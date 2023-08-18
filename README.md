@@ -1,4 +1,4 @@
-<!-- README.md 0.0.2                UTF-8                         2023-08-18
+<!-- README.md 0.0.3                UTF-8                         2023-08-18
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -34,12 +34,13 @@ Improvements and removal of defects in this particular documentation can be
 reported and addressed in the
 [Issues section](https://github.com/orcmid/orcmid.github.io/issues).  There
 may also be relevant
-[projects](https://github.com/orcmid/orcmid.github.io/projects?type=classic)
+[projects](https://github.com/orcmid/orcmid.github.io/projects)
 from time to time.
 
 <!--
 
-      0.0.2 2023-08-28T00:33Z touch-ups
+      0.0.3 2023-08-18T02:10Z Correct link to projects (issue #2)
+      0.0.2 2023-08-18T00:33Z touch-ups
       0.0.1 2023-08-17T16:59Z updated placeholder to introduce how this all
             fits with GitHub Pages at <https://orcmid.github.io>.  Borrowed
             from nfoTools/docs/index.md 0.0.12
