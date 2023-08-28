@@ -1,12 +1,12 @@
-<!-- index.md 0.0.1                 UTF-8                          2023-08-28
+<!-- index.md 0.0.2                 UTF-8                          2023-08-28
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
                        ALL ABOUT ORCMID ON GITHUB
      -->
 
-# ***Orcmid on GitHub***
+# ***Orcmid's Lair on GitHub***
 
-| ***[orcmid.github.io](../)*** | [orcmid](.) | ***[index.html](index.html) 0.0.1 2023-08-28*** |
+| ***[orcmid.github.io](../)*** | [orcmid](.) | ***[index.html](index.html) 0.0.2 2023-08-28*** |
 | :--                |       :--:         | --: |
 | *image pending* | [Work-in-Progress](orcmid.txt) | *image pending |
 
@@ -28,6 +28,7 @@ from time to time.
 
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.0.2 2023-08-28T17:04Z Correct the title
      0.0.1 2023-08-28T16:53Z corrected title
      0.0.0 2023-08-18T02:48Z placeholder
 
