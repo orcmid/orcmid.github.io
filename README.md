@@ -1,4 +1,4 @@
-<!-- README.md 0.0.4                UTF-8                         2023-08-18
+<!-- README.md 0.0.5                UTF-8                         2023-08-28
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -10,19 +10,19 @@ as documentation folders.
 
 The purpose of organizing at this level is related to document engineering.
 I prefer to have common construction conventions and materials documented in
-a single place.  That would be here.
+a single place.  That would be here.  Maybe.
 
 ## Orcmid's Table of Content
 
 The `orcmid.github.io` web is organized in topical sections. The subfolders
-corresponding to GitHub Pages of Orcmid projects are in different stages
-of construction and readiness.
+corresponding to GitHub Pages of Orcmid projects/repositories are in different
+stages of construction and readiness.
 
 | **Section** |  **General Topic** |
 |   --:       |  ---               |
 | [docEng](docEng/) | Patterns, Practices and Tools for Document Engineering |
-| [miser](miser/) | The Miser Project |
-| [orcmid](orcmid/) | All about Orcmid on GitHub |
+| [miser](miser/) | The Miser Project on GitHub |
+| [orcmid](orcmid/) | All about Orcmid on GitHub (or anywhere else)|
 | [nfoTools](nfoTools/) | nfoWare/nfoWorks Software Tutorials and Toolkits|
 | | |
 | [construction](construction/) | Common Construction Materials (maybe) |
@@ -40,6 +40,7 @@ from time to time.
 
 <!--
 
+      0.0.5 2023-08-28T16:27Z Reflect some ponderings/musings
       0.0.4 2023-08-18T02:41Z Add orcmid/ as a local section here
       0.0.3 2023-08-18T02:10Z Correct link to projects (issue #2)
       0.0.2 2023-08-18T00:33Z touch-ups
