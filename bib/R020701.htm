@@ -1,0 +1,694 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>R020701: Tip-Toes Around the Abyss</title>
+<!--$$Header: /OrcmidCompagno/readings/R020701.htm 9     03-05-25 10:50 Orcmid $-->
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" alink="#FF0000" text="#000080">
+
+<h1 align="center"><a href="../readings/">Readings</a></h1>
+
+<h1 align="center"><a href="r000001-log.htm#R020700">R020701</a>: Tip-Toes Around
+the Abyss</h1>
+
+<dl>
+      <dt>[<a name="[Körner1968]" href="math.htm#[Körner1968]">Körner1968</a>]</dt>
+      <dd>Körner, Stephan.&nbsp; <i>The Philosophy of Mathematics: An  
+        Introductory Essay</i>.&nbsp; Hutchinson &amp; Co (London: 1960,  
+        1968).&nbsp; Unabridged and unaltered republication by Dover  
+        Publications (New York: 1968).&nbsp; ISBN 0-486-25048-2 pbk.&nbsp;&nbsp;</dd>  
+      <dd>  
+        <br>  
+        <font size="-1">I would say there are four steps onto the slippery slope  
+        and off the precipice into the deeps of mathematics:<br>  
+        &nbsp;&nbsp; 0. Accepting the principle of an unbounded but  
+        always-extendable sequence as being the essence of the natural numbers<br>  
+        &nbsp;&nbsp; 1. Adopting the principle of mathematical induction<br>  
+        &nbsp;&nbsp; 2. Taking an always-extendable sequence as the axiomatic  
+        basis for the existence of infinite sets and the progression of  
+        transfinite cardinals<br>  
+        &nbsp;&nbsp; 3. Realizing functions over transfinite sets as transfinite  
+        sets<br>  
+        <br>  
+        The first and third seem to require remarkably&nbsp; little  
+        commitment.&nbsp; The middle two are disturbing in progressive degrees  
+        to different people, depending on the nature of their concerns over the  
+        foundation of set theory.<br>  
+        <br>  
+        Whatever my own predilections to walking those steps, I must somehow  
+        contend with them.&nbsp; They lie at the heart of what it is we profess  
+        to know about the limitations of computers and the prospects for  
+        approaching universal computation.&nbsp; In seeking clarity on the  
+        foundations of computation, I am led to explore these knotty  
+        topics.&nbsp; I begin by looking at what K&ouml;rner has to offer.</font></dd>  
+      <dd>  
+        <p align="right">  
+        <font size="-1"><i>-- Dennis E. Hamilton<br>  
+        Seattle, 2002 July 31</i></font></dd>  
+</dl>  
+  
+<font size="-1">  
+</font>  
+  
+<p align="center"><font size="-1"><b>L<span style="font-variant: small-caps">ast updated</span>  
+ 2002-08-05-22:20 -0700 (pdt)</b></font></p>  
+  
+<blockquote>  
+  <hr>  
+</blockquote>  
+  
+<h1>Notes on the Book</h1>  
+<blockquote>  
+  
+<p>These are undistilled notes from reading the book.&nbsp; They are mostly as 
+quotations, with an organization along my theme, not Körner's.&nbsp; These 
+notes are also not digested, which will be the second stage of the note.&nbsp; I 
+have found, in the reading, that I have found some clarity, and now want to 
+refine it to a summary of what I make of it, rather than so much of what Körner 
+has said in this place and that.&nbsp; --dh:2002-08-05.</p> 
+ 
+<p>&quot;Since the philosophy of mathematics is mainly concerned with the  
+exhibition of the structure and function of mathematical theories, it would seem  
+to be independent of any speculative or metaphysical assumptions.&nbsp; Yet it  
+may be doubted whether such autonomy is even in principle possible ...  
+.&quot;&nbsp; from the Introduction, p.11.</p>  
+  
+<p>&quot;As regarding pure mathematics I propose to argue that the concepts and 
+statements of any (existing) mathematical theory are--in a precise sense of the 
+terms--purely exact, that they are disconnected from perception, and that in so 
+far as a mathematical theory contains existential statements these, unlike, <i>e.g.</i>, 
+empirical and theological statements of existential import, are not 
+unique.&nbsp; As regards applied mathematics I shall, roughly speaking, argue 
+that the 'application' of pure mathematics consists in interchanging perceptual 
+and purely exact statements in the service of a given purpose.&quot;&nbsp; The 
+Nature of Pure and Applied Mathematics, p.159.</p> 
+ 
+<p>&quot;Each of the philosophies of mathematics which I discussed declares the 
+whole or part of classical mathematics to be in some way defective, proclaims 
+the need for replacing the defective by sound mathematical theories, and tries 
+to meet the need by actual construction.&nbsp; All agree that the 
+set-theoretical antinomies are not only obvious defects of classical 
+mathematics, but also symptoms of deeper lying defects which they diagnose in 
+different ways.&nbsp; The arguments used in the diagnosis are ... mainly 
+philosophical arguments, <i>i.e</i>., arguments which belong neither to natural 
+science or to logic.&quot;&nbsp; The Nature of Pure and Applied Mathematics, 
+p.185.</p> 
+</blockquote> 
+<h1>0. <a name="AcceptingLogic">Accepting a Logic</a>, Choosing a Reality</h1>  
+<blockquote>  
+<p>I did not expect to find so much here on this aspect.&nbsp; But there is a 
+big question on what it is that mathematical language is language about, and 
+also its relationship to perceptions in the world.&nbsp; I don't think I need to 
+make so much of it, although the historical perspective is extremely valuable, 
+and something to explore more deeply as occasions permit.&nbsp; I think there is 
+something about where things start.&nbsp; That is, it seems perfectly possible 
+to theorize for its own sake, and not with any connection to the world or 
+perceptions.&nbsp; This may not matter here. -- dh:2002-08-05</p>  
+<p>&quot;One of the strange features of mathematics, at least since Leibniz, is   
+that, in spite of the certainty of its truths, it is by no means generally   
+agreed of what, if anything, the true propositions of mathematics are   
+true.&quot;&nbsp; Some Older Views, p.16.</p>   
+<p>&quot;For Plato ... applied mathematics describes empirical objects and their   
+relations, in so far as they approximate to (participate in) the mathematical   
+Forms and their relations.&quot;&nbsp; Some Older Views, p.18.</p>   
+<p>&quot;According to Aristotle, the form or essence of any empirical object, an   
+apple or a plate, constitutes a part of it in the same way as does its matter.   
+...<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; &quot;Aristotle distinguishes sharply between the possibility of abstracting   
+(literally 'taking away') unity, circularity and other mathematical   
+characteristics from objects and the independent existence of these   
+characteristics or their instances, i.e., units and circles.&nbsp; He frequently   
+emphasizes that the possibility of abstraction does by no means entail the   
+independent existence of that which is, or can be, abstracted.&nbsp; The subject   
+matter of mathematics is those results of mathematical abstraction which   
+Aristotle calls 'mathematical objects.'&quot;&nbsp; Some Older Views, p.18.</p>   
+  <p>&quot;Indeed it would not even be possible for [Aristotle] to speak of a   
+  true or false idealization, but rather of one which would be more or less   
+  adequate for some given purpose.&quot; Some Older Views, p.19.</p>   
+  <p>&quot;Aristotle also pays more attention than Plato did to the structure of   
+  whole theories in mathematics as opposed to isolated propositions.&nbsp; Thus   
+  he distinguishes clearly between (i) the principles which are common to all   
+  sciences (or, as we might nowadays say, the principles of formal logic which   
+  are presupposed in the formulation and deductive development of any science);   
+  (ii) the special principles which are taken for granted by the&nbsp;   
+  mathematician engaged in the demonstration of theorems; (iii) the definitions,   
+  which do not assume that which is defined exists, e.g., Euclid's definition of   
+  a point as that which has no parts; and (iv) existential hypotheses, which   
+  assume that what has been defined exists -- independently of our thought and   
+  perception.&nbsp; Existential hypotheses in this sense would seem not to be   
+  required for pure mathematics.&quot;&nbsp; Some Older Views, p.20.</p>   
+  <p>&quot;[Leibniz] anticipated modern movements, in particular modern logicism,   
+  by bringing logic and mathematics together. ... One the one hand he presents a   
+  philosophical thesis concerning the differences between truths of reason and   
+  truths of fact, and their mutually exclusive and jointly exhaustive   
+  character.&nbsp; On the other hand he introduces the methodological idea of   
+  using mechanical calculation in aid of deductive reasoning, not only within   
+  those disciplines which belong traditionally to mathematics, but also beyond   
+  them.&nbsp; This means, in particular, the introduction of calculation into   
+  logic.&quot;&nbsp; Some Older Views, p.22.</p>   
+  <p>&quot;Another difficulty concerning truths of fact arises from the   
+  principle of sufficient reason 'which affirms that <i>nothing takes place</i>   
+  with out sufficient reason, that is to say nothing happens without its being   
+  possible for one who should know things sufficiently, to give a reason which   
+  is sufficient to determine why things are so and not otherwise.'&nbsp; This is   
+  for Liebniz not merely a general injunction to look for sufficient reasons to   
+  the best of one's ability, but in some ways, like the principle of   
+  contradiction, it is a principle of inference and analysis.&quot;&nbsp; Some   
+  Older Views, p.23.</p>   
+  <p>&quot;Mathematical propositions to [Liebniz] are like logical propositions   
+  in that they are not true of particular eternal objects or of idealized   
+  objects resulting from abstraction or indeed of any kind of object.&nbsp; They   
+  are true because their denial would be logically impossible.&nbsp; Despite   
+  every prima facie appearance to the contrary, a mathematical proposition is as   
+  much or as little 'about' a particular object or class of objects as is the   
+  proposition 'If anything is a pen it is a pen' about my particular pen, or   
+  about the class of pens, or the class of physical objects or any other class   
+  of objects.&nbsp; We might say that both propositions are necessarily true of   
+  all possible objects, of all possible states of affairs, or, using the famous   
+  Liebnizian phrase, <i>in all possible worlds</i>.&quot;&nbsp; Some Older   
+  Views, p.23.</p>   
+  <p>&quot;[Liebniz] must have found ... that the discovery of a symbolism for   
+  the representation of statements and demonstrations on the one hand, and the   
+  insight into their logical structure on the other, though separable in   
+  thought, are very rarely separable in fact.<br>   
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;The concrete representation, in suitable symbols, of a complicated   
+  deduction is, in [Leibniz's] words, a 'thread of Ariadne' which leads the   
+  mind.&nbsp; Leibniz's programme is first of all to devise a method of so   
+  'forming and arranging characters and signs, that they represent thoughts,   
+  that is to say that they are related to each other as are the corresponding   
+  thoughts.'&quot;&nbsp; Some Older Views, p.25.</p>   
+  <p>&quot;Frege [introduces] his own notion of an <i>analytic</i>   
+  proposition:&nbsp; A proposition is <i>analytic</i> if it can be shown to   
+  follow merely from general laws of logic <i>plus</i> definitions formulated in   
+  accordance with them.&quot;&nbsp; Mathematics as Logic, p.33.</p>   
+<p>&quot;According to Frege numbers are logical objects which it is the task of   
+a philosophy of mathematics to point out clearly.&nbsp; To define them is not to   
+create them, but to demarcate what exists in its own right.&nbsp; Contextual   
+definition of logical objects will not do because it does not exhibit their   
+character as independent entities.&quot;&nbsp; Mathematics as Logic, p.36.</p>   
+<p>&quot;But if arithmetic is deducible from logic, then the deduced   
+arithmetical propositions can hardly be assertions about objects of any kind;   
+not, at any rate, if, as Russell holds, logic has no subject matter.&nbsp; It   
+(a) must be shown that the phrases which seem to represent entities (the   
+so-and-so, the class of all things such that ...), whenever they occur in the   
+deduction of arithmetic from logic, are embedded in contexts, which do not imply   
+the assumption that such mental objects exist; and (b) these contexts must be   
+defined.&quot;&nbsp; Mathematics as Logic, p.35.</p>   
+<p>&quot;Russell's way of dealing with the impression--correct or   
+incorrect--that in talking about classes we are not talking about entities is   
+similar to his theory of descriptions.&nbsp; Again, 'the class of objects which   
+...', which seems to name an entity, is absorbed into contexts, each of which is   
+defined as a whole and is free from the existential implications which Russell   
+desires to avoid.&quot;&nbsp; Mathematics as Logic, p.36</p>   
+<p>&quot;Whether or not we accept this view--that all true propositions denote   
+(are names of) the truth-value T and all false propositions denote (are names   
+of) the truth-value F--is not the issue.&nbsp; The point is that in so far as we   
+regard a proposition as a truth-function of its components, we must take account   
+only of their truth or falsehood and ignore any other information which it or   
+its components may convey.&quot;&nbsp; Mathematics as Logic, p.41.</p>   
+<p>&quot;Because of its importance for logic and the philosophy of logicism the   
+point is worth emphasizing that truth-functions are a very special and abstract   
+kind of compound proposition, a type which in some respects represents <i>certain</i>   
+features of English and other natural languages ... but which in other respects   
+are idealizations and simplifications ... .&quot;&nbsp; Mathematics as Logic,   
+pp.41-42.</p>   
+<p>&quot;The last group of postulates needed to carry out the Frege-Russell   
+programme concern the use of the terms 'all' and 'some' in mathematics.&nbsp;   
+These were the last part of the logical apparatus to be formalized.&nbsp; The   
+need for them becomes very clear when we consider the transition from statements   
+in which a property is asserted of one individual object, to statements in which   
+the same property is asserted of a finite number of objects, and thence to   
+statements in which it is asserted of an actually infinite number.&quot;&nbsp;   
+Mathematics as Logic, p.47.</p>   
+<p>&quot;The search, however, for such a general characteristic ... as would   
+cover both logic and mathematics has, so far, been unsuccessful--which is   
+perhaps the least surprising, in view of the pragmatic principles included among   
+the postulates of logicist systems, especially principles which are almost   
+indistinguishable from empirical hypotheses about the universe.&quot;&nbsp;   
+Mathematics as Logic: Criticism, p.57.</p>  
+<p>&quot;The formalist not only needs the assurance that his formalism   
+formalizes a consistent theory, but also that it completely formalizes what it   
+is meant to formalize.&nbsp;&nbsp; A formalism is complete, if every formula   
+which--in accordance with its intended interpretation--is provable within the   
+formalism, embodies a true proposition, and if, conversely, every true   
+proposition is embodied in a provable formula.&quot;&nbsp; The Science of Formal   
+Systems, pp.76-77.</p> 
+<p>&quot;Since the concepts of metamathematics and the statements in which these 
+concepts are applied are not empirical, their subject-matter is also not 
+empirical.&nbsp; The strokes on paper and the operations upon them are just as 
+little the subject-matter of metamathematics as figures and constructions on 
+paper are the subject-matter of Euclidean geometry.&nbsp; Both types of marks 
+and constructions are diagrammatic; and diagrams, however useful and practically 
+indispensable, are 'representations' which are neither identical nor isomorphic 
+with that they are used to 'represent'.&nbsp; ... (I have put 'represent' in 
+quotes in order to indicate that I am not using the term in its (now perhaps) 
+dominant sense implying isomorphism between representing and represented 
+system.&nbsp; The inexactness of the empirical and the exactness of the 
+non-empirical concepts precludes isomorphism between the instances and relations 
+of the two systems.)&quot;&nbsp; The Science of Formal Systems: Criticism, 
+pp.104-105.</p>
+<p>&nbsp;&quot;If no two people can live through the <i>same</i> experience, 
+then the experience, not being intersubjective, cannot ever validate the 
+intersubjective statements of any science.&nbsp; For example, there can be no 
+intersubjective science of introspective psychology, and no intersubjective 
+science of mathematics as reporting intuitive constructions.&quot;&nbsp; 
+Intuitive Construction: Criticism, p.137.</p>
+<p>&quot;We have said that the postulation of objects for internally consistent 
+concepts is the foundation of mathematical existence-propositions.&nbsp; This 
+does not imply any answer to the question whether one should actually postulate 
+such objects in a given case.&nbsp; ... What has been said about 
+existence-propositions in mathematics seems very much in line with the notions 
+of working mathematicians.&nbsp; Indeed their use of the term 'existence-<i>postulate</i>' 
+suggests quite clearly the non-uniqueness of mathematical 
+existence-propositions.&quot;&nbsp; The Nature of Pure and Applied Mathematics, 
+p.176.</p>
+<p>On applied mathematics, there is a quotation of Dirac, from <i>The Principles 
+of Quantum Mechanics</i>, 1956, &quot;The new scheme becomes a precise physical 
+theory when all the axioms and rules of manipulation governing the mathematical 
+quantities are specified and when in addition certain laws are laid down 
+connecting physical facts with the mathematical formalism, so that from any 
+physical conditions equations between the mathematical quantities can be 
+inferred and vice versa. .... The justification for the whole scheme depends 
+apart from internal consistency on the agreement of the final results with 
+experiment.&quot;&nbsp; (Körner p.177)</p>
+<p>&quot;The procedure of theoretical physics and of applied mathematics in 
+general is to <i>replace</i> empirical propositions by mathematical ones, to 
+deduce mathematical consequences from the mathematical premisses, and to replace 
+some of these consequences by empirical propositions.&nbsp; That this procedure 
+can be, and has often been, highly successful depends on the world's being what 
+it is.&nbsp; That satisfiable rules governing--more or less strictly--the 
+interchange of exact and inexact concepts (before and after mathematical 
+deduction) have been found, depends on those features of the world which go 
+under the name of human ingenuity.&quot;&nbsp; The Nature of Pure and Applied 
+Mathematics, p.180.</p>
+<p>&quot;In choosing a criterion of the soundness of a physical or mathematical 
+theory one chooses a programme for the construction of theories.&nbsp; ... In 
+the case of mathematical theories the control by experience, if any, is at most 
+quite indirect; and the choice is determined more by metaphysical convictions, 
+allegedly based on insights into the nature of 'reality', or on sound practice 
+and tradition.&nbsp; These become effective as regulative principles, <i>i.e</i>. 
+as rules of conduct--the area of conduct being the construction of mathematical 
+theories.&quot;&nbsp; The Nature of Pure and Applied Mathematics, p.184.</p>
+</blockquote>
+<h1>1. <a name="AcceptingNumberPrinciple">Accepting the Number Principle</a></h1> 
+<blockquote> 
+  <p>&quot;[Aristotle] distinguishes between the possibility of adding a further  
+  unit to the last member of any sequence of numbers, such as in particular the  
+  sequence of natural numbers, 1, 2, 3, ... and the possibility of making always  
+  another subdivision of, say, a line between two points, which had previously  
+  been subdivided any number of times.&nbsp; Here the possibility of going on <i>ad  
+  infinitum</i> is what may be meant by calling the sequence infinite, or the  
+  line 'infinitely' divisible (consisting of infinitely many parts).&nbsp; This  
+  is the notion of potential infinity.&quot;&nbsp; Some Older Views, p.20.</p>  
+  <p>&quot;Kant's account of the propositions of pure arithmetic is similar to  
+  his account of pure geometry.&nbsp;&nbsp; The proposition that by adding 2  
+  units to 3 units we produce 5 units describes--synthetically and a  
+  priori--something constructed in time and space, namely the succession of  
+  units and their collection. ... The logical possibility of alternative  
+  arithmetics is not denied.&nbsp; What is asserted is that these systems would  
+  not be descriptions of perceptual space and time.&quot;&nbsp; Some Older  
+  Views, p.29.</p>  
+  <p>&quot;Kant's notion of construction as providing the instances of  
+  mathematical concepts, the internal consistency of which is granted, assumed,  
+  or, at least, not called into question, has many recognizable descendants in  
+  later developments in the philosophy of mathematics.&quot;&nbsp; Some Older  
+  Views, p.29.</p>  
+  <p>&quot;In a mathematical sequence or progression a rule tells us how to take  
+  each step after the previous one has been taken.&nbsp; Kant will not allow the  
+  assumption that when such a rule is given the totality of all the steps is  
+  necessarily in some sense also given.&nbsp; The issue is particularly  
+  important in cases when there is no last step or where there is no first  
+  step.&quot;&nbsp; Some Older Views, p.30.</p>  
+  <p>&quot;According to [Aristotle] not only are there no instances of actual   
+  infinity within sense-experience; it is logically impossible that there should   
+  be.&quot;&nbsp; Some Older Views, p.30.</p>   
+  <p>&quot;Let us consider a concept '<var>n</var> is a Natural Number' which is   
+  so defined that it does <i>not</i> entail '<var>n</var> has a unique immediate   
+  successor'.&nbsp; In other words, we admit the possibility, envisaged by   
+  Russell, that the number-sequence comes to an end.&nbsp; Moreover if there is   
+  a last Natural Number we assume it to be so great that no one--whether   
+  scientist or grocer--needs to be perturbed about it.&quot;&nbsp; Mathematics   
+  as Logic: Criticism, p.59</p>  
+  <p>&quot;Let us consider next the concept '<var>n</var> is a natural number'   
+  which is so defined that it <i>does</i> entail '<var>n</var> has a unique   
+  immediate successor', and, therefore, ''<var>n</var> has infinitely many   
+  successors'.&nbsp; <i>This</i> concept may not be applicable to groups of   
+  perceptual objects.&quot; p.59</p>  
+  <p>&quot;Moreover, the hypothesis of the infinite sequence of natural numbers   
+  by which the concept 'natural number' is defined and provided with its   
+  infinite range admits of no empirical falsification or confirmation.&nbsp; It   
+  leaves room for further 'hypothesese' of a similar kind, one of which 'assures   
+  us' that the class of natural numbers is completely given, another that in   
+  addition the class of its subclasses is also given.&nbsp; But there are also   
+  hypotheses which assure us to the contrary.&nbsp; This freedom of defining   
+  mutually inconsistent concepts and of <i>providing them by definition</i> with   
+  different ranges shows us that none of these concepts is empirical.&nbsp; The   
+  Natural Numbers on the other hand are empirical concepts, characteristics of   
+  perceptual patterns, such as groups of strokes or of temporally separated   
+  experiences.&nbsp; They and their relationship to each other are found, not   
+  postulated.&quot; p.60.</p>  
+  <p>&quot;My aim in this section has been to show that the logicist account of   
+  applied mathematics implies an illegitimate conflation of mathematical number   
+  concepts and of corresponding empirical ones.&nbsp; Ignoring the difference   
+  between the corresponding concepts, logicism cannot, and does not, say   
+  anything about the nature of this correspondence.&quot;&nbsp; pp.61-62.</p>  
+</blockquote>  
+<h1>2. Accepting Mathematical Induction</h1>  
+<blockquote>  
+  <p>Here, this is basically a question around rules of inference that lead to   
+  use of universal quantification on all of the numbers.&nbsp; It is not singled   
+  out (so far).</p>   
+  <p>&quot;Again the principle of induction, the most characteristic of all the   
+  principles of arithmetic, is, in the words of Hilbert and Bernays not an   
+  'independent principle' but 'a consequence which we take from the concrete   
+  construction of the figures [of numbers].&quot;&nbsp; The Science of Formal   
+  Systems, p.78.</p>  
+  <p>This is an odd idea, except we would agree that the expressions in formal  
+  systems about arithmetic tend to exhibit the quality of number in their  
+  forms.&nbsp; However, K&ouml;rner raises some questions about finite 
+  methods.&nbsp; This is at the heart of it, since we formalize using structures 
+  that are similar to the natural numbers, and are left with a problem there 
+  about any &quot;reaching beyond,&quot; or even to the boundary.&nbsp; Here is 
+  how K&ouml;rner sets it out:&nbsp; -- dh:2002-08-05</p>
+  <p>&quot;Elementary arithmetic is the paradigm of mathematical theory.&nbsp; 
+  It is an apparatus which produces formulae, and which can be entirely 
+  developed by finite means.&nbsp; This statement, however, ... is still 
+  needlessly imprecise, and requires an actual and explicit characterization of 
+  what is to be meant by 'finite methods'.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;First, every mathematical concept or 
+  characteristic must be such that its possession or non-possession by any 
+  object can be decided by inspection of either the actually constructed object 
+  or the constructive process which would produce the object. ... Thus one is 
+  reasonably content with a process of construction which is 'in principle' 
+  performable.&nbsp; Indeed it is at this point, namely when the choice arises 
+  between making the formalist programme less strict or sacrificing it, that 
+  some relaxation of the finite point of view may be expected.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;Secondly, a truly universal proposition--a 
+  proposition about all stroke-expressions for example--is not finite: no 
+  totality of an unlimited number of objects can be made available for 
+  inspection, either in fact or 'in principle'.&nbsp; It is, however, 
+  permissible to interpret any such statement as being about each constructed 
+  object.&nbsp; Thus, that all numbers divisible by four are divisible by two 
+  means that if one constructs an object divisible by four, this object will 
+  have the property of being divisible by two.&nbsp; Clearly this assertion does 
+  not imply that the class of all numbers divisible by four is actually and 
+  completely available.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;Thirdly, a truly existential proposition--to 
+  the effect, <i>e.g.</i>, that there exists a stroke-expression with a certain 
+  property--is equally not finite: we cannot go through <i>all</i> 
+  stroke-expression (of a certain kind) to find one which has the property in 
+  question.&nbsp; But we may regard an existential proposition as an incomplete 
+  statement to be supplemented by an indication of either of a concrete object 
+  which possesses the property or of the constructuve process yielding such an 
+  object. ...<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;Fourthly, the law of excluded middle is not 
+  universally valid. ...<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;Even in elementary arithmetic there is occasion 
+  for using, in a restricted way, transfinite methods, in particular the 
+  principle of excluded middle. ... &quot;&nbsp;&nbsp; The science of formal 
+  systems. pp.78-80.</p>
+</blockquote>
+<h1>3. Accepting Trans-Finite Sets</h1> 
+<blockquote> 
+  <p>Aristotle's arguments for rejecting the notion of actual infinity have a  
+  central idea behind them:&nbsp; &quot;that a method for a step-by-step  
+  procedure, <i>i.e.</i> for making the next step if the preceding step has been  
+  taken, does not imply that there is a last step, either in thought or in  
+  fact.&quot;</p>  
+  <p>&quot;The rejection of the notion of actual infinity is regarded as being  
+  of little important for the mathematician who, so Aristotle holds, needs only  
+  that of potential infinity for the purposes of mathematical demonstration. ...  
+  It might possibly be argued that Aristotle admits the possibility of the  
+  consistent use of actually infinite sets in a purely mathematical system which  
+  is not applicable to the physical universe.&quot;&nbsp; Some Older Views,  
+  p.21.</p>  
+  <p>Kant's analysis of infinity &quot;reminds one in many ways of Aristotle's  
+  doctrine, except that in Kant the distinction between actual and potential  
+  infinity is worked out still more clearly.&quot;&nbsp; Some Older Views,  
+  pp.29-30.</p>  
+  <p>&quot;Kant does <i>not</i> regard the notion of actual infinity as  
+  logically impossible.&nbsp; It is what he calls an Idea of reason, that is to  
+  say an internally consistent notion which is, however, inapplicable to  
+  sense-experience since instances of it can be neither perceived nor  
+  constructed.&nbsp; Kant's view is that ... we can neither perceive nor  
+  construct an actually infinite aggregate.&quot;&nbsp; Some Older Views, p.30.</p>  
+  <p>&quot;This transition from the notion of potential, constructive infinity  
+  to the notion of actual, non-constructive infinity is in Kant's view the main  
+  root of confusion in metaphysics.&nbsp; Whether it is required, desirable, or  
+  objectionable or indifferent <i>within mathematics</i> is a question which  
+  divides the contemporary schools of philosophy of mathematics perhaps more  
+  radically than any other problem.&quot;&nbsp; Some Older Views, p.31.</p>  
+  <p>&quot;In [Frege's famous definition of 'number'] the role placed by the   
+  familiar notion of parallel lines is played by the less familiar notion of   
+  'similar' concepts.&nbsp; Two sets of objects are similar if, and only if, a   
+  one-to-one correspondence can be established between their members.&nbsp; ...   
+  Every concept determines, as we have seen, a set of things, namely the set of   
+  things falling under it--the extension of the concept.&nbsp; If the sets of   
+  things falling under two concepts ... are similar we shall say that the   
+  concepts themselves are similar.&quot;<br>   
+  &nbsp;&nbsp;&nbsp;&nbsp; Frege says we may &quot;define the number of a   
+  concept, say <var>a</var>, as the range of values (extension) of the concept '<var>&xi;</var>   
+  is a concept similar to <var>a</var>'.&quot;&nbsp; Mathematics as Logic, p.38.</p>   
+<p>&nbsp;&quot;Now, some of the most important propositional functions in pure   
+mathematics, such as '<var>x</var> is an integer' or '<var>x</var> is an   
+irrational number', are of ranges which are not finite.&nbsp; They must be   
+regarded as infinite, at least potentially.&nbsp; The philosophical   
+mathematicians who adopt the Russellian programme regard the ranges of both '<var>x</var>   
+is an integer' and '<var>x</var> is an irrational number' as actually infinite,   
+and they regard the latter range as being in a clearly definable sense greater   
+than the former. ...<br>   
+&nbsp;&nbsp;&nbsp;&nbsp; &quot;Postulates providing the infinite ranges covered   
+by the logicist equivalent of the phrases 'for every integer ...' or 'for every   
+real number ...' are susceptible to various interpretations.&nbsp; They may be   
+regarded as merely technical devices, admissible so long as they are   
+demonstrably innocent of leading to contradictions.&nbsp; This is essentially   
+the view of Hilbert and his school.&nbsp; They may be regarded, again as   
+inadmissible because misrepresenting the nature of mathematics.&nbsp; This is   
+essentially the view of Brouwer and his disciples.&nbsp; They may be regarded,   
+lastly, as empirical assumptions about the world.&nbsp; ... To say that there is   
+an infinite number of individuals in the world would according to Russell be to   
+make an empirical statement which may be true or false but which in Principia   
+Mathematica is assumed to be true.&quot;&nbsp; Mathematics as Logic, pp.48-49.</p>   
+<p>&quot;The logistic account of the sequence of natural numbers involves the   
+assumption of actual infinities.&nbsp; But although logicism, following Cantor,   
+employs this notion most liberally by developing a mathematics of infinities of   
+various sizes and various internal structures, its mathematical theory is not   
+backed by any philosophical theory or analysis.&quot;&nbsp; Mathematics as   
+Logic: Criticism, p.53.</p>   
+<p>&quot;[Frege and Russell] are not ... compelled to hold that the similarity   
+or lack of it between two classes, <i>i.e.</i> the presence or absence of a   
+one-to-one correspondence between their members, can be established in every   
+case.&nbsp; But they do assume it to be true for any two classes; either that   
+they are or are not similar, even if there is no possible way of fining   
+out.&nbsp; The nature of this assumption is, at best, obscure and in need of   
+justification.&quot;&nbsp; Mathematics as Logic: Criticism, p.59.</p>   
+  <p>The historical importance of the 'naive' transfinite mathematics, created   
+  by Cantor and incorporated almost wholly into <i>Principia Mathematica</i>,   
+  can hardly be overestimated.&nbsp;&nbsp;</p>  
+  <p>&quot;For proving the consistency of a system, two methods are available:   
+  the direct and the indirect.&nbsp; In some cases it can be shown by   
+  combinatorial means that inconsistent statements are not deducible in a given   
+  theory.&nbsp; In other cases, the direct method proceeds by exhibiting a   
+  perceptual model of the theory.&nbsp; More precisely it consists (i) in   
+  identifying the objects of the theory with concrete objects, (ii) in   
+  identifying the postulates with exact descriptions of these objects and their   
+  mutual relations, and (iii) in showing that an inference within the system   
+  will not lead to any other than exact descriptions.&nbsp; Since mathematics   
+  abounds in concepts of actual infinities which cannot be identified with   
+  perceptual objects, the use of the direct method is restricted to certain   
+  small parts of mathematics.&nbsp;&nbsp;<br>  
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;A theory involving actual infinities can--at   
+  least <i>prima facie</i>--be tested for consistency only by the indirect   
+  method.&nbsp; One proceeds in this by establishing a one-to-one correspondence   
+  between (a) the postulates and the theorems of the original theory and (b) all   
+  or some of the postulates and theorems of a second theory, which is assumed to   
+  be consistent.&nbsp; ... But none of these theories can have a concrete model.<br>  
+  &nbsp;&nbsp;&nbsp;&nbsp; &quot;Amongst indirect proofs of the consistency of   
+  any geometical or physical theory the most common are based on arithmetization,   
+  <i>i.e.</i> on representing the objects of these theories by real numbers or   
+  systems of such. ... But the reducibility to arithmetic of physical and   
+  mathematical theories which contain ideal notions, and which cannot be proved   
+  consistent by the direct method, raises the question of the consistency of   
+  arithmetic itself.&quot;&nbsp; The Science of Formal Systems, p.75.</p>  
+  <p>&quot;We now turn to non-elementary arithmetic.&nbsp; The subject-matter of 
+  this arithmetical <i>theory</i> is, of course, no longer finite.&nbsp; But may 
+  be possible to construct an arithmetical <i>formalism</i>--with 
+  statement-formulae and theorem-formulae corresponding ... to statements and 
+  theorems of the theory; and this formalism could then be the subject-matter of 
+  a metatheory.&nbsp; Since the subject-matter, namely formula-construction, 
+  would be finite, the metatheory would be just as finite as elementary 
+  arithmetic, from which it would differ only by being about a different kind of 
+  perceptual construction.&nbsp; If a formalism corresponding, in the required 
+  manner, to the theory of non-elementary arithmetic can be constructed, then we 
+  can again, by demonstrating <i>formal</i> consistency of the formalism, <i>eo 
+  ipso</i> establish logical consistency of the theory. ... Our next task, 
+  therefore, must be to consider the formula-constructing activities, or 
+  formalism--both formalisms considered by themselves and formalisms which are 
+  at the same time formalizations of theories.&quot;&nbsp; The Science of Formal 
+  Systems, p.84.</p> 
+</blockquote> 
+<h1>X. <a name="DramatisPersonae">Dramatis Personae</a></h1> 
+<h2>Classical Thinkers</h2> 
+<h3>Plato</h3> 
+<blockquote> 
+<p>Considered there to be an absolute, unchanging reality separate from the 
+world of appearances.</p> 
+<p>&quot;Precision, timelessness and--in some sense--independence of their being  
+apprehended is certainly, for Plato, characteristic of mathematical statements,  
+and the view that numbers, geometric entities and the relations between them  
+have an objective, or at least an intersubjective, existence is  
+plausible.&quot;&nbsp; Some Older Views, p.15.</p>  
+<p>&quot;Plato certainly held that there are mind-independent, definite, eternal  
+objects which we call 'one', 'two', 'three', etc., the arithmetic  
+Forms.&quot;&nbsp; Some Older Views, pp.15-16.</p>  
+</blockquote>  
+<h3>Aristotle</h3>  
+<blockquote>  
+<p>Aristotle gave a detailed formulation of the problem of mathematical  
+infinity.&nbsp;&nbsp; &quot;[Aristotle] was the first of many to see the two  
+main ways of analyzing the notion of infinity as actual and as merely potential;  
+and he was the first who made a clear decision in favor of the second  
+alternative.&quot;&nbsp; Some Older Views, p.20.</p>  
+</blockquote>  
+<h3>Leibniz</h3>  
+<blockquote>  
+<p>&quot;Leibniz's more radical [than Aristotle] logical position, that the  
+predicate of every proposition is 'contained in' the subject, is paralleled, on  
+his side, by the famous metaphysical doctrine that the world consists of  
+self-contained subjects--substances or monads which do not interact.&quot;&nbsp;  
+Some Older Views, p.21.</p>  
+</blockquote>  
+<h3>Hume</h3>  
+<h3>Kant</h3>  
+<blockquote>  
+<p>&quot;Kant does not agree with the view of pure mathematics which would make  
+it a matter of definitions and of postulated entities falling under them.&nbsp;  
+To him pure mathematics is not analytic; it is synthetic <i>a priori</i>, since  
+it is about (describes) space and time.&quot;&nbsp; Some Older Views, p.28.</p>  
+</blockquote>  
+<h2>19th Century Bridging of Mathematics and Logic</h2>  
+<h3>Boole</h3>  
+<h3>Cantor</h3>  
+<blockquote>  
+  <p>&quot;Cantor, the founder of the general theory of classes or sets, defined  
+  a set (<i>Menge</i>) as 'a collection of definite, well-distinguished objects  
+  of our perception or thought--the elements of the set--into a whole' [<a href="#[Cantor1895]">Cantor1895</a>].  
+  ...<br>  
+  &nbsp;&nbsp;&nbsp; &quot;One of the most important and fruitful events in the  
+  history of mathematical logic and the philosophy of mathematics was the  
+  discovery that Cantor's logic of classes, by admitting as a class any  
+  collection, however formed, leads to contradictions.&nbsp; Their occurrence  
+  ... makes it necessary to distinguish between admissible and inadmissible  
+  classes ... .&nbsp; The region of thought where such distinctions are  
+  imperative is a little like some notorious swamp which no one could drain, and  
+  which, consequently, it was imperative to bridge, by whatever artificial means  
+  available.&quot;&nbsp; Mathematics as logic, pp.44-45.</p>  
+</blockquote>  
+<h3>Frege</h3>  
+<blockquote>  
+<p>&quot;Frege's explanation of the analytic character of arithmetic presupposes  
+that the general laws of logic, which he lists and uses as premisses, are such  
+that would generally and at once be recognized.<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; &quot;These laws are propositions which he simply  
+enumerates.&nbsp; He does not characterize them by any common feature, such as  
+all analytic propositions might be presumed to possess though not always being  
+immediately seen to possess it.&nbsp; ...<br>  
+&nbsp;&nbsp;&nbsp;&nbsp; &quot;The path from the listed initial propositions, by  
+inferential steps, to the theorems of arithmetic can be expected to be long,  
+especially if every step is to be open to thorough inspection. ... Frege and his  
+followers adopted and extended the symbolic representation of deductive  
+reasoning used by mathematicians.&nbsp; ... The extension consists on the one  
+hand of not only symbolizing the notions used in the traditional branches of  
+mathematics but those used in all deductive reasoning; and on the other hand of  
+formulating explicitly the permissible rules of inference.&quot;&nbsp;  
+Mathematics as Logic, pp.33-34.</p>  
+</blockquote>  
+<h3>Pierce</h3>  
+<h2>20th Century Mathematical Logic and Foundations</h2>  
+<h3>Russell</h3>  
+<blockquote>  
+  <p>&quot;According to Russell, definition is a purely notational device.&nbsp;  
+  ... Yet, it is maintained that in at least two ways, definitions,  
+  theoretically superfluous though they are, often convey most important  
+  information.&nbsp; They imply 'that the <i>definiens</i> is worthy of careful  
+  consideration' and further that 'when what is defined is (as often occurs)  
+  something already familiar, such as cardinals or other ordinal numbers, the  
+  definition contains an analysis of a common idea, and may therefore express a  
+  notable advance'.[<a href="#[Russell1925]">Russell1925</a>:p.11ff]&quot;&nbsp;  
+  Mathematics as Logic, pp.34-35.</p>  
+</blockquote>  
+  <h3>Quine</h3>  
+<blockquote>  
+  <p>&quot;[Quine] claims that the notions of arithmetic can be defined in   
+  purely logical terms; that 'the notions of identity, relation, number,   
+  function, sum, product, power, limit, derivative, etc. are all definable in   
+  terms of our three notational devices: membership, joint denial, and   
+  quantification with its variables' [<a href="#[Quine1981]">Quine1981</a>:   
+  p.125ff]&nbsp; Definition here may be both explicit or contextual, and does   
+  not imply the existence, in any sense, of objects falling under the defined   
+  concepts.&quot;&nbsp; Mathematics as Logic, p.50.</p>   
+</blockquote>   
+  <h3>Curry</h3>  
+<blockquote>  
+  <p>&nbsp;&quot;According to Curry, who is quite explicit on this question, we 
+  must distinguish between the <i>truth</i> of a formula within a formal 
+  system--<i>i.e</i>. the statement that is derivable within the system--and the 
+  <i>acceptability</i> of the system as a whole.&nbsp;&nbsp; The former is 'an 
+  objective matter about which we can all agree; while the latter may involve 
+  extraneous considerations'.&nbsp; Thus he holds that 'the acceptability of 
+  classical analysis for the purposes of application in physics is ... 
+  established on pragmatic grounds and neither the question of intuitive 
+  evidence nor that of a consistency proof has any bearing on this matter.&nbsp; 
+  The primary criterion of acceptability is empirical; and the most important 
+  considerations are adequacy and simplicity'. ... The domain of formal theories 
+  and the propositions about their formal properties are, Curry holds, cleary 
+  demarcated.&quot;&nbsp; The Science of Formal Systems, p.87.</p> 
+</blockquote> 
+<h3><b>Brouwer</b></h3> 
+<blockquote>
+  <p>&quot;According to Brouwer the principles of classical logic are linguistic 
+  rules in that those who 'linguistically follow' them may but need not 'be 
+  guided by experience'.&nbsp; This means that the rules of classical logic are 
+  employed in description and communication but not in the activity itself of 
+  constructing; as they are not employed, except as inessential aids, in the 
+  activity of mountain climbing.&nbsp; Mathematics is essentially independent, 
+  in this sense, not only of language but also of logic.&quot;&nbsp; Intuitive 
+  Constructions, p.122.</p> 
+</blockquote>
+<h1><a name="References">References</a></h1> 
+<dl> 
+  <dt>[<a name="[Cantor1895]">Cantor1895</a>]</dt> 
+  <dd>Cantor, Georg.&nbsp; Beitr&auml;ge zur Begr&uuml;ndung der transfiniten 
+    Mengenlehre I.&nbsp; Mathematische Annalen (1895).&nbsp;&nbsp; Translated 
+    and reprinted in [<a href="logic.htm#[Cantor1915]">Cantor1915</a>].<br> 
+    &nbsp;&nbsp;&nbsp;</dd> 
+      <dt>[<a name="[Quine1981]" href="logic.htm#[Quine1981]">Quine1981</a>]</dt>                
+      <dd>Quine, Willard Van Orman.&nbsp; <i>Mathematical Logic</i>.&nbsp; revised                
+        edition.&nbsp; Harvard University Press (Cambridge, MA: 1940, 1951,                
+        1979, 1981).&nbsp; ISBN 0-674-55451-5 pbk.<font size="-1"></font></dd>                
+  <dt>&nbsp;</dt> 
+  <dt>[<a name="[Russell1925]">Russell1925</a>]</dt> 
+  <dd>Whitehead, Alfred North., Russell, Bertrand.&nbsp; Principia Mathematica, 
+    vol. 1.&nbsp; ed.2.&nbsp; Cambridge University Press.&nbsp; (Cambridge: 
+    1927).&nbsp; See [<a href="logic.htm#[Whitehead1997]">Whitehead1997</a>].</dd> 
+</dl> 
+<blockquote> 
+ 
+ 
+<hr> 
+ 
+ 
+</blockquote> 
+ 
+ 
+<p align="right"><font size="-2">created 2002-07-28-11:34 -0700 (pdt) by <a href="../construction/orcmid.htm"> orcmid</a><br> 
+<em>$$Author: Orcmid $<br> 
+$$Date: 03-05-25 10:50 $<br> 
+$$Revision: 9 $</em></font></p> 
+ 
+</body> 
+</html> 

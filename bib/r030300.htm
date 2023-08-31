@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>R030300: The Reach of Software Engineering</title>
+<!--$$Header: /OrcmidCompagno/readings/r030300.htm 6     04-11-25 12:50 Orcmid $-->
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" alink="#FF0000" text="#000080">
+
+<h1 align="center"><a href="../readings/">Readings</a></h1>
+
+<h1 align="center"><a href="r000001-log.htm#R030300">R030300</a>: The Reach of 
+Software Engineering</h1>
+
+<dl>
+      <dt></dt>
+</dl>  
+  
+<font size="-1">  
+</font>  
+  
+<p align="center"><font size="-1"><b>L<span style="font-variant: small-caps">ast updated</span>  
+ 2003-03-17-00:22 -0800 (pdt)</b></font></p>   
+  
+<blockquote>  
+  <hr>  
+</blockquote>  
+  
+<h1>1. <a name="InitialAssumptions">Initial Assumptions</a></h1> 
+<blockquote>
+  
+<p>Software includes computer programs and what is needed to use them [<a href="#[SE]">SE</a>: 
+1.1.1]</p> 
+  <p>Software engineering is seen as an engineering discipline concerned with 
+  all aspects of software production [<a href="#[SE]">SE</a>: 1.1.2] starting 
+  from (software) system specification through maintenance of the (software) 
+  system after it has gone into use.&nbsp;&nbsp;</p> 
+  <p>This distinction does not provide much about the system of which the 
+  software system occurs in an instrumental way.&nbsp; Even in the discussion of 
+  (computer-based) system engineering, the focus is inward and artifact centric 
+  in tone [<a href="#[SE]">SE</a>: 1.1.4].</p> 
+  <p>The reach is further confirmed by placing software specification as the 
+  initial stage of the software process [<a href="#[SE]">SE</a>: 1.1.5].&nbsp; 
+  It is important that software evolution is included, beyond the validation of 
+  the software product against customer requirements.&nbsp; The requirements 
+  confirmation process is not itself identified as the leading activity.</p> 
+  <p>The software process model is peculiar in that sometimes the notions here 
+  apply to the model inside which the delivered software functions, and 
+  sometimes the notions are about the activity of software engineering and 
+  development [<a href="#[SE]">SE</a>: 1.1.6].&nbsp; It is clear from the 
+  section that it is the software delivery process that is being considered, and 
+  not the functions of the software itself, but it is startling to not have that 
+  be so clear in terms of the kinds of models.</p> 
+  <p>The limitation of scope is confirmed in regard to the characterization of 
+  software engineering methods [<a href="#[SE]">SE</a>: 1.1.8].&nbsp; However, 
+  the process of moving up to situation in models, via approaches such as MDA 
+  are still possible in this view.&nbsp; However, MDA may be confined mostly to 
+  software engineering, and hence inward-looking still.</p> 
+  <p>The attributes of good software are about non-functional metrics with 
+  regard to the behaving software [<a href="#[SE]">SE</a>: 1.1.10].&nbsp; 
+  Usability, and some performance attributes, are the closest that seem to be 
+  related to suitability to the task.&nbsp; The prospect for metrics is not 
+  introduced at this point.</p> 
+  <p>It is interesting to me that the key challenges would seem to require both 
+  abstraction and situation of the software, its integration, and its life cycle 
+  [<a href="#[SE]">SE</a>: 1.1.11].&nbsp;&nbsp;</p> 
+  <p>The ACM/IEEE Code of Ethics for software engineers is cited, as is the Fred 
+  Brooks &quot;No Silver Bulllet paper. [<a href="#[Brooks1995]">Brooks1995</a>]</p> 
+</blockquote>
+  
+  <h1>Computer-Based System Engineering</h1> 
+<blockquote>
+  <p>Now we look more closely at the scope of system-engineering around
+  computers.</p> 
+  
+  <p>We want to look for broader system-engineering issues that affect software
+  engineering [<a href="#[SE]">SE</a>: 2, objectives].&nbsp; We also want to
+  look at what is meant by the system's environment.&nbsp;&nbsp;</p> 
+  
+  <p>&quot;System engineering is the activity of specifying, designing,
+  implementing, validating, deploying and maintaining systems <i>as a whole</i>.&nbsp;
+  System engineers are [concerned with] software, hardware and the system
+  interactions with users and its environment.&nbsp; They must think about the
+  services that the system provides, the constraints under which the system must
+  be built and operated and the interactions of the system with its
+  environment.&quot;&nbsp; [<a href="#[SE]">SE</a>: p.21]</p> 
+  
+  <p>The following definition is telling:</p> 
+  
+  <blockquote>
+    <p>&quot;A system is a purposeful collection of interrelated components that
+    work together to achieve some objective.&quot; [<a href="#[SE]">SE</a>:
+    p.21]</p> 
+  
+  </blockquote>
+  <p>There is emphasis on emergent properties [<a href="#[Checkland1981]">Checkland1981</a>],
+  ones that cannot be attributed to any specific part of the system, emerging
+  only when the system as a whole is considered.&nbsp; Examples include physical
+  weight, reliability, and usability.&nbsp; There is reference to [<a href="#[White1993]">White1993</a>]
+  as the source of ideas about CBSE and also some observations about the growth
+  in space-program software systems.</p> 
+  
+</blockquote>
+<h2>2.1 Emergent System Properties</h2> 
+  
+<blockquote>
+  <p>The examples are great:</p> 
+  
+  <ul>
+    <li>Functional properties - like bicycle having the functional property of
+      being a transportation device once it has been assembled from its
+      components (but notice the missing reference to the rider).</li>
+    <li>Non-functional properties such as reliability, performance, safety and
+      security.&nbsp; (Also noteworthy if we consider the bicycle with and
+      without the rider.)</li>
+    <li>For reliability, operator behavior is considered.&nbsp; &quot;Operator
+      error is more likely in conditions of stress.&quot; [p.23].&nbsp; Also it
+      is noted that observed reliability depends on the context in which the
+      system is used.</li>
+    <li>Environmentally-related failures and hazards are useful. There is an
+      example of a subsystem that must be operated within a particular range of
+      temperatures, and that failure of an adjacent air-conditioning unit could
+      cause it to be overheated out of proximity to the malfunctioning AC!</li>
+    <li>Safety and security pose different problems, it is claimed.&nbsp; Here
+      the problem is the prediction of the absence of something.</li>
+  </ul>
+</blockquote>
+<h2>2,2 Systems and Their Environment</h2>
+<blockquote>
+  <ul>
+    <li>Considers interactions with and from the physical environment that are
+      intended as part of the functioning and that are unintended.</li>
+    <li>Looks at organizational environment as well as physical
+      environment.&nbsp; &quot;If the organizational environment is not properly
+      understood, systems may not meet business needs and may be rejected by
+      users and organizational managers.&quot; [SE: 2.2 p.25].</li>
+    <li>Looks at impact on people including changes of processes and training
+      requirements, deskilling or otherwise changing how people work, and
+      organizational impact.&nbsp; Refers to [Mumford1989], [Checkland1981],
+      [Checkland1990], and [Ackroyd1992].</li>
+    <li>Asserts that it is impossible to anticipate all of the environmental
+      factors.</li>
+  </ul>
+  <p>&nbsp;</p>
+</blockquote>
+  
+<h1><a name="References">References</a></h1> 
+<dl> 
+
+  
+    <dt>[<a href="swe.htm#[Brooks1995]" name="[Brooks1995]">Brooks1995</a>]</dt>
+    <dd>&nbsp;</dd>
+    <dt>[<a name="[Checkland1981]">Checkland1981</a>]</dt>
+    <dd>Checkland, P.&nbsp; Systems Thinking, Systems Practice.&nbsp; John Wiley
+      &amp; Sons (Chichester: 1981).<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;</dd>
+
+  
+    <dt>[<a name="[SE]">SE</a>] [<a name="[Sommerville2001]" href="swe.htm#[Sommerville2001]" target="_top">Sommerville2001</a>]</dt>
+    <dd>Sommerville, Ian.&nbsp; <i>Software Engineering</i>, ed.6.&nbsp; Addison-Wesley (Boston:  
+      2001).&nbsp; ISBN 0-201-39815-X.<br>
+      &nbsp;&nbsp;&nbsp;</dd>  
+
+  
+    <dt>[<a name="[White1993]">White1993</a>]</dt>
+    <dd>White, S., Alford, M., <i>et.al</i>.&nbsp; Systems engineering of
+      computer-based systems.&nbsp; IEEE Computer 26, 11 (1993), 54-65.</dd>
+
+  
+</dl> 
+<blockquote> 
+ 
+ 
+<hr> 
+ 
+ 
+</blockquote> 
+ 
+ 
+<p align="right"><font size="-2">created 2003-03-16-13:37 -0800 (pst) by <a href="../construction/orcmid.htm"> orcmid</a><br>  
+<em>$$Author: Orcmid $<br> 
+$$Date: 04-11-25 12:50 $<br> 
+$$Revision: 6 $</em></font></p> 
+ 
+</body> 
+</html> 
