@@ -1,4 +1,4 @@
-<!-- index.md 0.0.7                 UTF-8                         2023-08-30
+<!-- index.md 0.0.8                 UTF-8                         2023-11-26
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -20,10 +20,11 @@ stages of construction and readiness.
 
 | **Section** |  **General Topic** |
 |   --:       |  ---               |
+| [bib](bib/) | Annotated Bibliographies, Remarks and Reviews |
 | [docEng](docEng/) | Patterns, Practices and Tools for Document Engineering |
 | [miser](miser/) | The Miser Project on GitHub |
-| [orcmid](orcmid/) | All about Orcmid on GitHub (or anywhere else)|
 | [nfoTools](nfoTools/) | nfoWare/nfoWorks Software Tutorials and Toolkits|
+| [orcmid](orcmid/) | All about Orcmid on GitHub (or anywhere else)|
 | | |
 | [construction](construction/) | Common Construction Materials |
 
@@ -40,6 +41,7 @@ from time to time.
 
 <!--
 
+      0.0.8 2023-11-26T01:07Z Add bib/ entry
       0.0.7 2023-08-30T03:51Z Rename from README.md and smooth over
       0.0.6 2023-08-28T16:42Z Clarify what and where of this material
       0.0.5 2023-08-28T16:27Z Reflect some ponderings/musings
