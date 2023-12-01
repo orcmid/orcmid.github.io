@@ -7,10 +7,16 @@
 <table border="0" width="100%" height="3">
   <tr>
     <td width="12%" height="6">
-    <img src="../images/F56xx04-SelfPortrait2-logo.png">
+        <a href="./" target="_top">
+           <img border="0" src="../images/F56xx04-SelfPortrait2-logo.png"
+                width="172" height="137"
+                alt="Self Portrait 2 - photographer in mirror"
+                longdesc="An early selfie taken with my first SLR, a Praktika"
+                />
+        </a>
     </td>
     <td width="75%" height="6">
-      <p align="center"><strong><font color="#990033"><br><big><big><em>
+      <p align="center"><strong><font color="#990033"><br /><big><big><em>
 		All About Orcmid</em></big></big></font></strong>
       </p>
     </td>
