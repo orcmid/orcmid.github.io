@@ -8,7 +8,7 @@
 
 <table border="0" width="100%">
   <tr>
-    <td width="12%" align="left" height="6">
+    <td width="25%" align="left" height="6">
         <a href="./" target="_top">
            <img border="0" src="../images/F56xx04-SelfPortrait2-logo.png"
                 width="172" height="137"
@@ -17,12 +17,12 @@
                 />
         </a>
     </td>
-    <td width="75%" height="6">
+    <td width="50%" height="6">
       <p align="center"><strong><font color="#990033">orcmid.github.io<br /><big><big><em>
 		All About Orcmid</em></big></big></font></strong>
       </p>
     </td>
-    <td width="13%" valign="middle" align="right">
+    <td width="25%" valign="middle" align="right">
       <b><code><a href="../" target="top">orcmid.github.io</a>&gt;<br />
 	  <a href="./" target="_top">orcmid</a>&gt;
       </code></b>
@@ -35,7 +35,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.0.4 2023-12-01T00:55Z<!-- MAINTAIN THIS MANUALLY -->
+        0.0.4 2023-12-01T03:50Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -77,6 +77,7 @@ from time to time.
 
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.0.4 2023-12-01T03:50Z Corrected top banner
      0.0.3 2023-12-01T00:55Z Convert to hybrid format
      0.0.2 2023-08-28T17:04Z Correct the title
      0.0.1 2023-08-28T16:53Z corrected title
