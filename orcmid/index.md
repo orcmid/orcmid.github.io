@@ -1,14 +1,38 @@
-<!-- index.md 0.0.2                 UTF-8                          2023-08-28
+<!-- index.md 0.0.3                 UTF-8                          2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
                        ALL ABOUT ORCMID ON GITHUB
      -->
-
-# ***Orcmid's Lair on GitHub***
-
-| ***[orcmid.github.io](../)*** | [orcmid](.) | ***[index.html](index.html) 0.0.2 2023-08-28*** |
-| :--                |       :--:         | --: |
-| *image pending* | [Work-in-Progress](orcmid.txt) | *image pending |
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    <td width="12%" height="6">
+    <img src="../images/F56xx04-SelfPortrait2-logo.png">
+    </td>
+    <td width="75%" height="6">
+      <p align="center"><strong><font color="#990033"><br><big><big><em>
+		All About Orcmid</em></big></big></font></strong>
+      </p>
+    </td>
+    <td width="13%" valign="middle" align="right">
+      <b><code><a href="../" target="top">orcmid.github.io</a>&gt;<br />
+	  <a href="./" target="_top">orcmid</a>&gt;
+      </code></b>
+      <br /><br />
+      <a href="https://clustrmaps.com/site/1bw9w" title="Visit tracker">
+            <img src="//www.clustrmaps.com/map_v2.png?d=3-2eQV4fOuelVHp_YtztZ0hl9Uj4ei9zLKw_nRgCgyM&cl=ffffff" />
+      </a>
+      <br /><br />
+      <b><code>
+         <a href="index.html" target="_top">index.html</a>&gt;</code></b>
+      <br />
+      <small><small>
+        0.0.3 2023-12-01T00:55Z<!-- MAINTAIN THIS MANUALLY -->
+      </small></small>
+      </td>
+  </tr>
+</table>
+</font>
 
 This portion of `orcmid.github.io` provides information about Orcmid that is
 global and over-arching the individual respositories/projects here.
@@ -26,8 +50,27 @@ are also relevant
 [projects](https://github.com/orcmid/orcmid.github.io/projects?type=classic)
 from time to time.
 
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p>
+		<a href="index.htm">
+		<img border="0" src="../images/hardhat-thumb.gif" width="80" height="60" alt="Construction Zone (Hard Hat Area)"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      You are navigating <a href="../"><tt>orcmid.github.io</tt> material</a>
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">originally created 2000-05-07-13:42 +0200 (it) by
+		<a href="orcmid.htm">orcmid</a></font></p>
+    </td>
+  </tr>
+</table>
+
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.0.3 2023-12-01T00:55Z Convert to hybrid format
      0.0.2 2023-08-28T17:04Z Correct the title
      0.0.1 2023-08-28T16:53Z corrected title
      0.0.0 2023-08-18T02:48Z placeholder
