@@ -1,10 +1,12 @@
-<!-- index.md 0.0.3                 UTF-8                          2023-12-01
+<!-- index.md 0.0.4                 UTF-8                          2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
                        ALL ABOUT ORCMID ON GITHUB
      -->
-<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
-<table border="0" width="100%" height="3">
+
+# [Welcome to Orcmid on GitHub](.)
+
+<table border="0" width="100%" height="6">
   <tr>
     <td width="12%" height="6">
         <a href="./" target="_top">
@@ -33,12 +35,11 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.0.3 2023-12-01T00:55Z<!-- MAINTAIN THIS MANUALLY -->
+        0.0.4 2023-12-01T00:55Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
-</font>
 
 This portion of `orcmid.github.io` provides information about Orcmid that is
 global and over-arching the individual respositories/projects here.
@@ -65,7 +66,7 @@ from time to time.
 		<img border="0" src="../images/hardhat-thumb.gif" width="80" height="60" alt="Construction Zone (Hard Hat Area)"></a></p>
     </td>
     <td width="34%" valign="middle" align="center">
-      You are navigating <a href="../"><tt>orcmid.github.io</tt> material</a>
+      You are navigating <a href="../"><tt>orcmid.github.io</tt></a> material
     </td>
     <td width="37%">
       <p align="right"><font size="-2">originally created 2000-05-07-13:42 +0200 (it) by
