@@ -6,9 +6,9 @@
 
 # [Welcome to Orcmid on GitHub](.)
 
-<table border="0" width="100%" height="6">
+<table border="0" width="100%">
   <tr>
-    <td width="12%" height="6">
+    <td width="12%" align="left" height="6">
         <a href="./" target="_top">
            <img border="0" src="../images/F56xx04-SelfPortrait2-logo.png"
                 width="172" height="137"
@@ -18,7 +18,7 @@
         </a>
     </td>
     <td width="75%" height="6">
-      <p align="center"><strong><font color="#990033"><br /><big><big><em>
+      <p align="center"><strong><font color="#990033">orcmid.github.io<br /><big><big><em>
 		All About Orcmid</em></big></big></font></strong>
       </p>
     </td>
