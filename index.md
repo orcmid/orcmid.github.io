@@ -1,16 +1,49 @@
-<!-- index.md 0.0.8                 UTF-8                         2023-11-26
+<!-- index.md 0.1.0                 UTF-8                         2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
 
-This page is published from GitHub repository `orcmid.github.io`.
-This is the anchor for GitHub orcmid projects/repositories that have GitHub
-Pages documentation (docs/) folders.  The repository for this level is
-[Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
+<table border="0" width="100%">
+  <tr>
+    <td width="25%" align="left" height="6">
+        <a href="./" target="_top">
+           <img border="0" src="images/F56xx04-SelfPortrait2-logo.png"
+                width="172" height="137"
+                alt="Self Portrait 2 - photographer in mirror"
+                longdesc="An early selfie taken with my first SLR, a Praktika"
+                />
+        </a>
+    </td>
+    <td width="50%" height="6">
+      <p align="center"><strong><font color="#990033">orcmid.github.io<br /><big><big><em>
+		All About Orcmid's Web and GitHub Activity</em></big></big></font></strong>
+      </p>
+    </td>
+    <td width="25%" valign="middle" align="right">
+      <b><code><a href="./" target="top">orcmid.github.io</a>&gt;
+      </code></b>
+      <br /><br />
+      <a href="https://clustrmaps.com/site/1bw9w" title="Visit tracker">
+            <img src="//www.clustrmaps.com/map_v2.png?d=3-2eQV4fOuelVHp_YtztZ0hl9Uj4ei9zLKw_nRgCgyM&cl=ffffff" />
+      </a>
+      <br /><br />
+      <b><code>
+         <a href="index.html" target="_top">index.html</a>&gt;</code></b>
+      <br />
+      <small><small>
+        0.1.0 2023-12-01T20:04Z<!-- MAINTAIN THIS MANUALLY -->
+      </small></small>
+      </td>
+  </tr>
+</table>
 
-The purpose of organizing at this level is related to document engineering.
-I prefer to have common construction conventions and materials documented in
-a single place.  That would be here.
+This is the anchor site for Orcmid GitHub orcmid projects/repositories and
+GitHub documentation (e.g., `docs/`). folders.  That documentation is all
+anchored here on
+[Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io).
+
+This arrangement supports common construction conventions, shared materials,
+and organization in a single place..
 
 ## Orcmid's Table of Content
 
@@ -39,8 +72,24 @@ may also be relevant
 [projects](https://github.com/orcmid/orcmid.github.io/projects)
 from time to time.
 
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p>
+		<a href="index.htm">
+		<img border="0" src="images/hardhat-thumb.gif" width="80" height="60" alt="Construction Zone (Hard Hat Area)"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      You are navigating <a href="./"><tt>orcmid.github.io</tt></a> material
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">originally created 2020-02-02 by
+		<a href="orcmid/">orcmid</a></font></p>
+    </td>
+  </tr>
+</table>
 <!--
-
+      0.1.0 2023-12-01T20:07Z Convert to hybrid form, touch-up
       0.0.8 2023-11-26T01:07Z Add bib/ entry
       0.0.7 2023-08-30T03:51Z Rename from README.md and smooth over
       0.0.6 2023-08-28T16:42Z Clarify what and where of this material
