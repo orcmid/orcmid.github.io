@@ -1,4 +1,4 @@
-<!-- index.md 0.1.0                 UTF-8                         2023-12-01
+<!-- index.md 0.1.1                 UTF-8                         2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -31,13 +31,13 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.0 2023-12-01T20:04Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.0 2023-12-01T20:54Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
-This is the anchor site for Orcmid GitHub orcmid projects/repositories and
+This is the anchor site for Orcmid GitHub projects/repositories and
 GitHub documentation (e.g., `docs/`). folders.  That documentation is all
 anchored here on
 [Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io).
@@ -47,7 +47,7 @@ and organization in a single place..
 
 ## Orcmid's Table of Content
 
-This `orcmid.github.io` web is organized in topical sections. Subfolders
+The `orcmid.github.io` web is organized in topical sections. Subfolders
 corresponding to GitHub Pages of Orcmid projects/repositories are in different
 stages of construction and readiness.
 
@@ -89,6 +89,7 @@ from time to time.
   </tr>
 </table>
 <!--
+      0.1.1 2023-12-01T20:55Z Touch-ups
       0.1.0 2023-12-01T20:07Z Convert to hybrid form, touch-up
       0.0.8 2023-11-26T01:07Z Add bib/ entry
       0.0.7 2023-08-30T03:51Z Rename from README.md and smooth over
