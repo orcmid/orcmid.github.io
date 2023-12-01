@@ -1,4 +1,4 @@
-<!-- index.md 0.1.0                 UTF-8                          2023-12-01
+<!-- index.md 0.1.1                 UTF-8                          2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -35,7 +35,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.0 2023-12-01T21:24Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.1 2023-12-01T22:16Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -44,22 +44,20 @@
 This Construction Material portion of `orcmid.github.io` provides a record of
 the tools and techniques by which the overall web site and its immediate
 subfolders (e.g., [orcmid](../orcmid))
-are maintained and operated.  Construction structure of GitHub Pages
-(`docs/` folders) for individual projects/repositories on
-[Orcmid's GitHub](https://github.com/orcmid) is provided in those
-repositories.
+are maintained and operated.  GitHub Pages (`docs/` folders) for individual
+projects/repositories on [Orcmid's GitHub](https://github.com/orcmid) share a
+common construction structure and, when needed, separate Construction Material
+folders.
 
-The Construction Material section has a
+Each Construction Material section has a
 [construction structure](index.htm) and a top-level
-[construction zone](construction.htm) in the same manner as other sections of
-the site.
-
-There is a [catalog of materials](c000001.htm) and a
+[construction zone](construction.htm).  There is a
+[catalog of materials](c000001.htm) and a
 [job jar & diary](c000000.htm).
 
 Most of these materials are created and managed directly as HTML, often with
 the aid of Microsoft FrontPage.  There are also "hybrid" pages (such as this
-one) generated from Markdown that has HTML inserts for the top and bottom
+one) generated from Markdown with in-line HTML inserts for the top and bottom
 banners.
 
 ----
@@ -91,6 +89,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.1 2023-12-01T22:16Z Tidy up
      0.1.0 2023-12-01T21:24Z Redo with hybrid formatting, improved text
      0.0.1 2023-08-28T17:25Z Clarification of scope
      0.0.0 2023-08-17T17:21Z Experimental placeholder
