@@ -1,4 +1,4 @@
-<!-- index.md 0.0.4                 UTF-8                          2023-12-01
+<!-- index.md 0.1.0                 UTF-8                          2023-12-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
                        ALL ABOUT ORCMID ON GITHUB
@@ -41,10 +41,15 @@
   </tr>
 </table>
 
-This portion of `orcmid.github.io` provides information about Orcmid that is
-global and over-arching the individual respositories/projects here.
+You've reached Orcmid's location on orcmid.github.io, a collection of
+professional and recreational work of Dennis E. Hamilton
+(a.k.a. [orcmid](orcmid.htm)).
 
 The current page is a placeholder.  Additional content is under consideration.
+
+The [Orcmid's Lair](https://orcmid.com) site and its companions are the source
+of material that will be refactored/repurposed and curated here as migration
+to GitHub Pages continues.
 
 ----
 
@@ -77,6 +82,7 @@ from time to time.
 
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.0 2023-12-01T17:44Z Tidy things up for now
      0.0.4 2023-12-01T03:50Z Corrected top banner
      0.0.3 2023-12-01T00:55Z Convert to hybrid format
      0.0.2 2023-08-28T17:04Z Correct the title
