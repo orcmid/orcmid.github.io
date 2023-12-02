@@ -1,4 +1,4 @@
-<!-- index.md 0.1.2                 UTF-8                          2023-12-02
+<!-- index.md 0.1.3                 UTF-8                          2023-12-02
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -35,19 +35,23 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.2 2023-12-02T17:58Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.3 2023-12-02T20:54Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
-This Construction Material portion of `orcmid.github.io` provides a record of
-the tools and techniques by which the overall web site and its immediate
-subfolders (e.g., [orcmid](../orcmid))
-are maintained and operated.  GitHub Pages (`docs/` folders) for individual
-projects/repositories on [Orcmid's GitHub](https://github.com/orcmid) have the
-common construction structure and, where needed, custom Construction Material
-sections.
+This Construction Material portion of `orcmid.github.io` provides definition
+of the tools and techniques by which the overall web site and its immediate
+subfolders (e.g., [bib](../bib) and [orcmid](../orcmid)) are formatted and
+published.
+
+Other [Orcmid's GitHub](https://github.com/orcmid) projects (e.g.,
+[Miser](../miser) and [nfoTools](../nfoTools)) provide GitHub Pages
+(`docs/` folders) of documentation that are published as sections of
+`orcmid.github.io`.  Those sections follow the same document-engineering
+pattern; they may include private Construction Material subsections for the
+different customizations and maintenance of web page features.
 
 Each Construction Material section has a
 [construction structure](index.htm) and a top-level
@@ -89,6 +93,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.3 2023-12-02T20:54Z Still more wordsmithing
      0.1.2 2023-12-02T17:59Z Wordsmithing
      0.1.1 2023-12-01T22:16Z Tidy up
      0.1.0 2023-12-01T21:24Z Redo with hybrid formatting, improved text
