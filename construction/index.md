@@ -1,4 +1,4 @@
-<!-- index.md 0.1.3                 UTF-8                          2023-12-02
+<!-- index.md 0.1.4                 UTF-8                          2023-12-03
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -35,23 +35,28 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.3 2023-12-02T20:54Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.4 2023-12-03T17:48Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
+Construction Material sections are part of the construction structure and
+other scaffolding used to manage web site presence.  They are not about the
+subject-matter of the site.  They aid in the housekeeping and
+document-engineering, providing scaffolding for the subject-matter content.
+
 This Construction Material portion of `orcmid.github.io` provides definition
 of the tools and techniques by which the overall web site and its immediate
-subfolders (e.g., [bib](../bib) and [orcmid](../orcmid)) are formatted and
+subfolders (i.e, [bib](../bib) and [orcmid](../orcmid)) are formatted and
 published.
 
 Other [Orcmid's GitHub](https://github.com/orcmid) projects (e.g.,
 [Miser](../miser) and [nfoTools](../nfoTools)) provide GitHub Pages
 (`docs/` folders) of documentation that are published as sections of
 `orcmid.github.io`.  Those sections follow the same document-engineering
-pattern; they may include private Construction Material subsections for the
-different customizations and maintenance of web page features.
+pattern; they have separate Construction Material subsections for their
+document-engineering customizations and maintenance.
 
 Each Construction Material section has a
 [construction structure](index.htm) and a top-level
@@ -77,15 +82,15 @@ from time to time.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
-    <td width="29%">
+    <td width="25%">
       <p>
 		<a href="index.htm">
 		<img border="0" src="../images/hardhat-thumb.gif" width="80" height="60" alt="Construction Structure (Hard Hat Area)"></a></p>
     </td>
-    <td width="34%" valign="middle" align="center">
+    <td width="50%" valign="middle" align="center">
       You are navigating <a href="../"><tt>orcmid.github.io</tt></a> material
     </td>
-    <td width="37%">
+    <td width="25%">
       <p align="right"><font size="-2">originally created 2023-08-17T17:21Z by
 		<a href="../orcmid">orcmid</a></font></p>
     </td>
@@ -93,6 +98,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.4 2023-12-03T17:48Z More on purpose, tidying up
      0.1.3 2023-12-02T20:54Z Still more wordsmithing
      0.1.2 2023-12-02T17:59Z Wordsmithing
      0.1.1 2023-12-01T22:16Z Tidy up
