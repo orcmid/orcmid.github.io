@@ -1,4 +1,4 @@
-<!-- index.md 0.1.1                 UTF-8                         2023-12-01
+<!-- index.md 0.1.2                 UTF-8                         2023-12-03
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -16,7 +16,7 @@
     </td>
     <td width="50%" height="6">
       <p align="center"><strong><font color="#990033">orcmid.github.io<br /><big><big><em>
-		All About Orcmid's Web and GitHub Activity</em></big></big></font></strong>
+		All About Orcmid's GitHub Projects and Web Presence</em></big></big></font></strong>
       </p>
     </td>
     <td width="25%" valign="middle" align="right">
@@ -31,7 +31,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.0 2023-12-01T20:54Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.2 2023-12-03T16:20Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -43,7 +43,9 @@ anchored here on
 [Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io).
 
 This arrangement supports common construction conventions, shared materials,
-and organization in a single place..
+and organization in a single place.  GitHub provides backup and preservation
+of in-progress developments and released materials via git and narratives
+about the efforts.
 
 ## Orcmid's Table of Content
 
@@ -89,6 +91,7 @@ from time to time.
   </tr>
 </table>
 <!--
+      0.1.2 2023-12-03T16:20Z More wordsmithing
       0.1.1 2023-12-01T20:55Z Touch-ups
       0.1.0 2023-12-01T20:07Z Convert to hybrid form, touch-up
       0.0.8 2023-11-26T01:07Z Add bib/ entry
