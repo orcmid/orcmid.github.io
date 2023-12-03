@@ -1,4 +1,4 @@
-<!-- index.md 0.1.2                 UTF-8                         2023-12-03
+<!-- index.md 0.1.3                 UTF-8                         2023-12-03
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -31,21 +31,21 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.2 2023-12-03T16:20Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.3 2023-12-03T17:09Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
 This is the anchor site for Orcmid GitHub projects/repositories and
-GitHub documentation (e.g., `docs/`). folders.  That documentation is all
+their documentation (e.g., `docs/`) folders.  The narrative materials are all
 anchored here on
 [Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io).
 
-This arrangement supports common construction conventions, shared materials,
-and organization in a single place.  GitHub provides backup and preservation
-of in-progress developments and released materials via git and narratives
-about the efforts.
+This arrangement supports uniform [document engineering](doceng/) of multiple
+projects in a single place.  GitHub is relied upon for backup and preservation
+of in-progress developments and released materials via git, with automatic
+publishing of project documentation by GitHub Pages.
 
 ## Orcmid's Table of Content
 
@@ -91,6 +91,7 @@ from time to time.
   </tr>
 </table>
 <!--
+      0.1.3 2023-12-03T17:09Z Still struggling to get the working just right
       0.1.2 2023-12-03T16:20Z More wordsmithing
       0.1.1 2023-12-01T20:55Z Touch-ups
       0.1.0 2023-12-01T20:07Z Convert to hybrid form, touch-up
