@@ -1,4 +1,4 @@
-<!-- index.md 0.1.3                 UTF-8                         2023-12-03
+<!-- index.md 0.1.4                 UTF-8                         2023-12-04
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -31,27 +31,13 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.3 2023-12-03T17:09Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.4 2023-12-04T18:44Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
-This is the anchor site for Orcmid GitHub projects/repositories and
-their documentation (e.g., `docs/`) folders.  The narrative materials are all
-anchored here on
-[Orcmid's orcmid.github.io](https://github.com/orcmid/orcmid.github.io).
-
-This arrangement supports uniform [document engineering](doceng/) of multiple
-projects in a single place.  GitHub is relied upon for backup and preservation
-of in-progress developments and released materials via git, with automatic
-publishing of project documentation by GitHub Pages.
-
 ## Orcmid's Table of Content
-
-The `orcmid.github.io` web is organized in topical sections. Subfolders
-corresponding to GitHub Pages of Orcmid projects/repositories are in different
-stages of construction and readiness.
 
 | **Section** |  **General Topic** |
 |   --:       |  ---               |
@@ -63,6 +49,28 @@ stages of construction and readiness.
 | | |
 | [construction](construction/) | Common Construction Materials |
 
+## A Little Tap Dance
+
+This site is the anchorage for documentation of Orcmid's projects and
+writings. Different Orcmid GitHub projects are documented individually, yet
+published together as sections of this anchorage. This is achieved with a
+handy feature of GitHub that may be of interest to others in developing
+documentation there.
+
+When [Orcmid GitHub](https://github.com/orcmid) repositories are documented
+using [GitHub Pages](https://pages.github.com/) (e.g., via `docs/` folders),
+those published GitHub Pages appear as sections (e.g.,
+[orcmid.github.io/miser](https://orcmid.github.io/miser)) of the anchorage.
+
+Orcmid's anchorage materials are developed on
+[Orcmid's orcmid.github.io project](https://github.com/orcmid/orcmid.github.io)
+and published as [GitHub Pages](https://pages.github.com/).  GitHub recognizes
+the coincidence of repository and web site name.
+
+This arrangement supports uniform [document engineering](doceng/) of multiple
+projects in a single place.  GitHub is relied upon for backup and preservation
+of in-progress developments and released materials via git, with automatic
+publishing of project documentation by GitHub Pages.
 ----
 
 I invite discussion about `orcmid.github.io` topics in the
@@ -76,21 +84,22 @@ from time to time.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
-    <td width="29%">
+    <td width="25%">
       <p>
 		<a href="index.htm">
 		<img border="0" src="images/hardhat-thumb.gif" width="80" height="60" alt="Construction Zone (Hard Hat Area)"></a></p>
     </td>
-    <td width="34%" valign="middle" align="center">
+    <td width="50%" valign="middle" align="center">
       You are navigating <a href="./"><tt>orcmid.github.io</tt></a> material
     </td>
-    <td width="37%">
+    <td width="25%">
       <p align="right"><font size="-2">originally created 2020-02-02 by
 		<a href="orcmid/">orcmid</a></font></p>
     </td>
   </tr>
 </table>
 <!--
+      0.1.4 2023-12-04T18:44Z Reshuffling for better flow
       0.1.3 2023-12-03T17:09Z Still struggling to get the working just right
       0.1.2 2023-12-03T16:20Z More wordsmithing
       0.1.1 2023-12-01T20:55Z Touch-ups
