@@ -1,4 +1,4 @@
-<!-- index.md 0.1.4                 UTF-8                          2023-12-03
+<!-- index.md 0.1.5                 UTF-8                          2023-12-04
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -24,18 +24,15 @@
     </td>
     <td width="25%" valign="middle" align="right">
       <b><code><a href="../" target="top">orcmid.github.io</a>&gt;<br />
-	  <a href="./" target="_top">construction</a>&gt;
-      </code></b>
-      <br /><br />
+	  <a href="./" target="_top">construction</a>&gt;</code></b><br /><br />
       <a href="https://clustrmaps.com/site/1bw9w" title="Visit tracker">
             <img src="//www.clustrmaps.com/map_v2.png?d=3-2eQV4fOuelVHp_YtztZ0hl9Uj4ei9zLKw_nRgCgyM&cl=ffffff" />
       </a>
       <br /><br />
       <b><code>
-         <a href="index.html" target="_top">index.html</a>&gt;</code></b>
-      <br />
+         <a href="index.html" target="_top">index.html</a>&gt;</code></b><br />
       <small><small>
-        0.1.4 2023-12-03T17:48Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.5 2023-12-04T00:01Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -98,6 +95,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.5 2023-12-04T00:01Z Clean up some unnecessary spaces
      0.1.4 2023-12-03T17:48Z More on purpose, tidying up
      0.1.3 2023-12-02T20:54Z Still more wordsmithing
      0.1.2 2023-12-02T17:59Z Wordsmithing
