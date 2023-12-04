@@ -1,4 +1,4 @@
-<!-- index.md 0.1.4                 UTF-8                         2023-12-04
+<!-- index.md 0.1.5                 UTF-8                         2023-12-04
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -31,7 +31,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.4 2023-12-04T18:44Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.5 2023-12-04T19:27Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -51,6 +51,13 @@
 
 ## A Little Tap Dance
 
+GitHub is relied upon for backup and preservation of Orcmid's
+in-progress software development, releases, and maintenance.  Change-tracking
+and any recoveries of backups is accomplished via git, as is any coordination
+of submission by multiple contributors.  There is also useful support for
+publication of project activity and software releases on the web.  That's how
+these web pages are published.
+
 This site is the anchorage for documentation of Orcmid's projects and
 writings. Different Orcmid GitHub projects are documented individually, yet
 published together as sections of this anchorage. This is achieved with a
@@ -67,10 +74,6 @@ Orcmid's anchorage materials are developed on
 and published as [GitHub Pages](https://pages.github.com/).  GitHub recognizes
 the coincidence of repository and web site name.
 
-This arrangement supports uniform [document engineering](doceng/) of multiple
-projects in a single place.  GitHub is relied upon for backup and preservation
-of in-progress developments and released materials via git, with automatic
-publishing of project documentation by GitHub Pages.
 ----
 
 I invite discussion about `orcmid.github.io` topics in the
@@ -99,6 +102,7 @@ from time to time.
   </tr>
 </table>
 <!--
+      0.1.5 2023-12-04T19:27Z More reshuffling and a small fix
       0.1.4 2023-12-04T18:44Z Reshuffling for better flow
       0.1.3 2023-12-03T17:09Z Still struggling to get the working just right
       0.1.2 2023-12-03T16:20Z More wordsmithing
