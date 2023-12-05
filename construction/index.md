@@ -1,10 +1,8 @@
-<!-- index.md 0.1.5                 UTF-8                          2023-12-04
+<!-- index.md 0.1.6                 UTF-8                          2023-12-05
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
      -->
-
-#
 
 <table border="0" width="100%">
   <tr>
@@ -32,16 +30,15 @@
       <b><code>
          <a href="index.html" target="_top">index.html</a>&gt;</code></b><br />
       <small><small>
-        0.1.5 2023-12-04T00:01Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.6 2023-12-05T16:27Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
 Construction Material sections are part of the construction structure and
-other scaffolding used to manage web site presence.  They are not about the
-subject-matter of the site.  They aid in the housekeeping and
-document-engineering, providing scaffolding for the subject-matter content.
+other scaffolding used to manage web site presence.  The objective is to
+support consistent ocument-engineering for subject-matter content.
 
 This Construction Material portion of `orcmid.github.io` provides definition
 of the tools and techniques by which the overall web site and its immediate
@@ -95,6 +92,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.6 2023-12-05T16:27Z Refinement along with the front porch
      0.1.5 2023-12-04T00:01Z Clean up some unnecessary spaces
      0.1.4 2023-12-03T17:48Z More on purpose, tidying up
      0.1.3 2023-12-02T20:54Z Still more wordsmithing
