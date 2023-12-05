@@ -1,4 +1,4 @@
-<!-- index.md 0.1.8                 UTF-8                         2023-12-05
+<!-- index.md 0.1.9                 UTF-8                         2023-12-05
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -29,7 +29,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.8 2023-12-05T16:19Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.9 2023-12-05T20:39Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -50,13 +50,21 @@
 ## A Little Tap Dance
 
 Here, [GitHub](https://github.com) is relied upon for backup and preservation
-of software development, documentation, releases, and maintenance.
-Change-tracking and recovery of backups is accomplished via git, the GitHub
-desktop client, and GitHub repository storage in the cloud.  Publishing
-repositories and related project materials to GitHub provides public
-code-in-the-open and coordination of contribution by multiple contributors
-(and myself when operating on different computers). GitHub provides publishing
-of documentation to wikis and as web pages (such as this one).
+of Orcmid's software development, documentation, releases, and maintenance
+efforts.
+
+Change-tracking and recovery of backups is accomplished via
+[git](https://en.wikipedia.org/wiki/Git), the
+[GitHub Desktop](https://docs.github.com/en/desktop) app, and
+[GitHub repositories](https://docs.github.com/en/get-started/quickstart/hello-world).
+GitHub provides publishing
+of documentation to [wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) and as
+[web pages](https://pages.github.com/) (such as this one).
+
+For orcmid.github.io, the web site includes a skeleton and scaffolding that
+support its construction and maintenance.  This, along with all of the
+projects, is created and maintained in the open.  The
+[construction](construction/) section is part of that.
 
 ----
 
@@ -87,6 +95,7 @@ from time to time.
 </table>
 <!--
 
+      0.1.9 2023-12-05T20:39Z Simplification
       0.1.8 2023-12-05T16:19Z Cutting back on details, defer to construction/
       0.1.7 2023-12-05T00:17Z One last try at smoothing
       0.1.6 2023-12-04T21:05Z Smoothing further
