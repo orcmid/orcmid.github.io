@@ -1,4 +1,4 @@
-<!-- index.md 0.1.6                 UTF-8                         2023-12-04
+<!-- index.md 0.1.7                 UTF-8                         2023-12-05
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # Welcome to Orcmid's GitHub Projects
@@ -31,7 +31,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.6 2023-12-05T21:04Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.7 2023-12-05T00:17Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -52,16 +52,18 @@
 ## A Little Tap Dance
 
 GitHub is relied upon for backup and preservation of software development,
-releases, and maintenance.  Change-tracking and any recoveries of backups is
-accomplished via git, as is any coordination of submission by multiple
-contributors.  There is also useful support for publication of project
-activity and documentation on the web.  That's how pages of this site are
+releases, documentation, and maintenance.  Change-tracking and recoveries of
+backups is accomplished via git and GitHib cloud storage.  The publishing to
+GitHub supports coordination of submission by multiple contributors and from
+myself on different computers. GitHub also provides for publishing from
+GitHub repositories onto the Web. That's how pages of this site are
 published.
 
-This site is an anchorage for documentation of writings and several projects.
-Orcmid GitHub projects are documented individually yet published together as
-of this site. This handy feature of GitHub that may be of interest to others
-in developing documentation and publishing web sites.
+This site is a harbor for documentation of writings among several projects.
+Orcmid GitHub projects are documented individually with the separate sets of
+documentation published together on this web site. This handy feature of
+GitHub that may be of interest to others in developing documentation and
+publishing for web sites of their own.
 
 When [Orcmid GitHub](https://github.com/orcmid) repositories are documented
 using [GitHub Pages](https://pages.github.com/) (e.g., via `docs/` folders),
@@ -69,7 +71,7 @@ those published GitHub Pages are moored as sections (e.g.,
 [orcmid.github.io/miser](https://orcmid.github.io/miser)).  There are also
 sections, such as [bib](bib/) authored directly here.
 
-Anchorage materials such as this page are authored at
+Anchored materials such as this page are authored at
 [Orcmid's orcmid.github.io project](https://github.com/orcmid/orcmid.github.io)
 and published as [GitHub Pages](https://pages.github.com/).  GitHub recognizes
 the coincidence of repository and the default web site name for the orcmid
@@ -104,6 +106,8 @@ from time to time.
   </tr>
 </table>
 <!--
+
+      0.1.7 2023-12-05T00:17Z One last try at smoothing
       0.1.6 2023-12-04T21:05Z Smoothing further
       0.1.5 2023-12-04T19:27Z More reshuffling and a small fix
       0.1.4 2023-12-04T18:44Z Reshuffling for better flow
