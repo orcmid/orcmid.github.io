@@ -1,10 +1,8 @@
-<!-- index.md 0.1.0                 UTF-8                          2023-12-01
+<!-- index.md 0.1.1                 UTF-8                          2023-12-05
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
                        ALL ABOUT ORCMID ON GITHUB
      -->
-
-# [Welcome to Orcmid on GitHub](.)
 
 <table border="0" width="100%">
   <tr>
@@ -35,7 +33,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.0.4 2023-12-01T03:50Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.1 2023-12-05T23:55Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -65,15 +63,15 @@ from time to time.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
-    <td width="29%">
+    <td width="25%">
       <p>
 		<a href="index.htm">
 		<img border="0" src="../images/hardhat-thumb.gif" width="80" height="60" alt="Construction Zone (Hard Hat Area)"></a></p>
     </td>
-    <td width="34%" valign="middle" align="center">
+    <td width="50%" valign="middle" align="center">
       You are navigating <a href="../"><tt>orcmid.github.io</tt></a> material
     </td>
-    <td width="37%">
+    <td width="25%">
       <p align="right"><font size="-2">originally created 2000-05-07-13:42 +0200 (it) by
 		<a href="orcmid.htm">orcmid</a></font></p>
     </td>
@@ -82,6 +80,7 @@ from time to time.
 
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.1 2023-12-05T23:55Z Clean up bottom banner layout
      0.1.0 2023-12-01T17:44Z Tidy things up for now
      0.0.4 2023-12-01T03:50Z Corrected top banner
      0.0.3 2023-12-01T00:55Z Convert to hybrid format
