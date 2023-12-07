@@ -1,4 +1,4 @@
-<!-- index.md 0.1.6                 UTF-8                          2023-12-05
+<!-- index.md 0.1.7                 UTF-8                          2023-12-07
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -30,15 +30,15 @@
       <b><code>
          <a href="index.html" target="_top">index.html</a>&gt;</code></b><br />
       <small><small>
-        0.1.6 2023-12-05T16:27Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.7 2023-12-07T19:17Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
 
 Construction Material sections are part of the construction structure and
-other scaffolding used to manage web site presence.  The objective is to
-support consistent ocument-engineering for subject-matter content.
+other scaffolding used to manage web site presence. Document-engineering
+consistency is established.
 
 This Construction Material portion of `orcmid.github.io` provides definition
 of the tools and techniques by which the overall web site and its immediate
@@ -50,7 +50,7 @@ Other [Orcmid's GitHub](https://github.com/orcmid) projects (e.g.,
 (`docs/` folders) of documentation that are published as sections of
 `orcmid.github.io`.  Those sections follow the same document-engineering
 pattern; they have separate Construction Material subsections for their
-document-engineering customizations and maintenance.
+customizations and maintenance.
 
 Each Construction Material section has a
 [construction structure](index.htm) and a top-level
@@ -58,10 +58,13 @@ Each Construction Material section has a
 [catalog of materials](c000001.htm) and a
 [job jar & diary](c000000.htm).
 
-Most of the materials are created and managed directly as HTML, often with
-the aid of Microsoft FrontPage.  There are also "hybrid" pages (such as this
-one) generated from Markdown with in-line HTML inserts for the top and bottom
-banners.
+Much of the web content is created and managed directly as HTML, often with
+the aid of
+[Microsoft FrontPage](https://en.wikipedia.org/wiki/Microsoft_FrontPage).
+There is also an increasing number of "hybrid" pages (such as this
+one) generated from [Markdown](https://en.wikipedia.org/wiki/Markdown) with
+in-line [HTML](https://en.wikipedia.org/wiki/HTML) inserts for the top and
+bottom banners.
 
 ----
 
@@ -92,6 +95,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.7 2023-12-07T19:17Z Tidying up
      0.1.6 2023-12-05T16:27Z Refinement along with the front porch
      0.1.5 2023-12-04T00:01Z Clean up some unnecessary spaces
      0.1.4 2023-12-03T17:48Z More on purpose, tidying up
