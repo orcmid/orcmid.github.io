@@ -1,4 +1,4 @@
-<!-- index.md 0.1.9                 UTF-8                         2023-12-05
+<!-- index.md 0.1.10                 UTF-8                         2023-12-07
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -29,7 +29,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.9 2023-12-05T20:39Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.10 2023-12-07T19:02Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -50,7 +50,7 @@
 ## A Little Tap Dance
 
 Here, [GitHub](https://github.com) is relied upon for backup and preservation
-of Orcmid's software development, documentation, releases, and maintenance
+of Orcmid's software development, documentation, release, and maintenance
 efforts.
 
 Change-tracking and recovery of backups is accomplished via
@@ -95,6 +95,7 @@ from time to time.
 </table>
 <!--
 
+      0.1.10 2023-12-07T19:02Z Fix simple typo
       0.1.9 2023-12-05T20:39Z Simplification
       0.1.8 2023-12-05T16:19Z Cutting back on details, defer to construction/
       0.1.7 2023-12-05T00:17Z One last try at smoothing
