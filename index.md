@@ -1,4 +1,4 @@
-<!-- index.md 0.1.10                 UTF-8                         2023-12-07
+<!-- index.md 0.1.11                 UTF-8                         2023-12-08
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -29,7 +29,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.10 2023-12-07T19:02Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.11 2023-12-08T00:11Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -61,10 +61,12 @@ GitHub provides publishing
 of documentation to [wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) and as
 [web pages](https://pages.github.com/) (such as this one).
 
-For orcmid.github.io, the web site includes a skeleton and scaffolding that
-support its construction and maintenance.  This, along with all of the
-projects, is created and maintained in the open.  The
+The orcmid.github.io web sit content is constructed upon
+[scaffolding](index.htm) and [construction zones](construction.htm) used in
+management of site creation and maintenance. The
 [construction](construction/) section is part of that.
+
+The site is created and maintained entirely in the open.
 
 ----
 
@@ -95,6 +97,7 @@ from time to time.
 </table>
 <!--
 
+      0.1.11 2023-12-08T00:11Z More smoothing on construction structure
       0.1.10 2023-12-07T19:02Z Fix simple typo
       0.1.9 2023-12-05T20:39Z Simplification
       0.1.8 2023-12-05T16:19Z Cutting back on details, defer to construction/
