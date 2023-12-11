@@ -1,4 +1,4 @@
-<!-- index.md 0.1.7                 UTF-8                          2023-12-07
+<!-- index.md 0.1.8                 UTF-8                          2023-12-11
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
             ORCMID.GITHUB.IO DOCUMENTATION CONSTRUCTION MATERIAL
@@ -30,7 +30,7 @@
       <b><code>
          <a href="index.html" target="_top">index.html</a>&gt;</code></b><br />
       <small><small>
-        0.1.7 2023-12-07T19:17Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.8 2023-12-11T01:15Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -50,7 +50,7 @@ Other [Orcmid's GitHub](https://github.com/orcmid) projects (e.g.,
 (`docs/` folders) of documentation that are published as sections of
 `orcmid.github.io`.  Those sections follow the same document-engineering
 pattern; they have separate Construction Material subsections for their
-customizations and maintenance.
+separate customization and maintenance.
 
 Each Construction Material section has a
 [construction structure](index.htm) and a top-level
@@ -95,6 +95,7 @@ from time to time.
 </table>
 <!-- ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
 
+     0.1.8 2023-12-11T01:15Z Tidy up the separation of concerns
      0.1.7 2023-12-07T19:17Z Tidying up
      0.1.6 2023-12-05T16:27Z Refinement along with the front porch
      0.1.5 2023-12-04T00:01Z Clean up some unnecessary spaces
