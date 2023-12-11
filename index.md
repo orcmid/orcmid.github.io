@@ -1,4 +1,4 @@
-<!-- index.md 0.1.12                 UTF-8                         2023-12-09
+<!-- index.md 0.1.13                 UTF-8                         2023-12-11
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -29,7 +29,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.12 2023-12-09T01:27Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.13 2023-12-11T01:06Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -49,25 +49,23 @@
 
 ## A Little Tap Dance
 
-Here, [GitHub](https://www.makeuseof.com/what-is-github-an-introduction/) is
-relied upon for backup and preservation
-of Orcmid's software development, documentation, release, and maintenance
-efforts.
+[GitHub](https://www.makeuseof.com/what-is-github-an-introduction/) provides
+documentation and preservation of Orcmid's software development efforts.
+
+All activities are conducted entirely in the open.
 
 Change-tracking and recovery of backups is accomplished via
 [git](https://en.wikipedia.org/wiki/Git), the
 [GitHub Desktop](https://docs.github.com/en/desktop) app, and
 [GitHub repositories](https://docs.github.com/en/get-started/quickstart/hello-world).
-GitHub provides publishing
-of documentation to [wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) and as
+Publishing
+of documentation is via [wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis) and as
 [web pages](https://pages.github.com/) (such as this one).
 
-The orcmid.github.io web sit content is constructed upon
-[scaffolding](index.htm) and [construction zones](construction.htm) used in
-management of site creation and maintenance. The
-[construction](construction/) section is part of that.
-
-The site is created and maintained entirely in the open.
+orcmid.github.io has underlying
+[scaffolding](index.htm) and [construction zones](construction.htm) in support
+of web site management. The [construction](construction/) section provides
+supporting materials.
 
 ----
 
@@ -98,6 +96,7 @@ from time to time.
 </table>
 <!--
 
+      0.1.13 2023-12-11T01:06Z Polishing of the approach and scaffolding usage
       0.1.12 2023-12-09T01:27Z Use GitHub link that doesn't hit a dashboard
       0.1.11 2023-12-08T00:11Z More smoothing on construction structure
       0.1.10 2023-12-07T19:02Z Fix simple typo
