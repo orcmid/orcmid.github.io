@@ -13,11 +13,10 @@ project-specific security policies and those should be consulted.
 ## Reporting a Vulnerability
 
 To privately report an exploitable vulnerability or exposed threat-surface,
-please use the GitHub vulerability reporting provision of a specific
-project's Security tab, such as
-[orcmid.github.io Security](https://github.com/orcmid/orcmid.github.io/security)
-when specifically about a particular project/repository (such as for `orcmid.github.io`
-directly here).
+please use the GitHub vulnerability reporting provision of a specific
+project's Security tab, such as 
+[orcmid.github.io Security](https://github.com/orcmid/orcmid.github.io/security),
+for `orcmid.github.io` specifically/overall). 
 
 If you are unable to exercise that capability, or prefer private email communication,
 send a digitally-signed plaintext email to [orcmid](mailto:orcmid@msn.com).
