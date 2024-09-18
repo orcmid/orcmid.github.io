@@ -23,4 +23,6 @@ send a digitally-signed plaintext email to [orcmid](mailto:orcmid@msn.com).
 
 If you have reservations about email security/privacy, enclose an ASCII-armored file
 PGP-encrypted using the
-[orcmid Apache](https://people.apache.org/keys/committer/orcmid.asc) public key.
+[orcmid Apache](https://people.apache.org/keys/committer/orcmid.asc) public key. If
+you wish encrypted responses, also sign that email in order for your public key
+to be so used.
