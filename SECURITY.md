@@ -3,7 +3,7 @@
 ## Supported Versions
 
 **2024-09-15 Status**: There are no code releases at the
-orcmid.github.io](https://github.com/orcmid/orcmid.github.io/new/master)
+[orcmid.github.io](https://github.com/orcmid/orcmid.github.io/new/master)
 project.  This is the anchor for GitHub Pages of various Orcmid's Lair individual projects.
 The content consists entirely of text files and HTML web pages.  
 
@@ -13,8 +13,8 @@ project-specific security policies and those should be consulted.
 ## Reporting a Vulnerability
 
 To engage in a private discussion about a potential threats or a threat-surface
-defect, please use the GitHub vulerability reporting provision of a specific project's
-Security tab, such as the
+defect here, please use the GitHub vulerability reporting provision of a specific
+project's Security tab, such as the
 [orcmid.github.io Security](https://github.com/orcmid/orcmid.github.io/security) tab.
 
 If you are unable to exercise that capability, or prefer private email communication,
