@@ -1,25 +1,41 @@
 # Security Policy
 <!-- ---1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
-     SECURITY.md 1.0.11            UTF-8                        dh:2024-09-18
+     SECURITY.md 1.1.0             UTF-8                        dh:2024-09-27
      -->
-**2024-09-18 Status**: There are no code releases at the
-[orcmid.github.io](https://github.com/orcmid/orcmid.github.io/new/master)
-project.  This is the anchor for GitHub Pages of various Orcmid's Lair
-individual projects.
+**2024-09-27 Status**: There are no code releases at the
+[orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
+repository/project.  Content consists of HTML, Markdown, and text files
+published as GitHub Pages to [Orcmid on GitHub](https://orcmid.github.io).
 
-The content consists entirely of text files and HTML web pages.
+GitHub automatically anchors the documentation (`docs/`) GitHub Pages for
+other Orcmid on Github projects in subordinate directories, such as for
+[nfoTools](https://orcmid.github.io/nfoTools) and
+[The Miser Project on GitHub](https://orcmid.github.io/miser).
+
+The individual projects of [Orcmid on GitHub](https://github.com/orcmid/)
+have separate and specific Security Policy statements, vulnerability reports,
+and instructions for reporting vulerabilities.  Consult **those** repository
+Security tabs and/or `SECURITY.md` files.
 
 ## Supported Versions
 
-At **this level** There are no code releases whatsoever.
-**Subordinate projects** have project-specific security policies and those
-should be consulted.
+At [orcmid.github.io](https://github.com/orcmid/orcmid.github.io) There are no
+code releases whatsoever.  There are only materials used to generate static
+GitHub Pages.  **Subordinate projects** have project-specific security
+policies and the pertinent one should be consulted.
 
 | Version | Supported          |
 | ------- | ------------------ |
 | none    | :x:                |
 
 ## Reporting a Vulnerability
+
+**IMPORTANT: Please report vulnerability discoveries at the specific
+GitHub repository for software having the suspected/detected security
+defect. That is where analysis, resolution, and publication of any
+vulnerability announcement must occur.**
+
+********************  CONTINUE BELOW HERE *******************************
 
 To privately report an exploitable vulnerability or exposed threat-surface,
 please use the GitHub vulnerability reporting provision of a specific
