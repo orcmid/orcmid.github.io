@@ -1,4 +1,4 @@
-<!-- README.md 1.1.0                UTF-8                         2024-09-30
+<!-- README.md 1.1.1                UTF-8                         2024-09-30
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # orcmid.github.io GitHub Pages
@@ -16,7 +16,7 @@ the domain.  Changes and additions are automatically published when committed
 to the repository.
 
 The files and subdirectories of this project are all carried over into
-published GitHub Pages.  All Markdown (`*.md`) pages will be transformed to
+published GitHub Pages. Markdown (`*.md`) pages are transformed to
 HTML (`*.html`) pages.  Other pages (such as `*.txt` and `*.htm`) are
 published without change.
 
@@ -55,15 +55,13 @@ to cybersecurity vulnerability reporting on those Orcmid on GitHub projects
 that are intended to have releases.
 
 The Security Policy also has "Private vulnerability reporting" enabled.  In
-the case of `orcmid.github.io`, this is entirely for trial use and
+the case of `orcmid.github.io`. That is entirely for trial use and
 familiarization with what goes into private reporting of a security
-vulnerability.  Use this feature to experience how private efforts toward
-development of a remedy and subsequent vulnerability announcement are
-coordinated in private.
+vulnerability.  Use this feature to experience how coordination of any
+remedy and subsequent vulnerability announcement are conducted in private.
 
-The arrangement is also used to assist the manager of Orcmid on GitHub to
-determining that the private reporting system is functioning and can be
-explained.
+The arrangement assists the Orcmid on GitHub manager's confirmation that
+Private vulnerability reporting system is functioning and useful.
 
 ----
 
@@ -78,6 +76,7 @@ from time to time.
 
 <!--
 
+      1.1.1 2024-09-30T21:57Z Additional smoothing
       1.1.0 2024-09-30T15:37Z Touch-up, refining the Sandbox explanation
       1.0.0 2024-09-29T18:23Z First completed draft
       0.0.0 2024-09-29T15:12Z Trial Version to Verify non-interference with
