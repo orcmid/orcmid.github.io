@@ -1,4 +1,4 @@
-# GitHub Repository orcmid.github.io Security Policy
+# GitHub Repository orcmid.github.io Security Policy/Sandbox
 <!-- ---1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      SECURITY.md 1.1.1             UTF-8                        dh:2024-09-28
      -->
@@ -11,9 +11,8 @@ GitHub automatically anchors the documentation (`docs/`) GitHub Pages for
 other Orcmid on Github projects in subordinate directories, such as for
 [nfoTools](https://orcmid.github.io/nfoTools) and
 [The Miser Project on GitHub](https://orcmid.github.io/miser).
-site is at (https://orcmid.github.io)
 
-Individual projects of [Orcmid on GitHub](https://github.com/orcmid/)
+Distinct projects of [Orcmid on GitHub](https://github.com/orcmid/)
 have separate and specific Security Policy statements, vulnerability reports,
 and instructions for reporting vulerabilities.  Consult **those** repository
 Security tabs and/or `SECURITY.md` files for specific policies, vulnerability
@@ -31,12 +30,30 @@ security policies and the pertinent one should be consulted.
 | ------- | ------------------ |
 | none    | :x:                |
 
+## Finding Vulnerability Reports
+
+The Security Tabs on GitHub repository pages provide a link to all public
+reports on resolved vulnerabilities, including their nature, any mitigation,
+and any actions required by those who are employing vulnerable software
+versions.  These reports are developed privately in response to notification
+of a vulnerability and not published until any remediation is in place.
+
 ## Reporting a Vulnerability
 
 **IMPORTANT: Please report vulnerability discoveries at the specific
 GitHub repository for software having the suspected/detected security
 defect. That is where analysis, resolution, and publication of any
 vulnerability announcement must occur.**
+
+The identification of vulnerabilities and operation in conjunction with a
+Security Policy is designed by GitHub for use by security researchers.
+Knowlege of practices around handling and resolution of security issues is expected, including use of the Cybersecurity Vulnerability and Exposures
+([CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures))
+identifiers and associated reports, and of the Common Weakness Scoring System
+([CVSS](https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System)).
+
+
+
 
 *Already-issued vulnerability announcements are found via the Security
 tab of specific [Orcmid on GitHub](https://github.com/orcmid/) project
