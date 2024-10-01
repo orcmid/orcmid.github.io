@@ -1,4 +1,4 @@
-<!-- README.md 1.1.1                UTF-8                         2024-09-30
+<!-- README.md 1.1.2                UTF-8                         2024-10-01
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 # orcmid.github.io GitHub Pages
@@ -20,9 +20,9 @@ published GitHub Pages. Markdown (`*.md`) pages are transformed to
 HTML (`*.html`) pages.  Other pages (such as `*.txt` and `*.htm`) are
 published without change.
 
-In addition, those other Orcmid on GitHub repositories that have `docs/`
+Other Orcmid on GitHub repositories that have `docs/`
 folders are configured to have those folders published as subfolders of the
-`orcmid.github.io` web site with same Orcmid on GitHub names, such as
+`orcmid.github.io` web site with their Orcmid on GitHub names, such as
 [nfoTools](https://orcmid.github.io/nfoTools) and
 [miser](https://orcmid.github.io/miser).
 
@@ -46,22 +46,16 @@ Cybersecurity vulnerabilities are not expected at this level.  There are no
 code releases at the `orcmid.github.io` repository/project.  Only static web
 pages are produced.
 
-However, there is a
+The
 [Security Policy](https://orcmid.github.io/SECURITY.html)
-implemented at the `orcmid.github.io`
-[security tab](https://github.com/orcmid/orcmid.github.io/security).  The
-policy statement is provided for familiarization of the general approach
-to cybersecurity vulnerability reporting on those Orcmid on GitHub projects
-that are intended to have releases.
+at the `orcmid.github.io`
+[security tab](https://github.com/orcmid/orcmid.github.io/security) is
+provided as a sandbox for familiarization and practice with GitHub's
+vulnerability reporting and announcement mechanism.
 
-The Security Policy also has "Private vulnerability reporting" enabled.  In
-the case of `orcmid.github.io`. That is entirely for trial use and
-familiarization with what goes into private reporting of a security
-vulnerability.  Use this feature to experience how coordination of any
-remedy and subsequent vulnerability announcement are conducted in private.
-
-The arrangement assists the Orcmid on GitHub manager's confirmation that
-Private vulnerability reporting system is functioning and useful.
+The sandbox Security Policy has "Private vulnerability reporting" enabled.
+Use the sandbox to inspect what's required for a report and how any remedy
+and vulnerability announcement are developed in private.
 
 ----
 
@@ -76,6 +70,7 @@ from time to time.
 
 <!--
 
+      1.1.2 2024-10-01T17:56Z Smoothing, especially of Sandbox section
       1.1.1 2024-09-30T21:57Z Additional smoothing
       1.1.0 2024-09-30T15:37Z Touch-up, refining the Sandbox explanation
       1.0.0 2024-09-29T18:23Z First completed draft
