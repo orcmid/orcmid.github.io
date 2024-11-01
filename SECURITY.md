@@ -1,6 +1,6 @@
 # GitHub Repository orcmid.github.io Security Policy/Sandbox
 <!-- ---1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
-     SECURITY.md 1.4.1             UTF-8                        dh:2024-10-31
+     SECURITY.md 1.4.2             UTF-8                        dh:2024-11-01
      -->
 ## About the Orcmid on GitHub Security-Policy Sandbox
 
@@ -11,14 +11,15 @@ Security tabs and/or `SECURITY.md` files for their specific policies and
 reporting procedures.  The same applies for the project repositories of
 others.
 
-Ccnsult
+Consult
 [GitHub Guidance](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities)
 for  details of GitHub support for secure reporting and handling
 of vulnerabilities.
 
 The following material applies to the
-[orcmid.github.io](https://orcmid.github.io) project and its web site.  It
-demonstrates the pattern of all Orcmid on GitHub security policies.
+[orcmid.github.io](https://orcmid/orcmid.github.io) project repository and
+the web pages produced from that repository.  It demonstrates the pattern of
+all Orcmid on GitHub project repository security policies.
 
 ## Welcome to the Sandbox
 
@@ -26,7 +27,7 @@ The Security Policy Sandbox is provided for completeness, as a safeguard, and
 as an example.  Use the sandbox for familiarization and practice with security
 advisories and the vulnerability reporting process.
 
-The [Orcmid GitHub](https://orcmid.github.io/SECURITY.html) web page
+The [Orcmid GitHub Security](https://orcmid.github.io/SECURITY.html) web page
 is the text of the Sandbox Security policy. To inspect the complete sandbox,
 with or without reporting a vulnerability, access the
 [Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
@@ -34,7 +35,7 @@ tab.
 
 ## Supported Versions (Sandbox case)
 
-**2024-10-31 Status**: There are no code releases at the
+**2024-11-01 Status**: There are no code releases at the
 [orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
 repository/project.  Content consists of HTML, Markdown, and text files
 published as static GitHub Pages to
@@ -66,10 +67,9 @@ at the `orcmid.github.io` repository, the title will reveal that case.
 
 **IMPORTANT: Please report vulnerability discoveries at the specific
 GitHub repository for software having the suspected/detected cybersecurity
-defect. That is where analysis, resolution, and any vulnerability announcement
-must occur.  It is acceptable to practice with the reporting procedure using
-the Sandbox.  A report that applies to a different repository anywhere is not
-acceptable.**
+defect.** That is where analysis, resolution, and any vulnerability
+announcement must occur.  Use the Sandbox for practice and trial submissions
+to see how the process works.
 
 ### What to Expect
 
@@ -100,7 +100,7 @@ System
 
 ### The Simplest Path
 
-When there is an established Security Policy, the page displayed for the
+Where there is an established Security Policy, the page displayed for the
 repository's Security tab will have a "Report a vulnerability" button.
 
 ![Report a vulnerability](https://orcmid.github.io/images/report-button.png)
@@ -136,8 +136,8 @@ Privacy) public key cryptography features.
 
 For direct private secure communication, send an ASCII-armored
 PGP-encrypted report in a plaintext email to [orcmid](mailto:orcmid@msn.com).
-Use the [orcmid Apache](https://people.apache.org/keys/committer/orcmid.asc)
-public key.
+Download and use the
+[orcmid Apache public key](https://people.apache.org/keys/committer/orcmid.asc).
 
 Provide equivalent information to that solicited in the Report Description
 of the Vulnerability Report form.
