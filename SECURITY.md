@@ -1,6 +1,6 @@
 # GitHub Repository orcmid.github.io Security Policy/Sandbox
 <!-- ---1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
-     SECURITY.md 1.4.2             UTF-8                        dh:2024-11-01
+     SECURITY.md 1.4.3             UTF-8                        dh:2024-11-01
      -->
 ## About the Orcmid on GitHub Security-Policy Sandbox
 
@@ -11,15 +11,15 @@ Security tabs and/or `SECURITY.md` files for their specific policies and
 reporting procedures.  The same applies for the project repositories of
 others.
 
-Consult
+Review
 [GitHub Guidance](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities)
 for  details of GitHub support for secure reporting and handling
 of vulnerabilities.
 
-The following material applies to the
-[orcmid.github.io](https://orcmid/orcmid.github.io) project repository and
-the web pages produced from that repository.  It demonstrates the pattern of
-all Orcmid on GitHub project repository security policies.
+The material below applies to the
+[orcmid.github.io](https://github.com/orcmid/orcmid.github.io) project
+repository and the web pages produced from that repository.  It follows
+the pattern of all Orcmid on GitHub project repository security policies.
 
 ## Welcome to the Sandbox
 
@@ -27,8 +27,12 @@ The Security Policy Sandbox is provided for completeness, as a safeguard, and
 as an example.  Use the sandbox for familiarization and practice with security
 advisories and the vulnerability reporting process.
 
-The [Orcmid GitHub Security](https://orcmid.github.io/SECURITY.html) web page
-is the text of the Sandbox Security policy. To inspect the complete sandbox,
+The web page (https://orcmid.github.io/SECURITY.html) provides the same
+Security Policy statement that can be viewed via the
+[Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
+"View security policy" link.
+
+To inspect the complete sandbox,
 with or without reporting a vulnerability, access the
 [Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
 tab.
@@ -37,8 +41,8 @@ tab.
 
 **2024-11-01 Status**: There are no code releases at the
 [orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
-repository/project.  Content consists of HTML, Markdown, and text files
-published as static GitHub Pages to
+repository/project.  Content consists of HTML, Markdown, images, and text
+files published as static GitHub Pages to
 [Orcmid on GitHub](https://orcmid.github.io).  See the project
 [README](https://github.com/orcmid/orcmid.github.io/blob/master/README.md)
 for further details.
@@ -71,6 +75,13 @@ defect.** That is where analysis, resolution, and any vulnerability
 announcement must occur.  Use the Sandbox for practice and trial submissions
 to see how the process works.
 
+There is no support for reports of vulnerabilities to independent releases or
+distributions of modified forks, clones, or other derivatives provided by
+others.  It may be worthwhile to confirm that such a
+vulnerability does not arise from original Orcmid on GitHub projects; when
+that is the case, no support is available and any vulnerability announcement
+here will reflect that conclusion.
+
 ### What to Expect
 
 Being a cybersecurity expert is *not* a requirement for reporting an observed
@@ -90,9 +101,9 @@ should be requested.
 - There must be an "ecosystem" choice.  It is not necessary to know what
 that is.  The "other" entry is always appropriate.
 
-Other entries are *optional*.  they depend upon knowledge of expert
-practices around handling and resolution of security issues,
-including use of the Cybersecurity Vulnerability and Exposures
+Other details and entries are *optional*.  Some depend on expert knowledge and
+practices around cybersecurity procedures, including use of the Cybersecurity
+Vulnerability and Exposures
 ([CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures))
 identifiers and associated reports, and use of the Common Weakness Scoring
 System
@@ -105,7 +116,7 @@ repository's Security tab will have a "Report a vulnerability" button.
 
 ![Report a vulnerability](https://orcmid.github.io/images/report-button.png)
 
-#### Click the button.  An Advisory Details form will open.
+#### Click the button.  An Advisory Details form template will open.
 
 ![Describe vulnerability](https://orcmid.github.io/images/describe-vuln.png)
 
@@ -139,5 +150,5 @@ PGP-encrypted report in a plaintext email to [orcmid](mailto:orcmid@msn.com).
 Download and use the
 [orcmid Apache public key](https://people.apache.org/keys/committer/orcmid.asc).
 
-Provide equivalent information to that solicited in the Report Description
-of the Vulnerability Report form.
+Provide equivalent information to that solicited in the Description portion
+of the Vulnerability Report template.
