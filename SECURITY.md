@@ -1,6 +1,6 @@
 # GitHub Repository orcmid.github.io Security Policy/Sandbox
 <!-- ---1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
-     SECURITY.md 1.4.3             UTF-8                        dh:2024-11-01
+     SECURITY.md 1.4.4             UTF-8                        dh:2024-11-02
      -->
 ## About the Orcmid on GitHub Security-Policy Sandbox
 
@@ -27,15 +27,11 @@ The Security Policy Sandbox is provided for completeness, as a safeguard, and
 as an example.  Use the sandbox for familiarization and practice with security
 advisories and the vulnerability reporting process.
 
-The web page (https://orcmid.github.io/SECURITY.html) provides the same
-Security Policy statement that can be viewed via the
+The web page
+[https://orcmid.github.io/SECURITY.html](https://orcmid.github.io/SECURITY.html)
+ provides the same Security Policy statement that can be viewed via the
 [Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
 "View security policy" link.
-
-To inspect the complete sandbox,
-with or without reporting a vulnerability, access the
-[Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
-tab.
 
 ## Supported Versions (Sandbox case)
 
@@ -72,13 +68,15 @@ at the `orcmid.github.io` repository, the title will reveal that case.
 **IMPORTANT: Please report vulnerability discoveries at the specific
 GitHub repository for software having the suspected/detected cybersecurity
 defect.** That is where analysis, resolution, and any vulnerability
-announcement must occur.  Use the Sandbox for practice and trial submissions
-to see how the process works.
+announcement must occur.  Use the Sandbox only for practice and trial
+submissions to observe how the process works.
 
-There is no support for reports of vulnerabilities to independent releases or
+*There is no support for vulnerabilities of independently-released
 distributions of modified forks, clones, or other derivatives provided by
-others.  It may be worthwhile to confirm that such a
-vulnerability does not arise from original Orcmid on GitHub projects; when
+others.*
+
+It can be worthwhile to confirm that a derivative's
+vulnerability does not arise from the origin Orcmid on GitHub project; when
 that is the case, no support is available and any vulnerability announcement
 here will reflect that conclusion.
 
