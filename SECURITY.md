@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.2              UTF-8                         2024-11-03
+<!-- SECURITY.md 1.5.3              UTF-8                         2024-11-03
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.2 2024-11-03T20:54Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.3 2024-11-03T21:22Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -167,8 +167,11 @@ The "Select an ecosystem" item provides a pull-down when clicked.
 
 #### For Orcmid on GitHub, "Other" is always a good selection.
 
-After you submit the form, there is a confirmation and invitation to
-be credited with the report.
+Scroll down to the bottom of the form and click the "Submit report" button.
+
+![Submit report](https://orcmid.github.io/images/Submit-vuln.png)
+
+#### After you submit the form, there is a confirmation and invitation
 
 ![Report Confirmation](https://orcmid.github.io/images/ReportConfirmation.png)
 
@@ -213,6 +216,7 @@ of the Vulnerability Report template.
 </table>
 <!--
 
+      1.5.3  2024-11-03T21:22Z Add scroll-down image with Submit button
       1.5.2  2024-11-03T20:54Z Warning about subjects of encrypted messages
       1.5.1  2024-11-03T00:00Z Correct links and smooth layout
       1.5.0  2024-11-02T23:21Z Change to hybridForm
