@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.1              UTF-8                         2024-11-02
+<!-- SECURITY.md 1.5.2              UTF-8                         2024-11-03
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.1 2024-11-03T00:00Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.2 2024-11-03T20:54Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -73,7 +73,7 @@ The web page
 
 ## Supported Versions (Sandbox case)
 
-**2024-11-01 Status**: There are no code releases at the
+**2024-11-03 Status**: There are no code releases at the
 [orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
 repository/project.  Content consists of HTML, Markdown, images, and text
 files published as static GitHub Pages to
@@ -133,7 +133,7 @@ include the word PRACTICE in the title.
 be a simple statement.  This is also where any non-English communication
 should be requested.
 - There must be an "ecosystem" choice.  It is not necessary to know what
-that is.  The "other" entry is always appropriate.
+that is.  The "Other" entry is always appropriate.
 
 Other details and entries are *optional*.  Some depend on expert knowledge and
 practices around cybersecurity procedures, including use of the Cybersecurity
@@ -184,6 +184,9 @@ PGP-encrypted report in a plaintext email to [orcmid](mailto:orcmid@msn.com).
 Download and use the
 [orcmid Apache public key](https://people.apache.org/keys/committer/orcmid.asc).
 
+**DO NOT REVEAL anything about the vulnerability in the Subject or text of
+that email.**
+
 Provide equivalent information to that solicited in the Description portion
 of the Vulnerability Report template.
 
@@ -210,6 +213,7 @@ of the Vulnerability Report template.
 </table>
 <!--
 
+      1.5.2  2024-11-03T20:54Z Warning about subjects of encrypted messages
       1.5.1  2024-11-03T00:00Z Correct links and smooth layout
       1.5.0  2024-11-02T23:21Z Change to hybridForm
       1.4.3  2024-11-01T15:56 SECURITY.md too
