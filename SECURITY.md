@@ -1,10 +1,10 @@
-<!-- SECURITY.md 1.5.0              UTF-8                         2024-11-02
+<!-- SECURITY.md 1.5.1              UTF-8                         2024-11-02
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
   <tr>
     <td width="25%" align="left" height="6">
-        <a href="./" target="_top">
+        <a href="https://orcmid.github.io" target="_top">
            <img border="0"
                 src="https://orcmid.github.io/images/F56xx04-SelfPortrait2-logo.png"
                 width="172" height="137"
@@ -16,7 +16,7 @@
     <td width="50%" height="6">
       <p align="center"><strong><font color="#990033">orcmid.github.io<br />
          <big><big><em>GitHub Repository orcmid.github.io Security-Policy
-                       Statement</em></big></big></font></strong>
+                       Sandbox</em></big></big></font></strong>
       </p>
     </td>
     <td width="25%" valign="middle" align="right">
@@ -29,14 +29,17 @@
       </a>
       <br /><br />
       <b><code>
-         <a href="SECURITY.html" target="_top">SECURITY</a>&gt;</code></b>
+         <a href="https://orcmid.github.io/SECURITY.html"
+            target="_top">SECURITY
+         </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.0 2024-11-02T23:21Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.1 2024-11-03T00:00Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
 </table>
+
 ## About the Orcmid on GitHub Security-Policy Sandbox
 
 Individual projects of [Orcmid on GitHub](https://github.com/orcmid/)
@@ -108,9 +111,7 @@ submissions to observe how the process works.
 
 *There is no support for vulnerabilities of independently-released
 distributions of modified forks, clones, or other derivatives provided by
-others.*
-
-It can be worthwhile to confirm that a derivative's
+others.*  It can be worthwhile to confirm that a derivative's
 vulnerability does not arise from the origin Orcmid on GitHub project; when
 that is the case, no support is available and any vulnerability announcement
 here will reflect that conclusion.
@@ -190,14 +191,16 @@ of the Vulnerability Report template.
   <tr>
     <td width="25%">
       <p>
-        <a href="https://orcmid.github.io">
+        <a href="https://orcmid.github.io/index.htm">
         <img border="0"
              src="https://orcmid.github.io/images/hardhat-thumb.gif"
              width="80" height="60" alt="Construction Zone (Hard Hat Area)">
         </a></p>
     </td>
     <td width="50%" valign="middle" align="center">
-      You are navigating <a href="./"><tt>orcmid.github.io</tt></a> material
+      You are navigating
+      <a href="https://orcmid.github.io"><tt>orcmid.github.io</tt>
+      </a> material
     </td>
     <td width="25%">
       <p align="right"><font size="-2">originally created 2024-09-04 by
@@ -207,6 +210,7 @@ of the Vulnerability Report template.
 </table>
 <!--
 
+      1.5.1  2024-11-03T00:00Z Correct links and smooth layout
       1.5.0  2024-11-02T23:21Z Change to hybridForm
       1.4.3  2024-11-01T15:56 SECURITY.md too
       1.4.2  2024-11-01T12:39 SECURITY.md fine-tuning and work-item review
