@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.3              UTF-8                         2024-11-03
+<!-- SECURITY.md 1.5.4              UTF-8                         2024-11-06
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.3 2024-11-03T21:22Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.4 2024-11-06T16:29Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -68,16 +68,15 @@ advisories and the vulnerability reporting process.
 The web page
 [https://orcmid.github.io/SECURITY.html](https://orcmid.github.io/SECURITY.html)
  provides the same Security Policy statement that can be viewed via the
-[Security-Policy Sandbox](https://github.com/orcmid/orcmid.github.io/security)
-"View security policy" link.
+[orcmid.github.io security tab](https://github.com/orcmid/orcmid.github.io/security).
 
 ## Supported Versions (Sandbox case)
 
-**2024-11-03 Status**: There are no code releases at the
+**2024-11-06 Status**: There are no code releases at the
 [orcmid.github.io](https://github.com/orcmid/orcmid.github.io)
 repository/project.  Content consists of HTML, Markdown, images, and text
-files published as static GitHub Pages to
-[Orcmid on GitHub](https://orcmid.github.io).  See the project
+files published as static GitHub Pages to the
+[Orcmid on GitHub](https://orcmid.github.io) web site.  See the project
 [README](https://github.com/orcmid/orcmid.github.io/blob/master/README.md)
 for further details.
 
@@ -93,13 +92,15 @@ employing vulnerable software versions. Occassionally, a vulnerability
 announcement can explain why a particular situation does not qualify as a
 vulnerability.
 
-*Already-issued vulnerability announcements are found via the Security
-tab of specific [Orcmid on GitHub](https://github.com/orcmid/) project
-repositories.*
+Find already-issued public vulnerability announcements at
+[orcmid.github.io advisories](https://github.com/orcmid/orcmid.github.io/security/advisories).
 
-Vulnerability announcements for sandbox trials are identified as PRACTICE
-announcements.  In the unlikely case that an actual vulnerability arises
-at the `orcmid.github.io` repository, the title will reveal that case.
+Draft vulnerability announcements for sandbox trials are identified as
+PRACTICE announcements.  They are not published.  They are only visible to
+their reporter and the managers of the repository.
+
+In the unlikely case that an actual vulnerability arises at the
+`orcmid.github.io` repository, its public announcement will be listed.
 
 ## Reporting a Vulnerability
 
@@ -216,6 +217,7 @@ of the Vulnerability Report template.
 </table>
 <!--
 
+      1.5.4  2024-11-06T16:29Z Clarify access to vulnerability announcements
       1.5.3  2024-11-03T21:22Z Add scroll-down image with Submit button
       1.5.2  2024-11-03T20:54Z Warning about subjects of encrypted messages
       1.5.1  2024-11-03T00:00Z Correct links and smooth layout
