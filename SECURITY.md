@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.5              UTF-8                         2024-11-06
+<!-- SECURITY.md 1.5.6              UTF-8                         2024-11-07
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.5 2024-11-06T21:40Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.6 2024-11-07T23:43Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -112,11 +112,12 @@ announcement must occur.  Use the Sandbox only for practice and trial
 submissions to observe how the process works.
 
 *There is no support for vulnerabilities of independently-released
-distributions of modified forks, clones, or other derivatives provided by
+distributions of modified forks, clones, or other derivatives of Orcmid on
+GitHub projects/repositories provided by
 others.*  It can be worthwhile to confirm that a derivative's
-vulnerability does not arise from the origin Orcmid on GitHub project; when
+vulnerability does not arise from an original Orcmid on GitHub project; when
 that is the case, no support is available and any vulnerability announcement
-here will reflect that conclusion.
+for the Orcmid project will reflect that conclusion.
 
 ### What to Expect
 
@@ -194,7 +195,9 @@ Download and use the
 that email.**
 
 In the encrypted text, provide equivalent information to that solicited in
-the Description portion of the Vulnerability Report template.
+the Description portion of the Vulnerability Report template, including the
+name of the Orcmid on GitHub project, the specific release (if any) and the
+name of files that contribute to the vulnerability.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
@@ -219,7 +222,8 @@ the Description portion of the Vulnerability Report template.
 </table>
 <!--
 
-      1.5.5  2024-11-06T21:40Z Smoothiing
+      1.5.6  2024-11-07T23:43Z Cleanup the disclaimer concerning forks
+      1.5.5  2024-11-06T21:40Z Smoothing
       1.5.4  2024-11-06T16:29Z Clarify access to vulnerability announcements
       1.5.3  2024-11-03T21:22Z Add scroll-down image with Submit button
       1.5.2  2024-11-03T20:54Z Warning about subjects of encrypted messages
