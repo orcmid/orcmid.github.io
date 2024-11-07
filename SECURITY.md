@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.4              UTF-8                         2024-11-06
+<!-- SECURITY.md 1.5.5              UTF-8                         2024-11-06
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.4 2024-11-06T16:29Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.5 2024-11-06T21:40Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -92,10 +92,11 @@ employing vulnerable software versions. Occassionally, a vulnerability
 announcement can explain why a particular situation does not qualify as a
 vulnerability.
 
-Find already-issued public vulnerability announcements at
+Find already-issued public vulnerability announcements, if any, for the
+`orcmid.github.io` project/repository at
 [orcmid.github.io advisories](https://github.com/orcmid/orcmid.github.io/security/advisories).
 
-Draft vulnerability announcements for sandbox trials are identified as
+Draft vulnerability announcements for sandbox exercises are identified as
 PRACTICE announcements.  They are not published.  They are only visible to
 their reporter and the managers of the repository.
 
@@ -120,10 +121,11 @@ here will reflect that conclusion.
 ### What to Expect
 
 Being a cybersecurity expert is *not* a requirement for reporting an observed
-vulnerability. The form provided for entering a vulnerability report is
-structured for use by cybersecurity experts as well as non-experts.
+vulnerability.
 
-An initial vulnerability report can be very simple:
+Although the form provided for entering a vulnerability report is
+structured for use by cybersecurity experts as well as non-experts,
+an initial vulnerability report can be very simple:
 
 - Reporters must have a GitHub account and be logged into GitHub to submit
 a report.
@@ -134,7 +136,7 @@ include the word PRACTICE in the title.
 be a simple statement.  This is also where any non-English communication
 should be requested.
 - There must be an "ecosystem" choice.  It is not necessary to know what
-that is.  The "Other" entry is always appropriate.
+that is.  The "Other" ecosystem entry is always appropriate.
 
 Other details and entries are *optional*.  Some depend on expert knowledge and
 practices around cybersecurity procedures, including use of the Cybersecurity
@@ -191,8 +193,8 @@ Download and use the
 **DO NOT REVEAL anything about the vulnerability in the Subject or text of
 that email.**
 
-Provide equivalent information to that solicited in the Description portion
-of the Vulnerability Report template.
+In the encrypted text, provide equivalent information to that solicited in
+the Description portion of the Vulnerability Report template.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
@@ -217,6 +219,7 @@ of the Vulnerability Report template.
 </table>
 <!--
 
+      1.5.5  2024-11-06T21:40Z Smoothiing
       1.5.4  2024-11-06T16:29Z Clarify access to vulnerability announcements
       1.5.3  2024-11-03T21:22Z Add scroll-down image with Submit button
       1.5.2  2024-11-03T20:54Z Warning about subjects of encrypted messages
