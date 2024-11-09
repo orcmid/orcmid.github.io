@@ -1,4 +1,4 @@
-<!-- SECURITY.md 1.5.6              UTF-8                         2024-11-07
+<!-- SECURITY.md 1.5.7              UTF-8                         2024-11-09
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -34,7 +34,7 @@
          </a>&gt;</code></b>
       <br />
       <small><small>
-        1.5.6 2024-11-07T23:43Z<!-- MAINTAIN THIS MANUALLY -->
+        1.5.7 2024-11-09T18:49Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -45,9 +45,8 @@
 Individual projects of [Orcmid on GitHub](https://github.com/orcmid/)
 have separate and specific Security Policy statements, vulnerability reports,
 and procedures for reporting vulnerabilities.  Consult **those** repository
-Security tabs and/or `SECURITY.md` files for their specific policies and
-reporting procedures.  The same applies for the project repositories of
-others.
+Security tabs and/or `SECURITY.md` files for their specific policies. The same
+applies for the project repositories of others.
 
 Review
 [GitHub Guidance](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities)
@@ -56,14 +55,14 @@ of vulnerabilities.
 
 The material below applies to the
 [orcmid.github.io](https://github.com/orcmid/orcmid.github.io) project
-repository and the web pages produced from that repository.  It follows
+repository and the web pages produced from that repository.  It sets
 the pattern of all Orcmid on GitHub project repository security policies.
 
 ## Welcome to the Sandbox
 
 The Security Policy Sandbox is provided for completeness, as a safeguard, and
-as an example.  Use the sandbox for familiarization and practice with security
-advisories and the vulnerability reporting process.
+as an example.  Use the sandbox as a walk-through for familiarization and
+practice with security advisories and the vulnerability reporting process.
 
 The web page
 [https://orcmid.github.io/SECURITY.html](https://orcmid.github.io/SECURITY.html)
@@ -96,9 +95,9 @@ Find already-issued public vulnerability announcements, if any, for the
 `orcmid.github.io` project/repository at
 [orcmid.github.io advisories](https://github.com/orcmid/orcmid.github.io/security/advisories).
 
-Draft vulnerability announcements for sandbox exercises are identified as
-PRACTICE announcements.  They are not published.  They are only visible to
-their reporter and the managers of the repository.
+Identify vulnerability announcements for sandbox experiments as PRACTICE
+announcements.  Sandbox Practice reports and announcements are not published.
+They are only visible to their reporter and the managers of the repository.
 
 In the unlikely case that an actual vulnerability arises at the
 `orcmid.github.io` repository, its public announcement will be listed.
@@ -108,8 +107,8 @@ In the unlikely case that an actual vulnerability arises at the
 **IMPORTANT: Please report vulnerability discoveries at the specific
 GitHub repository for software having the suspected/detected cybersecurity
 defect.** That is where analysis, resolution, and any vulnerability
-announcement must occur.  Use the Sandbox only for practice and trial
-submissions to observe how the process works.
+announcement must occur.  Use the Sandbox only as a walk-through and
+for practice and trial submissions to observe how the process works.
 
 *There is no support for vulnerabilities of independently-released
 distributions of modified forks, clones, or other derivatives of Orcmid on
@@ -122,17 +121,18 @@ for the Orcmid project will reflect that conclusion.
 ### What to Expect
 
 Being a cybersecurity expert is *not* a requirement for reporting an observed
-vulnerability.
+vulnerability of any [GitHub/orcmid](https://github.com/orcmid)
+project/repository.
 
 Although the form provided for entering a vulnerability report is
 structured for use by cybersecurity experts as well as non-experts,
-an initial vulnerability report can be very simple:
+initial vulnerability reports can be very simple:
 
 - Reporters must have a GitHub account and be logged into GitHub to submit
 a report.
 - English language is required, even if very brief.
-- A title must be chosen for the report.  For a practice report, please
-include the word PRACTICE in the title.
+- A title must be chosen for the report.  For a practice report using the
+sandbox, please include the word PRACTICE in the title.
 - There must be a brief description of the identified vulnerability.  This can
 be a simple statement.  This is also where any non-English communication
 should be requested.
@@ -169,7 +169,7 @@ The "Select an ecosystem" item provides a pull-down when clicked.
 
 ![Ecosystem Selection](https://orcmid.github.io/images/Ecosystem-Other.png)
 
-#### For Orcmid on GitHub, "Other" is always a good selection.
+#### For Orcmid on GitHub projects/repositories, "Other" is always acceptable.
 
 Scroll down to the bottom of the form and click the "Submit report" button.
 
@@ -222,6 +222,7 @@ name of files that contribute to the vulnerability.
 </table>
 <!--
 
+      1.5.7  2024-11-09T18:49Z Smoothing for use as a walkthrough
       1.5.6  2024-11-07T23:43Z Cleanup the disclaimer concerning forks
       1.5.5  2024-11-06T21:40Z Smoothing
       1.5.4  2024-11-06T16:29Z Clarify access to vulnerability announcements
