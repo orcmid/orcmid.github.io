@@ -1,4 +1,4 @@
-<!-- index.md 0.1.15                UTF-8                         2024-09-28
+<!-- index.md 0.1.16                UTF-8                         2025-06-12
      ----1----|----2----|----3----|----4----|----5----|----6----|----7----|--*
      -->
 <table border="0" width="100%">
@@ -29,7 +29,7 @@
          <a href="index.html" target="_top">index.html</a>&gt;</code></b>
       <br />
       <small><small>
-        0.1.15 2024-09-2820:46Z<!-- MAINTAIN THIS MANUALLY -->
+        0.1.16 2025-06-12T21:21Z<!-- MAINTAIN THIS MANUALLY -->
       </small></small>
       </td>
   </tr>
@@ -70,14 +70,15 @@ supporting materials.
 
 ----
 
-Discussion about `orcmid.github.io` topics in the
+Discuss about `orcmid.github.io` topics in the
 [Discussion section](https://github.com/orcmid/orcmid.github.io/discussions).
 Improvements and removal of defects in this particular documentation can be
 reported and addressed in the
 [Issues section](https://github.com/orcmid/orcmid.github.io/issues).  There
 may also be relevant
 [projects](https://github.com/orcmid/orcmid.github.io/projects)
-from time to time.
+from time to time.  For any security concerns, consult the
+[security policy](SECURITY.html) statement.
 
 <table border="0" cellspacing="3" width="100%">
   <tr>
@@ -97,6 +98,7 @@ from time to time.
 </table>
 <!--
 
+      0.1.16 2025-06-12T21:21Z Touch up footer text
       0.1.15 2024-09-28T20:46Z Correct Policy link and name
       0.1.14 2024-09-28T16:01Z Add Security Policy link
       0.1.13 2023-12-11T01:06Z Polishing of the approach and scaffolding usage
