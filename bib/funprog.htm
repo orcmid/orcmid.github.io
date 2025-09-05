@@ -56,7 +56,7 @@
 
       <p align="right"><b><code><a target="_top" href="funprog.htm">funprog.htm</a>&gt;</code></b><br>
       <small><small><a href="#v0.01">0.01</a> 
-		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2024-08-08 16:28<!--webbot bot="Timestamp" i-checksum="26130" endspan --></small>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2025-09-05 16:34<!--webbot bot="Timestamp" i-checksum="25748" endspan --></small>
       </small></p>
       </td>
     
@@ -208,7 +208,59 @@ enduring as a demonstration of applicative programming without explicit use of&n
 		Digging into the combinators, λ-calculus, and representation of other 
 		types as interpretations of λ-expressions occurs in Chapter 9, Writing 
 		Interpreters for the λ-calculus, starting in section 9.5. <br>
-&nbsp;&nbsp; </font>&nbsp;<font SIZE="4"></font></dd>
+&nbsp;&nbsp; </font>&nbsp;</dd>
+      <dt><a name="Revesz1988" href="#Revesz1988">[Revesz1988]</a></dt>
+      <dd>Révész, György E. <i> Lambda-Calculus, Combinators and Functional 
+		Programming</i>. Cambridge University Press (Cambridge, 1988). ISBN 
+		0-521-34589-8.<br>
+&nbsp;<font size="2">&nbsp;&nbsp; There are some notational difficulties that 
+		need to be carefully navigated in this material. The use of (f)x in 
+		place of conventional f(x) and applicative (f x) requires a change in 
+		mind-set and/or some serious rewriting to an alternative form (e.g., 
+		Frugalese).&nbsp; It is a quaint similarity that application associates 
+		to the right (as in oFrugal) but parentheses can alter that.&nbsp; These 
+		matters are not of great moment until one attempts to translate the 
+		forms in this book and also appreciate whether evaluations are 
+		considered strict or not.&nbsp; There are interesting elements in this 
+		book, and the section on List Manipulation reveals a gold mine.&nbsp;
+		</font></dd>
+		<dd><font size="2">&nbsp;&nbsp;&nbsp; [2025-09-05] Although this 
+		material focuses on theoretical aspects of the λ-calculus, I have 
+		persuaded myself that this is more about functional programming.&nbsp; I 
+		don&#39;t think that all of the λ-calculus (and combinatory logic) are 
+		sufficient as models of computations, something the Miser Project has 
+		taught me.&nbsp; Also, while this book is taken as a contribution to 
+		Theoretical Computer Science,&nbsp;&nbsp; I think the reveal is in the 
+		statement (p.viii), &quot;lambda-calculus is treated here as a functional 
+		language implemented by software in a conventional computer.&quot;&nbsp; 
+		While it was thought to be a model for concrete computing machines, 
+		those visions have not come to pass, and I will avoid λ-calculus where 
+		the key facility is one of λ-calculus and where combinators are manifest 
+		via script-constructing operations.&nbsp; </font>&nbsp;<font size="-1"><br>&nbsp;&nbsp;&nbsp;&nbsp; 2000-07-18: I have book-marked some material in 
+		here on the idea of extensionally-equal (Definition 1.1, which comes up 
+		in the theory for CL) and the nice explanation of the set-theoretic 
+		model of functions and the procedural view of functions, considered the 
+		older model.&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp; Chapter 3 is about combinators and constant 
+		symbols and ways people have dealt with placeholders.<br>&nbsp;&nbsp;&nbsp;&nbsp; There are also representations of arithmetic 
+		and logic (Boolean values) in CL, and the treatment of recursion is 
+		something I need to understand better, especially around finding 
+		fixed-points. There are additional things here, that can be used in 
+		building implementations and applying Miser engines. For example, list 
+		processing, handling infinite-lists, stuff like that. (I don&#39;t propose 
+		to go down that road very far, but I have my eye out for useful 
+		definitions for list-processing primitives, string manipulation, and 
+		other things.) The Church-Rosser theorem is treated in here, also. And a 
+		treatment of FP, the John Backus approach to functional programming.<br>&nbsp;&nbsp;&nbsp;&nbsp; I want to be very careful about how true and 
+		false is represented in the Miser Engine. In one respect, true and false 
+		can be represented any way that we want. But the primitive operation for 
+		equality has to produce some sort of result and it, along with an idiom 
+		for conditional evaluation, will create a truth representation. So I 
+		want to come up with a comparison result that fits into this and is both 
+		useful and revealing.<br>&nbsp;&nbsp; Content<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<i>Preface</i><br>&nbsp;&nbsp;&nbsp;&nbsp; 1. Introduction<br>&nbsp;&nbsp;&nbsp;&nbsp; 2. Type-Free Lambda Calculus<br>&nbsp;&nbsp;&nbsp;&nbsp; 3. Combinators and Constant Symbols<br>&nbsp;&nbsp;&nbsp;&nbsp; 4. List Manipulation in Lambda-Calculus<br>&nbsp;&nbsp;&nbsp;&nbsp; 5. Rule-Based Semantics of&nbsp;λ-expressions<br>&nbsp;&nbsp;&nbsp;&nbsp; 6. Outlines of a Reduction Machine<br>&nbsp;&nbsp;&nbsp;&nbsp; 7. Towards a Parallel Graph-Reduction<br>&nbsp;&nbsp;&nbsp;&nbsp; Appendix A.&nbsp; A Proof of the Church-Rosser 
+		Theorem<br>&nbsp;&nbsp;&nbsp;&nbsp; Appendix B.&nbsp; Introduction to Typed 
+		λ-Calculus<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>Bibliographical notes<br>&nbsp;&nbsp;&nbsp;&nbsp; References</i></font></dd>
+		<dt>&nbsp;</dt>
 		<dt><a name="Reynolds1998" href="#Reynolds1998">[Reynolds1998]</a></dt>
 		<dd>Reynolds, John C. <i>Theories of Programming Languages</i>. 
 		Cambridge University Press (Cambridge: 1998). ISBN 0-521-59414-6 
