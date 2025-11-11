@@ -56,7 +56,7 @@
 
       <p align="right"><b><code><a target="_top" href="funprog.htm">funprog.htm</a>&gt;</code></b><br>
       <small><small><a href="#v0.01">0.01</a> 
-		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2025-09-06 08:58<!--webbot bot="Timestamp" i-checksum="26414" endspan --></small>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2025-11-09 13:09<!--webbot bot="Timestamp" i-checksum="25676" endspan --></small>
       </small></p>
       </td>
     
@@ -158,15 +158,25 @@
 		<a href="https://en.wikipedia.org/w/index.php?title=ISWIM&oldid=1199986035">
 		Wikipedia Article</a>.&nbsp; Accessed 2024-02-29.<br>
 &nbsp;&nbsp; </dd>
-		<dt><font size="2">[<a name="Landin1964" href="#Landin1964">Landin1964</a>]</font></dt>
+		<dt>[<a name="Landin1964" href="#Landin1964">Landin1964</a>]</dt>
 <dd>Landin, P.J.&nbsp; The mechanical evaluation of expressions.&nbsp;
 <i>Computer Journal</i> <b>6</b>, 4 (January 1964), 308-320.<font size="2"><br>
 &nbsp;&nbsp; This is Landin&#39;s initial publication on applicative operations with connection to the 
 λ-calculus.&nbsp; This is what was passed around the Sperry Univac office to acquaint us with 
 the notions of functional programming and how they might be introduced in 
-programming languages and practice.</font></dd>
+programming languages and practice, with implementation of ISWIM being the 
+objective..&nbsp; I have an off-print that has corrections in either Landin or 
+Burge&#39;s markings.&nbsp; The SECD machine first appeared in this paper.</font></dd>
 <dd><font size="2">&nbsp;&nbsp;&nbsp; </font></dd>
-<dt><font size="2">[<a name="Landin1966" href="#Landin1966">Landin1966</a>]</font></dt>
+<dt>[<a name="Landin1965" href="#Landin1965">Landin1965</a>]</dt>
+		<dd>Landin, P.J.&nbsp; A correspondence between ALGOL 60 and Church&#39;s
+		<font SIZE="3">λ notation.&nbsp; <i>Comm. ACM</i> <b>8</b>, 89-101, 
+		158-165.<br>
+&nbsp;&nbsp; </font><font SIZE="2">I think this, until [<a href="#Landin1966">Landin1966</a>], 
+		is what attracted so much attention to applicative expressions and 
+		λ-calculus.&nbsp; </font><font SIZE="3"><br>
+&nbsp;&nbsp; </font></dd>
+		<dt>[<a name="Landin1966" href="#Landin1966">Landin1966</a>]</dt>
 <dd>Landin, P.J.&nbsp; The Next 700 Programming Languages.&nbsp;
 <i>Comm. ACM</i> <b>9</b>, 3 (March 1966), 157-164.<font size="2"><br>
 &nbsp; &nbsp; Following 
@@ -175,13 +185,32 @@ introduction of programming languages should be as ones that are, in some
 respect, sugarings of an underlying functional system, namely a proposed ISWIM 
 (If you See What I Mean) programming-language system. At the paper&#39;s 
 presentation at the ACM Programming Languages and Pragmatics Conference in 1965, 
-discussion seemed to bikeshed on the use of indentation in the ISWIM 
+discussion seemed to bike-shed on the use of indentation in the ISWIM 
 illustrations, something now made commonplace in Python.&nbsp; This paper is 
 enduring as a demonstration of applicative programming without explicit use of&nbsp; 
 λ-expressions, although the procedures for functions are first-class entities.<br>
+&nbsp;&nbsp; [<a href="compsci.htm#Scott1993">Scott1993</a>], in its original 
+1969 privately-circulated form, questioned Landin&#39;s failure to handle assignment 
+in any kind of theoretically-interesting manner.&nbsp; It seems to be the case 
+that Landin<br>
+hand-waved the problem away (especially in [<a href="#Landin1965">Landin1965</a>]) 
+and assignment was handled in an ad hoc manner (i.e., with a hack).&nbsp; The 
+same is apparent in the language SML although I think the F# folks have figured 
+it out.&nbsp; <br>
+&nbsp;&nbsp;
 &nbsp;&nbsp; </font></dd>
-<font size="-1">
-		<dt>-[<a name="McCarthy1960" href="#McCarthy1960">McCarthy1960</a>]</dt>
+		<dt>[<a name="Landin1966b" href="#Landin1966b">Landin1966b</a>]</dt>
+		<dd>Landin, P.J<font size="-1">.&nbsp; A <font SIZE="3">λ-calculus 
+		Approach.&nbsp; Chapter 5 in <i>Advances in Programming and 
+		Non-Numerical Computation</i> Pergamon Press (Oxford: 1966), 97-141.<br>
+&nbsp;&nbsp; </font></font><font size="2">This was written before [Landin1966].&nbsp; 
+		I recently (November 2025) stumbled over an off-print that had been in 
+		the Univac Systems Programming library when Ann Mason was the librarian 
+		and she often asked me who I thought would be interested in articles and 
+		books of various kinds.&nbsp; I seem to have obtained this off-print 
+		when the library was abandoned in the 1970s.</font><font size="-1"><font SIZE="3"><br>
+&nbsp; </font></dd>
+		<dt>[<a name="McCarthy1960" href="#McCarthy1960">McCarthy1960</a>]</dt>
     	</font>
 		<dd>McCarthy, John.&nbsp; Recursive functions of symbolic expressions and 
 		their computation by machine, Part I. <i>&nbsp;Comm. ACM</i> <b>3</b>, 4 
