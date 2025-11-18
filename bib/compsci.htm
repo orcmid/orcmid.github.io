@@ -65,8 +65,8 @@
       <p align="right"><b><code><a target="_top" href="compsci.htm">compsci</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-11-09<!--webbot bot="Timestamp" i-checksum="12116" endspan -->                     
-      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->14:02 -0800<!--webbot bot="Timestamp" i-checksum="11961" endspan -->              
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-11-17<!--webbot bot="Timestamp" i-checksum="12113" endspan -->                     
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->18:20 -0800<!--webbot bot="Timestamp" i-checksum="11953" endspan -->              
       </small></small></p></td>
 </font>
 
@@ -703,6 +703,42 @@
 		might assist in oFrugal operator-precedence handling.&nbsp; The oFrugal 
 		REPL is a true mindelayscandoer.</font><br>
 &nbsp;&nbsp;&nbsp; </dd>
+		<dt>[<a name="Fagan1979" href="#Fagan1979">Fagan1979</a>]</dt>
+		<dd>Fagin, Ronald., Nievergelt, Jurg., Strong, H. Raymond.&nbsp; 
+		Extendible Hashing -- A Fast Access Method for Dynamic Files.&nbsp; <i>
+		ACM Transactions on Database Systems <b>4</b></i>, 3 (September 1979), 
+		315-344.<br>
+		<font size="2">&nbsp;&nbsp; This is a foundational paper that is cited 
+		in the contributions of others such as [<a href="#Litwin1980">Litwin1980</a>] 
+		and [<a href="#Larson1988">Larson1988</a>].&nbsp; It attends to factors, 
+		such as processor paging and caching considerations that might not be of 
+		such concern in relatively moderate applications.&nbsp; The emphasis is 
+		on structuring data whose volume is allowed to grow and shrink by large 
+		factors on a dynamic basis.&nbsp; There is a good summary of approaches 
+		and characteristics of dynamic file organization schemes.&nbsp; Not all 
+		of this pertains to in-memory directories/repositories.&nbsp; It is 
+		presumed that the data items being organized are relatively larger than 
+		the items in the directory.&nbsp; There is useful nomenclature: The key 
+		space, S, is whatever differentiates the items to be captured in the 
+		directory.&nbsp; The hash function h on S maps into address space A 
+		which is presumed to be fairly evenly distributed.&nbsp; A is mapped 
+		onto a directory with buckets having approximately the same high load 
+		factor.&nbsp; The notion of load factor is also specified.&nbsp; There 
+		is reference to a &quot;buddy&quot; system for allocating buckets [<a href="#Knuth1997">Knuth1997</a>:2.5C].&nbsp; 
+		The basic idea of splitting buckets in half or coalescing pairs of 
+		sparse buckets into one is fundamental to the proposal, and subsequent 
+		proposals, such as Linear Hashing, although it is not done with adjacent 
+		(i.e. buddy) blocks and alternative ways might be needed.&nbsp; Part of 
+		the buddy system appeal is that it accomodates chunks of different 
+		(power of 2) sizes, so it is about allocating other things than, say, 
+		simple list-processing cells.&nbsp; Linear Hashing is about splitting 
+		and coalescing fixed buckets of directory entries, not necessarily of 
+		the extent of an item, just its directory entry.&nbsp; In designing a 
+		memory-management system, the various schemes must be walked through 
+		very carefully, with testing and instrumentation as well.&nbsp; And 
+		there needs to be some smoothness of operation as well as amortization 
+		of the burps all such schemes have.<br>
+		</font>&nbsp;&nbsp; </dd>
 		<dt>[<a name="Graham1987" href="#Graham1987">Graham1987</a>]</dt>             
       <dd>Ashenhurst, Robert L., Graham, Susan L. (eds.).&nbsp; <i>ACM Turing Award                                                 
         Lectures: The First Twenty Years 1966-1985</i>.&nbsp; ACM Anthology                                                  
@@ -1108,7 +1144,58 @@
         &nbsp;&nbsp;&nbsp;&nbsp; Index</i><br>
         &nbsp;&nbsp;&nbsp;</small></dd>
  
-      <dt>[<a name="Malone2025" href="#Malone2025">Malone2025</a>]</dt>
+		<dt>[<a name="Larson1988" href="#Larson1988">Larson1988</a>]</dt>
+		<dd>Larson, Per-Ake.&nbsp; Dynamic Hash Tables.&nbsp; <i>Comm. ACM <b>31</b></i>, 
+		4 (April 1988), 446-457.&nbsp; Available on the Internet at &lt;<a href="https://dl.acm.org/doi/10.1145/42404.42410">https://dl.acm.org/doi/10.1145/42404.42410</a>&gt;.<br>
+		<font size="2">&nbsp;&nbsp; From the Abstract: &quot;Linear hashing and 
+		spiral storage are two dynamic hashing schemes originally designed for 
+		external files.&nbsp; This paper shows how to adapt these two methods 
+		for hash tables stored in main memory.&nbsp; The necessary data 
+		structures and algorithms are described, the expected performance is 
+		analyzed mathematically, and actual execution time are obtained and 
+		compared with alternative techniques.&nbsp; Linear hashing is found to 
+		be both faster and easier to implement than spiral storage. ... Overall, 
+		linear hashing is a simple and efficient technique for applications 
+		where the cardinality of the key set is not known in advance.<br>
+&nbsp;&nbsp; This article provides a very clear account of Linear Hashing as 
+		introduced in [<a href="#Litwin1980">Litwin1980</a>].&nbsp; The data 
+		structures and algorithms are well illustrated in a publication form of 
+		ALGOL 60/Pascal accompanied by useful diagrams.&nbsp; The design of the 
+		experiments and the experimental results are also illustrative and 
+		inform what one might to employ Linear Hashing for an in-memory 
+		directory/database.&nbsp; It will be important to obtain excellent 
+		&quot;representative&quot; test cases.&nbsp; The cardinality observation is about 
+		the key set, not the hashes, although the chardinality of the hash 
+		values is set in advance and determines the worst case for a very large 
+		data set of distinct keys.&nbsp; Also, within the hash set, there will 
+		be collisions even in the hopefully-impossible largest case, say 24-32&nbsp; 
+		hash bits.</font></dd>
+ 
+      <dt>&nbsp;&nbsp; </dt>
+		<dt>[<a name="Litwin1980" href="#Litwin1980">Litwin1980</a>]</dt>
+		<dd>Litwin, Witold. Linear Hashing: A New Tool for File and Table 
+		Addressing.&nbsp; pp.212-223 in <i>Proceedings of the 6th International 
+		Conference on Very Large Databases (VLDB)</i>, (Montreal, Quebec, 
+		Canada: October 1980).&nbsp; Available on the Internet at &lt;<a href="https://cs-web.bu.edu/faculty/gkollios/ada17/LectNotes/linear-hashing.PDF">https://cs-web.bu.edu/faculty/gkollios/ada17/LectNotes/linear-hashing.PDF</a>&gt;.<br>
+		<font size="2">&nbsp;&nbsp; From the Abstract: &quot;Linear hashing is a 
+		hashing in which the address space may grow or shrink dynamically. A 
+		file or a table may then support <i>any</i> number of insertions or 
+		deletions wthout access or memory load performance deterioration.&nbsp; 
+		A record in the file is, in general, found in <i>one</i> access while 
+		the load may stay practically constant up to 90%.&nbsp; A record in a 
+		table is found in a mean of 1.7 accesses, while the load is constantly 
+		80%.&nbsp; No other algorithms attaining such a performance are known.&quot;<br>
+&nbsp;&nbsp; In April 2011 I stumbled over Linear Hashing in the context of a 
+		patent-infringement held against Google in regard to a means for 
+		accomplishing deletions of somehow-expired entries while searching for 
+		something in the bucket used for similar hashes.&nbsp; Avoiding that 
+		situation, the use of Linear Hashing is very appealing in how the table 
+		of hash-indexed items grows and maybe even shrinks dynamically.&nbsp; 
+		There are related considerations concerning the nature of the hash 
+		values and also their distribution in accesses to a 
+		Linear-Hashing-implemented directory/database.<br>
+		</font>&nbsp;&nbsp; </dd>
+		<dt>[<a name="Malone2025" href="#Malone2025">Malone2025</a>]</dt>
 		<dd>Hayes, Catherine., Malone, David.&nbsp; Questioning the Criteria for 
 		Evaluating Non-Cryptographic Hash Functions.&nbsp; <i>Comm. ACM <b>68</b></i>, 
 		2 (Feb. 2025), 46-51.&nbsp; See [<a href="#Hayes2025">Hayes2025</a>]<br>
@@ -1123,6 +1210,12 @@
 		&lt;<a href="https://dl.acm.org/citation.cfm?id=804440">https://dl.acm.org/citation.cfm?id=804440</a>&gt;<br>
 &nbsp;&nbsp;&nbsp;
     </font></dd>
+		<dt>[<a name="Nievergelt1979" href="#Nievergelt1979">Nievergelt1979</a>]</dt>
+		<dd>Fagin, Ronald., Nievergelt, Jurg., Strong, H. Raymond.&nbsp; 
+		Extendible Hashing -- A Fast Access Method for Dynamic Files.&nbsp; <i>
+		ACM Transactions on Database Systems <b>4</b></i>, 3 (September 1979), 
+		315-344.&nbsp; See [<a href="#Fagan1979">Fagan1979</a>]</dd>
+		<dt>&nbsp;&nbsp; </dt>
 		<dt>[<a name="Patashnik1989" href="#Patashnik1989">Patashnik1989</a>]</dt>                                                        
       <dd>Graham, Ronald L., Knuth, Donald E., Patashnik, Oren.&nbsp; <i>Concrete                                                        
         Mathematics: A Foundation for Computer Science</i>.&nbsp; Addison-Wesley                                                        
@@ -1332,6 +1425,12 @@
         &nbsp;&nbsp;&nbsp;&nbsp; <i>Bibliography<br>                                                       
         &nbsp;&nbsp;&nbsp;&nbsp; Index<br>
 &nbsp;&nbsp;&nbsp; </i></font></dd>
+		<dt>[<a name="Strong1979" href="#Strong1979">Strong1979</a>]</dt>
+		<dd>Fagin, Ronald., Nievergelt, Jurg., Strong, H. Raymond.&nbsp; 
+		Extendible Hashing -- A Fast Access Method for Dynamic Files.&nbsp; <i>
+		ACM Transactions on Database Systems <b>4</b></i>, 3 (September 1979), 
+		315-344.&nbsp; See [<a href="#Fagan1979">Fagan1979</a>]</dd>
+		<dt>&nbsp;&nbsp; </dt>
 		<dt>[<a name="Sturgis1970" href="#Sturgis1970">Sturgis1970</a>]</dt>
 		<dd>Earley, Jay., Sturgis, Howard. A Formalism for Translator 
 		Interactions.&nbsp; <i>Comm. ACM <b>13</b></i>, 10 (October 1970), 
