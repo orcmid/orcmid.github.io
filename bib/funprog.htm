@@ -56,7 +56,7 @@
 
       <p align="right"><b><code><a target="_top" href="funprog.htm">funprog.htm</a>&gt;</code></b><br>
       <small><small><a href="#v0.01">0.01</a> 
-		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2025-11-09 13:09<!--webbot bot="Timestamp" i-checksum="25676" endspan --></small>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2025-11-22 17:11<!--webbot bot="Timestamp" i-checksum="24768" endspan --></small>
       </small></p>
       </td>
     
@@ -85,6 +85,55 @@
 		language, Scheme, to make its points. And it does have lots of material. 
 		Lots of material. And it addresses topics I say I care about. So I have 
 		the book and I will make the effort.<br>&nbsp;</font></dd>
+		<dt>[<a name="Baker1992b" href="#Baker1992b">Baker1992b</a>]</dt>
+		<dd>Baker, Henry G.&nbsp; The Boyer Benchmark at warp speed.&nbsp; <i>
+		ACM SIGPLAN Lisp Pointers</i> <b><i>5</i></b>, 3 (August 1992), 13-14.<br>
+&nbsp;&nbsp; Abstract: &quot;We show how to speed up the Boyer Benchmark by an order 
+		of magnitude ... using better programming techniques.&nbsp; The 
+		resulting program ... [becomes] worthless as a general-purpose Lisp 
+		benchmark.&quot;<br>
+&nbsp;&nbsp; There is reference to a 1986 Boyer technical report.&nbsp; It is 
+		interesting that a version of the test is used in [<a href="#Baker1993">Baker1993</a>], 
+		I suppose because it represents a great stress test even if not the best 
+		way to do it. </dd>
+		<dt>&nbsp;&nbsp; </dt>
+		<dt>[<a name="Baker1992c" href="#Baker1992c">Baker1992c</a>]</dt>
+		<dd>Baker, Henry G. The Gabriel &quot;Triangle&quot; Benchmark at warp speed.&nbsp;
+		<i>ACM SIGPLAN Lisp Pointers <b>5</b></i>, 3 (August 1992), 15-17.<br>
+&nbsp;&nbsp; This article disposes of a benchmark as general-purpose in the same 
+		manner as of the Boyer Benchmark in [Baker1992].&nbsp; It also depends 
+		on bit-vector operations and that might be unavailable in 
+		more-rudimentary systems that have no such built-in capabilities.&nbsp; 
+		Further examination is warranted for such situations.<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1993" href="#Baker1993">Baker1993</a>]</dt>
+		<dd>Baker, Henry G.&nbsp; Iterators: signs of weakness in 
+		object-oriented languages.&nbsp; <i>ACM SIGPLAN OOPS Messenger <b>4</b></i>, 
+		3 (July 1, 1993), 18-25.<br>
+&nbsp;&nbsp; From the Abstract: &quot;The appearance of <i>iterators</i> in an 
+		object-oriented language appears to be inversely related to the power of 
+		the language&#39;s intrinsic control structures. ... We examine a purely 
+		functional iteration protocol for the difficult task of comparing the 
+		collections of leaves of two non-isomorphic trees--the so-called &#39;samefringe&#39; 
+		problem--and find that its type signature requires recursive (cyclic) 
+		functional types.&quot;<br>
+&nbsp;&nbsp; [dh:2025-11-22 Although the abstract might be a bit opaque, the 
+		examples are translatable into various functional language forms beside 
+		the Lisp that is used.&nbsp; The section on generators and co-routines 
+		is worth the price of admission all by itself.&nbsp; The solution for &#39;samefringe&#39; 
+		is bonus icing on the cake.]<br>
+&nbsp;&nbsp; Content<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A. Introduction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. Mapping Functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C. Generators and Co-Routines<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D. Iterators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E. Emulating Mapping in C and C++<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F. Mapping &#39;Functions&#39; in Ada83<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G. Why Use Mappers Instead of Iterators?<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H. Functional Iteration Protocols<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I. Conclusions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J. References<br>
+&nbsp;&nbsp; </dd>
 		<dt>[<a name="Burge1966" href="#Burge1966">Burge1966</a>]</dt>
 		<dd>Burge, William H. A reprogramming machine.&nbsp; <i>Comm. ACM <b>9</b></i>, 
 		2 (February 1966), 60-66.&nbsp; Available on the Internet at

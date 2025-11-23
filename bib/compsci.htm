@@ -65,8 +65,8 @@
       <p align="right"><b><code><a target="_top" href="compsci.htm">compsci</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-11-17<!--webbot bot="Timestamp" i-checksum="12113" endspan -->                     
-      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->18:20 -0800<!--webbot bot="Timestamp" i-checksum="11953" endspan -->              
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-11-22<!--webbot bot="Timestamp" i-checksum="12104" endspan -->                     
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->17:07 -0800<!--webbot bot="Timestamp" i-checksum="12047" endspan -->              
       </small></small></p></td>
 </font>
 
@@ -183,8 +183,187 @@
 		Neumann style?&nbsp; a functional style and its algebra of programs.&nbsp;
 		<i>Comm. ACM <b>21</b></i>, 8 (August 1978), 613-641.&nbsp; Turing Award 
 		Lecture.&nbsp;&nbsp; Available on the Internet at
-		<a href="htttps://doi.org/10.1145/359576.359579">
-		doi:10.1145/359576.359579</a>.<br>
+		&lt;<a href="htttps://doi.org/10.1145/359576.359579">doi:10.1145/359576.359579</a>&gt;.<br>
+&nbsp;&nbsp;
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1978" href="#Baker1978">Baker1978</a>]</dt>
+		<dd>Baker, Henry G. List processing in real time on a serial computer.&nbsp;
+		<i>Comm. ACM <b>21</b></i>, 4 (April 1978), 280-294.&nbsp; &lt;<a href="https://doi.org/10.1145/359460.359470">doi:10.1145/359460.359470</a>&gt;<br>
+&nbsp;&nbsp; Abstract: &quot;A real-time list processing system is one in which the 
+		time required by the elementary list operations (e.g. CONS, CAR, CDR, 
+		RPLACA, RPLACD, EQ, and ATOM in LISP) is bounded by a (small) constant. 
+		Classical implementations of list processing systems lack this property 
+		because allocating a list cell from the heap may cause a garbage 
+		collection, which process requires time proportional to the heap size to 
+		finish. A real-time list processing system is presented which 
+		continuously reclaims garbage, including directed cycles, while 
+		linearizing and compacting the accessible cells into contiguous 
+		locations to avoid fragmenting the free storage pool. The program is 
+		small and requires no time-sharing interrupts, making it suitable for 
+		microcode. Finally, the system requires the same average time, and not 
+		more than twice the space, of a classical implementation, and those 
+		space requirements can be reduced to approximately classical proportions 
+		by compact list representation. Arrays of different sizes, a program 
+		stack, and hash linking are simple extensions to our system, and 
+		reference counting is found to be inferior for many applications.&quot;<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is the fundamental Baker algorithm I need to go 
+		through more careful to grasp the specifics and see how this distills 
+		down to a workable storage-management scheme for oMiser list structures.&nbsp; 
+		I also think there is something more around generational 
+		garbage-collection algorithms and I need to find it.&nbsp; I will need 
+		to see if [Leiberman1983] improves on this and whether there is yet more 
+		(apart from the insight to have heap-0 be on the runtime stack.]<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1990" href="#Baker1990">Baker1990</a>]</dt>
+		<dd>Baker, Henry G. Efficient implementation of bit-vector operation in 
+		Common Lisp.&nbsp; <i>ACM SIGPLAN Lisp Pointers <b>3</b></i>, 2-4 (April 
+		1990), 8-22.&nbsp; &lt;<a href="https://doi.org/10.1145/121989.121991">doi:10.1145/121989.121991</a>&gt;.<br>
+&nbsp;&nbsp; From the Abstract: &quot;In this paper we show various techniques for 
+		the efficient implementation for the various functions of Common Lisp 
+		involving bit-vectors and bit-arrays. ... [The] efficient manipulation 
+		of bit-vectors in modern computers represents a curious point in the 
+		spectrum of data processing tasks.&nbsp; On the one hand, the 
+		possibility of packing many bits within a single computer word and 
+		operating on all of them in parallel offers a potential for speedup not 
+		usually available for other types of tasks. ... [The] efficient 
+		implementation of bit-vector operations requires special-case code, and 
+		is an interesting challenge in ingenuity and engineering.<br>
+&nbsp;&nbsp; &quot;[We] show how word-wide parallelism can be utilized for almost all 
+		of [the bit-vector operations in Common Lisp] to achieve speedups.&nbsp; 
+		... The major exception will be Common Lisp&#39;s &#39;SEARCH&#39; function for 
+		bit-vectors, which can also be speeded up [Baker1989].&quot;<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is rather intriguing when seen alongside 
+		[Baker1990b].&nbsp; It would be remarkable if something like this could 
+		somehow be introduced into Miser, though I am not confident about 
+		oMiser.]<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1990b" href="#Baker1990b">Baker1990b</a>]</dt>
+		<dd>Baker, Henry G. Unify and conquer. pp. 218-226 in <i>LFP&#39;90: 
+		Proceeding of the 1990 ACM conference on LISP and functional programming</i>, 
+		(Nice France: May 1990)&nbsp; &lt;<a href="https://doi.org/10.1145/91556.91652">doi:10.1145/91556.91652</a>&gt;.<br>
+&nbsp;&nbsp; From the Abstract: <i>Type inference</i> is the process by which an 
+		expression in an untyped computer language such as the lambda-calculus, 
+		Lisp, or a functional language can be assigned a static data type in 
+		order to improve the code generated by a compiler.&nbsp; <i>Storage use 
+		inference</i> is the process by which a program ina computer language 
+		can be statically analyzed to model its run-time behavior, particularly 
+		the containment and sharing relations among its run-time data 
+		structures.&nbsp; The information generated by storage use information 
+		can also be used to improve the code generated by a compiler, because 
+		knowledge of the containment and sharing relations of run-time data 
+		structures allows for methods of storage allocation and deallocation 
+		which are cheaper than garbage-collected heap storage and allows for the 
+		in-place updating of functional aggregates. ... [The] best-known and 
+		best-understood of the type inferencing algorithms--Milner&#39;s unification 
+		method for ML--already generates valuable sharing and containment 
+		information ... with no additional overhead during unification; however 
+		there is some additional work necessary to extract this information. ... 
+		[Our] scheme seems only to work for <i>functional languages </i>like 
+		pure Lisp.<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is an intriguing situation.&nbsp; It might not 
+		be workable with regard to type inference from pure functional types, 
+		such as that provided by combinators, and it might require distinguished 
+		(base) types already.&nbsp; I take this as something fruitful to 
+		explore.]<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1991" href="#Baker1991">Baker1991</a>]</dt>
+		<dd>Baker, Henry G. Shallow binding makes functional arrays fast.&nbsp;
+		<i>ACM SIGPLAN Notices <b>26</b></i>, 8 (August 1991), 145-147.&nbsp; &lt;<a href="https://doi.org/10.1145/122598.122614">doi:10.1145/122598.122614</a>&gt;<br>
+		<font size="2">&nbsp;&nbsp; From the Abstract: Access and update for 
+		random elements of arrays in imperative programming languages are O(1) 
+		operation.&nbsp; Implementing functional programming languages to 
+		achieve equivalent efficiency has proved difficult.&nbsp; We show how 
+		the straight-forward application of shallow binding to functional arrays 
+		automatically achieves O(1) update for single-threaded usage.<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is a general problem with respect to the 
+		absence of assignment operations leading to concern for alterations of 
+		aggregates involves transformation to a derived aggregate regardless of 
+		how miniscule an individual change might be.&nbsp; This applies to any 
+		kind of aggregated structure, not just arrays.&nbsp; This article does 
+		not illustrate shallow binding and other resources must be consulted.]<br>
+&nbsp;</font></dd>
+		<dt>[<a name="Baker1992" href="#Baker1992">Baker1992</a>]</dt>
+		<dd>Baker, Henry G. CONS should not CONS its arguments, or, a lazy alloc 
+		is a smart alloc.&nbsp; <i>ACM SIGPLAN Notices <b>27</b></i>, 3 (March 
+		1992), 24-34.&nbsp; &lt;<a href="https://doi.org/10.1145/130854.130858">doi:10.1145/130854.130858</a>&gt;<br>
+		<font size="2">&nbsp; From the Abstract: <i>Lazy allocation</i> is a 
+		model for allocating objects on the execution stack of a high-level 
+		language which does not create dangling references.&nbsp; Our model 
+		provides safe transportation into the heap for objects tha may survive 
+		the deallocation of the surrounding stack frame.&nbsp; Space for objects 
+		that do not survive the deallocation of the surrounding stack frame is 
+		reclaimed without additional effort when the stack is popped<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is precisely the technique that I am interested 
+		in for the Miser Project.&nbsp; [Baker1995] may provide a core aspect of 
+		the technique, and this 1992 article may address additional questions 
+		about ensuring no references from outside the retreated stack frame are 
+		left dangling.]<br>
+&nbsp;&nbsp; </font></dd>
+		<dt>[<a name="Baker1992d" href="#Baker1992d">Baker1992d</a>]</dt>
+		<dd>Baker, Henry G. Less complex elementary functions.&nbsp; <i>ACM 
+		SIGPLAN Notices <b>27</b></i>, 11 (November 1992), 15-16.<br>
+		<font size="2">&nbsp;&nbsp; From the Abstract:&nbsp; &quot;We give formulae 
+		for complex elementary functions in which the real and imaginary parts 
+		can be computed separately using only real operations.&nbsp; Many of 
+		thesse formulae are obvious but some--e.g., asin(z), ..., atanh(z)--are 
+		not obvious and/or not well-known.<br>
+		</font>&nbsp;</dd>
+		<dt>[<a name="Baker1993b" href="#Baker1993b">Baker1993b</a>]</dt>
+		<dd>Baker, Henry G.&nbsp; The Boyer benchmark meets linear logic.&nbsp;
+		<i>ACM SIGPLAN Lisp Pointers, <b>6</b></i>, 4 (October 1993), 3-10.&nbsp; 
+		Available on the Internet at &lt;<a href="https://doi.org/10.1145/181889.181890">doi:10.1145/181889.181890</a>&gt;.<br>
+		<font size="2">&nbsp;&nbsp; From the abstract: &quot;Of the Gabriel Lisp 
+		Benchmarks, the Boyer Benchmark (&quot;Boyer&quot;) is the most representative of 
+		real AI applications, because it performs .. rule-directed rewriting and 
+		because it relies heavily on garbage collection (GC) for the recovery of 
+		storage.&nbsp; We investigated the notion that such programs are 
+		unsuitable for explicit storage management.&quot;<br>
+&nbsp;&nbsp; The Boyer benchmark has several bugs that are corrected in this 
+		paper.&nbsp; The paper ends with &quot;A short Tutorial on &#39;Linear&#39; Lisp.&quot;&nbsp; 
+		[dh:2025-11-22 This appears to be making procedures tail-recursive and 
+		I&#39;m uncertain about the necessity of the linear logic approach that 
+		involves explicit &quot;killing&quot; of variables.&nbsp; It seems easier to 
+		specify as a tail-recursive form to start with.&nbsp; There does seem to 
+		be an opportunity to effectively de-reference the original argument by 
+		essentially reusing the &quot;frame.&quot;&nbsp; This needs exploration.]&nbsp;
+		<br>
+&nbsp;&nbsp; [dh:2025-11-22 This is as much about Functional Programming as a 
+		general Computer Science Topic.&nbsp; It is about the nuts-and-bolts 
+		under the covers of functional-style operations and there being 
+		bench-mark stress tests is of particular interest.&nbsp; The [<a href="#Gabriel1985">Gabriel1985: 
+		Boyer Benchmark</a>] is useful as a stress test for Functional 
+		Programming approaches, including that of the Miser Project, but 
+		transposition into an oFrugal script may be challenging.]<br>
+		</font>&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1994" href="#Baker1994">Baker1994</a>]</dt>
+		<dd>Baker, Henry G. Thermodynamics and garbage collection.&nbsp; <i>ACM 
+		SIGPLAN Notices <b>29</b></i>, 4 (April 1, 1994), 58-63.&nbsp; Available 
+		on the Internet at&nbsp; &lt;<a property="sameAs" style="box-sizing: border-box; background-color: rgb(255, 255, 255); cursor: pointer; color: inherit; text-decoration: underline; transition: background 0.15s ease-in-out, color 0.15s ease-in-out; line-height: 1; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent: -20px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal;" href="https://doi.org/10.1145/181761.181770">doi:10.1145/181761.181770</a>&gt;.<br>
+		<font size="2">&nbsp;&nbsp; Abstract: &quot;We discuss the principles of 
+		statistical thermodynamics and their application to storage management 
+		problems.&nbsp; We point out problems which result from imprecise usage 
+		of the terms<i> information, state, reversible, conservative</i>, etc.&quot;<br>
+&nbsp;&nbsp; </font></dd>
+		<dt>[<a name="Baker1994b" href="#Baker1994b">Baker1994b</a>]</dt>
+		<dd>Baker, Henry G. Minimizing reference count updating with deferred 
+		and anchored pointers for functional data structures.&nbsp; <i>ACM 
+		SIGPLAN Notices <b>29</b></i>, 9 (September 1, 1994), 38-43.&nbsp; 
+		Available on the Internet at &lt;<a property="sameAs" style="box-sizing: border-box; background-color: rgb(255, 255, 255); cursor: pointer; color: inherit; text-decoration: underline; transition: background 0.15s ease-in-out, color 0.15s ease-in-out; line-height: 1; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent: -20px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal;" href="https://doi.org/10.1145/185009.185016">doi:10.1145/185009.185016</a>&gt;.<br>
+		<font size="2">&nbsp;&nbsp; From the abstract: &quot;Reference counting can 
+		be an attractive form of dynamic storage management.&nbsp; It recovers 
+		storage promptly and (with a garbage stack instead of a free list) it 
+		can be made &quot;real-time&quot;--i.e., all accesses can be performed in constant 
+		time.&nbsp; Its major drawbacks are its inability to reclaim cycles, its 
+		count storage, and its count update overhead.&nbsp; Update overhead is 
+		especially irritating for functional (read-only) date ... .&nbsp; We 
+		show how reference count updating can be largely eliminated for 
+		functional data structures ... .&quot;</font><br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Baker1995" href="#Baker1995">Baker1995</a>]</dt>
+		<dd>Baker, Henry G.&nbsp; CONS should not CONS its arguments, part II: 
+		Cheney on the M.T.A.&nbsp; <i>ACM SIGPLAN Notices <b>30</b></i>, 9 
+		(September 1, 1995), 17-20. Available on the Internet at &lt;<a property="sameAs" style="box-sizing: border-box; background-color: rgb(255, 255, 255); cursor: pointer; color: inherit; text-decoration: underline; transition: background 0.15s ease-in-out, color 0.15s ease-in-out; line-height: 1; font-family: &quot;Open Sans&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent: -20px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal;" href="https://doi.org/10.1145/214448.214454">doi:10.1145/214448.214454</a>&gt;.<br>
+&nbsp;&nbsp; Part I is [<a href="#Baker1992">Baker1992</a>]<br>
 &nbsp;&nbsp; </dd>
 		<dt>[<a name="Biermann1997" href="#Biermann1997">Biermann1997</a>]</dt>
       <dd>Biermann, Alan W.&nbsp; <i>Great Ideas in Computer Science: A Gentle                                    
@@ -739,6 +918,30 @@
 		there needs to be some smoothness of operation as well as amortization 
 		of the burps all such schemes have.<br>
 		</font>&nbsp;&nbsp; </dd>
+		<dt>[<a name="Gabriel1985" href="#Gabriel1985">Gabriel1985</a>]</dt>
+		<dd>Gabriel, Richard P. Performance and Evaluation of Lisp Systems.&nbsp; 
+		MIT Press (Cambridge MA: 1985).&nbsp; ISBN 9780262256193.&nbsp; &lt;<a href="https://doi.org/10.7551/mitpress/5298.001.0001">doi.org:10.7551/mitpress/5298.001.0001</a>&gt;.<br>
+&nbsp;&nbsp; This book is cited for some benchmarks that it includes, including 
+		the &quot;Boyer Test.&quot;&nbsp; Although the subject is a Functional Programming 
+		system, this is about implementations and relevant Computer Science 
+		Topics and not so abstract as general Functional Programming 
+		application.<br>
+&nbsp;&nbsp; From the abstract: &quot;This final report of the Stanford Lisp 
+		Performance Study, conducted over a three year period by the author, 
+		describes implementation techniques, performance tradeoffs, benchmarking 
+		techniques, and performance results for all of the major Lisp dialects 
+		in use today. ... It provides detailed performance informatoin using the 
+		tools of benchmarking (the process of utilizing standardized computer 
+		programs to test the processing power of different computer systems) to 
+		measure the various Lisp sytems, and provide an understanding of the 
+		technical tradeoffs made during the implementation of a Lisp system.&nbsp; 
+		The study is divided into three major parts.&nbsp; The first provides 
+		the theoretical background, outlining the factors that go into 
+		evaluating the performance of a Lisp system.&nbsp; The second part 
+		presents the Lisp implmementations ... A final part describes the 
+		benchmark suite that was used during the major portion of the study and 
+		the results themselves.&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
 		<dt>[<a name="Graham1987" href="#Graham1987">Graham1987</a>]</dt>             
       <dd>Ashenhurst, Robert L., Graham, Susan L. (eds.).&nbsp; <i>ACM Turing Award                                                 
         Lectures: The First Twenty Years 1966-1985</i>.&nbsp; ACM Anthology                                                  
@@ -811,7 +1014,12 @@
 		uniformly distributed.&nbsp; An interesting topic would be 
 		reconciliation of the cases here and the considerations of [<a href="#Knuth1998b">Knuth1998b</a>:6.4].<br>
 &nbsp;&nbsp; </font></dd>
-      <dt>[<a target="_top" name="Kent1982" href="#Kent1982">Kent1982</a>]</dt>
+		<dt>[<a name="Hewitt1983" href="#Hewitt1983">Hewitt1983</a>]</dt>
+		<dd>Lieberman, Henry., Hewitt, Carl.&nbsp; A real-time garbage collector 
+		based on the lifetimes of objects.&nbsp; <i>Comm. ACM<b> 26</b></i>, 6 
+		(June 1983), 419-429.&nbsp; See [<a href="#Lieberman1983">Lieberman1983</a>]</dd>
+      <dt>&nbsp;&nbsp; </dt>
+		<dt>[<a target="_top" name="Kent1982" href="#Kent1982">Kent1982</a>]</dt>
       <dd><a href="http://www.bkent.net/" target="_top">Kent, William</a>.&nbsp;                        
         <a href="http://www.bkent.net/Doc/simple5.htm" target="_top">A Simple  
         Guide to Five Normal Forms in Relational Database Theory</a>. <i>Comm.                        
@@ -1172,6 +1380,22 @@
 		hash bits.</font></dd>
  
       <dt>&nbsp;&nbsp; </dt>
+		<dt>[<a name="Lieberman1983" href="#Lieberman1983">Lieberman1983</a>]</dt>
+		<dd>Lieberman, Henry., Hewitt, Carl.&nbsp; A real-time garbage collector 
+		based on the lifetimes of objects.&nbsp; <i>Comm. ACM<b> 26</b></i>, 6 
+		(June 1983), 419-429.<br>
+&nbsp;&nbsp; This paper reviews the technique of [<a href="#Baker1978">Baker1978</a>] 
+		and proposes a simple extension to have multiple generations (smaller 
+		regions) and a scavenging technique that ensures all references into a 
+		region being evacuated are not left dangling.&nbsp; Finding a reference 
+		must be done to accomplish the vacating of the referenced object and let 
+		the new location be know to all of the references to any one of them.<br>
+&nbsp;&nbsp; [dh:2025-11-22 I am not sanguine about all of this.&nbsp; In the 
+		case of list structures that are always acyclic and (logically) 
+		immutable, this may be far easier.&nbsp; I need to understand how 
+		forward pointers are needed in this Lieberman-Hewitt scheme and if I can 
+		always avoid them.]<br>
+&nbsp;&nbsp; </dd>
 		<dt>[<a name="Litwin1980" href="#Litwin1980">Litwin1980</a>]</dt>
 		<dd>Litwin, Witold. Linear Hashing: A New Tool for File and Table 
 		Addressing.&nbsp; pp.212-223 in <i>Proceedings of the 6th International 
