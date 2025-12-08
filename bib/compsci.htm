@@ -65,8 +65,8 @@
       <p align="right"><b><code><a target="_top" href="compsci.htm">compsci</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-11-22<!--webbot bot="Timestamp" i-checksum="12104" endspan -->                     
-      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->17:07 -0800<!--webbot bot="Timestamp" i-checksum="12047" endspan -->              
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2025-12-05<!--webbot bot="Timestamp" i-checksum="12172" endspan -->                     
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->15:24 -0800<!--webbot bot="Timestamp" i-checksum="12011" endspan -->              
       </small></small></p></td>
 </font>
 
@@ -708,6 +708,16 @@
 		in the case of left-recursive generations, usually expedited by 
 		transformation into tail-iterative forms. <br>
 &nbsp;&nbsp; </dd>
+		<dt>[<a name="Clinger1990" href="#Clinger1990">Clinger1990</a>]</dt>
+		<dd>Clinger, William D.&nbsp; How to read floating point numbers 
+		accurately.&nbsp; <i>PLDI &#39;90: Proceedings of the ACM SIGPLAN 1990 
+		Conference on Programming Language Design and Implementation</i>.&nbsp; 
+		June 1990, pp.92-101. &lt;<a href="https://doi.org/10.1145/93542.93557">doi:10.1145/93542.93557</a>&gt;<br>
+&nbsp;&nbsp; From the abstract: &quot;The input problem considered by this paper is 
+		the inverse of an output problem considered by [<a href="#Steele1990">Steele1990</a>].&quot;&nbsp; 
+		&quot;This paper present an efficient algorithm that always finds the best 
+		approximation.&quot;<br>
+&nbsp;&nbsp; </dd>
 		<dt>[<a name="Codd1970" href="#Codd1970">Codd1970</a>]</dt>
       <dd>Codd, E.F.&nbsp; <a href="http://doi.acm.org/10.1145/362384.362685" target="_top">A                            
         Relational Model of Data for Large Shared Data Banks</a>.&nbsp; <i>Comm.                            
@@ -836,11 +846,9 @@
       <dd>Bird, Richard., de Moor, Oege.&nbsp; <i>Algebra of Programming</i>.&nbsp;                                                       
         Prentice-Hall (Harlow, England: 1997).&nbsp; ISBN 0-13-507245-X.&nbsp;                                                       
         See [<a href="#[Bird1997]">Bird1997</a>]<br>                                                
-        &nbsp;&nbsp;&nbsp;</dd>                  
-      <font size="-1">
+        &nbsp;&nbsp;&nbsp;</dd>
  
       <dt>[<a name="Denning2025" href="#Denning2025">Denning2025</a>]</dt>
-    </font>
 		<dd>Denning, Peter J. Abstractions.&nbsp; Profession of IT column.&nbsp;
 		<i>Comm. ACM <b>68</b></i>, 3 (March 2025), 21-23.<font size="-1">
  
@@ -1425,7 +1433,19 @@
 		2 (Feb. 2025), 46-51.&nbsp; See [<a href="#Hayes2025">Hayes2025</a>]<br>
 &nbsp;&nbsp; </dd>
  
-      <dt>[<a name="More1979" href="#More1979">More1979</a>]</dt>
+      <dt>[<a name="Matula1968" href="#Matula1968">Matula1968</a>]<dd>Matula, 
+		David W.&nbsp; In-and-Out Conversions.&nbsp; <i>Comm. ACM <b>11</b></i>, 
+		1 (January 1968), 47-50.&nbsp; &lt;<a href="https://doi.org/10.1145/362851.362887">doi:10.1145/362851.362887</a>&gt;<br>
+&nbsp;&nbsp; Abstract: &quot;By an in-and-out coversion we mean that a floating-point 
+		number in one base is converted into a floating-point number in another 
+		base and then converted back to a floating-point number in the original 
+		base.&nbsp; For all combinations of rounding and truncation conversions, 
+		the question is considered of how many significant digits are needed in 
+		the intermediate base to allow such in-and-out conversions to return the 
+		original number (when possible), or at least to ccause a difference of 
+		no more than a unit in the least significan digit.&quot;<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="More1979" href="#More1979">More1979</a>]</dt>
       <font size="-1">
  
       <dd>More, Trenchard. The nested rectangular array as a model of data. pp. 
@@ -1649,6 +1669,18 @@
         &nbsp;&nbsp;&nbsp;&nbsp; <i>Bibliography<br>                                                       
         &nbsp;&nbsp;&nbsp;&nbsp; Index<br>
 &nbsp;&nbsp;&nbsp; </i></font></dd>
+		<dt>[<a name="Steele1990" href="#Steele1990">Steele1990</a>]</dt>
+		<dd>Steele, Guy L. Jr., White, Jon L.&nbsp; How to print floating-point 
+		numbers accurately.&nbsp; <i>PLDI&#39;90 Proceedings of the ACM SIGPLAN 1990 
+		conference on Programming Language Design and Implementation</i>.&nbsp; 
+		June 1990, pp. 112-126 &lt;<a href="https://doi.org/10.1145/93542.93559">doi:10.1145/93542.93559</a>&gt;<br>
+&nbsp;&nbsp; From the abstract: &quot;We present algorithms for accurately converting 
+		floating-point numbers to decimal representation. ... No information is 
+		lost ... . No &#39;garbage digits&#39; are produced.&nbsp; The output is 
+		correctly rounded.&quot;&nbsp; <br>
+&nbsp;&nbsp; This paper is in the vein of [<a href="#Matula1968">Matula1968</a>], 
+		handling the output case by producing no more digits than necessary.</dd>
+		<dd>&nbsp;&nbsp;&nbsp; </dd>
 		<dt>[<a name="Strong1979" href="#Strong1979">Strong1979</a>]</dt>
 		<dd>Fagin, Ronald., Nievergelt, Jurg., Strong, H. Raymond.&nbsp; 
 		Extendible Hashing -- A Fast Access Method for Dynamic Files.&nbsp; <i>
@@ -1665,7 +1697,14 @@
 		Lists in Construction of a Combined ALGOL and Machine-Like Assembly 
 		Processor.&nbsp; <i>Comm. ACM </i><b>4</b>, 1 (Jan. 1961), 36-41.&nbsp; 
 		DOR &lt;<a href="https://dl.acm.org/doi/10.1145/366062.366081">https://dl.acm.org/doi/10.1145/366062.366081</a>&gt;.&nbsp; 
-		See [<a href="#Evans1961">Evans1961</a>].</dd>
+		See [<a href="#Evans1961">Evans1961</a>].<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="White1990" href="#White1990">White1990</a>]</dt>
+		<dd>Steele, Guy L. Jr., White, Jon L.&nbsp; How to print floating-point 
+		numbers accurately.&nbsp; <i>PLDI&#39;90 Proceedings of the ACM SIGPLAN 1990 
+		conference on Programming Language Design and Implementation</i>.&nbsp; 
+		June 1990, pp. 112-126.&nbsp; See [<a href="#Steele1990">Steele1990</a>]</dd>
+		<dt>&nbsp;</dt>
 
     </dl>                               
                     
