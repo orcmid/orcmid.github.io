@@ -65,8 +65,8 @@
       <p align="right"><b><code><a target="_top" href="compsci.htm">compsci</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-01-06<!--webbot bot="Timestamp" i-checksum="12086" endspan -->                     
-      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->09:22 -0800<!--webbot bot="Timestamp" i-checksum="11986" endspan -->              
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-02-09<!--webbot bot="Timestamp" i-checksum="12156" endspan -->                     
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->13:26 -0800<!--webbot bot="Timestamp" i-checksum="12039" endspan -->              
       </small></small></p></td>
 </font>
 
@@ -938,10 +938,29 @@
 		hash table that achieves far better expected search complexities (both 
 		amortized and worst-case) than were previously though possible.</font><font SIZE="3"><br>
 &nbsp;&nbsp; </font></dd>
+		<dt>[<a name="Floyd1961" href="#Floyd1961">Floyd1961</a>]</dt>
+		<dd>Floyd, Robert W.&nbsp; An Algorithm for Coding Efficient Arithmetic 
+		Operations.&nbsp; <i>Comm.ACM <b>4</b></i>, 1 (January 1961), 42-51.<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Floyd1961b" href="#Floyd1961b">Floyd1961b</a>]</dt>
+		<dd>Floyd, Robert W. A Descriptive Language for Symbol Manipulation. <i>&nbsp;J. 
+		ACM <b>8</b></i>, 4 (October 1961), 579-584<br>
+&nbsp;&nbsp; </dd>
+		<dt>[<a name="Floyd1963" href="#Floyd1963">Floyd1963</a>]</dt>
+		<dd>Floyd, Robert W.&nbsp; Syntactic Analysis and Operator Precedence.
+		<i>J. ACM <b>10</b></i>, 3 (July 1963) 316-333.<font size="-1"><br>
+&nbsp;&nbsp;&nbsp;
+    </font></dd>
+		<dt>[<a name="Floyd1964" href="#Floyd1964">Floyd1964</a>]</dt>
+		<dd>Floyd, Robert W.&nbsp; Bounded Context Syntactic Analysis.&nbsp; <i>
+		Comm. ACM <b>7</b></i>, 2 (February 1964), 62-67.<font size="-1"><br>
+&nbsp;&nbsp;
+    </font>
+    	</dd>
 		<dt>[<a name="Gabriel1985" href="#Gabriel1985">Gabriel1985</a>]</dt>
 		<dd>Gabriel, Richard P. Performance and Evaluation of Lisp Systems.&nbsp; 
 		MIT Press (Cambridge MA: 1985).&nbsp; ISBN 9780262256193.&nbsp; &lt;<a href="https://doi.org/10.7551/mitpress/5298.001.0001">doi.org:10.7551/mitpress/5298.001.0001</a>&gt;.<br>
-&nbsp;&nbsp; This book is cited for some benchmarks that it includes, including 
+		<font size="2">&nbsp;&nbsp; This book is cited for some benchmarks that it includes, including 
 		the &quot;Boyer Test.&quot;&nbsp; Although the subject is a Functional Programming 
 		system, this is about implementations and relevant Computer Science 
 		Topics and not so abstract as general Functional Programming 
@@ -958,10 +977,38 @@
 		The study is divided into three major parts.&nbsp; The first provides 
 		the theoretical background, outlining the factors that go into 
 		evaluating the performance of a Lisp system.&nbsp; The second part 
-		presents the Lisp implmementations ... A final part describes the 
+		presents the Lisp implementations ... A final part describes the 
 		benchmark suite that was used during the major portion of the study and 
 		the results themselves.&quot;<br>
-&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		</font>&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt>[<a name="Goldberg1967" href="#Goldberg1967">Goldberg1967</a>]</dt>
+		<dd>Goldberg, I. Bennett.&nbsp; 27 Bits Are Not Enough for 8-Digit 
+		Accuracy.&nbsp; <i>Comm.ACM <b>10</b></i>, 2(February 1967), 105-106.<br>
+		<font size="2">&nbsp;&nbsp; This paper refuted the notion that a 24-bit 
+		mantissa in a binary floating-point number representation provided 
+		precision equivalent to 8 decimal digits.&nbsp;&nbsp;&nbsp; The 
+		confusion stems from there not being 2^24 values at each scale 
+		(determined by the exponent) in that common floating-point format.&nbsp; 
+		Normalization resulted in there always being a leading 1-bit, so there 
+		were effectively only 2^23 different values of those.&nbsp; Later 
+		formats were improved by omitting that leading 1 bit, so it didn&#39;t have 
+		to be carried around, achieving the expected precision.&nbsp; The value 
+		for zero (along with some denormalized edge cases) is then the only one 
+		that excludes any hidden leading 1-bit.<br>
+		</font>&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt>[<a name="Goldberg1991" href="#Goldberg1991">Goldberg1991</a>]</dt>
+		<dd>Goldberg, David.&nbsp; What Every Computer Scientist Should Know 
+		About Floating-Point Arithmetic.&nbsp; <i>ACM Computing Surveys <b>23</b></i>, 
+		1 (March 1991), 5-48.<br>
+		<font size="2">&nbsp;&nbsp; At 44 pages, this tour de force on 
+		floating-point arithmetic using IEEE 754-1985 calculation applies more 
+		to those concerned with numerical analysis and how rounding and the 
+		sequencing of computations matters.&nbsp; It appears that the 
+		considerations extend to the latest version, IEEE 754-2019 and its 
+		counterpart, ISO/IEC 60559:2020.&nbsp; In taking much of this into 
+		account, it is valuable to know what the compliance level is for ones 
+		favorite programming languages producing code for common processors.<br>
+		</font>&nbsp;&nbsp; </dd>
 		<dt>[<a name="Graham1987" href="#Graham1987">Graham1987</a>]</dt>             
       <dd>Ashenhurst, Robert L., Graham, Susan L. (eds.).&nbsp; <i>ACM Turing Award                                                 
         Lectures: The First Twenty Years 1966-1985</i>.&nbsp; ACM Anthology                                                  
@@ -1327,6 +1374,10 @@
         Number 102.&nbsp; Center for the Study of Language and Information                                                        
         (Palo Alto: 2000).&nbsp; ISBN 1-57586-212-3 pbk.<font size="-1"><br>         
         &nbsp;&nbsp;&nbsp;</font></dd>
+		<dt>[<a name="Knuth2003" href="#Knuth2003">Knuth2003</a>]</dt>
+		<dd>Knuth, Donald E. Robert W. Floyd: In Memoriam.&nbsp; <i>ACM SIGACT 
+		News <b>34</b></i>, 4 (December 2003), 3-13.</dd>
+		<dt>&nbsp;&nbsp; </dt>
 		<dt>[<a name="Knuth2011" href="#Knuth2011">Knuth2011</a>]</dt>
 		<dd>Knuth, Donald E.&nbsp; <i>Selected Papers on Fun &amp; Games</i>.&nbsp; 
 		CSLI Lecture Notes Number 192. CSLI Publications (Stanford, CA: 2011).&nbsp; 
@@ -1448,15 +1499,18 @@
       <dt>[<a name="Matula1968" href="#Matula1968">Matula1968</a>]<dd>Matula, 
 		David W.&nbsp; In-and-Out Conversions.&nbsp; <i>Comm. ACM <b>11</b></i>, 
 		1 (January 1968), 47-50.&nbsp; &lt;<a href="https://doi.org/10.1145/362851.362887">doi:10.1145/362851.362887</a>&gt;<br>
-&nbsp;&nbsp; Abstract: &quot;By an in-and-out coversion we mean that a floating-point 
+		<font size="2">&nbsp;&nbsp; Abstract: &quot;By an in-and-out conversion we mean that a floating-point 
 		number in one base is converted into a floating-point number in another 
 		base and then converted back to a floating-point number in the original 
 		base.&nbsp; For all combinations of rounding and truncation conversions, 
 		the question is considered of how many significant digits are needed in 
 		the intermediate base to allow such in-and-out conversions to return the 
-		original number (when possible), or at least to ccause a difference of 
-		no more than a unit in the least significan digit.&quot;<br>
-&nbsp;&nbsp; </dd>
+		original number (when possible), or at least to cause a difference of 
+		no more than a unit in the least significant digit.&quot;<br>
+&nbsp; A particular case of interest has to do with input and output of numbers 
+		in decimal form that are represented as floating-point numbers in some 
+		binary-based form.<br>
+		</font>&nbsp;&nbsp; </dd>
 		<dt>[<a name="More1979" href="#More1979">More1979</a>]</dt>
       <font size="-1">
  
