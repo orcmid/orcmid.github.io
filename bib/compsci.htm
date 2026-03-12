@@ -65,8 +65,8 @@
       <p align="right"><b><code><a target="_top" href="compsci.htm">compsci</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-02-09<!--webbot bot="Timestamp" i-checksum="12156" endspan -->                     
-      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->13:26 -0800<!--webbot bot="Timestamp" i-checksum="12039" endspan -->              
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-03-12<!--webbot bot="Timestamp" i-checksum="12207" endspan -->                     
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->09:33 -0700<!--webbot bot="Timestamp" i-checksum="12009" endspan -->              
       </small></small></p></td>
 </font>
 
@@ -1480,15 +1480,19 @@
 		the load may stay practically constant up to 90%.&nbsp; A record in a 
 		table is found in a mean of 1.7 accesses, while the load is constantly 
 		80%.&nbsp; No other algorithms attaining such a performance are known.&quot;<br>
-&nbsp;&nbsp; In April 2011 I stumbled over Linear Hashing in the context of a 
+&nbsp;&nbsp; In April 2011 I stumbled over Linear Hashing in an
+		<a href="2011/r110400b1.pdf">LWN.net discussion</a> of a 
 		patent-infringement held against Google in regard to a means for 
 		accomplishing deletions of somehow-expired entries while searching for 
 		something in the bucket used for similar hashes.&nbsp; Avoiding that 
-		situation, the use of Linear Hashing is very appealing in how the table 
+		situation, the use of <a href="2011/r110400b2.pdf">Linear Hashing</a> is very appealing in how the table 
 		of hash-indexed items grows and maybe even shrinks dynamically.&nbsp; 
 		There are related considerations concerning the nature of the hash 
 		values and also their distribution in accesses to a 
-		Linear-Hashing-implemented directory/database.<br>
+		Linear-Hashing-implemented directory/database.&nbsp; This approach is 
+		being applied in the Miser Project for the
+		<a href="https://orcmid.github.io/miser/oMiser/2011/04/m110400b.html">
+		oMiser Ob directory</a>.<br>
 		</font>&nbsp;&nbsp; </dd>
 		<dt>[<a name="Malone2025" href="#Malone2025">Malone2025</a>]</dt>
 		<dd>Hayes, Catherine., Malone, David.&nbsp; Questioning the Criteria for 
