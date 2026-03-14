@@ -66,7 +66,7 @@ Systems &amp; Languages</i></strong></font></font></td>
       <p align="right"><b><code><a target="_top" href="progsys.htm">progsys</a>&gt;</code></b><br>
       <small><small>
 		<!--webbot bot="Timestamp"
-      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-01-23<!--webbot bot="Timestamp" i-checksum="12082" endspan --> -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->10:08 -0800<!--webbot bot="Timestamp" i-checksum="12049" endspan -->
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2026-03-14<!--webbot bot="Timestamp" i-checksum="12211" endspan --> -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:53 -0700<!--webbot bot="Timestamp" i-checksum="12012" endspan -->
       </small></small></p></td>
 </font>
 
@@ -367,7 +367,29 @@ Systems &amp; Languages</i></strong></font></font></td>
         &nbsp;&nbsp;&nbsp;&nbsp; <i>Bibliography<br>
         &nbsp;&nbsp;&nbsp;&nbsp; Index<br>
         </i>&nbsp;&nbsp;&nbsp;</small></dd>
-  <dt>[<a name="Drayton2001" href="#Drayton2001">Drayton2001</a>]</dt>
+    <dt>[<a name="Dijkstra1968" href="#Dijkstra1968">Dijkstra1968</a>]</dt>
+	<dd>Dijkstra, Edsger W.&nbsp; Letters to the editor: Go To Statement 
+	Considered Harmful.&nbsp; <i>Comm. ACM <b>11</b></i>, 3 (March 1968)), 
+	147-148.&nbsp; &lt;<a href="https://dl.acm.org/doi/10.1145/362929.362947">doi:10.1145/3629.362947</a>&gt;<br>
+	<font size="2">&nbsp;&nbsp; &quot;For a number of years I have been familiar with 
+	the observation that the quality of programmers is a decreasing function of 
+	the density of <b>go to</b> statements in they programs they produce.&nbsp; 
+	More recently I discovered why the use of the <b>got to</b> statement has 
+	such disastrous effect, and I became convinced that the go to statement 
+	should be abolished from all &#39;higher level&#39; programming languages (i.e. 
+	everything except, perhaps, plain machine code.&quot;<br>
+&nbsp;&nbsp; [dh:2026-03-14] In this deservedly famous (and lengthy) letter, 
+	Dijkstra sets the stage for the thinking that will lead him to [<a href="compsci.htm#Dijkstra1976">Dijkstra1976</a>].&nbsp; 
+	The appeal is to have the facility (and presumably the ability to place 
+	labels on programming-language statements) disappear from programming 
+	languages.&nbsp; That has not happened, especially with the languages that 
+	have endured since before the time of this outburst.&nbsp; There are 
+	languages in the functional-programming pantheon where <b>go to</b> is 
+	omitted or, at least, its usage would be most peculiar.&nbsp; I have not 
+	found the need to ever use<b> go to</b> in ALGOL and not even C Language.&nbsp;
+	</font></dd>
+  <dt>&nbsp;</dt>
+	<dt>[<a name="Drayton2001" href="#Drayton2001">Drayton2001</a>]</dt>
   <dd>Albahari, Ben., Drayton, Peter., Merrill, Brad.&nbsp; <i>C# Essentials</i>.&nbsp; 
 	Programming the .NET Framework.&nbsp; O&#39;Reilly (Sebastopol, CA: 2001).&nbsp; 
 	ISBN 0-596-00079-0 pbk.&nbsp; See [<a href="#Albahari2001">Albahari2001</a>]</dd>
@@ -737,6 +759,39 @@ Systems &amp; Languages</i></strong></font></font></td>
 	language.&nbsp; The examples can be adjusted to Clean C in most cases.&nbsp; 
 	Historically important, in my mind this book is supplanted as a reference by 
 	[<a href="#Harbison2002">Harbison2002</a>].</font></dd>
+	<dt>&nbsp;</dt>
+      <dt>[<a name="Knuth1974b" href="#Knuth1974b">Knuth1974b</a>]</dt>
+	<dd>Knuth, Donald E.&nbsp; Structured Programming with <i>go to</i> 
+	Statements. <i>&nbsp;ACM Computing Surveys <b>6</b></i>, 4 (December 1974), 
+	261-301.<br>
+	<font size="2">A reasoned response to [<a href="#Dijkstra1968">Dijkstra1968</a>] 
+	and the blossoming movement toward structured programming.&nbsp; The 
+	abstract: &quot;A consideration of several different examples sheds new light on 
+	the problem of creating reliable, well-structured programs that behave 
+	efficiently.&nbsp; This study focuses largely on two issues: (a) improved 
+	syntax for iterations and error exits, making it possible to write a larger 
+	class of programs clearly and efficiently without <b>go to</b> statements; 
+	(b) a methodology of program design, beginning with readable and correct, 
+	but possibly inefficient programs tghat are systematicall transformed if 
+	necessary into efficient and correct, but possibly less readable code.&nbsp; 
+	The discussion brings out opposing points of view about whether or not go to 
+	statements should be abolished; some merit is fund on both sides of the 
+	question.&nbsp; Finally, an attempt is made to define the true nature of 
+	structured programming, and to recommend fruitful directions for further 
+	study.&quot;<br>
+&nbsp; [dh:2026-03-14] I have occasions to read Donald Knuth programs from time 
+	to time, and I found it interesting to encounter a program, migrated from 
+	FORTRAN to Literate C, in which there is an explicitly unapologetic <b>go to</b> 
+	[<a href="compsci.htm#Knuth2011">Knuth2011</a>: Adventure].&nbsp; I suspect 
+	I can safely eliminate it as part of refactoring into Clean C. <br>
+&nbsp; Content<br>
+&nbsp;&nbsp;&nbsp; Introduction<br>
+&nbsp;&nbsp;&nbsp; 1. Elimination of go to Statements<br>
+&nbsp;&nbsp;&nbsp; 2. Introduction of go to Statements<br>
+&nbsp;&nbsp;&nbsp; 3. Conclusions<br>
+&nbsp;&nbsp; <i>&nbsp;Acknowledgments<br>
+&nbsp;&nbsp;&nbsp; Appendix<br>
+&nbsp;&nbsp;&nbsp; Bibliography</i></font></dd>
 	<dt>&nbsp;</dt>
 	<dt>[<a name="Lorenzo2019" href="#Lorenzo2019">Lorenzo2019</a>]</dt>
 	<dd>Lorenzo, Mark Jones.&nbsp; <i>Abstracting Away the Machine: The History 
