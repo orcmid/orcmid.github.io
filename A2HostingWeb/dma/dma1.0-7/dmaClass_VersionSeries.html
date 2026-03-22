@@ -1,0 +1,109 @@
+<html><head><title>dmaClass_VersionSeries Reference</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff"><h3>
+ dmaClass_VersionSeries</h3><p>
+The Version Series Class objects represent collections of versionable objects.<p><b>Class ID:</b> dmaClass_VersionSeries<br>
+<b>Superclass:</b> <A href="dmaClass_Containable.html">Containable</A><br>
+<h4><b>Interfaces</b></h4><a href="IUnknown.html" > IUnknown</a><br><a href="IdmaObject.html" > IdmaObject</a><br><a href="IdmaProperties.html" > IdmaProperties</a><br><a href="IdmaEditProperties.html" > IdmaEditProperties</a> [Optional]<br><a href="IdmaConnection.html" > IdmaConnection</a> [Optional]<br><a href="IdmaVersionSeries.html" > IdmaVersionSeries</a>
+<h4><b>Properties</b></h4><p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Impl. Required</b></p></TD><TD><p><b>System Gen'ed</b></p></TD><TD><p><b>Read-Only</b></p></TD>
+<TD><p><b>Value Required</b></p></TD><TD><p><b>Type</b></p></TD><TD><p><b>Cardinality</b></p></TD><TD><p><b>Required Class</b></p></TD></TR><TR><TD><p><A name="TdmaProp_OIID">OIID</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ClassDescription">Class Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Class Description</p></TD></TR><TR><TD><p><A name="TdmaProp_This">This</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Version Series</p></TD></TR><TR><TD><p><A name="TdmaProp_CreatePending">Create Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_UpdatePending">Update Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DeletePending">Delete Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_Parent">Parent</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Containment Relationship</p></TD></TR><TR><TD><p><A name="TdmaProp_ParentContainer">Parent Container</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Container</p></TD></TR><TR><TD><p><A name="TdmaProp_Containers">Containers</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Containment Relationship</p></TD></TR><TR><TD><p><A name="TdmaProp_ConfigurationHistory">Configuration History</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Configuration History</p></TD></TR><TR><TD><p><A name="TdmaProp_IsPrimarySeries">Is Primary Series</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_VersionDescriptions">Version Descriptions</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Version Description</p></TD></TR><TR><TD><p><A name="TdmaProp_CurrentVersionDescription">Current Version Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Version Description</p></TD></TR><TR><TD><p><A name="TdmaProp_Reservation">Reservation</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Reservation</p></TD></TR><TR><TD><p><A name="TdmaProp_BranchedFromVersionDescriptions">Branched From Version Descriptions</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Version Description</p></TD></TR><TR><TD><p><A name="TdmaProp_TerminatedIntoVersionDescriptions">Terminated Into Version Descriptions</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Version Description</p></TD></TR></TABLE><h4><b>Detailed Description</b></h4><p>
+<p>The version series is used to represent a collection of  versionable objects that are versions of the same conceptual entity.  The Version Series are made up of a linear sequence of zero or more Version Description objects and each Version Description object refers to at most one versionable object.  The Version Series is part of exactly one Configuration History.
+<h4><b>Property Descriptions</b></h4><p><b>• OIID     {<A name="dmaProp_OIID"></A><A href="dmaclass_versionseries.html#TdmaProp_OIID">dmaProp_OIID</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Class Description     {<A name="dmaProp_ClassDescription"></A><A href="dmaclass_versionseries.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• This     {<A name="dmaProp_This"></A><A href="dmaclass_versionseries.html#TdmaProp_This">dmaProp_This</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Create Pending     {<A name="dmaProp_CreatePending"></A><A href="dmaclass_versionseries.html#TdmaProp_CreatePending">dmaProp_CreatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Update Pending     {<A name="dmaProp_UpdatePending"></A><A href="dmaclass_versionseries.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Delete Pending     {<A name="dmaProp_DeletePending"></A><A href="dmaclass_versionseries.html#TdmaProp_DeletePending">dmaProp_DeletePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Parent     {<A name="dmaProp_Parent"></A><A href="dmaclass_versionseries.html#TdmaProp_Parent">dmaProp_Parent</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Parent Container     {<A name="dmaProp_ParentContainer"></A><A href="dmaclass_versionseries.html#TdmaProp_ParentContainer">dmaProp_ParentContainer</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Containers     {<A name="dmaProp_Containers"></A><A href="dmaclass_versionseries.html#TdmaProp_Containers">dmaProp_Containers</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Configuration History     {<A name="dmaProp_ConfigurationHistory"></A><A href="dmaclass_versionseries.html#TdmaProp_ConfigurationHistory">dmaProp_ConfigurationHistory</A>}</b>
+<p>
+Configuration History associated with this object.
+</p><p>
+<p>This object is the Configuration history to which this object belongs.
+<p>
+</p>
+<p><b>• Is Primary Series     {<A name="dmaProp_IsPrimarySeries"></A><A href="dmaclass_versionseries.html#TdmaProp_IsPrimarySeries">dmaProp_IsPrimarySeries</A>}</b>
+<p>
+This is the Primary Series under the Configuration History.
+</p><p>
+<p>This property must be set to make this Version Series the Primary Series under the associated Configuration History.  At most one Version Series may be primary under a given Configuration History.
+<p>
+</p>
+<p><b>• Version Descriptions     {<A name="dmaProp_VersionDescriptions"></A><A href="dmaclass_versionseries.html#TdmaProp_VersionDescriptions">dmaProp_VersionDescriptions</A>}</b>
+<p>
+An enumeration of the Version Description objects by which this versionable object is referenced.
+</p><p>
+<p>This property is only required if versioning is supported. If the object is not part of any version series, the enumeration is empty. Otherwise, it is a system-derived enumeration of those Version Descriptions which denote this object being part of a Version Series. This enumeration is manipulated by the IdmaVersionable::SetCheckIn method.
+<p>
+</p>
+<p><b>• Current Version Description     {<A name="dmaProp_CurrentVersionDescription"></A><A href="dmaclass_versionseries.html#TdmaProp_CurrentVersionDescription">dmaProp_CurrentVersionDescription</A>}</b>
+<p>
+Shortcut to latest description object in the Version Series.
+</p><p>
+<p>This property is a short-cut to find the latest Version Description in the Version Series. It is normally manipulated only by SetCheckIn, but can be set by direct manipulation if permitted by the implementation. This property is used by the SetCheckOutNext operation to determine what versionable object to clone.
+<p>
+</p>
+<p><b>• Reservation     {<A name="dmaProp_Reservation"></A><A href="dmaclass_versionseries.html#TdmaProp_Reservation">dmaProp_Reservation</A>}</b>
+<p>
+This property contains a Reservation object if there is an outstanding Checkout or Reservation against this Version Series.
+</p><p>
+<p>This is a system property -- it is manipulated by the SetCheckOutNext, SetReserveNext and SetRevoke methods of the Version Series object, and by the SetCheckIn method of a Versionable object which resolves the reservation.
+<p>
+</p>
+<p><b>• Branched From Version Descriptions     {<A name="dmaProp_BranchedFromVersionDescriptions"></A><A href="dmaclass_versionseries.html#TdmaProp_BranchedFromVersionDescriptions">dmaProp_BranchedFromVersionDescriptions</A>}</b>
+<p>
+Enumeration of VersionDescriptions from other VersionSeries that this series springs from. Used to start a branch.
+</p><p>
+<p>This property is an enumeration of Version Descriptions from which this Version Series obtained its first version’s source material.  Applications which are DMA 1.0 compliant can safely ignore this property.
+<p>
+</p>
+<p><b>• Terminated Into Version Descriptions     {<A name="dmaProp_TerminatedIntoVersionDescriptions"></A><A href="dmaclass_versionseries.html#TdmaProp_TerminatedIntoVersionDescriptions">dmaProp_TerminatedIntoVersionDescriptions</A>}</b>
+<p>
+Enumeration of Version Descriptions in other Version Series. Used to terminate a branch.
+</p><p>
+<p>This property is an enumeration of Version Descriptions to which this Version Series contributed its last version’s source material.  This property is not used in DMA 1.0 implementations.
+<p>
+</p>
+</body></html>

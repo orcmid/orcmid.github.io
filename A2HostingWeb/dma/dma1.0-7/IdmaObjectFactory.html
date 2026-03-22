@@ -1,0 +1,27 @@
+<html><head><title>Interfaces and Methods: IdmaObjectFactory</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaObjectFactory"></a>IdmaObjectFactory</h2>
+<p>This interface provides access to object creation services of a DMA System object, DocSpace object or Scope object.</p>
+<h3><a name="IdmaObjectFactoryCreateObject"></a>IdmaObjectFactory::CreateObject</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaObjectFactory::CreateObject</b> (<br>
+pDmaId    <i>pClassId</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pClassId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the class of object to be created. This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>Returns a pointer for the requested interface for the object created, which will be NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This will create a new object of the class indicated by pClassId in the client's process space. The object’s properties will be set with default values, and may be changed using the IdmaEditProperties interface.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. In case the operation is successful, the returned interface must be released using the method IUnknown::Release. 
+</p><p>
+The method gives gives DMARC_NOT_CREATABLE errors for objects which are inappropriate to generate from the object supporting the method. For example, a System object will not support creating independently persistable objects.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_CLASSID</p></TD><TD><p>The supplied identifier does not reference an available class of object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_CREATABLE</p></TD><TD><p>Creation of objects of the specified class is not supported.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

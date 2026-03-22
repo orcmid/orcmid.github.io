@@ -1,0 +1,415 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovoCompagno/odma/support/X000002.htm 5     04-11-18 14:16 Orcmid $-->
+<title>X000002: ODMA Codes Missing in Odma.h</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000002.htm">X000002</a>:
+</b>ODMA Codes Missing in <b><code><font size="+2">Odma.h</font></code></b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-05-21-17:31 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000002.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Functionality - Defect</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000002">X000002</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>5 - Important</b></td>
+      <td width="50%"><b>Status</b>: <a href="#WorkAround">Workaround Under
+        Development</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code><a href="http://www.infonuovo.com/odma/downloads/odma200h.htm">Odma.h
+        2.0.0</a></code></b></td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd><a name="X000009" href="X000009.htm"><b>X000009</b></a><b>: </b>Incorrect
+        <code><b>ODMOpenDoc</b></code> <code><b>ODM_REFCOPY</b></code> Flag<br>
+            <b><a href="X00-log.htm#X000301">X000301</a></b>: Constant Definitions Managed
+        Improperly</dd>
+          <dd>
+            <b><a href="../downloads/Q000705.htm">Q000705</a></b>: Changes
+            Between ODMA Versions,<br>
+            <b><a href="../downloads/Q000703.htm">Q000703</a></b>: ODMA-Aware Application and Connection-Manager
+Version Compatibility,<br>
+            <b><a href="../downloads/rata20-1.htm">Errata 2.0</a></b>: ODMA
+            Version 2.0 Errata,<br>
+            <b><a href="../projects/p000001-log.htm#P000702">P000702</a></b>: ODMA
+            Library Release 2.0.1 project</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: tbd</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="../faq/Q000605.htm#RajaSekhar">Raja Sekhar</a> (<a href="x000002a.msg">1998-07-17</a>)<br>
+            <a href="../faq/Q000605.htm#BobSt.Jean">Bob St. Jean</a> (<a href="x000002c.msg">1998-09-08</a>)<br>
+            <a href="../faq/Q000605.htm#MichaelDSmith">Michael D. Smith</a> (<a href="x000002d.msg">1999-04-16</a>)<br>
+            <a href="../faq/Q000605.htm#DalGhotra">Dal Ghotra</a> (<a href="x000002f.msg">1999-08-16</a>)<br>
+            <a href="../faq/Q000605.htm#EvgenyRex">Evgeny Rex</a> (<a href="x000002h.msg">2001-05-09</a>)<br>
+            <a href="../faq/Q000605.htm#ViktorYuzyuk">Viktor Yuzyuk</a> (<a href="x000002k.msg">2001-05-15</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Date Reported</b>: 1998-07-17<br>
+        <b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Opened</b>: 2001-05-11</td>
+      <td width="50%" valign="top"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>3. <a href="#WorkAround">Working Around the Problem</a></h3>
+
+<h3>4. <a href="#Investigation">Analysis</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>        (2001-05-21)</h2>
+
+<blockquote>
+  <p>In the original ODMA 2.0 Library header file <b><code><a href="http://www.infonuovo.com/odma/downloads/odma200h.htm">Odma.h</a></code></b>,
+  the values for a number of flags and result codes are not defined:</p>
+
+  <table border="2" width="90%" cellspacing="3" bordercolor="#0000FF" bordercolordark="#000080" bordercolorlight="#0000FF">
+    <caption><b>Table 1-1.&nbsp; Missing Values for <code>ODMSTATUS</code> Codes</b></caption>
+    <tr>
+      <th width="33%" valign="top" align="left"><b><code>ODMSTATUS</code></b></th>
+      <th width="20%" valign="top" align="center">Correct Value</th>
+      <th width="34%" valign="top">Comments</th>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_NOERROR</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>0</code></b></td>
+      <td width="34%" valign="top"><font size="-1"><b><i>&nbsp;&nbsp;&nbsp;&nbsp;
+        Define</i></b> <b><i>this code</i></b> to preserve down-level compatibility
+        with ODMA 1.5 Definitions.</font></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_E_ALREADYOPENED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>24</code></b></td>
+      <td width="34%" rowspan="3" valign="top"><font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;
+        1. <b><i>Do not use</i></b>  these result codes with any operation
+        defined prior to ODMA 2.0.&nbsp; See <a href="../downloads/Q000705.htm">Q000705:
+        Changes Between ODMA Versions</a>.&nbsp; These codes are not expected by
+        pre-ODMA 2.0 applications, and failures may be provoked if they are
+        returned.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; 2. <b><i>Do not define</i></b> these result
+        codes until <a href="#Actions">it is established</a>
+        how to safely return these codes to only those applications that are
+        prepared for them.</font></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_E_ARCHIVED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>23</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_E_FILELOCKED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>25</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_W_NOACTION</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>27</code></b></td>
+      <td width="34%" valign="top"><font size="-1">&nbsp;&nbsp;&nbsp;&nbsp; 1. An application
+        developed without this definition may fail or behave as if the requested
+        operation failed.&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; 2. <b><i>Do not define this code</i></b>.&nbsp;
+        Return <b><code>ODM_SUCCESS</code></b> instead.</font></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_E_NORELATION</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>28</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_E_REFUSED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>26</code></b></td>
+      <td width="34%" valign="top"><font size="-1"><b><i>&nbsp;&nbsp;&nbsp;&nbsp; Do not define.&nbsp; Do not use</i></b>.&nbsp; The
+        ODMA 2.0 Connection Manager implementation of&nbsp; <b><code>ODMRegisterApp</code></b>
+        never returns this <b><code>ODMSTATUS</code></b> value.</font></td>
+    </tr>
+  </table>
+
+  <p align="left">&nbsp;</p>
+
+  <table border="2" width="90%" cellspacing="3" bordercolor="#0000FF" bordercolordark="#000080" bordercolorlight="#0000FF">
+    <caption><b>Table 1-2.&nbsp; Missing/Corrected Values for <code>ODMOpenDoc</code>
+      and <code>ODMSelectDocEx</code> <code><i>flag</i></code></b></caption>
+    <tr>
+      <th width="33%" valign="top" align="left"><b><code>ODMOpenDoc</code>/<code>ODMSelectDocEx
+        <i>flag</i> </code>values</b></th>
+      <th width="20%" valign="top" align="center">Correct Value</th>
+      <th width="34%" valign="top">Comments</th>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_REFCOPY</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>4</code></b></td>
+      <td width="34%" valign="top">Value of <b><code>3</code></b> is <a href="X000009.htm">incorrect</a>.&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_TEMPLATE</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>8</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+  </table>
+
+  <p align="left">&nbsp;</p>
+
+  <table border="2" width="90%" cellspacing="3" bordercolor="#0000FF" bordercolordark="#000080" bordercolorlight="#0000FF">
+    <caption><b>Table 1-3.&nbsp; Values for Get/Set Relation *<i>pdw<code>flag</code></i></b></caption>
+    <tr>
+      <th width="33%" valign="top" align="left"><b><code>ODMGetRelation</code>/<code>ODMSetRelation
+        *<i>pdwflag</i> </code>values</b></th>
+      <th width="20%" valign="top" align="center">Correct Value</th>
+      <th width="34%" valign="top">Comments</th>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_REL_CHILD</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>1</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_REL_PARENT</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>2</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_REL_NONE</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>4</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_REL_NOTORDERED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>8</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_REL_FIXED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>32</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_REL_RELEASED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>64</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_REL_LATEST</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>128</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+  </table>
+
+  <p align="left">&nbsp;</p>
+
+  <table border="2" width="90%" cellspacing="3" bordercolor="#0000FF" bordercolordark="#000080" bordercolorlight="#0000FF">
+    <caption><b>Table 1-4.&nbsp; Values for <code>ODMSetDocEvent <i>event</i></code></b></caption>
+    <tr>
+      <th width="33%" valign="top" align="left"><b><code>ODMSetDocEvent <i>event</i>
+        </code>values</b></th>
+      <th width="20%" valign="top" align="center">Correct Value</th>
+      <th width="34%" valign="top">Comments</th>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_EVENT_PRINTED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>1</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>ODM_EVENT_POSTED</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>2</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_SENT</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>3</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_FAXED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>4</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_ROUTED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>5</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_COPIED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>6</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_CONVERTED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>7</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>ODM_EVENT_DMSDEFINED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>8</code></b></td>
+      <td width="34%" valign="top">&nbsp;</td>
+    </tr>
+  </table>
+
+  <p align="left">&nbsp;</p>
+
+  <table border="2" width="90%" cellspacing="3" bordercolor="#0000FF" bordercolordark="#000080" bordercolorlight="#0000FF">
+    <caption><b>Table 1-5.&nbsp; Values for <code>ODMGetODMInterface</code> and <code>ODMQueryInterface
+      HRESULT</code></b></caption>
+    <tr>
+      <th width="33%" valign="top" align="left"><b><code>HRESULT</code></b></th>
+      <th width="20%" valign="top" align="center">Correct Value</th>
+      <th width="34%" valign="top">Comments</th>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>S_OK</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>0L</code></b></td>
+      <td width="34%" valign="top" rowspan="4"><font size="-1">&nbsp;&nbsp;&nbsp;&nbsp; 1. These
+        values are defined by standard Windows libraries when <b><code><a href="../downloads/odma200c.htm">odmacom.h</a></code></b>
+        is <a href="../downloads/odma20L.htm">properly included</a> into a
+        program.&nbsp; <b><i>Do not define these values directly</i></b>.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; 2. These are but a small selection of possible
+        COM <b><code>HRESULT</code></b> codes that can be delivered to
+        applications <i><b>whether or not</b></i> returned directly by ODMA DMS
+        implementations.&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; 3. Apart from <b><code>S_OK</code></b> and <b><code>E_NOINTERFACE</code></b>,
+        applications should treat all others as if <b><code>E_UNEXPECTED</code></b>.</font></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><code><b>E_NOINTERFACE</b></code></td>
+      <td width="20%" valign="top" align="center"><b><code>0x80004002L</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>E_FAIL</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>0x80004005L</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>E_UNEXPECTED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>0x8000FFFFL</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>E_ACCESSDENIED</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>0x80070005L</code></b></td>
+      <td width="34%" valign="top" rowspan="2"><font size="-1">&nbsp;&nbsp;&nbsp;&nbsp;
+        1. <b><i> Do not return these&nbsp; values</i></b> from an implementation of <b><code>ODMQueryInterface</code></b>
+        or <b><code>ODMGetODMInterface</code></b>.&nbsp;&nbsp;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; 2. Although these are defined by <i>some</i>
+        standard Windows libraries, there is no use made of them by the ODMA 2.0
+        Connection Manager.</font></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>E_INVALIDARG</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>0x80070057L</code></b></td>
+    </tr>
+    <tr>
+      <td width="33%" valign="top" align="left"><b><code>E_ODM_VERSION</code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>n/a</code></b></td>
+      <td width="34%" valign="top"><font size="-1">There is no valid <b><code>HRESULT</code></b>
+        with this name.&nbsp; <b><i><code>Do not implement</code></i></b>.</font></td>
+    </tr>
+  </table>
+
+</blockquote>
+
+<h2>2. <a name="Actions">Actions</a> Toward Resolution (2001-05-21)</h2>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+<ol>
+  <li>Leave <b><code><a href="../downloads/odma200h.htm">odma.h</a></code></b>
+    2.0.0-1 intact.</li>
+  <li>Create a supplemental <b><code>.h</code></b> file that can be added by <b><code>#include</code></b>
+    following the inclusion of <code><b><a href="../downloads/odma200h.htm">odma.h</a></b></code>.</li>
+  <li>The supplemental <b><code>.h</code></b> file will define only those codes
+    that are safe to introduce unannounced at this point.&nbsp;</li>
+  <li>For the codes that are useful but that introduce compatibility problems,
+    it is recommended that they be abandoned for now and reintroduced with a
+    maintenance release of the specification, the ODMA Connection Manager, and
+    the ODMA libraries.</li>
+  <li>The introduction of more codes will be accomplished in a way that <a href="../downloads/Q000703.htm">preserves
+    operation</a> of all ODMA-aware applications implemented with the current <a href="../downloads/odma200h.htm">ODMA
+    2.0</a>, <a href="odma15st.htm">1.5</a>, or <a href="odma10st.htm">1.0</a>
+    versions of <code><b>odma.h</b></code> and the pre-ODMA 2.0 ODMA
+    Specifications.</li>
+</ol>
+
+</blockquote>
+
+<h2>3. <a name="WorkAround">Working Around the Problem</a> (2001-05-21)</h2>
+
+<blockquote>
+  <p>[When the supplemental .h file is available, it will be made available
+  here.]</p>
+
+</blockquote>
+
+<h2>4. <a name="Investigation">Analysis</a>      of Incident (2001-05-21)</h2>
+
+<blockquote>
+  <p>[The discussion of history and problems introduced by the additional ODMA
+  2.0 codes is a bit complex.&nbsp; We will save this until a decent workaround
+  is available]</p>
+
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed the archive of ODMA Tech mail for unresolved incidents, logging this
+      one (2000-08-11) and later opening it for resolution
+      (2001-05-11) as more people began to notice the deficiency.&nbsp; Dennis
+      provided analysis of the compatibility issues and the workaround approach.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#BobSt.Jean">Bob
+      St. Jean</a></dt>
+    <dd><a href="x000002c.msg">confirmed</a> that there are omissions and <a href="x000002f.msg">provided</a>
+      an <b><i>unofficial</i></b> version of <b><code><a href="x000002g.h">odma.h</a></code></b>
+      with his corrections.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-05-11-08:17 -0700 (pdt) by <a href="mailto:orcmid@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 04-11-18 14:16 $<br>
+$$Revision: 5 $</em></p>
+</body>
+</html>

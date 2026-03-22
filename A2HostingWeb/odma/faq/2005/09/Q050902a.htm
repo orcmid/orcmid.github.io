@@ -1,0 +1,744 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q050902a: C/C++ Compiler Setup - Diary &amp; Job Jar </title>
+<!--$$Header: /ODMACompagno/faq/2005/09/Q050902a.htm 63    13-08-22 12:48 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006a.htm 0.10 of 2005-07-05T20:50Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../q000001.htm#Q050902"><font color="#990033">Q050902</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+		<a href="../../q000001.htm"><font color="#990033">
+		FAQtip</font></a></strong></font><font color="#990033"><strong><br>
+      &nbsp;<a href="q050902.htm"><font color="#990033">C/C++ Compiler Setup</font></a><br>
+      <em><big><big>Diary &amp; Job Jar</big></big></em></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a 
+  href="../../">faq</a>&gt;<br>
+      <a href="../">2005</a>&gt;<a target="_top" href="./">09</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q050902a.htm">Q050902a</a>&gt;</code></b></font><br>
+      <small><small>
+		<a href="#0.26">0.26</a>
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2007-07-28<!--webbot bot="Timestamp" endspan i-checksum="12476" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:15 -0700<!--webbot bot="Timestamp" endspan i-checksum="12010" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<div align="center">
+  <center>
+  
+  <table border="2" width="100%" bordercolor="#990033" bordercolorlight="#CC0066" bordercolordark="#800000" bgcolor="#FFFFFF">
+    <tr>
+    <big>
+      <td width="11%" align="center"><p><i><b>S<span style="font-variant: small-caps">tatus</span></b></i></p></td>
+      <td width="11%" align="center"><p><i><b>D<span style="font-variant: small-caps">ate</span></b></i></p></td>
+      <td width="78%" align="left">
+        <p align="center"><i><b>D<span style="font-variant: small-caps">escription</span></b></i></p>
+      </td>
+      </big>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;
+    </td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-11-18</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">The details of compiler choice, installation, and so on 
+		are in many ways preferably carried as ODMdev content.&nbsp; It's a 
+		little too late and I'll stick to using FAQ (and I might include these 
+		there, rather than vice versa, since that should work unless I make it a 
+		different Web folder -- dagnabit).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-11-18</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Tie-in to source control also needs to come up, but I 
+		think it is better treated in ODMdev, rather than here.&nbsp; </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-11-18</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">ODMdev is going to talk about the setup here, including 
+		the use of MyProjects as a place to make derivatives, run tests, and 
+		rebuild components.&nbsp; In this case, downloading ODMdev works best if 
+		viewed as a read-only collection of material, where changes are made at 
+		the MyProjects level.&nbsp; Review all text for updating to reflect 
+		this, as part of making a Q050902d version.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-11-18</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Change this setup to use <kbd><b>c:\MyProjects</b></kbd>, 
+		not <kbd><b>C:\MyPrograms</b></kbd> and clean up the work accordingly.&nbsp; 
+		I should probably cut a new version of the file (e.g., Q050902d with a 
+		couple of changes to the images).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Verify all of the cross-references and permalinks now on 
+		the page</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">An interesting idea here is to create a companion page on 
+		troubleshooting, each step of the way, and link from the Q050902c page 
+		on setup to the appropriate trouble-shooting section in each section 
+		where something my go amiss.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There are also other resources on command-line operation 
+		that need to be considered, including cscript, wscript (and wsh 
+		generally), as well as alternative shells.&nbsp; </font>
+    </td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Make an observation about training and education 
+		availability too.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There needs to be a link and tie-in to material on 
+		command-line commands.&nbsp; This can be in the C/C++ Resources too.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-10-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Get this material under Creative Commons Attribution 2.5.&nbsp; 
+		Be clear about how attribution is made.&nbsp; Be clear what elements are 
+		not subject to that copyright and its licensing.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-28</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Make a procedure about being administrator, and link to 
+		it from the new Q050902.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-12</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">After posting and verifying that it is all there, invite 
+		review. [2005-09-28 did once with Jaxia.&nbsp; Need to request broader 
+		review, probably on Clueless]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-10</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Add comment about ODMdev and this being a prerequisite 
+		for ODMdev but that must also be done for mirroring the ActiveODMA 
+		development setup for confirming ActiveODMA builds, performing tests, 
+		and contributing new ActiveODMA components.</font></td>
+    </tr>
+    
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-08</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There are notes on the use of certain available books, 
+		adjusted for working with this compiler and the Windows XP Pro command 
+		shell.&nbsp; These need to be tied in here or on the resources page.&nbsp; 
+		[dh:2005-09-08 I think the setup page can cover it, because it 
+		demonstrates what is involved when it takes the user through the Hello 
+		World exercise.]</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-08</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Link to the ODMA /dev section about 
+		arrangements and setup specific to ActiveODMA projects, rather than 
+		general usability.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-08</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">This doesn't show anything about editing, debugging, or 
+		additional support for development using the compiler.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2005-09-08</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">When the ActiveODMA configuration setup and batch file is 
+		documented, refer to that from here.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>
+		done 0.30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-10-06</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Add (McGrath 2005) along with a see also to the C/C++ 
+		Resources folio.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.26</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-10-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Move this material to its canonical location, 
+		faq/2005/09, and show it anywhere else by inclusion.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-10-01</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">We are working at creating a version <strike>0.10</strike>. 
+		0.25 [dh:2005-10-01]</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-10-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Reflect material from #48.26</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-10-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Make correction noted on #48.25</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-10-01</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Perform other adjustments noted in #48.23.&nbsp; </font>
+    	</b>
+    </td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-10-01</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Unblock-indent the revision history in Q050902c - the 
+		other pages are fine.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#FFCC99">
+		<font color="#800000"><font size="2"><b>abandoned</b></font><b><small><br>
+		2005-10-01</small></b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#FFCC99">
+		<font color="#800000"><b><small>2005-09-28</small></b></font></td>
+      <td width="78%" align="left" valign="top" bgcolor="#FFCC99">
+        <b>
+        <font size="2" color="#800000">Fix the text of hello.c so that it reminds the user to 
+		save it as hello.c. [dh:2005-10-01 Ixnay, then I have to replace all of 
+		the compilation and example images and that's more potential 
+		destabilization than this is worth.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Put permalinks throughout Q050902c - every bullet item 
+		needs to be linkable and referred to in comments, notes, etc.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Fix the description for hello.c also.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">The downloaded version of the MyVC.bat file saves as HTML 
+		if it is saved from the browser window.&nbsp; Looks like a MIME-type 
+		problem from the server.&nbsp; I might be able to fix that with an ASP 
+		page that fixes the content type and sends just the ASCII text.&nbsp; 
+		[dh:2005-09-30 No joy on that -- it would then fail on a 
+		non-server-based page]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-29</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">There's no link in the image of the batch file in 4.1.
+		</font>
+    	</b>
+    </td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-29</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Meanwhile, fix the description of the download to use 
+		right-click and not just save the file by clicking on the link or the 
+		image.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.25<br>
+		2005-09-29</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-12</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Clean up the title of Q050902c and also the reference 
+		from Q050902.htm [dh:2005-09-29 I can't figure out what this was so I am 
+		declaring it complete with the tweaking I've done.]</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-12</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Post to the hosted site</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-12</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Check in the pages and all of the images for posting 
+		to the hosted site.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-12</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Add minimal information for an 0.05 Q050902 that tides 
+		us over for now.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-12</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Connect the 0.05 sketch to Q050902b which will show 
+		its progressive versions as latest.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-12</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-11</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Complete an outline/sketch and include as many screen 
+		shots as possible to demonstrate the progression.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-09</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Verification of the equivalence of the VS .NET 2003 and 
+		toolkit compilers should be possible from material that we show in 
+		screen captures here.&nbsp; (Does the compiler identify itself?&nbsp; I 
+		forget.)[dh:2005-09-09 Yes it does, and it gives the build number in its 
+		version information.&nbsp; This is enough to tell if the Visual .NET 
+		Studio 2003 compiler is the same.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Include specific information on what it looks like when 
+		the material is installed [dh:2005-09-08 do under the setup 
+		instructions]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Be sure to link back to Q050901c for download if not 
+		already obtained, and the assumption that this procedure follows that 
+		one.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Create and Run the Hello World example.&nbsp; <strike>Show how to 
+		save the compiler output to a text file so that it is available for 
+		examination for error information.</strike></font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Create a new batch file in the <strike>VC++TK2003</strike> 
+		C:/\MyPrograms directory.&nbsp; 
+		You can make these in any number of directories where you want to do 
+		C/C++ projects, using this one as a model, or one that is preferred.&nbsp; 
+		(A slightly different one is needed for work on ActiveODMA.)</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Provide example of what happens when the batch file is 
+		executed.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Provide confirmation picture of the setup, what is 
+		provided in the files, in the All Programs folder, and other available 
+		information</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Assume that the change of privileges and other steps are 
+		known.&nbsp; Just list them, don't explain them.&nbsp; That goes 
+		elsewhere - maybe in a safe-installation section</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Identify prerequisites for this part.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05<br>
+		2005-09-11</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Work through the install, with the first assumption being 
+		that we want to work in a limited account, and explain why 
+		[dh:2005-09-11 the motivation is in Q050901 and it is continued here.]</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-10</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Construction Zone is in active/ODMref10, not active/.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-10</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Bottom description on this page is centered instead of 
+		left-justified.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Connect Q050902 to related pages Q050901 and Q050903</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Customize Q050902b and Q050902c as initial 
+		placeholders</font></b></td>
+    </tr>
+    
+  </center>
+  <center>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+  </center>
+  
+  <center>
+    <tr>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>done</small></b></td>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>2005-09-08</small></b></td>
+      <td width="78%" valign="top" style="background-color: #CCCCFF">
+		<p align="left"><b><small>
+		Create this page for immediate collection of action items and notes.</small></b></td>
+    </tr>
+  </table>
+  
+  </center>
+</div>
+
+<small>
+		<dl><dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+		<dt><b><a name="0.26">0.26</a> 2005-10-03-15:03 Relocate folio to 
+		canonical location faq/2005/09</b></dt>
+			<dd>The material is moved to a better location and existing 
+			bookmarks, if any, are preserved by then including it at other 
+			places the material is situated.</dd>
+			<dt><b><a name="0.25">0.25</a> 2005-10-01-17:27 Complete All Items for 
+		Posting Update to 0.25 draft</b></dt>
+			<dt><b><a name="0.05">0.05</a> 2005-09-12-01:04 Complete All Items for 
+		Posting 0.05 draft</b></dt>
+			<dt><b><a name="0.00">0.00</a> 2005-09-08-08:53 Create Initial Placeholder</b></dt>
+		<dd>Introduce an initial placeholder that serve as a target of links and 
+	provides a diary &amp; job jar that can be employed immediately.&nbsp; This page is 
+	a customization of the
+		<a href="../../../faq/templates/00/Q000006a.htm">FAQtip 
+	Bootstrap Template 0.10 Diary &amp; Job Jar</a>.&nbsp; A 
+	version from
+		<a target="_top" href="../../../projects/2005/06/p050601c.htm">FAQtip 
+  Bootstrap 0.10 Material</a> was used.</dd></dl>
+
+</small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="15%"><a href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="52%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-09-08-08:50 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 63 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

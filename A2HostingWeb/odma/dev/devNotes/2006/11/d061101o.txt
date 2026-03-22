@@ -1,0 +1,354 @@
+d061101o.txt 0.00                    UTF-8                   dh:2008-03-30
+
+                         ODMJNI 1.0 Java-ODMA Bridge
+                         ---------------------------
+
+               CONTENT OF d061001o-odmjni100-0.59beta.zip ARCHIVE
+
+
+               ODMJNI 1.0 odmjni100 0.59beta Transition Candidate
+               --------------------------------------------------
+
+     **********************************************************************
+     *  WARNING: The 0.59beta Public Transition Candidate makes breaking  *
+     *  changes to the info.odma.odmjni100 interfaces and their implemen- *
+     *  tations.  In addition to the breaking changes, some elements are  *
+     *  deprecated for removal in the 0.60 Public Beta release.           *
+     **********************************************************************
+
+     **********************************************************************
+     *  WARNING: The 0.59beta version of odmjni100 is not compatible with *
+     *  any version of practical100 except the 0.59beta release of that   *
+     *  package.  This odmjni100 implementation is tightly-coupled with   *
+     *  the practical100 null-implementation classes and is not supported *
+     *  for any other version of practical100.                            *
+     **********************************************************************
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/11/d061101o.htm>.  There
+        is additional infomation on the origin and usage of this material
+        at that location.
+
+        This package release the ODMJNI 1.0 odmjni100 package with the
+        0.59beta improvements in preparation for the 0.60 public beta.
+        For more information on the release of which this a part, consult
+        pages at <http://odma.info/dev/devNotes/2006/12/d061201h.htm>,
+        <http://odma.info/dev/devNotes/2007/07/d070701d.htm>, and
+        <http://odma.info/dev/devNotes/2007/09/d070901c.htm>.
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+
+This distribution of info.odma.odmjni100 components includes deprecated
+elements from earlier stages (from 0.54 to 0.58) and the refactored and
+additional elements that will be perpetuated in release 0.60 and beyond.
+The purpose of the release is to provide a transition to 0.60 for those
+who have developed using earlier releases.
+
+If you have not relied on earlier releases of ODMJNI 1.0, it is recommended
+that deprecated elements in this package not be used.  This should allow
+operation as a preview of the release for 0.60beta.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this distribution, it is necessary to have already
+   satisfied the following minimum prerequisites:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Creation of a development tree, starting at some folder, <folder>,
+        in which are installed the odmjni100 development tree
+        <folder>\info\odma\odmjni100 with subordinate test folders.
+
+   To work with and modify the JNI library, odmjni100.dll, it is also
+   necessary to work with Visual C++ 2005 Express Edition and be able to
+   make batch file customizations and command-line builds as part of
+   creating odmjni100.dll implementations.
+
+   THIS IS A COMPLETE REPLACEMENT.  PREVIOUS BETA DISTRIBUTIONS SHOULD BE
+   REMOVED FROM THE odmjni100 BRANCH OF THE DEVELOPMENT TREE.  If there are
+   locally-customized versions of batch files and other changes, they should
+   be preserved before extracting the material in this distribution.
+
+2. MANIFEST
+
+   This archive is designed to be extracted to the <folder> location that is
+   the Java classpath point for the ODMJNI 1.0 packages on your computer.
+
+   The material must be extracted IN PLACE OF any existing odmjni100
+   materials.
+
+   The update will install material in the following hierarchy when
+   extraction is into the directory at <folder>:
+
+   <folder>/
+           d061101o.txt 0.00 this manifest, 17,221 byte file
+               dated 2008-03-30-17:33
+           d061101o-license.txt 0.00 copy of the Open Document
+               Management API license 1.0 applied to this archive,
+               3,193 byte file dated 2008-03-20-15:36
+           d061101o-ReleaseNotes.txt 0.05, 18,364 byte file dated
+               2008-03-19-19:10
+           d061101o-odmjni100-0.59beta.zip 0.00 archive from which
+               the other material is extracted.
+
+       info/
+           odma/
+               odmjni100/
+                       BuildClasses.bat 0.01, 2,543 byte file,
+                           2007-01-09-00:44
+                       BuildDLL.bat 0.04, 2,616 byte file,
+                           2007-02-05-21:34
+
+                       d071001e-0.54-odmjni100.zip 0.01, 142,046 byte file,
+                           2007-11-30-18:57
+                       d071001f-0.57-odmjni100.zip 0.01, 481,036 byte file,
+                           2007-11-30-17:58
+                       d071001g-0.59-odmjni100.zip 0.00, 575,938 byte file,
+                           2007-12-01-13:27
+
+                       ExtractAppHeader.bat 0.00, 2,561 byte file,
+                           2007-01-13-18:38
+                       ExtractHeader.bat 0.00, 2,951 byte file,
+                           2006-11-28-17:31
+                       ExtractPendHeader.bat 0.00, 2,577 byte file,
+                           2007-01-21-20:56
+                       ExtractViewHeader.bat 0.00, 2,560 byte file,
+                           2007-01-09-20:04
+                       ExtractWorkHeader.bat 0.00, 2,575 byte file,
+                           2007-01-13-18:38
+
+                       Odma32types100.h 0.02, 8,464 byte file,
+                           2006-11-25-21:50
+
+                       OdmJava.bat 0.05, 3,179 byte file,
+                           2007-03-31-15:15
+                       OdmJNI.bat 0.02, 2,477 byte file,
+                           2007-02-05-21:42
+
+                       odmjni100.cpp 0.20, 38,860 byte file,
+                           2007-03-27-23:32
+                       odmjni100.dll 0.20, 81,920 byte file,
+                           2007-03-27-23:32
+                       odmjni100.h, 1,444 byte file, 2007-02-04-21:57
+                       odmjni100.opt, 73 byte file, 2007-02-05-21:28
+                       odmjni100a.h, 1,593 byte file, 2007-03-07-23:14
+                       odmjni100p.h, 742 byte file, 2007-01-21-21:58
+                       odmjni100v.h, 1,206 byte file, 2007-01-22-23:16
+                       odmjni100w.h, 522 byte file, 2007-01-13-18:39
+                       odmjni100x.h 0.12, 7,789 byte file, 2007-03-07-22:18
+
+                       OdmJniApp.class 0.15, 3,413 byte file,
+                           2007-11-15-19:46
+                       OdmJniApp.java 0.15, 22,225 byte file,
+                           2007-11-10-17:23
+                       OdmJniBind.class 0.21, 1,664 byte file,
+                           2007-11-15-19:46
+                       OdmJniBind.java 0.21, 14,014 byte file,
+                           2007-11-10-16:48
+                       OdmJniPend.class 0.03, 2,540 byte file,
+                           2007-11-15-19:46
+                       OdmJniPend.java 0.03, 10,710 byte file,
+                           2007-11-10-17:34
+                       OdmJniView.class 0.15, 4,181 byte file,
+                           2007-11-15-19:46
+                       OdmJniView.java 0.15, 19,082 byte file,
+                           2007-11-15-18:56
+                       OdmJniWork.class 0.02, 1,106 byte file,
+                           2007-11-15-19:46
+                       OdmJniWork.java 0.02, 5,877 byte file,
+                           2007-11-15-19:44
+
+                       OdmNative100.hpp 0.24, 18,217 byte file,
+                           2007-02-04-17:29
+                       OdmNative100.lib 0.24, 32,286 byte file,
+                           2007-02-04-17:58
+                       OdmPending100.hpp 0.01, 9,535 byte file,
+                           2007-01-20-00:10
+                       OdmPSDK.bat 0.03, 3,689 byte file, 2006-11-25-20:59
+                       OdmVC++.bat 0.28, 3,165 byte file, 2006-11-25-20:54
+                       OdmWorking100.hpp 0.04, 18,168 byte file,
+                           2007-01-01-13:13
+
+                   test/
+                       Check04/
+                           BuildCheckChoice.bat 0.01, 2,520 byte file,
+                               2007-01-23-23:58
+                           BuildCheckKnown.bat 0.00, 2,539 byte file,
+                               2007-03-10-13:51
+                           BuildCheckNew.bat 0.00, 2,216 byte file,
+                               2007-01-24-22:49
+                           BuildDLL.bat 0.00, 2,194 byte file,
+                               2007-01-24-15:51
+
+                           CheckChoice.java 0.17 12,759 byte file,
+                               2007-01-25-19:46
+                           CheckKnown.java 0.02 14,199 byte file,
+                               2007-11-16-20:28
+                           CheckNew.java 0.01 10,290 byte file,
+                               2007-11-16-20:29
+                           CheckUtil.cpp 0.01 2,197 byte file,
+                               2007-02-12-19:49
+                           CheckUtil.dll 0.01 61,440 byte file,
+                               2007-02-12-19:49
+                           CheckUtil.h 427 byte file, 2007-01-24-15:09
+                           CheckUtil.java 0.05, 18,180 byte file,
+                               2007-11-16-19:41
+                           CheckUtilx.h 0.00, 1,042 byte file,
+                               2007-01-24-16:08
+
+                           ConIO.class 1,423 byte file, 2007-01-24-19:19
+                           ConLineIO.class 1,284 byte file, 2007-01-23-19:01
+                           ConReader.class 370 byte file, 2007-01-24-19:07
+                           ConWriter.class 367 byte file, 2006-10-24-00:16
+
+                           ExtractUtilHeader.bat 0.00 2,293 byte file,
+                               2007-01-24-15:05
+
+                           IConIn.class 212 byte file, 2007-01-24-19:19
+                           IConIO.class 125 byte file, 2007-01-24-19:19
+                           IConLineIn.class 187 byte file, 2007-01-24-19:19
+                           IConLineIO.class 130 byte file, 2007-01-24-19:19
+                           IConOut.class 480 byte file, 2007-01-24-19:19
+
+                           OdmJava.bat 0.05, 3,179 byte file,
+                               2007-03-31-16:15
+                           PromptedIO-0_13.zip 23,808 byte file,
+                               2003-07-12-09:34
+                           RunCheck.bat 0.01, 3,754 byte file,
+                               2007-11-28-21:56
+
+                       Clicker/
+                           BuildSwingApp.bat 0.00 2,725 byte file,
+                               2007-01-31-19:58
+                           OdmClicker.java 0.08 4,498 byte file,
+                               2007-02-12-18:23
+                           OdmJava.bat 0.05 3,179 byte file,
+                               2007-03-31-16:15
+                           RunClicker.bat 0.01 3,426 byte file,
+                               2007-11-26-18:41
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061101o-odmjni100-0.59beta.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java SE JDK such as the JDK 1.5 used to develop all of the Java
+                      applications in this distribution.
+
+       A Visual C++ 2005 Express Edition (or compatible release) plus the
+                      Microsoft Platform SDK if it is desired to reconstruct
+                      the odmjni100.dll.  The OdmVC++.bat and OdmPSDK.bat
+                      files in the odmjni100 directory provide further
+                      information on the configuration used.
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   ** NOTE: If the same <folder> has been used to hold earlier materials
+   from odmjni100 development, DELETE THE PREVIOUS MATERIAL AT PATH
+   <folder>\info\odma\odmjni100\ and below.
+
+   The <folder>\info\odma\odmjni100\ provides the sources used to develop
+   the latest versions of the tests.
+
+   To use the current set of regression tests, not necessarily from the
+   same sources, the test archives at <folder>\info\odma\odmjni100\ should
+   be extracted in that directory to provide the different regression sets:
+
+       d071001e-0.54-odmjni100.zip extracts to 0.54-odmjni100\ for Clicker
+       d071001f-0.57-odmjni100.zip extracts to 0.57-odmjni100\ for Check04
+       d071001f-0.59-odmjni100.zip extracts to 0.59-odmjni100\ for Check04
+
+   The 0.57 Check04 uses deprecated features and no new features.  The 0.59
+   Check04 does not use deprecated features and relies only on new features.
+   Each regression set has its own manifest with information on using the
+   test and reviewing the results of tests already performed.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2008 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Content of d061101o-odmjni100-0.59beta.zip Archive: ODMJNI 1.0
+        odmjni100 0.59beta Transition Candidate Implementation. ODMA
+        Interoperability Exchange, ODMdev Development Note page d061101o.txt
+        0.00, March 30, 2008.  Current version available as part of the archive at
+        <http://ODMA.info/dev/devNotes/2006/11/d061101o.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.00 2008-03-30-17:28 Provide completed manifest for the odmjni100 0.59beta
+     archive with all source code and incorporated regression sets.
+
+$Header: /ODMdev/d061101o.txt 3     08-03-30 17:33 Orcmid $
+
+                       *** end of d061101o.txt ***

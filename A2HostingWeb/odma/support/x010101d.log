@@ -1,0 +1,66 @@
+ODMRegisterApp
+	Input parameters:
+	version=100(64)
+	lpszAppId=WordPerfect;
+	dwEnvData=6947882(6a042a)
+	Output parameters:
+	odmHandle=53741296(33406f0)
+	Return value=0(0)
+ODMSelectDoc
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	pdwFlags=1(1)
+	Output parameters:
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	pdwFlags=1(1)
+	Return value=0(0)
+ODMGetDocInfo
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	item=4(4)
+	dataLen=255(ff)
+	Output parameters:
+	lpszData=REG new clients form  (A0023349.WPD;1);
+	Return value=0(0)
+ODMOpenDoc
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	flags=17(11)
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	Output parameters:
+	lpszDocLocation=F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	Return value=0(0)
+ODMCloseDoc
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	activeTime=-1(ffffffff)
+	pagesPrinted=-1(ffffffff)
+	sessionData address=0(0)
+	dataLen=0(0)
+	No output parameters
+	Return value=0(0)
+ODMSelectDoc
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	pdwFlags=1(1)
+	Output parameters:
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023344.DAT;
+	pdwFlags=1(1)
+	Return value=0(0)
+ODMGetDocInfo
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	lpszDocId=::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023344.DAT;
+	item=4(4)
+	dataLen=255(ff)
+	Output parameters:
+	lpszData=REG new clients 11/99 on  (A0023344.DAT;1);
+	Return value=0(0)
+ODMGetDocInfo
+	Input parameters:
+	odmHandle=53741296(33406f0)
+	lpszDocId=::ODMA\::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD;
+	item=4(4)
+	dataLen=255(ff)

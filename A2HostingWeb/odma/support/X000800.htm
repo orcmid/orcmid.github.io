@@ -1,0 +1,100 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000800.htm 6     00-08-11 17:55 Orcmid $-->
+<title>X000800: ODMA Lacks Y2K Compliance - Warning</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000800">X000800</a>:
+ODMA Lacks Y2K Compliance</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-08-11-17:56 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Reliability - Warning</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000800">X000800</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: Investigate and Confirm</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: </b>ODMA 1.0, 1.5, and 2.0</td>
+      <td width="50%"><b>Repaired in: </b>none</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: open</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis Hamilton 2000-08-02</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-02</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+  <p>Year 2000 auditing and compliance activities have <i> not</i> been conducted for
+  any ODMA 1.0, ODMA 1.5, and ODMA 2.0 Connection Manager and test-fixture
+  components.</p>
+  <p>There are no known Y2K problems in ODMA software.&nbsp; It is simply the
+  case that Y2K compliance has not been explicitly demonstrated.</p>
+  <p>All of the ODMA Connection Managers
+  and sample implementations now in service were compiled prior to May 9,
+  1998.&nbsp; All software was built using compilers, libraries, and software
+  utilities available before then.&nbsp; Some of these tools and components were
+  subsequently determined to lack Y2K compliance,
+  if they were even audited.</p>
+  <p>This incident is given a low priority based on the absence of any problem
+  reports related to Y2K non-compliance.&nbsp;&nbsp;</p>
+  <p>This case arose while noticing that there are Borland C++ compiler packages
+  currently being sold (versions before BC++ 5.0) for which Y2K certification
+  is explicitly disclaimed on the package.&nbsp; Y2K patches for BC++ 5.02 are dated after January 1, 1999.&nbsp;&nbsp;
+  Similar
+  considerations apply to Microsoft development tools that were available
+  and used for ODMA development in 1998 and earlier.</p>
+</blockquote>
+
+  <h3>Action:</h3>
+<blockquote>
+  <ol>
+    <li>Inspect the ODMA 2.0 Connection Manager source codes and library
+      dependencies for potential Y2K and allied date-time defects.</li>
+    <li>Report on the successful determination that these components are not
+      vulnerable to Y2K and similar defects.</li>
+    <li>If there is any exposure, determine an approach to replacing the
+      vulnerable Connection Manager implementations with new compilations.</li>
+    <li>Retire older compilations of samples gradually as part of normal support
+      for ODMA development.&nbsp; Audit the samples for proper handling of
+      calendar and date-time information on an opportunistic basis.</li>
+    <li>Retire any older connection managers which are subject to potential Y2K
+      defects and for which we no longer have the means to reconstruct or repair
+      them.</li>
+  </ol>
+  <p>Please provide any relevant information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-02-18:59 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-11 17:55 $<br>
+$$Revision: 6 $</em></p>
+</body>
+</html>

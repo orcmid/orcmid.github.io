@@ -1,0 +1,428 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<!--$$Header: /miserCompagno/notes/2000/11/n001100c.htm 21    17-08-29 16:40 Orcmid $-->
+<title>n001100c: Computational Notions of Truth - Initial Notes</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="../../n000001.htm#n001100"><font color="#990033">n001100</font></a><br>
+		<a href="n010201.htm"><font color="#990033">Computational Notions of 
+		Truth</font></a><br /> 
+      
+      
+
+      	<i><font size="5">Initial Notes</font></i></font></b></font><i> </i>
+
+      </p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">notes</a>&gt;<br>
+		<a href="../" target="_top">2000</a>&gt;<a target="_top" href="./">11</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="n001100a.htm">n001100c</a>&gt;</code></b><br>
+      <small><small><a href="#v0.21">0.21</a> 
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2017-08-29 16:40<!--webbot bot="Timestamp" endspan i-checksum="25258" --></small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest Miser as Theoretical Model 
+				material is at <br>
+				&lt;<b><a href="n001100b.htm">http://miser-theory.info/notes/2000/11/n001100b.htm</a></b>&gt;.</li>
+				<li>&nbsp;<b>This page:</b>&nbsp;<b>&nbsp;0.21 Initial Notes </b>&lt;<b><a href="n001100c.htm">http://miser-theory.info/notes/2000/11/n001100c.htm</a></b>&gt;.&nbsp;&nbsp; 
+				This consists of notes that were created quickly in some 
+				initial thinking about propositions and predicates represented 
+				in Miser.<br>
+				<font color="#800080"><b>{Ed.Note: The notation employed in this 
+				Initial Note is now obsolete. The notions are meaningful, but 
+				the constants and notation are now different.}</b></font></li>
+			</ul></div>
+			
+
+</small>
+
+    <hr color="#990033">
+
+<blockquote>
+<font size="-1">
+  <p align="left">Programs that determine the presence or absence of some 
+	condition can be viewed as (computational) propositions.&nbsp; In most 
+	programming systems, truth and falsity are represented implicitly in the 
+	operations of the system.&nbsp; Functions and expressions that yield those 
+	implicit representations are usefully taken as the intrinsic representations 
+	for predicates and propositions in the computational system.</p>
+  <p align="left">For Miser, we have the opportunity to choose among some 
+	interesting representations for truth and falsity.&nbsp; This note explores 
+	that opportunity and constructs a rationale for the particular choice of 
+	truth values and its power in idiomatic expression of programs and 
+	propositions using Miser.</p>
+  </font>
+
+</blockquote>
+<blockquote>
+  <h3><i>Content</i></h3>
+</blockquote>
+
+<h2>1. <a href="#ProgrammingSystemTruth">Truth in Programming Systems</a></h2>
+
+<h2>2. <a href="#MiserIntrinsicTruth">Miser-Intrinsic Truth</a></h2>
+
+<h2>3. <a href="#MiserTruthNotions">Propositions in Miser</a></h2>
+
+<h2>4. <a href="#DeeperQuestions"> Deeper Questions</a></h2>
+
+<h2>5. <a href="#References">References</a></h2>
+
+<blockquote>
+
+  <hr>
+</blockquote>
+<h1 align="left">1. <a name="ProgrammingSystemTruth">Truth in Programming 
+Systems</a></h1>
+<h2 align="left">1.1 Computational Representation of Truth</h2>
+<blockquote>
+  <p align="left">In any programming system that is adequate for expressing 
+	practical, general-purpose computation, there are an arbitrary number of 
+	ways to represent the notions of truth and falsity as well as the standard 
+	propositional forms of logic: <i>A</i>
+  <b>and</b> <i>B</i>, <i>A</i> <b>or</b> <i>B</i>, <b>not</b> <i>A</i>, etc.&nbsp; 
+	Representing truth and falsity is not much different than representing any 
+	externally-based &quot;fact&quot; or even representing arithmetic&nbsp; It is simply a 
+	potential intention in the design of the program -- something being 
+	modeled.&nbsp;&nbsp;</p>
+<p align="left">At this point, there is nothing that says we must represent 
+truth with a program or that a given program does model truth (of something).&nbsp; 
+Let us concede that computer programs can be constructed to model truth (of 
+something).&nbsp; If the programming system is complete in its ability to 
+represent all computable functions, then we can take as given that there is a 
+rich variety of ways that truth (of anything) may be modeled.&nbsp;&nbsp;</p>
+</blockquote>
+<h2 align="left">1.2 Intrinsic Truth Representations</h2>
+<blockquote>
+<p align="left">We want to narrow the investigation to <b> intrinsic</b> 
+representations of truth which are seen to be designed into programming systems 
+and that are essential to their general-purpose function.&nbsp; By intrinsic is 
+meant that values of the intrinsic &quot;truth&quot; representation arise automatically as 
+part of the defined operations of the programming system.&nbsp; The &quot;truth&quot; 
+representations derive immediately from design principles reflected in the 
+computational mechanism.</p>
+</blockquote>
+<h3 align="left">1.2.1 Intrinsic Truth in Conventional Programming Languages</h3>
+<blockquote>
+<p align="left">In the C Programming Language [<a href="#[Harbison95]">Harbison95</a>], 
+it is clear that there are intrinsic representations for truth and falsity using 
+the <b><code>int</code></b> value <code>1</code> for truth and <code>0</code>
+for falsity.&nbsp; These values are produced by the relational and logical 
+operations: <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>,
+<code>!</code>, <code>&amp;&amp;</code>, <code>||</code>, etc.&nbsp; It is consistent 
+with this representation that conditional operations, especially the <b><code>if</code></b>
+operation (and also <code>&amp;&amp;</code>, <code>||</code>, and unary <code>!</code>), 
+interpret <code>0</code> as falsity and any other <code><b>int</b></code> value 
+(including <code>1</code>) as truth.</p>
+<p align="left">This use of arithmetic values <code>0</code> and <code>1</code>
+(or <code>0</code> and everything but <code>0</code>) is a commonplace idiom for 
+intrinsic truth values in programming systems.&nbsp; There are a number of 
+appealing qualities, including availability of simple machine-language 
+instructions for enacting programming-language operations expressed in these 
+terms.&nbsp; There is a certain legitimacy as well: George Boole used an 
+arithmetic restricted to 0 and 1 in the original development of symbolic logic [<a href="#[Boole1854]">Boole1854</a>].</p>
+<p align="left">In some programming languages, such as Pascal and members of the 
+Algol family, there is a separate <b><code>B</code></b><b><code>oolean</code></b>
+data type which is restricted to the values <b><code>true</code></b> and <b><code>
+false</code></b>.&nbsp; Values of this type are delivered by the relational 
+operations, and they are required by logical operations and conditional 
+operations, especially the <b><code>if</code></b>
+and <b><code>while</code></b> operations.&nbsp;&nbsp;</p>
+<p align="left">Relying on Boolean data types can make it easier to tell where 
+truth representations likely are used in a program.&nbsp; Sun&#39;s Java language 
+and Microsoft&#39;s C# language use separate Boolean data types (named <b><code>
+boolean</code></b>
+and <b><code>bool</code></b> respectively) for their intrinsic truth 
+representations.</p>
+</blockquote>
+<h3 align="left">1.2.2 Intrinsic Truth in Functional Languages</h3>
+<blockquote>
+  <p align="left">In the earliest &quot;functional language,&quot; LISP, the fundamental 
+	data type is a form of list structure.&nbsp; The simplest list structure is <code><b>
+	NIL</b></code>, the empty list.</p>
+  <p align="left">[More here on how that worked, and also the use of <b><code>
+	#true</code></b>
+  and <b><code>#false</code></b> now too.]</p>
+</blockquote>
+<h2 align="left">1.3 Conditional Behavior</h2>
+<blockquote>
+<p align="left">We are looking at those aspects of a computational mechanism by 
+which <b> <i>conditional behavior&nbsp;</i></b> is achieved: the means by which 
+different actions are taken depending on whether a specified condition is 
+satisfied or not.&nbsp; This has us be interested in two things:</p>
+<ol>
+  <li>
+    <p align="left"><b>Condition Determination:</b> Those operations that 
+	determine whether some condition is satisfied or not.&nbsp; These operations 
+	correspond to primitive propositions.</li>
+  <li>
+    <p align="left"><b>Conditional Operation:</b> Those operations that vary 
+	behavior of the program based on the result of a determined condition.&nbsp; 
+	These operations can be identified with composition of more complex 
+	propositions and functions from the primitive propositions.</li>
+</ol>
+    <p align="left">In the examples of C Language and Lisp-based languages, we 
+	see that there are specific counterparts of these ideas.
+</blockquote>
+  <h1 align="left">2. <a name="MiserIntrinsicTruth">Miser-Intrinsic Truth</a></h1>
+<h2 align="left">2.1 Miser Condition Determination</h2>
+<blockquote>
+<p align="left">In the Miser system, there is only one primitive for condition 
+determination: the ob-match function.&nbsp; This function determines whether one 
+operand is the same Miser Ob as the other operand.&nbsp; The result of ob-match(<i>x,</i>
+<i>y</i>) is one specific Ob, ob-<span style="font-variant: small-caps">YES</span>, 
+when <i>x</i> equals <i>y.&nbsp; </i>Ob-match(<i>x</i>, <i>y</i>) is a different 
+but specific Ob, ob-<span style="font-variant: small-caps">NO</span>, when <i>x</i>
+does not equal <i>y</i>.&nbsp;</p>
+<p align="left">It is the case that</p>
+<blockquote>
+<p align="left">ob-match(<i>x</i>, <i>x</i>)&nbsp;</p>
+</blockquote>
+<p align="left">yields the intrinsic representation of Miser &quot;truth&quot;&nbsp;for any 
+determined <i>x</i>. Likewise,&nbsp;</p>
+<blockquote>
+<p align="left">ob-match(<i>x</i>, ob-quote(<i>x</i>))&nbsp;</p>
+</blockquote>
+<p align="left">yields the intrinsic representation of Miser &quot;falsity,&quot; since 
+ob-quote(<i>x</i>) is guaranteed to be different than <i>x</i> for <i>x</i> any 
+determined Miser Ob.</p>
+<p align="left">The choice of ob-<span style="font-variant: small-caps">YES</span>
+and ob-<span style="font-variant: small-caps">NO</span> is what interests us.&nbsp; 
+We have the following requirements:</p>
+<blockquote>
+  <dl>
+    
+      <dt>R1. ob-<span style="font-variant: small-caps">YES</span> and ob-<span style="font-variant: small-caps">NO</span>
+        are uniquelly-distinguished Obs.</dt>
+   
+  </dl>
+  <p>R2. ob-apply(ob-<span style="font-variant: small-caps">YES</span>, <i>x</i>) 
+	and ob-apply(ob-<span style="font-variant: small-caps">NO</span>, <i>x</i>) 
+	are usefully-different functions and can serve as idioms for 
+	conditionally-determined operations.</p>
+  <p>R3. The definitions of Miser &quot;truth&quot;-values is based on differentiation of 
+	Obs and not differentiation of the applicative interpretations of Obs.</p>
+</blockquote>
+</blockquote>
+  <h2>2.2 Miser Conditional Operation</h2>
+<blockquote>
+  <p>An essential quality for intrinsic truth is that the result of condition 
+	determination &quot;get us somewhere.&quot;&nbsp;&nbsp; That is, something can be done 
+	with an intrinsic-truth value that moves a computation toward a determined 
+	result.</p>
+  <p>In Miser, there is no distinct conditional operation.&nbsp;&nbsp; 
+	Basically, the only operation that moves computations forward is ob-apply.&nbsp; 
+	Conditional behavior is by giving applicative interpretations to ob-<span style="font-variant: small-caps">YES</span> 
+	and ob-<span style="font-variant: small-caps">NO</span>
+  that lead to well-defined and useful differences in behavior.</p>
+  <p>The conditional behavior that we use is to choose between two alternatives.&nbsp; 
+	It is done this way:</p>
+  <blockquote>
+    <p>ob-apply(ob-<span style="font-variant: small-caps">YES</span>, <i>x</i>) 
+	= ob-a(<i>x</i>)</p>
+    <p>ob-apply(ob-<span style="font-variant: small-caps">NO</span>, <i>x</i>) = 
+	ob-b(<i>x</i>)</p>
+  </blockquote>
+  <p>for <i>x</i> any determined Ob.</p>
+  <p>As a consequence,</p>
+  <blockquote>
+    <p>ob-apply(ob-<span style="font-variant: small-caps">YES</span>, ob-c(<i>x</i>,
+    <i>y</i>)) = <i>x</i></p>
+    <p>ob-apply(ob-<span style="font-variant: small-caps">NO</span>, ob-c(<i>x</i>,
+    <i>y</i>)) = <i>y</i></p>
+  </blockquote>
+  <p align="left">for <i>x</i> and <i>y</i> any determined Obs.</p>
+  <p align="left">And this is sufficient to obtain any desired conditional 
+	behavior, since we can use</p>
+  <blockquote>
+    <p align="left">ob-apply(ob-apply(ob-<span style="font-variant: small-caps">YES</span>, 
+	ob-c(<i>x</i>, <i>y</i>)), <i>z</i>) = ob-apply(<i>x</i>, <i>z</i>)</p>
+    <p align="left">ob-apply(ob-apply(ob-<span style="font-variant: small-caps">NO</span>, 
+	ob-c(<i>x</i>, <i>y</i>)), <i>z</i>) = ob-apply(<i>y</i>, <i>z</i>)</p>
+  </blockquote>
+  <p align="left">as an idiom for arbitrary conditional behavior, corresponding 
+	to</p>
+  <blockquote>
+    <p align="left"><b>if</b> <i>p</i> <b>then</b> <i>x</i>(<i>z</i>) <b>else</b>
+    <i>y</i>(<i>z</i>)</p>
+  </blockquote>
+  <p align="left">Assuming that Miser is computationally complete, then whatever 
+	computational propositions there are, we expect that we are able to 
+	represent all of them with this much conditional-behavior machinery.</p>
+</blockquote>
+<h1 align="left">3. <a name="MiserPropositions">Propositions in Miser</a></h1>
+<blockquote>
+<p align="left"><i>Why we didn&#39;t use an applicative definition for truth and 
+employed ob-YES and ob-NO as definite Obs.</i></p>
+<p align="left"><i>The initial simplistic assumption that lets us talk about 
+propositions pretty much at all.&nbsp; (This isn&#39;t actually necessary in 
+general, but it seems necessary for computational propositions.)</i></p>
+  <p align="left"><i>The basic propositional forms and some demonstrated 
+	propositional functions.</i></p>
+  <p align="left"><i>Distinguishing between operating with truth functions and 
+	predicates and creating propositional forms.&nbsp; Maybe just a little.</i></p>
+<p align="left"><i>See if there is anything in the computational logic sphere 
+that we can borrow and illustrate here.</i></p>
+</blockquote>
+<h1 align="left">4. <a name="DeeperQuestions">Deeper Questions</a></h1>
+<blockquote>
+  <p align="left"><i>The dual of truth applies in programming systems.</i></p>
+  <p align="left"><i>The preference of Yes/No to True/False in reflecting 
+	computational truth (condition determination)</i></p>
+  <p align="left"><i>Inferring propositions versus the use of fixed forms for 
+	propositions.&nbsp; What it means for computational inference procedures.&nbsp;&nbsp;</i></p>
+  <p align="left"><i>Looking at the insight that the propositional calculus is 
+	about the sense of statements, not the literal surface syntax of statements, 
+	but that a formal view is indispensible for getting some certainty on being 
+	able to discern the proposition in a statement.</i></p>
+  <p align="left"><i>Dealing with propositions that are time-sensitive -- that 
+	is, there are predicates the determination of which depends on the state of 
+	the system at the time the predicate is asserted.</i></p>
+  <p align="left"><i>Dealing with the opacity and ambiguity of Obs as 
+	propositions, and discerning the form of the proposition from an applicative 
+	expression on Obs.&nbsp;&nbsp;</i></p>
+  <p align="left"><i>Issues of decidability in the ability to perform 
+	computational logic using Obs as computational propositions.&nbsp; Issues of 
+	computability with regard to propositional algebra.</i></p>
+  <p align="left"><i>Tying the two together.&nbsp; We can start with 
+	distinguished forms for and, or, not, implies, cond, and so on.&nbsp; That 
+	will certainly let us apply logical analysis and determine tautologies, etc.</i></p>
+  <p align="left"><i>Dealing with the prospect of undefined elements.&nbsp;&nbsp; 
+	We may have to do something about that.&nbsp; What happens when an 
+	operand-form does not yield a determined Ob, and other stories.</i></p>
+</blockquote>
+<h1 align="left">5. <a name="References">References</a></h1>
+<blockquote>
+ 
+    <dl>
+      <dt><a name="[Boole1854]" href="http://orcmid.com/readings/logic.htm#[Boole1854]">
+		[Boole1854]</a></dt>
+      <dd>Boole, George.&nbsp; <i>An Investigation of the Laws of Thought on 
+		which Are Founded the Mathematical Theories of Logic and Probabilities</i>.&nbsp; 
+		Macmillan (Toronto, London: 1854).&nbsp; Dover edition (New York: 1958) 
+		with all corrections made in the text.&nbsp; ISBN 0-486-60028-9.</dd>
+      <dt>&nbsp;</dt>
+      <dt><a name="[Burge75]" href="../readings/funprog.htm#[Burge75]">[Burge75]</a></dt>
+      <dd> Burge, William H. <i> Recursive Programming Techniques</i>. 
+		Addison-Wesley (Reading, MA: 1975). ISBN 0-201-14450-6. 
+      </dd>
+      <dt>&nbsp;</dt>
+ 
+    <dt><a name="[Harbison95]" href="http://orcmid.com/readings/softools.htm#[Harbison95]">
+	[Harbison95]</a></dt>
+    <dd>Harbison, Samuel P., Steele, Guy L.,Jr.&nbsp; <i>C, A Reference Manual.</i>&nbsp; 
+	ed.4.&nbsp; Prentice-Hall (Englewood Cliffs, NJ: 1995).&nbsp; ISBN 
+	0-13-326224-3 pbk.</dd>
+ 
+    </dl>
+  
+    <p><i>To be included:</i></p>
+    <blockquote>
+      <p><i>Boyer and Moore, Computational Logic as an example of interpretation 
+		of computational forms as propositions and predicates.</i></p>
+      <p><i>Use the ANSI standard for C rather than Harbison and Steele.</i></p>
+      <p><i>Reynolds for the use of closed lambda-calculus forms for truth and 
+		falsity.</i></p>
+      <p><i>Abelson and Sussman for how it is done in lisp-like systems, namely 
+		Scheme.</i></p>
+      <p><i>Anything about propositions versus the truth-value model that is 
+		useful here.</i></p>
+    </blockquote>
+  
+</blockquote>
+<hr color="#990033">
+<dl><font size="-1">
+	<dt><b><a name="v0.21">0.21</a> 2014-04-17-16:39 Preserve Initial Notes</b></dt>
+	<dd>The page is preserved in the folio established at notes/2000/11/n001100.</dd>
+	<dt><b><a name="v0.20">0.20</a> 2002-02-25-21:42 Introduce ob-<span style="font-variant: small-caps">YES</span> 
+	and ob-<span style="font-variant: small-caps">NO</span> (orcmid)</b></dt>
+	<dd>In looking at other problems around indeterminate results, I settled on 
+	YES and NO as better general responses than TRUE and FALSE.&nbsp; This 
+	provides a tie-in to having determined results.&nbsp; This edition provides 
+	initial capture of these ideas.</dd>
+	<dt><strong><a name="v0.10">0.10</a> 2000-11-07-15:17 Initial Draft (orcmid)</strong></dt>
+	<dd>Sketch the basic question and why I am interested in it.&nbsp; Explore 
+	how this is typically done.</dd></font>
+</dl>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" --></td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2000-11-07-15:17 -0800 (pst) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 17-08-29 16:40 $<br>
+		$$Revision: 21 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</div>
+<p align="right">&nbsp;</p>
+</body>
+</html>

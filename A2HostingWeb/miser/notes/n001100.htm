@@ -1,0 +1,197 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<!--$$Header: /miserCompagno/notes/n001100.htm 21    17-08-29 16:40 Orcmid $-->
+<title>n001100: Computational Notions of Truth [wormhole]</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../construction/templates/00/c000004e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<!--webbot bot="Include" U-Include="2000/11/n001100.htm" TAG="BODY" startspan -->
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+</font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="n000001.htm#n001100"><font color="#990033">n001100</font></a><br>
+		<i><font size="5">Computational Notions of Truth</font></i></font></b></font></p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../">miser</a>&gt;<a href="./">notes</a>&gt;<br>
+		<a href="2000/" target="_top">2000</a>&gt;<a target="_top" href="2000/11/">11</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="2000/11/n001100.htm">n001100</a>&gt;</code></b><br>
+      <small><small><a href="#v0.00">0.00</a> 
+		2017-08-29 16:40</small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+  <hr color="#990033">
+
+<blockquote>
+<p align="left">Procedures that determine the presence or absence of some 
+condition can be viewed as (computational) propositions.&nbsp; In most 
+programming systems, truth and falsity are represented implicitly in the 
+operations of the system.&nbsp; Functions and expressions that yield those 
+implicit representations are usefully taken as the intrinsic representations for 
+predicates and propositions in the computational system.</p>
+<p align="left">In some systems, there are designated values that represent 
+truth and falsity, and defined operations employ and produce those values in a 
+consistent manner.&nbsp; Since there are only Obs in <b><i>oMiser</i></b>, if we 
+are to fix particular values to signify truth and falsity, those values will be 
+Obs.</p>
+  <p align="left">However, the notion 
+	of truth in <i><b>oMiser</b></i> is more grounded in that it applies to what computational procedures in Miser 
+	do and do not determine.&nbsp; There is no fixed true/false distinction.&nbsp; 
+	Whether a result signifies the truth or falsity of something is a matter of 
+	the intention that is understood for the procedure that determines the 
+	result.&nbsp;&nbsp; </p>
+<p align="left">At the basic procedural level, there are merely the 
+	values that are produced based on some condition and there is not intrinsic 
+	notion of truth.&nbsp; One can consider this to be the case in all 
+computational systems.</p>
+<p align="left">This separation of truth and falsity from just what computations 
+produce is easily illustrated in the case of <i><b>oMiser</b></i>.&nbsp;&nbsp; 
+In the formulation of <b><i>oMiser</i></b> there is only one given operation that determines 
+any condition: function <b>ob.d</b>(<i>x</i>, <i>y</i>) on two given Obs <i>x</i> 
+and <i>y </i>yields <span style="font-variant: small-caps"><b>
+<font face="Courier New">ob_a</font></b></span> if <i>x</i> = <i>y</i> and
+<span style="font-variant: small-caps"><b><font face="Courier New">ob_b</font></b></span> if 
+<i>x</i> &ne; <i>y</i>.&nbsp; Which of these two fixed Obs signifies truth of 
+something depends on what the question happens to be: is truth to be the 
+interpretation when <i>x</i> and <i>y</i> are the same or when they are 
+different?&nbsp; Actual situations might depend on far more context than that 
+much.</p>
+<p align="left">In order to express properties of <b>
+		‹ob› </b>
+		in <i><b>oMiser</b></i> procedures, there does need to be an agreed 
+convention for coding truth and falsity as Obs.&nbsp; The convention is to 
+define <span style="font-variant: small-caps"><b>ob_a</b></span> to signify 
+truth and <span style="font-variant: small-caps"><b><font face="Courier New">ob_b</font></b></span> 
+for falsity in those situations where a truth-valued interpretation is called 
+for.&nbsp; In this manner, predicates represented mathematically in <b>
+		‹ob›</b>
+		can be manifest computationally in <i><b>oMiser</b></i> procedures in a 
+direct manner.&nbsp;&nbsp; </p>
+<p align="left">Under this convention, the idiomatic is-singleton(<i>x</i>) 
+defined as <i>x</i> = <b>ob.b</b>(<i>x</i>) can be manifest directly as <b>ob.d</b>(<i>x</i>,
+<b>ob.b</b>(<i>x</i>)).&nbsp; </p>
+<p align="left">The choice of <span style="font-variant: small-caps"><b>
+<font face="Courier New">ob_a</font></b></span> and
+<span style="font-variant: small-caps"><b><font face="Courier New">ob_b</font></b></span> 
+as results of <b>ob.d</b>(<i>x</i>, <i>y</i>) is not arbitrary.&nbsp; Although 
+there is no inherent interpretation as truth values, there is the useful 
+property that, by definition, <b>ob.ap</b>(<span style="font-variant: small-caps"><b><font face="Courier New">ob_a</font></b></span>,<i> 
+x</i>) = <b>ob.a</b>(<i>x</i>) and <b>ob.ap</b>(<span style="font-variant: small-caps"><b><font face="Courier New">ob_b</font></b></span>,
+<i>x</i>) = <b>ob.b</b>(<i>x</i>).</p>
+<p align="left">The definition of <b>ob.d</b>(<i>x</i>,<i>y</i>) and the 
+applicative interpretations of <span style="font-variant: small-caps"><b>
+<font face="Courier New">ob_a</font></b></span> and
+<span style="font-variant: small-caps"><b><font face="Courier New">ob_B</font></b></span> 
+are at the heart of application of <i><b>oMiser</b></i> to problems in logic, 
+including representing logical conditions about <i><b>oMiser</b></i> itself.</p>
+<p align="left">This folio provides detailed considerations of how this is 
+important with regard to <b>ob.ap</b> as a universal computational function and <b>
+		‹ob› </b>providing a model of computation, along with many useful 
+definitions based on the interpretation of
+<span style="font-variant: small-caps"><b><font face="Courier New">ob_a</font></b></span> 
+and <span style="font-variant: small-caps"><b><font face="Courier New">ob_B</font></b></span> 
+as truth values.</p>
+</blockquote>
+<h1 align="left"><a name="RelatedMaterial">Related Material</a></h1>
+<ul>
+	<li>
+	<p align="left"><b>n001100b: <a href="2000/11/n001100b.htm">Computational Notions of 
+	Truth [latest]</a></b></li>
+<li>
+<p align="left"><b>n001100c: <a href="2000/11/n001100c.htm">Initial Note</a><br>&nbsp;&nbsp; </b> </li>
+	<li>
+<p align="left"><b>n010202: <a href="2001/02/n010202.htm">Homage to the 
+Bit</a></b></li>
+	<li>
+<p align="left"><b>n001000: <a href="2000/10/n001000.htm">Miser as Theoretical 
+Model</a><br>
+&nbsp;&nbsp; </b> </li>
+<li>
+<p align="left"><b>n001100a: <a href="2000/11/n001100a.htm">Diary &amp; Job Jar</a></b></li>
+</ul>
+<hr color="#990033">
+<dl><font size="-1">
+	<dt><b><a name="v0.21">0.21</a> 2014-04-17-18:47 Provide Folio Cover</b></dt>
+	<dd>The page is preserved in the folio established at notes/2000/11/n001100.</dd>
+	<dt><b><a name="v0.20">0.20</a> 2002-02-25-21:42 Introduce ob-<span style="font-variant: small-caps">YES</span> 
+	and ob-<span style="font-variant: small-caps">NO</span> (orcmid)</b></dt>
+	<dd>In looking at other problems around indeterminate results, I settled on 
+	YES and NO as better general responses than TRUE and FALSE.&nbsp; This 
+	provides a tie-in to having determined results.&nbsp; This edition provides 
+	initial capture of these ideas.</dd>
+	<dt><strong><a name="v0.10">0.10</a> 2000-11-07-15:17 Initial Draft (orcmid)</strong></dt>
+	<dd>Sketch the basic question and why I am interested in it.&nbsp; Explore 
+	how this is typically done.</dd></font>
+</dl>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="2000/11/index.htm" target="_top">
+	<img border="0" src="../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+</td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2000-11-07-15:17 -0800 (pst) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 17-08-29 16:40 $<br>
+		$$Revision: 21 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</div>
+<!--webbot bot="Include" endspan i-checksum="56504" -->
+</body>
+</html>

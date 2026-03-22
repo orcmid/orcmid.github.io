@@ -1,0 +1,232 @@
+PkgCrypto-Enhancements-v1.02          UTF-8                     dh:2011-08-15
+
+
+           PROPOSAL: ODF 1.3 PACKAGE ENCRYPTION ENHANCEMENTS
+           =================================================
+
+             A. Rationale
+
+             B. Proposed Changes
+               1. Front Page
+               2. Normative References
+               3. Section 4.8.3 manifest:checksum-type
+               4. Section 4.8.6 manifest:start-key-generation-name
+
+             C. Deployment Considerations
+
+             D. Cryptographic Strength Considerations
+
+             Change History
+
+A. RATIONALE
+
+   In the default approach to password-based key generation for encryption of
+   ODF packages, a single start-key is generated from the user-entered pass-
+   word.  The same start-key is used in all of the key-generation operations
+   performed for the individual encryption of the parts of the ODF package.
+
+   Although the generated key is different for each encrypted part, the
+   user-entered password and the default start-key values are unchanged for
+   each encrypted part.  This means that both the user-entered password and
+   the start-key value can be attacked to reveal all of the plaintexts of the
+   encrypted package.
+
+   This proposal takes advantage of the existing presence of unique salts for
+   key generation as a means to also have unique start keys.  The salt which
+   is already created for use in the password-based key generation is also
+   used (in a different manner) as a salt in the generation of the start-key
+   value.
+
+   With this procedure, successful attack on one start-key is not useful in
+   attacking the encryption of any other parts of the ODF package.
+
+   NOTE: The vulnerability of the user-entered password to attack is not
+   diminished.  The encrypted document is compromised to the extent that the
+   password is discoverable by any means.
+
+   To support decryption recognition that streams in an encrypted package are
+   being decrypted properly, the default manifest also stores a salt-free
+   digest of the first 1024 bytes of the unencrypted but compressed plaintext.
+   To discourage this information being useful in detection of same-text items
+   in encrypted and unencrypted documents, a new manifest:checksum-type is
+   added.  This checksum type uses a salt to prevent duplicate
+   manifest:checksum values being produced for the same unencrypted document
+   part.
+
+   Specification of these provisions in an early Committee Specification Draft
+   for ODF 1.3 secures an opportunity for trial-use introduction in ODF 1.2
+   extended documents and confirmation of practical utility of the proposed
+   changes.
+
+
+B. PROPOSED CHANGES
+   (relative to OpenDocument-v1.2-cs01-part3) for ODF 1.3 CSD01
+
+
+  1. Front Page
+     ----------
+
+[Add to Declared XML Namespaces]
+
+    http://docs.oasis-open.org/ns/office/1.3/security#
+
+
+  2. Normative References
+     --------------------
+
+In section 1.3, add the reference
+
+[RFC2104]   H. Krawczyk, M. Bellare, and R. Canetti.  HMAC: Keyed-Hashing for
+Message Authentication, http://www.ietf.org/rfc/rfc2104.txt, IETF, 1997.
+
+
+  3. Section 4.8.3 manifest:checksum-type
+     ------------------------------------
+
+Before the last list item ("The IRI of an alternative algorithm ..."), add the
+new list item
+
+  * The IRI http://docs.oasis-open.org/ns/office/1.3/security#sha1-1k-smac
+
+Replace the final paragraph, beginning "Package producers that support
+encryption ... " with the following paragraphs:
+
+"Package producers that support encryption should use the
+http://docs.oasis-open.org/ns/office/1.3/security#sha1-1k-smac algorithm.
+Package consumers that support encryption shall support the values SHA1/K,
+urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha1-1k,
+urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k, and
+http://docs.oasis-open.org/ns/office/1.3/security#sha1-1k-smac.
+
+"For http://docs.oasis-open.org/ns/office/1.3/security#sha1-1k-smac, the value
+of manifest:checksum encodes a string of 40 octets.  The first 20 octets are
+the value *mac*.  The remaining 20 octets are the value *salt*, a 160 bit
+cryptographically-unique value.
+
+"    mac=HMAC-SHA1(salt, plain1k)
+
+"where *plain1k* is the first 1024 bytes of the compressed unencrypted file or
+the entire compressed unencrypted file if its length is less than 1024 bytes.
+HMAC-SHA1(key, text) is the HMAC messaage authentication code algorithm based
+on the SHA-1 hash function [RFC2104].
+
+"[Note: This form is used since HMAC-SHA1 is presumed to be already available
+as part of the default PBKDF2 key-generation algorithm.  Note further that,
+while the HMAC key parameter is generally a secret authentication key, in this
+case it is the text that has any secrecy that there is.]"
+
+
+  4. Section 4.8.6 manifest:start-key-generation-name
+     ------------------------------------------------
+
+Following the first list item (beginnning SHA1:...) insert the new list item:
+
+  * The IRI http://docs.oasis-open.org/ns/office/1.3/security#sha1-shaken
+
+Replace the last paragraph (beginning "Package producers that ..." with the
+following two paragraphs:
+
+"When http://docs.oasis-open.org/ns/office/1.3/security#sha1-shaken is
+specified, the start key consists of the SHA1 digest over the concatenation of
+the user password's UTF-8 and the immediately-following binary octets
+of a salt value.  The salt value is provided by the <manifest:key-derivation>
+manifest:salt attribute sibling of the <manifest:start-key-generation>
+element for which this method is specified.  If there is no manifest:salt
+value, the result is the same as the default start-key generation.
+
+"Package producers that support encryption should use the
+http://docs.oasis-open.org/ns/office/1.3/security#sha1-shaken algorithm.
+Package consumers that support encryption shall support the values SHA1 and
+the values http://docs.oasis-open.org/ns/office/1.3/security#sha1-shaken,
+http://www.w3.org/2000/09/xmldsig#sha1, and
+http://www.w3.org/2001/04/xmlenc#sha256."
+
+
+C.  DEPLOYMENT CONSIDERATIONS
+
+The additional provisions are designed so that an implementation of any
+version of ODF that supports at least (or only) the default SHA1 methods will
+not be disturbed when longer or different protection-key values are employed,
+so long as unexpected lengths of base64Binary encodings of the
+manifest:checksum are tolerated in a graceful manner.
+
+Down-level implementations will fail with these extensions, not being able to
+derive the correct start-key nor to verify the digest of the initial
+plaintext.  The discretionary variability available to producers is something
+that ODF consumers need to respond to gracefully in any case.
+
+This situation is mitigated to the degree that documents are encrypted for
+personal reasons and are not distributed to others where there is a shared
+password but not necessarily the same software available for the decryption.
+Messages provided for optional selection of these enhancement extensions can
+also indicate that selection of the option limits decryption to use of other
+software that also supports the enhancement extensions.
+
+For ODF 1.2, the addition of alternative IRIs for manifest:checksum-type and
+manifest:start-key-generation-name is permitted only in extended conforming
+packages.  Consequently, any down-level implementation of these ODF 1.3
+additions (1) must be isolated to extended conforming packages and (2) must
+not have identifiers that appear to be under the authority of the OASIS
+OpenDocument Format specification.
+
+One approach for early adoption is to upgrade ODF 1.2 consumers to accept the
+new URIs and their methods and also accept early-adoption URIs that are
+implementation-defined.  The implementation-defined URIs can be aligned on by
+agreement among implementations to provide early adoption in advance of the
+completion of ODF 1.3 and the production of ODF 1.3 documents.  ODF 1.2
+producers need only produce the implementation-defined URIs until upgraded to
+produce ODF 1.3 documents.
+
+In addition, if these new algorithms do not survive into ODF 1.3, or they are
+changed in an incompatible way, different URIs than those in this proposal
+should be adopted into ODF 1.3.  In that way, there is never any collision
+with the anticipatory acceptance of the current URIs in early-adoption
+implementations.  The implementation-defined URIs can remain in use, as they
+would continue to be extensions in ODF 1.3 packages so long as the basic
+encryption model is preserved in ODF 1.3.
+
+A series of resiliency tests are being provided in the repository of the
+OASIS ODF Interoperability and Conformance (OIC) TC so that consumers at all
+levels can be tested to confirm that these additional provisions and others
+of their kind allowed for in ODF 1.2 and beyond will not break consumers and
+be handled gracefully even where unsupported.
+
+
+D. CRYPTOGRAPHIC STRENGTH CONSIDERATIONS
+
+These provisions do not address broader considerations of information
+disclosure and vulerability to discovery of passwords and breaking of
+encryption by other means.
+
+Improving the secrecy of the start-key and and salting the manifest:checksum
+value are useful but insufficient improvements.
+
+Although stronger message-digest algorithms are recommended (SHA256 and SHA512
+in particular), there is no indication that relative weakness of SHA1 is
+of any importance in the current usage.
+
+For manifest:checksum-type, the salted digest is not a secret and the effort
+to determine that there is a known same-plaintext value is not increased much.
+The key benefit is having a salt at all.  The usage of HMAC-SHA1 instead of
+plain SHA1 adds a modest computational cost without requiring additional
+digest techniques.
+
+For manifest:start-key-generation-name, the salted generation of the start-key
+value is sufficient and not weaker than what happens before a typical first
+HMAC-SHA1 round in situations when the start-key value is the password text.
+So long as keys with no more than 160 bits are required from the key-
+generation procedure, the simplest strengthening of the PBKDF2 procedure is by
+increasing the number of iterations.
+
+
+CHANGE HISTORY
+
+ 1.02 2011-08-15T23:16Z Correct a typographical error and make editorial
+      review of the entire text, expanding the deployment considerations.
+      Added Cryptographic Strength Considerations.
+ 1.01 2011-08-04T04:16Z Change name of proposal, add [RFC2104], section 4.8.3
+      manifest:checksum-type, and section on C on Deployment Considerations.
+ 1.00 2011-07-31T01:57Z Initial full draft.
+
+
+                      *** end of proposal v1.02 ***

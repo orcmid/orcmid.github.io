@@ -1,0 +1,291 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<!--$$Version:                                                                        $-->
+<title>MNCS Library Proposal</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">DMA Proposal for</a> an <a NAME="Top">MNCS Library: </a></h1>
+
+<h1 align="center"><a NAME="Top">Multinational Character Set Library for Portability and
+Reuse</a></h1>
+
+<h3>Authors: DMA Integration Subcommittee</h3>
+
+<blockquote>
+  <p>:Larry Bonham, Xerox Corporation</p>
+  <p>Dennis E. Hamilton, InfoNuovo</p>
+</blockquote>
+
+<blockquote>
+  <p>Hitoshi Tanaka, Hitachi Corporation, Ltd.</p>
+</blockquote>
+
+<h3>Revision History</h3>
+
+<blockquote>
+  <p><font color="#FF0000"><strong>Changes needed:</strong></font><ul>
+    <li><font color="#FF0000"><strong>Bring in the newer sections of architectural change
+      proposals and align more with that structure.&nbsp; It will provide a place to mention the
+      library implementation, definition of values, etc.</strong></font></li>
+    <li><font color="#FF0000"><strong>Illustrate the basic string-model usage.</strong></font></li>
+    <li><font color="#FF0000"><strong>Populate the indicated sections in this version (0.02) of
+      the boilerplate.</strong></font></li>
+  </ul>
+  <p><strong>Version 0.02 - </strong>2000-02-24<strong> </strong>Minor adjustment for
+  published MNCS project on the web (Dennis Hamilton)<ul>
+    <li>There is still no significant content here.&nbsp; It is a placeholder for further
+      effort.</li>
+    <li>The sections were collapsed to those that will require content.</li>
+  </ul>
+  <p><strong>Version 0.01</strong> - 1999-06-09 Original Proposal skeleton (Dennis Hamilton)<ul>
+    <li>a version of the Architectural Change boilerplate (in HTML) with minor markup for this
+      topic.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><em>Content </em></h2>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <h3><a HREF="sketch.htm#Overview">1. Functional Overview / Description</a> </h3>
+  <h3><a href="#NewTypes">2. New/Changed Data Types and Values</a></h3>
+  <h3><a HREF="sketch.htm#NewProps">3. New/Changed Classes and Properties</a> </h3>
+  <h3><a HREF="sketch.htm#NewFaces">4. New/Changed Interfaces</a></h3>
+  <h3><a HREF="sketch.htm#ArchImpact">5. Architectural Impacts</a> </h3>
+  <h3><a HREF="sketch.htm#References">6. Reference Materials</a> </h3>
+  <h3><a HREF="sketch.htm#Experience">7. Existing Systems and Related Experiences</a> </h3>
+  <h3><a HREF="sketch.htm#Compliance">8. Compliance and Conformance Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#SampleUse">9. Sample Usage</a> </h3>
+  <h3><a HREF="sketch.htm#Glossary">10. Glossary / Nomenclature</a> </h3>
+  <h3><a HREF="sketch.htm#Impact">11. Impact on Existing Systems</a> </h3>
+  <h3><a HREF="sketch.htm#Performance">12. Performance Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#Compatibility">13. Backwards Compatibility and Legacy
+  Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#Specification">14. Incorporation Into DMA Specifications</a> </h3>
+  <h3><a href="#Deployment">15. Implementation and Deployment</a></h3>
+</blockquote>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="The table of content provides hyperlinks to the title lines of the appropriate sections. If you adjust the titles, you will want to adjust them here, too. Also, you'll need to be careful to maintain the document links. Starting out, it may be useful just to work with these sections and not be too creative. " --></p>
+</blockquote>
+
+<h1><a NAME="Overview">1. Functional Overview / Description </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section should provide a conceptual overview of the feature(s) included in your submission. Details about new interfaces and properties should be deferred to the sections below. This section should focus on how the architecture is extended and improved by this submission. 
+
+Because HTML provides a hypertext mechanism, it is desirable to keep descriptions here short and, as they expand, provide further details in expansion sections that are linked to from these main body sections. The sections that are reached should provide a way back to this point in the document as well as back to the top of this document. " --></p>
+</blockquote>
+
+<blockquote>
+  <p>The MNCS library provides programming support for creation of string-format independent
+  programs that can be built to operate with one MNCS string-format or another simply by
+  changing some macro definitions.&nbsp; The library provides recommended macros and their
+  usage.&nbsp;&nbsp; The use of the MNCS Library is entirely optional.&nbsp; It is
+  implemented and provided so that developers can use a portable, common solution readily
+  available to all of the DMA community.</p>
+  <p>The MNCS library depends on the MNCS extensions being present.&nbsp; The library is not
+  required for the extensions; the extensions are required for the library.</p>
+  <p>[<font color="#FF0000">remember to point out that the library can also be used without
+  the extensions, but the application must limit itself to the default, DmaString
+  configuration</font>.</p>
+  <p>point out that the library allows the same source code to be compiled for one or more
+  different string models using the _T suffix and an #include definition.</p>
+  <p>point out that the library also allows any and all of the string models to be used at
+  the same time, in those applications which find that valuable.</p>
+  <p>point out that the library also allows a service element to be created that uses
+  multiple string models or that is compiled into different copies from a single source,
+  once for each model to be supported.]</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="NewTypes">2. New/Changed Data Types and Values</a></h1>
+
+<blockquote>
+  <p>not applicable</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewProps">3. New/Changed Classes and Properties </a></h1>
+
+<blockquote>
+  <p>not applicable</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewFaces">4. New/Changed Interfaces</a></h1>
+
+<blockquote>
+  <p>not applicable.&nbsp; Interface changes are part of the extension proposal. </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp;</p>
+</blockquote>
+
+<h1><a NAME="ArchImpact">5. Architectural Impacts </a></h1>
+
+<blockquote>
+  <p>not applicable.&nbsp; </p>
+  <p>Thie library is confined to source-language mechanisms that make it easier to select
+  and then conform to one or more string models.&nbsp; The architectural impacts are a
+  consequence of the extensions themselves, not the library.</p>
+</blockquote>
+
+<h2><a NAME="Requirements">5.7 What requirement does this address? </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Whenever possible, trace the submission back to a specific requirements in the user requirements document for DMA. In general, our bias should be to strongly question any architecture change request that can't be linked back to a requirement. If our customer base didn't ask for this feature, why are we providing it ? " --></p>
+  <p><font color="#FF0000"><strong>Note: This material and that of section 5.8 needs to be
+  moved to a different level in the outline, and then addressed separate from Architectural
+  Impact.</strong></font></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h3>5.7.1 Why is this a good solution? </h3>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="In this section you should provide some self-critique of your approach. Describe alternatives that were discarded, and the criteria you used in determining that this change is a good solution to the problem. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h2><a NAME="FailureModes">5.8 Failure Modes / Crash Recovery </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="You should discuss failure modes and crash recovery issues if your submission has any peculiarities in this regard. If your change significantly improves or degrades the ability of DMA compliant systems to recover from error conditions, describe the impact of your change in this section. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="References">6. Reference Materials</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="We want to insure that consideration has been given to existing research into each of our topic areas. This area may be excluded in a draft submission, but must be completed in a final submission, and must include at least 2 references. These may be specific journals, or existing product documentation, or notes from a verbal/e-mail conversation with a topic expert. " --></p>
+  <p>to be defined</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Experience">7. Existing Systems and Related Experiences </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This is similar to the previous section, but is more focused on existing product implementations. For example, the containment subcommittee might reference a journal arcticle describing electronic filing cabinets in section 6. In this section a list of the features and failings of existing implementations could be presented. This provides reviewers with insights into the state of the existing art in this particular technical area. " --></p>
+  <p>to be defined</p>
+  <p>acknowledge the custom for _T modeling of different string models in Microsoft Win32
+  libraries.</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compliance">8. Compliance &amp; Conformance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Define conformance criteria for your submission here.  For example, if your submission provides for wide ranging levels of conformance, or perhaps a very narrow range of conformance (works or doesn't), describe these features here in qualitative terms.  What is the minimum subset of features defined here that should be required of every DMA-compliant implementation?  What is strictly optional?  Even though compliance testing is not within the scope of DMA 1.0, list any suggestions here for how compliance testing of the features could be done in the future." --></p>
+  <p>not applicable.</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="SampleUse">9. Sample Usage </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Provide an example of how this feature is used. This can be provided as either a code example, or as descriptive text. If you can't think up a compelling sample usage, you should not be suggesting this enhancement ! " --></p>
+  <p>to be defined</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Glossary">10. Glossary / Nomenclature </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="List new or ambiguous terms you've used in your submission. Commonly used DMA terms such as &quot;document space&quot; or &quot;service provider interface&quot; do not need to be redefined in your submission. However, any new terms, or terms you feel have been ambiguously used prior to your submission should be included in this glossary. " --></p>
+  <p>to be defined</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Impact">11. Impact on Existing Systems</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe how this change will impact existing systems that could be integrated into a DMA system. For example, including a containment model would allow repositories that have a containment model to externalize this through their document space. Browsers that support hierarchical navigation could navigate through DMA object hierarchies using the DMA containment model, and display these hierarchies in their UIs. 
+
+If you are making a change that will change the behavior of functionality already specified in DMA, specify the type of change in this section. " --></p>
+  <p>to be defined (short comment on the impact of recompilation)</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Performance">12. Performance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the performance impact of your suggested changes. Does your change force implementations that have poor performance ? Consider the fact that DMA systems will be implemented in distributed environments. " --></p>
+  <p>no impact (short comment on how the macros employ standard idioms for the functions)</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compatibility">13. Backwards Compatibility and Legacy Considerations</a> </h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section is probably not applicable for the first round of submissions, but will be useful in subsequent revisions to the architecture. " --></p>
+  <p>not applicable (point out existing DMASTR usage is preserved and additions are all in
+  the DMA name space)</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Specification">14. Incorporation Into DMA Specifications </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the specific changes that should be made to the architecture to incorporate your change. 
+
+Describe new sections that should be added, additions/deletions to existing sections. Specify if your change includes updates to the objects and interfaces Access databases used to generate the spec. " --></p>
+  <p>to be defined</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a name="Deployment">15. Implementation and Deployment</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Explain anything that needs to be paid attention to about the implementation and deployment of this change, especially into configuration management, trial use, and deployment into standard applications and middleware." --></p>
+  <p>to be defined</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<hr>
+
+<h5><a name="Bottom">End of Document </a></h5>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)" --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+  <p align="right"><em>$$Author: Orcmid $<br>
+  $$Date: 00-03-12 12:13 $<br>
+  $$Revision: 3 $</em></p>
+</blockquote>
+<!-- This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com) -->
+</body>
+</html>

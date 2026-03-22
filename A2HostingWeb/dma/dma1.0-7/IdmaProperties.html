@@ -1,0 +1,349 @@
+<html><head><title>Interfaces and Methods: IdmaProperties</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaProperties"></a>IdmaProperties</h2>
+<p>This interface provides read-only access to DMA property values of any DMA base property type:  Binary, Boolean, DateTime, Float, Identifier, Integer, Object, or String.  Properties  may be chosen either by their index in the object's class description list, or by their property identifier (e.g. dmaProp_RenditionsPresent).  Both indices and property ids can be found from the object's meta-data.  Some Property Ids are well known and can be used directly without investigation of the meta-data.
+</p><p>
+The methods used to access DMA Properties are segmented into two interfaces, the methods that allow readonly access to the properties (IdmaProperties), and the methods that allow modification of the properties (IdmaEditProperties).
+</p><p>
+When a caller requests the value of a  property of type String, DateTime, or Binary, the called method allocates storage for the property value (using the DMA system allocator), and passes back a pointer to the allocated storage.  It is the caller's responsibility to free that storage when it is no longer needed -- again using the DMA system allocator.</p></p>
+<h3><a name="IdmaPropertiesGetPropValBinaryById"></a>IdmaProperties::GetPropValBinaryById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValBinaryById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DmaBinaryValue*    <i>pBinaryValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pBinaryValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the DmaBinaryValue structure that describes the returned value.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a binary property value -- a fixed number of bytes of arbitrary format.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.
+</p><p>
+The caller is responsible for allocating and freeing the structure pointed to by the pBinaryValue parameter. The memory pointed to by the pBinaryValue-&gt;pbBytes field is allocated by the callee and must be freed by the caller. This field need not be pre-initialised to NULL by the caller, and must be set to NULL by the callee if any return code other than DMARC_OK is returned.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValBinaryByIndex"></a>IdmaProperties::GetPropValBinaryByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValBinaryByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaBinaryValue*    <i>pBinaryValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pBinaryValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the Property Value location.  If unsuccessful, the bytes at this location will remain unchanged.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a binary property value -- a fixed number of bytes of arbitrary format.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.
+</p><p>
+The caller is responsible for allocating and freeing the structure pointed to by the pBinaryValue parameter. The memory pointed to by the pBinaryValue-&gt;pbBytes field is allocated by the callee and must be freed by the caller. This field need not be pre-initialised to NULL by the caller, and must be set to NULL by the callee if any return code other than DMARC_OK is returned.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValBooleanById"></a>IdmaProperties::GetPropValBooleanById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValBooleanById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaBoolean    <i>pbBooleanValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pbBooleanValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns the boolean value for the indicated property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a boolean property value.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValBooleanByIndex"></a>IdmaProperties::GetPropValBooleanByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValBooleanByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaBoolean    <i>pbBooleanValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pbBooleanValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns the boolean value for the indicated property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a boolean property value.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValDateTimeById"></a>IdmaProperties::GetPropValDateTimeById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValDateTimeById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>ppDmaDateTime    <i>ppDateTimeValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>ppDateTimeValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the returned DateTime, which will be set to NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a DateTime property value, which is a specialization of a DMAString.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.
+</p><p>
+This method, if successful, allocates a DmaDateTime and passes ownership to the caller.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValDateTimeByIndex"></a>IdmaProperties::GetPropValDateTimeByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValDateTimeByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>ppDmaDateTime    <i>ppDateTimeValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>ppDateTimeValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the returned DateTime, which will be set to NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a DateTime property value, which is a specialization of DMAString.  The property of interest is located using its index, which is defined by the object's Class Description.
+</p><p>
+This method, if successful, allocates a DmaDateTime and passes ownership to the caller.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValFloat64ById"></a>IdmaProperties::GetPropValFloat64ById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValFloat64ById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaFloat64    <i>pfFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to a  string containing the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pfFloatValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns the float value of the Property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a 64 bit float property Value.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValFloat64ByIndex"></a>IdmaProperties::GetPropValFloat64ByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValFloat64ByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaFloat64    <i>pfFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pfFloatValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns the float value of the Property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a 64 bit float property Value.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValIdById"></a>IdmaProperties::GetPropValIdById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValIdById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaId    <i>pIdValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIdValue</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to client-allocated storage, which the method will populate with the Id value</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a Property Value in DMA Id form.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValIdByIndex"></a>IdmaProperties::GetPropValIdByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValIdByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaId    <i>pIdValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIdValue</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to client-allocated storage, which the method will populate with the Id value</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a Property Value as a DMA Id, which is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValInteger32ById"></a>IdmaProperties::GetPropValInteger32ById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValInteger32ById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaInteger32    <i>plIntegerValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to a string containing the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>plIntegerValue</i></p></TD><TD><p>output</p></TD><TD><p>The integer value of the Property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a 32 bit signed integer property value.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValInteger32ByIndex"></a>IdmaProperties::GetPropValInteger32ByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValInteger32ByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaInteger32    <i>plIntegerValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>plIntegerValue</i></p></TD><TD><p>output</p></TD><TD><p>The integer value of the Property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a 32 bit signed integer property value.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValObjectById"></a>IdmaProperties::GetPropValObjectById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValObjectById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObjectValue</i></p></TD><TD><p>output</p></TD><TD><p>An interface on the returned object, which will be set to NULL for unsuccessful return codes.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns an object valued property.  This operation will be successful only for properties that are of type "object".  This allows properties to be containers, lists of property values, or complex types.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.
+</p><p>
+The returned object is obtained by reference. If there is an already-bound value for the object-valued property, an interface on that value is returned.  If there is no already-bound value, and a value is defined, an appropriate DMA object is obtained, bound, and its selected interface returned.  Sometimes, an existing object will be bound (i.e., for the dmaProp_This property).  In other cases, a completely new object may be supplied, as for the default initial value of a never-set list-valued property.  And at other times, a new scratchpad of  an existing persistent object will be created and bound in conformance with the by-reference rules of the DMA object model.
+</p><p>
+An exception is made for enumeration objects -- all access to enumeration-valued properties return interfaces to a fresh enumeration object reset to the beginning of the sequence.  Enumeration-valued properties always behave as if they are not already bound.
+</p><p>
+If this method is applied to a list or enumeration property, it may never return DMARC_VALUE_NOT_SET. That is, all other error conditions notwithstanding, an interface to a list or enumeration object must always be delivered, even though the list or enumeration may be empty.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValObjectByIndex"></a>IdmaProperties::GetPropValObjectByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValObjectByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObjectValue</i></p></TD><TD><p>output</p></TD><TD><p>An interface on the returned object, which will be set to NULL for unsuccessful return codes.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns an object valued property.  This operation will be successful only for properties that are of type "object".  This allows properties to be containers, lists of property values, or complex types.  The property of interest is located using its index, which is defined by the object's Class Description.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.
+</p><p>
+The returned object is obtained by reference. If there is an already-bound value for the object-valued property, an interface on that value is returned.  If there is no already-bound value, and a value is defined, an appropriate DMA object is obtained, bound, and its selected interface returned.  Sometimes, an existing object will be bound (i.e., for dmaProp_This).  In other cases, a completely new object may be supplied, as for the default initial value of a never-set list-valued property.  And at other times, a new scratchpad of  an existing persistent object will be created and bound in conformance with the by-reference rules of the DMA object model. 
+</p><p>
+An exception is made for enumeration objects -- all access to enumeration-valued properties return interfaces to a fresh enumeration object reset to the beginning of the sequence.  Each time the property is accessed, enumeration-valued properties behave as if they are not already bound.
+</p><p>
+If this method is applied to a list or enumeration property, it may never return DMARC_VALUE_NOT_SET. That is, all other error conditions notwithstanding, an interface to a list or enumeration object must always be delivered, even though the list or enumeration may be empty.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValStringById"></a>IdmaProperties::GetPropValStringById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValStringById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>ppDmaString    <i>ppStringValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>ppStringValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the returned string, which will be set to NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a DMAString-valued property value.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.
+</p><p>
+This method, if successful, allocates a DmaString and passes ownership to the caller.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaPropertiesGetPropValStringByIndex"></a>IdmaProperties::GetPropValStringByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProperties::GetPropValStringByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>ppDmaString    <i>ppStringValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be obtained.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>ppStringValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the returned string, which will be set to NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a DMAString-valued property value, which is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.
+</p><p>
+This method, if successful, allocates a DmaString and passes ownership to the caller.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+</body></html>

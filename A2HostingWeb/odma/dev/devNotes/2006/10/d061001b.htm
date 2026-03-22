@@ -1,0 +1,838 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061001b: info.odma.practical100 Package [latest] </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061001b.htm 106   13-08-22 12:53 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="d061001g.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="15%" height="6">
+
+
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+</td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+		<a href="../../d000001.htm#d061001"><font color="#990033">d061001</font></a><br>
+      	</font></strong><strong><font color="#990033">&nbsp;</font></strong><font color="#990033"><strong><a href="d061001.htm"><font color="#990033">info.odma.practical100 
+Component Development</font></a></strong></font><strong><font color="#990033"><br>
+      <em><font size="5">0.56beta Evolutionary Development</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="19%" height="6">
+
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font face="monospace"><p align="right"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</b></p>
+      <p align="right"><b><a target="_top" href="d061001g.htm">d061001g</a>&gt;<br>
+		</b></font>
+</font></small><a href="#0.11"><font size="1">0</font><small><small>.11</a>
+		2013-08-22 12:53 -0700 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+
+<small>
+	<blockquote>
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest&nbsp; <b><font face="Courier New, Courier, Monospace">
+				info.odma.practical100</font></b> components are at &lt;<b><font face="monospace"><a href="d061001b.htm">http://ODMA.info/dev/devNotes/2006/10/d061001b.htm</a></font></b>&gt;.<div style="float: right">
+					
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	</div>
+				</li>
+				<li><b>Previous version: 0.30alpha&nbsp; </b>&lt;<b><font face="monospace"><a href="d061001f.htm">http://ODMA.info/dev/devNotes/2006/10/d061001f.htm</a></font></b>&gt;<b>.</b></li>
+				<li><b>Next version: 0.59beta </b>&lt;<font face="monospace"><b><a target="_top" href="d061001h.htm">http://ODMA.info/dev/devNotes/2006/10/d061001h.htm</a></b></font>&gt;
+				is the transition candidate that will provide a half-step toward 
+				0.60beta with all breaking changes identified.<br>
+&nbsp;&nbsp; </li>
+				<li><b>This version:</b>&nbsp;&nbsp;<b>0.56beta&nbsp;Evolutionary 
+				Development 0.11 </b>&lt;<font face="monospace"><b><a target="_top" href="d061001g.htm">http://ODMA.info/dev/devNotes/2006/10/d061001g.htm</a></b></font>&gt; 
+				c<b>onsists of&nbsp; material that is intended for the 
+				practical100 release candidate.&nbsp; </b>Future changes were to 
+				be limited to documentation formatting changes (e.g., for JavaDoc) 
+				and repair of defects.&nbsp; There may also be some tightening 
+				of parameter-format filtering before 0.60beta.&nbsp; [This 
+				objective is amended in the 0.59beta work.]<br>
+&nbsp;&nbsp; </li>
+				<li><b><a name="Downloads">Downloads</a>:</b> The material of the 0.56beta 
+				Evolutionary Development is provided in four files:<ol>
+					<li><b><font face="monospace">
+					<a href="d061001g-license.txt">d061001g-license.txt</a></font></b> 
+					0.00 version, 3,215 byte file dated 2007-02-23-12:16</li>
+					<li><b>
+					<font face="monospace">
+					<a href="d061001g-ReleaseNotes.txt">d061001g-ReleaseNotes.txt</a></font></b> 
+					0.07, 14,562 byte file dated 2007-03-10-23:30</li>
+					<li><b><font face="monospace">
+					<a href="d061001g.txt">d061001g.txt</a></font></b>
+					<b>0.04 Manifest of the 0.56beta package</b>, 10,335 byte 
+					file dated 2007-03-10-23:43</li>
+					<li><b><font face="monospace">
+					<a href="d061001g-practical100-0.56beta.zip">d061001g-practical100-0.56beta.zip</a></font></b>
+					<b>0.04 Archive of the 0.56beta Material</b>, 37,623 byte file dated 2007-03-10-23:44.&nbsp; 
+					The license, release notes, and manifest are included.&nbsp; 
+					Review the manifest to determine whether it is desirable to 
+					download the complete archive.<br>
+&nbsp;&nbsp; <br>
+					<font color="#990033"><b>WARNING: Versions 0.00-0.03 of the 
+					0.56beta archive are obsolete.&nbsp; They must be replaced by 
+					an 0.04 or later archive to work properly with the 
+					0.57beta release of the odmjni100 package.&nbsp; Changes in 
+					0.04 correct a serious defect in OdmFormat.wfDocIdPrefix.&nbsp; 
+					In addition, there are minor adjustments to the manifest and ReleaseNotes.</b></font></li>
+				</ol>
+				</li>
+			</ul>
+			</div>
+
+</small>
+
+</blockquote>
+<h2><a name="Synopsis">Synopsis</a></h2>
+<h2><a name="1" target="_top" href="#1">1</a>. Objectives</h2>
+<blockquote>
+	<p>The ODMJNI 1.0 0.56beta distribution is provided to accomplish six 
+	important steps in the progression to full ODMJNI 1.0: </p>
+	<ol>
+		<li>Begin clean-up and improved documentation of the <b>
+		<font face="monospace">practical100</font></b> 
+			package in anticipation of interface freeze and initiation of the 
+			initial-public 0.60beta release. <br>&nbsp;&nbsp;&nbsp; </li>
+		<li>Repair any defects noticed during usage of the 
+			<b><font face="monospace">practical100</font></b> package as it has existed since the 0.30alpha 
+			iteration. <br>&nbsp;&nbsp;&nbsp; </li>
+		<li>Introduce the <b>info.odma.practical100.OdmFormat</b> class and static 
+			methods for verifying the format of text data elements.&nbsp; This 
+			allows verification of parameters to <b><font face="monospace">practical100</font></b> interface and 
+			class implementations without submission to, and summary rejection 
+			by, an implementation. <br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li>Enable active filtering of parameters in the null 
+			implementations within the <b><font face="monospace">practical100</font></b> package. The encounter of 
+			any ill-formed text element will result in an unchecked <b>
+		<font face="monospace">OdmError</font></b> 
+			exception as specified in the definition of <b>
+		<font face="monospace">practical100</font></b> behaviors.&nbsp;
+		<br>&nbsp;&nbsp;&nbsp; </li>
+		<li>Increase the test coverage of null implementations by providing 
+			more coverage of all paths that are possible under null conditions. 
+			(The testing of all of the filter and exception cases isn&#39;t complete 
+			until 0.60beta.&nbsp; In particular, the 0.56beta changes do not 
+			make any modifications to the <b><font face="monospace">odmjni100</font></b> package, which must only 
+			undergo a regression check.) <br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li>Perform regression against the 0.54beta <b><font face="monospace">odmjni100</font></b> implementations 
+			to ensure that the introduction of validations does not interfere 
+			with the valid format usages with existing <b>
+		<font face="monospace">odmjni100</font></b> classes and tests.&nbsp; 
+			Because the <b><font face="monospace">odmjni100</font></b> package classes use 
+		<b><font face="monospace">practical100</font></b> null 
+			implementations for base classes, some parameter filtering will 
+			occur via inheritance.</li>
+	</ol>
+</blockquote>
+
+<h2><a name="2" target="_top" href="#2">2</a>. Bugs and Caveats</h2>
+<blockquote>
+	<p>Versions of the <b><font face="monospace">OdmFormat</font></b> Document ID methods had a serious defect in 
+	packages prior to 0.04.&nbsp; The bug was such that <b>
+	<font face="monospace">OdmFormat.wfDocIdPrefix</font></b> 
+	and all other methods that relied on it (<b><font face="monospace">prefixDmsId</font></b>, 
+	<b><font face="monospace">wfDocId</font></b>, and <b><font face="monospace">safeDocId</font></b>) 
+	would fail for all Document ID strings, well-formed or not.&nbsp; This bug 
+	is repaired in package version 0.04.</p>
+</blockquote>
+
+<h2><a name="3" target="_top" href="#3">3</a>. Change Summary</h2>
+
+<blockquote>
+	<p>This version of the <b><font face="monospace">info.odma.practical100</font></b> 
+	package introduces the <b><font face="monospace">OdmFormat</font></b> class and its use within the 
+	<b><font face="monospace">practical100</font></b> 
+	package.&nbsp; </p>
+	<p>All changes are backward compatible with the final <a href="d061001f.htm">
+	0.30beta version of <b><font face="monospace">practical100</font></b></a>.&nbsp; This package should work in all 
+	previous settings where the 0.30beta components are usable.&nbsp; 0.56beta 
+	is a cumulative roll-up of all <b><font face="monospace">practical100</font></b> changes to date.&nbsp; It may be 
+	used with any ODMJNI 1.0 release 
+	from 0.25alpha to 0.56beta and beyond.&nbsp;</p>
+	<p>There are some implementation changes and new classes and methods.&nbsp; The 
+	contracts for existing classes and methods are honored fully.</p>
+	<p>These are the change highlights:</p>
+	<ul>
+		<li>The new method <b><font face="monospace">OdmNullBind.application(<i>appId</i>, 
+		<i>appWindow</i>)</font></b> is added.&nbsp; 
+		This method corresponds to the <b><font face="monospace">OdmJniBind.application(<i>appId</i>, 
+		<i>appWindow</i>)</font></b> 
+		method, so that the null implementation can be substituted directly in 
+		the testing of an application.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li>The <b><font face="monospace">OdmFormat</font></b> class is implemented, along with methods for verifying 
+		that text strings are well-formed as ODMA-important parameters and 
+		results.&nbsp; The methods are<br>
+&nbsp;<ul>
+		<li><b><font face="monospace">boolean wfAppId(java.lang.String <i>appId</i>)</font></b><br>
+		well-formed, pure alphanumeric ODMA Application ID of 1 to 15 characters<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">boolean wfDocFormatName(java.lang.String
+		<i>docFormatName</i>)</font></b><br>
+		well-formed, &#39;<b><font face="monospace">.</font></b>&#39;-prefixed pure alphanumeric ODMA Document Format ID<br>
+&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">boolean wfDocIdPrefix(java.lang.String <i>docId</i>)</font></b><br>
+		well-formed case-insensitive &quot;<b><font face="monospace">::ODMA\\<i>odmdmsid</i>\\</font></b>&quot; prefix on an 
+		arbitrary-string; <b><font face="monospace"> <i>odmdmsid</i></font></b> is from 1 to 8 alphanumeric characters 
+		that are to be taken as the ODMA DMS ID.<br>
+&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">java.lang.String prefixDmsId(java.lang.String
+		<i>docId</i>)</font></b><br>
+		the ODMA DMS ID (i.e., the non-null <b><font face="monospace"> <i>odmdmsid</i></font></b> part) when 
+		<b><font face="monospace">wfDocIdPrefix</font></b> holds, <b>
+		<font face="monospace">null</font></b> otherwise<br>
+&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">boolean wfDocId(java.lang.String <i>docId</i>)</font></b><br>
+		<b><font face="monospace">true</font></b>
+		when the string starts with a well-formed Document ID prefix, does not&nbsp; 
+		exceed the maximum length for Document IDs, and does not contain any 
+		Unicode C0 or C1 controls or the codes for non-breaking space or soft 
+		hyphen.&nbsp; This solution fails to reject Unicode characters that 
+		cannot be translated to the single-byte code page of the ODMA DMS.&nbsp; 
+		See the Developer Notes for further details on how this approach was 
+		arrived at (<a href="#4">section 4</a>).<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">boolean safeDocId(java.lang.String <i>docId</i>)</font></b><br>
+		for a well-formed ODMA Document Id that is further restricted to consist 
+		of the ISO 646 alphanumeric characters and a few additional characters that can be used in interchange practically 
+		anywhere; the only non-alphanumeric characters are:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><font face="monospace">: - _ . / \</font></b>
+		<br>&nbsp;&nbsp;&nbsp; </li>
+	</ul>
+		</li>
+		<li>The formats of parameters to methods of the null implementations are 
+		enforced and <b><font face="monospace">OdmError</font></b> exceptions are thrown when a parameter string 
+		value is not well-formed.&nbsp; In previous implementations, operations 
+		would fail silently.&nbsp;&nbsp; The <b><font face="monospace">OdmError</font></b> exception is part of the 
+		defined behavior and compatible with the documented contract for 
+		behavior of the <b><font face="monospace">practical100</font></b> interfaces and classes.</li>
+	</ul>
+</blockquote>
+<h2><a name="4" target="_top" href="#4">4</a>. Development Approach</h2>
+<blockquote>
+	<p>The development consists of the addition of validation operations and 
+	confirmation that the validations are being used properly (exceptions are 
+	thrown) and that the validations do not disturb any of the code that is 
+	known to be using well-formed data.&nbsp; More rigorous coverage tests will 
+	come later.</p>
+	<p><b><font face="monospace">OdmFormat</font></b> is first implemented with all-null behaviors: the filters 
+	always return false regardless of the operand. Verification using the 
+	filters is added at all of the appropriate places in the <b>
+	<font face="monospace">practical100</font></b> null 
+	classes.&nbsp;&nbsp; This will automatically confirm that <b>
+	<font face="monospace">OdmError</font></b> is being 
+	thrown and what that looks like. </p>
+	<p>After this case, and after each subsequent change, we run a version of 
+	the <b><font face="monospace">practical100\test\Null01</font></b> which we will be improving as we go.</p>
+	<p>After each confirmation with <b><font face="monospace">Null01</font></b> and its improvements, we also run a 
+	regression on <b><font face="monospace">odmjni100</font></b>.&nbsp; The test programs for 
+	<b><font face="monospace">odmjni100</font></b> may or may 
+	not reveal any sensitivity to these changes.&nbsp; Whatever sensitivity 
+	there is should come from the use of class inheritance from <b>
+	<font face="monospace">practical100</font></b> 
+	null classes.&nbsp; In general, there should not be any need to make <b>
+	<font face="monospace">odmjni100</font></b> repairs, but there may be a list of changes that are warranted 
+	when <b><font face="monospace">odmjni100</font></b> is updated for 0.58beta.</p>
+	<p>The filters are given non-null implementations in the following sequence:</p>
+	<ul>
+		<li><b><font face="monospace">OdmFormat.wfAppId</font></b><br>
+		allowing <b><font face="monospace">OdmNullBind(<i>appId</i> <i>[</i>, <i>appWindow]</i>)</font></b> to succeed via the success of 
+		<b>OdmNullConnection</b> construction<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">OdmFormat.wfDocFormatName</font></b><br>
+		allowing <b><font face="monospace">OdmConnection.acceptNewDocument(<i>docFormat</i>)</font></b> to succeed at 
+		returning a null implementation<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><font face="monospace">OdmFormat.wfDocId</font></b><br>
+		allowing <b><font face="monospace">OdmConnection.openKnownDocument(<i>docId</i>)</font></b> to succeed at returning 
+		a null failure implementation</li>
+	</ul>
+	<p>That concludes the basic development and confirmation.&nbsp; There is no 
+	internal <b><font face="monospace">practical100</font></b> usage of the <b>
+	<font face="monospace">wfDocIdPrefix</font></b>, <b><font face="monospace">
+	prefixDmsId</font></b>, and <b><font face="monospace">safeDocId</font></b> 
+	methods.</p>
+</blockquote>
+<h2><a name="5" target="_top" href="#5">5</a>. Developer Notes: Working toward 
+0.56beta</h2>
+<ul>
+	<li><i>2007-02-24: </i><b>Step 1</b><i> - </i><b>Define the 10-step work 
+		breakdown</b> to operate against for this drop.<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+	</li>
+	<li><i>2007-02-25: </i><b>Step 2<i> </i></b><i>- </i><b>Make an 
+	<font face="monospace">OdmNullFormat</font> class that 
+		always fails</b>.&nbsp; Make an <b><font face="monospace">OdmFormat</font></b> class that extends <b>
+	<font face="monospace">OdmNullFormat</font></b> 
+		and initially does not overload any <b><font face="monospace">OdmNullFormat</font></b> methods.<br>&nbsp;&nbsp;&nbsp; 
+	<br>In creating these files, I split out <b><font face="monospace">OdmNullFormat</font></b> simply to illustrate 
+		the null behavior base-class technique that is also used in other parts 
+		of ODMJNI.&nbsp; This particular case involves inheritance static 
+		implementations, and I am using this to confirm how Java works in this 
+		case.<br>&nbsp;&nbsp;&nbsp; <br><b>When setting up the initial null behaviors, it occurred to me that these 
+		filters might contradict the implementations at the Native100 level</b> 
+		(which are required for defensive-programming and modularity reasons).&nbsp; 
+		It would be an improvement for ODMJNI classes and Native100 to share a 
+		set of common filters and I left a comment marker to look into that 
+		later on.&nbsp; This is an odd refactoring/optimization case that tends 
+		to increase coupling, so it is worth exploring to see how to confine the 
+		dependency problem that accompanies having consistent (i.e., shared) 
+		behavior between the ODMJNI and OdmNative layers.<br>&nbsp;&nbsp;&nbsp; 
+	</li>
+	<li><i>2007-02-27:</i> <b>There was considerable effort to confirm the 
+		extent to which ODMA is Multi-Document Interface (MDI) unfriendly</b>.&nbsp;&nbsp; 
+		Through ODMA 2.0 (introduced before Office 2000), applications are 
+		expected to provide a single Window Handle (<b><font face="monospace">HWND</font></b>) that will persist as 
+		long as the single ODMA Connection.&nbsp; This single window is used as 
+		the parent for all DMS-initiated modal dialogs.&nbsp;&nbsp; This creates 
+		some problems for ODMA-aware applications that present unique windows 
+		for separate documents, and the first window opened need not be the last 
+		one closed.&nbsp; Time was spent confirming that Microsoft Office Word 
+		2003 and Microsoft Office Word 2007 are also unable to overcome this 
+		limitation with ODMA.&nbsp; The two versions of Word also differ 
+		somewhat in the behaviors that their MDI implementations exhibit when 
+		ODMA operations are involved.&nbsp; The most surprising aspect of ODMA&#39;s 
+		failure to accommodate MDI-style applications is that there has never 
+		been a complaint about it since ODMA 2.0 was released in 1998.<br>&nbsp;&nbsp;&nbsp; 
+		</li>
+	<li><i>2007-02-28</i>: <b>Modify the BuildClasses.bat file</b> to always erase 
+		the *.class files before any build.&nbsp; This works around a problem 
+		where the Java compiler will fail to recompile a failed class 
+		compilation if the class that depends on it compiled and appears to be 
+		current.<br>&nbsp;&nbsp; </li>
+	<li><i>2007-02-28: </i><b>Step 3<i> </i></b><i>-</i>&nbsp; <b>Review the 
+	<font face="monospace">practical100</font> 
+		interface classes</b> to make sure that there are accurate throws clauses 
+		for all methods.&nbsp; None needed to be changed.<br>&nbsp;&nbsp; </li>
+	<li><i>2007-02-28: </i><b>Step 4</b> - <b>Add format checks in the 
+		<font face="monospace">practical100</font> null implementations</b>.&nbsp; This includes addition of 
+	<b><font face="monospace">OdmNullBind.application(<i>appId</i>, <i>appWindow</i>)</font></b> to
+	<b><font face="monospace">OdmNullBind.java</font></b>.<br>&nbsp;&nbsp;&nbsp; 
+	<br>The <b><font face="monospace">OdmNullConnection</font></b> class is kept 
+	<b><font face="monospace">public</font></b> as a requirement of having 
+		the interface be public.&nbsp; The constructor is made <b>
+	<font face="monospace">protected</font></b> so that 
+		there is no longer any support for direct construction of an <b>
+	<font face="monospace">OdmNullConnection</font></b> outside of the package except by extension, as is done 
+		with the <b><font face="monospace">OdmJniApp</font></b> class .&nbsp; A second constructor is also added: 
+		<b><font face="monospace">OdmNullConnection(<i>appId</i>, <i>appWindow</i>)</font></b>.<br>&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-02-28:</i> <b>Step 5</b> - <b>This is enough for a clean compile and initial testing</b>, since the 
+	<b><i><font face="monospace">appId</font></i></b> 
+		check will fail at once.&nbsp; This is confirmed with <b>
+	<font face="monospace">Null01</font></b>, <b><font face="monospace">CheckSwing</font></b> 
+		(<b><font face="monospace">OdmClicker</font></b>), and <b>
+	<font face="monospace">Check04</font></b> (<b><font face="monospace">CheckNew</font></b> and 
+	<b><font face="monospace">CheckChoice</font></b>).&nbsp; The static 
+		inheritance of <b><font face="monospace">OdmFormat</font></b> from <b>
+	<font face="monospace">OdmNullFormat</font></b> is also sorted out.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+	<b>This is not a full Steps 4-5</b>.&nbsp; Instead of adding all format 
+	checks, I only updated <b><font face="monospace">OdmNullConnection</font></b>, since we will be blocked at the 
+	<b><i><font face="monospace">appId</font></i></b> parameter until the correct 
+	<b><font face="monospace">wfAppId</font></b> is put in place.&nbsp; So I will 
+	add more checks as the possibility of more failures comes into existence.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-01:</i> <b>Step 6</b> - <b>Implement <font face="monospace">OdmFormat.wfAppId</font></b>.&nbsp; 
+	The rules are borrowed from <b><font face="monospace">verifyAppId</font></b> in 
+	<b><font face="monospace">OdmNative100.cpp</font></b> 0.28 (0.52beta).&nbsp;&nbsp; 
+	The private constant <b><font face="monospace">OdmFormat.MAX_APPID_LENGTH</font></b> is also added.&nbsp; The 
+	value is derived from the current <b><font face="monospace">Odma32types100.h</font></b> header file as one less 
+	than <b><font face="monospace">ODM_APPID_MAX</font></b> (which includes a trailing 
+	<b><font face="monospace">&#39;\0&#39;</font></b> code that does not apply 
+	to the Java String value).<br>
+&nbsp;&nbsp;&nbsp; <br>
+	With this change, <b><font face="monospace">RunNull01</font></b> 0.00 now throws an
+	<b><font face="monospace">OdmError</font></b> because of 
+	ill-formed Document Format Name to <b><font face="monospace">acceptNewDocument</font></b>.<br>
+&nbsp;&nbsp; <br>
+	At this point, I noticed that it is time to make <b><font face="monospace">OdmError</font></b> messages 
+	consistent and to use <b><font face="monospace">interfaceImplementation()</font></b> in the message where that is 
+	available.&nbsp; So I went back to document how that works in <b>
+	<font face="monospace">OdmInterface</font></b> 
+	and <b><font face="monospace">OdmError</font></b>.&nbsp; All <b>
+	<font face="monospace">practical100</font></b> classes were reviewed for the format of
+	<b><font face="monospace">interfaceImplementation()</font></b> and of the <b>
+	<font face="monospace">OdmError</font></b> strings.&nbsp; These&nbsp; 
+	changes complete Steps 4-5.&nbsp; There&#39;s no place to add more checks in the 
+	<b><font face="monospace">practical100</font></b> package.&nbsp; <br>
+&nbsp;&nbsp; <br>
+	Now, all that&#39;s left is the regression to make sure nothing in the 
+	<font face="monospace"><b>odmjni100</b></font> layer has been broken that 
+	shouldn&#39;t be (because of extended null classes that now have deficient 
+	format checks).&nbsp; All of the <font face="monospace"><b>odmjni100</b></font>
+	<b><font face="monospace">CheckSwing</font></b> and <b>
+	<font face="monospace">Check04</font></b> confirmation checks now operate without problems.&nbsp; 
+	The <b><font face="monospace">practical100</font></b> <b>
+	<font face="monospace">Null01</font></b> exercise fails on a document format error, which is 
+	appropriate.<br>
+&nbsp;&nbsp; </li>
+	<li><i>2007-03-01:</i><b> Step 7 </b>-<b> Implement 
+	<font face="monospace">OdmFormat.wfDocFormatName</font></b>.&nbsp; The private constant 
+	<b><font face="monospace">OdmFormat.MAX_DOCFORMAT_LENGTH</font></b> is introduced and defined to be one less than 
+	<b><font face="monospace">ODM_FORMAT_MAX</font></b> as defined in <b>
+	<font face="monospace">Odma32types100.h</font></b>.&nbsp; The string must begin 
+	with a period and consist of one or more additional characters in the same 
+	character set as <b><i><font face="monospace">appId</font></i></b>.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <br>
+	There may be reason to relax this format restriction in the future, 
+	depending on rules for what can appear in registry entries, what file 
+	systems allow, and so on.<br>
+&nbsp;&nbsp; <br>
+	The <b><font face="monospace">practical100</font></b> <b>
+	<font face="monospace">Null01</font></b> exercise operates without any failure.&nbsp; There 
+	are going to be no more <b><font face="monospace">odmjni100</font></b> regression cases, since nothing failed 
+	when <b><font face="monospace">wfDocFormatName</font></b> was always <b>
+	<font face="monospace">false</font></b>.&nbsp; The test cases will have to 
+	be tightened up to show anything more exciting.&nbsp; That will be done as 
+	part of 0.58beta or even 0.60beta.<br>
+&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-01:</i> <b>Step 8 </b>-<b> Implement <font face="monospace">OdmFormat.wfDocId</font></b>.&nbsp; 
+	There&#39;s nothing to test this with until I come up with a better set of null 
+	tests.&nbsp; I think it might be better to make some improvements in the 
+	null-behavior tests, although I&#39;m not entirely clear that it worthwhile for 
+	0.56beta.&nbsp; I might want to leap directly to 0.58 beta.&nbsp; My 
+	inclination is that I need some testing of DocId formats in a standalone 
+	test of some kind.&nbsp; I will look at that as part of Step 9 cleanup work.<br>
+&nbsp;&nbsp;&nbsp; <br>
+	The current <b><font face="monospace">wfDocId</font></b> is basically a length and 
+	<b><font face="monospace">wfDocIdPrefix</font></b> check.&nbsp; 
+	There should be some filtering of character codes beyond the prefix, but it 
+	is not necessary that there be any.&nbsp; This is something to look into as 
+	well.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-02:</i> <b>Rethinking <font face="monospace">wfDocId</font></b>.&nbsp; [I crashed and lost 
+	all of my notes for today.&nbsp; This is a reconstruction.]&nbsp;&nbsp; 
+	There needs to be some sort of screening on <b><font face="monospace">wfDocId</font></b> that somehow enhances 
+	interchange of Document IDs.&nbsp; I am going to follow Dick Wilson&#39;s 
+	architectural principle:&nbsp; It is easier to relax a restriction later 
+	rather than add one later.&nbsp; So I will start by making a <b>
+	<font face="monospace">safeDocId</font></b> 
+	filter that indicates when a <b>DocId</b> is pretty much always safe for use in 
+	interchange, including being of a reasonable length for e-mail, etc.&nbsp; 
+	The <b><font face="monospace">wfDocId</font></b> will be a little more relaxed, but I will start out making sure 
+	that it is confined to the Unicode Basic Latin code page simply because 
+	those are pretty much the codes where we do not care what the 
+	single-/multi-byte code page is.<br>
+&nbsp;&nbsp;&nbsp; <br>
+	The ODMA 2.0-3 specification only gives us the discussion in
+	<a target="_top" href="http://odma.info/downloads/odma20-3.htm#DocumentIDs">
+	Section 1.1, Document IDs</a> with an additional caveat in section
+	<a target="_top" href="http://odma.info/downloads/odma20-3.htm#CharacterSets">
+	1.7 Character Sets</a>.&nbsp; The caveat about interconvertibility of 
+	Document IDs does not take into consideration that prospect that there is no 
+	equivalent character between two code pages.&nbsp; So we settle on what 
+	works for almost all code-page settings.<br>
+&nbsp;&nbsp;&nbsp; <br>
+	With regard to what Windows tolerates, the Basic Class Library Team has a 
+	blog page on character set limitations here: Kim Hamilton&#39;s
+	<a target="_top" href="http://blogs.msdn.com/bclteam/archive/2007/02/13/long-paths-in-net-part-1-of-3-kim-hamilton.aspx">
+	first of three</a>.&nbsp; The MSDN
+	<a href="http://msdn2.microsoft.com/en-us/library/aa365247.aspx">page on the 
+	rules</a>, allows all characters but control codes and allows code-page 
+	sensitivity (all octet values are allowed except for 0 to 31).&nbsp; There 
+	are a few reserved characters (<b><font face="monospace">&lt; &gt; : &quot; / \ |</font></b>).&nbsp; Also, the names in 
+	long-file-name format are stored in Unicode.&nbsp; This is not very helpful 
+	for us, although we at least understand how it is that <b>
+	<font face="monospace">MAX_PATH</font></b> is 260 in 
+	Windows, with 248 the maximum for a directory name.<br>
+&nbsp;&nbsp; <br>
+	Although Document IDs need not have anything to do with file names, it is 
+	commonplace that they have some similarity and that they even may have a 
+	fairly-direct mapping to filenames as used within the DMS.<br>
+&nbsp;&nbsp;
+	</li>
+	<li><i>2007-03-03:</i> <b>More Reconsideration</b>.&nbsp; I am not thrilled 
+	about the <b><font face="monospace">safeDocId</font></b> filter and wonder if it should be dropped completely.&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp; <br>
+	Also, the fact that <b>wfDocId</b> filters Unicode characters is the reason for the 
+	tight restriction to ASCII characters.&nbsp; We do not know what the 
+	single-byte code page will be for communication to the ODMA DMS, so we can&#39;t 
+	be sure of the successful communication of Document IDs with any further 
+	characters.&nbsp; Any relaxation to <b><font face="monospace">wfDocId</font></b> requires operation at the native 
+	level and the <b><font face="monospace">safeDocId</font></b> filter would still restrict to at most the Basic 
+	Latin graphical character codes.<br>
+&nbsp;&nbsp; <br>
+	I read Oren Eine&#39;s article on
+	<a target="_top" href="http://ayende.com/Blog/archive/2007/03/03/The-Production-Value-of-Seams.aspx">
+	The Production Value of Seams</a> today.&nbsp; His illustration of testable 
+	design had me wonder whether I should have an interface above <b>
+	<font face="monospace">OdmFormat</font></b> to 
+	allow for a variety of testable-design scenarios.&nbsp; I gave up on that 
+	when I remembered that Java does not allow interfaces on classes, only on 
+	instantiated objects.&nbsp; I am not so willing to go that abstract above 
+	what is merely a suite of static methods.&nbsp; I may regret it, but that is 
+	all I am doing for now.&nbsp;&nbsp; There is time to reconsider up until 
+	0.60beta and probably beyond that.&nbsp; <br>
+&nbsp;&nbsp; <br>
+	The real challenge to deal with has to do with shared native-Windows filter 
+	code that can work between both ODMJNI and Native100.&nbsp; Maybe that will 
+	show something that influences the choice to interface in a decisive way.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-03:</i> <b>Step 9 - Wrap-Up</b>.&nbsp; Once I got into 
+	0.56beta, it was clear that the changes are confined to the <b>
+	<font face="monospace">practical100</font></b> 
+	package and there is no regression to <b><font face="monospace">odmjni100</font></b> and Native100.&nbsp; The 
+	real test comes with 0.58beta and modifications to <b>
+	<font face="monospace">odmjni100</font></b>.&nbsp; Although 
+	I am concerned that the filters have not been tested very well, I think I 
+	will address that starting in 0.58beta.&nbsp; It is time to simply wrap up 
+	0.56 beta, providing the necessary files and manifests.<br>
+&nbsp;&nbsp; 
+<ul>
+	<li>The <b><font face="monospace">d061001g-license.txt</font></b> file is reviewed to make sure that it remains 
+	applicable (it does).</li>
+	<li>The <b><font face="monospace">d061001g-ReleaseNotes.txt</font></b> is reviewed and updated</li>
+	<li>The <b><font face="monospace">d061001g.txt</font></b> manifest is created</li>
+	<li>The <b><font face="monospace">d061001g-practical100-0.56beta.zip</font></b> archive of the material is 
+	created.<br>
+&nbsp;&nbsp;&nbsp; </li>
+</ul></li>
+	<li><i>2007-03-04:</i> <b>Simplification</b>.&nbsp; As part of Step 9, I 
+	also chose against a full refresh of the <b><font face="monospace">practical100</font></b> development tree.&nbsp; 
+	This is a small, incremental change, and it is more useful to package just 
+	the changes.&nbsp;&nbsp; The next full refresh will be the 0.60beta.<br>
+&nbsp;&nbsp; </li>
+	<li><i>2007-03-04:</i> <b>Step 10</b>.&nbsp; This page is updated and all of 
+	the material is uploaded.&nbsp; The <a href="../12/d061201h.htm">d061201h 
+	0.60beta</a> progression page is updated to reflect availability of 
+	0.56beta.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-06:</i> <b>Archive Version 0.01 Adjustment to 
+	<font face="monospace">wfDocId</font></b>.&nbsp; In order to 
+	support integration of the <b><font face="monospace">odmjni100</font></b> 0.57beta package, the
+	<b><font face="monospace">OdmFormat.wfDocId</font></b> 
+	method was changed again.&nbsp; Since <b><font face="monospace">OdmFormat.wfDocId</font></b> was first given a 
+	non-null implementation, there have been three versions of the function.&nbsp;&nbsp; 
+	It is an interesting progression.<br>
+&nbsp;&nbsp;&nbsp; <br>
+	The first version provided the following code:<br>
+&nbsp;&nbsp;
+	</li>
+</ul>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<pre>if (docId.length() &gt; MAX_DOCID_LENGTH) <b>return false</b>;
+
+<b>return</b> wfDocIdPrefix(docId);</pre>
+		</blockquote>
+	</blockquote>
+	<p>Basically, there must be a valid prefix, but any Unicode UTF-16 codes are 
+	permitted after the prefix so long as the length restriction is satisfied.&nbsp; 
+	This is a simple way to do it, but it is far too relaxed about what can come 
+	after the prefix.&nbsp; To improve on this, I went to the following approach 
+	in the 0.00 release of the 0.56beta archive:</p>
+	<blockquote>
+		<blockquote>
+			<pre><b>if</b> (docId.length() &gt; MAX_DOCID_LENGTH) <b>return false</b>;
+
+<b>if</b> (!wfDocIdPrefix(docId)) <b>return false</b>;
+
+<b>for</b> (<b>int</b> i = ODMPREFIX.length(); i &lt; docId.length(); i++)
+
+    {   <b>char</b> code = docId.charAt(i);
+        <b>if</b> (code &lt; &#39; &#39; || code &gt; &#39;~&#39;) <b>return false</b>;
+        }
+
+<b>return true</b>;
+</pre>
+		</blockquote>
+	</blockquote>
+	<p>This is the version that was settled on for archive version 0.00.&nbsp; 
+	The idea is to only allow the printable graphic codes of the Unicode Basic 
+	Latin character set.&nbsp; These are essentially the printable ASCII or ISO 
+	646 codes.|<br>&nbsp;&nbsp; <br>In all cases, the constant <b>ODMPREFIX</b> is the string whose value is the seven 
+	characters &ldquo;<font face="monospace">::ODMA\</font>&rdquo; that was 
+	already verified in <b><font face="monospace">wfDocIdPrefix</font></b>, along with the following DMS ID and 
+	another “<font face="monospace">\</font>&rdquo;.&nbsp; <br>&nbsp;&nbsp; <br>Now, this version although very safe (but not so safe as 
+	<b><font face="monospace">safeDocId</font></b>), it more 
+	restrictive than the ODMA 2.0 specification requires of DMS integrations.&nbsp; 
+	The one risk of this particular filter, is that it will reject ODMA Document 
+	IDs that were legitimately produced by a DMS.&nbsp; <br>&nbsp;&nbsp; <br>I have placed restrictions in
+	<b><font face="monospace">wfAppId</font></b> and <b><font face="monospace">wfDocFormatName</font></b> that are 
+	stricter than required by ODMA.&nbsp; But these are restrictions imposed on 
+	new Java applications, not on any existing applications, and I can argue 
+	that the added safety and utility of the restrained forms is part of the 
+	<b><font face="monospace">practical100</font></b> contract.<br>&nbsp;&nbsp; <br>In considering the newly-introduced 0.57beta release, I concluded that the 
+	most effective solution is to use the translatability of the <b><i>
+	<font face="monospace">docId</font></i></b> string to 
+	the single-byte codes of the default Windows ANSI code page to be the 
+	ultimate requirement for characters following the prefix, including the DMS 
+	ID.&nbsp;&nbsp; I can&#39;t implement that in Java alone, I need to use JNI code 
+	for that.&nbsp; In the 0.56beta, I can&#39;t be that tight, but I can relax to a 
+	point where all such strings will pass through, even though strings that 
+	don&#39;t translate will also be passed, for now.&nbsp; When 0.58beta 
+	substitutes JNI implementations of filters used by both <b>
+	<font face="monospace">practical100</font></b> and the 
+	rest of the ODMJNI 1.0 implementation, the thrown exceptions will reject 
+	exactly the strings that will lead to silent failures in <b>
+	<font face="monospace">odmjni100</font></b> JNI code.<br>&nbsp;&nbsp; 
+	<br>This is the first form I entertained for the 0.01 archive update was the 
+	original version considered for 0.00, above.&nbsp; The problem with that is 
+	that it still permits far more than is ever intended to be acceptable.&nbsp; 
+	It is also so permissive that known control codes are passed and must be 
+	filtered out by supplemental code in 0.57beta.&nbsp; So I finally settled on 
+	this version:</p>
+	<blockquote>
+		<blockquote>
+			<pre><b>if</b> (docId.length() &gt; MAX_DOCID_LENGTH) <b>return false</b>;
+
+<b>if</b> (!wfDocIdPrefix(docId)) <b>return false</b>;
+
+<b>for</b> (<b>int</b> i = 0; i &lt; docId.length(); i++)
+
+    {   <b>char</b> code = docId.charAt(i);
+
+        if (code &lt; 0x20
+                || (code &gt; 0x7e &amp;&amp; code &lt; 0xa1)
+                || code == 0xad
+                )
+             <b>return false</b>;
+             /* XXX: Although the non-break space (0xa0) and
+                     the soft hyphen (0xad) are technically not
+                     control characters, their allowance in
+                     Document IDs would be pernicious.
+                     */
+        }
+
+<b>return true;</b></pre>
+		</blockquote>
+	</blockquote>
+	<p>This version rules out the C0 and C1 Control Codes (and two more) of the 
+	first 256 Unicode UTF-16 values.&nbsp; We can&#39;t reject more without knowing 
+	the code page, but translatability to the proper code page, without 
+	exceeding the length limitation, is all that remains for a precise check.&nbsp; 
+	The idiosyncratic <b> <font face="monospace">ODMPREFIX</font></b> usage is also 
+	avoided, since those already strictly-checked codes will simply be accepted 
+	a second time.</p>
+</blockquote>
+<ul>
+	<li><i>2007-03-07</i>: <b>Re-issue the archive</b>.&nbsp; The 0.01 archive 
+	did not include the latest <b><font face="monospace">.class</font></b> 
+	files.&nbsp; While repairing that, the <b><font face="monospace">OdmFormat.java</font></b> version was included 
+	correctly, the <b><font face="monospace">ReleaseNotes.txt</font></b> warning was updated, and the manifest was 
+	also updated with correction for missing linebreaks.&nbsp; This new package 
+	is version 0.02.<br>
+&nbsp;&nbsp; <br>
+	Somehow, the revised approach to <b><font face="monospace">wfDocId</font></b> seems much more straightforward and 
+	practical.&nbsp; When (in 0.58beta) it also rejects Document ID strings that 
+	are not translatable to the default code page for communication to a DMS, I 
+	think it will be entirely acceptable.<br>
+&nbsp;&nbsp; <br>
+	Later, small discrepancies were noticed in the Release Notes and the 
+	manifest, leading to issuing of an 0.03 package and an updated version of 
+	this page.&nbsp; We are at the borderline of corrections to the housekeeping 
+	being hard to make without introducing errors in the housekeeping.&nbsp;&nbsp; 
+	More automation would be good.<br>
+&nbsp;</li>
+	<li><i>2007-03-09:</i> <b>Accumulation of Small Defects.</b>&nbsp; Since the 
+	posting of package 0.03, I&#39;ve been noticing small defects in the manifest 
+	and Release Notes pages.&nbsp; I have been marking printed copies for 
+	changes to be made the next time there is some reason to make an update.&nbsp; 
+	So long as the code is fine, I will accumulate changes in the turnover 
+	documents.&nbsp;&nbsp; They will be worked in as bugs are repaired or the 
+	material is made obsolete.&nbsp; The same applies to earlier packages.<br>
+&nbsp;&nbsp;&nbsp; </li>
+	<li><i>2007-03-10:</i> <b>Here&#39;s a Bug!</b>&nbsp; When I created the 
+	<b><font face="monospace">CheckKnown.java</font></b> test for 0.57beta (the first-ever code that tests 
+	<b><font face="monospace">OdmFormat</font></b> 
+	Document ID checking), I discovered that all candidate Document IDs were 
+	being rejected by the <b><font face="monospace">OdmJniApp.openKnownDocument</font></b> implementation.&nbsp; The 
+	bug is in this statement of <b><font face="monospace">OdmFormat.wfDocIdPrefix(docId)</font></b>:<br>
+&nbsp;&nbsp; </li>
+</ul>
+
+  <blockquote>
+	<blockquote>
+		<pre>        <b>if</b> (  docId.substring(0, ODMPREFIX.length()-1)
+                .compareToIgnoreCase(ODMPREFIX)
+              != 0)
+             <b>return false</b>;</pre>
+	</blockquote>
+	<p>When I planted some additional output statements into the <b>CheckKnown</b> test 
+	code, it became clear that </p>
+	<blockquote>
+		<blockquote>
+			<p><font face="monospace">docId.substring(0, &quot;::ODMA\\&quot;.length()-1) 
+			== &quot;::ODMA&quot;</font></p>
+		</blockquote>
+	</blockquote>
+	<p>and not <font face="monospace">&quot;::ODMA\\&quot;</font> as expected.&nbsp; A 
+	little digging in the Java API documentation explains what is wrong with my 
+	use of the <b><font face="monospace">java.lang.String.substring(start, end)</font></b>.&nbsp; I 
+	made a classic beginner mistake in not noticing that <i>end</i> is the 
+	position after the end, not the end itself.&nbsp; That is, 
+	<b><font face="monospace"><i>docId</i>.substring(0, 0)</font></b> returns an empty string and 
+	<b><font face="monospace"><i>docId</i>.substring(0,1)</font></b> is 
+	the string which has <b><font face="monospace"><i>docId</i>.charAt(0)</font></b> as its only character.</p>
+	<p>The repaired <b><font face="monospace">OdmFormat</font></b> will be included in the 0.04 package and all 
+	previous 0.56beta package versions will be declared obsolete.</p>
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>info.odma.practical100 Component Development -- 0.56beta 
+		Evolutionary Development.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note d061001 page d061001g 0.11, September 23, 2007.&nbsp; Available at &lt;<font face="monospace"><b><a target="_top" href="d061001g.htm">http://ODMA.info/dev/devNotes/2006/10/d061001g.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.11">0.11</a> 2007-09-23-17:00 Reflect Start of 0.59beta 
+	work</b></dt>
+	<dd>The 0.59beta placeholder is linked as the next version.&nbsp; That page 
+	does not have the latest materials at first, but it can be accessed to 
+	observe the progression of activity that leads to the availability of 
+	candidate materials.</dd>
+	<dt><b><a name="0.10">0.10</a> 2007-08-19-15:45 Repaving Complete</b></dt>
+	<dd>All editorial cleanups and repaving-required modifications are 
+	introduced.</dd>
+	<dt><b><a name="0.09">0.09</a> 2007-03-10-18:04 Create package 0.04 with 
+	OdmFormat bug fix</b></dt>
+	<dd>This opportunity is used to correct some minor defects in the 
+	transmittal and wrapper material.&nbsp; </dd>
+	<dt><b><a name="0.08">0.08</a> 2007-03-07-16:52 Make Simple Corrections to 
+	the Package</b></dt>
+	<dd>It is desirable to use 0.03, which makes small corrections to the 
+	manifest and Release Notes.&nbsp; The software is not changed from 0.02.</dd>
+	<dt><b><a name="0.07">0.07</a> 2007-03-07-11:43 Clean up the Revised 
+	0.56beta Packaging</b></dt>
+	<dd>The 0.02 archive version, with related updates, is produced to correct 
+	the identification of the OdmFormat.java file and to include class files 
+	that are compiled with that version of the file.&nbsp; The source code and 
+	the class files were out of synch in the package.&nbsp; The descriptions of 
+	wfDocId and safeDocId on this page also had to be corrected.</dd>
+	<dt><b><a name="0.06">0.06</a> 2007-03-06-18:17 Revise 0.56beta to support 
+	0.57beta</b></dt>
+	<dd>The OdmFormat.wfDocId method is altered to fit with the direction being 
+	taken for 0.57beta as an interim step toward 0.58beta where the final 
+	OdmFormat methods will be established using native implementations.</dd>
+	<dt><b><a name="0.05">0.05</a> 2007-03-04-18:52 Complete Step 10 and make 
+	0.56beta available</b></dt>
+	<dt><b><a name="0.04">0.04</a> 2007-03-03-16:48 Start Steps 9 and 10.</b></dt>
+	<dt><b><a name="0.03">0.03</a> 2007-03-01-21:21 Document through Step 8.</b></dt>
+	<dt><b><a name="0.02">0.02</a> 2007-02-24-21:06 Add Development Approach</b></dt>
+	<dt><b><a name="0.01">0.01</a> 2007-02-23-11:14 Update with Draft Release 
+	Notes</b></dt>
+	<dd>The draft notes are linked to the page and additional structure and 
+	narrative is provided as accompaniment to the release notes.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-02-21-19:38 Provide Placeholder for 
+	Commencement of 0.56beta Development</b></dt>
+	<dd>This page is put up as a placeholder so that the 0.56beta version of 
+	practical100 development can be captured.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+</td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-02-21-19:38 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 106 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="20008" -->
+</body>
+</html>

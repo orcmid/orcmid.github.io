@@ -1,0 +1,1514 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061003a: ODMJNI 1.0 OdmNative100 ODMA Access Implementation - Diary &amp; 
+Job Jar </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061003a.htm 89    13-08-22 12:53 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="64%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d061003"><font color="#990033">d061003</font></a><br>
+      	</font></strong>
+</font>
+
+  <font color="#990033"><strong>&nbsp;<a href="d061003.htm"><font color="#990033">ODMJNI 
+1.0 OdmNative100 ODMA-Access Implementation</font></a><br>
+      <em><big><big>Diary &amp; Job Jar</big></big></em></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d061003a.htm">d061003a</a>&gt;</b></code><br>
+</font><small><small>
+		<a href="#0.06">0.06</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<div align="center">
+  <center>
+  
+  <table border="2" width="100%" bordercolor="#990033" bordercolorlight="#CC0066" bordercolordark="#800000" bgcolor="#FFFFFF">
+    <tr>
+    <big>
+      <td width="11%" align="center"><p><i><b>S<span style="font-variant: small-caps">tatus</span></b></i></p></td>
+      <td width="11%" align="center"><p><i><b>D<span style="font-variant: small-caps">ate</span></b></i></p></td>
+      <td width="78%" align="left">
+        <p align="center"><i><b>D<span style="font-variant: small-caps">escription</span></b></i></p>
+      </td>
+      </big>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-01-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2"><b>There is a major refactoring that icalled for.</b>&nbsp; 
+		I need to define ODMA-specific, application-mode HRESULTs to use as 
+		carriers for ODMSTATUS values.&nbsp; This allows single functions to 
+		provide higher-level operations and I can eliminate those functions that 
+		are now separate so the ODMSTATUS is delivered.&nbsp; These functions 
+		are fragile because they have preconditions on the parameters being 
+		obtained from other functions in sequence.&nbsp; In future, that 
+		coupling will be ensured by making all ODMA calls under the covers and 
+		only exposing &quot;complete&quot; functions of the Practical100 kind.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-01-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003g.txt license comment on the top, paragraph 2, &quot;If 
+		the license has <u>has</u> been separated ...&quot; duplicate word.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-12-20</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">We can simplify the dialogs and narrative in Check05 
+		because we don't need to see all of the details that we verified in 
+		earlier tests.&nbsp; There might be a regression reason, but probably 
+		not.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-28</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003e: The .txt file has an altered date in the top 
+		right but its other information has not been updated.&nbsp; It is not 
+		the .txt file inside the archive.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">0.30alpha: Move the build process and the source code to 
+		a deeper level in the hierarchy, with only the .obj and the public 
+		header files at the OdmNative100 level. [dh:2007-01-03 I didn't do that.&nbsp; 
+		It doesn't matter.&nbsp; The real deliverables are over into odmjni100, 
+		and that part only has copies of what matters for ODMJNI 1.0 and the use 
+		of ODMA is entirely encapsulated in the OdmNative bits that are carried 
+		over.&nbsp; The better solution is to give OdmNative100 its own 
+		deployment and delivery process at some point, with ODMJNI 1.0 simply 
+		relying on the deliverable for using the library, not building it.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003: Add References and Resources to the cover page, 
+		especially on the use of COM binary interfaces, in the manner this was 
+		done for JNI on d061101. </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-26</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmNative.hpp: Document the error cases as part of the 
+		agreement for OdmBindNative100.&nbsp; </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-26</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup03: The TestSetup03.c hello function refers to 
+		stdout directly where out should be used.&nbsp; See how it's cleaned up 
+		in Setup03.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-26</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup02: The TestSetup02.c hello function refers to 
+		stdout directly where out should be used.&nbsp; See how it's cleaned up 
+		in Setup03.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-25</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003f: Create and use as a placeholder for backup of 
+		Setup03.&nbsp; Stitch it in before d061003g.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-25</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmNative100: Look at optimizations of OdmNative.cpp 
+		compiling at some point: /Ox, /GF, /Gy, /GT and others that might make a 
+		difference.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-25</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmNative100: Fix the tryConsoleWindow code to Load 
+		kernel32.dll and check for the GetConsoleWindow API.&nbsp; This way we 
+		can run degraded on pre-Windows 2000 versions without failing to load 
+		altogether.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-23</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">I want to make the individual class methods be local to 
+		the file and only exposed outside via the interfaces and the 
+		virtual-method vtable access.&nbsp; I don't know why I can't do that.&nbsp; 
+		I need to figure out what I am missing in what I am allowed to say in 
+		C++ to make a method implementation not be visible to the linker.</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-17</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Application IDs: Find out any additional restrictions on 
+		Registry Keys too.</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-15</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmBindNative100: I need some confirmation tests for 
+		Application ID filtering.&nbsp; [dh:2006-11-26 This rolls back into 
+		odmjni100 too.]</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-15</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmBindNative100: I need a solid test to confirm error 
+		cases of this object construction function.</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-13</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup00: BuildClass 00 checks for compiler error results 
+		incorrectly.&nbsp; The fix is in Setup01.</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-12</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup01: The TestSetup01.c hello function refers to 
+		stdout directly where out should be used.&nbsp; [dh:2006-11-26 There is 
+		also a simpler way to do this in fewer output calls, as demonstrated in 
+		Setup04.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-10</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d and beyond: I wonder if I could use a shortcut 
+		that had the special check-permissions option and that has a PIF that 
+		makes it clear we are running an administrator console session.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-10</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d and beyond: Another way to enter admin is to set 
+		up a console session that does it.&nbsp; It would be great to elevate, 
+		or spawn an elevated session, but it is also good enough to simply have 
+		an administrative console session for most ODMA registry functions 
+		(which do not depend on current user).&nbsp; </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d.txt: OdmVC++.bat is listed as from Setup01 0.04 
+		instead of Setup00 0.04.&nbsp; The correct version should be listed.&nbsp; 
+		In all versions it should indicate where this is unchanged from in the 
+		progression of a given archive.&nbsp; That way, people can tell there is 
+		nothing to deal with in restoring their own version, if any.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003c-d.txt: Improve the titles of the manifests.&nbsp; 
+		Compare with d061003e.txt.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003e.txt: Correct the narrative in section 2 of the 
+		manifest and installation notes file.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003e.txt: Rewrite the date and sizes paths for 
+		everything in d061003e.txt</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d: The BuildSetup01.bat script needs to verify 
+		that TestSetup01.c is present.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-09</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup03 might be a better recommended successor for 
+		Setup01.&nbsp; Or this might be handled in the summary of setups, which 
+		need not mention intermediate ones.&nbsp; I won't change the naming, but 
+		I can skip ahead.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-07</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d.txt Correct typos that are recorded on #55.87.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-07</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d Setup01: Review the code and scripts for any 
+		FIXME entries that should be tracked here and elsewhere.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003d Setup01: Test different Platform SDK and 
+		integrated Visual Studio installs for proper location of setenv and 
+		vsvars32 scripts, etc.&nbsp; Work with VS 2005 Standard Edition and also 
+		the Vista SDK when it is issued.&nbsp; We probably don't want to work 
+		backwards prior to the March 2006 PSDK.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003c.txt should emphasize that the folder structure 
+		is designed for installation alongside the sibling trees for 
+		practical100 and odmjni100.&nbsp; Also, the different setups and tests 
+		can be installed side-by-side.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003: There needs to be a better way to do see-alsos.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003c and d061003c.txt the opportunity to extract on 
+		the side of the practical100 and odmjni100 development trees has not 
+		been featured. [dh:2006-11-05 I took care of it in d061003c but not in 
+		the d061003c.txt file.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">OdmNative needs to have defensive protections against 
+		buffer over-runs in values returned from the Connection Manager and ODMA 
+		DMS implementations.&nbsp; There are many values returned into unchecked 
+		char arrays, flag words, and opaque pointers (e.g., ODMHANDLE values).&nbsp; 
+		It is also conceivable that a string input might be altered when it is 
+		expected to be held as a constant.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">The critical scripts like OdmVC++.bat and OdmPSDK.bat 
+		need to indicate what versions they have been confirmed with.&nbsp; We 
+		should make a point of trying them out on different packages and then 
+		adding the packages tested to the remarks in the scripts as well as in 
+		the respective manifest files.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-04</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003: When prerequisites and links are being 
+		considered, review d061003c.txt for the information there that could be 
+		simplified by appeal to external sources.&nbsp; And at least make sure 
+		there are external sources for the kinds of prerequisites that are 
+		mentioned.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-04</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003c Setup00: Include link to the package 
+		origin/attribution in the source code of TestSetup00 (except then we 
+		have to rebuild it).&nbsp; Well, consider it at some point when it needs 
+		to be recompiled for some other reason.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-04</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003c Setup00: After the embargo is lifted, link 
+		OdmVC++.bat to an appropriate Folio page in ODMAdev.&nbsp; 
+		[dh:2006-11-04 The way to do this is to put in the final path now, even 
+		though the web link is broken until after the embargo.&nbsp; This way we 
+		don't forget that stuff, and we can review it when the time comes.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Many procedural items and descriptions of prerequisites, 
+		etc., need to be eventually moved into links where there is more detail 
+		in a consolidated place (e.g., on nfoWare).</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">We can use a version of Setup03 or later that takes an 
+		Application ID on the command line for checking on the access by another 
+		application.&nbsp; This should be a feature of OdmRun10 too.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-02</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">It looks like GetCurrentThreadId and EnumThreadWindows 
+		may be a way to find the likely only client window of the application.&nbsp; 
+		We need to run some sort of test to see how that works.&nbsp; It would 
+		be interesting if it locks down even a console window (#55.81).&nbsp; It 
+		would also be interesting to see how that impacts console sessions that 
+		are emulated in special packages like the 4NT variants of standard 
+		console sessions, the ones that run inside of Visual Studio, etc.&nbsp; 
+		[dh:2006-11-23 I have GetConsoleWindow working and I have 
+		EnumThreadWindows implemented but not tested.&nbsp; Testing with 4NT 
+		variants might be useful.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-02</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There are a number of peculiarities and exposures in 
+		ODMASAMP revealed in our inspection.&nbsp; Remember to put those 
+		somewhere appropriate around matters to address in a future ODMASAMP (or 
+		ODMref10) (#55.80).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-02</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Find a way to determine a correct parent window and 
+		obtain proper modal behavior, without weirdness with the thread that is 
+		running OdmNative (#55.78,.81). [dh:2006-11-23 I am using 
+		EnumThreadWindows and also GetConsoleWindow.&nbsp;&nbsp; I don't know 
+		yet if the EnumeThreadWindows will consistently find a winner.&nbsp; 
+		GetConsoleWindow works great in console sessions, and EnumeThreadWindows 
+		does not find a console window.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-02</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Include the option of changing the registry permissions 
+		for testing/development too, with regard to registry settings (#55.78)</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">A tool and guide to make it much easier for a normal 
+		user/developer to adjust the ODMA registry settings would be really 
+		valuable for these tests and later trouble-shooting (#55.78)</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">In TestSetup02.c, add comment about ODMHANDLE hOdmDefault 
+		and its role.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">The ODMUnregisterApp call should clear the handle 
+		afterwards #55.77).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Make .reg files for setting OdmNativeTest to have 
+		ODMASAMP as the default DMS, and removing it.&nbsp; This procedure needs 
+		to be documented (#55.77).&nbsp; The information on how to do these 
+		scripts is at
+		<a href="http://support.microsoft.com/default.aspx/kb/310516">
+		http://support.microsoft.com/default.aspx/kb/310516</a>.&nbsp; 
+		[dh:2006-11-26 This needs to be documented in the folio and also in the 
+		Guide.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">GetLastError should be used when hardening the calls on 
+		Windows API functions.&nbsp; When that is used, a clearing call to 
+		SetLastError should also occur before an operation that might or might 
+		not clear it when there is no error (#55.77).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">in TestSetupNN, I should add a pre-processor check to 
+		decline compilation with Unicode set (#55.77).&nbsp; [dh:2006-11-04 We 
+		also need to assert Win32 and perhaps even Visual C.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Need to include different cases in the logs of the 
+		different TestSetupNN executions (#55.77).&nbsp; [dh:2006-11-04 That is, 
+		run the different variants, e.g., with and without a default DMS, with 
+		and without a Connection Manager, etc.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Testing with different ODMA Connection Manager and on 
+		different platforms should be part of the standard drill (#55.76).&nbsp;
+		</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Executing the tests on Windows 98 SE and on other than 
+		the development machines should be captured as part of the procedures 
+		and stabilization activity (#55.76)</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-11-01</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">More on prerequisites: (a) Set up a directory structure, 
+		(b) Use of Winzip and extraction of a directory structure to a place, 
+		(c) Execution of MS-DOS Prompt or Command Prompt console sessions.&nbsp; 
+		Also, be operating on Windows 2000 or later.&nbsp;&nbsp; 9#55.76).&nbsp; 
+		[dh:2006-11-04 See the prerequisites note under 2006-10-31.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-31</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">The LoadLibrary and FreeLibrary code in the ODMA 2.0 
+		Connection Manager is suspect.&nbsp; In particular, it presumes error 
+		feedback from LoadLibrary which is not how it is done for Win32.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-31</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">The loading of DLLs is from ODMdev\manage\odma32 2.0\ and 
+		odmaent.cpp has all the entry points and logging features.&nbsp; The 
+		Connection Manager logging does its work all of the time, except for 
+		actually writing the records.&nbsp; There is a better way to do this by 
+		subclassing the non-logging entry points, I think, and choosing the 
+		correct version at startup.&nbsp;&nbsp; All of the Connection Manager 
+		entries that relay through an ODMHANDLE will then be more streamlined in 
+		several respects. (The few cases that are basically static entries to 
+		the Connection Manager don't happen that much per connection, although 
+		how those have any state to consult is also an interesting questions) 
+		(#55.75)</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-31</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003e: The example of making function-pointer types is from 
+		ODMdev/confirm/derisk02/odmgetodm.h and from examples using 
+		GetProcAddress in the PSDK Help's Windows API Reference documentation 
+		(#55.75). </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-31</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d0631003d: The discriminators for the setups we are using are (1) 
+		VS80COMNTOOLS establish VS 8.0 tools, (2) VCINSTALLDIR establishes that 
+		VC++ is present, and (3) MSSdk establishes that a PSDK configuration has 
+		been established.&nbsp; (#55.74)</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-31</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d061003: We need to establish prerequisites: To install, to 
+		execute, to configure, to test/confirm, to make configurations, to 
+		build, to modify, and to troubleshoot. (#55.74) [dh:2006-11-04 Some of 
+		this is in the manifest for Setup00, but it is best on the cover of the 
+		devNote.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup03 exercises the SelectDoc operation and we get 
+		to see what it takes to get a dialog to come up inside of an application 
+		window.&nbsp; We may need to fake an application window as part of doing 
+		this.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Setup02 confirms calling the connection manager and starting to 
+		create a header file and setup for all of the Procs for entries into the 
+		ODMA Connection Manager DLL, explain why we do it this way, and the 
+		value we gain.</font></td>
+    </tr>
+    
+  </center>
+  <center>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+  </center>
+  
+  <center>
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-25</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There is sample code and DLL creation information to 
+		review when the time comes (#55.72).</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-10-25</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">We need code to figure out the version of ODMA Connection 
+		Manager that is in hand&nbsp; (#55.62).&nbsp; Future Connection Managers 
+		should be able to tell us.</font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Review for consistency with &quot;Java-ODMA Integration 
+		Kit&quot;.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-01-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Update the catalog to reflect d061003 0.05 and 
+		transfer to the hosted site.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-01-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003: Update to link to the latest materials.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-01-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003b: Link to d061003i</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-01-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003i: Customize and include links for download of 
+		license, manifest, and the code archive.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done<br>
+		2006-12-31</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">0.30alpha: When there are two or more .obj files, it is 
+		useful to start using a .lib to carry them so that odmjni100.dll builds 
+		and regression tests don't have to change as the number of 
+		interdependent .obj files increases. [dh:2007-01-03 This worked fine 
+		once I figured out that my breaking the build had nothing to do with 
+		switching to a .lib]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Update the catalog and move all of the changes to the 
+		web site so that it can be reviewed and tested.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.04</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003: Update to reflect what we have stitched into 
+		the revision progression - we'll fill in the gaps later.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003b: Make d061003g the latest for now.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.02</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003g: Hook to d061003h but don't change anything 
+		about the current blog.&nbsp; </font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.00</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Make d061003h: Hold the 0.26 version that we obtain - 
+		it goes here because all source-code changes are here.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">After customizing go rebuild odmjni100.dll and run it 
+		with the Check03 program over there.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Check05: Make the directory and clone the Setup04 
+		program to be the Check05 program that does an 0.26alpha regression 
+		check for us on the modified OdmNative100.obj.&nbsp; This will grow as 
+		we do more.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.00</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Check05.cpp: Customize for Check05</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.00</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">BuildCheck05.bat: Customize for Check05.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.21</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-12-20</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Modify OdmNative100.cpp to use an alternative 
+		hWndFound callback that remembers the first handle enumerated rather 
+		than the last.&nbsp; Just grasping at straws for a short-term solution.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-28</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003: Add d061003e to the list of available 
+		materials and also include those pages on the hosted site.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-26</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">The license should be linked from the download section of 
+		the individual pages as well.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003g: Customize for holding initial downloads of 
+		Setup04 0.25alpha escrow for OdmNative100.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-25</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Restore the AIIM Copyright notice to the Odma32api.h and 
+		the Odma32types.h files when they are populated.&nbsp; Refer to the ODMA 
+		BSD license and include a copy.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-08</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003e Setup02: Check out the files and set up the 
+		placeholder for the web page.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-07</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-31</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003d: Put in a general warning about the PSDK used and the 
+		dependencies around it.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-07</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">The discussion of over-writing OdmVC++.bat and 
+		OdmPSDK.bat should consider that the SetupNN and other packages need not 
+		be installed in sequence.&nbsp; So there is also action on installing an 
+		older version atop a newer one.&nbsp; <strike>Zip should warn about this, but we 
+		might need to discuss it to.&nbsp; We definitely should test it.</strike></font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-07</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: review for consistent use of monospace fonts in 
+		mentions of the various packages, classes and other artifacts.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-07</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Link forward to d061003d after d061003d is made 
+		the latest included by d061003b.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-07</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003d Setup01: Emphasize use of the PSDK Help files 
+		and documentation too.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-06</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003d Setup01: Change MyPSDK.bat to OdmPSDK.bat when 
+		making the same kinds of improvements made for OdmVC++.bat in Setup00.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-06</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003d: Point out that Windows 2000 is TARGETOS=WINNT and APPVER=5.0 
+		(#55.73)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-06</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">TestSetup01.c title comment for the MAIN section says 
+		TESTSETUP02, not 01 (#55.77).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-06</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003d: Reflect insistence that we are developing only on OS=Windows_NT 
+		platforms.&nbsp; That is where we compile.&nbsp; Our code might run on 
+		earlier systems.&nbsp; But the oldest we are committed to supporting is 
+		Windows 2000.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003d: Setup placeholder for description of 
+		Setup01.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Identify how this fits with the Development 
+		Progression, what the critical step accomplishes, what part of the step 
+		is accomplished with 0.01 and what the actions are.&nbsp; [dh:2006-11-04 
+		This needs some clarification.][dh:2006-11-05 I think I have it handled 
+		between the latest folio cover and the d061003c text.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-24</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003: The key idea is that these are simple Windows 
+		console applications that confirm we have the functionality working on 
+		the native Windows (OdmNative) side, and then we can adapt to 
+		development and confirmation in the odmjni100 testing and then the 
+		Java-based application. (#55.59).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-24</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003: One thing we are providing here is a way to 
+		confirm configuration and connection capabilities in standalone C/C++ 
+		programs.&nbsp; These can be used to troubleshoot the odmjni100 
+		functions and also a production/pilot setup with ODMJNI and a commercial 
+		DMS.&nbsp; When ODMJNI doesn't seem to be working, we can use the C/C++ 
+		test programs to see if they are working or not, in isolating where the 
+		break might be. (#55.58)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Review the d061003c package for any FIXME items that 
+		need to be surfaced at a higher level. [dh:2006-11-05 There were none.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003c: Mention that the package is designed for 
+		installation alongside the sibling practical100 and odmjni100 branches.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003: Change the name to OdmNative100 everywhere in 
+		this folio and in all of the titles.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003c: Correct the camel-case spelling of the .zip 
+		file link and name in the download list.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Find a way to set the web server encoding to UTF-8 for 
+		this and other manifest files (so the copyright and other symbols render 
+		via UTF-8 encoding).&nbsp; [dh:2006-11-05 It looks like I need 
+		Content-Type to be content=text charset=utf-8.&nbsp; I wonder if I can 
+		do this with an .htaccess at the right level without losing other global 
+		settings.&nbsp; I have aded an AccCharset utf-8 .txt directive at the 
+		devNotes level.&nbsp; Let's see how that works.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Setup00 - Put caveats in <strike>the .bat file and
+		</strike>the 
+		overview to point out that this has only been confirmed with Visual C++ 
+		2005 Express Edition (include product id). [dh:2006-11-05 This is done 
+		in the manifest and on the web page.&nbsp; That is good enough for now.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003c.txt: Add corrections noted after reviewing 
+		the file on-line (#55.84).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Find why d061001d doesn't have the 
+		keyboard-text font shrinkage problem in paragraphs with small type, and 
+		get that change into d061003c before we cloan more pages.&nbsp; 
+		[dh:2006-11-05 The lines with smaller type use <font face="Courier New, Courier, Monospace">&lt;font face=&quot;Courier New, 
+		Courier, Monospace&quot;&gt;</font> instead of&nbsp; <font face="Courier New, Courier, Monospace">&lt;code&gt;</font> or <font face="Courier New, Courier, Monospace">&lt;kbd&gt;</font> elements.&nbsp; 
+		(See!)]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d061003c.txt: Add version numbers of the files listed 
+		in the manifest.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Put in caveat about making a separate copy of 
+		<strike>MyVC++.bat</strike> OdmVC++.bat and restoring it atop the ones that are introduced by 
+		download of later OdmNative materials. [dh:2006-11-04 Here's a good 
+		reason to update d061003c.txt and also clean up its version 
+		information.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-05</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c.txt: The version number at the bottom is 0.04 
+		and the version number of the page is actually 0.03 (and the VSS version 
+		is running way ahead of that).&nbsp; This needs to be cleaned up at some 
+		point.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-04</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Provide the progression for Setup01 and 
+		explain what is involved, what the output is.&nbsp;&nbsp; [dh:2006-11-04 
+		This is covered in the manifest.&nbsp; There can be more on the cover 
+		page later.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c.txt Upgrade with Copyright, Creative Commons 
+		license, and attribution notice <strike>when the embargo is lifting</strike>.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Setup00: Change the name of MyVC++ to OdmVC++ to keep 
+		separate and specific to the use in ODMJNI.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-04</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-31</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">The MyVC++ script should check for vcvars.bat/cmd and 
+		whatever that portends (#55.75)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-04</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Setup00: My VC++ should check for an installation and 
+		explain it nice.&nbsp; It should set a fatal exit too (#55.76)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-04</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d061003c: Move Setup00 to info\odma\OdmNative100\test\Setup00 
+		instead of placing it at the test level.&nbsp; This gives room for more 
+		tests and allows for the possibility of using SetupNN folders as Visual 
+		Studio projects as another way of building OdmNative.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Review #55.50-81 for items to note here, items to 
+		check off, and items to move to ODMJNI project materials.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-02</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Test what happens when a NULL (0) dwEnvData parameter 
+		is supplied.&nbsp; [dh:2006-11-02 Dialog boxes go up and work properly, 
+		since they establish their own message loops.&nbsp; There is no locking 
+		of the missing parent, so the dialog boxes are modal in that control 
+		doesn't return, but other ways of getting into the application remain 
+		available.&nbsp; As a threading matter, we must find a way to get full 
+		modal behavior.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-02</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Analyze how dwEnvData is used by ODMASAMP.&nbsp; 
+		[dh:2006-11-02 It is stored in HWND m_clientWind and passed to 
+		DialogBoxParm as the parent window (#55.78).]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-11-02</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">For TestSetup03, look at nesting the output somehow so 
+		the scopes of the levels of operation are easily observed.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-11-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Start separating Odma32api.h for the Connection Manager 
+		entry-point pointer types (#55.77).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-31</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Move the tests (e.g., setup02, ..) down into their own 
+		folders under the test folder.&nbsp; Don't have one flat set of test 
+		programs.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-10-31</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Setup01: After completing TestSetup00, make a MyPSDK.bat in 
+		<strike>Setup02</strike> Setup01 for finding the Platform SDK (#55.73)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Analyze the Microsoft Platform SDK for Windows Server 
+		2003 R2 and locate the script, its parameters, and the environment 
+		settings it makes for creation of MyPSDK.&nbsp; [dh:2006-10-30: noted at 
+		#55.73]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-10-30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Make a BuildSetup00.bat that just builds TestSetup00.exe 
+		for confirming that we are compiling with VC++ and standard libraries 
+		with no difficulty.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done<br>
+		2006-10-30</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">The skeleton native connection class needs a name.&nbsp; 
+		[dh:2006-10-30 I settle on OdmNative100 for the native material, 
+		especially the C++ classes and interfaces, and odmjni100 for the Java 
+		classes that access OdmNative100 via native methods.&nbsp; #55.73]</font></b></td>
+    </tr>
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Make the file &lt;folder&gt;\info\odma\OdmNative\MyVC++.bat 
+		that sets the VC++ Environment variables if they are not already set.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Use the path </b> <kbd><b>&lt;folder&gt;\info\odma\OdmNative\test</b></kbd><b> 
+		for the development of the </b> <kbd><b>OdmNative</b></kbd><b> C++ class, 
+		interface, and its tests.&nbsp; Although it is not required to be part 
+		of the classpath, we make it that way so that all of the ODMJNI material 
+		is carried in one folder tree.&nbsp; Note that this will be alongside 
+		<kbd>&lt;folder&gt;\info\odma\odmjni</kbd> with its implementation classes 
+		and their tests.</b></font></td>
+    </tr>
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Hyphenate ODMA-Access Implementation in all of the 
+		title bars.</font></b></td>
+    </tr>
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Make bare placeholders of a minimum folio before 
+		populating further: d061003, d061003a, d061003b, and 
+		d061003c.</b></font></td>
+    </tr>
+    <tr>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>done</small></b></td>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>2006-10-27</small></b></td>
+      <td width="78%" valign="top" style="background-color: #CCCCFF"><b><small>Create
+        this folio placeholder under embargo.&nbsp; The evolutionary prototyping 
+		of OdmNative will be defined and&nbsp; tracked here.</small></b></td>
+    </tr>
+  </table>
+  
+  </center>
+</div>
+<dl><small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.06">0.06</a> 2007-01-03-16:49 Bring current with 0.30alpha 
+	Changes</b></dt>
+	<dt><b><a name="0.05">0.05</a> 2006-12-20-18:00 Bring current with 0.26alpha 
+	Changes</b></dt>
+	<dt><b><a name="0.04">0.04</a> 2006-11-07-16:41 Complete Immediate Setup01 
+	Items</b></dt>
+	<dd>There is enough on d061003d and the download materials for us to move on 
+	for now.</dd>
+	<dt><b><a name="0.03">0.03</a> 2006-11-05-19:04 Start Setup01 Items</b></dt>
+	<dd>The preparation of d061003d is started and the package will be 
+	consolidated for download and review.</dd>
+	<dt><b><a name="0.02">0.02</a> 2006-11-05-11:56 Correct Setup00 Materials</b></dt>
+	<dd>Add further entries and also complete corrections to d061003c and 
+	d061003c.txt noticed so far.</dd>
+	<dt><b><a name="0.01">0.01</a> 2006-11-04-22:32 Move Setup00 Materials</b></dt>
+	<dd>The page for Setup00 is completed and the updated material is brought 
+	over from the OdmNative development setup.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-10-26-19:55 Create Initial Placeholder</b></dt>
+<dd>This diary and job jar is created to provide immediate capture of job-jar 
+items for this folio.</dd>
+		</small></dl>
+		
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="59%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="27%">
+      <p align="right"><font size="-2">created 2006-10-26-19:55 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 89 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

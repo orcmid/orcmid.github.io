@@ -1,0 +1,227 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMACompagno/active/odmref10/mitigate/P050301.htm 27    13-08-22 12:47 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>P050301: ODMref1.0 Risk Mitigation Exercise</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Project 
+		<a href="../../../projects/p000001-log.htm#P050301"><font color="#990033">P050301</font></a> ODMref1.0<br>
+      <i><big>
+      <big>Risk Mitigation Exercise</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../../../" target="_top">ODMA</a>&gt;<a target="_top" href="../../">active</a>&gt;<br>
+      <a href="../" target="_top">ODMref1.0</a>&gt;<br>
+		<a target="_top" href="./">mitigate</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="P050301.htm" target="_top">P050301</a>&gt;</code></b><br>
+      <small><small><a href="p050301.htm#0.00">0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2010-08-29<!--webbot bot="Timestamp" endspan i-checksum="12490" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->20:11 -0700<!--webbot bot="Timestamp" endspan i-checksum="11945" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<div align="left">
+  <table border="0" width="100%">
+    <tr>
+      <td width="50%"><b>Type: Feasibility Demonstration</b></td>
+      <td width="50%"><b>Project ID: 
+		<a href="../../../projects/p000001-log.htm#P050301">P050301</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Style: Abbreviated</b></td>
+      <td width="50%"><b>Status</b>: <b>In Progress</b></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">
+        <dl>
+          <dt>
+        <b>Objective:&nbsp;</b>
+          </dt>
+          <dd>Demonstrate that there are sufficient resources and skills for 
+			carrying out the development of ODMref1.0 and ODMrun1.0 on schedule:</dd>
+          <dd>1. [complete this from the materials that are already written]</dd>
+        </dl>
+      </td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt>
+        <b>Related information/projects:</b>
+          <br>
+&nbsp;&nbsp;&nbsp;&nbsp; [ODMA Refresh]<br>
+&nbsp;&nbsp;&nbsp;&nbsp; [TROST]<br>
+&nbsp;&nbsp;&nbsp;&nbsp; [ODMref1.0 Project Management Documents<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Estimates for Risk 
+		Mitigation]</dt>
+          <dd>&nbsp;</dd>
+          <dd>&nbsp;
+          </dd>
+        </dl>
+        <p>&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Defined By:&nbsp;</b>Dennis Hamilton (2005-03-04)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Initiated</b>: 2005-03-04</td>
+      <td width="50%"><b>Date Completed</b>: tbd</td>
+    </tr>
+    <tr>
+      <td width="50%">
+        &nbsp;</td>
+      <td width="50%"></td>
+    </tr>
+  </table>
+</div>
+  <hr noshade color="#990033">
+
+<h2>1. <a name="Concerns">Concerns</a></h2>
+
+<ul>
+  <li>[Fill in from the ODMref risk assessment and mitigation activities.]</li>
+</ul>
+
+<h2>2. <a name="Approach">Approach</a></h2>
+<blockquote>
+	<p>The Risk Mitigation section of the original project estimates defined 
+	three versions of the ODMAref10.DLL to take as the development cases.</p>
+</blockquote>
+<h3>2.1 Nobody Home Trivial DLL</h3>
+<blockquote>
+	<p>This DLL implements only the ODMGetODMInterface entry.</p>
+	<ul>
+		<li>It always provides a defined COM failure case, NOINTERFACE result 
+		code.</li>
+		<li>It creates a log record indicating that it was successfully called, 
+		and presents what the parameters of the request were.&nbsp; The log file 
+		is very rudimentary and is created where the DLL is loaded from.</li>
+		<li>This DLL can be registered with ODMA32 and an attempt to use the DMS 
+		can be carried out with ODMA32 and a variety of applications, including 
+		Microsoft Word and the TestODMA application.</li>
+	</ul>
+</blockquote>
+<h3>2.2 Not-Taking-Calls Interface</h3>
+<blockquote>
+	<p>This next version implements IUnknown and IODMDocMan interfaces:</p>
+	<ul>
+		<li>All methods of the IODDMDocMan interface return failure responses.</li>
+		<li>The log records produced indicate what the requests were and what 
+		the response was.</li>
+		<li>The logging cases are more sophisticated (and can be based on the 
+		logging provisions in the ODMA 2.0 Connection Manager).</li>
+	</ul>
+</blockquote>
+<h3>2.3 Thinking-It-Over Interface</h3>
+<blockquote>
+	<p>This final level confirms use of a configuration file to the DLL that 
+	specifies options and control to the reference implementation for 
+	configuration:</p>
+	<ul>
+		<li>A configuration file is access that controls the behavior of the 
+		ODMref 1.0 implementation in a given use.&nbsp; It can implement either 
+		the 2.1 or 2.3 response.&nbsp; There might be other cases.&nbsp; </li>
+		<li>An initial ODMrun10 module is available for calling a DMS directly 
+		or via the ODMA Connection Manager.&nbsp; This does enough to 
+		demonstrate the behavior to be controlled.</li>
+		<li>This sorts out some of the divisions of labor between ODMrun and 
+		ODMref, and also determines how much of existing sample code can be 
+		scavenged for ideas.</li>
+	</ul>
+</blockquote>
+
+<h2>3. <a name="Activities">Activities</a>                 (2005-03-04)</h2>
+
+<ul>
+  <li>
+    <p style="background-color: #CCCCFF"><b>2005-03-03: Install freeware 
+	Microsoft VC++ Toolkit 2003</b> </li>
+	<li>
+    <p style="background-color: #99FF66">Process a skeleton executable that uses 
+	the ODMA header files</li>
+	<li>
+    <p style="background-color: #99FF66">Proces<span 
+ style="background-color: #99FF66">s a skeletal DLL that uses the ODMA COM 
+	header files</span></li>
+	<li>
+    <p style="background-color: #99FF66">Create the minimalist modules that are 
+	defined for this exercise in the project plan documents</li>
+</ul>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+  <dt><b><a name="0.00">0.00</a>  2005-03-04 create&nbsp; placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="P050301a.htm">job jar </a>and use it to drive
+    the completion of essential items here, providing an initial skeleton for 
+	more activity.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a rel="nofollow" target="_top" href="../construction.htm"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2005-03-04-17:49 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:47 $<br>
+      $$Revision: 27 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,82 @@
+Hello, Kitson.
+
+I have successfully imported your PGP public key into my GnuPG software.
+
+I am going to sign this message with my PGP key.
+
+Then I will encrypt the signed message with your PGP key.
+
+FEEDBACK REQUESTED:
+
+When you receive this, you can satisfy me that you possess the private
+
+key for the key you sent out by sending me the following text
+
+    "kfwHJEhnW1oslL"
+
+in a message that you have signed and then encrypted with my public key.
+
+I exported my public key, below with the console command
+
+        gpg --export --armor orcmid
+
+Then I pasted the console output into this text.  I imported the key from
+your message with
+
+        gpg --import your-message.asc
+
+and that should work with my signed message after decryption, too.
+
+If you want to verify that this is my public key in a more secure way,
+ you will need to conduct a similar experiment.  You can also fetch my public
+key from a public key server, using "orcmid" for the search. My key is at
+the MIT PGP Key Server, <http://pgp.mit.edu>.
+
+You can also
+match with the PGP fingerprint that I place in my Embanet messages.
+
+OK, that's all for now.
+
+I will sign the message first, then I will encrypt it with your public key
+and send it as an attachment.  After decrypting you should see this, with
+signature, and you should be able to check the signing.  It may say that you
+don't have the public key to use, in which case you should import it first
+or obtain it from MIT.  Either way.  Then you can verify this signature.
+
+I wouldn't tell PGP that you trust my signature (by signing it yourself) until
+you have confirmed that this public key actually is mine and not from someone
+else who is in possession of your public key [;<).
+
+ -- Dennis
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.2.2 (MingW32)
+
+mQGiBD84h3cRBACRgShBQ61vo3wOeynhk4YvhApPvVP8p+dtlP6w46w/6Z4JnkI0
+BqQ+abU299Hh9fljedTK4l6jSa+yYsRBnUGwZcJmcbvvfmAfMqvRsaHs8KEbN3eG
+vHwdDvkVxUwPzv6DgEVt/PASZxqOXxx1WpEO5LByEEzINr1ovLaN/sCjdwCgunUz
+NAgN7GWnbSxobTjVWYpjlt0D/3ePQZJ8oPN7V+I9ya564h5cISYCCO/ErcBTLewJ
+aczE/EOZcILt9G4619jXkGP+t3/TYiqsI4uvByP59GzN5bhsOvVJ/zRkBOMl/LJU
+0W1jnRJdCOKHwz9VyT0x4zpF7IFaHrCZng+7No65awuONvYngqRdmfd9DGJKatst
+tdzZBACIM4XMf7Zdkv8AhYZM7K1FEmMf13spSdr/70gA6DsBPMllAyFRp01HlhUM
+fzh19AL3EA/s5bbz71QlEZbYoTJPq1GPpWBcERia4gZLeO8HSO1G775XXT7MI8iq
+tlRkBxGOkFh5ZDeeUYdfeVc2ehOLYdHMddDaw73WP2DPG/KjpLQ1RGVubmlzIEUu
+IEhhbWlsdG9uIChvcmNtaWQpIDxkZW5uaXMuaGFtaWx0b25AYWNtLm9yZz6IWwQT
+EQIAGwYLCQgHAwIDFQIDAxYCAQIeAQIXgAUCPzncLAAKCRDYDQw/o5Mn7DI0AJ0c
+y7TeQqzu37+yGFtGxp1g6/dYKACfZtwbtoD+tWou1GsRS+9hx3mNzLO0P0Rlbm5p
+cyBFLiBIYW1pbHRvbiAoTS5TYyBzdHVkZW50KSA8RGVubmlzX0hhbWlsdG9uQGVt
+YmFuZXQuY29tPoheBBMRAgAeBQI/P9X7AhsDBgsJCAcDAgMVAgMDFgIBAh4BAheA
+AAoJENgNDD+jkyfsz1MAnRllBGpMvncB6pNun4f21C/+yxIfAJ9sQxgun/7aD8at
+Qz7hF+S1T5b2fLkBDQQ/OId7EAQAxu3PthrgwjXzuy+0x7l/2Gb8a8OkOO27SzBn
+a5gWGlduSRTXieq/hytrZqbGKsgfJLo61TZBZh9efuEz3ltA5lOC6QI+wL0HaSps
+KLHlmUiGN8YSV05vhuZMGdDhHhMzk+H/HGMhm0EO5Z8QLZ+F6LYyIT1ajq3p1kzG
+w8CI2+sAAwUD/A0FOtYtEVqeUgJemsQCBJSy73Xa0I22pghEhDPkh8axS226ylAA
+DEcSecxgATfiCp8fu0tsyniUgmIEe5W1gfkZiEcQrS6NA2QoozzqzgQ8CyQe20eK
+6OGYYpenUSymjD9Oso2uZO5VZq8QO9EWN/zzTaFPtF0ugdttLVIGK1XSiEwEGBEC
+AAwFAj84h3sFCQHhM4AACgkQ2A0MP6OTJ+z01QCgpkJbwa4LHFYU/TAEWIERU5mD
+lpAAn3PUGgB7E9bAZRsObaIfXMvKy3Tr
+=KqI+
+-----END PGP PUBLIC KEY BLOCK-----
+
+
+

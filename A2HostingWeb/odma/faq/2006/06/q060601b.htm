@@ -1,0 +1,497 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q060601b: Confirming ODMA-Aware Connection (latest) </title>
+<!--$$Header: /ODMACompagno/faq/2006/06/q060601b.htm 26    13-08-22 12:48 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="q060601c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../q000001.htm#Q060601"><font color="#990033">Q060601</font></a> 
+		ODMA </strong></font>
+
+		<strong><a href="../../q000001.htm"><font color="#990033">FAQtip</font></a><font color="#990033"><br>
+      </font></strong><strong><font color="#990033">&nbsp;<a href="q060601.htm"><font color="#990033">Confirming 
+ODMA-Aware Connection</font></a><br>
+      <em><font size="5">Procedure 0.10 (review draft)</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><b><code><a href="../../../">ODMA</a>&gt;<a href="../../">faq</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a href="./">06</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q060601c.htm">Q060601c</a>&gt;</code></b></font><br>
+		<small><small>
+		<a href="#0.10">0.10</a>
+		2013-08-22      
+      -12:48 -0700 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this FAQtip is available on the Internet at <br>
+			&lt;<b><kbd><a target="_top" href="q051001b.htm">http://ODMA.info/faq/2006/06/Q060601b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This version:</b>&nbsp;&nbsp;<b>Procedure 0.10&nbsp; </b>&lt;<b><kbd><a target="_top" href="q060601c.htm">http://ODMA.info/faq/2006/06/Q060601c.htm</a></kbd></b>&gt;.&nbsp; 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small></blockquote>
+<p><b><font color="#800080">{author note: This is a provisional draft for early 
+review.&nbsp; There is missing information.&nbsp; It is also likely that this 
+material will eventually be refactored, with some material extracted into a 
+common place where it will serve multiple procedures.}</font></b></p>
+<p>This procedure is for testing and troubleshooting the automatic connection 
+between ODMA-aware desktop applications and the ODMA Connection Manager.&nbsp; 
+Confirming end-to-end connection between the application to the ODMA Connection 
+Manager and is the first stage in verifying that an application has been 
+configured properly for ODMA.</p>
+<blockquote>
+	<blockquote>
+		<h3>1. <a href="#Purpose">Purpose</a><br>
+		2. <a href="#Scenario">Scenario</a><br>
+		3. <a href="#Prerequisites">Prerequisites</a><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.1</span> <span style="font-weight: 400"><a href="#Platform">
+		Platform</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.2</span> <span style="font-weight: 400">
+		<a href="#AdministrativeAuthorization">Administrative Authorization</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.3</span> <span style="font-weight: 400">
+		<a href="#InitialConditions">Initial Conditions</a></span><br>
+		4. <a href="#Setup">Setup</a><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.1</span>
+		<span style="font-weight: 400"><a href="#HaveNoDefaultDMS">Have No 
+		Default DMS</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.2</span>
+		<span style="font-weight: 400"><a href="#StartODMA32Log">Start the 
+		ODMA32 Log</a></span><br>
+		5. <a href="#ConfirmationSteps">Confirmation Steps</a><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.1</span>
+		<span style="font-weight: 400"><a href="#ClearLog">Clear the Log</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.2</span>
+		<span style="font-weight: 400"><a href="#StartApplication">Start the 
+		Application</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.3</span>
+		<span style="font-weight: 400"><a href="#RequestOpeningDocument">Request 
+		Opening of a Document</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.4</span>
+		<span style="font-weight: 400"><a href="#ConfirmODMADialogAbsence">
+		Confirm Absence of ODMA-Related Dialogs</a></span><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.5</span>
+		<span style="font-weight: 400"><a href="#CancelAndClose">Cancel 
+		Operation and Close Application</a></span><br>
+		6. <a href="#CheckingODMALog">Checking the ODMA Log</a><br>
+&nbsp;<span style="font-weight: 400">&nbsp;&nbsp; 6.1 <a href="#PreserveAnyLog">
+		Preserve Any Log</a><br>
+&nbsp;&nbsp;&nbsp; 6.2 <a href="#InspectLog">Inspect the Log</a><br>
+&nbsp;&nbsp;&nbsp; 6.3 <a href="#ConfirmLoggingIfDoubting">Confirm Logging If In 
+		Doubt</a></span><br>
+		7. <a href="#NextSteps">Next Steps</a><br>
+		<span style="font-weight: 400">&nbsp;&nbsp;&nbsp; 7.1
+		<a href="#RestoreODMAConfiguration">Restore the ODMA Configuration</a><br>
+&nbsp;&nbsp;&nbsp; 7.2 <a href="#IfSuccess">If Confirmation Succeeded</a><br>
+&nbsp;&nbsp;&nbsp; 7.3 <a href="#IfFailure">If Confirmation Failed</a></span><br>
+		8. <a href="#Resources">Resources</a></h3>
+	</blockquote>
+</blockquote>
+<h2><a name="1" target="_top" href="#1">1</a>. <a name="Purpose">Purpose</a></h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd: A little more about when this procedure 
+	would be used.&nbsp; Paraphrase the Summary on the folio cover page.</b></font></p>
+	<p><font color="#800080"><b>This procedure can also be used to learn the 
+	ODMA Application ID that an application program is using.}</b></font></p>
+	<p>Suggest also using this procedure as a way to become familiar with ODMA 
+	troubleshooting</p>
+	<p>This procedure can also be undertaken with an application that is known 
+	to be working with ODMA.&nbsp; That can be done to confirm that the procedure works and 
+	also demonstrate what 
+	a successful results look like.</p>
+</blockquote>
+<h2><a name="2" target="_top" href="#2">2</a>. <a name="Scenario">Scenario</a></h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd: Diagram of the path to the Connection 
+	Manager and Back.&nbsp; An Input-Process Output organized on the pattern of 
+	a UML interaction-sequence diagram (Fowler &amp; Scott, p.103}</b></font></p>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a>. <a name="Prerequisites">
+Prerequisites</a></h2>
+<h3><a name="3.1" target="_top" href="#3.1">3.1</a> <a name="Platform">Platform</a></h3>
+<blockquote>
+	<p><b><a name="3.1.1" target="_top" href="#3.1.1">3.1.1</a> Microsoft 
+	Windows 2000 and later versions are assumed for the conduct of this 
+	procedure</b>.&nbsp; The procedure and examples are all based on using 
+	Windows XP Professional SP2 (Media Center Edition 2005).&nbsp; Variations in 
+	appearance of examples and incidental details will be observed with earlier 
+	and later versions of Microsoft Windows.</p>
+	<p><b><a name="3.1.2" href="#3.1.2">3.1.2</a> This procedure is specific to 
+	native Win32 desktop applications, x86-compatible processors, and the ODMA 
+	2.0 Connection Manager, </b><kbd><b>ODMA32.dll</b></kbd>.&nbsp; No ODMA 
+	Connection Manager is supplied for native operation on 64-bit versions of 
+	Windows.</p>
+	<p><b><a name="3.1.3" target="_top" href="#3.1.3">3.1.3</a> This procedure 
+	also applies to versions of Windows 98.</b>&nbsp; The desktop application 
+	must be supported on those versions.&nbsp; The authorization conditions and 
+	use of separate administrator and limited-user accounts do not apply (3.2).&nbsp; 
+	The Windows registry can be modified by any Windows 98 user and no special 
+	permissions are required.</p>
+	<p><b><a name="3.1.4" target="_top" href="#3.1.4">3.1.4</a></b> <b>Duplicate 
+	the essential configuration.</b>&nbsp; An 
+	application that is confirmed to connect on one platform may fail to connect 
+	on a different Microsoft Windows version.&nbsp; If there is apparent 
+	difficulty obtaining an ODMA connection from an application, this procedure 
+	should be carried out on an identical configuration and preferably on the 
+	same computer.</p>
+</blockquote>
+<h3><a name="3.2" target="_top" href="#3.2">3.2</a>
+<a name="AdministrativeAuthorization">Administrative Authorization</a></h3>
+<blockquote>
+	<p><b><a name="3.2.1" target="_top" href="#3.2.1">3.2.1</a></b> <b>You must 
+	be comfortable carrying out simple Administrator functions.</b>&nbsp; You 
+	must have an administrative account on the platform to be used, or else an 
+	administrator must perform the following functions for you.</p>
+	<p><b><a name="3.2.2" target="_top" href="#3.2.2">3.2.2</a></b> <b>The 
+	confirmation itself can be carried out entirely in a limited user account 
+	(strongly recommended)</b>.&nbsp; This duplicates what should be the normal 
+	account type for operating an office-desktop application with ODMA.</p>
+	<p><b><a name="3.2.3" target="_top" href="#3.2.3">3.2.3</a></b> <b>Registry 
+	settings must be adjusted to set up the confirmation procedure.</b>&nbsp; 
+	This can be accomplished by using an administrative account </p>
+	<ul>
+		<li>(a) to backup the registry in case it is damaged or corrupted by 
+		later modifications</li>
+		<li>(b) to access the registry for modifications</li>
+		<li>(c) optionally, to changing the permissions on the ODMA-important 
+		portions of the registry so they can be adjusted using the limited 
+		account during testing and troubleshooting</li>
+	</ul>
+	<p><b><a name="3.2.4" target="_top" href="#3.2.4">3.2.4</a> An 
+	administrative account is required for software installation.</b>&nbsp;&nbsp; 
+	This applies to installation of the ODMA Connection manager (e.g., by 
+	installing the ODMA SDK) if it is not already installed.&nbsp; It will 
+	usually apply to installation of the application to be confirmed.&nbsp; It 
+	is recommended that installations be performed by elevating the limited 
+	account to administrator capability just long enough to carry out the 
+	installs and initial configuration of the application.</p>
+</blockquote>
+<h3><a name="3.3" target="_top" href="#3.3">3.3</a> <a name="InitialConditions">
+Initial Conditions</a></h3>
+<blockquote>
+	<p><b><a name="3.3.1" target="_top" href="#3.3.1">3.3.1</a> The desktop application has been installed and is confirmed to be 
+	working normally in the absence of any ODMA installation.</b>&nbsp; Note: An 
+	ODMA-aware desktop application is expected to operate normally if there is 
+	no ODMA Connection Manager installed or if there is no default DMS available 
+	for use with the particular application.&nbsp; If there is any suspicion 
+	that the application is malfunctioning in the presence of ODMA, the ODMA 
+	Connection Manager should be removed and operation of the application 
+	confirmed. <font color="#800080">{<b>tbd:</b> link to information on how to 
+	do this safely and then restore ODMA in an appropriate manner.}</font></p>
+	<p><b><a name="3.3.2" href="#3.3.2">3.3.2</a> The ODMA Connection Manager is installed.</b>&nbsp; 
+	It is recommended that the 
+	<a href="../../../downloads/default.htm#ODMA-20-SDK">ODMA 2.0 SDK</a> be used.&nbsp; This will provide the 
+	correct Connection Manager version and also set up other tools that are 
+	valuable for troubleshooting.&nbsp; This installation is safe to make even 
+	when the ODMA Connection Manager is already installed. </p>
+	<p><b><a name="3.3.3" target="_top" href="#3.3.2">3.3.3</a> There need not 
+	be any ODMA-compliant Document Management System installed.</b>&nbsp; This 
+	confirmation procedure works easiest if there are none.&nbsp; Default use of any ODMA DMS 
+	will be disabled as part of the setup, then restored afterwards.</p>
+</blockquote>
+<h2><a name="4" target="_top" href="#4">4</a>. <a name="Setup">Setup</a></h2>
+<h3><a name="4.1" target="_top" href="#4.1">4.1</a> <a name="HaveNoDefaultDMS">
+Have No Default DMS</a></h3>
+<blockquote>
+	<p><b><a name="4.1.1" target="_top" href="#4.1.1">4.1.1</a> ODMA Connection 
+	Fails Without a Default DMS.</b>&nbsp; 
+	When there is no 
+	default DMS available for use with an ODMA-aware application, the ODMA 
+	Connection Manager will reject the application's <b><kbd>
+	<a href="../../../downloads/odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></kbd></b> 
+	request.&nbsp; <i>In this procedure we want that to 
+	happen.</i>&nbsp; This procedure confirms that registration is rejected and 
+	tests whether the application behaves appropriately in the face of that 
+	condition.</p>
+	<p><b><a name="4.1.2" target="_top" href="#4.1.2">4.1.2</a> ODMA Checks for 
+	Application Default DMS First.</b>&nbsp; The ODMA Connection manager will 
+	use the ODMA Application ID to check the Windows Registry for an entry with 
+	that key under <b><kbd>HKEY_LOCAL_MACHINE\Software|Classes</kbd></b>. If 
+	there is specification of a default ODMA32 DMS under that key, that DMS will 
+	be used.&nbsp;&nbsp; For this procedure, <i>there should not be any 
+	application default DMS entry</i>.&nbsp; If there is one, it can be 
+	temporarily disabled.&nbsp; It can then be restored following the procedure.&nbsp;
+	<b><font color="#800080">{tbd: picture of an application default DMS entry 
+	and renaming of the key to prevent it being recognized.}</font></b></p>
+	<p><b><a name="4.1.3" target="_top" href="#4.1.3">4.1.3</a> ODMA Checks for 
+	a Global Default DMS Next.</b>&nbsp; If there is no specific default DMS for 
+	the application, the ODMA Connection manager checks the list of registered 
+	ODMA32 DMS integrations under <b><kbd>HKEY_CLASSES_ROOT\ODMA32</kbd></b>.&nbsp; 
+	If there is an entry with a <kbd><b>DEFAULT</b></kbd> subkey, that DMS will 
+	be used.&nbsp; For this procedure, <i>there should not be any global default 
+	DMS entry</i>.&nbsp; If there is one, it can be temporarily disabled.&nbsp; 
+	It can then be restored following the procedure.&nbsp; <font color="#800080">
+	<b>{tbd: picture of a global default DMS entry and renaming of the key to 
+	prevent it being recognized.}</b></font></p>
+</blockquote>
+<h3><a name="4.2" target="_top" href="#4.2">4.2</a> <a name="StartODMA32Log">
+Start the ODMA32 Log</a></h3>
+<blockquote>
+	<p><b><a name="4.2.1" target="_top" href="#4.2.1">4.2.1</a></b> The ODMA 2.0 
+	Connection Managers will provide a log of all requests received by ODMA.&nbsp; 
+	The log includes the name of the request, the parameters of the request, and 
+	the results, if any, returned through ODMA back to the requesting 
+	application.&nbsp; The production of logs is controlled by registry keys 
+	added beneath the <b><kbd>HKEY_CLASSES_ROOT\ODMA32.ConnectionManager </kbd>
+	</b>key (<a href="#Fig.4-1">fig. 4-1</a>).&nbsp; Unless logging is already 
+	set up, you will need to modify the registry (cf.
+	<a href="#AdministrativeAuthorization">section 3.2</a>):</p>
+</blockquote>
+<div align="center">
+	<table border="0" width="74%" cellspacing="3" cellpadding="3" id="table1">
+		<caption align="bottom" valign="bottom"><a href="#Fig.4-1">Fig. 4-1</a>.&nbsp; 
+		Registry Entries for ODMA32 Logging (typical)</caption>
+		<tr>
+			<td>
+			<p align="center"><a name="Fig.4-1">
+			<img border="0" src="Q060601c2.png" width="632" height="209"></a></td>
+		</tr>
+	</table>
+</div>
+<blockquote>
+	<p><b><a name="4.2.2" target="_top" href="#4.2.2">4.2.2</a> Create Logging 
+	key under ODMA32.ConnectionManager</b>.&nbsp; If it is not already present, 
+	add the <kbd><b>Logging</b></kbd> key.&nbsp; No value is required.</p>
+	<p><b><a name="4.2.3" target="_top" href="#4.2.3">4.2.3</a> Create Enabled 
+	sub-key under the Logging key.&nbsp; </b>If it is not already present, add 
+	the <kbd><b>Enabled</b></kbd> sub-key.&nbsp; No value is required.&nbsp; If 
+	there is a disabled <kbd><b>Enabled</b></kbd> key (such as one name <b><kbd>
+	Enabled.off</kbd></b>), simply rename it back to <kbd><b>Enabled</b></kbd>.</p>
+	<p><b><a name="4.2.4" target="_top" href="#4.2.4">4.2.4</a> Create File 
+	sub-key under the Logging key.&nbsp; </b>If it is not already present, add 
+	the <kbd><b>File</b></kbd> sub-key.&nbsp; A valid absolute path and file 
+	name is required.&nbsp; The file should be in a location that is both 
+	writeable and readable under the limited account used to perform this 
+	confirmation.</p>
+	<p><b><a name="4.2.5" target="_top" href="#4.2.5">4.2.5</a> Considerations 
+	for Location of Log File.&nbsp; </b>It is important that the directory for 
+	the log file be eligible for limited-account use in creating, reading, and 
+	deleting log files.&nbsp; It is also useful to choose a location that has no 
+	spaces in the full path name.</p>
+	<p><b><a name="4.2.6" target="_top" href="#4.2.6">4.2.6</a> Other Options 
+	for Log File Entries.&nbsp; </b>There is an optional <kbd><b>Options</b></kbd> 
+	sub-key that can be added under the <kbd><b>Logging</b></kbd> key.&nbsp; The 
+	value, if any is a comma-separated list of tokens.&nbsp; The only token that 
+	is meaningful for the ODMA 2.0 Connection Manager is <b><kbd>NEWLOG</kbd></b>.&nbsp; 
+	When that token is present in the value of an <kbd><b>Options</b></kbd> 
+	sub-key, any existing log is deleted each time the Connection Manager is 
+	loaded and initiated by an application.&nbsp; In all other cases when 
+	logging is enabled, new log entries will be appended to any existing ones.&nbsp; 
+	It is recommended that there be no options when using this procedure.&nbsp; 
+	This will prevent loss of the log in the case that the ODMA Connection 
+	Manager is initiated more than once for some reason.</p>
+</blockquote>
+<h2><a name="5" target="_top" href="#5">5</a>. <a name="ConfirmationSteps">Confirmation Steps</a></h2>
+<h3><a name="5.1" target="_top" href="#5.1">5.1</a> <a name="ClearLog">Clear the 
+Log</a></h3>
+<blockquote>
+	<p>If there is already a log file at the log location, either delete it or 
+	rename it.&nbsp; Renaming it, perhaps to include a timestamp in the name, 
+	preserves any existing log while making sure there is no log file already 
+	present at the 
+	start of the application.&nbsp; It is useful to keep the directory that 
+	receives logs open so that the creation of the log file can be observed.</p>
+</blockquote>
+<h3><a name="5.2" target="_top" href="#5.2">5.2</a> <a name="StartApplication">Start the Application</a></h3>
+<blockquote>
+	<p>Simply start the application to be confirmed.&nbsp; Double click on an 
+	icon, select it in <kbd><b>Start | All Programs</b></kbd>, or take any other action that will 
+	initiate the ODMA-aware application.</p>
+</blockquote>
+<h3><a name="5.3" target="_top" href="#5.3">5.3</a>
+<a name="RequestOpeningDocument">Request Opening of a Document</a></h3>
+<blockquote>
+	<p><b><a name="5.3.1" target="_top" href="#5.3.1">5.3.1</a></b> An ODMA-aware application might not connect to the ODMA Connection 
+	Manager until it is clear that a document operation is to be performed.&nbsp; 
+	This can be as late as requesting a dialog for opening a file (e.g., a <kbd>
+	<b>File | Open ...</b></kbd> menu selection) or as requesting that a 
+	newly-created document be saved (e.g., a <kbd><b>File | Save As ...</b></kbd> 
+	menu selection).&nbsp; </p>
+	<p><b><a name="5.3.2" target="_top" href="#5.3.2">5.3.2</a> Initiate an operation</b> (e.g., a File/Document Open 
+	dialog) of the application where an existing document is to be accessed.</p>
+</blockquote>
+<h3><a name="5.4" target="_top" href="#5.4">5.4</a>
+<a name="ConfirmODMADialogAbsence">Confirm Absence of ODMA-Related Dialogs</a></h3>
+<blockquote>
+	<p><b><a name="5.4.1" target="_top" href="#5.4.1">5.4.1</a></b> No 
+	ODMA-related Dialogs should occur.&nbsp; There should be no offer from any 
+	sort of DMS to select a document.&nbsp; There should be no error messages of 
+	any kind.</p>
+	<p><b><a name="5.4.2" target="_top" href="#5.4.2">5.4.2</a></b> The 
+	application should provide its normal, default dialog for accessing a 
+	document (e.g., from a location in the Windows file system).</p>
+	<p><b><a name="5.4.3" target="_top" href="#5.4.3">5.4.3</a></b> If there are 
+	any unusual behaviors, including failure to be offered any dialog at all, 
+	make note of that fact.</p>
+</blockquote>
+<h3><a name="5.5" target="_top" href="#5.5">5.5</a> <a name="CancelAndClose">
+Cancel Operation and Close Application</a></h3>
+<blockquote>
+	<p>It is not necessary to perform any useful operations.&nbsp; The dialog 
+	that opened, if any, should be closed/cancelled.&nbsp; Then close the 
+	application.</p>
+</blockquote>
+<h2><a name="6" target="_top" href="#6">6</a>. <a name="CheckingODMALog">Checking the ODMA Log</a></h2>
+<h3><a name="6.1" target="_top" href="#6.1">6.1</a> <a name="PreserveAnyLog">Preserve Any Log</a></h3>
+<blockquote>
+	<p><b><a name="6.1.1" target="_top" href="#6.1.1">6.1.1</a></b> <b>If no log is recorded</b> at all, the application is not connecting to 
+	the ODMA Connection Manager.</p>
+	<p><b><a name="6.1.2" target="_top" href="#6.1.2">6.1.2</a> If there is a log file</b>, rename it (e.g., from <kbd><b>ODMA32.log</b></kbd> 
+	to <kbd><b>ODMA32-2006-06-17-1827.log</b></kbd> or any other name that helps 
+	keep test logs organized and associated with related projects and notes.)</p>
+</blockquote>
+<h3><a name="6.2" target="_top" href="#6.2">6.2</a> <a name="InspectLog">Inspect the Log</a></h3>
+<blockquote>
+	<p>If a log has been produced, the application reached the <b><kbd>ODMRegisterApp</kbd></b> entry point of the ODMA Connection Manager.&nbsp; The log 
+	entry should have the following form (159 byte <a href="Q060601c1.log.txt">
+	<kbd><b>.txt</b></kbd> file</a>):</p>
+	<blockquote>
+		<div style="border: 2px solid #808080; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px">
+			<pre><font color="#000000">ODMRegisterApp
+    Input parameters:</font>
+    <font color="#000000">version=100(64)</font>            <font face="serif" color="#008000">&lt;&lt; Version of ODMA API expected by the application</font>
+    <font color="#000000">lpszAppId=MS Word;</font>         <font face="serif" color="#008000">&lt;&lt; ;-followed ODMA Application ID for the application</font>
+    <font color="#000000">dwEnvData=458964(700d4)</font>
+    <font color="#000000">Output parameters:</font>
+    <font color="#000000">odmHandle=0(0)</font>             <font color="#008000" face="serif">&lt;&lt; No ODMA session handle created (NULL handle returned)</font>
+    <font color="#000000">Return value=3(3)</font>          <font color="#008000" face="serif">&lt;&lt; ODMSTATUS value ODM_E_NODMS</font></pre>
+		</div>
+	</blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<h3><a name="6.3" target="_top" href="#6.3">6.3</a>
+<a name="ConfirmLoggingIfDoubting">Confirm Logging If In Doubt</a></h3>
+<blockquote>
+	<p><b><a name="6.3.1" target="_top" href="#6.3.1">6.3.1</a> If no log was 
+	produced</b> and there is any doubt whether the ODMA 2.0 Connection Manager 
+	is producing a log, repeat this confirmation with an ODMA-aware application 
+	(such as Microsoft Word or the ODMA Test application from the ODMA SDK) that 
+	is known to connect properly.&nbsp; </p>
+	<p><b><a name="6.3.2" target="_top" href="#6.3.2">6.3.2</a> If you are 
+	unable to produce a log</b> for a known ODMA-aware application, verify that 
+	you have the ODMA 2.0 Connection Manager installed.&nbsp; There should be no 
+	other ODMA32.dll files, especially in directories along with application 
+	software.</p>
+</blockquote>
+<h2><a name="7" target="_top" href="#7">7</a>. <a name="NextSteps">Next Steps</a></h2>
+<h3><a name="7.1" target="_top" href="#7.1">7.1</a>
+<a name="RestoreODMAConfiguration">Restore the ODMA Configuration</a></h3>
+<blockquote>
+	<p><b><a name="7.1.1" target="_top" href="#7.1.1">7.1.1</a></b> If there 
+	were any default DMS settings that were disabled as part of the setup 
+	(section <a href="#HaveNoDefaultDMS">4.1</a>), those default settings should 
+	now be restored in the registry.</p>
+	<p><b><a name="7.1.2" target="_top" href="#7.1.2">7.1.2</a></b> If it is 
+	undesirable to continue capturing logs (section <a href="#StartODMA32Log">
+	4.2</a>), disable logging by either deleting the <kbd><b>Enabled</b></kbd> 
+	key or renaming it to a different value such as <b><kbd>Enabled.off</kbd></b>.</p>
+</blockquote>
+<h3><a name="7.2" target="_top" href="#7.2">7.2</a> <a name="IfSuccess">If 
+Confirmation Succeeded</a></h3>
+<blockquote>
+	<p>If this confirmation procedure succeeds, perform further tests using the 
+	existing setup for logging and any test DMS for operation.&nbsp; The test 
+	DMS can be setup as an application-specific default, using the ODMA 
+	Application ID found in the log that was produced (section
+	<a href="#InspectLog">6.2</a>).</p>
+</blockquote>
+<h3><a name="7.3" target="_top" href="#7.3">7.3</a> <a name="IfFailure">If 
+Confirmation Failed</a></h3>
+<blockquote>
+	<p><b><a name="7.3.1" target="_top" href="#7.3.1">7.3.1</a> If the 
+	confirmation procedure fails</b>, any troubleshooting and further analysis 
+	will depend on the nature of the application and the support available for 
+	it.&nbsp; There is no generic advice that applies.&nbsp; </p>
+	<p><b><a name="7.3.2" target="_top" href="#7.3.2">7.3.2</a> Sometimes, there 
+	is specific information</b> on individual ODMA-aware applications.&nbsp; 
+	Consult the notes column of the registry of ODMA-aware applications.&nbsp;
+	</p>
+</blockquote>
+<h2>8. <a name="Resources">Resources</a></h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd: Also attributions and acknowledgments - possibly below the line.}</b></font></p>
+</blockquote>
+
+  <hr color="#990033">
+
+<dl><small>
+		</small></dl>
+
+<dl><small>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.10">0.10</a> 2006-06-18-15:32 Review Draft</b></dt>
+	<dd>The basic outline is sketched, with rough details.&nbsp; This version is 
+	used for announcement of the basic approach and this confirmation as 
+	important for testing integrations and new ODMA-aware application 
+	installations.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-06-14-13:42 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.</dd>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="61%" valign="middle" align="center">
+      <font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --></td>
+    <td width="25%">
+      <p align="right"><font size="-2">created 2006-06-14-13:42 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 26 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="39044" -->
+</body>
+</html>

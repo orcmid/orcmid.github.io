@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>a040601i: Assuming Contexts and Meanings</title>
+<!--$$Header: /miserCompagno/astraendo/2004/06/a040601i.htm 30    17-08-29 16:38 Orcmid $-->
+<base target="_self">
+
+</head>
+
+<body marginwidth="0" marginheight="0" stylesrc="../construction/templates/00/c000005e.htm">
+
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="12%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font>
+
+  
+
+    </td>
+    
+    <td width="59%" height="6">
+      <p align="center">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><strong>
+		<a href="../../a000001.htm#a040601"><font color="#990033">a040601</font></a> </strong></font>
+		<font color="#990033"><strong>astraendo <a href="../../a000001.htm">
+		<font color="#990033">Topic</font></a> </strong></font><br> 
+      
+      
+
+      <font color="#990033"><strong><a href="a040601.htm"><font color="#990033">
+		Numbering-Peano Project</font></a></strong></font></font><font color="#990033"><strong><i><big><big><br>
+      </big></big></i></strong><i><b><big><big>Assuming Contexts &amp; Meanings</big></big></b></i></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    	<b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">astraendo</a>&gt;<br>
+		<a href="../">2004</a>&gt;<a target="_top" href="./">06</a>&gt;</code></b></font></p>
+      <p align="right"><b><code><a target="_top" href="a040601i.htm">a040601i</a>&gt;</code></b><br>
+      <small><small>
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2014-04-18<!--webbot bot="Timestamp" endspan i-checksum="12263" -->        
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->13:22 -0700<!--webbot bot="Timestamp" endspan i-checksum="11974" -->      
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<hr noshade color="#990033">
+
+<blockquote>
+
+  <br>
+
+  <i>Bill discusses the <a href="a040601g.htm">contrasting </a></i>   
+  <a href="a040601g.htm"><code><b>Num.java</b></code><i> examples</i>   
+  </a><i> and what he sees in them.&nbsp; (All times in these notes are Pacific Daylight Time (PDT),       
+  gmt-0700.)</i>   
+</blockquote>
+<p><b><a name="FirstNum.java" href="a040601g.htm#s2004-05-22-1846">The First 
+Num.java</a> (anderbill):</b></p>
+<blockquote>
+  <blockquote>
+    <pre style="border: 1px solid #000000; padding: 2px"><code><b><font color="#800080">package</font></b><font color="#000000"> com.orcmid.cs.pa;
+
+<b>public</b> </font><b><font color="#0000FF">interface</font></b><font color="#000000"> Num
+<b>{</b>
+
+    <b>public</b> </font><b><font color="#0000FF">int</font></b><font color="#000000"> <i>next</i>();
+
+    <b>public</b> </font><b><font color="#0000FF">int</font></b><font color="#000000"> <i>pred</i>();
+
+    <b>public</b> </font><b><font color="#0000FF">boolean</font></b><font color="#000000"> <i>is0</i>();
+<b>}</b></font></code></pre>
+  </blockquote>
+</blockquote>
+<p><b><a name="SecondNum.java" href="a040601g.htm#s2004-05-23-1003">The Second 
+Num.java</a> (orcmid):</b></p> 
+<blockquote>
+  <blockquote>
+    <pre style="border: 1px solid #000000; padding: 2px"><code><b><font color="#008000">// package com.orcmid.llc.pa.pn;</font></b><font color="#000000">
+
+<b>public </b></font><b><font color="#0000FF">interface</font></b><font color="#000000"> Num
+<b>{</b>
+
+    <b>public</b> Num <i>next</i>();
+
+    <b>public</b> Num <i>pred</i>();
+
+    <b>public</b> </font><b><font color="#0000FF">boolean</font></b><font color="#000000"> <i>isOrigin</i>();
+<b>}</b></font></code></pre>
+  </blockquote>
+</blockquote>
+<dl>
+  <dt><b><a name="s2004-05-23-10:58">2004-05-23-10:58</a> </b><b>
+	<a href="a040601i.txt">Further 
+E-Mail Comment </a>(anderbill):</b></dt>
+  <dd>Bill comments on the remarks Dennis made in moving from the first to the 
+    second <b><code>Num.java</code></b> examples.</dd>
+</dl>
+<blockquote>
+  <p><a href="a040601g.htm#s2004-05-23-1003">&gt; <b> 1</b></a>. We have moved from  
+  comments to e-mail. That is interesting.</p> 
+  <blockquote>
+  <p><i>I didn't see an easy way of keeping the code separate and easily 
+  manipulated. I also thought a move to a wiki would be better, but wanted to 
+  wait for the compilable interface first.</i></p>
+  </blockquote>
+  <p><a href="a040601g.htm#s2004-05-23-1003">&gt; <b> 2</b></a>. Although my note was    
+  intentionally crude, I see that our automatic&nbsp;<br>   
+  &gt; induction of meaning has already led to something interesting. I had    
+  not&nbsp;<br>
+  &gt; omitted the result type of <code>pred()</code> and <code>next()</code>,    
+  although I can see how that&nbsp;<br>   
+  &gt; could be seen as a mistake by me.<br>   
+  &gt;&nbsp;<br>
+  <a href="a040601g.htm#s2004-05-23-1003">&gt; <b> 3</b></a>. <a href="#SecondNum.java">Here</a>    
+  is an update based on your version.</p>   
+  <blockquote>
+  <p><i>I thought about saying </i><code><b>public</b> Num <i>next</i>();</code><i> 
+  but <a href="#FirstNum.java">my choice</a> of </i><code><b>int</b></code><i> 
+  reflects my own imperfect understanding of Java, and maybe OOP.&nbsp;</i></p>   
+  </blockquote>
+  <p><a href="a040601g.htm#s3.1">&gt; <b> 3.1</b></a> It is interesting to wonder whether there is some advantage in&nbsp;<br>   
+  &gt; changing the names of <code>pred()</code> and <code>next()</code> to    
+  something else, although that&nbsp;<br>   
+  &gt; has only a temporary advantage.</p>   
+  <blockquote>
+  <p><i>Agile methods would counsel to use full words like &quot;successor&quot;    
+  and &quot;predecessor&quot;.&nbsp;</i></p>   
+  </blockquote>
+  <p><a href="a040601g.htm#s3.2">&gt; <b> 3.2</b></a> Likewise, I am not happy about <code>isOrigin</code> versus <code>is0</code>,    
+  although changing&nbsp;<br>   
+  &gt; the name is useful. I am not certain about &quot;origin&quot; is all.</p>   
+  <blockquote>
+  <p><i>Yeah, this is very interesting. I thought I had a clue about what </i><code>is0()</code><i> 
+  was about. </i><code>isOrigin()</code><i> seems confusing to me in that it 
+  makes me think this is more complicated than I had thought.</i></p>
+  </blockquote>
+  <p><i>This is a very interesting example of assumed contexts and meanings.</i></p>
+</blockquote>
+<p><i><b>To Be Continued ...</b></i></p>
+<hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%">
+	<a href="index.htm">
+	<img border="0" src="../../../images/hardhat-thumb.gif" width="80" height="60" alt="Construction Structure (Hard Hat Area)"></a></td>
+    <td width="67%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" -->
+    </td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2004-06-03-22:23 -0700 (pdt) by orcmid<br>  
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-08-29 16:38 $<br>
+      $$Revision: 30 $</em></font></p>
+    </td>
+  </tr>
+</table>
+			
+			
+		
+	
+	
+
+
+
+
+
+</body>
+</html>

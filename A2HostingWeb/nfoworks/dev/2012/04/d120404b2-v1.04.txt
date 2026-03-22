@@ -1,0 +1,291 @@
+version 1.04                          UTF-8                     dh:2011-09-24
+
+
+             PROPOSAL: ODF 1.3 PROTECTION-KEY ENHANCEMENTS
+             =============================================
+
+             A. Rationale
+
+             B. Proposed Changes
+               1. Front Page
+               2. Section 19.697 table:protection-key
+               3. Section 19.698 table:protection-key-digest-algorithm
+               4. Section 19.850 text:protection-key
+               5. Section 19.851 text:protection-key-digest-algorithm
+
+             C. Deployment Considerations
+
+             Change History
+
+A. RATIONALE
+
+   The use of password hashes in easily-discovered XML element and attribute
+   values is subject to compromise of the hashed password.  Although the use
+   of increasingly-stronger digest algorithms may lengthen the time required
+   for carrying out a brute-force attack on the hash, memorable passwords
+   remain subject to compromise; attacks become easier as processor technology
+   advances.
+
+   In addition, the presence of hashes in plain sight in XML documents allows
+   the digest value to be easily compared with the same digest value
+   elsewhere, revealing worthy targets to an adversary.  In addition, the
+   digest value is easily removed/replaced.  And an extracted digest value
+   can be repurposed for malicious purposes without having to know the hashed
+   password.
+
+   This proposal introduces two protection-key digest algorithms that are
+   intended to mitigate (but not eliminate) risks associated with use of
+   digest algorithms and provision of the digests in plain view in XML
+   documents.
+
+   The first algorithm defines a salting of the computation of SHA1 digest
+   values.  This increases the difficulty of detecting where the same password
+   has been used in more than one place.  This is its primary value.  There is
+   limited increase in the difficulty of discovery of the password by and no
+   mitigation of the use of the hash in a forgery since the hash and the salt
+   are "in plain sight."  Note that using digest algorithms of increasing
+   "power" does not mitigate this primary defect, especially if the password
+   itself is memorable and easily discovered by brute-force means.
+
+   The second algorithm is not specified beyond requiring that a password is
+   not used to derive the protection-key value.  This is the only means by
+   which revealed protection-keys cannot be directly attacked in an effort to
+   discover a password used in its creation: there is no such password.  The
+   prospect that the protection-key value itself can be misused in some way
+   remains.  Means for repudiation of a forged use are enabled but not
+   specified in this provision.
+
+   This proposal does not establish any conformance requirement on the use
+   of the second algorithm.  It establishes sufficient information for the
+   introduction of such algorithms in practice and leaves open the arrange-
+   ments that producers and consumers might introduce to make use of the
+   second algorithm useful and appealing under practical conditions.
+
+   Specification of these provisions in an early Committee Specification Draft
+   for ODF 1.3 secures an opportunity for experimental introduction in ODF 1.2
+   extended documents and confirmation of practical utility of the additonal
+   algorithms.
+
+   Note that these mitigations do not rely on use of SHA-2 algorithms.  The
+   difficulty of attacking such unsalted digests is not significantly more
+   difficult and invites an arms race that cannot be won.  The fundamental
+   defect is that the digest values are not secrets in their use as ODF 1.2
+   protection-key values and they are amenable to malicious repurposing.
+
+B. PROPOSED CHANGES
+   (relative to OpenDocument-v1.2-cs01-part1) for ODF 1.3 CSD01
+
+
+  1. Front Page
+     ----------
+
+[Add to Declared XML Namespaces]
+
+    http://docs.oasis-open.org/ns/office/1.3/protection#
+
+
+  2. Section 19.697 table:protection-key
+     -----------------------------------
+
+Change the paragraph
+
+"The password shall be provided as a sequence of bytes in UTF-8 encoding."
+
+to read
+
+"Any password shall be provided as a sequence of bytes in UTF-8 encoding."
+
+After that text, add the paragraph:
+
+"Consumers shall not silently ignore the presence of a table:protection-key
+attribute.  A consumer that does not recognize or support the specified
+table:protection-key-digest-algorithm shall not accept any password for
+release of the protection.  Any other means for removal of a
+table:protection-key and the associated protection is implementation-defined."
+
+Change, by adjustment of the schema
+
+"The table:protection-key attribute has the data type string 18.2."
+
+to
+
+"The table:protection-key attribute has the data type base64Binary 18.2."
+
+
+  3. Section 19.698 table:protection-key-digest-algorithm
+     ----------------------------------------------------
+
+Insert before the paragraph beginning "Any other procedures ... ." the
+following paragraphs:
+
+"If the table:protection-key-digest-algorithm value is
+'http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted' the value
+encoded in the table:protection-key value consists of the 20 octets of an SHA1
+message digest followed immediately by at least 20 full octets of a
+cryptographically-random salt value.  The SHA1 message digest is prepared, in
+accordance with [xmlenc-core] section 5.7.1, from the message consisting of
+all octets of the UTF-8encoded password followed immediately by the octets of
+the salt value.
+
+"If the table:protection-key-digest-algorithm value is
+'http://docs.oasis-open-org/ns/office/1.3/protection#authz160' the value
+encoded in the protection-key value consists of at least 20 octets (160 bits)
+of binary data not derived from an user-provided password.  Any means by
+which consumers recognize the producer of the table:protection-key value and
+authenticate a request to remove the protection is implementation-dependent.
+[Note: The binary data can contain a cryptographically-random value. Use of a
+protection-key value that is not derived from a password avoids compromise of
+memorable passwords for reuse in attacking other assets such as encrypted
+documents.]
+
+"[Note: Protection-key attributes themselves are easily defeated by
+removing/replacing them directly in XML documents that contain them.
+XML-visible digest values are also amenable to repurposing for malicious
+purposes.]"
+
+Replace the paragraph beginning "Consumers shall support ... ."
+
+with the following paragraphs:
+
+"Consumers shall support htt://www.w3.org/2000/09/xmldsig#sha1, which is the
+default, http://www.w3.org/2001/04/xmlenc#sha256, and
+http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted.  Producers
+should use http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted.
+
+"Producers shall provide warnings that when a password is used as the basis
+of a protection-key setting, the password used is compromisable."
+
+
+  4. Section 19.850 text:protection-key
+     ----------------------------------
+
+Change the paragraph
+
+"The password shall be provided as a sequence of bytes in UTF-8 encoding."
+
+to read
+
+"Any password shall be provided as a sequence of bytes in UTF-8 encoding."
+
+After that text, add the paragraph:
+
+"Consumers shall not silently ignore the presence of a table:protection-key
+attribute.  A consumer that does not recognize or support the specified
+table:protection-key-digest-algorithm shall not accept any password for
+release of the protection.  Any other means for removal of a
+table:protection-key and the associated protection is implementation-defined."
+
+Change, by adjustment of the schema
+
+"The text:protection-key attribute has the data type string 18.2."
+
+to
+
+"The text:protection-key attribute has the data type base64Binary 18.2."
+
+
+  5. Section 19.851 text:protection-key-digest-algorithm
+     ---------------------------------------------------
+
+Insert before the paragraph beginning "Any other procedures ... ." the
+following paragraphs:
+
+"If the text:protection-key-digest-algorithm value is
+'http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted' the value
+encoded in the text:protection-key value consists of the 20 octets of an SHA1
+message digest followed immediately by at least 20 full octets of a
+cryptographically-random salt value.  The SHA1 message digest is prepared, in
+accordance with [xmlenc-core] section 5.7.1, from the message consisting of
+all octets of the UTF-8encoded password followed immediately by the octets of
+the salt value.
+
+"If the text:protection-key-digest-algorithm value is
+'http://docs.oasis-open-org/ns/office/1.3/protection#authz160' the value
+encoded in the protection-key value consists of at least 20 octets (160 bits)
+of binary data not derived from an user-provided password.  Any means by
+which consumers recognize the producer of the text:protection-key value and
+authenticate a request to remove the protection is implementation-dependent.
+[Note: The binary data can contain a cryptographically-random value. Use of a
+protection-key value that is not derived from a password avoids compromise of
+memorable passwords for reuse in attacking other assets such as encrypted
+documents.]
+
+"[Note: Protection-key attributes themselves are easily defeated by
+removing/replacing them directly in XML documents that contain them.
+XML-visible digest values are also amenable to repurposing for malicious
+purposes.]"
+
+Replace the paragraph beginning "Consumers shall support ... ."
+
+with the following paragraphs:
+
+"Consumers shall support htt://www.w3.org/2000/09/xmldsig#sha1, which is the
+default, http://www.w3.org/2001/04/xmlenc#sha256, and
+http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted.  Producers
+should use http://docs.oasis-open.org/ns/office/1.3/protection#sha1-salted.
+
+"Producers shall provide warnings that when a password is used as the basis
+of a protection-key setting, the password used is compromisable."
+
+
+C. DEPLOYMENT CONSIDERATIONS
+
+The additional provisions are designed so that an implementation of any
+version of ODF that supports at least (or only) the default SHA1 method will
+not be disturbed when longer or different protection-key values are employed.
+It is sufficient that arbitrarily-long base64Binary encodings of the
+protection-key value be tolerated and only the expected size be used from that
+value.  ODF 1.2 consumers are already faced with the prospect of unexpected
+protection-key lengths and unknown digest algorithm names.  ODF 1.1 consumers
+may have greater difficulty depending on the resiliency of their implementa-
+tions.
+
+A series of resiliency tests are being provided in the repository of the
+OASIS ODF Interoperability and Conformance (OIC) TC so that consumers at all
+levels can be tested to confirm that these additional provisions and others
+of their kind allowed for in ODF 1.2 and beyond will not break consumers and
+are handled gracefully.
+
+The presumption is that any user-interface attempt to remove a lock for which
+the protection-key is derived by an unknown method will simply fail to accept
+any offered password.  This will be either because the protection-key value
+cannot be matched by an assumed digest algorithm or because the implementation
+does not recognize the identified digest algorithm.
+
+For migration to use of the additional protection-key digest methods, it is
+desirable to have proof of concept and trial use in advance of ratification
+of new algorithms in ODF 1.3 and versions beyond 1.3.
+
+For provisional use in ODF 1.2 consumers and producrs, the URIs specified in
+this proposal shall not be used.  Instead, alternative URIs can be used by
+mutual agreement of extended use of URIs having the same definitions as those
+provided here. It is also desirable for consumers that accept such provisional
+URIs to also accept the URIs defined here in anticipation of their
+ratification in a future ODF specification.
+
+Producers should not use these URIs except in conformant versions of ODF
+specifications that provide for their use.
+
+To safeguard against change in the definitions of the new algorithms
+introduced in this proposal, any Committee Specification Draft that introduces
+different algorithms shall also introduce distinct, non-conflicting URIs for
+those algorithms.  In this way, a consumer that is pre-conditioned to except
+the URIs described here will not be disrupted by eventual specificaton of
+modified provisions using the same URIs.
+
+
+CHANGE HISTORY
+
+ 1.04 2011-09-24T19:26Z Review with correction of minor typos.  Strengthen
+      the rationale.  Tighten the conformance provisions and the new text.
+ 1.03 2011-08-01T14:29Z Add approach to confirming graceful degradation of
+      existing consumers in the face of the variability that is allowed in
+      ODF 1.2 and beyond.
+ 1.02 2011-08-01T12:38Z Allow arbitrary length salts and replace secure160
+      with authz160 having a 20-octet minimum.  Light editing of the text.
+ 1.01 2011-07-11T22:14Z Corrected duplicate use of same section number
+      19.697
+ 1.00 2011-07-11T21:50Z Initial full draft.
+
+
+                    *** end of proposal v1.04 ***

@@ -1,0 +1,778 @@
+<html>
+<!--$$Heading:                                                           $-->
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<!--$$Header: /DMACompagno/csdocs/sketch/instidid.htm 18    13-08-22 12:15 Orcmid $-->
+<title>InstanceId DmaId Value Position Statement</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><em>CSDocs Architecture Sketch</em></h1>
+
+<h1 align="center">InstanceId Position Statement:</h1>
+
+<h1 align="center">DmaId for InstanceId Values</h1>
+
+<blockquote>
+  <p align="right"><em>$$Author: Orcmid $<br>
+  $$Date: 13-08-22 12:15 $<br>
+  $$Revision: 18 $</em></p>
+  <p align="left"><em>The CSDocs proposal includes creation of a new general property that
+  can be used on any persistent element, the InstanceId.&nbsp; This is a structural
+  solution, accomplished entirely within the model, for identifying elements of
+  independently-persistent objects when it is valuable to do so, as in CSDocs compounding
+  relationships.</em></p>
+  <p align="left"><em>This position statement is part of the <a href="default.htm">CSDocs
+  Architecture Sketch</a>.&nbsp; It elaborates on <a href="default.htm#UniqueIdentifiability">proposed rules for InstanceId values</a> and how
+  the property is introduced.&nbsp; This is the basis for further e-mail discussion and
+  arrival at a consensus position in the <a href="CSDocsFoundation00.doc">CSDocs Foundation
+  proposa</a>l.</em></p>
+  <p align="left"><em>The statement is in two parts:</em></p>
+  <ol>
+    <li><p align="left"><em>Having InstanceId be an Optionally-Supported Property of
+      dmaClass_DMA Class</em></p>
+      <p align="left">That is discussed in the <a href="instidpo.htm">companion page</a> that
+      provides the <a href="instidpo.htm#BasicPositionStatement">overall position statement on
+      InstanceIds</a>.</p>
+    </li>
+    <li><p align="left"><em>Having InstanceId values be DmaId values.</em></p>
+      <p align="left">That is discussed on this page, along with background on using DmaId
+      values in legacy situations.</p>
+    </li>
+  </ol>
+  <p align="center"><strong><em>This is InstanceId Position Statement 0.2 created on <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d %H:%M" startspan -->2006-08-28 18:06<!--webbot bot="Timestamp" endspan i-checksum="25788" --> -0700 (pdt)</em></strong></p>
+  <hr>
+</blockquote>
+
+<blockquote>
+  <h2><a name="Content"><em>Content</em></a></h2>
+</blockquote>
+
+<h2><a href="#DmaIdValues">Position: DmaId for InstanceId Values</a></h2>
+
+<h2><a href="#WhyDmaId">Why DmaId?</a></h2>
+
+<h2><a href="#StandardDmaId">Standard DmaId Structure and Usage</a></h2>
+
+<blockquote>
+  <h3><a href="#DCEUIIDVersion1Format">DCE UUID Version 1 Format</a></h3>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong><a href="#UUIDTimeStamp">UUID Time Stamp:</a> time-low, time-mid, time-hi</strong></li>
+    <li><a href="#Clock-Seq"><strong>Clock-Seq Values</strong></a></li>
+    <li><a href="#NodeIdentification"><strong>Node Identification</strong></a></li>
+  </ul>
+  <h3><a href="#Pseudo-NodeIdentifications">Pseudo-Node Identifications</a></h3>
+</blockquote>
+
+<h2><a href="#LegacyConsiderations">Legacy Considerations</a></h2>
+
+<blockquote>
+  <h3><a href="#WhenInstanceIdIsRelevant">When InstanceId is Relevant</a></h3>
+  <h3><a href="#Alternatives2CSDocsInstanceId">Alternatives to the CSDocs InstanceId in
+  Identifying Specific CSRelationship Elements</a></h3>
+  <h3><a href="#MappingToDmaIds">Mapping Locally-Unique Ids to DmaIds</a></h3>
+  <ul>
+    <li><a href="#ReservingUUIDBlocks"><strong>Reserving UUID Blocks</strong></a></li>
+    <li><a href="#MappingUUIDTime-Low"><strong>Mapping the UUID <em>time-low</em> Field</strong></a></li>
+  </ul>
+</blockquote>
+
+<h2><a href="#Resources">References and Resources on DmaId</a></h2>
+
+<blockquote>
+  <h3><a href="#NormativeSpecifications">Normative Specifications</a></h3>
+  <h3><a href="#InformativeReferences">Informative References</a></h3>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1><a name="DmaIdValues"><span class="570322223-30061999">Position: DmaId for InstanceId
+Values</span></a></h1>
+
+<blockquote>
+  <ol>
+    <li>The InstanceId property has values of type DmaId.&nbsp; </li>
+    <li>It InstanceId is supported on a class of DMA object, it is required to be read-only and
+      system-derived.&nbsp; The presence of a value is optional.</li>
+    <li>An InstanceId property has a value if and only if the DMA object supporting the property
+      corresponds to a persistent element of a DMA System</li>
+    <li>Any time that an object-valued property that corresponds to a dependently-persistent
+      element is given a new value (via a Put..., Insert, or Replace method), and that value is
+      made persistent, any InstanceId property for that new persistent element will have a
+      never-used DmaId value.</li>
+  </ol>
+  <p><span class="570322223-30061999">In this position paper, use of a DmaId and achievement
+  of global uniqueness and complete unambiguity is proposed to avoid having to worry about
+  degrees of uniqueness, especially in query, cross-repository operations, etc.</span></p>
+  <blockquote>
+    <blockquote>
+      <p><a href="#Content"><em>to contents</em></a></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="WhyDmaId">Why DmaId?</a></h1>
+
+<blockquote>
+  <p>DmaId values are DCE Universally Unique IDentifiers (UUIDs) [<a href="#[DCERPC]">DCE
+  RPC</a>].&nbsp; DmaIds are 128-bit binary values.&nbsp; DmaIds that are generated
+  correctly on computers with network cards are guaranteed to be different from all other
+  DmaIds until at least 3400 AD.&nbsp; </p>
+  <p>DmaId values can be generated without consultation with a centralized authority. &nbsp;
+  The uniqueness of IEEE 802 network identifications is sufficient to allow each network
+  node to independently produce DmaId values that will be unique and unambiguous. &nbsp;
+  These DmaId values can be conveyed anywhere and never be confused with any other DCE UUID.</p>
+  <p>The technique for generating DCE UUIDs&nbsp; already provides for clock corrections.
+  &nbsp; The UUID generator will recover after system failures and crashes where state and
+  possible history are lost.&nbsp; There is no need to invent another technique to prevent
+  accidental duplications of locally-unique labels or identifiers.&nbsp; UUIDs are already
+  available, can be generated very quickly, are both safe and unique, and can be used for a
+  very long time (at least another millenium).&nbsp; </p>
+  <p>The DmaId is also compatible with, and fully interoperable with, the Microsoft GUID as
+  it is widely used and supported on the Microsoft Windows platform and in the Component
+  Object Model [<a href="#[COMSpec]">COM Spec</a>]. </p>
+  <p>DCE UUIDs are easily compared and different UUIDs are usually recognized as different
+  with very little effort.&nbsp; There need be no accomodation of differing sizes and
+  comparisons based on anything but binary values.&nbsp; There are also standard 16-bit
+  hash-value functions that work well with UUIDs to provide rapid lookup in to sets of
+  UUIDs.</p>
+  <p>Generally, a fixed 128-bit binary value is simple to use routinely as an InstanceId for
+  any number of purposes.&nbsp;&nbsp; Indexing is simplified by having the same kind of
+  easily compared, easily-stored value be used everywhere that an InstanceId is useful.</p>
+  <p>Use of text strings, small integers, and other varieties of values is useful on a
+  local, application or implementation-specific basis.&nbsp; However, there is no reliable
+  interoperable case that will work for different document spaces that use special-case
+  solutions for their different local situations.&nbsp; The use of DmaId for InstanceId
+  provides for predictable methodology across a wide variety of document collections.</p>
+  <p>Another difficulty with local solutions is that over time, as more functionality is
+  introduced and more use of InstanceId is required, one is led slowly but surely to create
+  more features of DmaId without having DmaId compatibility. </p>
+  <p>Finally, it is difficult to specify an optional, interoperable facility that relies on
+  local options for achieving degrees of uniqueness.&nbsp; The concern is not only about
+  added complexity of the specification: there is also concern that the solution will not
+  scale to meet the requirements of advanced features, forcing replacement of the InstanceId
+  implementation or leading to introduction of further special cases.</p>
+  <p>It is proposed to accept the use of a general InstanceId solution, even for the
+  specific case of the CSDocs Foundation, so that there is no doubt about the ability to
+  extend to use of InstanceId to additional usages and requirements beyond the foundation.</p>
+</blockquote>
+
+<h1><a name="StandardDmaId">Standard DmaId</a> Structure and Usage</h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#DCEUIIDVersion1Format">DCE UUID Version 1 Format</a></li>
+      <li><a href="#Pseudo-NodeIdentifications">Pseudo-Node Identifications</a></li>
+    </ul>
+    <blockquote>
+      <p><a href="#Content"><em>to contents</em></a></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>The DCE UUID used for DmaId is exactly that specified for [<a href="#[DCERPC]">DCE RPC</a>]
+  and used by Microsoft for COM [<a href="#[COMSpec]">COM Spec</a>].&nbsp; This is the same
+  as the GUID format generated by Microsoft utilities and development tools [<a href="#[VS60]">VS60</a>].&nbsp; This tutorial description is provided to provide more
+  familiarity with UUIDs and the options for applying them in legacy situations.</p>
+  <p>There is a standard format for presentation of DCE UUID values as sequences of
+  hexadecimal digits separated by &quot;-&quot; characters.&nbsp; Typical sequences and
+  their interpretations as structures of unsigned binary integers is illustrated in the
+  Figure.</p>
+</blockquote>
+
+<p align="center"><img src="csd990717-UUID-structure.gif" alt="csd990717-UUID-structure.gif (11283 bytes)" WIDTH="897" HEIGHT="308"></p>
+
+<blockquote>
+  <p align="center"><strong>Figure.&nbsp; DCE UUID Structure (<a href="csd990717-UUID-structure.vsd">click for Visio image</a>)</strong></p>
+</blockquote>
+
+<h2 align="left"><a name="DCEUIIDVersion1Format">DCE UUID Version 1 Format</a></h2>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#UUIDTimeStamp">UUID Time Stamp</a></li>
+      <li><a href="#Clock-Seq">Clock-Seq Values</a></li>
+      <li><a href="#NodeIdentification">Node Identification</a></li>
+    </ul>
+    <ul>
+      <p align="left"><em><a href="#StandardDmaId">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p align="left">At the top of the <a href="#StandardDmaId">figure</a>, UUIDs are shown in
+  their standard text representation.&nbsp; This sequence of 36 characters is the standard
+  form used for DCE UUIDs everywhere.&nbsp; The '-' characters are a required part of the
+  format.&nbsp; The other 32 characters specify hexadecimal numbers, using '0' .. '9' and
+  'a' .. 'f' (or 'A' .. 'F') to represent 4-bit binary fields (decimal 0 to 15 and binary
+  0000 to 1111).</p>
+  <p align="left">All of the illustrated UUIDs are in DCE version 1 format.&nbsp; This
+  format is distinguished by the following characteristics:</p>
+  <ul>
+    <li><p align="left">The first character of the fourth group is one of the hexadecimal digits
+      8 to b (decimal 8 to 11, binary 1000 to 1011).&nbsp; </p>
+      <p align="left">This leading binary '10' pattern establishes the UUID as a DCE variant.</p>
+    </li>
+    <li><p align="left">The first character of the third group (version and time-hi) is always
+      '1'.&nbsp; </p>
+      <p align="left">This leading binary '0001' pattern establishes this DCE variant as being
+      for a standard DCE version UUID.</p>
+    </li>
+  </ul>
+  <p align="left">The parts between the '-' characters separate different components of the
+  UUID.&nbsp; The components represent the following information:</p>
+  <ul>
+    <li><p align="left">60 bit <a href="#UUIDTimeStamp">time stamp</a> representing
+      100-nanosecond intervals since 1582-10-15-00:00:00.00 UTC&nbsp; </p>
+    </li>
+    <li><p align="left">14 bit <a href="#Clock-Seq">clock-sequence value</a> used to prevent
+      inadvertent duplications as the result of clock irregularities and loss of system state</p>
+    </li>
+    <li><p align="left">6-octet sequence consisting of an IEEE 803.2 <a href="#NodeIdentification">node identification</a></p>
+    </li>
+  </ul>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#DCEUIIDVersion1Format">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 align="left"><a name="UUIDTimeStamp">UUID Time Stamp</a>: time-low, time-mid, time-hi</h3>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#time-low">time-low</a></li>
+      <li><a href="#time-mid">time-mid</a></li>
+      <li><a href="#time-hi">time-hi</a></li>
+    </ul>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p align="left">The time stamp values correspond to the number of 100-nanosecond intervals
+  that have occurred since the initiation of the current Gregorian calendar on October 15,
+  1582 A.D of that calendar.</p>
+  <p align="left">The 60 bits are expressed in three parts: <a href="#time-lo"><em>time-lo</em></a><a href="#time-low">w</a> (32 bits), <a href="#time-mid"><em>time-mid</em></a> (16 bits), and
+  <a href="#time-hi"><em>time-hi</em></a> (12 bits).</p>
+  <p align="left">The integer value of the time stamp is </p>
+  <p align="center">(<em>time-hi</em> נ2<sup>16 </sup>+ <em>time-mid</em>) נ2<sup>32</sup>
+  + <em>time-low</em></p>
+  <p align="left">It is not expected that time stamps be accurate to the nearest 100
+  nanoseconds.&nbsp; It is expected that time stamps generated with the same node and
+  clock-seq values be monotonically increasing.&nbsp; There must be sufficient accuracy of
+  time-keeping that duplication of identical time stamp and <em>clock-seq</em> combinations
+  is statistically impossible for a given node identification.</p>
+</blockquote>
+
+<h4 align="left"><a name="time-low"><em>time-low</em></a></h4>
+
+<blockquote>
+  <p align="left">The first group, consisting of 8 hexadecimal digits, specifies the value
+  of a 32-bit unsigned binary integer, <em>time-lo</em>w.&nbsp; As a 100-nanosecond interval
+  counter, <em>time-low</em> takes&nbsp; 429.4967296 seconds (about 7.16 minutes) before it
+  repeats.</p>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#UUIDTimeStamp">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h4 align="left"><a name="time-mid"><em>time-mid</em></a></h4>
+
+<blockquote>
+  <p align="left">The second group, consisting of 4 hexadecimal digits, specifies the value
+  of a 16-bit unsigned binary integer, <em>time-mid</em>.&nbsp; The<em> time-mid</em> value
+  advances each time<em> time-</em>low changes to 0.&nbsp; So time-mid changes every
+  429.4967296 seconds.&nbsp; It will take about </p>
+  <blockquote>
+    <p align="left">28,147,497.67 seconds, or about </p>
+    <p align="left">7,818.75 hours, or about</p>
+    <p align="left">325.78 days</p>
+  </blockquote>
+  <p align="left">for <em>time-mid</em> to repeat.</p>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#UUIDTimeStamp">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h4 align="left"><a name="time-hi"><em>time-hi</em></a></h4>
+
+<blockquote>
+  <p align="left">The third group, consisting of 4 hexadecimal digits, specifies the value
+  of a 16-bit unsigned binary integer.&nbsp; The high-order nibble of 4 bits is used for a
+  version field and the remaining 12 bits constitute the <em>time-hi</em> value. &nbsp;
+  Since <em>time-hi</em> changes every 325.78 days, it will take</p>
+  <blockquote>
+    <p align="left">1,334,399.89 days, or over </p>
+    <p align="left">3,653 years (4096 clicks of <em>time-hi</em>)</p>
+  </blockquote>
+  <p align="left">for<em> time-hi</em>, and hence a value of the entire time stamp, to
+  repeat.</p>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#UUIDTimeStamp">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 align="left"><a name="Clock-Seq">Clock-Seq Values</a></h3>
+
+<blockquote>
+  <p align="left">The fourth field of the UUID string, consisting of 4 hexadecimal digits,
+  specifies the value of a 16-bit unsigned binary integer.&nbsp; For a DCE UUID, the
+  high-order 2 bits are used for a constant variant-identification field and the remaining
+  14 bits constitute the <em>clock-seq</em> value.&nbsp; </p>
+  <p align="left">The <em>clock-seq</em> value is required to start as a random number
+  generated in such a way that there is a negligible chance that the same clock-seq value
+  would be employed with the same time stamp if the node identification were moved to (or
+  from) another computer.</p>
+  <p align="left">[<a href="#[DCERPC]">DCE RPC</a>] specifies the conditions for generating
+  clock-seq values and altering them any time there is risk of duplicate time stamps being
+  produced without detection.&nbsp; This can occur, for example, when the local system clock
+  is adjusted or the system is restarted in a way where it is not certain that the
+  last-generated UUID has been remembered.&nbsp; The [<a href="#[UUIDs-GUIDs]">UUIDs-GUIDs</a>]
+  working paper provides a sample implementation that illustrates how these qualities can be
+  achieved.</p>
+  <p align="left"><a name="clock-seq-low">In</a> the <a href="#StandardDmaId">figure</a>,
+  the fourth field is also shown separated into two 8-bit binary fields, one containing the
+  variant and <a name="clock-seq-hi"><em>clock-seq-hi</em></a>, the other containing <em>clock-seq-low</em>.&nbsp;
+  In that storage arrangement, which is used in the interchange of UUIDs in binary data
+  structures (including DmaIds), it is the case that</p>
+  <p align="center"><em>clock-seq</em> = <em>clock-seq-hi</em> ײ56 + <em>clock-seq-low</em></p>
+</blockquote>
+
+<blockquote>
+  <p align="left">or, put slightly differently,</p>
+  <p align="center"><em>clock-seq-low</em> = <em>clock-seq</em> <strong>mod</strong> 256;</p>
+  <p align="center"><em>clock-seq-hi</em> = (<em>clock-seq</em> - <em>clock-seq-low</em>) 獊  256</p>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#DCEUIIDVersion1Format">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 align="left"><a name="NodeIdentification">Node Identification</a></h3>
+
+<blockquote>
+  <p align="left">The final part of the UUID sequence consists of a 6-octet <em>node</em>
+  identification sequence.&nbsp; Each pair of hexadecimal digits specifies the value of a
+  single 8-bit binary value (octet), and the six octets are presented in the same order used
+  in the interchange of IEEE 802.3 network node identifications.&nbsp; </p>
+  <p align="left">In the pure use of DCE GUIDs, a node identification will always have the
+  first octet hold a value less than 128: the high-order bit of the value is always&nbsp; 0.</p>
+  <p align="left">In the<a href="#StandardDmaId"> figure</a>, the first example is the UUID
+  used to identify the well-known DMA 1.0 dmaClass_DMA class.&nbsp; It conforms exactly in
+  structure to an official DCE UUID.&nbsp; The value was generated using a node on a system
+  that, on its own, will never generate that particular UUID again.</p>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#DCEUIIDVersion1Format">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2 align="left"><a name="Pseudo-NodeIdentifications">Pseudo-Node Identifications</a></h2>
+
+<blockquote>
+  <p align="left">When there is no node identification available, or it is undesirable to
+  use the true node identification, different procedures are required to produce UUIDs that
+  cannot conflict with UUIDs generated on systems having legitimate IEEE 802.3 network node
+  identifications.</p>
+  <p align="left">Some approaches extend the basic DCE UUID format by using the high-order
+  bit of the first<em> node</em> octet to indicate when a pseudo-node identification is
+  present..</p>
+  <p align="left">In the <a href="#StandardDmaId">figure</a>, the second and third sample
+  UUIDs are produced using such a technique.&nbsp; The UUIDGEN utility of [<a href="#[VS60]">VS60</a>]
+  was used on a Windows 98 system with no network card.&nbsp; The &quot;Day-1
+  pseudonode&quot; example was used on the first day.&nbsp; After shutting down the computer
+  and restarting on the next day, the &quot;Day-2 pseudonode&quot; example was obtained.</p>
+  <p align="left">There is no standard for the creation of pseudo-node identifications, so
+  interoperability among computers systems is not assured.&nbsp; </p>
+  <p align="left">A working paper by Paul Leach and Rich Salz [<a href="#[UUIDs-GUIDs]">UUIDs-GUIDs</a>]
+  describes ways to extend the [<a href="#[DCERPC]">DCE RPC</a>] UUID specification to allow
+  pseudo-node identification in DCE Version 1 UUIDs.&nbsp; Additional versions are also
+  proposed.&nbsp; None of these have been adopted as standard extensions to the DCE UUID.</p>
+  <p align="left">UUIDs that are intended to be communicated to other computer systems
+  should not be generated using anything but the &quot;pure&quot; DCE UUID format.&nbsp; </p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#StandardDmaId">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="LegacyConsiderations">Legacy Considerations</a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#WhenInstanceIdIsRelevant">When InstanceId is Relevant</a></li>
+      <li><a href="#Alternatives2CSDocsInstanceId">Alternatives to the CSDocs InstancdId in
+        Identifying Specific CSRelationship Elements</a></li>
+      <li><a href="#MappingToDmaIds">Mapping Locally-Unique Ids to DmaIds</a></li>
+      <li><a href="#SimpleMappingTechnique">Simple Mapping Technique</a></li>
+    </ul>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><span class="570322223-30061999">Given a legacy repository that does not support
+  InstanceId already, it is suggested that the requirement to support DmaId for InstanceId
+  is a barrier to adoption of CSDocs. </span></p>
+</blockquote>
+
+<h2><a name="WhenInstanceIdIsRelevant"><span class="570322223-30061999">When InstanceId is
+Relevant</span></a></h2>
+
+<blockquote>
+  <p><span class="570322223-30061999">Sticking with the CSDocs foundation, ignoring other
+  potential applications of InstanceId, it would appear that having InstanceId be a DmaId
+  cannot become a barrier until the following situations has obtained:</span><ol>
+    <li><span class="570322223-30061999">The legacy system has found a way of expressing the DMA
+      Relationship model and realizing <a href="default.htm#CSDocsFoundation">CSRelationship
+      objects</a> to at least bridge CSRoot and CSComponent DocVersions.</span></li>
+    <li><span class="570322223-30061999">The legacy system is prepared to support<a href="default.htm#SpecifyingContentDependency"> identification of specific elements</a>
+      within a CSRoot and/or CSComponent as part of the CSRelationship implementation.</span></li>
+    <li><span class="570322223-30061999">The legacy system could operate with a simpler or
+      already-available facility if globally-unique identifiability of elements were not
+      required.</span></li>
+    <li><span class="570322223-30061999">The Ids the legacy system employs, or can employ, are
+      ones that the legacy system can ensure are not duplicated, even in the face of failures
+      and loss of system state.</span></li>
+  </ol>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#LegacyConsiderations">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="Alternatives2CSDocsInstanceId">Alternatives to the CSDocs InstanceId</a> in
+Identifying Specific CSrelationship Elements</h2>
+
+<blockquote>
+  <p>The CSDocs Foundation provisions for InstanceId are for<strong> interoperability</strong>
+  in the identification of specific elements (2, <a href="#WhenInstanceIdIsRelevant">above</a>).</p>
+  <p>It is legitimate for a DMA DocSpace to support subclasses of CSRelationship that do not
+  support the additional properties of CSRelationship for identifying specific elements.
+  &nbsp; That is, none of the dmaProp_HeadRenditionId, dmaProp_HeadContentElementId,
+  dmaProp_TailRenditionId, and dmaProp_TailContentElementId properties would be supported on
+  the SCRelationship subclass.</p>
+  <p>There is no impact on CSDocs-unaware requesters.&nbsp; There is some impact on
+  CSDocs-aware requesters, in that there will be CSRelationship objects for which the
+  principal, if any, for locating specific elements is not known.&nbsp; This is not a new
+  condition to deal with.&nbsp; No CSDocs implementation is required to use a known method
+  for identifying specific elements.&nbsp; </p>
+  <p>When a CSDocs implementation does employ the CSDocs provisions for <a href="default.htm#SpecifyingContentDependency">identification of specific elements</a> on
+  a CSRelationship object, there is more available to a CSDocs-aware requester, including
+  the prospect of being able to create or alter a CSRelationship<strong> in an interoperable
+  way</strong>.</p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#LegacyConsiderations">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="MappingToDmaIds">Mapping Locally-Unique Ids to DmaIds</a></h2>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#ReservingUUIDBlocks">Reserving UUID Blocks</a></li>
+      <li><a href="#MappingUUIDTime-Low">Mapping the UUID <em>time-low</em> Field</a></li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><span class="570322223-30061999">Assuming that conditions (1-4), <a href="#WhenInstanceIdIsRelevant">above</a>, are satisfied by a legacy system, it is
+  possible to map the local identifer to a globally-unique DmaId.&nbsp; This assumes that
+  there is an unambiguous mapping between the locally-unique identification and a 32-bit
+  binary value.</span></p>
+  <p><span class="570322223-30061999">To ensure that the legacy system will never exhaust
+  the capacity of a single 32-bit value, it may be necessary to partition the set of local
+  identifications and map each set to a different locally-unique 32-bit binary value.
+  &nbsp;&nbsp; How this partitioning is accomplished depends on the characteristics of the
+  legacy system.&nbsp; The only requirement to have a DmaId mapping is that there be a means
+  for associating a single DmaId (a <em>BaseId</em>) with each partition, and then mapping
+  the locally-unique identifiers ever used in that partition to unique 32-bit values.</span></p>
+  <p><span class="570322223-30061999">For CSDocs, the legacy implementation need only add a
+  DMA implementation for producing the correct DmaId value of an InstanceId property. &nbsp;
+  It should be able to recognized the correct partition and produce the same 32-bit binary
+  value without error.&nbsp; There is no requirement, within the CSDocs Foundation, to be
+  able to directly access some element, given the value of its InstanceId. &nbsp;&nbsp; It
+  is only necessary to deliver the value of the InstanceId once the element is accessed.</span></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#LegacyConsiderations">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3><a name="ReservingUUIDBlocks">Reserving UUID Blocks</a></h3>
+
+<blockquote>
+  <p><span class="570322223-30061999">Here is a trivial way to obtain a set of DmaId values
+  that can be mapped to and from 32-bit unsigned integers:</span><ul>
+    <li><span class="570322223-30061999">Have access to the pure DCE UUID generator of a system
+      that can be shut down easily and that has a reliable clock (currently accurate to within
+      one minute).</span></li>
+    <li><span class="570322223-30061999">Generate a UUID value, <em>StartId </em>with the
+      system.&nbsp; Record the value.</span></li>
+    <li><span class="570322223-30061999">Shut down the system.</span></li>
+    <li><span class="570322223-30061999">Wait at least 15 minutes.&nbsp; </span></li>
+    <li><span class="570322223-30061999">Start up the system again and generate a new UUID
+      value, <em>StopId </em>with the system.</span></li>
+    <li><span class="570322223-30061999">Make the following changes to <em>StopId:</em></span><p><span class="570322223-30061999"><strong>if</strong><em> StopId.time-mid </em>= 0<em> </em><strong>then</strong><em>
+      StopId.time-hi </em>:=<em> StopId.time-hi </em>- 1;</span></p>
+      <p><span class="570322223-30061999"><em>StopId.time-mid </em>:= (<em>StopId.time-mid </em>+
+      (2<sup>16</sup> -1)) <strong>mod</strong> 2<sup>16</sup>;</span></p>
+      <p><span class="570322223-30061999"><em>StopId.time-low</em> := 0;</span></p>
+    </li>
+    <li><span class="570322223-30061999">The objective is to produce a value of <em>StopId</em>
+      that is the first of a sequence of 2<sup>32</sup> UUID values that were never generated by
+      the system and will never be generated by the system (the appropriate time having safely
+      passed, never to be used again with this value of <em>clock-seq</em>).&nbsp; </span></li>
+    <li><span class="570322223-30061999">It is ideal if the <em>StopId.clock-seq</em> differs
+      from <em>StartId.clock-seq</em>.&nbsp; This protects against a duplication of any UUIDs
+      that were generated by the computer system after <em>StartId</em> was generated and saved.
+      &nbsp; If <em>clock-seq</em> has not changed, it is important that </span><p align="center"><span class="570322223-30061999">(<em>StopId.time-hi</em> נ2<sup>16</sup>
+      + <em>StopId.time-mid</em>) &gt; (<em>StartId.time-hi</em> נ2<sup>16</sup> + <em>StartId.time-mid</em>),</span></p>
+      <p align="left"><span class="570322223-30061999">ideally by a generous margin.</span></p>
+    </li>
+    <li>The key idea is to have the block of time stamps be separated by generous intervals from
+      the ending and restart times of the system and to be confident that the clock will never
+      be reset to fall into the same range with the same <em>clock-seq</em> values.</li>
+  </ul>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#MappingToDmaIds">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3><a name="MappingUUIDTime-Low">Mapping the UUID <em>time-low</em> Field</a></h3>
+
+<blockquote>
+  <p>Once the UUID of an unused block is found in this form, the mapping between the UUID
+  and some locally-unique identifier is usually straightforward:<ul>
+    <li>Define the modified <em>StopId</em> value to be the <em>BaseId</em> associated with some
+      partition of the legacy collection.&nbsp; It is important that the partition of the
+      collection be one for which the 2<sup>32</sup> reserved timestamp values will never be
+      consumed. </li>
+    <li>When it is necessary to deliver an InstanceId value for an object of the partition,
+      convert the object's locally-unique identification to a 32-bit integer by appropriate
+      lossless conversion technique.</li>
+    <li>Given the 32-bit integer version of a locally-unique identifier, deliver it through the
+      DMA API as an InstanceId value by returning the partition's<em> BaseId</em> with <em>BaseId.time-lo</em>
+      set to the 32-bit integer.</li>
+    <li>Given a DmaId to resolve against an InstanceId (internally), verify that all of the
+      fields but <em>BaseId.time-lo</em> match the corresponding fields of <em>BaseId</em>.
+      &nbsp; Then <em>BaseId.time-lo</em> is the internal 32-bit integer to use.&nbsp; It should
+      do no harm if the <em>BaseId.time-lo</em> value is not one that is currently supported as
+      a local identifier in the legacy subspace.</li>
+    <li>Do not depend on the secrecy of a DmaId of this kind (or any other kind, for that
+      matter) to accomplish a security safeguard on its own.&nbsp; </li>
+  </ul>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#MappingToDmaIds">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><span class="570322223-30061999"><a name="Resources">References and Resources</a> on
+DmaId</span></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#NormativeSpecifications"><span class="570322223-30061999">Normative
+        Specifications</span></a></li>
+      <li><a href="#InformativeReferences"><span class="570322223-30061999">Informative References</span></a></li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><big><em><span class="570322223-30061999">References on UUIDs, how they can be
+  generated, and provisions for generating/reserving blocks of UUIDs that can be used to
+  fabricate UUIDs from locally-unique IDs that are easily mapped to dense integers.</span></em></big></p>
+</blockquote>
+
+<h2><a name="NormativeSpecifications">Normative Specifications</a></h2>
+
+<blockquote>
+  <p><big><em>Definitive sources on the format, generation, and usage of UUIDs and GUIDs.</em></big><dl>
+    <dt><a name="[ISO11578]">[ISO 11578]</a></dt>
+    <dd>ISO (International Organization for Standardization) ISO/IEC 11578:1996. &nbsp;
+      Information Technology - Open System Interconnection - Remote Procedure Call (RPC). &nbsp;
+      570pp.&nbsp; JTC 1.&nbsp; ICS 35.100.70.&nbsp; This ISO standard covers the complete RPC
+      system.&nbsp; It is an outgrowth of the OSF DCE specification and covers UUIDs and
+      GUIDs.&nbsp; The document is only available in hard copy through a national standards
+      body, such as the <a href="http://www.ansi.org">American National Standards Institute
+      (ANSI)</a>.&nbsp; Printed copies of this specification cost over $250 in the United
+      States.</dd>
+  </dl>
+  <dl>
+    <dt><a name="[DCERPC]">[DCE RPC]</a></dt>
+    <dd>DCE 1.1: Remote Procedure Call.&nbsp; Open Group Technical Standard.&nbsp; <a href="http://www.db.opengroup.org/online-pubs?DOC=009629399">Document Number C706</a>.
+      &nbsp; <a href="http://www.opengroup.org">The Open Group</a> (Reading, UK: August, 1997).
+      &nbsp; 737pp.&nbsp; Electronic edition, $58.00.&nbsp; HTML edition on-line.&nbsp; UUIDs
+      are specified in an <a href="http://www.opengroup.org/onlinepubs/009629399/apdxa.htm#tagcjh_20">Appendix of the
+      on-line edition</a>.&nbsp; Registration is required to access the on-line material. &nbsp;
+      C706 was formerly C309 [<a href="#[CAERPC]">CAE RPC</a>].</dd>
+  </dl>
+</blockquote>
+
+<h2><a name="InformativeReferences">Informative References</a></h2>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Resources">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt><a name="[CAERPC]">[CAE RPC]</a></dt>
+    <dd>CAE Specification, X/Open DCE: Remote Procedure Call.&nbsp; <a href="http://www.xopen.co.uk">X/Open Company Limited</a> (Reading, Berkshire, UK: 1994).
+      &nbsp; X/Open Document Number C309.&nbsp; ISBN 1-85912-041-5.&nbsp; pp. 585-592 describe
+      UUIDs.&nbsp; According to [<a href="#[COMSpec]">COM Spec</a>], COM GUIDs are identifiers
+      that are interoperable with the UUIDs of p.586, and not related to the GUIDs mentioned as
+      a specific scheme on p.587 of [CAE RPC].</dd>
+  </dl>
+  <dl>
+    <dt><a name="[COMSpec]">[COM Spec]</a></dt>
+    <dd>Microsoft Corporation and Digital Equipment Corporation.&nbsp; <em>The Component Object
+      Model Specification. </em>Microsoft Corporation (Redmond, WA: 1992-1995).&nbsp; Version
+      0.9, October 24, 1995.&nbsp; This specification is available on the Microsoft Developer
+      Network (MSDN) Library CD-ROM distribution, as late as April, 1999.&nbsp; The
+      specification can also be found at <a href="http://www.microsoft.com/com/resources/comdocs.asp">Microsoft's on-line pages</a>.
+      &nbsp; There is an on-line (HTML) version and two downloadable versions as Microsoft Word
+      6.0 Master Documents with individual chapters.&nbsp; A Word 6.0 version is required in
+      order to have the footnotes and bibliography.&nbsp; Chapter 3.2 Globally-Unique
+      Identifiers, provides the description of GUID usage in COM.&nbsp; [<a href="#[CAERPC]">CAE
+      RPC</a>] is the referenced source.</dd>
+  </dl>
+  <dl>
+    <dt><a name="[InsideOLE]">[Inside OLE]</a></dt>
+    <dd>Brockschmidt, Kraig.&nbsp; <em>Inside OLE.</em>&nbsp; ed.2. Microsoft Press (Redmond,
+      WA: 1995).&nbsp; ISBN 1-55615-843-2.&nbsp; pbk with two disks.&nbsp; Chapter 2, Objects
+      and Interfaces, Object Identity section, has a treatment of Globally Unique Identifiers.
+      &nbsp; This book is available on the Microsoft Developer Network (MSDN) Library CD-ROMs,
+      as late as April, 1999.&nbsp; The Globally Unique Identifiers section of the book can also
+      be found on MSDN Online at <a href="http://msdn.microsoft.com/LIBRARY/BOOKS/TECHNLANG/INOLE/D1/S10E8.HTM">http://msdn.microsoft.com/LIBRARY/BOOKS/TECHNLANG/INOLE/D1/S10E8.HTM</a>.
+      &nbsp; It is necessary to register, although access to MSDN Online is free. &nbsp;
+      Brockschmidt discusses creation of blocks of GUIDs</dd>
+  </dl>
+  <dl>
+    <dt><a href="http://www.opengroup.org/dce/index.html" name="[OSFDCE]">[OSF DCE]</a></dt>
+    <dd>Miller, Steven.&nbsp; DEC/HP Network Computing Architecture Remote Procedure Call Run
+      Time Extensions version OSF TX1.0.11. <a href="http://webopedia.internet.com/TERM/O/OSF.html">Open Software Foundation</a>
+      (Cambridge, MA: July 23, 1992).&nbsp; This is the reference that is commonly given for the
+      definition of UUID and GUID, a particular adaptation of it.&nbsp; The current
+      specification from The Open Group is [DCE RPC].</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt><a name="[UUIDs-GUIDs]">[UUIDs-GUIDs]</a></dt>
+    <dd>Leach, Paul J., Salz, Rich.&nbsp; UUIDs and GUIDs.&nbsp; Internet Draft &lt;<a href="http://www.ietf.org/internet-drafts/draft-leach-uuids-guids-01.txt">draft-leach-uuids-guids-01.txt</a>&gt;.
+      &nbsp;&nbsp; Microsoft, Certco. February 4, 1998.&nbsp; Expired August 4, 1998.&nbsp; This
+      is an expired draft document.&nbsp; It has no standing as an IETF specification and may
+      not be employed as such.&nbsp; To determine if this draft has been updated or replaced,
+      consult the <a href="http://www.ietf.org/ID.html">IETF Internet-Draft Directory</a>.
+      &nbsp; This draft is also referenced by The Open Group at <a href="http://www.opengroup.org/dce/info">http://www.opengroup.org/dce/info</a>.&nbsp; This
+      draft provides implementations of common UUID creation, comparison, and conversion
+      functions.&nbsp; The DCE version 1 UUID is the same form used for Microsoft COM GUIDs in [<a href="#[COMSpec]">COM Spec</a>].&nbsp; Leach and Salz introduce a method for producing DCE
+      version 1 UUIDs using a cryptographic-quality random number for the Node identification
+      when there is no IEEE 802 node identification available or it is undesirable to use it.</dd>
+  </dl>
+  <dl>
+    <dt><a name="[VS60]">[VS60]</a></dt>
+    <dd>Microsoft Corporation.&nbsp; Visual Studio 6.0.&nbsp; The Microsoft Win32 development
+      for Intel platforms provides two utilities, UUIDGEN and GUIDGEN.&nbsp; UUIDGEN is a
+      console application that uses the operating system to derive UUIDs.&nbsp; GUIDGEN is a
+      VS60 tool that uses the same UUID generator to offer GUIDs in a variety of formats used in
+      programming and creating installation scripts.&nbsp; When UUIDGEN produces a pseudo-node
+      form of UUID on a machine with no detected network node, there is a warning that the
+      resulting UUID is not reliable beyond the single machine and should not be interchanged
+      with other systems.&nbsp; GUIDGEN makes no such announcement.</dd>
+  </dl>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#InformativeReferences">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+  <div align="center"><center><address>
+    updated <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d %H:%M" startspan -->2006-08-28 18:06<!--webbot bot="Timestamp" endspan i-checksum="25788" --> -0700
+    (pdt) by Dennis E. Hamilton 
+  </address>
+  </center></div><div align="center"><center><address>
+    created 1999-07-11-22:06 -0700 (pdt) by Dennis E. Hamilton 
+  </address>
+  </center></div>
+</blockquote>
+</body>
+</html>

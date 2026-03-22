@@ -1,0 +1,340 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /nfoCentrale Compagno Web/miser/notations.htm 11    02-07-14 12:36 Orcmid $-->
+<!-- This document is based on the dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)  -->
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Miser Project Notations</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><font face="Arial, Helvetica, Geneva, Swiss, Sans Serif"><a NAME="Top"><i>The Miser Project</i></a><br>
+Notations</font></h1>
+
+<p align="center"><font size="-1"><b><a href="#0.12">V<span style="font-variant: small-caps">ersion</span>  
+0.12</a> L<span style="font-variant: small-caps">ast
+updated</span>      2002-02-24-15:24 -0800 (pst)</b></font></p>
+
+<blockquote>
+  <hr>
+
+<h3><em>Content </em></h3>
+
+</blockquote>
+
+<h2>1. <a href="#NotationRequirements">Notation Requirements</a></h2>
+
+<h2>2. <a href="#CodeData">Code and Data Notation</a></h2>
+
+<h2>3. <a href="#Metalanguage">Metalinguistic Notations</a></h2>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1>1. <a name="NotationRequirements">Notation Requirements</a></h1>
+
+<blockquote>
+  <ul>
+    <li>The notation must be usable on standard Web pages with successful
+      presentation by most browsers.</li>
+    <li>It must be possible to read the notations successfully when special
+      typographical decorations are removed (e.g., if the document is rendered
+      as a simple text document).</li>
+    <li>The notation should be useful and successful in guiding the reader even
+      when the conventions themselves are not known.</li>
+    <li>The notation provides typographical separation of code and data
+      elements, of abstracted computational entities (well-known Miser Obs,
+      for example), and of mathematical language, including metalinguistic
+      expressions that have computational objects.</li>
+  </ul>
+  <p>We want to use separate fonts and styles of characters to aid in notational
+  separation.&nbsp; At the same time, we must be prepared to have there only be
+  one available font and limited style selections.&nbsp;&nbsp;</p>
+  <p>In using HTML, we are never certain how the default behavior of browsers,
+  use of accessibility aids, and other local variations will cause the material
+  to be presented.&nbsp; Note that it will be very difficult to understand <i>this</i>
+  page if the typography being discussed has been altered.&nbsp; Here's a place
+  where there's no workaround.</p>
+  <p>We could adopt a style of language that makes explicit separation of the
+  domain we are speaking in and the domain we are speaking about.&nbsp; We could
+  simply not allow duplicate symbologies in different domains.&nbsp; That is, we
+  couldn't reuse symbols like +, -, =, and common words.&nbsp; We're not willing
+  to go quite that far.&nbsp;</p>
+</blockquote>
+
+<h1>2. <a name="CodeData">Code and Data Notation</a></h1>
+
+<blockquote>
+  <p>For specimens and expression of code and data elements, a <code><b>fixed-pitch
+  font</b></code> is always used.&nbsp; The elements are usually shown in <b><code>bold-face</code></b>
+  as well, to have it be clear that mention/use of code and data elements is
+  being made.&nbsp;&nbsp;</p>
+
+  <p>This convention is consistent with the example used in the specification of
+  the C Language and its library [<a href="#[Plauger92]">Pflauger92</a>].</p>
+
+  <p>When prototypes of functions and procedures are given, it is customary to
+  show the formal parameters as <b><i><code>italicized code elements</code></i></b>.&nbsp;
+  This does not mean that such an element is expressed in a special
+  typography.&nbsp; We use this convention to emphasize that we are actually
+  speaking of the values or forms that are supplied as the
+  parameters.&nbsp;&nbsp;</p>
+
+  <p>In code specimens and algorithms, these conventions are also honored,
+  except that we use bold-face elements selectively as a way to improve
+  readability.&nbsp; Also, we may italicize tags that have roles as variables
+  just as in prototypes of functions.&nbsp; Comments may be in different fonts,
+  and other typographical techniques may be used to enhance readability.&nbsp;
+  It is to be understood that there is no such special typography in the actual
+  computer data elements, which are represented as plain text.</p>
+
+  <h3>Examples:</h3>
+
+  <p>Using this convention, the McCarthy &quot;91 function&quot; can be
+  expressed this way in a&nbsp; hypothetical computer language [<a href="#[Lifschitz91]">Lifschitz1991</a>]:</p>
+
+  <blockquote>
+    <p align="center"><code><b>def</b>  <b>rec</b> f(<i>x</i>) = <b>if</b> <i>x</i> &gt; 100
+    <b>then</b> <i>x</i> - 10 <b>else</b> f(f(<i>x</i>+11))</code> .</p>
+
+  </blockquote>
+  <p>In text we would speak of <code><b>f</b></code> or <code><b>f(<i>x</i>)</b></code>
+  and discuss the behavior of calculations with different values of <b><i><code>x</code></i></b>.&nbsp;
+  This is to emphasize that we are discussing computational interpretations and
+  computer processing.&nbsp; It reduces confusion with similarly-named abstract
+  or mathematical entities and formulae that will often be discussed at the same
+  time.&nbsp;</p>
+
+  <p>The following example is for a brief Python definition to which these
+  conventions have been applied:</p>
+
+  <blockquote>
+      <pre><code><font color="#000000"><b>def</b> <a name="BinSearch" href="BinSearch.py">BinSearch</a>(<i>List</i>, <i>item</i>):
+&nbsp;&nbsp;&nbsp; &quot;return the index of <i>item</i> in the already-sorted <i>List</i>&quot;
+    &quot;return -1 when <i>item</i> is not in <i>List</i>&quot;
+&nbsp;&nbsp;&nbsp; &quot;based on Donald E. Knuth's Algorithm <a href="#[ACP6.2.1B]">6.2.1B</a>&quot;
+    &quot;  cleaned up to work with 0-origin lists, tuples, and indexes&quot;
+&nbsp;&nbsp;&nbsp; L = 0                    # Current left-most position
+&nbsp;&nbsp;&nbsp; R = len(<i>List</i>)            # Current right boundary
+&nbsp;&nbsp;&nbsp; <b>while</b> L &lt; R:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = (L + R) / 2      # A place to try in the 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> <i>List</i>[j] == <i>item</i>:  #   candidate interval
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> j
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> <i>List</i>[j] &lt; <i>item</i>:   # When no match yet, close off
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L = j + 1        #   the area where <i>item</i> can't be
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b>:                #   and continue in the interval
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R = j            #   that remains
+    <b>return</b> -1                # Return impossible index if no match</font></code></pre>
+
+  </blockquote>
+  <p>The following illustrates a sample dialog with a Python processor:</p>
+
+  <blockquote>
+    <pre><font COLOR="#000000"><code>&gt;&gt;&gt; <b>L1=(-8,-3,0,1, 15)
+</b>&gt;&gt;&gt; <b>BinSearch(L1,-10)
+</b>-1
+&gt;&gt;&gt; <b>BinSearch(L1,-8)
+</b>0
+&gt;&gt;&gt; <b>BinSearch(L1,15)
+</b>4
+&gt;&gt;&gt; <b>BinSearch(L1,-7)
+</b>-1
+&gt;&gt;&gt; <b>L2=['Chocolate', 'Strawberry', 'Vanilla']
+</b>&gt;&gt;&gt; <b>BinSearch(L2, 'Pistachio')
+</b>-1
+&gt;&gt;&gt; <b>BinSearch(L2, 'Strawberry')
+</b>1</code></font></pre>
+  </blockquote>
+  <p><font color="#000000">Finally, a small C Language example presented using
+  the notational conventions:</font></p>
+  <blockquote>
+    <pre><font color="#000000"><code><b>int</b> <a href="BinSearch.cpp" name="BinSearchInt">BinSearch</a>(<b>int</b> <i>List</i>[], <b>int</b> R, <b>int</b> <i>item</i>)
+    { /* Return the index of <i>item</i> in the already-sorted <i>List</i>[R].
+         Return -1 when <i>item</i> is not in <i>List</i>[0] to <i>List</i>[R-1].
+         Based on Donald E. Knuth's Algorithm <a href="#[ACP6.2.1B]">6.2.1B</a> cleaned up to
+         work with 0-origin arrays. 
+         */
+      <b>int</b> L = 0;
+      <b>int</b> j;
+      <b>while</b> (L &lt; R)
+         { j = (L + R) / 2;
+           <b>if</b> (<i>List</i>[j] == <i>item</i>)
+                <b>return</b> j;
+           <b>if</b> (<i>List</i>[j] &lt; <i>item</i>)
+                L = j+1;
+           <b>else</b> R = j;  
+           }
+      <b>return</b> -1;
+      } ;</code></font></pre>
+  </blockquote>
+  <p>Notice that there are two different binary search implementations
+  here.&nbsp; <b><code><a href="#BinSearch">BinSearch</a></code></b><sub>|Python</sub>
+  and <code> <b><a href="#BinSearchInt">BinSearch</a></b><sub>|</sub></code><sub>C</sub>
+  realize the same algorithm, yet their functions are quite different and not at
+  all equivalent, despite the similarities between the two languages.&nbsp;
+  Wherever we need to be more rigorous about separation of implementations,
+  we'll use different names for the implemented functions.</p>
+
+</blockquote>
+<h1>3. <a name="Metalanguage">Metalinguistic Notations</a></h1>
+
+<blockquote>
+  <p>When we provide and discuss the rules of construction and interpretation of
+  concrete languages, we will use special metalinguistic notations.&nbsp; This
+  helps us be clear that we are using language to talk about
+  language.&nbsp;&nbsp;</p>
+
+</blockquote>
+
+  <h2>3.1 <a name="BNFContext-FreeGrammars">BNF For Context-Free Grammars</a></h2>
+
+<blockquote>
+
+  <p>We use Backus-Naur Form (BNF) notation with little modification.&nbsp; When
+  we are specifying a grammar for data or programming-language code, the literal
+  occurrence of text characters will be presented in ordinary <b><code>bold-face
+  fixed-pitch</code></b> characters.&nbsp; Metalinguistic characters and terms
+  are kept in the overall language of expression, just like mathematical forms:</p>
+
+  <blockquote>
+    <p>&#139;numeral&#155; ::= &#139;digit&#155;
+    | &#139;digit&#155; &#139;numeral&#155;</p>
+
+    <p>&#139;digit&#155;
+    ::= <b><code>0</code></b> | <b><code>1</code></b> | <b><code>2</code></b> | <b><code>3</code></b>
+    | <b><code>4</code></b> | <b><code>5</code></b> | <b><code>6</code></b> | <b><code>7</code></b>
+    | <b><code>8</code></b> | <b><code>9</code></b></p>
+
+    <p>&#139;numeric-tag&#155;
+    ::= <code><b>#</b></code>&#139;numeral&#155;</p>
+
+  </blockquote>
+  <p>We use differences in graphic appearance to assist the reader.&nbsp; For
+  example, the bracketed term, ‹numeral›, can also be written &lt;numeral&gt;, using the
+  signs for less-than and greater-than.&nbsp;&nbsp; We use alternative angled
+  brackets to avoid confusion.</p>
+
+  <p>To have more rigorous differentiation between characters in the subject
+  language and metalinguistic text, we will use quotation of the
+  subject-language characters, as in</p>
+
+  <blockquote>
+    <p>&#139;category-name&#155; ::= “<b><code>&lt;</code></b>” &#139;tag&#155; “<b><code>&gt;</code></b>”</p>
+
+    <p>&#139;form-definition&#155; ::= &#139;category-name&#155; “<b><code>:</code></b>” “<b><code>:</code></b>”
+    “<code><b>=</b></code>” &#139;alternative-forms&#155;</p>
+
+    <p>&#139;alternative-forms&#155; ::= &#139;sentential-form&#155; | &#139;alternative-forms&#155; “<b><code>|</code></b>”
+    &#139;sentential-form&#155;</p>
+
+  </blockquote>
+
+    <p>Sometimes we will refer to encoded text characters and symbols by name,
+    rather than literally depicting them text of the metalanguage usage.&nbsp;
+    This is done by using Unicode or other agreed names for the elements in <b><span style="font-variant: small-caps">small
+    capitals </span></b>[<a href="#[Unicode00]">Unicode00</a>].&nbsp; Compound
+    names will be hyphenated to avoid confusion about word boundaries:</p>
+
+</blockquote>
+
+<div align="center">
+  <center>
+  <table border="0" width="80%">
+    <tr>
+      <td width="25%" valign="top">&#139;category-name&#155; ::=&nbsp;</td>
+      <td width="50%" valign="top"><span style="font-variant: small-caps">left-pointing-single-guillemet<br>
+        </span>&#139;tag&#155;<span style="font-variant: small-caps"><br>
+        right-pointing-single-guillemet</span></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+
+<p>We will employ the small-capitals convention in many other situations when we
+need to name a coded data element or fixed concrete entity without exhibiting a
+literal occurrence in the structure being described.</p>
+
+</blockquote>
+
+<h1><a name="References">References</a></h1>
+
+<blockquote>
+
+<dl>
+ 
+    <dt><a name="[ACP6.2.1B]">[ACP 6.2.1B]</a></dt>
+    <dd>Knuth, Donald E.&nbsp; Binary Search.&nbsp; Algorithm 6.2.1B on p. 410
+      of <i><a href="http://orcmid.com/readings/compsci.htm#[Knuth98b]">The Art of
+      Computer Programming</a></i><a href="http://orcmid.com/readings/compsci.htm#[Knuth1998b]">,
+      <i>v.3: Sorting and Searching</i></a>.&nbsp; ed.2.&nbsp; Addison-Wesley
+      Longman (Reading, MA: 1998).&nbsp; ISBN 0-201-89685-0.<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; <code> <b><a href="#BinSearch">BinSearch</a></b>
+      </code>
+      is derived from the form given by Knuth in <i>Scientific American</i> <b>236</b>,
+      4 (April 1977), as reprinted on pp.66-67 of <i><a href="http://orcmid.com/readings/compsci.htm#[Knuth1996]">Selected
+      Papers on Computer Science</a>,</i> CSLI (Palo Alto: 1996),&nbsp; ISBN
+      1-881526-91-7 pbk.&nbsp;&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; This <b><a href="#BinSearch"><code>BinSearch</code></a></b>
+      is adjusted to avoid wondering what <code><b><i>m</i>/2</b></code> might
+      be for integer <b><code><i>m</i>&lt;0</code></b>, while preserving a clean
+      terminating condition and loop invariant.&nbsp; It is required that <b><code>(2*<i>i</i>+1)/2</code></b> is <i><code><b>i</b></code></i>
+      for non-negative integer <b><i><code>i</code></i></b>.</font></dd>
+ 
+    <dt>&nbsp;</dt>
+      <dt><a name="[Lifschitz1991]" href="readings/theory.htm#[Lifschitz1991]">[Lifschitz1991]</a></dt>
+      <dd>Lifschitz, Vladimir (ed.). <i> Artificial Intelligence and Mathematical
+    Theory of Computation: Papers in Honor of John McCarthy</i>. Academic Press (San
+    Diego: 1991). ISBN 0-12-450010-2.<font size="-1"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp; There are two articles featuring McCarthy's
+        &quot;91 function&quot; here, one by Feferman and another by
+        Knuth.&nbsp; I picked this one for an example simply because I had
+        recently looked at those papers and the book was in easy reach.</font></dd>
+ 
+    <dt>&nbsp;</dt>
+ 
+    <dt><a name="[Plauger92]" href="http://orcmid.com/readings/softools.htm#[Plauger92]">[Plauger92]</a></dt>
+    <dd>Plauger, P.J.&nbsp; <i>The Standard C Library</i>.&nbsp; Prentice-Hall
+      (Englewood Cliffs, NJ: 1992).&nbsp; ISBN 0-13-131509-9.</dd>
+  
+    <dt>&nbsp;</dt>
+    <dt><a name="[Unicode00]" href="http://orcmid.com/readings/softools.htm#[Unicode00]">[Unicode00]</a></dt>
+    <dd>The Unicode Consortium.&nbsp; <i>The Unicode Standard, Version 3.0</i>.&nbsp;
+      Addison Wesley Longman (Reading, MA: 1991-2000).&nbsp; ISBN 0-201-61633-5
+      with CD-ROM.&nbsp;</dd>
+  
+</dl>
+
+</blockquote>
+
+<hr>
+
+<p align="left"><font size="-1"><b><a name="0.12">version 0.12 2000-07-24</a> (orcmid)</b>.&nbsp;
+I created a place for introduction of metalinguistic notation and tidied up some
+wording so people can see where we are going in this compilation of notations.</font></p>
+
+<p align="left"><font size="-1"><b><a name="0.11">version 0.11 2000-07-21</a> (orcmid).&nbsp;</b>
+A lesson in never including code that I haven't actually tested.&nbsp; I replace
+the Python <a href="#BinSearch">BinSearch</a> example with one that adjusts the
+window on the correct side and then make it work for both <a href="BinSearch.py"> Python</a> and
+<a href="BinSearch.cpp">C</a>.&nbsp; The
+program files are linked to this page as demonstration that the examples have
+been verified.&nbsp; The sample Python dialog is pasted from an interactive
+Python session.</font></p>
+
+<p align="left"><b><a name="0.10"><font size="-1">version 0.10 2000-07-18</a>
+(orcmid).&nbsp;&nbsp;</b> Initial
+creation of documentation for proposed notation.</font></p>
+
+<p align="right"><font size="-2">created 2000-07-18-22:31 -0700 (pdt) by <a href="construction/orcmid.htm"> orcmid</a><em><br>
+$$Author: Orcmid $<br>
+$$Date: 02-07-14 12:36 $<br>
+$$Revision: 11 $</em></font></p>
+
+</body>
+</html>

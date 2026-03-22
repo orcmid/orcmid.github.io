@@ -1,0 +1,85 @@
+<html><head><title>Interfaces and Methods: IdmaScope</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaScope"></a>IdmaScope</h2>
+<p>The IdmaScope interface provides methods specific to a DMA scope, such as executing a query.</p>
+<h3><a name="IdmaScopeExecuteSearch"></a>IdmaScope::ExecuteSearch</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaScope::ExecuteSearch</b> (<br>
+Dmapv    <i>pIQueryObject</i>,<br>Dmapv    <i>pICallback</i>,<br>DmaBoolean    <i>bRequestElimination</i>,<br>DMA_REFIID    <i>riidResultSet</i>,<br>pDmapv    <i>ppIResultSet</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pIQueryObject</i></p></TD><TD><p>input</p></TD><TD><p>This is the query object that specifies the query to be performed.</p></TD></TR>
+<TR><TD><p><i>pICallback</i></p></TD><TD><p>input</p></TD><TD><p>This is a pointer to a callback interface whose ReportProgress method will optionally be called at regular intervals during this function call. This pointer may be NULL.</p></TD></TR>
+<TR><TD><p><i>bRequestElimination</i></p></TD><TD><p>input</p></TD><TD><p>If TRUE, this requests the scope to eliminate classes, properties, and operators it doesn’t fully understand using the rules of three valued logic. If the scope supports this capability, it will comply. If FALSE, an error will be returned if the scope encounters a class, property, or operator it doesn’t understand.</p></TD></TR>
+<TR><TD><p><i>riidResultSet</i></p></TD><TD><p>input</p></TD><TD><p>The desired interface on the result set object.</p></TD></TR>
+<TR><TD><p><i>ppIResultSet</i></p></TD><TD><p>output</p></TD><TD><p>The result set object returned by this method. The query result items are obtained by invoking methods on this object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The ExecuteSearch method processes the Query Object and internalizes the information contained therein. Neither the Query Object nor any of its subobjects are altered in any way by ExecuteSearch.
+</p><p>
+If the underlying scope is a merged scope, then, assuming preliminary processing succeeds, this function passes either the Query Object, or a newly constructed Query Object to the IdmaScope:: ExecuteSearch method of each component scope. If any of these calls returns an error, an error is returned.
+</p><p>
+In the case that a new Query Object is passed to a component scope, the new Query Object is not necessarily isomorphic to the Query Object passed in to this method. Examples of when this could occur include (1) three valued elimination is performed on the information in the original Query Object to develop the new copy, and/or (2) the Order By clause is added or extended in the new copy.
+</p><p>
+No internal pointers are kept to the Query Object or any of its descendant nodes. Once ExecuteSearch returns, changes to the Query Object or its descendant nodes will have no effect on the subsequent development of result rows during query execution.
+</p><p>
+If ExecuteSearch is successful, a Result Set object is returned. The IdmaResultSet:: GetNextResultRow method on the Result Set object is used to obtain each result row. The IdmaResultSet:: ReExecuteQuery method on the Result Set object may be used to terminate the current query, and prepare for reexecution of the query (without calling ExecuteSearch again), etc. The IdmaResultSet:: TerminateResults method on the Result Set object may be used to cancel further execution of the query. The TerminateResults method can be called asynchronously by a second thread in a multi-threaded application while the first thread is blocked internal to GetNextResultRow awaiting a result row to be returned. Multiple Result Set objects can be generated from a scope object. The Result Set objects are independent of each other, and, in a multi-threaded application, can be used concurrently.
+</p><p>
+It is recommended but not required that implementations defer most or all of the document space scope processing above and beyond the processing of the Query Object to the Result Set object, in order to make ExecuteSearch complete faster. If this is done, a multi-threaded application would then be more responsive to asynchronously canceling the potentially long running part of the query (i.e., generation of result rows) by calling IdmaResultSet:: TerminateResults on the Result Set object.
+</p><p>
+Clients desiring proper errors for their malformed Query Objects should pass DMA_FALSE for the bRequestElimination parameter to ExecuteSearch.
+</p><p>
+If DMA_FALSE is passed for bRequestElimination, and the query contains any undefined elements, ExecuteSearch will return an error.
+</p><p>
+If DMA_TRUE is passed for bRequestElimination, and the scope does not support three valued elimination, DMARC_3VE_NOT_SUPPORTED is returned.
+</p><p>
+If bRequestElimination is DMA_TRUE, and the query contains undefined elements, the scope performs three valued elimination as needed on the query object relative to its own metadata to develop a new copy of the information in the query object, which does not contain the undefined elements. Processing of the derived query object then proceeds.
+</p><p>
+If the scope is a merged scope, it delivers the query or a massaged copy of it to each component scope. For each component scope, the merged scope determines whether there are any undefined classes, properties, etc., in the possibly revised Query Object relative to the metadata of the component scope. If there are any undefined elements, and the component scope does not support three valued elimination, then the merged scope must perform three valued elimination to develop a revised query object which contains only elements defined relative to the metadata of the component scope. This insures that a query which is valid relative to the metadata of the merged scope will never fail because it contains undefined elements relative to any component scope. This behavior is independent of the setting of the Has Elimination  property on the merged scope.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_3VE_NOT_SUPPORTED</p></TD><TD><p>The current scope does not support three valued elimination.</p></TD></TR>
+<TR><TD><p>DMARC_ABORT</p></TD><TD><p>The progress callback indicated that the method should be aborted.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_CLASSID</p></TD><TD><p>The supplied identifier does not reference an available class of object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_COLLATION_SEQUENCE</p></TD><TD><p>The specified collation sequence is not known or supported by the scope.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_FROM_EXPRESSION</p></TD><TD><p>The query contains an invalid From Expression.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OPERAND</p></TD><TD><p>An operand is incorrect in datatype, form, or class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OPERATOR</p></TD><TD><p>An operator ID is not defined in the metadata of the current scope.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_ORDERBY_ELEMENT</p></TD><TD><p>Illegal 'order by' list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_SC_OCCUR</p></TD><TD><p>The value of a query node's searchable class occurrence property is not present in the query.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_SELECT_ELEMENT</p></TD><TD><p>Illegal select list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_SUBQUERY_DATATYPE</p></TD><TD><p>The datatype of the query root node of an "IN" subquery does not match that of the property in the select list.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_SUBQUERY_SELECT</p></TD><TD><p>The select list of a subquery contains an inappropriate number of elements</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_CLASS_NOT_SEARCHABLE</p></TD><TD><p>A class referred to in the From Expression is not searchable.</p></TD></TR>
+<TR><TD><p>DMARC_CLASSES_NOT_JOINABLE</p></TD><TD><p>A particular join operator in the query is supported, but the operator does not support the join between the particular operands specified in the query.</p></TD></TR>
+<TR><TD><p>DMARC_DISTINCT_NOT_SUPPORTED</p></TD><TD><p>The scope does not support the request for distinct result rows.</p></TD></TR>
+<TR><TD><p>DMARC_EXTRA_OPERANDS</p></TD><TD><p>A query node has extra operands.</p></TD></TR>
+<TR><TD><p>DMARC_MISSING_OPERANDS</p></TD><TD><p>A query node is missing one or more operands.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_PROPERTY_NOT_ORDERABLE</p></TD><TD><p>A property referred to in the query order by list is not orderable.</p></TD></TR>
+<TR><TD><p>DMARC_PROPERTY_NOT_SEARCHABLE</p></TD><TD><p>A property referred to in the Query Expression is not searchable.</p></TD></TR>
+<TR><TD><p>DMARC_PROPERTY_NOT_SELECTABLE</p></TD><TD><p>A property referred to in the Selections list is not selectable.</p></TD></TR>
+<TR><TD><p>DMARC_QUERY_TREE_LOOP</p></TD><TD><p>There is a circular reference loop or a shared node in the query.</p></TD></TR>
+<TR><TD><p>DMARC_REQUIRED_VALUE_ABSENT</p></TD><TD><p>A required property value has not been set.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaScopeGetOperatorDescription"></a>IdmaScope::GetOperatorDescription</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaScope::GetOperatorDescription</b> (<br>
+pDmaId    <i>pOperatorId</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIOperatorDesc</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pOperatorId</i></p></TD><TD><p>input</p></TD><TD><p>The Id of the operator whose description is desired.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>The desired interface on the operator description object.</p></TD></TR>
+<TR><TD><p><i>ppIOperatorDesc</i></p></TD><TD><p>output</p></TD><TD><p>The operator description object returned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method can be used to get the operator description object (an instance of dmaClass_QueryOperatorDescription) for a particular object. This can be useful in building or analyzing query expression hierarchies.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

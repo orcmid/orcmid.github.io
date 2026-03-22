@@ -1,0 +1,156 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000600.htm 13    01-01-11 8:59 Orcmid $-->
+<title>X000600: Word 2000 + ODMA32 + SampleDMS Fatal Errors</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000600">X000600</a>:
+Word 2000 + ODMA32 + SampleDMS</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-10-19-15:45 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%" valign="top"><b>Category: Important - Integration </b></td>
+      <td width="50%" valign="top"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000600"> X000600</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Priority</b>: 5 - Important</td>
+      <td width="50%" valign="top"><b>Status</b>: Closed</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component:&nbsp; </b>
+        <ol>
+          <li><a href="odma20st.htm"><kbd>ODMA 2.0 SDK (</kbd><code><b>odma20.exe</b></code><kbd>) 2.0.0</kbd></a></li>
+          <li><a href="../downloads/default.htm#ODMA-20-ConnectionManager"><b><code>ODMA32.dll</code></b>, version 2.0.0</a></li>
+          <li><code><a href="../downloads/default.htm#ODMA-20-Source"><b>ODMASamp32.DLL</b></a></code><a href="../downloads/default.htm#ODMA-20-Source">, version 2.0.0</a></li>
+        </ol>
+      </td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: </b>n/a<br>
+        <b>Related information: </b></dt>
+          <dd>Q000001: <a href="http://www.infonuovo.com/odma/faq/Q000001.htm">Configuring
+            Microsoft Office for ODMA</a></dd>
+          <dt><br>
+        <b>Downgraded</b> from Fatal Error: Critical on 2000-08-22</dt>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%" valign="top"><b>Reported By:&nbsp;<br>
+        </b><a href="x000500z.htm">Clay Gibney</a> (2000-06-20)<br>
+        <a href="x000600a.htm">S. Ramananthan</a> (2000-06-21)</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Date Opened</b>: 2000-06-22</td>
+      <td width="50%" valign="top"><b>Date Closed</b>: 2000-10-19</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary (2000-10-19):</h3>
+
+<blockquote>
+
+<p>The ODMA Sample DMS can fail with Microsoft Word 2000, typically on Windows
+2000.&nbsp; The symptoms are an apparent selection or creation of a document
+with the DMS, followed by Word claiming an Invalid Filename and failing to open
+the document.</p>
+
+<p>This is determined to be a case of Microsoft Office attempting to communicate
+with ODMA using Unicode strings.&nbsp; The problem is resolved by configuring
+Microsoft Office to communicate with ODMA using ANSI strings.&nbsp; See FAQ <a href="http://www.infonuovo.com/odma/faq/Q000001.htm">Q000001:
+Configuring Microsoft Office for ODMA</a>.</p>
+
+</blockquote>
+<h3><a name="Status">Status</a>  (2000-10-19):</h3>
+<blockquote>
+  <dl>
+    <dt><b><a name="Document">Document Resolution</a></b></dt>
+    <dd>1. Add this case to the conditions to watch for when integrating Office
+      2000.&nbsp; Done in <a href="http://www.infonuovo.com/odma/faq/Q000001.htm">Q000001: Configuring
+      Microsoft Office for ODMA</a> (2000-10-19)<br>
+      2. Obtain review by those who have reported this problem.&nbsp; Obtain
+      consensus on closing this particular incident.&nbsp; (Provided by S.
+      Ramananthan on 2000-06-28)<br>
+    </dd>
+    <dt><b>Split Out Other Failures</b></dt>
+    <dd>There is evidence of sporadic failures of ODMA integrations that may be
+      unrelated to Microsoft Office integration.&nbsp; These are being addressed
+      as part of&nbsp; incident report <a href="http://www.infonuovo.com/odma/support/X000500.htm">X000500</a>
+      resolution.</dd>
+  </dl>
+
+</blockquote>
+
+<h3><a name="Analysis">Analysis</a>  (2000-08-22):</h3>
+<blockquote>
+  <p>This was confirmed to be a failure to configure Microsoft Office 2000 for
+  non-Unicode operation.&nbsp; In the tested configuration, Word 2000 was
+  failing rather than simply ignoring the presence of ODMA.</p>
+  <p>The hypothesized (<a href="http://www.infonuovo.com/odma/support/X000600d.htm">2000-06-22</a>)
+  possibility that this condition could provide insight into a problem (<a href="http://www.infonuovo.com/odma/support/X000500.htm">X000500</a>)
+  with similar symptoms is now ruled out.</p>
+</blockquote>
+  <h3>Original Problem (2000-08-22)</h3>
+<blockquote>
+
+<p>With the Sample DMS installed as the default DMS (as set up by installing the
+ODMA 2.0 SDK), the failure occurs as follows:</p>
+
+  <ol>
+    <li>Start Word 2000.&nbsp; Type in a few letters in the initial unnamed
+      document.</li>
+    <li>Press the Word 2000 Save icon.</li>
+    <li>When the Word &quot;Select File As Type&quot; dialog occurs, accept the
+      default settings and click OK.</li>
+    <li>A junk file name is then displayed in the title of the document.</li>
+    <li>In addition, Word may report a &quot;File Permission Error&quot; some of
+      the time.</li>
+  </ol>
+  <p>Inspection of the ODMA32 log file reveals that</p>
+  <ul>
+    <li>Word performs an <code>ODMNewDoc</code> operation followed by <code>ODMSaveAs</code>.</li>
+    <li>Word does not call <code>ODMOpenDoc</code> and continue further as
+      stated in ODMA documentation.</li>
+  </ul>
+</blockquote>
+<blockquote>
+  <hr>
+
+  <p><font size="-1"><a name="2000-08-22-12">
+  </a>
+  <b>2000-10-19-15:28: </b>Incident report is closed with availability of FAQ
+  for repairing the MS Office configuration for ODMA.
+  <b><a name="2000-08-22-12"><br>
+  2000-08-22-12:50:</a>  </b> Downgrade to
+  Interoperability: Important and indicate nature of resolution to be
+  documented.
+  <b><br><b><a name="2000-06-23-08">
+  2000-06-23-08</a>:58:</b>  </b> Add ODMA 2.0 SDK 2.0.0
+as the key component (orcmid)</p>
+
+</blockquote>
+
+<p align="right">created 2000-06-22-14:26 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-01-11 8:59 $<br>
+$$Revision: 13 $</em></p>
+</body>
+</html>

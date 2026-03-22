@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMACompagno/faq/1997/q971101.htm 26    13-08-22 12:48 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q971101: ODMA and the Internet</title>
+
+
+
+</head>
+
+<body stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<TABLE border=0 width="100%">
+  <TBODY>
+  <tr>
+    <td width="20%" height="6"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="54750" -->
+    </td>
+    <td width="60%" height="6"><p align="center"><font color="#990033"><b><a href="../q000001.htm"><font color="#990033">FAQ</font></a> 
+      </b> <a href="../q000001.htm#Q971101"><b><font color="#990033">Q971101</font></b><br>
+      </a><br />
+
+      <b><i><big><big>ODMA and the Internet</big></big></i></b></font></p>
+
+    </td> 
+    <td width="20%" height="6" align="right"> 
+      <p><b><code><a href="../../" target="_top">ODMA</a>&gt;<br>
+      <a href="../" target="_top">FAQ</a>&gt;<br>
+      <a href="./" target="_top">1997</a>&gt;<br>
+      <br>
+      <a href="Q971101.htm" target="_top">Q971101</a>&gt;</code>
+      <br /><a href="#1.16"><small><small>1.16</small></small></a><small><small> <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2007-07-28<!--webbot bot="Timestamp" endspan i-checksum="12476" -->  
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:16 -0700<!--webbot bot="Timestamp" endspan i-checksum="12026" --></small></small></b></td>
+  </tr>
+ </TBODY></TABLE>
+ </font>
+
+  <hr color="#000080">
+
+<p align="center"><font size="1"><strong>Copyright © 1996-1998 <a href="../Q000605.htm#COBrien"> Activedoc
+Corporation</a></strong></font><font size="2">.<br>
+</font><font size="1"><b>Copyright </b><strong>©</strong><b> 2000, AIIM International</b></font>
+</p>
+
+<p align="left">Many DMS (document management system) vendors have spent the
+last year [1997] adding support for access from web browsers, first simple search and
+retrieval, and then full client functionality. ODMA is now following that same
+two step process. A proposal developed by Oracle was unanimously approved March
+11, 1997 and was demonstrated by Novell April 15-17, 1997 at the AIIM Show in
+New York.
+</p>
+
+<p align="left">The specification defines a series of methods which can be sent
+via HTTP to a server integration process, such as CGI, ISAPI or NSAPI. These
+methods are essentially a sub-set of the ODMA API.
+</p>
+
+<p align="left">With this functionality, a web designer could provide a form
+which sends a search request to the web server fronting the DMS. The format of
+this search is derived from that used in ODMA 1.5. A regular HTML page is
+returned listing the titles of documents satisfying the search. By clicking on a
+document, the ODMA URL is sent to the DMS and the document is returned to be
+displayed using whatever viewer is configured in the web browser.
+</p>
+
+<p align="left">An ODMA URL could also be embedded in a document.
+</p>
+
+<p align="left">The Internet specification relies upon a <a href="../../downloads/odma20-3.htm#ODMGetDocInfo"> new call</a> in ODMA 2.0 to
+convert an <a href="../../downloads/odma20-3.htm#DocumentIDs"> ODMA Document Id</a> into a
+<a href="../../downloads/odma20-3.htm#ODM_URL">URL</a>.
+</p>
+
+<p align="right"><i><a href="../Q000605.htm#COBrien">Colin
+O'Brien</a>, ActiveDoc<br>
+1997 November 10</i>
+</p>
+
+  <hr color="#000080">
+<font size="-1">
+    <dl>
+      <dt><b><a name="1.16">1.16</a> 2005-02-05: Update format and style</b></dt>
+  
+      <dd>The article is moved to Q971101 to more accurately reflect its
+        evolution.&nbsp; A <a href="Q971101A.htm">job jar and diary</a> is added
+        and the item is marked for review as part of the ODMA Refresh that is
+        occuring now.</dd>
+      <dt><b><a name="1.15">1.15</a> 2001-02-06: Update ODMA URL information (orcmid)</b></dt>
+  
+    <dd>Provide links to the specific provisions in the ODMA 2.0 Specification
+      by which URLs are obtained for ODMA documents.</dd>
+    <dt><b><a name="1.10">1.10</a> 2000-09-26: Initial DMware Version (orcmid)</b></dt>
+  
+    <dd>Placed material in DMware FAQtip format, preserving most of the look
+      and feel.&nbsp; Obtain review.</dd>
+    <dt><b>1.00 1997-11-10: ActiveDoc Version (Colin O'Brien)</b></dt>
+    <dd>Published on the ActiveDoc web site by <a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien">Colin
+      O'Brien</a>.</dd>
+    </dl>
+  <hr color="#000080">
+  </font><font size="-1">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a rel="nofollow" href="../construction.htm" target="_top"><img border="0" src="../../images/hardhat-thumb.gif" alt="Hard Hat Area (Construction Zone)" width="80" height="60"></a></td>
+    <td width="34%" valign="middle" align="center"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005d.htm" TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="62067" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2000-</font></font><font size="-2">09-26-12:10</font><font size="-1">
+  <font size="-2"> -0</font></font><font size="-2">700 (pdt</font><font size="-1"><font size="-2">) by <a rel="nofollow" href="../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 26 $</em></font></p>
+    </font>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>n130101c: Basic Crypto Primitives </title>
+<!--$$Header: /nfoWorksCompagno/notes/2013/01/n130101c.htm 95    17-04-10 14:09 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006c.htm of 2005-08018T20:44Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://nfoWorks.org" target="_top">
+<img border="0" src="../../../images/nfoWorks-2014-06-02-1702-LogoSmall.png" alt="nfoWorks: tools for document interoperability" width="160" height="100"></a><a href="http://nfoWare.com" target="_top">
+<!-- included from the http://nfoworks.org/construction/templates/00/c000005b.htm  template of 2014-06-05-17:10 -0700 -->
+</a>
+<!--webbot bot="Include" endspan i-checksum="61274" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../n000001.htm#n130101"><font color="#990033">n130101</font></a> 
+		nfoWorks </strong></font>
+
+		<strong><a href="../../n000001.htm"><font color="#990033">nfoNote</font></a></strong><br>
+<strong>
+<font color="#990033">&nbsp;<i><a href="n130101.htm"><font color="#990033">NIST 
+Cryptography Resources</font></a></i><br>
+      <em><font size="5">Basic Crypto Primitives</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+      <small>
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right">
+		<b><font face="monospace"><a target="_top" rel="nofollow" href="../../../">
+        nfoWorks</a>&gt;<a target="_top" rel="nofollow" href="../../">notes</a>&gt;<br>
+		<a target="_top" rel="nofollow" href="../">2013</a>&gt;<a rel="nofollow" target="_top" href="./">01</a>&gt;</font></b></p>
+</font>
+</font>
+
+      <p align="right"><b><font face="monospace">
+		<a rel="nofollow" target="_top" href="n130101c.htm">n130101c</a>&gt;</font></b><br>
+</font>
+      <small>&nbsp;<a href="#v0.00">0.00</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2017-04-10 14:09 -0700<!--webbot bot="Timestamp" endspan i-checksum="28905" --> </small></p></small>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<table border="0" width="100%">
+  <tr>
+    <td>
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> available on the Internet at
+			<br>&lt;<b><kbd><a href="n130101b.htm">http://nfoWorks.org/notes/2013/01/n130101b.htm</a></kbd></b>&gt;.<br>&nbsp;</li>
+			<li><b>This version:</b>&nbsp;&nbsp;<b>Basic Crypto Primitives </b>&lt;<a href="n130101c.htm"><b><kbd>http://nfoWorks.org/notes/2013/01/n130101c.htm</kbd></b></a>&gt;.&nbsp; 
+            Consult that page for the latest status and for the most-recent 
+            electronic revision of this page.</li>
+		</ul>
+</div></small></blockquote>
+
+       
+          
+    </td>
+    <td>
+<div style="float: right">
+	<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+				<a href="../../../construction/templates/00/c000006c.htm">visits to popular <b><i>nfoWorks</i></b> pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+				<a href="http://www3.clustrmaps.com/counter/maps.php?url=http://nfoWorks.org" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://nfoWorks.org" style="border:0px;" alt="Locations of visitors to nfoWorks" title="Locations of visitors to nfoWorks" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+</a></td>
+			</tr>
+			<!-- Inserted from nfoWorks /construction/templates/00/c000006c1.htm of 2014-11-04-10:24 -0800 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="45866" --></div>
+    </td>
+  </tr>
+</table>
+
+       
+          
+
+		<p>The NIST basic cryptographic primitives are those on which other 
+        cryptographic procedures depend.&nbsp; These include pseudo-random 
+        generators and message digest algorithms.&nbsp; There are also 
+        prerequisite primitives that do not themselves provide nor rely upon 
+        encryption/decryption techniques on which the basic cryptographic 
+        primitives will depend.</p>
+<h2>1. Prerequisites</h2>
+<p>Usage and testing of the basic NIST-specified primitives requires means for 
+satisfying the following prerequisites:</p>
+<ul>
+  <li>Encoding and decoding of binary data in hexadecimal and base64 encoding</li>
+  <li>Procedures for producing, accessing, and verifying test materials in the 
+  formats employed in NIST verification procedures</li>
+  <li>Existing implementations of algorithms for comparison and testing</li>
+  <li>Pseudo-random generators for 
+  testing and confirmation as part of bootstrapping cryptographically-acceptable 
+  procedures</li>
+</ul>
+<p>These elementary procedures are available from numerous sources.&nbsp; 
+Dependencies on them will be identified as part of specific development 
+activities.&nbsp; Useful generic resources may be catalogued separately.</p>
+<h2>2. Secure Hash Algorithms</h2>
+<h3>2.1 Basic Characteristics</h3>
+<h3>2.2 NIST Secure Hash Standards</h3>
+<p>&nbsp;</p>
+<h3>2.3 NIST Secure Hash Certification Testing</h3>
+<p>&nbsp;</p>
+<h3>2.4 NIST Secure Hash Implementation and Testing</h3>
+<h3>2.5 Hash Algorithm Threats and Vulnerabilities</h3>
+<h3>2.6 <i>nfoWorks</i> Secure Hash Development</h3>
+<h2>3. Pseudo-Random Generators</h2>
+
+  <dl>
+        <dt>&nbsp;</dt>
+        <dt><b><a target="_top" name="Attribution" href="#Attribution">
+		Attribution:</a></b> </dt>
+	</dl>
+	<blockquote>
+		<dl>
+			<dt><font size="2">Hamilton, Dennis E. </font> </dt>
+			<dd><font size="2">Basic Crypto Resources.&nbsp;&nbsp; <i><b>nfoWorks</b></i> 
+			nfoNote page n130101c 0.00, January 27, 2013.&nbsp; Accessed at &lt;<font face="monospace"><b><a target="_top" href="n130101c.htm">http://nfoWorks.org/notes/2013/01/n130101c.htm</a></b></font>&gt;.</font></dd>
+		</dl>
+	</blockquote>
+	<dt><b><a name="RevisionHistory"><font size="2">Revision History:</font></a></b></dt>
+	<dt><strong><a name="v0.00"><font size="2">0.00</font></a><font size="2"> 
+    2013-01-27-10:17 Initial Placeholder 
+    Version</font></strong></dt> 
+      <dd><font size="2">Provide initial placeholder version for development of the first 
+      sketch.</dd>        
+    </font><br>
+&nbsp;        
+    </small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<!-- included from nfoWorks construction/templates/00/c000005d.htm of 2008-04-07-11:14 -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWorks /construction/templates/00/c000005f.htm of 2011-10-01-18:46 -0700 -->
+ 	<i><b><a href="../../../" target="_top">nfoWorks</a></b></i>.<br />This work is 
+	licensed under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font>
+<!--webbot bot="Include" endspan i-checksum="48845" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2012-12-30-13:09 -0800 (pst) by
+<a rel="nofollow" target="_top" href="http://orcmid.com/construction/orcmid.htm">
+      orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-04-10 14:09 $<br>
+      $$Revision: 95 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<html><head><title>Interfaces and Methods: IdmaConnection</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaConnection"></a>IdmaConnection</h2>
+<p>This interface provides access to the persistent state of an independently persistent scratchpad object. It exploits the logical connection to the document space in order to apply and remove locks, refresh the snapshot of the persistent state and to apply updates to the persistent state.</p>
+<h3><a name="IdmaConnectionApplyLock"></a>IdmaConnection::ApplyLock</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::ApplyLock</b> (<br>
+DmaInteger32    <i>lLockType</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>lLockType</i></p></TD><TD><p>input</p></TD><TD><p>The type of lock to be obtained on the object, one of DMA_LOCK_READ, DMA_LOCK_WRITE, or DMA_LOCK_EXIST.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Lock an object in the persistent store in one of several modes.  This permits client applications to operate while maintaining the proper level of data integrity on the object's persistent store.  There is no requirement to use a lock in order to modify an object.  If it is not possible to acquire the requested lock on the object, the status of the connections lock will not be altered, and a result code indicating the reason for failure will be returned.  This function will not wait for a lock to become available, it will return as soon as it is determined that a lock can or cannot be acquired.
+</p><p>
+Valid values for lLockType include: DMA_LOCK_READ, DMA_LOCK_WRITE and DMA_LOCK_EXIST.   DMA_LOCK_READ puts a read lock on this object.  This prevents other connections from getting an write lock on the object.  DMA_LOCK_WRITE puts an exclusive write lock on the object.  This prevents other connections from getting a write lock or a read lock on the object.  DMA_LOCK_EXIST puts a existence lock on the object.  The object cannot be deleted when an existence lock is held, even if deletion attempted by connection holding a write lock.  This does not affect acquisition of read or write locks.
+</p><p>
+A lock is owned by a scratchpad object. A scratchpad object may own at most one lock on its related persistent object. If the scratchpad object already owns a lock of any type on its persistent object, the Lock method will return an error regardless of the value
+of the lLockType parameter, and the object's old lock will be unaffected.
+</p><p>
+A lock is removed following any of the events listed below:
+</p><p>
+-- Invocation of IdmaConnection::RemoveLock on the same scratchpad object.
+</p><p>
+-- The final IUnknown::Release invocation on the same scratchpad object.
+</p><p>
+-- Termination of the logical document space connection via which the scratchpad object was obtained</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_LOCK_TYPE</p></TD><TD><p>The lock type is invalid.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_DELETED</p></TD><TD><p>The object has been deleted since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_MODIFIED</p></TD><TD><p>The object has been modified since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaConnectionExecuteChange"></a>IdmaConnection::ExecuteChange</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::ExecuteChange</b> (<br>
+Dmapv    <i>pICallback</i>,<br>DmaInteger32    <i>lProtectionLevel</i>,<br>DmaBoolean    <i>bRefreshFlag</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pICallback</i></p></TD><TD><p>input</p></TD><TD><p>(optional) Pointer to callback interface</p></TD></TR>
+<TR><TD><p><i>lProtectionLevel</i></p></TD><TD><p>input</p></TD><TD><p>Sets the protection level against concurrent updates. The value of this parameter must be one of DMA_MODIFY_UNPROTECTED, DMA_MODIFY_PROTECTED. See descriptive text below for details.</p></TD></TR>
+<TR><TD><p><i>bRefreshFlag</i></p></TD><TD><p>input</p></TD><TD><p>If RefreshFlag is TRUE, the snapshot in the scratchpad object is updated according to the rules for IdmaConnection::Refresh.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The ExecuteChange method makes the appropriate changes to the persistent object, whatever they may be: initially create a persistent object, update an existing persistent object, or delete an existing persistent object. The action is determined by the values of the three properties CreatePending, UpdatePending, and DeletePending. 
+</p><p>
+The object is created if CreatePending is TRUE and DeletePending is FALSE.
+</p><p>
+The existing persistent object is modified if CreatePending is FALSE, UpdatePending is TRUE, and DeletePending is FALSE.
+</p><p>
+The existing object is deleted if CreatePending is FALSE, and DeletePending is TRUE.
+</p><p>
+If all three are FALSE, or if both CreatePending and DeletePending are TRUE, the method is a no-op as far as the document space persistent state is concerned, regardless of the value of lProtectionLevel. There shall be no updates to the persistent store as a result of such a no-op, but the bRefreshFlag parameter still has the usual effect on the scratchpad object state.
+</p><p>
+Here are details on the meaning of the value of the lProtectectionLevel parameter. Each value of the protection level parameter is optionally supported. However, if the ExecuteChange method is supported, then at least one value of the protection level parameter must be supported.
+</p><p>
+For the creation case, the value of this parameter is irrelevant. The create will succeed, unless there is some unrelated problem, e.g., out of disk space, duplicate key value, etc.
+</p><p>
+For the deletion case, if the value if this parameter is DMA_MODIFY_PROTECTED, then the delete will fail if the persistent object does not exist and have the same property values as the original property values in the snapshot.  The other values of this parameter have no effect on deletions.
+</p><p>
+For the case of updating an existing object, ExecuteChange fails with DMARC_OBJECT_DELETED if the independently persistent object to be updated does not exist in the persistent store, regardless of the value of the protection level parameter. Otherwise, when updating an existing independently persistent object, each value of the protection level parameter results in different behavior as follows:
+</p><p>
+-- If the value of the protection level parameter is DMA_MODIFY_UNPROTECTED, then an attempt is made to update the independently persistent object in the persistent store to reflect the changes made to the scratchpad object. The implementation is free to assume that no concurrent updates have been made to the independently persistent object or any of its subobjects, providing only that the independently persistent object still exists. The updates are performed at the finest possible granularity and do not affect any part of the persistent state which is unmodified in the scratchpad object. In the case of lists, only the minimal insertions, deletions, and replacements need be performed. Thus, for example, if a property or list element was deleted from the scratchpad object, it will be deleted from the persistent object, and none of the rest of the state of the persistent object will be altered. In the case of dependently persistent subobjects, this is recursively true. For purposes of this paragraph, "subobject" includes list elements. If any changes to the persistent object have been made in the persistent store that conflict with any changes made to the scratchpad, then the result is undefined. Some modifications may no longer be applicable, and, if this situation is detected, these modifications may be quietly discarded or an error may be returned, at the option of the implementation. Since this value of the protection level parameter provides no protection against concurrent updates to the persistent store, it is recommended that locking be used to protect against concurrent updates (if locking is supported), or, even better, that the protection level value DMA_MODIFY_PROTECTED be used instead (if it is supported).
+</p><p>
+-- If the value of the protection level parameter is DMA_MODIFY_PROTECTED, the result is effectively the same as if an atomic combination of IsCurrent and DMA_MODIFY_UNPROTECTED were performed: If the independently persistent object is not current in the sense of IsCurrent, then the update fails with DMARC_OBJECT_MODIFIED. Otherwise, it is known that neither the independently persistent object nor any of its dependently persistent subobjects has changed. In that case, the changes made to the scratchpad are applied to the persistent object. The updates are performed at the finest possible granularity and do not affect any part of the state of the persistent object which is unmodified in the scratchpad. It is recommended that clients use this value of the protection level parameter, if it is supported, in preference to using DMA_MODIFY_UNPROTECTED. This value of the protection level parameter provides concurrency protection when updating an object while avoiding the additional overhead that would be incurred by use of the locking and unlocking methods (assuming locking is supported).”
+</p><p>
+Many more return values are possible from this method than are listed below.  They are detailed in individual method descriptions -- see especially any method with "Set" in its name.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ABORT</p></TD><TD><p>The progress callback indicated that the method should be aborted.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_REFERENCE</p></TD><TD><p>The object cannot be saved because it references another object which is not persistent.</p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+<TR><TD><p>DMARC_MISSING_REFERENCE</p></TD><TD><p>The object cannot be saved because required reference to it is absent. For example, it may be required to be in a container and no appropriate relationship object exists.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_DELETED</p></TD><TD><p>The object has been deleted since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_MODIFIED</p></TD><TD><p>The object has been modified since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_PROTECTION_LEVEL_NOT_SUPPORTED</p></TD><TD><p>The desired protection level is not supported by the doc space.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_REQUIRED_VALUE_ABSENT</p></TD><TD><p>A required property value has not been set.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaConnectionExecuteRefresh"></a>IdmaConnection::ExecuteRefresh</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::ExecuteRefresh</b> ( )</p>    <b>Description</b>    </p>
+<p>Refreshes the scratchpad object with an up to date snapshot from the persistent store. If successful, any changes made to the scratchpad object prior to this call will be discarded.
+</p><p>
+If the persistent object no longer exists, the error DMARC_OBJECT_DELETED is returned, and the scratchpad  object is unchanged. 
+</p><p>
+If the persistent object exists and is successfully retrieved, the CreatePending, UpdatePending, and DeletePending properties are set to FALSE, FALSE, FALSE. All scalar properties of the scratchpad object are set to match the current state of the persistent store, with the usual consistency guarantees. All object-valued properties are reset to the unbound state.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_DELETED</p></TD><TD><p>The object has been deleted since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaConnectionIsCurrent"></a>IdmaConnection::IsCurrent</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::IsCurrent</b> (<br>
+pDmaBoolean    <i>pbIsCurrent</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pbIsCurrent</i></p></TD><TD><p>output</p></TD><TD><p>Returns DMA_TRUE if the current state of the object's snapshot is current with the persistent state of the object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns DMA_TRUE if the persistent state of the object has not been changed since the IdmaConnection interface was delivered, or
+the last call to IdmaConnection::ExecuteRefresh, whichever is later.
+</p><p>
+The method may be conservative and return DMA_FALSE for the value of *pbIsCurrent if there is good reason to believe that the independently persistent object or one of its dependently persistent subobjects may have changed, but determining with certainty whether the object has actually changed is considered to be too expensive. For example, a difference in the value of a change count or epoch field in the independently persistent object is considered to be a sufficiently good reason to believe that the object may have changed. It is not necessary to actually check whether the old and new values of all properties and all other parts of the persistent state have changed. (For example, that might be considered too expensive in the case of content elements and large binary properties.) Note, therefore, that  DMA_FALSE might be returned for *pbIsCurrent, even though a property was set to its original value, resulting in no net change. In contrast, being pessimistic and always returning DMA_FALSE for *pbIsCurrent is not acceptable.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaConnectionRemoveLock"></a>IdmaConnection::RemoveLock</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::RemoveLock</b> ( )</p>    <b>Description</b>    </p>
+<p>Remove the lock that is held by this connection on the persistent object, making it available to other connections.  If there is no lock held on this connection the return code DMARC_NOT_LOCKED will be returned.
+</p><p></p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NOT_LOCKED</p></TD><TD><p>The object is not locked.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaConnectionSetDeletePending"></a>IdmaConnection::SetDeletePending</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaConnection::SetDeletePending</b> (<br>
+DmaBoolean    <i>bDeleteFlag</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>bDeleteFlag</i></p></TD><TD><p>input</p></TD><TD><p>DMA_TRUE if object is to be marked for delete, DMA_FALSE to be unmarked for delete.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The value of the DeletePending property is set in the current scratchpad object. This preconditions it so that if the DeletePending property is TRUE,  IdmaConnection:: ExecuteChange or IdmaBatch:: ExecuteChanges will delete the persistent object.
+</p><p>
+Successful operation of this method does not depend on the value of the Delete Pending property.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_REFERENCED</p></TD><TD><p>The object cannot be deleted because it is referenced by other objects.</p></TD></TR>
+<TR><TD><p>DMARC_REFERENCES_OTHERS</p></TD><TD><p>The object cannot be deleted because it holds references to other objects.</p></TD></TR>
+</TABLE>
+</body></html>

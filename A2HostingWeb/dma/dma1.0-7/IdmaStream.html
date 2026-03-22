@@ -1,0 +1,49 @@
+<html><head><title>Interfaces and Methods: IdmaStream</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaStream"></a>IdmaStream</h2>
+<p>Provides read-only access to DMA content via an octet-stream.</p>
+<h3><a name="IdmaStreamReadStreamData"></a>IdmaStream::ReadStreamData</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaStream::ReadStreamData</b> (<br>
+pDmaBinary    <i>pBuffer</i>,<br>DmaUInteger32    <i>ulBytesToRead</i>,<br>pDmaUInteger32    <i>pulBytesRead</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pBuffer</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the buffer to be read into</p></TD></TR>
+<TR><TD><p><i>ulBytesToRead</i></p></TD><TD><p>input</p></TD><TD><p>Number of bytes to read from the stream</p></TD></TR>
+<TR><TD><p><i>pulBytesRead</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to number of bytes actually read.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Reads the designated number of bytes into the buffer.  The supplied buffer must be at least ulBytesToRead bytes in size.
+</p><p>
+Number of bytes read is returned in pulBytesRead, even if an error is returned. The seek pointer is adjusted by the number of bytes actually read.
+</p><p>
+If the end of stream is reached during the read, the number of bytes actually read may be less than requested and the result code DMARC_SHORT_READ is returned.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DEVICE_ERROR</p></TD><TD><p>An error has occurred reading or writing a hardware device.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_SHORT_READ</p></TD><TD><p>(Warning) End of stream was encountered before the requested number of bytes was read.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaStreamSetStreamPosition"></a>IdmaStream::SetStreamPosition</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaStream::SetStreamPosition</b> (<br>
+DmaInt64    <i>liDisplacement</i>,<br>DmaInteger32    <i>lRelativeTo</i>,<br>pDmaUInt64    <i>puliNewPosition</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>liDisplacement</i></p></TD><TD><p>input</p></TD><TD><p>Number of bytes of displacement</p></TD></TR>
+<TR><TD><p><i>lRelativeTo</i></p></TD><TD><p>input</p></TD><TD><p>DMA_REL_CURRENT if displacement is to be treated relative to the current position of the stream, DMA_REL_BEGINNING if it is relative to the beginning of the stream, or DMA_REL_END if it is relative to the end of the stream.</p></TD></TR>
+<TR><TD><p><i>puliNewPosition</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to value of the seek pointer,  May be omitted, indicating client is not interested in this value</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Adjusts the location of the seek pointer on the stream. The seek pointer can be moved relative to its current position, set to an absolute location (relative to beginning of the stream) ), or set relative to the end of the stream 
+</p><p>
+If liDisplacement is greater then zero, the seek pointer is positioned toward the end of the stream.  If liDisplacement is less then zero, the seek pointer is positioned toward the beginning of the stream.  The seek pointer cannot be moved beyond the end of the stream or before the beginning of the stream.  Attempting to do so will result in the seek pointer being set to either the beginning of the stream or the end of the stream.
+</p><p>
+If the stream cannot be positioned as requested, the error DMARC_POSITION_NOT_ALLOWED should be returned. For example, the stream may be "forward only" and the combination of liDisplacement and lRelativeTo may reference a point in the stream which has already been passed.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DEVICE_ERROR</p></TD><TD><p>An error has occurred reading or writing a hardware device.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_POSITION_NOT_ALLOWED</p></TD><TD><p>The stream cannot be positioned as requested.</p></TD></TR>
+</TABLE>
+</body></html>

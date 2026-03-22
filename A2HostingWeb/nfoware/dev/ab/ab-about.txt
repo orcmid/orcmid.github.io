@@ -1,0 +1,52 @@
+AB-ABOUT.TXT                                              dh:2005-03-25-19:25
+
+                        ABOUT THE AB PROJECT
+                        ====================
+
+This project is for development of a refer-style bibliographic system.  This
+is so I can have recreated what I want to do for being able to make refer-
+format bibliographies that I can transform to a variety of target formats for
+publication and my M.Sc dissertation.
+
+I have collected a variety of materials, as well as examples of my past usage.
+I now want to start using a manual template, and I will then consider making
+a C Language version of the bibliographic construction and editing tool.
+
+JOB JAR
+
+I must make a template that I can use manually.  The only tricky part is to
+make a description at a URL somewhere that can also be used as a namespace
+if and when needed.
+
+Some of the other packages that I found may have useful code, documentation,
+and ideas that I can adapt.
+
+I must also find the EndNotes format that ACM is now providing on ACM Digital
+Library and the Collected Works materials.
+
+This is an initial placeholder.
+
+I don't think I want to do all of this using the MS-DOS Editor, but I can see
+getting quite a ways with it.  I do think jEdit will serve me better.
+
+2005-04-04: I have been hand-crafting some bibs, after boiling down a set
+of keys and descriptions that I find useful. I have some ideas about how
+this thing should work:
+ 1. Blank entries are ignored, even if the tag is present.  This lets people
+    use boilerplate and also leave placeholders, and it doesn't have to be
+    all tidy.
+ 2. The processor will attempt to match a template version and the header
+    for a given bib file.  The processor will also use the first record as
+    an in-line definition if it seems to be a template, or maybe regardless.
+ 3. The processor is also creative about how it adds new entries at the end
+    of the file, depending on what is already on the end.  Consider inserting
+    before all comments that are beyond the last entry (with at least one
+    separating space).  This sort of thing depends on being able to position.
+
+
+                                                        -- Dennis E. Hamilton
+                                                          Seattle, Washington
+                                                       2005-03-25-17:32 -0800
+
+$Header: /nfoDev/ab/ab-about.txt 1     05-05-16 16:22 Orcmid $
+                     *** END OF AB-ABOUT.TXT ***

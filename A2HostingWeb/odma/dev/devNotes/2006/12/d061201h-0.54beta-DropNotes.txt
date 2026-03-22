@@ -1,0 +1,216 @@
+d061201h-0.54beta-DropNotes.txt 0.00 UTF-8                    dh:2007-02-13
+
+                               STABILIZATION NOTE
+
+              ODMJNI 1.0 0.54beta Character-Code Stabilization
+              ------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   The 0.60beta release of ODMJNI 1.0 is made up of a series of drops
+   that complete the stabilization of functionality on an area.  These
+   are focused increments that stabilize around a particular function.
+
+   This 0.54beta drop is the second incremental update.  It applies after
+   0.50beta is updated by 0.52beta.
+
+   This drop stabilizes the reliance on Code Page information to properly
+   convert extended single-byte character codes to Java Unicode character
+   encoding.
+
+            CONTENT
+                Synopsis
+                1. Requirement
+                2. Approach
+                3. Changes
+                4. Confirmation of Changes
+                   4.1 Regression check
+                   4.2 Special-character tests
+                5. Caveats and Concerns
+                   5.1 Use of different encodings by DMS
+                   5.2 Different interpretations of special characters
+                   5.3 Being watchful
+                Copyright Notice
+                Attribution
+                Revision History
+
+1. REQUIREMENT
+
+   Single-byte character codes in text supplied by the DMS to ODMA (e.g.,
+   for document properties) must be properly interpreted in the code page
+   of the desktop system so that extended characters beyond the basic ASCII
+   (ISO 646) character codes are properly converted to Unicode.
+
+
+2. APPROACH
+
+   0.54beta introduces an additional conversion step in the odmjni100.dll
+   delivery of ODMA document properties, Document IDs, and document
+   locations.  This causes character codes beyond the basic "7-bit" codes to
+   be properly interpreted in the prevailing ANSI code page before as part
+   of conversion to Unicode.
+
+   There is no change to any of the info.odma.practical100 interfaces.
+   The info.odma.odmjni100 classes are also unchanged.  The modifications
+   are confined to the odmjni100.dll file and the odmjni100.cpp source code.
+
+   There should be no impact on use of ODMJNI by existing Java applications.
+   The appearance of international characters should be automatically
+   improved, with no impact on the Java software itself.
+
+   If extended characters also appear in filenames (docLocation values)
+   provided by the DMS, they will be interpreted as codes in the default
+   ANSI code page for delivery to the Java application.  These would have
+   been incorrectly translated prior to 0.54beta.
+
+
+
+3. CHANGES
+
+   In odmjni100.cpp, those functions that deliver Java Unicode strings are
+   modified to use Windows to convert ODMA single-byte code strings to
+   Unicode before creating a new Java Unicode string.  The conversion is
+   performed with assuming that the single-byte code is based on the
+   current default ANSI code page.
+
+
+4. CONFIRMATION OF CHANGES
+
+4.1 Regression Check
+
+    The Check04 programs CheckChoice and CheckNew continue to operate
+    properly.  The OdmClicker application also continues to operate
+    properly.
+
+4.2 Special-Character Tests
+
+    CheckNew was used to create a new document, via the ODMA Sample DMS,
+    that contained extended characters in the document title and the
+    author's name.  These codes were confirmed to be delivered to the DMS
+    and properly preserved for further displays (e.g., when running
+    CheckChoice later).
+
+    The special-character codes were also recorded in the Odma32.log file,
+    once it was set for viewing as being created using the character codes
+    of the Windows ANSI code page 1252.
+
+    The CheckNew and CheckChoice programs do not display the correct
+    characters however.  The correct characters occur in the Unicode, and
+    they are properly translated to single-byte codes, but the display uses
+    the Windows OEM code page on the computer used for these tests.
+
+    To verify that the Java program did hold the correct value, even though
+    not displayed properly in CheckNew and CheckChoice console output, the
+    OdmClicker program was modified to show the Document Name in one of its
+    text messages.  This revised OdmClicker program shows the Unicode
+    characters that were entered as single-byte codes using the Windows ANSI
+    1252 code page.  There is one exception: One pair of characters in the
+    Unicode does not seem to be translated correctly for presentation in
+    the OdmClicker text field (see Caveats).
+
+5.  CAVEATS
+
+5.1 Use of Different Encodings by DMS
+
+    It is not possible for ODMJNI to automatically determine the actual code
+    page that the DMS is presuming as the agreed code page when single-byte
+    codes are delivered as properties of a document.
+
+    Because the DMS is operating on Windows, and is producing Windows
+    dialogs using the same characters, the presumption that the DMS is
+    delivering character encodings that are to be understood in accordance
+    with the default Windows ANSI code page is the best-available guess.
+
+    It is not known whether particular DMS implementations take special care
+    to deal with differences in the code page used when a document was
+    first created and the code page that is the default when the document
+    is later accessed.  It is likely that some DMS implementations that are
+    designed around single-byte encodings of document metadata will fail to
+    compensate for such changes.  There is insufficient information
+    available to ODMA-aware desktop applications to be able to compensate
+    for such discrepancies.
+
+    ODMA is underspecified with regard to how character-set encodings are
+    to be understood by an ODMA-aware application.  The approach taken in
+    0.54beta involves using a likely assumption, but there is no guarantee
+    that this will be successful at all times, with every ODMA DMS.
+
+
+5.2 Different Interpretations of Special Characters
+
+    We have confirmed that the Unicode strings that are delivered to the
+    Java application are correctly translated to single-byte codes when
+    the text is sent to the Console.
+
+    However, there may be deficiencies in how the version of Java used
+    handles special characters on the display.
+
+    The screen capture of the OdmClicker selection in file
+
+        OdmClicker-2007-02-12-1725-0.08-selection.png
+
+    correctly shows the special characters in the document name,
+
+        Ümlaüt Gödel Sì è una testa
+
+    However, the display of this name in screen shot
+
+        OdmClicker-2007-02-12-1726-0.08-selection.png
+
+    shows contraction of the "Sì" pair to a single character S with the
+    suggestion of an accent.  It is not clear how that arose.  It could be
+    a font metric or other problem in the display of the particular
+    combination of characters.  It is not reproducible: normally, the name
+    of the document is rendered perfectly.
+
+5.3 Being Watchful
+
+    There must be careful inspection of ODMJNI in production Java
+    applications.  It is important to be alert for any indication that
+    character-text information about ODMA documents is consistent with the
+    form in which the material was submitted to the DMS.
+
+    This may be difficult.  Except for glaring discrepancies, code-
+    conversion errors might only be noticed by coincidence.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+               Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Stabilization Note: ODMJNI 1.0 0.52beta Character-Code Stabiliza-
+        tion, ODMA Interoperability Exchange, ODMdev Development Note page
+        d061201h-0.54beta-DropNotes.txt 0.00, February 13, 2007.  Current
+        version available as part of the archive material downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+
+0.00 2007-02-13-19:39 Sketch the 0.54beta Character-Code Stabilization
+     and how there remains some nervousness over its reliable operation
+     in all cases.
+
+$Header: /ODMdev/d061201h-0.54beta-DropNotes.txt 1     07-02-13 19:42 Orcmid $
+
+                 *** END OF d061201h-0.54beta-DropNotes.txt ***

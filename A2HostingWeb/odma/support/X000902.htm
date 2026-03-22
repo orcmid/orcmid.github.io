@@ -1,0 +1,133 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000902.htm 2     00-09-11 8:25 Orcmid $-->
+<title>X000902: E_ODMVERSION neither Defined nor Implementable</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000902.htm">X000902</a>:
+<code>E_ODMVERSION</code>
+</b> neither Defined nor Implementable</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-09-11-08:24 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000902.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Functionality - Defect</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000902.htm">X000902</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Correction Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: <code>Odmacom.h</code></b>
+        2.0.0 and ODMA 2.0 Specification</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd</a> </b></dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Q000705</a>:
+            Changes Between ODMA Versions<br>
+            <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000901">Q000901</a>:
+            Using COM<br>
+            <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">ODMA
+            Version 2.0 Errata</a><br>
+          </dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis Hamilton (2000-09-10)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-09-10</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>   (2000-09-11):</h3>
+
+<blockquote>
+
+<p>The ODMA 2.0 specification adds the <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#3.1ReturnValue">HRESULT</a></code></b>
+value <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#E_ODM_VERSION3.1">E_ODM_VERSION</a></code></b>
+for the ODMA-internal integration operation <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMGetODMInterface">ODMGetODMInterface</a></code></b>.&nbsp;
+In fact,</p>
+
+  <ol>
+    <li>No value for this <b><code>HRESULT</code></b> has been defined in the <a href="../downloads/odma20L.htm">ODMA
+      2.0 libraries</a>.</li>
+    <li>The ODMA 2.0 Connection Manager version 2.0.0 does not check for nor
+      anticipate this value.</li>
+    <li>The DMS integration has no way to verify its version against the
+      ODMA-version level of the application that the DMS integration is being
+      instantiated for.&nbsp; Neither the version of the application nor the
+      version of the Connection Manager is supplied to the DMS integration by
+      the <b><code>ODMGetODMInterface</code></b> operation.</li>
+  </ol>
+  <p>Since the proposed <b><code>HRESULT</code></b> cannot be produced, is not
+  defined, and is not expected, it is proposed to remove it from the
+  specification.</p>
+</blockquote>
+<h3><a name="Actions">Actions</a>  (2000-09-11):</h3>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of an extraneous <b><code>ODMGetODMInterface</code></b>
+      <b><code>HRESULT</code></b> in the <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">ODMA
+      Version 2.0 Errata</a>. [2000-09-11: Done]</li>
+    <li>Remove this extraneous result code from ODMA 2.0-3 as part of final
+      editing.</li>
+    <li>Close this incident report when (1-2) are completed and the documents
+      are closed as being in final form.</li>
+  </ol>
+</blockquote>
+<h3><a name="Investigation">Investigation</a>   (2000-09-11):</h3>
+<blockquote>
+<p>The following steps were taken to confirm the claims made in this incident
+report:</p>
+  <ol>
+    <li>The current <a href="http://www.infonuovo.com/odma/downloads/odma200h.htm"><b><code>Odma.h</code></b></a>
+      and <b><code><a href="http://www.infonuovo.com/odma/downloads/odma200c.htm">Odmacom.h</a></code></b>
+      files were reviewed to confirm that <b><code>E_ODM_VERSION</code></b> is
+      not defined in the libraries.</li>
+    <li>The ODMA 2.0 Connection Manager source code, module <code><b>Odmdms.cpp</b></code>,
+      was reviewed to confirm that method <b><code>ODMDms::Init()</code></b>
+      does not behave in any way that assumes an <b><code>E_ODM_VERSION</code></b>
+      response is possible from the only use of <b><code>OGMGetODMInterface</code></b>
+      in the Connection Manager implementation.&nbsp; That is the case, although
+      <b><code>ODMDms::Init()</code></b> can produce an <b><code>ODM_E_VERSION</code></b>
+      response as the result of determinations internal to its implementation
+      independent of its <b><code>ODMGetODMInterface</code></b> usage.</li>
+  </ol>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-09-11-07:09 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-09-11 8:25 $<br>
+$$Revision: 2 $</em></p>
+</body>
+</html>

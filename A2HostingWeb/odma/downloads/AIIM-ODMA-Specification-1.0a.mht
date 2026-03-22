@@ -1,0 +1,1727 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: ODMA Version 1.0a
+Date: Fri, 7 Apr 2000 10:14:38 -0700
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.aiim.org/odma/odmaspec.htm
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2919.6600
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>ODMA Version 1.0a</TITLE>
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-Type>
+<META content=3D"MSHTML 5.00.3013.2600" name=3DGENERATOR></HEAD>
+<BODY bgColor=3D#ffffff>
+<H2 align=3Dcenter><FONT color=3Dmaroon>Open Document Management API <A=20
+name=3Dspec>Version 1.0a</FONT></H2>
+<CENTER></CENTER>
+<P>
+<BLOCKQUOTE><BR>Revision history:<BR>
+  <P>
+  <UL>
+    <LI>Version 1.0 - with small BHC 325 at the end of the =
+document<BR>Brad=20
+    Clements. This is the original version.<BR>
+    <P></P>
+    <LI>Version 1.0 - with small DM1\285 at the end of the =
+document<BR>Mike=20
+    Gardiner. This contains additional information for registering ODMA =
+under=20
+    Windows 95 and NT. It also adds a new table for document ID =
+constants.<BR>
+    <P></P>
+    <LI>Version 1.0a<BR>Rod Schiffman. Additional information on the =
+ODMA spec=20
+    background, usage of calls, <BR>suggestions on the use of document =
+ID=20
+    character sets and the addition of ODM_E_INUSE as a valid return =
+code in=20
+    ODMActivate.=20
+    <P>
+    <HR>
+
+    <P>The purpose of this update to the ODMA specification is to =
+clarify a=20
+    number of issues that have been raised by companies that have =
+implemented=20
+    ODMA in their products. It does not change any of the calls or=20
+    functionality. It is a preliminary step to creating the next version =
+of the=20
+    specification. There is additional information about the usage of =
+the calls,=20
+    as well as more information about the goals of ODMA. The document, =
+perhaps=20
+    even more than in the past, retains an informal writing style. </P>
+    <P>The original impetus for ODMA was the recognition that there was =
+no=20
+    standard method for a client application to integrate with a DMS. =
+Each DMS=20
+    vendor wrote separate integration code for each of the major client=20
+    applications they supported. Applications that did not have =
+integrations=20
+    written for them by the DMS vendors would have to write and support =
+a=20
+    separate integration for each DMS that was supported. This required =
+a=20
+    complete matrix of integrations, each with its own set of bugs, =
+limitations=20
+    and reliability issues. It seemed obvious that a high level standard =
+for=20
+    connecting applications and document management systems was a =
+natural fit. A=20
+    small group of application and DMS vendors started working together =
+to=20
+    create an API that would allow applications and document management =
+systems=20
+    to inter-operate through a single high level API. This implied the =
+creation=20
+    of a standard, however, the creation of a standard has many =
+pitfalls.=20
+    Probably the biggest problem is that a lot of work can be put into =
+the=20
+    creation of the standard, and nobody uses it. </P>
+    <P>The industry is filled with examples of standards that were =
+obsolete by=20
+    the time they made it through the standardization process. By time =
+some=20
+    standards make it through the standardization process, they are so =
+large and=20
+    unwieldy they are almost impossible to implement and maintain. =
+Company=20
+    politics and hidden agendas of the participants can play as big a =
+role in=20
+    the adoption of a standard as trying to solve the problem in the =
+first=20
+    place. The industry is also full of proprietary API=92s that claim =
+to be=20
+    standards, but are not. The initial group of vendors that met and =
+formed the=20
+    ODMA consortium wanted to avoid as many of these problems as =
+possible.</P>
+    <H4><FONT color=3Dmaroon>The working rules of the ODMA consortium =
+are fairly=20
+    simple.</FONT> </H4>
+    <OL>
+      <LI>If the standard does not solve a problem it will not be used.=20
+      <LI>If the creation of the standard takes a long period of time, =
+it does=20
+      not solve the problem.=20
+      <LI>If the standard is difficult to implement, it does not solve =
+the=20
+      problem.=20
+      <LI>The standard must be vendor independent.=20
+      <LI>The standard must not try to solve all vendors problems, or it =
+will be=20
+      big, complex and take a long time to implement. This violates =
+rules 1, 2=20
+      and 3 above.=20
+      <LI>It is the customers that lose if there is not a =
+straightforward way to=20
+      integrate applications that create documents, and applications =
+that manage=20
+      documents. Easy integration between applications and document =
+management=20
+      systems will grow the industry and increase sales for the entire=20
+      marketplace. </LI></OL>
+    <P>It is difficult to express the importance the initial members of =
+the=20
+    consortium placed on wanting to create a useful API that is vendor =
+and=20
+    platform independent while still simple to implement. They =
+recognized that=20
+    they could solve 80 percent of the problem easily and were willing =
+to live=20
+    with having to solve another 10 percent over time and probably never =
+being=20
+    able to solve the final 10 percent. </P>
+    <P>The Open Document Management API (ODMA) is a standardized, =
+high-level=20
+    interface between desktop applications and document management =
+systems=20
+    (DMSs). </P>
+    <H4><FONT color=3Dmaroon>Its purposes are: </FONT></H4>
+    <OL>
+      <LI><FONT face=3D"Times New Roman">To make DMS services available =
+to users=20
+      of desktop application in a seamless manner so that these services =
+appear=20
+      to the user like extensions of the applications. </FONT>
+      <LI><FONT face=3D"Times New Roman">To reduce the application =
+vendors' burden=20
+      of having to deal with multiple DMS vendors. By writing to ODMA, =
+an=20
+      application vendor has potentially integrated his application with =
+all=20
+      supporting DMSs. </FONT>
+      <LI><FONT face=3D"Times New Roman">To reduce the DMS vendors' =
+burden of=20
+      integrating with multiple applications. By supporting ODMA a DMS =
+vendor=20
+      has potentially integrated with all applications that have written =
+to=20
+      ODMA. </FONT>
+      <LI><FONT face=3D"Times New Roman">To reduce effort and complexity =
+needed to=20
+      install and maintain DMSs. </FONT></LI></OL>
+    <P>ODMA specifies a set of interfaces that applications can use to =
+initiate=20
+    actions within a DMS. The API is intended to be relatively easy for=20
+    application vendors to incorporate into updates of existing =
+applications. It=20
+    should not require major restructuring of an application to =
+integrate it=20
+    with ODMA. Note that this version of ODMA does not specify how DMSs =
+may=20
+    initiate actions within the applications. </P>
+    <P>The ODMA API is platform-independent. The associated data type=20
+    definitions and binding information are platform-specific. =
+Currently, most=20
+    of the work has been done in Windows. It makes this document look =
+Windows=20
+    specific, but over time, the platform specific entries for other =
+platforms=20
+    will be added as they are defined. </P>
+    <H4><FONT color=3Dmaroon>Document IDs </FONT></H4>
+    <P>Many of the ODMA functions accept or return a Document ID =
+parameter. A=20
+    document ID is a persistent, portable identifier for a document. It =
+can be=20
+    stored and used in a later session, and it can be passed across =
+platforms=20
+    via email or other processes. </P>
+    <P>Document IDs are case insensitive, null-terminated strings of =
+printable=20
+    characters. Although a document ID is case insensitive, an =
+application=20
+    should never change the case of a document ID. The format of a =
+document ID=20
+    is </P>
+    <CENTER>
+    <H4 align=3Dcenter>::ODMA\DM_ID\DM_SPECIFIC_INFO </H4></CENTER>
+    <P>The DM_ID portion of a document ID will identify which DMS =
+provided the=20
+    ID. This information is primarily for the use of ODMA itself; =
+applications=20
+    using ODMA should not need to know which DMS provided a particular =
+ID. The=20
+    ODMA group members will coordinate these IDs to ensure their =
+uniqueness. The=20
+    maximum length of the DM_ID portion of the document ID is specified =
+by the=20
+    constant <B>ODM_DMSID_MAX. </B></P>
+    <P>The DM_SPECIFIC_INFO portion of the ID will vary depending on =
+which DMS=20
+    built the ID. The total length of the document ID including the =
+terminating=20
+    Null character cannot exceed <B>ODM_DOCID_MAX</B> bytes. </P>
+    <P>ODMA-aware applications should be able to handle a document ID =
+anywhere=20
+    they handle an externally-generated document filename. For example, =
+if the=20
+    application allows a document filename to be passed as a command =
+line=20
+    argument then it should allow a document ID to be passed in the same =
+way. If=20
+    the application allows document filenames to be used in DDE commands =
+then it=20
+    should also support the use of document IDs in the same commands. =
+</P>
+    <P>Although the technical definition of a document ID is a case =
+insensitive,=20
+    null-terminated strings of printable characters, there are some =
+general=20
+    rules that are more likely to make a DMS and ODMA application work =
+better=20
+    together. ODMA was designed so that it would be easy to add to an=20
+    application without major modifications in code or structure. If a =
+DMS=20
+    passes a document ID that breaks fundamental rules of normal file =
+and path=20
+    names it will probably run into problems if it is passed in on a =
+command=20
+    line. Special characters like ^, [, ], |, *, -, &gt;, &lt; and ? are =
+
+    processed by the Unix shell even before they are seen by the =
+application. It=20
+    is possible to pass these characters by using special escape =
+sequences, but=20
+    that places a burden on the DMS vendor to process the document ID =
+before=20
+    giving it to the ODMA application. Some operating systems require =
+the=20
+    application to handle the reverse process of interpreting and =
+removing the=20
+    escape characters. The application may be able to support the escape =
+removal=20
+    on the command line, but not if the document ID with escape =
+characters is=20
+    returned in a procedure call. In most cases, it is easier to =
+generate a=20
+    document ID that contains a fairly simple set of characters. The =
+following=20
+    table suggests characters it may be wise to avoid for different=20
+    platforms.<BR>
+    <TABLE border=3D2 cellPadding=3D3 cellSpacing=3D2>
+      <TBODY>
+      <TR>
+        <TD><B><FONT size=3D4>Platform</B></FONT></TD>
+        <TD><B><FONT size=3D4>Characters to =
+Avoid</B></FONT></TD></TR><BR>
+      <TR>
+        <TD>Windows 3.x</TD>
+        <TD>" ' &lt; &gt; * ? | and the space character</TD></TR><BR>
+      <TR>
+        <TD>Windows 95</TD>
+        <TD>" ' &lt; &gt; * ? |</TD></TR><BR>
+      <TR>
+        <TD>Other platforms to be defined</TD>
+        <TD></TD></TR><BR></TBODY></TABLE><BR>
+    <H4><FONT color=3Dmaroon>Constants</FONT></H4>
+    <P>
+    <TABLE border=3D2 cellPadding=3D3 cellSpacing=3D2>
+      <TBODY>
+      <TR>
+        <TD><B><FONT size=3D4>CONSTANTS</FONT></B></TD>
+        <TD>Windows 3.x</TD>
+        <TD>Win32</TD>
+        <TD>Mac</TD>
+        <TD>Unix</TD>
+        <TD>Other</TD></TR><BR>
+      <TR>
+        <TD><B>ODM_DOCID_MAX</B><BR>Maximum length of a document ID=20
+          including<BR>the terminating Null character</TD>
+        <TD>80</TD>
+        <TD>255</TD>
+        <TD>255</TD>
+        <TD>255</TD>
+        <TD>255</TD></TR><BR>
+      <TR>
+        <TD><B>ODM_FILENAME_MAX</B><BR>Maximum length of a path/filename =
+
+          returned<BR>by ODMA including the terminating Null =
+character</TD>
+        <TD>128</TD>
+        <TD>255</TD>
+        <TD>255</TD>
+        <TD>1024</TD>
+        <TD>255</TD></TR><BR>
+      <TR>
+        <TD><B>ODM_API_VERSION</B><BR>The version of the ODMA API to =
+which=20
+          this<BR>header file corresponds. See the description<BR>of=20
+          <B>ODMRegisterApp</B></TD>
+        <TD>100</TD>
+        <TD>100</TD>
+        <TD>100</TD>
+        <TD>100</TD>
+        <TD>100</TD></TR><BR>
+      <TR>
+        <TD><B>ODM_DMSID_MAX</B><BR>Maximum length of a DMS ID including =
+
+          the<BR>terminating Null character</TD>
+        <TD>9</TD>
+        <TD>9</TD>
+        <TD>9</TD>
+        <TD>9</TD>
+        <TD>9</TD></TR><BR></TBODY></TABLE></P>
+    <H4><FONT color=3Dmaroon>Error Handling</FONT> </H4>
+    <P>Nearly all of the ODMA functions use the return value to indicate =
+to the=20
+    calling application whether the function succeeded, failed because =
+the user=20
+    canceled the operation, or failed for other reasons. The DMS is =
+responsible=20
+    for displaying informational error messages to the user where =
+appropriate=20
+    except when the ODM_SILENT flag is specified. The DMS must take care =
+to=20
+    return the appropriate error indication because applications may act =
+
+    differently depending on whether an ODMA call was canceled by the =
+user or=20
+    failed for other reasons. The calling application generally should =
+not=20
+    display error messages when an error value is returned from ODMA =
+unless the=20
+    ODM_SILENT flag was specified. </P>
+    <H4><FONT color=3Dmaroon>Connections and the ODMA Connection =
+Manager</FONT>=20
+    </H4>
+    <P>The ODMA connection manager is a small software module that sits =
+between=20
+    applications using ODMA and document management systems implementing =
+ODMA.=20
+    It manages the connections between these components and routes ODMA =
+calls to=20
+    the appropriate provider. A freely-redistributable copy of the ODMA=20
+    connection manager will be provided to any vendor wishing to =
+implement or=20
+    make use of the ODMA API. This is a place where it would be possible =
+to=20
+    provide mapping code that would allow ODMA to have truly platform=20
+    independent document IDs, however, it currently only manages =
+connections and=20
+    does not touch document IDs. </P>
+    <H4><FONT color=3Dmaroon>Document Format Names</FONT> </H4>
+    <P>When new documents are registered with a DMS via ODMA and when an =
+
+    existing document's format is changed by an application, the =
+application=20
+    passes a document format name to ODMA. Document format names are=20
+    Null-terminated strings defining the format of a document's content. =
+
+    Application vendors are encouraged to make public the format names =
+they=20
+    choose for their proprietary formats so that other ODMA users and =
+providers=20
+    can standardize on the same names. The odma.h header file contains =
+names for=20
+    common, non-proprietary formats such as text, RTF, and TIFF. This is =
+a=20
+    significant limitation in the ODMA 1.0 specification. There is a =
+proposal in=20
+    an appendix at the end of this document to create a standardization =
+for=20
+    document format names under Windows. </P>
+    <H4><FONT color=3Dmaroon>Character Sets </FONT></H4>
+    <P>All strings passed to or returned from ODMA functions should be =
+in the=20
+    native character set of the system on which ODMA is being used. So =
+for=20
+    example, 8859-1 would be used on English Windows, Shift-JIS would be =
+used on=20
+    Japanese Windows, Unicode would be used on NT, etc. The term=20
+    "Null-terminated" as used in this specification means terminated by =
+the=20
+    character set's natural Null character. For most character sets this =
+means a=20
+    single byte with the value 0x0; for Unicode it means a sequence of 2 =
+bytes=20
+    with the value 0x0. If an application obtains an ODMA document ID on =
+one=20
+    platform and later uses it on another platform, the application is=20
+    responsible for translating the ID to the native character set of =
+the second=20
+    platform before using it there. </P>
+    <H4><FONT color=3Dmaroon>Application Interfaces</FONT> </H4>
+    <P>An ODMA-aware application can choose to communicate with the ODMA =
+
+    Connection Manager either through a traditional, function-oriented =
+API or=20
+    through Component Object Model (COM) interfaces. Prototypes and =
+constants=20
+    used for the function-oriented API are included in the odma.h header =
+file.=20
+    Prototypes, constants, and interface definitions for the COM =
+interface are=20
+    included in the odmacom.h header file. </P>
+    <P>After calling ODMRegisterApp applications can obtain one or more =
+COM=20
+    interfaces to ODMA through the ODMQueryInterface function. The =
+IODMDocMan=20
+    interface provides an alternate entry point to most of the ODMA =
+functions=20
+    documented below. This interface and its interface ID are defined in =
+the=20
+    odmacom.h header file. </P>
+    <P>Note that IODMDocMan::QueryInterface will only query the default =
+DMS for=20
+    the calling application. The application must call ODMQueryInterface =
+in=20
+    order to query other DMSs. </P>
+    <H4><FONT color=3Dmaroon>ODMA API</FONT> </H4>
+    <H3><FONT color=3Dmaroon>ODMRegisterApp </FONT></H3>
+    <H5>ODMSTATUS ODMRegisterApp( ODMHANDLE FAR *pOdmHandle, WORD =
+version, LPSTR=20
+    lpszAppId, DWORD dwEnvData, LPVOID pReserved ) </H5>
+    <P><B>ODMRegisterApp</B> registers an application with the =
+appropriate=20
+    Document Management System (DMS) and returns a handle that can be =
+used in=20
+    calls to other ODMA functions. An application must call this =
+function before=20
+    calling any of the other ODMA functions. A task may call=20
+    <B>ODMRegisterApp</B> more than once; each call will return a =
+different=20
+    handle, each of which must be deregistered via =
+<B>ODMUnRegisterApp</B>. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>pOdmHandle</I> - out - If successful, a handle is returned =
+here that=20
+    can be used in calls to other ODMA functions. If the registration =
+fails then=20
+    0 is returned here. </P>
+    <P><I>version - </I>in - Specifies the version of the API required =
+by the=20
+    application. 100 should be passed to indicate version 1.0, 110 =
+should be=20
+    passed to indicate version 1.1, etc. The macro =
+<B>ODM_API_VERSION</B> can be=20
+    used to get the correct version number at compile time. All versions =
+of the=20
+    ODMA API will be downward compatible, so this should be interpreted =
+as the=20
+    minimum version number that the calling application expects the DMS =
+to=20
+    support. If the DMS does not support the specified version or a =
+higher=20
+    version then it should return an error. </P>
+    <P><I>lpszAppId</I> - in - A unique identifier for the application. =
+The=20
+    maximum length for this string is 16 characters including the =
+terminating=20
+    Null, and it cannot begin with a digit. It is recommended that a =
+Windows=20
+    application use the File Manager ProgId for its primary document =
+class, but=20
+    this is not required. </P>
+    <P><I>dwEnvData</I> - in - Environment data. On Windows platforms =
+this is a=20
+    Window handle for a parent window in the calling application. The =
+DMS may=20
+    use this window handle as the parent window for any dialogs or other =
+windows=20
+    it displays in response to ODMA calls. This handle must remain valid =
+for the=20
+    duration of the ODMA session (i.e. until ODMUnRegisterApp is =
+called). </P>
+    <P><I>pReserved</I> - in - Reserved for future use. Must be set to =
+Null.=20
+</P>
+    <P><B>Return value</B>: 0 is returned if successful. =
+<B>ODM_E_NODMS</B> is=20
+    returned if no Document Management System has been registered for =
+the=20
+    calling application. <B>ODM_E_CANTINIT</B> is returned if a DMS is=20
+    registered for the calling application, but it fails to initialize =
+itself.=20
+    <B>ODM_E_VERSION</B> is returned if the DMS does not support the =
+requested=20
+    version of the API. </P>
+    <H3><FONT color=3Dmaroon>ODMUnRegisterApp </FONT></H3>
+    <P>void ODMUnRegisterApp( ODMHANDLE odmHandle ) <BR>An application =
+that=20
+    previously registered itself with a DMS via <B>ODMRegisterApp</B> =
+should=20
+    call this function when it is finished using the DMS. This would =
+typically=20
+    be done when the application is shutting down. After this call =
+returns, the=20
+    DMS handle is no longer valid and cannot be used for subsequent =
+calls to=20
+    ODMA functions. </P>
+    <H4>Parameters: </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    ODMRegisterApp. </P>
+    <H3><FONT color=3Dmaroon>ODMSelectDoc</FONT> </H3>
+    <H5>ODMSTATUS ODMSelectDoc( ODMHANDLE odmHandle, LPSTR lpszDocId, =
+LPDWORD=20
+    pdwFlags ) </H5>
+    <P>This function causes the DMS to return a document ID representing =
+a=20
+    document that has been selected for some action. Typically the DMS =
+will=20
+    display searching and other dialogs that allow the user to =
+interactively=20
+    select a document from among those managed by the DMS. An =
+application would=20
+    typically call this function whenever the user needs to select a =
+document to=20
+    be opened or imported. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterAp</B><B>p</B>. </P>
+    <P><I>lpszDocId</I> - out - A pointer to a buffer where the DMS will =
+return=20
+    the ID of the document selected by the user. This buffer needs to be =
+at=20
+    least ODM_DOCID_MAX bytes in length. If successful then a =
+null-terminated=20
+    document ID will be returned here. Otherwise the contents of the =
+buffer will=20
+    be undefined. </P>
+    <P><I>pdwFlags</I> - in/out - On input, 0 or a combination of 1 or =
+more of=20
+    the following values: </P>
+    <UL>
+      <LI><B>ODM_SILENT</B> - The DMS should not require user =
+interaction while=20
+      satisfying the call. If the call cannot be satisfied without user=20
+      interaction then an error should be returned. </LI></UL>
+    <P>Upon return, one of the following flags will be set unless an =
+error=20
+    occurred: </P>
+    <UL>
+      <LI><B>ODM_MODIFYMODE </B>- The user indicated that the selected =
+document=20
+      should be opened in a modifiable mode.=20
+      <LI><B>ODM_VIEWMODE</B> - The user indicated that the selected =
+document=20
+      should be opened in a view-only mode. </LI></UL>
+    <P>Return value: 0 if successful. <B>ODM_E_CANCEL</B> if the user =
+does not=20
+    make a selection. <B>ODM_E_APPSELECT</B> if the user indicated that =
+he wants=20
+    to make a selection using the application's regular file selection=20
+    facilities rather than using the DMS. In this case the application =
+should=20
+    just display its regular selection dialog as though ODMA were not =
+present.=20
+    <B>ODM_E_OTHERAPP</B> if the user selected a document from a =
+different=20
+    application; generally the caller should treat this the same as=20
+    <B>ODM_E_CANCEL. ODM_E_USERINT</B> if the <B>ODM_SILENT</B> flag was =
+
+    specified and the DMS could not make a selection without user =
+interaction.=20
+    <B>ODM_E_HANDLE</B> if <I>odmHandle</I> was invalid. </P>
+    <P>In the case that ODM_E_APPSELECT is returned and a document is =
+opened=20
+    through the application's regular file selection facilities, the =
+following=20
+    behaviors are recommended: </P>
+    <OL>
+      <LI>File | Save and File | Close should be handled as though the =
+DMS were=20
+      not present.=20
+      <LI>File | Save As should he handled through ODMA (specifically =
+through=20
+      the ODMSaveAs function). This will allow documents to be imported =
+into the=20
+      DMS. </LI></OL>
+    <H4><FONT color=3Dmaroon>ODMOpenDoc</FONT> </H4>
+    <H5>ODMSTATUS ODMOpenDoc( ODMHANDLE odmHandle, DWORD flags, LPSTR =
+lpszDocId,=20
+    LPSTR lpszDocLocation ) </H5>
+    <P>This function causes the DMS to make a document available to the=20
+    application. It performs any necessary pre-processing (mapping =
+network=20
+    drives, checking security, etc.) and then returns to the application =
+a=20
+    temporary filename that can be used to access the document during =
+the=20
+    current session. Note that this function does not open the document =
+file; it=20
+    merely makes the file temporarily available to the calling =
+application. The=20
+    application can then open, read, write, and close the file as =
+needed. When=20
+    the application is finished using the file, it should call=20
+    <B>ODMCloseDoc.</B> </P>
+    <P>If <B>ODM_MODIFYMODE</B> is requested, the DMS may refuse the =
+request if=20
+    the user has view-only rights or if the document is currently =
+checked-out to=20
+    another user. It is recommended that the application retry the =
+request=20
+    specifying <B>ODM_VIEWMODE</B> in this case so that the user can at =
+least=20
+    view the document. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp. </B></P>
+    <P><I>flags</I> - in - One or more of the following flags: </P>
+    <UL>
+      <LI><B>ODM_MODIFYMODE</B> - The DMS should make the document =
+available in=20
+      a modifiable mode. This mode is assumed if <B>ODM_VIEWMODE</B> is =
+not=20
+      explicitly requested.=20
+      <LI><B>ODM_VIEWMODE</B> - The DMS should make the document =
+available in a=20
+      view-only mode. Any changes made to the document will not be =
+transferred=20
+      back to the document repository. Note that it is invalid to =
+specify both=20
+      <B>ODM_VIEWMODE</B> and <B>ODM_MODIFYMODE</B> in the same call.=20
+      <LI><B>ODM_SILENT</B> - The DMS should not require user =
+interaction while=20
+      satisfying the call. If the call cannot be satisfied without user=20
+      interaction then an error should be returned. </LI></UL>
+    <P><I>lpszDocId</I> - in - A document ID. This is typically obtained =
+by a=20
+    call to <B>ODMSelectDoc</B> or <B>ODMNewDoc.</B> </P>
+    <P><I>lpszDocLocation</I> - out - A pointer to a buffer of at least=20
+    <B>ODM_FILENAME_MAX</B> bytes in length. The DMS will store in this =
+buffer a=20
+    Null-terminated string indicating where the caller can access the =
+document=20
+    during the current session. Typically this will be the full =
+path/file name=20
+    of the specified document, but some document formats may dictate =
+another=20
+    type of location such as a directory name. If an error occurs then =
+the=20
+    contents of the buffer will be undefined. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_ACCESS</B> if the =
+user=20
+    does not have the access rights requested (for example, modify mode =
+was=20
+    requested but the user only has view rights to the document).=20
+    <B>ODM_E_INUSE</B> if the user is currently unable to access the =
+document=20
+    because it is checked out by another user; this differs from=20
+    <B>ODM_E_ACCESS</B> in that it is expected that the user might be =
+able to=20
+    access the document in the specified mode at some point in the =
+future.=20
+    <B>ODM_E_DOCID</B> if the document ID is invalid or refers to a =
+document=20
+    that no longer exists. <B>ODM_E_USERINT</B> if the <B>ODM_SILENT</B> =
+flag=20
+    was specified and the DMS could not make the specified document =
+available=20
+    without user interaction. <B>ODM_E_FAIL</B> if the DMS is unable to =
+make the=20
+    document accessible for any other reason. <B>ODM_E_HANDLE</B> if=20
+    <I>odmHandle</I> was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMSaveDoc</FONT> </H4>
+    <H5>ODMSTATUS ODMSaveDoc( ODMHandle odmHandle, LPSTR lpszDocId, =
+LPSTR=20
+    lpszNewDocId ) </H5>
+    <P>This function tells the DMS that the document should be saved to =
+the=20
+    document repository. An application would typically call this =
+function after=20
+    saving changes to the temporary file returned by <B>ODMOpenDoc</B>. =
+A new=20
+    document ID is returned to the application which should be used for =
+all=20
+    subsequent operations on the document. This ID replaces the previous =
+
+    document ID in the current session. The new ID may or may not be the =
+same as=20
+    the original ID. It will usually be the same unless the DMS saved =
+the=20
+    document as a new version or as a new document. If the new ID is =
+different=20
+    from the previous ID then the previous ID cannot be used =
+subsequently=20
+    without doing an <B>ODMOpenDoc</B> on it. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - A document ID. This is typically obtained =
+by a=20
+    call to <B>ODMSelectDoc</B> or <B>ODMNewDoc</B>. This document must =
+have=20
+    been previously opened in modify mode by a call to =
+<B>ODMOpenDoc</B>. </P>
+    <P><I>lpszNewDocId</I> - out - A pointer to a buffer where the DMS =
+will=20
+    return the new ID of the document. This buffer needs to be at least=20
+    <B>ODM_DOCID_MAX</B> bytes in length. If successful then a =
+null-terminated=20
+    document ID will be returned here. Otherwise the contents of the =
+buffer will=20
+    be undefined. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_OPENMODE</B> if =
+the=20
+    document was not previously opened in modifiable mode. =
+<B>ODM_E_FAIL</B> if=20
+    the DMS is unable to save the document to the document repository.=20
+    <B>ODM_E_HANDLE</B> if odmHandle was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMCloseDoc</FONT> </H4>
+    <H5>ODMSTATUS ODMCloseDoc( ODMHANDLE odmHandle, LPSTR lpszDocId, =
+DWORD=20
+    activeTime, DWORD pagesPrinted, LPVOID sessionData, WORD dataLen ) =
+</H5>
+    <P>An application that has opened a document by calling =
+<B>ODMOpenDoc</B>=20
+    must call <B>ODMCloseDoc</B> when it is finished using the document. =
+The=20
+    application should not call this function until after it has closed =
+the=20
+    document, because the DMS may move the document or make it =
+inaccessible as a=20
+    result of this call. Note that this function will not cause the =
+document to=20
+    be saved into the DMS's persistent repository unless =
+<B>ODMSaveDoc</B> has=20
+    been called previously. </P>
+    <H4><FONT color=3Dteal>Parameters</FONT>: </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - A Null-terminated document ID. This is =
+typically=20
+    obtained by a call to <B>ODMSelectDoc</B> or =
+<STRONG>ODMNewDoc</STRONG>.=20
+    This document must have been previously opened by a call to=20
+    <B>ODMOpenDoc</B>. </P>
+    <P><I>activeTime</I> - in - If the application tracks time spent =
+editing the=20
+    document then it should pass the number of seconds here. Otherwise =
+it should=20
+    pass 0xFFFFFFFF. </P>
+    <P><I>pagesPrinted</I> - in - If the application tracks the number =
+of pages=20
+    printed from this document during the current editing session, it =
+should=20
+    pass this number here. Otherwise it should pass 0xFFFFFFFF. </P>
+    <P><I>sessionData</I> - in - The application may pass other =
+information=20
+    regarding the current editing session in this parameter. For =
+example, an=20
+    application might pass the number of keystrokes that were entered. =
+The=20
+    calling application is free to determine the format of this data, so =
+DMSs=20
+    that rely on this information will have to coordinate with each =
+application=20
+    supported. Null should be passed if the application has no =
+meaningful=20
+    information to pass through this parameter. </P>
+    <P><I>dataLen </I>- in - The length of the data passed in the =
+sessionData=20
+    parameter. Ignored if sessionData is Null. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_NOOPEN</B> if the =
+document=20
+    was not open. <B>ODM_E_HANDLE</B> if odmHandle was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMNewDoc</FONT> </H4>
+    <H5>ODMSTATUS ODMNewDoc( ODMHANDLE odmHandle, LPSTR lpszDocId, DWORD =
+
+    dwFlags, LPSTR lpszFormat, LPSTR lpszDocLocation ) </H5>
+    <P>This function causes the DMS to create a new document profile and =
+return=20
+    the document ID for the new document to the calling application. =
+</P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call=20
+    to<B>ODMRegisterApp</B>.</P>
+    <P><I>lpszDocId</I> - out - A pointer to a buffer where the DMS will =
+return=20
+    the ID of the document selected by the user. This buffer needs to be =
+at=20
+    least <B>ODM_DOCID_MAX</B> bytes in length. If successful then a=20
+    Null-terminated document ID will be returned here. Otherwise the =
+contents of=20
+    the buffer will be undefined. </P>
+    <P>dwFlags - in - 0 or a combination of 1 or more of the following =
+values:=20
+    </P>
+    <UL>
+      <LI><B>ODM_SILENT</B> - The DMS should not require user =
+interaction while=20
+      satisfying the call. If the call cannot be satisfied without user=20
+      interaction then an error should be returned. </LI></UL>
+    <P><I>lpszFormat</I> - in - A Null-terminated string naming the =
+format of=20
+    the new document's content. Note that this may be changed later via =
+an=20
+    ODMSaveAs call. </P>
+    <P><I>lpszDocLocation</I> - in - Normally DMSs select the location =
+for a new=20
+    document. But if the document already exists and is large or resides =
+on=20
+    read-only storage then the calling application can use this =
+parameter to=20
+    tell the DMS where the document is currently stored. This is a hint =
+to the=20
+    DMS that the document should be left in this location. Note that =
+some DMSs=20
+    may ignore this hint and move the document anyway. The calling =
+application=20
+    should not directly access the document in this location following =
+the call=20
+    to <B>ODMNewDoc</B>; it should use <B>ODMOpenDoc</B> to obtain a =
+location=20
+    for subsequent access to the document. In most cases the application =
+should=20
+    pass Null in this parameter to allow the DMS to determine the =
+document's=20
+    storage location. </P>
+    <P><B>Return value:</B> 0 if successful. <B>ODM_E_CANCEL</B> if the =
+user=20
+    cancels the creation of the new document. <B>ODM_E_FAIL</B> if the =
+DMS=20
+    failed to create the new document. <B>ODM_E_USERINT</B> if the=20
+    <B>ODM_SILENT</B> flag was specified and the DMS could not make the=20
+    specified document available without user interaction.=20
+    <B>ODM_E_APPSELECT</B> if the user indicated that he wants to select =
+the=20
+    document's filename using the application's regular file selection=20
+    facilities rather than using the DMS. In this case the application =
+should=20
+    just display its regular filename selection dialog as though ODMA =
+were not=20
+    present. <B>ODM_E_HANDLE</B> if odmHandle was invalid. </P>
+    <H4><B><FONT color=3Dmaroon>ODMSaveAs </FONT></B></H4>
+    <H5>ODMSTATUS ODMSaveAs( ODMHANDLE odmHandle, LPSTR lpszDocId, LPSTR =
+
+    lpszNewDocId, LPSTR lpszFormat, ODMSAVEASCALLBACK pcbCallBack, =
+LPVOID=20
+    pInstanceData ) </H5>
+    <P>This function causes the DMS to return a new document ID for a =
+document=20
+    that is based on an existing document. An application would =
+typically call=20
+    this function in response to the user selecting a SaveAs menu =
+option.=20
+    <B>ODMSaveAs</B> causes the DMS to display options to the user for =
+selecting=20
+    the destination for the new document. This might be an entirely new =
+document=20
+    or a new version of the current document. </P>
+    <P>Often the application will want to present additional options to =
+the user=20
+    at this point such as different file formats or encrypting the =
+document.=20
+    This is accomplished via the pcbCallBack parameter. ODMA =
+implementors should=20
+    provide a method for users to access this function if desired. For =
+example,=20
+    the DMS may show a dialog that includes an Options button. If the =
+user=20
+    clicks this button, the DMS would call the application's callback =
+function=20
+    which would give the application a chance to display other save =
+options.=20
+</P>
+    <P>Note that following a successful call to ODMSaveAs the calling=20
+    application may have two different document IDs to work with. This =
+is=20
+    different than the situation with ODMSaveDoc where the new ID =
+replaces the=20
+    old one in the current session. The state of the document specified =
+by the=20
+    old ID remains the same after the call. The document specified by =
+the new ID=20
+    will be in the closed state following the call. A typical sequence =
+of=20
+    operations an application might follow in response to the user =
+selecting=20
+    File | Save As would be: </P>
+    <UL>
+      <LI>Application passes the currently open document's ID to =
+ODMSaveAs. If=20
+      Null is returned for the new ID then the sequence is complete. If =
+a new ID=20
+      for the document is returned then continue with the steps below.=20
+      <LI>Application calls ODMOpenDoc on the new ID. This returns a new =
+
+      filename for the document.=20
+      <LI>Application saves the document to the new filename and then =
+calls=20
+      ODMSaveDoc on the new ID to indicate to the DMS that the new =
+document=20
+      should be saved in the document repository.=20
+      <LI>Application calls ODMCloseDoc on the old ID.=20
+      <LI>The application can now forget about the old ID and use the =
+new ID for=20
+      all subsequent operations on the file. When the current session is =
+
+      completed it will call ODMCloseDoc on the new ID. </LI></UL>
+    <P><FONT color=3Dteal>Parameters:</FONT> </P>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp.</B> </P>
+    <P><I>lpszDocId</I> - in - A Null-terminated document ID. This is =
+typically=20
+    obtained by a call to <B>ODMSelectDoc</B> or <B>ODMNewDoc</B>. This =
+document=20
+    may or may not be open at the time that ODMSaveAs is called. Its =
+open status=20
+    will remain the same after this call. </P>
+    <P><I>lpszNewDocId</I> - out - A pointer to a buffer where the DMS =
+will=20
+    return the ID of the new document. This buffer needs to be at least=20
+    <B>ODM_DOCID_MAX</B> bytes in length. If successful then a =
+Null-terminated=20
+    document ID will be returned here, unless the document is saved with =
+the=20
+    current ID. In this case the first byte of this buffer will be set =
+to Null=20
+    and 0 will be returned. Otherwise the contents of the buffer will be =
+
+    undefined. </P>
+    <P><I>lpszFormat </I>- in - A Null-terminated string naming the =
+format in=20
+    which the application expects to save the document. This may be =
+passed as a=20
+    parameter to the </P>
+    <P><I>pcbCallBack</I> function which may return a different format.=20
+    pcbCallBack - in - A pointer to a callback function that can be used =
+by the=20
+    application to make other saving options available to the user. Any =
+UI=20
+    presented by this callback function should be task modal. The =
+function=20
+    should return a pointer to a format string which may or may not be =
+the same=20
+    as the original format string. This parameter may be null if the =
+application=20
+    does not wish to present any options. Under Microsoft Windows the=20
+    procedure-instance address of the callback function (obtained from=20
+    MakeProcInstance) should be used. The callback function's interface =
+is as=20
+    follows: </P>
+    <CENTER>
+    <P align=3Dcenter><B>LPSTR SaveAsCallBack(DWORD dwEnvData, LPSTR =
+lpszFormat,=20
+    LPVOID pInstanceData)</B> </P></CENTER>
+    <P><I>dwEnvData</I> - in - Environment data. On Windows platforms =
+this is a=20
+    Window handle for a parent window to associate with the callback =
+function's=20
+    display. If the DMS displayed a dialog in response to the =
+<B>ODMSaveAs</B>=20
+    call then it should pass the window handle for that dialog. =
+Otherwise it=20
+    should pass the window handle obtained from the =
+<B>ODMRegisterApp</B> call.=20
+    The callback function may use this window handle as the parent =
+window for=20
+    any dialogs or other windows it displays. </P>
+    <P><I>lpszFormat</I> - The currently selected document format. </P>
+    <P><I>pInstanceData</I> - The instance data passed from the calling=20
+    application. </P>
+    <P><I>pInstanceData</I> - in - A pointer to caller context =
+information that=20
+    will be passed to the <I>pcbCallBack</I> function. This data will =
+not be=20
+    accessed by ODMA. </P>
+    <P><B>Return value:</B> 0 if successful. <B>ODM_E_CANCEL</B> if the =
+user=20
+    cancels the creation of the new document. <B>ODM_E_DOCID</B> if the =
+document=20
+    ID is invalid or refers to a document that no longer exists.=20
+    <B>ODM_E_FAIL</B> if the DMS is unable to create the new document.=20
+    <B>ODM_E_HANDLE</B> if odmHandle was invalid. <B>ODM_E_APPSELECT</B> =
+if the=20
+    user selected to save the document as a non-profiled document. </P>
+    <H4><FONT color=3Dmaroon>ODMActivate </FONT></H4>
+    <H5>ODMSTATUS ODMActivate( ODMHANDLE odmHandle, WORD action, LPSTR =
+lpszDocId=20
+    ) </H5>
+    <P>This function causes the DMS to perform actions that do not =
+require=20
+    cooperation from the calling application. Control is returned to the =
+calling=20
+    application after the specified action has been completed. Note that =
+a DMS=20
+    is not required to support all of these actions. </P>
+    <P><FONT color=3Dteal>Parameters:</FONT> </P>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P>action - in - One of the following action codes: </P>
+    <UL>
+      <LI><B>ODM_NONE</B> - No specific action is requested. The DMS =
+should=20
+      simply make itself visible and let the user select the action to =
+be=20
+      performed.=20
+      <LI><B>ODM_DELETE</B> - The DMS should delete the specified =
+document. Note=20
+      that most DMSs will not allow a deletion to occur if the document =
+is=20
+      currently in use. Normally the application would call ODMSelectDoc =
+to get=20
+      a document ID for the document to be deleted.=20
+      <LI><B>ODM_SHOWATTRIBUTES</B> - The DMS should display the =
+specified=20
+      document's profile or attributes.=20
+      <LI><B>ODM_EDITATTRIBUTES</B> - The DMS should display the =
+specified=20
+      document's profile or attributes, and the user should be put in =
+edit mode.=20
+      Note that some DMSs will not allow a document's attributes to be =
+edited=20
+      while the document is in use.=20
+      <LI><B>ODM_VIEWDOC </B>- The DMS should display the specified =
+document in=20
+      a viewer window.=20
+      <LI><B>ODM_OPENDOC</B> - The DMS should open the specified =
+document in its=20
+      native application. This function is intended for use by =
+applications=20
+      other than the document's native application (e-mail, workflow,=20
+      annotation, etc.). Applications should use ODMOpenDoc to access =
+their own=20
+      documents. </LI></UL>
+    <P><I>lpszDocId</I> - in - A document ID specifying the document on =
+which to=20
+    perform the requested action. This parameter may be Null if the =
+action is=20
+    <B>ODM_NONE</B>. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_DOCID</B> if the =
+document=20
+    ID is invalid or refers to a document that no longer exists.=20
+    <B>ODM_E_INUSE</B> if the document is currently in use orchecked out =
+by=20
+    another user on actions where this would preclude the operation from =
+
+    completing correctly. <B>ODM_E_CANCEL</B> if the action was canceled =
+by the=20
+    user. <B>ODM_E_ITEM</B> if action is invalid or not supported by the =
+DMS.=20
+    <B>ODM_E_FAIL</B> if the action could not be completed by the DMS.=20
+    <B>ODM_E_HANDLE</B> if odmHandle was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMGetDocInfo</FONT> </H4>
+    <H5>ODMSTATUS ODMGetDocInfo( ODMHANDLE odmHandle, LPSTR lpszDocId, =
+WORD=20
+    item, LPSTR lpszData, WORD dataLen ) </H5>
+    <P>An application can use this function to obtain information about =
+a=20
+    document from the DMS. </P>
+    <H4><FONT color=3Dteal>Parameters</FONT>: </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - A Null-terminated document ID. This is =
+typically=20
+    obtained by a call to <B>ODMSelectDoc</B> or <B>ODMNewDoc</B>. The =
+specified=20
+    document may or may not be open when <B>ODMGetDocInfo</B> is called. =
+</P>
+    <P><I>item </I>- in - One of the following: </P>
+    <UL>
+      <LI><B>ODM_AUTHOR</B> - Author of the document.=20
+      <LI><B>ODM_NAME</B> - Name of the document. This is a descriptive =
+name for=20
+      the document, not the filename.=20
+      <LI><B>ODM_TYPE</B> - Type of the document. This is typically an=20
+      indication of the format or content of the document, i.e. =
+correspondence,=20
+      memo, contract, etc.=20
+      <LI><B>ODM_TITLETEXT</B> - Suggested text to display in the =
+document=20
+      window's title bar. This may include one or more fields from the=20
+      document's profile and possibly other information as well.=20
+      <LI><B>ODM_CONTENTFORMAT</B> - The format string indicating the =
+format of=20
+      the document's content.=20
+      <LI><B>ODM_DMS_DEFINED</B> - The lpszData parameter contains a=20
+      DMS-specific indication of the data to be returned. Note that an=20
+      application must know which DMS it is talking to and must =
+understand the=20
+      data indications supported by that DMS in order to use this item =
+name.=20
+      </LI></UL>
+    <P><I>lpszData </I>- in/out - On input, ignored if item is anything =
+other=20
+    than <B>ODM_DMS_DEFINED</B>. If item is <B>ODM_DMS_DEFINED</B> then =
+lpszData=20
+    contains an indication of the data to be returned. On output, the =
+requested=20
+    data is returned in the buffer pointed to by lpszData. </P>
+    <P><I>dataLen</I> - in - length of the output buffer pointed to by =
+lpszData.=20
+    If the data to be returned is longer than this, it will be =
+truncated. In=20
+    either case the returned data will always be terminated with a Null=20
+    character. </P>
+    <P><B>Return value:</B> 0 if successful. <B>ODM_E_DOCID</B> if the =
+document=20
+    ID is invalid or refers to a document that no longer exists.=20
+    <B>ODM_E_ITEM</B> if item is invalid or not supported by the =
+document's DMS.=20
+    <B>ODM_E_HANDLE</B> if odmHandle was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMSetDocInfo</FONT> </H4>
+    <H5>ODMSTATUS ODMSetDocInfo( ODMHANDLE odmHandle, LPSTR lpszDocId, =
+WORD=20
+    item, LPSTR lpszData ) </H5>
+    <P>An application can use this function to pass information about =
+the=20
+    document to the DMS. The DMS may or may not accept the information; =
+most=20
+    DMSs validate attributes like document types and authors against =
+predefined=20
+    tables. </P>
+    <H4><FONT color=3Dteal>Parameters: </FONT></H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - A Null-terminated document ID. This is =
+typically=20
+    obtained by a call to <B>ODMSelectDoc</B> or <B>ODMNewDoc</B>. The =
+specified=20
+    document may or may not be open when <B>ODMSetDocInfo</B> is =
+called.</P>
+    <P><I>item</I>-in- One of the following: <B></B></P>
+    <UL>
+      <LI><B>ODM_AUTHOR</B> - Author of the document.=20
+      <LI><B>ODM_NAME </B>- Name of the document. This is a descriptive =
+name for=20
+      the document, not the filename.=20
+      <LI><B>ODM_TYPE </B>- Type of the document. This is typically an=20
+      indication of the format or content of the document, i.e. =
+correspondence,=20
+      memo, contract, etc.=20
+      <LI><B>ODM_CONTENTFORMAT </B>- The document's format string. Note =
+that=20
+      this merely informs the DMS of a change in the document's format; =
+it does=20
+      not cause a conversion process to take place within the DMS.=20
+      <LI><B>ODM_DMS_DEFINED</B> - The lpszData parameter contains a=20
+      DMS-specific indication of the data being passed as well as the =
+data=20
+      itself. Note that an application must know which DMS it is talking =
+to and=20
+      must understand the data indications supported by that DMS in =
+order to use=20
+      this item name. </LI></UL>
+    <P><I>lpszData </I>- in - the data being passed to the DMS. Must be=20
+    null-terminated. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_DOCID</B> if the =
+document=20
+    ID is invalid or refers to a document that no longer exists.=20
+    <B>ODM_E_ITEM</B> if item is invalid. <B>ODM_E_HANDLE</B> if =
+odmHandle was=20
+    invalid. <B>ODM_E_FAIL</B> if the specified data was invalid or the =
+DMS was=20
+    unable to accept it for other reasons. </P>
+    <H4>ODMGetDMSInfo </H4>
+    <H5>ODMSTATUS ODMGetDMSInfo( ODMHANDLE odmHandle, LPSTR lpszDmsId, =
+LPWORD=20
+    pwVerNo, LPDWORD pdwExtensions ) </H5>
+    <P>This function returns information to the application about the =
+currently=20
+    active DMS. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle </I>- in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDmsId</I> - out - This should point to an area at least=20
+    <B>ODM_DMID_MAX</B> bytes long. A Null-terminated ID identifying the =
+DMS is=20
+    returned here. This is the same ID embedded in document IDs returned =
+by this=20
+    DMS. </P>
+    <P><I>pwVerNo</I> - out - The version of the ODMA API supported by =
+this DMS=20
+    is returned here. </P>
+    <P><I>pdwExtensions</I> - out - Indications of extensions to the =
+base ODMA=20
+    API that are supported by this DMS are returned here. No extensions =
+have=20
+    been defined yet, so currently 0 will always be returned here. </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_HANDLE</B> if =
+odmHandle=20
+    was invalid. </P>
+    <H4><FONT color=3Dmaroon>ODMQueryInterface</FONT> </H4>
+    <H5>HRESULT ODMQueryInterface( ODMHANDLE odmHandle, LPSTR lpszDocId, =
+REFIID=20
+    riid, LPVOID FAR *ppvObj ) </H5>
+    <P>An application can use this function to get a COM interface from =
+an ODMA=20
+    provider. All ODMA providers support the <B>IODMDocMan</B> =
+interface, and=20
+    individual DMSs may support other interfaces as well. Note that this =
+
+    function is prototyped in odmacom.h instead of odma.h, so that =
+non-COM-aware=20
+    applications do not have to #include the header files that define =
+interface=20
+    IDs. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - An ODMA document ID or Null. If Null then =
+the=20
+    application's default DMS is queried for the interface. Otherwise =
+the DMS=20
+    that created this document ID is queried. </P>
+    <P><I>riid</I> - in - The interface to be obtained from the DMS. =
+</P>
+    <P><I>ppvObj</I> - out - If the requested interface is supported by =
+the DMS=20
+    then it is returned here. Otherwise ppvObj is set to Null. </P>
+    <P><B>Return value</B>: S_OK if successful. E_INVALIDARG if =
+odmHandle or=20
+    lpszDocId is invalid. E_NOINTERFACE if the requested interface is =
+not=20
+    supported by the DMS. </P>
+    <H4><FONT color=3Dmaroon>ODMGetLeadMoniker </FONT></H4>
+    <H5>ODMSTATUS ODMGetLeadMoniker( ODMHANDLE odmHandle, LPSTR =
+lpszDocId,=20
+    LPMONIKER FAR *ppMoniker ) </H5>
+    <P>Applications that are OLE 2 servers typically form composite =
+monikers for=20
+    their OLE links by combining a file moniker representing the =
+document with=20
+    one or more item monikers representing a particular section of the =
+document.=20
+    This approach often does not work in environments where document =
+management=20
+    systems are in use because the filename that the application sees is =
+usually=20
+    just temporary. This function lets the application obtain a leading =
+moniker=20
+    from the DMS that can be used in place of the file moniker. </P>
+    <P>This function will only be available on platforms supporting OLE =
+2. This=20
+    function may not be supported by some DMSs; those DMSs will return=20
+    <B>ODM_E_FAIL.</B> In this case the application should go ahead and =
+use the=20
+    file moniker as though ODMA were not present. Note that this =
+function is=20
+    prototyped in odmacom.h instead of odma.h, so that non-OLE-aware=20
+    applications do not have to #include the OLE header files. </P>
+    <H4><FONT color=3Dteal>Parameters:</FONT> </H4>
+    <P><I>odmHandle</I> - in - An ODMA handle obtained by a previous =
+call to=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>lpszDocId</I> - in - An ODMA document ID. </P>
+    <P><I>ppMoniker </I>- out - A leading moniker for the specified =
+document ID=20
+    will be returned here if successful. Otherwise Null will be returned =
+here.=20
+    </P>
+    <P><B>Return value</B>: 0 if successful. <B>ODM_E_FAIL</B> if the =
+DMS that=20
+    created the specified document ID does not support OLE moniker =
+building.=20
+    <B>ODM_E_DOCID</B> if the document ID is invalid or refers to a =
+document=20
+    that no longer exists. <B>ODM_E_HANDLE</B> if odmHandle is invalid. =
+</P>
+    <P>&nbsp;</P>
+    <H3><FONT color=3Dteal>DMS Interface</FONT> </H3>
+    <P>A DMS interfaces with ODMA through a function called =
+ODMGetODMInterface=20
+    and through COM interfaces. When an application calls the ODMA =
+connection=20
+    manager's ODMRegisterApp function, the connection manager calls the=20
+    appropriate DMS's ODMGetODMInterface function to establish a =
+connection with=20
+    the DMS. This function is defined as follows: </P>
+    <P><B><FONT color=3Dmaroon>ODMGetODMInterface </FONT></B></P>
+    <P>HRESULT ODMGetODMInterface( REFIID riid, LPVOID FAR *ppvObj, =
+LPUNKNOWN=20
+    pUnkOuter, LPVOID pReserved, LPSTR lpszAppId, DWORD dwEnvData ) </P>
+    <P>The ODMA connection manager calls this function to get an =
+interface from=20
+    a DMS. This function is not available to ODMA-aware applications. =
+</P>
+    <H4><FONT color=3Dteal>Parameters</FONT>: </H4>
+    <P><I>riid </I>- in - ID of the interface being requested. This will =
+
+    typically be <B>IID_IODMDocMan</B>, but the connection manager may =
+also pass=20
+    through calls for other interfaces from the client. ODMA providers =
+must=20
+    support the <B>IID_IODMDocMan</B> interface. </P>
+    <P><I>ppvObj</I> - out - The requested interface should be returned =
+here. If=20
+    the DMS cannot return the requested interface, ppvObj should be set =
+to Null.=20
+    </P>
+    <P><I>pUnkOuter</I> - in - The controlling IUnknown interface for =
+the=20
+    aggregate object. ODMA providers must support aggregation. </P>
+    <P><I>pReserved </I>- in - Reserved for future use. Will always be =
+set to=20
+    Null. </P>
+    <P><I>lpszAppId</I> - in - The ID of the calling application. See=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><I>dwEnvData</I> - in - Environment specific data. On Windows =
+platforms=20
+    this will be a window handle from the calling application. See=20
+    <B>ODMRegisterApp</B>. </P>
+    <P><B>Return value</B>: S_OK if successful. <B>E_NOINTERFACE</B> if =
+the=20
+    requested interface is not supported. </P>
+    <H3><FONT color=3Dteal>Binding to the API under Windows 3.x, Windows =
+95 and=20
+    Windows NT </FONT></H3>
+    <P>The ODMA connection manager, <B>ODMA.DLL</B> (Windows 3.x) or=20
+    <B>ODMA32.DLL</B> (Windows 95 and NT), and a corresponding link =
+library,=20
+    <B>ODMA.LIB</B> (Windows 3.x) or <B>ODMA32.LIB</B> (Windows 95 and =
+NT), will=20
+    be made freely available to any application vendor wishing to use =
+them.=20
+    Applications can choose either of the methods described below to =
+bind to=20
+    ODMA: </P>
+    <OL>
+      <LI>Link to <B>ODMA.LIB/ODMA32.LIB</B>. Applications choosing this =
+
+      approach will need to install a copy of <B>ODMA.DLL/ODMA32.DLL</B> =
+into=20
+      the Windows system directory at the time the application is =
+installed=20
+      unless a newer copy of <B>ODMA.DLL/ODMA32.DLL</B> already resides =
+there.=20
+      At startup time the application can call ODMRegisterApp to =
+determine=20
+      whether or not an ODMA provider is present for the calling =
+application.=20
+      Dynamically load <B>ODMA.DLL/ODMA32.DLL</B> at startup time with a =
+call to=20
+      LoadLibrary. With this approach the application has to call =
+GetProcAddress=20
+      to get a pointer to each ODMA function it will call, but the =
+application=20
+      does not have to do anything related to ODMA at installation time. =
+If=20
+      <B>ODMA.DLL/ODMA32.DLL</B> doesn't exist or if ODMRegisterApp =
+returns=20
+      ODM_E_NODMS then the application knows that no ODMA provider is =
+present=20
+      for the calling application. </LI></OL>
+    <P>There is currently no thunk layer that exists to allow a 32 bit=20
+    application and a 16 bit DMS, or vise versa, to interact with each =
+other.=20
+    </P>
+    <H3><FONT color=3Dteal>Installing a DMS under Windows 3.x, Windows =
+95 and=20
+    Windows NT</FONT> </H3>
+    <P>The ODMA connection manager, <B>ODMA.DLL</B> for Windows 3.x and=20
+    <B>ODMA32.DLL</B> for Windows NT and Windows 95, will be provided to =
+all DMS=20
+    vendors that want to support the ODMA specification. These DLLs will =
+serve=20
+    as a common entry point for applications that wish to call ODMA =
+functions.=20
+    Its implementation of <B>ODMRegisterApp</B> will figure out which =
+DMS is=20
+    registered for default use by the calling application. It will then =
+load the=20
+    appropriate DMS's DLL and pass through the function call. All other =
+ODMA=20
+    function calls that do not include a document ID will be passed to =
+this=20
+    default DMS. </P>
+    <P>When an ODMA call is made that includes a document ID, the ODMA=20
+    connection manager will determine which DMS created the ID. If that =
+DMS has=20
+    not been initialized yet by the calling application, the connection =
+manager=20
+    will call the provider's <B>ODMGetODMInterface</B> function and will =
+then=20
+    pass through the current ODMA function call.</P>
+    <P>As part of its installation, a DMS should check whether a copy of =
+
+    <B>ODMA.DLL</B> or <B>ODMA32.DLL</B> already exists in the Windows =
+system=20
+    directory. If it does not or if the DMS has a newer version then it =
+should=20
+    copy its version of <B>ODMA.DLL</B> or ODMA32.DLL to the Windows =
+system=20
+    directory. Then it should register with the ODMA connection manager =
+by=20
+    adding one or more keys to the registration database. </P>
+    <P>Each DMS must add a subkey to the root level ODMA key. This =
+subkey should=20
+    be named the same as the DMS's DMS ID, and the subkey's value should =
+specify=20
+    the location of the DLL containing the DMS's ODMA entry points. For =
+example,=20
+    suppose a DMS with a DMS ID of DDD implemented its ODMA entry points =
+in=20
+    H:\ABC\XYZ.DLL. It would add the following key and value to the =
+registration=20
+    database: </P>
+    <P>ODMA\DDD =3D H:\ABC\XYZ.DLL for Windows 3.x </P>
+    <P>ODMA32\DDD =3D H:\ABC\XYZ.DLL for Win32 (i.e. WindowsNT and =
+Windows95) </P>
+    <P>If the DMS wanted to serve as the default ODMA provider to be =
+used with=20
+    all ODMA-aware applications that were not registered with a specific =
+DMS, it=20
+    would add the DEFAULT subkey to its DMS ID key as shown below: </P>
+    <P>ODMA\DDD\DEFAULT for Windows 3.x </P>
+    <P>ODMA32\DDD\DEFAULT for Win32 (i.e. WindowsNT and Windows95) </P>
+    <P>If the DMS wanted to specifically register itself as the ODMA =
+provider=20
+    for one or more applications, it would also add a subkey to the =
+relevant=20
+    applications' root level keys. Note that this is only necessary if a =
+
+    different DMS is registered as the default ODMA provider. Each time =
+an=20
+    application calls <B>ODMRegisterApp</B>, the connection manager =
+looks in the=20
+    registration database for a root-level key that matches the =
+specified=20
+    application ID. If it finds such a key then it looks under it for a =
+subkey=20
+    called ODMA. The value of this key is the DMS ID of the specifically =
+
+    registered DMS. If the application ID key is not found or if the =
+subkey ODMA=20
+    or ODMA32 does not exist under it, the connection manager looks at =
+the=20
+    subkeys of the root-level key ODMA or ODMA32 for a default ODMA=20
+    implementation.</P>
+    <P>For example, suppose a document management system with a DMS ID =
+of DDD=20
+    wanted to support only one particular application that used QQQ as =
+its=20
+    application ID. It would add the following key and value to the =
+registration=20
+    database in addition to the ODMA subkey described above: </P>
+    <P>QQQ\ODMA =3D DDD for Windows 3.x </P>
+    <P>QQQ\ODMA32 =3D DDD for Win32 (i.e. WindowsNT and Windows95) </P>
+    <P>&nbsp;</P>
+    <CENTER>
+    <H2><FONT color=3Dmaroon>Appendix</FONT> </H2></CENTER>
+    <CENTER>
+    <H4 align=3Dcenter>A Preferred Call Usage for Initial File Creation=20
+    </H4></CENTER>
+    <P>There has been some misunderstandings among both DMS and =
+application=20
+    vendors on the correct use of the ODMA calls to initially create a =
+file.=20
+    This appendix is basically from a proposal made in October 1994 by =
+Rod=20
+    Schiffman of Novell. There has been no dissension on the issue since =
+the=20
+    original proposal was made. Until the standard is modified to =
+provide other=20
+    methods for the initial creation of a new document in a DMS, this =
+provides a=20
+    sequence for the calls that will work with all major DMS vendors. =
+</P>
+    <P>It is probably useful for me to describe the terminology and =
+concepts I=20
+    will use in this discussion. A DMS is fundamentally more complex =
+than my=20
+    description, but it will suffice for my purposes. A DMS is a black =
+box that=20
+    manages documents. My Local System is the particular machine and =
+Operating=20
+    System, or Environment, that I use. It has its own file system, =
+applications=20
+    and interfaces. When I need to do something to a existing document =
+in the=20
+    DMS, I select it using tools the DMS provides and retrieve it into =
+my local=20
+    system. I use an application to perform operations on the document. =
+I may=20
+    want to create a new document with my application. The new document =
+will be=20
+    stored on my local system until I save it into the DMS. The DMS may =
+want to=20
+    tell me where I should save it on the Local System until I =
+eventually save=20
+    it into the DMS. I may also want to update the copy in the DMS while =
+I am=20
+    still working on it. I call this writing the document through to the =
+DMS.=20
+    When I am finally done working on the document, I can save it to the =
+DMS. It=20
+    is then closed. At some point in the process of creating a new =
+document, the=20
+    DMS will require me to give it a profile. When I have saved the =
+document to=20
+    the DMS, it is closed and the document no longer has a presence on =
+my local=20
+    machine. ODMA has a vaguely defined concept of formats that are =
+attached to=20
+    a document, and while the timing of when and how formats are defined =
+plays a=20
+    central role in this discussion, formats, conversions and their =
+association=20
+    to documents does not play a role in this discussion. </P>
+    <P>ODMSaveDoc is the only ODMA function that actually saves a =
+document into=20
+    a DMS. It uses a Document ID (DocID) supplied by the DMS. The =
+initial=20
+    creation of the first DocID for the document can only be supplied by =
+
+    ODMNewDoc. ODMSaveAs and ODMSaveDoc can return a new DocID, but they =
+must=20
+    already have an initial DocID to start with. ODMSelectDoc only =
+returns a=20
+    DocID that already exists. This means that ODMNewDoc must be called =
+to=20
+    generate the initial DocID. After the application has a DocID, it =
+can call=20
+    ODMOpenDoc to get a local file name to save the document to and =
+ODMSaveDoc=20
+    to write the document through to the DMS. This would imply that it =
+is not=20
+    necessary to call ODMSaveAs in the process of saving the document =
+the first=20
+    time. This has caused a number of people to assume that the usage of =
+
+    ODMNewDoc was synonymous with the initial =93Save=94 function in =
+most=20
+    applications. However, the spec says that the format specified in =
+ODMNewDoc=20
+    =93may be changed later via an ODMSaveAs call.=94 This implies that =
+it is OK to=20
+    call ODMSaveAs after calling ODMNewDoc. ODMSaveAs is the only call =
+that=20
+    allows an application to interact with the DMS and supply =
+application=20
+    specific information such as formats and passwords. If an app only =
+calls=20
+    ODMNewDoc and does not call ODMSaveAs, it loses the ability to =
+provide=20
+    application specific information. ODMSaveAs requires that a user =
+interface=20
+    is supplied to the user. If ODMNewDoc also supplies a user =
+interface, then=20
+    the user interface comes up twice for each document creation. Once =
+in=20
+    ODMNewDoc and again in ODMSaveAs. This is probably not something =
+that the=20
+    user wants. Also, how do we reconcile the ability to call ODMNewDoc =
+without=20
+    a user interface. If ODMNewDoc is called with no user interface and =
+a DocID=20
+    is returned, then when is the profile filled in? ODMOpenDoc and =
+ODMSaveDoc=20
+    and ODMCloseDoc have no obvious provisions for providing a user =
+interface.=20
+    </P>
+    <P>ODMNewDoc was originally intended to be synonymous with the =
+=93New=94 menu=20
+    choice, not the =93Save=94 menu choice, in most applications. For =
+example,=20
+    although SoftSolutions and PC Docs do not care about a document =
+until it is=20
+    time to save it to the DMS the first time, DEC TeamLinks does have =
+the=20
+    concept of letting the DMS know a document is going through initial=20
+    creation. There is nothing in the spec that indicates whether =
+ODMNewDoc=20
+    should be called at document creation or just before saving the =
+document the=20
+    first time. This is not an accident according to Brad Clements, the =
+original=20
+    author of the ODMA spec. It can be done at whatever time makes sense =
+for the=20
+    DMS and application. ODMNewDoc does not have provisions for the =
+callback=20
+    routine because it notifies the DMS about the creation of a document =
+not the=20
+    saving of a document. At document creation time, the user is =
+probably not=20
+    worried about the what the final format will be or if there will be =
+a=20
+    password. The user may not, and this is crucial, even save the =
+document to=20
+    the DMS. It is possible that if ODMNewDoc is called without a user=20
+    interface, that the DocID returned to the application may not =
+eventually be=20
+    used, if the user is allowed to have the file saved to the local =
+file system=20
+    in a later call to ODMSaveAs. </P>
+    <P>It turns out that many applications and Document Management =
+Systems do=20
+    not have or need a concept of providing application and DMS =
+interaction=20
+    until the document is ready to be saved in the DMS for the first =
+time.=20
+    Certainly a DMS must deal with applications that will not provide =
+any=20
+    interaction with the DMS until the document is already created in =
+the edit=20
+    buffer and is ready to be saved. At this point I would like to point =
+out a=20
+    scenario that follows the spec, and still works with major =
+applications that=20
+    may not have followed the spec according to the interpretation given =
+here.=20
+    </P>
+    <P>At the time of initial document creation, or when it is time to =
+save the=20
+    document the application should call ODMNewDoc with the ODM_SILENT =
+flag.=20
+    This will return a temporary DocID that the application can use.=20
+    Technically, the application could call ODMOpenDoc to have a local =
+temporary=20
+    file to use until the document is finally saved into the DMS, but I =
+know=20
+    that every DMS vendor I have talked to would frown on this idea. =
+They prefer=20
+    the idea that all saves are written through to the DMS and that =
+there is a=20
+    full profile for anything that exists in the DMS. It is OK for the =
+DMS=20
+    vendor require this by returning an ODM_E_USERINT error to indicate =
+that=20
+    ODMOpenDoc cannot be called until the app makes a call to ODMNewDoc =
+or=20
+    ODMSaveAs that brings up an user interface. This implies that the=20
+    application would be better to avoid the situation and not call =
+ODMOpenDoc=20
+    until after an user interface is provided to the user. After calling =
+
+    ODMNewDoc in silent mode, take the DocID that is returned and call =
+ODMSaveAs=20
+    to have the profile created, and allow access to the callback =
+routines. If=20
+    the ODMNewDoc returns an ODM_E_USERINT error because it does not =
+support the=20
+    silent mode, then call ODMNewDoc with a user interface and skip =
+calling=20
+    ODMSaveAs. This performs the same functionality, but does not =
+provide access=20
+    to the callback routines. If the application still wants the user to =
+see the=20
+    callback dialog, then it can call the callback dialog itself after =
+calling=20
+    the ODMNewDoc call. This is not optimal, but does work. In either =
+case the=20
+    user interface is only presented to the user one time. </P>
+    <P>There are a couple caveats for DMS vendors. The DocID returned by =
+
+    ODMNewDoc must be a temporary ID. It is possible that the user will =
+throw=20
+    away the file before it is saved, or that it will be saved to the =
+native OS=20
+    through the options button in the SaveAs dialog. This could be =
+easily=20
+    handled by returning a well known dummy value like ::ODMA\&lt;app=20
+    id&gt;\NULLWhen ODMSaveAs sees this null value as the DocID, it can =
+know=20
+    that it is creating the document for the first time and take =
+appropriate=20
+    action as opposed to the normal SaveAs action. It does not matter if =
+there=20
+    are multiple documents using this DocID at the same time as long as =
+the DMS=20
+    returns ODM_E_USERINT to the ODMOpenDoc call that passed in the null =
+DocID.=20
+    </P>
+    <P>Basically, this turns the ODMNewDoc into a fancy NOP routine. =
+There may=20
+    be situations where this may not be the best action, but since there =
+is no=20
+    compelling reason for the existence of the ODMNewDoc call in the 1.0 =
+spec,=20
+    it seems to solve more problems than it creates. It would probably =
+be a good=20
+    idea to add an extension to the 1.0 spec in ODMA 1.1 where the =
+ODMSaveAs=20
+    call can allow a NULL to be passed in as the lpszDocID parameter to =
+indicate=20
+    that the document is being saved for the first time. This would free =
+the=20
+    application from having to use the ODMNewDoc call. Of course, that =
+is what=20
+    the addition of a dummy DocID value returned from ODMNewDoc =
+accomplishes. In=20
+    the ODMA 1.1 time frame a new ODMNewDoc call can be created if =
+someone comes=20
+    up with a compelling reason for its existence. Simply using the =
+ODMSaveAs=20
+    call when an application is creating a new file in the DMS, whether =
+it is=20
+    the first save or an actual SaveAs, matches the way most =
+applications work=20
+    today. </P></LI></UL></BLOCKQUOTE>
+<P></P>
+<P>&nbsp;</P>
+<CENTER><A href=3D"http://www.aiim.org/odma/odmaspec.htm#top"><B>RETURN =
+TO TOP OF=20
+PAGE</A></B></CENTER>
+<P>
+<CENTER><A href=3D"http://www.aiim.org/odma/odma.htm"><B>RETURN TO ODMA =
+TABLE OF=20
+CONTENTS</A></B></CENTER></BODY></HTML>

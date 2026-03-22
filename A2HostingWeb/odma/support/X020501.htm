@@ -1,0 +1,285 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /ODMACompagno/support/X020501.htm 12    07-07-28 11:15 Orcmid $-->
+<title>X020501: Microsoft Outlook 2002 Save Failure</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+<base target="_self">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="X00-log.htm">ODMA Incident Report</a></h2>
+
+<h1 align="center"><b><a href="X00-log.htm#X020501">X020501</a>:
+</b>Microsoft Outlook 2002 Save Failure</h1>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2002-06-14-13:02 -0700 (pdt)<br>
+The <a href="http://ODMA.info/support/X020501.htm">latest version</a>
+of this information is available on the <a href="http://DMware.info/" target="_top">AIIM
+DMware</a> <a href="http://ODMA.info/" target="_top">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%">
+        <dl>
+          <dt><b>Category: Integration - Defect</b></dt>
+          <dd>(downgraded from <b><font color="#FF0000"> Fatal Error - Critical</font></b> on 2002-06-14)</dd>
+        </dl>
+      </td>
+      <td width="50%"><b>Incident ID: <a href="X00-log.htm#X020501">X020501</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>6 - Important</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Workaround Development</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>
+        2.0.0 interacting with <b>Microsoft Outlook 2002</b></td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information: </b></dt>
+          <dd>
+            Q000606: <a href="../faq/q000001.htm#Q000606">Troubleshooting
+            Microsoft Word ODMA Integrations</a><br>
+            Q000602: <a href="../faq/q000001.htm#Q000602">Where
+            Is Support Information for Microsoft Office?</a><br>
+            Q000001: <a href="../faq/1998/Q980101.htm">Configuring
+            MS Office for ODMA<br>
+            </a>Q000600: <a href="../faq/Q000600.htm#ConfiguringODMA-WordPerfect">
+section on Configuring WordPerfect for ODMA</a> (sketches disabling
+            ODMA-awareness of an application)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Reported By:&nbsp;
+        </b></dt>
+          <dd><a href="../faq/Q000605.htm#MariaGabrielaSerkin">Maria Gabriela Serkin</a>
+
+            (<a href="X020501a.msg">2002-05-07</a>)
+
+          </dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Logged</b>: 2002-05-20<br>
+        <b>Date Recorded</b>: 2002-05-20</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#HappeningToYou"> If This Is Happening to You</a></h3>
+
+<h3>3. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>4. <a href="#Investigation">Investigation of Incident</a></h3>
+
+<h3>5. <a href="#Demonstration">Demonstration of Save Failures</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>     (2002-06-14):</h2>
+
+<blockquote>
+
+  <p>Microsoft Outlook 2002 operates as if it is ODMA-aware when it isn't
+  intended to be.</p>
+  <p>When ODMA is installed and a default DMS is established, the Outlook 2002 <b>File / Save
+  ...</b> operation with an open Outlook document or message will initiate ODMA
+  requests for saving a new document in the default ODMA DMS.</p>
+  <p>However, the required sequence of operations is not completed.&nbsp;
+  Instead, Outlook (here configured for Spanish operation) fails with an error
+  message:&nbsp;</p>
+  <p align="center"><img border="0" src="X020501b.gif" width="216" height="108"></p>
+  <p align="left">Following this error, it may be necessary to close and re-open
+  Outlook 2002 to restore operation.</p>
+</blockquote>
+  <h3 align="left">1.1 Resolution</h3>
+
+<blockquote>
+
+  <p align="left">The ODMA user contacted Microsoft and learned that Outlook
+  2002 is <i> not</i> intended to be ODMA-aware.&nbsp;&nbsp; The initiation of ODMA
+  operation is an error in the operation of Outlook 2002.&nbsp; A patch was
+  provided.&nbsp; Successful operation with the patch has not been confirmed.</p>
+  <p align="left">When the resolution is complete, appropriate information will
+  be added for others who may encounter this, and this incident will be closed
+  and carried as inactive.</p>
+</blockquote>
+  <h3 align="left">1.2 Work Around</h3>
+
+<blockquote>
+
+  <p>If, when attempting to Save As ... in Outlook 2002, any dialogs from a DMS
+  are presented, you should decline them.&nbsp;&nbsp;</p>
+  <ol>
+    <li>If a DMS log-on occurs, cancel it (or log on and decline in the next
+      step).&nbsp;</li>
+    <li>If a DMS-related Save dialog is presented, select the option to use the
+      file system instead.&nbsp;&nbsp; Outlook 2002 will then continue with its
+      normal file-based dialogs.&nbsp;&nbsp;</li>
+    <li>This will not prevent recurrences of the log-on and save dialogs.&nbsp;
+      However, if Save As ... is an uncommon operation in Outlook 2002, this may
+      be sufficient for you.&nbsp; If not, one of the other remedies in Section
+      2 will be needed.</li>
+  </ol>
+</blockquote>
+  <h3><b>1.3 Configurations Confirmed</b></h3>
+
+<blockquote>
+
+  <p>The problem and the workaround has been confirmed with the following configurations:</p>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="2" width="85%" bordercolorlight="#0000FF" bordercolordark="#000080" bordercolor="#0000FF">
+    <tr>
+      <td width="34%" valign="top" align="left">
+        Outlook 2002 (10.2627.2625) on Windows NT 4.00.1381
+      </td>
+      <td width="33%" valign="middle" align="left" rowspan="2">ODMA 2.0.0-1
+        ODMA32.dll Connection Manager</td>
+      <td width="33%" valign="top" align="left">IBM Content Manager Client
+        version 7.1 with Content Manager Aix Server 7.1
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="34%" valign="top" align="left">
+        Outlook 2002 SP1 on Windows 2000
+      </td>
+      <td width="33%" valign="top" align="left">&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h2>2. <a name="HappeningToYou">If This Is Happening to You</a> (2001-06-05)</h2>
+
+<blockquote>
+<p>Outlook 2002 is not intended to be an ODMA-aware application.&nbsp; If this
+incident occurs,</p>
+
+<p>&nbsp; 1. Apply the workaround (section 1.2) until you can introduce an
+automatic solution.</p>
+
+<p>&nbsp; 3. Contact Microsoft and obtain the patch for disabling the erroneous
+access to ODMA.</p>
+
+<p>&nbsp; 3. Adjust your registry to disable the availability of a default ODMA
+DMS to Outlook.&nbsp; This will cause the Outlook 2002 registration with ODMA to
+fail.&nbsp; Outlook should proceed normally as a non-ODMA-aware
+application.&nbsp; [More information on how to do this will be provided.&nbsp;
+Meanwhile, there is a sketch in the FAQ <a href="../faq/Q000600.htm#ConfiguringODMA-WordPerfect">Q000600
+section on Configuring WordPerfect for ODMA</a>.]</p>
+
+</blockquote>
+
+<h2>3. <a name="Actions">Actions</a> Toward Resolution (2001-06-14):</h2>
+
+<blockquote>
+<p>The following actions are complete:</p>
+
+<ol>
+  <li>Capture of logs</li>
+  <li>Analysis of logs and request of variations to isolate the underlying cause</li>
+  <li>Establishment of an incident report with Microsoft by the user</li>
+  <li>Identification of workarounds for interrupting any Outlook 2002 accidental
+    initiation of ODMA-aware behavior</li>
+</ol>
+
+<p>The following actions are to be carried out before this incident is closed:</p>
+<ul>
+  <li>Complete the documentation of logs and screen shots for support of
+    trouble-shooting and analysis of related problems as well as for supporting
+    people who want to confirm this or similar incidents in use of Microsoft
+    Office XP Applications.</li>
+  <li>Update the relate FAQ files to be more useful in future troubleshooting
+    and workarounds for situations where an application needs to be isolated
+    from operating with ODMA.</li>
+  <li>Create a feature request for greater control of troubleshooting setup
+    (e.g., ODMA logging) and application isolation by users who are using ODMA
+    integrations.</li>
+  <li>Close this incident report and leave it in existence for reference in
+    those cases where others report what appears to be the same incident to ODMA
+    Tech.</li>
+</ul>
+
+</blockquote>
+<h2>4. <a name="Investigation">Investigation</a>      of Incident (as of
+2001-06-14):</h2>
+<blockquote>
+  <p align="right"><b><i>see also:</i> X020501e: <a href="X020501e.htm">Outlook
+  Save-Document Analysis</a></b></p>
+  <ol>
+    <li>An <a href="X020501e.htm">ODMA log</a> has been obtained of the Outlook
+      2002 requests to ODMA.&nbsp; There is no indication of a failure in any of
+      the ODMA operations.&nbsp; The incomplete document-creation sequence is
+      proceeding correctly.&nbsp; It appears that Outlook 2002 simply fails.</li>
+    <li>Additional log cases and screen captures were obtained.</li>
+    <li>It was confirmed that a proper pcbCallBack procedure is supplied by
+      Outlook 2002 and it appears to operate properly as part of the requested
+      Save operation.&nbsp; The DMS-provided &quot;Options&quot; button will
+      properly present and exercise the options provided in the callback from
+      Outlook 2002.</li>
+    <li>It was also confirmed that the DMS-provided &quot;File System ...&quot;
+      button can be used to end the attempted use of ODMA operations and have
+      Outlook 2002 revert to use of the standard file-system dialogs for
+      carrying out the Save As ... request.</li>
+    <li>Exploring the possible differences with substitute DMS integrations is
+      abandoned since the presence of ODMA-aware functionality in Outlook 2002
+      is now understood to be an accident.</li>
+  </ol>
+</blockquote>
+
+<h2>5. <a name="Demonstration">Demonstration</a> of Save Failures (2001-05-20):</h2>
+<blockquote>
+  <p>&nbsp;[A simple repeatable case that can be used to demonstrate the
+  failure, if available]</p>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="../faq/Q000605.htm#MariaGabrielaSerkin">Maria Gabriela Serkin</a></dt>
+    <dd>confirmed that Outlook 2002 is ODMA-aware and tested saving of e-mail
+      messages into a DMS, providing the key information and a log file for
+      incident X020501.</dd>
+    <dt><a href="../faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed the reports and logs, creating this incident report.</dd>
+    <dt>&nbsp;</dt>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right"><font size="-2">created 2002-05-20-18:12 -0600 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 07-07-28 11:15 $<br>
+$$Revision: 12 $</em></font></p>
+</body>
+</html>

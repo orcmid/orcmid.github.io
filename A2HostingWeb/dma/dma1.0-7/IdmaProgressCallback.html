@@ -1,0 +1,27 @@
+<html><head><title>Interfaces and Methods: IdmaProgressCallback</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaProgressCallback"></a>IdmaProgressCallback</h2>
+<p>Methods supporting the ability of DMA methods to report progress to their callers. This interface may be implemented by a client-provided COM object; support is not required by any of the DMA objects.</p>
+<h3><a name="IdmaProgressCallbackReportProgress"></a>IdmaProgressCallback::ReportProgress</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaProgressCallback::ReportProgress</b> (<br>
+DmaRC    <i>rcProgressStatus</i>,<br>DmaUInteger32    <i>ulProgressNumerator</i>,<br>DmaUInteger32    <i>ulProgressDenominator</i>,<br>DmaBoolean    <i>bAbortAllowed</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>rcProgressStatus</i></p></TD><TD><p>input</p></TD><TD><p>A DMA return code that indicates the status of the underlying operation’s progress at this point. DMARC_OK always indicates that the operation is proceeding normally. Any other value is for a defined exception that the requester has the option of ignoring.</p></TD></TR>
+<TR><TD><p><i>ulProgressNumerator</i></p></TD><TD><p>input</p></TD><TD><p>The numerator of a fraction that represents fraction of completion of the underlying operation.</p></TD></TR>
+<TR><TD><p><i>ulProgressDenominator</i></p></TD><TD><p>input</p></TD><TD><p>The denominator of a fraction that represents fraction of completion. If the ulProgressDenominator is nonzero, then ulProgressNumerator / ulProgressDenominator * 100 % is the percentage of completion of the operation. If ulProgressDenominator is zero, the caller is unable to supply any information about the degree of completeness of the operation.</p></TD></TR>
+<TR><TD><p><i>bAbortAllowed</i></p></TD><TD><p>input</p></TD><TD><p>If DMA_TRUE,  the underlying operation in progress can be aborted at this point; if DMA_FALSE it cannot (and the return code from ReportProgress will be ignored). Successive calls can pass in different values for bAbortAllowed.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method provides a way for potentially long-running DMA methods to report back on their progress.  When a client supplies an IdmaProgressCallback interface pointer to a method which accepts such an argument, that method may provide a 'percentage done' indication via ReportProgress().  ReportProgress() also allows the caller to request that the method may be aborted.
+</p><p>
+Implementations of ReportProgress() must always return to their caller, and (because their execution delays the underlying method) should execute quickly. They should normally return DMARC_OK.  Any other error code will be considered as a request to abort the underlying method.
+</p><p>
+There are no guarantees that ReportProgress() will ever be called, that a requested abort will take place, or that a non-zero value will ever be supplied for nProgressDenominator. If nProgressDenominator is nonzero, the callback procedure cannot rely on the percentage done being non-decreasing.
+</p><p>
+There are certain guarantees. (1) Once the denominator is nonzero,it stays nonzero. (2) If the denominator is ever nonzero, the percentage done will never be more than 100%, and the percent done can increase, decrease, or stay the same. (3) The client must be written so that the ReportProgress method might never be called, and, if it is, it may be called repeatedly, even after it instructs the underlying method to abort.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ABORT</p></TD><TD><p>The progress callback indicated that the method should be aborted.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

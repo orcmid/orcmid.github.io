@@ -1,0 +1,113 @@
+practical100.txt 0.05alpha            UTF-8                  dh:2006-10-24
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+                   EVOLUTIONARY PROTOTYPE VERSION 0.05alpha
+
+The info.odma.practical100 package provides basic interfaces, classes, and
+other definitions for implementing ODMA 1.0 access from Java-based
+desktop applications on Microsoft Windows.  The component interfaces are
+designed to shield Java-based applications from ODMA API details.  The
+package provides a practical level of ODMA-aware operations suitable for
+typical office-desktop applications.
+
+    Content
+        1. The Package
+        2. Installing Version 0.05alpha
+        3. Compiling and Exercising the Material
+
+
+1. THE PACKAGE
+
+   This version contains definitions for three interfaces:
+
+        info.odma.practical100.OdmConnection
+
+        info.odma.practical100.OdmPendingDocument
+
+        info.odma.practical100.OdmWorkingDocument
+
+   In addition, there are is now an implementation of a null-connection
+   class,
+
+        info.odma.practical100.OdmNullConnection
+
+   In addition to these components, there are additional interfaces and classes that are used as part of the implementation.  For ODMA-aware
+   applications, it is the above three interfaces and the single null-
+   connection class that are important for early testing and review.
+
+   The material in the package is organized in a Java class-path hierarchy:
+
+     a. At the root, there is this document, d061001d.txt, the informal
+        manifest for all of the material.
+
+     b. at the end of the folder hierarchy
+
+        info\odma\practical100
+
+        all of the contents for package info.odma.practical100 are provided.
+
+     c. at the end of the folder hierarchy
+
+        info\odma\practical100\test
+
+        there is a test program with supporting utility classes and scripts.
+
+
+2. INSTALLING VERSION 0.05alpha
+
+   If you have installed 0.01alpha, it is recommended that you completely
+   remove the previous material and the folder hierarchy.  It will be
+   necessary to recustomize the file MyJava.bat.  You can save the earlier
+   one to review for the previous custom alterations.
+
+   Choose a folder that can be used as a Java classpath node.  Extract all
+   content of the d061001d-practical100-0.05alpha.zip file into that folder.
+   This should provide the additional subfolder path info\odma\practical100
+
+   It will also provide the subfolder path info\odma\practical100\test
+
+
+3. COMPILING AND EXERCISING THE MATERIAL
+
+   The material is designed to be compiled using the javac command-line
+   compiler.
+
+   The MyJava.bat file in info\odma\practical100\test must be customized.
+   There are two settings that must be corrected.  The file describes the
+   modifications that are required.
+
+   The BuildAlpha.bat file in the same directory is executed to confirm
+   that the package classes compile successfully.  To run BuildAlpha.bat,
+   the current working directory must be info\odma\practical100, wherever
+   that is on your machine.
+
+   To build the test application, change the current working directory
+   to info\odma\practical100\test on your machine.  The BuildTest.bat
+   script in that directory relies on the MyJava.bat and BuildAlpha.bat
+   scripts in the superior directory and will build everything fresh.
+
+   The program TestNullConnection.class can be run using RunTest.bat.
+   The compiled classes are also included so that RunTest.bat can be
+   run without first attempting compilation.  MyJava.bat must be adjusted
+   before the program can be run properly.  The TestNullConnection.log
+   file provides a copy of the kind of output to expect when RunTest is
+   performed.
+
+
+0.03 2006-10-24-01:15 Correct the name of this file and the archive.
+
+0.02 2006-10-24-00:53 Update for the info.odma.practical100 0.05alpha
+     evolutionary release.
+
+0.01 2006-10-19-00:17 Update information to reflect the included material,
+     its installation, and how to duplicate the compilation of the classes.
+
+0.00 2006-10-18-11:47 Create Basic Structure for the first alpha prototype
+     The class-path directory structure is created and this file initiated
+     as the current overview.
+
+$Header: /MyProjects/java/ODMdev/d061001d.txt 7     06-10-24 1:15 Orcmid $
+
+                       *** end of d061001d.txt ***

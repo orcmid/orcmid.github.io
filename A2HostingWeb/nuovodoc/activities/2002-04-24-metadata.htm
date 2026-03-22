@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /NuovoDocCompagno/activities/2002-04-24-metadata.htm 4     05-12-13 20:49 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>2002-04-24: Metadata and DMA Notes</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"><a href="../"><img border="0" src="../images/NuovoDoc-logo.gif" alt="NuovoDoc" width="178" height="123"></a></td>
+    <td width="60%" height="6"><h2 align="center"><em>Convergence of Document
+      Management, Records Management, and the Web:</em></h2>
+      <h1 align="center"><em>&nbsp;DMA and Metadata</em></h1>
+    </td>
+  </tr>
+</table>
+</center></div>
+</font>
+<blockquote>
+<div align="center"><center>
+
+
+
+<p align="center">
+  <b>
+  <small>version <a href="#0.10">0.10</a> last updated 2002-04-24-07:21 +0900
+  (jst)</small></b>
+</p>
+</center></div>
+
+</blockquote>
+
+<h2><a name="Notes">Notes</a>: April 24, 2002</h2>
+
+<blockquote>
+  <p>This is a notes place-holder for discussions at Hitachi on questions around
+  managing metadata for DMA.</p>
+  <p>Here are the bullets from Chuck Fay's April 1999 slides that Hide has:</p>
+  <ul>
+    <li>International Support</li>
+    <li>Dynamic discovery of repositories based on middleware registration
+      mechanism</li>
+  </ul>
+  <p>Power Features:</p>
+  <ul>
+    <li>Cross-repository search</li>
+    <li>Property aliases for cross-repository search</li>
+    <li>Renditions</li>
+    <li>Dynamic discovery of metadata</li>
+    <li>Internet and WebDAV-ready</li>
+  </ul>
+  <p>The diagram that is used for dynamic discovery of metadata has</p>
+  <p>Any object (class description:) -&gt; Class description object
+  (properties:) -&gt; list of Property Description</p>
+  <p>Slide bullets: Dynamic Discovery of Metadata</p>
+  <ul>
+    <li>Run-time discovery -- no static configuration required in application</li>
+    <li>Discovery includes
+      <ul>
+        <li>Display name &amp; descriptive text</li>
+        <li>searchability &amp; search operators</li>
+        <li>Selectability in search results</li>
+        <li>Data type</li>
+        <li>Value constraints</li>
+      </ul>
+      <p>My additions:
+      <ul>
+        <li>requirement and policy (system derived, hidden, required, read-only)</li>
+        <li>need to make read-only write-on-creation-only too.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+<h2><a name="Discussion">Discussion</a></h2>
+<blockquote>
+  <p>Suggested topics for discussion include:</p>
+  <ul>
+    <li>economizing the customization of applications and DocBroker
+      configurations in terms of metadata design and integration activity.</li>
+  </ul>
+</blockquote>
+
+<h2><a name="resources">Resources and References</a></h2>
+
+<blockquote>
+
+<p>DMA objects related to this:</p>
+
+<p><b>dmaClass_DMA</b></p>
+
+  <blockquote>
+
+<p>::OIID property</p>
+
+<p>::ClassDescription property</p>
+
+<p>and IdmaObject interface (for ascertaining class membership of an object)</p>
+
+  </blockquote>
+
+<p><b>dmaClass_Metadata</b>:dmaClass_DMA</p>
+
+  <blockquote>
+
+<p>::DisplayName property</p>
+
+<p>::DescriptiveText property</p>
+
+<p>::IDs property</p>
+
+  </blockquote>
+
+<p><b>dmaClass_PropertyDescription</b>:dmaClass_Metadata</p>
+
+  <blockquote>
+
+<p>::DataType property</p>
+
+<p>::Cardinality property</p>
+
+<p>other properties about search operator usage and policies on property</p>
+
+  </blockquote>
+
+<p><b>dmaClass_ClassDescription</b>:dmaClass_Metadata</p>
+
+  <blockquote>
+
+<p>::SuperClassDescription property</p>
+
+<p>::ImmediateSubclassDescriptions property</p>
+
+<p>::NameProperty property</p>
+
+<p>::PropertyDescriptions property lists descriptions of all properties,
+including those inherited</p>
+
+<p>other properties around use of this class of objects in queries</p>
+
+<p>and IdmaClassDescription interface with</p>
+
+    <blockquote>
+
+<p>::CreateInstance operation</p>
+
+<p>::IsOfClass operation</p>
+
+    </blockquote>
+  </blockquote>
+
+<p><b>dmaClassDocSpace</b>:dmaClassDMA</p>
+
+  <blockquote>
+
+<p>::ClassDescriptions property</p>
+
+<p>and optional IdmaObjectFactory interface</p>
+
+  </blockquote>
+
+<p>&nbsp;</p>
+
+<hr>
+
+
+</blockquote>
+<h3><i>History</i></h3>
+<blockquote><font size="-1">
+  <p><b><a name="0.10">version 0.10</a>    2002-04-24</b> posted as place-holder
+  for addition of material and a reminder of how DMA has been described.</p>
+  </font>
+</blockquote>
+
+
+<p align="right"><font size="-2">created 2002-04-24-07:21 +0900 (jst) by <a href="../construction/orcmid.htm"> orcmid</a><br><em>$$Author: Orcmid $<br>
+  $$Date: 05-12-13 20:49 $<br>
+  $$Revision: 4 $</em>
+  </font>
+</p>
+
+</body>
+</html>

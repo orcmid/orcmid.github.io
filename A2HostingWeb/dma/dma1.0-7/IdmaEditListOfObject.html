@@ -1,0 +1,57 @@
+<html><head><title>Interfaces and Methods: IdmaEditListOfObject</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaEditListOfObject"></a>IdmaEditListOfObject</h2>
+<p>This interface provides the methods for modifying lists that contain references to objects.
+</p><p>
+This interface offers all the methods of the IdmaEditList interface,  as well as those listed below.</p></p>
+<h3><a name="IdmaEditListOfObjectInsertObject"></a>IdmaEditListOfObject::InsertObject</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditListOfObject::InsertObject</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>Dmapv    <i>pIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list where the value will be placed.</p></TD></TR>
+<TR><TD><p><i>pIObjectValue</i></p></TD><TD><p>input</p></TD><TD><p>The object that will be inserted into the list.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function inserts an object into a list based on an ordinal position provided by the caller.  All list elements that have indexes greater then iIndex at the time of the call will have their index in the list incremented by one.  Permitted values for iIndex are 0 through n, where n is the number of elements in the list at the time of the call. A value of n appends a new value to the end of the list.
+</p><p>
+The object is inserted into the list by reference.  Changes to the object outside the context of the list will result in side-effects on the list.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditListOfObjectReplaceObject"></a>IdmaEditListOfObject::ReplaceObject</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditListOfObject::ReplaceObject</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>Dmapv    <i>pIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list where the value will be placed.</p></TD></TR>
+<TR><TD><p><i>pIObjectValue</i></p></TD><TD><p>input</p></TD><TD><p>The new object that will replace the object in the list.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Replaces an object value in a list with the supplied object value given an ordinal position value as input.  Valid values for iIndex are 0 through <i>n</i>-1, where <i>n</i> is the number of elements in the list at the time of the call.
+</p><p>
+The object found in the list will be released using the method IUnknown::Release.  The new object is inserted into the list by reference.  Changes to the object outside the context of the list will result in side-effects on the list.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+</TABLE>
+</body></html>

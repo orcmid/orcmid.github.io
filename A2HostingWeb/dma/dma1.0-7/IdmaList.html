@@ -1,0 +1,20 @@
+<html><head><title>Interfaces and Methods: IdmaList</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaList"></a>IdmaList</h2>
+<p>Lists are a fundamental feature in managing documents, so there are several operations available for manipulating them and the objects contained within them.  Items within a list are kept in inserted order and can be identified by an index (ordinal position).
+</p><p>
+The methods used to access a DMA List are segmented into two groups of interfaces, the methods that allow readonly access to the list (IdmaList), and the methods that allow modification of the list (IdmaEditList). The IdmaEditList interface is only available on list objects that are editable. For each list datatype, there is a specific interface that offers methods particular to that datatype, as well as all the methods of IdmaList, (e.g., IdmaListOfString).</p></p>
+<h3><a name="IdmaListGetElementCount"></a>IdmaList::GetElementCount</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaList::GetElementCount</b> (<br>
+pDmaIndex32    <i>piCount</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>piCount</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the Count location.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Determines the number of elements in a list object, which can be used to iterate through the list for processing.  The number returned is only valid at the time for inquiry, since any inserts or deletes will change the underlying list and render the count inaccurate.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

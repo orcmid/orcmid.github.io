@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040801C: Blog Slamdown Procedure - Web Log Status Page </title>
+<!--$$Header: /OrcmidCompagno/blunderdome/B040801C.htm 22    13-08-22 13:02 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!-- included from page http://orcmid.com/BlunderDome/B040801B.htm of 2004-08-14-08:47 -0700 -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6" valign="middle" align="left">
+
+<!--webbot bot="Include" U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>
+      <a href="http://orcmid.com/BlunderDome/B040801.htm" target="_top"><font color="#990033">Blog Slamdown Procedure</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>Web Log Status Page</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="http://orcmid.com/" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="http://orcmid.com/BlunderDome/">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="http://orcmid.com/BlunderDome/B040801B.htm" target="_top">B040801C</a>&gt;</code></b><br>
+      <small><small><a href="#0.00">0.00</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2008-08-28<!--webbot bot="Timestamp" endspan i-checksum="12548" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->17:28 -0700<!--webbot bot="Timestamp" endspan i-checksum="12078" --> 
+      </small> 
+      </small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<ul>
+  <li>
+    <p align="left"><a href="B040801.htm#MarkIncidentScene"><b>The Web Log Status page is
+    replaced with an incident marker</b></a> so that anyone who checks that page
+    at this time will see that there is an incident being addressed even though
+    there is no other information.&nbsp; This is accomplished copying the
+    incident-response-in-progress version atop the current version as easily and
+    quickly as possible.</li>
+</ul>
+<p align="left">Create Incident Checklist</p>
+<ul>
+  <li>
+    <p align="left">The incident checklist must be updated to reflect the actual
+    steps taken, so that subsequent procedures can adapt to the approach
+    taken.&nbsp; When the incident is being cleaned-up, this list will be used
+    to ensure that any gaps have been filled in and the proper materials
+    restored.</li>
+</ul>
+<p align="left">Some Variations</p>
+<ul>
+  <li>
+    <p align="left">At the hosted site itself, using FTP, the current Web Log
+    Status page is deleted and the incident-in-progress page is renamed to be
+    that page.&nbsp; This leaves a hole that for the incident-in-progress that
+    can be restored from the site image on a development machine.&nbsp; Note
+    that the site cannot be updated from the image without restoring the
+    previous page.</li>
+  <li>
+    <p align="left">On the site image on the development machine, delete the Web
+    Log Status page, rename the incident-in-progress page to be the status page,
+    and transfer another copy of the incident-in-progress page from VSS for the
+    site image.&nbsp; Transfer the substitute Web Log Status to the hosting site
+    with FTP.</li>
+</ul>
+<p align="left">Eventually, this action will be taken:</p>
+<ul>
+  <li>
+    <p align="left">On the development (FrontPage) web site, check out the Web
+    Log Status page, select all, delete all page content, and then use the
+    Insert | Component | Include Page ... menu dialog to select the appropriate
+    incident-in-progress page as the interim replacement of the Web Log Status
+    page.&nbsp; Check in this new page.</li>
+  <li>
+    <p align="left">Synchronize the site image to the development web site,
+    using VSS.&nbsp; This should result in a new incident-in-progress version of
+    the Web Log Status Page and a restored version of the incident-in-progress
+    page in the site image.&nbsp; These can then be transferred to the host site
+    via FTP.</li>
+</ul>
+<p align="left">This leaves a stable version of the incident material on the
+site.</p>
+<p align="left">Restoring an Informative Web Log Status</p>
+<blockquote>
+  <p align="left">variation: We might come directly to this step if we can do it
+  quickly enough.</p>
+  <p align="left">We might come here from slamming the Web Log Status, rather
+  than updating the development version to carry the slam information.</p>
+  <p align="left">On the development web site, as Initial Analysis reveals an
+  initial status and more details of the actual incident, the working copy of
+  the Web Log Status can be amended to reflect the new situation and the updated
+  status information.&nbsp; The working copy should be restored to its last good
+  values as needed, and then edited to reflect the incident and the new status
+  of the web logs as a result.</p>
+  <p align="left">The development Web Log Status page is checked out and then
+  updated to the working copy status via Include Page ... menu dialog, and
+  checked in.&nbsp; When this material is moved to the site image and then the
+  host site, we are in a normal Web Log Status condition, whether there is an
+  incident response underway or the incident has been resolved already.</p>
+</blockquote>
+ <hr color="#990033">
+<small><dl>
+ 
+
+    <dt><b><a name="0.00">0.00</a> 2004-08-14-21:21 Make Provisional Version (orcmid)</b></dt>
+    <dd>Capture draft notes for completion as the detailed pages are worked out
+      and a fire-drill is performed with them.</dd>
+</dl></small>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="http://orcmid.com/BlunderDome/construction.htm" target="_top"><img border="0" src="http://orcmid.com/images/hardhat-logo.gif" width="80" height="57" alt="Hard Hat Area"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm"
+      TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-08-14-21:21 -0700 (pdt) by <a href="http://orcmid.com/construction/orcmid.htm" target="_top">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 13:02 $<br>
+      $$Revision: 22 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

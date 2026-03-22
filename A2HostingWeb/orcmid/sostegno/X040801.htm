@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/X040801.htm 35    26-03-22 14:18 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X040801: Bad Atom Provokes Gator</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report <a href="x000001-log.htm#X040801">
+      <font color="#990033">X040801</font></a><br>
+      <i><big><big>Bad Atom Provokes Gator</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">sostegno</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="X040801.htm" target="_top">X040801</a>&gt;</code></b><br>
+      <a href="#0.15">
+      <small><small>0.15</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+
+<blockquote>
+  <div align="left">
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%" style="background-color: #CCCCFF"><b>Category: Data Corruption - User
+        Exposure</b></td>
+      <td width="50%" style="background-color: #CCCCFF"><b>Incident ID: <a href="x000001-log.htm#X040801">X040801</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%" style="background-color: #CCCCFF"><b>Priority</b>: <b>9 - Critical</b></td>
+      <td width="50%" style="background-color: #CCCCFF">
+        <dl>
+          <dt><b>Status</b>: <b>Resolved 2004-08-25</b></dt>
+          <dd>with <b><a href="#Actions">workaround</a>  to be retested</b></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Subject: <a href="../BlunderDome/B040701.htm">Atom Site
+        Feeds</a>, <a href="http://www.newsgator.com" target="_top">NewsGator
+        2.0.3.3</a>, <a href="../BlunderDome/B040801.htm">Blog Incident Response
+        Procedure</a></b></td>
+      <td width="50%"><b>Repaired in: </b>2004-08-24 page updates</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="../construction/orcmid.htm">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="../construction/orcmid.htm">Dennis Hamilton</a>
+        (2004-08-24)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2004-08-24</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <blockquote>
+          <p><b>1. <a href="#Summary">Summary</a><br>
+          2. <a href="#Remedies">Remedies</a><br>
+          3. <a href="#Actions">Actions</a><br>
+          4. <a href="#Analysis">Analysis<br>
+          </a>5. Lessons Learned</b></p>
+        </blockquote>
+      </td>
+      <td width="50%" valign="top" align="left">
+        <dl>
+          <dt><i>see also:</i></dt>
+          <dd><a href="X040802.htm">X040802</a>: Guessing Atom Rules</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+  </div>
+</blockquote>
+
+<h3>1. <a name="Summary">Summary</a>        (2004-08-25):</h3>
+
+<blockquote>
+  <div align="center">
+    <center>
+  <table border="0" cellpadding="2" width="90%" style="border: 3px double #990033; padding-left: 0; padding-right: 0; padding-top: 2; padding-bottom: 1">
+  <tr>
+      <td valign="top" width="12%" style="background-color: #FFCCCC">
+        <p align="right"><b>Incident</b></p>
+      </td>
+      <td colspan="2" valign="top" style="background-color: #FFCCCC">
+        <p align="left"><b>Spanner Wingnut Site Feed Error (<a href="X040801.htm">X040801</a>)</b></p>
+      </td>
+  </tr>
+  <tr>
+      <td valign="top" width="12%" style="background-color: #FFCCCC">
+        <p align="right"><b><small>2004-08-24</small></b></td>
+      <td valign="top" align="center" width="12%" style="background-color: #FFCCCC"><b><small><font color="#990033">2004-08-23</font></small></b></td>
+      <td valign="top" style="background-color: #FFCCCC">
+        <p align="left"><b><small><font color="#990033">At 2004-08-23-22:36 pdt, there was an invalid
+        site feed for Spanner Wingnut.&nbsp;</font> The incident was corrected in 10
+        minutes.&nbsp; Any access to the feed in that interval may have resulted
+        in feed errors or even removal of the feed from syndication.&nbsp; A
+        workaround against recurrences has been confirmed.&nbsp; See Incident Report X040801: <a href="http://orcmid.com/sostegno/X040801.htm" target="_top">Bad
+        Atom Provokes Gator.</small></a></small>&nbsp; <font color="#990033">NOTE:
+        Because of web-page caching, the invalid feed may have continued to be
+        served until as recently as 2004-08-24-16:00 pdt.</font></b></p>
+  </td>
+  </tr>
+  </table>
+    </center>
+  </div>
+</blockquote>
+
+<blockquote>
+
+<p><b>1</b>. Aggregators for site Atom feeds can depend on identification
+information in the feed to confirm that the file being accessed is consistent
+with the feed that is subscribed to.</p>
+
+  <p><b>2</b>. In the case of NewsGator, if a feed does not appear to be the one
+  subscribed to or the feed is considered invalid for some other reason, the
+  feed <strike> will be dropped and the subscription will be silently deleted</strike>.
+  may be diverted into a new folder.&nbsp; This
+  is an example of behavior that can occur when a feed is unexpected or
+  unacceptable in some way, even though the XML is well-formed and appears to be
+  Atom-compliant.</p>
+
+  <p><b>3</b>. Experimental introduction of test feeds can lead to the feed
+  being recognized as improper with entries discarded and subscriptions deleted
+  unless key identifying information is preserved.</p>
+
+</blockquote>
+
+<h3>2. <a name="Remedies">Remedies</a>       (2004-08-24):&nbsp;&nbsp;</h3>
+<blockquote>
+  <b>1. Substitutions for site feeds must match the descriptive information for
+  the original feed</b> so that a feed reader/aggregator will not have any basis
+  for concluding that the feed is damaged and/or should be unsubscribed.
+  <p><b>2. Site feeds that are used for testing should not be the same feeds
+  used for production entries</b> of the blog.&nbsp; For example, the feed
+  linked to the Spanner Wingnut page should not be used for experimental
+  purposes because this is also where valid feeds are stored by Blogger.&nbsp;</p>
+  <p><b>3. The experiments should be done using a different feed,</b> perhaps
+  one that is not linked from any web log page.&nbsp; That way, only private,
+  experimental subscriptions are impacted.&nbsp; The official feeds are not
+  altered in a way that is likely to damage subscriptions placed by public
+  readers of a web log.</p>
+  <p><b>4. Whenever a feed is being replaced as part of a fire drill or live
+  test</b>, there should be a warning message.&nbsp; When the test is concluded,
+  an all-clear message should also be transmitted.&nbsp;&nbsp; followed-by an
+  all-clear entry.&nbsp; This provides public readers with warning that the feed
+  might be disrupted.&nbsp; Re-subscription may be required to restore the feed
+  following a disruption, intended or not.</p>
+</blockquote>
+<h3>3. <a name="Actions">Actions</a>   (2004-08-26):</h3>
+<blockquote>
+  <ul>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-23-22:46:</b> The feed that was unacceptable to NewsGator was
+      restored to its latest acceptable file.</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-24-09:10:</b> Initiate Incident Report for analysis and
+      resolution.</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-24-15:07: Workaround: </b>Make a version of the &quot;stand by&quot; entry feed
+      that looks completely like the Spanner Wingnut site feed that Blogger
+      creates, except that it has just the one special entry for the
+      announcement.&nbsp; This is kept at <b><kbd>wingnut/wing-atom.standby.xml</kbd></b>.</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-24-16:22 Add a warning entry</b> to the current feed indicating that a
+      potentially-disruptive feed experiment is being conducted.&nbsp; This is
+      identified with <b><kbd><a href="X040801B.htm">X040801B</a></kbd></b>.</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-24-16:53 Conducted a timed fire-drill</b> swapping in the &quot;standby&quot; feed,
+      confirming its retrieval, and swapping the &quot;standby&quot; out
+      again.&nbsp; Repair the &quot;stand by&quot; feed until this works.&nbsp;
+      [It worked the first time.]</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-24-17:10 Added an all-clear entry</b> to the restored current feed once the
+      fire-drill is successful.</li>
+    <li>
+      <p style="background-color: #CCCCFF"><b>2004-08-26-21:22 Retest a revised procedure</b>
+      just to be sure it works the way we think.&nbsp; (No it didn't and I
+      learned some important things about Atom feeds: <a href="X040802.htm"><b>X040802</b></a>)</li>
+    <li>
+      <p style="background-color: #99FF99"><b>Review the experience</b> up to this point and document updated
+      procedures, timing results, and other information.</li>
+    <li>
+      <p style="background-color: #99FF99"><b>Document related incidents </b>including the moved feed
+      (<a href="X040802.htm"><b>X040802</b></a>) and the the
+      problems with pages temporarily missing.</li>
+    <li><font color="#666666"><b>Develop Testing Feed</b> not Used by Blogger and Not Announced for
+      Syndication</font></li>
+    <li><font color="#666666"><b>Develop Minimal Announcement Feed.</b>&nbsp; Complete this after
+      higher-priority tasks are completed, finding a way to reduce or eliminate
+      dependence on Blogger in making a &quot;stand by&quot; announcement.</font></li>
+  </ul>
+</blockquote>
+<h3>4. <a name="Analysis">Analysis</a>       (2004-08-25):</h3>
+<blockquote>
+  <b>1.</b> On August 23, I created a custom Atom XML file as a form of &quot;<a href="../standby.htm">Please
+  Stand By</a>&quot; announcement for site feeds. I wanted to make a simple file
+  that could be used in place of any feed to protect subscribers from accessing
+  a possibly-corrupted feed.&nbsp; This file would be used as part of a site
+  incident response.
+  <p><b>2.</b> My file was too simple.&nbsp; After storing it atop the <kbd>wing-atom.xml</kbd>
+  file of the <a href="../BlunderDome/wingnut/">Spanner Wingnut Blog</a>, I ran
+  NewsGator to see if it would fetch the generic announcement. The NewsGator
+  status display showed there being one new entry being retrieved.&nbsp; But
+  when I looked in the folder that receives Wingnut feed items, the announcement
+  wasn't there.&nbsp; When I looked at my subscription list to see if there was
+  anything to be discovered there, I saw that the <b>subscription to Spanner
+  Wingnut had been deleted</b>. [dh:2004-08-25: I overlooked the appearance of a
+  new feed with a different folder for its one message, the one that seemed to
+  be lost.]</p>
+  <p><b>3.</b> I quickly restored the original file in place of the custom
+  version.&nbsp; Then I resubscribed to the feed in NewsGator.&nbsp; The
+  resubscription was successful, with entries re-retrieved into the folder
+  holding the previously-read copies.&nbsp; Any further information will depend
+  on the success of workarounds and additional experience resolving this
+  incident..</p>
+</blockquote>
+
+  <hr noshade color="#990033">
+
+<small><dl>
+  <dt><b><a name="0.15">0.15</a> 2004-08-26-13:40 Introduce Retest Action</b></dt>
+  <dd>The slamdown of the workaround feed &quot;Please Stand By&quot;
+    announcement is going to be retested.</dd>
+  <dt><b><a name="0.10">0.10</a> 2004-08-25-08:19 Incident Declared to be
+    Resolved</b></dt>
+  <dd>The incorrect feed has been repaired by one that is
+    effective.&nbsp; The workaround is being reviewed for accurate cause and
+    simplifications.&nbsp; The incident itself has been resolved.</dd>
+  <dt><b><a name="0.00">0.00</a>     2004-08-24-09:04 Create Initial Incident Identification,
+    Analysis, and Proposed Actions</b></dt>
+  <dd>Provide enough so that there is a complete record and site users can read
+    over our shoulder as we work through incident-resolution steps.&nbsp; Manage
+    with a&nbsp;<a href="X040801A.htm"> job jar</a>.</dd>
+</dl></small>
+
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm" target="_top"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-08-24-09:04 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:18 $<br>
+      $$Revision: 35 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q990401d: Document ID Considerations</title>
+<!--$$Header: /ODMACompagno/faq/1999/Q990401D.htm 24    13-08-22 12:48 Orcmid $-->
+</head>
+<body stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="54750" -->
+
+
+    </td>
+
+
+    <td width="53%" height="6"><p align="center"><font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><strong>ODMA
+      <a href="../q000001.htm"><font color="#990033">FAQtip</font></a>    <a href="../q000001.htm#Q990401"><font color="#990033">Q990401</font></a><i><br />
+      </i><a href="Q990401.htm"><font color="#990033">Creating ODMA Document
+      IDs</font></a><i><big><big><br />
+      Document ID Considerations</big></big></i></strong></font></p>
+    </td>
+
+
+
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../../" target="_top">ODMA</a>&gt;<br />
+      <a href="../" target="_top">FAQ</a>&gt;<br>
+      <a href="./" target="_top">1999</a>&gt;</code></b></p>
+
+
+
+      <p align="right"><b><code><a href="Q990401D.htm" target="_top">Q990401d</a>&gt;</code></b><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><br />
+      <small><small> <!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2007-07-28<!--webbot bot="Timestamp" endspan i-checksum="12476" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:15 -0700<!--webbot bot="Timestamp" endspan i-checksum="12010" -->
+      </small>
+      </small></font></p>
+
+
+
+    </td>
+  </tr>
+</table>
+
+<hr noshade color="#000080">
+<pre>From: Dennis E. Hamilton
+Sent: <a href="Q990401D.msg">Friday, 20 October 2000 12:21</a>
+To: <a href="../Q000605.htm#BalazBranislav">Balaz Branislav</a>
+Cc: <a href="../2000/q000801.htm">ODMA Tech</a>; <a href="../Q000605.htm#DalGhotra">Dal Ghotra</a>
+Subject: <a href="Q990401.htm">RE: Creating ODMA Document IDs</a></pre>
+<p><kbd>Thank you for your useful question.&nbsp; Your question is similar to <a href="Q990401B.htm">one</a>
+that Mr. Dal Ghotra submitted some time ago.&nbsp; I am going to address both of
+your questions.</kbd></p>
+<p><kbd>There will be a new ODMA FAQ about Creating ODMA Document IDs.&nbsp; It
+will be at</kbd></p>
+<blockquote>
+  <p><kbd><a href="Q990401.htm">http://ODMA.info/downloads/Q000014.htm</a></kbd></p>
+</blockquote>
+<p><kbd>Here is the basic response:<br>
+<br>
+1.&nbsp;&nbsp; ODMA DOESN'T WORK WITHOUT ODMA DOCUMENT IDS.</kbd></p>
+<p><kbd>The ODMA API Depends on ODMA Document IDs to locate the correct DMS
+integration to use for performing individual operations.&nbsp; Notice in the
+ODMA specification how many operations require a Document ID as a parameter.</kbd></p>
+<p><kbd>The ODMA Document ID is how the correct DMS is located and consulted for
+providing the actual document-management operations.</kbd></p>
+<p><kbd>Even at the ODMA COM interfaces provided by the DMS, such as IODMDocMan,
+most methods require that a valid ODMA Document ID be supplied.</kbd></p>
+<p><kbd>It is necessary for a DMS Integration to provide and then to accept ODMA
+Document IDs.&nbsp; On receiving an ODMA Document ID, the DMS Integration should
+determine that the Document ID is a valid one issued by it (or another
+configuration using the same DMS Integration software and name).</kbd></p>
+<p><kbd>2.&nbsp;&nbsp; REQUIREMENTS FOR ODMA DOCUMENT IDS</kbd></p>
+<p><kbd>ODMA has simple requirements for a Document ID:</kbd></p>
+<p><kbd>a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It must be a text string in the local
+character set</kbd></p>
+<p><kbd>b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It must not be longer than ODM_DOCIDMAX,
+counting the terminating '\0' character.</kbd></p>
+<p><kbd>c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It should be used in a case-insensitive
+way and be formatted in such a way that it can be provided on a command line
+without problem.</kbd></p>
+<p><kbd>d.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first part of the ODMA Document ID
+has the following fixed structure:</kbd></p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><kbd>::ODMA\dms-id\...</kbd></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<p><kbd>where dms-id is at least 1 and at most ODM_DMSID_MAX-1 characters.&nbsp;
+There should be no spaces and it is recommended that the DMS-ID include only
+Roman letters and decimal digits for maximum international interoperability.</kbd></p>
+<p><kbd>The dms-id is used by ODMA to determine, using the Windows Registry, the
+correct DMS Integration to initiate and give the request to.</kbd></p>
+<p><kbd>3. INTEROPERABILITY CONSIDERATIONS</kbd></p>
+<p><kbd>For ODMA DMS Integrations to interoperate successfully across multiple
+computers, the dms-id should be unique among DMS Integrations, so that the ID is
+never supplied to a DMS Integration for which it is not intended.</kbd></p>
+<p><kbd>It is also strongly recommended that the ODMA Document ID be globally
+unique.&nbsp; ODMA Document IDs may be stored in files, carried in documents as
+links to other documents, and transmitted to others using e-mail and other
+transfer techniques.&nbsp; A globally unique ODMA Document ID allows a DMS
+Integration to determine whether it actually has access to the repository to
+which the Document ID applies, or not.</kbd></p>
+<p><kbd>4. CREATING DMS DOCUMENT IDS</kbd></p>
+<p><kbd>ODMA never examines the part of an ODMA Document ID that follows the dms-id
+portion.&nbsp; Applications are also required to treat that portion as
+&quot;opaque&quot; information that is intended for use solely by the identified
+DMS Integration.</kbd></p>
+<p><kbd>So long as the Document ID length, character set and character code
+requirements of ODMA are satisfied, the remainder of the Document ID can be
+encoded in any way that allows the DMS Integration to locate the identified
+document at any time in the future, or reliably report that the identified
+document cannot be located.</kbd></p>
+<p><kbd>When a DMS Integration is atop of a document-management system that has
+its own identification scheme, the common approach is to recode such
+identifications, with useful supplemental identification, so that the original
+identification can be recovered by inspection of the ODMA Document ID. The
+supplemental information may include identification of the specific repository
+that was used, so that identifications applicable to one repository will not be
+mistaken for similarly-identified documents of other repositories.</kbd></p>
+<p><kbd>How this is done is dependent on the implementation of the DMS
+Integration.</kbd></p>
+<p><kbd>For example, the following ODMA Document ID applies for a fictitious DMS
+Integration,&nbsp;</kbd></p>
+<blockquote>
+  <p><kbd>::ODMA\DM-FOO\AA345961-A67C-11d4-A462-F0B953C1AECD#4E7C9FA0-A67D-11d4-0001</kbd></p>
+</blockquote>
+<p><kbd>where there is a globally-unique and privately generated identifier for
+the DM-FOO-integrated repository, and then a unique document identification
+following the &quot;#&quot;-separator.</kbd></p>
+<p><kbd>There is a special case that each DMS Integration must support: The
+ODMNewDoc function returns a place-holder that is used temporarily until a
+SaveAs function is performed to establish the official ODMA Document ID for a
+new document.&nbsp; Each DMS has its own implementation of this scheme.&nbsp;
+For example,</kbd></p>
+<blockquote>
+  <p><kbd>::ODMA\DM-FOO\#B75B6FA0</kbd></p>
+</blockquote>
+<p><kbd>with the number being a session-unique identifier for a pending document
+that the DMS is waiting for the application to define further.&nbsp; Some DMS
+Integrations use even simpler schemes than this, having a specific constant ODMA
+Document ID that is used for every pending new document of that DMS.&nbsp; (The
+hypothetical DM-FOO integration&nbsp; does more work so documents from different
+NewDoc requests are separated when debugging and trouble-shooting.)</kbd></p>
+<p><kbd>There are many other variations.&nbsp; Here are some ODMA Document IDs
+produced by actual DMS Integrations:</kbd></p>
+<blockquote>
+  <p align="left"><kbd>::ODMA\ODMASAMP\11-15-50-99;<br>
+  ::ODMA\MHODMA\NULL;0;0<br>
+  ::ODMA\MHODMA\Clients;217303;1<br>
+  ::ODMA\GRPWISE\DXU-WG-DM.DXU_PO_DM1.WG3_CO_DM1:6302.1<br>
+  ::ODMA\WORLDOX\T:\DOCS\FOONARD\999\999\MISC\0647098.WPD</kbd></p>
+</blockquote>
+<p align="left"><kbd>I will incorporate this into the new <a href="Q990401.htm"> Q000014</a> FAQtip.</kbd></p>
+<p align="left"><kbd>Does this help?</kbd></p>
+<p align="left"><kbd>-- Dennis</kbd></p>
+<hr noshade color="#000080">
+<font size="-1">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="../construction.htm" target="_top"><img border="0" src="../../images/hardhat-thumb.gif" alt="Hard Hat Area (Construction Zone)" width="80" height="60"></a></td>
+    <td width="34%" valign="middle" align="center"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005d.htm" TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="62067" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2000-1</font></font><font size="-2">1-04-22:29
+      -0800 (p</font><font size="-2">s</font><font size="-1"><font size="-2">t) by <a href="http://DMware.info/construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 24 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body></html>

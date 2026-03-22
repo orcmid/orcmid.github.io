@@ -1,0 +1,158 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /nfoCentrale Compagno Web/dmware/projects/P010100f.htm 5     02-10-22 15:34 Orcmid $-->
+<title>P010100F: Setup RTF Internet-Draft Boilerplate</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+<base target="_self">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="../">DMware</a> <a href="./"> Project</a> <a href="p010100.htm"> P010100</a>&nbsp;</h2>
+
+<h1 align="center"><b>&nbsp;<a href="p010100.htm">P010100</a>F: Setup RTF
+Internet-Draft Boilerplate</b></h1>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span>
+ 2002-10-22-15:34 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+</blockquote>
+<h1>Job Jar</h1>
+<blockquote>
+  <p>Try out <b><code> crlf.exe</code></b> and see what command line it takes to have it work.</p>
+  <p>Adjust the generic printer or the page layout in Word to have everything
+  work right with footers included.</p>
+  <p>Install the latest version of UniRed and see if its command-line launching
+  works better or not.</p>
+</blockquote>
+  <h1>Task Notes</h1>
+<h3>2002-10-14: Obtain Materials</h3>
+<blockquote>
+  <p>I located the following files and moved them to the IETF Section for
+  documented use later:</p>
+  <ul>
+    <li><b><a href="../standards/IETF/rfc3285-UsingWordForDraftsRFCs.txt"><code>rfc3285.txt</code></a>:
+      Using Word for Internet Drafts and RFCs</b></li>
+    <li><b><a href="../standards/IETF/2-Word.template.rtf"><code>2-Word.template.rtf</code></a><code>:</code>
+      A boilerplate document set up for producing a correct plain-text document
+      (downloaded 2002-10-14)</b></li>
+    <li><b><a href="../standards/IETF/2-Word.template.rtf"><code>crlf.exe</code></a>:
+      The CR and LF converter program</b></li>
+  </ul>
+</blockquote>
+<h3>2002-10-14: Create Local Word Template</h3>
+<blockquote>
+  <p>I made a template in Microsoft Word 2000 by opening the <b><code>2-Word.template.rtf
+  </code></b>document and saving it as a <i>template</i>, <b><code>InternetDraft-2-Word.dot</code></b>,
+  in the Microsoft Office template subdirectory.&nbsp; I will edit this and keep
+  it in compliance with the latest instructions.</p>
+</blockquote>
+<h3>2002-10-14: Populate Working Edit</h3>
+<blockquote>
+  <p>I set out to make a working edit version of the document and experimented
+  with the format.</p>
+  <ol>
+    <li>I worked on having the page headers and footers provide information the
+      way I wanted it. This involved eliminating derived fields and having the
+      document filled in explicitly.</li>
+    <li>I filled in the page-1 top block and arranged to have it work.</li>
+    <li>I got the table of contents to regenerate as I wanted, and began to use
+      the supported styles.&nbsp; There were some styles that had been reset so
+      I set them back.</li>
+    <li>I started adding new sections and highlighted instructions to
+      myself.&nbsp;&nbsp;</li>
+    <li>I noticed that there is a section change and that the references show up
+      as end notes.&nbsp; I began to get the hang of that.</li>
+    <li>I changed the Microsoft Word options to eliminate undesirable automatic
+      behavior (hyphenation, symbol and glossary substitutions, etc.)</li>
+  </ol>
+  <p>I also consulted some additional documents for their contribution to
+  creation of Internet Drafts:</p>
+  <ul>
+    <li><code><b><a href="../standards/IETF/1id-guidelines-2002-09-05.txt">1id-guidelines.txt</a></b></code>:
+      (2002-09-05 edition), the Internet-Draft Guidelines</li>
+    <li><code><b><a href="../standards/IETF/rfc2026-InternetStandardsProcess-v3.txt">rfc2026.txt</a></b></code>:
+      Internet Standards Process, version 3 (referenced from the draft)</li>
+    <li><code><b><a href="../standards/IETF/rfc2119-KeywordsForRequirementsLevels.txt">rfc2119.txt</a></b></code>:
+      Keywords for Requirements Levels (referenced from the draft)</li>
+    <li><b><code><a href="../standards/IETF/rfc2223-RFC-InstructionsToAuthors.txt">rfc2223.txt</a></code></b>:
+      Instructions to RFC Authors</li>
+  </ul>
+  <p>There is an on-line document on Internet Draft Nits that I also checked
+  out.&nbsp; These, led me to make changes in the format and in other material.</p>
+  <p>I looked at a number of requirements documents and made a variety of
+  adjustments.&nbsp; This left me with a working document to keep making edits
+  on.</p>
+</blockquote>
+  <h3>2002-10-15: Things to Watch Out For</h3>
+<blockquote>
+  <p>In downloading the <b><code>2-word.template.rtf</code></b> document, Word
+  notices that the download is from the Web and offers opportunity to open it
+  for editing.&nbsp; My personal firewall catches Word wanting to be on the
+  internet twice, and then offers me a logon dialog to the server.&nbsp; This is
+  presumably because of FrontPage extensions or Office extensions.</p>
+  <p>These documents should be stored in a form that does not invite
+  authentication for editing rights and that does not provoke firewall software.</p>
+  <p>I really do need to have something like ZoneAlarm on all of my computers,
+  just not the roving one, compagno.</p>
+</blockquote>
+<h3>2002-10-15:&nbsp;Attempt to Make Text</h3>
+<blockquote>
+  <p>I started seeing what it takes to produce a simple text document set up
+  appropriately.</p>
+  <p>Installed the Generic / Text Only printer and ran a test on it.</p>
+  <p>I set UniRed as my default editor for *.prn files, and then thought the
+  files weren't being produced.&nbsp; The file is apparently a problem with
+  UniRed being command-line-launched with a long file name.&nbsp; This version
+  of UniRed does not do Win32 file-opening properly to work with long file names
+  everywhere.</p>
+  <p>When I access the *.prn files through the Open ... dialog, I get to see
+  them.&nbsp; They look good, except that the page footers are missing.&nbsp;
+  They are also missing when I use the 4DOS list command.&nbsp; I will need to
+  troubleshoot that.</p>
+</blockquote>
+<h3>2002-10-16: Finding the Missing Footing Line</h3>
+<blockquote>
+  <p>I went through and read more of the instructions in rfc3285 and made more
+  adjustments based on what it says there.&nbsp; Word seems to be set up
+  properly.&nbsp; It had the page settings already, and the header and footer
+  styles were also set properly.</p>
+  <p>I printed Working Edit 00.01.&nbsp; Still no visibility for footers.</p>
+</blockquote>
+  <h3>2002-10-16: Looking for Footer Lines</h3>
+<blockquote>
+  <p>I moved <b><code> crlf.exe</code></b> to the Compagno <b><code>c:\comando\tools\</code></b> subdirectory and put that
+  subdirectory in my path.</p>
+  <p>I got the 00.01-edit file to convert.&nbsp; The footing lines are really
+  not there.&nbsp; I don't know why that is!</p>
+  <p>I then did get some results, but not by having 55 lines of text on a
+  page.&nbsp; I can only get 54!&nbsp; What I did was make the footing area one
+  line bigger and set the footer to be one line up from the bottom of the page.</p>
+</blockquote>
+  <h3>2002-10-16: Really Fouling It Up</h3>
+<blockquote>
+  <p>I fooled around some more, but then I messed it up completely with the
+  00.02 edit file.&nbsp; The headings and footers disappeared altogether.&nbsp;
+  I was manipulating the &quot;boxes&quot; that the footers appear in and that
+  may be a clue.</p>
+  <p>&nbsp;</p>
+  <hr>
+</blockquote>
+<blockquote>
+  <dl><font size="-1">
+  </font></dl>
+</blockquote>
+
+<p align="right"><font size="-2">created 2002-10-15-15:37 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-10-22 15:34 $<br>
+$$Revision: 5 $</em></font></p>
+</body>
+</html>

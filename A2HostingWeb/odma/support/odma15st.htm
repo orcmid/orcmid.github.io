@@ -1,0 +1,507 @@
+<html>
+
+<head><!--$$Header: /InfoNuovo Conclave Web/odma/support/odma15st.htm 7     00-12-13 12:51 Orcmid $-->
+
+<title>ODMA 1.5 Support Status</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"></td>
+    <td width="60%" height="6"><h1 align="center"><font face="Arial"><strong><i><a href="http://www.infonuovo.com/odma/support/">ODMA
+      Support</a></i><em><br>
+      </em><font color="#FF0000">ODMA 1.5 Status</font></strong></font></h1>
+    </td>
+    <td width="20%" height="6"></td>
+  </tr>
+</table>
+</center></div>
+
+<blockquote>
+  <h5 align="center"><a href="#0.30">Version 0.30</a> L<span style="font-variant: small-caps">ast updated </span>2000-12-13-12:44
+  -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/odma15st.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+  </h5>
+  <p><a href="#About1.5">ODMA 1.5</a> was introduced in 1996.&nbsp; It is
+  supported by <a href="http://www.infonuovo.com/odma/support/odma10st.htm">ODMA
+  1.0</a>-compliant DMS integrations that also implement the ODMA-1.5-defined query
+  option.&nbsp;&nbsp;Following introduction of ODMA 1.5, <a href="http://www.infonuovo.com/odma/support/odma20st.htm">ODMA
+  2.0</a> was developed and then implemented in May, 1998.&nbsp;</p>
+  <p><i><b> All
+  new development for ODMA middleware is based on <a href="http://www.infonuovo.com/odma/support/">more-recent
+  specifications and software</a></b>.&nbsp;&nbsp;</i> Newer work preserves
+  operation of existing ODMA 1.0 and ODMA 1.5 components.&nbsp;</p>
+
+  <p> <i><b>ODMA 1.5 is not obsolete: </b></i>Developers of ODMA-aware applications and ODMA-compliant DMS integrations continue to
+  <a href="http://www.infonuovo.com/odma/support/odma10st.htm">employ ODMA 1.0</a>,
+  optionally-supplemented by the ODMA 1.5 query option.&nbsp; ODMA 1.5 is <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm#IntendedInteroperability">
+  downward compatible</a> to ODMA 1.0-compliant components and from ODMA 2.0-compliant components.&nbsp;
+  ODMA 1.5-compliant components operate with the latest ODMA middleware.&nbsp;</p>
+
+  <hr>
+  <h3><a name="Content"><em>Content</em></a></h3>
+</blockquote>
+
+<dl>
+  <dt><b><font size="+2">1. <a href="#About1.5">About ODMA 1.5</a></font></b></dt>
+  <dd><b>1.1 <a href="#NewFunctionality">New Functionality</a><br>
+    1.2 <a href="#NewApproach">New Approach</a></b></dd>
+  <dt>&nbsp;</dt>
+  <dt><b><font size="+2">2. <a href="#PlaceInProgression">ODMA 1.5's Place in
+    the ODMA Progression</a></font></b></dt>
+  <dd><b>2.1 <a href="#1996Introduction">Introduction in 1996</a><br>
+    2.2 <a href="#ODMA2.0">ODMA 2.0 Implementation in 1998</a><br>
+    2.3 <a href="#ODMA1.5Continues">ODMA 1.5 Support and Development Continues</a></b></dd>
+  <dt>&nbsp;</dt>
+  <dt><b><font size="+2">3. <a href="#ODMA-1.0-Development">ODMA 1.5 Development</a></font></b></dt>
+  <dt>&nbsp;</dt>
+  <dt><b><font size="+2">3. <a href="#Support">ODMA 1.5 Support</a></font></b></dt>
+  <dd><b>3.1 <a href="#KnownProblems">Reported Problems and Remedies</a><br>
+    3.2 <a href="#Projects">ODMA 1.5 Projects</a></b></dd>
+  <dt>&nbsp;</dt>
+  <dt><b><font size="+2">4. <a href="#ODMA-10-Specification"> ODMA 1.5 Specifications</a></font></b></dt>
+  <dd>&nbsp;</dd>
+  <dt><b><font size="+2">5. <a href="#ODMA-10-ConnectionManager">ODMA 1.5 Connection Manager</a></font></b></dt>
+  <dd>&nbsp;</dd>
+  <dt><b><font size="+2">6. <a href="#ODMA-10-SDK">ODMA 1.5 Software Development Kit</a></font></b></dt>
+  <dd>&nbsp;</dd>
+  <dt><b><font size="+2">7. <a href="#OtherResources"> Other ODMA 1.5 Materials and Resources</a></font></b></dt>
+  <dd><b>7.1 <a href="#MultODMA">MultODMA 1.5 Experimental Application</a></b></dd>
+</dl>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+
+<dl>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</dl>
+
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1>1. <font color="#ff0000"><a name="About">About ODMA 1.5</a></font></h1>
+
+<p align="right"><i><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien">Colin
+O'Brien</a> <a href="http://www.activedoc.com"> <br>
+ ActiveDoc</a><br>
+1998 June 2</i></p>
+<blockquote>
+  <p>ODMA 1.5 was proposed by PC DOCS and Documentum in response to the needs of
+  a customer. After demonstration at the 1996 AIIM show, it was approved at the
+  ODMA meeting in August 1996 and the new developer's kit was available in
+  November 1996.</p>
+</blockquote>
+<h2>1.1 <a name="NewFunctionality">New Functionality</a></h2>
+<blockquote>
+  <p>The focus of the new functionality in ODMA 1.5 is to provide application
+  access to DMS (document management systems) from multiple vendors. It takes
+  two forms:</p>
+  <ul>
+    <li>Instead of relying on the default DMS entry in the Windows Registry,
+      when starting the application, the user can select a default from the list
+      of registered, ODMA-compliant DMS.</li>
+    <li>ODMA 1.5 provides a call to the Connection Manager to specify a search,
+      which it distributes to any or all of the registered DMS. Further calls
+      can then retrieve the name of one or more of the documents that satisfied
+      the search criteria. The search can cover any attribute, including
+      content, that is known to be used in at least one of the DMS. If one of
+      the DMS is unable to execute the search, the other DMS still complete and
+      the Connection Manager returns &quot;Partial Success&quot;.</li>
+  </ul>
+</blockquote>
+<h2>1.2 <a name="NewApproach">New Approach</a></h2>
+<blockquote>
+  <p>ODMA 1.5 is interesting because it goes beyond one of the tenets of ODMA
+  1.0, in that it does not rely on the standard screens available from the DMS,
+  with which the user is assumed to be already familiar. After all, which DMS?
+  Instead, the expectation is that the implementer will have to define a new
+  search screen. And the implementer might be a DMS vendor, or an application.</p>
+</blockquote>
+<h1>2. <a name="PlaceInProgression"><font color="#FF0000">ODMA 1.5's
+Place in the ODMA Progression</font></a></h1>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also:</i></b></dt>
+      <dd><b>Q000705: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+        Between ODMA Versions</a><br>
+        Q001201: <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Versions
+        to Develop For</a></b></dd>
+    </dl>
+  </blockquote>
+</blockquote>
+<h2>2.1 <a name="1996Introduction"> Introduction in 1996</a></h2>
+<blockquote>
+  <p><a href="#About1.5">ODMA 1.5</a> was introduced in 1996.&nbsp; It is
+  supported by <a href="http://www.infonuovo.com/odma/support/odma10st.htm">ODMA
+  1.0</a>-compliant DMS integrations that add the optional ODMA-compliant query
+  capability.&nbsp; ODMA 1.5 provides two key extensions beyond basic ODMA
+  1.0 functionality:</p>
+  <blockquote>
+    <ol>
+      <li>There are new Connection Manager functions <b><code>ODMGetDMSList</code></b>
+        and <b><code>ODMSetDMS</code></b> to support multiple DMS integrations
+        being used on the same desktop.&nbsp; ODMA-1.5-aware applications can
+        use these operations to offer users a selection of DMS's to use.</li>
+      <li>The new <b><code>ODMQueryExecute</code></b> operation is available for
+        application-initiated queries across single or multiple
+        ODMA-1.5-compliant DMS integrations.&nbsp; The ODMA 1.0 ability of a DMS
+        to independently present queries to users during <b><code>ODMSelect</code></b>
+        operations is unchanged.</li>
+    </ol>
+  </blockquote>
+  <p>Although few desktop applications are designed to issue ODMA queries of any
+  kind, the ability to manage multiple-DMS configurations is sufficient cause to
+  always install an ODMA 1.5 or later connection manager.</p>
+</blockquote>
+  <h2>2.2 <a name="ODMA2.0"> ODMA 2.0 Implementation in 1998</a></h2>
+<blockquote>
+  <p>Following the successful 1996 introduction of ODMA 1.5, <a href="http://www.infonuovo.com/odma/support/odma20st.htm">ODMA
+  2.0</a> was implemented in May, 1998.&nbsp; All recent development for ODMA middleware is based on the newer specification.&nbsp;Later
+  work preserves operation of existing ODMA 1.0 and ODMA 1.5 components.&nbsp;&nbsp;
+  This means that ODMA 1.0 and ODMA 1.5 components will continue to operate
+  without alteration.&nbsp; It is also appropriate to develop new components to
+  any of the ODMA levels, including 1.5.</p>
+</blockquote>
+  <h2>2.3 <a name="ODMA1.5Continues"> ODMA 1.5 Support and Development Continues</a></h2>
+<blockquote>
+  <p>
+  Developers of ODMA-aware applications and ODMA-compliant DMS integrations may
+  continue to employ the ODMA 1.5 level of integration.&nbsp;&nbsp;</p>
+  <p>
+ ODMA 1.5 is
+  downward compatible from ODMA 2.0-compliant components and the ODMA 2.0
+  Connection Managers.&nbsp; Likewise, ODMA 1.5-compliant DMS integrations will
+  operate successfully with ODMA 1.0-aware applications and ODMA 1.0 Connection
+  Managers.</p>
+</blockquote>
+<h1>2. <a name="Development"><font color="#FF0000">ODMA 1.5 Development</font></a></h1>
+
+  <blockquote>
+    <blockquote>
+    <dl>
+      <dt><b><i>see also:</i></b></dt>
+      <dd><b>Q000705: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+        Between ODMA Versions</a><br>
+        Q001201: <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Versions
+        to Develop For</a></b></dd>
+        </dl>
+    </blockquote>
+  </blockquote>
+
+<blockquote>
+  <p>ODMA 1.5 is defined in the <a href="#ODMA-10-Specification">ODMA 1.5 Specification</a>.</p>
+  <p>The ODMA 1.5 specification is written as a complete replacement for the <a href="http://www.infonuovo.com/odma/support/odma10st.htm">ODMA
+  1.0</a> specification.&nbsp;&nbsp;All important changes are through additions,
+  as described in the FAQtip on <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+  Between ODMA Versions</a>.</p>
+  <p>Although there is <a href="#Support">no active development</a> of the ODMA
+  1.5 specifications, the ODMA 1.5 level of features is still important.&nbsp;
+  How and when to take advantage of this level is described in the FAQtip on <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Versions
+  to Develop For</a>.</p>
+</blockquote>
+<h1>3. <a name="Support"><font color="#FF0000">ODMA 1.5
+Support</font></a></h1>
+
+<h2>3.1 <a name="KnownProblems" href="X00-log.htm">Reported Problems and Remedies</a></h2>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><i><b>see also:</b></i></dt>
+      <dd><b>X000903: <a href="http://www.infonuovo.com/odma/support/X000903.htm">ODMQueryExecute
+        Fails to Provide Partial Results<br>
+        </a>Incident Reports: <a href="http://www.infonuovo.com/odma/support/active.htm">Active
+        Incident Log<br>
+        </a>Incident Reports: <a href="http://www.infonuovo.com/odma/support/X00-log.htm">Complete
+        Incident Log</a> (including Pending Reports)<br>
+        ODMA 2.0 Specification <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">Errata</a></b></dd>
+    </dl>
+  </blockquote>
+<p>The <a href="http://www.infonuovo.com/odma/support">ODMA Support</a> area of
+the AIIM DMware site&nbsp; provides the latest information on support of all
+versions of the ODMA specification, ODMA middleware (Connection Managers), and
+other components and tools.</p>
+<p>Formal problem reporting, tracking, and resolution is not done separately for ODMA
+1.5.&nbsp; AIIM DMware support for ODMA middleware,
+initiated in April, 2000, uses the ODMA 2.0 Connection Manager as the stable,
+supported version.&nbsp; This is the only level for which complete source code is available for
+further open-source development.</p>
+  <p>New problems and workarounds can apply to ODMA 1.5 components and
+  middleware, although no repairs are available directly for ODMA 1.5.&nbsp;
+  It is recommended that ODMA 2.0 middleware, which is under active maintenance,
+  be used with ODMA components at all levels of ODMA-compliance.</p>
+</blockquote>
+<blockquote>
+  <p>The ODMA 1.5 Specification is also impacted by <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">errata</a>
+  developed for later specifications.&nbsp; Only the latest specification is updated.</p>
+</blockquote>
+<h2>3.2 <a name="Projects" href="../projects/">ODMA 1.5 Projects</a></h2>
+<blockquote>
+  <p>Proposals for projects and questions about any projects can be posted to
+  the <a href="mailto:ODMATECH@ftplist.aiim.org">ODMA Tech</a> list.</p>
+  <p>ODMA Project activities of AIIM DMware are defined and tracked in the <a href="http://www.infonuovo.com/odma/projects">ODMA
+  Projects</a> section of the ODMA site.&nbsp; Some projects benefit ODMA 1.5 as
+  part of overall support for ODMA.&nbsp; There are no current projects specific
+  to ODMA 1.5.</p>
+</blockquote>
+
+<h1>4. <font color="#FF0000"> <a name="Specification">ODMA 1.5
+Specifications</a></font></h1>
+
+&nbsp;
+<div align="center">
+  <center>
+    <table border="3" width="90%" bordercolorlight="#0000FF" bordercolordark="#000000" bordercolor="#000080">
+      <tr>
+        <td width="100%">
+          &nbsp;
+          <blockquote>
+            <h2>D<span style="font-variant: small-caps">ownload the</span> ODMA
+            1.5 S<span style="font-variant: small-caps">pecification</span>:</h2>
+          </blockquote>
+
+<ul>
+  <li><b>1996-10-29 ODMA 1.5 Specification:</b> Microsoft Word Document file, <b><code>odma15.doc</code></b>
+    (99,328 bytes) in Zip File <b><code><a href="http://www.infonuovo.com/odma/downloads/odma15.zip">odma15.zip</a></code></b>
+    (30kB)<br>
+  </li>
+  <li><b>Current ODMA 1.5 HTML Edition</b>  <b>1.5-2</b>  (86kB: <a href="http://www.infonuovo.com/odma/downloads/odma1052.htm">right
+    click here</a>).&nbsp; This is the second HTML edit of the
+    ODMA 1.5 specification.&nbsp;
+    The content is identical to the Microsoft Word Document, with simple adjustments
+    for format and identification as part of AIIM DMware.<br>
+  </li>
+  <li><a href="../downloads/odma15-2.htm"><b>View Current HTML Edition of ODMA
+    1.5
+    Specification On-Line</b></a><b>.&nbsp;</b></li>
+</ul>
+        </td>
+      </tr>
+    </table>
+  </center>
+</div>
+<h1>5. <a name="ConnectionManager"><font color="#FF0000">ODMA 1.5 Connection Manager</font></a></h1>
+<blockquote>
+<p>The ODMA 1.5 Connection Manager is distributed as part of the <a href="#SDK">ODMA
+1.5 SDK</a>.&nbsp;&nbsp;</p>
+<p>For 32-bit Windows applications, it is recommended that the ODMA 1.5
+Connection Manager <b>not be used.&nbsp;</b></p>
+<p>It is recommended that the <a href="http://www.infonuovo.com/odma/downloads/default.htm#ODMA-20-ConnectionManager"><b>latest
+stable release</b></a> of ODMA Connection Manager always be used instead, so
+that&nbsp;</p>
+<ul>
+  <li>Any repairs to defects that impact ODMA 1.5 operability are applied.</li>
+  <li>The latest trouble-shooting and configuration support is available for use
+    with the ODMA 1.5 components.</li>
+  <li>Any applications able to use more-recent ODMA features can operate with
+    full functionality along with the ODMA 1.5 components.</li>
+</ul>
+<p>For 16-bit Windows applications, it may be necessary to employ the 16-bit
+ODMA 1.5 Connection Manager implementation, depending on how binding to the
+connection manager is implemented.</p>
+<blockquote>
+  <dl>
+    <dt><b><i>see also:</i></b></dt>
+    <dd><b>Q000703: <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm"> ODMA-Aware Application and
+        Connection-Manager Version Compatibility</a></b></dd>
+    <dd><b>
+        Q001201: <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Versions
+        to Develop For<br>
+      </a>X000700: </b><b><a href="X000700.htm">Win16 Down-Level Interoperability Problems</a></b></dd>
+  </dl>
+</blockquote>
+</blockquote>
+<h1>6. <a name="SDK"><font color="#FF0000">ODMA 1.5 Software Development Kit</font></a></h1>
+&nbsp;
+<div align="center">
+  <center>
+    <table border="3" width="90%" bordercolorlight="#0000FF" bordercolordark="#000000" bordercolor="#000080">
+      <tr>
+        <td width="100%">
+          <h2>&nbsp;</h2>
+          <blockquote>
+            <h2>D<span style="font-variant: small-caps">ownload the</span> ODMA
+            1.5 SDK:</h2>
+          </blockquote>
+          <ul>
+            <li><b>Version 1.5.0 SDK: </b>Windows Zip File <a href="http://www.infonuovo.com/odma/downloads/15devkit.zip"><kbd><b>15devkit.zip</b></kbd></a>
+              (153kB)</li>
+          </ul>
+          <ol>
+            <li>The Zip archive contains several directories of
+              material.&nbsp;&nbsp;</li>
+            <li>Select a directory to extract the Zip archive into, and specify
+              that extraction occur with folder names used.</li>
+            <li>The extracted subdirectories carry libraries, middleware, sample
+              source codes, and the ODMA 1.5 specification.</li>
+          </ol>
+        </td>
+      </tr>
+    </table>
+  </center>
+</div>
+<blockquote>
+  <p>The ODMA 1.5 SDK provides materials needed by three groups of people:</p>
+  <ul>
+    <li><b>Developers and integrators of document management systems</b> who
+      want to provide ODMA 1.5 integrations and develop DMS drivers for integration
+      under ODMA 1.5</li>
+    <li><b>Developers and installers of desktop applications</b> that want to
+      provide or configure ODMA-1.5-compliant operation as an added-value of the
+      application</li>
+    <li><b>Users and support personnel</b> who want to confirm installation and
+      test operation of ODMA 1.5 elements in their ODMA configurations</li>
+  </ul>
+  <p>The ODMA 1.5 SDK includes the following software:</p>
+  <ol>
+    <li><b>ODMA Connection Manager:</b> The ODMA 1.5 16-bit connection manager, <kbd><b>Odma.dll</b></kbd>
+      and the ODMA 1.5 32-bit connection manager, <kbd><b>ODMA32.dll</b></kbd></li>
+    <li><b>Sample ODMA 1.5 DMS Implementation:</b> A Sample DMS, <b><code>ODMASAMP</code></b>,
+      with source code, that
+      can be installed and used (16-bit and 32-bit versions).&nbsp; This sample
+      confirms simple operations using text-format documents, and it implements
+      the ODMA 1.5 <b><code>IODMQuery</code></b> interface for optional query
+      operations.&nbsp; The source
+      code for the Sample DMS is included for use as a model by developers of
+      ODMA 1.5 DMS integrations.</li>
+    <li><b>ODMA 1.5 Specification:</b> The pre-1.0a edition of the ODMA 1.0
+      specification is included.</li>
+    <li><b>ODMA Libraries:</b> The ODMA libraries and header files needed to
+      build ODMA 1.0 DMS drivers and ODMA-1.0-aware desktop applications are included.</li>
+  </ol>
+</blockquote>
+<blockquote>
+<blockquote>
+  <dl>
+    <dt><b><i>see also:</i></b></dt>
+    <dd><b>Q000705: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+      Between ODMA Versions</a></b></dd>
+    <dd><b>Q000706: <a href="http://www.infonuovo.com/odma/downloads/Q000706.htm"> ODMA Version-Interoperability
+      Configuration<br>
+      </a>ODMA 2.0 <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">Library
+      Files Collection</a></b></dd>
+  </dl>
+</blockquote>
+<p>The ODMA 1.5 SDK does not include a sample application.&nbsp; The <a href="http://www.infonuovo.com/odma/support/odma10st.htm">ODMA
+1.0</a> MultODMA Application operates with ODMA 1.5.&nbsp; There is also an <a href="#MultODMA">experimental
+MultODMA 1.5</a> application that can be investigated for
+application-investigation ideas.</p>
+</blockquote>
+<h1>7. <a name="OtherResources"><font color="#FF0000">Other ODMA 1.5 Resources
+and Materials</font></a></h1>
+<h2>7.1 <a name="MultODMA">MultODMA 1.5 Experimental Application</a></h2>
+<div align="center">
+  <center>
+    <table border="3" width="90%" bordercolorlight="#0000FF" bordercolordark="#000000" bordercolor="#000080">
+      <tr>
+        <td width="100%">
+          <h2>&nbsp;</h2>
+          <blockquote>
+            <h2>D<span style="font-variant: small-caps">ownload the</span>
+            MultODMA 1.5 Experimental Source:</h2>
+          </blockquote>
+          <ul>
+            <li><b>1996-10-31 MultODMA Version 1.5.0-1 Source:&nbsp;<br>
+ </b>Windows Zip File <a href="http://www.infonuovo.com/odma/downloads/MultODMA150-1.ZIP"><kbd><b>MultODMA150-1.zip</b></kbd></a>
+              (56kB)</li>
+          </ul>
+          <ol>
+            <li>The Zip archive contains 20 files which unZip to 282kb.&nbsp;</li>
+            <li>Unzip the material into any directory that you choose to work
+              from.&nbsp; One that can be checked into a source-control system
+              is preferable.&nbsp;</li>
+            <li>The package consists entirely of undocumented source code based
+              on the MultiPad sample used by Windows developers.&nbsp;
+              Additional files are required to be able to compile and operate
+              MultODMA 1.5.0.</li>
+          </ol>
+        </td>
+      </tr>
+    </table>
+  </center>
+</div>
+<blockquote>
+  <p>MultODMA 1.5 is a Windows application based on the MultODMA 1.0 sample
+  application included with the <a href="http://www.infonuovo.com/odma/support/odma10st.htm#ODMA-10-SDK">ODMA
+  1.0 Development Kit</a>.&nbsp; It extends MultODMA 1.0 to provide
+  application-originated use of the ODMA 1.5 Query facility.</p>
+  <p>Experimentation with this source code requires an <a href="#SDK">ODMA SDK</a>,
+  version 1.5 or later.&nbsp; A Windows development system with appropriate
+  header files, libraries, and a C/C++ compiler are also required.</p>
+  <p>For testing and confirmation of MultODMA 1.5 off-spring, it is useful to
+  first investigate operation of MultODMA 1.0 and demonstrate ability to
+  recreate MultODMA 1.0 using a current Windows Development setup.</p>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also:</i></b></dt>
+      <dd><b>Q000706: <a href="http://www.infonuovo.com/odma/downloads/Q000706.htm"> ODMA Version-Interoperability
+        Configuration</a></b></dd>
+      <dd><b>
+        Q001201: <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Versions
+        to Develop For<br>
+        </a></b><b>ODMA 2.0 <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">Library
+        Files Collection</a></b></dd>
+    </dl>
+  </blockquote>
+</blockquote>
+  <hr>
+
+<font size="-1">
+   
+  
+      
+      <h2><a name="Contributors">Contributors</a></h2>
+      <blockquote>
+        <dl>
+          <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis
+            Hamilton</a></dt>
+          <dd>gathered the material and compiled the ODMA 1.0 support page</dd>
+          <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien">Colin
+            O'Brien</a></dt>
+          <dd>provided the <a href="#MultODMA">MultODMA 1.5 </a>experimental
+            source code and the <a href="#About">About ODMA 1.5</a> article that
+            has been adapted for this document.</dd>
+        </dl>
+      </blockquote>
+      <h2><a name="History">Change History</a></h2>
+
+<blockquote>
+  <dl>
+   
+  
+      
+      <dt><b><a name="0.30">Version 0.30</a>: Completed consolidation of
+        available material (orcmid)</b></dt>
+      <dd>Added the MultODMA 1.5 material and tidied up the documentation.</dd>
+   
+  
+      
+      <dt><b><a name="0.25">Version 0.25</a>: Expanded materials (orcmid)</b></dt>
+    <dd>Created structure similar to that for ODMA 1.0, providing links to all
+      available materials.&nbsp;&nbsp;</dd>
+   
+  
+      
+      <dt><b><a name="0.10">Version 0.10</a>: Initial draft (orcmid)</b></dt>
+      <dd>The ODMA 1.5 article by <a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien">Colin
+        O'Brien</a> is replicated from the ActiveDoc web site.</dd>
+   
+  
+      
+  </font></dl>
+</blockquote>
+
+<p align="right">created 2000-09-29-17:35 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-12-13 12:51 $<br>
+$$Revision: 7 $</em></p>
+</body>
+</html>

@@ -1,0 +1,126 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: Some disasters attributable to bad numerical computing
+Date: Mon, 5 Apr 2004 19:10:29 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0009_01C41B41.A8C3E090";
+	type="text/html"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1165
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0009_01C41B41.A8C3E090
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ima.umn.edu/~arnold/disasters/disasters.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Some disasters attributable to bad numerical =
+computing</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1"><!-- ZoneLabs Privacy Insertion -->
+<SCRIPT language=3Djavascript=20
+src=3D"http://127.0.0.1:1028/js.cgi?pcaw&amp;r=3D16139"></SCRIPT>
+
+<META content=3D"MSHTML 6.00.2800.1400" name=3DGENERATOR></HEAD>
+<BODY bgColor=3D#ffffff>
+<CENTER>
+<H1>Some disasters attributable to bad numerical computing</H1></CENTER>
+<P>Have you been paying attention in your numerical analysis or =
+scientific=20
+computation courses? If not, it could be a costly mistake. Here are some =
+real=20
+life examples of what can happen when numerical algorithms are not =
+correctly=20
+applied.=20
+<P>The <A =
+href=3D"http://www.ima.umn.edu/~arnold/disasters/patriot.html">Patriot=20
+Missile failure</A>, in Dharan, Saudi Arabia, on February 25, 1991 which =
+
+resulted in 28 deaths, is ultimately attributable to poor handling of =
+rounding=20
+errors.=20
+<P>The <A =
+href=3D"http://www.ima.umn.edu/~arnold/disasters/ariane.html">explosion=20
+of the Ariane 5 rocket</A> just after lift-off on its maiden voyage off =
+French=20
+Guiana, on June 4, 1996, was ultimately the consequence of a simple =
+overflow.=20
+<P>The <A =
+href=3D"http://www.ima.umn.edu/~arnold/disasters/sleipner.html">sinking=20
+of the Sleipner A offshore platform</A> in Gandsfjorden near Stavanger, =
+Norway,=20
+on August 23, 1991, resulted in a loss of nearly one billion dollars. It =
+was=20
+found to be the result of inaccurate finite element analysis.=20
+<P>
+<HR width=3D"100%">
+<SMALL>Last modified August 26, 1998 by <I><A=20
+href=3D"http://www.ima.umn.edu/~arnold/index.html">http://www.ima.umn.edu=
+/~arnold/index.html</A>=20
+</I></SMALL>
+<P></P><!-- ZoneLabs Popup Blocking Insertion -->
+<SCRIPT language=3Djavascript>postamble();</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0009_01C41B41.A8C3E090
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://127.0.0.1:1028/js.cgi?pcaw&r=16139
+
+
+var blockedReferrer =3D 'blockedReferrer';
+NS_ActualWrite=3Ddocument.write;
+// Popup Blocker -->
+RanPostamble=3D0;
+NS_ActualOpen=3Dwindow.open;
+orig_setTimeout =3D window.setTimeout;
+function NS_NullWindow(){this.window;}
+function nullDoc() {
+   this.open =3D NS_NullWindow;
+   this.write =3D NS_NullWindow;
+   this.close =3D NS_NullWindow;
+}
+function NS_NewOpen(url,nam,atr){
+	if((nam!=3D'' && nam=3D=3Dwindow.name) || nam=3D=3D'_top'){
+	   return(NS_ActualOpen(url,nam,atr));}
+	obj=3Dnew NS_NullWindow();
+	obj.focus =3D NS_NullWindow;
+	obj.blur =3D NS_NullWindow;
+	obj.opener =3D this.window;
+	obj.document =3D new nullDoc();
+	return(obj);
+}
+function NS_NullWindow2(){this.window;}
+function NS_NewOpen2(url,nam,atr){
+	if((nam!=3D'' && nam=3D=3Dwindow.name) || nam=3D=3D'_top'){
+	   return(NS_ActualOpen(url,nam,atr));}
+    return(new NS_NullWindow2());
+}
+function op_stop() { NS_ActualOpen2=3Dwindow.open; =
+window.open=3DNS_NewOpen2; }
+function op_start() { window.open=3DNS_ActualOpen2; }
+function noopen_ST(one,two) { =
+return(orig_setTimeout("op_stop();"+one+";;op_start();",two)); }
+function noopen_load() {=20
+    op_stop(); if(orig_onload) orig_onload(); op_start();
+}
+function noopen_unload() { op_stop(); if(orig_onunload) orig_onunload(); =
+op_start(); }
+function postamble() {=0A=
+=0A=
+  if(!RanPostamble) {
+    RanPostamble=3D1;
+	orig_onload =3D window.onload;
+	orig_onunload =3D window.onunload;
+	window.onunload =3D noopen_unload;
+	window.onload =3D noopen_load;
+	window.open=3DNS_ActualOpen;
+  }
+}
+window.setTimeout =3D noopen_ST;
+window.open=3DNS_NewOpen;
+document.ignore =3D new Object();
+
+------=_NextPart_000_0009_01C41B41.A8C3E090--

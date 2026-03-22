@@ -1,0 +1,565 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Existing Approaches to Compound/Structured Documents</title>
+<meta NAME="subject" CONTENT="Comparison of existing systems for relationship to CSDocs approach">
+<meta NAME="Language" CONTENT="en_US">
+<meta NAME="Project" CONTENT="DMA TC CSDocs Subcommittee">
+<meta NAME="Template" CONTENT="C:\architetto\InsideDMA\CSDocs\ModelSketch\arch_templ_990707.dot">
+</head>
+
+<body TEXT="#000000">
+<b><font SIZE="6">
+
+<p ALIGN="CENTER"><a NAME="_Toc389897700"></a><a NAME="_Toc389897806"></a><a NAME="_Toc389897945"></a><a NAME="_Toc389898743"></a><a NAME="_Toc389898757"></a><a NAME="_Toc389899422"></a><a NAME="_Toc389899442"></a><a NAME="_Toc389901439"></a><a NAME="_Toc389904799"></a><a NAME="_Toc389905093"></a>ContentAnalysis of Extant
+Compound/Structured Document Systems</p>
+</font>
+
+<p><a NAME="_Toc389897701">Authors:</b> </a>DMA TC Compound/Structured Document
+Subcommittee
+
+<dir>
+  <dir>
+    <p>Richard Sauvain (Xerox Corporation, Chair), Mitsuru Akizawa (Hitachi, Ltd.), Alan
+    Babich (FileNET), Chuck Fay (FileNET), Jim Green (FileNET), Dennis Hamilton (InfoNuovo),
+    Katsumi Kanasaki (Ricoh, Ltd.), Yoshifumi Sato (Hitachi, Ltd.)</p>
+  </dir>
+</dir>
+<b>
+
+<p>Revision 0.00, 1999 July 28</p>
+<font SIZE="4">
+
+<p>Synopsis: This document summarizes the analysis of existing approaches to
+compound/structured documents and the way that they relate to the CSDocs model. This is
+referenced from Section 12 of various CSDocs proposals, including the CSDocs Foundation
+architecture.
+
+<ol>
+  <li><a NAME="_Toc389897703"></a><a NAME="_Toc389898744"></a><a NAME="_Toc389898758"></a><a NAME="_Toc389899423"></a><a NAME="_Toc389899443"></a><a NAME="_Toc389901440"></a><a NAME="_Toc389904800"></a><a NAME="_Toc389905094"></a><a NAME="_Toc389905202"></a><a NAME="_Toc389906235"></a><a NAME="_Toc389907139"></a><a NAME="_Toc389907213"></a><a NAME="RevisionHistory"></a></font><font SIZE="6"><a NAME="_Toc457794302">Revision History</a></li>
+</ol>
+</font>
+
+<p>Revision 0.00, 1999 July 28, Dennis Hamilton</b>
+
+<ul>
+  <li>Initial Extant Systems information extracted from Foundation Proposal for further
+    refinement.</li>
+</ul>
+
+<ol>
+  <li><a NAME="_Toc389897946"></a><a NAME="_Toc389898745"></a><a NAME="_Toc389898759"></a><a NAME="_Toc389899424"></a><a NAME="_Toc389899444"></a><a NAME="_Toc389901441"></a><a NAME="_Toc389904801"></a><a NAME="_Toc389905095"></a><a NAME="_Toc389905203"></a><a NAME="_Toc389906236"></a><a NAME="_Toc389907140"></a><a NAME="_Toc389907214"></a><a NAME="TableOfContent"></a><font SIZE="6"><b><a NAME="_Toc457794303">Table of Contents</a></li>
+  </b></font><p>1 Revision History <a HREF="CSDocsExisting00.html#_Toc457794302">*</a> </p>
+  <p>2 Table of Contents <a HREF="CSDocsExisting00.html#_Toc457794303">*</a></p>
+  <p>3 Extant Systems with Similar Features and Related Experiences <a HREF="CSDocsExisting00.html#_Toc457794304">*</a></p>
+  <p>3.1 Documentum <a HREF="CSDocsExisting00.html#_Toc457794305">*</a></p>
+  <p>3.1.1 Objects <a HREF="CSDocsExisting00.html#_Toc457794306">*</a></p>
+  <p>3.1.2 Naming and IDs <a HREF="CSDocsExisting00.html#_Toc457794307">*</a></p>
+  <p>3.1.3 Creating a compound document <a HREF="CSDocsExisting00.html#_Toc457794308">*</a></p>
+  <p>3.1.4 Delete model <a HREF="CSDocsExisting00.html#_Toc457794309">*</a></p>
+  <p>3.1.5 Versioning model <a HREF="CSDocsExisting00.html#_Toc457794310">*</a></p>
+  <p>3.1.6 Query model <a HREF="CSDocsExisting00.html#_Toc457794311">*</a></p>
+  <p>3.1.7 Navigation model <a HREF="CSDocsExisting00.html#_Toc457794312">*</a></p>
+  <p>3.1.8 Security model <a HREF="CSDocsExisting00.html#_Toc457794313">*</a></p>
+  <p>3.1.9 Sharing model <a HREF="CSDocsExisting00.html#_Toc457794314">*</a></p>
+  <p>3.1.10 Handling of object references that are embedded in document content <a HREF="CSDocsExisting00.html#_Toc457794315">*</a></p>
+  <p>3.2 Interleaf <a HREF="CSDocsExisting00.html#_Toc457794316">*</a></p>
+  <p>3.2.1 Objects <a HREF="CSDocsExisting00.html#_Toc457794317">*</a></p>
+  <p>3.2.2 Naming and IDs <a HREF="CSDocsExisting00.html#_Toc457794318">*</a></p>
+  <p>3.2.3 Creating a compound document <a HREF="CSDocsExisting00.html#_Toc457794319">*</a></p>
+  <p>3.2.4 Delete model <a HREF="CSDocsExisting00.html#_Toc457794320">*</a></p>
+  <p>3.2.5 Versioning model <a HREF="CSDocsExisting00.html#_Toc457794321">*</a></p>
+  <p>3.2.6 Query model <a HREF="CSDocsExisting00.html#_Toc457794322">*</a></p>
+  <p>3.2.7 Navigation model <a HREF="CSDocsExisting00.html#_Toc457794323">*</a></p>
+  <p>3.2.8 Security model <a HREF="CSDocsExisting00.html#_Toc457794324">*</a></p>
+  <p>3.2.9 Sharing model <a HREF="CSDocsExisting00.html#_Toc457794325">*</a></p>
+  <p>3.2.10 Handling of object references that are embedded in document content <a HREF="CSDocsExisting00.html#_Toc457794326">*</a></p>
+  <p>3.3 Lotus Domino.doc <a HREF="CSDocsExisting00.html#_Toc457794327">*</a></p>
+  <p>3.3.1 Objects <a HREF="CSDocsExisting00.html#_Toc457794328">*</a></p>
+  <p>3.3.2 Naming and Ids <a HREF="CSDocsExisting00.html#_Toc457794329">*</a></p>
+  <p>3.3.3 Compound Document Support <a HREF="CSDocsExisting00.html#_Toc457794330">*</a></p>
+  <p>3.3.4 Deleting <a HREF="CSDocsExisting00.html#_Toc457794331">*</a></p>
+  <p>3.3.5 Versioning <a HREF="CSDocsExisting00.html#_Toc457794332">*</a></p>
+  <p>3.3.6 Query <a HREF="CSDocsExisting00.html#_Toc457794333">*</a></p>
+  <p>3.3.7 Navigation <a HREF="CSDocsExisting00.html#_Toc457794334">*</a></p>
+  <p>3.3.8 Security <a HREF="CSDocsExisting00.html#_Toc457794335">*</a></p>
+  <p>3.3.9 Referencing <a HREF="CSDocsExisting00.html#_Toc457794336">*</a></p>
+  <p>3.4 FileNET IDM <a HREF="CSDocsExisting00.html#_Toc457794337">*</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <li><a NAME="_Toc389899431"></a><a NAME="_Toc389899451"></a><a NAME="_Toc389901457"></a><a NAME="_Toc389904818"></a><a NAME="_Toc389905112"></a><a NAME="_Toc389905220"></a><a NAME="_Toc389906253"></a><a NAME="_Toc389907157"></a><a NAME="_Toc389907231"></a><a NAME="ExtantSystemsExperiences"></a><b><font SIZE="6"><a NAME="_Toc457794304">Extant
+    Systems with Similar Features and Related Experiences</a></li>
+</ol>
+</font><font COLOR="#008000">
+
+<p><a NAME="_Toc389899432"></a><a NAME="_Toc389899452"></a><a NAME="_Toc389901458"></a><a NAME="_Toc389904819"></a><a NAME="_Toc389905113"></a><a NAME="_Toc389905221"></a><a NAME="_Toc389906254"></a><a NAME="_Toc389907158"></a><a NAME="_Toc389907232">[The extant
+systems survey is to be distilled down to the elements related to Compound/structured
+documents as well as similarities at the Foundation versus beyond-Foundation level. The
+general survey information is inappropriate in this proposal. Also, the use of an
+annotated table might be more useful with regard to lining up the feature sets along
+common axes.]</p>
+<i>
+
+<p>Edit all of this to reflect the focus on compound/structured documents:</i></font></b>
+As part of our background research, we reviewed several repository products that have some
+form of compound document support. We characterized each product by considering the
+following areas:
+
+<ul>
+  <li>Objects</li>
+  <li>Naming and IDs</li>
+  <li>Creating a compound document</li>
+  <li>Navigation</li>
+  <li>Sharing (locking, checkin / out)</li>
+  <li>Security</li>
+  <li>Deleting a compound document</li>
+  <li>Versioning</li>
+  <li>Query</li>
+  <li>Handling of object references that are embedded in document content</li>
+</ul>
+</a>
+
+<ol>
+  <ol>
+    <li><font SIZE="5"><b><a NAME="_Toc457794305">Documentum</a></li>
+    </b></font><p>This is a description of the compound document model supported by
+    Documentum&#146;s Enterprise Document Management System, version 3.2. Support for complex,
+    intricately versioned compound documents is one of Documentum&#146;s strong points.<ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457794306">Objects</a></li>
+      </b></font><p>Documentum compound documents are constructed using three objects: document,
+      content, and containment. </p>
+      <i><p>Document</i>: This object contains document properties (such as title, authors,
+      keywords), an ordered list of content objects, and a content format. There is an
+      optimization for the case where there is only once content object. A document has a
+      primary format. The repository, which Documentum calls a <i>docbase</i>, contains a list
+      of registered formats, and there must be a complete set of content objects in one of these
+      formats.</p>
+      <p>The term <i>simple document</i> is used for documents made up entirely of content
+      objects. </p>
+      <p>It is also possible to have a component which is another document. This is done using a
+      list of relationship objects called <i>containment objects</i>. If a document has
+      containment objects, it is called a <i>virtual document.</p>
+      </i><p>Documents can be contained in <i>folders</i>, which in turn may be in <i>cabinets</i>.
+      Folder membership is always referential (in the DMA sense of the term).</p>
+      <i><p>Containment:</i> stores information about a component of a virtual document. Has
+      object Ids of both parent and child, an order number representing the component&#146;s
+      position in the virtual document, and a version label.</p>
+      <i><p>Content</i>: This object stores information about the format and location of a
+      content file. It contains an integer &#145;page number&#146; - really the position of the
+      content element in the document - and an encoded handle to the actual file location of the
+      content file. Documentum is a closed repository&#151;all content is copied into a secure
+      portion of the file system, and renamed with numeric file names.</p>
+      <p>A content object can be shared among documents. It contains a list of parent object
+      Ids, as well as a list of &#145;page numbers&#146; giving the order in each parent
+      document.</p>
+      <p>Renditions in Documentum are at the content object level&#151;they are the same
+      &quot;page&quot; in another content format. There is provision for both automatic
+      generation on demand by the server, and for manual generation of renditions. Alternate
+      renditions can be stored persistently as content objects with the same page number as the
+      primary rendition, but with a different format and a flag indicating that they are
+      client-generated or server-generated.</p>
+      <p>Documentum has a notion of transient and persistent objects. All the above are
+      persistent, and indeed are implemented with tables in a relational database.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794307">Naming and IDs</a></li>
+      </b></font><p>Objects are identified by a 64-bit GUID that contains a docbase ID, an
+      object class, and an instance number. The GUIDs are usually represented at the repository
+      API by 16 character hex strings.</p>
+      <p>Document objects also have a string-valued object name whose value is user-defined.</p>
+      <li><a NAME="_Toc360355375"></a><a NAME="_Toc363021390"></a><font SIZE="4"><b><a NAME="_Toc371157632"> </a><a NAME="_Toc457794308">Creating a compound document</a></li>
+      </b></font><p>The Documentum API has distinct calls for adding content objects
+      (AppendFile) and adding other documents (AppendPart). AppendPart handles the creation of
+      the Containment object that links in a component document. The usual procedure is to first
+      create the document level components of the compound document, then to create a new
+      document object and call AppendFile and AppendPart to add content objects and documents,
+      respectively. The resulting document may then be linked into folders or even other
+      cabinets.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794309">Delete model</a></li>
+      </b></font><p><a NAME="_Toc360355376"></a><a NAME="_Toc363021391"></a><a NAME="_Toc371157633">Documentum&#146;s default delete behavior is to refuse to destroy or
+      prune an object that belongs to a virtual document. This enforces referential integrity.
+      This default behavior can be turned off on a server-wide basis if the users are willing to
+      deal with the consequences.</p>
+      <p>So in general the strategy for deleting a virtual document is similar to that of
+      deleting a DMA container. Delete all the components, working bottom up -- then you can
+      delete the virtual document.</p>
+      </a>
+      <li><a NAME="_Toc360355377"></a><a NAME="_Toc363021392"></a><a NAME="_Toc371157634"></a><a NAME="_Toc457794310"></a><font SIZE="4"><b>Versioning model</li>
+      </b></font><p>Simple or virtual documents can be versioned (what DMA calls &#145;branched
+      versioning&#146; is supported). Documents have both numeric (system generated) and textual
+      (user supplied) version labels - there is also a distinguished version known as CURRENT.</p>
+      <p>When you add a component to a virtual document, you can choose <i>early binding</i> or <i>late
+      binding</i>, terms which specify how to pick the version to be added. In late binding, you
+      do not specify a version label, and the version is determined later when the document is
+      accessed. In early binding, you pick a particular version in advance by specifying either
+      an absolute version number (which never changes), or a symbolic version label (like
+      &quot;CURRENT&quot;, which can be moved from version to version).</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794311">Query model</a></li>
+      </b></font><p>The Documentum query language (DQL) is a superset of SQL. DQL has constructs
+      like &quot;IN DOCUMENT&quot; to narrow down a search to components of a document,
+      &quot;DESCEND&quot; to say whether to search only direct (first level) components, or to
+      also include indirectly contained components, and &quot;WITH&quot; to control late
+      binding. &#145;late binding&#146; is when you add a component associating the entire
+      version tree of the component and specify at query time which version is to be looked at.</p>
+      <p>All documents (virtual or not) have a set of pre-defined and searchable attributes. The
+      set includes title, author, subject, keywords, creation date, and others. As in DMA, it is
+      possible for users to define subclasses of documents, folders, or other objects with
+      additional searchable properties.</p>
+      <li><a NAME="_Toc360355378"></a><a NAME="_Toc363021393"></a><font SIZE="4"><b><a NAME="_Toc371157635"></a><a NAME="_Toc457794312">Navigation model</a></li>
+      </b></font><p>In the Documentum API, navigation is done by executing a query, rather than
+      using methods specific to navigation. </p>
+      <p>For instance since the component objects in a virtual document all have a searchable
+      &#145;parent object&#146; property, you find children by searching for all documents or
+      content objects that have a given parent. </p>
+      <p>Going the other way (from child to parent) is usually done by obtaining an ID-valued
+      parent property from the child, then using that in a query to obtain the needed properties
+      of the parent. Content objects contain a list of parent Ids (since content can be shared).
+      Documents contain a list of parent folder Ids and a list of Containment objects, which in
+      turn have the parent ID of the containing virtual document. </p>
+      <li><a NAME="_Toc360355379"></a><a NAME="_Toc363021394"></a><font SIZE="4"><b><a NAME="_Toc371157636"></a><a NAME="_Toc457794313">Security model</a></li>
+      </b></font><p>Documentum has object level security. The system provides two models for
+      enforcing object level permissions: use of Access Control Lists (ACLs), and the Unix model
+      of assigning permissions at the owner, group, and world levels. Both models can be turned
+      off, so that there is no security. When a document object is created, security attributes
+      for both modes are set.</p>
+      <p>Documentum has seven levels of permissions: none, browse, read, relate, version, write,
+      delete. Having a permission later in this list includes all permissions before it.
+      &#145;browse&#146; lets you look at attributes but not content. &#145;relate&#146; means a
+      user can add an annotation to the object.</p>
+      <p>An ACL is a list of users and groups, with permission levels for these users and
+      groups. ACLs can be attached to documents, folders, and indeed most persistent objects. </p>
+      <p>There is optional folder level security. When this is turned on, permissions are
+      checked not only on the object, but also on any folders or cabinets which contain the
+      object. With folder security turned on, for example, versioning a document requires
+      version permission on the document object, and at least write permission for the folder or
+      cabinet in which the document is stored.</p>
+      <p>Documents are assigned a <i>primary cabinet</i> when created, and this is the one that
+      will be used for cabinet level security checking. They may then be <i>linked</i> into
+      other cabinets or folders. All folder containment is referential.</p>
+      <li><a NAME="_Toc360355382"></a><a NAME="_Toc363021397"></a><font SIZE="4"><b><a NAME="_Toc371157639"> </a><a NAME="_Toc457794314">Sharing model</a></li>
+      </b></font><p>Documents can be checked out. When this happens, no one else can modify the
+      document object. After making changes, the document can be saved (which does not create a
+      new version), or checked in (which does).</p>
+      <p>Checking out a virtual document does not lock component documents, however virtual
+      documents can be <i>frozen</i>, which means no one can modify any of the components.</p>
+      <p>One can also <i>fetch</i> document content, which gives you a copy but does not
+      prohibit others from changing the original.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794315">Handling of object references that are embedded in document
+        content</a></li>
+    </ol>
+    </b></font><p>This is completely up to the client application</p>
+    <li><font SIZE="5"><b><a NAME="_Toc457794316">Interleaf</a></li>
+    </b></font><p>This is a description of the compound document models supported by Interleaf
+    6 (I6), a compound document authoring product similar to FrameMaker, and by RDM,
+    Interleaf's document management repository. These are separate products based on different
+    market needs. They can be used together, but they are based on different underlying
+    document models suited to their markets. Interleaf has other products, including
+    BladeRunner, a new XML authoring product that will ship later this summer, but this survey
+    will cover only I6 and RDM.</p>
+    <p>(Disclaimer: This description is based on publicly-available information; it is
+    possible that errors have been made in interpreting that information. This is not intended
+    to be a definitive description of these Interleaf products, but more as a general
+    indication of existing practice.)</p>
+    <p>I6 is an authoring tool designed for users who assemble and publish large documents in
+    workgroup environments and have reached the limits of their word processing packages. I6
+    features a visual desktop with folders, drawers and cabinets to store and organize
+    documents in a familiar manner. It provides a graphical book container for building and
+    controlling multiple documents in books, and even books within books. It supports network
+    style sheets or &quot;book catalogs&quot; for reformatting documents or document
+    collections for print, Internet, or CDROM by globally controlling the format and contents.</p>
+    <p>I6 includes bi-directional, compound text and graphics filters for Microsoft Word and
+    WordPerfect that ensure round-trip data integrity. It has the ability to assemble
+    automatically multiple versions of a document from a single source. Lastly, it has an
+    Active Link Tool for live linking to external data files that contain non-OLE data, and
+    DBLink for extracting information from one or more Oracle, Sybase, or ODBC-compliant
+    databases into a compound document.</p>
+    <p>RDM is a repository designed for complete document lifecycle management with built-in
+    workflow, annotations, versioning, and full text search and retrieval. In addition, RDM
+    offers configuration management for dynamic tracking and control of compound document
+    configurations, including detailed bills-of-material, an audit history, and
+    &quot;where-used&quot; information.<ol>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794317">Objects</a></li>
+      </b></font><p>At a high level, Interleaf 6 documents separate presentation semantics from
+      the logical structure of a document. Specifically, I6 supports the notion of a <i>catalog</i>,
+      similar in concept to a style sheet. The catalog maps specific document elements (tags) to
+      presentation behavior.</p>
+      <i><p>Catalogs</i> are separate files that are associated with a document at run time by
+      their relative position&nbsp;in the file system.</p>
+      <i><p>Catalogs</i> and I6 <i>documents</i> have a 1:N relationship, i.e., a single catalog
+      can be used to describe the presentation semantics of a collection of I6 documents. This
+      can be viewed as a form of property inheritance (i.e., I get my font definition for
+      &lt;para&gt; from a catalog contained in an I6 book somewhere). This has interesting
+      implications for a query model (find me all paragraphs that currently use this
+      catalog's&nbsp;paragraph presentation definition).</p>
+      <p>I6 presents a desktop metaphor to users. Within the I6 desktop, there are hierarchical
+      structures - drawers, folders, books, documents. An I6 <i>book</i> can contain many
+      documents, including special documents like TOCs, back of book indices, etc. Information
+      is organized into books and collections so that changes in one document ripple immediately
+      across document sets.</p>
+      <p>I6 supports auto-numbering streams. There is one default stream in a document. Other
+      streams may exist for items like figures, tables, etc.</p>
+      <p>Even though books are modeled as containers, books are the place in the Interleaf 6
+      metaphor where you need more than containment, e.g., to handle auto-numbering streams,
+      index generation, TOC generation, pagination, etc. A lot of specialization of a DMA
+      Container subclass would be needed to handle all these semantics. I6 has different models
+      for simple documents and collections of documents. TOCs across documents, auto-numbering
+      schemes across documents, etc., are necessary for books.</p>
+      <p>An I6 document contains <i>document elements</i>. I6 ships with a default set of
+      elements such as paragraphs, tables, frames, images, etc. A&nbsp;user may create
+      user-defined elements that are defined in a catalog, similar to Word styles.</p>
+      <p>Initially the Interleaf document structure was modeled as a linear list of tags. Later,
+      the concept of <i>microdocuments</i> was introduced. A <i>microdocument</i> is similar to
+      a &lt;subdoc&gt; element in SGML, or an embedded OLE component in the&nbsp;Windows world.
+      Within a microdocument different elements may exist, etc. Microdocuments are embedded
+      content; they are not separately addressable documents.</p>
+      <p>I6 on WindowsNT is an OLE container, so you can create embedded or externally
+      referenced OLE components within an I6 document.</p>
+      <p>The I6 graphics model is fairly sophisticated. It supports bitmapped images, B<font FACE="Times New Roman Special G1">¾</font> zier curves,&nbsp;vector graphics, etc.
+      Bitmapped images may be stored inline within a graphics instance, or they may be
+      referenced as an external file. The link mechanism&nbsp;used in this case is simply a file
+      path.</p>
+      <p>Elements may contain user-defined attributes. These may be defined for a single
+      document, or used by many documents by defining in a catalog.</p>
+      <p>I6 supports the notion of &quot;effectivity&quot;. This is similar in concept to a
+      conditional compile of a software program. Users will employ effectivity to create a
+      single document with multiple languages contained, with each logical element being
+      replicated many times, with different content, and a different value for an effectivity
+      tag. For example, each paragraph instance would be provided in English, French and German.
+      By setting the value of an effectivity tag in an external catalog, the user can change an
+      entire book from English-&gt;Japanese.</p>
+      <p>The I6 binary file format is proprietary and undocumented. I6 can save documents in an
+      ASCII version that is documented, and looks like a proprietary markup language.</p>
+      <p>I6 supports several different link notions. Intra-document and inter-document links
+      exist.</p>
+      <p>Dynamic&nbsp;database queries may be embedded within an Interleaf document using a
+      proprietary component called DBlink that stores and executes&nbsp;queries against SQL
+      databases.</p>
+      <p>Interleaf also supports the notion of &quot;publishing&quot; I6 documents/books into a
+      lightweight, final form called WorldView. The WorldView format is a PDL that is a
+      competitor to PDF. WorldView the product is a competitor to Adobe Acrobat, Adobe Catalog,
+      etc. WorldView collections are groups of I6 documents that have had&nbsp;a particular
+      presentation format applied to them (through the use of a catalog). WorldView documents
+      contained in WorldView collections are also full-text indexed using Fulcrum.</p>
+      <p>RDM has a complex object model of its own, with documents, containers, versions, global
+      and local objects. However, it has a relatively simple object model for structured and
+      compound documents when compared to I6. RDM takes in an I6 compound document as a single
+      chunk, rather than a set of components. When an I6 compound document with a link to an
+      external file is checked in, RDM has no visibility inside the document for following the
+      link.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794318">Naming and IDs</a></li>
+      </b></font><p>I6 can link external objects like images or documents via file system path
+      name, which allows these objects to be shared. It also has a linking method for extracting
+      data from external databases. It's not clear if I6 documents themselves have IDs other
+      than their file system path name, but it seems safe to assume they also have a title or
+      name.</p>
+      <p>RDM assigns unique Ids to objects. It distinguishes between global objects and local
+      objects. Global objects are searchable and independently persistent. Local objects are
+      only referenced within a global object, like DMA's dependently persistent objects. Local
+      objects are not separately searchable or addressable. It's not clear if or how I6 compound
+      documents are mapped to RDM global and local objects.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794319">Creating a compound document</a></li>
+      </b></font><p>I6 has features for creating compound documents like books that include
+      other documents. From I6, you can check a book or document and catalog into RDM as a
+      single chunk or as a set of global objects that are unrelated as far as RDM is concerned.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794320">Delete model</a></li>
+      </b></font><p>When RDM takes in a compound document as a single chunk, it has no
+      opportunity to create a referential integrity violation at deletion time: the whole chunk
+      is deleted. When an I6 compound document with embedded links to external files is checked
+      in or deleted, RDM has no visibility inside the document for checking, following, or
+      maintaining the links. So RDM has no responsibilities for referential integrity.</p>
+      <p>If an I6 compound document with links to other files is deleted, the links are deleted
+      but not the target files.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794321">Versioning model</a></li>
+      </b></font><p>RDM has a fairly complex versioning model associated with a workflow
+      representing a document review cycle. A document version goes all the way through the
+      review cycle and is completed at the end of the cycle. I6 has no explicit versioning
+      mechanism.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794322">Query model</a></li>
+      </b></font><p>RDM is not knowledgeable about links between global objects, so you can
+      query for all global objects, but you can't tell in the query that the objects are
+      related.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794323">Navigation model</a></li>
+      </b></font><p>RDM provides the ability to navigate from global objects to related local
+      objects, but within an I6 compound document you use I6 to navigate among its components.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794324">Security model</a></li>
+      </b></font><p>I6 security is provided by the underlying file system. Details of RDM
+      security features are not known.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794325">Sharing model</a></li>
+      </b></font><p>I6 can share each document among many books, and each catalog among many
+      documents.</p>
+      <p>In the other sense of sharing documents among multiple authors, RDM supports version
+      management, but details are not known.</p>
+      <font SIZE="4"><b>
+      <li><a NAME="_Toc457794326">Handling of object references that are embedded in document
+        content</a></li>
+    </ol>
+    </b></font><p>I6 knows about embedded object references; RDM does not.</p>
+    <li><font SIZE="5"><b><a NAME="_Toc457794327">Lotus Domino.doc</a></li>
+    </b></font><p>This is a description of the Domino.doc API as of October 1998.<ol>
+      <b><font SIZE="4">
+      <li><a NAME="_Toc457794328">Objects</a></li>
+      </font><p>The Library</p>
+      </b><p>The Library is the entry point into Domino.Doc. It is the &quot;main view&quot; or
+      the &quot;home page&quot; from which users navigate the storage system, perform searches,
+      list checked-out documents, and access administrative functions such as setting and
+      changing document and binder type definitions and attributes.</p>
+      <p>A library can contain zero or more file rooms.</p>
+      <b><p>File rooms</p>
+      </b><p>The file room provides a way to logically group individual file cabinets to
+      facilitate navigation. All file cabinets are contained in a file room.</p>
+      <p>When creating a new file cabinet, the user can add it to an existing file room or
+      create a new file room.</p>
+      <b><p>File cabinets</p>
+      </b><p>Domino.Doc uses file cabinets to organize and manage binders and documents. File
+      cabinets are Notes database (.nsf) files that reside on the Domino server.</p>
+      <b><p>Binders</p>
+      </b><p>The Domino.Doc binder is a container within a file cabinet that is used to group
+      related documents logically. </p>
+      <p>A given binder can exist in only one file cabinet.</p>
+      <p>A binder can contain &quot;real&quot; documents, or &quot;links&quot; to documents that
+      reside in other binders.</p>
+      <p>Each binder has attributes that facilitate organization and retrieval. Attributes
+      associated with every binder include the title, type, author, creation date, modification
+      date, and number of documents. Application attributes, presented in the form of an Index
+      Card, are specific to the binder type.</p>
+      <b><p>Documents</p>
+      </b><p>A &quot;document&quot; in Domino.Doc is the information that is to be managed. It
+      can be a data file -- such as a word processor document or a spreadsheet, an OLE object,
+      or a Notes document -- that is given a descriptive title and saved to a binder in a file
+      cabinet.</p>
+      <p>Each document has attributes that facilitate document organization and retrieval.
+      System attributes are associated with every document and may include the document author,
+      creation date, date of last modification, document title, and so forth. Application
+      attributes, presented in the form of an Index Card, are specific to the individual
+      application and may include the project name, document type, proposal number, and so
+      forth.</p>
+      <p>A single document can have multiple attachments of any file type. </p>
+      <p>A document object resides inside a single binder. Links to a document can be made
+      inside other binders.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794329">Naming and Ids</a></li>
+      </b></font><p>Domino.Doc objects are each identified by a 64-bit GUID, generated
+      automatically by the system when the object is created. Each object has a set of
+      properties and attributes that are customizable by the user. Client applications of
+      Domino.Doc also use the object&#146;s name or title to identify the object in a simple
+      manner.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794330">Compound Document Support</a></li>
+      </b></font><p>Domino.Doc (version 2.0) currently has no support for compound documents.
+      Documents are self-contained objects that have no relationships with other documents. A
+      binder object is used for the containment of documents, but there is no support for
+      establishing any type of complex relationships between the documents contained within it.
+      I do believe that support for compound documents will be supplied in future versions of
+      Domino.Doc.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794331">Deleting</a></li>
+      </b></font><p>Any object (File Rooms and below) can be deleted as long as the user has
+      permission to do so. Objects contained inside a parent object that is being deleted will
+      be deleted as well. </p>
+      <p>There is no current support in the Domino.Doc API for deletion of objects.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794332">Versioning</a></li>
+      </b></font><p>Using Lotus Notes as the underlying mechanism, Domino.Doc provides a rich
+      set of versioning capabilities. All documents are versioned when they are stored into the
+      system. Documents can be put into an approval cycle, in which a document must go through a
+      process that involves a list of users that must review and verify the document. All
+      versions are automatically labeled numerically by the system. Descriptions of each
+      versioned document are customizable by the user.</p>
+      <p>Users with adequate permission can check-out and check-in binders and documents. When a
+      document or binder is checked-out, that object is locked and cannot be modified by any
+      other user of the system. </p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794333">Query</a></li>
+      </b></font><p>Domino.Doc supports the same type of querying model that is present in Lotus
+      Notes called &quot;Full-Text Indexed Search&quot;. A query in Domino.Doc consists of a
+      statement or string similar to an SQL statement, but much simpler. A typical query would
+      request objects that have specific attributes meet certain criteria. Queries can refer to
+      both document content and document attributes, as in &quot;documents with AUTHOR = 'Smith'
+      that contain the word 'cooling'&quot;. </p>
+      <p>Domino today can full text search any file attachment whose file format does not
+      &quot;hide&quot; the text of the document. For example, Lotus WordPro has all kinds of
+      formatting gibberish in the file but in one form or another the text of the document is
+      still intact so that WordPro documents can be full text searched. Word is a good example
+      of an application whose file format does not contain the text in readable form. Thus Word
+      documents cannot be searched. The upcoming V5 release of Domino will solve this problem.</p>
+      <p>Binders and documents can be attached to profile objects. These objects allow a user to
+      create customized attributes for that object. The query model also supports queries on
+      profile attributes. However the API does not currently support querying on binder
+      attributes. It is believed that this will be in a future release.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794334">Navigation</a></li>
+      </b></font><p>Navigation in Domino.Doc can be done through the objects or through
+      querying. By using the object method, children objects can be enumerated within a parent
+      object, and the Domino.Doc tree hierarchy can be traversed through this type of repeated
+      enumeration. Querying can lead a user to a specific object, which can then be traversed to
+      retrieve and children objects. </p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794335">Security</a></li>
+      </b></font><p>Domino.Doc relies on the underlying Lotus Notes system to provide security
+      for its documents. Each object in Domino.Doc can be separately assigned access lists of
+      users and groups who can do certain operations on that object. Each user or group can have
+      specific access rights that are different from the other members of the access list.</p>
+      <p>Access rights include versioning of documents and binders as well. A user who has
+      sufficient control rights of an object can also set that object&#146;s access control
+      list.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457794336">Referencing</a></li>
+    </ol>
+    </b></font><p>Domino.Doc supports minimal referencing. A document object must have one
+    true binder as its parent object. Another binder may contain that document but only as a
+    &quot;link&quot;. There is no current support in the Domino.Doc API for creating links or
+    references to a document from a binder.</p>
+    <li><font SIZE="5"><b><a NAME="_Toc457794337">FileNET IDM</a></li>
+  </ol>
+</ol>
+</b></font>
+
+<p>This describes the compound document capabilities that are currently available (as of
+July 1998) in FileNET's IDM document management system.</p>
+
+<p>The CD capabilities are exposed through either of two application interfaces - one that
+is for documents created with general office applications, and the other a very specific
+implementation that interfaces several CAD packages (AutoCAD, MicroStation, and others) to
+provide total control of drawing configurations in a multi-user CAD environment.</p>
+
+<p>General Office Application</p>
+
+<p>The general office implementation allows the user to create compound documents by
+creating links in the DMS (relationship objects) that connect a parent (or container)
+document with one or more target documents. The target documents may themselves be
+compound documents.</p>
+
+<p>All of the documents in the compound document are checked-in and managed by the DMS. </p>
+
+<p>By default, these links connect a specific version of the parent document with the
+latest version of the target component. When checking out the parent document, the user is
+given the option of either checking out or copying each of the target components. Each of
+the documents in a compound document (including all target components), are stored as
+independent documents, and may have independent authoring and update cycles.</p>
+
+<p>CAD - (Computer Aided Design)</p>
+
+<p>The CAD implementation is significantly more complex and capable. In a large drafting
+organization, CAD drawings are usually configured so that specific portions of a single
+drawing are stored as separate files (building structure, electrical wiring, heating and
+air conditioning, etc., each in a separate file.) A master file contains the list of all
+of these separate files, and the CAD application will read the master file and display one
+or more of these &quot;layers&quot; for the draftsman to modify. Each of these layers will
+have its own approval cycle, and specific versions will be identified as applicable for
+certain configurations of the entire drawing.</p>
+
+<p>The CAD-specific application features tight integration with a specific CAD package,
+and allows multiple user the ability to independently modify each of the component files
+that make up an entire CAD drawing.</p>
+
+<p>It maintains each component as a separate document (with associated version history),
+and maintains links (relationship objects) that connect specific versions of each
+component. It supports mark-up and red-lining with links to other drawings, and provides
+the approval and drawing configuration control necessary for the CAD environment.</p>
+</body>
+</html>

@@ -1,0 +1,1095 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Movable Type 4.34-en" />
+<link rel="stylesheet" href="http://nfocentrale.com/status/styles.css" type="text/css" />
+<link rel="start" href="http://nfocentrale.com/status/" title="Home" />
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://nfocentrale.com/status/atom.xml" />
+<script type="text/javascript" src="http://nfocentrale.com/status/mt.js"></script>
+
+
+    <title>nfoCentrale Status: July 2010 Archives</title>
+
+
+    <link rel="prev" href="http://nfocentrale.com/status/2010/06/default.htm" title="June 2010" />
+    <link rel="next" href="http://nfocentrale.com/status/2010/08/default.htm" title="August 2010" />
+
+</head>
+<body id="mt-blog" class="mt-archive-listing mt-datebased-monthly-archive layout-tw">
+    <div id="container">
+        <div id="container-inner">
+
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name"><a href="http://nfocentrale.com/status/" accesskey="1">nfoCentrale Status</a></div>
+            <div id="header-description">nfoCentrale Status is a blog used to report status changes and other information related to the care and feeding of the nfoCentrale sites and their blogs.</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <h1 id="page-title" class="archive-title">July 2010 Archives</h1>
+
+
+
+
+
+                            
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/07/default.htm#entry-000035"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/35"
+    dc:title="Windows Live Writer: Uploading Pictures III &amp;ndash; Configuring Live Writer"
+    dc:identifier="http://nfocentrale.com/status/2010/07/default.htm#entry-000035"
+    dc:subject="blog development"
+    dc:description="Windows Live Writer can upload pictures using the upload features of some blog-publishing services.&#160; It will do that with Blogspot and Windows Live Spaces, for example.&#160; If you are hosting your own blogging engine, such as Movable Type, or have..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-07-09T14:51:28-08:00" />
+</rdf:RDF>
+-->
+
+<div id="entry-35" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h2 class="asset-name entry-title"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html" rel="bookmark">Windows Live Writer: Uploading Pictures III &ndash; Configuring Live Writer</a></h2>
+        <div class="asset-meta">
+            <span class="byline">
+    
+                By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-07-09T14:51:28-08:00">July  9, 2010  2:51 PM</abbr>
+    
+            </span>
+
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html#comments">No Comments</a>
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html#trackbacks">4 TrackBacks</a>
+
+        </div>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <p>Windows Live Writer can upload pictures using the upload features of some blog-publishing services.&#160; It will do that with Blogspot and Windows Live Spaces, for example.&#160; </p>  <p>If you are hosting your own blogging engine, such as Movable Type, or have your own web site where you want blog posts and the images they use stored together, there is an option to upload images via FTP (File Transfer Protocol).&#160; This does not require any cooperation of the blog-publishing engine.&#160; Windows Live Writer posts the images independently, incorporating them in the post that is then submitted to the blog engine.</p>  <p>Another way to incorporate images into blog posts is to have them somewhere else on the Internet.&#160; I often have photos and images on Flickr that I then include in blog posts.&#160; I use this method occasionally, but not for images such as screen captures that are meaningful only in conjunction with a blog post.&#160; Even when there is a Flickr version, I may want to resize and crop differently for the blog version.</p>  <p>Aside from using photos that are already on Flickr, FTP is my chosen method for all blogs that are published on <strong><em>nfoCentrale</em></strong> sites.&#160; I did this when I used Windows Live Writer with Blogger to publish to nfoCentrale sites (also via FTP), and I am creating the same procedure for using Windows Live Writer with Movable Type.</p>  <p><strong>PREREQUISITES</strong></p>  <p>Configuration of Windows Live Writer for FTP transfer of images to a web site is in four steps:</p>  <ol>   <ol>     <li><strong>Connecting Windows Live Writer and the Blog</strong>.&#160; The blog must already be set up and Windows Live Writer configured to post to it.&#160; If Live Writer can’t log into the blog-publishing engine for your blog, it can’t be configured to upload images.&#160; This step can be performed any time prior to step (4).&#160; <br />&#160; <br /><small>This part of the setup depends on the blog-publishing engine and how accounts for automated publishing through it are managed.&#160; I use a Movable Type configuration on an Apache-based hosting-service account.&#160; The user identification and password that Windows Live Writer uses to deliver posts is determined by that configuration and custom setting under my control.</small>         <br />&#160;&#160; </li>      <li><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html"><strong>Preparing a Place for the Images</strong></a>.&#160; A web-server location for the images must already be created for use.&#160; This can be accomplished by using web-development software that publishes to a web site.&#160; It can also be done using FTP access to the full web-server account and creating the necessary directories and any initial content.&#160; The result will be a structure such as the one for <em>nfoCentrale Status</em> images described in <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html">Part I</a>.         <br />&#160;&#160; <br /><small>If the site is already published via FTP, then providing additional FTP accounts for delegating limited access to Windows Live Writer may be relatively straightforward.&#160;&#160; I use a combination of Microsoft FrontPage, Microsoft Internet Information Server (IIS), Visual SourceSafe, and FTP as part of a web-site development workflow.&#160; While that’s more involved than many prefer, it also provides a backup and a restoration/migration mechanism for my web sites and the blogs that are part of them.&#160; </small>        <br />&#160;&#160; </li>      <li><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html"><strong>Creating a LImited FTP Account</strong></a>.&#160; It is desirable to create a limited FTP account that can only be used to upload to the images location in step (2).&#160; While there is little risk that the account credentials can be stolen and abused, I find it to be a consistent practice to create separate, limited FTP accounts that are easy to cancel or to change the password of without disrupting anything else.&#160; This stage is illustrated in <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html">Part II</a>.         <br />&#160;&#160; <br /><small>In my case, I also use computer-generated passwords that are definitely not memorable.&#160; I remember these passwords in a digital safe on my computer.&#160; This helps me to avoid using the same password in more than one place while also making it difficult to attack the password.&#160; This, combined with the limitations on the FTP account limit the damage that can result from a successful exploit against the limited FTP account.&#160; Along with the backup procedures that are kept in place, recovery from an exploit or other damage is also relatively straightforward. </small>        <br />&#160;&#160; </li>      <li><strong>Configuring Live Writer for Photo Upload</strong>.&#160; The final stage.         <br />&#160; </li>   </ol> </ol>  <p><strong>CONFIGURATION STEPS</strong></p>  <p>Open Windows Live Writer and select Tools | Options | Accounts.&#160; The account should already be set up for publishing to the blog without accompanying images.&#160; (At this point, only images that are elsewhere on the web can be posted.)</p>  <p><img style="border-right-width: 0px; margin: 5px auto; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Typical Live Writer Tools | Options | Accounts selection" border="0" alt="Typical Live Writer Tools | Options | Accounts selection" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy08201007052027SetupImagesWLW.png" width="560" height="589" /> </p>  <p>On the dialog for editing the Blog Settings, select the Pictures option, select “Upload pictures to an FTP server:” and then click “Configure FTP …”:</p>  <p><img style="border-right-width: 0px; margin: 5px auto 15px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Selecting FTP Configuration for Uploading Pictures" border="0" alt="Selecting FTP Configuration for Uploading Pictures" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy09201007052028SetupImagesWLW.png" width="559" height="607" /> </p>  <p><a href="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy16201007081729statusimagesPW.png"><img style="border-right-width: 0px; margin: 0px 10px 5px 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Moving the password from the safe to the clipboard for adding to the Live Writer FTP Account Parameters" border="0" alt="Moving the password from the safe to the clipboard for adding to the Live Writer FTP Account Parameters" align="left" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy16201007081729statusimagesPW_thumb.png" width="240" height="132" /></a> To configure FTP, I use the settings obtained when I <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html">created the FTP account</a>.&#160; I recover the password from its location in my password-safe software.&#160; </p>  <p>This password is delivered to Windows Live Writer and I allow it to remember the account log-in for automatic use from my blog-authoring computer(s).</p>  <p>An interesting feature of Windows Live Writer is its provision for browsing to the FTP account.&#160; This confirms that access works and it reveals what the access reaches.&#160; Take that opportunity:</p>  <p><img style="border-right-width: 0px; margin: 5px auto 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Browsing to the FTP location checks the FTP parameters" border="0" alt="Browsing to the FTP location checks the FTP parameters" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy10201007052047SetupImagesWLW.png" width="544" height="506" /> </p>  <p>The option to Browse For Folder shows the achievement of access and the structure that is available at that point.&#160; We are (we trust) looking at the place on the web server that corresponds to <a href="http://nfoCentrale.com/status/images">http://nfoCentrale.com/status/images</a> and that is where we want Windows Live Writer to place the images it uploads:</p>  <p><img style="border-right-width: 0px; margin: 5px auto 10px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="The FTP access is limited to the folder set up when the FTP account was created.  Nothing else can be seen here." border="0" alt="The FTP access is limited to the folder set up when the FTP account was created.  Nothing else can be seen here." src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy11201007052048SetupImagesWLW.png" width="544" height="506" /> </p>  <p><small>Technically, the <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html">FTP account that I supplied</a> has a base address at the server location <font face="monospace"><strong>publish_html/status/images/</strong></font> and when we view the server via that account, all we can see is what is under that location.&#160; Even that location is relative to my server-account location <font face="monospace"><strong>/home/orcmid/</strong></font> but that is not part of the material displayed by the web server as <a href="http://nfoCentrale.com/"><font face="monospace"><strong>http://nfoCentrale.com/</strong></font></a> (although I can access it as part of working directly with software on the hosted account via logging into the Linux server through a remote console).</small></p>  <p><small>FTP Browse allows creation of subfolders.&#160; I chose not to do that at this time.&#160; My experience is that unless there is something already there, Windows Live Writer has difficulty confirming the setup.&#160; I have already created an <font face="monospace"><strong>index.htm</strong></font> file in the <font face="monospace"><strong>images/</strong></font> folder, although it is not visible in the Browse, and it will help confirm that I have found the right place.</small></p>  <p>After selecting that I want to use the folder that Browse shows me, Windows Live Writer fills in the appropriate base-relative location in its configuration:</p>  <p><img style="border-right-width: 0px; margin: 5px auto 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="The completed and confirmed FTP Server Configuration for Windows Live Writer uploading of images" border="0" alt="The completed and confirmed FTP Server Configuration for Windows Live Writer uploading of images" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIIICon_B43A/F10xy12201007052049SetupImagesWLW.png" width="328" height="307" /> </p>  <p>The configuration is accepted.&#160; Windows Live Writer has confirmed access to the place that pictures will be published to.&#160; The validity of the URL has also been verified, although I do not know if Live Writer has any way to establish that the two places are actually the same.</p>  <p>In any case, the test, now, is to confirm successful upload of pictures inserted into a Windows Live Writer post and uploaded with the publishing of the post.&#160; I accomplished that by writing and posting <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html">Part I</a>.</p>  <p>&#160;</p>  <p></p>  <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:c5a353ad-18fd-4d56-baa7-ee5b609296df" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/A2+Hosting" rel="tag">A2 Hosting</a>, <a href="http://del.icio.us/popular/Passwords+Max" rel="tag">Passwords Max</a>, <a href="http://del.icio.us/popular/using+FTP+accounts" rel="tag">using FTP accounts</a>, <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/uploading+pictures" rel="tag">uploading pictures</a>, <a href="http://del.icio.us/popular/web+configuration" rel="tag">web configuration</a>, <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a>, <a href="http://del.icio.us/popular/IIS" rel="tag">IIS</a>, <a href="http://del.icio.us/popular/Internet+Information+Server" rel="tag">Internet Information Server</a>, <a href="http://del.icio.us/popular/Miicrosoft+FrontPage" rel="tag">Miicrosoft FrontPage</a>, <a href="http://del.icio.us/popular/VSS" rel="tag">VSS</a>, <a href="http://del.icio.us/popular/Visual+Source+Safe" rel="tag">Visual Source Safe</a>, <a href="http://del.icio.us/popular/FTP+transfer" rel="tag">FTP transfer</a></div>
+        </div>
+
+
+
+    </div>
+    <div class="asset-footer"></div>
+</div>
+
+
+                            
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/07/default.htm#entry-000034"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/34"
+    dc:title="Windows Live Writer: Uploading Pictures II &amp;ndash; Setting Up FTP Account"
+    dc:identifier="http://nfocentrale.com/status/2010/07/default.htm#entry-000034"
+    dc:subject="blog development"
+    dc:description="[updated 2010-09-01T03:00Z Oddly, this post was not in the blog development/Windows Live Writer subcategory.&#160; That rather interrupted the progression between parts I and III so I fixed that.] To have Windows Live Writer place pictures and other uploads in a..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-07-08T18:20:23-08:00" />
+</rdf:RDF>
+-->
+
+<div id="entry-34" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h2 class="asset-name entry-title"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html" rel="bookmark">Windows Live Writer: Uploading Pictures II &ndash; Setting Up FTP Account</a></h2>
+        <div class="asset-meta">
+            <span class="byline">
+    
+                By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-07-08T18:20:23-08:00">July  8, 2010  6:20 PM</abbr>
+    
+            </span>
+
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html#comments">No Comments</a>
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html#trackbacks">2 TrackBacks</a>
+
+        </div>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <p><small>[<strong>updated 2010-09-01T03:00Z</strong> Oddly, this post was not in the blog development/Windows Live Writer subcategory.&#160; That rather interrupted the progression between parts I and III so I fixed that.]</small></p>  <p>To have Windows Live Writer place pictures and other uploads in a location that I own, I need to create an FTP Account that I will dedicate to uploads on behalf of <em>nfoCentrale Status</em> from Windows Live Writer.&#160; The FTP Account will be to the <a href="http://nfoCentrale.com/status/images/">http://nfoCentrale.com/status/images/</a> folder that I <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html">already created on the hosted site in Part I</a>.</p>  <p>I must create the directory (done in Part I) and the FTP account next, because Windows Live Writer will verify that the account works and that the location on the server exists.</p>  <p align="center"><a href="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIISett_F790/F10xy05201007052008MakeImagesFTP_3.png"><img style="border-right-width: 0px; margin: 0px auto 5px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Creating an FTP Account on the Web-Hosting Account" border="0" alt="Creating an FTP Account on the Web-Hosting Account" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIISett_F790/F10xy05201007052008MakeImagesFTP.png" width="677" height="408" /></a></p>  <p>I create an FTP account that has, as its accessible location, the web-server folder that corresponds to <a href="http://nfoCentrale.com/status/images">http://nfoCentrale.com/status/images</a>.&#160; This location is near the “top” (public_html) on my web-server account, where the material of the <a href="http://nfocentrale.com/status/2010/05/nfocentrale-anchoring-all-of-it.html"><strong><em>nfoCentrale</em></strong> anchor site</a> is hosted.&#160; You can also see that the CPanel administration tool furnished by my hosting service also seems to verify that the directory exists on the server already.</p>  <p>Other hosting services will have their own provisions for creating FTP access to specific web-site folders.&#160; In this case, I am taking advantage of the opportunity to create an individual account that is only useful in uploading to the <font face="monospace"><strong>status/images</strong></font> folder associated with the <em>nfoCentrale Status</em> blog.</p>  <p>&#160;<img style="border-right-width: 0px; margin: 5px auto; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Finding out how to access the FTP Account" border="0" alt="Finding out how to access the FTP Account" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIISett_F790/F10xy06201007052010MakeImagesFTP.png" width="693" height="80" /> </p>  <p>On the page where I can review all of my FTP accounts, I can also find out what the correct FTP configuration is for accessing the server location associated with this new account.</p>  <p><img style="border-right-width: 0px; margin: 5px 10px 5px 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="The FTP Settings that I need to provide to Windows Live Writer" border="0" alt="The FTP Settings that I need to provide to Windows Live Writer" align="left" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIISett_F790/F10xy07201007052012MakeImagesFTP.png" width="336" height="112" /> </p>  <p></p>  <p>These are the settings that Windows LIve Writer will ask for.&#160; I will also need to provide the account-specific password as well.</p>  <p>I use a password generator to create strong passwords that I never try to remember.&#160; Instead, I keep the passwords in a safe associated with the name of the account and any other details that I want to have available for lookup.</p>  <p align="center"><img style="border-right-width: 0px; margin: 5px 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="The Password Safe Entry where I created the FTP Password" border="0" alt="The Password Safe Entry where I created the FTP Password" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIISett_F790/F10xy17201007081731statusimagesPWsafe.png" width="608" height="307" /> </p>  <p>When I needed a password for the hosting-service to enforce for the FTP account specific to status/images/ I created the above new entry and generated a password to use.&#160;&#160; That is now retained in the safe for use any time I need to provide the account to Windows Live Writer (or another tool) for its automatic use.&#160; I can also create a new password if that becomes advisable at some future time.</p>  <p>&#160;</p>  <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:08c1633d-1009-4ec7-907a-dce61c1dfcc9" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/A2+Hosting" rel="tag">A2 Hosting</a>, <a href="http://del.icio.us/popular/CPanel" rel="tag">CPanel</a>, <a href="http://del.icio.us/popular/creating+FTP+accounts" rel="tag">creating FTP accounts</a>, <a href="http://del.icio.us/popular/creating+FTP+passwords" rel="tag">creating FTP passwords</a>, <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/uploading+pictures" rel="tag">uploading pictures</a>, <a href="http://del.icio.us/popular/web+configuraton" rel="tag">web configuraton</a>, <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a>, <a href="http://del.icio.us/popular/Passwords+Max" rel="tag">Passwords Max</a></div>
+        </div>
+
+
+
+    </div>
+    <div class="asset-footer"></div>
+</div>
+
+
+                            
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/07/default.htm#entry-000033"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/33"
+    dc:title="Windows Live Writer: Uploading Pictures I &amp;ndash; Preparing Place for Images"
+    dc:identifier="http://nfocentrale.com/status/2010/07/default.htm#entry-000033"
+    dc:subject="blog development"
+    dc:description=" For all of my blogs, I create a separate images/ folder in the blog directory on the web server that hosts the blog. For nfoCentrale Status, I prepared the folder as part of my development web site for the..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-07-05T21:58:48-08:00" />
+</rdf:RDF>
+-->
+
+<div id="entry-33" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h2 class="asset-name entry-title"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html" rel="bookmark">Windows Live Writer: Uploading Pictures I &ndash; Preparing Place for Images</a></h2>
+        <div class="asset-meta">
+            <span class="byline">
+    
+                By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-07-05T21:58:48-08:00">July  5, 2010  9:58 PM</abbr>
+    
+            </span>
+
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html#comments">No Comments</a>
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html#trackbacks">5 TrackBacks</a>
+
+        </div>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <blockquote>   <p><a href="http://nfocentrale.com/status/images/2010/1ebe67695b80_11E51/F10xy13201007052144PreparedImagesPlace.png"><img style="border-right-width: 0px; margin: 0px 5px 5px 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Prepared folder for nfoCentrale Status  images" border="0" alt="Prepared folder for nfoCentrale Status  images" align="left" src="http://nfocentrale.com/status/images/2010/1ebe67695b80_11E51/F10xy13201007052144PreparedImagesPlace_thumb.png" width="210" height="273" /></a> For all of my blogs, I create a separate <font face="monospace"><strong>images/</strong></font> folder in the blog directory on the web server that hosts the blog.</p>    <p>For <em>nfoCentrale Status</em>, I prepared the folder as part of my development web site for the <strong><em>nfoCentrale</em></strong> anchor site.&#160; The folder is initialized with an <font face="monospace"><strong><a href="http://nfocentrale.com/status/images/index.htm">index.htm</a></strong></font> that I use as a default to carry construction-structure information in the absence of any other default page.</p>    <p>It is useful to have the folder already on the site.&#160; When I train Windows Live Writer to use this destination for new pictures that are used on <em>nfoCentrale Status</em> pages, it will verify the location for me.</p>    <p>I have already gone through <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html">the entire procedure</a>.&#160; This image appearing correctly on the blog page will be confirmation that my upload settings are working.</p>    <p><small>[<strong>update 2010-07-09T21:57Z</strong> I added the link back to the procedure that had the image on this page be uploaded successfully.]</small></p>    <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:654c9a5c-67be-41f4-b767-e67d26d4d676" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/uploading+pictures" rel="tag">uploading pictures</a>, <a href="http://del.icio.us/popular/web+configuration" rel="tag">web configuration</a>, <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a></div></blockquote>
+        </div>
+
+
+
+    </div>
+    <div class="asset-footer"></div>
+</div>
+
+
+                            
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/07/default.htm#entry-000032"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/32"
+    dc:title="nfoCentrale: Repaving Continues"
+    dc:identifier="http://nfocentrale.com/status/2010/07/default.htm#entry-000032"
+    dc:subject="blog development"
+    dc:description="Despite my itch to bring my blogs back up quickly, I find that I am spending new effort on the repaving of the nfoCentrale anchor site. I find that as I continue to use the nfoCentrale Status blog, I also..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-07-05T18:11:38-08:00" />
+</rdf:RDF>
+-->
+
+<div id="entry-32" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h2 class="asset-name entry-title"><a href="http://nfocentrale.com/status/2010/07/nfocentrale-repaving-continues.html" rel="bookmark">nfoCentrale: Repaving Continues</a></h2>
+        <div class="asset-meta">
+            <span class="byline">
+    
+                By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-07-05T18:11:38-08:00">July  5, 2010  6:11 PM</abbr>
+    
+            </span>
+
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/nfocentrale-repaving-continues.html#comments">No Comments</a>
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/nfocentrale-repaving-continues.html#trackbacks">2 TrackBacks</a>
+
+        </div>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <p>Despite my itch to bring my blogs back up quickly, I find that I am spending new effort on the <a href="http://nfocentrale.com/status/2010/05/nfocentrale-anchoring-all-of-it.html">repaving of the nfoCentrale anchor site</a>.</p>  <p>I find that as I continue to use the <em>nfoCentrale Status</em> blog, I also want to have it attached to a cleaner, well-backed-up site.&#160; </p>  <p>So I have been practicing backing up and synchronizing <em>nfoCentrale Status</em> in my web-site development and deployment structure.</p>  <p>What I call the <a href="http://nfocentrale.com/index.htm">Construction Structure</a> for the site is now more civilized.&#160; I have cleared away some of the underbrush that arrived as boilerplate pinched from other sites.&#160; There is more to do before those repaving badges can be turned green.</p>  <p>The part that is in aid of bringing my blogs back on-line has to do with Windows Live Writer.&#160; I am setting up to have Windows Live Writer able to upload images for <strong><em>nfoCentrale Status</em></strong>.&#160; I will also be documenting everything that it takes to do that, and I will put that documentation on the site and/or blog in some appropriately-paved location.&#160; So there is a little bit of chicken-and-egg gerbil racing here too.</p>  <p>I am now ready to do the configuring that will enable Windows Live Writer to upload images instead of using the Movable Type arrangement for images-as-assets, an arrangement I prefer to avoid using.&#160; The initial successes will be demonstrated by the upload of images about the uploading of images.&#160; </p>  <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:6b245ba3-bc3c-429a-89f0-5def945d7113" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a>, <a href="http://del.icio.us/popular/anchor+site" rel="tag">anchor site</a>, <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/Movable+Type" rel="tag">Movable Type</a>, <a href="http://del.icio.us/popular/blog+development" rel="tag">blog development</a>, <a href="http://del.icio.us/popular/web+development" rel="tag">web development</a>, <a href="http://del.icio.us/popular/posting+images" rel="tag">posting images</a></div>
+        </div>
+
+
+
+    </div>
+    <div class="asset-footer"></div>
+</div>
+
+
+                            
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/07/default.htm#entry-000031"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/31"
+    dc:title="Windows Live Writer: Looking for Better Tagging"
+    dc:identifier="http://nfocentrale.com/status/2010/07/default.htm#entry-000031"
+    dc:subject="blog development"
+    dc:description="I have given up on technorati tags.&#160;&#160; The support for blog registration and pinging seems to have simply disappeared.&#160;&#160; The Movable Type engine supports its own little tag world for posts authored via the browser-interface editor.&#160; I don’t want that,..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-07-05T13:13:08-08:00" />
+</rdf:RDF>
+-->
+
+<div id="entry-31" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h2 class="asset-name entry-title"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-looking-for-better-tagging.html" rel="bookmark">Windows Live Writer: Looking for Better Tagging</a></h2>
+        <div class="asset-meta">
+            <span class="byline">
+    
+                By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-07-05T13:13:08-08:00">July  5, 2010  1:13 PM</abbr>
+    
+            </span>
+
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-looking-for-better-tagging.html#comments">No Comments</a>
+            <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-looking-for-better-tagging.html#trackbacks">No TrackBacks</a>
+
+        </div>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <p>I have given up on technorati tags.&#160;&#160; The support for blog registration and pinging seems to have simply disappeared.&#160;&#160; The Movable Type engine supports its own little tag world for posts authored via the browser-interface editor.&#160; I don’t want that, I want tags to link to an aggregating service of some sort.&#160; </p>  <p>I am going to use del.icio.us tags (although they have since changed their name) and see if they go through without my doing anything in particular.&#160; If I need to ping, that will be interesting.</p>  <p>The tags seem to work as tags.&#160; I was wondering if there is some sort of submission to del.icio.us that happens.&#160; I don’t think so.&#160; </p>  <p>I will be putting a del.icio.us button on the blogs and we’ll see how that helps.&#160; For now, I will simply tag this way.</p>  <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:e58d9058-7709-4768-a552-d49fa1a47fed" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/del.icio.us" rel="tag">del.icio.us</a>, <a href="http://del.icio.us/popular/technorati" rel="tag">technorati</a>, <a href="http://del.icio.us/popular/tags" rel="tag">tags</a>, <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/Movable+Type" rel="tag">Movable Type</a>, <a href="http://del.icio.us/popular/blog+tagging" rel="tag">blog tagging</a>, <a href="http://del.icio.us/popular/nfocentrale" rel="tag">nfocentrale</a></div>
+        </div>
+
+
+
+    </div>
+    <div class="asset-footer"></div>
+</div>
+
+
+
+
+                            <div class="content-nav">
+                                <a href="http://nfocentrale.com/status/2010/06/default.htm">&laquo; June 2010</a> |
+                                <a href="http://nfocentrale.com/status/default.htm">Main Index</a> |
+                                <a href="http://nfocentrale.com/status/archives.html">Archives</a>
+                                | <a href="http://nfocentrale.com/status/2010/08/default.htm">August 2010 &raquo;</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div id="beta">
+    <div id="beta-inner">
+
+
+    
+    <div class="widget-search widget">
+    <h3 class="widget-header">Search</h3>
+    <div class="widget-content">
+        <form method="get" action="http://nfocentrale.com/cgi-bin/mt/mt-search.cgi">
+            <input type="text" id="search" class="ti" name="search" value="" />
+
+            <input type="hidden" name="IncludeBlogs" value="1" />
+
+            <input type="hidden" name="limit" value="20" />
+            <input type="submit" accesskey="4" value="Search" />
+        </form>
+    </div>
+</div>
+
+<div class="widget-about-this-page widget">
+    <h3 class="widget-header">
+
+    
+        About this Archive
+    
+
+
+    </h3>
+    <div class="widget-content">
+
+
+
+
+
+        <p class="first">This page is an archive of entries from <strong>July 2010</strong> listed from newest to oldest.</p>
+    
+        <p><a href="http://nfocentrale.com/status/2010/06/default.htm">June 2010</a> is the previous archive.</p>
+    
+    
+        <p><a href="http://nfocentrale.com/status/2010/08/default.htm">August 2010</a> is the next archive.</p>
+    
+
+
+        <p>Find recent content on the <a href="http://nfocentrale.com/status/">main index</a> or look in the <a href="http://nfocentrale.com/status/archives.html">archives</a> to find all content.</p>
+
+    </div>
+</div>
+<div class="widget-archive widget-archive-category widget">
+    <h3 class="widget-header">Categories</h3>
+    <div class="widget-content">
+    
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/default.htm" title="Software tools and their usage in blog development for the nfoCentrale sites.">blog development (21)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/blogger/default.htm">Blogger (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/movable-type/default.htm">Movable Type (20)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/windows-live-writer/default.htm">Windows Live Writer (26)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/zemanta/default.htm">Zemanta (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/default.htm">blogs (12)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/kiln-sitters-digest/default.htm">Kiln Sitter's Digest (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/numbering-peano/default.htm">Numbering Peano (4)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-lair/default.htm">Orcmid's Lair (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-live-hideout/default.htm">Orcmid's Live Hideout (11)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/professor-von-clueless/default.htm">Professor von Clueless (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/pursuing-harmony/default.htm">Pursuing Harmony (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/spanner-wingnuts-muddleware-lab/default.htm">Spanner Wingnut's Muddleware Lab (9)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/nfocentrale-status/default.htm">nfoCentrale Status (14)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/default.htm">centrale (11)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/lan/default.htm">LAN (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/olpc/default.htm">OLPC (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/whs/default.htm">WHS (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/astraendo/default.htm">astraendo (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/blocco/default.htm">blocco (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/centro/default.htm">centro (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/ceramica/default.htm">ceramica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/compagno/default.htm">compagno (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/default.htm">conclave (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave333/default.htm">conclave.333 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave386/default.htm">conclave.386 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/liberta/default.htm">liberta (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/default.htm">microcomputers (2)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/atari-800/default.htm">Atari 800 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h8/default.htm">H8 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h89/default.htm">H89 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/hz158/default.htm">HZ158 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/ti-sr52/default.htm">TI SR52 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/quadro/default.htm">quadro (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scampo/default.htm">scampo (13)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scritto/default.htm">scritto (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/retired/default.htm">{retired} (2)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/default.htm">ecostructure (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/wp7/default.htm" title="Devices that serve as apparatus of the ecostructure, including when that is the role of endpoints in Centrale and the nfoCentrale web presence.">devices (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/default.htm">sites (4)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dma/default.htm">DMA (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dmware/default.htm">DMware (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/infonuovo/default.htm">InfoNuovo (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nuovodoc/default.htm">NuovoDoc (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/default.htm">ODMA (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/odmdev/default.htm">ODMdev (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/eoware/default.htm">eoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/millennia-antica/default.htm">millennia-antica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/miser/default.htm">miser (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/default.htm">nfoCentrale (13)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralecom/default.htm">nfocentrale.com (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralenet/default.htm">nfocentrale.net (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoware/default.htm">nfoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoworks/default.htm">nfoWorks (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmid/default.htm">orcmid (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidtv/default.htm">orcmid.tv (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidapache/default.htm">orcmid@apache (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/trost/default.htm">trost (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/worthiness/default.htm">worthiness (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/retired-1/default.htm">{retirees} (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/strumenti/default.htm" title="The tools and instruments that are part of the inventory of software and accessories deployed on Centrale, along with those whose principle application is blog, web, and other ecostructure development.">strumenti (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/default.htm">web development (22)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/apache/default.htm">Apache (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/ftp/default.htm">FTP (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/frontpage/default.htm">FrontPage (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/iis/default.htm">IIS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/linux/default.htm">Linux (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/pws/default.htm">PWS (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/vss/default.htm">VSS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/windows/default.htm">Windows (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/obsolete/default.htm">{obsolete} (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+        </ul>
+        
+    
+    </div>
+</div>
+
+
+
+
+    <div class="widget-archive-monthly widget-archive widget">
+    <h3 class="widget-header">Monthly <a href="http://nfocentrale.com/status/archives.html">Archives</a></h3>
+    <div class="widget-content">
+        <ul>
+        
+            <li><a href="http://nfocentrale.com/status/2011/07/default.htm">July 2011 (3)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/03/default.htm">March 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/02/default.htm">February 2011 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/01/default.htm">January 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/12/default.htm">December 2010 (2)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/11/default.htm">November 2010 (4)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/10/default.htm">October 2010 (7)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/09/default.htm">September 2010 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/08/default.htm">August 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/07/default.htm">July 2010 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/06/default.htm">June 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/05/default.htm">May 2010 (15)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/11/default.htm">November 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/09/default.htm">September 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/08/default.htm">August 2007 (1)</a></li>
+        
+        </ul>
+    </div>
+</div>
+        
+    
+
+
+
+<div class="widget-pages widget">
+    <h3 class="widget-header">Pages</h3>
+    <div class="widget-content">
+        <ul>
+    
+    
+        </ul>
+    </div>
+</div>
+
+<div class="widget-syndication widget">
+    <div class="widget-content">
+        <ul>
+            <li><img src="http://nfocentrale.com/mt-static/images/status_icons/feed.gif" alt="Subscribe to feed" width="9" height="9" /> <a href="http://nfocentrale.com/status/atom.xml">Subscribe to this blog's feed</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="widget-openid widget">
+    <div class="widget-content">
+        <em><strong>OpenID</strong> accepted here</em>
+        <a href="http://www.sixapart.com/labs/openid/">Learn more about OpenID</a>
+    </div>
+</div>
+
+<div class="widget-powered widget">
+    <div class="widget-content">
+        <a href="http://www.movabletype.com/"><img src="http://nfocentrale.com/mt-static/images/mt4-bug-pbmt-white.png" alt="Powered by Movable Type 4.34-en" width="120" height="75" /></a>
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+            <div class="widget-powered widget">
+                <div class="widget-content">
+                    Powered by <a href="http://www.movabletype.com/" rel="generator">Movable Type</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>ctnewdoc.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 The Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  
+ * Code example: Creation of a new simple document in DMA 1.0. 
+ *
+ */
+
+#ifndef NULL
+#define NULL    0
+#endif
+
+// ANSI C header file
+#include &lt;stddef.h&gt;
+
+// DMA header files
+#include &lt;dmatypes.h&gt;
+#include &lt;dmastr.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmarc.h&gt;  
+#include &lt;dmacom.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+
+// Assumes:
+//   connection to doc space has already been made
+//   documents are single rendition, single content element
+//   documents are not versioned.
+
+extern LPIdmaDocSpace iDocSpace; /* interface on the connected doc space */
+
+// Utilities assumed to exist
+extern pDmaString MakeDmaString(DmaWChar*);
+extern void FreeDmaString(pDmaString);
+
+Abort(DmaRC rc, char *msg);
+
+DmaWChar *docURL = L"file://\\project\\foo.txt"; /* URL of content file */
+
+// While this example builds the document structure bottom up (from
+//    content transfer element up to doc ver), the reverse could also be done.
+
+void StoreDocInDocSpace(DmaWChar *docURL)
+{
+IdmaObjectFactory*      iObjectFactory = NULL;
+IdmaContentTransfer*    iContent = NULL;
+IdmaListOfObject*       iContentEls = NULL;
+IdmaEditListOfObject*   iEditContentList = NULL;
+IdmaEditListOfObject*   iEditRenditionList = NULL;
+IdmaConnection*         iDocConnection = NULL;
+IdmaEditProperties*     iDocVer = NULL;
+IdmaEditProperties*     iContentProps = NULL;
+IdmaEditProperties*     iRenditionProps = NULL;
+
+pDmaString docURLString = MakeDmaString(docURL);
+pDmaString single = MakeDmaString(L"single");
+pDmaString plainText = MakeDmaString(L"MIME::text/plain");
+
+//  Create a content transfer element, and set its Capture Resource.
+//  NOTE: the object factory in the doc space is used to create
+//   the objects that are used in storing a new document -- since
+//   those objects may be doc space dependent
+
+DmaRC rc =iDocSpace-&gt;QueryInterface(IID_IdmaObjectFactory,(pDmapv) &amp;iObjectFactory);
+if (rc != DMARC_OK)
+    Abort (rc, "Failed to get object factory interface");
+
+// NOTE: for brevity, further error checking is omitted.
+//   All DMA calls should be followed by code similar to the above
+
+rc = iObjectFactory-&gt;CreateObject(&amp;dmaClass_ContentTransfer,
+                                IID_IdmaContentTransfer,(pDmapv) &amp;iContent);
+rc = iContent-&gt;SetCaptureResource(docURLString);
+
+// set required properties on the content transfer object
+rc = iContent-&gt;QueryInterface(IID_IdmaEditProperties,(pDmapv) &amp;iContentProps);
+rc = iContentProps-&gt;PutPropValStringById(&amp;dmaProp_ComponentType, single);
+
+// Create a rendition, and link in content transfer object
+rc = iObjectFactory-&gt;CreateObject(&amp;dmaClass_Rendition,
+                                IID_IdmaProperties,(pDmapv) &amp;iRenditionProps);
+rc = iRenditionProps-&gt;GetPropValObjectById(&amp;dmaProp_ContentElements, 
+                        IID_IdmaEditListOfObject, (pDmapv) &amp;iEditContentList);
+rc = iEditContentList-&gt;InsertObject(0, (pDmapv) &amp;iContent);
+
+// Set required property - Rendition Type - on the rendition object
+rc = iRenditionProps-&gt;PutPropValStringById(&amp;dmaProp_RenditionType, plainText);
+
+// Now make a doc version object and insert the rendition onto its rendition list
+rc = iObjectFactory-&gt;CreateObject(&amp;dmaClass_DocVersion,
+                                IID_IdmaEditProperties,(pDmapv) &amp;iDocVer);
+// NOTE: since IdmaEditProperties inherits from IdmaProperties,
+//   no QueryInterface is needed
+rc = iDocVer-&gt;GetPropValObjectById(&amp;dmaProp_Renditions, IID_IdmaEditListOfObject,
+                            (pDmapv) &amp;iEditRenditionList);
+rc = iEditRenditionList-&gt;InsertObject(0, (pDmapv) &amp;iRenditionProps);
+
+// NOTE: if we were using a sub-class of doc version with properties
+//  like title, author, ... we could set them here 
+
+// Make the new document persistent
+rc = iDocVer-&gt;QueryInterface(IID_IdmaConnection, (pDmapv) &amp;iDocConnection);
+rc = iDocConnection-&gt;ExecuteChange(NULL, NULL, DMA_FALSE);
+
+// cleanup
+if (iObjectFactory != NULL) iObjectFactory-&gt;Release();
+if (iContent != NULL) iContent-&gt;Release();
+if (iContentEls != NULL) iContentEls-&gt;Release();
+if (iEditContentList != NULL) iEditContentList-&gt;Release();
+if (iEditRenditionList != NULL) iEditRenditionList-&gt;Release();
+if (iDocConnection != NULL) iDocConnection-&gt;Release();
+if (iDocVer != NULL) iDocVer-&gt;Release();
+if (iContentProps != NULL) iContentProps-&gt;Release();
+if (iRenditionProps != NULL) iRenditionProps-&gt;Release();
+
+FreeDmaString(docURLString);
+FreeDmaString(single);
+FreeDmaString(plainText);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>
+

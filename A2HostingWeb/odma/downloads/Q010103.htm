@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /ODMACompagno/downloads/Q010103.htm 9     07-07-28 11:15 Orcmid $-->
+<title>Q010103 Visual Basic Access to ODMA Functions</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+<base target="_top">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.aiim.org" target="_top">AIIM</a> <a href="http://DMware.info/" target="_top"> DMware</a>
+<a href="http://ODMA.info/" target="_top"> ODMA</a> <a href="http://ODMA.info/faq/"> FAQ</a>
+<a href="../faq/q000001.htm#Q010103">Q010103</a></h2>
+
+<h1 align="center"><b>Visual Basic Access to ODMA Functions</b></h1>
+
+<h5 align="center">&nbsp;<a href="#0.25">Version 0.25</a> L<span style="font-variant: small-caps">ast updated</span>
+ 2002-11-22-22:16 -0700 (pdt)<br>
+The latest version
+of this information is available on the <a href="http://DMware.info/" target="_top">AIIM
+DMware</a> <a href="http://ODMA.info/" target="_top">ODMA site</a>.
+</h5>
+
+<blockquote>
+
+  <hr>
+
+<h3><i><a href="#Summary">Summary</a>:</i></h3>
+
+  <blockquote>
+
+<p><i>This response addresses questions&nbsp;about the usage of Visual Basic and
+component technology as a means for accessing and providing ODMA functionality.</i></p>
+
+<p><i><b>There is presently (November, 2002) no public solution for general access
+to ODMA-integrated DMS systems from Visual Basic applications.&nbsp; There is
+also no public solution for construction of DMS integration using Visual
+Basic.&nbsp;&nbsp;</b></i></p>
+
+<p><i>The <a href="http://ODMA.info/active/" target="_self"><b>ActiveODMA
+project</b></a> is intended to make ODMA integration available to all platform
+COM-capable and scripting languages.&nbsp; There has been negligible progress to
+date.</i></p>
+
+<p><i>This FAQtip summarizes the known approaches to bridging the mismatch
+between ODMA and the Visual Basic programming model (and others like it).&nbsp;
+Few available resources are identified.</i></p>
+
+  </blockquote>
+</blockquote>
+
+<h2>1. <a href="#AccessODMA">Accessing ODMA Using Visual Basic</a></h2>
+
+<h2>2. <a href="#ODMAUsingComponents">ODMA-Using Components</a></h2>
+
+<h2>3. <a href="#DirectODMAUsage">Direct ODMA Usage</a></h2>
+
+<h2>4. <a href="#ODMA-OCX">ActiveX ODMA Interface</a></h2>
+
+<h2>5. <a href="#BuildingDMSwithVB">Building a DMS With Visual Basic</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h1><a name="Summary">Summary</a></h1>
+<blockquote>
+
+<p>There are periodic questions about the integration of Visual Basic
+applications with ODMA.&nbsp; The first inquiries concerned being able to
+construct special purpose desktop fixtures that would access DMS integrations
+via ODMA.&nbsp; Lately, there has been interest in using Visual Basic in
+creating a DMS integration itself.&nbsp;&nbsp;</p>
+
+<p>The appeal of Visual Basic (VB to its friends) is the existence of a large
+community of application developers who use VB as their only programming
+language.&nbsp; In addition, there are DMS vendors who develop client- (and
+server-) side document-management systems either by using Visual Basic or by
+providing interfaces that encourage access from Visual Basic applications.</p>
+
+<p>It is natural to ask how ODMA integration can be utilized in these VB-centric
+settings.&nbsp;</p>
+
+<p><i><b>Simply put, (1) the ODMA API is not compatible with direct use from
+Visual Basic and (2) the ODMA Connection Manager DMS integration model is not
+compatible with objects of the kind that can be constructed using Visual
+Basic.&nbsp;&nbsp;</b></i></p>
+
+<p>As unnatural as the fit between ODMA and Visual Basic happens to be, there
+are some who have achieved limited &quot;impedance matching&quot; between the
+two.&nbsp; This is not something that fits the ordinary experience of Visual
+Basic developers.&nbsp; Extraordinary effort is required and this may present
+testing, maintenance and general skill requirements that an organization must be
+prepared for.</p>
+
+<p>Here's what VB developers need to know about the possibilities for ODMA
+usage.&nbsp;&nbsp; Steps to simplify the situation are
+described.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+</blockquote>
+<h1>1. <a name="AccessODMA">Accessing ODMA Using Visual Basic</a></h1>
+<h2>1.1 Historical Perspective</h2>
+<blockquote>
+  <p>In 1994 when ODMA was being developed, the choice of a C Language API was
+  near-automatic.&nbsp; This was the preferred means of development and
+  integration by developers of Microsoft Windows-based desktop applications,
+  most of whom had not yet adopted the 1992-introduced OLE (Object-Linking and
+  Embedding) and COM (Component Object Model) technologies.&nbsp; Many
+  developers of desktop applications and of DMS technology were still wary of
+  Microsoft's COM initiative and, even if they saw migration to COM/OLE as
+  inevitable, current products didn't employ the technology.</p>
+  <p>Although use of COM as an integration model was not commonplace and some
+  doubted its viability altogether, the ODMA developers did agree on COM
+  interfacing techniques for DMS integration with the ODMA Connection
+  Manager.&nbsp; The ambition was also to support the same models on platforms
+  beyond the Win16-Win32 &quot;sweet spot,&quot; and it was thought that a
+  constrained COM integration approach would ease transfer to Macintosh, Unix,
+  and OS/2, among others.&nbsp;&nbsp;</p>
+  <p>It was also felt that &quot;pure COM&quot; could not be used simply because
+  the applications and existing services that were being offered for ODMA
+  integration were implemented in a way that did not yet map naturally to the
+  COM approach.&nbsp; At the time, the migration from Win-16 applications to
+  Win32 and NT was more in the forefront.</p>
+  <p>The &quot;incompleteness&quot; of ODMA COM support is revealed primarily in
+  the way ODMA supports character data and uses storage for information
+  delivered across ODMA interfaces.&nbsp; The ODMA provisions were entirely
+  appropriate for the candidate applications and DMS systems that were available
+  at that time.&nbsp; They are unnatural to the current COM (and emerging .NET)
+  worlds.</p>
+  <p>Although Visual Basic has now emerged as an instrument of professional
+  software development and an appealing avenue for application development, its
+  concepts and natural idioms are not harmonious with the approach taken in
+  arriving at the ODMA API.&nbsp; The ODMA API is quite idiosyncratic compared
+  with the consistency of COM automation-oriented languages, including Visual
+  Basic.&nbsp; ODMA presents a challenging impedance match for Visual Basic
+  developers.</p>
+</blockquote>
+<h2>1.2 Requirements of the ODMA API</h2>
+<blockquote>
+  <p><i>[establish the nomenclature, introduce basic principles involved.&nbsp;
+  Also identify the limitations here or in an end-section, so that people can
+  confirm there understanding of why it doesn't work just the way things are.]</i></p>
+  <p><i>[include links to related FAQ about this.]</i></p>
+  <p><i>[establish which Visual Basics we are talking about]</i></p>
+</blockquote>
+<h1>2. <a name="ODMAUsingComponents">ODMA-Using Components</a></h1>
+<blockquote>
+<blockquote>
+  <dl>
+    <dt><b><i>see also</i>:</b></dt>
+    <dd><b>4. <a href="#ODMA-OCX">ActiveX ODMA Interface</a></b></dd>
+  </dl>
+</blockquote>
+<p>One way to obtain ODMA services from Visual Basic is to access an already-available
+Active X Component (an OCX) that is ODMA-aware.&nbsp;&nbsp; For example, it is possible to use
+Microsoft Word component interfaces to initiate a Word session that will use
+ODMA to open a requested document and perform other operations.&nbsp; Here is
+an example of this approach provided by <a href="#NancyBobb">Nancy Bobb</a>:</p>
+<pre style="border-style: solid; border-width: 1"><code>Private Sub Command1_Click()
+     Dim x As Object
+     Set x = CreateObject(&quot;Word.Application&quot;)
+     x.Visible = True
+     x.Documents.Open FileName:= _
+     &quot;::ODMA\GRPWISE\FH09CADO.FH09CAPO.FH09CA_SUBJCA_LIBRARY:34035.1&quot;
+     End Sub</code></pre>
+<p>It is possible to support this same technique by introducing a special-purpose &quot;application&quot; that provides
+something like the Microsoft Word Object Model, or perhaps the Microsoft Office
+Binder Object Model.&nbsp; This &quot;application&quot; would use ODMA to
+perform its accesses while exposing an object model usable by Visual Basic
+applications.&nbsp;</p>
+<p>&nbsp;This case has not been explored.&nbsp;&nbsp;</p>
+<p>The advantage is that almost all ODMA DMS integrations are designed to
+support ODMA Accesses from Microsoft Office and matching that behavior in a
+pseudo-application component should be successful.&nbsp;&nbsp;</p>
+<p>The disadvantage is that the Word Object Model can be an unnatural fit and be
+inadequate with regard to ODMA functionality that the Word Object model does not
+accommodate.&nbsp;&nbsp; Finally, the effort is probably as great as building an
+<a href="#ODMA-OCX">ODMA-specific OCX</a>.</p>
+</blockquote>
+<h1>3. <a name="DirectODMAUsage">Direct ODMA Usage</a></h1>
+<blockquote>
+  <p>There has been some success accessing ODMA directly using Visual Basic
+  calls.&nbsp; A sample of suitable VB (and VBA) declarations is found in the
+  file <b><code><a href="VBODMA102.bas" target="_self">VBODMA102.bas</a></code></b>.&nbsp;
+  Documentation has not been provided.&nbsp; The handling of ODMA string buffers
+  and the ODMA use of 8-bit characters (not BSTRs) requires some
+  care.&nbsp;&nbsp;</p>
+  <p>A variation on this technique has been used to provide ODMA access to
+  Borland Delphi applications.</p>
+</blockquote>
+<h1>4. <a name="ActiveX-ODMA">ActiveX ODMA Interface</a></h1>
+<h2>4.1 Experimental OCX Development: ODMAWrapper</h2>
+<blockquote>
+  <p>An experimental implementation of an ODMA-compatible Active X Control was
+  turned over in 1999.&nbsp; The idea was to provide ODMA functionality to any
+  application able to use an OLE control.</p>
+  <p>There is an archive of the available source code at <a href="http://ODMA.info/downloads/ODMA-OCX-200-0.zip"><b><code>ODMA-OCX-2.0.0-0</code></b></a>
+  (261kB ZIP file).&nbsp; This code has not been confirmed and a tested <b><code>.DLL</code></b>
+  has never been provided.&nbsp;&nbsp;There is no information about the
+  development status, the completeness, or the reliability of the
+  implementation.</p>
+  <p>Expertise with Microsoft VC++ and the Microsoft Foundation Class (MFC)
+  Library is required for working with this implementation.</p>
+  <p>The ODMAWrapper software does provide a specimen mapping between ODMA
+  methods and operations delivered to VB applications.&nbsp; This is worthy of
+  review in arriving at a public implementation of ActiveODMA solutions.</p>
+</blockquote>
+<h2>4.2 ActiveODMA Interfaces and Modules</h2>
+<blockquote>
+  <p>[Add information about the development to be described more fully in the <a href="http://ODMA.info/active/" target="_self">ActiveODMA</a>
+  section of the ODMA web site.]</p>
+</blockquote>
+<h1>5. <a name="BuildingDMSwithVB">Building a DMS with Visual Basic</a></h1>
+<blockquote>
+  <p><i>[discusses limitations on using component technologies (e.g., VB 6.0, VBA,
+  ...) to make a DMS.&nbsp; Need for a wrapper to allow the ODMA Connection
+  Manager to connect to a DMS that is integrated via implementation of
+  components.&nbsp; Link to the ActiveODMA section for more on potential
+  approaches]</i></p>
+  <hr>
+</blockquote>
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><a name="NancyBobb" href="http://ODMA.info/faq/Q000605.htm#NancyBobb" target="_self">Nancy
+      Bobb</a></dt>
+    <dd><a href="Q010103a.htm" target="_self">illustrated</a>
+      how ODMA-aware components, such as those of MS Word, can be used as an
+      avenue to obtaining ODMA functions from a Visual Basic Application</dd>
+    <dt><a href="http://ODMA.info/faq/Q000605.htm#orcmid" target="_self">Dennis Hamilton</a></dt>
+    <dd>initiated this FAQtip in support of <a href="http://ODMA.info/faq/Q00-log.htm#Q000801" target="_self">ODMA
+      Tech</a> requests for material on
+      usage with Visual Basic as well as other component-based technologies and
+      scripting engines.</dd>
+    <dt><a href="http://ODMA.info/faq/Q000605.htm#SimonTomlinson" target="_self">Simon Tomlinson</a></dt>
+    <dd>provided an example of <a href="Q010103b.htm" target="_self">Visual Basic definitions</a>
+      that are useful with ODMA.</dd>
+  </dl>
+  </blockquote>
+
+  <h2><a name="History">Change History</a></h2>
+  <blockquote>
+    <dl>
+      <dt><b><a name="0.25">version 0.25</a> 2002-11-23</b></dt>
+      <dd>updated to reflect the initiation of <a href="http://ODMA.info/active/" target="_self">ActiveODMA</a>
+        and also provide more content information.</dd>
+      <dt><b><a name="0.21">version 0.21</a> 2002-05-07</b></dt>
+      <dd>added the Visual Basic definitions that have been employed in some
+        situations.&nbsp; Then updated the file to version 1.02 after checking
+        the source in Visual Basic 6.0.</dd>
+      <dt><b><a name="0.15">version 0.15</a> 2001-01-30</b></dt>
+      <dd>begins to add text on the first case, <a href="#ODMAUsingComponents">relaying
+        through ODMA-using components</a></dd>
+      <dt><b><a name="0.10">version 0.10</a> 2001-01-17</b></dt>
+      <dd>is a place-holder and outline for
+    a note to be reviewed and developed further.</dd>
+      <dt>&nbsp;&nbsp;&nbsp;</dt>
+    </dl>
+  </blockquote>
+</font>
+
+<p align="right"><small><small>created 2001-01-17-13:16 -0800 (pst) by <a href="http://ODMA.info/construction/orcmid.htm" target="_self">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 07-07-28 11:15 $<br>
+$$Revision: 9 $</em></small></small></p>
+</body>
+</html>

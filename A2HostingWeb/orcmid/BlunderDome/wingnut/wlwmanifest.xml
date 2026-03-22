@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- xmlmanifest.xml 0.01 Windows Live Writer manifest for nfoCentrale Movable Type blogs -->
+<manifest xmlns="http://schemas.microsoft.com/wlw/manifest/weblog">
+   <options>
+       <clientType>MovableType</clientType>
+         <!-- 0.00 I am not including options that are default for MovableType and that
+                   I want to leave enabled.  The following are to disable unwanted
+                   cases and to add others that matter.
+                   -->
+
+       <supportsExtendedEntries>No</supportsExtendedEntries>          <!-- 0.00 Don't want. -->
+       <!-- 0.00 <supportsCategoriesInline>Yes</supportsCategoriesInline> Don't see why -->
+       <supportsHierarchicalCategories>Yes</supportsHierarchicalCategories>
+       <supportsNewCategories>No</supportsNewCategories>              <!-- 0.00 Don't wnat. -->
+       <supportsNewCategoriesInline>No</supportsNewCategoriesInline>  <!-- 0.00 Don't wnat. -->
+       <supportsKeywords>No</supportsKeywords>
+       <!-- 0.00 <supportsSlug>Yes</supportsSlug> -->
+       <!-- 0.00 <supportsPages>Yes</supportsPages> -->
+       <supportsEmptyTitles>No</supportsEmptyTitles>                   <!-- 0.00 Don't wnat. -->
+       <requiresXHTML>Yes</requiresXHTML>                              <!-- 0.00 MT-assumed. -->
+       <supportsScripts>Yes</supportsScripts>
+       <supportsEmbeds>Yes</supportsEmbeds>
+   </options>
+   <weblog>
+       <serviceName>Movable Type</serviceName>
+       <homepageLinkText>View site</homepageLinkText>
+       <adminLinkText>View Dashboard</adminLinkText>
+       <adminUrl>mt.cgi</adminUrl>
+       <postEditingUrl>mt.cgi?__mode=view&amp;_type=entry&amp;blog_id={blog-id}&amp;id={post-id}</postEditingUrl>
+          <!-- 0.00 <mt:AdminScript encode_xml="1"> replaced by mt.cgi in both
+                    <adminUrl> and <postEditingUrl>since this file is not being 
+                    pre-processed by Movable Type.  This file produced manually.
+                    -->
+   </weblog>  
+</manifest>
+<!-- 0.01 2010-05-30-18:16 Share between nfoCentrale Status and Spanner Wingnut.  This should only be
+          branched if there is some need to have different URLs.
+     0.00 2010-05-30-16:03 Create Initial Customization.  The admin-related URLs might not
+          be correct.  They may need to be absolute.
+          -->
+          
+<!--                                *** end of wlwmanifest.xml ***      -->

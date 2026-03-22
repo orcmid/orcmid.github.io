@@ -1,0 +1,20 @@
+<html><head><title>Interfaces and Methods: IdmaObject</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaObject"></a>IdmaObject</h2>
+<p>This is a base interface which must be supported by all DMA objects.</p>
+<h3><a name="IdmaObjectIsOfClass"></a>IdmaObject::IsOfClass</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaObject::IsOfClass</b> (<br>
+pDmaId    <i>pClassId</i>,<br>pDmaBoolean    <i>pbIsOfClass</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pClassId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the class.</p></TD></TR>
+<TR><TD><p><i>pbIsOfClass</i></p></TD><TD><p>output</p></TD><TD><p>Returns DMA_TRUE if the object conforms to the selected Class Id.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns DMA_TRUE if and only if the object conforms to the selected class. To be conformant, the specified class ID must be an identifier for a class for which the object's class is a subclass. All DMA objects should return DMA_TRUE if the specified class ID is dmaClass_DMA.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_CLASSID</p></TD><TD><p>The supplied identifier does not reference an available class of object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

@@ -1,0 +1,676 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/com.orcmid/LLC/pa/pn/ALPHA/J040602b.htm 28    26-03-22 14:17 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>J040602b: Package Organization Projection</title>
+<base target="_self">
+</head>
+
+<body stylesrc="../../../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../../../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../../../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="15139" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Java <a href="../../../../J000001-log.htm"><font color="#990033">Project</font></a> 
+      <a href="../../../../J000001-log.htm#J040602"><font color="#990033">J040602</font></a><br>
+      com.orcmid.LLC.pa.pn ALPHA <a href="J040603.htm"><font color="#990033">Organization</font></a></strong></font><font color="#990033"><strong><em><big><big><br>  
+      &nbsp;</big></big><big><big>Package Projection</big></big></em></strong></font></p>                             
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<b><code><a href="../../../../" target="_top">com.orcmid</a>&gt;<br>
+      <a href="../../../" target="_top">LLC</a>&gt;<a href="../../" target="_top">pa</a>&gt;<a href="../" target="_top">pn</a>&gt;<br>
+<a href="./">ALPHA</a>&gt;</code></b>
+</font>
+
+      <b><code><br>
+      <br>
+      <a href="J040602b.htm" target="_top">J040602b</a>&gt;
+      </code></b><br>
+<a href="#0.10">
+      <small>
+      <small>0.11</a> <!--webbot bot="Timestamp" S-Type="EDITED"                                           
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->-<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<hr noshade color="#990033">
+
+
+
+<h2>Synopsis</h2>                   
+
+
+
+<p>The <b>com.orcmid.LLC.pa.pn</b> package structure is <b> projected</b> onto a number              
+of hierarchical structures used in the development of the Peano Numeral              
+package.&nbsp; These hierarchies are chosen and their components are named so that their intended              
+relationship to <b>com.orcmid.LLC.pa.pn</b> is recognizable.</p>                      
+
+
+
+<p>We speak of this as a projection to capture the following practical matter:</p>                   
+
+
+
+<ul>
+  <li><b>com.orcmid.LLC.pa.pn</b> identifies an abstract construct in <b>application</b> 
+    of the Java programming language.</li>
+  <li>The (relatively) material structures that are employed in the expression 
+    and execution of corresponding Java compilation units are identified in ways 
+    that reflect the abstract structure</li>
+</ul>
+<p>It is valuable to notice that this is a practice.&nbsp; Part of it is a   
+practice and convention established and honored in the community of Java   
+developers, including the developers of Java platforms and hosts.&nbsp;   
+Additional details are introduced for the specific purpose of providing a   
+harmonious organization of material that is easily recognized as related to <b>com.orcmid.LLC.pa.pn</b>.</p>  
+
+
+
+<p>For use and adaptation of this material, the key elements to understand are&nbsp;</p>              
+
+
+
+<ul>
+  <li>the <a href="#PackageHierarchy">authoritative     
+use</a> of <b>com.orcmid.LLC.pa.pn</b> (section <a href="#AuthoritativePackage">2.2</a>),&nbsp;</li>  
+  <li>the correct setup of <a href="#FileSystem">Java     
+Package files</a> for <b><kbd>%CLASSPATH%\com\orcmid\LLC\pa\pn</kbd></b>   
+    (section <a href="#FileSystem">3.1</a>), and&nbsp;</li>  
+  <li>access to the latest materials using the official <a href="#HTTPaccess">web     
+site location</a> &lt;<b><kbd><a href="http://orcmid.com/com.orcmid/LLC/pa/pn/" target="_top">http://orcmid.com/com.orcmid/LLC/pa/pn/</a></kbd></b>&gt;   
+    (section <a href="#HTTPaccess">5</a>)</li>   
+</ul>
+
+
+
+<p>The additional material is provided as demonstration of how additional 
+details might be handled in a chosen development environment.</p>            
+
+
+
+<blockquote>
+  <blockquote>
+    <h3>1. <a href="#Overview">Overview</a><br />                       
+2. <a href="#PackageHierarchy">Java Package Hierarchy</a><br />                   
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; </small>                  
+    <small>2.1 <a href="#PackageRules">Basic Rules</a><br />                   
+    &nbsp;&nbsp;&nbsp;&nbsp;</small><small> 2.2 <a href="#AuthoritativePackage"> Authoritative Use of <b><kbd>com.orcmid</kbd></b></a></small><br />                          
+    3. <a href="#FileSystem">File-System Hierarchies</a><br />                   
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; 3.1 <a href="#JavaPackageFiles">Java Package-Files                   
+    Access</a><br />
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.2 <a href="#PackagePublicationImages">Package-Publication                   
+    Images</a></small><br />      
+    4. <a href="#VSSprojects"> Visual SourceSafe Projects</a><br>             
+    5. <a href="#HTTPaccess"> HTTP Web Access</a>                  
+    <br>           
+    6. <a href="#CompilationEnvironment"> References</a></h3>                           
+  </blockquote>
+</blockquote>
+
+
+
+<hr noshade color="#990033">
+
+
+
+<h2>1. <a name="Overview">Overview</a></h2>                 
+<blockquote>
+  <p><b>1.1</b> The package name <b>com.orcmid.LLC.pa.pn</b> is reserved for the Peano              
+  Numeral package.&nbsp; The name was chosen for that purpose and it is our              
+  declaration that it shall be so.&nbsp; The authority by which this claim is              
+  made is the <a href="http://www.whois.sc/orcmid.com" target="_top">fact of              
+  ownership</a> of the <b>orcmid.com</b> Internet domain name.</p>                   
+  <p><b>1.2</b> Having reserved the name, we commence to establish our intention for 
+  it, including:</p>      
+  <ul>
+    <li>logistical and storage-organization requirements for access to the 
+      compilation units and related material for the package</li>
+    <li>access to authoritative definitions of the package and the rules for its 
+      use (identified <a href="../">here</a>)</li>
+    <li>how to honor the interface contracts for implementation and use of the 
+      public types specified in the Peano Numeral package (specified <a href="../J040601.htm">elsewhere</a>)</li>
+  </ul>
+  <p><b>1.3</b> <a href="#Table1-1">Table 1-1</a> identifies how the Java package structure, <b>com.orcmid.LLC.pa.pn</b>,                    
+  is projected onto the development                    
+  and publishing configuration.&nbsp; This projection is made onto five kinds of hierarchical namings   
+  used in the implementation and deployment of package compilation units:</p>                  
+  <ol>
+    <li><a href="#Package">Java Package</a>  hierarchies</li>
+    <li><a href="#FileSystem">File System</a>  (<b><kbd>\\compagno</kbd></b>) hierarchies</li>  
+    <li><a href="#VSSprojects">Visual Source Safe</a> (<b><kbd>\\compagno\vss</kbd></b>) project hierarchies&nbsp;</li>                   
+    <li><a href="#HTTPaccess">HTTP Server</a> hierarchies</li>                  
+    <li><a href="#PackagePublicationImages">FTP Server</a> hierarchies</li>
+  </ol>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="2" cellpadding="3" cellspacing="1" style="border: 4px double #000080">
+    <caption><small><b><a name="Table1-1">Table 1-1</a>:</b> Projection of </small><b><kbd> com.orcmid.LLC.pa.pn</kbd></b><small> across  
+      authoritative   
+      development spaces</small></caption>  
+    <tr>
+      <th colspan="2" align="right" valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b><a href="#Package">Java   
+        package</a></b></th>
+      <th valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b>com</b></th>
+      <th valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b>.orcmid</b></th>
+      <th valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b>.LLC</b></th>
+      <th valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b>.pa</b></th>
+    </center>
+    <th colspan="2" align="left" valign="top" bgcolor="#E0E0E0" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000"><b>.pn</b></th>
+  </tr>
+  <center>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #99FF99"><b><kbd><a href="#FileSystem">\\compagno\c\java2\projects</a></kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>\com</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>\orcmid</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>\LLC</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>\pa</kbd></b></td>
+    <td colspan="2" style="background-color: #99FF99"><b><kbd>\pn</kbd></b></td>
+  </tr>
+  <tr>
+    <td style="background-color: #99FF99"><b><kbd>\\compagno\vss</kbd></b></td>
+    <td align="right" style="background-color: #99FF99"><b><kbd><a href="#VSSprojects">$/Java2</a></kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>/com</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>/orcmid</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #99FF99"><b><kbd>/pa</kbd></b></td>
+    <td colspan="2" style="background-color: #99FF99"><b><kbd>/pn</kbd></b></td>
+  </tr>
+  <tr>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\\compagno\vss</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0">
+      <p align="right"><b><kbd><a href="#VSSprojects"><font color="#E0E0E0">$/OrcmidCompagno</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #008080; color: #E0E0E0"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #008080; color: #E0E0E0"><b><kbd><a href="#PackagePublicationImages"><font color="#E0E0E0">\\compagno\c\Inetpub\wwwroot\orcmid</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #008080; color: #E0E0E0"><b><kbd>\com.orcmid</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\LLC</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\pa</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\pn</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" style="background-color: #008080; color: #E0E0E0">
+      <p align="right"><b><kbd><a href="#HTTPaccess"><font color="#E0E0E0">http://compagno/orcmid</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #008080; color: #E0E0E0"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>\\compagno\vss</kbd></b></td>
+    <td align="right" style="background-color: #008080; color: #E0E0E0"><b><kbd><a href="#VSSprojects"><font color="#E0E0E0">$/nfoCentraleMSbCentralWeb/orcmid</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #008080; color: #E0E0E0"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #008080; color: #E0E0E0"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #0000FF; color: #E0E0E0"><b><kbd><a href="#PackagePublicationImages"><font color="#E0E0E0">\\compagno\c\publicca\bCentral\web\orcmid</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #0000FF; color: #E0E0E0"><b><kbd>\com.orcmid</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>\LLC</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>\pa</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>\pn</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>\ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #0000FF; color: #E0E0E0"><b><kbd><a href="#PackagePublicationImages"><font color="#E0E0E0">ftp://ftp.nfoCentrale.net/web/orcmid</font></a></kbd></b></td>
+    <td colspan="2" style="background-color: #0000FF; color: #E0E0E0"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #0000FF; color: #E0E0E0"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #CCCCFF"><b><kbd><a href="#HTTPaccess">http://nfoCentrale.net/orcmid</a></kbd></b></td>
+    <td colspan="2" style="background-color: #CCCCFF"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="right" style="background-color: #CCCCFF"><b><kbd><a href="#HTTPaccess">http://orcmid.com</a></kbd></b></td>
+    <td colspan="2" style="background-color: #CCCCFF"><b><kbd>/com.orcmid</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/LLC</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/pa</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/pn</kbd></b></td>
+    <td style="background-color: #CCCCFF"><b><kbd>/ALPHA</kbd></b></td>
+  </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+<p><b>1.4</b> Other forms of hierarchy, such as one carried internal to a ZIP archive or to       
+a Java Jar (<b><kbd>.jar</kbd></b>) file, are not employed in the Peano Numeral ALPHA development effort.&nbsp;    
+We also ignore, at this point, provisions in recent versions of Java software for package    
+versioning, sealing, and other identification of packages at run time.</p>           
+</blockquote>
+<h2>2. <a name="PackageHierarchy">Java Package Hierarchy</a></h2>    
+  <h3>2.1 <a name="PackageRules">Basic Rules</a></h3>             
+<blockquote>
+<p><b>2.1.1</b> The <b>interpretation of package names</b> occurring within Java programs is                    
+established in the Java Language Specification [<a href="#Joy2000">1</a>: <a href="http://java.sun.com/docs/books/jls/second_edition/html/names.doc.html#22349" target="_top">6.5.3</a>].&nbsp;&nbsp;</p>                                        
+
+
+
+
+<p><b>2.1.2</b> The <b>specific structure of package names</b> is established in the language                    
+specification [<a href="#Joy2000">1</a>: <a href="http://java.sun.com/docs/books/jls/second_edition/html/names.doc.html#9184">6.8.1</a>].&nbsp;                    
+This is where it is established that the first prefix must be a top-level                    
+Internet domain name (TLD), such as <b><kbd>com</kbd></b>.&nbsp;&nbsp;</p>                                        
+
+
+
+
+<p><b>2.1.3</b> The <b>hierarchy of Java packages</b>, and the rules for names that express                    
+the hierarchy, are given in the chapter on packages [<a href="#Joy2000">1</a>: <a href="http://java.sun.com/docs/books/jls/second_edition/html/packages.doc.html#60384" target="_top">7</a>].&nbsp;                    
+The decentralized maintenance of unique package names is an important feature of                    
+the Java package naming system [<a href="#Joy2000">1</a>: <a href="http://java.sun.com/docs/books/jls/second_edition/html/packages.doc.html#40169">7.7</a>]:</p>                                        
+
+
+
+
+<ul>
+  <li>A convention for specifying unique package names is suggested.</li>
+  <li>In this convention, it is important to possess (or belong to an 
+    organization that possesses) a unique Internet domain name, such as <b><kbd>orcmid.com</kbd></b>.</li>
+  <li>The components of the unique domain name are reversed to create a unique 
+    package prefix, such as <b><kbd>com.orcmid</kbd></b>.</li>
+  <li>The assignment of subpackage names and the maintenance of their uniqueness 
+    becomes the responsibility of the entity that owns the domain name.</li>
+</ul>
+<p><b>2.1.4 This is a convention.</b>&nbsp; The package uniqueness convention is                    
+widely honored.&nbsp; The public reliance on a conflicting scheme is likely to                    
+be strongly-discouraged in the Java community.</p>                   
+
+
+
+
+</blockquote>
+<h3>2.2 <a name="AuthoritativePackage"> Authoritative</a> Use of <kbd>com.orcmid</kbd></h3> 
+<blockquote>
+<p><b>2.2.1</b> As the owner of Internet domain <b><kbd>orcmid.com</kbd></b>, <a href="http://NuovoDoc.com/info/deh-sketch.htm" target="_top"> Dennis Hamilton</a>                    
+and <b><a href="http://NuovoDoc.com/" target="_top"> NuovoDoc</a></b> assert authority over   
+the Java package hierarchy having                    
+prefix <b><code>com.orcmid</code></b>.&nbsp; The following hierarchy of package                    
+names is reserved by them for usage relevant to the Numbering Peano project:</p>                   
+<blockquote>
+  <p><b><kbd>com.orcmid<br>
+  com.orcmid.LLC<br>
+  com.orcmid.LLC.pa<br>
+  com.orcmid.LLC.pa.pn</kbd></b></p>
+</blockquote>
+<p><b>2.2.2</b> The name <b><kbd>com.orcmid.LLC.pa.pn.ALPHA</kbd></b>  is restricted and 
+is not intended to be used for   
+any purpose.</p>  
+<p><b>2.2.3</b> The Java Language Specification does not require any correspondence between                    
+package names and storage at physical locations on the Internet.&nbsp; There is                    
+no requirement that there be a correspondence to an Internet location at all, in                    
+the sense of there being a direct association with an authoritative web page or other association with a                    
+physical location.&nbsp;&nbsp;</p>                   
+<p><b>2.2.4</b> For packages under the <b><kbd>com.orcmid</kbd></b>                    
+ prefix, direct associations are honored by local convention, as illustrated    
+here.</p>             
+
+
+
+
+</blockquote>
+
+
+  <h2>3. <a name="FileSystem">File-System Hierarchies</a></h2>                 
+
+
+<blockquote>
+
+
+  <p>File-System hierarchies are used for the storage of Peano Numeral material  
+  in two ways:</p>        
+
+
+  <ol>
+    <li>Java access to the packages for local development, testing, and use of  
+      package members in other packages and applications</li>
+    <li>Stored &quot;images&quot; of the package material as part of web site   
+      publication, including FTP images</li> 
+  </ol>
+  <p>All of the cases illustrated here are <b>implemented privately</b>.&nbsp; 
+  They are described here because any use of compilation units for Peano 
+  Numerals will likely need to be similar.</p>
+</blockquote>
+  <h3>3.1 <a name="JavaPackageFiles">Java Package-Files Access</a></h3>                 
+
+
+<blockquote>
+
+
+  <p><b>3.1.1</b> The Java System host (Sun Java 2 SE 1.4 on Microsoft Windows) used for              
+  Peano Numeral development requires packages to be stored in the Windows file              
+  system in accordance with the general rules for storing packages in file              
+  systems [<a href="#Joy2000">1</a>: <a href="http://java.sun.com/docs/books/jls/second_edition/html/packages.doc.html#37758" target="_top">7.2</a>].&nbsp;              
+  In this scheme, there must be a file hierarchy that provides the appropriate              
+  class path:</p>               
+
+
+  <blockquote>
+    <p><b><kbd>%CLASSPATH%\com\orcmid\LLC\pa\pn\</kbd></b></p>  
+
+
+  </blockquote>
+  <p><b>3.1.2</b> The java compiler and run-time make use of the specified <b><kbd>%CLASSPATH%</kbd></b>  
+  location to resolve references to packages, including package <b>com.orcmid.LLC.pa.pn</b>.</p>   
+
+
+  <p><b>3.1.3</b> For example, in the ALPHA development work,&nbsp;</p>               
+
+
+  <blockquote>
+    <p><b><kbd>%CLASSPATH%</kbd></b> = <b><kbd>\\compagno\c\Java2\projects</kbd></b></p>               
+
+
+  </blockquote>
+  <p><b>3.1.4</b> To use the ALPHA Peano Numeral packages, a similar class path must be              
+  provided, with the package files placed in the <b><kbd>\pn</kbd></b>              
+  subdirectory.&nbsp; The choice of <kbd><b>%CLASSPATH%</b> </kbd> portion is             
+  determined by the user of the Java host.&nbsp; The chosen location must include the <b>com.orcmid.LLC.pa.pn</b>              
+  hierarchy in its subpackage structure.&nbsp; Usage of Java package files and              
+  the class path is demonstrated in the examples for <a href="J040603.htm">compiling              
+  ALPHA packages</a>.&nbsp; (When running locally on host compagno, <a href="J040603c.htm#Fig.3-4">we              
+  use</a> <b><kbd>%CLASSPATH%</kbd></b> = <b><kbd>C:\Java2\projects</kbd></b>.)</p>               
+
+
+  <p><b>3.1.5</b> This structure must be mimicked when using the package on any Java host              
+  that uses a file system to store packages.&nbsp; This is the only              
+  &quot;intelligence&quot; that the Java language specification imposes on             
+  package names.&nbsp; It provides a means for access to package              
+  materials when the package is named in any compilation unit.&nbsp; Permitting             
+  variable <b><kbd>%CLASSPATH%</kbd></b> choice allows there to be multiple locations for a package              
+  of that name, so long as only one of them is provided in a given execution of              
+  the Java compiler or run-time.</p>               
+
+
+</blockquote>
+
+
+  <h3>3.2 <a name="PackagePublicationImages">Package-Publication</a>        
+  Images</h3>          
+
+
+  <blockquote>
+    <p><b>3.2.1</b> For ALPHA Peano Numeral packages, more file-system hierarchies are             
+    used.&nbsp; They provide images for web-site access to the Numbering Peano             
+    materials.</p> 
+
+
+    <p><b>3.2.2</b> It is not intended that direct Java compiler and run-time access be             
+    supported on these web sites.&nbsp; The projection of <b>com.orcmid.LLC.pa.pn</b>             
+    onto these web site file images is for <i> our</i> convenience (<a href="#Table1-1">Table&nbsp;1-1</a>):</p>           
+
+
+    <blockquote>
+      <dl>
+        <dt><b><kbd>\\compagno\c\Inetpub\wwwroot\orcmid&nbsp;<font color="#000000">\com.orcmid\LLC\pa\pn\ALPHA</font></kbd></b></dt>
+        <dd>is the image in the file system of the local IIS 5.1 server that is             
+          used for development and updating of the web pages about the Peano             
+          Numeral package.<br>            
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><b><kbd>\\compagno\c\publicca\bCentral\web\orcmid&nbsp;<font color="#000000">\com.orcmid\LLC\pa\pn\ALPHA</font></kbd></b></dt>
+        <dd>is the image of the latest material ready for publishing on the web             
+          site.&nbsp; It provides a source for restoration of the web site, if            
+          needed.<br>
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><b><kbd>ftp://ftp.nfoCentrale.net/web/orcmid&nbsp;<font color="#000000">/com.orcmid/LLC/pa/pn/ALPHA</font></kbd></b></dt>
+        <dd>is the image of the current material on the externally-hosted, 
+          public web   
+          site.</dd>
+        <dt>&nbsp;</dt>
+      </dl>
+    </blockquote>
+
+
+    <p><b>3.2.3</b> This approach is also usable for publishing Numbering Peano on other           
+    media.&nbsp; For example, a CD-ROM collection might use the hierarchic           
+    structure</p>
+    <blockquote>
+      <p><b><kbd>%CD-path%/com&nbsp;<font color="#000000">/orcmid/LLC/pa/pn/ALPHA</font></kbd></b></p>
+    </blockquote>
+    <p>in an authoritative form that might also be used as the target of a <b><kbd>%CLASSPATH%</kbd></b>.</p>
+
+
+  </blockquote>
+
+
+    <h2>4. <a name="VSSprojects">Visual SourceSafe Projects</a></h2>
+
+
+  <blockquote>
+    <p><b>4.1</b> On the compagno development system, Microsoft Visual SourceSafe 6.0 is          
+    employed for source-code control of all materials as they are developed and          
+    published.&nbsp; The Visual SourceSafe (VSS) database is stored at <b><kbd>\\compagno\vss</kbd></b>          
+    and shared with other local development machines as that networked          
+    shared-file location.&nbsp; There are the following project trees currently          
+    defined for <b>com.orcmid.LLC.pa.pn</b> package development:</p>         
+
+
+    <blockquote>
+      <dl>
+        <dt><b><kbd>$/Java2 <font color="#000000">/com/orcmid/LLC/pa/pn</font></kbd></b></dt>
+        <dd>is the project hierarchy for development of Java compilation units        
+          and directly-related materials for <b>com.orcmid.LLC.pa.pn</b>.&nbsp;        
+          The corresponding working directories for check-in and check-out of        
+          material are the classpath location <b><kbd>\\compagno\c\Java2\projects</kbd></b>        
+          (see section <a href="#JavaPackageFiles">3.1</a>).<br>       
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><b><kbd><a name="OrcmidCompagno">$/OrcmidCompagno</a> <font color="#000000">/com.orcmid/LLC/pa/pn/ALPHA</font></kbd></b></dt>       
+        <dd>is the project hierarchy for the local IIS 5.1 development of web        
+          site materials about package <b>com.orcmid.LLC.pa.pn</b> and its ALPHA        
+          development.&nbsp; The corresponding working directories for check-in        
+          and check-out of material are the <a href="#PackagePublicationImages">web        
+          server file-system locations</a> <kbd><b>\\compagno\c\Inetpub\wwwroot\orcmid</b></kbd>.&nbsp;        
+          This provides a complete version control of the web pages as they are        
+          being developed.<br>       
+          &nbsp;&nbsp; FrontPage extensions for web page authoring on the IIS        
+          5.1 configuration are configured to automatically coordinate check-in        
+          and check-out with this VSS project hierarchy.<br>       
+          &nbsp;&nbsp; There is some sharing of material between the package        
+          development projects into the IIS 5.1 development projects, taking        
+          advantage of VSS capabilities for sharing of the same resources        
+          between projects.<br>       
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><b><kbd>$/nfoCentraleMSbCentralWeb/orcmid <font color="#000000">/com.orcmid/LLC/pa/pn/ALPHA</font></kbd></b></dt>       
+        <dd>is the project hierarchy for the externally-published version of the        
+          web-site material at a web hosting service.&nbsp; This material is        
+          normally not checked-in and checked-out under this project.<br>       
+          &nbsp;&nbsp; The content of these projects is completely shared with        
+          the <b><kbd><a href="#OrcmidCompagno">$/OrcmidCompagno</a></kbd></b>        
+          sub-projects of the same name.&nbsp; Any updates to those projects are        
+          automatically available under these projects.&nbsp; (This does not        
+          include the FrontPage extension material used on the local IIS 5.1        
+          development site.)<br>       
+          &nbsp;&nbsp; When the development web site has material that is ready        
+          to be published to the external hosted site, VSS is used to update the        
+          <a href="#PackagePublicationImages">publication file hierarchy image</a> 
+          with those materials that are new or have changed.&nbsp; FTP transfer        
+          is used for bulk-transfer of only those files that have changed or are        
+          new since the previous update to the public site.</dd>       
+      </dl>
+    </blockquote>
+    <p><b>4.2</b> The version of <b>com.orcmid.LLC.pa.pn</b> source files is reflected in  
+    the Visual SourceSafe labels that are included in the published versions,  
+    usually in comments (fig. 4-1).</p> 
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.4-1">Fig. 4-1</a></b>  VSS $Header label in <a href="J040603c.htm#Stubby-0.10.java">Stubby-0.10.java</a></caption>
+  <tr>
+    <td>
+
+<pre><font color="#000000">
+</font><b><font color="#008000">/* 0.10 2004-09-18-18:02 create a basic stub that implements the minimal
+        degenerate case (says me).
+   $H<!-- -->eader: /Java2/com/orcmid/llc/pa/pn/Stubby-0.10.java 2     04-09-18 18:21 Orcmid $
+   */
+</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+    <p><b>4.3</b> Likewise, there is version information at the <a href="#created">bottom        
+    right-hand corner</a> of all of the web pages.&nbsp; There is also a VSS        
+    $Header label in the <b><kbd>&lt;head&gt;</kbd></b>-element of each these        
+    web pages.&nbsp; For example, this page has&nbsp;the HTML comment</p>      
+    <pre><b><kbd><font color="#808080">&lt;!--$$Header: /A2HostingWeb/orcmid/com.orcmid/LLC/pa/pn/ALPHA/J040602b.htm 28    26-03-22 14:17 Orcmid $--&gt;</font></kbd></b></pre>
+    <p>in its HTML <b><kbd>&lt;head&gt;</kbd></b>-element.</p>
+    <p><b>4.4</b> VSS version information provides an additional way to confirm that  
+    material originated in the development of the <b>com.orcmid.LLC.pa.pn</b>  
+    packages.</p> 
+  </blockquote>
+    <h2>5. <a name="HTTPaccess">HTTP Web Access</a></h2>
+
+
+  <blockquote>
+
+
+    <p><b>5.1</b> There are three web locations used in the development of the <a href="#Table1-1">current</a>     
+    <b>com.orcmid.LLC.pa.pn</b> materials:</p>    
+
+
+    <blockquote>
+      <dl>
+        <dt><b><kbd>http://compagno/orcmid <font color="#000000">/com.orcmid/LLC/pa/pn/ALPHA</font></kbd></b></dt>
+        <dd>is the web site hierarchy used to view the development materials on     
+          the IIS 5.1 web server on the local machine.&nbsp; This site supports     
+          FrontPage extensions and page creation and maintenance is accomplished     
+          using Microsoft FrontPage on the local machine and on other computers     
+          of the local residential network.&nbsp; (This network is not open to     
+          the Internet.)<br>    
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><kbd><b><a href="http://nfoCentrale.net/">http://nfoCentrale.net</a>/orcmid     
+          <font color="#000000">/com.orcmid/LLC/pa/pn/ALPHA</font></b></kbd></dt>
+        <dd>is the hierarchy at the web site at which Orcmid's Lair is     
+          anchored.&nbsp; This is a hosting of the <b><kbd>nfoCentrale.net</kbd></b>     
+          domain on a public, hosted site.&nbsp; This is the site that is     
+          updated using FTP transfers from the <kbd><b>\\compagno\c\publicca\bCentral\web\orcmid     
+          </b></kbd><a href="#PackagePublicationImages">file-system image</a>.<br>
+          &nbsp;&nbsp;&nbsp;</dd>
+        <dt><b><kbd><a href="http://orcmid.com">http://orcmid.com</a> 
+          /com.orcmid/LLC/pa/pn/ALPHA</kbd></b></dt>    
+        <dd>is the web site hierarchy of the <b>com.orcmid.LLC.pa.pn</b>     
+          material at the Orcmid's Lair URL.&nbsp; This site is implemented by     
+          web forwarding of the <b><kbd>orcmid.com</kbd></b> domain to the     
+          subweb of <b><kbd>nfoCentrale.net</kbd></b> above.<br>    
+          &nbsp;&nbsp; This is the official public URL.&nbsp; This URL might be     
+          forwarded to a different anchor, or made into an independent site at     
+          some future time.&nbsp; By always using this URL, the material will be     
+          found wherever it is currently maintained.</dd>    
+        <dt>&nbsp;</dt>
+        <dd>&nbsp;</dd>
+      </dl>
+    </blockquote>
+
+
+    <p><b>5.2</b> The <b><kbd>http://compagno/orcmid</kbd></b>&nbsp; URLs refer 
+    to a private web site that is not exposed to the public Internet.&nbsp; It 
+    is identified here to complete the picture of how the projection is 
+    preserved as material is moved among development and public sites.</p>
+
+
+  </blockquote>
+
+
+<h2>6. <a name="References">References</a></h2>           
+<ol>
+  <li><a name="Joy2000">Joy</a>, Bill (ed.)., Steele, Guy L.,Jr., Gosling, James.,                    
+    Bracha, Gilad.&nbsp; <i><a href="../../../../../readings/progsys.htm#Joy2000">Java Language Specification</a></i>.&nbsp; 2.ed.&nbsp;&nbsp;                    
+        Addison-Wesley (Boston: 2000).&nbsp; ISBN 0-201-31008-2 pbk.&nbsp; Published on the web at &lt;<a href="http://java.sun.com/docs/books/jls/" target="_top">http://java.sun.com/docs/books/jls/</a>&gt;.</li>                   
+</ol>
+  <hr noshade color="#990033">
+
+<dl>
+  <dt><small><b><a name="0.11">0.11</a> 2004-10-06-18:17 Change to Package 
+    Projection, not Mapping</b></small></dt>               
+  <dd><small>We make this change at the same time as we also talk about 
+    situating Peano Numeral, rather than binding it.</small></dd>
+  <small><dt><b><a name="0.10">0.10</a> 2004-09-27-16:33 Provide complete coverage of  
+    the current ALPHA organization</b></dt>                
+  <dd>The table and material are completed enough to account for all current 
+    organization, including the structure of the local development site that 
+    harmonizes with the externally-visible published materials.</dd></small>
+  <dt><b><small><a name="0.00">
+    0.00</a>    2004-09-26-10:18 Setup for Documenting Hierarchical Organization (<a href="../../../../../construction/orcmid.htm">orcmid</a>)</b></dt>               
+  </small>
+  <dd><small>Create a tabular presentation that reveals the way that package 
+    structure com.orcmid.LLC.pa.pn is projected onto computer hierarchies to 
+    ground the material and to provide development and access for authoritative 
+    versions.</small></dd>                   
+</dl>
+
+<font size="-1">
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm"><img border="0" src="../../../../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../../../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="62976" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2"><a name="created">created </a> </font></font><font size="-2"> 2004-09-26-10:18 
+      -0700 (pdt)</font><font size="-1"><font size="-2"> by <a href="../../../../../construction/orcmid.htm">orcmid</a><br> 
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 28 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

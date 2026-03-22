@@ -1,0 +1,384 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Conformance</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc394835116">Conformance</A></P>
+</B></FONT><P>The description of conformance is presented in two parts – the mandatory baseline that any implementation of the DMA API must provide, and a detailed definition of each optional capability.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc394835117">Mandatory Baseline</A></P>
+</FONT><P>General</P>
+</B><P>Every DMA object describes itself by providing metadata, as specified in the object model overview.</P>
+<P>All the DMA classes are described in the reference sections of this specification. For each DMA class, the specification defines what properties and interfaces must be supported for it, given that the class itself is supported. </P>
+<P>In order to support self describing metadata, at least the following DMA classes (referred to as SDM classes below) must be supported:</P>
+
+<UL>
+<LI>DMA</LI>
+<LI>Metadata</LI>
+<LI>Class Description</LI>
+<LI>Property Description</LI>
+<LI>Property Description Boolean</LI>
+<LI>Property Description Id</LI>
+<LI>Property Description Integer32</LI>
+<LI>Property Description Object</LI>
+<LI>Property Description String</LI>
+<LI>List</LI>
+<LI>List Of Boolean</LI>
+<LI>List Of Id</LI>
+<LI>List Of Integer32</LI>
+<LI>List Of Object</LI>
+<LI>List Of String</LI></UL>
+
+<P>The DMA classes that must be supported by all implementations vary according to metadata space type. </P>
+<P>The following are the metadata space types, and the minimum set of DMA classes that they must support:</P><DIR>
+<DIR>
+
+<B><P><A NAME="_Toc394835118">System Metadata Spaces</P><DIR>
+<DIR>
+
+</B><P>SDM classes</P>
+<P>System</P>
+<P>Enumeration</P>
+<P>Enumeration Of Object</P></DIR>
+</DIR>
+
+<B><P>Individual Document Space Metadata Spaces </P><DIR>
+<DIR>
+
+</B><P>SDM classes</P>
+<P>DocSpace</P>
+<P>DocVersion</P></DIR>
+</DIR>
+
+<B><P>Individual Document Space Scope Metadata Spaces </P><DIR>
+<DIR>
+
+</B><P>SDM classes</P>
+<P>Scope</P>
+<P>Query</P>
+<P>Query Constant</P>
+<P>Query Node</P>
+<P>Query Nonterminal Node</P>
+<P>Query Operand Description</P>
+<P>Query Operator</P>
+<P>Query Operator Description</P>
+<P>Query Order By Node</P>
+<P>Query Property</P>
+<P>Query Root</P>
+<P>Query Searchable Class</P></DIR>
+</DIR>
+
+<B><P>Merged Scope Metadata Spaces </P><DIR>
+<DIR>
+
+</B><P>(Same as Individual Document Space Metadata Space)</P></DIR>
+</DIR>
+
+<B><P>Query Result Metadata Spaces</P><DIR>
+<DIR>
+
+</B><P>SDM classes</P>
+<P>Enumeration</P>
+<P>Query Result Row</P>
+<P>Query Result Set</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><P>System Object</A></P>
+</B><P>The system object is a DMA object implemented by software referred to as &quot;middleware&quot;. The main functions of the middleware are to provide an implementation of the system object, a means for registering and locating document spaces, and to provide merged scope objects generated from multiple document space scopes, so that cross repository queries can be performed.</P>
+<P>Every conformant implementation of the system object must provide:</P>
+
+<UL>
+<LI>implementation of all interfaces, methods, classes, and properties identified as required to be implemented by the DMA object in the reference sections of this specification.</LI>
+<LI>thread safety under unrestricted threading (in which multiple threads of a process may execute both user and OS code concurrently).</LI></UL>
+
+<B><P><A NAME="_Toc394835119">Document Repository</A></P>
+</B><P>The main purpose of document repository implementations of the DMA API is to provide an implementation of the Document Space object, and objects generated from it, e.g., scope objects.</P>
+<P>Every conformant document space implementation must provide:</P>
+
+<UL>
+<LI>implementation of all interfaces, methods, classes, and properties identified as required to be implemented by document spaces in the reference sections of this specification.</LI>
+<LI>thread safety under free threading.</LI>
+<LI>document space specific properties and/or content for documents.</LI>
+<LI>at least read only access to all documents stored in the document space: Implementation of all interfaces, methods, classes, and properties necessary for at least one of the following options is required:</LI>
+
+<UL>
+<LI>Query access: Documents can be accessed using a search involving the values of properties of persistent objects.</LI>
+<LI>Containment access: Starting from the list of initial containers or a container in hand, containment related properties can be used to navigate to documents.</LI>
+<LI>OIID: The IdmaDocSpace:: ConnectObject method is supported, and can provide access to a document given its OIID. </LI></UL>
+</UL>
+
+<B><FONT SIZE=4><P><A NAME="_Toc398451414">Optional Capabilities</A></P>
+</FONT><P><A NAME="_Toc398451415">Document Space Object</A></P>
+</B><P>In the subsections of this section, the identifiers for document space capabilities (e.g., DMAC_LEVEL, DMAC_AUTHENTICATE, etc.) appear in the DMA header files as macros that evaluate to unique small, nonnegative integers. The capability identifiers are intended to be used as a list element index of the Doc Space Capabilities property, which is a list of integer32 property native to the document space object (class Doc Space). When the following refers to a capability being &quot;set&quot; or &quot;reset&quot;, that means that the value of the corresponding list element is DMA_TRUE or DMA_FALSE, respectively.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451416">General</A></P>
+</FONT><FONT SIZE=1><P><A NAME="_Toc398451417">DMAC_LEVEL</A></P>
+</B></FONT><P>The value indicates the version level number of the capabilities property for the document repository. It is a positive integer equal to 1 for the 1.0 DMA spec. On every subsequent release of the DMA spec. in which additional document repository capabilities are introduced, this number is increased by one.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451418">DMAC_AUTHENTICATE</A></P>
+</B></FONT><P>If set, then the document space object supports the IdmaAuthentication interface. </P>
+<P>If reset, the document space object does not support the IdmaAuthentication interface.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451419">DMAC_WRITEABLE_DOCSPACE</A></P>
+</B></FONT><P>If set, then (1) document space objects can be added, and deleted, and modified, and/or (2) document versions can be checked in. </P>
+<P>If reset, the document space is read only.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451420">DMAC_CONNECT_VIA_OIID</A></P>
+</B></FONT><P>If set, IdmaDocSpace:: ConnectObject is supported on the document space object to connect to persistent objects given their OIID.</P>
+<P>If reset, IdmaDocSpace:: ConnectObject is not supported.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451421">Content</A></P>
+</FONT><FONT SIZE=1><P><A NAME="_Toc398451422">DMAC_CONTENT</A></P>
+</B></FONT><P>This is set if and only if content is supported: At least some documents in the document space can have content. This implies that the Rendition class and at least one of the classes Content Transfer and Content Reference must be supported.</P>
+<P>If reset, the document repository merely catalogs external material, e.g., books on a shelf, and no documents have content.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451423">DMAC_CONTENT_MULT_RENDITIONS</A></P>
+</B></FONT><P>If set, then content is supported, and documents can have multiple renditions.</P>
+<P>If reset, documents can have at most one rendition.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451424">DMAC_CONTENT_MULT_ELEMENTS</A></P>
+</B></FONT><P>If set, then content is supported, and renditions can have multiple content elements.</P>
+<P>If reset, renditions can not have more than one content element.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451425">DMAC_CONTENT_MIME_RENDITIONS</A></P>
+</B></FONT><P>If set, then content is supported, and the document space supports the use of rendition types from the MIME rendition type space. NOTE: The Rendition Type property is a string of the form &lt;rendition_type_space&gt;::&lt;typename&gt;. The only &lt;rendition_type_space&gt; defined in the DMA 1.0 spec. is &quot;MIME&quot; (Multipurpose Internet Mail Extension) as defined by the IANA. Examples are &quot;MIME::application/postscript&quot; and &quot;MIME::text&quot;. END NOTE</P>
+<P>If reset, then the document space does not support MIME reference type names.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451426">DMAC_CONTENT_UPDATEABLE</A></P>
+</B></FONT><P>If set, then document content is supported, and document content can be edited. Some or all of the following operations can be performed on existing persistent Doc Version objects: Renditions can be added; renditions can be deleted; renditions can be replaced; content elements can be added; content elements can be deleted; content elements can be replaced. This implies IdmaConnection:: ExecuteChange is supported.</P>
+<P>If reset, then document cannot be edited. (Note that checking in a new version of a document does not count as updating content in the sense of this capability. That is viewed as creating a new persistent Doc Version object for purposes of discussion of this capability.)</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451427">DMAC_CONTENT_CAPTURE_RESOURCE</A></P>
+</B></FONT><P>If set, then content is supported, and IdmaContentTransfer:: SetCaptureResource supported. This method allows content to be captured from a named resource.</P>
+<P>If reset, then IdmaContentTransfer:: SetCaptureResource is not supported.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451428">DMAC_CONTENT_COPY_TO_RESOURCE</A></P>
+</B></FONT><P>If set, then content is supported, and IdmaContentTransfer:: CopyToResource is supported. This method makes a copy of captured content data in a resource of a specified name.</P>
+<P>If reset, then IdmaContentTransfer:: CopyToResource is not supported.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451429">Containment</A></P>
+</B></FONT><P>If containment is supported, the following optional classes must be supported:</P>
+
+<UL>
+<LI>Containable</LI>
+<LI>Container</LI>
+<LI>Relationship</LI></UL>
+
+<B><FONT SIZE=1><P><A NAME="_Toc398451430">DMAC_CONTAIN_DIR_REQUIRED</A></P>
+</B></FONT><P>If set, then, any directly containable object (except for root direct containers) must be contained in a container via direct containment. (There are no freestanding directly containable objects except root direct containers.)</P>
+<P>If reset, then it is not required that directly containable objects be contained in a container via direct containment. </P>
+<P>If containment is not implemented, the value is reset.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451431">DMAC_CONTAIN_REF_REQUIRED</A></P>
+</B></FONT><P>If set, then, any referentially containable object (except for root referential containers) must be contained in a container via referential containment. (There are no freestanding referentially containable objects except root referential containers.)</P>
+<P>If reset, then it is not required that referentially containable objects be contained in a container via referential containment.</P>
+<P>If containment is not implemented, the value is reset.</P>
+<P>If DMAC_CONTAIN_REF_REQUIRED and DMAC_CONTAIN_DIR_REQUIRED are both set, and if there is a class that can be contained both via direct containment and referential containment, then objects of that class must be directly contained, but need not be referentially contained.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451432">DMAC_CONTAIN</A></P>
+</B></FONT><P>If DMAC_CONTAIN is set, then containment is supported. The value of DMAC_CONTAIN is defined to be DMAC_CONTAIN_REF OR DMAC_CONTAIN_DIR .</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451433">DMAC_CONTAIN_REF</A></P>
+</FONT><P>If set, then referential containment is supported. The value of DMAC_CONTAIN_REF is defined to be DMAC_CONTAIN_REF_CONTAINER OR DMAC_CONTAIN_REF_CFG_HISTORY OR DMAC_CONTAIN_REF_VER_SERIES OR DMAC_CONTAIN_REF_VER_DESC OR DMAC_CONTAIN_REF_DOC_VER OR DMAC_CONTAIN_REF_OTHER .</P>
+<P>If DMAC_CONTAIN_REF is set, the following optional classes must be supported:</P>
+
+<UL>
+<LI>Referential Containment Relationship</LI></UL>
+
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451434">DMAC_CONTAIN_REF_CONTAINER</A></P>
+</FONT><P>If set, then classes of type Container and subclasses of that type may be contained referentially. </P>
+<P>If reset, classes of type Container and subclasses of that type may not be referentially contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451435">DMAC_CONTAIN_REF_CFG_HISTORY</A></P>
+</FONT><P>If set, then classes of type Configuration History and subclasses of that type may be contained referentially. </P>
+<P>If reset, then classes of type Configuration History and subclasses of that type may not be referentially contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451436">DMAC_CONTAIN_REF_VER_SERIES</A></P>
+</FONT><P>If set, then classes of type Version Series and subclasses of that type may be contained referentially. </P>
+<P>If reset, then classes of type Version Series and subclasses of that type may not be referentially contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451437">DMAC_CONTAIN_REF_VERS_DESC</A></P>
+</FONT><P>If set, then classes of type Version Description and subclasses of that type may be contained referentially. </P>
+<P>If reset, then classes of type Version Description and subclasses of that type may not be referentially contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451438">DMAC_CONTAIN_REF_DOC_VER</A></P>
+</FONT><P>If set, then classes of type Doc Version and subclasses of that type may be contained referentially. </P>
+<P>If reset, then classes of type Doc Version and subclasses of that type may not be referentially contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451439">DMAC_CONTAIN_REF_OTHER</A></P>
+</FONT><P>If set, then a class of type other than Doc Version, Configuration History, Version Series, and Version Description and subclasses of those classes may be contained referentially.</P>
+<P>If reset, then no classes of type other than Doc Version, Configuration History, Version Series, and Version Description and subclasses of those classes may be contained referentially.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451440">DMAC_CONTAIN_REF_MAX_DEPTH</A></P>
+</FONT><P>This is the maximum number of recursive levels that containers can contain other containers referentially. If a container can not be contained referentially by another container, the value is zero. If there is no limit on the number of levels of referential containment of containers, the value is -1.</P>
+<P>If referential containment is not supported, the value is zero.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451441">DMAC_CONTAIN_REF_ORDER</A></P>
+</FONT><P>The value of this capability is defined as DMAC_CONTAIN_REF_ORDER_HEAD OR DMAC_CONTAIN_REF_ORDER_TAIL .</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451442">DMAC_CONTAIN_REF_ORDER_HEAD</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering interface is supported for Referential Containment Relationship objects, and the SetOrdering method accepts the value DMA_POS_DEFAULT for the value of the ulHeadWhere parameter.</P>
+<P>If reset, the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451443">DMAC_CONTAIN_REF_ORDER_HEAD_BEFORE</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_BEFORE for the ulHeadWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_BEFORE value for the ulHeadWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451444">DMAC_CONTAIN_REF_ORDER_HEAD_AFTER</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_AFTER for the ulHeadWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_AFTER value for the ulHeadWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451445">DMAC_CONTAIN_REF_ORDER_HEAD_FIRST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_FIRST for the ulHeadWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_FIRST value for the ulHeadWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451446">DMAC_CONTAIN_REF_ORDER_HEAD_LAST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_LAST for the ulHeadWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_LAST value for the ulHeadWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451447">DMAC_CONTAIN_REF_ORDER_HEAD_NO_CH</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_NO_CHANGE for the ulHeadWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not implemented for Referential Containment Relationship objects, or the DMA_POS_NO_CHANGE value for the ulHeadWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451448">DMAC_CONTAIN_REF_ORDER_TAIL</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering interface is supported for Referential Containment Relationship objects, and the SetOrdering method accepts the value DMA_POS_DEFAULT for the value of the ulTailWhere parameter.</P>
+<P>If reset, the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451449">DMAC_CONTAIN_REF_ORDER_TAIL_BEFORE</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_BEFORE for the ulTailWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_BEFORE value for the ulTailWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451450">DMAC_CONTAIN_REF_ORDER_TAIL_AFTER</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_AFTER for the ulTailWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_AFTER value for the ulTailWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451451">DMAC_CONTAIN_REF_ORDER_TAIL_FIRST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_FIRST for the ulTailWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_FIRST value for the ulTailWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451452">DMAC_CONTAIN_REF_ORDER_TAIL_LAST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_LAST for the ulTailWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the DMA_POS_LAST value for the ulTailWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451453">DMAC_CONTAIN_REF_ORDER_TAIL_NO_CH</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_NO_CHANGE for the ulTailWhere parameter for Referential Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Referential Containment Relationship objects, or the SetOrdering DMA_POS_NO_CHANGE value for the ulTailWhere parameter to SetOrdering is not supported for Referential Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451454">DMAC_CONTAIN_DIR</A></P>
+</FONT><P>The value of DMAC_CONTAIN_DIR is defined to be DMAC_CONTAIN_DIR_CONTAINER OR DMAC_CONTAIN_DIR_CFG_HISTORY OR DMAC_CONTAIN_DIR_VER_SERIES OR DMAC_CONTAIN_DIR_VER_DESC OR DMAC_CONTAIN_DIR_DOC_VER OR DMAC_CONTAIN_DIR_OTHER .</P>
+<P>If DMAC_CONTAIN_DIR is set, the following optional classes must be supported:</P>
+
+<UL>
+<LI>Direct Containment Relationship</LI></UL>
+
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451455">DMAC_CONTAIN_DIR_CONTAINER</A></P>
+</FONT><P>If set, then classes of type Container and subclasses of that type may be contained directly. </P>
+<P>If reset, then classes of type Container and subclasses of that type may not be directly contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451456">DMAC_CONTAIN_DIR_CFG_HISTORY</A></P>
+</FONT><P>If set, then classes of type Configuration History and subclasses of that type may be contained directly. </P>
+<P>If reset, then classes of type Configuration History and subclasses of that type may not be directly contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451457">DMAC_CONTAIN_DIR_VER_SERIES</A></P>
+</FONT><P>If set, then classes of type Version Series and subclasses of that type may be contained directly. </P>
+<P>If reset, then classes of type Version Series and subclasses of that type may not be directly contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451458">DMAC_CONTAIN_DIR_VER_DESC</A></P>
+</FONT><P>If set, then classes of type Version Description and subclasses of that type may be contained directly. </P>
+<P>If reset, then classes of type Version Description and subclasses of that type may not be directly contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451459">DMAC_CONTAIN_DIR_DOC_VER</A></P>
+</FONT><P>If set, then classes of type Doc Version and subclasses of that type may be contained directly. </P>
+<P>If reset, then classes of type Doc Version and subclasses of that type may not be directly contained.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451460">DMAC_CONTAIN_DIR_OTHER</A></P>
+</FONT><P>If set, then a class of type other than Doc Version, Configuration History, Version Series, and Version Description and subclasses of those classes may be contained directly.</P>
+<P>If reset, then no classes of type other than Doc Version, Configuration History, Version Series, and Version Description and subclasses of those classes may be contained directly.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451461">DMAC_CONTAIN_DIR_MAX_DEPTH</A></P>
+</FONT><P>This is the maximum number of recursive levels that containers can contain other containers via direct containment. If a container can not be contained by another container via direct containment, the value is zero. If there is no limit on the number of levels, the value is -1.</P>
+<P>If direct containment is not supported, the value is zero.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451462">DMAC_CONTAIN_DIR_ORDER</A></P>
+</FONT><P>This capability is defined as DMAC_CONTAIN_DIR_ORDER_HEAD OR DMAC_CONTAIN_DIR_ORDER_TAIL .</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451463">DMAC_CONTAIN_DIR_ORDER_HEAD</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering interface is supported for Direct Containment Relationship objects, and the SetOrdering method accepts the value DMA_POS_DEFAULT for the value of the ulHeadWhere parameter.</P>
+<P>If reset, the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451464">DMAC_CONTAIN_DIR_ORDER_HEAD_BEFORE</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_BEFORE for the ulHeadWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_BEFORE value for the ulHeadWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451465">DMAC_CONTAIN_DIR_ORDER_HEAD_AFTER</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_AFTER for the ulHeadWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_AFTER value for the ulHeadWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451466">DMAC_CONTAIN_DIR_ORDER_HEAD_FIRST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_FIRST for the ulHeadWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_FIRST value for the ulHeadWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451467">DMAC_CONTAIN_DIR_ORDER_HEAD_LAST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_LAST for the ulHeadWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_LAST value for the ulHeadWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451468">DMAC_CONTAIN_DIR_ORDER_HEAD_NO_CH</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_NO_CHANGE for the ulHeadWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not implemented for Direct Containment Relationship objects, or the DMA_POS_NO_CHANGE value for the ulHeadWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451469">DMAC_CONTAIN_DIR_ORDER_TAIL</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering interface is supported for Direct Containment Relationship objects, and the SetOrdering method accepts the value DMA_POS_DEFAULT for the value of the ulTailWhere parameter.</P>
+<P>If reset, the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451470">DMAC_CONTAIN_DIR_ORDER_TAIL_BEFORE</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_BEFORE for the ulTailWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_BEFORE value for the ulTailWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451471">DMAC_CONTAIN_DIR_ORDER_TAIL_AFTER</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_AFTER for the ulTailWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_AFTER value for the ulTailWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451472">DMAC_CONTAIN_DIR_ORDER_TAIL_FIRST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_FIRST for the ulTailWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_FIRST value for the ulTailWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451473">DMAC_CONTAIN_DIR_ORDER_TAIL_LAST</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_LAST for the ulTailWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the DMA_POS_LAST value for the ulTailWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451474">DMAC_CONTAIN_DIR_ORDER_TAIL_NO_CH</A></P>
+</FONT><P>If set, the IdmaRelationshipOrdering:: SetOrdering method allows the value DMA_POS_NO_CHANGE for the ulTailWhere parameter for Direct Containment Relationship objects. </P>
+<P>If reset, either the IdmaRelationshipOrdering interface is not supported for Direct Containment Relationship objects, or the SetOrdering DMA_POS_NO_CHANGE value for the ulTailWhere parameter to SetOrdering is not supported for Direct Containment Relationship objects.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451475">Versioning</A></P>
+</B></FONT><P>If versioning is supported, the following optional classes must be supported:</P>
+
+<UL>
+<LI>Versionable</LI>
+<LI>Configuration History</LI>
+<LI>Version Series (Note that IdmaVersionSeries is a required interface on this class.)</LI>
+<LI>Version Description</LI></UL>
+
+<P>If versioning is supported, the following optional interfaces must be supported by the Doc Version class:</P>
+
+<UL>
+<LI>IdmaVersionable</LI></UL>
+
+<B><FONT SIZE=1><P><A NAME="_Toc398451476">DMAC_VERSION</A></P>
+</B></FONT><P>If set, new document versions can be created via IdmaVersionable:: SetCheckin on the Doc Version object, followed by IdmaConnection:: ExecuteChange on the Doc Version object.. </P>
+<P>If reset, the checking in of new document versions is not supported.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451477">DMAC_VERSION_REQUIRED</A></P>
+</FONT><P>If set, then the versioning related properties are required to have values. Thus, for example, all documents have to be versioned.</P>
+<P>If reset, then the versioning related properties are not required to have values. Thus, for example, there can be documents not in a version series.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451478">DMAC_VERSION_OTHER_ENTITIES</A></P>
+</FONT><P>If set, then there are classes that are not subclasses of Versionable that have versioning properties, and so may be versioned.</P>
+<P>If reset, then only classes that are subclasses of Versionable can have versioning properties.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451479">DMAC_VERSION_CHECKIN_EXISTING</A></P>
+</FONT><P>If set, then the document space allows checkin of an object that is already persistent.</P>
+<P>If reset, then the document space does not allow checkin of an object that is already persistent.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451480">DMAC_VERSION_THREADED</A></P>
+</FONT><P>If set, then a Doc Version can have more than one Version Description as a parent.</P>
+<P>If reset, then a Doc Version can have at most one Version Description as a parent.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451481">DMAC_VERSION_CHECKOUT</A></P>
+</FONT><P>If set, then the document space supports IdmaVersionSeries:: SetCheckOutNext.</P>
+<P>If rest, then the document space does not support SetCheckOutNext. (SetReserveNext is in the versioning baseline. SetCheckOutNext isn’t.)</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451482">DMAC_VERSION_CHANGE_CURRENT</A></P>
+</FONT><P>If set, then the document space supports making a version other than the last be the current version. The current version is what gets checked out and leads to the next version when it’s checked in. Changing the current version would be done by changing the Current Version Description property of the Version Series object.</P>
+<P>If reset, the current version cannot be modified. This implies that the current version is always the last version. This also implies that the only way to insert a new version is checkout or reserve, followed by checkin.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451483">DMAC_VERSION_DELETE_VERSION_DESCRIPTION</A></P>
+</FONT><P>If set, then the document space supports deleting some, but not necessarily all, Version Descriptions in one operation.</P>
+<P>If reset, versions can not be deleted selectively.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451484">Query</A></P>
+</FONT><FONT SIZE=1><P><A NAME="_Toc398451485">DMAC_QUERY</A></P>
+</B></FONT><P>If set, then query is supported: IdmaDocSpace:: GetScope is supported, and at least the following query classes are supported: Scope, Query, Query Node, Query Root, Query Property, Query Searchable Class, Query Result Set, Query Result Row. There is at least one searchable class in the Searchable Classes property of scopes generated by the document space, and at least one selectable property in every searchable class in scopes generated by the document space. </P>
+<P>If reset, there are no useful queries that are supported. The IdmaDocSpace:: GetScope method is not supported, and none of the query classes are supported. The query classes are: Query, Query Constant, Query Constant Binaries, QueryConstant Binary, Query Constant Boolean, Query Constant Booleans, Query Constant Date Time, Query Constant Date Times, Query Constant Float64, Query Constant Float64s, Query Constant Id, Query Constant Ids, Query Constant Integer32, Query Constant Integer32s, Query Constant String, Query Constant Strings, Query Join Op, Query Node, Query Nonterminal Node, Query Operand Description, Query Operator, Query Operator Description, Query Order By Node, Query Property, Query Result Row, Query Result Set, Query Root, Query Searchable Class, Scope.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451486">DMAC_QUERY_EXPRESSION</A></P>
+</FONT><P>If set, then the following is true: DMAC_QUERY is set. The Query Expression property of the  Query Root object may be non null. The classes Query Operator Description, Query Operand Description, Query Nonterminal Node, Query Constant, and Query Operator are supported. At least one query operator that is not a join operator is supported. At least one of the following query classes is supported: Query Constant Binaries, Query Constant Binary, Query Constant Boolean, Query Constant Booleans, Query Constant Date Time, Query Constant Date Times, Query Constant Float64, Query Constant Float64s, Query Constant Id, Query Constant Ids, Query Constant Integer32, Query Constant Integer32s, Query Constant String, Query Constant Strings.</P>
+<P>If reset, then the Query Expression property of the Query Root object must be null.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451487">DMAC_QUERY_JOINS</A></P>
+</FONT><P>If set, then DMAC_QUERY is set, and at least one query join operator is supported.</P>
+<P>If reset, then no query join operators are supported.</P>
+<FONT FACE="Arial Black" SIZE=1><P><A NAME="_Toc398451488">DMAC_QUERY_ORDERINGS</A></P>
+</FONT><P>If set, then DMA_QUERY is set, and the Orderings property of the Query Root object may be non null.</P>
+<P>If reset, then the Orderings property of the Query Root object must be null.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451489">DMAC_3V_ELIMINATION</A></P>
+</B></FONT><P>If set, Scope objects created by the current document space object always perform three valued elimination on queries when requested to do so.</P>
+<P>If reset, Scope objects created by the current document space object never perform three valued elimination on queries.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc398451490">DMAC_LOCKING</A></P>
+</B></FONT><P>If this capability is set, locking is supported. The value of DMAC_LOCKING is defined as DMAC_LOCKING_WRITER OR DMAC_LOCKING_READER OR DMAC_LOCKING_EXISTENCE. </P>
+<P>Required Interfaces and methods:</P>
+
+<UL>
+<LI>IdmaConnection</LI>
+
+<UL>
+<LI>ApplyLock</LI>
+<LI>RemoveLock</LI></UL>
+
+<LI>IdmaDocSpace</LI>
+
+<UL>
+<LI>ConnectAndLockObject</LI></UL>
+</UL>
+
+<B><FONT SIZE=1><P><A NAME="_Toc398451491">DMAC_LOCKING_WRITER</A></P>
+</B></FONT><P>If set, the value DMA_LOCK_WRITE for the lLockType parameter to ApplyLock is supported.</P>
+<P>If reset, the value DMA_LOCK_WRITE for the lLockType parameter to ApplyLock is not supported.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451492">DMAC_LOCKING_READER</A></P>
+</B></FONT><P>If set, the value DMA_LOCK_READ for the lLockType parameter to ApplyLock is supported.</P>
+<P>If reset, the value DMA_LOCK_READ for the lLockType parameter to ApplyLock is not supported.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc398451493">DMAC_LOCKING_EXISTENCE</A></P>
+</B></FONT><P>If set, the value DMA_LOCK_EXIST for the lLockType parameter to ApplyLock is supported.</P>
+<P>If reset, the value DMA_LOCK_EXIST for the lLockType parameter to ApplyLock is not supported.</P>
+</BODY>
+</HTML>

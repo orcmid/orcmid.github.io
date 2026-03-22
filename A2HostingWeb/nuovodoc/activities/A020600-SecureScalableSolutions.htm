@@ -1,0 +1,190 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /nfoCentrale Compagno Web/NuovoDoc/activities/A020600-SecureScalableSolutions.htm 3     02-11-18 16:29 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>A020600: Watching the Bear Dance - Scaling .NET</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"></td>
+    <td width="60%" height="6">
+      <h2 align="center"><em><big>Watching the Bear Dance!</big></em></h2>
+      <h2 align="center"><em>Building Secure and Scalable .NET Solutions for the
+      Networked World</em></h2>
+      <h2 align="center"><em>&nbsp;June 20-21, 2002</em></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+</font>
+<blockquote>
+<div align="center"><center>
+
+
+
+<p align="center">
+  <b>
+  <small>version <a href="#0.10">0.10</a> last updated 2002-08-10-14:02 -0700
+  (pdt)</small></b>
+</p>
+</center></div>
+
+<hr>
+<p align="center">&nbsp;</p>
+<hr>
+
+<h2>Arrival</h2>
+
+<p>The Microsoft Campus is very nice, and the route I was given for finding the
+conference center took me along a wooded road, with paths, people jogging, and a
+sense of the sheltered quiet that is provided throughout the campus.</p>
+
+<p>The Conference center is also pleasant, well-outfitted, and the people know
+how to provide hospitality and a comodious setting, from the Internet access
+stations in the foyer to the outlets and touch controls at the individual
+stations.</p>
+
+<p>It was also impressive to see a meeting that had to ask some of its guests
+leave because the room was overfilled.&nbsp; The attention to safety and
+capacity is not something I see that plainly.</p>
+
+<h2>Setup</h2>
+
+<p>Nice discussion, see my notes pages on the slides.&nbsp; Good setup for the
+overview.</p>
+
+<p>Surprising that it is not all about down and dirty code but lots of situated
+discussion.&nbsp; Good anecdotal material to motivate the setup and overview of
+the</p>
+
+<h2>Freebies</h2>
+
+<p>Two books</p>
+
+<p>Trial version of VS.NET</p>
+
+<p>Full-Up XP Professional 2002 complementary VIP edition.&nbsp; Not an upgrade.</p>
+
+<p>Other materials, plus what was in the initial summit folder.</p>
+
+</blockquote>
+
+<h2>1. <a name="Presentation">Presentation</a></h2>
+
+<h3>1.1 Module 1 - Security Concepts</h3>
+
+<blockquote>
+
+<p align="left">STRIDE model.&nbsp; Need to use that.&nbsp; I should try it and
+test it with
+the MISER COM Implementation.</p>
+  <p align="left">Various illustrations about blinders and trust points.&nbsp;
+  For example, an user can do a POST from anything instead of the form that was
+  delivered to the client.&nbsp; So if there is stuff that is expected to be
+  replayed (e.g., prices sent to a form), they can be altered.&nbsp; So it is
+  important to not allow replay/alteration of material by the client.</p>
+  <p align="left">Trust points are used in the discussion, but tacitly, such as
+  trusting DNS and trusting a URL to take us to the expected place.</p>
+  <p align="left">Get to learn that .cs means c# code.&nbsp; Now I feel like an
+  insider and I belong here.</p>
+  <p align="left">SHA1 or MD5 - SHA is currently preferred, because the
+  weaknesses of MD5 are concerning people.</p>
+  <p align="left">Cool tip about using Win2k and beyond to Run As ... when
+  starting something, and never being logged on as administrator on your own
+  machine!&nbsp; Also you can run as ... rather than logging off and logging on
+  as someone else.</p>
+  <p align="left">Uses command shell a lot.&nbsp; Surprise!</p>
+  <p align="left">Comment about how if you do a correct password change, your
+  encrypted keys will be re-encrypted.&nbsp; But if it gets changed some other
+  way, you won't be able to access your OS-encrypted files anymore, because your
+  new credential doesn't work to decrypt the encrypted keys done with the old
+  password.</p>
+  <p align="left">Discussion of message authentication codes.&nbsp; (Under
+  mitigation tampering threats.)</p>
+  <p align="left">p.9 slides tips.&nbsp; If you are denied access, the first
+  thing you want to know is if you are authenticated properly.&nbsp; There are
+  ways to check that.&nbsp; You can audit logon events and find out whether or
+  not there is a successful authentication.&nbsp; Then you can look to see if
+  you have authorization structures that need to be adjusted.</p>
+  <p align="left">p.10 slide 31 - back up logs -- good things to put on a CD-R.</p>
+  <p align="left">Code Access Security, Module 3.&nbsp; Running code lets the
+  code do anything that you can do.</p>
+  <p align="left">Components in a process-centric security model created a big
+  exposure for component defects, even with authenticode.</p>
+  <p align="left">I get sleepy after lunch, but this is all good material.&nbsp;
+  The way that applications and code can be boxed in, and the amount of
+  security&nbsp;</p>
+<p align="left">There are deployment wizards that create MSI files.&nbsp; So MSI
+is a big deal too.&nbsp; Group policies get synchronized every time you
+boot.&nbsp;</p>
+<p align="left">Exceptions do not provide the means to discover the policy that
+it came from.</p>
+<p align="left">The Evaluate an Assembly function gives you the result of the
+evidence/policy evaluation and tells you the permissions that are granted.</p>
+<p align="left">Unrestricted means no additional restrictions.&nbsp; This is a
+new speedbump, but it doesn't over-ride the unmanaged security context.</p>
+</blockquote>
+<h3 align="left">1.x Day 2, Module 5 - Forms Authentication (middle of module we
+left off with yesterday)</h3>
+<blockquote>
+<p align="left">Forms Authentication</p>
+<p align="left">aspnet-isapi.dll runs inside of the Web Server and provides the
+.NET pipeline</p>
+<p align="left">More notes on the slide pages.&nbsp; I am busy making more Miser
+notes while this is all going on.</p>
+<p align="left">I am not so attentive on Day 2.&nbsp; I lapse back and forth
+about being excited about what I am doing in the Miser sketch, and then also
+with my fatigue level because I didn't rest enough.</p>
+  <p align="left">There are exciting things about what ASP.NET provides, and the
+  support for authenticated operation.&nbsp; Also, I am more interested in what
+  the DevelopMentor folk provide.&nbsp; It is a cool organization.</p>
+</blockquote>
+<p align="left">1.x Code&nbsp;</p>
+<blockquote>
+<p align="left">&nbsp;</p>
+</blockquote>
+<h2>2. <a name="Discussion">Discussion</a></h2>
+<blockquote>
+  <p>Suggested topics for discussion include:</p>
+</blockquote>
+
+<h2>3. <a name="resources">Resources and References</a></h2>
+
+<blockquote>
+  <dl>
+    <dt><a href="http://www.webdav.org" target="_top"><b>http://staff.develop.com/jasonm</b></a></dt>
+    <dd>For the resources from this Summit.&nbsp; The slides and the sample code
+      are all available for download.</dd>
+  </dl>
+
+<hr>
+
+
+</blockquote>
+<h3><i>History</i></h3>
+<blockquote><font size="-1">
+  <p><b><a name="0.10">version 0.10</a>     2002-06-20 </b>Adapt a boilerplate
+  and start capturing notes other than on the printed slide notes pages.</p>
+  </font>
+</blockquote>
+
+
+<p align="right"><font size="-2">created 2002-06-20-09:10 -0700 (pdt) by <a href="../construction/orcmid.htm"> orcmid</a><br><em>$$Author: Orcmid $<br>
+  $$Date: 02-11-18 16:29 $<br>
+  $$Revision: 3 $</em>
+  </font>
+</p>
+
+</body>
+</html>

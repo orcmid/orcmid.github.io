@@ -1,0 +1,206 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X010100.htm 8     01-02-12 12:01 Orcmid $-->
+<title>X010100: Inappropriate Messages to Users</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X010100.htm">X010100</a>:
+</b>Inappropriate Messages to Users</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-02-12-12:02 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X010100.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Functionality -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X010100.htm">X010100</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>8 - <font color="#FF0000">Important</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Correction Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>
+        2.0.0 and <b><code>Odma.dll</code></b> 2.0.0</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> </b></dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/support/X010101.htm">X010101</a>:
+            WordPerfect SP4 Invalid Document IDs<br>
+            <a href="http://www.infonuovo.com/odma/projects/P000902.htm">P000902</a>:
+            ODMA Connection Manager Release 2.0.1</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: tbd</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>&nbsp;<a href="http://www.infonuovo.com/odma/faq/Q000605.htm#CarolynKaukl">Carolyn
+        Kaukl</a> (<a href="http://www.infonuovo.com/odma/support/x010100a.msg">2001-01-18</a>)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-01-25</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>     (2001-01-29):</h3>
+
+<blockquote>
+  <p>The ODMA 2.0.0 Connection Manager implementations, <b><code>ODMA32.dll</code></b>
+  and <b><code>Odma.dll</code></b>, presents unwanted message windows under two
+  conditions:</p>
+
+  <ol>
+    <li><code>INVDOCID:</code> Invalid Document ID</li>
+    <li><code>NODMS:</code> Specified DMS is not registered with ODMA Keys</li>
+  </ol>
+  <p>The messages that are produced are very plain in format:</p>
+  <p align="center"><img border="0" src="x010100b.gif" alt="Specified DMS is not registered with ODMA Keys" width="640" height="480"></p>
+  <p align="center"><i>Figure 1</i>.&nbsp; ODMA Connection Manager Message (download
+  <a href="http://www.infonuovo.com/odma/support/x010100b.bmp">BMP
+  format</a>)</p>
+  <p>If the user clicks &quot;OK&quot; the Connection Manager will then perform
+  the correct operation, which is to silently report the appropriate error
+  condition (e.g., <b><code>ODM_E_DOCID</code></b>) to the ODMA-aware application that originated the request.</p>
+  <p>These messages are inappropriate and unwanted for several reasons:</p>
+  <ul>
+    <li>The ODMA 2.0 Connection Manager is neither localized nor designed for
+      internationalization.</li>
+    <li>The ODMA 2.0 Connection Manager must support &quot;batch&quot; and
+      unattended operation of ODMA-aware applications.&nbsp; The ability to
+      avoid all operator interventions is a specific provision of ODMA 2.0.&nbsp;
+      These messages defeat the provisions for silent operation.</li>
+    <li>The <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ErrorHandling"> ODMA Specifications</a>
+      and implementation practices are based on the assumption that all interactive
+      activities are those of the DMS and of the ODMA-aware
+      application.&nbsp;&nbsp; The ODMA Connection Manager must passively
+      deliver error indications (via <b><code> ODMSTATUS</code></b> result codes) for problems
+      detected by the Connection Manager itself or reported by the DMS.</li>
+    <li>The reported conditions are not fatal and may occur under ordinary
+      conditions in which there is no actual problem.&nbsp; For example, when an
+      <a href="../downloads/odma20-3.htm#DocId">
+      ODMA Document ID</a> is obtained as a link in a document, or from an E-mail
+      message, it may well be that the originating DMS is not available on the
+      computer in which access to the document is attempted.&nbsp; The inability
+      to use the Document ID should simply be reported back to the application
+      for treatment as an allowable though uncommon exception.</li>
+    <li>There are well-defined <b><code>ODMSTATUS</code></b> values for
+      reporting any of these conditions: <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_DOCID2.1">ODM_E_DOCID</a></code></b>,
+      <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_NODMS2.14">ODM_E_NODMS</a></code></b>,
+      and <code><b><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_FAIL2.10">ODM_E_FAIL</a></b></code>,
+      and appropriate result codes will in-fact be delivered once the user
+      clicks the &quot;OK&quot; button.</li>
+    <li>The message wording is not particularly informative.&nbsp; The message
+      provides information that the user of the ODMA-aware application cannot be
+      expected to comprehend nor understand the consequences of.&nbsp; It is far
+      better to have the application provide an informative display, if even
+      needed, depending on what operations are being performed at the
+      application level.</li>
+  </ul>
+  <p>Although the messages have been seen under conditions where there is an <a href="http://www.infonuovo.com/odma/support/X010101.htm">
+  error in the application</a>, these messages are inappropriate because they can
+  occur when there is no actual defect.&nbsp; The messages are not required for,
+  nor are they helpful for troubleshooting of, ODMA 2.0 operations.&nbsp; The
+  ODMA 2.0 Connection Manager <a href="../downloads/odma20-3.htm#7">Trace Log</a>
+  is more informative and useful for any
+  necessary troubleshooting.</p>
+</blockquote>
+<h3><a name="Actions">Actions</a>    (2001-01-29):</h3>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the repair that is needed.&nbsp;
+      [2001-01-29: Completed]</li>
+    <li>Include elimination of these messages in the development of the next maintenance and functionality release
+      2.0.1 of the ODMA 2.0 Connection Managers.&nbsp; This development will be
+      under ODMA Project <a href="http://www.infonuovo.com/odma/projects/p00-log.htm#P000902">P000902</a>.</li>
+    <li>Produce an updated, tested Connection Manager in which the repair is
+      confirmed.&nbsp;&nbsp;</li>
+    <li>Announce the Connection Manager revision and have it be available for
+      download.</li>
+    <li>Close this incident report when (1-4) are complete and it is clear that
+      proper operation of the updated Connection Managers is fully
+      confirmed.</li>
+  </ol>
+</blockquote>
+<h3><a name="Investigation">Investigation</a>     (2001-01-29):</h3>
+<blockquote>
+<p>The following steps were taken to confirm the claims made in this incident
+report:</p>
+  <ol>
+    <li>The ODMA 2.0 Connection Manager <a href="http://www.infonuovo.com/odma/downloads/default.htm#ODMA-20-Source">source
+      code</a> for ODMA32.dll 2.0.0 was inspected and the reported
+      defect was located.</li>
+    <li>Resource definition file <b><code>odma.rc</code></b> defines a string
+      table for the two message texts.</li>
+    <li>Resource definition header file <b><code>Resource.h</code></b> defines
+      the identification of the two message-text resources, <b><code>IDS_INVDOCID</code></b>
+      and <b><code>IDS_NODMS</code></b></li>
+    <li>File <b><code>ConMan.h</code></b> declares the prototype <b><code>ErrorMessage</code></b>
+      function.</li>
+    <li>File <b><code>Client.cpp</code></b> uses the <b><code>ErrorMessage</code></b>
+      function in <code><b>ODMClient::ConnectDocID</b></code>.</li>
+    <li>File <b><code>Init.cpp</code></b> defines <b><code>ErrorMessage</code></b>
+      using the Microsoft Windows <b><code>MessageBox</code></b> function and a
+      global <b><code>MAXERRSTRING</code></b> parameter (defined in <b><code>ConMan.h</code></b>)
+      on the length of message texts.</li>
+    <li>File <b><code>Odmdms.cpp</code></b> uses the <b><code>ErrorMessage</code></b>
+      function in <code><b>ODMDms::Init</b></code>.</li>
+  </ol>
+<p>There are other uses of the Windows <b><code>MessageBox</code></b> function
+that are only employed when the Connection Manager is compiled with debugging
+enabled.&nbsp; These cases are ignored since debugging versions are not
+distributed.&nbsp; It is advisable to remove the conditional debugging material
+when the ODMA Connection Manager 2.0.1 edition is produced, instead relying on a
+single trouble-shooting model that is reliable for production integrations as
+well as testing of new code.</p>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#CarolynKaukl">Carolyn
+      Kaukl</a></dt>
+    <dd>provided the original report of incidents, and then provided the
+      trouble-shooting requested to confirm this part of the original problem.&nbsp;
+      Carolyn provided <a href="x010101g.log">follow-up demonstration</a> that
+      accepting the message box leads to correct <b><code>ODMSTATUS</code></b>
+      return from the ODMA operation that provoked the message box.</dd>
+    <dt><a href="mailto:infonuovo@email.com">Dennis Hamilton</a></dt>
+    <dd>reviewed the reports and logs, then confirmed the defects by inspection
+      of the ODMA 2.0 Connection Manager 2.0.0 source code..</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-01-25-17:22 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-02-12 12:01 $<br>
+$$Revision: 8 $</em></p>
+</body>
+</html>

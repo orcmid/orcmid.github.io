@@ -1,0 +1,62 @@
+<html><head><title>Interfaces and Methods: IdmaSystem</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaSystem"></a>IdmaSystem</h2>
+<p>This is the specialized interface for the DMA System object.  It provides access to Document Spaces and methods that deal with multiple Document Spaces.  It also provides some infrastructure services, such as access to the memory management mechanism.</p>
+<h3><a name="IdmaSystemConnectDocSpace"></a>IdmaSystem::ConnectDocSpace</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystem::ConnectDocSpace</b> (<br>
+pDmaId    <i>pDocSpaceId</i>,<br>pDmaString    <i>pLocaleName</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIDocSpace</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pDocSpaceId</i></p></TD><TD><p>input</p></TD><TD><p>The DmaId which identifies the document space for which an object is to be instantiated.</p></TD></TR>
+<TR><TD><p><i>pLocaleName</i></p></TD><TD><p>input</p></TD><TD><p>The name of the locale to be used by the returned document space instance. If this parameter is NULL, the document space is to employ its default locale.  If this parameter is non-NULL and does not correspond to a locale supported by the document space, the returned instance will utilize the document space's default locale.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on the resulting DMA object</p></TD></TR>
+<TR><TD><p><i>ppIDocSpace</i></p></TD><TD><p>output</p></TD><TD><p>Reference to the requested interface for the DocSpace object; NULL if the operation is unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns an interface to a (usually unauthenticated) DMA DocSpace object representing the identified DMA Document Space. If the operation succeeds, a new DocSpace object is instantiated, representing a point-of-access view of the identified document space. Each DocSpace interface returned by IdmaSystem::ConnectDocSpace is for a distinct instance of a DMA DocSpace object (in the same sense that EnumerationOfObject delivers distinct instances according to the DMA Object Model).
+</p><p>
+In general, the IdmaAuthentication interface must be exercised on the returned DMA DocSpace object before the object can be used for anything other than inspecting non-object valued properties..</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_DOC_SPACE</p></TD><TD><p>There is no available document space with the specified DmaId</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_UNEXPECTED</p></TD><TD><p>(E_UNEXPECTED) An unexpected error occurred.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaSystemEnumerateDocSpaces"></a>IdmaSystem::EnumerateDocSpaces</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystem::EnumerateDocSpaces</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIEnumOfDocSpace</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIEnumOfDocSpace</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface or NULL if unsuccessful. </p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The IdmaSystem::EnumerateDocSpaces function returns an interface (typically IdmaEnumOfObject) to a DMA object which the caller can use to enumerate DMA Document Space objects accessible via the System object. The DocSpace objects delivered by the enumerator are in the same state as if ConnectDocSpace had been called, using the locale and character set encoding in effect for the System object. Therefore, in general, the IdmaAuthentication interface must be exercised on the returned objects before they can be used for anything other than inspecting the DocSpace's non-object valued properties.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. In case the operation is successful, the returned interface must be released using the method IUnknown::Release.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaSystemGetResultCodeDescription"></a>IdmaSystem::GetResultCodeDescription</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystem::GetResultCodeDescription</b> (<br>
+DmaRC    <i>rcResultCode</i>,<br>ppDmaString    <i>ppResultCodeDesc</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>rcResultCode</i></p></TD><TD><p>input</p></TD><TD><p>A result code that may be returned from a DMA method.</p></TD></TR>
+<TR><TD><p><i>ppResultCodeDesc</i></p></TD><TD><p>output</p></TD><TD><p>Returns a string that describes the selected result code.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a string that contains a textual description of the result code that is passed in to the function.  The description will be given in the operative locale for the System object.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_RC</p></TD><TD><p>Invalid Result Code.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

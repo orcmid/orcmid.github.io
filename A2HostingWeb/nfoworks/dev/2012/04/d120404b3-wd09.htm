@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+ 
+<title>OASIS OIC TC Interop Advisory XXXXX</title> 
+<link rel="stylesheet" type="text/css" href="d120404b3-style.css"/> 
+</head> 
+<body> 
+<h1>OASIS OIC TC Interop Advisory 00009: <br /> 
+Protection-Key Safety</h1> 
+<div id="general"> 
+ 
+<h2>General info</h2> 
+<div id="dates"> 
+<table> 
+<tr><th>State:</th><td id="state">Draft</td></tr> 
+<tr><th>Original Date:</th><td id="date">2011-10-04</td></tr> 
+<tr><th>Last revised:</th><td id="lastdate">2012-06-13 working draft 9</td></tr> 
+</table> 
+</div> 
+ 
+<div id="affects"> 
+<h3>Affects</h3> 
+<table> 
+<tr><th>ODF version(s):</th><td id="odf">1.0, 1.1, 1.2</td></tr> 
+<tr><th>Issue:</th><td id="issue">OFFICE-3703</td></tr> 
+<tr><th>Case(s):</th><td id="case">n/a</td></tr> 
+</table> 
+</div> 
+ 
+<div id="references"> 
+<h3>References</h3> 
+<ul> 
+<li>[<a name="r1">1</a>] <a href="http://docs.oasis-open.org/office/v1.2/os/">
+Open Document Format for Office Applications (OpenDocument) Version 1.2, OASIS 
+Standard, 29 September 2011</a></li>
+<li>[<a name="r2">2</a>] <a href="http://docs.oasis-open.org/office/v1.1/OS/">Open 
+Document Format for Office Applications (OpenDocument) v1.1, OASIS Standard, 1 
+Feb 2007</a></li> 
+<li>[<a name="r3">3</a>] <a href="http://docs.oasis-open.org/office/v1.0/">Open 
+Document Format for Office Applications (OpenDocument) v1.0, OASIS Standard, 1 
+May 2005</a></li>
+<li>[<a name="r4">4</a>] <a href="http://tools.oasis-open.org/issues/browse/OFFICE-3703">ODF TC JIRA ticket 
+OFFICE-3703: Proposal ODF 1.3 Protection-Key Enhancements</a></li>
+<li>
+[<a name="r5">5</a>]
+<a href="http://www.oasis-open.org/committees/document.php?document_id=46218">
+ODF TC EnhancedProtectionKey-v1.05.odt Document Details</a> (2012-06-12,
+<a href="http://www.oasis-open.org/committees/document.php?document_id=46219">
+PDF</a>,
+<a href="http://www.oasis-open.org/committees/document.php?document_id=46220">
+HTML</a>)<br>
+&nbsp;</li>
+<li><a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">Cryptographic Hash Function</a> (Wikipedia Article, 2011-09-19 version accessed)</li> 
+</ul> 
+</div> 
+ 
+ 
+<div id="description"> 
+<h3>Description</h3> 
+<p> 
+<b>Summary:</b> <i>Password-associated protection locks on ODF documents are 
+insecure.&nbsp; There is assurance neither of password confidentiality nor of 
+integrity for the protected material.&nbsp; Furthermore, the digital hash 
+used to authenticate the password is usable in forgery and misuse with the same or other documents.&nbsp; This 
+advisory provides means by which users can avoid risky use of passwords while 
+also being able to use protection settings safely.</i></p>
+<p> 
+ODF documents use password hashes as settings for protection-keys.&nbsp; When a 
+protection is locked, the document author specifies a password that is used 
+to discourage removal of the lock.&nbsp; The protection can be removed or reset 
+at a future time by presenting the password again.&nbsp;
+</p>
+<p> 
+The ODF document does not retain the password.&nbsp; Instead, a digital hash of 
+the password is recorded in the document as a protection-key value.&nbsp; A future password entry is 
+accepted if its digital hash matches the one stored as the protection-key value.&nbsp; There 
+is no security around the digital hash values.&nbsp; The hashes can be extracted 
+and also replaced without difficulty.&nbsp; The hash lends no integrity to the 
+lock itself.&nbsp; </p>
+<p> 
+The appeal of digital hashes is that the cryptographically-based ones make it 
+difficult to determine the original text the hash is produced from by 
+cryptographic means.&nbsp; 
+It is also extremely unlikely that two texts that have the same digital hash are 
+discoverable by practical means.&nbsp; The digital hash is intended solely to 
+impede discovery of the actual password by some sort of decryption.&nbsp; 
+</p>
+<p> 
+However, the password used in creation of an ODF protection-key digital-hash 
+value is vulnerable to discovery 
+because the hash is not itself kept secret. An attacker can use a variety of 
+schemes involving dictionaries of known password+hash combinations, brute-force guessing, and 
+other often-successful schemes for discovering the password.&nbsp; Since 
+the digital hash is in plain sight, it can be attacked repeatedly without 
+interruption using high-performance tools that are crafted for that purpose.</p>
+<p> 
+It is important to understand that protection settings are not document-security 
+provisions.&nbsp; Circumvention of document-protection locks is trivial.&nbsp; 
+Furthermore, a password 
+that has a serious security usage must be considered compromised if it is ever 
+used to set document-protection locks.&nbsp; The simple digital hashes used 
+provide an opening to discovery of the valuable password.</p>
+<p> 
+The digital hash values that are recorded are also usable in forgery of 
+protected material.&nbsp; The protection-key can be removed, protected material 
+can be altered, and the protection-key and its digital-hash value restored.&nbsp; 
+The digital-hash can also be used to forge protection locks on entirely 
+different documents.&nbsp; No improvement in password confidentiality is of any 
+value in 
+these cases; misappropriation of the digital-hash and alteration of the 
+protection do not depend on knowing the password at all.&nbsp;
+</p>
+<p> 
+The&nbsp; &quot;Save with Password&quot; feature of ODF applications<i> is</i> a 
+document-security provision.&nbsp; It is the only one.&nbsp; However, if the 
+same password is used to also set a protection, the digital hash from that 
+protection can be used to decrypt the same-password-saved document without ever 
+knowing the password.&nbsp; That digital hash can also be used directly in 
+forging encrypted documents (as if they were encrypted by someone knowing the 
+protection password) .&nbsp; The encryption methodology (Blowfish, AES, or 
+anything else) has no bearing.&nbsp; The attack is at a point where a password&#39;s 
+digital hash is used as the secret 
+key on which all further stages of the encryption depend.</p> 
+</div> 
+ 
+</div> 
+<hr /> 
+ 
+<div id="recommendations"> 
+ 
+<div id="producers"> 
+<h3>Recommendations for ODF Producers</h3> 
+<!-- Validators and Users added to the list.  Any of these items 
+     that are inapplicable should be deleted when not needed.
+     If other categories are needed, consider revising the
+     template, not just the local usage.
+     -->
+<ul> 
+<li>Do not at any time identify protection features as security provisions.&nbsp; 
+To avoid confusion with digital signature and encryption features, protection 
+options should not be offered to users in proximity with those authenticity, 
+integrity, and privacy provisions.&nbsp; NOTE: In some jurisdictions, there is 
+liability for failure of a claimed security function.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+<li>Provide an option for &quot;fire-and-forget&quot; setting of protection locks using 
+randomly-generated protection-key digest values for which it is extremely 
+unlikely that there is a known associated password.&nbsp;&nbsp; NOTE: These can 
+still be the correct size for default interpretation as SHA1 digests; it is 
+simply that there was no known password used to create the digest value.&nbsp; 
+The <a href="#r5">proposed</a> AUTHZ160 default method for ODF 1.3 is usable in 
+this manner without restriction for ODF <a href="#r3">1.0</a>/<a href="#r2">1.1</a> 
+documents and for default protections in <a href="#r1">ODF 1.2</a> extended 
+documents.&nbsp; <br>
+&nbsp;</li>
+<li>Consider provisional use of proposed protection-key enhancements in 
+accordance with the <a href="#r5">Enhanced Protection-Key Proposal</a> 
+Deployment Considerations section.<br>
+&nbsp;&nbsp;&nbsp; </li>
+<li>Provide warnings concerning the use of memorable passwords, emphasizing that the protection lock is not an assurance of document integrity, 
+authenticity, or password secrecy.<br>
+&nbsp;&nbsp;&nbsp; </li>
+<li>When exporting documents to a format where the protections cannot be 
+preserved, provide user-understandable warnings of the loss of protection.<br>
+&nbsp;&nbsp; </li>
+<li>When exporting a modified document that is derived from a foreign-format 
+document having protection locks, preserve the original foreign-format protection settings 
+where possible.</li> 
+</ul> 
+</div> 
+ 
+<div id="consumers"> 
+<h3>Recommendations for ODF Consumers</h3> 
+<ul> 
+<li>If protection keys are ignored and the locks are not enforced, make this 
+explicit in the specifications of the consumer&#39;s support for ODF.<br>
+&nbsp;&nbsp;&nbsp; </li>
+<li>If protection keys are ignored when importing documents in non-ODF formats, 
+make this explicit in the specifications of the consumer&#39;s support for the 
+conversion to ODF.<br>
+&nbsp;&nbsp; </li>
+<li>If protection keys are recognized, support the locking function even when 
+there is no provision for removing the protections.&nbsp; Make this explicit in 
+the specifications of the consumer&#39;s support for ODF and for any imported 
+formats having protections.&nbsp;&nbsp; In addition, 
+when blocking of alteration to protected material, indicate that the consumer 
+cannot remove the protection.<br>
+&nbsp; </li>
+<li>If protection keys are recognized in ODF documents, honor the protection-key 
+counterparts when importing documents in non-ODF formats also.&nbsp; If it is 
+possible to preserve an original digital hash, even if produced by a non-ODF 
+method, attempt to do so.&nbsp; If users are allowed to submit passwords to 
+unlock protections, warn that a protection set in a foreign-format document 
+might not be in a form that can be unlocked using the ODF Consumer.<br>
+&nbsp;&nbsp; </li>
+<li>When protection-key attribute-value formats and digest-method names deviate 
+from those which are supported, do not fail; proceed the same as in the handling 
+of documents with protections for which there is no removal support.</li> 
+</ul> 
+</div> 
+ 
+<div id="tc"> 
+<h3>Recommendations for the ODF TC</h3> 
+<ul> 
+<li>Deprecate the use of unsalted digital hash values of any form; introduce 
+cryptographically random salts and iterated protection-key that are unlikely to ever be repeated, 
+such as the SHA1DK procedure of the <a href="#r5">Enhanced Protection-Key 
+Proposal.</a>&nbsp; <br>
+&nbsp;&nbsp;&nbsp; </li>
+<li>Encourage support for use of random protection-key values that have no 
+association with a known or memorable password of the user who requests setting 
+of the lock, such as that AUTHZ160 procedure of the <a href="#r5">Enhanced 
+Protection-Key Proposal</a>.<br>
+&nbsp;&nbsp; </li>
+<li>Establish equivalents of protection-key digest algorithms that are used in 
+other office-productivity software, such as those defined in IS 29500 for use in 
+interoperable consumption of those formats.<br>
+&nbsp;&nbsp; </li>
+<li>Specifically identify protection-key provisions of the specification as not 
+providing security for the locks nor for the passwords.<br>
+&nbsp;&nbsp;&nbsp; </li>
+<li>Add Security Considerations as an explicit section of the specification 
+documents.<br>
+&nbsp; </li>
+<li>Develop a form of protection that preserves the integrity of the document 
+(e.g., by digital signature) in a way that only permitted entries/modifications 
+preserve the integrity of that document and the protection cannot be forged.</li> 
+</ul> 
+</div> 
+ 
+<div id="users"> 
+<h3>Recommendations for Users</h3> 
+<p>When creating documents in which protection features are applied, avoid 
+password compromise: do not use a password that is ever used for any other 
+purpose at any other time.&nbsp; Then forget the password:</p>
+<ol>
+  <li>Save a copy of the document in which the protections have not been locked.</li>
+  <li>Set the locks on protections using useless passwords, preferably one-time 
+  random ones, that are neither memorable nor recorded.</li>
+  <li>If it is necessary to modify the original document, use the unlocked 
+  version, (1), that has been preserved.</li>
+  <li>If necessary, bypass the lock on a locked document if it there is no 
+  unlocked version available or if the added content in a locked version is 
+  important to retain.&nbsp; (Note that anyone else can do this, whether there 
+  is an useful password or not.&nbsp; That is an inherent limitation of 
+  the protection mechanism.)<br>
+  <br>
+  <b>Important:</b> This does not apply to the &quot;Save with Password&quot; feature 
+  available with many ODF implementations.&nbsp; That uses encryption of the 
+  entire document.&nbsp; If that password is forgotten or lost, the document cannot be 
+  opened by any ordinary means.</li>
+</ol>
+<h4>Creating Useless, Forgettable Passwords</h4>
+<p>If the software will create a random protection lock, use that feature.&nbsp; 
+It is unlikely that the lock can be released by entering any password, and 
+guessing will be fruitless.&nbsp; Have an unprotected copy or have a means to 
+break the lock without using a password.</p>
+<p>There are many software products that can be used for generating random 
+&quot;strong&quot; passwords.&nbsp; These should be set to generate a reasonably long 
+password (20 characters or more) and the complete range of keyboard-enterable 
+characters should be allowed.&nbsp;&nbsp; Paste a newly-generated password into 
+the password form for setting the lock.&nbsp; Paste again to confirm, if 
+necessary.&nbsp; Then forget.</p>
+<p>Alternatively, generate a long password by typing erratically into a 
+plain-text note.&nbsp; Use numbers and special characters.&nbsp; Use something 
+that you are unlikely to type the same way ever again.&nbsp; Don&#39;t include any 
+aspect of a memorable password known to you.&nbsp; To avoid inadvertent patterns 
+in the choice of passwords, copy text from a randomly-chosen source, such as a 
+place on a web page or in a book, even a dictionary.</p>
+<p>It is probably not worthwhile to invest any more effort in creating a lock 
+than it takes someone to bypass it completely (below).&nbsp; In that case, use a 
+trivial password for which compromise is not an issue because it is never worthy 
+as a true password.&nbsp; Something like &quot;***.&quot;&nbsp; Be creative and not so 
+predictable though.</p>
+<h4>Overcoming Protection Locks</h4>
+<p>If a document has protections and the password has been lost or was never 
+known, it is possible to remove the protections on the document a number of 
+ways.</p>
+<p>First, save the document in an alternative format.&nbsp; Then bring it back.&nbsp; 
+In many cases of conversion (such as from <font face="Courier New">.ods</font> to 
+<font face="Courier New">.xls</font> and back, <font face="Courier New">.odt</font> to 
+<font face="Courier New">.rtf</font> 
+and back), the protection locks are simply removed.&nbsp; This is expedient 
+because the digital hashes used in these separate formats are created by 
+incompatible means; they are not translatable.</p>
+<p>If the first technique is unreliable for preserving essential aspects of the 
+document, it is possible to remove locks directly by manipulating the ODF 
+document format.&nbsp; If you are not comfortable with this level of manipulation, find 
+a colleague or family member who has the expertise.&nbsp; They will need</p>
+<ul>
+  <li>A Zip-format utility that can be used to unzip and re-zip the document.&nbsp; 
+  On current versions of Windows, that capability is built into the operating 
+  system.</li>
+  <li>A text editor that can be used to open XML files and perform 
+  search-replace operations automatically.&nbsp; It is not necessary to 
+  understand the XML, but the text editor must not fail when opening XML 
+  documents that appear to be extremely long lines of strangely-formatted 
+  Unicode text.&nbsp; The text editor must be able to search on phrases that 
+  include special characters.</li>
+</ul>
+<p>In this procedure, the <font face="Courier New">content.xml</font> file within the Zip is searched and the protection-key attributes are simply renamed.&nbsp; They must be renamed to 
+something that preserves the XML structure.&nbsp; For example, change 
+&quot;<font face="Courier New">:protection-key=</font>&quot; to &quot;<font face="Courier New">:protection-key-xyz=</font>&quot;; 
+the &#39;<font face="Courier New">:</font>&#39; and &#39;<font face="Courier New">=</font>&#39; 
+characters are important here.&nbsp; This will remove the locks in 
+all of the places where they are set..&nbsp; (Note: If the document has text of 
+that form, it may be changed as well, although this is very unlikely, except in 
+a document such as this one represented in ODF.)&nbsp; </p>
+<p>It is generally safe to perform a search-replace-all operation.&nbsp; Although the 
+result is not a strictly-valid ODF document, most software will ignore the 
+occurrence of unknown attributes having local name <font face="Courier New">protection-key-xyz</font>.&nbsp; If 
+the substitution fails, it will be necessary to remove all protection-key 
+attributes and their attribute values.&nbsp; That requires more expertise or a 
+utility program designed for this specific purpose.</p>
+<p>When the <font face="Courier New">content.xml</font> is modified in this 
+manner, the document can then be opened and the locks will not be set.&nbsp; 
+After making any necessary modifications, the protection can be re-established 
+by setting the locks again using the same procedure recommended for 
+first-time protection; use a new throw-away password..</p>
+<p><b>Note:</b> Some products implement additional protections beyond those 
+offered in the ODF format itself.&nbsp; Examples include &quot;Save as 
+Read-Only&quot; options and locking of tracked-changes settings.&nbsp;  
+These are generally implemented with protection keys in <font face="Courier New">
+settings.xml</font>.&nbsp; To bypass those protections, simply delete
+<font face="Courier New">settings.xml</font> in the Zip packaging of the document.</p>
+<p>&nbsp;</div> 
+ 
+</div> 
+<hr/> 
+ 
+<div id="extra"> 
+<h3>Extra material</h3> 
+<ul> 
+<li><a href="./test-xxxx.odt">Simple test file</a>: XXXXXX</li> 
+</ul> 
+</div> 
+ 
+<hr/> 
+<div id="copyright"> 
+Copyright 2012 OASIS. All Rights Reserved. OASIS trademark, IPR and other policies apply.
+</div> 
+<!-- 2011-09-20 SCM version information removed because it is only visible in checked-out working
+     copies, not on pages viewed in the repository directly, the place where they will
+     usually be found.
+     -->
+</body> 
+</html>

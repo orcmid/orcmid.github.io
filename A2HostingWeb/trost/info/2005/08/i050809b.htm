@@ -1,0 +1,862 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>i050809b: Navigational Data Model Diagramming [latest] </title>
+<!--$$Header: /TROSTCompagno/info/2005/08/i050809b.htm 124   17-07-01 7:36 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="i050809c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a rel="nofollow" href="http://TROSTing.org" target="_top"><img border="0" 
+src="../../../images/TROSTSymbol-thumb.gif" alt="TROST: Open-System Trustworthiness" 
+width="100" height="87"></a>
+<!-- included from TROSTing /construction/C000005a.htm of 2005-07-21-13:35 -0700 $-->
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../i000001.htm#i050809"><font color="#990033">i050809</font></a> 
+		TROST </strong></font>
+
+		<strong><a href="../../i000001.htm"><font color="#990033">InfoNote</font></a></strong><strong><font color="#990033"><br>
+      &nbsp;<a href="i050809.htm"><font color="#990033">Navigational Data Model</font></a></font></strong></font><br>
+<em><strong><font size="5" color="#990033">Diagramming 0.75</font></strong></em></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>TROSTing</b></a></code><b><code>&gt;<a 
+  href="../../">info</a>&gt;<br>
+      <a target="_top" href="../">2005</a>&gt;<a target="_top" href="./">08</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="i050809c.htm">i050809c</a>&gt;</code></b></font><br>
+      <small><small>
+		<a href="#0.75">0.75</a>
+		2017-07-01      
+      -07:36 -0700 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this InfoNote is available on the Internet at <br>
+			&lt;<b><kbd><a href="i050809b.htm">http://TROSTing.org/info/2005/08/i050809b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This version:</b>&nbsp;&nbsp;<b>0.75 </b>&lt;<b><kbd><a 
+   target="_top" href="i050809c.htm">http://TROSTing.org/info/2005/08/i050809c.htm</a></kbd></b>&gt;.&nbsp; 
+			Consult that page for the latest electronic copy and status of the material.</li>
+		</ul>
+</div></small></blockquote>
+
+<blockquote>
+	<div align="right">
+		<table border="0" width="66%" id="table1">
+			<tr>
+				<td>
+				<p align="left">If used effectively, entity modelling enables a 
+				good analyst to talk to users and systems people in their own 
+				language and about the issues with which they are concerned.&nbsp;
+				</p>
+				<p align="right">-- Richard Barker (<a href="#Barker1996">1996</a>, 
+				p. xvii)</td>
+			</tr>
+		</table>
+	</div>
+</blockquote>
+
+<blockquote>
+	<p>Diagrams are important for TROST in the identification of process 
+	patterns.&nbsp; Many of the process patterns lead to patterns in the 
+	structure of artifacts, such as collections of documents, that are 
+	instruments of trustworthy activity and care.&nbsp; These patterns are easy 
+	to portray in a data model that provides for cross-referencing and that 
+	assumes structured material but not a conventional relational database 
+	model.&nbsp; Many of the patterns relate to the kind of navigation, such as 
+	cross-referencing and cross-location that are manifest in the artifacts.&nbsp; 
+	A navigational model has served in these odd-structured cases on-and-off 
+	over the past 25 years.&nbsp; Because the TROST bootstrap cases involve hypertexts and 
+	documents that may exist on paper and on digital media, this navigational data model, 
+	slightly modernized, has been found useful once again.&nbsp; Here it is 
+	finally documented in its entirety.</p>
+	<p align="right"><i>-- Dennis E. Hamilton,<br>
+	2005 August 31</i></p>
+	<blockquote>
+		<h3>1. <a href="#1.">Hierarchical Organization</a><br>
+		2. <a href="#2.">Connectors</a><br>
+		3. <a href="#3.">Data-Entity Type Forms</a><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.1 <a href="#3.1">Ordinary 
+		data entities</a><br>
+&nbsp;&nbsp;&nbsp; 3.2 <a href="#3.2">Shared data-entity types</a><br>
+&nbsp;&nbsp;&nbsp; 3.3 <a href="#3.3">Association data-entity types</a></span><br>
+		4. <a href="#4.">Data-Entity Type Naming</a><br>
+		5. <a href="#5.">Other Data Models</a><br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">5.1 <a href="#5.1">Data model 
+		defined</a><br>
+&nbsp;&nbsp;&nbsp; 5.2 <a href="#5.2">Relationship to other data models</a><br>
+		</span>6. <a href="#6.">Musings</a><br>
+		7. <a href="#7.">Resources and References</a></h3>
+	</blockquote>
+</blockquote>
+
+  <h2><a name="1." target="_top" href="#1.">1.</a>
+	<a name="HierarchicalOrganization">Hierarchical Organization</a></h2>
+<blockquote>
+	<p align="center"><a name="Fig.1"><img border="0" 
+ src="i050809c1.png" 
+ alt="Figure 1.  Typical Navigational Data-Entity Hierarchy"></a></p>
+	<div align="center"><blockquote>
+		<blockquote>
+			<p align="left"><small><i><a target="_top" href="#Fig.1">Figure 1</a></i>.&nbsp; 
+			<i>Typical Navigational Data-Entity Hierarchy</i>.&nbsp; Data-entity 
+			cases are indicated by variations in the rectangles, in connectors 
+			among the boxes, and in special attachments in the diagrams.&nbsp; 
+			Each rectangle signifies a data entity type, with the connecting 
+			lines establishing their hierarchical composition of constituent 
+			data-entity types.</small></p>
+		</blockquote>
+	</blockquote></div>
+	<p align="left"><b><a name="1.1" target="_top" href="#1.1">1.1</a> 
+	Hierarchical organization</b> is used to specify the subordination of 
+	constituent data-entity types under an immediately-encompassing data-entity 
+	type.&nbsp; Constituents relevant to portraying the essential structure are 
+	shown.&nbsp; Additional constituents may be omitted or simply be named 
+	within the rectangle shape corresponding to their encompassing data entity.&nbsp; 
+	In that case, the constituent is often referred to as an attribute of the 
+	encompassing data-entity type (cf. <a href="#5.2.3">5.2.3</a>).&nbsp; For the 
+	navigational model there is no material difference between the two 
+	approaches and constituent type <i>DataEntity</i><kbd><b>.</b></kbd><i>Constituent-1</i> would 
+	identify either form for introduction of type <i>Constituent-1</i> under type 
+	<i>
+	DataEntity</i> (<a href="#4.">section 4</a>, below).</p>
+	<p align="left"><b><a name="1.2" target="_top" href="#1.2">1.2</a> 
+	Connecting lines</b> establish the navigation that is afforded directly by 
+	the structure under some tacitly-understood operation (section
+	<a href="#5.1">5.1</a>).&nbsp; In any constituent of a data-entity instance, 
+	navigation may proceed from any entry point (in <a href="#Fig.1">Figure 1</a>, 
+	the arriving arrow associated with the unique key) through any rectangle and 
+	along connecting lines so long as no opposing arrow is traversed.&nbsp; 
+	For a &quot;one of&quot; connection, the one that is there in a given 
+	instance is the only one that can be 
+	entered and exited.&nbsp; For a multiple-occurrence repeated constituent, 
+	there is presumed to be an enumeration principle for navigating all 
+	occurrences.&nbsp; Direct navigation into one of multiple occurrences 
+	depends on existence of a known key or understood position in the 
+	enumeration.</p>
+</blockquote>
+<h2 align="left"><a name="2." target="_top" href="#2.">2.</a>
+<a name="Connectors">Connectors</a></h2>
+<blockquote>
+	<div align="left">
+		<table border="0" width="95%" id="table3">
+			<tr>
+				<td>
+	<div style="float: left; width: 170px; height: 393px">
+	<table border="0" width="23%" id="table4">
+		<caption align="bottom" valign="bottom">
+			<i><small><a target="_top" href="#Fig.2">Figure 2</a>. Connector Variations</small></i></caption>
+		<tr>
+			<td>
+			<p align="center"><a name="Fig.2"><img border="0" src="i050809c3.png" 
+   alt="Figure 2.  Connector Variations"></a></p>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<p>The variation among connector styles is illustrated in <a href="#Fig.2">Figure 2</a>.</p>
+	<p><b><a name="2.1" target="_top" href="#2.1">2.1</a></b> <b>Arrow heads</b> on connecting lines signify unidirectional 
+	navigational entries (fig. 2a).&nbsp; Important occurrences are entry to a 
+	date-entity type via key, or via navigation from some global entry.&nbsp; 
+	The entered constituent, often the top-level of a data-entity type, is 
+	represented with a heavier rectangular frame to emphasize its importance as 
+	a navigational entry point.&nbsp; Arrow heads on any connectors signify 
+	restrictions on the direction of navigation.</p>
+				<div style="float: right">
+					<table border="0" width="30%" id="table5">
+						<caption align="bottom" valign="bottom"><i><a target="_top" href="#Fig.3"><small>Figure 3</a>. 
+						Workgroup File Sharing (simplified)</small></i></caption>
+						<tr>
+							<td><a name="Fig.3">
+							<img border="0" 
+       src="i050809c4.png" 
+       alt="Fig.3. Work Group File Sharing (simplified)"></a></td>
+						</tr>
+					</table>
+	</div>
+				<p><b><a name="2.2" target="_top" href="#2.2">2.2</a> Single lines</b> entering the top of a constituent's 
+				rectangle signify exactly one (solid, fig. 2b) or at most one 
+				(dashed, fig.2c) occurrence per superior.</p>
+	<p><b><a name="2.3" target="_top" href="#2.3">2.3</a></b> <b>Fanned 
+	(angular) lines</b> above a constituent rectangle signify provision for 
+	multiple occurrences.&nbsp; The specification of lower and upper bounds, <i>
+	m</i> and <i>n</i>, represents the general case (fig. 2f).&nbsp; An 
+	unbounded value for <i>n</i> is represented by a dashed line in place of the 
+	upper bound (fig. 2d-e).&nbsp; For <i>m</i>=1, the lower bound is omitted 
+	(fig. 2d).&nbsp; For <i>m</i>=0, a dashed line is used in place of the lower 
+	bound (fig. 2e).&nbsp; Additional variations are permitted.&nbsp; Those 
+	shown are likely to exceed the needs of most situations.</p>
+	<p><b><a name="2.4" target="_top" href="#2.4">2.4</a> Limitation to one-of a 
+	selection</b> occurs on the horizontal line above two or more constituent 
+	rectangles, at the connection upward to the containing data-entity rectangle 
+	or another horizontal line (<a href="#Fig.2">fig. 2h</a>).&nbsp;&nbsp; In this case, exactly one 
+	of the descending cases will occur for a given instance of the superior 
+	data-entity type.&nbsp; Descending connectors to the constituents subjected 
+	to one-of selection may specify any of the multiplicity conditions (<a 
+ href="#Fig.2">fig. 
+	2b-g</a>), although practical cases tend to be simple, as in (<a href="#Fig.1">fig. 
+	1</a>).</p>
+	<p><b><a name="2.5" target="_top" href="#2.5">2.5</a> Levels of Key Uniqueness.</b>&nbsp; Hierarchical use of connectors 
+	is illustrated in <a href="#Fig.3">Figure 3</a>.&nbsp; Levels of relative 
+	key uniqueness are also illustrated.&nbsp;&nbsp; Within a workgroup the computers are identified by 
+	workgroup-unique 
+	names.&nbsp; Any shared file-system points are identified by names that are 
+	unique for the computer, and so on.&nbsp; Here, the use of a data-entity 
+	model to represent that arrangement is emphasized by the use of a 
+	fixed-pitch font and prefixes on the names of the data-entity types (section
+	<a href="#4.">4</a>).&nbsp; In this simplified case, it would 
+	appear that individual resources are potentially-identifiable by compound keys of the 
+	form <kbd><b>\\</b></kbd><i><kbd>name</kbd></i><kbd><b>\</b></kbd><i><kbd>share</kbd></i><kbd><b>\</b><i>resource</i></kbd>.&nbsp; </p></td>
+			</tr>
+		</table>
+	</div>
+</blockquote>
+<h2><a name="3." target="_top" href="#3.">3.</a> <a name="TypeForms">Data-Entity 
+Type Forms</a></h2>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<p align="center"><a name="Fig.4">
+			<img border="0" 
+   src="i050809c5.png" alt="Fig. 4.  The Three Data-Entity Type Forms"></a></p>
+			<p align="left"><small><i><a target="_top" href="#Fig.4">Figure 4</a>.&nbsp; 
+			The Three Data-Entity Type Forms.</i></small></p>
+		</blockquote>
+	</blockquote>
+	<p align="left">Three different rectangular shapes are employed for 
+	designation of data-entity types in the navigational model diagrams.</p>
+</blockquote>
+<h3 align="left"><b><a name="3.1" target="_top" href="#3.1">3.1</a> Ordinary 
+Data Entities</b></h3>
+<blockquote>
+	<p align="left"><b><a name="3.1.1" target="_top" href="#3.1.1">3.1.1</a> 
+	Ordinary data entities</b> are signified with a simple rectangle (<a 
+ href="#Fig.4">fig.4b</a>).&nbsp;&nbsp; The name of the data-entity type is 
+	recorded inside the rectangle.&nbsp; Additional conditions and attributes 
+	may also be identified within the rectangle, which can be extended 
+	vertically if needed.</p>
+	<p align="left"><b><a name="3.1.2" target="_top" href="#3.1.2">3.1.2</a> 
+	Data entities without emphasized constituents.</b>&nbsp; When no 
+	constituents are featured, solid lines are used for all sides of the 
+	rectangle, as illustrated in three data-entity types of (<a href="#Fig.1">fig. 
+	1</a>) and the <kbd><b>dFile</b></kbd> data-entity type of (<a href="#Fig.3">fig. 3</a>).&nbsp;
+	</p>
+	<p align="left"><b><a name="3.1.3" target="_top" href="#3.1.3">3.1.3</a> 
+	Data entities with constituents.</b>&nbsp; When constituents are emphasized 
+	by being &quot;exploded out&quot; of an encompassing data-entity type, the lower line 
+	of the rectangular box is omitted and the connector to the constituent 
+	data-entity types is extended up into the rectangle of the encompassing 
+	type.&nbsp; This provides visual emphasis that the constituent types are 
+	indeed part of the encompassing data-entity type.&nbsp; <i>Constituent-2</i> in (<a 
+ href="#Fig.1">fig. 1</a>) and the <kbd><b>dWorkgroup</b></kbd> data-entity type of (<a 
+ href="#Fig.3">fig. 3</a>) illustrate this principle.</p>
+	<p align="left"><b><a name="3.1.4" target="_top" href="#3.1.4">3.1.4</a> 
+	Line weight and rectangle shape.</b>&nbsp; The rectangular border may be 
+	drawn with a heavier line in order to identify the significant data-entity 
+	types that serve as entry points to the structure.&nbsp; 
+	This is employed for the <i>Data Entity</i> (<a href="#Fig.1">fig. 1</a>) and the 
+	<kbd><b>dSharedFileSystemPoint</b></kbd> (<a href="#Fig.3">fig. 3</a>).&nbsp; This and 
+	similar emphasis has no technical significance.&nbsp; Rectangles may also 
+	have variations in size and proportions in order to carry additional 
+	information.&nbsp; Again, there is no technical significance attached to 
+	these variations and decorations.</p>
+</blockquote>
+<h3 align="left"><a name="3.2" target="_top" href="#3.2">3.2</a> Shared 
+Data-Entity Types</h3>
+<blockquote>
+	<p align="left"><b><a name="3.2.1" target="_top" href="#3.2.1">3.2.1</a> 
+	Shared types</b> are signified with additional vertical lines within the 
+	rectangle (<a href="#Fig.4">fig. 4c</a>).&nbsp; The type, defined elsewhere, 
+	is incorporated as a constituent just as if it were described where the 
+	shared-type rectangle occurs.&nbsp; </p>
+	<p align="left"><b><a name="3.2.2" target="_top" href="#3.2.2">3.2.2</a> 
+	Shared type, not instance.</b>&nbsp; It is important to recognize that it is 
+	the description of a type that is being reused.&nbsp; There is no automatic 
+	relationship among instances of a shared type employed in different 
+	encompassing data-entity types.</p>
+	<p align="left"><b><a name="3.2.3" target="_top" href="#3.2.3">3.2.3</a> 
+	Constituent data-entity types are allowed.</b>&nbsp; Constituents being 
+	added or specialized at the point of sharing can be shown beneath the shared 
+	data-entity type rectangle.&nbsp; The reconciliation of the constituents 
+	established at the definition of the shared type and at the use of the 
+	shared type must be straightforward.&nbsp; The point of use provides 
+	specializing overlay and cannot remove anything provided in the definition 
+	of the shared type.&nbsp; A common case for decoration of the shared 
+	data-entity type in this way is with regard to stipulation of any 
+	constituent association types.&nbsp; The association types are usually added 
+	locally, because of the need to name the correct converse-relationship 
+	conditions (section <a href="#3.3.3">3.3.3</a>).</p>
+</blockquote>
+<h3 align="left"><a name="3.3" target="_top" href="#3.3">3.3</a> Association Data-Entity Types</h3>
+<blockquote>
+	<p align="left"><b><a name="3.3.1" target="_top" href="#3.3.1">3.3.1</a> Association with other 
+	data-entities.</b> The association of instances of a data-entity type with 
+	instances of (the same or different) data-entity type is signified by a 
+	rectangle enclosed within the data-entity type rectangle (<a href="#Fig.4">fig. 
+	4a</a>).&nbsp; The enclosed rectangle names the <b>target data-entity type</b>, 
+	that of the associated instances. </p>
+	<p align="left"><b><a name="3.3.2" target="_top" href="#3.3.2">3.3.2</a> 
+	Naming the target rôle.</b>&nbsp;&nbsp; The space between the top of the 
+	inner rectangle and the outer rectangle of the association data-entity type 
+	is used to name the rôle that the associated data-entity type serves 
+	relative to the data-entity for which the association is a constituent.</p>
+	<p align="left"><b><a name="3.3.3" target="_top" href="#3.3.3">3.3.3</a> Converse Associations.</b>&nbsp; 
+	Every association data-entity type has exactly one converse association as a 
+	constituent of the target data-entity type.&nbsp; The target rôle of the 
+	converse association is identified in the space between the bottom of the 
+	inner rectangle and the outer rectangle.&nbsp; In the instances of these 
+	data entities, there will be a unique, one-two-one matching of association 
+	data-entity occurrences and converse data-entity occurrences, identifying a 
+	relation and its converse at each &quot;ending&quot; association type (<a 
+ href="#Whitehead1962">Whitehead &amp; Russell 1962</a>, *31).&nbsp; </p>
+	<p align="left"><b><a name="3.3.4" target="_top" href="#3.3.4">3.3.4</a> 
+	Example.</b> The 
+	modeling of parts explosion for manufactured assemblies in <a href="#Fig.5">Figure 5</a> 
+	illustrates the use of converse associations in reflecting how 
+	parts may be assemblies and are used in specific places as subassemblies of 
+	further assemblies.&nbsp; The symmetry of details in the converse 
+	associations is valuable in making the relation unambiguous.&nbsp; The 
+	notation also makes the converse-association pairs easy to locate, 
+	especially in extensive models where the mated associations appear on 
+	separate pages of the model's diagrams.</p>
+	<blockquote>
+		<p align="center"><a name="Fig.5"><img border="0" src="i050809c6.png" 
+  alt="Fig.5. Converse Matching of Association Types in Data-Entity Relationships"></a></p>
+		<blockquote>
+			<p align="left"><small><i><a target="_top" href="#Fig.5">Figure 5</a>.&nbsp; Converse Matching of Association 
+			Types in Data-Entity Relationships.</i>&nbsp; The dashed lines indicate the converse associations 
+			in a data model for characterizing assemblies manufactured from parts that may 
+			themselves be assemblies.&nbsp; In this model, the distinct use of 
+			identical parts is accounted for, facilitating revision of some 
+			parts in an assembly without revising them all.</small></p>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<h2><a name="4." target="_top" href="#4.">4.</a> Data-Entity Type Naming</h2>
+<blockquote>
+	<p><b><a name="4.1" target="_top" href="#4.1">4.1</a> Unambigous Naming.</b>&nbsp; 
+	In extensive data models, there will often be similarly-named components 
+	(especially in association types).&nbsp; In order to be more specific, 
+	hierarchical naming is used, with &quot;<b><font face="Arial"><kbd>.</kbd></font></b>&quot; 
+	typically used as the separator.&nbsp; For example, the <b> 
+	<font face="Arial">
+	<kbd>dPart.usedAs</kbd></font></b> data-entity type in (<a href="#Fig.5">fig. 5</a>) 
+	specifies <b> <font face="Arial"><kbd>dAssembly.dComponent</kbd></font></b> as its target 
+	data-entity type, with converse association <b> <font face="Arial">
+	<kbd>dAssembly.dComponent.requires</kbd></font></b>.</p>
+	<p><b><a name="4.2" href="#4.2">4.2</a> Other Notational Features.</b>&nbsp; 
+	The unambiguous names can also be used as a form of instance identification, 
+	using decorations such as <b> <font face="Arial"><kbd>dAssembly[<i>aID</i>].usedFor.dPart[<i>pID</i>]</kbd></font></b> 
+	and <b> <font face="Arial"><kbd>dPart[].usedAs[]</kbd></font></b>.</p>
+	<p><b><a name="4.3" target="_top" href="#4.3">4.3</a> Typography.</b>&nbsp; 
+	To emphasize that the data-entity model is for data structures, a <kbd><b>
+	fixed-pitch</b></kbd>, <kbd><b>computer-text</b></kbd> font style is used 
+	when the names of data-entity types, data entities, and associations are 
+	presented in the diagrams and text.&nbsp; </p>
+	<p><b><a name="4.4" target="_top" href="#4.4">4.4</a> Disruption of 
+	Automatic &quot;Meaning.&quot;</b> Typographical convention is employed to 
+	emphasize that the model is about organizations of data, no matter how much 
+	the terms are chosen to suggest the subject of that data (section
+	<a href="#5.1.4">5.1.4</a>).&nbsp; Unusual naming forms, typical of those 
+	used in object-oriented programming, are useful for disrupting the otherwise 
+	automatic shift of awareness past the data-entity model to consideration of 
+	the entities the data are about (sometimes, other data entities).&nbsp; This 
+	leaves normal language available for informal discussion of the entities 
+	about which the data model is intended to be valid, as in (section
+	<a href="#2.5">2.5</a>). </p>
+</blockquote>
+<h2><a name="5." target="_top" href="#5.">5.</a> <a name="OtherModels">Other Data Models</a></h2>
+<h3><a name="5.1" target="_top" href="#5.1">5.1</a> <a name="DataModelDefined">Data Model Defined</a></h3>
+<blockquote>
+	<p><b><a name="5.1.1" target="_top" href="#5.1.1">5.1.1</a></b> The simplest definition of a data model is as a &quot;relatively-simple 
+	representation, usually graphic, of a complex ... data structure (<a 
+ href="#Rob2002">Rob &amp; Coronel 2002</a>, p.811).&quot;</p>
+	<p><b><a name="5.1.2" target="_top" href="#5.1.2">5.1.2</a></b> E. F. Codd gives strong reasons for a more rigorous statement (<a 
+ href="#Codd1980">1980</a>, abstract).&nbsp; Chris Date provides a simpler and slightly 
+	more general paraphrase (<a 
+ href="#Date1999">1999</a>; <a href="#Date2001">2001</a>, p.136), adapted further here:</p>
+	<ol>
+		<li>A collection of data object [data entity] types, which form the 
+		basic building blocks for any database [organization of instances] that 
+		conforms to the model;</li>
+		<li>A collection of general integrity rules, which constrain the set of 
+		occurrences of those object types that can legally appear in any such 
+		database;</li>
+		<li>A collection of operators, which can be applied to such object 
+		occurrences for retrieval and other purposes</li>
+	</ol>
+	<p><b><a name="5.1.3" target="_top" href="#5.1.3">5.1.3</a></b> As applied 
+	in TROSTing, the navigational data model exhibits these characteristics in an informal 
+	way.&nbsp;&nbsp; Application to mainly-static data organizations makes 
+	attention to (3) less critical.&nbsp; Integrity is maintained by agreement and by the separation of maintenance and update from 
+	publishing and access in those applications to which the models are being 
+	applied for TROSTing.&nbsp; </p>
+	<p><b><a name="5.1.4" target="_top" href="#5.1.4">5.1.4</a></b> For the navigational data model the term &quot;data entity&quot; is preferred to simply 
+	&quot;entity&quot; or &quot;object.&quot;&nbsp; There's often an intention 
+	to represent perceived features and relationships of external entities, but it is fundamental that we are 
+	only dealing with data entities in the model (which is a formal model in 
+	that regard).&nbsp; The distinction is important because in TROSTing we also 
+	refer to entities <i>as such</i> in terms of material artifacts, 
+	processes, participation, and engagement in the application settings of 
+	information systems.&nbsp; It is important in this case to take special 
+	precautions against confusion between non-data entities (and other data 
+	entities) and selections of 
+	data that are intended to be about them (<a href="#Kent2000">Kent 2000</a>, 
+	pp. 226-229).&nbsp; Consider the difference between a physical book, the 
+	text of the book as data, and a catalog entry that might refer to both.&nbsp;&nbsp; 
+	Distinct 
+	typography is useful as a way to remind ourselves that the model is of data and 
+	digitally-recorded material, no matter how much we want it to be consistent 
+	in some way with perceived patterns of entities in the world.&nbsp; This 
+	allows ordinary writing and nomenclature to be reserved for where it is 
+	intended that focal awareness be on the entities, not the data model (<a 
+ href="#Polanyi1975">Polanyi &amp; Prosch 1975</a>, pp. 69-70).</p>
+</blockquote>
+<h3><a name="5.2" target="_top" href="#5.2">5.2</a> Relationship to Other Data Models</h3>
+<blockquote>
+	<p><b><a name="5.2.1" target="_top" href="#5.2.1">5.2.1</a></b> In terms of abstraction levels (<a href="#Rob2002">Rob &amp; Coronel 2002</a>, 
+	section 3.2), the navigational data model falls on the conceptual side of 
+	internal models.&nbsp; The model is not strictly internal in that it does 
+	not dictate the software employed for representation; a variety of internal 
+	models can be used for that purpose, as needed.&nbsp; The navigational model 
+	is semi-conceptual insofar as it can also be the highest level used in the 
+	original conception and specification of a data model.&nbsp; </p>
+	<p><b><a name="5.2.2" target="_top" href="#5.2.2">5.2.2</a></b> The navigational data model is particularly suited to situations where, 
+	for whatever reason, it is valuable to depict data entity types having 
+	internal subordinate structure over which there is a cohesive locality 
+	(direct navigation) condition.&nbsp; This has appeal for representation of 
+	documents and other structured material that can be recorded on serial media 
+	(including communication links) or packaged in some other persistent form, 
+	such as organizations of web pages.&nbsp; The navigational data model 
+	appears to be adequate for the XML Information Set and its applications (<a 
+ href="#Cowan2004">Cowan &amp; Tobin 2004</a>) and it may be useful in conjunction 
+	with applications of the RDF Resource Definition Framework (<a 
+ href="#W3C2004">W3C 2004</a>).</p>
+	<p><b><a name="5.2.3" target="_top" href="#5.2.3">5.2.3</a></b> The navigational data model's constituent types correspond to 
+	&quot;attributes&quot; in conventional data models, especially ones oriented farther 
+	toward the conceptual level.&nbsp; In the case of private, singleton 
+	constituents, the distinction is somewhat arbitrary (<a href="#Fowler1997">Fowler 
+	&amp; Scott 1997</a>, p.63).&nbsp; Whether a subordinate data element is 
+	depicted as an attribute (and named within a box) or as a separately-drawn 
+	constituent is primarily a matter of emphasis in the presentation of 
+	navigational models, ignoring the possibility of distinct implementations at 
+	a more-physical level of representation. </p>
+	<p><b><a name="5.2.4" target="_top" href="#5.2.4">5.2.4</a></b> In practice, 
+	we tend to suppress detailed identification of attributes, providing just 
+	enough to reflect the intension for a data-entity type and 
+	to show important relationships.&nbsp; Attributes that are 
+	employed entirely for plumbing (data infrastructure) purposes and to satisfy 
+	the representation system are rarely identified: We call attention to 
+	housekeeping attributes only when they happen to be the focus of attention.</p>
+	<p><b><a name="5.2.5" target="_top" href="#5.2.5">5.2.5</a></b> Sometimes, 
+	because of repeating groups and similar qualities of constituents, it 
+	doesn't work to collapse a navigational data entity into a single 
+	conceptual-model entity.&nbsp; In that case, it will be necessary to factor 
+	out a separate entity (or entities) to express grouping via a relationship.&nbsp; 
+	The same consideration applies when transforming to UML associations (<a 
+ href="#Fowler1997">Fowler &amp; Scott 1997</a>, pp.56-62). </p>
+	<p>&nbsp;<b><a name="5.2.6" target="_top" href="#5.2.6">5.2.6</a></b> 
+	Although relational-model normalizations can be applied to navigational 
+	models, the navigational approach seems more appropriate for settings that 
+	would be considered seriously de-normalized, such as navigational views, 
+	report structures and other forms where the intended achievement of local 
+	navigation is via position and adjacency on a storage medium and redundancy 
+	is not a major concern.</p>
+	<p><b><a name="5.2.7" target="_top" href="#5.2.7">5.2.7</a></b> In general, navigational data models are inter-convertible with the usual 
+	suspects (<a href="#Hay1999">Hay 1999</a>).&nbsp; Some constraints and 
+	features will be lost in moving one direction or the other, but there is 
+	usually some way to preserve key features even if forced into an unnatural 
+	representation (e.g., representing disjoint subclasses as an any-one-of 
+	constituency).&nbsp; The appeal of the navigational model is with regard to 
+	economy of expression and naturalness in a given situation and level of 
+	detail.&nbsp; There is no intention to have navigational models be suitable 
+	for all data-modeling situations.</p>
+	<p><b><a name="5.2.8" target="_top" href="#5.2.8">5.2.8</a></b> In TROSTing, the navigational model is found useful for expression of 
+	patterns in data structures arising in work flows, documentation, and web 
+	presence.&nbsp; The navigational patterns can be taken as overlays that are 
+	fused together in a single data model in which each of the patterns is 
+	manifest, sometimes in more than one way.</p>
+</blockquote>
+<h2><a name="6." target="_top" href="#6.">6.</a> <a name="Musings">Musings</a></h2>
+<blockquote>
+	<div style="float: left">
+		<table border="0" width="20%" id="table6">
+			<caption align="bottom" valign="bottom"><i><small><a target="_top" 
+   href="#Fig.6">Figure 6</a>. Three angles on multiplicity</small></i></caption>
+			<tr>
+				<td><b><a name="Fig.6" target="_top" href="#6.1"><img border="0" 
+    src="i050809c2.png" hspace="5" vspace="3" 
+ alt="Figure 6. Three angles on multiplicity"></a></b></td>
+			</tr>
+		</table>
+	</div>
+	<p><b><a name="6.1" target="_top" href="#6.1">6.1</a></b> The 
+	first book that I owned on database design used the connector form (fig. 6a).&nbsp; 
+	That symbology, promoted by James Martin (<a href="#Martin1977">1977</a>), 
+	didn't work visually for me at the time, so I chose (fig. 6b) as a way to 
+	remember the end having the multiplicity and also as a way to reflect the 
+	variety of different bounds cases.&nbsp; This was also suggestive to me of 
+	other diagram styles that were carry-overs from punched-card data-file 
+	designs and other groupings of sequential records (fig. 6c).&nbsp;&nbsp;
+	</p>
+	<p><b><a name="6.2" target="_top" href="#6.2">6.2</a></b> Once I'd settled on the essentials of the technique, I often used it to 
+	recast other methodologies as a way to explain them to myself.&nbsp; It gave 
+	me a way to test the conceptual integrity and completeness of the model at hand regardless of 
+	the author's choice of diagramming or symbolic notation.</p>
+	<p><b><a name="6.3" target="_top" href="#6.3">6.3</a></b> As well as I can 
+	recall, the fan-out symbol was not inspired by seeing the crow's-foot 
+	connectors in other data models.&nbsp; The only recollection I have of crow's feet 
+	when I finally saw them used was as 
+	confirmation that the fan-out symbols I already used were appropriately 
+	suggestive.&nbsp; 
+	It was also clear that the fan-out covers more cases by simple line-shape 
+	variations.&nbsp; I haven't found where Bachman's single arrow-head (<a 
+ href="#Bachman1969">1969</a>) was transformed into the crows-foot symbol and 
+	memorialized in the Crows Foot Entity-Relationship Model (<a 
+ href="#Rob2002">Rob &amp; Coronel 2002</a>, section 3.4), and that has me wonder who 
+	actually did it, and where.&nbsp; James Martin 
+	objected to the crow's foot model early on, but for a 
+	technical reason related to functional dependency that doesn't seem relevant 
+	to the choice of connector-end symbols (<a href="#Martin1982">1982</a>, 
+	p.108).&nbsp; Later, use of arrows was abandoned in favor of heavy use 
+	of crow's feet symbols (<a href="#Martin1987">Martin 1987</a>, p.196n).&nbsp; 
+	Ian Palmer is credited with crow's-foot notation in that extensive 
+	treatment of entity-relationship diagrams (<a href="#Martin1987">Martin 1987</a>, 
+	p.236). </p>
+	<p><b><a name="6.4" target="_top" href="#6.4">6.4</a></b> Although it wasn't part of my original motivation, removing the use of 
+	arrow heads to indicate multiplicity made them handy for indicating where 
+	there are directional restrictions on navigation, and I made use of that 
+	immediately.&nbsp; This opportunity also arose in UML (<a 
+ href="#Fowler1997">Fowler &amp; Scott 1997</a>, fig. 4-3).&nbsp; My interest 
+	was being able to take design advantage of cases where the application only 
+	requires direct navigation in one direction.</p>
+	<p><b><a name="6.5" target="_top" href="#6.5">6.5</a></b> Having 
+	identification of keys on the side of the data entity type with elevation to the level at which the 
+	key values provide unique discrimination was 
+	introduced very early.&nbsp; I used this in modeling IMS databases (and 
+	indexed-sequential equivalents) in this manner.&nbsp; I don't know what 
+	first inspired me 
+	to pull them out and up like that, but it didn't take much to then notice 
+	that elevation could indicate level of global uniqueness.&nbsp; That simple 
+	nicety has been extremely helpful in confirming the identification of 
+	compound keys for access of a hierarchy-internal component.</p>
+	<p><b><a name="6.6" href="#6.6">6.6</a></b> The present navigational data model formulation is essentially the same 
+	one last documented in (<a href="#Hamilton1993">Hamilton 1993</a>) and used 
+	in one form or another for over 25 years.&nbsp; I am now exploiting the 
+	availability of alternative typography to introduce some linguistic 
+	conventions for disrupting confusion of data and (non-data) subjects of the 
+	data. The key diagramming alteration is omission of the bottom line of entity-type boxes that have 
+	constituents exploded out.&nbsp;&nbsp;&nbsp; I am using this to emphasize that the 
+	subordinate elements are always constituents and the parent entity type 
+	encompasses them.&nbsp; This also makes the limited representation of 
+	sub-types more apparent as a special case of the exactly-one-of condition (<a 
+ href="#Hay1996">Hay 1996</a>, pp.12-13).&nbsp; 
+	The navigational data model does not have sub-typing; it does provide an 
+	intermediate-level representation of some sub-typing cases. </p>
+	<p><b><a name="6.7" target="_top" href="#6.7">6.7</a></b> Now that I've seen the Barker-Ellis method 
+	(<a href="#Hay1999">Hay 1999</a>), I am inclined to favor that methodology 
+	for higher-level conceptual models of data-entity inter-relationships.&nbsp; 
+	I continue to prefer the navigation data model at intermediate levels for 
+	verifying navigability and the integrity of relationships.&nbsp; The 
+	critical feature of the Barker-Ellis approach, for me, is its preservation of the different perspectives that apply from the 
+	opposite ends of a relationship-linkage, especially when the same 
+	data-entity types are related in more than one way.&nbsp; This is also 
+	achieved in the navigational data model, preserving this important facet in moving between conceptual and internal depictions (<a 
+ href="#Tsichritzis1982">Tsichritzis &amp; Lochovsky 1982</a>).&nbsp; I have no 
+	position about the importance of positional arrangement of the diagrams as 
+	strongly advocated in (<a href="#Hay1996">Hay 1996</a>, pp.16-18).&nbsp; It seems that 
+	the preferable presentation of hierarchic expansion in the navigational data 
+	model may be at odds with the positional use of the Barker-Ellis dead-crow 
+	notation.&nbsp; Further analysis is required to determine how greater 
+	harmony between the two presentations can be achieved.</p>
+</blockquote>
+<h2><a name="7." target="_top" href="#7.">7.</a> <a name="References">Resources and References</a></h2>
+<dl>
+	<dt><a name="Bachman1969">Bachman, Charles W. (1969)</a></dt>
+	<dd>Data Structure Diagrams.&nbsp; ACM SIGMIS <i>Database <b>1</b></i>, 2 
+	(Summer), 4-10.&nbsp; Available at &lt;<small>&nbsp;</small><kbd><a 
+ style="text-decoration: underline; font-weight: 700" target="_top" 
+ href="http://doi.acm.org/10.1145/1017466.1017467">http://doi.acm.org/10.1145/1017466.1017467</a></kbd>&gt;.&nbsp; 
+	The basic use of a dotted line for none-or-one and a single-headed arrow for 
+	multiple associated occurrences was introduced in this combination of 
+	navigational and set-oriented data-modeling technique.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Bachman1972">Bachman, Charles W. (1972)</a></dt>
+	<dd>The evolution of storage structures.&nbsp; <i>Comm. ACM <b>15</b></i>, 7 
+	(July), 628-634.&nbsp; Available at &lt;<kbd><a 
+ style="text-decoration: underline; font-weight: 700" target="_top" 
+ href="http://doi.acm.org/10.1145/361454.361495">http://doi.acm.org/10.1145/361454.361495</a></kbd>&gt;.&nbsp; 
+	The methodology of (<a href="#Bachman1969">Bachman 1969</a>) is used in 
+	characterizing different ways of storing data on physical digital media.&nbsp; 
+	Representation of different levels of data abstraction are illustrated, 
+	though forcing hierarchic fit (e.g., no data records spanning storage pages) 
+	was apparently thought necessary.<br>
+&nbsp;&nbsp; </dd>
+	<dt><a name="Barker1996">Barker, Richard (1996)</a>.</dt>
+	<dd>Foreword.&nbsp; pp. xvii - xviii in <i>Data Model Patterns: Conventions 
+	of Thought</i> (<a href="#Hay1996">Hay 1996</a>).&nbsp; Barker credits the 
+	&quot;dead crow&quot; notation to efforts of himself and Harry Ellis.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Codd1980">Codd, E. F. (1980)</a></dt>
+	<dd>Data Models in Database Management.&nbsp; pp. 112-114 in <i>Proc. 
+	Workshop on Data Abstraction, Databases, and Conceptual Modeling</i>, 
+	Stephen N. Zilles and Michael N. Brodie, chairmen.&nbsp; 
+	International Conference on Management of Data,&nbsp; Pingree Parks, CO,&nbsp; June 23-26.&nbsp; 
+	ACM Press, New York.&nbsp; ISBN 0-89791-031-1.&nbsp; Available via &lt;<b><kbd><a 
+ target="_top" 
+ href="http://portal.acm.org/citation.cfm?id=806891&jmp=cit&coll=ACM&dl=ACM&CFID=51257462&CFTOKEN=10421128#CIT">http://portal.acm.org/citation.cfm?id=806891&amp;jmp=cit&amp;coll=ACM&amp;dl=ACM&amp;CFID=51257462&amp;CFTOKEN=10421128#CIT</a></kbd></b>&gt;.<br />
+	<small>
+	<i>Abstract:</i> It is a combination of three components:<br />&nbsp; 1) a 
+	collection of data structure types (the building blocks of any database that 
+	conforms to the model);<br />&nbsp; 2) a collection of operators or inferencing 
+	rules, which can be applied to any valid instances of the data types listed 
+	in (1), to retrieve or derive data from any parts of those structures in any 
+	combinations desired;<br />&nbsp; 3) a collection of general integrity rules, 
+	which implicitly or explicitly define the set of consistent database states 
+	or changes of state or both—these rules may sometimes be expressed as 
+	insert-update-delete rules.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>dh:2005-08-22:</i> The paper is very clear about the 
+	importance of conditions (2-3) and the tendency to neglect them.&nbsp; Codd 
+	goes on to address the importance of clarity over the separation of levels 
+	of abstraction and provides an illuminating discussion of the importance of 
+	domains as separate from attributes (and underlying data type).<br />&nbsp;&nbsp;&nbsp; </small></dd>
+	<dt><a name="Cowan2004">Cowan, John., Tobin, Richard., eds. (2004)</a></dt>
+	<dd>XML Information Set (Second Edition).&nbsp; W3C Recommendation 4 
+	February 2004.&nbsp; Available at &lt;<b><a 
+ href="http://www.w3.org/TR/2004/REC-xml-infoset-20040204/"><kbd>http://www.w3.org/TR/2004/REC-xml-infoset-20040204/</kbd></a></b>&gt;.&nbsp; 
+	The errata at &lt;<b><a 
+ href="http://www.w3.org/2001/10/02/xml-infoset-errata.html"><kbd>http://www.w3.org/2001/10/02/xml-infoset-errata.html</kbd></a></b>&gt; 
+	has no errors for this edition at this time (accessed 2005-08-27).&nbsp; 
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Fowler1997">Fowler, Martin., Scott, Kendall (1997)</a>.</dt>
+	<dd><i>UML Distilled: Applying the Standard Object Modeling Language</i>.&nbsp; 
+	Foreword by Grady Booch, Ivar Jacobson, and James Rumbaugh.&nbsp; Object 
+	Technology Series, Addison-Wesley, Reading, MA.&nbsp; ISBN 0-201-32563-2 pbk.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Date1999">Date, C. J. (1999)</a></dt>
+	<dd>Thirty Years of Relational: Relational Forever!&nbsp; <i>Intelligent 
+	Enterprise <b>2</b></i>, 8 (June 1).&nbsp; The relational model will stand 
+	the test of time.&nbsp; Available at &lt;<b><kbd><a target="_top" 
+ href="http://www.intelligententerprise.com/db_area/archives/1999/992206/online1.jhtml">http://www.intelligententerprise.com/db_area/archives/1999/992206/online1.jhtml</a></kbd></b>&gt; 
+	(accessed 2003-11-16).&nbsp; Reprinted as Chapter 12 of (<a 
+ href="#Date2001">Date 2001</a>).&nbsp; Date summarizes (<a href="#Codd1980">Codd 
+	1980</a>) in the <a href="#DataModelDefined">form&nbsp; adapted here</a>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Date2001">Date, C. J. (2001)</a></dt>
+	<dd><i>The Database Relational Model: A Retrospective Review and Analysis</i>.&nbsp; 
+	Addison Wesley Longman, Reading, MA.&nbsp; ISBN 0-201-61294-1 pbk.&nbsp; A 
+	historical account and assessment of E. F. Codd's contribution to the field 
+	of database technology.&nbsp; <i>Thirty Years of Relational</i> articles 
+	were originally published in print and online by Intelligent Enterprise, 
+	Miller Freeman Inc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Hamilton1993">Hamilton, Dennis E. (1993)</a></dt>
+	<dd>Information-Model Diagrams.&nbsp; Notations and Diagramming Techniques 
+	section in a Functional-Architecture Overview for a collaborative-document-management product architecture.&nbsp; 
+	unpublished, March-June, 1993.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Hay1995">Hay, David C. (1995)</a></dt>
+	<dd>A Comparison of Data Modeling Techniques. <i>The Database Newsletter <b>23</b></i>, 3 (May/June).<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+	</dd>
+	<dt><a name="Hay1996">Hay, David C. (1996)</a></dt>
+	<dd><i>Data Model Patterns: Conventions of Thought</i>.&nbsp; Foreword by 
+	Richard Barker.&nbsp; Dorset House, 
+	New York.&nbsp; ISBN 0-932633-29-3.&nbsp; The Chapter 2 excerpt (pp. 10-14) 
+	on 
+	<a target="_top" 
+ href="http://www.amazon.com/gp/reader/0932633293/ref=sib_dp_pt/">Amazon.com</a> 
+	describes the use of the Barker-Ellis data-model style as also featured in (<a 
+ href="#Hay1999">Hay 1999</a>).<br>&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Hay1999">Hay, David C. (1999)</a></dt>
+	<dd>A Comparison of Data Modeling Techniques. On-line update of
+	<a href="#Hay1995">(Hay 1995)</a>, Essential Strategies, 
+	Inc., Adobe PDF Document, November.&nbsp; Available via the on-line version 
+	of the article at&nbsp; &lt;<kbd><b><a target="_top" 
+ href="http://www.essentialstrategies.com/publications/modeling/compare.htm">http://www.essentialstrategies.com/publications/modeling/compare.htm</a></b></kbd>&gt; 
+	with bibliography available at &lt;<b><kbd><a target="_top" 
+ href="http://www.essentialstrategies.com/publications/modeling/bibliography1.htm">http://www.essentialstrategies.com/publications/modeling/bibliography1.htm</a></kbd></b>&gt; 
+	(all accessed 2005-08-23).<br>&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Kent2000">Kent, William (2000)</a>.</dt>
+	<dd><i>Data and Reality</i>.&nbsp; 1stBooks, Bloomington, IN (1998, 2000).&nbsp; 
+	ISBN 1-58500-970-9 pbk, 1-4208-9888-4 eBook.&nbsp; Available via &lt;<b><a 
+ href="http://www.authorhouse.com/BookStore/ItemDetail~bookid~2713.aspx"><kbd>http://www.authorhouse.com/BookStore/ItemDetail~bookid~2713.aspx</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Martin1977">Martin, James (1977)</a>.</dt>
+	<dd><i>Computer Data-Base Organization</i>, ed.2.&nbsp; Prentice-Hall, 
+	Englewood Cliffs NJ (1975, 1977).&nbsp; ISBN 0-13-165423-3.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Martin1982">Martin, James (1982)</a>.</dt>
+	<dd><i>Strategic Data-Planning Methodologies</i>.&nbsp; Prentice Hall, 
+	Englewood Cliffs NJ.&nbsp; ISBN 0-13-851113-6.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Martin1987">Martin, James (1987)</a>.</dt>
+	<dd><i>Recommended Diagramming Standards for Analysts and Programmers: A 
+	Basis for Automation</i>.&nbsp; Prentice-Hall, Englewood Cliffs, NJ.&nbsp; 
+	ISBN 0-13-767377-9.<br>
+&nbsp;&nbsp; </dd>
+	<dt><a name="Polanyi1975">Polanyi, Michael., Prosch, Harry&nbsp;(1975).</a></dt>
+	<dd><i>Meaning</i>.&nbsp; University of Chicago Press, Chicago.&nbsp; ISBN 
+	0-226-67295-6 pbk.<small><br>
+&nbsp;&nbsp;&nbsp;&nbsp; Polyani's use of focal and subsidiary awareness 
+	provides inspiration for looking at how focal and subsidiary attention play 
+	in human-computer interactions and also the data-program-data interactions 
+	in conventional models of computation.<br>
+&nbsp;&nbsp;&nbsp; </small></dd>
+	<dt><a name="Rob2002">Rob, Peter., Coronel, Carlos (2002)</a>.</dt>
+	<dd><i>Database Systems: Design, Implementation, and Management,</i> 5th 
+	edition.&nbsp; Thomson Learning Course Technology, Boston, MA.&nbsp; ISBN 
+	0-619-06269-X.&nbsp; Data models are covered in sections 3.2-2.4.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Tobin2001">Tobin, Richard., ed. (2001)</a></dt>
+	<dd>An RDF Schema for the XML Information Set.&nbsp; W3C, 2001 April 6.&nbsp; 
+	Available on the Internet as an RDF file (<kbd><b>infoset.rss</b></kbd>) via 
+	&lt;<b><a href="http://www.w3.org/TR/2001/NOTE-xml-infoset-rdfs-20010406"><kbd>http://www.w3.org/TR/2001/NOTE-xml-infoset-rdfs-20010406</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp; This schema applies to the XML InfoSet (<a href="#Cowan2004">Cowan 
+	&amp; Tobin 2004</a>).. <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Tsichritzis1982">Tsichritzis, Dionysios C., Lochovsky, 
+	Frederick H. (1982)</a></dt>
+	<dd>Data Models.&nbsp; Prentice-Hall, Engelwood Cliffs, NJ.&nbsp; ISBN 
+	0-13-196428-3.<small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; <i>dh:1993-04-09</i> &quot;The chapters on hierarchical 
+	models and on entity-relationship models are particularly relevant to the 
+	approach in [navigational data models].&nbsp; The key distinction is in the 
+	way relationships are manifested.&nbsp; In E-R notation, the relationship is 
+	named, but the rôle of the participants in the relationship is vague and 
+	implicit.&nbsp; In [navigational model] diagrams, the rôle of the 
+	participant is emphasized, with the &quot;ends&quot; of the relationships given names 
+	relevant to what the relationship contributes to the state of the entity 
+	whose participation in the relationship is being identified.&nbsp; The 
+	relationships are not otherwise named, although they certainly could be.&quot;<br />
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+	<dt><a name="W3C2004">W3C (2004)</a>.</dt>
+	<dd>Resource Definition Framework (RDF).&nbsp; W3C Technology and Society 
+	Domain, Semantic Web Activity, RDF Overview.&nbsp; 2004 October 21, 
+	published on the Internet at &lt;<b><a href="http://www.w3.org/RDF/"><kbd>http://www.w3.org/RDF/</kbd></a></b>&gt; 
+	(accessed 2005-08-27).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Whitehead1962">Whitehead, Alfred North., Russell, Bertrand. 
+	(1962)</a></dt>
+	<dd><i>Principia Mathematica to *56</i>. Cambridge Mathematical Library 1997 
+	reprint.&nbsp; Cambridge University Press, Cambridge (1910, 1927, 1962).&nbsp; 
+	ISBN 0-521-62606-4 pbk.</dd>
+</dl>
+
+  <hr color="#990033">
+
+<dl><small>
+		</small></dl>
+
+<dl><small>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.75">0.75</a> 2005-09-03-16:14 Expand Disruptive Typography</b></dt>
+	<dd>The use of typography in notation and the diagrams is altered to be more 
+	disruptive of the automatic tendency to interpret the diagrams as intending 
+	to apply to external entities rather than data about some entities.&nbsp; 
+	Additional references, explanation and corrections are added to go with this 
+	clean-up.</dd>
+	<dt><b><a name="0.60">0.60</a> 2005-09-01-23:01 Provide Extensive 
+	Proof-Reading</b></dt>
+	<dd>Also reflect the findings in (Martin 1987) and introduce font variations 
+	to emphasize that it is a model of data structure and organziation.</dd>
+	<dt><b><a name="0.50">0.50</a> 2005-08-31-22:59 Complete First Full Draft</b></dt>
+	<dd>The first full draft is completed with all sections populated.&nbsp; 
+	Additional refinement takes lower priority to the commencement of pattern 
+	documentation.&nbsp; Meanwhile this portion can be reviewed and the diagrams 
+	tested for appearance in an appendix of the TROST thesis.</dd>
+	<dt><b><a name="0.00">0.00</a> 2005-08-22-15:09 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; This page is 
+	a customization of the
+	<a href="../../templates/00/i000006c.htm">InfoNote 
+	Bootstrap Template 0.20 Material [placeholder] template</a>.&nbsp; A 
+	version from
+	<a href="../../../projects/pilot/develop/p050601e.htm">Develop 
+	InfoNote Bootstrap Template (0.20) Material</a> was used.</dd>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+<img border="0" src="../../../images/ccby20.gif" align="right" 
+ alt="Creative Commons License" width="88" height="31">
+You are navigating 
+<!-- included from TROSTing /construction/C000005c.htm of 2005-06-18T01:04Z -->
+ 	<a rel="nofollow" target="_top" href="../../../">TROSTing.org</a>.<br />This work is 
+	<a href="../04/i050403c.htm" target="_top">licensed</a> under a <br />
+	<a rel="license" target="_top" 
+ href="http://creativecommons.org/licenses/by/2.0/">Creative Commons License</a>.
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.0/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--></small></small></font></div>
+</td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-08-21-16:31 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-07-01 7:36 $<br>
+      $$Revision: 124 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="42063" -->
+</body>
+</html>

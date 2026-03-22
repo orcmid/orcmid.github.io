@@ -1,0 +1,251 @@
+d071001e.txt 0.01                    UTF-8                   dh:2007-11-30
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+     USAGE OF d071001e-0.54-odmjni100.zip REGRESSION-SET ARCHIVE
+
+        This material is for confirmation testing of the Java
+        info.odma.odmjni100 package of the ODMJNI 1.0 Java-ODMA
+        Bridge.
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2007/10/d071001e.htm>.
+        Consult that page for the latest information on updates and
+        the range of odmjni100 version that this regression check
+        is usable for.
+
+        Versions of this regression set are redistributed as components
+        of archives containing material the regression set provides
+        confirmation tests of.  The list of archives carrying this
+        material is also found at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001e.htm>.
+
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this regression set, it is necessary to have experience
+   with the following minimum prerequisites:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Creation of a development tree, starting at some folder, <folder>,
+        in which are already installed the ODMJNI 1.0 classes to be
+        confirmed with this regression set, either in a development tree or
+        in a distribution .jar file.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to a <folder> location for
+   which there is not already a <folder>\0.54-odmjni100 subdirectory.
+   Any previous 0.54-odmjni100 subdirectory should be deleted.
+
+   This material does not have to be placed in the ODMJNI100 development
+   tree.  It can be placed anywhere, with the OdmJava.bat file then
+   customized to located the Java SDK being used and the classpath for the
+   ODMJNI 1.0 classes.
+
+   When the material is extracted, with subdirectories, there will be
+   the following structure:
+
+    <folder>
+            d071001e-0.54-odmjni100.zip 0.01
+                                This archive, from which the content has
+                                been extracted in the folders, below
+
+        0.54-odmjni100/
+                d071001e.txt 0.00, this manifest, 11,226 byte file
+                                dated 2007-11-30-17:54
+                d071001e-license.txt 0.01, 3,549 byte file
+                                dated 2007-11-30-17:36
+
+            Clicker/
+                    ClickerSource.zip 0.08, source code and build script
+                                5,914 byte file dated 2007-11-23-18:17
+                    OdmClicker$1.class 0.08 anonymous internal class,
+                                481 byte file dated 2007-02-12-17:24
+                    OdmClicker.class 0.08 confirmation test,
+                                4,411 byte file dated 2007-02-12-17:24
+                    OdmJava.bat 0.05 Java environment setup script,
+                                3,179 byte file dated 2007-03-31-15:15
+                    RunClicker.bat 0.01 regression-check script,
+                                3,426 byte file dated 2007-11-26-17:41
+
+                results/
+                    Clicker-0.59-2007-11-26-1744-0-Waiting.png,
+                                initial display of OdmClicker 0.08,
+                                39,612 byte file dated 2007-11-26-17:45
+                    ... nine intermediate images of each display in the
+                        course of the regression check
+                    Clicker-0.59-2007-11-26-1755-8-NoMore.png,
+                                final display of OdmClicker 0.08,
+                                7,912 byte file dated 2007-11-26-17:54
+
+                    Clicker-0.59-2007-11-26-1757-log.txt, the ODMA32
+                                Connection Manager log from the test,
+                                2,949 byte file dated 2007-11-26-18:27
+                    Clicker-0.59-2007-11-26-1758-transcript.txt,
+                                the console transcript for the session
+                                having the displays and producing the log
+                                of this confirmation test set,
+                                2,963 byte file dated 2007-11-26-18:40
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d071001e-0.54-odmjni100.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       PNG Image Viewer for viewing confirmation test screen captures
+                      These captures were made with HyperSnap Version
+                      6.13.02.  They can be viewed with Windows Picture
+                      and Fax Viewer or other image display software
+
+       Utility for viewing or editing simple text files and batch scripts
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java runtime such as the JRE 1.5 and JDK 1.5 used to develop
+                      and run the Clicker application in this archive.
+
+       The ODMA32 ODMA 2.0 Connection Manager must be installed for ODMA
+       to be available.
+
+       An ODMA DMS must be installed and available as a default DMS for
+       Application ID "OdmNativeTest"
+
+       These tests have been performed using the ODMASAMP Sample DMS
+       integration distributed with the ODMA 2.0 SDK.
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   The RunClicker.bat script is used to carry out the Clicker 0.08
+   regression check of the ODMJNI 1.0 package.
+
+   The RunClicker.bat script depends on the Java setup defined when it runs
+   the included OdmJava.bat script.
+
+   Adjust OdmJava.bat as necessary to locate the Java version that is used
+   for the tests.  It is assumed that a Java Development Kit (JDK) is used.
+   If there is only a Java runtime, OdmJava should be corrected such that
+   the PATH statement in the script works properly.
+
+   Also adjust OdmJava.bat to set the %OdmClasses% environment variable so
+   that the practical100 classes can be located.  This can be any of
+
+     * the directory where there is a jar file to be used, where the jar
+       file itself will be named when the RunClicker script is performed
+
+     * the directory that has a subfolder sequences info\odma\practical100
+       and info\odma\odmjni100, with the respective packages in the sub-
+       folders at the end.
+
+   The RunClicker.bat file depends on odmjni100.dll being available adjacent
+   to the package, if the jar file directory is named.  Otherwise, the DLL
+   is expected in the %OdmClasses%\info\odma\odmjni100 folder.
+
+   Operation of the confirmation check is by starting a console session and
+   changing to the 0.54-odmjni100\Clicker folder wherever it has been
+   extracted.  Perform the confirmation test using command
+
+        RunClicker <optional-package>
+
+   where the <optional-package> is used in the case where %OdmClasses% is
+   the location of a .jar file to be used.  The <optional-package> parameter
+   is of the form
+
+        \package.jar
+
+   when it is used.
+
+   Consult the transcripts in the results folder for illustrations of the
+   configurations used when those confirmation tests were performed.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  For further details and contact information
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate this archive on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        ODMJNI 1.0 0.54-odmjni100 Regression Set archive d071001e-0.54-
+        odmjni100.zip. ODMA Interoperability Exchange, ODMdev Development
+        Note page d071001e.txt 0.01 (manifest), November 30, 2007.
+        Current version available for download at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001e.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-11-30-17:49 Correct mention of the archive and add requirement
+     for the ODMA Connection Manager and a DMS Integration for successful
+     exercise of the test.
+0.00 2007-11-19-19:47 Customize initial manifest for the regression set.
+
+$Header: /ODMdev/info/odma/odmjni100/0.54-odmjni100/d071001e.txt 10    07-11-30 17:54 Orcmid $
+
+                       *** end of d071001e.txt ***

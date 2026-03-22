@@ -1,0 +1,56 @@
+<html><head><title>Interfaces and Methods: IdmaScopeFactory</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaScopeFactory"></a>IdmaScopeFactory</h2>
+<p>This is the specialized interface for scope factories, optionally supported on the DMA System object. It provides methods for creating lists usable with the Scope Factory and it provides the CreateScope method for merging multiple component scopes into a single logical scope for unified searching.</p>
+<h3><a name="IdmaScopeFactoryCreateScope"></a>IdmaScopeFactory::CreateScope</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaScopeFactory::CreateScope</b> (<br>
+Dmapv    <i>pIScopeList</i>,<br>DmaInteger32    <i>lCombinationRule</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIScope</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pIScopeList</i></p></TD><TD><p>input</p></TD><TD><p>A DMA List containing the list of scopes that will make up the merged scope.  Each object in the list must provide the interfaces required for a DMA Scope object.</p></TD></TR>
+<TR><TD><p><i>lCombinationRule</i></p></TD><TD><p>input</p></TD><TD><p>Combination Rule used to merge the scopes in the input scope list.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting Scope object.</p></TD></TR>
+<TR><TD><p><i>ppIScope</i></p></TD><TD><p>output</p></TD><TD><p>Returns the selected interface for the merged scope object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Creates a merged scope object that is a combination of the supplied list of scopes. Each object on the list must provide all of the interfaces required for a dmaClass_Scope type object.  The well-known properties specified for dmaClass_Scope must be supported.  If any objects on the list are found to be invalid, the method will fail and the DMARC_BAD_SCOPE result code will be returned. If the merge operation is unsuccessful an appropriate result code will be returned and *ppIScope will be set to NULL. If a non-NULL value is returned in *ppIScope, it will be an interface to a valid scope object
+</p><p>
+There are two defined rules for combining the input scope objects. They are DMA_COMBINATION_INTERSECTION and DMA_COMBINATION_UNION.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. If the operation is successful, the returned interface pointer is already reserved on behalf of the caller in accordance with the rules for delivery of interfaces as outputs of COM methods.  (See IUnknown::QueryInterface.).
+</p><p>
+CreateScope must be able to handle more than one component scope in the DMA List of Objects identified by pIScopeList.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ALIAS_CONFLICT</p></TD><TD><p>A class, operator or property in one component scope unifies with more than one such entity in another component scope.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_COLLATIONS</p></TD><TD><p>Merged scope creation failed because there would be no supported collation sequences.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_OPERAND_MERGE_CONFLICT</p></TD><TD><p>The merge would create an invalid operand description.</p></TD></TR>
+<TR><TD><p>DMARC_OPERATOR_MERGE_CONFLICT</p></TD><TD><p>An operator could not be merged because it has conflicting signatures in component scopes.</p></TD></TR>
+<TR><TD><p>DMARC_PROPERTY_MERGE_CONFLICT</p></TD><TD><p>A property could not be merged because there is a conflict of conflicting datatype or cardinality in component scopes.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaScopeFactoryCreateScopeList"></a>IdmaScopeFactory::CreateScopeList</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaScopeFactory::CreateScopeList</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on the resulting List of Scopes object.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>Returns a pointer for the requested interface for the initial List of Scopes object, *ppIObject will be NULL if CreateScopeList is unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This will create a new, empty but editable DMA List object of class dmaClass_ListOfObject. The list will be empty and the list object’s properties will be set with default values.  The list will be populated by using the IdmaEditList and IdmaEditListOfObject interface.  The list supports at least those interfaces specified as required for a class dmaClass_ListOfObject object.
+</p><p>
+If the requested object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. If the operation is successful, the returned interface pointer is already reserved on behalf of the caller, in accordance with the rules for delivery of interfaces as outputs of COM methods.  (See IUnknown::QueryInterface).</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

@@ -1,0 +1,508 @@
+<html>
+
+<head>
+<title>n010207d: What&#39;s An Algorithm? - Fundamental Definition</title>
+<!--$$Header: /miserCompagno/notes/2001/02/n010207d.htm 5     14-04-04 12:52 Orcmid $-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="../../n000001.htm#n010207"><font color="#990033">n010207</font></a><br>
+		<a href="n010207.htm"><font color="#990033">What&#39;s an Algorithm?</font></a><br /> 
+      
+      
+
+      	<i><font size="5">Fundamental Definition</font></i></font></b></font></p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">notes</a>&gt;<br>
+		<a href="../" target="_top">2001</a>&gt;<a target="_top" href="./">02</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="n010207d.htm">n010207d</a>&gt;</code></b><br>
+      <small><small><a href="#v0.00">0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2014-04-04 11:52<!--webbot bot="Timestamp" endspan i-checksum="25206" --></small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest What&#39;s an Algorithm&nbsp; 
+				material is at <br>
+				&lt;<b><a href="n010207b.htm">http://miser-theory.info/2001/02/n010207b.htm</a></b>&gt;.<br>
+&nbsp;&nbsp; </li>
+				<li><b>This page: Fundamental Definition </b>&lt;<b><a href="n010207c.htm">http://miser-theory.info/2001/02/n010207d.htm</a></b>&gt; 
+				for the essential qualities of an algorithm that are important 
+				for the theoretical appraisal of Miser</li>
+				<li>&nbsp;<b>Previous page:</b>&nbsp;<b>&nbsp;Initial Notes </b>&lt;<b><a href="n010207c.htm">http://miser-theory.info/2001/02/n010207c.htm</a></b>&gt;.</li>
+			</ul></div>
+			
+
+</small>
+
+
+    <hr color="#990033">
+<blockquote>
+
+
+<h3 align="left">
+        <i><a href="#Summary">Summary</a></i>
+        </h3>
+
+
+</blockquote>
+
+
+<dl><b><font size="+1">
+      <dt><font size="+2">
+        1. <a href="#AlgorithmIllustrated">Algorithm Illustrated</a>
+      </font></dt>
+      <dd>1.1&nbsp;<a href="#BinarySearchImplementation">A Binary Search 
+		Implementation</a><br>
+        1.2 <a href="#BinarySearchAlgorithm"> A Binary Search Algorithm</a><br>
+        1.3 <a href="#AlgorithmImplementationDance"> Dancing Between Algorithm 
+		and Implementation</a></dd>
+      <dt>&nbsp;</dt>
+      <dt><font size="+2">2. <a href="#AlgorithmDistilled"> Algorithm Distilled</a></font></dt>
+      <dd>&nbsp;</dd>
+      
+  </dl>
+
+
+  <blockquote>
+    <h3><i><a href="#Summary">References</a></i></h3>
+  </blockquote>
+      
+</font></b>
+
+
+<hr>
+
+
+<h2 align="left">
+        <a name="Summary">Summary</a>
+        </h2>
+
+
+<blockquote>
+  <p>There are casual notions of &quot;algorithm&quot; that are applied in many popular 
+	situations, such as when considering that computer programs are algorithms, 
+	or are algorithmic.&nbsp; </p>
+	<p>There is also rigorous use of &quot;algorithm&quot; as a procedure that has 
+	well-defined and confirmable properties.&nbsp; In this case, algorithm is 
+	kin to the idea of &quot;effective procedure&quot; and &quot;effective computability,&quot; 
+	general notions of being able to solve a class of problems via finite, 
+	mechanical means requiring no ingenuity to carry out.&nbsp; This meaning, 
+	from mathematical logic and computer science, is essential to the Miser 
+	Project.&nbsp; We will not be using &quot;algorithm&quot; in any other sense. The use 
+	of &quot;algorithm&quot; in this manner is going to be traditional and not so casual 
+	as many popular usages.</p>
+	<p>There are also notions of higher-level algorithms.&nbsp; Those are 
+	excluded here.&nbsp; There might be future consideration with regard to 
+	higher-level arrangements involving the Miser Project.&nbsp; Those will be 
+	addressed separately whenever there is future relevance to advanced 
+	situations.</p>
+	<p>Here, an expression qualifies as the expression of an algorithm if it 
+	satisfies some very specific conditions:</p>
+	<ol>
+		<li>It describes operations on particular kinds of objects at a 
+		consistent level of abstraction.</li>
+		<li>It can be demonstrated that carrying out of the operations in 
+		accordance with the described procedure will solve the problem in 
+		question and it will not provide incorrect solutions.</li>
+		<li>So long as the operations that the procedure relies upon can be 
+		carried out in finite time in a mechanical manner, the procedure always 
+		terminates with a solution in finite time using finite resources.</li>
+	</ol>
+	<p>These notions will be illustrated by exhibiting a computer program, a 
+	related algorithm description, and then distilling out the essentials of 
+	algorithm specification.&nbsp; Finally, the importance of this understanding 
+	for demonstrating characteristics of Miser will be identified.</p>
+</blockquote>
+
+
+<h1 align="left">
+        1. <a name="AlgorithmIllustrated">Algorithm Illustrated</a>
+        </h1>
+
+
+<blockquote>
+
+
+<p align="left">To see how much goes into the rigorous expression of an 
+algorithm, we&#39;ll now consider, first, a simple computer program.</p>
+
+
+</blockquote>
+
+
+<h2 align="left">1.1 <a name="BinarySearchImplementation"> A Binary Search 
+Implementation</a>
+        </h2>
+
+
+<blockquote>
+
+
+<p align="left">Here is a procedure expressed in the Python programming 
+language.&nbsp; It is not critical to understand Python.&nbsp; The contrast with 
+expression of the algorithm involved is what will be explored.
+        </p>
+
+
+<blockquote>
+      <pre><code><font color="#000000"><b>def</b> BinSearch(<i>List</i>, <i>item</i>):
+    &quot;return the index of <i>item</i> in the already-sorted <i>List</i>&quot;
+    &quot;return -1 when <i>item</i> is not in <i>List</i>&quot;
+    &quot;based on Donald E. Knuth&#39;s Algorithm <a href="#Algorithm-6.2.1B">6.2.1B</a>&quot;
+    &quot;  cleaned up to work with 0-origin lists, tuples, and indexes&quot;
+    L = 0                    # Current left-most position
+    R = len(<i>List</i>)            # Current right boundary
+    <b>while</b> L &lt; R:
+        j = L + int((R-L)/2) # A place to try in the 
+        <b>if</b> <i>List</i>[j] == <i>item</i>:  #   candidate interval
+            <b>return</b> j
+        <b>if</b> <i>List</i>[j] &lt; <i>item</i>:   # When no match yet, close off
+            L = j + 1        #   the area where <i>item</i> can&#39;t be
+        <b>else</b>:                #   and continue in the interval
+            R = j            #   that remains
+    <b>return</b> -1                # Return impossible index if no match</font></code></pre>
+
+</blockquote>
+<p align="left">&nbsp;Notice how much of the above expression consists of comments in 
+<font face="Courier New">&quot;</font>...<font face="Courier New">&quot;</font> and 
+also to the right of &quot;<font face="Courier New">#</font>&quot; marks.&nbsp; If those were stripped away, we 
+would have nothing but</p>
+<blockquote>
+	<p align="left"><code><font color="#000000"><b>def</b> BinSearch(<i>List</i>, 
+	<i>item</i>):<br>
+&nbsp;&nbsp;&nbsp; L = 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp; R = len(<i>List</i>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp; <b>while</b> L &lt; R:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j = L + int((R-L)/2) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> <i>List</i>[j] == <i>item</i>:&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> j<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> <i>List</i>[j] &lt; <i>item</i>:&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L = j + 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R = j&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br>
+&nbsp;&nbsp;&nbsp; <b>return</b> -1</font></code></p>
+</blockquote>
+<p align="left">An experienced software developer with fluency in the Python 
+language could determine what this procedure accomplishes and even identify 
+defects in it, if any.&nbsp; Many will prefer this form and consider the 
+narrative in the first form distracting and unnecessary.&nbsp; Although this is 
+the only part of the procedure that is employed by the computer, it is not 
+enough to establish the algorithm and what it accomplishes.&nbsp; There is too 
+much tacit understanding required if the procedure is to be offered as the 
+expression of an algorithm.</p>
+<p align="left">With either form of the procedure text, there are a variety of 
+incidental characteristics that might or might not have been explicitly 
+considered, including the following.</p>
+
+
+<ul>
+  <li>
+    <p align="left">It is assumed that <code>len(<i>List</i>)</code>, the number of items 
+	in the list, is always 
+	representable as an exact integer value and there is no risk of <i><code>
+	List</code></i>
+    having more elements than the largest-representable integer.&nbsp; </li>
+  <li>
+    <p align="left">The procedure can operate with any <i><code>item</code></i>
+    and <code><i>List</i></code>-item data type so long the values are 
+	comparable with &lt; and == (equality).</li>
+  <li>
+    <p align="left"><code>BinSearch</code> employs an impossible index (for 
+	Python lists) of <code>-1</code> to report unsuccessful completion of the 
+	search.&nbsp; The implementation assures that this value cannot arise as a 
+	successful result.</li>
+  <li>
+    <p align="left">The program variables <code>L</code>, <code>R</code>, and <code>
+	j</code>
+    are private to the implementation and the only operations with them are 
+	those that are shown.&nbsp;&nbsp;</li>
+  <li>
+    <p align="left">The parameters <i><code>List</code></i> and <i><code>item</code></i>
+    are assumed to be stable and non-volatile, with no alteration occurring to 
+	them while <code>BinSearch</code> is being carried out.</li>
+  <li>
+    <p align="left">The operations are clearly stated, and the purpose for the 
+	procedure is explained, with annotation of how particular operations narrow 
+	in on a solution, if any.&nbsp; Identification of 
+	the particular algorithm and preservation of essential conditions is by 
+	appeal to a separate publication [<a href="#Algorithm-6.2.1B">ACP 6.2.1B</a>]</li>
+	<li>
+    <p align="left">The mysterious form &quot;<b><font face="Courier New" size="2">j 
+	= L + int((R-L)/2</font></b>&quot; deals with two edge cases to accomplish what 
+	is, mathematically, <i>j</i> = floor((<i>L</i>+<i>R</i>)/2), the largest 
+	integer not greater than the average of <i>L</i> and <i>R</i>.&nbsp; The 
+	modification protects against the unlikely case that <b>
+	<font face="Courier New" size="2">L+R</font></b> &quot;overflows&quot; to an incorrect 
+	value.</li>
+</ul>
+
+
+</blockquote>
+
+
+<h2 align="left">1.2 <a name="BinarySearchAlgorithm"> A Binary Search Algorithm</a>
+        </h2>
+
+
+<blockquote>
+  <p align="left">To see the difference between the statement of an algorithm 
+	for binary search and the <code><b>BinSearch</b></code> implementation, 
+	above, we 
+	will use the style of algorithm presentation introduced by Donald Knuth[<a href="#Knuth1997">Knuth1997</a>: 
+	1.1] for our expression of Algorithm <a href="#Algorithm-6.2.1B">6.2.1B</a>.
+        </p>
+
+
+  <blockquote>
+
+
+  <p align="left"><b>Algorithm Bin</b> (<i>Binary search</i>).&nbsp; Given a 
+	list of items <i>K</i><sub>0</sub>, <i>K</i><sub>1</sub>, ..., <i>K</i><sub>N-1</sub><sub><br>
+  </sub>in non-decreasing order <i>K</i><sub>0</sub>  <u> &lt;</u> <i>K</i><sub>1</sub> 
+  <u> &lt;</u> ··· <u>
+  &lt;</u> <i>K</i><sub>N-1</sub>,&nbsp;<br>
+ 	this algorithm finds a position, if any, having a given item, <i>K</i>.
+        </p>
+
+
+
+<dl>
+      <dt><b>Bin1.</b> [Initialize.]</dt>
+      <dd>Set <i>L</i> to 0; set <i>R</i> to <i>N</i>,<i> </i>the number of 
+		items.<br>
+        (If there are no items, <i>N</i> is 0.) 
+      </dd>
+      <dt>&nbsp;</dt>
+      <dt><b>Bin2.</b> [No Luck?]</dt>
+      <dd>Let <i>Rem</i> = <i>R</i> - <i>L</i>, the number of eligible items 
+		remaining.<br>
+        If <i>Rem</i> = 0, terminate the search as unsuccessful.<br>
+        (Each time we return to Bin2, <i>Rem</i> is smaller and we must 
+		eventually find a matching item or terminate with all possibilities 
+		eliminated.&nbsp; See Bin4 and Bin5 to confirm that.)</dd>
+      <dt>&nbsp;</dt>
+      <dt><b>Bin3</b>. [Take a Look.]</dt>
+      <dd>(<i>L</i> &lt; <i>R</i> and if <i>K</i> is among the eligible items then <i> 
+		K</i><sub><i>L</i></sub> <u>&lt;</u>  <i> K</i> <u>&lt;</u>  <i> K</i><sub><i>R</i>-1</sub>.)<br>
+        Set <i>j</i> to floor((<i>L</i>+<i>R</i>)/2).</dd>
+      <dd>(<i>j</i> is always an index within one place of the middle of the 
+		interval <i>L</i> 
+        through <i>R</i>-1.&nbsp; <i>L</i> <u>&lt;</u> <i>j</i> <u>&lt;</u> <i>R</i>-1 
+		always.)<br>
+        If <i>K</i><sub><i>j</i></sub> &lt; <i>K</i>, go to Bin4.&nbsp; If <i>K</i>
+        &lt; <i>K<sub>j</sub></i>, go to Bin5.<br>
+        Otherwise, the search is successful and <i>K</i><i><sub>j</sub></i> is a 
+		matching item.</dd>
+      <dt>&nbsp;</dt>
+      <dt><b>Bin4.</b> [Look Higher Next.]</dt>
+      <dd>(If <i>K</i> is among the eligible items, then <i>K</i><sub><i>j</i>+1</sub>
+        <u>&lt;</u> <i>K</i> <u>&lt;</u> <i>K</i><sub><i>R</i>-1</sub>.)</dd>
+      <dd>Set <i>L</i> to <i>j</i>+1.&nbsp; Go to Bin2.<br>
+        (0 <u>&lt;</u> <i>R</i> - <i>L</i> &lt; <i>Rem</i>.&nbsp; We have eliminated 
+		at least half of the current items as ineligible.)</dd>
+      <dt>&nbsp;</dt>
+      <dt><b>Bin5.</b> [Look Lower Next.]</dt>
+      <dd>(If <i>K</i> is among the eligible items, then <i>K<sub>L</sub></i> <u>
+		&lt;</u>
+        <i>K</i> <u>&lt;</u> <i>K</i><sub><i>j</i>-1</sub>.)<br>
+        Set <i>R</i> to <i>j</i>.&nbsp; Go to Bin2.<br>
+        (0 <u>&lt;</u> <i>R</i> - <i>L</i> &lt; <i>Rem</i>.&nbsp; We have eliminated 
+		at least half of the current items as ineligible.)</dd>
+  
+</dl>
+  </blockquote>
+  <p>This statement of the algorithm is contrived so that someone skilled in the 
+	analysis of algorithms can independently confirm some important 
+	characteristics:</p>
+  <ul>
+    <li>The preconditions in which the algorithm is assured to operate are 
+	clearly established</li>
+    <li>We rely on&nbsp; mathematical objects, not computational ones, so there 
+	is a generality beyond the data representations that tend to be used in 
+	computer implementations.</li>
+    <li>All operations are definite and presumed to be carried out in finite 
+	time and space.&nbsp; This includes use of floor(<i>x</i>) for the largest 
+	integer not greater than <i>x</i>.&nbsp;&nbsp;</li>
+    <li>At the same time, we are not so definite as to fix the operations in a 
+	rigid way.&nbsp; It is presumed that there is or can be made to be such a 
+	fixation when the algorithm is embodied in an implementation.</li>
+    <li>No indefinite operations (e.g., reference to <i>K<sub>N</sub></i> or <i>
+	K</i><sub>-1</sub>) are ever attempted.</li>
+    <li>The algorithm must terminate.</li>
+    <li>If the input conditions are satisfied, the algorithm accurately 
+	determines an index for a <i>K</i>-matching item if and only if there is 
+	one.&nbsp; The algorithm will terminate unsuccessfully if an only if there 
+	is no <i>K</i>-matching item.</li>
+    <li>One can analyze the performance of the algorithm in terms of the number 
+	of times step Bin3 is ever performed.</li>
+  </ul>
+  <p>A software developer skilled at understanding algorithms and producing 
+	codes that achieve the particular result using a computer could use the 
+	expression of the algorithm as a basis for a programming-language form that 
+	accomplishes the algorithm in a particular setting.&nbsp; The software could 
+	be written in a way that the connection to the algorithm is accounted for.&nbsp;&nbsp; 
+	That is how the annotated version of BinSearch arose.&nbsp; Although there 
+	have been some transformations of the operations in the Python version, 
+	preservation of the essential algorithm is still evident and can be 
+	confirmed by inspection.&nbsp; In this particular case, there was iteration 
+	between the two in order to strengthen the connections as well as establish 
+	the contrasts.</p>
+	<p>Note that the algorithm, being expressed with regard to abstract indexes 
+	and indexed lists of values, need not consider limitations of computer 
+	representations.&nbsp; It is important to adjust for that and not blindly 
+	make literal implementations that rely on incorrect assumptions about the 
+	representation.&nbsp; In that respect, it is somewhat helpful that the 
+	expression of the algorithm does not look like a computer program that could 
+	simply be lifted into code in a modern programming language without giving 
+	it any thought.</p>
+  <p>An indispensible quality of the algorithm narrative is the provision of 
+	observations about what the state of affairs is asserted to be at any point 
+	in the procedure.&nbsp; There are annotations given in parenthetical 
+	statements and&nbsp; made on the operations as well..&nbsp; These are 
+	essential to expression of the algorithm, although they are not part of the 
+	procedure.&nbsp; &nbsp; The annotations 
+	provide assertions about the algorithm that are important in comprehending 
+	the achievement of its function and of its efficacy.&nbsp; The annotations 
+	also support confirmation that the recipe given is indeed that of an 
+	algorithm for the identified function.&nbsp; One relies on the annotations 
+	in understanding what is supposed to be the case, and then verify that the 
+	assertions hold.&nbsp;&nbsp; It is then clear that, because the assertions 
+	do hold, (1) the procedure always terminates for a finite list, (2) a 
+	correct index is always returned if the sought value is in the list, and (3) 
+	an incorrect index is never returned.</p>
+</blockquote>
+    <h1 align="left">2. <a name="AlgorithmDistilled">Algorithm Distilled</a></h1>
+
+
+<h2 align="left">&nbsp;</h2>
+<h2 align="left"><i><a name="References">References</a></i>
+        </h2>
+
+
+<blockquote>
+
+
+<dl>
+ 
+    <dt><a name="Algorithm-6.2.1B">[Algorithm 6.2.1B]</a></dt>
+    <dd>Knuth, Donald E.&nbsp; Binary Search.&nbsp; Algorithm 6.2.1B on p. 410 
+	of <i>The Art of Computer Programming</i>,
+      <i>v.3: Sorting and Searching</i>.&nbsp; ed.2.&nbsp; Addison-Wesley 
+	Longman (Reading, MA: 1998).&nbsp; ISBN 0-201-89685-0.&nbsp;&nbsp; <font size="-1"><b>&nbsp;&nbsp;&nbsp;&nbsp; <code><br>
+      </code>&nbsp;&nbsp;&nbsp;&nbsp; <code><a href="#BinSearch">BinSearch</a></code></b>
+      is derived from the form given by Knuth in <i>Scientific American</i> <b>
+	236</b>, 4 (April 1977), as reprinted on pp.66-67 of <i>Selected Papers on 
+	Computer Science,</i> CSLI (Palo Alto: 1996),&nbsp; ISBN 1-881526-91-7 pbk.</font></dd>
+ 
+    <dt>&nbsp;</dt>
+      <dt>[<a name="Knuth1997">Knuth1997</a>]</dt>
+      <dd>Knuth, Donald E.&nbsp; <i>The Art of Computer Programming, vol.1: 
+		Fundamental Algorithms</i>. ed.3.&nbsp; Addison Wesley Longman (Reading, 
+		MA: 1997).&nbsp; ISBN 0-201-89683-4.</dd>
+ 
+    <dt>&nbsp;</dt>
+      <dt>&nbsp;</dt>
+ 
+</dl>
+
+
+<hr>
+
+</blockquote>
+
+
+<h3 align="left"><i><a name="History">History</a></i></h3>
+
+<dl><font size="-1">
+	<dt><b><a name="v0.00">0.00</a> 2014-04-04-09:57 Boilerplate for Fundamental 
+	Defnition</b> (orcmid).</dt>
+	<dd>The initial notes are extracted and used for boiling down to the 
+	fundamentals as they apply for the theoretical treatment of Miser 
+	capabilities and limitations.</dd></font>
+</dl><div>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td width="166">
+    <p align="center">
+    <a href="http://www2.clustrmaps.com/counter/maps.php?url=http://miser-theory.info" id="clustrMapsLink" target="_top"><img src="http://www2.clustrmaps.com/counter/index2.php?url=http://miser-theory.info" />
+</a><br /><small><small>visits to popular Miser Project pages</small></small></td>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="56578" --></td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2014-04-04-09:57 -0700 (pdt) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 14-04-04 12:52 $<br>
+		$$Revision: 5 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</div>
+<p align="right">&nbsp;</p>
+
+</body>
+</html>

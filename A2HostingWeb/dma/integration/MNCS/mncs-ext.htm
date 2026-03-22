@@ -1,0 +1,523 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<!--$$Version:                                                                        $-->
+<title>MNCS Extensions Proposal</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">DMA Architecture Proposal for MNCS:</a></h1>
+
+<h1 align="center"><a NAME="Top">Multinational Character Set Extensions to DMA 1.0</a></h1>
+
+<h3>Authors: DMA Integration Subcommittee</h3>
+
+<blockquote>
+  <p>:Larry Bonham, Xerox Corporation</p>
+  <p>Dennis E. Hamilton, InfoNuovo</p>
+</blockquote>
+
+<blockquote>
+  <p>Hitoshi Tanaka, Hitachi Corporation, Ltd.</p>
+</blockquote>
+
+<h3>Revision History</h3>
+
+<blockquote>
+  <p><strong>Version 0.02 - </strong>2000-02-24 Minor cleanup for inclusion on the web site.
+  &nbsp; The section is still highly incomplete.&nbsp; It is provided for completeness and
+  as a basis for further work as part of the DMware open-source clearinghouse activity.
+  &nbsp; This is the first version publicly distributed.</p>
+  <p><strong>Version 0.01</strong> - 1999-06-09 Original proposal draft by Dennis Hamilton
+  with most architecture-proposal sections still left as boilerplate.</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><em>Content </em></h2>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <h3><a HREF="sketch.htm#Overview">1. Functional Overview / Description</a> </h3>
+  <h3><a href="#NewTypes">2. New/Changed Data Types and Values</a></h3>
+  <h3><a HREF="sketch.htm#NewProps">3. New/Changed Classes and Properties</a> </h3>
+  <h3><a HREF="sketch.htm#NewFaces">4. New/Changed Interfaces</a></h3>
+  <h3><a HREF="sketch.htm#ArchImpact">5. Architectural Impacts</a> </h3>
+  <h3><a HREF="sketch.htm#References">6. Reference Materials</a> </h3>
+  <h3><a HREF="sketch.htm#Experience">7. Existing Systems and Related Experiences</a> </h3>
+  <h3><a HREF="sketch.htm#Compliance">8. Compliance and Conformance Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#SampleUse">9. Sample Usage</a> </h3>
+  <h3><a HREF="sketch.htm#Glossary">10. Glossary / Nomenclature</a> </h3>
+  <h3><a HREF="sketch.htm#Impact">11. Impact on Existing Systems</a> </h3>
+  <h3><a HREF="sketch.htm#Performance">12. Performance Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#Compatibility">13. Backwards Compatibility and Legacy
+  Considerations</a> </h3>
+  <h3><a HREF="sketch.htm#Specification">14. Incorporation Into DMA Specifications</a> </h3>
+  <h3><a href="#Deployment">15. Implementation and Deployment</a></h3>
+</blockquote>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="The table of content provides hyperlinks to the title lines of the appropriate sections. If you adjust the titles, you will want to adjust them here, too. Also, you'll need to be careful to maintain the document links. Starting out, it may be useful just to work with these sections and not be too creative. " --></p>
+</blockquote>
+
+<h1><a NAME="Overview">1. Functional Overview / Description </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section should provide a conceptual overview of the feature(s) included in your submission. Details about new interfaces and properties should be deferred to the sections below. This section should focus on how the architecture is extended and improved by this submission. 
+
+Because HTML provides a hypertext mechanism, it is desirable to keep descriptions here short and, as they expand, provide further details in expansion sections that are linked to from these main body sections. The sections that are reached should provide a way back to this point in the document as well as back to the top of this document. " --></p>
+</blockquote>
+
+<blockquote>
+  <p>Support for MNCS Extensions are specified in two separate proposals.&nbsp; The first
+  proposal describes the impact on the binary interfaces standardized by DMA.&nbsp; That
+  determines all of the additional interfaces and the string formats that are used with the
+  additional interfaces.&nbsp; The first proposal is complete unto itself and is all that is
+  required to implement the MNCS extension.</p>
+  <p>The second proposal provides programming support for creation of string-format
+  independent programs that can be built to operate with one MNCS string-format or another
+  simply by changing some macro definitions.&nbsp; Some recommended macros and their usage
+  are defined in &quot;DMA Architecture Proposal for MNCS String Manipulation Library.&quot;
+  &nbsp;&nbsp; The use of the MNCS Library is entirely optional.&nbsp; It is implemented and
+  provided so that developers can use a portable, common solution readily available to all
+  of the DMA community.</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="NewTypes">2. New/Changed Data Types and Values</a></h1>
+
+<blockquote>
+  <p>A new DMAString Data type is introduced: DmaString_A.&nbsp; This datatype provides for
+  character strings that consist of counted sequences of 8-bit (octet) character-string
+  elements.</p>
+  <p>The principle of operation of DmaString_A is the same as DmaString, except for octets
+  instead of for 16-bit character string elements.&nbsp; (Technically, DmaString is the
+  DmaString_B format, but the _B suffix is never used in DMA.)</p>
+  <p>The new data type is introduced in the usual forms,</p>
+  <blockquote>
+    <p>pDmaString_A,</p>
+    <p>ppDmaString_A, </p>
+  </blockquote>
+  <p>and so on.&nbsp; Basically, every DmaString form already defined is supplemented by an
+  additional DmaString_A form.</p>
+  <p>There are also additional character set encodings, many that are specific to
+  DmaString_A usage.&nbsp; These additional character set encoding names and numbers are</p>
+  <blockquote>
+    <blockquote>
+      <p><font color="#FF0000"><u><strong>Include table of new character-set encoding names and
+      their codes here.</strong></u></font></p>
+    </blockquote>
+  </blockquote>
+  <p><font color="#000000">For convenience in programming, there is also a <em>generic</em>
+  character-string data type, DmaString_T.&nbsp; This is provided in the DMA interface
+  definitions and supporting files and is used when the program is designed to operate with
+  any one of DmaString_A, DmaString, or any additional character string formats that may be
+  introduced using the same principles.&nbsp; </font><u><strong><font color="#FF0000">The
+  discussion of DmaString_T and other macros used to simplify portability of programs
+  between multinational string formats is discussed in a companion sketch.&nbsp; It is kept
+  separate because it is important to distinguish what impacts DMA interfaces and what is
+  simply an accommodation for the source program and having no impact on the proper
+  interfacing between DMA-integrated components.</font></strong></u></p>
+  <p><font color="#000000">The DmaString_T is not an actual data type that is ever seen at a
+  DMA interface or delivered to a method.&nbsp; DmaString_T is a &quot;macro&quot; that will
+  at any time actually be implemented by DmaString_A, DmaString, or another string format.</font></p>
+  <blockquote>
+    <blockquote>
+      <p><font color="#FF0000"><u><strong>Consider whether any new result codes need to be
+      defined for failure to obtain the right kind of character string support from a supplied
+      object or any binding problems related to inconsistency in character string support.</strong></u></font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewProps">3. New/Changed Classes and Properties </a></h1>
+
+<blockquote>
+  <p>not applicable</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewFaces">4. New/Changed Interfaces</a></h1>
+
+<blockquote>
+  <p>For MNCS, there are two kinds of interface changes: additions to the integration-model
+  interfaces and replication of standard DMA 1.0 COM interfaces.</p>
+  <p><font color="#FF0000"><u><strong>We need to extract out a definition (included in the
+  glossary section) for what it means for two objects to be MNCS-compatible.&nbsp; </strong></u></font><ul>
+    <li><font color="#FF0000"><u><strong>It is delivered from a particular MNCS interface form.</strong></u></font></li>
+    <li><font color="#FF0000"><u><strong>All interfaces that it supports are supported in that
+      &nbsp; MNCS form</strong></u></font></li>
+    <li><font color="#FF0000"><u><strong>It accepts interfaces of that MNCS form on any objects
+      that are delivered to it via an interface parameter to a method.</strong></u></font></li>
+  </ul>
+  <p><font color="#FF0000"><u><strong>The IUnknown, IMalloc, and similar interfaces that
+  have no DmaString parameters to their methods, are automatically accepted as being all of
+  the MNCS forms.</strong></u></font></p>
+  <p>It is conceivable that an object could support more than one MNCS string format, but it
+  would require that the prevailing character set encoding be equally representable in the
+  multiple formats.&nbsp; Objects are permitted to support more than one MNCS format, they
+  are simply never required to do so.</p>
+</blockquote>
+
+<h2>4.1 DMA 1.0 Integration Interfaces</h2>
+
+<h3>4.1.1 dmaConnectSystemManager_A added</h3>
+
+<blockquote>
+  <p>The DMA System Manager connection interface dmaConnectSystemManager_A is added to the
+  defined interfaces for connecting a system manager.</p>
+  <p>The only difference in the signature of dmaConnectSystemManager_A form
+  dmaConnectSystemManager_A is using pDmaString_A wherever pDmaString is used in the
+  original interface.</p>
+  <p>When an application connects to the System Manager using the default interface, no
+  objects delivered under that system manager instance, directly or indirectly, need provide
+  anything but default interfaces.&nbsp; In addition, providing objects that do not honor
+  the default interfaces as parameters to default-interface methods may be rejected.</p>
+  <p>Likewise, when an application connects to the System Manager using an alternative MNCS
+  interface, no objects delivered under that system manager, directly or indirectly, need
+  provide anything but the particular MNCS interfaces.&nbsp; In addition, providing objects
+  that do not honor the established MNCS interface family as parameters to MNCS-interface
+  methods may be rejected.</p>
+</blockquote>
+
+<h3>4.1.2 DMA_GetServiceObject Interfaces added</h3>
+
+<blockquote>
+  <p>The integration entry for connecting service objects are supplemented by matching
+  interface having suffix &quot;_A.&quot;&nbsp; E.g,,</p>
+  <p>&nbsp;&nbsp;&nbsp; DMA_GetServiceObject_A is added.</p>
+  <p>Again, the only difference between _A signatures and the default signatures is the use
+  of pDmaString_A wherever pDmaString is used in the default interfaces.</p>
+  <p>When a default interface is employed for activation of a service object, that object
+  and any objects it delivers need only support the default string format.&nbsp; In
+  addition, receiving objects that do not honor the default interfaces as parameters of the
+  services default-interface methods may be rejected as bad parameters.</p>
+  <p>When an alternative MNCS interface is employed for activation of a service object, the
+  resulting object and any objects it delivers need only support the specified alternative
+  MNCS interfaces.&nbsp; Again, incompatible objects supplied as parameters to methods may
+  be rejected as bad parameters.</p>
+  <p><u><strong><font color="#FF0000">This wording is used because we anticipate expansion
+  of the default interfaces to support aggregation and possibly other integration functions.</font></strong></u></p>
+</blockquote>
+
+<h3>4.1.3 Application to Other Extensions and Exceptions</h3>
+
+<blockquote>
+  <p>Any time that there is an extension or addition to the Integration interfaces of DMA,
+  the introduction of a new default interface is automatically accompanied by an
+  &quot;_A&quot; version of the same interface.</p>
+  <p>When a default interface does not have any DmaString parameters of any form, it is not
+  necessary to introduce a new &quot;_A&quot; version.&nbsp; To simplify programming and
+  ensure consistent practice, an &quot;_A&quot; version will also be defined, but the
+  &quot;_A&quot; name will be realized by a macro definition to the default name.</p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<h2>4.2 Standard DMA 1.0 COM Interfaces</h2>
+
+<h3>4.2.1 IdmaServiceRegistry Interfaces Clarified</h3>
+
+<blockquote>
+  <p>The IdmaServiceRegistry Interfaces are never required to provide any visibility
+  whatsoever on registry entries that were introduced using a different MNCS string format
+  than the prevailing one.</p>
+  <p>When an object is integrated under one MNCS string format, it will only be instantiated
+  with that MNCS string format.&nbsp; To register an object as supporting more than one MNCS
+  string format, it must be registered with the appropriate style of IdmaServiceRegistry
+  interface.</p>
+  <p>A system manager is not required to support a combination of MNCS and character set
+  encoding for which it is not prepared to register objects and then invoke those objects.
+  &nbsp; (That is, the system manager does not have to register objects it may have no way
+  to invoke using the underlying operating system platform.)</p>
+  <p><u><strong><font color="#FF0000">Proposal: </font></strong></u>An IdmaServiceRegistry
+  interface is not required to deliver strings recorded in a character set encoding other
+  than the one now prevailing.&nbsp; That is, an IdmaServiceRegistry can completely hide
+  entries for objects that cannot be instantiated with the current MNCS and character set
+  encoding.&nbsp; Likewise, it does not have to accept registrations for objects which
+  operate in a different character set encoding than the one that now prevails.&nbsp; These
+  provisions enforce the rule that strings delivered across an interface are always in the
+  prevailing character set encoding and never anything else.&nbsp; In particular, an
+  IdmaServiceRegistry interface is permitted to refuse to deliver strings submitted in a
+  different character set encoding to a requester operating with a different prevailing
+  character set encoding (and MNCS format).</p>
+</blockquote>
+
+<h3>4.3 Ordinary DMA COM Interfaces follow the usual rules</h3>
+
+<p>This is basically the standard idea of suffixing all the interfaces.</p>
+
+<p>One important rule: If an&nbsp; interface definition has an understood character set
+encoding (e.g., ones from ActiveX), it is expected that the interface will not be
+available at all for incompatible MNCS or prevailing character set encoding.</p>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp;</p>
+</blockquote>
+
+<h1><a NAME="ArchImpact">5. Architectural Impacts </a></h1>
+
+<blockquote>
+  <p>The architectural impact of the MNCS Extension is primarily in the Integration Model
+  and in Internationalization / Localization.</p>
+</blockquote>
+
+<h3 align="center"><em>Architectural Impact Content </em></h3>
+
+<blockquote>
+  <h3><a HREF="sketch.htm#IntModel">5.1 Integration Model</a></h3>
+  <h3><a HREF="sketch.htm#Query">5.2 Query</a> </h3>
+  <h3><a HREF="sketch.htm#Internationalization">5.3 Internationalization/Localization</a> </h3>
+  <h3><a HREF="sketch.htm#Content">5.4 Content</a><a HREF="#Content"> </a></h3>
+  <h3><a href="#Containment">5.5 Containment</a></h3>
+  <h3><a href="#Versioning">5.6 Versioning</a></h3>
+  <h3><a HREF="sketch.htm#Security">5.7 Security</a> </h3>
+  <h3><a HREF="sketch.htm#Naming">5.8 Naming</a> </h3>
+  <h3><a HREF="sketch.htm#Requirements">5.9 Requirements Addressed</a> </h3>
+  <h3><a HREF="sketch.htm#FailureModes">5.10 Failure Modes / Crash Recovery</a> </h3>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="IntModel">5.1 Integration Model</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your change impact the DMA integration model ? The integration model addresses the following general areas: 
+- Service element integration 
+- Applications locating information about DMA systems in their environment 
+- Installing DMA systems into operating system environments 
+- DMA integration with other software architectures: 
+- - COM 
+- - ODMA 
+- - OLE 
+- - Internet technologies 
+- - - HTTP 
+- - - HTML 
+- - - MIME 
+- - - Java 
+- - OMG services " --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Query">5.2 Query</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your change impact the DMA query model ? The query model addresses the following general areas: 
+
+- Query construction 
+- Query execution 
+- Result set management 
+
+If you are introducing new objects, do they participate in the query model (ie can they be queried ?) " --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Internationalization">5.3 Internationalization/Localization </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How is this proposal affected by internationalization?  Does it impact internationalization provisions of DMA?  The DMA architecture supports the internationalization and localization of document management applications and systems through the use of multiple character set encodings, multiple languages, and multiple text ordering methodologies." --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Content">5.4 Content </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the content of objects accessed through DMA ? Are you changing the DMA content model ?Are you adding new content types ? Are you changing the way in which content is moved across a DMA system boundary ? " --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Containment">5.5 Containment</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect thhe containment model?  If you are introducing new classes of objects, do they participate in the containment model (i.e., can they be contained in containers, and/or are they containers themselves)?" --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Versioning">5.6 Versioning</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the versioning model?  If you are introducing new classes of objects, do they participate in the versioning model (i.e., can they be versioned)?" --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Security">5.7 Security </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the security of objects accessed through DMA systems ? Does your submissions change how authentication is done between DMA applications and DMA service elements ? Does your change improve/degrade the ability of document spaces to externalize their own security practices through DMA ? Are you adding any encryption capabilities ? " --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Naming">5.6 Naming </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission impact how things are named in DMA ? If you are introducing new objects, do they possess DmaIds? Can they be separately named, or only located through navigation of other objects? Are you introducing new naming concepts? Are you using a naming model from an extant system or standard (for example URLs?) " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Requirements">5.7 What requirement does this address? </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Whenever possible, trace the submission back to a specific requirements in the user requirements document for DMA. In general, our bias should be to strongly question any architecture change request that can't be linked back to a requirement. If our customer base didn't ask for this feature, why are we providing it ? " --></p>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h3>5.7.1 Why is this a good solution? </h3>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="In this section you should provide some self-critique of your approach. Describe alternatives that were discarded, and the criteria you used in determining that this change is a good solution to the problem. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h2><a NAME="FailureModes">5.8 Failure Modes / Crash Recovery </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="You should discuss failure modes and crash recovery issues if your submission has any peculiarities in this regard. If your change significantly improves or degrades the ability of DMA compliant systems to recover from error conditions, describe the impact of your change in this section. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="References">6. Reference Materials</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="We want to insure that consideration has been given to existing research into each of our topic areas. This area may be excluded in a draft submission, but must be completed in a final submission, and must include at least 2 references. These may be specific journals, or existing product documentation, or notes from a verbal/e-mail conversation with a topic expert. " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Experience">7. Existing Systems and Related Experiences </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This is similar to the previous section, but is more focused on existing product implementations. For example, the containment subcommittee might reference a journal arcticle describing electronic filing cabinets in section 6. In this section a list of the features and failings of existing implementations could be presented. This provides reviewers with insights into the state of the existing art in this particular technical area. " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compliance">8. Compliance &amp; Conformance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Define conformance criteria for your submission here.  For example, if your submission provides for wide ranging levels of conformance, or perhaps a very narrow range of conformance (works or doesn't), describe these features here in qualitative terms.  What is the minimum subset of features defined here that should be required of every DMA-compliant implementation?  What is strictly optional?  Even though compliance testing is not within the scope of DMA 1.0, list any suggestions here for how compliance testing of the features could be done in the future." --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="SampleUse">9. Sample Usage </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Provide an example of how this feature is used. This can be provided as either a code example, or as descriptive text. If you can't think up a compelling sample usage, you should not be suggesting this enhancement ! " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Glossary">10. Glossary / Nomenclature </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="List new or ambiguous terms you've used in your submission. Commonly used DMA terms such as &quot;document space&quot; or &quot;service provider interface&quot; do not need to be redefined in your submission. However, any new terms, or terms you feel have been ambiguously used prior to your submission should be included in this glossary. " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Impact">11. Impact on Existing Systems</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe how this change will impact existing systems that could be integrated into a DMA system. For example, including a containment model would allow repositories that have a containment model to externalize this through their document space. Browsers that support hierarchical navigation could navigate through DMA object hierarchies using the DMA containment model, and display these hierarchies in their UIs. 
+
+If you are making a change that will change the behavior of functionality already specified in DMA, specify the type of change in this section. " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Performance">12. Performance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the performance impact of your suggested changes. Does your change force implementations that have poor performance ? Consider the fact that DMA systems will be implemented in distributed environments. " --></p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compatibility">13. Backwards Compatibility and Legacy Considerations</a> </h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section is probably not applicable for the first round of submissions, but will be useful in subsequent revisions to the architecture. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Specification">14. Incorporation Into DMA Specifications </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the specific changes that should be made to the architecture to incorporate your change. 
+
+Describe new sections that should be added, additions/deletions to existing sections. Specify if your change includes updates to the objects and interfaces Access databases used to generate the spec. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a name="Deployment">15. Implementation and Deployment</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Explain anything that needs to be paid attention to about the implementation and deployment of this change, especially into configuration management, trial use, and deployment into standard applications and middleware." --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h5><a name="Bottom">End of Document </a></h5>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)" --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<p align="right">created 1999-06-09-11:39 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-02-24 16:39 $<br>
+$$Revision: 3 $</em></p>
+<!-- This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com) -->
+</body>
+</html>

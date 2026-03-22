@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000600d.htm 3     00-08-22 13:55 Orcmid $-->
+<title>X000600d: Original X000600 Incident Report</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a>
+<a href="X000600.htm">X000600</a></h2>
+
+<h1 align="center"><b>Obsolete Original Report</b></h1>
+
+<h2 align="center">This Incident Is <a href="#Status">Now Downgraded</a> to An <a href="X000600.htm">Important
+Integration Warning</a></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-08-22-13:36 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000">Fatal Error - Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000600"> X000600</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b><font color="#FF0000">9 - Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Investigate"> Investigate and Confirm</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component:&nbsp; </b>
+        <ol>
+          <li><a href="odma20st.htm"><kbd>ODMA 2.0 SDK (</kbd><code><b>odma20.exe</b></code><kbd>) 2.0.0</kbd></a></li>
+          <li><a href="../downloads/default.htm#ODMA-20-ConnectionManager"><b><code>ODMA32.dll</code></b>, version 2.0.0</a></li>
+          <li><code><a href="../downloads/default.htm#ODMA-20-Source"><b>ODMASamp32.DLL</b></a></code><a href="../downloads/default.htm#ODMA-20-Source">, version 2.0.0</a></li>
+        </ol>
+      </td>
+      <td width="50%"><b>Repaired in: </b>none
+        <dl>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/supportX00-log.htm#X000500">X000500</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="x000500z.htm">Clay Gibney</a> (2000-06-20)<br>
+        <a href="x000600a.htm">S. Ramananthan</a> (2000-06-21)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-06-22</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+
+<p>The ODMA Sample DMS fails with Microsoft Word 2000.</p>
+
+<p>With the Sample DMS installed as the default DMS (as set up by installing the
+ODMA 2.0 SDK), the failure occurs as follows:</p>
+
+  <ol>
+    <li>Start Word 2000.&nbsp; Type in a few letters in the initial unnamed
+      document.</li>
+    <li>Press the Word 2000 Save icon.</li>
+    <li>When the Word &quot;Select File As Type&quot; dialog occurs, accept the
+      default settings and click OK.</li>
+    <li>A junk file name is then displayed in the title of the document.</li>
+    <li>In addition, Word may report a &quot;File Permission Error&quot; some of
+      the time.</li>
+  </ol>
+  <p>Inspection of the ODMA32 log file reveals that</p>
+  <ul>
+    <li>Word performs an <code>ODMNewDoc</code> operation followed by <code>ODMSaveAs</code>.</li>
+    <li>Word does not call <code>ODMOpenDoc</code> and continue further as
+      stated in ODMA documentation.</li>
+  </ul>
+</blockquote>
+<h3><a name="Analysis">Analysis</a> (2000-06-22):</h3>
+<blockquote>
+  <p><a href="x000500z.htm">It has been suggested</a> that the test fixtures of
+  the ODMA 2.0 SDK (version 2.0.0) can be made to fail.&nbsp; <a href="x000600a.htm">This
+  incident</a> is remarkably similar to the behavior observed in <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000500">user-critical
+  situations</a> using production DMS integrations.&nbsp;</p>
+  <p>This opens up the possibility that we can use the test fixtures to
+  duplicate the behavior that shows up in critical applications, since we have
+  all of the code for the test fixtures and can revise them as necessary to
+  provide extended testing and trouble-shooting capabilities.</p>
+</blockquote>
+<h3><a name="Status">Status</a>:</h3>
+<blockquote>
+  <dl>
+    <dt><b><a name="Investigate">Investigate and Confirm</a> (2000-06-22):</b></dt>
+    <dd>1. <a href="x000600c.htm"> Obtain detailed information on failures</a> sufficient for reliable
+      reproduction of the incident on a test configuration.<br>
+      2. On confirming reproducibility of the incident, produce problem
+      analysis.</dd>
+    <dt><b>New Direction (2000-08-22):</b></dt>
+    <dd>This has been confirmed as a symptomatic failure of Word 2000
+      integration when Unicode operation is not disabled for ODMA access.&nbsp;
+      More information is available in the <a href="X000600.htm">updated
+      incident report</a>.</dd>
+  </dl>
+  <hr>
+
+<p><font size="-1"><b><a name="2000-06-23-08">2000-06-23-08</a>:58:</b> Add ODMA 2.0 SDK 2.0.0
+as the key component (orcmid)</font></p>
+
+</blockquote>
+
+<p align="right">created 2000-06-22-14:26 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-22 13:55 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

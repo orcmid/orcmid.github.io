@@ -1,0 +1,136 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000801.htm 5     00-08-07 14:44 Orcmid $-->
+<title>X00801 - ODMA32.dll Undefended NULL-Pointers Warning</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000801">X000801</a>:
+<code>ODMA32.dll</code></b> Undefended <b><code>NULL</code></b>-Pointers</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-08-07-14:45 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Vulnerability - Warning</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000801">X000801</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions"> Investigate Further and
+        Document</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>, all current
+        versions up to 2.0.0</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: </b>none</dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000806">X000806</a></dd>
+        </dl>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis Hamilton 2000-08-04</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-04</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+
+<p>An application that uses the ODMA API incorrectly can induce a crash in any
+version of <b><code>ODMA32.dll</code></b>, the Connection Manager for
+Win32.&nbsp; No direct damage occurs, but users will lose any work in progress
+and the DMS being used may have incomplete materials in its collection.&nbsp;</p>
+
+<p>There are <b>no reported production incidents</b> attributable to this particular
+defect.&nbsp; It is documented as a warning for future trouble-shooting and for
+maintenance of Connection Manager implementations.</p>
+
+<p>This condition is most likely to occur in development or maintenance of an
+ODMA-aware application.&nbsp; The conditions necessary to provoke the crash are
+unlikely in well-behaved applications in production usage.</p>
+
+</blockquote>
+
+<h3>Analysis:</h3>
+
+<blockquote>
+  <p>The ODMA Connection Manager must examine the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DocumentIDs">ODMA
+  Document IDs</a> that are provided as parameters for a number of ODMA 2.0 API
+  functions.&nbsp; This is necessary to determine the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DMS_ID">DMS
+  ID</a> of the DMS Integration to use in the operation.</p>
+
+  <p>In the cases where the Document ID parameter is not optional, the ODMA
+  Connection Manager 1.0.0, 1.5.0, and 2.0.0 implementations all fail to defend
+  against erroneous <b><code>NULL</code></b> values for an <b><code><i><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.2parameters">lpszDocId</a></i></code></b>
+  parameter before using its value.</p>
+
+  <p><b><code>ODMA32.dll</code></b> will terminate with a fatal error when it
+  receives a <b><code>NULL</code></b> value in any operation having a <i> required</i> <i><code><b>lpszDocId</b></code></i>
+  parameter.&nbsp; This is the result of performing <b><code>strlen(NULL)</code></b>
+  in function <b><code>ODMClient::ConnectDocId</code></b> of Connection Manager
+  module <b><code>Client.cpp</code></b>.</p>
+
+  <p><b><code>Odma.dll</code></b> will operate successfully, providing an
+  appropriate <code><b>ODMSTATUS</b>
+  </code>
+  error code.&nbsp; This is because <b><code>*NULL</code></b> is arranged to be <b><code>0
+  </code></b>on MS-DOS and Win16, so that the result of <b><code>strlen(NULL)</code></b>
+  is the same as <b><code>strlen(&quot;&quot;)</code></b>, namely <b><code>0</code></b>.</p>
+
+</blockquote>
+
+<h3><a name="Actions">Actions</a>:</h3>
+
+<blockquote>
+  <ol>
+    <li>Identify and report those ODMA Connection Manager functions that fail to
+      defend against <b><code>NULL</code></b> string-pointer parameters.</li>
+    <li>Confirm that <b><code>strlen(NULL)</code></b> is not well-defined for
+      ANSI Standard C and that <b><code>strlen(NULL)</code></b> fails for a
+      number of ANSI Standard C <b><code>string.h</code></b> libraries.</li>
+    <li>Demonstrate that this failure actually occurs with the current ODMA 2.0
+      connection manager implementation, <b><code>ODMA32.dll</code></b> version
+      2.0.0.</li>
+    <li>Describe appropriate work-around and safeguard techniques.</li>
+    <li>Schedule correction in the next rebuild of ODMA Connection Manager
+      implementations.</li>
+  </ol>
+
+</blockquote>
+
+<blockquote>
+  <p>Please provide any relevant information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-04-13:47 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-07 14:44 $<br>
+$$Revision: 5 $</em></p>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d060701i: getpwd API Reference (0.50 alpha) </title>
+<!--$$Header: /TROSTCompagno/dev/2006/07/d060701i.htm 33    17-07-01 7:36 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006c.htm of 2005-08018T20:44Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a rel="nofollow" href="http://TROSTing.org" target="_top"><img border="0" 
+src="../../../images/TROSTSymbol-thumb.gif" alt="TROST: Open-System Trustworthiness" 
+width="100" height="87"></a>
+<!-- included from TROSTing /construction/C000005a.htm of 2005-07-21-13:35 -0700 $-->
+<!--webbot bot="Include" endspan i-checksum="10704" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <font color="#990033"><strong>
+		<a href="../../d000001.htm#d060701"><font color="#990033">d060701</font></a> 
+		TROST </strong></font>
+
+<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong><font color="#990033"><strong><br>
+      <a href="d060701.htm"><font color="#990033">getpwd Platform Isolation</font></a><br />
+<em><font size="5">getpwd API Reference (0.50 alpha)</font></em></strong></font></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>TROSTing</b></a></code><b><code>&gt;<a 
+  href="../../">dev</a>&gt;<br>
+      <a target="_top" href="../">2006</a>&gt;<a target="_top" href="./">07</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d060701i.htm">d060701i</a>&gt;</b></code><br>
+</font>
+      <small><small>
+		<a target="_top" href="#0.50">0.50</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2017-07-01 07:36 -0700<!--webbot bot="Timestamp" endspan i-checksum="28946" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>The latest getpwd API Reference</b> is available on the Internet at <br>
+			&lt;<b><font face="Courier New, Courier, Monospace"><a target="_top" href="d060701d.htm">http://TROSTing.org/2006/07/d060701d.htm</a></font></b>&gt;.</li>
+			<li><b>This version, 0.50 alpha:</b>&nbsp;&nbsp;<b> </b>&lt;<b><font face="Courier New, Courier, Monospace"><a target="_top" href="d060701i.htm">http://TROSTing.org/2006/07/d060701i.htm</a></font></b>&gt;.&nbsp; 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of this version of the specification.</li>
+		</ul>
+</div></small></blockquote>
+
+<h1 align="center">getpwd: Obtain Password Entry Directly from Console</h1>
+<p>Custom C/C++ Language function <strong>
+<font face="Courier New, Courier, Monospace">getpwd</font></strong> accepts 
+entries from password fields, echoing &quot;<strong><font face="Courier New, Courier, Monospace">*</font></strong>&quot; 
+characters in place of the accepted characters.</p>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#Interface">Interface</a><br>
+			2. <a href="#ReturnValue">Return Value</a><br>
+			3. <a href="#RequiredHeader">Required Header</a><br>
+			4. <a href="#RequiredLibrary">Required Library</a><br>
+			5. <a href="#Dependencies">Dependencies</a><br>
+			6. <a href="#FailureCases">Failure Cases</a><br>
+			7. <a href="#ThreatModel">Threat Model</a><br>
+			8. <a href="#Caveats">Caveats</a><br>
+			9. <a href="#Bugs">Bugs</a></h3>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<h2><strong><a name="1" target="_top" href="#1">1</a>. <a name="Interface">
+Interface</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<blockquote>
+		<p><font face="Courier New, Courier, Monospace"><strong>int getpwd00(char
+		</strong><em>buffer</em><strong>[], size_t </strong><em>maxpwd</em><strong>, 
+	size_t </strong><em>maxfield</em><strong>)</strong></font></p>
+		<ul>
+			<li><font face="Courier New, Courier, Monospace"><em>buffer</em>[]</font> 
+		is an array of &nbsp;at least <em>
+			<font face="Courier New, Courier, Monospace">maxpwd</font></em>
+			<strong><font face="Courier New, Courier, Monospace">char</font></strong> 
+		elements.<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+		</li>
+			<li><em><font face="Courier New, Courier, Monospace">maxpwd</font></em> 
+		is the maximum number of <strong>
+			<font face="Courier New, Courier, Monospace">char</font></strong> 
+		elements to deliver from the password entry (with additional entered 
+		characters ignored).&nbsp; <font face="Courier New, Courier, Monospace">
+			<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 &lt; 
+			<i>maxpwd</i> &lt;= getpwdMAX_MAXPWD<br>
+			</font><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+			</li>
+			<li><font face="Courier New, Courier, Monospace"><em>maxfield</em></font> is the maximum number of &quot;<font face="Courier New, Courier, Monospace">*</font>&quot; 
+		characters that will be echoed for entered characters; use <strong>
+			<font face="Courier New, Courier, Monospace">0</font></strong> to 
+		suppress all echoing.&nbsp; <font face="Courier New, Courier, Monospace">
+			<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 &lt;= <em>maxfield</em> &lt;= 
+			getpwdMAX_MAXFIELD &lt; INT_MAX<br>
+			</font>is required.<br>
+&nbsp;&nbsp; </li>
+			<li>preprocessor-defined constant <font face="Courier New, Courier, Monospace">
+			getpwdMAX_MAXPWD</font> will never be less than 63.&nbsp; The value 
+			is fixed and will not change for any implementation of the same 
+			interface contract (i.e., <font face="Courier New, Courier, Monospace">
+			getpwd00</font>, <font face="Courier New, Courier, Monospace">
+			getpwd10</font>, etc).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+			<li>preprocessor-defined constant <font face="Courier New, Courier, Monospace">
+			getpwdMAX_MAXFIELD</font> will never be less than <font face="Courier New, Courier, Monospace">
+			getpwdMAX_MAXPWD</font>.&nbsp; The value is fixed and will not 
+			change for any implementation of the same interface contract (i.e., <font face="Courier New, Courier, Monospace">
+			getpwd00</font> can vary from <font face="Courier New, Courier, Monospace">
+			getpwd10</font>, etc).</li>
+		</ul>
+	</blockquote>
+	<p><b><a name="1.1" target="_top" href="#1.1">1.1</a></b> The <em><font face="Courier New, Courier, Monospace">maxfield</font></em> 
+	and <em><font face="Courier New, Courier, Monospace">maxpwd</font></em> 
+	parameters are independent.&nbsp; The function works correctly when
+	<font face="Courier New, Courier, Monospace"><em>maxfield </em><strong>&gt;</strong><em> 
+	maxpwd</em></font> and when backspace is entered at any time.</p>
+	<p><b><a name="1.2" target="_top" href="#1.2">1.2</a></b> Only printable ASCII&nbsp;character codes are included in the password.&nbsp; 
+	Only includable characters are echoed.&nbsp; Password entry is ended by using the 
+	Enter key or otherwise producing a data-ending code according to 
+	conventions&nbsp;of the implementing platform&nbsp;(e.g., CR, LF, Ctrl-Z, Ctrl-D, or 
+	an EOF indication).&nbsp; Any other keyboard entries and their <strong>
+	<font face="Courier New, Courier, Monospace">char</font></strong> codes are 
+	silently ignored.&nbsp; They do count against the limit of entered 
+	characters, however (section <a href="#6.1.3">6.1.3</a>).</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="2" target="_top" href="#2">2</a>. 
+<a name="ReturnValue">Return Value</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="2.1" target="_top" href="#2.1">2.1</a></b> If <strong><font face="Courier New, Courier, Monospace">
+	getpwd</font></strong> is successful, the return value is the number of 
+	password <strong><font face="Courier New, Courier, Monospace">char</font></strong> elements delivered in
+	<font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[]</strong></font>.&nbsp;&nbsp;Unused 
+	positions up through <font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[</strong><em>maxpwd</em><strong>-1]</strong></font> 
+	are filled with null characters, <strong>
+	<font face="Courier New, Courier, Monospace">'\0'</font></strong>.&nbsp; A&nbsp;zero 
+	return value&nbsp;signifies that no password was entered and that there are&nbsp;<em><font face="Courier New, Courier, Monospace">maxpwd</font></em> 
+	null characters in <font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[]</strong></font>.</p>
+	<p dir="ltr"><b><a name="2.2" target="_top" href="#2.2">2.2</a></b> The return value is less than 0&nbsp;when <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong> fails 
+	(see <a href="#FailureCases">6, Failure Cases</a>).</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="3" target="_top" href="#3">3</a>. 
+<a name="RequiredHeader">Required Header</a>:</strong> <strong>
+<font face="Courier New, Courier, Monospace">getpwd00.h</font></strong></h2>
+<blockquote>
+	<p dir="ltr"><b><a name="3.1" target="_top" href="#3.1">3.1</a></b> Place a 
+	copy of <b><font face="monospace">getpwd00.h</font></b> into the folder 
+	containing the application source code, accessing the header definitions 
+	using C/C++ Language pre-processor command</p>
+	<blockquote>
+		<p dir="ltr"><font face="monospace"><b>#include &quot;getpwd00.h&quot;</b></font></p>
+	</blockquote>
+	<p dir="ltr"><b><a name="3.2" target="_top" href="#3.2">3.2</a></b> It is 
+	useful to annotate the calling program with the specific versions of <b>
+	<font face="monospace">getpwd00.h</font></b> that the program has been 
+	confirmed with and relied upon for the interface contract.&nbsp; E.g.,</p>
+	<blockquote>
+		<p dir="ltr"><font face="monospace"><b>#include &quot;getpwd00.h&quot;<br>
+&nbsp;&nbsp;&nbsp; /* assuming an interface contract compatible with <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getpwd API Reference version 0.4 alpha */</b></font></p>
+	</blockquote>
+	<p dir="ltr"><b><a name="3.3" target="_top" href="#3.3">3.3</a></b> The 
+	header file defines</p>
+	<blockquote>
+		<ol dir="ltr">
+			<li dir="ltr">
+			<p dir="ltr">The function prototype for custom library function <font face="monospace"><b>
+			getpwd00</b></font></p></li>
+			<li dir="ltr">
+			<p dir="ltr">the pre-processor constant <b> <font face="Courier New, Courier, Monospace">
+			getpwdMAX_MAXPWD</font></b></p></li>
+			<li dir="ltr">
+			<p dir="ltr">the pre-processor constant <b> <font face="Courier New, Courier, Monospace">
+			getpwdMAX_MAXFIELD</font></b></p></li>
+		</ol>
+	</blockquote>
+</blockquote>
+<h2 dir="ltr"><strong><a name="4" target="_top" href="#4">4</a>.
+<a name="RequiredLibrary">Required Library</a> </strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr">There is no library for <strong>
+	<font face="Courier New, Courier, Monospace">getpwd00</font></strong>.&nbsp; The
+	<strong><font face="Courier New, Courier, Monospace">getpwd00.h</font></strong> 
+	and <strong><font face="Courier New, Courier, Monospace">getpwd00-<i>version</i>.c</font></strong> 
+	files should be included directly into a project directory for use in 
+	compiling the application that relies on <strong>
+	<font face="Courier New, Courier, Monospace">getpwd00</font></strong>.&nbsp; </p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="5" target="_top" href="#5">5</a>. 
+<a name="Dependencies">Dependencies</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="5.1" target="_top" href="#5.1">5.1</a></b>&nbsp;<strong><font face="Courier New, Courier, Monospace">getpwd00.h</font></strong> 
+	only depends on Standard C library <strong>
+	<font face="Courier New, Courier, Monospace">&lt;stddef.h&gt;</font></strong> (for
+	<strong><font face="Courier New, Courier, Monospace">size_t</font></strong>).
+	</p>
+	<p dir="ltr"><b><a name="5.2" target="_top" href="#5.2">5.2</a></b> <strong><font face="Courier New, Courier, Monospace">getpwd00-<i>version</i>.c</font></strong> 
+	depends on Standard C libraries and and on implementation-specific libraries 
+	(e.g., <strong><font face="Courier New, Courier, Monospace">conio.h</font></strong>) 
+	for an assumed platform and compiler implementation.&nbsp;&nbsp; The version 
+	suffix in the file name specifies level of implementation <b>and</b> any 
+	platform/implementation-specific dependencies.</p>
+	<p dir="ltr"><b><a name="5.3" target="_top" href="#5.3">5.3</a></b> The <strong><font face="Courier New, Courier, Monospace">
+	getpwd00-<i>version</i>.c</font></strong> source&nbsp;programs provides 
+	preprocessor warnings and errors when the assumed implementation does not 
+	appear to be present during compilation.&nbsp; </p>
+	<p dir="ltr"><b><a name="5.4" target="_top" href="#5.4">5.4</a></b> Comments in the&nbsp;<strong><font face="Courier New, Courier, Monospace">getpwd00-<i>version</i>.c</font></strong> 
+	code indicate how all dependencies are being relied upon and how they are 
+	used to satisfy the specifications of this custom function.</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="6" target="_top" href="#6">6</a>. 
+<a name="FailureCases">Failure Cases</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="6.1" target="_top" href="#6.1">6.1</a></b> <strong><font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+	will return a less-than-zero failure value if any of the following 
+	conditions occur:</p>
+	<ul>
+		<li dir="ltr"><b><a name="6.1.1" target="_top" href="#6.1.1">6.1.1</a></b>
+		<em><font face="Courier New, Courier, Monospace">buffer</font></em> 
+		is <font face="Courier New, Courier, Monospace"><strong>NULL</strong><br>
+		&nbsp;&nbsp; </font></li>
+		<li dir="ltr"><b><a name="6.1.2" target="_top" href="#6.1.2">6.1.2</a></b>
+		<font face="Courier New, Courier, Monospace"><em>maxpwd</em>
+		</font>is less than <font face="Courier New, Courier, Monospace">1</font> 
+		or greater than <b> <font face="Courier New, Courier, Monospace">
+		getpwdMAX_MAXPWD</font></b>;&nbsp; 
+		<em><font face="Courier New, Courier, Monospace">maxfield</font></em> is 
+		greater than <b> <font face="Courier New, Courier, Monospace">
+		getpwdMAX_MAXFIELD</font></b>.<br>
+		&nbsp;&nbsp;
+		</li>
+		<li dir="ltr"><b><a name="6.1.3" target="_top" href="#6.1.3">6.1.3</a></b> 
+		There is a failure obtaining keyboard input, in displaying echo 
+		characters, or if the number of keyboard 
+		entries&nbsp;is&nbsp;some amount greater&nbsp;than 4 times the larger of
+		<font face="Courier New, Courier, Monospace"><em>maxpwd</em></font> and
+		<em><font face="Courier New, Courier, Monospace">maxfield</font></em>.&nbsp; 
+		In these cases,&nbsp; <font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[0]</strong></font> 
+		to <font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[</strong></font><em><font face="Courier New, Courier, Monospace">maxpwd</font></em><font face="Courier New, Courier, Monospace"><strong>-1]</strong></font> 
+		will contain null characters, <b>
+		<font face="Courier New, Courier, Monospace">'\0'</font></b>, in order 
+		to obliterate any accepted characters that were discarded.</li>
+	</ul>
+	<p><b><a name="6.2" target="_top" href="#6.2">6.2</a></b> There is no use of the Standard C/C++ <strong>
+	<font face="Courier New, Courier, Monospace">errno</font></strong> value.&nbsp; 
+	There are no effects on the input-output state or error status of file and 
+	console streams.&nbsp;&nbsp; No exceptions are thrown by <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong>.</p>
+	<p><b><a name="6.3" target="_top" href="#6.3">6.3</a></b> If there is keyboard entry of a control code that aborts operation on the 
+	implementation platform (e.g., Ctrl-C), the application will be&nbsp;immediately 
+	aborted in the usual way.</p>
+	<p><b><a name="6.4" target="_top" href="#6.4">6.4</a></b> There is no protection 
+	against other threads accessing the console and even moving the 
+	character-output insertion point.&nbsp; Password elicitation should occur only 
+	when there is a single input-output-using thread operating in the application.</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="7" target="_top" href="#7">7</a>.
+<a name="ThreatModel">Threat Model</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="7.1" target="_top" href="#7.1">7.1</a></b> <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+	implementations only hold the <strong>
+	<font face="Courier New, Courier, Monospace">char</font></strong> of the 
+	current input in local data.&nbsp; The full password, in clear, is assembled 
+	in <font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[]</strong></font>.&nbsp;&nbsp; 
+	There is no protection against a key logger attack.&nbsp; Protection of
+	<font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[]</strong></font> 
+	against discovery is the responsibility of the application that uses <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong>.&nbsp; </p>
+	<p dir="ltr"><b><a name="7.2" target="_top" href="#7.2">7.2</a></b> Provided that <em><font face="Courier New, Courier, Monospace">
+	maxpwd</font></em> is valid, it is not possible to produce a buffer over-run 
+	using keyboard entries to <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong>.&nbsp;&nbsp; The 
+	limitation on amount of input mitigates against using&nbsp;unending responses&nbsp;to
+	<strong><font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+	as a&nbsp;form of denial-of-service exploit.</p>
+	<p dir="ltr"><b><a name="7.3" target="_top" href="#7.3">7.3</a></b> There is no protection against simply failing to provide or end 
+	the input response.&nbsp; 
+	Any time-out protection and similar safeguards are the responsibility of the 
+	application that invokes the <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+	procedure.</p>
+	<p dir="ltr"><b><a name="7.4" target="_top" href="#7.4">7.4</a></b> Aborting 
+	the application while <font face="Courier New, Courier, Monospace"><strong>
+	getpwd</strong></font> is eliciting input characters may leave any entered 
+	password characters exposed in
+	<font face="Courier New, Courier, Monospace"><em>buffer</em><strong>[]</strong></font><strong>.</strong></p>
+	<p dir="ltr"><strong><a name="7.5" target="_top" href="#7.5">7.5</a>
+	</strong><font face="Courier New, Courier, Monospace"><strong>getpwd</strong></font> 
+	is not suitable for protecting passwords that are entered over a non-secure 
+	network connection to the application.</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="8" target="_top" href="#8">8</a>.
+<a name="Caveats">Caveats</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="8.1" target="_top" href="#8.1">8.1</a></b> <em>
+	<font face="Courier New, Courier, Monospace">maxfield</font></em> 
+	should be chosen such that the string of <strong>
+	<font face="Courier New, Courier, Monospace">*</font></strong>-echoes will 
+	not&nbsp;wrap onto the next&nbsp;line of the console display.&nbsp; If line wrapping 
+	occurs, the display may be corrupted and implementation of backspacing may 
+	fail to delete characters prior to the wrap.</p>
+	<p dir="ltr"><b><a name="8.2" target="_top" href="#8.2">8.2</a></b> Because <strong><font face="Courier New, Courier, Monospace">
+	getpwd</font></strong> operates directly from the console, it is not 
+	possible to provide a password response in a batch file (and that's 
+	generally a good thing).&nbsp; However, the operator may not detect&nbsp;that the 
+	application is waiting for keyboard input.&nbsp; If batch operation is&nbsp;allowable, 
+	it is important to&nbsp;ensure that&nbsp;a password prompt appears directly on the 
+	console regardless of how input and output might be redirected.</p>
+	<p dir="ltr"><b><a name="8.3" target="_top" href="#8.3">8.3</a></b> The names <strong><font face="Courier New, Courier, Monospace">
+	getpwd00-<i>version</i>.c</font></strong>&nbsp; are used to reflect 
+	implementation dependencies in the name of the file.&nbsp;&nbsp; This does 
+	not impact use of the implementation, because the name of the file and the 
+	name of the function are independent.&nbsp;&nbsp; The version of implemented 
+	interface contract (with <font face="Courier New, Courier, Monospace">00</font> 
+	for alpha-level versions) does impact the name of the function.&nbsp; 
+	Samples in test releases of <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+	demonstrate practices for managing dependencies on alpha-level versions.</p>
+</blockquote>
+<h2 dir="ltr"><strong><a name="9" target="_top" href="#9">9</a>. <a name="Bugs">Bugs</a></strong></h2>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+	<p dir="ltr"><b><a name="9.1" target="_top" href="#9.1">9.1</a></b> The correct handling of locale effects on the determination of
+	<strong><font face="Courier New, Courier, Monospace">char</font></strong> 
+	classes and recognition of control codes (e.g., for backspace and 
+	carriage-return) has not been reconciled in alpha versions of the code.</p>
+	<p dir="ltr"><b><a name="9.2" target="_top" href="#9.2">9.2</a></b> The correct handling of special keyboard entries (function 
+	keys, arrow keys, and special states) has not yet been verified.</p>
+	<p dir="ltr"><b><a name="9.3" target="_top" href="#9.3">9.3</a></b> No attempt has been made to provide any accommodation for 
+	reverse-direction (e.g., right-to-left) typing and display schemes.&nbsp; We are 
+	operating on the possibly-mistaken assumption that nothing special needs to 
+	be done at this level of console usage.</p>
+	<p dir="ltr"><b><a name="9.4" target="_top" href="#9.4">9.4</a></b> The implementation of preprocessor checks for the correct
+	<strong><font face="Courier New, Courier, Monospace">getpwd00-<i>version</i>.c</font></strong> 
+	platform and compiler implementation is not comprehensive in these alpha and 
+	beta 
+	versions.</p>
+</blockquote>
+
+  <hr color="#990033">
+
+<dl><small>
+		</small></dl>
+
+<dl><small>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.50">0.50</a> 2006-08-31-23:46 Add Defined Constants and 
+	Adjust Material</b></dt>
+	<dd>The limits on buffer and field size are replaced by constant values, 
+	with guarantees on the values being fixed for a given version.&nbsp; There 
+	are also perpetually-guaranteed minimum values.&nbsp; The wordings are 
+	adjusted and simplified after letting it sit for a while.&nbsp; Further 
+	tightening is done after finding simple boundary checks for a getpwd-null 
+	implementation.</dd>
+	<dt><b><a name="0.45">0.45</a> 2006-08-05-17:13 Tighten Error Cases</b></dt>
+	<dd>All input is counted towards aborting because of excessive input.&nbsp; 
+	Additional changes are entered from earlier notes.</dd>
+	<dt><b><a name="0.40">0.40</a> 2006-08-04-17:04 Replicate the MSDN Forum 
+	note as a TROSTdev Note</b></dt>
+	<dd>Extract the &quot;man Page&quot; material on the MSDN Forum and reformat it for 
+	here.&nbsp; Provide 
+	additional adjustments found necessary during a review of the 0.3 alpha 
+	version.</dd>
+	<dt><b><a name="0.30">0.30</a> 2006-07-28-02:08 Made 0.3 alpha</b></dt>
+	<dd>Included revision history and consideration of failures by thread 
+	interference on the display and when there is an output failure.</dd>
+	<dt><b><a name="0.20">0.20</a> 2006-07-27-23:43 0.2 alpha Add Required 
+	Library Entry</b></dt>
+	<dd>Add dependency information and reflect on that under Caveats and Bugs.</dd>
+	<dt><b><a name="0.10">0.10</a> 2006-07-27-23:24 0.1 alpha Add PS on why this 
+	seems difficult</b></dt>
+	<dd>I also corrected a mangled sentence and added a caveat about not 
+	providing anything special for reverse-direction writing systems.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-07-27-12:15 Post Initial Version</b></dt>
+	<dd>The basic structure was posted as part of a proposed demonstration and 
+	to solicit review comments and suggestions.</dd>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="63%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+<img border="0" src="../../../images/ccby20.gif" align="right" 
+ alt="Creative Commons License" width="88" height="31">
+You are navigating 
+<!-- included from TROSTing /construction/C000005c.htm of 2005-06-18T01:04Z -->
+ 	<a rel="nofollow" target="_top" href="../../../">TROSTing.org</a>.<br />This work is 
+	<a href="../../../info/2005/04/i050403c.htm" target="_top">licensed</a> under a <br />
+	<a rel="license" target="_top" 
+ href="http://creativecommons.org/licenses/by/2.0/">Creative Commons License</a>.
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.0/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--></small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="46192" --></td>
+    <td width="25%">
+      <p align="right"><font size="-2">created 2006-08-04-17:04 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-07-01 7:36 $<br>
+      $$Revision: 33 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

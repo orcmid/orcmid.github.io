@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>n140504e1: Baseline Annotated ODF 1.2 Manifest Schema edition</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+ --><p>
+<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;
+===================================================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://nfoWorks.org/notes/2014/05/n140504e1.htm">n140504e1.htm</a>
+<a href="#L0.05">0.05</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+UTF-8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+dh:2014-06-07<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+BASELINE ANNOTATED ODF 1.2 MANIFEST SCHEMA<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;------------------------------------------<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; This is a faithful rendition of the
+OpenDocument-v1.2-manifest-schema.rng file<br>
+&nbsp;&nbsp;&nbsp;&nbsp; presented as an annotated text for reference and
+discussion.&nbsp; The annotations are<br>
+&nbsp;&nbsp;&nbsp;&nbsp; limited to the addition of line numbers, links to referenced external materials,<br>
+&nbsp;&nbsp;&nbsp;&nbsp; and cross-references among to definitions in the schema.&nbsp;
+Permalinks are set on the<br>
+&nbsp;&nbsp;&nbsp;&nbsp; line numbers, &lt;definition&gt;s, and the
+&lt;element&gt;/&lt;attribute&gt; entries.&nbsp; For an <br>
+&nbsp;&nbsp;&nbsp;&nbsp; authoritative copy of the schema itself, the
+<a href="#L0006">source location</a> should be
+consulted.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; The latest version of this annotated schema and
+further details are provided at<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;<a href="http://nfoWorks.org/notes/2014/05/n140504d.htm">http://nfoWorks.org/notes/2014/05/n140504d.htm</a>&gt;.&nbsp;
+This baseline version is managed <br>
+&nbsp;&nbsp;&nbsp;&nbsp; at &lt;<a href="http://nfoWorks.org/notes/2014/05/n140504e.htm">http://nfoWorks.org/notes/2014/05/n140504e.htm</a>&gt;.</font></p>
+<p>
+<font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp; This HTML web page
+has an embedded digital signature that can be used to verify its<br>
+&nbsp;&nbsp;&nbsp;&nbsp; authenticity and the absence of any alterations.&nbsp;
+The public key of the signature<br>
+&nbsp;&nbsp;&nbsp;&nbsp; has PGP fingerprint 04D0 4322 979B 84DE 1077 0334 F96E
+89FF D456 628A.&nbsp; The key is<br>
+&nbsp;&nbsp;&nbsp;&nbsp; at &lt;<a href="https://people.apache.org/keys/committer/orcmid.asc">https://people.apache.org/keys/committer/orcmid.asc</a>&gt;,
+any PGP key service, and<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;<a href="https://keybase.io/orcmid">https://keybase.io/orcmid</a>&gt;.&nbsp;
+Procedures for verification and creation of this <br>
+&nbsp;&nbsp;&nbsp;&nbsp; signed page are described at &lt;<a href="http://nfoWorks.org/dev/2014/05/d140502g.htm">http://nfoWorks.org/dev/2014/05/d140502g.htm</a>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<a name="L0001" href="#L0001">0001</a>&nbsp;&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;<br />
+<a name="L0002" href="#L0002">0002</a>&nbsp;&lt;!--<br />
+<a name="L0003" href="#L0003">0003</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open&nbsp;Document&nbsp;Format&nbsp;for&nbsp;Office&nbsp;Applications&nbsp;(OpenDocument)&nbsp;Version&nbsp;1.2<br />
+<a name="L0004" href="#L0004">0004</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OASIS&nbsp;Standard,&nbsp;29&nbsp;September&nbsp;2011<br />
+<a name="L0005" href="#L0005">0005</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Manifest&nbsp;Relax-NG&nbsp;Schema<br />
+<a name="L0006" href="#L0006">0006</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Source:&nbsp;<a href="http://docs.oasis-open.org/office/v1.2/os/">http://docs.oasis-open.org/office/v1.2/os/</a><br />
+<a name="L0007" href="#L0007">0007</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;OASIS&nbsp;Open&nbsp;2002-2011.&nbsp;All&nbsp;Rights&nbsp;Reserved.<br />
+<a name="L0008" href="#L0008">0008</a><br />
+<a name="L0009" href="#L0009">0009</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;capitalized&nbsp;terms&nbsp;in&nbsp;the&nbsp;following&nbsp;text&nbsp;have&nbsp;the&nbsp;meanings&nbsp;assigned&nbsp;to&nbsp;them<br />
+<a name="L0010" href="#L0010">0010</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;OASIS&nbsp;Intellectual&nbsp;Property&nbsp;Rights&nbsp;Policy&nbsp;(the&nbsp;&quot;OASIS&nbsp;IPR&nbsp;Policy&quot;).&nbsp;The<br />
+<a name="L0011" href="#L0011">0011</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;full&nbsp;Policy&nbsp;may&nbsp;be&nbsp;found&nbsp;at&nbsp;the&nbsp;OASIS&nbsp;website.<br />
+<a name="L0012" href="#L0012">0012</a><br />
+<a name="L0013" href="#L0013">0013</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;document&nbsp;and&nbsp;translations&nbsp;of&nbsp;it&nbsp;may&nbsp;be&nbsp;copied&nbsp;and&nbsp;furnished&nbsp;to&nbsp;others,&nbsp;and<br />
+<a name="L0014" href="#L0014">0014</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;derivative&nbsp;works&nbsp;that&nbsp;comment&nbsp;on&nbsp;or&nbsp;otherwise&nbsp;explain&nbsp;it&nbsp;or&nbsp;assist&nbsp;in&nbsp;its<br />
+<a name="L0015" href="#L0015">0015</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implementation&nbsp;may&nbsp;be&nbsp;prepared,&nbsp;copied,&nbsp;published,&nbsp;and&nbsp;distributed,&nbsp;in&nbsp;whole&nbsp;or<br />
+<a name="L0016" href="#L0016">0016</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;part,&nbsp;without&nbsp;restriction&nbsp;of&nbsp;any&nbsp;kind,&nbsp;provided&nbsp;that&nbsp;the&nbsp;above&nbsp;copyright<br />
+<a name="L0017" href="#L0017">0017</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notice&nbsp;and&nbsp;this&nbsp;section&nbsp;are&nbsp;included&nbsp;on&nbsp;all&nbsp;such&nbsp;copies&nbsp;and&nbsp;derivative&nbsp;works.<br />
+<a name="L0018" href="#L0018">0018</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However,&nbsp;this&nbsp;document&nbsp;itself&nbsp;may&nbsp;not&nbsp;be&nbsp;modified&nbsp;in&nbsp;any&nbsp;way,&nbsp;including&nbsp;by<br />
+<a name="L0019" href="#L0019">0019</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removing&nbsp;the&nbsp;copyright&nbsp;notice&nbsp;or&nbsp;references&nbsp;to&nbsp;OASIS,&nbsp;except&nbsp;as&nbsp;needed&nbsp;for&nbsp;the<br />
+<a name="L0020" href="#L0020">0020</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;purpose&nbsp;of&nbsp;developing&nbsp;any&nbsp;document&nbsp;or&nbsp;deliverable&nbsp;produced&nbsp;by&nbsp;an&nbsp;OASIS<br />
+<a name="L0021" href="#L0021">0021</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technical&nbsp;Committee&nbsp;(in&nbsp;which&nbsp;case&nbsp;the&nbsp;rules&nbsp;applicable&nbsp;to&nbsp;copyrights,&nbsp;as&nbsp;set<br />
+<a name="L0022" href="#L0022">0022</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;forth&nbsp;in&nbsp;the&nbsp;OASIS&nbsp;IPR&nbsp;Policy,&nbsp;must&nbsp;be&nbsp;followed)&nbsp;or&nbsp;as&nbsp;required&nbsp;to&nbsp;translate&nbsp;it<br />
+<a name="L0023" href="#L0023">0023</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into&nbsp;languages&nbsp;other&nbsp;than&nbsp;English.<br />
+<a name="L0024" href="#L0024">0024</a><br />
+<a name="L0025" href="#L0025">0025</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;limited&nbsp;permissions&nbsp;granted&nbsp;above&nbsp;are&nbsp;perpetual&nbsp;and&nbsp;will&nbsp;not&nbsp;be&nbsp;revoked&nbsp;by<br />
+<a name="L0026" href="#L0026">0026</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OASIS&nbsp;or&nbsp;its&nbsp;successors&nbsp;or&nbsp;assigns.<br />
+<a name="L0027" href="#L0027">0027</a><br />
+<a name="L0028" href="#L0028">0028</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;document&nbsp;and&nbsp;the&nbsp;information&nbsp;contained&nbsp;herein&nbsp;is&nbsp;provided&nbsp;on&nbsp;an&nbsp;&quot;AS&nbsp;IS&quot;<br />
+<a name="L0029" href="#L0029">0029</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;basis&nbsp;and&nbsp;OASIS&nbsp;DISCLAIMS&nbsp;ALL&nbsp;WARRANTIES,&nbsp;EXPRESS&nbsp;OR&nbsp;IMPLIED,&nbsp;INCLUDING&nbsp;BUT&nbsp;NOT<br />
+<a name="L0030" href="#L0030">0030</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIMITED&nbsp;TO&nbsp;ANY&nbsp;WARRANTY&nbsp;THAT&nbsp;THE&nbsp;USE&nbsp;OF&nbsp;THE&nbsp;INFORMATION&nbsp;HEREIN&nbsp;WILL&nbsp;NOT<br />
+<a name="L0031" href="#L0031">0031</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INFRINGE&nbsp;ANY&nbsp;OWNERSHIP&nbsp;RIGHTS&nbsp;OR&nbsp;ANY&nbsp;IMPLIED&nbsp;WARRANTIES&nbsp;OF&nbsp;MERCHANTABILITY&nbsp;OR<br />
+<a name="L0032" href="#L0032">0032</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FITNESS&nbsp;FOR&nbsp;A&nbsp;PARTICULAR&nbsp;PURPOSE.<br />
+<a name="L0033" href="#L0033">0033</a>&nbsp;--&gt;<br />
+<a name="L0034" href="#L0034">0034</a>&nbsp;&lt;grammar<br />
+<a name="L0035" href="#L0035">0035</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;<a href="http://relaxng.org/ns/structure/1.0">http://relaxng.org/ns/structure/1.0</a>&quot;<br />
+<a name="L0036" href="#L0036">0036</a><br />
+<a name="L0037" href="#L0037">0037</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datatypeLibrary=&quot;<a href="http://www.w3.org/2001/XMLSchema-datatypes">http://www.w3.org/2001/XMLSchema-datatypes</a>&quot;<br />
+<a name="L0038" href="#L0038">0038</a><br />
+<a name="L0039" href="#L0039">0039</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns:manifest=&quot;urn:oasis:names:tc:opendocument:xmlns:manifest:1.0&quot;<br />
+<a name="L0040" href="#L0040">0040</a>&nbsp;&gt;<br />
+<a name="L0041" href="#L0041">0041</a>&nbsp;&lt;start&gt;<br />
+<a name="L0042" href="#L0042">0042</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0043" href="#L0043">0043</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#manifest">manifest</a>&quot;/&gt;<br />
+<a name="L0044" href="#L0044">0044</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0045" href="#L0045">0045</a>&nbsp;&lt;/start&gt;<br />
+<a name="L0046" href="#L0046">0046</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="manifest" href="#manifest">manifest</a>&quot;&gt;<br />
+<a name="L0047" href="#L0047">0047</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-manifest-ELT" href="#manifest-manifest-ELT">manifest:manifest</a></b>&quot;&gt;<br />
+<a name="L0048" href="#L0048">0048</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#manifest-attlist">manifest-attlist</a>&quot;/&gt;<br />
+<a name="L0049" href="#L0049">0049</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;oneOrMore&gt;<br />
+<a name="L0050" href="#L0050">0050</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#file-entry">file-entry</a>&quot;/&gt;<br />
+<a name="L0051" href="#L0051">0051</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/oneOrMore&gt;<br />
+<a name="L0052" href="#L0052">0052</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0053" href="#L0053">0053</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0054" href="#L0054">0054</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="manifest-attlist" href="#manifest-attlist">manifest-attlist</a>&quot;&gt;<br />
+<a name="L0055" href="#L0055">0055</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-attlist-version-ATTR" href="#manifest-attlist-version-ATTR">manifest:version</a></b>&quot;&gt;<br />
+<a name="L0056" href="#L0056">0056</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;1.2&lt;/value&gt;<br />
+<a name="L0057" href="#L0057">0057</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0058" href="#L0058">0058</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0059" href="#L0059">0059</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="file-entry" href="#file-entry">file-entry</a>&quot;&gt;<br />
+<a name="L0060" href="#L0060">0060</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-file-entry-ELT" href="#manifest-file-entry-ELT">manifest:file-entry</a></b>&quot;&gt;<br />
+<a name="L0061" href="#L0061">0061</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#file-entry-attlist">file-entry-attlist</a>&quot;/&gt;<br />
+<a name="L0062" href="#L0062">0062</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0063" href="#L0063">0063</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=<a href="#encryption-data">&quot;encryption-data</a>&quot;/&gt;<br />
+<a name="L0064" href="#L0064">0064</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0065" href="#L0065">0065</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0066" href="#L0066">0066</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0067" href="#L0067">0067</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="file-entry-attlist" href="#file-entry-attlist">file-entry-attlist</a>&quot;&gt;<br />
+<a name="L0068" href="#L0068">0068</a>&nbsp;&nbsp;&nbsp;&lt;interleave&gt;<br />
+<a name="L0069" href="#L0069">0069</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-full-path-ATTR" href="#manifest-full-path-ATTR">manifest:full-path</a></b>&quot;&gt;<br />
+<a name="L0070" href="#L0070">0070</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#string">string</a>&quot;/&gt;<br />
+<a name="L0071" href="#L0071">0071</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0072" href="#L0072">0072</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0073" href="#L0073">0073</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-size-ATTR" href="#manifest-size-ATTR">manifest:size</a></b>&quot;&gt;<br />
+<a name="L0074" href="#L0074">0074</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#nonNegativeInteger">nonNegativeInteger</a>&quot;/&gt;<br />
+<a name="L0075" href="#L0075">0075</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0076" href="#L0076">0076</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0077" href="#L0077">0077</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-media-type-ATTR" href="#manifest-media-type-ATTR">manifest:media-type</a></b>&quot;&gt;<br />
+<a name="L0078" href="#L0078">0078</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#string">string</a>&quot;/&gt;<br />
+<a name="L0079" href="#L0079">0079</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0080" href="#L0080">0080</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0081" href="#L0081">0081</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-preferred-view-mode-ATTR" href="#manifest-preferred-view-mode-ATTR">manifest:preferred-view-mode</a></b>&quot;&gt;<br />
+<a name="L0082" href="#L0082">0082</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0083" href="#L0083">0083</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;edit&lt;/value&gt;<br />
+<a name="L0084" href="#L0084">0084</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;presentation-slide-show&lt;/value&gt;<br />
+<a name="L0085" href="#L0085">0085</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;read-only&lt;/value&gt;<br />
+<a name="L0086" href="#L0086">0086</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#namespacedToken">namespacedToken</a>&quot;/&gt;<br />
+<a name="L0087" href="#L0087">0087</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0088" href="#L0088">0088</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0089" href="#L0089">0089</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0090" href="#L0090">0090</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0091" href="#L0091">0091</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="file-entry-attlist-version-ATTR" href="#file-entry-attlist-version-ATTR">manifest:version</a></b>&quot;&gt;<br />
+<a name="L0092" href="#L0092">0092</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#string">string</a>&quot;/&gt;<br />
+<a name="L0093" href="#L0093">0093</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0094" href="#L0094">0094</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0095" href="#L0095">0095</a>&nbsp;&nbsp;&nbsp;&lt;/interleave&gt;<br />
+<a name="L0096" href="#L0096">0096</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0097" href="#L0097">0097</a><br />
+<a name="L0098" href="#L0098">0098</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="encryption-data" href="#encryption-data">encryption-data</a>&quot;&gt;<br />
+<a name="L0099" href="#L0099">0099</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-encryption-data-ELT" href="#manifest-encryption-data-ELT">manifest:encryption-data</a></b>&quot;&gt;<br />
+<a name="L0100" href="#L0100">0100</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#encryption-data-attlist">encryption-data-attlist</a>&quot;/&gt;<br />
+<a name="L0101" href="#L0101">0101</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#algorithm">algorithm</a>&quot;/&gt;<br />
+<a name="L0102" href="#L0102">0102</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0103" href="#L0103">0103</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#start-key-generation">start-key-generation</a>&quot;/&gt;<br />
+<a name="L0104" href="#L0104">0104</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0105" href="#L0105">0105</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#key-derivation">key-derivation</a>&quot;/&gt;<br />
+<a name="L0106" href="#L0106">0106</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0107" href="#L0107">0107</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0108" href="#L0108">0108</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="encryption-data-attlist" href="#encryption-data-attlist">encryption-data-attlist</a>&quot;&gt;<br />
+<a name="L0109" href="#L0109">0109</a>&nbsp;&nbsp;&nbsp;&lt;interleave&gt;<br />
+<a name="L0110" href="#L0110">0110</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-checksum-type-ATTR" href="#manifest-checksum-type-ATTR">manifest:checksum-type</a></b>&quot;&gt;<br />
+<a name="L0111" href="#L0111">0111</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0112" href="#L0112">0112</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;SHA1/1K&lt;/value&gt;<br />
+<a name="L0113" href="#L0113">0113</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyURI">anyURI</a>&quot;/&gt;<br />
+<a name="L0114" href="#L0114">0114</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0115" href="#L0115">0115</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0116" href="#L0116">0116</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-checksum-ATTR" href="#manifest-checksum-ATTR">manifest:checksum</a></b>&quot;&gt;<br />
+<a name="L0117" href="#L0117">0117</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#base64Binary">base64Binary</a>&quot;/&gt;<br />
+<a name="L0118" href="#L0118">0118</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0119" href="#L0119">0119</a>&nbsp;&nbsp;&nbsp;&lt;/interleave&gt;<br />
+<a name="L0120" href="#L0120">0120</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0121" href="#L0121">0121</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="algorithm" href="#algorithm">algorithm</a>&quot;&gt;<br />
+<a name="L0122" href="#L0122">0122</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-algorithm-ELT" href="#manifest-algorithm-ELT">manifest:algorithm</a></b>&quot;&gt;<br />
+<a name="L0123" href="#L0123">0123</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#algorithm-attlist">algorithm-attlist</a>&quot;/&gt;<br />
+<a name="L0124" href="#L0124">0124</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyElements">anyElements</a>&quot;/&gt;<br />
+<a name="L0125" href="#L0125">0125</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0126" href="#L0126">0126</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0127" href="#L0127">0127</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="algorithm-attlist" href="#algorithm-attlist">algorithm-attlist</a>&quot;&gt;<br />
+<a name="L0128" href="#L0128">0128</a>&nbsp;&nbsp;&nbsp;&lt;interleave&gt;<br />
+<a name="L0129" href="#L0129">0129</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-algorithm-name-ATTR" href="#manifest-algorithm-name-ATTR">manifest:algorithm-name</a></b>&quot;&gt;<br />
+<a name="L0130" href="#L0130">0130</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0131" href="#L0131">0131</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;Blowfish&nbsp;CFB&lt;/value&gt;<br />
+<a name="L0132" href="#L0132">0132</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyURI">anyURI</a>&quot;/&gt;<br />
+<a name="L0133" href="#L0133">0133</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0134" href="#L0134">0134</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0135" href="#L0135">0135</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-initialisation-vector-ATTR" href="#manifest-initialisation-vector-ATTR">manifest:initialisation-vector</a></b>&quot;&gt;<br />
+<a name="L0136" href="#L0136">0136</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#base64Binary">base64Binary</a>&quot;/&gt;<br />
+<a name="L0137" href="#L0137">0137</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0138" href="#L0138">0138</a>&nbsp;&nbsp;&nbsp;&lt;/interleave&gt;<br />
+<a name="L0139" href="#L0139">0139</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0140" href="#L0140">0140</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="anyAttListOrElements" href="#anyAttListOrElements">anyAttListOrElements</a>&quot;&gt;<br />
+<a name="L0141" href="#L0141">0141</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;zeroOrMore&gt;<br />
+<a name="L0142" href="#L0142">0142</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&gt;<br />
+<a name="L0143" href="#L0143">0143</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;anyName/&gt;<br />
+<a name="L0144" href="#L0144">0144</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;text/&gt;<br />
+<a name="L0145" href="#L0145">0145</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0146" href="#L0146">0146</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/zeroOrMore&gt;<br />
+<a name="L0147" href="#L0147">0147</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyElements">anyElements</a>&quot;/&gt;<br />
+<a name="L0148" href="#L0148">0148</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0149" href="#L0149">0149</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="anyElements" href="#anyElements">anyElements</a>&quot;&gt;<br />
+<a name="L0150" href="#L0150">0150</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;zeroOrMore&gt;<br />
+<a name="L0151" href="#L0151">0151</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;element&gt;<br />
+<a name="L0152" href="#L0152">0152</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;anyName/&gt;<br />
+<a name="L0153" href="#L0153">0153</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mixed&gt;<br />
+<a name="L0154" href="#L0154">0154</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyAttListOrElements">anyAttListOrElements</a>&quot;/&gt;<br />
+<a name="L0155" href="#L0155">0155</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/mixed&gt;<br />
+<a name="L0156" href="#L0156">0156</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0157" href="#L0157">0157</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/zeroOrMore&gt;<br />
+<a name="L0158" href="#L0158">0158</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0159" href="#L0159">0159</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="key-derivation" href="#key-derivation">key-derivation</a>&quot;&gt;<br />
+<a name="L0160" href="#L0160">0160</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-key-derivation-ELT" href="#manifest-key-derivation-ELT">manifest:key-derivation</a></b>&quot;&gt;<br />
+<a name="L0161" href="#L0161">0161</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#key-derivation-attlist">key-derivation-attlist</a>&quot;/&gt;<br />
+<a name="L0162" href="#L0162">0162</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;empty/&gt;<br />
+<a name="L0163" href="#L0163">0163</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0164" href="#L0164">0164</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0165" href="#L0165">0165</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="key-derivation-attlist" href="#key-derivation-attlist">key-derivation-attlist</a>&quot;&gt;<br />
+<a name="L0166" href="#L0166">0166</a>&nbsp;&nbsp;&nbsp;&lt;interleave&gt;<br />
+<a name="L0167" href="#L0167">0167</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-key-derivation-name-ATTR" href="#manifest-key-derivation-name-ATTR">manifest:key-derivation-name</a></b>&quot;&gt;<br />
+<a name="L0168" href="#L0168">0168</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0169" href="#L0169">0169</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;PBKDF2&lt;/value&gt;<br />
+<a name="L0170" href="#L0170">0170</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyURI">anyURI</a>&quot;/&gt;<br />
+<a name="L0171" href="#L0171">0171</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0172" href="#L0172">0172</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0173" href="#L0173">0173</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-salt-ATTR" href="#manifest-salt-ATTR">manifest:salt</a></b>&quot;&gt;<br />
+<a name="L0174" href="#L0174">0174</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#base64Binary">base64Binary</a>&quot;/&gt;<br />
+<a name="L0175" href="#L0175">0175</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0176" href="#L0176">0176</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-iteration-count-ATTR" href="#manifest-iteration-count-ATTR">manifest:iteration-count</a></b>&quot;&gt;<br />
+<a name="L0177" href="#L0177">0177</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#nonNegativeInteger">nonNegativeInteger</a>&quot;/&gt;<br />
+<a name="L0178" href="#L0178">0178</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0179" href="#L0179">0179</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0180" href="#L0180">0180</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-key-derivation-key-size-ATTR" href="#manifest-key-derivation-key-size-ATTR">manifest:key-size</a></b>&quot;&gt;<br />
+<a name="L0181" href="#L0181">0181</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#nonNegativeInteger">nonNegativeInteger</a>&quot;/&gt;<br />
+<a name="L0182" href="#L0182">0182</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0183" href="#L0183">0183</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0184" href="#L0184">0184</a>&nbsp;&nbsp;&nbsp;&lt;/interleave&gt;<br />
+<a name="L0185" href="#L0185">0185</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0186" href="#L0186">0186</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="start-key-generation" href="#start-key-generation">start-key-generation</a>&quot;&gt;<br />
+<a name="L0187" href="#L0187">0187</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>element</b>&nbsp;name=&quot;<b><a name="manifest-start-key-generation-ELT" href="#manifest-start-key-generation-ELT">manifest:start-key-generation</a></b>&quot;&gt;<br />
+<a name="L0188" href="#L0188">0188</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#start-key-generation-attlist">start-key-generation-attlist</a>&quot;/&gt;<br />
+<a name="L0189" href="#L0189">0189</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;empty/&gt;<br />
+<a name="L0190" href="#L0190">0190</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/element&gt;<br />
+<a name="L0191" href="#L0191">0191</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0192" href="#L0192">0192</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="start-key-generation-attlist" href="#start-key-generation-attlist">start-key-generation-attlist</a>&quot;&gt;<br />
+<a name="L0193" href="#L0193">0193</a>&nbsp;&nbsp;&nbsp;&lt;interleave&gt;<br />
+<a name="L0194" href="#L0194">0194</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-start-key-generation-name-ATTR" href="#manifest-start-key-generation-name-ATTR">manifest:start-key-generation-name</a></b>&quot;&gt;<br />
+<a name="L0195" href="#L0195">0195</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;choice&gt;<br />
+<a name="L0196" href="#L0196">0196</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;SHA1&lt;/value&gt;<br />
+<a name="L0197" href="#L0197">0197</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#anyURI">anyURI</a>&quot;/&gt;<br />
+<a name="L0198" href="#L0198">0198</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/choice&gt;<br />
+<a name="L0199" href="#L0199">0199</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0200" href="#L0200">0200</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;optional&gt;<br />
+<a name="L0201" href="#L0201">0201</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&nbsp;name=&quot;<b><a name="manifest-start-key-generation-key-size-ATTR" href="#manifest-start-key-generation-key-size-ATTR">manifest:key-size</a></b>&quot;&gt;<br />
+<a name="L0202" href="#L0202">0202</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ref&nbsp;name=&quot;<a href="#nonNegativeInteger">nonNegativeInteger</a>&quot;/&gt;<br />
+<a name="L0203" href="#L0203">0203</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+<a name="L0204" href="#L0204">0204</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/optional&gt;<br />
+<a name="L0205" href="#L0205">0205</a>&nbsp;&nbsp;&nbsp;&lt;/interleave&gt;<br />
+<a name="L0206" href="#L0206">0206</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0207" href="#L0207">0207</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="base64Binary" href="#base64Binary">base64Binary</a>&quot;&gt;<br />
+<a name="L0208" href="#L0208">0208</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;data&nbsp;type=&quot;<b><a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#base64Binary">base64Binary</a></b>&quot;/&gt;<br />
+<a name="L0209" href="#L0209">0209</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0210" href="#L0210">0210</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="namespacedToken" href="#namespacedToken">namespacedToken</a>&quot;&gt;<br />
+<a name="L0211" href="#L0211">0211</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;data&nbsp;type=&quot;<b><a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#QName">QName</a></b>&quot;&gt;<br />
+<a name="L0212" href="#L0212">0212</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param&nbsp;name=&quot;pattern&quot;&gt;[^:]+:[^:]+&lt;/param&gt;<br />
+<a name="L0213" href="#L0213">0213</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/data&gt;<br />
+<a name="L0214" href="#L0214">0214</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0215" href="#L0215">0215</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="nonNegativeInteger" href="#nonNegativeInteger">nonNegativeInteger</a>&quot;&gt;<br />
+<a name="L0216" href="#L0216">0216</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;data&nbsp;type=&quot;<b><a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#nonNegativeInteger">nonNegativeInteger</a></b>&quot;/&gt;<br />
+<a name="L0217" href="#L0217">0217</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0218" href="#L0218">0218</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="string" href="#string">string</a>&quot;&gt;<br />
+<a name="L0219" href="#L0219">0219</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;data&nbsp;type=&quot;<b><a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#string">string</a></b>&quot;/&gt;<br />
+<a name="L0220" href="#L0220">0220</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0221" href="#L0221">0221</a>&nbsp;&lt;define&nbsp;name=&quot;<a name="anyURI" href="#anyURI">anyURI</a>&quot;&gt;<br />
+<a name="L0222" href="#L0222">0222</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;data&nbsp;type=&quot;<b><a href="http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#anyURI">anyURI</a></b>&quot;/&gt;<br />
+<a name="L0223" href="#L0223">0223</a>&nbsp;&lt;/define&gt;<br />
+<a name="L0224" href="#L0224">0224</a>&nbsp;&lt;/grammar&gt;<br>
+&nbsp;&nbsp; <br>
+<a name="L0.05">0.05</a> 2014-06-07-16:20 Connect to Sources, Explain Signature<br>
+&nbsp;&nbsp;&nbsp;&nbsp; The preface is extended to connect to the official
+location and account for<br>
+&nbsp;&nbsp;&nbsp;&nbsp; the presence of the embedded digital signature.&nbsp;
+The data type dependencies<br>
+&nbsp;&nbsp;&nbsp;&nbsp; are updated to refer to the appropriate sections of the
+related W3C spec.<br>
+<a name="L0.04">0.04</a> 2014-06-06-10:16 Text Cleanup and Digital Signature<br>
+&nbsp;&nbsp;&nbsp;&nbsp; The HTML &lt;body&gt; includes an in-line PGP signature that
+does not display<br>
+&nbsp;&nbsp;&nbsp;&nbsp; in a browser but can be used to verify that the file is
+intact.<br>
+<a name="L0.03">0.03</a> 2014-05-26-10:19 Switch to version progression n140504e1<br>
+&nbsp;&nbsp;&nbsp;&nbsp; To provide for progressive versioning history, change
+to be the first static <br>
+&nbsp;&nbsp;&nbsp;&nbsp; source of n140504d1<br>
+<a name="L0.02">0.02</a> 2014-05-26-09:02 Complete Permalinks and Emphasis<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Each schema item that has an anchor for reaching by
+fragment ID becomes a<br>
+&nbsp;&nbsp;&nbsp;&nbsp; permalink for that place in the schema.&nbsp; Element
+entries and element/attribute <br>
+&nbsp;&nbsp;&nbsp;&nbsp; namings are emphasized.<br>
+<a name="L0.01">0.01</a> 2014-05-25-16:53 Complete Reference Annotation<br>
+&nbsp;&nbsp;&nbsp;&nbsp; All of the references and definitions are
+cross-referenced and the elements and<br>
+&nbsp;&nbsp;&nbsp;&nbsp; attributes provided anchors for use in referencing
+discussions.<br>
+<a name="L0.00">0.00</a> 2014-05-25-11:35 Initial Rendition<br>
+&nbsp;&nbsp;&nbsp;&nbsp; The baseline original HTML form with only line-number
+permalinks is established<br>
+&nbsp;&nbsp;&nbsp;&nbsp; as the draft reference version.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** end of
+BASELINE ANNOTATED ODF 1.2 MANIFEST SCHEMA ***<br />
+</font>
+</p><!--
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (MingW32)
+
+iQEcBAEBAgAGBQJTk5zaAAoJEPluif/UVmKKv6oH/2R65lPhB/0ZfcfMmGj+K/oa
+U3uV45MiqjfUXxYnWEAL9SbVByaXFaUYVr+XwJG+L4tqrQ1HV98Hu81xNn7jT67R
++Xqrvwswln/9Fac9Hg6xN9nwvY5yzaX1Q9pkAHBUeLMmvYTtjYewa/AczJhZ62aT
+4XE78RF8OM7jcr1eANg52X3p9vuGxMmHpxus2El3qeAdW6GDO//7Ul7qO1MPnGKp
+4E9Zt1NRzHWTa7EEZRkaURaXDrdeCHOo43lO+kxu39lUSiAmwH6X8PF0LECNzQ48
+cJ5Tf/N/JbnjYD72NuDxhws9j99yWtYA7PL1KU5n1UYtScq0o63EatoHdG1+3PU=
+=bqkX
+-----END PGP SIGNATURE-----
+ --></body>
+</html>
+
+</body>
+</html>
+

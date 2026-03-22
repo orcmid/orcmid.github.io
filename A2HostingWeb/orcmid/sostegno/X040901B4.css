@@ -1,0 +1,38 @@
+ /*
+-----------------------------------------------
+Quick Edit and Delete Comment Icons
+----------------------------------------------- */
+
+/* Hide it now, show it later with dynamically-generated CSS */
+.item-control {
+   display:none;
+}
+
+.item-control a, .item-action a {
+   text-decoration:none !important;
+}
+
+.quick-edit-icon {
+   background: url("/img/icon18_edit_allbkg.gif") no-repeat left;
+
+   /* makes an 18x18 box */
+   padding:9px;
+
+   margin:0 0 0 .5em;
+}
+
+.delete-comment-icon {
+   background: url("/img/icon_delete13.gif") no-repeat left;
+
+   /* makes a 14x14 box */
+   padding:7px;
+}
+
+.email-post-icon { 
+   background: url("/img/icon18_email.gif") no-repeat left;
+
+   /* makes an 18x18 box */
+   padding:9px;
+
+   margin:0 0 0 .5em;
+}

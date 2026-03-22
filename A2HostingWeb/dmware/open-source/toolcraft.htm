@@ -1,0 +1,244 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/dmware/open-source/toolcraft.htm 2     02-09-03 19:48 Orcmid $-->
+<title>Open Source Toolcraft</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<blockquote>
+  <h1 align="center"><em>Open-Source Development and Distribution</em></h1>
+  <h1 align="center">Toolcraft</h1>
+  <blockquote>
+    <p align="left"><em>Here is a cataloging of some of the artifacts, tools, and practices
+    that are encountered when present-day open-source materials are commonly distributed for
+    use by others.&nbsp; The term &quot;toolcraft&quot; is used because the promulgation and
+    use of open-source tools is by craft: use of methods and procedures that are learned and
+    practiced and then accepted in a mainly-automatic and often-unconscious way.&nbsp; </em></p>
+    <p align="left"><em>This material has been compiled so that participants in different
+    toolcraft communities can decode open-source materials of interest to them.&nbsp; It is
+    also offered to the members of the open-source community as a reminder of how much
+    understood context is relied upon in the practice of open-source development. &nbsp;
+    Participants in other development communities can look for the invisible toolcraft
+    that provides a barrier to participation in </em><b>their</b><em> community.</em></p>
+  </blockquote>
+  <p align="center"><font size="-1"><b>L<span style="font-variant: small-caps">ast</span>
+  U<span style="font-variant: small-caps">pdated</span>  2002-09-03-19:48 -0700
+  (pdt)</b></font></p>
+  <hr>
+</blockquote>
+
+<blockquote>
+  <h2><a name="Content"><em>Content</em></a></h2>
+</blockquote>
+
+<h2><a href="#Foreword">Foreword</a></h2>
+
+<h2>Finding Open-Source Packages</h2>
+
+<h2>Open-Source Packaging</h2>
+
+<h2>Primary Development Tools</h2>
+
+<h2>Target Platforms</h2>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1><a name="Foreword">Foreword</a></h1>
+
+<blockquote>
+  <p align="left">Open-source projects have their own toolcraft: tools and practices for
+  composing, managing and distributing the software elements.&nbsp; Open-source toolcraft is
+  freighted with private language and lore that infect the context in which open-source
+  software is created, installed, used, and maintained. In this regard, the open-source
+  community is as isolated in its craft as is any specialized technical community whose
+  defining mutual interest is the mastery of a particular set of technical artifacts and the
+  conceptual framework in which those artifacts are understood.&nbsp;</p>
+  <p align="left">Comprehending the toolcraft of a community is the entrance examination
+  for meaningful participation in that community.&nbsp; The appeal of the open-source
+  toolcraft is that it is inherently set up for learning by doing.&nbsp; The limitation of
+  the open-source community, which is long on code, short on documentation, and sometimes
+  antagonistic to disciplined methodologies, is that there is almost no way to operate in
+  that community other than by hands-on experience with some pretty arcane technologies.
+  &nbsp;</p>
+  <p align="left">Toolcraft is not unique to open-source development.&nbsp; All
+  collaborative technical communities develop toolcraft.&nbsp; There is also a natural
+  tendency for toolcraft to become invisible to the practitioners and inpenetrable to
+  onlookers (including observers from different communities having kindred purposes). &nbsp;
+  Open-source toolcraft is both a barrier to entry for new participants and an instrument of
+  efficient collaboration and communication for the established community. &nbsp;The striking quality of open-source toolcraft is the extent of it, how
+  much it is taken for granted, and the degree to which it imposes a conceptual model and
+  learning curve that is no less burdensome to master than, say, the development craft of a
+  large software development organization working on a closed, proprietary system using
+  commercial closed-source tools.&nbsp; At the same time, open-source development strives
+  for visibility of the development process and having all of the elements amenable to
+  inspection and verification.&nbsp; This tends to flatten the world of open-source
+  materials, grounding them all on the fundamental development artifacts, rather than there
+  being well-defined levels of disclosure and usage.&nbsp; There are two consequences:
+  understanding of the materials and their usage requires some mastery of development
+  toolcraft beyond what is required for users of commercial software; application of the
+  materials is more readily available to those who have adopted the particular conceptual
+  model and toolcraft in their development work, one that is optimized around a particular
+  approach to Unix software development having Unix tools as part of the development
+  platform.&nbsp; This particular development-system view is a near-inherent feature of
+  open-source toolcraft.&nbsp; It is sufficient and appropriate to the purposes of the
+  <a href="resources.htm#[GNUProject]">GNU Project</a>, for example, yet more is required if
+  there is to be greater appreciation and use of interoperable toolcraft on heterogeneous
+  platform technologies beyond the reach of GNU (including GNU/Linux).</p>
+  <p align="left">This compilation is designed for two purposes.&nbsp; First, to make
+  the prevalent open-source toolcraft more visible, so that it can be understood and
+  appreciated by observers from different software development communities.&nbsp; In this
+  way, the offerings of the open-source community can become more accessible. &nbsp;
+  Secondly, I want to remind software developers of the amount of toolcraft that has become
+  invisible and operated with in an unconscious way.&nbsp;&nbsp; This applies to all
+  development communities.&nbsp; It is particularly important for the open-source
+  development community which takes as a mantra having their contributions be accessible and
+  valuable among members of a global community of practice, contribution and application.
+  &nbsp;</p>
+</blockquote>
+
+<p align="right"><em>-- Dennis E. Hamilton<br>
+1999 November 9</em></p>
+
+<h1>Finding Open-Source Packages</h1>
+
+<h1>Open-Source Packaging</h1>
+
+<blockquote>
+  <p><i>We want to differentiate between packaging that occurs while a development or revision
+  cycle is underway, and the interchange that is done as part of the collaborative
+  development, and then what happens when a revision is complete and available for usage,
+  adaptation, and providing the basis for further maintenance and revision.</i></p>
+</blockquote>
+
+<h2>Common Package Storage Organization</h2>
+
+<blockquote>
+  <p>There are two forms of storage organization: interchange format and working file-system
+  organization.&nbsp; </p>
+</blockquote>
+
+<h3>Common Package Interchange Formats</h3>
+
+<h3>Common Package File-System Organizations</h3>
+
+<h2>Common Package Elements</h2>
+
+<blockquote>
+  <dl>
+    <dt>.am</dt>
+    <dd>Automatic Make file.&nbsp; </dd>
+    <dt>.c</dt>
+    <dd>C Language source code module.&nbsp; </dd>
+    <dt>.gz</dt>
+    <dd>GZip (GNU Zip)</dd>
+    <dt>.h</dt>
+    <dd>C Language header file providing definitions used in C language source code modules by <tt>#include</tt>
+      operations.&nbsp; </dd>
+    <dt>.htm</dt>
+    <dd>HTML</dd>
+    <dt>.html</dt>
+    <dd>HyperText Markup Language. </dd>
+    <dt>.pl</dt>
+    <dd>PerL; Perl Language.</dd>
+    <dt>.pod</dt>
+    <dd>Plain Old Documentation.&nbsp; A very simple text-file format for providing marked-up
+      documentation files.&nbsp; POD format is defined in the Perl specification.&nbsp; POD is
+      recognized by perl processors and can be embedded in a Perl Language file in a way that
+      allows the .pl to be a single-source for its own documentation.&nbsp; POD is designed so
+      that a single file can carry documentation that is customized based on the target
+      documentation form that is selected.&nbsp; E.g., man pages and HTML can be produced from
+      the same POD, and the POD can specify different content and formatting depending on the
+      target.</dd>
+    <dt>.sh</dt>
+    <dd>Shell Script.</dd>
+    <dt>.tar</dt>
+    <dd>Tape Archive.&nbsp; A sequential data stream format for archiving collections of files
+      such that they can be transported as a unit to another system or restored on the original
+      system</dd>
+    <dt>.tgz</dt>
+    <dd>short for .tar.gz, a file-name extension commonly used in the DOS and Windows world to
+      indicate a compressed-tar archive.&nbsp; Programs such as WinZip 7.0 recognize this file
+      extension and do the right thing.</dd>
+    <dt>.txt</dt>
+    <dd>Text File.&nbsp; There is often no suffix on text materials, and the nature of the
+      content (e.g., a file named COPYING or MAKEFILE) might only be revealed by attempting to
+      view the file as a known encoding of text.</dd>
+    <dt>.xs</dt>
+    <dd>?</dd>
+  </dl>
+</blockquote>
+
+<h2>Common Package Tool Requirements</h2>
+
+<blockquote>
+  <dl>
+    <dt>unzip</dt>
+    <dd>a package for accessing and unpacking material in a .zip archive file</dd>
+    <dt>&nbsp;</dt>
+  </dl>
+</blockquote>
+
+<h1>Primary Development Tools</h1>
+
+<blockquote>
+  <p>talk about the desire for ability to know the implementation of everything that is used
+  as part of a package, including beneath a package, all the way down to the hardware.
+  &nbsp; [Why doesn't GNU run on open-source hardware?]</p>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dt><a name="CVS">CVS</a></dt>
+    <dd>Concurrent Versions System.&nbsp; Part of the open-source toolcraft, CVS is used for
+      collaborative software configuration management on the Internet.&nbsp; Developers favor
+      CVS for making current work available and also for bringing together and managing
+      configurations using configurations developed at different locations around the world.</dd>
+    <dt><a name="GNOME">GNOME</a></dt>
+    <dd>The GNU Network Object Model Environment Project.</dd>
+    <dt><a name="GTK">GTK</a></dt>
+    <dd>Graphic Tool Kit.</dd>
+    <dt><a name="Linux">Linux</a></dt>
+    <dd>?</dd>
+    <dt><a name="MySQL">MySQL</a></dt>
+    <dd>My SQL Database?</dd>
+    <dt><a name="Perl">Perl</a></dt>
+    <dd>Perl?&nbsp; See <a href="http://www.perl.com/">http://www.perl.com/</a>.</dd>
+    <dt><a name="PHP">PHP</a></dt>
+    <dd>? An HTML-embedded scripting language that provides access to databases on Web servers,
+      using standard ODBC.&nbsp; See <a href="http://www.php.net/">http://www.php.net/</a></dd>
+    <dt><a name="Python">Python</a></dt>
+    <dd>Python?</dd>
+    <dt><a name="Tcl">Tcl</a></dt>
+    <dd>?</dd>
+  </dl>
+</blockquote>
+
+<h1>Target Platforms</h1>
+
+<blockquote>
+  <dl>
+    <dt>What is done in a tool to customize for a given platform, and what are some of the
+      standard elements about that, including #DEFINE entries, etc.</dt>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <hr>
+  <div align="center"><p align="right"><small><small>
+    created 1999-11-09 06:03 -0800 (pst) by <a href="../construction/orcmid.htm">orcmid</a><em><br>
+    $$Author: Orcmid $<br>
+    $$Date: 02-09-03 19:48 $<br>
+    $$Revision: 2 $</em></small></small>
+  </p>
+  </div>
+</blockquote>
+</body>
+</html>

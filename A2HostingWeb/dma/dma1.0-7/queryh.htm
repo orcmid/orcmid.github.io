@@ -1,0 +1,214 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>query.h</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*  query.h
+**
+**              PRODUCE QUERIES FROM SIMPLE DATA STRUCTURES
+**
+*/
+
+
+/*
+ *  Copyright 1995, 1996, 1997, 1998 by the
+ *  Association for Information and Image Management International
+ *      1100 Wayne Avenue
+ *      Silver Spring, MD 20910-5603
+ *      Tel: 301/587-8202
+ *      Fax: 301/587-2711
+ *  All Rights Reserved.
+ *  DMA (Document Management Alliance) working group.
+ */
+
+/*  The function
+**
+**          DmaRC StartQuery(                 QueryRoot *pQR, 
+**                                         IdmaScope *pScope,
+**                               IdmaResultSet **ppResultSet )
+**
+**  takes the QueryRoot datastructure and uses the *pScope scope object
+**  to construct a full DMA query, submit it for execution, and return
+**  the Result set delivered by the query request.
+**
+**  If successful, StartQuery returns the result set interface of the
+**  result set that is delivered from the successful query initiation.
+**
+**  If unsuccessful, an appropriate failure result code is delivered and
+**  no result set is available.
+**
+**  The QueryRoot data type, and all of those needed to support it, are
+**  defined here.  They specify how queries can be populated from "canned"
+**  memory structures.
+*/
+
+
+#include &lt;dmatypes.h&gt;
+
+
+typedef struct Operator
+{
+    DmaId *                 pID;
+}
+    Operator;
+
+typedef struct DmaBinaryValue    BinaryConst;
+
+typedef struct StringConst
+{
+    pDmaString             val;
+}
+    StringConst;
+
+typedef struct BooleanConst
+{
+    DmaBoolean             val;
+}
+    BooleanConst;
+
+typedef struct IntegerConst
+{
+    DmaInteger32           val;
+}
+    IntegerConst;
+
+typedef struct FloatConst
+{
+    DmaFloat64            val;
+}
+    FloatConst;
+
+typedef struct DateTimeConst
+{
+    pDmaDateTime          val;
+}
+    DateTimeConst;
+
+typedef struct IDConst
+{
+    DmaId *               pID;
+}
+    IDConst;
+
+typedef struct Property
+{
+    DmaInteger32          occurx;
+    DmaId *               pPropID;
+}
+    Property;
+
+/*  The Selections list is represented by an array of Property.
+
+    The last array elment is used only as a stopper entry. This is
+    indicated by occurx = -1.
+*/
+
+/*  A From Expression is represented by an array of FromExprElt.
+
+    The first array element must have valid values only for the
+    occurx and pClassID fields. The other fields are ignored.
+
+    The intermediate array elements must have all fields valid (except
+    for cross joins, which ignores pEqualOp, occurx1, pPropID1,
+    occurx2, pPropID2).
+
+    The last array element is used only as a stopper element. This
+    is indicated by occurx = -1.
+*/
+typedef struct FromExprElt
+{
+    DmaInteger32          occurx;   /* Searchable class occurrence index */
+    DmaId *               pClassID; /* ID of searchable class */
+    DmaBoolean            InclSubclasses;
+
+    DmaId *               pJoinID;  /* ID of the join operator */
+
+    DmaId *               pEqualOp; /* type dependent equality operator */
+
+    DmaInteger32          occurx1;  /* searchable class occurrence */
+    DmaId *               pPropID1; /* property ID */
+
+    DmaInteger32          occurx2;  /* searchable class occurrence */
+    DmaId *               pPropID2; /* property ID */
+}
+    JoinExprElt;
+
+/*  The Orderings list is represented by an array of OrderElt.
+
+    The last array element is used only as a stopper entry. This
+    is indicated by selectionsx = -1.
+*/
+typedef struct OrderElt
+{
+    DmaInteger32          selectionsx;  /* -1 if stopper entry */
+    DmaBoolean            descending;
+}
+    OrderElt;
+
+typedef struct QueryNode
+{
+    DmaInteger32          type;     /* type of query node */
+#   define StopperNodeType          0
+#   define OperatorNodeType         1
+#   define BinaryConstNodeType      2
+#   define StringConstNodeType      3
+#   define BooleanConstNodeType     4
+#   define IntegerConstNodeType     5
+#   define FloatConstNodeType       6
+#   define DateTimeConstNodeType    7
+#   define IDConstNodeType          8
+#   define PropertyNodeType         9
+#   define QueryRootNodeType        10
+ 
+    DmaInteger32          level;  /* recursive level of node. Starts at 0. 
+                                     -1 for stopper node.
+                                  */
+ 
+    union
+    {
+        void *                pVoid;
+        Operator *            pOperator;
+        BinaryConst *         pBinary;
+        StringConst *         pString;
+        BooleanConst *        pBoolean;
+        IntegerConst *        pInteger;
+        FloatConst *          pFloat;
+        DateTimeConst *       pDateTime;
+        IDConst *             pID;
+        Property *            pProperty;
+        struct QueryRoot *    pQueryRoot;
+    }
+                          u;
+}
+    QueryNode;
+
+
+typedef struct QueryRoot
+{
+    JoinExprElt *         pFromExpr;
+    Property *            pSelections;
+    QueryNode *           pQueryExpr;
+    OrderElt *            pOrder;
+    DmaBoolean            distinct;
+} 
+    QueryRoot;
+
+
+
+/* External module entry points */
+
+extern DmaRC 
+StartQuery(
+    QueryRoot *             pQR, 
+    IdmaScope *             pScope,
+    IdmaResultSet **        ppResultSet);
+
+                        /* end of query.h */
+</FONT>
+</PRE>
+</BODY>
+</HTML>

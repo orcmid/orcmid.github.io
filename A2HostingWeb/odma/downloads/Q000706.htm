@@ -1,0 +1,776 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q000706.htm 10    00-11-01 16:39 Orcmid $-->
+<title>Q000706: ODMA Version-Interoperability Configuration</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma/faq/">ODMA FAQtip</a></h2>
+
+<h1 align="center"><b>Q000706: ODMA Version-Interoperability Configuration</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.14">Version
+0.14</a></span>&nbsp; L<span style="font-variant: small-caps">ast updated</span>
+ 2000-11-01-16:38 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">latest
+version</a> of this information is available at the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <p><i>This document addresses questions about installation of ODMA in a way
+  that provides for development, trouble-shooting, and interoperability testing
+  of components with multiple versions of ODMA.&nbsp; A specific, tested
+  configuration is described.&nbsp; This can be varied to provide similar
+  capabilities on other configurations.</i></p>
+  <p>In the ODMA Version-Interoperability Configuration, three releases of ODMA are installed in a
+  non-conflicting way so that operation across different levels of ODMA-aware applications, ODMA Connection Managers, and
+  ODMA-compliant DMS integrations can be confirmed.</p>
+  <p>The testing uses Windows 98 and the original ODMA software supplied in the
+  ODMA 1.0, ODMA 1.5, and ODMA 2.0 SDK packages.&nbsp; It exercises
+  interoperability across Win16 and Win32 applications as well as across levels
+  of ODMA.</p>
+  <p>The basic ODMA-compliant fixtures used are the ODMA 2.0 <b><code>ODMASAMP</code></b>
+  DMS Integration, the ODMA 2.0 <b><code>ODMATest</code></b> document
+  application, and the ODMA 1.0 <b><code>MultODMA</code></b> document
+  application.&nbsp; These provide an experimental baseline using components that
+  are simple, freely obtained, and accompanied by complete source code for inspection,
+  instrumentation, and further
+  experimentation.&nbsp;</p>
+  <hr>
+  <h3><i>Content</i></h3>
+</blockquote>
+<h2>1. <a href="#PlatformConfiguration"> Platform Configuration</a></h2>
+
+<blockquote>
+<h3>1.1 <a href="#Hardware">Hardware</a></h3>
+
+<h3>1.2 <a href="#PlatformSoftware">Platform Software</a></h3>
+
+</blockquote>
+
+<h2>2. <a href="#ODMA2.0SDK">ODMA 2.0 SDK</a></h2>
+
+<blockquote>
+
+<h3>2.1 <a href="#ODMA20Installation">Installation</a></h3>
+
+<h3>2.2 <a href="#ODMA20Usage">Usage</a></h3>
+
+<blockquote>
+  <p><b>2.2.1 <a href="#ODMA20ConMans"> ODMA 2.0 Connection Managers</a><br>
+  2.2.2 <a href="#ODMA20ODMATest"> ODMA 2.0 <code>ODMATest</code> Application</a></b></p>
+
+</blockquote>
+
+<h3>2.3 <a href="#ODMA20Files">File Version Identifications</a></h3>
+
+</blockquote>
+
+<h2>3. <a href="#InterpretingLogs">ODMA 1.5 SDK</a></h2>
+
+<blockquote>
+  <h3>3.1 <a href="#ODMA15Installation">Installation</a></h3>
+
+  <h3>3.2 <a href="#ODMA15Usage">Usage</a></h3>
+
+  <h3>3.3 <a href="#ODMA15Files">File Version Identifications</a></h3>
+
+</blockquote>
+
+<h2>4. <a href="#ODMA1.0SDK">ODMA 1.0 SDK</a></h2>
+
+<blockquote>
+
+<h3>4.1 <a href="#ODMA10Installation">Installation</a></h3>
+
+<h3>4.2 <a href="#ODMA10Usage">Usage</a></h3>
+
+  <blockquote>
+
+<p><b>4.2.1 <a href="#ODMA10ConMans">ODMA 1.0 Connection Managers</a><br>
+4.2.2 <a href="#ODMA10MultODMA">ODMA 1.0 <code>MultODMA</code>
+Application</a></b></p>
+
+  </blockquote>
+  <h3>4.3 <a href="#ODMA10Files">File Version Identifications</a></h3>
+
+  <hr>
+</blockquote>
+<h1>1. <a name="PlatformConfiguration">Platform Configuration</a></h1>
+<h2>1.1 <a name="Hardware"> Hardware</a></h2>
+<blockquote>
+  <p><b>Dell Inspiron 7000</b> Notebook Computer</p>
+  <p><b>300MHz Intel Pentium<sup>®</sup> II Processor</b> with MMX<sup>™</sup>
+  Technology</p>
+  <p>Phoenix Technology 9/19/98 BIOS</p>
+  <p>192 MB RAM</p>
+  <p>6.05GB (FAT32) Hard Disk (430MB Available)</p>
+</blockquote>
+<h2>1.2 <a name="PlatformSoftware">Platform Software</a></h2>
+<blockquote>
+  <dl>
+    <dt><b>MS-DOS 7.10</b></dt>
+    <dd>4DOS 6.01a installed in place of <b> <code>COMMAND.COM</code></b>.<b> <code><br>
+      </code>
+      </b>The MS-DOS OEM code page number is 473.</dd>
+    <dt>&nbsp;</dt>
+    <dt><b>Microsoft Windows 98</b> 4.10.1998&nbsp;</dt>
+    <dd>All critical updates installed as of 2000-07-24.<br>
+      All customer service packs installed as of 2000-07-24.<br>
+      Configuration is for English (United States) with International time and
+      date formats. (<i>yyyy</i>-<i>mm</i>-<i>dd</i> and local time in 24-hour
+      format).<br>
+      The default code page is Windows ANSI 1252, ISO Character Set ISO 8859-1
+      Latin 1.<br>
+      <b><i>Please note</i></b><b>:&nbsp; </b>Windows<b> </b>View/Folder
+      Options/View options are set to allow <b> all uppercase names</b>.&nbsp; The
+      filenames shown in this document are the accurate names as shown in the
+      directories and in the Zip files.</dd>
+    <dt>&nbsp;</dt>
+    <dt><b>Internet Explorer 5</b>.00.2314.1003 (128-bit encryption)</dt>
+  </dl>
+  <p>Windows 98 Internet Services <b> Personal Web Server</b> Running with FrontPage
+  Extensions 4.0.2.2717</p>
+  <p><b>Norton Antivirus</b> v5.0 Auto-Protect Enabled.</p>
+  <p><b>Norton CrashGuard </b> 3.03 Enabled.</p>
+  <dl>
+    <dt><b>Microsoft Office 2000</b> Developer Edition 6.00.8433 installed.</dt>
+    <dd>This impacts the level of standard libraries (e.g., <b><code>MFC42.DLL</code></b>)
+      that are installed.<br>
+      Service Release SR-1 is not installed.</dd>
+    <dt>&nbsp;</dt>
+    <dt>Nico Mak <b>WinZip 7.0</b> SR-1 (1285) Registered Version used for all
+      archive extractions.</dt>
+    <dd>Options | Configuration ... | View tab General option for allowing <b>
+      all-upper case filenames</b> is selected so that consistency between names in
+      archives and extracted files can be confirmed.</dd>
+  </dl>
+</blockquote>
+<h1>2. <a name="ODMA2.0SDK">ODMA 2.0 SDK</a></h1>
+<blockquote>
+  <p align="left">The original packaging of the ODMA 2.0 SDK is as a
+  self-installing utility inside of a Zip archive.&nbsp; Earlier ODMA SDK
+  versions are distributed as Zip archives of individual components to be
+  installed by the user.&nbsp;&nbsp;</p>
+  <p align="left">ODMA 2.0 is installed first, allowing its installation of
+  registry information and ODMA <b><code>.dll</code></b> files to operate.&nbsp;
+  The ODMA 2.0 versions of <b><code>ODMATest</code></b>, <b><code>ODMATest32</code></b>,
+  and <b><code>ODMASAMP</code></b> (16-bit and 32-bit) are installed and then
+  available for use in all experiments.</p>
+</blockquote>
+<h2>2.1 <a name="ODMA20Installation"> Installation</a></h2>
+<blockquote>
+<p>Open the ODMA 2.0 SDK package, <b><code><a href="http://www.infonuovo.com/odma/downloads/5_11_98Odma20.zip">5_11_98Odma20.zip</a></code></b>,
+and execute the program <b><code>Odma20.exe</code></b>.&nbsp;&nbsp;</p>
+<p>Specify a working directory, <code><b>ODMA200-SDK</b></code>, as the
+destination of all material.&nbsp; The name is chosen to keep the different
+versions segregated.&nbsp;&nbsp;</p>
+<p>Install both 16-bit and 32-bit versions of ODMA.</p>
+<p>After installation is complete, manually add a new subdirectory:</p>
+  <blockquote>
+<p><b><code>ODMA200-SDK\ConMan</code></b></p>
+  </blockquote>
+<p><i>Copy</i> the ODMA <b><code>.dll</code></b> files from <b><code>c:\Windows\System</code></b>
+  to the new <b><code>ConMan</code></b> subdirectory.&nbsp; This is the safe
+  parking place for backups of the ODMA 2.0 <b><code>odma.dll</code></b>
+  (16-bit) and ODMA 2.0 <code><b>ODMA32.dll</b></code> files.&nbsp; A separate
+  subdirectory is employed so that there is no chance of these <b><code>.dll</code></b>
+  files still being used by <b><code>Odmatest.exe</code></b> and <b><code>ODMATest32.exe</code></b>
+  when different versions of the Connection Manager are installed in <b><code>Windows\System</code></b>.</p>
+  <p>The ODMA Sample DMS, <b><code>ODMASAMP</code></b>, is automatically
+  installed by the ODMA 2.0 SDK.&nbsp; It is retained for usage, since ODMA 2.0
+  DMS integrations operate correctly with all versions of the ODMA Connection
+  Manager and of ODMA-aware applications.</p>
+</blockquote>
+<h2>2.2 <a name="ODMA20Usage"> Usage</a></h2>
+<h3>2.2.1 <a name="ODMA20ConMans">ODMA 2.0 Connection Managers</a></h3>
+<blockquote>
+  <p align="left">To Restore the ODMA 2.0 Connection Managers for testing or
+  production operation, copy the desired files from <b><code>ODMA200-SDK\ConMan</code></b>
+  to <b><code>Window\System</code></b>.&nbsp; Generally, it is best to always
+  operate with the latest Win32 <b><code>ODMA32.dll</code></b> version.&nbsp; It
+  is sometimes desirable to operating with an older Win16 <b><code>Odma.dll</code></b>
+  version.&nbsp; (See the <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm#RecommendedApproach">Recommended
+  Approach</a> section of <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">FAQtip Q000703</a>.)</p>
+  <p align="left">Add or change registry settings to have the desired DMS
+  integrations as the defaults for ODMA.&nbsp;</p>
+  <p align="left">&nbsp;Adjust the ODMA 2.0 Connection Manager logging
+  instructions as needed.&nbsp; Since earlier versions of the Connection Manager
+  do not provide logging, the logging instructions can be left unchanged between
+  uses of the ODMA 2.0 Connection Manager implementations (Win16 or Win32).</p>
+</blockquote>
+<h3 align="left">2.2.2 <a name="ODMA20ODMATest">ODMA 2.0 ODMATest Application</a></h3>
+<blockquote>
+  <p align="left">For Win16 <b><code>ODMATest</code></b> operation, run</p>
+  <p align="center"><b><code>ODMA200-SDK\Odmatest.exe</code></b>.</p>
+  <p align="left">For Win32 <b><code>ODMATest</code></b> operation, run</p>
+  <p align="center"><b><code>ODMA200-SDK\ODMATest32.exe</code></b>.</p>
+  <p align="left">Make sure that an appropriate ODMA DMS Integration is selected
+  as the overall default (Win16 and Win32) or have an application-default DMS
+  registered for <b><code>ODMATest</code></b>.</p>
+</blockquote>
+<h2 align="left">2.3 <a name="ODMA20Files"> File Version Identification</a>s</h2>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b>Table 1.&nbsp; ODMA 2.0 SDK Components Used in Interoperability
+      Testing</b></caption>
+    <tr>
+      <th width="15%" align="center" valign="middle"><b><i><span style="font-variant: small-caps">Name</span></i></b></th>
+      <th width="8%" align="center"><b><i><span style="font-variant: small-caps">Size
+        (</span>bytes<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="20%" align="center"><b><i><span style="font-variant: small-caps">Time
+        Stamp<br>
+        (</span>local time<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="8%" align="center"><b><i><span style="font-variant: small-caps">Edition</span></i></b></th>
+      <th width="45%" align="center" colspan="2"><b><i><span style="font-variant: small-caps">Description</span></i></b></th>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>O</b><b>dma20.exe</b></code></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>437229</code>
+    </td>
+    <td width="20%" align="center" valign="top">
+      <p align="center"><code>1998-05-11-08:54</code></td>
+  <center>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" colspan="2">Edition 2.0.0-1 of the ODMA SDK Self-Installer, as packaged
+      in <b><code>5_11_98Odma20.zip</code></b></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA200-SDK\<br>
+        </b></code><code><b>Odmasamp.dll</b></code></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>23344</code></p>
+    </td>
+    <center>
+    <td width="20%" align="center" valign="top">
+      <p align="center"><code>1998-04-09-15:21</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" colspan="2">Win16 edition of ODMA 2.0 <b><code>ODMASAMP</code></b> DMS
+      integration sample.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA200-SDK\<br>
+        ODMASamp32.dll</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>68096</code></p>
+    </td>
+    <center>
+    <td width="20%" align="center" valign="top">
+      <p align="center"><code>1998-04-09-15:31</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" colspan="2">Win32 edition of ODMA 2.0 <b><code>ODMASAMP</code></b> DMS
+      integration sample.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA200-SDK\<br>
+        Odmatest.exe</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>127072</code></td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1998-04-09-15:22</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" colspan="2">Win16 edition of ODMA 2.0-aware ODMATest application.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA200-SDK\<br>
+        ODMATest32.exe</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>&nbsp;39936</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1998-04-09-15:31</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" colspan="2">Win32 edition of the ODMA 2.0-aware ODMATest application:</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>File Version:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> 1, 0, 0, 1</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Description:&nbsp;</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> ODMATEST MFC<br>
+      Application</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Copyright:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> Copyright
+      © 1997</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Internal Name:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> ODMATEST</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Language:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b>
+      English<br>
+      (United States)</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Original Filename:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> ODMATEST.EXE</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Product Name:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> ODMATEST<br>
+      Application</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="23%" valign="top"><font size="-1"><code><b>Product Version:</b></code></font></td>
+    <td width="22%" valign="top"><font size="-1"><code><b> 1, 0, 0, 1</b></code></font></td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA200-SDK\<br>
+        ConMan\<br>
+        Odma.dll</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>28672</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1998-04-09-15:21</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" valign="top" colspan="2">Win16 edition of ODMA 2.0 Connection Manager</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA200-SDK\<br>
+        ConMan\<br>
+        ODMA32.dll</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>69632</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1998-05-07-13:10</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+    <td width="45%" valign="top" colspan="2">Win32 edition of ODMA 2.0 Connection Manager.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA200-SDK\<br>
+        Specification\</b></code></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" colspan="2">Subdirectory with copy of the original ODMA 2.0
+      Specification</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA200-SDK\<br>
+        Source\</b></code></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" colspan="2">Subdirectory with source code and library files used to
+      build ODMA components, including everything for the <b><code>ODMATest</code></b>
+      and <b><code>ODMASample</code></b> components.</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+<p align="left">Not all ODMA 2.0 SDK components are identified in this
+table.&nbsp; Some components not required for interoperability testing are
+omitted.</p>
+</blockquote>
+<h1 align="left">3. <a name="ODMA1.5SDK">ODMA 1.5 SDK</a></h1>
+<blockquote>
+  <p align="left">The original packaging of the ODMA 1.5 SDK is in Zip archive <b><code><a href="http://www.infonuovo.com/odma/downloads/15devkit.zip">15devkit.zip</a></code></b>.&nbsp;
+  It is designed for extraction into a specified subdirectory of your
+  choice.&nbsp; The SDK provides the ODMA 1.5 Connection Manager <b><code>.dll</code></b>
+  files.&nbsp; It also provides all library files necessary for creating
+  ODMA-compliant products and all files for constructing an ODMA 1.5 <b><code>ODMASAMP</code></b>
+  DMS Integration (Win16 and Win32).&nbsp;&nbsp;</p>
+  <p align="left">For interoperability testing, the ODMA 1.5 components can
+  remain in the separate directory.&nbsp; The ODMA 1.5 <b><code>.dll</code></b>
+  files are moved to <b><code>Windows\System</code></b> whenever it is desired
+  to operate with that level of Connection Manager.&nbsp; So long as the <a href="#ODMA2.0SDK">ODMA
+  2.0 SDK installation</a> has already been done, this simply substitutes the
+  ODMA 1.5 Connection Manager in that testing configuration.</p>
+</blockquote>
+<h2>3.1 <a name="ODMA15Installation"> Installation</a></h2>
+<blockquote>
+<p>Create working directory <b><code>ODMA150-SDK</code></b> as the location for
+all ODMA 1.5 material.</p>
+<p>Open the ODMA 1.5 SDK package, <b><code><a href="http://www.infonuovo.com/odma/downloads/15devkit.zip">15devkit.zip</a></code></b>.&nbsp; <b><i><u><span style="font-variant: small-caps">IMPORTANT:</span></u></i></b>
+<b>Select the Extract All action</b>.&nbsp; This preserves the date-time stamps
+from the packaged files. Select the Use Folder Names option.&nbsp; Specify the <b><code>ODMA150-SDK</code></b>
+subdirectory as the destination.</p>
+</blockquote>
+<h2>3.2 <a name="ODMA15Usage"> Usage</a></h2>
+<blockquote>
+  <p align="left">To test with the ODMA 1.5&nbsp; Connection Manager for Win16,
+  copy&nbsp;</p>
+  <p align="center"><b><code>ODMA150-SDK\CONMAN\OUT16\ODMA.DLL</code></b></p>
+  <p align="left">to <b><code>Windows\System</code></b>.</p>
+  <p align="left">To test with the ODMA 1.5 Connection Manager for Win32, copy</p>
+  <p align="center"><b><code>ODMA150-SDK\CONMAN\OUT32\ODMA32.DLL</code></b></p>
+  <p align="left">to <b><code>Windows\System</code></b>.</p>
+  <p align="left">Add or change registry settings to have the desired DMS
+  integrations as the defaults for ODMA.&nbsp;</p>
+</blockquote>
+<h2 align="left">3.3 <a name="ODMA15Files"> File Version Identification</a>s</h2>
+<div align="center">
+  <center>
+  <table border="0" width="90%" height="275">
+    <caption><b>Table 2.</b>&nbsp; <b>ODMA 1.5 SDK Components Used in
+      Interoperability Testing</b></caption>
+    <tr>
+      <th width="15%" align="center" valign="middle" height="37"><b><i><span style="font-variant: small-caps">Name</span></i></b></th>
+      <th width="8%" align="center" height="37"><b><i><span style="font-variant: small-caps">Size
+        (</span>bytes<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="20%" align="center" height="37"><b><i><span style="font-variant: small-caps">Time
+        Stamp<br>
+        (</span>local time<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="8%" align="center" height="37"><b><i><span style="font-variant: small-caps">Edition</span></i></b></th>
+      <th width="45%" align="center" height="37"><b><i><span style="font-variant: small-caps">Description</span></i></b></th>
+    </tr>
+    <tr>
+      <td width="15%" valign="top" height="59"><code><b>ODMA150-SDK\<br>
+        ODMASAMP\</b></code></td>
+    </center>
+    <td width="8%" align="center" valign="top" height="59">
+      <p align="right"></p>
+    </td>
+    <center>
+    <td width="20%" align="center" valign="top" height="59"></td>
+    <td width="8%" align="center" valign="top" height="59"></td>
+    <td width="45%" height="59">Source code and construction components for an
+      ODMA 1.5 Sample DMS, <b><code>ODMASAMP</code></b>.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top" height="59"><b><code>ODMA150-SDK\<br>
+        CONMAN\</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top" height="59">
+      <p align="right"></p>
+    </td>
+    <center>
+    <td width="20%" align="center" valign="top" height="59"></td>
+    <td width="8%" align="center" valign="top" height="59"></td>
+    <td width="45%" height="59">Subdirectory for all materials needed to install
+      ODMA 1.5 or build ODMA-1.5-compliant components.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top" height="50"><b><code>ODMA150-SDK\<br>
+        CONMAN\OUT16\<br>
+        ODMA.DLL</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top" height="50">
+      <p align="right"><code>14816</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top" height="50">
+      <p align="center"><code>1996-10-31-13:05</code></p>
+    </td>
+    <td width="8%" align="center" valign="top" height="50"><span style="font-variant: small-caps">1.5.0-1</span></td>
+    <td width="45%" valign="top" height="50">Win16 edition of ODMA 1.5
+      Connection Manager</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top" height="50"><b><code>ODMA150-SDK\<br>
+        CONMAN\OUT32\<br>
+        ODMA32.DLL</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top" height="50">
+      <p align="right"><code>12168</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top" height="50"><code>1996-10-31-13:03</code></td>
+    <td width="8%" align="center" valign="top" height="50"><span style="font-variant: small-caps">1.5.0-1</span></td>
+    <td width="45%" height="50" valign="top">Win32 edition of ODMA 1.5
+      Connection Manager.</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+  <p align="left">Not all ODMA 1.5 SDK components are identified in this
+  table.&nbsp; Some components not required for interoperability testing are
+  omitted.</p>
+</blockquote>
+  <h1 align="left">4. <a name="ODMA1.0SDK">ODMA 1.0 SDK</a></h1>
+<blockquote>
+  <p align="left">The final packaging of the ODMA 1.0 SDK is in Zip archive <b><code><a href="http://www.infonuovo.com/odma/downloads/oddev.zip">oddev.zip</a></code></b>.&nbsp;
+  It is designed for extraction into a specified subdirectory of your
+  choice.&nbsp; The SDK provides ODMA 1.0 Connection Manager <b><code>.dll</code></b>
+  files.&nbsp; It also provides all library files necessary for creating
+  ODMA-1.0-compliant products.&nbsp; There are implementations of an ODMA 1.0 <b><code>ODMASAMP</code></b>
+  DMS Integration (Win16 and Win32) and an ODMA 1.0 <b><code>MultODMA</code></b>
+  application.&nbsp;&nbsp;</p>
+  <p align="left">For interoperability testing, the ODMA 1.0 components can
+  remain in the separate directory.&nbsp; The ODMA 1.0 <b><code>.dll</code></b>
+  files are moved to <b><code>Windows\System</code></b> whenever it is desired
+  to operate with that level of Connection Manager.&nbsp; So long as the <a href="#ODMA2.0SDK">ODMA
+  2.0 SDK installation</a> has already been done, this simply substitutes the
+  ODMA 1.0 Connection Manager in that testing configuration.</p>
+</blockquote>
+<h2>4.1 <a name="ODMA10Installation"> Installation</a></h2>
+<blockquote>
+<p>Create working directory <b><code>ODMA100-SDK</code></b> as the location for
+all ODMA 1.0 material.</p>
+  <p>Open the ODMA 1.0 SDK package, <b><code><a href="http://www.infonuovo.com/odma/downloads/oddev.zip">oddev</a></code><a href="http://www.infonuovo.com/odma/downloads/oddev.zip"><code>.zip</code></a></b>.&nbsp;
+  <b><i><u><span style="font-variant: small-caps">IMPORTANT:</span></u></i></b> <b>Select
+  action &quot;Extract All&quot;</b>.&nbsp; This preserves the date-time stamps
+  from the packaged files. Select the Use Folder Names option.&nbsp; Specify the
+  <b><code>ODMA100-SDK</code></b> subdirectory as the destination.</p>
+</blockquote>
+<h2>4.2 <a name="ODMA10Usage"> Usage</a></h2>
+<h3>4.2.1 <a name="ODMA10ConMans">ODMA 1.0 Connection Managers</a></h3>
+<blockquote>
+  <p align="left">To test with the ODMA 1.0&nbsp; Connection Manager for Win16,
+  copy&nbsp;</p>
+  <p align="center"><b><code>ODMA100-SDK\CONMAN\OUT16\ODMA.DLL</code></b></p>
+  <p align="left">to <b><code>Windows\System</code></b>.</p>
+  <p align="left">To test with the ODMA 1.0 Connection Manager for Win32, copy</p>
+  <p align="center"><b><code>ODMA100-SDK\CONMAN\OUT32\ODMA32.DLL</code></b></p>
+  <p align="left">to <b><code>Windows\System</code></b>.</p>
+  <p align="left">Add or change registry settings to have the desired DMS
+  integrations as the defaults for ODMA.&nbsp;</p>
+</blockquote>
+  <h3 align="left">4.2.2 <a name="ODMA10MultODMA">ODMA 1.0 MultODMA</a>&nbsp;</h3>
+<blockquote>
+  <p align="left">To use the Win16 ODMA 1.0 <b><code>MultODMA</code></b>
+  application, run</p>
+  <p align="center"><code><b>ODMA100-SDK\MULTODMA\OUT16\MULTODMA.EXE</b></code>.</p>
+  <p align="left">To use the Win32 ODMA 1.0 <b><code>MultODMA</code></b>
+  application, run</p>
+  <p align="center"><b><code>ODMA100-SDK\MULTODMA\OUT32\MULTODMA.EXE</code></b>.</p>
+</blockquote>
+<h2 align="left">4.3 <a name="ODMA10Files"> File Version Identifications</a></h2>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b>Table 3.</b>&nbsp; <b>ODMA 1.0 SDK Components Used in
+      Interoperability Testing</b></caption>
+    <tr>
+      <th width="15%" align="center" valign="middle" height="37"><b><i><span style="font-variant: small-caps">Name</span></i></b></th>
+      <th width="8%" align="center" height="37"><b><i><span style="font-variant: small-caps">Size
+        (</span>bytes<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="20%" align="center" height="37"><b><i><span style="font-variant: small-caps">Time
+        Stamp<br>
+        (</span>local time<span style="font-variant: small-caps">)</span></i></b></th>
+      <th width="8%" align="center" height="37"><b><i><span style="font-variant: small-caps">Edition</span></i></b></th>
+      <th width="45%" align="center" height="37"><b><i><span style="font-variant: small-caps">Description</span></i></b></th>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA100-SDK\<br>
+        CONMAN\</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"></p>
+    </td>
+    <center>
+    <td width="20%" align="center" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" valign="top">Subdirectory for all materials needed to
+      install ODMA 1.0 or build ODMA-1.0-compliant components.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA100-SDK\<br>
+        CONMAN\OUT16\<br>
+        ODMA.DLL</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>47616</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1995-06-26-12:59</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">1.0.0-2</span></td>
+    <td width="45%" valign="top">Win16 edition of ODMA 1.0 Connection Manager</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA100-SDK\<br>
+        CONMAN\OUT32\<br>
+        ODMA32.DLL</code></b></td>
+    </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right"><code>34304</code></p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1995-06-26-12:34</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">1.0.0-2</span></td>
+    <td width="45%" valign="top">Win32 edition of ODMA 1.0 Connection Manager.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA100-SDK\<br>
+        DOC\</b></code></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" valign="top">ODMA 1.0 Document Files, including <b><code>README.TXT</code></b>.</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA100-SDK\<br>
+        MULTODMA</b></code></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" valign="top">ODMA 1.0 <b><code>MultODMA</code></b> sample
+      application with source code and executables</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><b><code>ODMA100-SDK\<br>
+        MULTODMA\<br>
+        OUT16\<br>
+        MULTODMA.EXE</code></b></td>
+  </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right">
+      <code>114516</code>
+      </p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1995-06-26-13:00</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">1.0.0-2</span></td>
+    <td width="45%" valign="top">Win16 edition of <b><code>MultODMA</code></b>
+      sample application</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA100-SDK\<br>
+        MULTODMA\<br>
+        OUT32\<br>
+        MULTODMA.EXE</b></code></td>
+  </center>
+    <td width="8%" align="center" valign="top">
+      <p align="right">
+      <code>48640</code>
+      </p>
+    </td>
+    <center>
+    <td width="20%" valign="top">
+      <p align="center"><code>1995-06-26-12:57</code></p>
+    </td>
+    <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">1.0.0-2</span></td>
+    <td width="45%" valign="top">Win32 edition of <b><code>MultODMA</code></b>
+      sample application</td>
+    </tr>
+    <tr>
+      <td width="15%" valign="top"><code><b>ODMA100-SDK\<br>
+        ODMASAMP\</b></code></td>
+    <td width="8%" align="center" valign="top">
+    </td>
+    <td width="20%" valign="top"></td>
+    <td width="8%" align="center" valign="top"></td>
+    <td width="45%" valign="top">ODMA 1.0 <b><code>ODMASAMP</code></b> sample
+      DMS integration with source code and <b><code>.dll</code></b> files.</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+  <p align="left">Not all ODMA 1.0 SDK components are identified in this
+  table.&nbsp; Components not required for interoperability testing are
+  omitted.</p>
+</blockquote>
+<blockquote>
+  <p align="right"><i>Dennis E. Hamilton<br>
+  AIIM DMware Technical Coordinator<br>
+  Renton, Washington, July 25, 2000</i></p>
+  <hr>
+</blockquote>
+<blockquote>
+  <dl><font size="-1">
+    <dt><b><a name="0.14">Version 0.14</a>: 2000-09-11 (orcmid)</b></dt>
+    <dd>Separated from <a href="Q000703.htm">Q000703</a> as a free-standing
+      FAQtip in its own right.&nbsp; Something I should have figured out right
+      away when I wanted to refer to it independently.&nbsp;</dd>
+    <dt><b><a name="0.13">Version 0.13: 2000-07-29 (orcmid)</a></b></dt>
+    <dd>Moved to <a href="http://www.infonuovo.com/odma/downloads">odma/downloads</a>
+      area for ease in packaging with library materials and cross-referencing
+      with that material via simple shortcuts.&nbsp; Exploit location with
+      downloads and libraries to have more shortcuts available to users.&nbsp;
+      Arrange for the file to work properly when downloaded as part of <a href="odma20L.htm">ODMA
+      2.0 Library</a> materials.</dd>
+    <dt><b><a name="0.12">Version 0.12: 2000-07-27</a> (orcmid)</b></dt>
+    <dd>Clean up shortcuts.&nbsp; Make alignments in tables more consistent.</dd>
+    <dt><b><a name="0.11">Version 0.11: 2000-07-26 (orcmid)</a></b></dt>
+    <dd>Clean up fonts in some of the table entries so they don't display too
+      small.&nbsp; Added more information about file names and the WinZip
+      program used.</dd>
+    <dt><strong><a name="0.10">Version 0.10: 2000-07-25</a> (orcmid)</strong></dt>
+    <dd>The initial setup was done to obtain crude confirmation of down-level
+      interoperability.&nbsp; This was verified as part of documenting the&nbsp;
+      ODMA 2.0 libraries.</dd>
+  </font></dl>
+</blockquote>
+
+<p align="right">created 2000-07-24-21:46 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-11-01 16:39 $<br>
+$$Revision: 10 $</em></p>
+</body>
+</html>

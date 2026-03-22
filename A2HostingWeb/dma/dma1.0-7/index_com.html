@@ -1,0 +1,258 @@
+<html><head><title>Interfaces and Methods Table of Contents</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h1>Interfaces and Methods</h1><h2><a href ="MethodsRefIntro.html">Introduction and Conventions</a></h2><h2>Table of Contents</h2>
+<ul PLAIN>
+<li><a href="cfunc.html">Free Standing Functions and Entry-Points</a></li>
+<ul PLAIN>
+<li><a href="cfunc.html#CFuncDMA_GetServiceObject">DMA_GetServiceObject</a></li>
+<li><a href="cfunc.html#CFuncdmaConnectSystemManager">dmaConnectSystemManager</a></li>
+</ul>
+<li><a href="IdmaAuthentication.html">IdmaAuthentication</a></li>
+<ul PLAIN>
+<li><a href="IdmaAuthentication.html#IdmaAuthenticationAuthenticateUser">IdmaAuthentication::AuthenticateUser</a></li>
+<li><a href="IdmaAuthentication.html#IdmaAuthenticationAutoAuthenticateUser">IdmaAuthentication::AutoAuthenticateUser</a></li>
+</ul>
+<li><a href="IdmaBatch.html">IdmaBatch</a></li>
+<ul PLAIN>
+<li><a href="IdmaBatch.html#IdmaBatchExecuteChanges">IdmaBatch::ExecuteChanges</a></li>
+</ul>
+<li><a href="IdmaClassDescription.html">IdmaClassDescription</a></li>
+<ul PLAIN>
+<li><a href="IdmaClassDescription.html#IdmaClassDescriptionCreateInstance">IdmaClassDescription::CreateInstance</a></li>
+<li><a href="IdmaClassDescription.html#IdmaClassDescriptionIsOfClass">IdmaClassDescription::IsOfClass</a></li>
+</ul>
+<li><a href="IdmaConnection.html">IdmaConnection</a></li>
+<ul PLAIN>
+<li><a href="IdmaConnection.html#IdmaConnectionApplyLock">IdmaConnection::ApplyLock</a></li>
+<li><a href="IdmaConnection.html#IdmaConnectionExecuteChange">IdmaConnection::ExecuteChange</a></li>
+<li><a href="IdmaConnection.html#IdmaConnectionExecuteRefresh">IdmaConnection::ExecuteRefresh</a></li>
+<li><a href="IdmaConnection.html#IdmaConnectionIsCurrent">IdmaConnection::IsCurrent</a></li>
+<li><a href="IdmaConnection.html#IdmaConnectionRemoveLock">IdmaConnection::RemoveLock</a></li>
+<li><a href="IdmaConnection.html#IdmaConnectionSetDeletePending">IdmaConnection::SetDeletePending</a></li>
+</ul>
+<li><a href="IdmaContentTransfer.html">IdmaContentTransfer</a></li>
+<ul PLAIN>
+<li><a href="IdmaContentTransfer.html#IdmaContentTransferCopyToResource">IdmaContentTransfer::CopyToResource</a></li>
+<li><a href="IdmaContentTransfer.html#IdmaContentTransferGetResourceName">IdmaContentTransfer::GetResourceName</a></li>
+<li><a href="IdmaContentTransfer.html#IdmaContentTransferGetStream">IdmaContentTransfer::GetStream</a></li>
+<li><a href="IdmaContentTransfer.html#IdmaContentTransferSetCaptureResource">IdmaContentTransfer::SetCaptureResource</a></li>
+<li><a href="IdmaContentTransfer.html#IdmaContentTransferSetCaptureStream">IdmaContentTransfer::SetCaptureStream</a></li>
+</ul>
+<li><a href="IdmaDocSpace.html">IdmaDocSpace</a></li>
+<ul PLAIN>
+<li><a href="IdmaDocSpace.html#IdmaDocSpaceConnectAndLockObject">IdmaDocSpace::ConnectAndLockObject</a></li>
+<li><a href="IdmaDocSpace.html#IdmaDocSpaceConnectObject">IdmaDocSpace::ConnectObject</a></li>
+<li><a href="IdmaDocSpace.html#IdmaDocSpaceExecuteDisconnect">IdmaDocSpace::ExecuteDisconnect</a></li>
+<li><a href="IdmaDocSpace.html#IdmaDocSpaceGetScope">IdmaDocSpace::GetScope</a></li>
+</ul>
+<li><a href="IdmaEditList.html">IdmaEditList</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditList.html#IdmaEditListDeleteElement">IdmaEditList::DeleteElement</a></li>
+<li><a href="IdmaEditList.html#IdmaEditListTruncateList">IdmaEditList::TruncateList</a></li>
+</ul>
+<li><a href="IdmaEditListOfBinary.html">IdmaEditListOfBinary</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfBinary.html#IdmaEditListOfBinaryInsertBinary">IdmaEditListOfBinary::InsertBinary</a></li>
+<li><a href="IdmaEditListOfBinary.html#IdmaEditListOfBinaryReplaceBinary">IdmaEditListOfBinary::ReplaceBinary</a></li>
+</ul>
+<li><a href="IdmaEditListOfBoolean.html">IdmaEditListOfBoolean</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfBoolean.html#IdmaEditListOfBooleanInsertBoolean">IdmaEditListOfBoolean::InsertBoolean</a></li>
+<li><a href="IdmaEditListOfBoolean.html#IdmaEditListOfBooleanReplaceBoolean">IdmaEditListOfBoolean::ReplaceBoolean</a></li>
+</ul>
+<li><a href="IdmaEditListOfDateTime.html">IdmaEditListOfDateTime</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfDateTime.html#IdmaEditListOfDateTimeInsertDateTime">IdmaEditListOfDateTime::InsertDateTime</a></li>
+<li><a href="IdmaEditListOfDateTime.html#IdmaEditListOfDateTimeReplaceDateTime">IdmaEditListOfDateTime::ReplaceDateTime</a></li>
+</ul>
+<li><a href="IdmaEditListOfFloat64.html">IdmaEditListOfFloat64</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfFloat64.html#IdmaEditListOfFloat64InsertFloat64">IdmaEditListOfFloat64::InsertFloat64</a></li>
+<li><a href="IdmaEditListOfFloat64.html#IdmaEditListOfFloat64ReplaceFloat64">IdmaEditListOfFloat64::ReplaceFloat64</a></li>
+</ul>
+<li><a href="IdmaEditListOfId.html">IdmaEditListOfId</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfId.html#IdmaEditListOfIdInsertId">IdmaEditListOfId::InsertId</a></li>
+<li><a href="IdmaEditListOfId.html#IdmaEditListOfIdReplaceId">IdmaEditListOfId::ReplaceId</a></li>
+</ul>
+<li><a href="IdmaEditListOfInteger32.html">IdmaEditListOfInteger32</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfInteger32.html#IdmaEditListOfInteger32InsertInteger32">IdmaEditListOfInteger32::InsertInteger32</a></li>
+<li><a href="IdmaEditListOfInteger32.html#IdmaEditListOfInteger32ReplaceInteger32">IdmaEditListOfInteger32::ReplaceInteger32</a></li>
+</ul>
+<li><a href="IdmaEditListOfObject.html">IdmaEditListOfObject</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfObject.html#IdmaEditListOfObjectInsertObject">IdmaEditListOfObject::InsertObject</a></li>
+<li><a href="IdmaEditListOfObject.html#IdmaEditListOfObjectReplaceObject">IdmaEditListOfObject::ReplaceObject</a></li>
+</ul>
+<li><a href="IdmaEditListOfString.html">IdmaEditListOfString</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditListOfString.html#IdmaEditListOfStringInsertString">IdmaEditListOfString::InsertString</a></li>
+<li><a href="IdmaEditListOfString.html#IdmaEditListOfStringReplaceString">IdmaEditListOfString::ReplaceString</a></li>
+</ul>
+<li><a href="IdmaEditProperties.html">IdmaEditProperties</a></li>
+<ul PLAIN>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesDeletePropValById">IdmaEditProperties::DeletePropValById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesDeletePropValByIndex">IdmaEditProperties::DeletePropValByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValBinaryById">IdmaEditProperties::PutPropValBinaryById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValBinaryByIndex">IdmaEditProperties::PutPropValBinaryByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValBooleanById">IdmaEditProperties::PutPropValBooleanById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValBooleanByIndex">IdmaEditProperties::PutPropValBooleanByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValDateTimeById">IdmaEditProperties::PutPropValDateTimeById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValDateTimeByIndex">IdmaEditProperties::PutPropValDateTimeByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValFloat64ById">IdmaEditProperties::PutPropValFloat64ById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValFloat64ByIndex">IdmaEditProperties::PutPropValFloat64ByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValIdById">IdmaEditProperties::PutPropValIdById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValIdByIndex">IdmaEditProperties::PutPropValIdByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValInteger32ById">IdmaEditProperties::PutPropValInteger32ById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValInteger32ByIndex">IdmaEditProperties::PutPropValInteger32ByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValObjectById">IdmaEditProperties::PutPropValObjectById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValObjectByIndex">IdmaEditProperties::PutPropValObjectByIndex</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValStringById">IdmaEditProperties::PutPropValStringById</a></li>
+<li><a href="IdmaEditProperties.html#IdmaEditPropertiesPutPropValStringByIndex">IdmaEditProperties::PutPropValStringByIndex</a></li>
+</ul>
+<li><a href="IdmaEnumOfObject.html">IdmaEnumOfObject</a></li>
+<ul PLAIN>
+<li><a href="IdmaEnumOfObject.html#IdmaEnumOfObjectGetNextObject">IdmaEnumOfObject::GetNextObject</a></li>
+</ul>
+<li><a href="IdmaList.html">IdmaList</a></li>
+<ul PLAIN>
+<li><a href="IdmaList.html#IdmaListGetElementCount">IdmaList::GetElementCount</a></li>
+</ul>
+<li><a href="IdmaListOfBinary.html">IdmaListOfBinary</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfBinary.html#IdmaListOfBinaryGetBinary">IdmaListOfBinary::GetBinary</a></li>
+</ul>
+<li><a href="IdmaListOfBoolean.html">IdmaListOfBoolean</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfBoolean.html#IdmaListOfBooleanGetBoolean">IdmaListOfBoolean::GetBoolean</a></li>
+</ul>
+<li><a href="IdmaListOfDateTime.html">IdmaListOfDateTime</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfDateTime.html#IdmaListOfDateTimeGetDateTime">IdmaListOfDateTime::GetDateTime</a></li>
+</ul>
+<li><a href="IdmaListOfFloat64.html">IdmaListOfFloat64</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfFloat64.html#IdmaListOfFloat64GetFloat64">IdmaListOfFloat64::GetFloat64</a></li>
+</ul>
+<li><a href="IdmaListOfId.html">IdmaListOfId</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfId.html#IdmaListOfIdGetId">IdmaListOfId::GetId</a></li>
+</ul>
+<li><a href="IdmaListOfInteger32.html">IdmaListOfInteger32</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfInteger32.html#IdmaListOfInteger32GetInteger32">IdmaListOfInteger32::GetInteger32</a></li>
+</ul>
+<li><a href="IdmaListOfObject.html">IdmaListOfObject</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfObject.html#IdmaListOfObjectGetObject">IdmaListOfObject::GetObject</a></li>
+</ul>
+<li><a href="IdmaListOfString.html">IdmaListOfString</a></li>
+<ul PLAIN>
+<li><a href="IdmaListOfString.html#IdmaListOfStringGetString">IdmaListOfString::GetString</a></li>
+</ul>
+<li><a href="IdmaObject.html">IdmaObject</a></li>
+<ul PLAIN>
+<li><a href="IdmaObject.html#IdmaObjectIsOfClass">IdmaObject::IsOfClass</a></li>
+</ul>
+<li><a href="IdmaObjectFactory.html">IdmaObjectFactory</a></li>
+<ul PLAIN>
+<li><a href="IdmaObjectFactory.html#IdmaObjectFactoryCreateObject">IdmaObjectFactory::CreateObject</a></li>
+</ul>
+<li><a href="IdmaOIID.html">IdmaOIID</a></li>
+<ul PLAIN>
+<li><a href="IdmaOIID.html#IdmaOIIDGetDocSpaceId">IdmaOIID::GetDocSpaceId</a></li>
+<li><a href="IdmaOIID.html#IdmaOIIDGetGuid">IdmaOIID::GetGuid</a></li>
+<li><a href="IdmaOIID.html#IdmaOIIDGetObjectIdText">IdmaOIID::GetObjectIdText</a></li>
+<li><a href="IdmaOIID.html#IdmaOIIDGetSystemId">IdmaOIID::GetSystemId</a></li>
+</ul>
+<li><a href="IdmaProgressCallback.html">IdmaProgressCallback</a></li>
+<ul PLAIN>
+<li><a href="IdmaProgressCallback.html#IdmaProgressCallbackReportProgress">IdmaProgressCallback::ReportProgress</a></li>
+</ul>
+<li><a href="IdmaProperties.html">IdmaProperties</a></li>
+<ul PLAIN>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValBinaryById">IdmaProperties::GetPropValBinaryById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValBinaryByIndex">IdmaProperties::GetPropValBinaryByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValBooleanById">IdmaProperties::GetPropValBooleanById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValBooleanByIndex">IdmaProperties::GetPropValBooleanByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValDateTimeById">IdmaProperties::GetPropValDateTimeById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValDateTimeByIndex">IdmaProperties::GetPropValDateTimeByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValFloat64ById">IdmaProperties::GetPropValFloat64ById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValFloat64ByIndex">IdmaProperties::GetPropValFloat64ByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValIdById">IdmaProperties::GetPropValIdById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValIdByIndex">IdmaProperties::GetPropValIdByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValInteger32ById">IdmaProperties::GetPropValInteger32ById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValInteger32ByIndex">IdmaProperties::GetPropValInteger32ByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValObjectById">IdmaProperties::GetPropValObjectById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValObjectByIndex">IdmaProperties::GetPropValObjectByIndex</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValStringById">IdmaProperties::GetPropValStringById</a></li>
+<li><a href="IdmaProperties.html#IdmaPropertiesGetPropValStringByIndex">IdmaProperties::GetPropValStringByIndex</a></li>
+</ul>
+<li><a href="IdmaRelationshipOrdering.html">IdmaRelationshipOrdering</a></li>
+<ul PLAIN>
+<li><a href="IdmaRelationshipOrdering.html#IdmaRelationshipOrderingSetOrdering">IdmaRelationshipOrdering::SetOrdering</a></li>
+</ul>
+<li><a href="IdmaResultSet.html">IdmaResultSet</a></li>
+<ul PLAIN>
+<li><a href="IdmaResultSet.html#IdmaResultSetGetNextResultRow">IdmaResultSet::GetNextResultRow</a></li>
+<li><a href="IdmaResultSet.html#IdmaResultSetIsResultReady">IdmaResultSet::IsResultReady</a></li>
+<li><a href="IdmaResultSet.html#IdmaResultSetReExecuteQuery">IdmaResultSet::ReExecuteQuery</a></li>
+<li><a href="IdmaResultSet.html#IdmaResultSetTerminateResults">IdmaResultSet::TerminateResults</a></li>
+</ul>
+<li><a href="IdmaScope.html">IdmaScope</a></li>
+<ul PLAIN>
+<li><a href="IdmaScope.html#IdmaScopeExecuteSearch">IdmaScope::ExecuteSearch</a></li>
+<li><a href="IdmaScope.html#IdmaScopeGetOperatorDescription">IdmaScope::GetOperatorDescription</a></li>
+</ul>
+<li><a href="IdmaScopeFactory.html">IdmaScopeFactory</a></li>
+<ul PLAIN>
+<li><a href="IdmaScopeFactory.html#IdmaScopeFactoryCreateScope">IdmaScopeFactory::CreateScope</a></li>
+<li><a href="IdmaScopeFactory.html#IdmaScopeFactoryCreateScopeList">IdmaScopeFactory::CreateScopeList</a></li>
+</ul>
+<li><a href="IdmaServiceRegistry.html">IdmaServiceRegistry</a></li>
+<ul PLAIN>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryFindNextRegistryElement">IdmaServiceRegistry::FindNextRegistryElement</a></li>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryGetRegistryElement">IdmaServiceRegistry::GetRegistryElement</a></li>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryPublishRegistryElement">IdmaServiceRegistry::PublishRegistryElement</a></li>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryRegisterServiceElement">IdmaServiceRegistry::RegisterServiceElement</a></li>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryRemoveRegistryElement">IdmaServiceRegistry::RemoveRegistryElement</a></li>
+<li><a href="IdmaServiceRegistry.html#IdmaServiceRegistryUnpublishRegistryElement">IdmaServiceRegistry::UnpublishRegistryElement</a></li>
+</ul>
+<li><a href="IdmaStream.html">IdmaStream</a></li>
+<ul PLAIN>
+<li><a href="IdmaStream.html#IdmaStreamReadStreamData">IdmaStream::ReadStreamData</a></li>
+<li><a href="IdmaStream.html#IdmaStreamSetStreamPosition">IdmaStream::SetStreamPosition</a></li>
+</ul>
+<li><a href="IdmaSystem.html">IdmaSystem</a></li>
+<ul PLAIN>
+<li><a href="IdmaSystem.html#IdmaSystemConnectDocSpace">IdmaSystem::ConnectDocSpace</a></li>
+<li><a href="IdmaSystem.html#IdmaSystemEnumerateDocSpaces">IdmaSystem::EnumerateDocSpaces</a></li>
+<li><a href="IdmaSystem.html#IdmaSystemGetResultCodeDescription">IdmaSystem::GetResultCodeDescription</a></li>
+</ul>
+<li><a href="IdmaSystemManager.html">IdmaSystemManager</a></li>
+<ul PLAIN>
+<li><a href="IdmaSystemManager.html#IdmaSystemManagerConnectSystem">IdmaSystemManager::ConnectSystem</a></li>
+<li><a href="IdmaSystemManager.html#IdmaSystemManagerEnumerateSystems">IdmaSystemManager::EnumerateSystems</a></li>
+<li><a href="IdmaSystemManager.html#IdmaSystemManagerGetMalloc">IdmaSystemManager::GetMalloc</a></li>
+</ul>
+<li><a href="IdmaTextOrdering.html">IdmaTextOrdering</a></li>
+<ul PLAIN>
+<li><a href="IdmaTextOrdering.html#IdmaTextOrderingCompareStrings">IdmaTextOrdering::CompareStrings</a></li>
+</ul>
+<li><a href="IdmaVersionable.html">IdmaVersionable</a></li>
+<ul PLAIN>
+<li><a href="IdmaVersionable.html#IdmaVersionableSetCheckIn">IdmaVersionable::SetCheckIn</a></li>
+</ul>
+<li><a href="IdmaVersionSeries.html">IdmaVersionSeries</a></li>
+<ul PLAIN>
+<li><a href="IdmaVersionSeries.html#IdmaVersionSeriesSetCheckOutNext">IdmaVersionSeries::SetCheckOutNext</a></li>
+<li><a href="IdmaVersionSeries.html#IdmaVersionSeriesSetReserveNext">IdmaVersionSeries::SetReserveNext</a></li>
+<li><a href="IdmaVersionSeries.html#IdmaVersionSeriesSetRevoke">IdmaVersionSeries::SetRevoke</a></li>
+</ul>
+<li><a href="IUnknown.html">IUnknown</a></li>
+<ul PLAIN>
+<li><a href="IUnknown.html#IUnknownAddRef">IUnknown::AddRef</a></li>
+<li><a href="IUnknown.html#IUnknownQueryInterface">IUnknown::QueryInterface</a></li>
+<li><a href="IUnknown.html#IUnknownRelease">IUnknown::Release</a></li>
+</ul>
+</body></html>

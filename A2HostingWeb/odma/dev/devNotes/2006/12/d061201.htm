@@ -1,0 +1,410 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMdevCompagno/devnotes/2006/12/d061201.htm 82    13-08-22 12:53 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061201: ODMJNI 1.0 Deployment</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="64%" height="6">
+      <p align="center">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong>
+		<a href="../../d000001.htm#d061201"><font color="#990033">d061201</font></a><br>
+      	<i><font size="5">ODMJNI 1.0 Deployment</font></i></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">12</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b>
+		<a target="_top" href="d061201.htm">d061201</a>&gt;</b><br>
+</font>
+</font><small><a href="#0.12">0.12</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<blockquote>
+	<p align="left"><font color="#800080"><b>{Preliminary Material: Brief 
+	synopsis and TOC required here.}</b></font></p>
+	<p align="left">An ODMJNI 1.0 Deployment is any packaging of code that is 
+	extracted from the development system and made available for download and 
+	use by others.&nbsp; </p>
+	<p align="left">All defects that are detected in a deployed package are 
+	recorded as bugs in delivered code and there is a public record, here, of 
+	the current availability and status of each deployed package.</p>
+</blockquote>
+<h2 align="left"><b><a name="1" target="_top" href="#1">1</a>. Overview</b></h2>
+<blockquote>
+	<p align="left"><b><a name="1.1" target="_top" href="#1.1">1.1</a></b> This 
+	devNote tracks the development of the deployment procedures and packages for 
+	ODMJNI 1.0.&nbsp; The deployed &quot;releases&quot; are combinations of material from 
+	four development tracks:</p>
+	<ul>
+		<li>
+		<p align="left"><font face="monospace"><b><a href="../10/d061001.htm">info.odma.practical100</a></b></font> 
+		package of implementation-independent components: interfaces and Java 
+		classes that provide the assured behavior seen by Java applications that 
+		rely on ODMJNI 1.0.<br>
+&nbsp;&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><font face="monospace"><b><a href="../11/d061101.htm">info.odma.odmjni100</a></b></font> 
+		package of the Java bridge to ODMA, along with the 
+		<font face="monospace"><b>odmjni100.dll</b></font> used to 
+		implement native methods of the Java-language bridge components.&nbsp; 
+		Apart from a single initialization operation, all behavior of the 
+		odmjni100 bridge software is exposed entirely via the <b>
+		<font face="monospace">practical100</font></b> 
+		interfaces.<br>
+&nbsp;&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="../10/d061003.htm"><font face="monospace">OdmNative100</font> library</a></b> 
+		software that uses C++ Language, Microsoft COM interfaces, and native 
+		Windows (Win32) API functions to provide and manage access to the ODMA 
+		API on behalf of the ODJNI 1.0 application.&nbsp; This code is 
+		incorporated in the <font face="monospace"><b>odmjni100.dll</b></font> module.&nbsp; Its interfaces are confined to 
+		internal use of <font face="monospace"><b>odmjni100</b></font> Java methods having native implementations in
+		<font face="monospace"><b>odmjni100.dll</b></font>.<br>
+&nbsp;&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left">OdmPackage100 materials for creating the deployment 
+		package with progressive use of runtime, regression checks, and the 
+		source code from each track that is incorporated in the full deployment.&nbsp; 
+		(OdmNative100 library will be moved to its own development library by 
+		the 0.80 Beta Refactoring release.)</p></li>
+	</ul>
+	<p align="left"><b><a name="1.2" target="_top" href="#1.2">1.2</a></b> An important part of deployment is to synchronize these 
+	layers in choosing the combination to distribute and test.</p>
+	<p align="left"><b><a name="1.3" target="_top" href="#1.3">1.3</a></b> Initially, deployment is by distribution of Zip archives 
+	containing material that must be extracted and manually customized.&nbsp;&nbsp; 
+	Eventually, deployment is by Java <b><font face="monospace">.JAR</font></b> files that can be incorporated in the 
+	Java application's own deployment.</p>
+</blockquote>
+<h2 align="left"><a name="2" target="_top" href="#2">2</a>. Deployment Progression</h2>
+<blockquote>
+	<ul>
+		<li><b><a href="../10/d061001c.htm" name="0.01alpha">0.01alpha Evolutionary Prototype</a></b> 
+		(<i>completed 2006-10-19</i>).&nbsp;&nbsp; This first-trial definition of 
+		<b><font face="monospace">practical100</font></b> interfaces was used to verify the Java compiler 
+		implementation and use of scripts to automate construction and 
+		deployment.&nbsp; The interfaces were revised and the development code 
+		tree enhanced by 0.05alpha as the result of experimentation with this 
+		first prototype effort.<br>
+&nbsp;&nbsp;&nbsp; 
+		</li>
+		<li><b><a href="../10/d061001d.htm" name="0.05alpha">0.05alpha Evolutionary Prototype</a>
+		</b>&nbsp;(<i>completed 2006-10-24</i>).&nbsp; This stage provided confirmation of 
+		the basic interfaces and the overall approach for <b>
+		<font face="monospace">practical100</font></b> 
+		components.&nbsp; The interface definitions were incomplete, but 
+		remained stable until 0.30alpha.&nbsp; Only the Java language 
+		&quot;front-end&quot; interfaces are defined, with limited exercising by null 
+		implementations.&nbsp; Because null interfaces are legitimate results in 
+		the final package, this allows initial testing of &quot;ODMA not available&quot; 
+		cases in an actual application.&nbsp; This &quot;deployment&quot; was only of 
+		<b><font face="monospace">practical100</font></b> materials and some tests to exercise them.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+		</li>
+		<li><b><a href="d061201c.htm" name="0.20alpha">0.20alpha End-to-End Confirmation</a></b> 
+		(<i>completed 2006-12-07</i>)<b>.</b>&nbsp; This rudimentary implementation, deployed in a Zip archive, is used for 
+		confirmation of the development configuration.&nbsp; 
+		<ul>
+			<li>The implementation of ODMJNI is sufficient to accomplish an 
+			end-to-end connection from a Java application through ODMJNI to the 
+			ODMA Connection Manager and a default ODMA DMS for the test 
+			application.&nbsp; This allows initial confirmation of the basic 
+			handling of OdmConnection interfaces in an ODMA-aware Java-based 
+			application.&nbsp; </li>
+			<li>There is no document-processing functionality delivered to the 
+			Java application beyond confirmation of connection and demonstration 
+			that a DMS is reachable and responds to the application.</li>
+			<li>Reproducing the compiling and linking of components in this 
+			distribution is an useful way to verify that a compatible 
+			development environment has been set up.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		</ul>
+		</li>
+		<li><b><a href="d061201d.htm" name="0.25alpha">0.25alpha API Regression Check</a></b> (<i>completed 2006-12-20</i>).&nbsp; 
+		This is a version of 0.20alpha that substitutes the 0.30alpha API and 
+		demonstrates that the breaking changes have been accommodated by 
+		rebuilding <b><font face="monospace">odmjni100</font></b> classes and leaving 
+		<b><font face="monospace">odmjni100.dll</font></b> unchanged.&nbsp; 
+		The <b><font face="monospace">Check03</font></b> test program does not exercise any additional functionality 
+		in this release: It is designed to show that nothing that worked before 
+		has been broken.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a href="d061201e.htm" name="0.30alpha">0.30alpha Document-Access Features</a></b> 
+		(<i>completed 2007-01-09</i>).&nbsp; This version implements the basic functions 
+		for accessing the content and properties of an ODMA document once 
+		selected in an available ODMA DMS integration.&nbsp; This allows testing 
+		and verification of scenarios in which ODMA documents are made available 
+		for retrieval and viewing.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a href="d061201f.htm" name="0.40alpha">0.40alpha Document-Update Features</a></b> 
+		(<i>completed 2007-01-14</i>).&nbsp; This version expands on the functionality of 
+		0.30alpha by implementing updates (commitment of changes) back to the 
+		DMS-retained version of a retrieved document.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a href="d061201g.htm" name="0.50beta">0.50beta Feature-Complete Release</a></b> 
+		(<i>completed 2007-01-25</i>).&nbsp; The basic feature set for ODMJNI 1.0 is 
+		completed with introduction of functions for creating new documents in 
+		coordination with the DMS.&nbsp; A variation, the saving of a current 
+		DMS document as a new DMS document, is implemented at the same time.&nbsp; 
+		The ability to open a known ODMA document using its Document ID is 
+		omitted, although all required features are available.&nbsp; This 
+		function is omitted until code for validating Document IDs is also 
+		introduced in 0.60beta.&nbsp; (This is part of a commitment to never 
+		allow unacceptable data to be passed to the ODMA Connection Manager and 
+		through there to an ODMA-compliant DMS.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		At this point, we officially move out of alpha-level development and are 
+		now entering beta-test.&nbsp; There are already some urgent 
+		stabilization activities and they are addressed in the progression to 
+		the 0.60beta, 
+		release.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a href="d061201h.htm" name="0.5x beta updates">0.5x beta 
+		Function-Stabilization Updates</a></b> 
+		(<i>under development</i>).&nbsp;&nbsp; The purpose of this portion of the 
+		project is to stabilize all functionality that is apparent at the Java 
+		application level.&nbsp; There is a series of interim 0.5<i>x</i>beta 
+		&quot;drops&quot; that are applied as successive patches to the 0.50beta 
+		source-code and test tree.&nbsp; The 0.59beta release is a complete 
+		roll-up and is the candidate for the public-beta release.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="0.60beta" href="d061201i.htm">0.60beta Public-Beta Release</a></b> 
+		(<i>tbd</i>).&nbsp;&nbsp; The 0.60beta release will be a full 
+		roll-up and replacement of the source-code and test tree.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="0.70beta" href="d061201j.htm">0.70beta Packaging</a></b> 
+		(<i>tbd, tentative</i>).&nbsp; Following initiation of the 0.60beta 
+		public-beta release, the packaging (including documentation) and 
+		deployment of ODMJNI are improved so that it is easier to install and 
+		confirm as part of a production Java application.&nbsp; There will be 
+		bug fixes and hardening of the code.&nbsp; The code tree is replicated 
+		on SourceForge and the project history and materials are fully public.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="0.80beta" href="d061201k.htm">0.80beta Refactoring</a></b> (<i>tbd, tentative</i>).&nbsp; Along 
+		with maintenance and any bug fixes, this release includes a major 
+		refactoring of the Java native implementations in odmjni100 to exploit a 
+		significant improvement and restructuring of <b><font face="monospace">OdmNative100</font></b> interfaces and 
+		code.&nbsp; There is continuing improvement of regression tests and 
+		sample applications begin to take form.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="0.90beta" href="d061201l.htm">0.90beta Hardening</a></b> (<i>tbd, tentative</i>).&nbsp; This stage 
+		is devoted to maintenance and hardening of the code, especially with 
+		regard to the threat surface, defensive programming, stress cases, and 
+		preparation for the equivalent of &quot;Works on Vista&quot; certification.&nbsp; 
+		All FIXME entries in the code are addressed and all XXX entries 
+		reviewed.&nbsp; There will also be experiments to reduce the code 
+		foot-print, reduce the dependency surface, and separate out the 
+		improvements to ODMA headers and the <b><font face="monospace">OdmNative100</font></b> libraries that are 
+		re-usable elsewhere.&nbsp; 
+		The documentation is updated and the comments in the code are 
+		streamlined for use with JavaDoc and other documentation tools.&nbsp; We 
+		declare code complete (this is RC1) and await confirmation that there 
+		seem to be no bugs.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="1.00" href="d061201m.htm">1.00 Certification</a></b> (<i>tbd, tentative</i>).&nbsp; 
+		This is the version that is declared suitable for production use.&nbsp; 
+		The DLLs and JAR files are signed, attestations concerning the tests and 
+		source codes are collected, and we are under serious change control.&nbsp; 
+		The bug reporting and feature request system is fully operational, there 
+		is a trustworthy support spiral that provides for easy tracking and 
+		announcements of importance to adopters and their users.</li>
+	</ul>
+	<p>Any further development and deployments will be under new post-1.0 
+	projects.&nbsp; It is already assumed that the <b><font face="monospace">OdmNative100</font></b> elements will be 
+	flexed into a full-up documented deliverable that will also provide a common 
+	foundation for an ODMNET 1.0 Bridge for ODMA-aware .NET application 
+	programs.</p>
+</blockquote>
+<h2 align="left"><a name="3" target="_top" href="#3">3</a>. <a name="Materials">Available Material</a></h2>
+<ul>
+	<li><b>d061201b: <a href="d061201b.htm">ODMJNI 1.0 Deployment 
+	[latest]</a></b><br>
+&nbsp;&nbsp; </li>
+	<li><b>d061201m: <a href="d061201m.htm">ODMJNI 1.0 1.00 Certification 
+	Release</a></b></li>
+	<li><b>d061201l: <a href="d061201l.htm">ODMJNI 1.0 0.90 Beta Hardening 
+	Release</a></b></li>
+	<li><b>d061201k: <a href="d061201k.htm">ODMJNI 1.0 0.80 Beta Refactoring 
+	Release</a></b></li>
+	<li><b>d061201j: <a href="d061201j.htm">ODMJNI 1.0 0.70 Beta Deployment 
+	Release</a></b></li>
+	<li><b>d061201i: <a href="d061201i.htm">ODMJNI 1.0 0.60beta Public Beta 
+	Release</a></b></li>
+	<li><b>d061201h: <a href="d061201h.htm">ODMJNI 1.0 0.5x beta 
+	Function-Stabilization Updates</a></b></li>
+	<li><b>d061201g: <a href="d061201g.htm">ODMJNI 1.0 0.50beta 
+	Feature-Complete Release</a></b></li>
+	<li><b>d061201f: <a href="d061201f.htm">ODMJNI 1.0 0.40alpha Document-Update 
+	Features</a></b></li>
+	<li><b>d061201e: <a href="d061201e.htm">ODMJNI 1.0 0.30alpha Document-Access 
+	Features</a></b></li>
+	<li><b>d061201d: <a href="d061201d.htm">ODMJNI 1.0 0.25alpha API Regression 
+	Check</a></b></li>
+	<li><b>d061201c: <a href="d061201c.htm">ODMJNI 1.0 0.20alpha End-to-End 
+	Confirmation</a></b><br>
+&nbsp;&nbsp; </li>
+	<li>
+	<p align="left"><b>d061201a: <a href="d061201a.htm">Diary &amp; Job Jar</a></b><p align="left"><b><i>see also</i>:</b><ul>
+	<li>
+	<p align="left"><b>d061001: <a href="../10/d061001.htm">
+	info.odma.practical100 Component Development</a></b></li>
+	<li>
+	<p align="left"><b>d061101: <a href="../11/d061101.htm">info.odma.odmjni100 
+	Java-OdmNative Bridge</a></b></li>
+	<li>
+	<p align="left"><b>d061003: <a href="../10/d061003.htm">OdmNative100 
+	ODMA-Access Implementation</a></b></li>
+</ul>
+
+
+	</li>
+</ul>
+
+
+<h2>References and Resources</h2>
+<blockquote>
+	<p align="left"><font color="#800080"><b>{Material to be supplied.}</b></font></p>
+</blockquote>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.12">0.12</a> 2008-03-31-12:42 Link All Planned Stages</b></dt>
+<dd>The 0.80 through 1.00 stages are created and linked, using placeholders that 
+are ready for accumulation of more material as it is recovered from notebooks 
+and noticed while working on earlier stages.</dd>
+<dt><b><a name="0.11">0.11</a> 2007-10-15-13:47 Link In 0.70 Deployment Release</b></dt>
+<dd>The deployment-release page is created for collection of developer notes in 
+advance of reaching that stage.&nbsp; Minor text improvements are made.</dd>
+<dt><b><a name="0.10">0.10</a> 2007-08-24-17:38 Repaving Complete</b></dt>
+<dd>Adjustments are made for consistency with the 0.59beta effort.&nbsp; This 
+page is reviewed and correct in satisfaction of Repaving Project requirements.</dd>
+<dt><b><a name="0.09">0.09</a> 2007-07-13-20:11 Reflect Split of 0.5x beta 
+updates from 0.60beta</b></dt>
+<dd>0.60beta is separated as a clean release with the 0.5x beta updates confined 
+to a separate page.</dd>
+<dt><b><a name="0.08">0.08</a> 2007-03-18-18:28 Adjust for 0.60beta Redefinition</b></dt>
+<dd>The progression and some nomenclature around the 0.60beta progression have 
+been changed.&nbsp; The mentions here are updated to correspond to the changes 
+at d061201h 0.07.</dd>
+<dt><b><a name="0.07">0.07</a> 2007-02-08-15:03 Bring current with 0.60beta 
+activity</b></dt>
+<dd>The 0.50 beta stage is complete.&nbsp; The narratives and timelines are 
+filled in.&nbsp;&nbsp; The in-progress 0.60beta is connected and the tentative 
+progression to 1.00 is summarized.</dd>
+<dt><b><a name="0.06">0.06</a> 2007-01-14-17:18 Tie in 0.50beta Initiation</b></dt>
+<dd>The 0.40alpha stage is complete and also requires narrative here.</dd>
+<dt><b><a name="0.05">0.05</a> 2007-01-11-20:32 Reflect 0.30alpha Preservation 
+and 0.40alpha Initiation</b></dt>
+<dd>The pages are linked from the Available Materials.&nbsp; Further narrative 
+is required.</dd>
+<dt><b><a name="0.04">0.04</a> 2006-12-20-14:18 Reflect 0.25alpha Preservation</b></dt>
+<dd>The interim API Regression Check is preserved before going on to enable the 
+functionality to be activated in the 0.30alpha distribution.</dd>
+<dt><b><a name="0.03">0.03</a> 2006-12-07-21:14 Reflect 0.20alpha Distribution</b></dt>
+<dd>The 0.20alpha stage of the progression is summarized, with connection to the 
+download page.</dd>
+<dt><b><a name="0.00">0.00</a>  2006-12-05-19:04 create&nbsp;placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="../../../devNotes/tBlzT8bS/12/d061201a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; The first step is to provide alpha-level distributions for 
+	initial integration trials and testing with production DMS integrations.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%">
+      <p><a href="index.htm" target="_top">
+		<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2006-11-09-13:48 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 82 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

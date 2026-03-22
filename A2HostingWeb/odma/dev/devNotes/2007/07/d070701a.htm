@@ -1,0 +1,918 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d070701a: ODMJNI 1.0 Public Beta - Diary &amp; Job Jar </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2007/07/d070701a.htm 67    13-08-22 12:53 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="12%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="69%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d070701"><font color="#990033">d070701</font></a><br>
+      	</font></strong>
+</font>
+
+  <font color="#990033"><strong>&nbsp;<a href="d070701.htm"><font color="#990033">ODMJNI 
+1.0 Public Beta</font></a><br>
+      <em><big><big>Diary &amp; Job Jar</big></big></em></strong></font></p>
+    </td>
+    
+    <td width="17%" height="6">
+
+      <small>
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font face="monospace"><p align="right"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br />
+      <a href="../">2007</a>&gt;<a target="_top" href="./">07</a>&gt;</b></p>
+      <p align="right"><b><a target="_top" href="d070701a.htm">d070701a</a>&gt;</b></font><br />
+</font><small>
+		<a href="#0.02">0.02</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<div align="center">
+  <center>
+  
+  <table border="2" width="100%" bordercolor="#990033" bordercolorlight="#CC0066" bordercolordark="#800000" bgcolor="#FFFFFF">
+    <tr>
+    <big>
+      <td width="11%" align="center"><p><i><b>S<span style="font-variant: small-caps">tatus</span></b></i></p></td>
+      <td width="11%" align="center"><p><i><b>D<span style="font-variant: small-caps">ate</span></b></i></p></td>
+      <td width="78%" align="left">
+        <p align="center"><i><b>D<span style="font-variant: small-caps">escription</span></b></i></p>
+      </td>
+      </big>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-11-10</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Introduce caveat about using the same checks for both 
+		null and odmjni100 in the 0.59 release.&nbsp; Tie to the business about 
+		making the least change that can work until we can come through again 
+		and look closer for 0.60.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-10-03</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Review the daily tracking reports for more notes relevant 
+		to the Developer diary.&nbsp; I will need to use follow-up check-offs 
+		for reviewed items, delete unnecessary history (keeping key pieces, 
+		etc.).</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-09-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d070701e: Now may be a good time to point out that any 
+		64-bit development of OdmNative100 and ODMA Connection Managers can be 
+		expected to be quite different and the ODMA Win32 API is unlikely to 
+		survive.&nbsp; There needs to be an ODMA.info FAQ on the 64-bit 
+		prospects. [dh:2007-10-10 I wonder about which way there is 
+		interoperability too, including from 32 to 64 and 64 back to 32.&nbsp; 
+		There will also be WoW for a while, and that will matter.&nbsp; I don't 
+		know what those arrangements will be and how they will work out.&nbsp; 
+		Ditto across virtual machines on the same computer.][dh:2007-10-31 There 
+		is now a folio for this along with some other stages in the 
+		progression.][dh:2007-11-12 I have posted &quot;How About That ODMA64?&quot; and 
+		created a folio for it.&nbsp; The concerns here need to be reflected in 
+		the new folio.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCFF99">
+		<font size="2"><b>in progress<br>
+		2007-09-29</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCFF99"><b><small>2007-09-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCFF99">
+        <font size="2">d070701d: Review my notebook as I go back for items, 
+		looking for material to include in the Developer Notes here and in the 
+		other parts. <b>&nbsp;[dh:2007-10-03 At #59.25 now.]</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-07-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d070701: Link to the Programmer Reference when available</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-07-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d070701: Link to the Guide when updated</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2007-07-27</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d070701: Link to the project page when removed from 
+		embargo.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.14<br>
+		2007-11-12</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-11-10</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Add desire for separate OdmDocumentProperties to be kept 
+		on a separate interface that may also be used in administrative 
+		operations that do not require an open document.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.06<br>
+		2007-11-10</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-31</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701: Reflect the creation of a Confirmation Testing 
+		folio as part of this activity</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.09</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-31</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Reflect the final status of pass -1 and 
+		insights about the changes</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.01</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701e: Add apprehensions around regression checks 
+		and completion of regression at the 0.60 drop.&nbsp; There does need to 
+		be a related folio just on testing.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.07</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: add the table for tracking spirals and track 
+		through the completion of the Format exception elimination.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.06</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-13</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Reflect the way that I seed the 0.59 
+		regression sets with provisional clones of the pre-0.59 sets.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.00<br>
+		2007-10-10</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701e: Ways to allow most customization to be 
+		accomplished by inheritance on practical100 and odmjni100 classes may 
+		require some adjustment in the inheritance of the native implementations 
+		in odmjni100.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.00<br>
+		2007-10-10</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701e: Include ruminations on how to rely on 0.60 and 
+		also what are the safest ways to make variants that can still take 
+		advantage of the improvements that occur in the progression to 1.0.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.05</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-10</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701: Include d070701e, update VSS to share 
+		everything, and update the catalog to reflect the new version</b></font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.00<br>
+		2007-10-10</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701e: Include developer notes on the choice of name 
+		and on the intention with regard to future releases through 1.00.&nbsp;
+		</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.00<br>
+		2007-10-10</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701e: Create as initial placeholder for 0.60 and also 
+		describe what it will be and why it is called the 0.60 Stable Candidate.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-10</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Reflect more of my angst on the regressions and how I 
+		need to play at getting the structures more or less right but then it 
+		will matter more for the 0.59/0.60.&nbsp; Now, some of the pre-0.59 
+		regressions might continue as 0.59/0.60 regressions, but that is handled 
+		better when we know for sure.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-09</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701d: Reflect change to <font face="monospace">
+		OdmPackage100</font> as needed. -- No changes were needed.</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-07</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Correct some font usage and a typo in one of the 
+		developer notes.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-07</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Add note about the motivation to go from OdmFormat 
+		static methods to the OdmFormatCheck interface.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.04</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Note the initiation of odmjni100 0.59 development too.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.04</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Reflect the noticing and election of a 
+		zigzag approach for changing the two packaging and evolving the 
+		confirmation tests.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.04</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Add note about the end-game and having the regression 
+		sets ship as part of the package set for confirmation and test use there 
+		by people who never put their hands on the source code.&nbsp; This needs 
+		to be reflected in d061001 and d061101 too.&nbsp; We won't do this with 
+		OdmNative100 because that is technically a deliverable from a parallel 
+		project effort (which will eventually have its own packaging and 
+		deployment, with similar unit and package regression checks).</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.03<br>
+		2007-10-03</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-16</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Add discussion about testing, lying awake, 
+		thinking about how to work regression-set transition, etc.&nbsp; [See 
+		#59.25]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.03<br>
+		2007-10-03</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-02</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Add commentary on the changes made concerning 
+		notChangeable() and transferToNewDocument.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.03<br>
+		2007-10-03</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-02</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Make changes from proof-reading of the printed 
+		version on the bus and the evening of 2007-10-01.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-10-02</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: fix the &quot;see also:&quot; to have agreement in 
+		number in the last sentence make it &quot;in later stages&quot;</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-10-01</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Show 3.2 as started.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701: Commit this folio and interim backups of all 
+		other in-progress materials for backup and for testing of the pages.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.04</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Make 0.04 when the 0.59beta setup is 
+		complete, reflecting it in the catalog.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.03</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701c: Make 0.03 to reflect adjustments for the 
+		current 0.59beta approach</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done 0.02<br>
+		2007-09-29</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-16</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Expand on information for the 0.59 beta 
+		candidate.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>updated<br>
+		2007-09-29<br>
+		done<br>
+		2007-08-23</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <div align="center">
+			<!--webbot bot="Include" U-Include="../../../construction/2007/07/c070701c3.htm" TAG="BODY" startspan -->
+		<table border="3" width="80%" bordercolor="#006600" id="table1">
+			<tr>
+				<td>
+				<blockquote><small>
+					<p align="left"><b><font color="#006600"><br>
+					The Content Material here was successfully repaved as part of the
+					</font><font color="#800000">
+					<a href="../../../construction/2007/07/c070701c.htm"><font color="#006600">2007-07-24</font></a></font><font color="#006600"> stage of the 
+					</font><font color="#800000">
+					<a href="../../../construction/2007/07/c070701.htm"><font color="#006600">Site Repaving Project</font></a></font><font color="#006600">.&nbsp; Check those
+					pages for additional details of the approach to correction and upgrade.&nbsp; </font> </b>
+					<font color="#006600"><b>Contact the&nbsp;
+					</b></font><b>
+					<a target="_top" href="http://odma.info/contact.htm"><font color="#006600">ODMA 
+					Technical Coordinator</font></a></b><font color="#006600"><b> with questions and to 
+					report any subsequent defects that you notice.</b></font></p></small>
+				</blockquote>
+				</td>
+			</tr>
+			<!-- Included from ODMdev construction/2007/07/c070701c3.htm of 2007-08-14-09:57 -->
+		</table>
+	<!--webbot bot="Include" endspan i-checksum="59171" --></div>
+		</td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701: Retrofit the anchor-block changes here, so 
+		that new pages don't require them: d070701, d070701a, d070701c, d070701d</b></font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Change to Public Transition Candidate and 
+		explain the nomenclature</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Change the link to d070701d to reflect the 
+		transition candidate designation</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-09-24</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Link to the d061001h page for where the details 
+		are hammered out, when that page is there.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-09-24</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: I need a folio that tracks development within 
+		OdmDeploy and accounts for packaging and its management and further 
+		development.&nbsp; This doesn't go in the deployment folio which is 
+		really just about how these are pulled into the top-level full-source 
+		distributions.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-09-24</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701d: Add 0.59-stage pages to the practical100 
+		(d061001), odmjni100 (d061101) for the activities here.&nbsp; </b> </font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Permalink the summary and explain the 
+		testing and other confirmation aspects for 0.59beta.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-09-16</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>
+		2007-07-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Create &quot;What is ODMJNI&quot; as an engineered document under 
+		the ODMA FAQ.&nbsp; It will be carried in the ActiveODMA section and it 
+		will be absolute-linked from this material as &quot;See also:&quot;&nbsp; Link to 
+		it when available.&nbsp; It can also be linked from the ODMA Products 
+		page.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-16</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Second paragraph - Make it clear about 0.60 
+		being ready for trial use in production.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-09-16</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Link up to the What Is ODMJNI page of the 
+		ODMA ActiveODMA section.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d000001: Update the catalog to reflect the newest 
+		version of this material</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Include d070701d in the available materials</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701c: Link to d070701d as future version (leave as 
+		the currently-available material though)</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Almost forgot: Explain removal of unchecked 
+		exceptions for format violations.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-08-23</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Include the rationale for the new approach to 
+		OdmFormatCheck interface and replacement of the OdmFormat object.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-08-23</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701d: Include the rationale for the new structure of 
+		the interfaces leading up to OdmWorkingDocument.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done<br>
+		2007-08-23</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <small>d070701d: Mark 0.59beta as the candidate.&nbsp; It is 
+		to be the 0.60 public beta &quot;candidate&quot; and provide all of the interface 
+		changes, preserving deprecated elements where necessary, prior to the 
+		full-up 0.60 with any fixes, removal of depracated elements, and 
+		addition of necessary documentation and guidance for a beta.</small></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-23</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701d: Adopt the d061001g style for version 
+		progression.&nbsp; This should be part of the model everywhere now.</font></b></td>
+    </tr>
+    
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Review this folio and conform to the repaving project: 
+		d070701, d070701a, d070701b, d070701c</b></font></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">When this folio conforms, check off the index.htm 
+		also.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF">
+		<font size="2"><b>done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-22</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">When the repaving is complete, reflect in the catalog</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-08-01</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Review for appropriate use of &quot;Java-ODMA Integration 
+		Kit&quot; d070701, d070701c</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.01</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Reflect version 0.01 in the devNote catalog</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done 
+		0.01</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-27</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d070701: Add content for preview visitors.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701c: Find a way to draw a border around the 
+		version-progression information</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>d070701b: Verify correct inclusion of d070701c.</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-25</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d070701c: Describe the 0.58beta preview materials</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-15</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Share the new 2007/07 folder with the hosted-site image</font></b></td>
+    </tr>
+    
+  </center>
+  <center>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+  </center>
+  
+  <center>
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>done</small></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2007-07-15</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Make bare placeholders of a minimum folio before 
+		populating further: d070701, d070701a, d070701b, 
+		d070701c.</b></font></td>
+    </tr>
+    <tr>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>done</small></b></td>
+      <td width="11%" align="center" valign="top" style="background-color: #CCCCFF"><b><small>2007-07-15</small></b></td>
+      <td width="78%" valign="top" style="background-color: #CCCCFF"><b><small>Create
+        this folio placeholder as a 
+		place for the preview work items.</small></b></td>
+    </tr>
+  </table>
+  
+  </center>
+</div>
+<dl><small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.02">0.02</a> 2007-10-03-15:30 Tracking 0.59beta</b></dt>
+	<dd>The 0.59 beta development is underway and the different components are 
+	being worked on for later integration and availability here.</dd>
+	<dt><b><a name="0.01">0.01</a> 2007-08-22-20:24 Conform to Repaving Project</b></dt>
+	<dd>Repaving of this page and the folio are undertaken, along with 
+	preparation for 0.59beta.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-07-15-19:44 Create Initial Placeholder</b></dt>
+<dd>This diary and job jar is created to provide immediate capture of job-jar 
+items for this folio.</dd>
+		</small></dl>
+		
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top" rel="nofollow">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../../2006/01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="36747" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-07-15-19:44 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 67 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

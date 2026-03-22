@@ -1,0 +1,723 @@
+d061001f-PreReleaseNotes.txt 0.06    UTF-8                    dh:2007-02-22
+
+                               PRE-RELEASE NOTES
+
+          info.odma.practical100 Component Development 0.30alpha
+          ------------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061001f.htm>.
+
+
+   The ODMJNI 1.0 0.30alpha distribution is provided to accomplish four
+   important steps in the progression to full ODMJNI 1.0:
+
+     1. Confirmation of the selection and retrieval of managed documents
+        by a Java-based ODMA-aware application operating from an ODMA
+        DMS integration.
+
+     2. Improvements in the packaging for construction and for use of ODMJNI
+        components.
+
+     3. Upgrade of the practical100 API to support all retrieval of ODMA
+        documents by Java-based applications using ODMJNI.
+
+     4. Incidental improvements and additional features that provide for
+        greater reliability in ODMA-aware operations of Java-based
+        applications.  These are added on an opportunistic basis with the
+        intent of having all such features present by the 0.50beta release.
+
+   The changes made for the 0.30alpha stage of the info.odma.practical100
+   Component Development contribute to steps (3-4).
+
+
+   CONTENT
+
+     1. Breaking Changes
+        1.1 Specifying document format for new documents
+        1.2 Document Format Name strings
+        1.3 ODMJNI 1.0 approach to underspecified ODMA behaviors
+        1.4 OdmInterface.availableConnection now OdmInterface.available
+        1.5 openKnownDocument null behavior is null (failed) document ***
+            *** corrected 2007-02-22 ***
+     2. Deprecated Classes and Methods
+     3. New Classes and Interfaces
+        3.1 OdmNullBind
+        3.2 OdmFormat
+        3.3 OdmError
+     4. Additional Methods
+        4.1 viewOnly
+        4.2 Additional new methods
+     5. Deployment and Testing Improvements
+        5.1 Deployment
+        5.2 Testing improvements
+        5.3 Validations and hardening of interfaces
+     6. Treatment of Locale-Specific Text
+     7. Integration in Application GUI Behavior
+     Copyright Notice
+     Revision History
+
+
+1. BREAKING CHANGES
+
+   1.1 Specifying Document Format for New Documents
+
+   The OdmConnection.acceptNewDocument method requires the specification of
+   a document format parameter.  The type of the method is now
+
+        OdmPendingDocument
+            acceptNewDocument(java.lang.String docFormatName)
+
+   It is an unrecoverable program error for an improperly-formatted
+   docFormatName string to be provided.  An unchecked exception will be
+   thrown if the format requirement for docFormatName strings is not
+   satisfied.  (In alpha versions, the operation may silently fail.
+   Improperly-formed strings will never be passed through the ODMA API.)
+
+   For applications that obtain ODMA Document Format Name values from
+   external sources, there will be a format verification method that can be
+   used to ensure that the docFormatName parameter is well-formed prior
+   to making an acceptNewDcoument request.
+
+   This change will be in effect for the ODMJNI 1.0 0.30alpha distribution.
+   An intermediate 0.25alpha regression check of odmjni100 will confirm
+   operation of the 0.20alpha behavior using these new interfaces.  It is
+   recommended that Java GUI developers switch to using the updated classes
+   at that time simply to avoid difficulties with 0.30alpha and beyond.
+
+
+1.2 Document Format Name Strings
+
+   The ODMA specifications identify a variety of ways that the format of
+   documents can be conveyed to an ODMA-integrated DMS.  In general, ODMA
+   is underspecified in this area.  (See ODMA 2.0 section 1.5 at
+   <http://odma.info/downloads/odma20-3.htm#DocumentFormatNames>).
+
+   For ODMJNI 1.0, only one name format is accepted, that of the file
+   extension to be used on document files exchanged between the ODMA-aware
+   application and the ODMA-integrated DMS:
+
+        a.  The first character of the string is a "." (full-stop or
+            period character, '\u002E')
+
+        b.  There are one or more additional characters that make up the
+            filename extension.  These characters must be from the following
+            subset of the available string characters:
+
+                26 letters 'A' to 'Z' ('\u0041' to '\u005A')
+                26 letters 'a' to 'z' ('\u0061' to '\u007A')
+                10 digits '0' to '9' ('\0030' to '\0039')
+
+            Spaces and special characters are not permitted in extensions
+            specified to ODMJNI.
+
+        c.  On the Windows platform, extensions are not case sensitive.
+            A single preferred capitalization should be used in those
+            Document Format Name strings that are communicated to ODMJNI
+            from the application.
+
+        d.  Although a Document Format Name may be quite lengthy (up to
+            80 characters), the common file extensions have names with few
+            characters (3-4, typically).
+
+   Individual Document Management Systems may have additional limitations
+   on the document format names that are accepted.  Although lengthier
+   file-name extensions are now coming into use, an ODMA-compliant DMS may
+   not have been designed to accept more than three characters.  It is
+   necessary to verify the limitations of each DMS on a case-by-case basis.
+
+   In addition, lengthy Document Format Names subtract from the overall
+   file path name available for working-document locations shared between
+   the application and the ODMA-integrated DMS.
+
+   A DMS may use other formats in the filenames that it returns for the
+   location of documents made available to the application.  The ODMJNI
+   restriction does not apply to the DMS, only to the application in
+   identifying the extension it uses and accepts as a Document Format Name.
+   This leads to the interesting situation where a DMS may report Document
+   Format Names that an ODMJNI 1.0 application is not permitted to use.
+
+
+1.3 ODMJNI Approach to Underspecified ODMA Behaviors
+
+   [This will be covered in the Guide & Usage Scenarios at some point. It
+   is useful to understand the approach now.]
+
+   There are many aspects of interoperation between ODMA-aware applications
+   and ODMA-compliant DMS integrations that are underspecified for ODMA.
+   This was especially true for ODMA 1.0, where there was explicit recog-
+   nition that there might be considerable out-of-band agreement required
+   between the providers of applications and DMS integrations in order to
+   achieve interoperation.
+
+   Now, ten years later, ODMJNI takes the other extreme.  For basic ODMA-
+   awareness of straightforward document applications, the practical100
+   classes and interfaces prescribe clear-cut behavior and strong format
+   requirements.  The restriction to a single case for the Document Format
+   Names is an example of the certainty that these interfaces and their
+   implementations impose.  The enforcement of formats and rejection of
+   deviations as application failures that cause unchecked exceptions
+   emphasizes the rejection of the deviations as serious bugs.  It is not
+   possible to "tunnel through" the ODMJNI APIs to accomplish an out-of-band
+   arrangement with an ODMA-integrated DMS.
+
+   How can we get away with this?
+
+   First, every restricted case that applies to ODMJNI is consistent with
+   the well-established behavior of Microsoft Office releases since Office
+   98 (and have been confirmed with the 2007 Office System).  Microsoft
+   Office Word is the de facto benchmark case for behaviors that DMS
+   integrations are called upon to match.  The practical100 interfaces for
+   ODMJNI live under that umbrella.
+
+   Secondly, ODMJNI is a reference case, and it is focused on maximum
+   interoperability with the simplest-possible demands on ODMA-aware
+   applications.  This allows the complexity of the ODMA API, the under-
+   specified behaviors/formats, and breaking differences between versions
+   of ODMA to be removed from the application developer's concern.
+
+   Finally, ODMA was intended to be useful in situations where there might
+   be mated applications and DMS integrations that implement special out-
+   of-band arrangements as part of custom configurations.  The reliance on
+   ODMA as an integration layer is to permit other applications and DMS
+   productws to be integrated as well, but not so tightly.  The practical100
+   interfaces do not support such arrangements.
+
+   There is no intention to broaden the applicability of ODMJNI 1.0 and the
+   practical100 interfaces.  The software is fully available for modifica-
+   tion for such purposes without requiring that ODMJNI 1.0 itself be
+   extended to support of such custom arrangements.  So long as practical100
+   covers the essentials for basic desktop document applications, ODMJNI 1.0
+   will present strict interface contracts and rigorously enforced formats
+   and protocols.
+
+
+1.4 OdmInterface.availableConnection is now OdmInterface.available
+
+   The interface method OdmInterface.availableConnection is renamed
+   OdmInterface.available.  This applies to the OdmConnection interface and
+   all other interfaces that extend OdmInterface (OdmDocument,
+   OdmWorkingDocument, etc.)
+
+   This change is not because the method name is so wordy (although it is).
+   It is a stretch to refer to it as being about a connection when it is
+   about the availability of ODMA to the application.  The change is to
+   simplify the explanation and description of usage rules.
+
+   The change has been made to this text. The impact on the comments on
+   practical100 interface methods also reveal the value of this simplifica-
+   tion.
+
+
+1.5 OdmConnection.openKnownDocument Null Behavior Is Null Document
+
+   [UPDATE 2007-02-22: Although it was intended to throw an exception
+    when OdmConnection.openKnownDocument(String docId) is inappropriate
+    (e.g., when OdmConnection.available() is false, that approach has not
+    been implemented.  Instead, a failed Working Document is returned.
+
+    There are other places where an exception is warranted, but in this
+    case there is no explosion of null documents because OdmConnection has
+    a cache of null-document cases and never creates a null-document for
+    the same condition (e.g., failed) more than once.  In fact, all methods
+    of OdmConnection that return interfaces to documents return null-
+    document implementations for a null OdmConnection.  However the null-
+    document implementations do not allow document-producing operations and
+    those will throw exceptions if their false operationSucceeded() results
+    are ignored by the application.
+
+    This is the behavior that was not implemented:
+
+    "The interface method OdmConnection.openKnownDocument(String docId) null
+     behavior is to throw an OdmError exception, not returning a null
+     OdmWorkingDocument.  It is an error to perform this operation when
+     OdmConnection.available() is false.
+
+    "That behavior also serves to prevent ridiculous explosion of null
+     documents by performing document-creating methods on what are already
+     null documents and null connections."
+    ]
+
+
+2. DEPRECATED CLASSES AND METHODS
+
+   The class info.odma.practical100.OdmNullConnection will not be public
+   when the 0.40alpha release occurs.  Its constructor will not be available
+   for implementing the practical100.OdmConnection interface.
+
+   [UPDATE 2007-01-10: The class will remain public for subclassing in
+    odmjni100 classes, but the constructor will not be public.  This change
+    will be made post-0.50beta.]
+
+   The current use of OdmNullConnection should be replaced by the
+
+        info.odma.practical100.OdmNullBind.application("myApplication")
+
+   method.  This method returns an OdmConnection interface when successful.
+   It is available as part of 0.30alpha.  It is recommended that the
+   second form be substituted as soon as possible.
+
+   This change is introduced to match the standard ODMJNI initialization
+   operation:
+
+        info.odma.odmjni100.OdmJniBind.application("myApplication")
+
+
+3. NEW CLASSES AND INTERFACES
+
+3.1 OdmNullBind
+
+   The class info.odma.practical100.OdmNullBind has a single public static
+   method of type,
+
+        OdmConnection
+            application(String appID)
+
+   where the appID string is used to identify the Java application to ODMA
+   and any ODMA-compliant DMS installed on the system.  (See section 2 for
+   the use of this method.)
+
+
+3.2 OdmFormat
+
+   [UPDATE 2007-01-10: This is the direction that will be taken.  The
+    implementation of the OdmFormat class is deferred to post-0.50beta
+    stabilization activity.]
+
+   The class info.odma.practical100.OdmFormat has public static methods
+   that may be used to verify that a particular kind of ODMA string
+   parameter is in the correct form.  The methods that will be available
+   as part of the 0.30alpha release are
+
+        boolean OdmFormat.wfAppId(java.lang.String appId);
+                    /* determine whether appId is well-formed as an
+                       ODMA Application ID acceptable to ODMJNI
+                       */
+
+        boolean OdmFormat.wfDocFormatName(java.lang.String docFormatName);
+                    /* determine whether docFormatName is well-formed as
+                       an ODMA Document Format Name acceptable to
+                       ODMJNI
+                       */
+
+   [Preliminary list: Additional formats for strings that can be specified
+    to ODMJNI will be added as their usage is introduced.  The use of "wf"
+    for well-formed is intended to separate out verification of the format
+    as opposed to validation of the the string as a known identifer of some
+    form.]
+
+
+3.3 OdmError
+
+   [UPDATE 2007-01-10: Although this class is used and there are a few
+    places where exceptions will be thrown, most of the checks that are
+    defined in the interface definitions are implemented by silent return
+    of a null case.  This will continue until post-0.50beta stabilization
+    is undertaken.]
+
+   The class info.odma.practical100.OdmError is an exception class for
+   unchecked exceptions that may be thrown by methods on various ODMJNI
+   classes.  It is a subclass of java.lang.Error.  A thrown OdmError
+   exception will contain a detail message with technical information about
+   the cause of the exception.
+
+   ODMJNI classes do not throw exceptions as a means of communication with
+   the application.  ODMJNI does not throw exceptions from the Java native
+   method implementations (although the Java Virtual Machine may do so).
+   There are also no Microsoft Windows exceptions thrown from OdmNative100
+   software used to bridge between odmjni100 and ODMA.  (Occurrence of such
+   an exception is an ODMJNI defect and should be reported as a bug against
+   ODMJNI, the ODMA Connection Manager, or the DMS integration, depending
+   on the apparent origin of the error report.)
+
+   When guarding against ill-formed parameters, ODMJNI java methods will
+   throw unchecked exceptions.  These exceptions always indicate a failure
+   of the application software.  There is no meaningful remedial behavior on
+   the part of the application program or the user.
+
+   All cases of OdmError exceptions can be avoided by validating parameters
+   using OdmFormat methods and by avoiding inadmissable operations on null
+   connections and null documents.
+
+
+3.4 OdmViewingDocument
+
+   The info.odma.practical100.OdmViewingDocument interface is a new
+   interface that is added to the practical100 interfaces.
+
+   OdmViewingDocument extends OdmDocument.
+
+   In 0.30alpha, the existing OdmWorkingDocument interface will extend
+   OdmViewingDocument.  All of the currently-defined (0.20alpha)
+   OdmWorkingDocument methods will be inherited from OdmViewingDocument.
+
+   This refactoring does not impact the current use of OdmWorkingDocument,
+   including the delivery of OdmWorking document interfaces from the
+   OdmConnection.chooseDocument and OdmConnection.openKnownDocument methods.
+
+   Application developers can ignore this intervening extension of
+   OdmDocument without consequence.
+
+   The new interface can be used within applications as a parameter to
+   methods that do not require the ability to alter a document.  When a
+   delivered OdmWorkingDocument interface is for a viewOnly document, all
+   methods but those of the OdmViewingDocument interface provide null
+   behavior.
+
+
+4. NEW METHODS
+
+4.1 viewOnly
+
+   The info.odma.practical100.OdmWorkingDocument interface has a new
+   method, viewOnly (inherited from OdmViewingDocument) that returns a
+   boolean value.
+
+   When OdmDocument.viewOnly() is true, the document is not checked out for
+   modification and no changes will be accepted by the DMS.
+
+   When OdmDocument.viewOnly() is true, the document should be displayed
+   as if it is stored on the file system as a read-only document, whether
+   it is or not.
+
+   A viewOnly document can still be saved as a new document, whether in the
+   local file system or to a DMS.  The DMS from which the document is
+   retrieved might also permit the equivalent of a Save As ... operation
+   in making a new managed document derived from the first.
+
+
+4.2 Additional New Methods
+
+   A number of methods are introduced for providing information about a
+   document that is available for viewing by the application.
+
+   The following additions are implemented by the OdmViewingDocument
+   interface:
+
+        java.lang.String
+            dmsAuthor()
+                /* returns the name of the document's author as know
+                   by the DMS.  Null behavior = null.
+                   */
+
+                [UPDATE 2007-01-10 This method is named dmsAuthor(),
+                 not dmsDocAuhor as documented previously.]
+
+        java.lang.String
+            dmsDocName()
+                /* returns the descriptive name for the document as
+                   recorded at the DMS.  Null behavior = null.
+                   Localization, if any, is the responsibility of the DMS.
+                   */
+
+        java.lang.String
+            dmsDocType()
+                /* returns a descriptive Document Type text for the
+                   document as recorded at the DMS.  Null behavior = null
+                   The dmsDocType() is not related to the format of the
+                   document but its application or use (invoice, pleading,
+                   memorandum, etc.)  Localization, if any, is the
+                   responsibility of the DMS.
+                   */
+
+        java.lang.String
+            dmsFormatName()
+                /* [UPDATE 2007-01-10 This function returns the Document
+                    Format Name used by the DMS as the name of the format
+                    of content for the document (delivered at docLocation).
+                    It is not necessarily a form that is acceptable for
+                    the application to supply as a Document Format Name.]
+
+        java.lang.String
+            windowTitle()
+                /* returns a DMS-suggested text description to include in
+                   the Window Title bar for any display of the document
+                   content.  Localization, if any, is the responsibility of
+                   the DMS.  Null behavior = null.
+                   */
+
+   See section 6 for discussion of the measures taken within ODMJNI to
+   correctly translate DMS-provided octet-string text to Java Unicode.
+
+   Any of the preceding methods can produce null behavior even when
+   dmsAvailable() is true for the document represented behind the
+   interface.  The information should then be treated as unknown or not
+   specified.
+
+   There are also practices that apply around what is to be displayed to
+   users and what should be kept internal to the application.
+
+        [UPDATE 2007-01-10:
+
+        OdmWorkingDocument
+            commitContent()
+                        throws OdmError
+                /* Is added to OdmPendingDocument for committing the
+                   content of a new document to to the custody of the
+                   DMS.  This operation can be performed at most once.
+                   After a commitContent() is performed the first time,
+                   docSubmissionLocation() and commitContent() will
+                   provide their null responses.  Null behavior = OdmError.
+                   */
+
+        OdmPendingDocument
+            transferToNewDocument(java.lang.String docFormatName)
+                        throws OdmError
+                /* Is added to OdmViewingDocument (and OdmWorkingDocument)
+                   to request transfer of the DMS version of this document
+                   to a new document, with interaction with the user as
+                   needed.  This operation has no impact on the state of
+                   the current document, and any number of new documents
+                   can be created in this way.  Null behavior = OdmError.
+                   */
+
+        boolean
+            commitChanges()
+                        throws OdmError
+                /* Is added to OdmWorkingDocument to request acceptance of
+                   changes that have been stored in a closed file at
+                   docLocation().  The result indicates whether or not the
+                   operation succeeded.  After every commitChanges(), the
+                   application must assume that all document properties,
+                   including docID() and docLocation(), have been changed.
+                   Null behavior = OdmError.
+                   */
+
+        These operations all have null implementations in the 0.30alpha
+        release and they will be enabled in the different releases up to
+        0.50beta.
+        ]
+
+
+5. DEPLOYMENT AND TESTING IMPROVEMENTS
+
+5.1 Deployment
+
+   For either 0.30alpha or 0.40alpha, a Jar file will be used for deploy-
+   ment of the info.odma.practical100 package.  This is for verification
+   of correct Jar construction and access, in anticipation of the production
+   level of deployment to be achieved by 0.50beta.
+
+   [UPDATED 2007-01-10 The Jar file is not introduced with 0.30alpha. The
+    current plan is to make packaging changes after the 0.50beta release.]
+
+
+5.2 Testing Improvements
+
+   By 0.50beta, it is desirable to have a more-thorough test of the null
+   implementation that is a potential default for every ODMJNI behavior.
+
+   The test should work with null and non-null implementations and confirm
+   the expected null behaviors that are predictable for given states of
+   connection.  The test should also confirm that a reset produces the
+   expected final state.
+
+   To accomplish this in different settings, the test software must be part
+   library and part application.  These improvements will be taken in
+   evolutionary steps.  Initial effort is desired in 0.30beta.
+
+   [UPDATED 2007-01-10 This and other hardening are deferred to the post-
+    0.50beta stabilization activity.]
+
+
+5.3 Validations and Hardening of Interfaces
+
+   The restrictions and requirements for parameters to ODMJNI operations
+   will be enforced more stringently.  These validations and the resulting
+   unchecked exceptions (sections 3.2 and 3.3) will be fully implemented by
+   the 0.50beta release.
+
+   [UPDATED 2007-01-10 These validations and hardening are deferred to the
+    post-0.50beta stabilization activity.]
+
+
+6. TREATMENT OF LOCALE-SPECIFIC TEXT
+
+   One of the most-seriously underspecified elements of ODMA is the
+   treatment of character codes and the preservation of locale-specific
+   choices of text characters.  Regardless of different statements made
+   on the subject in different versions of the ODMA specification, the
+   following continue to be the facts of the matter:
+
+        a.  Encoded text is transferred between ODMA-aware applications,
+            the ODMA Connection Manager, and ODMA-compliant DMS integrations
+            as sequences of single-byte (octet) character encodings.
+
+        b.  The specification of character buffer sizes as explicit and
+            implicit (e.g., ODM_APPID_MAX) values is in terms of the number
+            of octets.
+
+   ODMJNI only accepts application-supplied strings that are directly
+   translatable to ISO 646 7-bit printable character codes, the subset of
+   ASCII and Unicode Basic Latin that is coded in values ranging from
+   '\u0020' to '\u007e'.  Appropriate subsets of these codes are accepted
+   in the Windows Registry, as Windows file-system path names, and as ODMA
+   Document IDs without ambiguity.  ODMJNI enforces limitations within this
+   code set to ensure maximum interoperability with different locales and
+   in different language settings of ODMA applications and DMS systems.
+
+   With regard to text strings that are intended for human interpretation,
+   there must be greater accomodation of character sets beyond the limited
+   Basic Latin usage used at the software-coordination level.
+
+   ODMJNI does not accept internationalized, locale-specific text *from* the
+   Java-based application.  (This observation does not apply to document
+   files.  ODMJNI does not examine document files in any way and their
+   coding does not matter for ODMA.)
+
+   All entry of textual information that may be in the character code and
+   characters for a specific human language must be accomplished over
+   interfaces supplied by the DMS to the human operator.
+
+   In the case of information provided *by* the DMS, ODMJNI interprets texts
+   as encoded in the "standard character set of the system ... where ODMA is
+   being used."  (For the latest ODMA specification on this topic, see
+   <http://odma.info/downloads/odma20-3.htm#CharacterSets>).
+
+   The new functions that deliver human-readable text to the application
+   (section 4.2) incorporate heuristics that are intended to provide the
+   correct translation of extended character sets (such as ISO 8859-1,
+   Latin-1).  How well this achieves fidelity to the language used when
+   the text was originally supplied to the DMS will depend on how well
+   the ODMA-compliant DMS is sensitive to the code page and other settings
+   on the computer that is running the ODMA-aware application.
+
+   There is no assurance that the correct translation to Java's Unicode
+   will be achieved every time.  Improvements will depend on experience in
+   actual application settings.  We begin introducing conversion heuristics
+   in 0.30alpha so that there is time to experiment and make corrections
+   before 0.50beta is reached.
+
+   [UPDATED 2007-01-10: These improvements will not be started until after
+    the 0.50beta release, so that key application-integration provisions
+    can be tested earlier.]
+
+
+7. INTEGRATION IN APPLICATION GUI BEHAVIOR
+
+   The hierarchical progression for preservation of ODMJNI connection
+   context across GUI dialogs is extended for 0.30alpha (cf.
+   <http://info.odma/dev/devNotes/2006/12/d061201c-ReleaseNotes.txt>).
+
+    > OdmConnection is established in the startup of the application.
+
+      > If OdmConnection.available() is false, all document operations are
+        to be accomplished with local file operations only.
+
+      > If OdmConnection.available() is true, the OdmConnection should be
+        used before performing a local file-system operation (other than
+        Save on a document that was obtained from the local file-system).
+
+        > If OdmConnection.dmsDefaultAvailable() is false, all document
+          operations that would require a default DMS should be performed
+          using the local file file-system.
+
+        > If OdmConnection.dmsDefaultAvailable() is true, then operations
+          directed against a default DMS should be attempted before trying
+          the counterpart operation with the local file system:
+
+          [ ... ]
+
+          > OdmConnection.chooseDocument is used when the user indicates
+            a desire to access a document.
+
+            > An OdmWorkingDocument interface is returned in response
+              to ODMJNI and the user interaction with the DMS, if any.
+
+              > If OdmWorkingDocument.operationSucceeded() is true,
+                a document file has been delivered to an application-
+                accessible location for viewing and possible manipulation.
+
+                > If OdmWorkingDocument.viewOnly() is true, only those
+                  methods that are also defined for the OdmViewingDocument
+                  interface are meaningful.  All other methods provide
+                  null behavior.
+                  [ ***** THIS IS THE CASE IMPLEMENTED BY 0.30ALPHA *****
+                    The application is restrained to viewing functionality
+                    even if the DMS permits change to the document.]
+
+                  > The document file should be opened for reading and
+                    the user allowed to perform document operations as
+                    appropriate to the application.
+
+                  > Although the document cannot be altered in the DMS,
+                    it is permissable to attempt a SaveAs ... that creates
+                    the retrieved document, and any modifications as a
+                    new document.  [UPDATED 2007-01-10: THIS FUNCTION WILL
+                    NOT BE IMPLEMENTED UNTIL 0.50alpha.  0.30alpha offers
+                    a null implementation for transferToNewDocument, which
+                    is the ODMA DMS equivalent of a Save As ... operation.]
+
+                  > When the viewed document file is no longer required by
+                    the application it *must* be closed in the Windows file
+                    system.
+
+
+              > If OdmWorkingDocument.operationSucceeded() is false, other
+                methods will define the recommended behavior or indicate
+                that the requested operation simply failed.
+
+              > Whatever the outcome of the chooseDocument operation,
+                the OdmWorkingDocument.release() operation should be
+                performed at the point where the application has no further
+                need for that particular interface reference.
+
+                [UPDATE 2007-01-10: IT IS IMPERATIVE THAT WORKING AND
+                 PENDING DOCUMENTS BE RELEASED.  IF ODMJNI INTERFACE
+                 IMPLEMENTATIONS ARE NOT RELEASED, IT IS POSSIBLE THAT
+                 TERMINATION OF THE APPLICATION WILL FAIL TO PROVIDE AN
+                 AUTOMATIC RELEASE, LEAVING THE DMS DOCUMENT IN AN
+                 UNPREDICTABLE STATE WITH REGARD TO THE DOCUMENT.]
+
+          [ ... ]
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the original on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Pre-Release Notes: info.odma.practical100 Component Development
+        0.30alpha.  ODMA Interoperability Exchange, ODMdev Development Note
+        page d061001f-PreReleaseNotes.txt 0.06, February 22, 2007.  Current
+        version available through
+        <http://ODMA.info/dev/devNotes/2006/10/d061001f.htm>.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.06 2007-02-22-12:53 Correct some line breaks and the version for
+     attribution.
+0.05 2007-02-22-11:42 Restate section 1.5 to account for the actual
+     implementation.  The exception case is not to be implemented (although
+     an OdmError can be thrown because of a format problem).
+0.04 2007-01-10-13:18 Review and update status at the point of 0.30alpha
+     completion, reflecting later changes and experiences.
+0.03 2006-12-13-18:58 Correct one dangling line and add breaking change of
+     OdmInterface.availableConnection to OdmInterface.available.
+0.02 2006-12-11-19:02 Provide further expansion of character-set treatment
+     and additional discussion of methods and interfaces.
+0.01 2006-12-11-12:02 Expand to include the GUI Integration progression
+     featuring the Working Document view case.
+0.00 2006-12-10-18:12 Initial note on breaking changes and other changes
+     expected with the practical100 progression to 0.30alpha.
+
+$Header: /ODMdev/d061001f-PreReleaseNotes.txt 6     07-02-22 12:57 Orcmid $
+
+                  *** END OF d061001f-PreReleaseNotes.txt ***

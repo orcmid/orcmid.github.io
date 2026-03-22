@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>P030502b: DeRisk01 Dummy DLL </title>
+<!--$$Header: /ODMACompagno/active/odmref10/mitigate/P050302c.htm 18    13-08-22 12:47 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><font color="#990033"><strong>Project 
+		<a href="../../../projects/p000001-log.htm#P050302"><font color="#990033">P050302</font></a>&nbsp;</strong></font></font><font color="#990033"><strong>ODMref1.0&nbsp;<br>
+      &nbsp;<a href="P050302.htm"><font color="#990033">Mitigation Experiment #1</font></a><br>
+      <em><big><big><kbd>DeRisk01</kbd> Dummy DLL</big></big></em></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../../../" target="_top">ODMA</a>&gt;<a target="_top" href="../../">active</a>&gt;<br>
+      <a href="../" target="_top">ODMref1.0</a>&gt;<br>
+		<a target="_top" href="./">mitigate</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="P050302c.htm">P050302c</a>&gt;</code></b><br>
+      <small><small>
+		<a href="p050302c.htm#0.01">0.01</a>
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2010-08-29<!--webbot bot="Timestamp" endspan i-checksum="12490" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->20:11 -0700<!--webbot bot="Timestamp" endspan i-checksum="11945" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<p align="left"><kbd>DeRisk01</kbd> is the dummy DLL for Mitigation Experiment 
+#1.&nbsp; <kbd>DeRisk01</kbd> provides the minimum (no interface) response to 
+all apparently-valid requests.&nbsp; It is designed to confirm that we can 
+compile a DLL of the proper format for use by ODMA.</p>
+<h2 align="left">1. Operation</h2>
+<h3 align="left">1.1 Command-Line</h3>
+<blockquote>
+	<p align="left"><kbd><b>DeRisk01</b></kbd> is a DLL that can be executed by 
+	using <kbd><b><a href="P050302b.htm">DeRun01</a></b></kbd> or a later 
+	version in the progression to <kbd><b>ODMrun10</b></kbd>:</p>
+	<blockquote>
+		<p align="left"><kbd><b>&nbsp;&nbsp;&nbsp; C:/&gt; DeRun01 --dll 
+		DeRisk01.dll<br>
+		</b></kbd><i>or</i><kbd><b>&nbsp; C:/&gt; ODMrun10 --dll DeRisk01.dll</b></kbd></p>
+	</blockquote>
+	<p align="left">causes the basic confirmation test to run with <kbd><b>
+	DeRisk01</b></kbd>.&nbsp; The DLL 
+	is loaded and the test performed.&nbsp; There should be a <code><b>DeRun01</b></code> 
+	(or <kbd><b>ODMrun10</b></kbd>) log and one from <kbd><b>DeRisk01.dll</b></kbd>.</p>
+</blockquote>
+<h3 align="left">1.2 Output</h3>
+<blockquote>
+	<p align="left"><kbd><b>DeRisk01</b></kbd> Creates a log file in the 
+	directory in which it resides. </p>
+	<p align="left">The output text provides the following information:</p>
+	<ol>
+		<li>
+		<p align="left">An announcement of the DLL being loaded, its version and 
+		title.&nbsp; Anything else we can know, we will include.</p></li>
+		<li>
+		<p align="left">Entries to <b><kbd>ODMGetODMInterface()</kbd></b> and 
+		their parameters.</p>
+		</li>
+		<li>
+		<p align="left">An annotation about the basis for the response.</p></li>
+		<li>
+		<p align="left">The response provided to the entry.</p></li>
+		<li>
+		<p align="left">Any detection of the DLL being unloaded, and a report 
+		about that.</li>
+	</ol>
+	<p align="left">All of the output lines are time-stamped.&nbsp; Hmm, maybe 
+	not, because that makes it impossible to compare the results of different 
+	runs.&nbsp; We'll sort that out later.</p>
+</blockquote>
+<h3 align="left">1.3 Confirmation</h3>
+<blockquote>
+	<ol>
+		<li>
+		<p align="left"><kbd><b>DeRisk01</b></kbd> is first confirmed by being able to load, 
+		activate, and unload it using <kbd><b>DeRun01</b></kbd>.&nbsp; The two 
+		logs should provide consistent information.&nbsp; </p></li>
+		<li>
+		<p align="left">The second confirmation is by being able to register the 
+		DLL as an ODMA DMS Integration and have it be invoked from the ODMA 2.0 
+		Connection Manager.&nbsp; The client behavior and the Connection Manager 
+		logs should be available and reconcilable with the <kbd><b>DeRisk01</b></kbd> 
+		log.</p></li>
+		<li>
+		<p align="left"><kbd><b>DeRisk01</b></kbd> will be usable for regression 
+		confirmation of later versions of <b><kbd>DeRisk</kbd></b> and versions 
+		of <kbd><b>ODMrun10</b></kbd> as they are developed.</p></li>
+	</ol>
+</blockquote>
+<h2 align="left">2. Design Considerations</h2>
+<h3 align="left">2.1 General Approach</h3>
+<blockquote>
+	<p align="left">This is a simple program that will be developed in C 
+	Language.&nbsp; Except for the DLL entry points, which depend on 
+	Microsoft-specific elements, the DLL setup and operation is a pretty simple 
+	Standard C and mostly-POSIX source program.&nbsp; In the future, this code 
+	will make use of C++ classes and COM interface definitions to deliver an 
+	object that is requested by the ODMA Connection Manager.&nbsp; </p>
+	<p align="left">The <b><kbd>ODMGetODMInterface</kbd></b> definition is 
+	maintained in a header file, <b><kbd>ODMGetODM.h</kbd></b>.&nbsp; This header is included and we manage 
+	that appropriately too.</p>
+</blockquote>
+<h3 align="left">2.2 Potential Resources</h3>
+<blockquote>
+	<ol>
+		<li>
+		<p align="left">A general stdio library along the lines of my Java conio 
+		interface(s) would also be very useful.&nbsp; I can also get examples 
+		from my collection of Java goodies.&nbsp; This is for making the log 
+		file and it is also useful to consider the availability of library code 
+		for just this sort of thing.</p></li>
+		<li>
+		<p align="left">The existing ODMA header files and the ODMA Sample DMS, 
+		the Test32 client, and pieces of the classes used in building the ODMA32 
+		2.0 Connection Manager.</p></li>
+		<li>
+		<p align="left">Find existing definitions and declarations for the <b>
+		<kbd>ODMGetODMInterface</kbd></b> operation.</p></li>
+	</ol>
+</blockquote>
+<h3 align="left">2.3 Packaging</h3>
+<blockquote>
+	<p align="left">[to be defined.&nbsp; There will be a simple Zip packaging 
+	of the completed <kbd><b>DeRisk01</b></kbd> experiment and everything needed to run it.]</p>
+</blockquote>
+<p align="left">&nbsp;</p>
+  <hr color="#990033">
+
+<dl><small>
+		<dt><b><a name="0.01">0.01</a> 2005-03-26-19:54 Create Initial Skeleton 
+		Work Item</b></dt><dd>A sketch of the the DeRisk01 approach is created that is 
+		the basis for working through the initial construction.</dd>
+</small></dl>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a rel="nofollow" href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2005-03-26-18:38 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:47 $<br>
+      $$Revision: 18 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

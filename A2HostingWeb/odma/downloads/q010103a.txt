@@ -1,0 +1,150 @@
+From: ODMA TECH LIST [ODMATECH@FTPLIST.AIIM.ORG] on behalf of Nancy Bobb
+[Nancy.Bobb@IGATE.FHWA.DOT.GOV]
+Sent: Friday, 08 December 2000 12:10
+To: ODMATECH@FTPLIST.AIIM.ORG
+Subject: Re: Visual Basic/ODMA question
+
+Follow Up Flag: Follow up
+Flag Status: Completed
+
+Mr. Hamilton:
+
+Thank you so much for all the information!  It will take me a while to digest.
+
+I see I left quite a bit of info out of my original request.  Yes, we do have ODMA documents.  I had generated an ODMA statement by recording a Word macro, then tried to apply it but it wouldn't work.  Wouldn't you know, I tried it again just now and it works!  But there might be a better way to do it, so I look forward to getting the API call info you mentioned.  Just for laughs, I've pasted my code below.  Thanks again for your help.
+
+Private Sub Command1_Click()
+Dim x As Object
+Set x = CreateObject("Word.Application")
+x.Visible = True
+x.Documents.Open FileName:= _
+        "::ODMA\GRPWISE\FH09CADO.FH09CAPO.FH09CA_SUBJCA_LIBRARY:34035.1"
+End Sub
+
+Nancy E. Bobb
+Division Bridge Engineer
+California Division
+916-498-5033
+email:  Nancy.Bobb@fhwa.dot.gov
+
+>>> "Dennis E. Hamilton" <infonuovo@email.com> 12/08/00 11:42AM >>>
+%To:    Nancy E. Bobb
+%Cc:    ODMA Tech
+%From:  Dennis E. Hamilton
+
+I think there are three cases to look at
+
+        1.      Driving the DMS to Open a Document on the Desktop
+        2.      Driving Word to Open a DMS Document on the Desktop
+        3.      Driving ODMA to locate documents to launch
+
+I am assuming that you want to control the launching of Word with a document
+selected from a DMS so that it can be viewed or even manipulated (e.g., as
+part of a workflow).  And you want to do this from software, rather than by
+directly requesting it from GroupWise 5 or from MS Word 2000.
+
+I am going to respond based on the assumption that you have an ODMA Document
+ID for the document.  If you need ways to get a document identification to
+use, there are ways to address that also.
+
+There are doubtless non-ODMA approaches, and experts on this list can point
+you to resources for that.
+
+Here are the alternatives that I see.
+
+1.      DRIVING THE DMS TO OPEN A DOCUMENT ON THE DESKTOP
+
+There may be an API that GroupWise 5 makes available for direct use of
+customer-developed applications.  You will need to research the GroupWise
+documentation and consult their technical support for any ActiveX components
+or other interfaces that are made available directly by GroupWise 5 and that
+are intended for use from Visual Basic applications.
+
+We are happy to provide links to any such information that people let us
+know about.  We have no such information at this time.
+
+2.      DRIVING WORD TO OPEN A DMS DOCUMENT ON THE DESKTOP
+
+This is easy with an ODMA-compliant DMS.  Microsoft Word is an ODMA-aware
+application and it will use ODMA to access documents in a DMS when given an
+ODMA Document ID in place of a file name.
+
+So all you need to do to fire up word with an ODMA document is launch Word
+with the command form
+
+        winword <odma-id>
+
+For example, I just used the Start | Run ... parameters
+
+        winword ::ODMA\ODMASAMP\13-00-07-17
+
+and Microsoft Word 2000 started and automatically retrieved the specified
+document of mine from the ODMA 2.0 Sample repository.
+
+When I edited and saved the document, MS Word used the specified ODMA DMS to
+save the altered document back into the repository.
+
+Initiating the equivalent of that Start | Run ... should be fairly
+straightforward using Visual Basic.
+
+        3.      DRIVING ODMA TO LOCATE DOCUMENTS TO LAUNCH
+
+If you don't have an ODMA Document ID, it is possible to directly use ODMA,
+via its API, to exercise one or more DMS integrations and then deliver a
+derived ODMA Document ID to your application.  Then you can apply step (2).
+Or you can use the ODMActivate operation of ODMA, requesting an ODM_OPENDOC
+or ODM_VIEWDOC operation.  This has the DMS open an identified document
+using the correct application for the format of the document.
+
+This case involves using the ODMA API.  This API is not very directly suited
+to direct use by Visual Basic applications, though people have done so.
+
+There is on-going interest in using ODMA from Visual Basic and other
+higher-level tools.  The information that we have collected about this, as
+well as some effort at creating an ActiveX component usable from VB, is
+being consolidated on the ODMA site over the next 10 days.  I will add you
+to the announcement list when this material is available.  It will be part
+of creating responses to three FAQ: Q000012, Q000100, and Q001103 in the job
+jar at
+
+        http://www.infonuovo.com/odma/faq/Q00-next.htm 
+
+Is this information along the lines you are interested in? For more
+information and available downloads, please visit
+
+        http://www.infonuovo.com/odma/ 
+
+and let us know any further questions that you have.
+
+Thank you,
+
+-- Dennis
+
+AIIM DMware Technical Coordinator
+AIIM DMware http://www.infonuovo.com/dmware 
+ODMA Support http://www.infonuovo.com/odma 
+------------------
+Dennis E. Hamilton            tel. +1-425-793-0283
+mailto:orcmid@email.com       fax. +1-425-430-8189
+
+
+-----Original Message-----
+From: ODMA TECH LIST [mailto:ODMATECH@FTPLIST.AIIM.ORG]On Behalf Of
+Nancy Bobb
+Sent: Wednesday, December 06, 2000 13:25
+To: ODMATECH@FTPLIST.AIIM.ORG 
+Subject: Visual Basic/ODMA question
+
+
+We have Groupwise 5 and MS Word 2000 in our office.  We are trying to figure
+out how  to open a document in Word from our DMS using an external Visual
+Basic application.  Do you know where I can find help on this?  It is a
+pretty specialized area and there isn't a lot of info out there.
+
+Thanks.
+
+Nancy E. Bobb
+Division Bridge Engineer
+California Division
+916-498-5033
+email:  Nancy.Bobb@fhwa.dot.gov 

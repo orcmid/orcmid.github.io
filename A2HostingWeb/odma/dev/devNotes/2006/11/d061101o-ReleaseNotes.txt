@@ -1,0 +1,412 @@
+﻿d061001o-ReleaseNotes.txt 0.05      UTF-8                    dh:2008-03-19
+
+                           RELEASE NOTES [DRAFT]
+
+           info.odma.odmjni100 Component Development 0.59beta
+           --------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/11/d061001o.htm>.
+
+     **********************************************************************
+     *  WARNING: The 0.59beta Public Transition Candidate makes breaking  *
+     *  changes to the info.odma.odmjni100 classes in conformance with    *
+     *  changes in the practical100 interfaces and null implementations.  *
+     *  In addition to the breaking changes, some elements are deprecated *
+     *  in 0.59 and will be removed in the 0.60 Public Beta release.      *
+     **********************************************************************
+
+   The odmjni100 0.59beta distribution is provided to accomplish
+   important steps in the progression to full ODMJNI 1.0:
+
+     1. Remove OdmError exceptions for ill-formed string-valued parameters
+        to odmjni100 operations.
+
+     2. Implement the practical100.OdmFormatCheck interface for checking
+        whether a string-valued parameter candidate is well-formed. Do this
+        while continuing to use the 0.58 implementation of the filters.
+        (Movement toward tighter integration with OdmNative100 will first
+        appear in an 0.60 or later release.)
+
+     3. Remove all internal dependencies on deprecatedpractical100.OdmFormat
+        operations, substituting usage of the OdmFormatCheck implementation
+        and its availability as part of odmjni100 practical100.OdmInterface
+        implementations.
+
+     3. Introduce support for the refactored practical100 document classes
+        such that the deprecated methods and their replacement are properly
+        supported in the odmjni100 implementations.
+
+     4. Preserve regression checks that work for pre-0.59 implementations
+        and demonstrate their continued operation with the 0.59 release.
+
+     5. Develop versions of regression checks that do not rely on any of
+        the deprecated elements in 0.59 and that are therefore suitable
+        for 0.59/0.60 regression checking.  These may include pre-0.59
+        implementations that make no reliance on deprecated elements.  This
+        set is used to confirm that the 0.60 removal of deprecated elements
+        is carried out properly.
+
+     6. Provide a simple packaging of the odmjni100 development tree for
+        preservation and incorporation in the 0.59 packaging.
+
+   CONTENT
+
+     1. Breaking Changes
+     2. Deprecated Classes and Methods
+     3. New Interfaces
+     4. New Methods
+     5. Simple Improvements and Bug Fixes
+     6. Deployment and Testing
+     Copyright Notice
+     Revision History
+
+
+1. BREAKING CHANGES
+
+1.1 Requires info.odma.practical100 0.59
+
+   This release requires the 0.59beta version of info.odma.practical100.
+   Operation will fail with earlier versions.
+
+1.2 OdmError Not Thrown for Parameter Format Violations.
+
+   1.2.1 OdmError exceptions are no longer thrown for malformed
+   java.lang.String parameters to info.odma.odmjni100 operations.  The
+   practical100 classes do not throw exceptions for those cases and the
+   odmjni100 classes align their own operations to conform.
+
+   1.2.1 Defensive code that detects malformed parameters now results in the
+   appropriate null/failed interface implementation.  The principle is that
+   no odmjni100 operation will ever deliver a non-null interface when an
+   ill-formed string parameter value is provided.
+
+   This change impacts the following methods and their .java file
+   documentation:
+
+        OdmJniApp.java
+        OdmJniApp(rIface) [new protected constructor]
+        OdmJniApp.acceptNewDocument(docFormatName)
+        OdmJniApp.openKnownDocument(docId)
+
+        OdmJniBind.java
+        OdmJniBind.application(appId)
+        OdmJniBind.application(appId, appWindow)
+
+        OdmJniPend.java
+        OdmJniPend(rIodmPending, nullDoc) [protected constructor]
+
+        OdmJniView.java
+        OdmJniView.transferToNewDocument(docFormatName)
+
+2. DEPRECATED CLASSES AND METHODS
+
+2.1 Deprecated Classes
+
+   There are no deprecated classes in odmjni100 for the 0.59 release.
+
+2.2 OdmJniWork
+
+   The implementation of viewOnly is deprecated.  This implementation will
+   simply be removed for 0.60.
+
+
+3. NEW CLASSES AND INTERFACES
+
+   There are no new classes and interfaces in odmjni100 for the 0.59
+   release.  The only appearance of new interfaces is as a result of the
+   formatCheck() methods that deliver practical100.OdmFormatCheck inter-
+   faces.
+
+4. NEW METHODS
+
+4.1 OdmJniBind
+
+   4.1.1 The same MAX_APPID_SIZE and wfAppId implementations provided in
+   practical100.OdmNullBind are incorporated in OdmJniBind by subclassing
+   OdmNullBind:
+
+        public static final int MAX_APPID_SIZE;
+        /* The maximum size permitted for an Application ID String. This
+           is not enough to ensure validity of the string.
+           */
+
+        public static boolean wfAppId(java.lang.String appId);
+        /* determines whether appId is well-formed.  It must be a non-null
+           String having no more than MAX_APPID_SIZE Unicode characters
+           consisting of Basic Latin letters (a to z, A to Z) and digits
+           (0 to 9).  This is an always-safe format, even when the ODMA
+           Connection Manager might accept additional characters and even
+           longer Application ID values.
+           */
+
+
+   4.1.2 NOTE: There is no difference in the implementation for odmjni100.
+   This definition is part of ODMJNI 1.0 contract.  It is conceivable that
+   wfAppId might be relaxed to admit additional displayable characters in
+   the future.  This is not an anticipated change for ODMJNI even if it is
+   made in OdmNative100 to support legacy applications.
+
+
+4.2 OdmJniApp (Internal Class for Implementation of OdmConnection)
+
+   4.2.1 formatCheck() is implemented by inheritance from OdmNullConnection.
+      NOTE: This provides OdmFormatCheck interface implemented by OdmNull-
+   Connection.  This is a provisional solution.  In 0.60, it is desired
+   to have logic that allows for an OdmNull.formatCheck() result different
+   than the OdmNull.nullCheck() result.  This will be used in a version
+   of formatCheck() that is sensitive to the connection status of the
+   connection.
+
+   4.2.2 The format check in openKnownDocument(docId) is modified to make
+   use of formatCheck().wfDocId and not rely on practical100.OdmFormat.
+
+
+4.3 OdmJniPend (Internal Class for Implementation of OdmPendingDocument)
+
+   4.3.1 The constructor, which receives an OdmNull interface, is adjusted
+   to pass that OdmNull.nullCheck() result to the constructor of its
+   OdmNullPendingDocument super class.
+
+   4.3.2 formatCheck() is implemented by inheritance from OdmNullPending-
+   Document.
+      NOTE: This provides an OdmFormatCheck interface implemented by an
+   OdmNull.nullCheck() implementation.  This is a provisional solution that
+   must be adjusted in 0.60 to employ an OdmNull.formatCheck() result when
+   there is a connection present.
+
+
+4.4 OdmJniView (Internal Class for Implementation of OdmViewDocument and
+    OdmWorkingDocument of a viewOnly document)
+
+   4.4.1 The constructor, which receives an OdmNull interface, is adjusted
+   to pass the OdmNull.nullCheck() result to the constructor of its
+   OdmNullWorkingDocument super class.
+
+   4.4.2 formatCheck() is implemented by inheritance from OdmNullWorking-
+   Document.
+      NOTE: This provides an OdmFormatCheck interface implemented by an
+   OdmNull.nullCheck() implementation.  This is a provisional solution that
+   must be adjusted in 0.60 to employ an OdmNull.formatCheck() result when
+   there is a connection present.
+
+   4.4.3 The viewOnly and notChangeable methods are now obtained by
+   inheritance from OdmNullWorkingDocument, since the null-behavior results
+   of true now apply to OdmJniView documents automatically.
+
+
+4.5 OdmJniWork (Internal Class for Implementation of OdmWorkingDocument
+    of a modifiable document)
+
+   4.5.1 viewOnly is now implemented by notChangeable here.  notChangeable
+   is false if there is a connection and it is the null behavior when there
+   is no connection.
+
+   4.5.2 All other methods of OdmJniWork are implemented by inheritance from
+   OdmJniView.  The OdmBasicDocumentMetadata, OdmViewingDocument,
+   OdmEditingDocument, and OdmWorkingDocument interfaces are implemented.
+
+
+5. SIMPLE IMPROVEMENTS AND BUG FIXES
+
+5.1 OdmJniBind Class
+
+   5.1.1 Parameter Checking.  The OdmJniBind class is simplified by the
+   absence of any need to throw an exception for parameter format checks.
+   Occurrence of a null appWindow parameter is handled by invoking
+   practical100.OdmNullBind which will throw the relevant exception.
+   Occurrence of an ill-formed appId parameter must be caught by the
+   implementations of private native methods getIodmWinNative and
+   getIodmNative.  The return of a null interface pointer leads to use of
+   proactical100.OdmNullBind to return a null connection.
+
+   5.1.2 OdmJniBind.application Dependence on appId and AppWindow.
+   OdmJniBind.application only passes appId and any appWindow to the
+   approporiate jniGetIodmNative and jniGetIodmWinNative operations.  There
+   is no need for further use once they are supplied to the creation of the
+   IodmNative equivalent of a connection constructor.  If appId were needed
+   for logging, this is best handled at the OdmNative level, where a single
+   coherent log can be collated.
+
+
+5.2 OdmJniApp Class (internal)
+
+   5.2.1 Constructor Checking.  The OdmJniApp class is also simplified by
+   the ability to assume that the constructor is never called with an
+   invalid rIface interface pointer. This is true for OdmJniBind.appRaiser,
+   the common point for all OdmJniApp instantiations by OdmJniBind.  Later
+   null behavior follows from absence of a connection and other conditions
+   up to and including release of the delivered practical100.OdmConnection.
+
+   5.2.2 Absence of dependence on appId.  The OdmjniApp constructor no
+   longer has any need for appId.  Only the interface is needed for the
+   connection of OdmJniApp OdmConnection methods to an OdmNative connection,
+   if any.
+
+   5.2.3 acceptNewDocument Checking.  Checking the docFormatName is now
+   simply deferred to the internal jniNewDoc method, which is expected to
+   return an error status if the docFormatName is not acceptable.  The
+   error status will lead to delivery of an appropriate null pending
+   document.
+
+   5.2.4 openKnownDocument Checking.  This method continues to check for
+   wfDocId until we obtain assurance that the native jniKnownDocument method
+   is fully defended against ill-formed docId parameters.
+
+
+5.3 OdmJniPend Class (internal)
+
+   5.3.1 General.  The conditions on the constructor being used are
+   clarified.  It is also the case that all methods provide a null behavior
+   if the interface is not a reference pointer or it has been released.  The
+   message in the exception thrown by commitContent is cleaned up.
+
+
+5.4 OdmJniView Class (internal)
+
+   5.4.1 General.  The conditions on the constructor being used are
+   clarified.  The methods defend against receiving a null interface
+   pointer, but the properties of the interface presume a successful
+   operation has been conducted.
+
+   5.4.2 transferToNewDocument.  This method relies on the jniToNewDoc
+   method to verify the docFormatName and return a failure code if the
+   parameter is ill-formed.
+
+5.5 OdmJniWork Class (internal)
+
+   5.5.1 The changes to eliminate OdmError parameter-format exceptions
+   have no impact on OdmJniWork.
+
+   5.5.2 The changes to implement formatCheck are obtained by inheritance
+   from OdmJniView.
+
+
+6. DEPLOYMENT AND TESTING
+
+6.1 Deployment
+
+   This 0.59 release of the odmjni100 development tree is a complete
+   replacement for that tree.
+
+   If your copy of the ODMJNI development tree is anchored at <folder>,
+   prepare for deployment as follows:
+
+        - Place the d061001o-odmjni100-0.59beta.zip file in <folder>.
+
+        - Delete any content in <folder>\info\odma\odmjni100 after saving
+          any customized OdmJava.bat, OdmVC++.bat and OdmPSDK.bat scripts.
+          (The OdmJNI.bat, BuildClasses.bat, and BuildDLL.bat scripts are
+          designed to depend on the other scripts and rarely need to be
+          customized.)
+
+        - Following your preparations, unzip d061001o-odmjni100-
+          0.59beta.zip directly into <folder> using folder names.
+
+        - If you are asked whether files in the zip should replace the same
+          files in you development tree, answer "Yes to All".
+
+        - If you had customized batch files, merge your changes into the
+          new copies of OdmJava.bat, OdmVC++.bat and OdmPSDK.bat that are
+          now installed.
+
+   The material will be found in this directory tree:
+
+        <folder>\
+            |       d061001o.txt                Manifest file
+            |       d061001o-license.txt        BSD-style license
+            |       d061001o-ReleaseNotes.txt   version of this file
+            :----info\odma\odmjni100\
+                                            the classes and source code
+                                            with the updates and the three
+                                            regression sets:
+                                            d071001e-0.54-odmjni100.zip
+                                            d071001f-0.57-odmjni100.zip
+                                            d071001g-0.59-0dmjni100.zip
+
+
+   The odmjni100\test\Clickr and odmjni100\test\Check04 subtrees provide
+   the development areas for the latest regression check code.  This should
+   not be used for the testing of distributions; use the appropriate
+   regression sets.  These subtrees are used for development of new and
+   modified tests.
+
+
+6.2 Testing
+
+   Three regression sets are available for confirming operation of this
+   odmjni100 0.59 release:
+
+   * 0.54-odmjni100 Clicker provides a simple GUI test for verifying that
+     the ODMJNI 1.0 classes are being accessed and that end-to-end operation
+     through ODMA is achieved.  This regression set can be downloaded at
+     <http://odma.info/dev/devNotes/2007/10/d071001e.htm>.
+
+   * 0.57-odmjni100 Check04 provides console tests that exercise the
+     creation of new documents, selection of existing documents, selection
+     of known documents, commitment of changes, and transfer to new
+     documents under DMS management.  This test relies on features that
+     are deprecated in release 0.59 and that will be removed in 0.60.
+     This regression set can be downloaded at
+     <http://odma.info/dev/devNotes/2007/10/d071001f.htm>.
+
+   * 0.59-odmjni100 Check04 provides a revised set of console tests that
+     operate the same as the 0.57 versions but without relying on features
+     that are being deprecated in 0.59 and removed in 0.60.  This set should
+     continue to work with the 0.60 release when it is available.  This
+     regression set can be downloaded at
+     <http://odma.info/dev/devNotes/2007/10/d071001g.htm>.
+
+   Although copies of these regression sets are included in the release
+   archive, their independent download locations should be checked for any
+   more-recent changes, improved instructions, and test results.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  For further details and contact procedures,
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2006-2008 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the original on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: info.odma.odmjni Component Development
+        0.59beta.  ODMA Interoperability Exchange, ODMdev Development Note
+        page d061001o-ReleaseNotes.txt 0.05, March 19, 2008.  Current
+        version available through
+        <http://ODMA.info/dev/devNotes/2006/11/d061101o.htm>.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.05 2008-03-19-19:10 Complete Release Notes
+     The deployment section is completed and other small adjustments made.
+     These are the final release notes for odmjni100 0.59beta.
+0.04 2007-12-01-13:39 Provide information on availability of the three
+     regression sets available for testing odmjni100 in ODMJNI 1.0 0.59.
+0.03 2007-11-17-18:34 Update to reflect the completion of the third round
+     of changes: adjustment to refactoring of the metadata and document
+     interfaces.
+0.02 2007-11-10-18:57 Bring current with the completion of the second round
+     of changes: incorporation of formatCheck methods and reliance on the
+     OdmFormatCheck interface rather than practical100.OdmFormat class.
+0.01 2007-10-31-18:00 Bring current with completion of the first round of
+     changes: elimination of OdmError exceptions for ill-formed string-
+     valued parameters.
+0.00 2007-10-17-16:00 Placeholder draft of the release notes for 0.59beta
+     using an older note for boilerplate.  Minor customization performed.
+
+$Header: /ODMdev/d061101o-ReleaseNotes.txt 9     08-03-19 19:11 Orcmid $
+
+                  *** END OF d061101o-ReleaseNotes.txt ***

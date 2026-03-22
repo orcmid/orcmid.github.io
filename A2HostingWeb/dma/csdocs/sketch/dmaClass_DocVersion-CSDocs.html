@@ -1,0 +1,453 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>dmaClass_DocVersion for CSDocs</title>
+<!--$$Header: /InfoNuovo Conclave Web/dma/csdocs/sketch/dmaClass_DocVersion-CSDocs.html 5     99-08-31 20:47 Orcmid $-->
+</head>
+
+<body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<h3>dmaClass_DocVersion</h3>
+
+<p>A document version is<font color="#0000FF"> <strong>a </strong></font>single document
+stored in a Document Space.</p>
+
+<table border="1" width="30%" bgcolor="#BFFFFF" bordercolor="#0000FF"
+bordercolorlight="#00FFFF" bordercolordark="#000080">
+  <tr>
+    <td width="100%"><blockquote>
+      <p><font color="#000080"><strong>with additions for the CSDocs Foundation revision 0.02</strong></font></p>
+    </blockquote>
+    </td>
+  </tr>
+</table>
+
+<p><b>Class ID:</b> dmaClass_DocVersion<br>
+<b>Superclass:</b> <a href="dmaClass_Versionable.html">Versionable</a><br>
+</p>
+
+<h4><b>Interfaces</b></h4>
+<a href="IUnknown.html">
+
+<p>IUnknown</a><br>
+<a href="IdmaObject.html">IdmaObject</a><br>
+<a href="IdmaProperties.html">IdmaProperties</a><br>
+<a href="IdmaEditProperties.html">IdmaEditProperties</a> [Optional]<br>
+<a href="IdmaConnection.html">IdmaConnection</a> [Optional]<br>
+<a href="IdmaVersionable.html">IdmaVersionable</a> [Optional] </p>
+
+<h4><b>Properties</b></h4>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Impl. <br>
+    Required</b></td>
+    <td><b>System<br>
+    Gen'ed</b></td>
+    <td><b>Read-<br>
+    Only</b></td>
+    <td><b>Value<br>
+    Required</b></td>
+    <td><b>Type</b></td>
+    <td><b>Cardinality</b></td>
+    <td><b>Required Class</b></td>
+    <td><b>Reflective<br>
+    Property</b></td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_OIID">OIID</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>String</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_ClassDescription">Class Description</a></td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Class Description</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_This">This</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Doc Version</td>
+    <td>This</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_CreatePending">Create Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_UpdatePending">Update Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_DeletePending">Delete Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080"><a name="TdmaProp_InstanceId"
+    href="#InstanceId">Instance Id</a></font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_Parent">Parent</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Direct Containment Relationship</td>
+    <td>Head</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_ParentContainer">Parent Container</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Container</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_Containers">Containers</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>Object</td>
+    <td>Enum</td>
+    <td>Referential Containment Relationship</td>
+    <td>Head</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_VersionDescriptions">Version Descriptions</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>Object</td>
+    <td>Enum</td>
+    <td>Version Description</td>
+    <td>Version</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_CurrentOfSeriesCount">Current Of Series Count</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>Integer32</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_RenditionsPresent">Renditions Present</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>String</td>
+    <td>List</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_Renditions">Renditions</a></td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Object</td>
+    <td>List</td>
+    <td>Rendition</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_CSRoots" href="#CSRoots"><font color="#0000FF">CSRoots</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Object</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Enum</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">CSRelationship</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Head</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_CSComponents" href="#CSComponents"><font
+    color="#0000FF">CSComponents</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Object</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Enum</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">CSRelationship</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Tail</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_CSRootStyle" href="#CSRootStyle"><font
+    color="#0000FF">CSRoot Style</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#0000FF">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+</table>
+
+<h4><b>Detailed Description</b></h4>
+
+<p>This is the base class for objects representing &quot;documents&quot;. It introduces
+the properties which support the representation of document content (if supported) and
+inherits properties which support versioning and containment of documents (if supported).
+A document space may allow actual instances of DocVersion to be created, or it may only
+allow instances of subclasses of DocVersion. </p>
+
+<h4><b>Property Descriptions</b></h4>
+
+<p><b>&#149; OIID {<a name="dmaProp_OIID"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_OIID">dmaProp_OIID</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Class Description {<a name="dmaProp_ClassDescription"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</a>}</b>
+<br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; This {<a name="dmaProp_This"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_This">dmaProp_This</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Create Pending {<a name="dmaProp_CreatePending"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_CreatePending">dmaProp_CreatePending</a>}</b>
+<br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Update Pending {<a name="dmaProp_UpdatePending"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</a>}</b>
+<br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Delete Pending {<a name="dmaProp_DeletePending"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_DeletePending">dmaProp_DeletePending</a>}</b>
+<br>
+<i>Property Inherited from DMA</i> </p>
+
+<table border="1" width="30%" bgcolor="#BFFFFF" bordercolor="#0000FF"
+bordercolorlight="#00FFFF" bordercolordark="#000080">
+  <tr>
+    <td width="100%"><b>&#149; <a name="InstanceId">Instance Id</a> {<a
+    name="dmaProp_DeletePending"></a><a href="#TdmaProp_InstanceId">dmaProp_InstanceId</a>}</b>
+    <br>
+    <i>Property Inherited from <a href="dmaClass_DMA-CSDocs.html#InstanceId">DMA</i> </a><p>[This
+    addition is made to all well-known classes]</td>
+  </tr>
+</table>
+
+<p><b>&#149; Parent {<a name="dmaProp_Parent"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_Parent">dmaProp_Parent</a>}</b> <br>
+<i>Property Inherited from Containable</i> </p>
+
+<p><b>&#149; Parent Container {<a name="dmaProp_ParentContainer"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_ParentContainer">dmaProp_ParentContainer</a>}</b>
+<br>
+<i>Property Inherited from Containable</i> </p>
+
+<p><b>&#149; Containers {<a name="dmaProp_Containers"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_Containers">dmaProp_Containers</a>}</b> <br>
+<i>Property Inherited from Containable</i> </p>
+
+<p><b>&#149; Version Descriptions {<a name="dmaProp_VersionDescriptions"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_VersionDescriptions">dmaProp_VersionDescriptions</a>}</b>
+<br>
+<i>Property Inherited from Versionable</i> </p>
+
+<p><b>&#149; Current Of Series Count {<a name="dmaProp_CurrentOfSeriesCount"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_CurrentOfSeriesCount">dmaProp_CurrentOfSeriesCount</a>}</b>
+<br>
+<i>Property Inherited from Versionable</i> </p>
+
+<p><b>&#149; Renditions Present {<a name="dmaProp_RenditionsPresent"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_RenditionsPresent">dmaProp_RenditionsPresent</a>}</b>
+</p>
+
+<p>List of the types of renditions contained within the DocVersion at the time is was last
+made persistent. </p>
+
+<p>A system-generated (and read-only) list of Strings which reflect the rendition types of
+the renditions in the document. This property is static except over a Refresh and does not
+dynamically track the state of the Renditions list. Therefore, the client application may
+not in general assume that the number or order of elements in this list correspond to that
+of the Renditions list. </p>
+
+<p>However, if neither the Rendition list nor any of the rendition objects it contains
+have been modified since the DocVersion was connected or last refreshed, then it is
+required that the two lists be synchronized. </p>
+
+<p><b>&#149; Renditions {<a name="dmaProp_Renditions"></a><a
+href="dmaClass_DocVersion-CSDocs.html#TdmaProp_Renditions">dmaProp_Renditions</a>}</b> </p>
+
+<p>List of Renditions contained within this DocVersion </p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="100%" bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><b>&#149; <font color="#000080"><a name="CSRoots">CSRoots</a></font>
+    {<a name="dmaProp_DeletePending"></a><a href="#TdmaProp_CSRoots">dmaProp_CSRoots</a>}</b> <p><font
+    color="#000080">This optional property is meaningful only on objects that may be employed
+    as CSComponents in CSDocs structures.&nbsp; The reflective property of CSRoots is always
+    the dmaProp_Head property of an admissable dmaClass_CSRelationship subclass instance.
+    &nbsp; The property represents all of the CSRelationships in which this DocVersion occurs
+    in some way as a CSComponent.</font></p>
+    <p><b>&#149; <a name="CSComponents"><font color="#000080">CSComponents</font></a> {<a
+    name="dmaProp_DeletePending"></a><a href="#TdmaProp_CSComponents">dmaProp_CSComponents</a>}</b>
+    </p>
+    <p><font color="#000080">This optional property is meaningful only on objects that may be
+    employed as CSRoots in CSDocs structures.&nbsp; The reflective property of CSComponents is
+    always the dmaProp_Tail property of an admissable dmaClass_CSRelationship subclass
+    instance.&nbsp; The property represents all of the CSRelationships in which this
+    DocVersion occurs in some way as a CSRoot.</font></p>
+    <p><b>&#149; <font color="#000080"><a name="CSRootStyle">CSRoot Style</a></font> {<a
+    name="dmaProp_DeletePending"></a><a href="#TdmaProp_CSRootStyle">dmaProp_CSRootStyle</a>}</b>
+    </p>
+    <p><font color="#000080">This optional property is meaningful only on objects that may be
+    employed as CSRoots.&nbsp; When present, it specifies whether any renditions of the
+    DocVersion are complete documents or whether some style of consolidation must be applied
+    to derive a complete rendition.</font></p>
+    <p><font color="#000080">If CSRoot Style is not supported or it is supported and has no
+    value, interpretation is the same as when CSRoot Style is supported and the value is the
+    NULL DmaId (DMA_CSR_STYLE_COMPLETE).</font></p>
+    <p><font color="#000080">When CSRoot Style is supported and it has a value other than
+    DMA_CSR_STYLE_COMPLETE, the value is the DmaId of a registered scheme for how a rendition
+    of the complete document can be obtained or derived.&nbsp; For any value but
+    DMA_CSR_STYLE_COMPLETE, it must be understood that no CSRoot Renditions is guaranteed to
+    be a complete rendition of the compound/structured document represented by that
+    DocVersion.&nbsp;&nbsp; </font></p>
+    <p><font color="#000080">It is expected that particular CSRoot DocVersion subclasses may
+    fix the value of CSRoot Style as read-only and system-derived as part of subclass-specific
+    realization of particular CSDoc structures.&nbsp; Subclasses may also limit the values to
+    selections from a particular set of allowed values.</font></p>
+    <p><font color="#000080">The following values are defined for CSRoot Style:</font></p>
+    <blockquote>
+      <ul>
+        <li><font color="#000080">DMA_CSR_STYLE_COMPLETE</font><p><font color="#000080">Any
+          renditions of the CSRoot are complete renditions which can be used to render the complete
+          document using the CSRoot rendition alone.&nbsp; This is the corresponding default
+          interpretation of any DMA 1.0 DocVersion that has renditions, without regard to the
+          DocVersion's involvement in an explicit or implicit compound/structured document
+          relationship</font></p>
+        </li>
+        <li><font color="#000080">DMA_CSR_STYLE_INCOMPLETE</font><p><font color="#000080">The CSRoot
+          Renditions do not by themselves provide complete renditions.&nbsp; A complete rendition is
+          obtained by other means specific to the implementation of this CSRoot DocVersion. &nbsp;
+          The particular means is made known by application agreement.&nbsp; No particular means is
+          specified with this value of CSRoot Style.</font></p>
+        </li>
+        <li><font color="#000080">other values</font><p><font color="#000080">Other values of CSRoot
+          Style are safely interpreted as DMA_CSR_STYLE_INCOMPLETE if the actual value is not one
+          with a definition that the application is designed to recognize.&nbsp; These other values
+          are introduced as part of application agreements so that interoperable use can be made of
+          the CSRoot DocVersion and its renditions.</font></p>
+        </li>
+      </ul>
+    </blockquote>
+    <p><font color="#000080">CSRoot Style is implemented with a DmaId so that the definition
+    and advertising of particular CSRoot styles can occur on a decentralized basis without
+    need for a central assignment authority.&nbsp; </font></td>
+  </tr>
+</table>
+
+<p align="right"><font color="#0000FF"><em>$$Author: Orcmid $<br>
+$$Date: 99-08-31 20:47 $<br>
+$$Revision: 5 $</em></font></p>
+</body>
+</html>

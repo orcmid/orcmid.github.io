@@ -1,0 +1,74 @@
+<html><head><title>DMA Free Standing Functions and Entry-points</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="cfunc.html"></a>Free Standing Functions and Entry-Points</h2>
+<p>This section describes the free standing functions and entry-points defined for the DMA specification.</p>
+<h3><a name="CFuncDMA_GetServiceObject"></a>DMA_GetServiceObject</h3><p>    <b>Syntax</b><br>DmaRC <b>DMA_GetServiceObject</b> (<br>pDmaVoid    <i>pvEnvInfo</i>,<br>pDmaString    <i>pProfile</i>,<br>Dmapv    <i>pIMalloc</i>,<br>Dmapv    <i>punkParent</i>,<br>DmaInteger32    <i>lCharSetEncodingId</i>,<br>pDmaString    <i>pLocaleName</i>,<br>pDmaId    <i>pServiceObjectTypeId</i>,<br>pDmaId    <i>pServiceObjectId</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIServiceObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pvEnvInfo</i></p></TD><TD><p>input</p></TD><TD><p>(optional) Any environment-specific information required in order to locate the execution environment that the service object will operate within. The specific value is environment-specific. When pvEnvInfo is not defined for an environment or it is optional and omitted, NULL must be supplied.  The specification of integration details for a given DMA environment will stipulate what is provided here for all DMA_GetServiceObject entries.  It is typically, but not necessarily, the same pvEnvInfo supplied to dmaConnectSystemManager. </p></TD></TR>
+<TR><TD><p><i>pProfile</i></p></TD><TD><p>input</p></TD><TD><p>(optional) Configuration-specific profile  for the service object to be instantiated.  Specified as part of registering the service object, this information is automatically supplied to the GetSystemObject function when an instance of the object is to be connected.  This information is specific to the implementation of the object and has no significance in the DMA integration model beyond carrying it in the registry and supplying it to GetSystemObject.  NULL will be supplied if this parameter was omitted in the registration.</p></TD></TR>
+<TR><TD><p><i>pIMalloc</i></p></TD><TD><p>input</p></TD><TD><p>A interface to an object supporting the IMalloc interface.  The service object must employ this IMalloc interface in constructing all storage structures delivered as output parameters from methods on the service object or any children of the service object. This applies any time that an interface delivers an output pointer that is not a pointer to an interface including pointers embedded in the data reached by such outputs (hereafter referred to as non-interface output pointers). The service object is required to use this pIMalloc for delivering of non-interface output pointers regardless of the memory allocation mechanism used for interfaces and in the internal operations of the object.The service object will also utilize the pIMalloc-&gt;Free method to free any non-interface output pointers it might obtain by invoking methods on any interface input parameters. </p></TD></TR>
+<TR><TD><p><i>punkParent</i></p></TD><TD><p>input</p></TD><TD><p>An interface of the parent object.  This is the object that is requesting the DMA_GetServiceObject operation</p></TD></TR>
+<TR><TD><p><i>lCharSetEncodingId</i></p></TD><TD><p>input</p></TD><TD><p>The character set encoding id to be used by the returned service object and any objects created directly or indirectly via that interface.</p></TD></TR>
+<TR><TD><p><i>pLocaleName</i></p></TD><TD><p>input</p></TD><TD><p>The locale to be used by the returned service object and any objects created directly or indirectly via the service object.  If this parameter is NULL, the service object is to employ its default locale.If this parameter is non-NULL and does not correspond to a locale supported by this service object, the service object will utilize its default locale.The DMA String referenced by this parameter must utilize the character set encoding specified by the lCharSetEncodingId parameter otherwise this function will fail and return DMARC_BAD_PARAMETER.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectTypeId</i></p></TD><TD><p>input</p></TD><TD><p>The DmaId of the type of Service Object requested.  In DMA 1.0 it should be an Id for either System, DocSpace or TextOrdering type.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectId</i></p></TD><TD><p>input</p></TD><TD><p>The DmaId of the object (e.g., System, DocSpace or TextOrdering) being instantiated.  This is always supplied and provides for the same GetServiceObject being used to implement more than one object.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIServiceObject</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface for the service object, or NULL if unsuccessful. </p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The implementation of a service object for use at a point-of-presence is accomplished by integrating a function named DMA_GetServiceObject of type DMA_GetServiceObjectProc.  The function is packaged in a program in accordance with the requirements for the particular DMA point-of-presence environment.  The program is in a form that can be registered via the IdmaServiceRegistry interface defined for that environment.  The registration information is enough for an individual object to be instantiated as a DMA Object by bringing the "packaging" program to an operational state and invoking the GetServiceObject function.
+</p><p>
+It is important to understand that GetServiceObject is not a function that is called by DMA applications.  GetServiceObject is a function that is delivered by the implementations of services integrated in the DMA point-of-presence.  The program that carries the function is installed in a Service registry, and the System Manager and System Objects use the registry information to find DMA objects that have their implementations available at the point of presence. 
+</p><p>
+Activation of a service object involves dynamic operation of the service object implementation. This operation is operating environment specific. The specification has been defined to be as generic as possible, limiting the differences between platforms to the specific semantics of certain parameters. Also, there are allowances for the service object to indicate to the point-of-presence how to locate and access the service object (via the moduleLocation and moduleType parameters of the registration mechanism).</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="CFuncdmaConnectSystemManager"></a>dmaConnectSystemManager</h3><p>    <b>Syntax</b><br>DmaRC <b>dmaConnectSystemManager</b> (<br>pDmaVoid    <i>pEnvInfo</i>,<br>pDmaString    <i>pProfile</i>,<br>Dmapv    <i>pIMalloc</i>,<br>DmaInteger32    <i>lCharSetEncodingId</i>,<br>pDmaString    <i>pLocaleName</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppISysMgr</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pEnvInfo</i></p></TD><TD><p>input</p></TD><TD><p>(optional) Any environment-specific information required in order to locate the execution environment that the system manager object will operate within. The specific value is environment-specific. When pEnvInfo is not defined for an environment or it is optional and omitted, NULL must be supplied. </p></TD></TR>
+<TR><TD><p><i>pProfile</i></p></TD><TD><p>input</p></TD><TD><p>(optional) The information used to locate the system configuration information maintained by the system manager. When it is not required or optional, NULL must be supplied.</p></TD></TR>
+<TR><TD><p><i>pIMalloc</i></p></TD><TD><p>input</p></TD><TD><p>(optional) A reference to an interface of an object that supplies the IMalloc interface.  When this parameter is omitted, the System Manager provides an implementation that is used for this requirement throughout the lifetime of the System Manager and any of its children.  The System Manager and all of its children will employ this IMalloc interface in constructing all storage structures delivered as output parameters from methods on interfaces. This applies any time that an interface delivers an output pointer that is not a pointer to an interface, including pointers embedded in the data reached by such outputs (hereafter referred to as non-interface output pointers).  The system manager and its children are required to use this pIMalloc for delivering non-interface output pointers regardless of the memory allocation mechanism used for interfaces themselves and in the internal operations of objects.  (The proper way to release an interface pointer is always via the IUnknown::Release method of that interface.)In addition, any interfaces supplied as parameters to methods on children of the System Manager must deliver non-interface outputs that were allocated with this same IMalloc interface.</p></TD></TR>
+<TR><TD><p><i>lCharSetEncodingId</i></p></TD><TD><p>input</p></TD><TD><p>The character set encoding id to be used by the returned system manager interface and any objects created directly or indirectly via that interface.</p></TD></TR>
+<TR><TD><p><i>pLocaleName</i></p></TD><TD><p>input</p></TD><TD><p>(optional) The name of the locale to be used by the returned system manager interface and any system objects returned by the IdmaSystemManager::EnumerateSystems.  If NULL, that value will be supplied in any SystemManager-synthesized ConnectSystem operations, as when performing EnumerateSystems. The DMA String referenced by this parameter must utilize the character set encoding specified by the lCharSetEncodingId parameter otherwise this function will fail and return DMARC_BAD_PARAMETER.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppISysMgr</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface for the system manager object, which will be NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This is the first call that must occur when using the DMA Application Programming Interface. The DMA System Manager object is the starting point for access to all other DMA objects. 
+</p><p>
+Returns an interface for a DMA System Manager object. The System Manager provides interfaces for enumerating the available DMA Systems, registering new DMA Systems, and connecting to a DMA System. 
+</p><p>
+Each successful dmaConnectSystemManager procedure call returns a distinct System Manager object.
+</p><p>
+If the application employs other COM-based components, it is essential to use the same Memory Manager for delivering pointers to non-interface results everywhere.  So long as this is done, interfaces from any of the COM-based components can be supplied to methods of any other interfaces, and there need be no concern about exactly which Memory Manager to use in releasing the storage of data returned from any interface method, no matter where the interface may have been obtained.
+</p><p>
+There are three simple rules of thumb:
+</p><p>
+1. If the program employs the Microsoft COM library (e.g., as part of OLE, MAPI, or other usage), the simplest way to provide an IMalloc to DMA is by first initializing COM and then using the Microsoft library CoGetMalloc to obtain the IMalloc to supply to dmaConnectSystemManager. 
+</p><p>
+2. For all calls on dmaConnectSystemManager in a program, have exactly the same pIMalloc input on every call, NULL or otherwise.
+</p><p>
+3. For any other components that deliver method-allocated outputs via COM interfaces, arrange to use the same pIMalloc in those components as in (1-2) or vice versa.
+</p><p>
+This is sufficient to have all COM interfaces be interoperable without further concern.  
+</p><p>
+Application development is also simplified considerably if the same character set encoding is specified for every dmaConnectSystemManager operation in the program.
+</p><p>
+At an abstract level, the information used by the system manager can be located anywhere. In practice the pProfile string will refer to a data source accessible within the local environment from which it is being used. 
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. In case the operation is successful, the returned interface must be released using the method IUnknown::Release.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping DMA return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<p></p>
+</body></html>

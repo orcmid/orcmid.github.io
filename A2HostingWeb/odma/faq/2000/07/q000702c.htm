@@ -1,0 +1,654 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q000702c: 0.27 ODMA Result Codes </title>
+<!--$$Header: /ODMACompagno/faq/2000/07/q000702c.htm 23    13-08-22 12:48 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006c.htm 0.10 of 2005-07-06T00:14Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033"><strong>
+		<a href="../../q000001.htm#Q000702"><font color="#990033">Q000702</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+		<a href="../../q000001.htm"><font color="#990033">
+		FAQtip</font></a><font color="#990033"><br>
+      </font></strong><font color="#990033"><strong><a href="q000702.htm">
+<font color="#990033">Interpreting ODMA Logs</font></a></strong></font><br>
+<em><strong><font size="5" color="#990033">ODMA Result Codes</font></strong></em></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a href="../../">faq</a>&gt;<br>
+      <a href="../">2000</a>&gt;<a href="./">07</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q000702c.htm">Q000702c</a>&gt;</code></b><br>
+      <small><small><a href="#0.27">0.27</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:48 -0700<!--webbot bot="Timestamp" endspan i-checksum="29230" --></small></small></p>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this FAQtip is available on the Internet at <br>
+			&lt;<b><kbd><a target="_top" href="q000702b.htm">http://ODMA.info/faq/2000/07/Q000702b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This section:</b>&nbsp;&nbsp; <b>0.27 ODMA Result Codes </b>&lt;<b><kbd><a target="_top" href="q000702c.htm">http://ODMA.info/faq/2000/07/Q000702c.htm</a></kbd></b>&gt;. 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small>
+	<blockquote>
+		<h3>1. <a href="#ResultCodes">Result Codes</a><br>
+&nbsp;&nbsp;&nbsp; 1.1 <span style="font-weight: 400">
+		<a href="#ImplementedResultCodes">Implemented Result Codes</a></span><br>
+&nbsp;&nbsp;&nbsp; 1.2 <span style="font-weight: 400">
+		<a href="#UnimplementedResultCodes">Unimplemented Result Codes</a></span><br>
+		2. <a href="#BreakingChanges">Breaking Changes</a><br>
+&nbsp;&nbsp;&nbsp; 2.1 <span style="font-weight: 400">
+		<a href="#BreakingCondition">Breaking Condition</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.2 <span style="font-weight: 400">
+		<a href="#BreakableCondition">Breakable Condition</a></span><br>
+		3. <a href="#Sources">Sources and Resources</a></h3>
+	</blockquote>
+</blockquote>
+
+
+  <h2><a name="1" target="_top" href="#1">1</a>. <a name="ResultCodes">Result Codes</a></h2>
+<blockquote>
+	<p>The following values are defined for the <b><kbd>ODMSTATUS</kbd></b> 
+	returned from most API functions.&nbsp; Not all values are applicable to 
+	every operation.&nbsp; </p>
+	<p>In addition, some values added in ODMA 2.0, if implemented by a DMS, will 
+	be seen as invalid/unknown responses by ODMA 1.5 and ODMA 1.0 applications.&nbsp; 
+	These breaking and breakable changes are discussed further below (section
+	<a href="#BreakingChanges">2</a>).</p>
+</blockquote>
+<h3><a name="1.1" target="_top" href="#1.1">1.1</a>
+<a name="ImplementedResultCodes">Implemented Result Codes</a></h3>
+<blockquote>
+	<p>The following result codes are the ones that have been defined with 
+	values in the official versions of the <b><kbd><a href="#ODMA2001">odma.h</a></kbd></b> 
+	header file.</p>
+	<div align="center">
+		<table border="1" width="100%" id="table1">
+			<tr>
+				<td align="right"><b>Log Value</b></td>
+				<td align="left"><b><kbd>ODMSTATUS</kbd> Symbol</b></td>
+				<td align="center"><b>ODMA</b><br><b>Version</b></td>
+				<td width="391">
+				<p align="center"><b>Explanation</b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="3"><b><kbd>0(0)</kbd></b></td>
+				<td valign="top" align="left"><kbd><b>0</b></kbd></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" rowspan="3" width="391" align="left"><b>Operation completed successfully.</b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="left"><b><kbd>ODM_NO_ERROR</kbd></b></td>
+				<td valign="top" align="center">1.5</td>
+			</tr>
+			<tr>
+				<td valign="top" align="left"><b><kbd>ODM_SUCCESS</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="3"><b><kbd>1(1)</kbd></b></td>
+				<td valign="top" rowspan="3" align="left"><b><kbd>ODM_E_FAIL</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>The operation failed:</b> <b>
+				<kbd>ODMOpenDoc</kbd></b>, <b><kbd>ODMSaveDoc</kbd></b>, <b>
+				<kbd>ODMNewDoc</kbd></b>, <b><kbd>ODMSaveAs</kbd></b>, <b><kbd>
+				ODMActivate</kbd></b>, <b><kbd>ODMSetDocInfo</kbd></b>, <b><kbd>
+				ODMGetLeadMoniker</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">1.5</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMQueryExecute</kbd></b>,
+				<b><kbd>ODMQueryGetResults</kbd></b>, <b><kbd>ODMQueryClose</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMCloseDoc</kbd></b> (1.0
+				<i><a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMSelectDoc</kbd></b> (1.0 <i><a href="#BreakingCondition">
+				breaking</a></i>), <b><kbd>ODMCloseDocEx</kbd></b>, <b><kbd>
+				ODMGetAlternateContent</kbd></b>, <b><kbd>ODMGetDocRelation</kbd></b>,
+				<b><kbd>ODMQueryCapability</kbd></b>, <b><kbd>ODMSaveAsEx</kbd></b>,
+				<b><kbd>ODMSaveDocEx</kbd></b>, <b><kbd>ODMSetAlternateContent</kbd></b>,
+				<b><kbd>ODMSetDocEvent</kbd></b>, <b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="3"><b><kbd>2(2)</kbd></b></td>
+				<td valign="top" rowspan="3" align="left"><b><kbd>ODM_E_CANCEL</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Action was cancelled at user request:</b>
+				<b><kbd>ODMSelectDoc</kbd></b>, <b><kbd>ODMNewDoc</kbd></b>, <b>
+				<kbd>ODMSaveAs</kbd></b>, <b><kbd>ODMActivate</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">1.5</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMQueryExecute</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMSaveAsEx</kbd></b>, <b>
+				<kbd>ODMSaveDocEx</kbd></b>, <b><kbd>ODMSelectDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="3"><b><kbd>3(3)</kbd></b></td>
+				<td valign="top" rowspan="3" align="left"><b><kbd>ODM_E_NODMS</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>DMS not registered:</b> <b><kbd>
+				ODMRegisterApp</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">1.5</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMSetDMS</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMGetDMS</kbd></b>, <b>
+				<kbd>ODMQueryCapability</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>4(4)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_CANTINIT</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>DMS failed to initialize:</b> <b>
+				<kbd>ODMRegisterApp</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>5(5)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_VERSION</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>DMS doesn't support requested version of ODMA:</b>
+				<b><kbd>ODMRegisterApp</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>6(6)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_APPSELECT</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>DMS reports that Application should select file:</b>
+				<b><kbd>ODMSelectDoc</kbd></b>, <b><kbd>ODMNewDoc</kbd></b>, <b>
+				<kbd>ODMSaveAs</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMSaveAsEx</kbd></b>, <b><kbd>ODMSelectDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>7(7)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_USERINT</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Operation can't be performed without 
+				an user 
+				interaction that was not allowed in the request:</b> <b><kbd>
+				ODMSelectDoc</kbd></b>, <b><kbd>ODMOpenDoc</kbd></b>, <b><kbd>
+				ODMNewDoc</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMCloseDocEx</kbd></b>, <b>
+				<kbd>ODMGetAlternateContent</kbd></b>, <b><kbd>ODMGetDocRelation</kbd></b>,
+				<b><kbd>ODMQueryCapability</kbd></b>, <b><kbd>ODMSaveAsEx</kbd></b>,
+				<b><kbd>ODMSaveDocEx</kbd></b>, <b><kbd>ODMSelectDocEx</kbd></b>,
+				<b><kbd>ODMSetAlternateContent</kbd></b>, <b><kbd>ODMSetDocEvent</kbd></b>,
+				<b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>8(8)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_HANDLE</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Invalid <kbd>ODMHANDLE</kbd> parameter in the request:</b>
+				<b><kbd>ODMSelectDoc</kbd></b>, <b><kbd>ODMNewDoc</kbd></b>, <b>
+				<kbd>ODMOpenDoc</kbd></b>, <b><kbd>ODMSaveDoc</kbd></b>, <b>
+				<kbd>ODMCloseDoc</kbd></b>, <b><kbd>ODMSaveAs</kbd></b>, <b>
+				<kbd>ODMActivate</kbd></b>, <b><kbd>ODMGetDocInfo</kbd></b>, <b>
+				<kbd>ODMSetDocInfo</kbd></b>, <b><kbd>ODMGetDMSInfo</kbd></b>,
+				<b><kbd>ODMGetLeadMoniker</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMQueryClose</kbd></b> 
+				(1.5 <i><a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMQueryExecute</kbd></b> (1.5 <i><a href="#BreakingCondition">
+				breaking</a></i>), <b><kbd>ODMQueryGetResults</kbd></b> (1.5 <i>
+				<a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMCloseDocEx</kbd></b>, <b><kbd>ODMGetAlternateContent</kbd></b>,
+				<b><kbd>ODMGetDocRelation</kbd></b>, <b><kbd>ODMQueryCapability</kbd></b>,
+				<b><kbd>ODMSaveAsEx</kbd></b>, <b><kbd>ODMSaveDocEx</kbd></b>,
+				<b><kbd>ODMSelectDocEx</kbd></b>, <b><kbd>ODMSetAlternateContent</kbd></b>,
+				<b><kbd>ODMSetDocEvent</kbd></b>, <b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>9(9)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_ACCESS</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Insufficient access rights for request:</b>
+				<b><kbd>ODMOpenDoc</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMActivate</kbd></b> (1.0
+				<i><a href="#BreakableCondition">breakable</a></i>), <b><kbd>
+				ODMSetDocInfo</kbd></b> (1.0 <i><a href="#BreakableCondition">
+				breakable</a></i>), <b><kbd>ODMGetAlternateContent</kbd></b>, <b>
+				<kbd>ODMSetAlternateContent</kbd></b>, <b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>10(a)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_INUSE</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Document in use and not accessible in the 
+				specified mode:</b> <b><kbd>ODMOpenDoc</kbd></b>, <b><kbd>
+				ODMActivate</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMGetAlternateContent</kbd></b>,
+				<b><kbd>ODMSetAlternateContent</kbd></b>, <b><kbd>
+				ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>11(b)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_DOCID</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Invalid Document ID:</b> <b>
+				<kbd>ODMOpenDoc</kbd></b>, <b><kbd>ODMSaveAs</kbd></b>, <b><kbd>
+				ODMActivate</kbd></b>, <b><kbd>ODMGetDocInfo</kbd></b>, <b><kbd>
+				ODMSetDocInfo</kbd></b>, <b><kbd>ODMGetLeadMoniker</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMGetAlternateContent</kbd></b>,
+				<b><kbd>ODMGetDocRelation</kbd></b>, <b><kbd>ODMSaveAsEx</kbd></b>,
+				<b><kbd>ODMSetAlternateContent</kbd></b>, <b><kbd>ODMSetDocEvent</kbd></b>,
+				<b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>12(c)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_OPENMODE</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Requested action is incompatible with mode of 
+				access to document:</b> <b><kbd>ODMSaveDoc</kbd></b> </td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMSaveDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>13(d)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_NOOPEN</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>The specified document is not open:</b>
+				<b><kbd>ODMCloseDoc</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left">ODMSaveDoc (1.0 <i>
+				<a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMCloseDocEx</kbd></b>, <b><kbd>ODMSaveDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>14(e)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_ITEM</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Invalid item specifier:</b> <b>
+				<kbd>ODMActivate</kbd></b>, <b><kbd>ODMGetDocInfo</kbd></b>, <b>
+				<kbd>ODMSetDocInfo</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMQueryCapability</kbd></b>,
+				<b><kbd>ODMSetDocEvent</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>15(f)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_OTHERAPP</kbd></b></td>
+				<td valign="top" align="center">1.0</td>
+				<td valign="top" width="391" align="left"><b>Selected document was for another application 
+				and none is returned for this application (treat as ODM_E_Cancel): <kbd>ODMSelectDoc</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMSelectDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top" rowspan="2"><b><kbd>16(10)</kbd></b></td>
+				<td valign="top" rowspan="2" align="left"><b><kbd>ODM_E_NOMOREDATA</kbd></b></td>
+				<td valign="top" align="center">1.5</td>
+				<td valign="top" width="391" align="left"><b>No more data is available:</b>
+				<b><kbd>ODMQueryGetResults</kbd></b></td>
+			</tr>
+			<tr>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b><kbd>ODMGetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>17(11)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_PARTIALSUCCESS</kbd></b></td>
+				<td valign="top" align="center">1.5</td>
+				<td valign="top" width="391" align="left"><b>Not all queried DMSs succeeded:</b>
+				<b><kbd>ODMQueryExecute</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>18(12)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_REQARG</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b>Required parameter not specified 
+				(i.e., is <kbd>NULL</kbd>): <kbd>ODMQueryGetResults</kbd></b> 
+				(1.5 <i><a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMGetAlternateContent</kbd></b>, <b><kbd>ODMGetDMS</kbd></b>,
+				<b><kbd>ODMGetDocRelation</kbd></b>, <b><kbd>ODMQueryCapability</kbd></b>,
+				<b><kbd>ODMSelectDocEx</kbd></b>, <b><kbd>ODMSetDocEvent</kbd></b>,
+				<b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>19(13)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_NOSUPPORT</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b>DMS does not support requested 
+				action:</b> <b><kbd>ODMActivate</kbd></b> (1.0 <i>
+				<a href="#BreakableCondition">breakable</a></i>), <b><kbd>
+				ODMGetDocInfo</kbd></b> (1.0 <i><a href="#BreakableCondition">
+				breakable</a></i>), <b><kbd>ODMSetDocInfo</kbd></b> (1.0 <i>
+				<a href="#BreakableCondition">breakable</a></i>), <b><kbd>
+				ODMGetAlternateContent</kbd></b>, <b><kbd>ODMGetDocRelation</kbd></b>,
+				<b><kbd>ODMQueryCapability</kbd></b>, <b><kbd>ODMSelectDocEx</kbd></b>,
+				<b><kbd>ODMSetAlternateContent</kbd></b>, <b><kbd>ODMSetDocEvent</kbd></b>,
+				<b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>20(14)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_TRUNCATED</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b>Supplied buffer too small for 
+				result that cannot be truncated: <kbd>ODMGetDocInfo</kbd></b> 
+				(1.0 <i><a href="#BreakableCondition">breakable</a></i>), <b>
+				<kbd>ODMSelectDocEx</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>21(15)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_INVARG</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b>An argument value is invalid:</b>
+				<b><kbd>ODMOpenDoc</kbd></b> (1.0 <i>
+				<a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMGetAlternateContent</kbd></b>, <b><kbd>ODMGetDocRelation</kbd></b>,
+				<b><kbd>ODMQueryCapability</kbd></b>, <b><kbd>ODMSaveDocEx</kbd></b>,
+				<b><kbd>ODMSelectDocEx</kbd></b>, <b><kbd>ODMSetAlternateContent</kbd></b></td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><b><kbd>22(16)</kbd></b></td>
+				<td valign="top" align="left"><b><kbd>ODM_E_OFFLINE</kbd></b></td>
+				<td valign="top" align="center">2.0</td>
+				<td valign="top" width="391" align="left"><b>Cannot access because DMS 
+				storage or service is offline/disconnected:</b> <b><kbd>
+				ODMActivate</kbd></b> (1.0 <i><a href="#BreakableCondition">
+				breakable</a></i>), <b><kbd>ODMGetDocInfo</kbd></b> (1.0 <i>
+				<a href="#BreakableCondition">breakable</a></i>), <b><kbd>
+				ODMNewDoc</kbd></b> (1.0 <i><a href="#BreakingCondition">
+				breaking</a></i>), <b><kbd>ODMOpenDoc</kbd></b> (1.0 <i>
+				<a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMSaveAs</kbd></b> (1.0 <i><a href="#BreakingCondition">
+				breaking</a></i>), <b><kbd>ODMSelectDoc</kbd></b> (1.0 <i>
+				<a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+				ODMSetDocInfo</kbd></b> (1.0 <i><a href="#BreakableCondition">
+				breakable</a></i>), <kbd><b>ODMGetAlternateContent</b></kbd>, <b>
+				<kbd>ODMSaveAsEx</kbd></b>, <b><kbd>ODMSaveDocEx</kbd></b>, <b>
+				<kbd>ODMSelectDocEx</kbd></b>, <b><kbd>ODMSetAlternateContent</kbd></b>,
+				<b><kbd>ODMSetDocEvent</kbd></b>, <b><kbd>ODMSetDocRelation</kbd></b></td>
+			</tr>
+		</table></div>
+</blockquote>
+<h3><a name="1.2" target="_top" href="#1.2">1.2</a>
+<a name="UnimplementedResultCodes">Unimplemented Result Codes</a></h3>
+<blockquote>
+	<p>There are a number of <b><kbd>ODMSTATUS</kbd></b> symbols defined in the 
+	ODMA 2.0 Specification that are not to be found in the standard <b>
+	<a href="#ODMA2001"><kbd>odma.h</kbd></a></b> header files.&nbsp; There were 
+	agreed values and it is possible that they may appear on an ODMA log for a 
+	DMS integration that implements the result cases.&nbsp; For additional 
+	information and recommendations about these codes, see (<a href="#ODMA2000a">ODMA 
+	2000a</a>).</p>
+	<div align="center">
+	<table border="1" width="100%" id="table2">
+		<tr>
+			<td align="right"><b>Log Value</b></td>
+			<td align="left"><b><kbd>ODMSTATUS</kbd> Symbol</b></td>
+			<td align="center"><b>ODMA</b><br><b>Version</b></td>
+			<td width="393">
+			<p align="center"><b>Explanation</b></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><kbd><b>23(17)</b></kbd></td>
+			<td valign="top" align="left"><b><kbd>ODM_E_ARCHIVED</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>Cannot access document because it is 
+			archived:</b> <kbd><b>ODMActivate</b></kbd> (1.0 <i>
+			<a href="#BreakableCondition">breakable</a></i>), <b><kbd>ODMOpenDoc</kbd></b> 
+			(1.0 <i><a href="#BreakingCondition">breaking</a></i>),&nbsp; <b>
+			<kbd>ODMGetAlternateContent</kbd></b>, <b><kbd>
+			ODMSetAlternateContent</kbd></b></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><b><kbd>24(18)</kbd></b></td>
+			<td valign="top" align="left"><b><kbd>ODM_E_ALREADYOPENED</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>The document is already opened and 
+			was not opened again:</b> <b><kbd>ODMOpenDoc</kbd></b> (1.0 <i>
+			<a href="#BreakingCondition">breaking</a></i>)</td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><b><kbd>25(19)</kbd></b></td>
+			<td valign="top" align="left"><b><kbd>ODM_E_FILELOCKED</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>Application document still 
+			open/locked and DMS can't access it:</b> <b><kbd>ODMCloseDoc</kbd></b> 
+			(1.0 <i><a href="#BreakingCondition">breaking</a></i>), <b><kbd>
+			ODMCloseDocEx</kbd></b></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><b><kbd>26(1a)</kbd></b></td>
+			<td valign="top" align="left"><b><kbd>ODM_E_REFUSED</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>DMS Refused for this application:</b>
+			<b><kbd>ODMRegisterApp</kbd></b> (1.0 <i>
+			<a href="#BreakingCondition">breaking</a></i>)</td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><b><kbd>27(1b)</kbd></b></td>
+			<td valign="top" align="left"><b><kbd>ODM_W_NOACTION</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>No action needed to achieve result:</b>
+			<b><kbd>ODMActivate</kbd></b> (1.0 <i><a href="#BreakableCondition">
+			breakable</a></i>), <b><kbd>ODMSetDocRelation</kbd></b></td>
+		</tr>
+		<tr>
+			<td align="right" valign="top"><b><kbd>28(1c)</kbd></b></td>
+			<td valign="top" align="left"><b><kbd>ODM_E_NORELATION</kbd></b></td>
+			<td valign="top" align="center">2.0</td>
+			<td valign="top" width="393" align="left"><b>Document has no related parent or 
+			child:</b> <b><kbd>ODMGetDocRelation</kbd></b>, <b><kbd>
+			ODMSetDocRelation</kbd></b></td>
+		</tr>
+	</table>
+	</div>
+</blockquote>
+<h2><a name="2" target="_top" href="#2">2</a>. <a name="BreakingChanges">
+Breaking Changes</a></h2>
+<blockquote>
+	<p>The ODMA Specifications require and promise down-level compatibility from 
+	later versions of the specification.&nbsp; Nevertheless, the ODMA 2.0 
+	Specification contained a number of breaking changes in the API, including 
+	in the addition of <b><kbd>ODMSTATUS</kbd></b> values to ODMA 1.0 and ODMA 
+	1.5 operations (<a href="#ODMA2000b">ODMA 2000b</a>).</p>
+	<p>In the above tables, there are two categories of possible breakage: <i>
+	<a href="#BreakingCondition">breaking</a></i> and <i>
+	<a href="#BreakableCondition">breakable</a></i>.</p>
+</blockquote>
+<h3><a name="2.1" target="_top" href="#2.1">2.1</a> <a name="BreakingCondition">
+Breaking Condition</a></h3>
+<blockquote>
+	<p>If an <b><kbd>ODMSTATUS</kbd></b> value in this category is returned for 
+	a particular ODMA operation, it will break the interface agreement for an 
+	earlier version of ODMA.&nbsp; </p>
+	<p>The occurrence of such a result will not be recognized by an ODMA-aware 
+	application that implements an earlier version of ODMA.&nbsp; In this case, 
+	the response is unpredictable.&nbsp; </p>
+	<p>If the ODMA-aware application was not programmed to detect unexpected 
+	values of <b><kbd>ODMSTATUS</kbd></b>, it is possible that the application 
+	will fail or behave in unexpected ways.</p>
+	<p>Because an ODMA-compliant DMS integration has no means for determining 
+	the version of ODMA on which an application depends, it is recommended that 
+	these cases not be implemented in ODMA 2.0 DMS integrations.</p>
+	<p>In reviewing logs for resolution of unexpected behavior, it is important 
+	to review the logged <b><kbd>ODMSTATUS</kbd></b> values to see if a breaking 
+	value has been returned.</p>
+</blockquote>
+<h3><a name="2.2" target="_top" href="#2.2">2.2</a> <a name="BreakableCondition">
+Breakable Condition</a></h3>
+<blockquote>
+	<p>In some cases, the functions of certain ODMA 1.0 operations have been 
+	extended in ODMA 2.0.&nbsp; These functions will only be requested by 
+	ODMA-aware applications that rely on ODMA 2.0 capabilities.</p>
+	<p>However, the ODMA 2.0 specification also introduces additional ODMSTATUS 
+	values that will not be recognized by ODMA-aware applications built to 
+	earlier versions of the specification.</p>
+	<p>When one of the additional (breakable) ODMSTATUS values is returned for a 
+	function that is only defined for ODMA 2.0, there is no difficulty.&nbsp; 
+	Any application requesting that ODMA 2.0 functionality must be programmed to 
+	expect all of the possible ODMA 2.0 ODMSTATUS values for the operation.</p>
+	<p>When an additional ODMSTATUS value is returned for a function that is 
+	defined for earlier versions of the API, that action is a breaking condition 
+	and should be treated as such (section <a href="#BreakingCondition">2.1</a>).</p>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a><b>. <a name="Sources">Sources and Resources</a></b></h2>
+<blockquote>
+	<dl>
+		<dt><a name="ODMA1995">ODMA (1995)</a>.</dt>
+		<dd>Open Document Management API Version 1.0a.&nbsp; ODMA Coalition, 
+		AIIM International, December 18, 1995.&nbsp; Available on the internet 
+		at &lt;<b><kbd><a href="../../../downloads/odma10-2.htm">http://ODMA.info/downloads/odma10-2.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA1996">ODMA (1996)</a>.</dt>
+		<dd>Open Document Management API Version 1.5.&nbsp; ODMA Coalition, AIIM 
+		International, October 29, 1996.&nbsp; Available on the internet at &lt;<b><kbd><a href="../../../downloads/odma15-2.htm">http://ODMA.info/downloads/odma15-2.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA1997">ODMA (1997)</a>.</dt>
+		<dd>
+		Open Document Management API Version 2.0.&nbsp; ODMA Coalition, AIIM 
+		International, September 19, 1997.&nbsp; Available on the internet at &lt;<b><kbd><a href="../../../downloads/#ODMA-20-Specification">http://ODMA.info/downloads/#ODMA-20-Specification</a></kbd></b>&gt;.&nbsp; 
+		On-line review edition 2.0-3 available at &lt;<b><kbd><a href="../../../downloads/odma20-3.htm">http://ODMA.info/downloads/odma20-3.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2000a">ODMA (2000a)</a>.</dt>
+		<dd>ODMA Codes Missing in <b><kbd>Odma.h</kbd></b>.&nbsp; ODMA Incident 
+		Report X000002.&nbsp; 2001-05-21 version available at &lt;<b><a href="../../../support/X000002.htm"><kbd>http://ODMA.info/support/X000002.htm</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2000b">ODMA (2000b)</a>.</dt>
+		<dd>Changes Between ODMA Versions.&nbsp; ODMA FAQtip Q000705.&nbsp; 
+		2006-04-10 version 0.20 review draft available at &lt;<b><kbd><a href="q000705c.htm">http://ODMA.info/faq/2000/07/Q000705c.htm</a></kbd></b>&gt;.</dd>
+		<dd>&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2000c">ODMA (2000c)</a>.</dt>
+		<dd>Omission of <kbd><b>0</b></kbd> and <b><kbd>ODM_NOERROR</kbd></b> 
+		from <b><kbd>ODMSTATUS</kbd></b>.&nbsp; ODMA Incident Report X000900.&nbsp; 
+		2000-09-10 version available at &lt;<b><a href="../../../support/X000900.htm"><kbd>http://ODMA.info/support/X000900.htm</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2001">ODMA (2001)</a>.</dt>
+		<dd><b><kbd>odma.h</kbd> 2.0.0-1</b>.&nbsp; ODMA 2.0 Library Files.&nbsp; 
+		2001-09-04 edition.&nbsp; Available at &lt;<b><a href="../../../downloads/odma200h.htm"><kbd>http://ODMA.info/downloads/odma200h.htm</kbd></a></b>&gt;.<small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; This is the definitive header file for defining the 
+		ODMA-specific symbols and API signatures as established with the release 
+		of the ODMA 2.0 SDK.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+	</dl>
+</blockquote>
+
+
+  <hr color="#990033">
+
+<dl><small>
+<dl>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	</dl>
+
+<dl>
+	<dt><b><a name="0.27">0.27</a> 2006-05-10-18:07 Update Cross-References</b></dt>
+	<dd>Refer to the 0.20 version of Q000705 as (<a href="#ODMA2000b">ODMA 2000b</a>).&nbsp; 
+	Use the new folio location that will now be permanent.</dd>
+	<dt><b><a name="0.26">0.26</a> 2006-04-06-08:52 Make cleanups</b></dt>
+	<dd>Table formatting is corrected and <b><kbd>ODMSelectDocEx</kbd></b> is 
+	added into the <b><kbd>ODM_E_APPSELECT</kbd></b> case.</dd>
+	<dt><b><a name="0.25">0.25</a> 2006-04-05-22:54 Create Review Draft</b></dt>
+	<dd>The material is complete enough for careful review and for reference in 
+	incident analyses that are underway.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-04-04-17:01 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.</dd>
+	</dl>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2006-04-04-17:01 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 23 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

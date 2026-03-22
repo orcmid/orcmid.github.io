@@ -1,0 +1,407 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/faq/Q000600.htm 14    00-09-19 14:54 Orcmid $-->
+<title>ODMA FAQtip Q000600: WordPerfect-ODMA Troubleshooting</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma/faq">AIIM DMware ODMA FAQ</a></h2>
+
+<h1 align="center"><b><a href="http://www.infonuovo.com/odma/faq/Q000600.htm">FAQtip
+Q000600</a>: WordPerfect-ODMA Troubleshooting</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.66">Version
+0.70</a></span>&nbsp; L<span style="font-variant: small-caps">ast updated</span>
+ 2000-09-19-14:52 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/faq/Q000600.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+
+<h3><i><a href="#Summary">Summary</a>:</i></h3>
+
+<p><i><font size="4">This response addresses the question &quot;How can I
+trouble-shoot WordPerfect operation with ODMA-based Document Management
+Systems?&quot;</font></i></p>
+
+</blockquote>
+
+<h2>1. <a href="#WordPerfectResources">Reviewing WordPerfect Support Resources</a></h2>
+
+<h2>2. <a href="#CurrentODMASoftware">Confirming Current ODMA Software</a></h2>
+
+<h2>3. <a href="#ConfiguringODMA-WordPerfect">Configuring ODMA for WordPerfect</a></h2>
+
+<h2>4. <a href="#MakingLogs">Logging WordPerfect-ODMA Operations</a></h2>
+
+<h2>5. <a href="#InterpretingLogs">Interpreting WordPerfect Activity Logs</a></h2>
+
+<h2>6. <a href="#OtherThings">Trying Other Things</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h1><a name="Summary">Summary</a></h1>
+<blockquote>
+<p>For troubleshooting a WordPerfect-ODMA integration, follow these guidelines:</p>
+  <ol>
+    <li><b><a href="#WordPerfectResources">Review Available WordPerfect Support
+      Resources</a>.</b><br>
+      This can lead you to new information about the ODMA-compliant software
+      releases you are dealing with.&nbsp; Others may have encountered
+      difficulties and arrived at workarounds that you should know about.</li>
+    <li><b><a href="#CurrentODMASoftware">Have a Current ODMA Configuration</a>.</b><br>
+      Before working through an integration, make sure you have the correct ODMA
+      software installed.&nbsp; Having multiple versions of the software
+      installed can lead to inconsistent behavior.&nbsp; Make sure you have the
+      latest stable release of ODMA software and that it is properly installed.</li>
+    <li><b><a href="#ConfiguringODMA-WordPerfect">Configure ODMA for WordPerfect</a>.<br>
+      </b>Make sure that the ODMA configuration has WordPerfect be able to use
+      ODMA the way you want.&nbsp; You can prevent ODMA from being available to
+      WordPerfect, you can specify a particular DMS for default use by
+      WordPerfect, and you can specify a default DMS that is automatically used
+      with any ODMA-aware application that is run.</li>
+    <li><b><a href="#MakingLogs">Log WordPerfect ODMA Activity</a><br>
+      </b>WordPerfect for Windows provides activity logs.&nbsp; Learn to
+      activate these logs for use in confirming ODMA operation, and see what
+      ODMA is reporting to WordPerfect.</li>
+    <li><b><a href="#InterpretingLogs">Interpret the WordPerfect Activity Logs</a><br>
+      </b>Use the tutorials here, along with other reference material, to
+      interpret the logs and determine the requests that WordPerfect is making
+      via ODMA and the responses that are returned for those requests.</li>
+    <li><b><a href="#OtherThings">Try Other Things<br>
+      </a></b>Depending on what your investigations reveal, you may want to try
+      other resources, including problem workarounds that others have found.</li>
+  </ol>
+</blockquote>
+<h1>1. <a name="WordPerfectResources">Reviewing WordPerfect Support Resources</a></h1>
+<blockquote>
+  <blockquote>
+<p><b><i>see also: </i><a href="http://www.infonuovo.com/odma/faq/Q000601.htm">Q000601
+WordPerfect Support Resources</a>,</b> for updated information</p>
+  </blockquote>
+  <p> WordPerfect and Soft Solutions were the original
+  promoters and sponsors of the Open Document Management API development effort.</p>
+  <p>WordPerfect has supported DMS integration via ODMA on Windows since the
+  original introduction of ODMA 1.0.&nbsp;&nbsp;</p>
+  <p>There are three kinds of support information available for current versions
+  of WordPerfect: Direct, Peer-to-Peer, and Community:</p>
+  <ul>
+    <li><b>Check on <a href="http://www.infonuovo.com/odma/faq/Q000601.htm#Direct">Direct Support
+      Resources</a></b></li>
+    <li><b>Review <a href="http://www.infonuovo.com/odma/faq/Q000601.htm#Peer-to-Peer">Peer-to-Peer
+      Support Resources</a> </b></li>
+    <li><b>Check <a href="http://www.infonuovo.com/odma/faq/Q000601.htm#Community">Community Support Web Pages</a></b></li>
+  </ul>
+  <p>It is important to check these and any other resources that you have.&nbsp;
+  Thoroughness matters.&nbsp; Many problems are not what they
+  first seem; details contributed as discussions continue are often critical to successful resolution of
+  a problem.</p>
+</blockquote>
+<h1>2. <a name="CurrentODMASoftware">Confirming Current ODMA Software</a></h1>
+<blockquote>
+<p>An important first step is ensuring that current ODMA software is
+installed on your computer.</p>
+<p>The latest edition of software is that designed for the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">ODMA
+2.0 Specification</a>.&nbsp; In general, it is always preferable to use versions
+of ODMA software designed for ODMA 2.0.&nbsp; In addition to providing access to
+maximum functionality, there is <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ConnectionManagerTraceLogging">special
+support for troubleshooting</a> that is not available in earlier versions.</p>
+<p>For troubleshooting recent versions of WordPerfect for Windows (starting with
+WPWin 8.0), there is no reason not to use the latest version of <code><b>ODMA32.dll</b></code>,
+version 2.0.0-1.</p>
+<p>To ensure that you have the latest, and it is the most appropriate for your
+configuration, consult <a href="http://www.infonuovo.com/odma/faq/Q000603.htm">ODMA
+FAQtip Q000603: Latest ODMA Software</a>.&nbsp; This tip is updated any time
+there are important changes to the available software.</p>
+</blockquote>
+<h1>3. <a name="ConfiguringODMA-WordPerfect">Configuring ODMA for WordPerfect</a></h1>
+<blockquote>
+<p>There are three ways to configure ODMA so that WordPerfect is (or is not)
+allowed to operate with ODMA:&nbsp;</p>
+<ol>
+  <li>Using a <a href="#ConfiguringDefaultDMS">default DMS</a> with
+    WordPerfect,&nbsp;</li>
+  <li>Using a <a href="#UsingSpecificDMS">specific DMS</a> with
+    WordPerfect,&nbsp;</li>
+  <li>Using <a href="#UsingNoDMS">no DMS</a> with WordPerfect.</li>
+</ol>
+<p><b>Prerequisite:</b></p>
+<ul>
+  <li>You must be familiar with and be comfortable with reviewing and modifying
+    the Windows Registry.&nbsp; This is the <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000012">primary
+    means</a> for adjusting an ODMA configuration.</li>
+  <li>You can experiment with using the ODMA Test application of the <a href="Q000603.htm#DownloadODMASDK2.0.0">ODMA
+    2.0 SDK</a>.&nbsp; It's Tools menu provides some limited control over
+    default registry settings.</li>
+</ul>
+</blockquote>
+<h2>3.1 <a name="ConfiguringDefaultDMS">Using a Default DMS</a></h2>
+<blockquote>
+  <blockquote>
+<p><b>3.1.1 <a href="#ConfirmingDefaultDMS">Confirming Default DMS<br>
+</a>3.1.2 <a href="#EnableWordPerfectODMA">Enable WordPerfect ODMA Operation</a></b></p>
+  </blockquote>
+  <p>Even though ODMA software is installed, WordPerfect for Windows will not
+  automatically use ODMA unless a DMS has been assigned for use and WordPerfect
+  for Windows has ODMA operation enabled.</p>
+  <p>Establishing a Default DMS will allow all ODMA-aware applications to be
+  used with that DMS without any special installation operations being
+  required.&nbsp; All ODMA-aware applications for which no other DMS has been
+  specified will use the established default as their default DMS.&nbsp; When it
+  is desirable to avoid ODMA-based operation of some applications, including
+  WordPerfect for Windows, it is then desirable to operate without a default
+  DMS.</p>
+  <blockquote>
+    <p><b><i>see also</i>: 3.2 Using No DMS</b></p>
+  </blockquote>
+</blockquote>
+<h3>3.1.1 <a name="ConfirmingDefaultDMS">Confirming Default DMS</a></h3>
+<blockquote>
+  <blockquote>
+<p><b>3.1.1.1 <a href="#IdentifyInstalledDMS">Identify Installed DMS
+Integrations<br>
+</a>3.1.1.2 <a href="#IdentifyUniqueDefault">Identify Unique Default Integration</a></b></p>
+  </blockquote>
+</blockquote>
+<h4>3.1.1.1 <a name="IdentifyInstalledDMS"> Identify Installed DMS Integrations</a></h4>
+<blockquote>
+  <p>Using the Windows Registry editor, review the entries under registry key</p>
+  <blockquote>
+    <p><b><code>HKEY_CLASSES_ROOT\ODMA32\</code></b></p>
+  </blockquote>
+  <p>Under the <b><code>ODMA32</code></b> key, there should be one key entry for
+  each ODMA DMS that has a Win32 integration installed.&nbsp; A DMS is installed
+  if the DMS ID appears as a subkey entry and the subke has a default
+  value that specifies a full path to the <b><code>.dll</code></b> file that
+  implements the particular DMS integration.</p>
+  <p>If there is no <b><code>ODMA32</code></b> key, there are no keys below it,
+  or none of the keys have default values, it is necessary to install one or
+  more Win32 DMS integrations before ODMA operations can be performed via
+  WordPerfect for Windows.&nbsp;&nbsp;</p>
+  <p>If you don't have a commercial DMS installed, you can test WordPerfect
+  operation using the <b><code>ODMASAMP</code></b> DMS provided with the <a href="http://www.infonuovo.com/odma/faq/Q000603.htm#DownloadODMASDK2.0.0">ODMA
+  2.0 SDK</a>.&nbsp; This permits rudimentary testing of operation even though
+  full DMS functionality is not available.&nbsp; It also allows determination of
+  whether any problems appear to be DMS specific or not.</p>
+  <p>If you do not install <b><code>ODMASAMP</code></b>, you should install at
+  least one Win32 integration for a commercial ODMA-compliant DMS that you have
+  available.&nbsp;&nbsp;</p>
+</blockquote>
+<h4>3.1.1.2 <a name="IdentifyUniqueDefault"> Identify Unique Default Integration</a></h4>
+<blockquote>
+  <blockquote>
+    <p><b><i>see also</i>: <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">ODMA
+    2.0 Specification</a> section <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#InstallingDMS">5,
+    Installing a DMS</a></b></p>
+  </blockquote>
+  <p>At most one of the&nbsp;</p>
+  <blockquote>
+    <p><b><code>HKEY_CLASSES_ROOT\ODMA32\</code></b></p>
+  </blockquote>
+  <p>subkeys may identify a global default DMS to be available to all ODMA-aware
+  applications, including WordPerfect for Windows.&nbsp; Although a default DMS
+  is not required, it is common practice to have one.&nbsp; You can establish
+  any particular DMS as the default, and you can change the default at any time.</p>
+  <p>To specify the default DMS, you need to know the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DMS_ID">DMS
+  ID</a>.&nbsp; This is the key that occurs just below the <code><b>ODMA32</b></code>-key
+  level of the registry.&nbsp; If you want to be sure which document management
+  system goes with a DMS ID, look for <b><code>FullName</code></b> subkeys that
+  provide plaintext descriptions of the product integrated with that DMS
+  ID.&nbsp;&nbsp;</p>
+  <p>In the following procedure, the ODMA 2.0 Sample DMS <b><code>ODMASAMP</code></b>,
+  with <code><b>FullName</b></code> value &quot;<b><code>ODMA 2.0 Sample DMS (32 bit)</code></b>&quot;
+  is used for purposes of example.&nbsp; You can use any installed DMS as the
+  default.</p>
+  <ol>
+    <li>If there is a <b><code>DEFAULT</code></b> subkey, and it is not for the
+      DMS that you want as default, delete the <b><code>DEFAULT</code></b>
+      subkey(s) that is (are) already there.&nbsp;&nbsp;</li>
+    <li>If a default is not already specified, create a <b><code>DEFAULT</code></b>
+      subkey for global usage.&nbsp; For example, to have the ODMA Sample DMS as
+      the 32-bit default, create the key&nbsp;
+      <p><code><b>HKEY_CLASSES_ROOT\ODMA32\ODMASAMP\DEFAULT\</b></code></p>
+      <p>and make sure there is no other <b><code>ODMA32</code></b> DMS ID key that has a <b><code>DEFAULT</code></b>
+      subkey.&nbsp; No value is required for the <b><code>DEFAULT</code></b>
+      subkey.</li>
+    <li>Confirm that the specified DMS is actually installed.&nbsp; For example,
+      the <code><b>HKEY_CLASSES_ROOT\ODMA32\ODMASAMP\</b></code> key should have
+      a default value that specifies the correct file-system location of the <code><b>ODMASamp32.dll</b></code>.&nbsp;
+      (Do not be surprised if this path is expressed in terms of Win16
+      8.3-format file-and-subdirectory names, the ones that are always available
+      in addition to long file names on many Win32 file systems.)</li>
+  </ol>
+</blockquote>
+<h3>3.1.2 <a name="EnableWordPerfectODMA">Enable WordPerfect ODMA Operation</a></h3>
+<blockquote>
+  <p>WordPerfect is normally configured to automatically use ODMA when a DMS is
+  available for usage as the WordPerfect default.&nbsp; Even when there is no
+  default DMS, WordPerfect may attempt to use ODMA if it encounters an <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DocumentIDs">ODMA
+  Document Id</a> for a file to be used.&nbsp;&nbsp;</p>
+  <p>If you have current ODMA software and a default ODMA DMS integration has
+  been specified, confirm that WordPerfect is operating with ODMA:</p>
+  <ol>
+    <li>Initiate WordPerfect operation</li>
+    <li>Specify menu item File | New to create a new document</li>
+    <li>A DMS-specific file-creation dialog should occur.&nbsp; This dialog will
+      invite you to provide initial information about the document as it will
+      exist in the DMS.</li>
+    <li>There will be an option to force the file-system to be used by
+      WordPerfect, even though a DMS is available.&nbsp; Select that option.</li>
+    <li>You should now have a new document to work on that has not been assigned
+      to any DMS, and that you can save in the file system the same as when ODMA
+      operation is not available.</li>
+  </ol>
+  <p>If you do not see the above sequence, especially step (3), WordPerfect is <b>not</b>
+  configured to use ODMA.</p>
+  <p>To make sure that WordPerfect is configured to use ODMA, you need to use
+  the WordPerfect for Windows configuration options to specify <i>enhanced file
+  dialogs</i>.&nbsp; If your version of WordPerfect for Windows allows the use
+  of ODMA to be controlled as part of that configuration dialog, make sure that
+  ODMA usage is selected.</p>
+</blockquote>
+<h2>3.2 <a name="UsingSpecificDMS">Using A Specific DMS</a></h2>
+<blockquote>
+<p>Whether or not a <a href="#ConfiguringDefaultDMS">default DMS</a> has been
+established, you can instruct ODMA to use a particular DMS for
+WordPerfect.&nbsp;&nbsp;</p>
+<p>This is described in the ODMA 2.0 Specification in <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#5¶9">section
+5</a>, following the discussion of setting the overall default.</p>
+  <p>The <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#lpszAppId2.19">Application
+  Id</a> parameter value that WordPerfect uses for itself is <code><b>&quot;WordPerfect&quot;</b></code>.</p>
+<p>Create a registry key of</p>
+  <blockquote>
+<p><b><code>HKEY_CLASSES_ROOT\WordPerfect\ODMA32\</code></b></p>
+  </blockquote>
+  <p>and set the default value to the name of the DMS integration (e.g., <b><code>&quot;ODMASAMP&quot;</code></b>)
+  that you want to force as the initial default for WordPerfect to use.</p>
+  <p>This application-specific default always takes precedence over any general
+  default.</p>
+</blockquote>
+<h2>3.3 <a name="UsingNoDMS">Using No DMS</a></h2>
+<blockquote>
+<p>When there is a specific or generic default DMS established for WordPerfect
+to use, WordPerfect will notice that ODMA is supported in the configuration you
+have.&nbsp; It will then offer that DMS any time the operator requests creation
+of a new document or opening of an existing document.&nbsp; If WordPerfect fails
+to obtain a default DMS, it will not do that, offering only its own file-system
+operations for creating new documents and opening existing documents.</p>
+  <p>However, if WordPerfect is give an <a href="../downloads/odma20-3.htm#DocumentIDs">ODMA
+  Document Id</a>, it may still attempt to operate with the DMS that is
+  identified in that Document Id.&nbsp; And a DMS may launch WordPerfect with
+  that Document Id as a command-line parameter.&nbsp; This is just by way of
+  warning that you may see WordPerfect attempt to operate with a DMS different
+  than any specified default, and also when no DMS is specified for WordPerfect.</p>
+  <p>There are a number of ways to specify that WordPerfect is not to use any
+  ODMA DMS:</p>
+  <ol>
+    <li>Register a bogus DMS Id as the specific default for WordPerfect.&nbsp;
+      E.g., apply the procedure of <a href="#UsingSpecificDMS">section 3.2</a>
+      and use a fictitious DMS Id like <b><code>&quot;ODMAFAKE&quot;</code></b>.</li>
+    <li>Have there be <b>no</b> generic default DMS for ODMA and assign a
+      default DMS for every ODMA-aware application that you use <b>except </b>WordPerfect.</li>
+    <li>Assign an ODMA 2.0-compliant DMS that supports an <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_REFUSED2.19">exclusion
+      list</a> and that rejects WordPerfect connections.</li>
+    <li>Use configuration options of WordPerfect itself that causes it to avoid
+      using ODMA.&nbsp; If you cannot find WordPerfect configuration options
+      that do precisely what you want, there are workarounds possible for
+      manipulating WordPerfect's own Windows Registry settings.</li>
+  </ol>
+</blockquote>
+<h1>4. <a name="MakingLogs">Logging WordPerfect-ODMA Operations</a></h1>
+<blockquote>
+  <p>Word Perfect for Windows versions 8 and 9 provide activity logs for all operations performed
+  via the Open Document Management API (ODMA).&nbsp; The logs can
+  be used to confirm that WordPerfect and a DMS are properly installed and
+  coordinating via ODMA.</p>
+</blockquote>
+<h2>4.1 <a name="LoggingPrerequisites">Prerequisites</a></h2>
+<blockquote>
+  <dl>
+    <dt><b>Willingness to Modify the Windows System Registry</b></dt>
+    <dd>&nbsp;</dd>
+  </dl>
+  <p><a href="http://kb.corel.com/kbdocs/CWS8032/WP80WIN/WP80WIN_12912.htm">WordPerfect
+  Knowledge Base Article 12912</a>&nbsp;</p>
+</blockquote>
+<h1>4. <a name="InterpretingLogs">Interpreting Logs of WordPerfect-ODMA
+Operations</a></h1>
+<h2>4.2 <a name="InterpretingPrerequisites">Prerequisites</a></h2>
+<blockquote>
+  <p>The <a href="../downloads/odma20.htm">ODMA 2.0 Specification</a> for
+  explanations of the operations summarized in the log entries.</p>
+  <p>A text editor or viewer (such as Windows Notepad or WordPerfect) for
+  reviewing the log files that are produced.</p>
+  <p><a href="http://kb.corel.com/kbdocs/CWS8032/WP80WIN/WP80WIN_12912.htm">WordPerfect
+  Knowledge Base Article 12912</a>&nbsp;</p>
+</blockquote>
+<p>&nbsp;</p>
+<h1>5. <a name="OtherThings">Trying Other Things</a></h1>
+<blockquote>
+<p>Creating a Log from ODMA32</p>
+<p>Workarounds for known problems</p>
+  <hr>
+</blockquote>
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <dl>
+    <dt>Clay Gibney</dt>
+    <dd>provided a copy of the procedure for
+      initiating WordPerfect activity logging (2000-06-06) and provided
+      trouble-shooting information as part of working on an <a href="http://www.infonuovo.com/odma/support/X000500.htm">ODMA
+      integration incident</a>.</dd>
+    <dt><a href="mailto:infonuovo@email.com">Dennis Hamilton</a></dt>
+    <dd>collected the contributed material and organized versions 0.50-0.70 for
+      initial trial (2000-06-19 to 2000-09-19).</dd>
+  </dl>
+</blockquote>
+<h2><a name="History">History</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><b><a name="0.70">Version 0.70</a>: Added Disabling of ODMA for
+      WordPerfect</b></dt>
+    <dd>Tied in procedures for Disabling WordPerfect use of ODMA without
+      crippling ODMA for other applications.</dd>
+    <dt><b><a name="0.66">Version 0.66</a>: Work through Default DMS
+      Configuration</b></dt>
+    <dd>Expand the coverage of how to tie WordPerfect and a DMS together by
+      controlling default DMS configurations.&nbsp; This is tedious and deserves
+      being separated out as a generic case anyhow, with just the
+      WordPerfect-Unique information here.</dd>
+    <dt><b><a name="0.65">Version 0.65: Connect Other FAQtips</a></b></dt>
+    <dd>FAQtips <a href="http://www.infonuovo.com/odma/faq/Q000601.htm">Q000601</a>
+      and <a href="http://www.infonuovo.com/odma/faq/Q000603.htm">Q000603</a>
+      are linked from this tip, and the section on Configuration of ODMA is
+      expanded.</dd>
+    <dt><b><a name="0.60">Version 0.60: Expanded Material</a></b></dt>
+    <dd>The location of support information, and the confirmation of the latest
+      version of ODMA are separated out into separate FAQtips.&nbsp; These will
+      be cross-referenced from other problem work-around procedures.&nbsp; Additional
+      sections are introduced for covering other elements available in the
+      configuration of WordPerfect for operation with ODMA (and <i>vice versa</i>).</dd>
+    <dt><strong><a name="0.50">Version 0.50: Initial Trial</a></strong></dt>
+    <dd>The initial version is posted for trial use and confirmation by those
+      who provided the original information and others interested in
+      WordPerfect-ODMA troubleshooting.</dd>
+  </dl>
+</font></blockquote>
+
+<p align="right">created 2000-06-19-15:47 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-09-19 14:54 $<br>
+$$Revision: 14 $</em></p>
+</body>
+</html>

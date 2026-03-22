@@ -1,0 +1,239 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d161102: VCbind Deployment Kit</title>
+<!--$$Header: /nfoWareCompagno/dev/2016/11/d161102.htm 107   17-03-06 10:07 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006.htm 0.10 of 2005-07-06T00:17Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://nfoWare.com" target="_top">
+<img border="0" src="../../../images/nfoWareBits-thumb.gif" alt="nfoWare Hard Hat Stage" width="154" height="118">
+</a>
+<!-- Included from nfoWare /construction/templates/00/c000005b.htm of 2006-04-20-20:40 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="1387" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><strong><font color="#990033"> </font>
+<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<a href="../../d000001.htm#d161102"><font color="#990033">d161102</font></a></font><font color="#990033"><br>
+      <i><font size="5">VCbind Deployment Kit</font></i></font></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>nfoWare</b></a></code><b><code>&gt;<a href="../../">dev</a>&gt;<br>
+      <a href="../">2016</a>&gt;<a href="./">11</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="d161102.htm">d161102</a>&gt;</code></b><br>
+</font>
+      <small><small><a href="#v0.0.1">0.0.1</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2017-03-06<!--webbot bot="Timestamp" endspan i-checksum="12218" --> -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->10:06 -0800<!--webbot bot="Timestamp" endspan i-checksum="12017" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+
+
+		<blockquote>
+			<p>VCbinder is a kit for integrating <a href="#d161101">VCbind</a> 
+			operation into software construction sets. Construction sets based 
+			on VCbinder operate on Microsoft Windows and produce programs that 
+			run on Microsoft Windows. VCbinder is specifically for using 
+			Microsoft C/C++ command-line development tools on Windows in a 
+			portable manner.&nbsp; </p>
+			<p>VCbinder is distributed in a versioned Zip package (e.g., <b>
+			<font face="Courier New" size="2">VCbinder-0.1.0.zip</font></b>).&nbsp; 
+			VCbinder is usually not redistributed as a package.&nbsp; Instead, 
+			the packaged materials are used as instructions and components for 
+			customization as part of a construction set that is integrated in a 
+			project&#39;s source code.&nbsp; A typical incorporation is found in
+			<a href="#d161103">WinConKit</a>.&nbsp;&nbsp; </p>
+			<p>VCbinder development follows an engineering pattern that 
+			separately compartmentalizes the development of VCbinder, the 
+			deployment of stable VCbinder packages, and the employment of 
+			VCbinder in construction sets and construction set kits.&nbsp; An 
+			essential part of the pattern is provision for deployment of 
+			incremental updates of VCbinder into construction sets in a manner 
+			having minimal interference with customized local usage of the construction sets.</p>
+</blockquote>
+<dl>
+	<dt><b>Purpose</b></dt>
+	<dd>Provide a consistent, systematic approach to integration of VCbind into 
+	construction sets and general construction kits and their subsequent 
+	maintenance with VCbinder upgrades..&nbsp; <br>
+&nbsp;&nbsp; </dd>
+	<dt><b>Principles</b></dt>
+	<dd>&nbsp;&nbsp;&nbsp; 1. Only tools already available as part of Microsoft 
+	Windows desktop software are needed, along with the simplest addition of 
+	freely-available Microsoft development tools.<br>
+&nbsp;&nbsp;&nbsp; 2. Simple use of Microsoft &quot;batch commands&quot; are all that are 
+	required, with any parameters entirely optional.<br>
+&nbsp;&nbsp;&nbsp; 3. For the simple prerequisites, links to tutorials and 
+	examples are plentiful.<br>
+&nbsp;&nbsp;&nbsp; 4. Error messages guide users of constructed kits and sets in providing remedies and in 
+	finding additional trouble-shooting details.<br>
+&nbsp;&nbsp;&nbsp; 5. The software is &quot;code in the open&quot; that can be customized 
+	for local use and adapted in making of additional kits, construction sets, 
+	language localizations, and other customizations.<br>
+&nbsp;&nbsp; </dd>
+	<dt><b>Priorities</b></dt>
+	<dd>&nbsp;&nbsp; 1. Simple manual approach for incorporation into construction sets designed for novice usage.<br>
+&nbsp;&nbsp; 2. Sufficient for incorporation in WinCon 
+	Construction Sets.<br>
+&nbsp;&nbsp; 3. As-needed iterative improvement for testing and confirmation of 
+	integrations and of upgrades into existing integrations.<br>&nbsp;&nbsp; </dd>
+	<dt><b>Plan</b></dt>
+	<dd>&nbsp;&nbsp; 1. Develop VCbinder on GitHub as part of the nfoTools 
+	project.<br>
+&nbsp;&nbsp; 2. Provide pilot demonstration as part of the Adv10 project<br>
+&nbsp;&nbsp; 3. Confirm in prototype WinCon Construction Sets<br>
+&nbsp;&nbsp; 5. Roll up into a WinCon Construction Kit that is 
+	relied upon as a source for additional construction sets and their updates.<br>
+&nbsp;&nbsp; </dd>
+	<dt><b>People</b></dt>
+	<dd>&nbsp;&nbsp; 1. Developers simply using construction sets having 
+	VCbinder integration.&nbsp; </dd>
+	<dd>&nbsp;&nbsp; 2. Developers maintaining construction sets having VCbinder 
+	integration.<br>
+&nbsp;&nbsp; 3. Developers who take an interest in testing, 
+	improvement, and documentation of VCbinder and how to apply it.</dd>
+</dl>
+<h2><a target="_top" href="#1." name="1">1.</a> Deployment Kit </h2>
+<blockquote>
+	<p><b><font color="#800080">{Author Note: This is a placeholder for content 
+	to follow.}</font></b></p>
+</blockquote>
+<div style="float: right">
+	<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006c1.htm" TAG="BODY" startspan -->
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+				<a href="../../../construction/templates/00/c000006c.htm">visits to popular <b><i>nfoWare</i></b> pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+				<a href="http://www3.clustrmaps.com/counter/maps.php?url=http://nfoWare.com" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://nfoWare.com" style="border:0px;" alt="Locations of visitors to nfoWare" title="Locations of visitors to nfoWare" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+</a></td>
+			</tr>
+			<!-- Inserted from nfoWare /construction/templates/00/c000006c1.htm of 2007-08-02-13:09 -->
+		</table>
+	<!--webbot bot="Include" endspan i-checksum="19987" --></div>
+<h2><a target="_top" href="#2." name="2">2.</a> Available Materials</h2>
+
+	
+
+	<blockquote>
+		<ul>
+			<li><b>d161102b: <a href="d161102b.htm">VCbind Deployment Kit (latest)</a></b></li>
+			<li><b>d161102c: <a href="d161102c.htm">VCbinder 0.1.0</a></b></li>
+			<li><b>d161102c-dist: VCbinder 0.1.0 Full Download Set</b><br>
+&nbsp;&nbsp; </li>
+			<li><b>d161102a: <a href="d161102a.htm">Diary &amp; Job Jar</a></b><br>
+&nbsp;&nbsp; </li>
+			<li><b><a name="d161101">d161101</a>: <a href="d161101.htm">VCbind: 
+			VC++ Command Line Setup</a></b></li>
+			<li><b><a name="d161103">d161103</a>: <a href="d161103.htm">
+			WinConKit: WinCon Construction Kit</a></b><br>
+&nbsp;</li>
+		</ul>
+</blockquote>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><i><a name="Contributors">Attribution</a></i>:</b></dt>
+<blockquote>
+	<dt>Hamilton, Dennis.E.</dt>
+	<dd>VCbinder: VCbind Deployment Kit.&nbsp; nfoWare devNote folio d161102 
+	0.0.1, February 23, 2017.&nbsp; Accessed at &lt;<font face="Courier New"><a href="d161102.htm">http://nfoWare.com/dev/2016/11/d161102.htm</a></font>&gt;.</dd>
+</blockquote>
+
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="v0.0.1">0.0.1</a> 2017-02-23-08:57 Add Synopsis, 5Ps, and links 
+to related materials</b></dt>
+<dt><b><a name="v0.0.0">0.0.0</a> 2016-11-23-15:51 Create&nbsp; bootstrap 
+placeholder to morph into the necessary material</b></dt>
+  <dd>Incorporate <a href="d161102a.htm">job jar</a> and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp;</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%">
+      <p><a href="index.htm" target="_top" rel="nofollow">
+		<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWare /construction/C000005f.htm of 2006-01-11T16:37Z -->
+ 	<i><b><a href="../../../" target="_top">nfoWare</a></b></i>.<br />This work is 
+	<a rel="nofollow" href="../../../notes/2006/01/N060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="29578" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2016-11-23-15:51 -0800 by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-03-06 10:07 $<br>
+      $$Revision: 107 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

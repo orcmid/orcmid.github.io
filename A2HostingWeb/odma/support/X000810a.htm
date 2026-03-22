@@ -1,0 +1,142 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000810a.htm 4     00-08-30 17:52 Orcmid $-->
+<title>X000810a: Troubleshooting Experience</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a>
+<b><a href="http://www.infonuovo.com/odma/support/X000810.htm">X000810</a>
+</b></h2>
+
+<h1 align="center"><a href="X000810.htm#Analysis">Troubleshooting Experience</a></h1>
+
+<h2 align="center">Memory / Resource Hogging in WordPerfect-ODMA-PCDocs Configuration</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-08-30-17:35 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000810a.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <p><b><i>see also</i>: <a href="X000810b.htm">follow-up discussion</a></b></p>
+</blockquote>
+
+<pre><a name="2000-08-30-05">From</a>: Joseph A. Beeler [mailto:jbeeler@dykema.com]
+Sent: <a href="x000810a.msg">Wednesday, 30 August 2000 05:44</a>
+To: infonuovo@email.com
+Cc: rszalay@dykema.com; sibershoff@dykema.com
+<b>Subject: <a href="#2000-08-29-14">RE: Memory Leaks</a></b>
+
+I started the investigation and got through <a href="X000810.htm#VaryOperations">step 3a</a> and stopped.  
+I don't believe it's an ODMA issue, but rather a WP9 issue.  
+Here's my findings:
+
+WP9 Standalone (no ODMA present)
+Windows at startup = 88% system resources
+Run WP9 = 69% system resources
+Open document off local drive = 69% system resources
+Exit WP9 = 84% system resources
+
+WP9 Networked (with either ODMA v1.5 or ODMA v2.0) 
+Windows at startup = 89% system resources
+Run WP9 = 70% system resources
+Open document via PC Docs = 66% system resources
+Close document/PC Docs = 68% system resources
+Exit WP9 = 83% system resources
+
+Thanks, Joe
+
+<b><a name="2000-08-29-14">&gt;&gt;&gt; &quot;Dennis E. Hamilton&quot; &lt;infonuovo@email.com&gt; 8/29/2000 2:55:19 PM &gt;&gt;&gt;</a></b>
+%To: Joseph A. Beeler
+%Cc: ODMA TECH
+%From: Dennis E. Hamilton
+%<b><a href="#2000-08-29-08">Re: Memory Leaks</a></b>
+
+That's a new one!
+
+We have not had any reports of memory leaks related to operation of the ODMA
+Connection Manager, neither the ODMA 1.5 version that you have installed nor
+the currently-supported ODMA 2.0 version.
+
+I have recorded an incident report on this.  It is ODMA Incident Report
+X000810.  You will find the report at
+
+ <a href="http://www.infonuovo.com/odma/support/X000810.htm">http://www.infonuovo.com/odma/support/X000810.htm</a> 
+
+It proposes a number of investigation steps that I would like you to conduct
+if you feel comfortable doing them.
+
+Please let me know whether this investigation is something you can take on
+to isolate the source of the resource hogging.
+
+We have another critical incident involving WordPerfect for Windows version
+9, but it appears to be unrelated to your experience on WIndows 95.  It is
+http://www.infonuovo.com/odma/support/X000500.htm 
+
+Thanks to the work by a number of WordPerfect users this summer, we are
+compiling trouble-shooting information for use by people who are integrating
+WordPerfect with document management systems via ODMA.  I welcome your
+review of that material and any suggestions on how it can be made as useful
+as possible.  I will send more pointers separately.
+
+-- Dennis
+
+AIIM DMware Technical Coordinator
+http://www.infonuovo.com/dmware 
+------------------
+Dennis E. Hamilton
+InfoNuovo
+mailto:infonuovo@email.com 
+tel. +1-206-779-9430 (gsm)
+fax. +1-425-793-0283
+http://www.infonuovo.com 
+
+
+
+<b><a name="2000-08-29-08">-----Original Message-----</a></b>
+From: ODMA TECH LIST [mailto:ODMATECH@FTPLIST.AIIM.ORG]On Behalf Of
+Joseph A. Beeler
+Sent: Tuesday, August 29, 2000 08:07
+To: ODMATECH@FTPLIST.AIIM.ORG 
+<b>Subject: Memory Leaks</b>
+
+
+We have been observing that when using Corel WordPerfect 9 with PC Docs'
+DOCSOpen V3.8.2 Build 41 and ODMA32.DLL dated 10/13/1996 that there appears
+to be a memory leak.  In other words, if one checks the system  resources
+under Windows 95 OSR2 and then runs WP9, does an open/save/close/exit and
+then checks again, the system resources has dropped dramically.  Any
+thoughts that this might in some way be related to the ODMA?
+
+Thanks, Joe
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+- - - - - 
+This internet message may contain information that is privileged, confidential,
+and exempt from disclosure.  It is intended for use only by the person to whom
+it is addressed. If you have received this in error, please (1) do not forward
+or use this information in any way; and (2) contact me immediately.  Thank you.
+
+DYKEMA GOSSETT PLLC
+www.dykema.com</pre>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-30-10:39 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-30 17:52 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>P040300b: WikiText Conventions </title>
+<!--$$Header: /nfoWareCompagno/projects/p040300b.htm 23    13-08-22 12:33 Orcmid $-->
+<!-- This page is derived from nfoWare Project Diary Template P000006a.htm of
+	  2004-02-29-13:21 -0800.  See http://nfoWare.com/projects/P000006a.htm -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://nfoWare.com" target="_top">
+<img border="0" src="../images/nfoWareBits-thumb.gif" alt="nfoWare Hard Hat Stage" width="154" height="118">
+</a>
+<!-- Included from nfoWare /construction/templates/00/c000005b.htm of 2006-04-20-20:40 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="5197" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <font color="#990033">
+      <strong><a href="p000001-log.htm"><font color="#990033">Project</font></a>
+      <a href="p040300.htm"><font color="#990033">P040300</font></a></strong></font><br> 
+      
+      
+
+      <font color="#990033"><i><strong><big><big>WikiText Conventions</big></big></strong></i></font></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">nfoWare</a>&gt;</code><br>
+      <code><a target="_top" href="./">projects</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="p040300a.htm" target="_top">P040300b</a>&gt;</code></b><br>
+      <small><small><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><a href="#0.00">0.00</a> <!--webbot bot="Timestamp" S-Type="EDITED"            
+      S-Format="%Y-%m-%d" startspan -->2007-08-02<!--webbot bot="Timestamp" endspan i-checksum="12526" -->          
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:33 -0700<!--webbot bot="Timestamp" endspan i-checksum="11996" --></font></small>   
+      </small></p>
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+  <hr color="#990033">
+
+<p align="left"><i>As part of setting up the bootspiral for&nbsp;</i><b>nfoWiki</b><i>,
+I want to make sure that I design a clean WikiText to use in the initial
+round.&nbsp; This can be provisional and the implementation can be loose, but
+certain steps around versioning, identification, and honoring of prevalent
+practice, would be nice to incorporate and anticipate.&nbsp; Here are the
+WikiText Conventions that I have identified to guide my initial steps.</i></p>
+
+<table border="2" width="100%" bordercolor="#990033" bordercolorlight="#CC0066" bordercolordark="#800000" bgcolor="#FFFFFF">
+  <tr>
+    <td width="38%" align="center">
+      <p><i><b><big><small>C</small></big><big><small>o</small></big><big><small>n</small></big><big><small>v</small></big><big><small>e</small></big><small><big>nt</big></small><big><small>io</small></big><small><big>n</big></small></b></i></p>
+    </td>
+    <td width="73%" align="left">
+      <p align="center"><i><b><big><small>Si</small></big><big><small>g</small></big><big><small>n</small></big><big><small>i</small></big><big><small>f</small></big><big><small>i</small></big><big><small>c</small></big><big><small>a</small></big><big><small>n</small></big><big><small>c</small></big><small><big>e</big></small></b></i></p>
+    </td>
+    <td width="56%" align="left"><i><b><big><small>U</small></big><big><small>s</small></big><big><small>e</small></big><big><small>d</small></big><big><small>
+      </small></big><big><small>B</small></big><small><big>y</big></small></b></i></td>
+  </tr>
+  <tr>
+    <td width="38%" align="center" valign="top">&nbsp;lines of plain text</td>
+    <td width="73%" align="left" valign="top">take as (marked-up) content</td>
+    <td width="56%" align="left" valign="top"><a href="http://meta.wikipedia.org/wiki/MediaWiki" target="_top">MediaWiki</a></td>
+  </tr>
+  <tr>
+    <td width="38%" align="center" valign="top">blank (empty) line</td>
+    <td width="73%" align="left" valign="top">separates paragraphs</td>
+    <td width="56%" align="left" valign="top"><a href="http://meta.wikipedia.org/wiki/MediaWiki" target="_top">MediaWiki</a></td>
+  </tr>
+  <tr>
+    <td width="38%" align="center" valign="top">white space</td>
+    <td width="73%" valign="top">within paragraphs, treated the same as XML
+      white-space</td>
+    <td width="56%" valign="top"><a href="http://meta.wikipedia.org/wiki/MediaWiki" target="_top">MediaWiki</a></td>
+  </tr>
+  <tr>
+    <td width="38%" align="center" valign="top"><code>&lt;br&gt;</code></td>
+    <td width="73%" valign="top">breaks lines without starting a new paragraph</td>
+    <td width="56%" valign="top"><a href="http://meta.wikipedia.org/wiki/MediaWiki" target="_top">MediaWiki</a></td>
+  </tr>
+</table>
+
+<small><div>
+<dl>
+  <dt><b><a name="0.00">0.00</a>  2004-03-13 Initial Table setup (<a href="../../NuovoDoc/construction/orcmid.htm">orcmid</a>)</b></dt>
+</small>
+  <dd><small>I actually pilfered the <a href="p040300a.htm">P040300a</a> Diary
+    &amp; Job Jar for boilerplate and even a table to modify.</small></dd>
+</dl>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><!--webbot bot="Include" U-Include="../construction/templates/00/c000005c.htm" TAG="BODY" startspan
+      -->
+<a href="../construction/" target="_self">
+<img border="0" src="../images/hardhat-logo.gif" alt="Hard Hat Area" align="left" width="80" height="57">
+</a>
+<!-- included from nfoWare /construction/c000005b.htm of 2004-01-06-15:40 -0800 -->
+
+<!--webbot bot="Include" endspan i-checksum="20859"
+      -->
+      <p>&nbsp;</p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWare /construction/C000005f.htm of 2006-01-11T16:37Z -->
+ 	<i><b><a href="../" target="_top">nfoWare</a></b></i>.<br />This work is 
+	<a rel="nofollow" href="../notes/2006/01/N060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="1835" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-04-13-21:25 -0800 (pst) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:33 $<br>
+      $$Revision: 23 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

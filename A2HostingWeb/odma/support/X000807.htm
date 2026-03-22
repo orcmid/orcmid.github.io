@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000807.htm 4     00-08-08 13:55 Orcmid $-->
+<title>X00807 - Minimal Validaton of handle Parameters</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000807">X000807</a>:
+</b> 
+Minimal Validation of <b><i><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#handle2.1">handle</a></code></i></b>
+Parameters</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-08-08-13:56 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Vulnerability - Warning</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000807">X000807</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>2 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Analysis">Confirmed 2000-08-08</a>.<br>
+        Determination of effective repair <a href="#Actions">to be scheduled</a>.</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: </b> all distributed versions
+        of<b> <code>ODMA32.dll</code></b> and <b> <code>Odma.dll</code></b> up to 2.0.0</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: </b>none</dt>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis E. Hamilton 2000-08-05</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-05</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+  <p>For all ODMA API functions that provide a <b><i><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#handle2.1">handle</a></code></i></b>
+  as the first parameter, the ODMA Connection Managers defend against the <b><i><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#handle2.1">handle</a></code></i></b>
+  being <b><code>NULL</code></b>.&nbsp; This is the <b> only</b> <b><code><i><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#handle2.1">handle</a></i></code></b>
+  <b>validation</b>.&nbsp; <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.1ReturnValue">ODMSTATUS</a></code></b>
+  value <code><b><a href="../downloads/odma20-3.htm#ODM_E_HANDLE2.1">ODM_E_HANDLE</a></b></code>
+  is produced.&nbsp; (API function <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+  will produce the <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.18ReturnValue">HRESULT</a></code></b>
+  <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#E_INVALIDARG2.18">E_INVALIDARG</a></code></b>.)&nbsp;
+  If an application provides a non-<b><code>NULL</code></b> <b><i><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#handle2.1">handle</a></code></i></b>
+  parameter that is not a currently-valid handle, the ODMA Connection Manager
+  will fail, generally leading to an application termination under
+  possibly-mysterious circumstances.</p>
+
+<p>There are <b>no reported production incidents</b> attributable to this particular
+defect.&nbsp; It is documented as a warning for future trouble-shooting and for
+maintenance of Connection Manager implementations.</p>
+
+<p>This condition is most likely to occur in development or maintenance of an
+ODMA-aware application.&nbsp; The conditions necessary to provoke failure are
+unlikely in well-behaved applications in production usage.</p>
+
+</blockquote>
+
+<h3><a name="Analysis">Analysis</a>:</h3>
+
+<blockquote>
+  <ol>
+    <li>The limitation of validation to detection of <b><code>NULL</code></b>-valued
+      <b><i><code>handle</code></i></b> parameters is confirmed by inspection of
+      all ODMA Functions in Connection Manager module <b><code>odmaent.cpp</code></b>,
+      the set of C Language API entries.</li>
+    <li>Vulnerability to mysterious behavior stems from the Connection Manager
+      trusting non-<b><code>NULL</code></b> <b><i><code>handle</code></i></b>
+      values to be valid pointers to a known C++ class implementation.&nbsp; The
+      Connection Manager makes direct use of the <b><code><i>handle</i></code></b>
+      to make non-validated access to data of that class, including access to
+      internal objects of that class.</li>
+    <li>This may be one of those vulnerabilities for which there is little
+      prospect for improvement.&nbsp; It must also be considered that release of
+      a less-vulnerable Connection Manager implementation may have little impact
+      on the use of widely-distributed legacy implementations.</li>
+  </ol>
+</blockquote>
+
+<h3><a name="Actions">Actions</a>:</h3>
+
+<blockquote>
+  <ol>
+    <li>Identify all cases of use of minimally-screened <b><i><code>handle</code></i></b>
+      parameters and analyze the potential consequences.&nbsp; <i><a href="#Analysis">Completed</a></i>:
+      2000-08-07.&nbsp;&nbsp;</li>
+    <li>Review for possibility of any effective remedy.&nbsp; Weigh against the
+      difficulty of increased validation and the limited impact it makes on
+      existing implementations still in use.</li>
+    <li>Propose staging for introduction of improved <b><i><code>handle</code></i></b>
+      validation, if any.</li>
+  </ol>
+
+</blockquote>
+
+<blockquote>
+  <p>Please provide any relevant information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-08-09:21 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-08 13:55 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

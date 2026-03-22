@@ -1,0 +1,45 @@
+<html><head><title>Interfaces and Methods: IdmaBatch</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaBatch"></a>IdmaBatch</h2>
+<p>Methods for performing operations on a batch of scratchpad objects.</p>
+<h3><a name="IdmaBatchExecuteChanges"></a>IdmaBatch::ExecuteChanges</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaBatch::ExecuteChanges</b> (<br>
+Dmapv    <i>pICallback</i>,<br>Dmapv    <i>plListOfObj</i>,<br>pDmaIndex32    <i>piIndex</i>,<br>DmaInteger32    <i>lProtectionLevel</i>,<br>DmaBoolean    <i>bRefreshFlag</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pICallback</i></p></TD><TD><p>input</p></TD><TD><p>(optional) Pointer to callback interface.</p></TD></TR>
+<TR><TD><p><i>plListOfObj</i></p></TD><TD><p>input</p></TD><TD><p>An interface pointer to a list object whose elements are the scratchpad objects that are to have their changes reflected in the database.</p></TD></TR>
+<TR><TD><p><i>piIndex</i></p></TD><TD><p>output</p></TD><TD><p>If the transaction fails, this parameter is set to the index of the object in the list that aborted the transaction. If the transaction succeeds, the value of this parameter is set to -1.</p></TD></TR>
+<TR><TD><p><i>lProtectionLevel</i></p></TD><TD><p>input</p></TD><TD><p>Sets the protection level against concurrent updates. The value of this parameter must be one of DMA_MODIFY_PROTECTED or DMA_MODIFY_UNPROTECTED . The same level of protection applies to all scratchpad objects in the collection. The rules for this parameter are the same as for the ExecuteChange method of the IdmaConnection interface.</p></TD></TR>
+<TR><TD><p><i>bRefreshFlag</i></p></TD><TD><p>input</p></TD><TD><p>If RefreshFlag is TRUE, the snapshots in the scratchpad objects are updated according to the rules for IdmaConnection::Refresh.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>The ExecuteChanges method is defined relative to the IdmaConnection:: ExecuteChange method. The most important difference between the two methods is that, instead of operating on a single object, ExecuteChanges operates on a list of objects as a batch. The ExecuteChanges method makes the changes that ExecuteChange would have made to each object in the list. ExecuteChanges always performs all of the changes to the persistent store within a single transaction. If the change for any object fails, the entire transaction is aborted and backed out of the persistent store. If the change fails, none of the objects are refreshed, even if the bRefreshFlag is set to DMA_TRUE.
+</p><p>
+If there is any serial sequence of calls to IdmaConnection:: ExecuteChange on the objects in the pListOfObj list that would accomplish the desired final effect to the persistent store (assuming no concurrent updates to the persistent store), then the objects in the pListOfObj list are required to be in such an order, and ExecuteChanges applies the changes in order of increasing list index. 
+</p><p>
+If there is no such sequence, then ExecuteChanges will attempt to make all the changes to the objects in increasing list index order. However, there may be transient inconsistent or illegal states during the execution of the transaction which can be tolerated as long as the final state is valid. If the final state is invalid, the transaction fails. For example, if the document space requires all documents to be contained directly, there is no series of ExecuteChange calls that will succeed in creating a new document. However, ExecuteChanges can succeed, if the document object is followed by the relationship object in the pListOfObj list.
+</p><p>
+ExecuteChanges does not affect any locks, except in the case that the current connection holds a write lock on a persistent object that ExecuteChanges deletes. In that case, the write lock is deleted as well.
+</p><p>
+Refer to the description of IdmaConnection:: ExecuteChange for the operation of the Create Pending, Delete Pending, and Update Pending properties, and for the effect of the protection level parameter.
+</p><p>
+In addition to the result codes listed below, the return code of this method can reflect any of the failures that can occur as a result of a create, update, or delete.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ABORT</p></TD><TD><p>The progress callback indicated that the method should be aborted.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_REFERENCE</p></TD><TD><p>The object cannot be saved because it references another object which is not persistent.</p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_FOREIGN_OBJECT</p></TD><TD><p>An object is not from the current document space.</p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+<TR><TD><p>DMARC_MISSING_REFERENCE</p></TD><TD><p>The object cannot be saved because required reference to it is absent. For example, it may be required to be in a container and no appropriate relationship object exists.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_PROTECTION_LEVEL_NOT_SUPPORTED</p></TD><TD><p>The desired protection level is not supported by the doc space.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_REQUIRED_VALUE_ABSENT</p></TD><TD><p>A required property value has not been set.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+</body></html>

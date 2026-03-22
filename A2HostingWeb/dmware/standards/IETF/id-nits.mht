@@ -1,0 +1,906 @@
+From: <Salvato con Microsoft Internet Explorer 5>
+Subject: IESG Document Check Page
+Date: Wed, 9 Oct 2002 13:36:32 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0000_01C26F98.E12362E0";
+	type="text/html"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1106
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C26F98.E12362E0
+Content-Type: text/html;
+	charset="windows-1256"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ietf.org/ID-nits.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>IESG Document Check Page</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1256"><!-- ZoneLabs Privacy Insertion -->
+<SCRIPT language=3Djavascript=20
+src=3D"http://localhost:1025/js.cgi?pceaw&amp;r=3D27644"></SCRIPT>
+
+<META content=3D"MSHTML 6.00.2800.1106" name=3DGENERATOR></HEAD>
+<BODY>
+<H1>Considerations for Internet Drafts:</H1>
+<DIR>Here is a list of common "nits" that have been known to stop =
+documents in=20
+the IESG. This list does not pretend to cover all questions, especially =
+content=20
+questions like "does it work?", "is it bad for the Internet", etc. It =
+does cover=20
+some of the lower level issues that come up.</DIR>
+<H2>But does it work?</H2>
+<DIR>That said, "does it work" includes a number of questions about =
+operation in=20
+the Internet. If you are designing a protocol or an operational =
+specification,=20
+it would be good to ask yourself a number of questions about your =
+proposal - you=20
+can save yourself some grief by a few moments cautious consideration =
+of:</DIR>
+<UL>
+  <LI>What happens if this is implemented in a service provider's =
+network? Some=20
+  companies have larger internal corporate networks (what it is now =
+fashionable=20
+  to call "intranets") than many for-profit service provider networks. A =
+large=20
+  percentage of security problems derive from within the network that is =
+
+  attacked. The statement "security and scaling issues are handled at =
+the=20
+  firewall; this is just for corporate networks" doesn't wash. Are there =
+likely=20
+  to be policy issues between competing service providers, or between an =
+edge=20
+  network and its service provider? Will security issues arise?=20
+  <LI>Take a glance at the <A=20
+  href=3D"http://www.isi.edu/in-notes/rfc1958.txt">Architectural =
+Principles of the=20
+  Internet</A>. Can it be said that your proposal violates fundamental =
+concepts=20
+  like: </LI></UL>
+<DIR>
+<DL>
+  <DT>End to End Principle=20
+  <DD>The argument for retaining simplicity and flexibility in the =
+Internet by=20
+  keeping state out of the network or (at worst) limiting it to =
+well-defined=20
+  points in the network.=20
+  <DT>Heterogeneity apart from the network layer=20
+  <DD>Recognition of differing needs and points of view, and therefore =
+differing=20
+  protocol choices by network administrations=20
+  <DT>One end to end inter-network protocol=20
+  <DD>Perhaps the architecture should be updated to mention IP4 and IP6 =
+in one=20
+  breath, but it does expect that there is one internet protocol end to =
+end, and=20
+  that little else is ubiquitous. </DD></DL></DIR>
+<UL>
+  <LI>Have you done any interoperability testing between independent=20
+  implementations? Such testing is always a Good Thing To Do, even at =
+the very=20
+  earliest stages. It should emphasize not only testing for correct =
+behavior,=20
+  but also testing for robust response to incorrect messages or =
+behaviors.=20
+</LI></UL>
+<H2>Think about security before sending it to the IESG</H2>
+<DIR>Frankly, the Security Area Directors will be happier with you if =
+you think=20
+about security while designing the protocol, so they don't have to ask a =
+lot of=20
+whiny-sounding questions. You might read <A=20
+href=3D"http://www.isi.edu/in-notes/rfc2316.txt">Report of the IAB =
+Security=20
+Architecture Workshop</A>. It is often worthwhile to ask someone who has =
+written=20
+an RFC that you think has a good security considerations section to =
+review your=20
+draft well before you think you are finished.</DIR>
+<UL>
+  <LI>Does your document take into consideration common cryptanalytic =
+techniques=20
+  and scenarios, such as spoofing, denial-of-service, man-in-the-middle =
+attacks,=20
+  message re-ordering, message replay, adaptive chosen plaintext or =
+ciphertext=20
+  attacks, and so on?=20
+  <LI>If there are several choices for a particular algorithm, =
+mechanism, or=20
+  technique, does your document make clear what the security trade-offs =
+are?=20
+  <LI>If some technique or protocol in your document is intended to =
+provide a=20
+  security service (such as authentication, integrity, confidentiality, =
+and so=20
+  on), has this been reviewed by persons other than the authors (e.g.,=20
+  cryptanalysts or persons with a strong security background)? Is this =
+review=20
+  public (i.e., are there references to journal papers, conference=20
+  presentations, or technical reports)?=20
+  <LI>How is secrecy of information protected against malicious third =
+party? How=20
+  do you authenticate the other party you are communicating with, and =
+messages=20
+  from it? How do you avoid Man-in-the-middle attacks? How do you trust =
+and=20
+  authorize the authenticated party?=20
+  <LI>Are there any known security deficiencies or weaknesses in the =
+protocol=20
+  described in your document, or any areas that still require review and =
+
+  analysis? Consider: </LI></UL>
+<DIR>
+<DT><B>Threats:</B>=20
+<DD>Privacy, of both data and system usage.=20
+<DD>Resistance to denial of service attack=20
+<DD>Trustworthiness of results.=20
+<DD>Susceptibility to inadvertent misconfiguration.=20
+<DD>Susceptibility to malicious attack.=20
+<DT><B>Assumptions/applicability:</B>=20
+<DD>Use for valuable data or mission-critical functions.=20
+<DD>Use in constrained operating environment.=20
+<DT><B>Countermeasures, implementation requirements:</B>=20
+<DD>What additional issues should implementers address?=20
+<DD>What additional issues should deployment address?=20
+<DD>Use in combination with other protocols.=20
+<P>Does your document have an adequate security considerations section? =
+Some=20
+have said that the "Security Considerations" section of a document =
+essentially=20
+helps hackers attack implementations. It may, but the fact is that they =
+will do=20
+the analysis themselves anyway - not doing a threat analysis will not =
+stop them=20
+from exploiting weaknesses in your design. But by pointing out design =
+choices=20
+you have made which have security implications, or by documenting "when =
+you=20
+implement this, you should make these choices that have security =
+implications",=20
+you may help people build implementations that are more hacker-proof, =
+and you=20
+may find something you can improve. Frankly, the IESG has so many =
+documents come=20
+its way which have no thought for security in them it must return for =
+the=20
+analysis, putting the analysis into the document will be helpful in =
+getting it=20
+through.</P></DD></DIR>
+<H2>Document formats</H2>
+<H3>Templates for Internet Drafts</H3>
+<DIR>Here are some pointers folks have found useful:</DIR>
+<UL>
+  <LI><A href=3D"http://www.cs.berkeley.edu/~janp/Help/textms.html">UNIX =
+Text=20
+  Formatting Using the -ms Macros</A> <!---
+<A HREF=3D"http://www.cs.berkeley.edu/%7Ejanp/Help/textms.html">UNIX =
+Text
+Formatting Using the -ms Macros</A></LI>
+---->
+  <LI><A =
+href=3D"http://www.ietf.org/internet-drafts/2-latex.template">latex=20
+  template</A>=20
+  <LI><A =
+href=3D"http://www.ietf.org/internet-drafts/2-nroff.template">nroff=20
+  template</A>=20
+  <LI><A =
+href=3D"http://www.ietf.org/internet-drafts/2-scribe.template">scribe=20
+  template</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.ietf.org/internet-drafts/2-Word.template.rtf">Microsof=
+t Word=20
+  Template</A>=20
+  <DT>
+  <DL>Requires <A=20
+    =
+href=3D"ftp://ftp.ietf.org/internet-drafts/crlf.exe">CRLF.EXE</A></DL></D=
+T>
+  <LI><A href=3D"http://www.ietf.org/rfc/rfc2629.txt">Writing I-Ds and =
+RFCs using=20
+  XML</A> </LI></UL>
+<H3>Bit and Byte order in drawings</H3>
+<DIR>Historically, RFCs have specified byte and bit order according to a =
+US DoD=20
+rule which made byte zero be the first byte in an address range, and bit =
+zero be=20
+the most significant bit in a word or field. For example, you will find =
+drawings=20
+like this one (from RFC 791) in many RFCs: when you make drawings like =
+it, you=20
+should follow the same rule. Label your bit positions, bit zero is the =
+most=20
+significant bit, and place the first addressable byte at the upper =
+left-hand=20
+corner. <PRE>3.1.&nbsp; Internet Header Format
+
+&nbsp; A summary of the contents of the Internet header follows:
+
+&nbsp;&nbsp;&nbsp; =
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 =
+7 8 9 0 1&nbsp;
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; |Version|&nbsp; IHL&nbsp; |Type of =
+Service|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total =
+Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+Identification&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|Flags|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fragment Offset&nbsp;&nbsp;&nbsp; =
+|
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; |&nbsp; Time to Live |&nbsp;&nbsp;&nbsp; =
+Protocol&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+Header Checksum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; =
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Source =
+Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp; |
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; =
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Destination =
+Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+&nbsp;&nbsp; =
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+Options&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; =
+Padding&nbsp;&nbsp;&nbsp; |
+&nbsp;&nbsp; =
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Example Internet Datagram =
+Header
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Figure 4.</PRE></DIR>
+<H2>IANA considerations</H2>
+<DIR>If you are defining a new TCP or UDP port, RSVP object, Telnet =
+option, PPP=20
+PID, etc., go to <A href=3D"http://www.iana.org/">IANA</A>, click on =
+"application=20
+forms" and then on the appropriate form type, and fill in the blanks. =
+You can=20
+get the option assigned experimentally long before turning the Internet =
+Draft=20
+into an RFC, which saves you flag days and the like. You should get the =
+working=20
+group chair's buy-in before getting a standard port number or option, =
+though, as=20
+he or she will likely be polled by IANA and you don't want him surprised =
+by the=20
+request.=20
+<P>If you are defining a field that IANA will need to assign instances =
+of, read=20
+and follow <A href=3D"http://www.ietf.org/rfc/rfc2434.txt">Guidelines =
+for Writing=20
+an IANA Considerations Section in RFCs </A>and write one into your=20
+document.</P></DIR>
+<H2>Use of requirements language</H2>
+<DIR>Generally, MUST/MAY/SHOULD usage should be normalized by a =
+reference to <A=20
+href=3D"http://www.ietf.org/rfc/rfc2119.txt">RFC 2119 </A>called out in =
+proper=20
+place in text, i.e., at the front, rather than at the end. Note that the =
+
+abstract in RFC 2119 contains the wording you should use when referring =
+to RFC=20
+2119.=20
+<P>It is OK for an Internet Draft to define MAY/MUST/SHOULD itself, but =
+it <A=20
+href=3D"http://www.ietf.org/rfc/rfc2119.txt">SHOULD</A> have a reason =
+they do not=20
+use 2119 - the SMTP update document is an example where there was a =
+legitimate=20
+reason to do local definitions=20
+<P>Note, by the way, that few documents really specify requirements, and =
+should=20
+therefore be using requirements language. If you are specifying a =
+protocol, you=20
+probably don't mean that "the implementation MUST do this certain thing" =
+in a=20
+"requirements" sense, but "a correct implementation will do this certain =
+thing,=20
+because=85" there is a technical reason it needs to do so. Don't replace =
+clear=20
+concise prose with requirements language.</P></DIR>
+<H2>Updating or obsoleting RFCs</H2>
+<DIR>For documents replacing/updating existing RFCs, include an appendix =
+(not a=20
+section) listing changes relative to previous RFC. The abstract and/or =
+the=20
+introduction should also summarize what is being updated or obsoleted. =
+The=20
+"obsoletes" header isn't good enough, you want it in the text where the =
+reader=20
+can't miss it.</DIR>
+<H2>References in Internet Drafts</H2>
+<DIR>When publishing an Internet Draft onto the standards track, are =
+there any=20
+dependencies on documents that are still drafts and/or not standards =
+track, or=20
+lower grade? Non-normative references are OK, but normative references =
+(those=20
+that must be read and understood to correctly understand or implement =
+the=20
+specification) to documentation that may not be readily available are =
+not.=20
+<P>Consider especially whether ITU-T or related organizations may refer =
+to your=20
+draft as normative. If they do, their reference rules apply as =
+well.</P></DIR>
+<H2>Publication status</H2>
+<DIR>In your note to an Area Director requesting advancement of a =
+document to a=20
+certain status, is the requested publication status appropriate? <A=20
+href=3D"http://www.ietf.org/rfc/rfc2026.txt">BCP 9 </A>indicates what =
+the relevant=20
+issues are, but consider this:=20
+<DL>
+  <DT><B>Informational</B>=20
+  <DD>An "informational" specification is published for the general =
+information=20
+  of the Internet community, but does not represent an Internet =
+community=20
+  consensus or recommendation. It may describe architecture, and be =
+accompanied=20
+  by standards track protocol specifications; it may be an applicability =
+
+  statement on a protocol or procedure. It may be a white paper, a =
+corporate=20
+  statement of direction, a poem, or an April Fool's joke. The =
+Informational=20
+  designation is intended to provide for the timely publication of a =
+very broad=20
+  range of responsible informational documents from many sources, =
+subject only=20
+  to editorial considerations and to verification that there has been =
+adequate=20
+  coordination with the standards process.=20
+  <DD>"Informational" status is often abused by people wishing to bypass =
+the=20
+  standards process or post promotional literature. Because of this =
+practice,=20
+  these documents are now reviewed by the IESG even if they are simply =
+sent to=20
+  the RFC Editor. The IESG often simply publishes the document. It may =
+ask for=20
+  minor modifications such as the addition of a company's name to the =
+title=20
+  ("The Way To Build A Framistat" becomes "FUBAR Corporation's Design =
+For A=20
+  Framistat"), or editorial changes. It may add what is called an "IESG =
+Note",=20
+  like "This document is probably a reasonable thing to do, but it has =
+had no=20
+  review and does not represent a consensus by an IETF working group". =
+It may=20
+  recommend that the document not be published. In this last case, it =
+will state=20
+  why that decision was made, and the decision may be debated with the =
+area=20
+  director, IESG Chair, or the IAB as appropriate.=20
+  <DT><B>Historic</B>=20
+  <DD>A specification that has been superseded by a more recent =
+specification or=20
+  is for any other reason considered obsolete.=20
+  <DT><B>Experimental</B>=20
+  <DD>The "Experimental" designation typically denotes a specification =
+that is=20
+  part of some research or development effort, and not intended for =
+general=20
+  implementation apart from participation in that effort. Such a =
+specification=20
+  is published for the general information of the Internet technical =
+community=20
+  and as an archival record of the work, subject only to editorial=20
+  considerations and to verification that there has been adequate =
+coordination=20
+  with the standards process (see below). An Experimental specification =
+may be=20
+  the output of an organized Internet research effort (e.g., a Research =
+Group of=20
+  the IRTF), an IETF Working Group, or it may be an individual =
+contribution.=20
+  <DT><B>Proposed Standard</B>=20
+  <DD>A Proposed Standard specification is generally stable, has =
+resolved known=20
+  design choices, is believed to be well-understood, has received =
+significant=20
+  community review, and appears to enjoy enough community interest to be =
+
+  considered valuable. However, further experience might result in a =
+change or=20
+  even retraction of the specification before it advances.=20
+  <DD>It is possible for a document to go straight from an individual =
+submission=20
+  to Proposed Standard without review by a working group. To accomplish =
+that,=20
+  one must get the backing of an Area Director, and the IETF performs a=20
+  four-week last call instead of the usual two-week last call. This =
+process path=20
+  is, however, unusual, as something that needs Proposed Standard status =
+by=20
+  definition needs multiple implementers agreeing on a specification, =
+and=20
+  generally, they need to talk about the specification.=20
+  <DT><B>Draft Standard</B>=20
+  <DD>A specification from which at least two independent and =
+interoperable=20
+  implementations from different code bases have been developed, and for =
+which=20
+  sufficient successful operational experience has been obtained, may be =
+
+  elevated to the "Draft Standard" level. For the purposes of this =
+section,=20
+  "interoperable" means to be functionally equivalent or interchangeable =
+
+  components of the system or process in which they are used. If =
+patented or=20
+  otherwise controlled technology is required for implementation, the =
+separate=20
+  implementations must also have resulted from separate exercise of the=20
+  licensing process.=20
+  <DD>Elevation to Draft Standard is a major advance in status, =
+indicating a=20
+  strong belief that the specification is mature and will be useful.=20
+  <DT><B>Internet (Full) Standard</B>=20
+  <DD>A specification for which significant implementation and =
+successful=20
+  operational experience has been obtained may be elevated to the =
+Internet=20
+  Standard level. An Internet Standard (which may simply be referred to =
+as a=20
+  Standard) is characterized by a high degree of technical maturity and =
+by a=20
+  generally held belief that the specified protocol or service provides=20
+  significant benefit to the Internet community.=20
+  <DT><B>Best Current Practice</B>=20
+  <DD>The BCP series is designed to be a way to standardize practices =
+and the=20
+  results of community deliberations. A BCP document is subject to the =
+same=20
+  basic set of procedures as standards track documents. It is thus is a =
+vehicle=20
+  by which the IETF community can define and ratify the community's best =
+current=20
+  thinking on a statement of principle or on what is believed to be the =
+best way=20
+  to perform some operations or IETF process function. </DD></DL></DIR>
+<H2>Document title</H2>
+<DIR>Is the title appropriate (i.e., accurate, not misleading, etc.)?=20
+<P>The words <B>requirements</B> and <B>standard</B> are red flags when =
+found in=20
+document titles; unless this is a working group document, those words =
+are=20
+probably not your best choices. In addition, if your document describes =
+a=20
+proprietary product, the title should clearly say that.</P></DIR>
+<H2>Relationship with common architectural issues</H2>
+<DIR>How does your proposal relate to certain aspects that we find =
+common in the=20
+Internet, or expect to in the near future, such as:</DIR>
+<UL>
+  <UL>
+    <LI>Network Address Translators (NATs)=20
+    <LI>IP Version 6=20
+    <LI>Fire walls=20
+    <LI>Underlying transports </LI></UL></UL>
+<DIR>Note, in asking these questions, we're not saying "IP6 Rules", or =
+"NATs are=20
+good/bad" or anything of the sort. We are saying that IP6 deployment is=20
+something we consider likely to be important tomorrow, and NATs and Fire =
+walls=20
+are realities that we live with today. If your MIB, protocol, or =
+procedure=20
+doesn't have a clear and well thought-out way to address these issues, =
+it is=20
+limited in applicability.=20
+<P>It may be that you have designed a solution to a problem that occurs=20
+primarily in corporate networks, and so would be used mostly behind a =
+firewall.=20
+However, if it has to <B>remain</B> behind a firewall to be viable, it =
+would be=20
+a good idea to say why this is so, in the Security Considerations. You =
+should=20
+also plan a second version that fixes them. The IESG and your customers =
+are very=20
+likely to consider these issues to be bugs in the specification, =
+sufficient to=20
+force it off the standards track into "experimental" or "not recommended =
+for=20
+production usage".=20
+<P>The reason for this is that corporate intranets are in some cases =
+larger than=20
+service provider networks, and a large percentage (on the order of 80%) =
+of=20
+attacks come from within the affected network. So firewalls cannot be =
+expected=20
+to provide security, only a perimeter that limits the <B>external</B> =
+exposure=20
+of the organization. </P></DIR>
+<H2>Intellectual property</H2>
+<DIR>Are there intellectual property issues? Does the document actually =
+mention=20
+Intellectual Property Rights prior to last call? Do you conform to the=20
+Intellectual Property Rights guidelines in section 10 of <A=20
+href=3D"http://www.ietf.org/rfc/rfc2026.txt">BCP 9</A>, which among =
+other things=20
+states that "The contributor represents that he has disclosed the =
+existence of=20
+any proprietary or intellectual property rights in the contribution that =
+are=20
+reasonably and personally known to the contributor." RFC 2026 makes many =
+other=20
+requirements on RFC editors and contributors; be sure to read it =
+carefully=20
+before your draft has gone to the IESG.=20
+<P>References to a do not include references to particular IPR (patents =
+or=20
+patents that have been applied for) should not be in the Internet Draft. =
+
+Instead, be sure to include the text from rfc 2026 that applies to your =
+document=20
+and situation. Be sure to send notices of any IPR relevent to the ID to =
+the IETF=20
+Executive Director <IESG-SECRETARY@IETF.ORG>for inclusion on the IPR=20
+page</P></DIR>
+<H2>Service issues</H2>
+<DIR>IP over your favorite link layer, and IP over specific IP service=20
+documents, might ask themselves these questions:</DIR>
+<UL>
+  <LI>How does this use or support multicast or broadcast? Is something =
+special=20
+  required in the presence of a Virtual LAN? If something special is =
+required,=20
+  say so.=20
+  <LI>Does this use or make special requirements on IP address =
+resolution?=20
+  <LI>How will it be affected by IP Version 6? If it is more than "it =
+just=20
+  works", the draft should indicate what is required to make IP6 work.=20
+  <LI>How will it be administered? Are there any assumptions that need =
+to be=20
+  documented?=20
+  <LI>Is there any example of the intended use? It may be obvious to the =
+
+  authors, but not necessarily to anyone else. </LI></UL>
+<H2>For documents advancing in grade</H2>
+<UL>
+  <LI>The IESG will want to read your implementation report, which is =
+expected=20
+  to indicate who tested the products and what features were tested in =
+each=20
+  implementation.=20
+  <LI>Make sure there are no normative references to documents at lower =
+grade. A=20
+  "normative" reference leads to another document required to correctly=20
+  understand or implement a specification. A "non-normative" reference =
+leads to=20
+  material that may be helpful or educational, but is not required. =
+</LI></UL>
+<DIR>At least two complete, independent implementations must be tested =
+and=20
+reported on, of each role (client/server/peer), and of each feature. If=20
+intellectual property must be licensed, BCP 9 requires that the =
+implementations=20
+derive from separate licenses.</DIR>
+<H2>Internationalization</H2>
+<H3>Language</H3>
+<DIR>Does your protocol need to exchange language information between =
+client and=20
+server? If so, can it? Language information definitions can be found in =
+<A=20
+href=3D"http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</A>.</DIR>
+<H3>Localization</H3>
+<DIR>Is there trouble regarding data (addresses, date, time, number) =
+formats in=20
+presentation? Are you using a "year 2000 compliant" format? Is storage =
+specified=20
+in a way so it is unambiguous, so presentation formats can be left as an =
+
+exercise to the presentation layer?</DIR>
+<H3>Character sets</H3>
+<DIR>Is it clear how UTF-8 is handled? In addition, if other character =
+sets are=20
+allowed/used, how is the character set negotiated/specified? Information =
+on=20
+character set issues can be found in <A=20
+href=3D"http://www.ietf.org/rfc/rfc2130.txt">The Report of the IAB =
+Character Set=20
+Workshop</A> and in the <A =
+href=3D"http://www.ietf.org/rfc/rfc2277.txt">IETF=20
+Policy on Character Sets and Languages</A>.</DIR>
+<H2>Independent submissions</H2>
+<DIR>If the document does not come from an IETF working group, and =
+especially if=20
+it is a single-company document, the IESG will pay special attention and =
+is=20
+likely to arrange some form of third-party review. If there is a working =
+group=20
+chartered in the area, it is very likely to be the working group. Be =
+prepared to=20
+revise the draft accordingly. Proprietary specifications, if published =
+as=20
+Informational RFCs, must include the name of the company or association=20
+responsible for the specification in the title.</DIR>
+<H2>Management Information Base submissions (MIBs)</H2>
+<DIR>You might start out by perusing <A =
+href=3D"http://www.ops.ietf.org/">The=20
+Operations and Management Area Web Page</A></DIR>
+<UL>
+  <LI>Make sure that your MIB compiles cleanly with at least one =
+(preferably=20
+  multiple) MIB compilers.=20
+  <LI>Make sure you have the proper MIB boilerplate (see <A=20
+  href=3D"http://www.ops.ietf.org/mib-boilerplate.html">MIB =
+Boilerplate</A>)=20
+  <LI>Make sure you specify which objects are sensitive in the MIB and =
+how to=20
+  protect them via access control. (see <A=20
+  href=3D"http://www.ops.ietf.org/security.html">MIB Security</A>)=20
+  <LI>Make sure you have proper REVISION clauses in the MIB in the=20
+  MODULE-IDENTITY macro invocation.=20
+  <LI>Make sure you adhere to the SMIv2 rules as defined in RFCs <A=20
+  href=3D"http://www.ietf.org/rfc/rfc2578.txt">2578</A>, <A=20
+  href=3D"http://www.ietf.org/rfc/rfc2579.txt">2579</A> and <A=20
+  href=3D"http://www.ietf.org/rfc/rfc2580.txt">2580</A> (STD 58) =
+</LI></UL>
+<H2>Variant Algorithm Definitions</H2><B>If you specify multiple =
+algorithms for=20
+a particular function</B>=20
+<DIR>For example, if there are multiple compression algorithms, =
+encryption=20
+algorithms, representation formats, etc., consider</DIR>
+<UL>
+  <LI>A robust way to enumerate these, preferably with space for future=20
+  assignments by the <A href=3D"http://www.iana.org/">Internet Assigned =
+Number=20
+  Authority</A>=20
+  <LI>Consider re-using an existing IANA registry instead of creating a =
+new one,=20
+  since this leads to less confusion between different registries that =
+have=20
+  similar items.=20
+  <LI>Designating one as "mandatory to implement". This algorithm should =
+be of=20
+  sufficient quality for the purpose and be unencumbered by intellectual =
+
+  property rights, if possible. If a single mandatory algorithm cannot =
+be=20
+  chosen, state why. </LI></UL>
+<H3>Undefined and ambiguous text</H3>
+<DIR>If a standard contains functions which are not fully defined, this =
+may=20
+cause different implementors to interpret these functions in different =
+ways,=20
+which will cause interoperability problems. Because of this, you are =
+strongly=20
+advised to try to avoid anything that is undefined or ambiguous. In =
+particular,=20
+it is <U>not</U> a good solution to disagreements in a standards =
+development=20
+group, to resolve the disagreements by leaving something unclear, vague, =
+
+ambiguous or undefined.=20
+<P>If, however, you absolutely need to have something undefined, you =
+should at=20
+least clearly specify what is undefined, and why.</P></DIR>
+<H1>Notes on the IESG review procedure</H1>
+<H2>Naming your Internet Draft</H2>
+<DIR>The IETF generally uses this convention for Internet Draft file =
+names. NN=20
+is a sequence number, starting from 00 and monotonically increasing. =
+<BR>&nbsp;=20
+<DL>
+  <DT><B>Independent submissions</B>:=20
+  <DD>Draft-&lt;author name&gt;-&lt;descriptive text&gt;-NN.txt=20
+  <DD>Example: draft-baker-spam-what-am-00.txt=20
+  <DT><B>Independent submissions to a working group</B>=20
+  <DD>Draft-&lt;author name&gt;-&lt;working group&gt;-&lt;descriptive=20
+  text&gt;-NN.txt=20
+  <DD>Example: draft-baker-spamwg-spam-what-am-not-00.txt=20
+  <DT><B>Working Group documents</B>=20
+  <DD>Draft-ietf-&lt;working group&gt;-descriptive text&gt;-NN.txt=20
+  <DD>Example: draft-ietf-spamwg-how-to-send-spam-00.txt </DD></DL>You =
+must have=20
+the consent of your working group chair, and the working charter needs =
+to have a=20
+corresponding work item, to consider your document a working group =
+document.=20
+Individual submissions (whether general or to a working group) may be =
+made=20
+without prior notice, but unless you ask someone to do something with =
+them,=20
+nothing further will be done.</DIR>
+<H2>Submitting your Internet Draft</H2>
+<DIR>Please assure that the boilerplate specified in <A=20
+href=3D"http://www.ietf.org/ietf/1id-guidelines.txt">Internet Draft =
+Guidelines</A>=20
+is present.=20
+<P>Additionally, here are some comments from <A=20
+href=3D"http://www.ietf.org/rfc/rfc2223.txt">Instructions to RFC =
+Authors</A>,=20
+which you should read:</P></DIR>
+<UL>
+  <UL>
+    <LI>Documents should not be right justified, (i.e., not filled) or=20
+    hyphenated.=20
+    <LI>Make sure that special characters "'", """, "-" come through as =
+ASCII,=20
+    not word processor control characters.=20
+    <LI>If there is a postscript version of the file, make sure that an =
+ASCII=20
+    version also exists and that the protocol or proposal can be equally =
+
+    implemented from either. </LI></UL></UL>
+<DIR>Having put your document together, you can email it, either as text =
+or as=20
+an attachment, to <A=20
+href=3D"mailto:internet-drafts@ietf.org">internet-drafts@ietf.org</A>.=20
+Alternatively, you may post it as an FTP-accessible file and mail the =
+URL to the=20
+same address. The latter is nicer for the person managing the Internet =
+Drafts=20
+directory.=20
+<P>In general, you may post Internet Drafts whenever they are =
+appropriate to a=20
+discussion or idea. If they are intended for discussion during an IETF =
+Working=20
+Group meeting, there is an Internet Draft cut-off roughly a month prior =
+to the=20
+meeting. This is intended to allow people time to read the proposals, =
+promoting=20
+intelligent discussion, and most working group chairs require that =
+documents for=20
+discussion must be posted, or give first consideration to posted=20
+documents.</P></DIR>
+<H2>Responding to IESG requests for changes</H2>
+<DIR>The IESG often requests that changes be made to an Internet Draft =
+before it=20
+moves to the RFC Editor. If this happens, make the requested changes in =
+a new=20
+revision of the draft, submit the new draft through the normal =
+draft-submission=20
+procedures, and let the Area Director responsible for the draft know =
+when the=20
+submission has been made available in the official Internet Drafts=20
+directory.</DIR>
+<H2>Communicating with the sponsoring area director</H2>
+<DIR>The amount and kind of communication that you will have with the =
+Area=20
+Director who is sponsoring your draft will depend on many factors. These =
+include=20
+whether the draft is a WG item or an individual submission, whether or =
+not you=20
+and the Area Director agree on the changes requested by the IESG, the=20
+criticality of the other drafts that the Area Director is sponsoring, =
+and the=20
+Area Director's other duties.</DIR>
+<H2>I need to change a draft after I have submitted it to the IESG</H2>
+<DIR>That's OK, as long as the draft has not been officially processed =
+and=20
+approved. If you need to make changes, submit a new revision of the =
+draft=20
+through the normal draft-submission procedures. You should probably let =
+the=20
+sponsoring Area Director know as soon as you know that you are going to =
+be=20
+submitting a new draft so he or she can suspend the process on the =
+current one.=20
+<P>Once the draft has been considered by the IESG, changes are not =
+particularly=20
+welcome, although they may be required. The IESG handles these events on =
+a case=20
+by case basis, often asking the relevant working group to review the =
+changes and=20
+repeat the submission.</P></DIR>
+<HR>
+
+<P>Last updated by <A href=3D"mailto:iesg@ietf.org">Fred Baker</A> on =
+April 27=20
+1999.=20
+<P>The original text came from notes from Thomas Narten, Bert Wijnen, =
+and Patrik=20
+F&auml;ltstr&ouml;m. Significant editorial work was done by Paul =
+Hoffman, and subject and=20
+content review was done by quite a number of recent Internet Draft =
+authors. No=20
+representation is made that we have thought of everything you need to =
+know, or=20
+that we won't think of improvements, but this should help. Additional =
+questions=20
+and suggestions should be placed to the <A =
+href=3D"mailto:iesg@ietf.org">IESG</A>=20
+or to the <A href=3D"mailto:poised@lists.tislabs.com">Poisson working =
+group</A>. <!-- ZoneLabs Popup Blocking Insertion -->
+<SCRIPT>
+window.open=3DNS_ActualOpen;
+orig_onload =3D window.onload;
+orig_onunload =3D window.onunload;
+window.onload =3D noopen_load;
+window.onunload =3D noopen_unload;
+</SCRIPT>
+</P></BODY></HTML>
+
+------=_NextPart_000_0000_01C26F98.E12362E0
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://localhost:1025/js.cgi?pceaw&r=27644
+
+
+NS_ActualWrite=3Ddocument.write;
+// Script Error Blocker -->
+function handleError() {return true;}
+window.onerror =3D handleError;
+// Popup Blocker -->
+NS_ActualOpen=3Dwindow.open;
+orig_setTimeout =3D window.setTimeout;
+function NS_NullWindow(){this.window;}
+function NS_NewOpen(url,nam,atr){
+	obj=3Dnew NS_NullWindow();
+	obj.focus =3D NS_NullWindow;
+	obj.opener =3D this.window;
+	return(obj);
+}
+function NS_NullWindow2(){this.window;}
+function NS_NewOpen2(url,nam,atr){return(new NS_NullWindow2());}
+function op_stop() { NS_ActualOpen2=3Dwindow.open; =
+window.open=3DNS_NewOpen2; }
+function op_start() { window.open=3DNS_ActualOpen2; }
+function noopen_ST(one,two) { =
+orig_setTimeout("op_stop();"+one+";;op_start();",two); }
+function noopen_load() { op_stop(); if(orig_onload) orig_onload(); =
+op_start(); }
+function noopen_unload() { op_stop(); if(orig_onunload) orig_onunload(); =
+op_start(); }
+window.setTimeout =3D noopen_ST;
+window.open=3DNS_NewOpen;
+document.ignore =3D new Object();
+// WebBug Blocker -->
+function NS_NewWrite(str){
+ var wbre1 =3D new RegExp('<img[^<]*width *=3D =
+*["\']?[1-5][^0-9][^<]*height *=3D *["\']?[1-5](>|[^0-9][^<]*>)','gi');=20
+ var wbre2 =3D new RegExp('<img[^<]*height *=3D =
+*["\']?[1-5][^0-9][^<]*width *=3D *["\']?[1-5](>|[^0-9][^<]*>)','gi'); =20
+ str =3D str.replace(wbre1, '<img =
+src=3D"http://localhost:1025/bug.cgi">');
+ str =3D str.replace(wbre2, '<img =
+src=3D"http://localhost:1025/bug.cgi">');
+ NS_ActualWrite(str);
+}
+function NS_NewWriteLn(str){
+ NS_NewWrite(str+'\n');
+}
+document.writeln=3DNS_NewWriteLn;
+document.write=3DNS_NewWrite;
+
+------=_NextPart_000_0000_01C26F98.E12362E0--

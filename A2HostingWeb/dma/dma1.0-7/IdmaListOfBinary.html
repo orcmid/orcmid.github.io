@@ -1,0 +1,26 @@
+<html><head><title>Interfaces and Methods: IdmaListOfBinary</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaListOfBinary"></a>IdmaListOfBinary</h2>
+<p>This interface provides the methods for handling lists that contain buffers of binary data.
+</p><p>
+This interface offers all the methods of the IdmaList interface,  as well as those listed below.</p></p>
+<h3><a name="IdmaListOfBinaryGetBinary"></a>IdmaListOfBinary::GetBinary</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaListOfBinary::GetBinary</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaBinaryValue*    <i>pBinaryValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list to retrieve the binary value from.</p></TD></TR>
+<TR><TD><p><i>pBinaryValue</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to the returned binary value.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function will return the binary value that resides in the <i>iIndex</i>-th position in the list.
+</p><p>
+Valid values for iIndex are 0 through <i>n</i>-1, where <i>n</i> is the number of elements in the list at the time of the call.
+</p><p>
+The caller is responsible for allocating and freeing the structure pointed to by the pBinaryValue parameter. The memory pointed to by the pBinaryValue-&gt;pbBytes field is allocated by the callee and must be freed by the caller. This field need not be pre-initialised to NULL by the caller, and must be set to NULL by the callee if any return code other than DMARC_OK is returned.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

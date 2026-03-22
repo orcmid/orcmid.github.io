@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>quexp3.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995, 1996, 1997 by the
+ *  Association for Information and Image Management International
+ *      1100 Wayne Avenue
+ *      Silver Spring, MD 20910-5603
+ *      Tel: 301/587-8202
+ *      Fax: 301/587-2711
+ *  All Rights Reserved.
+ *  DMA (Document Management Alliance) working group.
+ */
+
+/* quexp3.cpp
+
+   This example enumerates the direct descendant objects directly
+   contained by a direct container object pX, as well as the  
+   direct container objects that contain pX.
+*/
+
+#define DMA_INIT_CD
+#include &lt;query.h&gt;
+
+
+/* This procedure enumerates the immediate child objects that
+   are "directly" contained by the container, pParent.
+*/
+DmaRC
+EnumChildren(
+    IdmaProperties *            pParent)
+{
+    DmaRC                       rc;
+    IdmaEnumOfObject *          pChildren = NULL;
+    IdmaProperties *            pChild = NULL;
+    IdmaProperties *            pChildReln = NULL;
+    DmaIndex32                  n;
+    IUnknown *                  a [1];
+
+    a[0] = NULL;
+
+    rc = pParent-&gt;GetPropValObjectById(&amp;dmaProp_Children, 
+                                       IID_IdmaEnumOfObject,
+                                       (pDmapv)&amp;pChildren);
+    CHK(rc);
+
+    while (1)
+    {
+        /* Get the next child relationship object.
+           The array "a" and scalar N are artifacts of the signature
+           of GetNextObject().
+        */
+        rc = pChildren-&gt;GetNextObject(1, a, &amp;n);
+        if (rc != DMARC_OK)
+        {
+          break; 
+        }
+
+        /* Since GetNextNext() didn't allow us to specify the interface
+           we wanted, call QueryInterface() to get it.
+        */
+        rc = a[0]-&gt;QueryInterface(IID_IdmaProperties,
+                                  (pDmapv)&amp;pChildReln);
+        RELEASE(a[0]);
+        CHK(rc);
+
+        /* Get the actual child object pointed to by the
+           relationship object.
+        */
+        rc = pChildReln-&gt;GetPropValObjectById(&amp;dmaProp_Head,
+                                              IID_IdmaProperties,
+                                              (pDmapv)&amp;pChild);
+        RELEASE(pChildReln);
+        CHK(rc);
+
+        /* TBD: Process the child object pointed to by pChild */
+
+        RELEASE(pChild);        
+    }    
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pChildren);
+    CHK_RELEASE(pChild);
+    return rc;
+}
+
+
+/* This procedure enumerates the container objects that immediately
+   "referentially" contain the containee, pContainee.
+*/
+DmaRC
+EnumContainers(
+    IdmaProperties *            pContainee)
+{
+    DmaRC                       rc;
+    IdmaEnumOfObject *          pContainers = NULL;
+    IdmaProperties *            pContainer = NULL;
+    IdmaProperties *            pContainerReln = NULL;
+    DmaIndex32                  n;
+    IUnknown *                  a [1];
+
+    a[0] = NULL;
+
+    rc = pContainee-&gt;GetPropValObjectById(&amp;dmaProp_Containers, 
+                                          IID_IdmaEnumOfObject,
+                                          (pDmapv)&amp;pContainers);
+    CHK(rc);
+
+    while (1)
+    {
+        /* Get the next container relationship object.
+           The array "a" and scalar N are artifacts of the signature
+           of GetNext().
+        */
+        rc = pContainers-&gt;GetNextObject(1, a, &amp;n);
+        if (rc != DMARC_OK)
+        {
+          break; 
+        }
+
+        /* Since GetNext() didn't allow us to specify the interface
+           we wanted, call QueryInterface() to get it.
+        */
+        rc = a[0]-&gt;QueryInterface(IID_IdmaProperties,
+                                  (pDmapv)&amp;pContainerReln);
+        RELEASE(a[0]);
+        CHK(rc);
+
+        /* Get the containing object pointed to by the
+           relationship object.
+        */
+        rc = pContainerReln-&gt;GetPropValObjectById(&amp;dmaProp_Tail,
+                                                 IID_IdmaProperties,
+                                                 (pDmapv)&amp;pContainer);
+        RELEASE(pContainerReln);
+        CHK(rc);
+
+        /* TBD: Process the container object pointed to by pContainer */
+
+        RELEASE(pContainer);
+    }    
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pContainers);
+    CHK_RELEASE(pContainer);
+    return rc;
+}
+
+
+void main(void)
+{
+  /* TBD: Declare variables pX, etc. 
+     Get system manager object.
+     Get system object.
+     Get doc space object.
+     Get contained direct container object, pX.
+
+     Call EnumChildren(pX).
+     Call EnumContainers(pX).
+     pX-&gt;Release();
+  */
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>

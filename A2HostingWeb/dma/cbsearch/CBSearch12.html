@@ -1,0 +1,1393 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<title>DMA Architecture Enhancement Proposal for Content Based Search</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#ffffff">
+<strong><font SIZE="6">
+
+<p><a NAME="_Toc389897700"></a><a NAME="_Toc389897806"></a><a NAME="_Toc389897945"></a><a NAME="_Toc389898743"></a><a NAME="_Toc389898757"></a><a NAME="_Toc389899422"></a><a NAME="_Toc389899442"></a><a NAME="_Toc389901439"></a><a NAME="_Toc389904799"></a><a NAME="_Toc389905093"></a><a NAME="_Toc389905201">DMA Architecture Enhancement Proposal for
+</a></font><a href="cbsearch.htm"><font SIZE="6">Content Based Search</font></a></p>
+</strong>
+
+<blockquote>
+  <p><a NAME="_Toc389897701"><strong>Authors:</strong> </a>DMA Query SC: Mitsuru Akizawa,
+  Yoshifumi Sato, Ann Palmer, Jim Green, Dennis Hamilton, Alan Babich</p>
+  <hr>
+</blockquote>
+<b>
+
+<h1><a NAME="_Toc389898744"></a><a NAME="_Toc389898758"></a><a NAME="_Toc389899423"></a><a NAME="_Toc389899443"></a><a NAME="_Toc389901440"></a><a NAME="_Toc389904800"></a><a NAME="_Toc389905094"></a><a NAME="_Toc389905202"></a><a NAME="_Toc389906235"></a><a NAME="_Toc389907139"></a><a NAME="_Toc389907213"></a><a NAME="_Toc389907567"></a><a NAME="_Toc455898881"></a><a NAME="RevisionHistory">Revision History</a></h1>
+</b><div align="center"><center>
+
+<table border="2" cellspacing="4" width="80%" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080">
+  <tr>
+    <td><strong>HTML Rendition: </strong>This HTML rendition was derived from the Microsoft
+    Word 97 file <a href="CBSearch12.doc">CBSearch12.doc</a>.&nbsp; It might not be the latest
+    version of the CBSearch extensions to DMA 1.0.&nbsp; Check the <a href="cbsearch.htm#About">definitive sources</a> for the latest version.&nbsp; There may
+    be a later packaging of complete, current CBSearch materials there.</td>
+  </tr>
+</table>
+</center></div>
+
+<ol>
+  <b><p>Version 8.0:</b> 6/23/99 Mitsuru Akizawa, Jim Green, Dennis Hamilton, Alan Babich</p>
+  <p>(<a href="CBSearch12.doc">CBSearch12.doc</a>) Final (minor) changes before vote. State
+  that there will be one subclass of the Content Search class for each CBR index supported
+  by the document space.</p>
+  <b><p>Version 7.0:</b> 6/23/99 Mitsuru Akizawa, Jim Green, Dennis Hamilton, Alan Babich</p>
+  <p>Put in the changes agreed to on the conference call of 5/11/99, and change the data
+  type of Thesaurus Id from String to Id. Enhance the explanation of the default units for
+  distance: </p>
+  <p>Put a sentence in section 3 that states explicitly that the merge rules are not changed
+  by this proposal.</p>
+  <p>Add a new class Content Query Options to hold the content based query options. Add a
+  single object valued property, Content Query Options, to the classes Query and Query
+  Operator. Do not require support for this property or any of the option properties, and do
+  not require a default value for any of the options.</p>
+  <p>The use of thesauri is on a best effort basis. The query will be executed, and no error
+  will be returned, even if a thesaurus is not available.</p>
+  <p>In the introduction it is noted that there can be multiple instances of the Result
+  Object property in the Selections list.</p>
+  <p>Put in an example showing the use of the Result Object property.</p>
+  <b><p>Version 6.0:</b> 4/27/99 Mitsuru Akizawa, Jim Green, Dennis Hamilton, Alan Babich</p>
+  <p>Change the name of the Proximity operator to Within. Add new query operators NotWithin,
+  WithinUnits, NotWithinUnits. Add HitCount property.</p>
+  <b><p>Version 5.0:</b> 4/4/99 Mitsuru Akizawa, Jim Green, Dennis Hamilton, Alan Babich</p>
+  <p>Add example query trees. Explain how to take advantage of the new properties in the
+  Query class. Get rid of the Word macros. Use the value 1 to indicate adjacency instead of
+  0. This change anticipates that an operand will be added to the Proximity operator to
+  specify the units of . For example, if the units were specified to be
+  &quot;paragraph&quot;, then 0 would mean that the search terms must be in the same
+  paragraph, and 1 would mean that the search terms must be in adjacent paragraphs. The old
+  way, -1 would have to be used to indicate that the search terms are in the same paragraph.</p>
+  <b><p>Version 4.0:</b> 2/16/99 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Dennis Hamilton, Alan Babich</p>
+  <p>Touch up the wording in the overview.</p>
+  <p>Changed the options from list of Booleans to separate properties.</p>
+  <p>Wrote the query overview.</p>
+  <p>Dropped the last Editor&#146;s note.</p>
+  <b><p>Version 3.0:</b> 1/19/99 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Alan Babich</p>
+  <p>Added a paragraph on the scope of the proposal in the introduction.</p>
+  <p>Clarified the confusion between class and class instance in the introduction.</p>
+  <p>Added Content Search to the glossary of terms.</p>
+  <p>Explained that the relative importance of two retrieval terms in a query is indicated
+  by the ratio of their retrieval term weights.</p>
+  <p>Changed the data type of Raw Score, Normalized Score, and weights from integer32 to
+  float64.</p>
+  <p>Moved the Special Properties to another proposal.</p>
+  <p>Made the list of options be list of integer32, not list of Boolean. Added format level
+  &quot;option&quot;.</p>
+  <p>Provided new name (DMA_CBR_OPTION_SPELLING_VARIANT) and new description for
+  DMA_CBR_OPTION_TRANSLATION_EXPANSION.</p>
+  <p>Made Thesaurus name a list of strings, and enhanced its description.</p>
+  <p>Deleted the Contains SGML and SGML operators.</p>
+  <p>Rewrote the sentence on internationalization considerations.</p>
+  <p>Removed most editor&#146;s notes.</p>
+  <p>Minor wording touch ups.</p>
+  <b><p>Version 2.0:</b> 12/10/98 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Alan Babich</p>
+  <p>Added operator for searches of SGML, HTML, and XML documents. Correct the statement
+  that the Hitachi proposal is based on STARTS. It is not. It used the concept of raw and
+  normalized score, however. Corrected some minor errors in the document.</p>
+  <b><p>Version 1.0:</b> 12/06/98 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Alan Babich</p>
+  <p>Initial version.</p>
+</ol>
+
+<h1><a NAME="_Toc389898745"></a><a NAME="_Toc389898759"></a><a NAME="_Toc389899424"></a><a NAME="_Toc389899444"></a><a NAME="_Toc389901441"></a><a NAME="_Toc389904801"></a><a NAME="_Toc389905095"></a><a NAME="_Toc389905203"></a><a NAME="_Toc389906236"></a><a NAME="_Toc389907140"></a><a NAME="_Toc389907214"></a><a NAME="_Toc389907568"></a><a NAME="_Toc455898882"></a><a NAME="TableOfContents">Table of Contents</a></h1>
+
+<ol>
+  <h2><a href="#RevisionHistory">Revision History</a></h2>
+  <h2><a href="#TableOfContents">Table of Contents</a></h2>
+  <h2><a href="#FunctionalOverview">Functional Overview/Description</a></h2>
+  <h2><a href="#Glossary">Glossary/Nomenclature</a></h2>
+  <h2><a href="#ClassesAndProperties">New/Changed Classes and Properties</a></h2>
+  <blockquote>
+    <h3><a href="#dmaClass_ContentSearch">dmaClass_ContentSearch</a></h3>
+    <h3><a href="#dmaClass_ContentQueryOptions">dmaClass_ContentQueryOptions</a></h3>
+    <h3><a href="#dmaClass_Query">DmaClass_Query</a></h3>
+    <h3><a href="#dmaClass_QueryOperator">dmaClass_QueryOperator</a></h3>
+  </blockquote>
+  <h2>New/Changed Interfaces</h2>
+  <h2><a href="#ArchitecturalImpacts">Architectural Impacts</a></h2>
+  <blockquote>
+    <h3>Integration Model</h3>
+    <h3><a href="#Query">Query</a></h3>
+  </blockquote>
+</ol>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <h4><a href="#QueryModelOverview">Query Model Overview</a></h4>
+      <h4><a href="#NewQueryOperators">New Query Operators</a></h4>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ol>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <h5><a href="#Contains">Contains</a></h5>
+        <h5><a href="#Within">Within</a></h5>
+        <h5><a href="#NotWithin">NotWithin</a></h5>
+        <h5><a href="#WithinUnits">WithinUnits</a></h5>
+        <h5><a href="#NotWithinUnits">NotWithinUnits</a></h5>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <h3><a href="#Internationalization">Internationalization/Localization</a></h3>
+  </blockquote>
+  <blockquote>
+    <h3>Content</h3>
+    <h3>Containment</h3>
+    <h3>Versioning</h3>
+    <h3>Security</h3>
+    <h3>Naming</h3>
+    <h3>Performance Impact</h3>
+    <h3>Failure Modes/Crash Recovery</h3>
+  </blockquote>
+  <h2><a href="#SampleUsage">Sample Usage</a></h2>
+  <blockquote>
+    <h3><a href="#ContainsOperator">Contains Operator</a></h3>
+    <h3><a href="#dmaProp_ResultObject">dmaProp_ResultObject</a></h3>
+    <h3><a href="#TheWithinOperator">The &quot;Within&quot; Operator</a></h3>
+    <h3><a href="#CompoundRetrievalCondition">Compound Retrieval Condition</a></h3>
+    <h3><a href="#UsingNewQueryClassProperties">Using the New Properties in the Query Class</a></h3>
+  </blockquote>
+  <h2><a href="#BackwardCompatibility">Backwards Compatibility</a></h2>
+  <h2><a href="#ExistingSystemImpact">Impact on Existing Systems</a></h2>
+  <h2><a href="#Conformance">Compliance &amp; Conformance Issues</a></h2>
+  <h2><a href="#RequirementsAddressed">What Requirement Does This Address?</a></h2>
+  <h2><a href="#WhyGoodSolution">Why Is This a Good Solution?</a></h2>
+  <h2><a href="#ExistingSystemImpact">Existing Systems with Similar Features and Related
+  Experiences</a></h2>
+  <h2><a href="#RawScoreProperty">Reference Materials</a></h2>
+  <h2><a href="#IncorporatedInSpecification">How Is This Incorporated into the
+  Specification?</a></h2>
+  <hr>
+</ol>
+
+<h1><a NAME="_Toc389899425"></a><a NAME="_Toc389899445"></a><a NAME="_Toc389901442"></a><a NAME="_Toc389904802"></a><a NAME="_Toc389905096"></a><a NAME="_Toc389905204"></a><a NAME="_Toc389906237"></a><a NAME="_Toc389907141"></a><a NAME="_Toc389907215"></a><a NAME="_Toc389907569"></a><a NAME="_Toc455898883"></a><a NAME="FunctionalOverview">Functional
+Overview/Description</a></h1>
+
+<ol>
+  <p>The scope of this proposal is to define a small, basic, interoperable subset of content
+  search that is to be added to the DMA API. The intent is to enable DMA query to provide
+  access to basic content search capability, assuming that is provided by the document space
+  implementation. This proposal is not intended to allow access to every feature of every
+  search engine that currently exists.</p>
+  <p>A new class is added to the DMA classes &#150; Content Search.</p>
+  <p>It is expected that the Content Search class will be supported and have exactly one
+  subclass for each CBR index supported by the document space. It is possible for each
+  content index to be managed by different content search engine software.&quot;</p>
+  <p>A query against the Content Search class (or one of its subclasses) implies a query
+  against the corresponding content index. </p>
+  <p>It should be noted that documents of many different types are typically indexed in the
+  same content index. It is also possible to include folders and annotations in the content
+  index. Therefore, searches against the Content Search class can in effect search across
+  multiple different subclasses of DocVersion and possibly other classes as well. </p>
+  <p>The properties of an instance of Content Search reflect properties stored in the
+  corresponding content index. A new object valued property, Result Object, is introduced as
+  a property of the new Content Search class. The act of accessing the value of the Result
+  Object property of a query result row causes a connected scratch pad object for the
+  DocVersion or other object associated with the result row to be instantiated on the
+  client. Note that there can be multiple instances of the Result Object property in the
+  Selections list.</p>
+  <p>The Content Search class is intended to be a virtual class: The Content Search class is
+  intended for use only in queries. No provision is made for inserting, updating, or
+  deleting independently persistable objects of an instance of the Content Search class via
+  the DMA API. Indexing and deindexing of documents in a content index is expected to be
+  done out of band of the DMA API.</p>
+  <p>New &quot;score&quot; properties of the Content Search class that allow the results of
+  content based queries to be ranked in descending order of relevance are defined in this
+  proposal.</p>
+  <p>In addition to the new Content Search class, new query operators that perform various
+  types of content based search operations are defined in this proposal.</p>
+  <p>This proposal does not propose any changes to the merge rules for constructing merged
+  scopes.</p>
+  <p>This proposal is based on a working paper submitted by Mr. Mitsuru Akizawa and Mr.
+  Yoshifumi Sato of Hitachi, as modified by the subsequent discussions of the DMA Query
+  subcommittee.</p>
+  <p>&nbsp;</p>
+</ol>
+
+<h1><a NAME="_Toc389899434"></a><a NAME="_Toc389899454"></a><a NAME="_Toc389901460"></a><a NAME="_Toc389904821"></a><a NAME="_Toc389905115"></a><a NAME="_Toc389905223"></a><a NAME="_Toc389906256"></a><a NAME="_Toc389907160"></a><a NAME="_Toc389907234"></a><a NAME="_Toc389907588"></a><a NAME="_Toc455898884"></a><a NAME="Glossary">Glossary/Nomenclature</a></h1>
+
+<ol>
+  <h4><a NAME="_Toc455898885"></a><a NAME="ContentSearch">Content Search</a></h4>
+  <p>Content search is querying for documents by specifying conditions on the document
+  content. Typically, the documents involved are parsed by special document indexing
+  software, and indexed in a content index. The entries in the content index refer back to
+  the original documents.</p>
+  <b><p><a NAME="RetrievalTerm">Retrieval Term</a></p>
+  </b><p>A retrieval term is word or phrase looked up in a content index by content based
+  retrieval (CBR) software.</p>
+  <b><p><a NAME="RetrievalTermWeight">Retrieval Term Weight</a></p>
+  </b><p>If there are multiple retrieval terms in a content based query, it may be desirable
+  to indicate the relative importance of each term to the query. That is done by assigning a
+  weight to each retrieval term. The retrieval term weight is a real number between 0.0 and
+  1.0 . The ratio of two retrieval term weights indicates the relative importance of the two
+  retrieval terms. Retrieval term weights are not normalized. That is, there is no
+  requirement that the sum of the retrieval term weights adds up to 1.0 or any other number.</p>
+  <b><p><a NAME="RawScore">Raw Score</a>, <a NAME="NormalizedScore">Normalized Score</a></p>
+  </b><p>The raw score is intended to be useful for ranking purposes when a single content
+  based index is involved in a query. In some document spaces, the raw score is based on the
+  number of occurrences of the search terms in the document, and on other statistics (e.g.
+  the number of documents in the content index that contain the search term, the total
+  number of documents in the content index, etc.). When multiple content indexes are
+  involved in a query, the raw scores are typically not directly comparable, even if the
+  same scoring algorithm is used. That is because the raw score of a document for a
+  particular query typically depends upon all the documents in the content index. Therefore,
+  when multiple content indexes are involved in a query, the normalized score is generally
+  used for ranking purposes. The normalized score may not be perfectly comparable across
+  content based indexes, but it is generally much more appropriate than the raw score in
+  such cases.</p>
+</ol>
+
+<h1><a NAME="_Toc389899426"></a><a NAME="_Toc389899446"></a><a NAME="_Toc389901443"></a><a NAME="_Toc389904803"></a><a NAME="_Toc389905097"></a><a NAME="_Toc389905205"></a><a NAME="_Toc389906238"></a><a NAME="_Toc389907142"></a><a NAME="_Toc389907216"></a><a NAME="_Toc389907570"></a><a NAME="_Toc455898886"></a><a NAME="ClassesAndProperties">New/Changed
+Classes</a> and Properties</h1>
+
+<h2><a NAME="_Toc455898887"></a><a NAME="dmaClass_ContentSearch">dmaClass_ContentSearch</a></h2>
+
+<blockquote>
+  <p>This is a new, virtual class. Objects of this class can not be created, deleted,
+  modified, or connected to in the usual way. It is intended that the primary use of this
+  class be in content based queries. </p>
+  <p>Adding and deleting objects of this class is outside of the scope of this proposal. The
+  Name property is not assigned. This class must be searchable but not addressable or
+  navigable.</p>
+  <b><p>Class ID:</b> dmaClass_ContentSearch</p>
+  <b><p>Superclass:</b> DMA</p>
+  <b><p>Interfaces</p>
+  </b><p>The interfaces are inherited from the superclass DMA. These are IUnknown,
+  IdmaObject, and IdmaProperties. However, objects of this class can not be instantiated.
+  This class exists to provide properties that can be selected in a query result set.</p>
+</blockquote>
+
+<blockquote>
+  <b><p>Properties</p>
+  </b><table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="599">
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2"><b>Impl. Req'd</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>System Gen'ed</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Read-Only</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Value Req'd</b></font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2"><b>Type</b></font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2"><b>Cardinality</b></font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2"><b>Req'd Class</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">OIID</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">String</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Class Description</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Object</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Class Description</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">This</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Object</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Content Search</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Create Pending</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Update Pending</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Delete Pending</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Content</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">String</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Result Object</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">object</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">DMA</font></td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Raw Score</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Float64</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Normalized Score</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Float64</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Document Length</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Integer32</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Hit Count</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Yes</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">Integer32</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Scalar</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+  </table>
+  <b><p>Detailed Description</p>
+  </b><p>It is useful to think of the persistent data associated with an instance of the
+  Content Search class (or one of its subclasses) as a content index. </p>
+  <p>The properties of an instance of the Content Search class reflect the properties stored
+  in the corresponding content index.</p>
+  <p>The Content Search class and its subclasses must be searchable. Searches against it
+  correspond to searches against a content index. </p>
+  <p>The primary use of this class is to facilitate content queries. It is not intended that
+  it be possible to connect scratchpad objects for members of this class or to create new
+  persistent members of this class (e.g., via the ExecuteChange method). The intent is that
+  indexing and deindexing of documents or other objects in the content index is done out of
+  band with respect to the DMA API.</p>
+  <p>Search results from this class correspond to documents or other objects indexed in the
+  content based index. A connected scratchpad object for the document or other object
+  associated with a result row may be obtained by accessing the value of the Result Object
+  property.</p>
+  <p>It is expected that if a document space has more than one content index, then there
+  will be an instance of Content Search or one of its subclasses for each such content index
+  in that document space. Different search engine software can be used to manage each
+  content index.</p>
+  <b><p>Property Descriptions</p>
+  <p>&#149; OIID {dmaProp_OIID} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not be implemented.</p>
+  </blockquote>
+  <p>&#149; Class Description</b> {dmaProp_ClassDescription} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not be implemented.</p>
+  </blockquote>
+  <b><p>&#149; This</b> {dmaProp_This} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not not be implemented.</p>
+  </blockquote>
+  <b><p>&#149; Create Pending</b> {dmaProp_CreatePending} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not be implemented.</p>
+  </blockquote>
+  <b><p>&#149; Update Pending</b> {dmaProp_UpdatePending} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not be implemented.</p>
+  </blockquote>
+  <b><p>&#149; Delete Pending</b> {dmaProp_DeletePending} </p>
+  <blockquote>
+    <i><p>Property Inherited from DMA </p>
+    </i><p>This property may not be implemented.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="ContentProperty">Content</a></b> {dmaProp_Content} </p>
+  <blockquote>
+    <p>This property stands for the content of the document or other target object. This
+    property is merely a placeholder needed by content search query operators. (Query
+    operators need an operand that designates the property being queried.) There must be no
+    value for this property (the content must be obtained by accessing the Result Object
+    property and then using the usual DMA 1.0 methods to access its content).</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="ResultObjectProperty">Result Object</b> </a>{dmaProp_ResultObject} </p>
+  <blockquote>
+    <p>This object-valued property references the actual document or other object that
+    corresponds to a query result row of a search against the Content Search class (or one of
+    its subclasses). In order to obtain a scratchpad object for the target object, this
+    property is mentioned in the Selections list property of the query, and its value is
+    retrieved from a result row of the query.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="RawScoreProperty">Raw Score</b> </a>{dmaProp_RawScore} </p>
+  <blockquote>
+    <p>The value of this property is the raw score of the document, i.e., this score value is
+    not normalized. The value of this property can be used to order the documents retrieved by
+    a content query in order of decreasing relevance. The Raw Score is most useful when the
+    query is against a single document space. The Raw Score property values are not comparable
+    across document spaces: The values of Raw Score of the same document stored in two
+    different document spaces may be different.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="NormalizedScoreProperty">Normalized Score </a></b>{dmaProp_NormalizedScore}
+  </p>
+  <blockquote>
+    <p>The value of this property is the normalized score of the document. The Normalized
+    Score can be used to order the documents retrieved by a content query in order of
+    decreasing relevance. The Normalized Score is expected to be more useful than the Raw
+    Score when the query is across multiple document spaces. However, although using the
+    Normalized Score is better than using the Raw Score in the case of multiple document
+    spaces, there is no guarantee that the normalized scores from different document spaces
+    will be perfectly comparable.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="DocumentLengthProperty">Document Length</b> </a>{dmaProp_DocumentLength}</p>
+  <blockquote>
+    <p>This is the length in bytes of the rendition of the document that was indexed in the
+    content index. This property is optionally supported.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="HitCountProperty">Hit Count</b> </a>{dmaProp_HitCount}</p>
+  <blockquote>
+    <p>For the case that there is a single Contains operator, the value of this property is
+    the number of occurrences of the search term in the document associated with the Result
+    Object property. For other cases, the value of Hit Count is implementation defined. This
+    property might be null for some content queries and non null for others.</p>
+  </blockquote>
+  <b><p><a NAME="OtherProperties">Other Properties in the Content Based Index</a></p>
+  </b><blockquote>
+    <p>It is usually the case that content search engines support the indexing of
+    &quot;hard&quot; properties of documents (e.g., &quot;Author&quot;, &quot;Title&quot;,
+    &quot;LoanNumber&quot;, etc.) in addition to document content. To make such
+    &quot;hard&quot; properties searchable or retrievable from the content based index, they
+    must be properties of Content Search or a subclass of Content Search. If any of the hard
+    properties are strings, they can be used as the target property for the content search
+    query operators if the document space implementation supports that. The normal query
+    operators (e.g., dmaQueryOperaor_GreaterInteger32, etc.) can also be used against the hard
+    properties in the content index.</p>
+  </blockquote>
+</blockquote>
+
+<h2><a NAME="_Toc455898888"></a><a NAME="dmaClass_ContentQueryOptions">dmaClass_ContentQueryOptions</a></h2>
+
+<ul>
+  <p>This class is added to collect the options that may apply to a content based query.
+  It&#146;s immediate superclass is Query Node. </p>
+  <p>The following are the properties introduced by this class:</p>
+  <b><p>Properties</p>
+  </b><table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="593">
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2"><b>Impl. Req'd</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>System Gen'ed</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Read-Only</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Value Req'd</b></font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2"><b>Type</b></font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2"><b>Cardinality</b></font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2"><b>Req'd Class</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Soundex</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Stemming</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Thesaurus</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Right Truncation</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Left Truncation</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Case Sensitive</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">CBR Spelling Variant</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Boolean</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+    <tr>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">Thesaurus Names</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Id</font></td>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">list</font></td>
+      <td WIDTH="14%" VALIGN="TOP">&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <b><p>Property Descriptions</p>
+  <blockquote>
+    <p>&#149; <a NAME="CBRSoundexProperty">CBR Soundex </a>{dmaProp_CBRSoundex}</p>
+    <p>If CBR Soundex is set, then the search is based on soundex values, not the word itself.
+    Otherwise, soundex values are not used in the search.</p>
+  </blockquote>
+  <p>&#149; <a NAME="CBRStemmingProperty">CBR Stemming</b> </a>{dmaProp_CBRStemming}</p>
+  <blockquote>
+    <p>If CBR Stemming is set, then stemming is applied to search terms. Otherwise, stemming
+    is not performed.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="CBRThesaurus">CBR Thesarus</b> </a>{dmaProp_CBRThesaurus}</p>
+  <blockquote>
+    <p>If CBR Thesaurus is set, then thesaurus expansion is applied to search terms.
+    Otherwise, thesaurus expansion is not performed. (See the Thesaurus Names property of the
+    Query class.)</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="CBRRightTruncation">CBR Right Truncation</b> </a>{dmaProp_CBRRightTruncation}</p>
+  <blockquote>
+    <p>If CBR Right Truncation is set, then search terms are truncated on the right end to
+    remove any ending or suffix before being looked up in the content based index. Otherwise,
+    right truncation is not performed.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="CBRLeftTruncation">CBR Left Truncation</b> </a>{dmaProp_CBRLeftTruncation}</p>
+  <blockquote>
+    <p>If CBR Left Truncation is set, then search terms are truncated on the left end to
+    remove any prefix before being looked up in the content based index. Otherwise, left
+    truncation is not performed.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="CBRCaseSensitive">CBR Case Sensitive</b> </a>{dmaProp_CBRRightTruncation}</p>
+  <blockquote>
+    <p>If CBR Case Sensitive is set, then, the lookup in the content based index is sensitive
+    to case. Otherwise, the lookup is case insensitive.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="CBRSpellingVariant">CBR Spelling Variant</b> </a>{dmaProp_CBRSpellingVariant}</p>
+  <blockquote>
+    <p>If CBR Spelling Variant is set, then spelling variant expansion is applied to search
+    terms before they are looked up. Otherwise, spelling variant expansion is not applied.
+    Spelling variant expansion means searching for the retrieval term or any of its
+    alternative spellings. The expansion strongly depends on language or locale. Spelling
+    variant expansion is different from synonym expansion (see the CBR Thesaurus property),
+    because the alternative spelling of the retrieval term is semantically identical to the
+    original retrieval term, not a synonym for it.</p>
+    <p>For example, consider Katakana. Katakana uses phonograms. Katakana is used in Japanese
+    documents to denote foreign words, e.g., &quot;computer&quot;, based on how they sound. It
+    is often hard to decide accurately what the sound of a foreign word is, due to differences
+    in pronunciation of the foreign word. As a result, there can be several commonly used
+    Katakana spellings of a foreign word.</p>
+    <p>As another example, the spelling expansion for &quot;color&quot; might include
+    &quot;colour&quot; in English documents.</p>
+  </blockquote>
+  <b><p>&#149; <a NAME="ThesaurusNamesProperty">Thesaurus Names</b> </a>{dmaProp_ThesaurusNames}</p>
+  <blockquote>
+    <p>This property specifies a list of names of thesauri, one of which is to be used for the
+    content search, if available. A document space may or may not use a thesaurus during
+    content search, and, even if it does, it may or may not allow a thesaurus other than the
+    default to be specified. Specification of thesauri is a hint, not an absolute requirement.
+    In other words, the query will be attempted in all relevant document spaces whether or not
+    the specified thesaurus is available in any particular document space. No error indication
+    will be given if the specified thesaurus is not available in a document space.</p>
+    <p>If the query option CBR Thesaurus is not set, a document space may use its default
+    thesaurus if it has one, or may choose to not use a thesaurus.</p>
+    <p>Assume that CBR Thesaurus is set. Then the following things are true: </p>
+  </blockquote>
+  <blockquote>
+    <ul>
+      <li>If Thesaurus Names has zero elements, the document space&#146;s default thesaurus will
+        be used, if there is one.</li>
+      <li>If Thesaurus Names has one or more elements, then the first (i.e., lowest list index)
+        thesaurus name that the document space implementation recognizes will be used. If none are
+        recognized by the document space implementation, the document space implementation will
+        use its default thesaurus, if it has one.</li>
+    </ul>
+  </blockquote>
+</ul>
+
+<h2><a NAME="dmaClass_Query">dmaClass_Query</a></h2>
+
+<ul>
+  <p>The following new property is added to this class: dmaProp_ContentQueryOptions.</p>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="577">
+    <tr>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2"><b>Impl. Req'd</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>System Gen'ed</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Read-Only</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Value Req'd</b></font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2"><b>Type</b></font></td>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Cardinality</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Req'd Class</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="14%" VALIGN="TOP"><font SIZE="2">Content Query Options</font></td>
+      <td WIDTH="11%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2">-</font></td>
+      <td WIDTH="10%" VALIGN="TOP"><font SIZE="2">Object</font></td>
+      <td WIDTH="15%" VALIGN="TOP">&nbsp;</td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2">Content Query Options</font></td>
+    </tr>
+  </table>
+  <p>Note that the name of this property is the same as the name of its required class.</p>
+  <p>If this property has a value, then the values of its properties (i.e., CBR Soundex, CBR
+  Stemming, etc.) specify global content search options that are apply to all the content
+  based retrieval operators in the current query. These global options may possibly be
+  overridden on an operator-by-operator basis by the value of this same property in a query
+  operator instance in the query.</p>
+</ul>
+
+<h2><a NAME="_Toc455898890"></a><a NAME="dmaClass_QueryOperator">dmaClass_QueryOperator</a></h2>
+
+<ul>
+  <p>The Content Query Options property is to be added to the Query Operator class (as well
+  as the Query class). The values of the properties in this occurrence of the Content Query
+  Options property override the global options specified by this same property on the
+  instance of Query class, if any. This provides a mechanism to override the global search
+  options specified on the Query object on an operator-by-operator basis. </p>
+  <p>If content search is not supported, the Content Query Options property is not
+  supported. It is not required that the property be supported on the Query Operator class,
+  even if the property is supported on the Query class. </p>
+  <p>&nbsp; </p>
+</ul>
+
+<h1><a NAME="_Toc389899428"></a><a NAME="_Toc389899448"></a><a NAME="_Toc389901444"></a><a NAME="_Toc389904804"></a><a NAME="_Toc389905098"></a><a NAME="_Toc389905206"></a><a NAME="_Toc389906239"></a><a NAME="_Toc389907143"></a><a NAME="_Toc389907217"></a><a NAME="_Toc389907571"></a><a NAME="_Toc455898891"></a><a NAME="InterfacesAndMethods">New/Changed
+Interfaces</a></h1>
+
+<ul>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ul>
+
+<h1><a NAME="_Toc389899429"></a><a NAME="_Toc389899449"></a><a NAME="_Toc389901445"></a><a NAME="_Toc389904805"></a><a NAME="_Toc389905099"></a><a NAME="_Toc389905207"></a><a NAME="_Toc389906240"></a><a NAME="_Toc389907144"></a><a NAME="_Toc389907218"></a><a NAME="_Toc389907572"></a><a NAME="_Toc455898892"></a><a NAME="ArchitecturalImpacts">Architectural
+Impacts</a></h1>
+
+<h2><a NAME="_Toc389901446"></a><a NAME="_Toc389904806"></a><a NAME="_Toc389905100"></a><a NAME="_Toc389905208"></a><a NAME="_Toc389906241"></a><a NAME="_Toc389907145"></a><a NAME="_Toc389907219"></a><a NAME="_Toc389907573"></a><a NAME="_Toc455898893">Integration
+Model</a></h2>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h2><a NAME="_Toc389901447"></a><a NAME="_Toc389904807"></a><a NAME="_Toc389905101"></a><a NAME="_Toc389905209"></a><a NAME="_Toc389906242"></a><a NAME="_Toc389907146"></a><a NAME="_Toc389907220"></a><a NAME="_Toc389907574"></a><a NAME="_Toc455898894"></a><a NAME="Query">Query</a></h2>
+
+<ol>
+  <p>The query model is not affected by this proposal. However, new operators must be
+  defined to provide content search functionality.</p>
+  <p>The companion proposal defining capabilities for content search query will indicate
+  whether or not there are some constraints on the form of query expressions. A fully
+  general query would include conditions on properties of the Content Search class as well
+  as other classes, and that would require more effort than an implementation that allowed
+  queries against only properties of Content Search, or properties not of Content Search.</p>
+</ol>
+
+<h3><a NAME="_Toc455898895"></a><a NAME="QueryModelOverview">Query Model Overview</a></h3>
+
+<ol>
+  <p>The query model overview should be updated by adding the following section to the DMA
+  1.0 specification to the very end of the query overview as section 3.5.14 &quot;Content
+  Based Search&quot;:</p>
+  <p>The Content Search class exists to support content searches. </p>
+  <p>The Content Search class is intended to be a virtual class: The Content Search class is
+  intended for use only in queries. No provision is made for inserting, updating, or
+  deleting independently persistable objects of an instance of the Content Search class via
+  the DMA API. Indexing and deindexing of documents in a content index is expected to be
+  done out of band of the DMA API.</p>
+  <p>It is expected that the Content Search class will be supported and have exactly one
+  subclass for each CBR index supported by the document space. It is possible for each
+  content index to be managed by different content search engine software.&quot;</p>
+  <p>A query against the Content Search class (or one of its subclasses) implies a query
+  against the corresponding content index. </p>
+  <p>It should be noted that documents of many different types are typically indexed in the
+  same content index. It is also possible to include folders and annotations in the content
+  index. Therefore, searches against the Content Search class can in effect search across
+  multiple different subclasses of DocVersion and possibly other classes as well. </p>
+  <p>The properties of an instance of Content Search reflect properties stored in the
+  corresponding content index. The object valued property, Result Object, is a property of
+  the new Content Search class. The act of accessing the value of the Result Object property
+  of a query result row causes a connected scratch pad object for the DocVersion or other
+  object associated with the result row to be instantiated on the client.</p>
+  <p>The &quot;score&quot; properties of the Content Search class that allow the results of
+  content based queries to be ranked in descending order of relevance. (See &quot;raw score,
+  normalized score&quot; in the glossary. See also &quot;content search&quot;,
+  &quot;retrieval term&quot;, and &quot;retrieval term weight&quot;.)</p>
+  <p>Query operators, such as Contains and Within, are specialized for content based
+  searching.</p>
+  <p>Content search options global to the query are specified by certain property values of
+  the Content Query Options property of the Query object (e.g., CBR Soundex, CBR Case
+  Sensitive, etc.). These global settings may be overridden for a sub part of the query by
+  values for these same properties of the Content Query Options property on certain Query
+  Operator objects, e.g. those with Query Operator Id equal to dmaQueryOperator_Contains or
+  dmaQueryOperator_Within.</p>
+</ol>
+
+<h3><a NAME="_Toc455898896"></a><a NAME="NewQueryOperators">New Query Operators</a></h3>
+
+<h4><a NAME="_Toc455898897"></a><a NAME="Contains">Contains</a></h4>
+
+<ol>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="583">
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="8%" VALIGN="TOP"><font SIZE="2"><b>Result Type</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Min # of Opnds</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Max # of Opnds</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Operand Type(s)</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Safe to Eliminate</b></font></td>
+      <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b>Define</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP">Contains</td>
+      <td WIDTH="8%" VALIGN="TOP">Boolean</td>
+      <td WIDTH="9%" VALIGN="TOP">3</td>
+      <td WIDTH="9%" VALIGN="TOP">3</td>
+      <td WIDTH="13%" VALIGN="TOP">0: object (class is Query Property)<p>1: string</p>
+      <p>2: float64</td>
+      <td WIDTH="12%" VALIGN="TOP">Yes</td>
+      <td WIDTH="33%" VALIGN="TOP">dmaQueryOperator_Contains</td>
+    </tr>
+  </table>
+</ol>
+
+<blockquote>
+  <b><p>dmaQueryOperator_Contains</p>
+  </b><p>This operator returns DMA_TRUE if and only if the content of the document referred
+  to by the current object under scan in the content index contains the retrieval terms
+  specified in the operands. Otherwise, it returns DMA_FALSE.</p>
+  <p>Operand 0 is a scalar object valued property that must be of class Query Property. The
+  Searchable Class Occurrence must designate the Content Search class or one of its
+  subclasses. The Property Id usually designates the Content property of Content Search. </p>
+  <p>Operand 1 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the retrieval term (i.e., a word or phrase to be looked
+  up in the content index).</p>
+  <p>Operand 2 is of class Query Constant Float64 specifying the retrieval term weight. The
+  weight must be between 0.0 and 1.0 . (The ratio of two weights indicates the relative
+  importance of two retrieval terms or co-occurrences.)</p>
+</blockquote>
+
+<h4><a NAME="_Toc455898898"></a><a NAME="Within">Within</a></h4>
+
+<ol>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="583">
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="8%" VALIGN="TOP"><font SIZE="2"><b>Result Type</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Min # of Opnds</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Max # of Opnds</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Operand Type(s)</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Safe to Eliminate</b></font></td>
+      <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b>Define</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP">Within</td>
+      <td WIDTH="8%" VALIGN="TOP">Boolean</td>
+      <td WIDTH="9%" VALIGN="TOP">6</td>
+      <td WIDTH="9%" VALIGN="TOP">6</td>
+      <td WIDTH="13%" VALIGN="TOP">0: object (class is Query Property)<p>1: String</p>
+      <p>2: String</p>
+      <p>3: integer32</p>
+      <p>4: Boolean</p>
+      <p>5: float64</td>
+      <td WIDTH="12%" VALIGN="TOP">Yes</td>
+      <td WIDTH="33%" VALIGN="TOP">DmaQueryOperator_Within</td>
+    </tr>
+  </table>
+</ol>
+
+<blockquote>
+  <b><p>dmaQueryOperator_Within</p>
+  </b><p>This operator is useful to find documents in which two search terms (i.e., words or
+  phrases) occur near each other. Specifically, this operator returns DMA_TRUE if and only
+  if all of the following conditions are satisfied: (1) the content of the document referred
+  to by the current object under scan in the content index contains both of the two
+  retrieval terms specified in the operands, and (2) the distance between the two terms in
+  the co-occurrence must be less than or equal to a specified distance of each other, and,
+  (3) if it matters which retrieval term occurs first, then when a co-occurrence of both
+  retrieval terms satisfies the proximity condition, the first retrieval term does indeed
+  occur before the second retrieval term. Otherwise, the operator returns DMA_FALSE.</p>
+  <p>Operand 0 is a scalar object valued property that must be of class Query Property. The
+  Searchable Class Occurrence must designate the Content Search class or one of its
+  subclasses. The Property Id usually designates the Content property of Content Search. </p>
+  <p>Operand 1 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the first retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 2 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the second retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 3 is of class Query Constant Integer32. The value indicates the maximum
+  distance allowed between the occurrence of the retrieval terms of operand 1 and operand 2
+  in the document. A value of 1 indicates adjacency. A value of 2 indicates at most one
+  intervening thing, etc. The units of distance for this operator are the, so called, <i>default
+  units.</i> (See the description of DMA_DISTANCE_DEFAULT in the Within Units operator.) For
+  most languages, the default units are words. For some Asian languages, the default units
+  are characters, because the concept of &quot;word&quot; is not applicable. For example, if
+  operand 3 had the value 1, then the search term of operand 1 must be adjacent to the
+  search term of operand 2.</p>
+  <p>Operand 4 is of class Query Constant Boolean. If the value is DMA_TRUE, then the first
+  search term must occur first. If the value is DMA_FALSE, then either the first or the
+  second search term may occur first, and the other search term must occur next.</p>
+  <p>Operand 5 is of class Query Constant Float64. The value specifies the weight for the
+  co-occurrence of the two retrieval terms. The weight must be between 0.0 and 1.0 . (The
+  ratio of two weights indicates the relative importance of the two retrieval terms or
+  co-occurrences.)</p>
+</blockquote>
+
+<h4><a NAME="_Toc455898899"></a><a NAME="NotWithin">NotWithin</a></h4>
+
+<ul>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="583">
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="8%" VALIGN="TOP"><font SIZE="2"><b>Result Type</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Min # of Opnds</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Max # of Opnds</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Operand Type(s)</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Safe to Eliminate</b></font></td>
+      <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b>Define</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP">NotWithin</td>
+      <td WIDTH="8%" VALIGN="TOP">Boolean</td>
+      <td WIDTH="9%" VALIGN="TOP">6</td>
+      <td WIDTH="9%" VALIGN="TOP">6</td>
+      <td WIDTH="13%" VALIGN="TOP">0: object (class is Query Property)<p>1: String</p>
+      <p>2: String</p>
+      <p>3: integer32</p>
+      <p>4: Boolean</p>
+      <p>5: float64</td>
+      <td WIDTH="12%" VALIGN="TOP">Yes</td>
+      <td WIDTH="33%" VALIGN="TOP">DmaQueryOperator_NotWithin</td>
+    </tr>
+  </table>
+  <b><p>dmaQueryOperator_NotWithin</p>
+  </b><p>This operator is useful to find documents in which two search terms (i.e., words or
+  phrases) occur near each other. Specifically, this operator returns DMA_TRUE if and only
+  if all of the following conditions are satisfied: (1) the content of the document referred
+  to by the current object under scan in the content index contains both of the two
+  retrieval terms specified in the operands, and (2) the two terms in the co-occurrence are
+  greater than a specified distance from each other, and, (3) if it matters which retrieval
+  term occurs first, then when a co-occurrence of both retrieval terms satisfies the
+  proximity condition, the first retrieval term does indeed occur before the second
+  retrieval term. Otherwise, the operator returns DMA_FALSE.</p>
+  <p>Operand 0 is a scalar object valued property that must be of class Query Property. The
+  Searchable Class Occurrence must designate the Content Search class or one of its
+  subclasses. The Property Id usually designates the Content property of Content Search. </p>
+  <p>Operand 1 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the first retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 2 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the second retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 3 is of class Query Constant Integer32. The value is one less than the minimum
+  distance allowed between the occurrence of the retrieval terms of operand 1 and operand 2
+  in the document. A value of 1 indicates adjacency. A value of 2 indicates at most one
+  intervening thing, etc. The units of distance for this operator are the, so called, <i>default
+  units.</i> (See the description of DMA_DISTANCE_DEFAULT in the Within Units operator.) For
+  most languages, the default units are words. For some Asian languages, the default units
+  are characters, because the concept of &quot;word&quot; is not applicable. For example, in
+  English documents, if operand 3 had the value 1, then the search term of operand 1 must be
+  have at least one intervening word between it and the search term of operand 2.</p>
+  <p>Operand 4 is of class Query Constant Boolean. If the value is DMA_TRUE, then the first
+  search term must occur first. If the value is DMA_FALSE, then either the first or the
+  second search term may occur first, and the other search term must occur next.</p>
+  <p>Operand 5 is of class Query Constant Float64. The value specifies the weight for the
+  co-occurrence of the two retrieval terms. The weight must be between 0.0 and 1.0 . (The
+  ratio of two weights indicates the relative importance of the two retrieval terms or
+  co-occurrences.)</p>
+</ul>
+
+<h4><a NAME="_Toc455898900"></a><a NAME="WithinUnits">WithinUnits</a></h4>
+
+<ul>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="583">
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="8%" VALIGN="TOP"><font SIZE="2"><b>Result Type</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Min # of Opnds</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Max # of Opnds</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Operand Type(s)</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Safe to Eliminate</b></font></td>
+      <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b>Define</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP">Within Units</td>
+      <td WIDTH="8%" VALIGN="TOP">Boolean</td>
+      <td WIDTH="9%" VALIGN="TOP">7</td>
+      <td WIDTH="9%" VALIGN="TOP">7</td>
+      <td WIDTH="13%" VALIGN="TOP">0: object (class is Query Property)<p>1: String</p>
+      <p>2: String</p>
+      <p>3: integer32</p>
+      <p>4: Boolean</p>
+      <p>5: float64</p>
+      <p>6: integer32</td>
+      <td WIDTH="12%" VALIGN="TOP">Yes</td>
+      <td WIDTH="33%" VALIGN="TOP">DmaQueryOperator_WithinUnits</td>
+    </tr>
+  </table>
+  <b><p>dmaQueryOperator_WithinUnits</p>
+  </b><p>This operator is useful to find documents in which two search terms (i.e., words or
+  phrases) occur near each other. This operator differs from the Within operator by the
+  addition of an operand specifying the units of the distance metric. Specifically, this
+  operator returns DMA_TRUE if and only if all of the following conditions are satisfied:
+  (1) the content of the document referred to by the current object under scan in the
+  content index contains both of the two retrieval terms specified in the operands, and (2)
+  the distance between the two terms in the co-occurrence must be less than or equal to a
+  specified distance of each other, and, (3) if it matters which retrieval term occurs
+  first, then when a co-occurrence of both retrieval terms satisfies the proximity
+  condition, the first retrieval term does indeed occur before the second retrieval term.
+  Otherwise, the operator returns DMA_FALSE.</p>
+  <p>Operand 0 is a scalar object valued property that must be of class Query Property. The
+  Searchable Class Occurrence must designate the Content Search class or one of its
+  subclasses. The Property Id usually designates the Content property of Content Search. </p>
+  <p>Operand 1 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the first retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 2 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the second retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 3 is of class Query Constant Integer32. The value indicates the maximum
+  distance allowed between the occurrence of the retrieval terms of operand 1 and operand 2
+  in the document. </p>
+  <p>Operand 4 is of class Query Constant Boolean. If the value is DMA_TRUE, then the first
+  search term must occur first. If the value is DMA_FALSE, then either the first or the
+  second search term may occur first, and the other search term must occur next.</p>
+  <p>Operand 5 is of class Query Constant Float64. The value specifies the weight for the
+  co-occurrence of the two retrieval terms. The weight must be between 0.0 and 1.0 . (The
+  ratio of two weights indicates the relative importance of the two retrieval terms or
+  co-occurrences.)</p>
+  <p>Operand 6 indicates the distance metric to be used. The following macros in the DMA
+  header files for C and C++ evaluate to small integer constants and can be used to specify
+  the distance metric:</p>
+  <blockquote>
+    <b><p>&#149; DMA_DISTANCE_DEFAULT</b></p>
+    <blockquote>
+      <dl>
+        <dt>The default units are words for most languages, and characters for some Asian languages,
+          because the concept of &quot;word&quot; is not applicable. For documents containing text
+          from multiple languages, the default units may be different in different parts of the
+          document, depending upon the language of those parts. For example, suppose a Japanese
+          document includes some quotations in English. Assume the Japanese parts of the document in
+          Japanese are in a Japanese character set such that the default units are Japanese
+          characters. The default units for the parts of the document in English would be words.</dt>
+      </dl>
+    </blockquote>
+    <b><p>&#149; DMA_DISTANCE_CHARACTERS</p>
+    </b><blockquote>
+      <p>Units of Character means characters in all languages.</p>
+    </blockquote>
+    <b><p>&#149; DMA_DISTANCE_WORDS</p>
+    </b><blockquote>
+      <p>This metric indicates words. The Words distance metric does not apply to some Asian
+      languages.</p>
+    </blockquote>
+    <b><p>&#149; DMA_DISTANCE_SENTENCES</p>
+    </b><blockquote>
+      <p>This metric indicates sentences.</p>
+    </blockquote>
+    <b><p>&#149; DMA_DISTANCE_PARAGRAPHS</p>
+    </b><blockquote>
+      <p>This metric indicates paragraphs.</p>
+    </blockquote>
+  </blockquote>
+  <p>Search terms are words or phrases. A value of one for the distance operand of the
+  Within, NotWithin, WithinUnits, and NotWithinUnits operators indicates adjacent search
+  terms. In the case of a distance metric that is normally composed of more than one word
+  (e.g., DMA_DISTANCE_SENTENCES and DMA_DISTANCE_PARAGRAPHS), a value of zero means
+  &quot;within the same paragraph (or sentence, etc.).&quot;</p>
+</ul>
+
+<h4><a NAME="_Toc455898901"></a><a NAME="NotWithinUnits">NotWithinUnits</a></h4>
+
+<ul>
+  <table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="583">
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP"><font SIZE="2"><b>Name</b></font></td>
+      <td WIDTH="8%" VALIGN="TOP"><font SIZE="2"><b>Result Type</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Min # of Opnds</b></font></td>
+      <td WIDTH="9%" VALIGN="TOP"><font SIZE="2"><b>Max # of Opnds</b></font></td>
+      <td WIDTH="13%" VALIGN="TOP"><font SIZE="2"><b>Operand Type(s)</b></font></td>
+      <td WIDTH="12%" VALIGN="TOP"><font SIZE="2"><b>Safe to Eliminate</b></font></td>
+      <td WIDTH="33%" VALIGN="TOP"><font SIZE="2"><b>Define</b></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="15%" VALIGN="TOP">Not Within Units</td>
+      <td WIDTH="8%" VALIGN="TOP">Boolean</td>
+      <td WIDTH="9%" VALIGN="TOP">7</td>
+      <td WIDTH="9%" VALIGN="TOP">7</td>
+      <td WIDTH="13%" VALIGN="TOP">0: object (class is Query Property)<p>1: String</p>
+      <p>2: String</p>
+      <p>3: integer32</p>
+      <p>4: Boolean</p>
+      <p>5: float64</p>
+      <p>6: integer32</td>
+      <td WIDTH="12%" VALIGN="TOP">Yes</td>
+      <td WIDTH="33%" VALIGN="TOP">DmaQueryOperator_NotWithinUnits</td>
+    </tr>
+  </table>
+  <b><p>dmaQueryOperator_NotWithinUnits</p>
+  </b><p>This operator is useful to find documents in which two search terms (i.e., words or
+  phrases) occur near each other. The difference between this operator and the NotWithin
+  operator is that there is an additional operand specifying the distance metric.
+  Specifically, this operator returns DMA_TRUE if and only if all of the following
+  conditions are satisfied: (1) the content of the document referred to by the current
+  object under scan in the content index contains both of the two retrieval terms specified
+  in the operands, and (2) the two terms in the co-occurrence are greater than a specified
+  distance from each other, and, (3) if it matters which retrieval term occurs first, then
+  when a co-occurrence of both retrieval terms satisfies the proximity condition, the first
+  retrieval term does indeed occur before the second retrieval term. Otherwise, the operator
+  returns DMA_FALSE.</p>
+  <p>Operand 0 is a scalar object valued property that must be of class Query Property. The
+  Searchable Class Occurrence must designate the Content Search class or one of its
+  subclasses. The Property Id usually designates the Content property of Content Search. </p>
+  <p>Operand 1 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the first retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 2 is a scalar object valued property that must be of class Query Constant
+  String. The value of the string is the second retrieval term (i.e., a word or phrase to be
+  looked up in the content index).</p>
+  <p>Operand 3 is of class Query Constant Integer32. The value is one less than the minimum
+  distance allowed between the occurrence of the retrieval terms of operand 1 and operand 2
+  in the document.</p>
+  <p>Operand 4 is of class Query Constant Boolean. If the value is DMA_TRUE, then the first
+  search term must occur first. If the value is DMA_FALSE, then either the first or the
+  second search term may occur first, and the other search term must occur next.</p>
+  <p>Operand 5 is of class Query Constant Float64. The value specifies the weight for the
+  co-occurrence of the two retrieval terms. The weight must be between 0.0 and 1.0 . (The
+  ratio of two weights indicates the relative importance of the two retrieval terms or
+  co-occurrences.)</p>
+  <p>Operand 6 specifies the distance metric, exactly the same as in the WithinUnits
+  operator.</p>
+</ul>
+
+<h2><a NAME="_Toc389901448"></a><a NAME="_Toc389904808"></a><a NAME="_Toc389905102"></a><a NAME="_Toc389905210"></a><a NAME="_Toc389906243"></a><a NAME="_Toc389907147"></a><a NAME="_Toc389907221"></a><a NAME="_Toc389907575"></a><a NAME="_Toc455898902"></a><a NAME="Internationalization">Internationalization/Localization</a></h2>
+
+<ul>
+  <p>When querying textual content, the word equality algorithms specific to the language
+  and locale of the document must be used.</p>
+</ul>
+
+<h2><a NAME="_Toc389901449"></a><a NAME="_Toc389904809"></a><a NAME="_Toc389905103"></a><a NAME="_Toc389905211"></a><a NAME="_Toc389906244"></a><a NAME="_Toc389907148"></a><a NAME="_Toc389907222"></a><a NAME="_Toc389907576"></a><a NAME="_Toc455898903">Content</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389901450"></a><a NAME="_Toc389904810"></a><a NAME="_Toc389905104"></a><a NAME="_Toc389905212"></a><a NAME="_Toc389906245"></a><a NAME="_Toc389907149"></a><a NAME="_Toc389907223"></a><a NAME="_Toc389907577"></a><a NAME="_Toc455898904">Containment</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389901451"></a><a NAME="_Toc389904811"></a><a NAME="_Toc389905105"></a><a NAME="_Toc389905213"></a><a NAME="_Toc389906246"></a><a NAME="_Toc389907150"></a><a NAME="_Toc389907224"></a><a NAME="_Toc389907578"></a><a NAME="_Toc455898905">Versioning</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389901452"></a><a NAME="_Toc389904812"></a><a NAME="_Toc389905106"></a><a NAME="_Toc389905214"></a><a NAME="_Toc389906247"></a><a NAME="_Toc389907151"></a><a NAME="_Toc389907225"></a><a NAME="_Toc389907579"></a><a NAME="_Toc455898906">Security</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389901453"></a><a NAME="_Toc389904813"></a><a NAME="_Toc389905107"></a><a NAME="_Toc389905215"></a><a NAME="_Toc389906248"></a><a NAME="_Toc389907152"></a><a NAME="_Toc389907226"></a><a NAME="_Toc389907580"></a><a NAME="_Toc455898907">Naming</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389899436"></a><a NAME="_Toc389899456"></a><a NAME="_Toc389901462"></a><a NAME="_Toc389904823"></a><a NAME="_Toc389905117"></a><a NAME="_Toc389905225"></a><a NAME="_Toc389906258"></a><a NAME="_Toc389907162"></a><a NAME="_Toc389907236"></a><a NAME="_Toc389907590"></a><a NAME="_Toc455898908">Performance Impact</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h2><a NAME="_Toc389901455"></a><a NAME="_Toc389904816"></a><a NAME="_Toc389905110"></a><a NAME="_Toc389905218"></a><a NAME="_Toc389906251"></a><a NAME="_Toc389907155"></a><a NAME="_Toc389907229"></a><a NAME="_Toc389907583"></a><a NAME="_Toc455898909">Failure
+Modes/Crash Recovery</a></h2>
+
+<ul>
+  <p>N/A</p>
+</ul>
+
+<h1><a NAME="_Toc389899433"></a><a NAME="_Toc389899453"></a><a NAME="_Toc389901459"></a><a NAME="_Toc389904820"></a><a NAME="_Toc389905114"></a><a NAME="_Toc389905222"></a><a NAME="_Toc389906255"></a><a NAME="_Toc389907159"></a><a NAME="_Toc389907233"></a><a NAME="_Toc389907587"></a><a NAME="_Toc455898910"></a><a NAME="SampleUsage">Sample Usage</a></h1>
+
+<h2><a NAME="_Toc455898911"></a><a NAME="ContainsOperator">Contains Operator</a></h2>
+
+<ul>
+  <p>Suppose you wanted to find documents that contained the phrase &quot;stock market
+  crash&quot;, and the relative importance of this retrieval term is 1.0. Then you could
+  have the following query subtree in the query parse tree:</p>
+  <p align="center"><img src="CBS12fig1.gif" alt="Contains Operator Structure (high-level)" WIDTH="480" HEIGHT="285"></p>
+  <p align="center">Fig. 1. Contains Operator Structure (<a href="cbs12fig1.vsd">click for
+  Visio</a>).</p>
+  <p>The object A is of class Query Operator. The value of its Query Operator Id property is
+  dmaQueryOperator_Contains.</p>
+  <p>The objects B, C, and D are objects referenced by the values of Operands[0],
+  Operands[1], and Operands[2], respectively.</p>
+  <p>The object B is of class Query Property. The value of its Property Id property is
+  dmaProp_Content.</p>
+  <p>The object C is of class Query Constant string. The value of its Constant Value String
+  property is &quot;stock market crash&quot;.</p>
+  <p>The object D is of class Query Constant Float64. The value of its Constant Value
+  Float64 property is 1.0.</p>
+</ul>
+
+<h2><a NAME="_Toc455898912"></a><a NAME="dmaProp_ResultObject">dmaProp_ResultObject</a></h2>
+
+<ul>
+  <p>Suppose the example query described in the previous section were to be executed, and 10
+  result items were generated. Further suppose that the only classes that were indexed in
+  the full text index were subclasses of DocVersion. Finally, suppose that the Result Object
+  property was included in the Selections list. Then, for each of the 10 result items,
+  accessing the value of the Result Objects property of the result item would result in the
+  creation of a scratch pad object. The scratch pad object would be connected to a DocVer
+  for a document stored in the document space that contains the phrase &quot;stock market
+  crash&quot; somewhere in its content. The connected scratch pad object could then be used
+  to access the properties and content of the document in the usual way.</p>
+  <p>&nbsp;</p>
+</ul>
+
+<h2><a NAME="_Toc455898913"></a><a NAME="TheWithinOperator">The &quot;Within&quot;
+Operator</a></h2>
+
+<ul>
+  <p>Suppose you wanted to find documents that had the word &quot;skydiving&quot; and the
+  phrase &quot;world championships&quot; with no more than 9 words between the two search
+  terms. Suppose you didn&#146;t care which order the two terms occurred in, and that the
+  relative importance of this retrieval term was 1.0. Then you could have the following
+  subtree in the query parse tree:</p>
+  <p align="center"><img src="CBS12fig2.gif" alt="Proximity Operator Structure (high-level)" WIDTH="444" HEIGHT="397"></p>
+  <p align="center">Fig. 2.&nbsp; Proximity Operator Structure (<a href="cbs12fig2.vsd">click
+  for Visio</a>)</p>
+  <p>The objects B, C, D, E, F, and G are the referenced by Operands[0] throught
+  Operands[5], respectively. The value of Operands[3] is 10, not 9, because there are at
+  most 9 intervening words between the two search terms. The value of Operands[4] is FALSE,
+  because the order of the two search terms doesn&#146;t matter.</p>
+</ul>
+
+<h2><a NAME="_Toc455898914"></a><a NAME="CompoundRetrievalCondition">Compound Retrieval
+Condition</a></h2>
+
+<ul>
+  <p>This example illustrates how the logical operators (And, Or, and Not) can be used to
+  form compound query conditions. Suppose you wanted to find documents that contained either
+  the phrase &quot;Andrew Johnson&quot; or the word &quot;impeachment&quot; or both, and
+  that the relative importance of this retrieval term is 1.0. Note that there is no
+  requirement that the two search terms both occur in the document &#150; either one would
+  be sufficient. Then you could have the following subtree in your query parse tree:</p>
+  <p align="center"><img src="cbs12fig3.gif" alt="Compound CBSearch Condition (high-level)" WIDTH="444" HEIGHT="298"></p>
+  <p align="center">Fig. 3.&nbsp; Compound CBSearch Condition (<a href="cbs12fig3.vsd">click
+  for Visio</a>)</p>
+</ul>
+
+<h2><a NAME="_Toc455898915"></a><a NAME="UsingNewQueryClassProperties">Using the New
+Properties in the Query Class</a></h2>
+
+<blockquote>
+  <p>Most of the new properties introduced to the Query class are Booleans. In order to
+  illustrate how to use the information they provide, it should be sufficient to consider
+  just one of them, say, CBR Soundex.</p>
+</blockquote>
+
+<ul>
+  <p>Several possibilities exist: (1) The content search engine does not do Soundex
+  searches. In this case, the CBR Soundex property, if implemented, would be read only, and
+  would have the value FALSE. (2) The content search only does Soundex searches, not
+  ordinary vocabulary based searches. In this case, the CBR Soundex property, if
+  implemented, would be read only, and have the value TRUE. (3) The content search engine
+  supports ordinary vocabulary based searched as well as Soundex. In this case, the CBR
+  Soundex property, if implemented, would be read-write. The default would be either TRUE or
+  FALSE, but FALSE is probably a better default.</p>
+  <p>By using the information about whether the CBR Soundex property is read only or
+  read-write (which it could get from the metadata of this property), the user interface
+  program could gray out the Soundex option or not, and show the default value. If
+  read-write, the user interface program could let the user override the default setting.
+  The user interface program would build the query parse tree according to the end
+  user&#146;s instructions. The server software would look at the value of the CBR Soundex
+  property, and use the Soundex algorithm or not. Of course, if Soundex wasn&#146;t
+  implemented, the server software could simply ignore the value of the CBR Soundex
+  property.</p>
+</ul>
+
+<h1><a NAME="_Toc389899437"></a><a NAME="_Toc389899457"></a><a NAME="_Toc389901463"></a><a NAME="_Toc389904824"></a><a NAME="_Toc389905118"></a><a NAME="_Toc389905226"></a><a NAME="_Toc389906259"></a><a NAME="_Toc389907163"></a><a NAME="_Toc389907237"></a><a NAME="_Toc389907591"></a><a NAME="_Toc455898916"></a><a NAME="BackwardCompatibility">Backwards
+Compatibility</a></h1>
+
+<ul>
+  <p>The proposal is additive. New classes, properties, and operators are added. Nothing is
+  deleted or modified.</p>
+</ul>
+
+<h1><a NAME="_Toc389899435"></a><a NAME="_Toc389899455"></a><a NAME="_Toc389901461"></a><a NAME="_Toc389904822"></a><a NAME="_Toc389905116"></a><a NAME="_Toc389905224"></a><a NAME="_Toc389906257"></a><a NAME="_Toc389907161"></a><a NAME="_Toc389907235"></a><a NAME="_Toc389907589"></a><a NAME="_Toc455898917"></a><a NAME="ExistingSystemImpact">Impact
+on Existing Systems</a></h1>
+
+<ul>
+  <p>This will allow existing systems to use content based retrieval with DMA. There is no
+  negative impact on them.</p>
+</ul>
+
+<h1><a NAME="_Toc389899432"></a><a NAME="_Toc389899452"></a><a NAME="_Toc389901458"></a><a NAME="_Toc389904819"></a><a NAME="_Toc389905113"></a><a NAME="_Toc389905221"></a><a NAME="_Toc389906254"></a><a NAME="_Toc389907158"></a><a NAME="_Toc389907232"></a><a NAME="_Toc389907586"></a><a NAME="_Toc455898918"></a><a NAME="Conformance">Compliance
+&amp; Conformance Issues</a></h1>
+
+<ul>
+  <p>The entire feature is optional. The Content Search class and all the content search
+  query operators are optional. To provide the feature, at least pure content search queries
+  must be supported. A companion <a href="CBRCap02.html">capabilities proposal</a> specifies
+  the optional constraints on the query condition.</p>
+</ul>
+
+<h1><a NAME="_Toc389901454"></a><a NAME="_Toc389904814"></a><a NAME="_Toc389905108"></a><a NAME="_Toc389905216"></a><a NAME="_Toc389906249"></a><a NAME="_Toc389907153"></a><a NAME="_Toc389907227"></a><a NAME="_Toc389907581"></a><a NAME="_Toc455898919"></a><a NAME="RequirementsAddressed">What Requirement Does This Address?</a></h1>
+
+<ul>
+  <p>Content search is necessary to complete the basic functionality of DMA. Oracle Corp.
+  stated that they thought it was so important that it had to be included in release 1.0 of
+  the DMA API specification.</p>
+</ul>
+
+<h1><a NAME="_Toc389904815"></a><a NAME="_Toc389905109"></a><a NAME="_Toc389905217"></a><a NAME="_Toc389906250"></a><a NAME="_Toc389907154"></a><a NAME="_Toc389907228"></a><a NAME="_Toc389907582"></a><a NAME="_Toc455898920"></a><a NAME="WhyGoodSolution">Why Is This
+a Good Solution?</a></h1>
+
+<ul>
+  <p>This is a good solution because it is simple and straightforward for document space
+  implementations to make their content based retrieval functionality available by defining
+  content based search operators on the Content Search class. In other words, it is a good
+  fit with existing implementations.</p>
+  <p>Another reason the solution is good is because it fits well with the existing query
+  model.</p>
+</ul>
+
+<h1><a NAME="_Toc389899431"></a><a NAME="_Toc389899451"></a><a NAME="_Toc389901457"></a><a NAME="_Toc389904818"></a><a NAME="_Toc389905112"></a><a NAME="_Toc389905220"></a><a NAME="_Toc389906253"></a><a NAME="_Toc389907157"></a><a NAME="_Toc389907231"></a><a NAME="_Toc389907585"></a><a NAME="_Toc455898921"></a><a NAME="ExtantSystemsExperience">Existing
+Systems with Similar Features and Related Experiences</a></h1>
+
+<ul>
+  <p>Most commercially available document management systems provide content based
+  retrieval, e.g., FileNET, Documentum, etc..</p>
+</ul>
+
+<h1><a NAME="_Toc389899430"></a><a NAME="_Toc389899450"></a><a NAME="_Toc389901456"></a><a NAME="_Toc389904817"></a><a NAME="_Toc389905111"></a><a NAME="_Toc389905219"></a><a NAME="_Toc389906252"></a><a NAME="_Toc389907156"></a><a NAME="_Toc389907230"></a><a NAME="_Toc389907584"></a><a NAME="_Toc455898922"></a><a NAME="ReferenceMaterials">Reference
+Materials</a></h1>
+
+<ul>
+  <ul>
+    <li>Hitachi working paper: Content-based Retrieval Extension of DMA Query Model (dated July
+      20, 1998)</li>
+    <li>Minutes of DMA Query subcommittee meeting for content search discussions</li>
+    <li>Hitachi slide presentation of their content based retrieval proposal</li>
+    <li>STARTS, Stanford Protocol Proposal for Internet Retrieval and Search. Last modified
+      January 19, 1997. Luis Gravano, Kevin Chang, Hector Garcia-molina, Carl Lagoze, Andreas
+      Paepcke. Digital Library Project, Stanford University.</li>
+    <li>User manual for Mezzanine.</li>
+    <li>User manual for Documentum.</li>
+  </ul>
+</ul>
+
+<h1><a NAME="_Toc389899438"></a><a NAME="_Toc389899458"></a><a NAME="_Toc389901464"></a><a NAME="_Toc389904825"></a><a NAME="_Toc389905119"></a><a NAME="_Toc389905227"></a><a NAME="_Toc389906260"></a><a NAME="_Toc389907164"></a><a NAME="_Toc389907238"></a><a NAME="_Toc389907592"></a><a NAME="_Toc455898923"></a><a NAME="IncorporatedInSpecification">How
+Is This Incorporated into the Specification?</a></h1>
+
+<ul>
+  <p>The new classes and new properties must be added as per section 5 <a href="#ClassesAndProperties">above</a>.</p>
+  <p>The query model overview must be updated as per section 7.2.1 <a href="#QueryModelOverview">above</a>.</p>
+  <p>New query operators must be added to the query operators table as per section 7.2.2 <a href="#NewQueryOperators">above</a>.</p>
+  <hr>
+</ul>
+
+<p align="right"><font color="#000080">html rendition derived 1999-08-06-00:13<em> -</em>0700
+(pdt)<em><br>
+$$Date: 00-02-17 15:07 $<br>
+$$Revision: 5 $</em></font></p>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /nfoCentrale Compagno Web/NuovoDoc/activities/A021100A.htm 5     02-11-04 14:42 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>A021100A: Behavioral Semantics Workshop - Serving the Customer</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"></td>
+    <td width="60%" height="6">
+      <h2 align="center"><em><big>Serving the Customer</big></em></h2>
+      <h2 align="center"><em>OOPSLA Behavioral Semantics Workshop</em></h2>
+      <h2 align="center"><em>&nbsp;November 4, 2002</em></h2>
+    </td>
+  </tr>
+</table>
+</center></div>
+</font>
+<blockquote>
+<div align="center"><center>
+
+
+
+<p align="center">
+  <b>
+  <small>version <a href="#0.10">0.10</a> last updated 2002-11-04-10:01 -0800
+  (pst)</small></b>
+</p>
+</center></div>
+
+<hr>
+<p align="center">&nbsp;</p>
+<hr>
+
+</blockquote>
+
+<h1>1. Starting Off</h1>
+
+<blockquote>
+<p>Ten of us at the start.&nbsp; 14 by first break.&nbsp; The outlets do work
+and there are enough.&nbsp; I can't rent out my powerstrip yet.&nbsp; Three
+people have communicated not coming because are presently unemployed and can't
+do the trip.&nbsp; One from Australia was an example.&nbsp;&nbsp;</p>
+
+<p>The co-chairman is having his slides printed one floor down at Kinkos and we
+are waiting a few minutes.</p>
+
+<p>Edsgar Dijsktra quote from 1961- a machine serves one of its highest purposes
+when ...</p>
+
+<p>A thorough training ... mathematics ... precludes any tendency to be fuzzy,
+... Conrad Hilton quote (not on a slide)</p>
+
+<p>An appeal to the value of mathematics and discussion about precision.</p>
+
+<p>Then the question between precision and formalization came up.</p>
+
+<p>Haim suggests maybe the kind of precision that business people want is not
+that kind of precision that is being offered.</p>
+
+<p>The precision-mathematics fellow (Chris Partridge?) thinks that formalization
+is not an avenue to precision, that may not actually work.&nbsp; You need to be
+sufficiently formal to capture the degree of precision that you have, but if you
+use a formalization that is stricter than that, you have trouble.</p>
+
+<p>Aristotle got dragged into that.&nbsp; And you can formalize
+nonsense.&nbsp;&nbsp;</p>
+
+<p>Question about models actually being valid representations of systems, and
+what ontologies offer in resolving that question.&nbsp; (Suggestion that a
+precise model does not admit nonsense.)</p>
+
+<p>This is a very international get-together.&nbsp; We have participants from
+both coasts of the US, from France, from the UK, from the Netherlands, and so
+on.&nbsp;&nbsp;</p>
+
+<p>There are 1400 people pre-registered this year, and before that around
+2500.&nbsp; So may still be down or may come up from 1400 this week when things
+start on Wednesday.</p>
+
+</blockquote>
+
+<h1>2. Baclawski - Formalization of Situation Awareness</h1>
+
+<blockquote>
+  <p>Suggestion that we are aware of what is going on in this room as an example
+  of situation awareness!</p>
+
+  <ul>
+    <li>Awareness is knowing what is going on[!!]</li>
+    <li>Information must be relevant</li>
+  </ul>
+  <p>Slide bullets not in the article, and moving pretty fast.&nbsp; These
+  presentations are very quick.</p>
+  <p>Uses example of 9-11 as a situation where people did not know what was
+  going on, did not know the situation, although there was much information that
+  something was going on.</p>
+  <p>Methodology uses UML, DAML, and Slang.&nbsp; And Joint Defense Laboratories
+  (JDL).&nbsp; Has a model of data fusion (see table 1 in paper).&nbsp; Do
+  reference some of Barwise.</p>
+  <p>RDF and DAML which extends RDF to serve as the basis for the Semantic
+  Web.&nbsp; Examples in the paper.</p>
+  <p>Nice definition of ontologies.&nbsp; Not in the paper - there is a
+  reference to M. Bunge treatise on Ontology: The furniture of the world (!) -
+  1977.</p>
+  <ul>
+    <li>Shared understanding within a community of people (slide up and down
+      very quickly - I only got this bullet)</li>
+  </ul>
+  <p>There are constraints in the methodology around monotonicity of
+  semantics.&nbsp; Raises problems between open world and closed world
+  semantics.</p>
+  <p>Some of the examples are ridiculous, depending on a closed ontological
+  system - things can't be expressed, and open situations lead to the system inferring
+  new relationships that may be inapt.</p>
+  <p>Proposal is that situations can't be closed because one can't assume
+  perfect knowledge of the situation, and Barwise's work on situations is
+  acknowledged here.</p>
+  <p>Have a top level UML formalization that allows situations to refer to
+  situations, and uses as example the gamer or military misdirection case, where
+  one includes in the situation what the opponent thinks the situation is and
+  misdirecting that.&nbsp; Recall that the topic is situation <i>awareness</i>.</p>
+  <p>[SOAR graphs raised as a question.]</p>
+  <p>Discussion about storage of model, difficulties of maintaining the model
+  efficiently, especially tracking dynamic situations.</p>
+  <p>Discussion about levels and higher-level notions, change of level.&nbsp;
+  For example, if two objects are engaged in a conflict, one can't tell that
+  from the objects.&nbsp; There is some higher level situation that provides
+  something about the mutual activity of the objects.</p>
+  <p>Concern about relevance and pruning mechanism so that there is focus on
+  what matters.</p>
+  <p>Then there are uncertainties to deal with.&nbsp; The Goodman book on data
+  fusion deals with uncertainty.&nbsp; Goodman book intensely
+  mathematical.&nbsp; Then there are beliefs -- Dempster - Shafer labelling
+  involves a much more complicated probability notion that is situated
+  somehow.&nbsp; There are propogation rules for uncertainties.</p>
+  <p>[I have an impression that this is a kind of academically-legitimized
+  hacking.&nbsp; I wonder how the customers deal with this.]</p>
+  <p>Kilov: Look at dealing with too much stuff.&nbsp; You have lots of data and
+  you abstract out only the &quot;important&quot; things.&nbsp; That is
+  dependent on the viewpoint and the goal.&nbsp; Agreed: What you see depends on
+  what you are looking for.&nbsp; It is agreed that viewpoints are important.</p>
+  <p>Just asks about open-closed. UML does not specify semantics.&nbsp; In the
+  software-development and programming-language environment it would be
+  closed.&nbsp; Confusion about semantics versus the axioms.&nbsp; UML does not
+  have a semantics.&nbsp; The way it tends to be used, the semantics (models)
+  are often closed.</p>
+  <p>Good suggestion that if one applies UML to business models, one is very
+  careful to have open models and use roles as a way to avoid type
+  commitment.&nbsp; But roles can be a closed set.&nbsp;&nbsp;</p>
+
+  <p>There is an interesting case with realizing that business situations are
+  fluid and can't be closed.</p>
+
+  <p>Discussion about ontologies and epistemologies being kept distinct.&nbsp;
+  Question about, in effect, whether systems like DAML create existential but
+  not identified things (that is, unknown but assured to exist objects).&nbsp;
+  The question is about models.&nbsp; Discussion about when, for example, a
+  person is named on an insurance policy, whether that is just data and whether
+  that is an identified person (that is, the difference between knowing
+  existence and knowing a particular).&nbsp; Interesting problem between
+  reflecting this in the theory or in the model, and maybe the model isn't
+  monotonic?&nbsp;&nbsp;</p>
+
+</blockquote>
+<h1>3. Semantic Verification of Behavior Conformance</h1>
+
+<blockquote>
+  <p>OOP not suitable for enterprise design.</p>
+
+  <p>Concerned with semantic preservation.</p>
+
+  <p>Look at the abstract.</p>
+
+  <p>Example is of ATM machine (fig. 2) which is nice based on what requirements
+  might be as a designed user experience.</p>
+
+  <p>RM-ODP (Reference Model for Open Distributed Processing) comes up
+  here.&nbsp; This is something that appears to be receiving attention beyond
+  MDA.</p>
+
+  <p>Claim is that the work here can relate models from different levels of
+  abstraction to each other.&nbsp; Need to look at that.&nbsp; ISO/IEC 16414,
+  ISO/IEC 10746 (-1 to -4)</p>
+
+  <p>Reference to (Johnson and Kilov, 1999) on a Z toolkit for RM-ODP.</p>
+
+  <p>Considers UML not ready for this.&nbsp;&nbsp;</p>
+
+  <p>Concerning RM-ODP, provide references and discussion of applications of it,
+  and suggest that ISDL (Interaction Systems Description Language) is generic
+  enough to describe both protocols and distributed objects.&nbsp;&nbsp;</p>
+
+  <p>The illustrations used for most of the slides are not in the paper.</p>
+
+</blockquote>
+
+  <h1>4. George Kelly Flanigan - War Stories</h1>
+
+<blockquote>
+
+  <p>&quot;A 12-step program for eliminating organizational change.&quot;</p>
+
+  <p>Had a luggage problem and is doing manual PowerPoint</p>
+
+  <p>Talking about customer behavior and that software development behavior is
+  similar to the customer behaviors that one wants to accomodate in software
+  designs.&nbsp;&nbsp;</p>
+
+  <p>Then looked at teaching of creativity and appealing to music because the
+  authors are musical.&nbsp;&nbsp;</p>
+
+  <p>Musicians that are hard to study.&nbsp; Beethoven, Mozart, and Schubert.</p>
+
+  <p>Looked at Bruckner, Liszt, and Dvorak.&nbsp; (Look at symbols for Dvorak.)</p>
+
+  <p>Revisionitis.&nbsp; Kept reworking their earlier works.&nbsp; Dvorak didn't
+  fuss with that.&nbsp; Would move on to something else.&nbsp;&nbsp;</p>
+
+  <p>Software as composition (as in musical composition).&nbsp; Brooks's Advice.</p>
+
+  <p>The place of chaos in the process of getting our work done.</p>
+
+  <p>Is there more to it than a joke to look at negative and fractional levels
+  of the CMM.&nbsp; Is there anti-process.&nbsp; It isn't just a process that
+  doesn't work.&nbsp; Disagreeing with the idea that chaos is hell and the
+  epitemy is the regularity of paradise.</p>
+
+  <p>Chaos is the place where normal human activity starts.&nbsp; That is
+  George's thesis.</p>
+
+  <p>Anti-processes depend tremendously on the belief and subscription level of
+  the people who participate in them.&nbsp; E.g., &quot;corporate
+  culture.&quot;&nbsp; There are signatures -- people who are paid to sign
+  things.&nbsp; In an anti-process you get a signature for a loophole or to
+  deviate, rather than record completion</p>
+
+  <p>Approach to metrics, usually not applied to anti-processes -- not open to
+  applying metrics to itself.</p>
+
+  <p>Anti-process maintains corporate culture, process modifies it.</p>
+
+  <p>A bank sending out an e-mail saying they were going to get serious about
+  QA.&nbsp; New rule: every user has to has their own user ID.&nbsp; Checked out
+  what they had been doing beforehand.&nbsp; The SA's didn't like to create new
+  IDs and capabilities and rights, and they assigned old IDs that were like what
+  you seem to need.&nbsp; And then users would borrow someone else's ID to get a
+  needed privilege.&nbsp; It took as many people to do the antiprocess as to do
+  the actual process.&nbsp; The antiprocess was doing active harm.</p>
+
+  <p>Suggestion that it is easiest to introduce a process or antiprocess into
+  chaos, rather than as a replacement for an existing process.&nbsp;&nbsp;</p>
+
+  <p>Haim makes an example of the planned economy under the Soviet system, and
+  how did it survive so long.&nbsp; Because there were people who introduced
+  chaos into the system.&nbsp; Bribed producers to produce other things and meet
+  actual needs.&nbsp; So the controlled economy was violated by this disruptive
+  (and criminal) behavior.&nbsp;</p>
+
+  <p>Comment about hierarchical organizations are resistent to creativity and
+  also a lot of people in management have been trained in theories that have
+  little to do with how things actually get done.&nbsp; George agrees that
+  adoption of some of these theoretical processes can be very harmful.</p>
+
+  <p>George seems to be using the idea of introducing chaos as a form of
+  disruption, destabilization, and revolution.&nbsp; We discuss that revolution
+  is a good idea.&nbsp;&nbsp;</p>
+
+  <p>Anecdotal description that the best H-R department is a filing cabinet in
+  which coffee cups are stored.</p>
+
+  <p>Putting people in silos.&nbsp; The sooner into a silo, the less opportunity
+  for creativity.</p>
+
+</blockquote>
+<h1>4. Kilov on Finding Work</h1>
+
+<blockquote>
+  <p>Assumption of situation being bad in IT, mailing lists of people looking
+  for work, etc.</p>
+
+  <p>The Bill Parker 2002 quote is about how to find work.&nbsp;&nbsp;</p>
+
+  <p>Yourdon talking a few weeks ago, said all work is going off-shore.&nbsp;
+  Kilov points out that it is a commoditization -- if you are an expert in
+  financial systems using Oracle 11i, it doesn't matter about all the other
+  stuff, it matters how cheap you are.&nbsp; And off-shore is cheaper.</p>
+
+  <p>Ties it to serving the cstomer using an Adam Smith quotation.</p>
+
+  <p>Haim is looking at the business model for an expert.&nbsp; Looks at
+  employment, versus contracting</p>
+
+  <p>Picture about expertise is more interesting, Generic Fragments is housing
+  of &quot;financial systems using Oracle 11i&quot;.&nbsp; Then differentiators
+  are something else.</p>
+
+  <p>Talking about fungible (faster, cheaper, better) and non0fungible: 1.
+  creative composition, 2. unique expertise in a specialized area, 3. mastering
+  complexity (problem understanding and specification)</p>
+
+  <p>Fungibility is what the customer wants.&nbsp; If it is out of control
+  anyhow, outsourcing it at least makes it cheaper.&nbsp; Business people hate
+  IT so much that they don't even want to see or speak to IT people.</p>
+
+  <p>It is also a way to restrict the need to interface with IT by
+  out-sourcing.&nbsp;&nbsp;</p>
+
+  <p>How can a knowledge worker make themselves valuable.&nbsp; Be
+  non-fungible.&nbsp; Mastering complexity is currently non-fungible.</p>
+
+  <p>The Roles picture is from von Mises, and it works in the IT world as
+  well.&nbsp; Roles may not be determined by the organization chart of the
+  organization.&nbsp; You have to do an explicit organizational assessment by
+  going there and making things explicit.&nbsp; The results might not be shown
+  to the customer or all of them, because they are unpleasant.</p>
+
+  <p>Being a problem solver, abstract out the essentials and subcontract the
+  accidentals (Oracle 11i), mastering complexity -- becoming a good abstractor (Booch,
+  his Ada book).</p>
+
+  <p>Neville Holmes, recent IEEE Computer or Software.&nbsp; Contrasting
+  engineers and tradespeople.&nbsp; Engineers lead by bringing their education
+  and experience to bear when applying general principles to new problems.</p>
+
+  <p>If IT is seen as a trade, IT people will try to become trades people.</p>
+
+  <p>Tony Hoare, 1999, an optimist.&nbsp; ... But the more far=sighted
+  enterprises can see the competitive advantage to be obtained by rapid
+  transition to an engineering attitude towards software.</p>
+
+  <p>All in bibliography - Kilov is careful.</p>
+
+  <p>Discussion are what are the drivers.</p>
+
+  <p>Discussion about product promotions, and what constitutes success and what
+  constitutes avoidance of failure.</p>
+
+  <p>Discussion of certification industry and what that is about, and this
+  process is feeding itself and a demand.&nbsp;&nbsp;</p>
+
+  <p>I raised about tradespeople being more reliable, but that was shot
+  down.&nbsp; It is a myth that tradesworkers are predictable and reliable, and
+  we shared common and recognizable horror stories.</p>
+
+  <p>Haim does not think that the goal is commoditization, he is observing a
+  state.</p>
+
+  <p>The question about marketing and marketing prevailing, over quality of a
+  product, being the first and the best.</p>
+
+  <p>Religious positions, object reality of the best, etc.</p>
+
+  <p>Haim has a story about improving a high school (for $41M) and the Big
+  Dig.&nbsp; Who are the decision majors.&nbsp; What do they know?</p>
+
+  <p>Coming back to behavioral semantics.&nbsp; Include in models essential
+  stuff, not the extraneous stuff.&nbsp; Interesting question, can modeling
+  using behavioral semantics assist in identifying the discontinuities.</p>
+
+  <p>SUVs as a marketing success.</p>
+
+  <p>We come back to &quot;reality is what it is no matter what we think about
+  it. &quot;&nbsp; So marketing then, I would say, sustains an agreement about
+  reality.&nbsp; But reality pays not attention.</p>
+
+  <p>Haim, value of being explicit -- exactified.&nbsp; To be precise.&nbsp; To
+  be explicit -- perhaps the most important thing, because there are too many
+  implicit assumptions.&nbsp; If the viewpoints of business people are visibly
+  conflicting, but if only somewhat conflicting exposing it is difficult, but IT
+  people can help.&nbsp;</p>
+
+</blockquote>
+<h2>Lunch Break</h2>
+
+<h1>5. Behavior Protocols in Enterprise Hava Beans - Jacques Noyes</h1>
+
+<blockquote>
+<p>Presentation of the Farias, Gueheneuc, and Sudholt work. [get the name
+typographies properly]</p>
+
+  <p>Example of a component for a ChatServer does not reveal semantics and how
+  the components can be used, so there is no protocol description for how the
+  operations are handled.&nbsp; Carefully describes that the component doe snot
+  show this, and also that namings may suggest something about protocol, but
+  there is actually nothing explicit.</p>
+
+  <p>Use a state diagram to describe protocol.</p>
+
+  <p>They define a notion of <i><b>coherence</b></i> between a protocol and a
+  component source code.&nbsp;&nbsp;</p>
+
+  <p>There may be a possible misconception.&nbsp; The protocol is associated
+  with a component.&nbsp; And the component protocol specifies completely the
+  behavior of its component.</p>
+
+  <p>They are interested in verification and establishing that a code implements
+  a protocol.&nbsp;&nbsp;</p>
+
+  <p>Nice questions about dealing with protocols</p>
+
+  <ul>
+    <li>Doesn't like to write protocols for every component</li>
+    <li>Component may follow a protocol already</li>
+    <li>How to tell the protocol is followed by the component</li>
+    <li>How to make a component compliant with a specified protocol</li>
+  </ul>
+  <p>CwEP - Components with Explicit Protocol (mention of Eclipse here)</p>
+  <p>Interesting question about compositions of components and the composite
+  behavior that arises.</p>
+  <p>People forget to specify exception conditions, or in refinement processes,
+  what is taught is not what actually happens.&nbsp; There are things added to
+  implementations going from high level to low level that aren't captured by
+  mathematical refinement.</p>
+  <p>Conversation about IT frameworks / architectures already being given or
+  chosen.&nbsp;&nbsp;</p>
+  <p>Question about refinement having anything to do with
+  mathematics.&nbsp;&nbsp;</p>
+</blockquote>
+<h1>6. Off-Agenda Presentation - Model-Driven Architecture</h1>
+<blockquote>
+  <p>Replacing a naive schema with another naive schema&nbsp;</p>
+  <p>Analysis - Design - Code</p>
+  <p>Now PIM - PSM - Code and the idea of model transformations</p>
+  <p>Empowering the MDA, 3 main ontologies:</p>
+  <p>UML 2.0, Unified Process Model (SPEM), and UTL (Unified Transformation
+  Language - MOF 2.0 QVT RFP)</p>
+  <p>Revisiting the Y Cycle - weaving PIMS &amp; PDMs to produce PSMs [Great
+  picture] and how binding merging happens to make Platform Specific Model, with
+  some sort of Design Decision Model that precedes it.</p>
+  <p>Want to get to, by 2005, something like 25% Manual/Automatic Code
+  Generation</p>
+  <p>Don't have models of the platforms to work with (WinTel, Sun, Linux, .NET,
+  etc.)</p>
+  <p>Abstract Syntax Systems Compared, growing to Technology levels, etc.</p>
+  <p>Model-Driven transformation is the big deal.&nbsp;&nbsp;</p>
+  <p>Idea of transformations and queries as models and there be higher-order
+  transformations (that, e.g., work on transformations).</p>
+  <p>Also looking at RM-ODP and taking as many good ideas from there as they
+  can.</p>
+  <p>Jean Beziven, Alcatel, INRIA, and others in France responding to the OMG
+  RFP.&nbsp; Requirement is to be based on MOF.&nbsp; UML Infrastructure and OCL
+  for precision and consistency to models and metamodels.&nbsp;&nbsp;</p>
+  <p>Problem being solved - platform independence and corresponding to business
+  requirements, and being able to preserve the PIM across platform generations.</p>
+  <p>Fellow from ATX has been doing this for four years or more, given design
+  rules.&nbsp; People have been doing MDA for a long time already.</p>
+</blockquote>
+<h1>7. Foundations of Software Engineering -&nbsp;</h1>
+<blockquote>
+  <p>Microsoft Research, Michael Barnett.&nbsp; research.microsoft.com/fse</p>
+  <p>ASML is the basic tool.&nbsp; Based on theories by Yuri Gurevich and
+  manager of the group.</p>
+  <p>A lot of the details are not of theoretical interest but they are the
+  things you need to have so working developers will use it.</p>
+  <p>So they developed a Literate specification system based on Word on XML and
+  can be edited in an IDE or other shell and the compiler will extract the
+  necessaries from the literate specification.</p>
+  <p>Levels: idea - model - code</p>
+  <p>comment on how many groups in MS work is without the model, going from idea
+  to code.</p>
+  <p>So an executable format for designs, they have support for executable model
+  that can be tested, confirmed, etc., including reuse of test suites from
+  previous generations of the product.</p>
+  <p>Validation of the model independent of the code is possible.</p>
+  <p>Once the code is written, there is some work in verification (conformance
+  and coherence) with respect to satisfaction of the model.&nbsp; Not into
+  transformation and generation (and achieving a refinement).</p>
+  <p>It is the unforseen interaction between pieces that cause problems.</p>
+  <p>Kinds of models: operational semantics</p>
+  <p>&nbsp;&nbsp;&nbsp; special constructs for non-determinism (it is
+  under-specification), clarified in discussion that use of
+  non-determinism&nbsp;</p>
+  <p>None of these uses of non-determinism are what is meant by non-determinism
+  in automata theory.</p>
+  <p>There are tools for test-case generation, etc.</p>
+  <p>The problem of systems that are instrumentalities and that are
+  situated.&nbsp; The transformation between a business model and a system model
+  is quite different than transformation between a PIM of a system model and an
+  implementation of the system</p>
+  <p>&nbsp;&nbsp;&nbsp; transactional in nature - restricts sequentiality</p>
+  <p>Some discussion apparently getting at systems being embedded and situated,
+  flexing off of the MS presentation being about tools already below the
+  business system level.</p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<h2>X. <a name="resources">Resources and References</a></h2>
+
+<blockquote>
+  <dl>
+    <dt><a href="http://www.webdav.org"><b>http://staff.develop.com/jasonm</b></a></dt>
+    <dd>For the resources from this Summit.&nbsp; The slides and the sample code
+      are all available for download.</dd>
+  </dl>
+
+<hr>
+
+
+</blockquote>
+<h3><i>History</i></h3>
+<blockquote><font size="-1">
+  <p><b><a name="0.10">version 0.10</a>     2002-06-20 </b>Adapt a boilerplate
+  and start capturing notes other than on the printed slide notes pages.</p>
+  </font>
+</blockquote>
+
+
+<p align="right"><font size="-2">created 2002-11-04-09:10 -0800 (pst) by <a href="../construction/orcmid.htm"> orcmid</a><br><em>$$Author: Orcmid $<br>
+  $$Date: 02-11-04 14:42 $<br>
+  $$Revision: 5 $</em>
+  </font>
+</p>
+
+</body>
+</html>

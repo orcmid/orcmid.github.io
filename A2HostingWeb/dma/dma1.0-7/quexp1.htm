@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>quexp1.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995, 1996, 1997 by the
+ *  Association for Information and Image Management International
+ *      1100 Wayne Avenue
+ *      Silver Spring, MD 20910-5603
+ *      Tel: 301/587-8202
+ *      Fax: 301/587-2711
+ *  All Rights Reserved.
+ *  DMA (Document Management Alliance) working group.
+ */
+
+/* quexp1.cpp
+
+   This example is for the following query:
+
+
+   SELECT S.s1, T.t1
+   FROM S INNER JOIN T ON S.s1 = T.t1
+   WHERE S.s2 &gt; 3 AND T.t2 = "red"
+   ORDER BY &lt;null&gt;
+*/
+
+#define DMA_INIT_CD
+#include &lt;query.h&gt;
+
+/* Declare DmaId variables for the searchable classes.
+*/
+#define SVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 } }
+
+DMA_EXTERN_C DmaId S = SVal;
+
+#define TVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x09 } }
+    
+DMA_EXTERN_C DmaId T = TVal;
+
+/* Declare DmaId variables for the properties.
+*/
+#define s1Val { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0A } }
+
+DMA_EXTERN_C DmaId s1 = s1Val;
+
+#define s2Val { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0B } }
+
+DMA_EXTERN_C DmaId s2 = s2Val;
+
+#define t1Val { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0C } }
+
+DMA_EXTERN_C DmaId t1 = t1Val;
+
+#define t2Val { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0D } }
+    
+DMA_EXTERN_C DmaId t2 = t2Val;
+
+
+/* Declare the variables needed to perform the query.
+*/
+
+    JoinExprElt             From [] = 
+        {
+            { 0, &amp;S, DMA_FALSE, NULL, NULL, 0, NULL, 0, NULL },
+            { 1, &amp;T, DMA_FALSE, &amp;dmaJoinOperator_Inner, 
+                 &amp;dmaQueryOperator_EqualInteger32, 0,&amp;s1, 1, &amp;t1 },
+            { -1, NULL, DMA_FALSE, NULL, NULL, 0, NULL, 0, NULL }
+        };
+
+
+     
+    Property                Select [] = 
+        {
+            { 0, &amp;s1 },
+            { 1, &amp;t1 },
+            { -1, NULL }
+        };
+
+    Operator                N1 = { &amp;dmaQueryOperator_And };
+    Operator                N2 = { &amp;dmaQueryOperator_GreaterInteger32 };
+    Property                N3 = { 0, &amp;s2 };
+    IntegerConst            N4 = { 3 };
+    Operator                N5 = { &amp;dmaQueryOperator_EqualString };
+    Property                N6 = { 1, &amp;t2 };
+    StringConst             N7 = { L"red" };
+
+    QueryNode               QueryExpr [] =
+        {
+            { OperatorNodeType, 0, &amp;N1 },
+                { OperatorNodeType, 1, &amp;N2 },
+                    { PropertyNodeType, 2, &amp;N3 },
+                    { IntegerConstNodeType, 2, &amp;N4 },
+                { OperatorNodeType, 1, &amp;N5 },
+                    { PropertyNodeType, 2, &amp;N6 },
+                    { StringConstNodeType, 2, &amp;N7 },
+            { StopperNodeType, -1, NULL }
+        };
+
+    QueryRoot               QR = { &amp;From[0], &amp;Select[0], &amp;QueryExpr[0],
+                                   NULL, DMA_FALSE };
+
+
+DmaRC
+QueryExample1(void)
+{
+    DmaRC                   rc;
+    IdmaScope *             pScope = NULL;
+    IdmaResultSet *         pResultSet = NULL;
+    IdmaProperties *        pResultRow = NULL;
+    DmaIndex32              SelectionsOffset;
+
+    /* TBD:  Not shown:
+       Initializataion to get system object, doc space object, 
+       and target scope object = pScope.
+    */
+
+    rc = StartQuery(&amp;QR, pScope, &amp;pResultSet);
+    CHK(rc);
+
+    while (1)
+    {
+        rc = pResultSet-&gt;GetNextResultRow(IID_IdmaProperties,
+                                          (pDmapv)&amp;pResultRow);
+        if (rc != DMARC_OK)
+        {
+            break;
+        }
+
+        rc = pResultRow-&gt;GetPropValInteger32ById(
+                             &amp;dmaProp_SelectListOffset,
+                             &amp;SelectionsOffset);
+        CHK(rc);
+
+        /* TBD: Not shown: Access the values of the properties of
+           the query result row referred to by pResultRow
+           corresponding to the properties selected in the Selections
+           list, e.g.,
+
+               DmaIndex32    x;
+               &lt;datatype&gt;    y;
+               rc = pResultRow-&gt;GetPropVal&lt;datatype&gt;ByIndex(
+                                    SelectionsOffset + x,
+                                    &amp;y);
+
+           to store the value for selection list element x into y.
+        */
+
+        RELEASE(pResultRow);  /* Release the Query Result row */
+    }
+
+theend:
+    return(DMARC_OK);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>

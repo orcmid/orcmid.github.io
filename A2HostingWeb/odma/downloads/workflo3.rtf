@@ -1,0 +1,365 @@
+{\rtf1\ansi \deff5\deflang1033{\fonttbl{\f5\fswiss\fcharset0\fprq2 Arial;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;
+\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\f5\fs20 
+\snext0 Normal;}{\s1\sb240\sa60\keepn \b\f5\fs28\kerning28 \sbasedon0\snext0 heading 1;}{\s2\sb240\sa60\keepn \b\i\f5 \sbasedon0\snext0 heading 2;}{\s3\sb240\sa60\keepn \b\f5 \sbasedon0\snext0 heading 3;}{\*\cs10 \additive Default Paragraph Font;}{
+\s15\tqc\tx4320\tqr\tx8640 \f5\fs20 \sbasedon0\snext15 header;}{\s16\tqc\tx4320\tqr\tx8640 \f5\fs20 \sbasedon0\snext16 footer;}{\*\cs17 \additive\sbasedon10 page number;}}{\info{\title ODMA Extension for Workflow}{\author John Newton}
+{\operator John Newton}{\creatim\yr1995\mo2\dy17\hr13\min59}{\revtim\yr1995\mo2\dy17\hr17\min9}{\printim\yr1995\mo4\dy23\hr13\min17}{\version1}{\edmins2}{\nofpages0}{\nofwords0}{\nofchars0}{\vern49203}}\widowctrl\ftnbj\aenddoc\hyphcaps0\formshade \fet0
+\sectd \linex0\endnhere {\footer \pard\plain \s16\tqc\tx4320\tqr\tx8640 \f5\fs20 ODMA Workflow 1.0\tab {\field{\*\fldinst {\cs17  PAGE }}{\fldrslt {\cs17 5}}}{\cs17 \tab }{\field{\*\fldinst {\cs17  DATE  \\l }}{\fldrslt {\cs17 04/24/1995}}}
+\par }{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5
+\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \s1\qc\sb240\sa60\keepn \b\f5\fs28\kerning28 ODMA Extension for Workflow
+\par \pard\plain \f5\fs20 
+\par \pard \qc Version 1.0: 24-Apr-95
+\par \pard 
+\par This purpose of this proposal is to enhance the ODMA specification beyond just document management and to add groupware capabilities in the form of Workflow. This would not only "document management-enable" applications, but "workflow-enable" them. Workfl
+ow enabling would be optional for the application vendor.
+\par 
+\par The benefits of this proposal are that it presents ODMA as not just a static view of the world, but as the
+ basis for actively managing information within groups and enterprises. It allows users to work completely within their applications while collaborating on documents. It gives application vendors the hooks to groupware-enable their documents, not just doc
+ument management-enable them. It allows the document management vendors to build cooperative solutions with workflow vendors with the application as the glue.
+\par 
+\par The form of this API follows the spirit of the ODMA specification, but does not assume that the w
+orkflow engine is the same as the document management engine. This would allow users to mix and match components to access the documents through a DMS and coordinate their efforts through a workflow package. This reflects how many packages are being integ
+rated together today, but make the integration occur at the application level. Interpretation of how the workflow commands would work is left entirely up to the workflow engine.
+\par 
+\par Conceptually, the proposal is simple. It assumes that from within an application, there are three things that a user might want to do with the ID of a workflow or business process:
+\par 
+\par {\pntext\pard\plain\f5\fs20 1.\tab}\pard \fi-360\li360{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+Start or attach a workflow or business processs to my current document or documents. What this means is left entirely up to the workflow engine. It could start an electronic mail route or database oriented workflow. The user would be presented with some f
+orm of dialog for definition and starting the workflow.
+\par {\pntext\tab}\pard \fi-360\li360{\*\pn \pnlvlcont\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+\par {\pntext\pard\plain\f5\fs20 2.\tab}\pard \fi-360\li360{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+Find out what is waiting for me in my inbox or queue. All workflow engines have the notion of inboxes, queues or to-do lists. The user would be presented with their queue on this command. This command returns {\ul one or more tokens}
+ for a document that the application can open for the user.
+\par {\pntext\tab}\pard \fi-360\li360{\*\pn \pnlvlcont\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+\par {\pntext\pard\plain\f5\fs20 3.\tab}\pard \fi-360\li360{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+Process my current document(s). If the current document was opened from the inbox (the application should know this), then process this document. Depending on the capabilities of the workflow engine this may mean forwa
+rd this document on to the next user, reject it, apply rules to it as to what happens next.
+\par \pard 
+\par Implementing these features implies a user interface change. This could be left up to the application to decide where or when these are presented. These are appropriate menu items for these functions:
+\par 
+\par {\b \tab Attach Workflow...
+\par \tab Workflow Inbox...
+\par \tab Process Document...
+\par \tab Get Workflow Info...
+\par }
+\par The last call is related to the GetDMInfo call of ODMA that gets information on the DMS. This gets information on the Workflow engine.
+\par 
+\par \pard \keepn {\ul Workflow IDs
+\par }\pard 
+\par All rules applying to document IDs in ODMA apply to Workflow IDs, with the exception that they are case sensitive due to the recommendation of the Workflow Management Coalition. They are case-sensitive, NULL terminated strings of printable ISO 8859-1 (Lat
+in 1) characters. To distinguish these IDs from document IDs they are prefixed with a ::ODMAWF string. It is important to distinguish these document IDs so that the calling application can handle them appropriately without requiring an inter
+pretation of the ODM_ID portion of the ID string. Their form is similar to the ODMA ID.
+\par 
+\par \tab ::ODMAWF\\WF_ID\\WF_SPECIFIC_INFO
+\par {\ul 
+\par Constants
+\par }
+\par All constants of ODMA apply to this interface as well. All ID lengths and buffer lengths apply.
+\par 
+\par {\ul Error Handling
+\par }
+\par The Workflow Manager is responsible for displaying informational error messages. When the ODM_SILENT flag is used, the Workflow Manager will not display these messages. The exception is the ODMWFRegisterApp where the caller should assume that the error me
+ssage has not been displayed (see ODMWFRegisterApp). All other caveats from ODMA apply.
+\par 
+\par {\ul Connections
+\par }
+\par The Workflow Manager API follows the same rules of connection that the ODMA interface follows. {\i 
+The connection however must be a separate one unless the ODMA ODMRegisterApp interface allows the for the return of information that the interface is a workflow interface. This is to accomodate interfaces that are workflow only and do not perform document
+ management functions.} 
+\par 
+\par \pard\plain \s2\sb240\sa60\keepn \b\i\f5 Workflow Manager API
+\par \pard\plain \f5\fs20 
+\par The workflow component would be similar to the ODMA interface in how it connects and is registered. It would use the same administration files. There are two pieces of information that are different.
+\par 
+\par \pard \li720 ODMWFHANDLE pODMWFHandle
+\par This is the handle of the workflow manager instance. It is retrieved from registering the workflow manager.
+\par \tab 
+\par LPSTR lpszWorkflowID
+\par Similar to the ID of a document within ODMA, the workflow ID identifies the workflow object being processed. This identifier must be distinct from a docume
+nt ID because a workflow object may contain mutiple documents, and because there may be state associated with the workflow object that is not part of the state of any of its documents. This identifier is a string as in ODMA 1.0 because it is independent o
+f the underlying workflow engine and can be transported as a string through alternate messaging systems.
+\par \pard 
+\par Just as ODMA does not require the application to maintain document management information from the DMS, this workflow interface does not require the ap
+plication to maintain workflow information. It is up to the workflow engine to maintain persistent information about the workflow and documents being worked on. No structures are to be maintained by the application.
+\par 
+\par Binding occurs the same as ODMA.DLL except that there is a ODMAWF.LIB and ODMAWF.DLL.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFRegisterApp
+\par \pard\plain \f5\fs20 WORD ODMWFRegisterApp( ODMWFHANDLE FAR *pODMWFHandle, WORD version, LPSTR lpszAppId, DWORD dwEnvData, WORD pReserved )
+\par 
+\par ODMWFRegisterApp registers an application with the appropriate Workflow Management system (WMS) and returns a handle that can be used in calls to other ODMA Workflow functions.{\b  }
+An application must call this function before calling any of the other ODMA Workflow functions. Contextual information about the user, security, etc. should be maintained internally by the WMS. Authentication and logon user interfaces are the responsibili
+ty of the WMS.
+\par 
+\par The caller of this function should assume that an error message has not been displayed in case of an error returned. This is due to the
+ fact that the Workflow Manager may not be up and that the connection manager may not be able to translate the message appropriately.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i pDmWorkHandle} - out - If successful, a handle is returned here that can be used in calls to other ODMA Workflow functions.{\b  }If the registration fails then 0 is returned here.
+\par 
+\par {\i version} - in - Specifies the version of the API required by the application. 100 should be passed to indicate version 1.0, 110 should be passed to indicate version 1.1, etc.{\b  }All versions of
+ the ODMA Workflow API will be downward compatible, so this should be interpreted as the minimum version number that the calling application expects the WMS to support.{\b  }
+If the WMS does not support the specified version or a higher version then it should return an error.
+\par 
+\par {\i lpszAppId} - in - A unique identifier for the application. The maximum length for this string is 16 characters including the terminating NULL and it cannot begin with a digit. It is recommended that a Windows application use the File Manager
+ ProgId for it primary document class, but this is not required.
+\par 
+\par {\i dwEnvData}
+ - in - Environment data. On Windows platforms this is a Window handle for a parent window in the calling application. The WMS may use this winodw handle as the parent window for any dialogs or other windows it displays in response to ODMA Workflow calls.
+ This handle must remain valid for the duration of the ODMA Workflow session (i.e. until ODMWFUnRegisterApp is called).
+\par 
+\par {\i pReserved} - in - Reserved for future use. Must be set to NULL.
+\par \pard 
+\par {\b Return Value: }0 is returned if successful.{\b  }
+ODM_E_NOWMS is returned if no Workflow Management System has been registered for the calling application. ODM_E_CANTINIT is returned if a WMS is registered for the calling application but it fails to initialize itself.{\b  }
+ODM_E_VERSION is returned if the WMS does not support the requested version of the API.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFUnRegisterApp
+\par \pard\plain \f5\fs20 void ODMWFUnRegisterApp( ODMWFHANDLE pODMWFHandle )
+\par 
+\par An application that previously registered itself with a WMS via ODMWFRegisterApp should call this function when it is finished using the WMS.{\b  }This would typically be done when the application is shutting down.{\b  }
+After this call returns, the WMS handle is no longer valid and cannot be used for subsequent calls to ODMA Workflow functions.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par \pard 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFNewObject
+\par \pard\plain \f5\fs20 WORD ODMWFNewObject( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, LPDWORD pdwFlags )
+\par 
+\par This function calls the WMS to crea
+te a workflow object and associated ID. The calling application passes a buffer to contain the workflow ID. The application can then use the ODMWFInsertItem to attach documents and ODMWFProcessObject to initiate the workflow. The WMS has the option of pre
+senting dialogs at any of these points to allow the user to select the workflow and confirm the documents to be attached.
+\par 
+\par The new workflow instance may be a brand new workflow object, an existing workflow object, or a copy of an existing workflow object. It may also be a mail message sent to a list of recipients. This is entirely up to the WMS.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflow} - out - The id of the workflow object. The WMS uses this to track the specific instance of the workflow as it exists in the system. This buffer should be as large as the size determined for ODMA IDs.
+\par 
+\par {\i pdwFlags }- in/out - On input, 0 or a combination of 1 or more of the following values:
+\par \pard 
+\par \pard \li1440 {\b ODM_SILENT }- The DMS should not require user interaction while satisfying the call.  If the call cannot be satisfied without user interaction then an error should be returned.
+\par \pard 
+\par {\b Return Value:} 0 is returned if the workflow is successfully attached. ODM_E_NOATTACH is returned if the workflow could not attach this document. ODM_W_CANCEL is returned if the user canceled the operation.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFSelectObject
+\par \pard\plain \f5\fs20 WORD ODMWFSelectObject( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, LPDWORD pdwFlags{\b  })
+\par 
+\par This is similar to the ODMW
+FSelectDoc call but is specifically designed to work with workflow. The users inbox is opened as interpreted by the WMS. The ids of any documents the workflow is routing can be obtained using the ODMWFGetItem calls. The documents are opened using the ODMA
+ Open calls. After viewing, editing and/or saving the attached documents, the workflow id is then processed by ODMWFProcessObject call.
+\par 
+\par There can potentially be a number of ways that the WMS can present the user\rquote s inbox. These are all WMS specific and it is left to the WMS to present these choices to the user. Any filtering of possible workflows is also left to the WMS.
+\par 
+\par Note: If there is a limited, universally accepted set of views that can be agreed, then those views should be exposed as part of the API and User Interface. Two possible choices are inbox and outbox.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowID} - out - The ID of the workflow object. The WMS uses this to track the specific instance of the workflow.
+\par {\i 
+\par pdwFlags }- in/out - On input, 0 or a combination of 1 or more of the following values:
+\par \pard 
+\par \pard \li1440 {\b ODM_SILENT }- The DMS should not require user interaction while satisfying the call.  If the call cannot be satisfied without user interaction then an error should be returned.
+\par \pard 
+\par {\b Return Value:} 0 is returned if the workflow is successfully attached. ODM_E_BADWORKFLOW is returned if a workflow could not be fetched from the inbox. ODM_W_CANCEL is returned if the user canceled the operation.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFInsertItem
+\par \pard\plain \f5\fs20 WORD ODMWFInsertItem( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, WORD wItemNumber, LPSTR lpszDocIdentifier )
+\par 
+\par ODMWFInsertItem allows the caller to insert a document to the collection of items attached to the workflow identified by the id. This collection is an ordered list and is inserted before the position indicated by the item number. A 0 value will put the ne
+w item at zero and force all the subsequent values down one. An item inserted at one past the last item will make the new i
+tem the last item. The attached item may either be identified by an ODMA ID or a simple file path. The ODMWFProcessObject should commit the changes made to the workflow.
+\par {\b 
+\par Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowID} - in - The ID of the workflow object. The WMS uses this to track the specific instance of the workflow.
+\par 
+\par {\i wItemNumber} - in - The index of the item to fetch from the collection of items attached to this workflow.
+\par {\i 
+\par lpszDocIdentifier}
+ - in - A pointer to a ODMA-sized buffer to be filled in with the information required to fetch the document at the specified location. This buffer may be filled in with an ODMA Id or a file identifier. If this is an ODMA Id then this should be easily ide
+ntified.
+\par {\i 
+\par }\pard {\b Return Value:} 0 is returned if the workflow is successfully attached. ODM_E_BADINDEX is returned if the index value is out of bounds. ODM_E_NOPERMIT is returned if the user has no permission to modify the list of attachments to the workflow.
+
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFRemoveItem
+\par \pard\plain \f5\fs20 WORD ODMWFRemoveItem( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, WORD wItemNumber )
+\par 
+\par ODMWFRemoveItem allows the caller to remove a document from the collection of items attached to the workflow identified by the id. This collection is an ordered list and is removed from the position indicated by the item number. A 0 value will remove the 
+first item and force all the subsequent values to move up one. This call only removes the item from the list and does not destroy the object. The ODMWFProcessObject should commit the changes made to the workflow.
+\par {\b 
+\par Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowID} - in - The ID of the workflow object. The WMS uses this to track the specific instance of the workflow.
+\par {\i 
+\par wItemNumber} - in - The index of the item to fetch from the collection of items attached to this workflow.
+\par {\i 
+\par }\pard {\b Return Value:} 0 is returned if the workflow is successfully attached. ODM_E_BADINDEX is returned if the index value is out of bounds. ODM_E_NOPERMIT is returned if the user has no permission to modify the list of attachments to the workflow.
+
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFGetItem
+\par \pard\plain \f5\fs20 WORD ODMWFGetItem( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, WORD wItemNumber, LPSTR lpszDocIdentifier )
+\par 
+\par ODMWFGetItem allows the caller to enumerate through the collection of items attached to the workflow identified by the id. This collection is an ordered list and specified by the ODMWFInsertItem call. {\b The WMS must return the documents in the sa
+me order the documents in which they were inserted.} The attached item may either be identified by an ODMA ID or a simple file path.
+\par {\b 
+\par Parameters:}
+\par 
+\par \pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowID} - in - The ID of the workflow object. The WMS uses this to track the specific instance of the workflow.
+\par {\i 
+\par wItemNumber} - in - The index of the item to fetch from the collection of items attached to this workflow.
+\par {\i 
+\par lpszDocIdentifier} - out - A pointer to a OD
+MA-sized buffer to be filled in with the information required to fetch the document at the specified location. This buffer may be filled in with an ODMA Id or a file identifier. Based upon this string, the application should be able to determine if this i
+s an ODMA ID or a filename.
+\par {\i 
+\par }\pard {\b Return Value:} 0 is returned if the workflow is successfully attached. ODM_E_BADINDEX is returned if the index value is out of bounds.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFProcessObject
+\par \pard\plain \f5\fs20 WORD ODMWFProcessDoc( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowID, LPDWORD pdwFlags )
+\par 
+\par This function calls the WMS to handle any forwarding action that may be required for this workflow. The workflow processed will have been retrieved using the ODMWFSelectObject or ODMWFNewObject. The semantics and context of this operation are up to the WM
+S and based upon the workflow ID. Based upon the values of the flags returned by this call the application should close the attached documents or leave them open. The 
+function should not be called if the attached documents are dirty and have not been saved off to the DMS if they are identified by an ODMA ID.
+\par 
+\par Possible actions that may be involved in processing a workflow are:
+\par 
+\par {\pntext\pard\plain\f5\fs20 1.\tab}\pard \fi-360\li1080{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}Start a new workflow. This is a workflow that has just been started by ODMWFNewObject.
+\par {\pntext\tab}\pard \fi-360\li1080{\*\pn \pnlvlcont\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+\par {\pntext\pard\plain\f5\fs20 2.\tab}\pard \fi-360\li1080{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}Forward the attached documents to the next user in the workflow or business process.
+\par {\pntext\tab}\pard \fi-360\li1080{\*\pn \pnlvlcont\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+\par {\pntext\pard\plain\f5\fs20 3.\tab}\pard \fi-360\li1080{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}Return the attached documents back to the previous user.
+\par {\pntext\tab}\pard \fi-360\li1080{\*\pn \pnlvlcont\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}
+\par {\pntext\pard\plain\f5\fs20 4.\tab}\pard \fi-360\li1080{\*\pn \pnlvlbody\pndec\pnstart1\pnindent360\pnhang{\pntxta .}}Stop working on the current documents. (This 
+may be called if the documents are dirty. It is up to the WMS to determine if documents may be dirty for a particular operation. It determines this with the appropriate ODMA call.)
+\par \pard 
+\par The attached documents are managed using the ODMWFInsertItem, ODMWFRemoveItem and ODMWFGetItem.
+\par 
+\par \pard \keepn {\b Parameters:}
+\par 
+\par \pard \li720\keepn {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par \pard \li720 {\i lpszWorkflowID} - in - The ID of the workflow object. The WMS uses this to track the specific instance of the workflow.
+\par 
+\par {\i pdwFlags }- in/out - On input, 0 or a combination of 1 or more of the following values:
+\par \pard 
+\par \pard \li1440 {\b ODM_SILENT }- The DMS should not require user interaction while satisfying the call.  If the call cannot be satisfied without user interaction then an error should be returned.
+\par \pard 
+\par \pard \li1440 Upon return, one of the following flags will be set unless an error occurred:
+\par \pard 
+\par \pard \fi-720\li2160 {\b ODM_CLOSEDOCS }- The user or WMS indicated that the selected documents should be closed.
+\par {\b 
+\par ODM_REOPENDOCS }{\i - This flag has been removed. Unless ODM_CLOSEDOCS has been returned, then documents should be left open.}
+\par \pard 
+\par {\b Return Value:} 0 is returned if the workflow is successfully attached.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFGetObjectInfo
+\par \pard\plain \f5\fs20 ODMSTATUS ODMWFGetObjectInfo( ODMWFHANDLE pODMWFHandle, LPSTR lpszWorkflowId, WORD attribute, LPSTR lpszData, WORD dataLen )
+\par 
+\par An application can use this function to obtain information about a workflow from the WMS.
+\par 
+\par {\b Parameters:}{\i 
+\par 
+\par }\pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowId }- in - A NULL-terminated Workflow ID.  This is typically obtained by a call to {\b ODMWFSelectObject }or {\b ODMWFNewObject}.
+\par \pard 
+\par \pard \li720 {\i attribute }- in - One of the following:
+\par \pard 
+\par \pard \li1440 {\b ODM_AUTHOR }- Owner or Supervisor of the workflow.
+\par \pard \fi-720\li2160 {\b ODM_NAME }- Name of the workflow.  This is a descriptive name for the workflow and does not represent a filename.
+\par {\b ODM_STATUS }- Status of the workflow.  This is typically an indication of the current status of the workflow such as Active, Late, Complete.
+\par {\b ODM_TITLETEXT }- Suggested text to display in the workflow window's title bar.  This may include one or more fields from the workflow\rquote s profile and possibly other information as well.
+\par {\b ODM_WMS_DEFINED }
+- The lpszData parameter contains a WMS-specific indication of the data to be returned.  Note that an application must know which WMS it is talking to and must understand the data indications supported by that WMS in order to use this attribute name.
+
+\par {\b ODM_ITEMCOUNT} - The lpszData parameter contains an ASCII-encoded value of the number of documents managed by this workflow. It is ASCII-encoded for consistency of results from the other parameters.
+\par {\b ODM_USERID} - The lpszData parameter returns the ID of the user as understood by the WMS.
+\par {\b ODM_USERNAME} - The lpszData parameter returns the full descriptive name of the user as understood by the WMS. Depending upon the implementation of the WMS, this may be the same value.
+\par \pard 
+\par \pard \li720 {\i lpszData }- in/out - On input, ignored if attribute is anything other than  {\b ODM_WMS_DEFINED}.  If attribute is {\b ODM_WMS_DEFINED }then {\i lpszData }
+contains an indication of the data to be returned.  On output, the requested data is returned in the buffer pointed to by {\i lpszData}.
+\par \pard 
+\par \pard \li720 {\i dataLen }- in - length of the output buffer pointed to by {\i lpszData}.  If the data to be returned is longer than this, it will be truncated.  In either case the returned data will always be terminated with a NULL character.
+\par \pard 
+\par {\b Return value:}  0 if successful. {\b ODM_E_ITEM} if {\i attribute} is invalid or not supported by the workflow's WMS.  {\b ODM_E_HANDLE} if {\i dmHandle} was invalid.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFSetObjectInfo
+\par \pard\plain \f5\fs20 ODMSTATUS ODMWFSetObjectInfo( ODMWFHANDLE pODMWFHandle, LPSTR lpszDocId, WORD attribute, LPSTR lpszData )
+\par 
+\par An application can use this function to pass information about the workflow to the WMS.  The WMS may or may not accept the information; most WMSs validate attributes like authors against predefined tables.
+\par 
+\par {\b Parameters:}{\i 
+\par 
+\par }\pard \li720 {\i pODMWFHandle} - in - An ODMA Workflow Handle obtained by a previous call to ODMWFRegisterApp().
+\par 
+\par {\i lpszWorkflowId }- in - A NULL-terminated Workflow ID.  This is typically obtained by a call to {\b ODMWFSelectObject }or {\b ODMWFNewObject}.
+\par \pard 
+\par \pard \li720 {\i attribute }- in - One of the following:
+\par \pard 
+\par \pard \li1440 {\b ODM_AUTHOR }- Owner or Supervisor of the workflow.
+\par \pard \fi-720\li2160 {\b ODM_NAME }- Name of the workflow.  This is a descriptive name for the workflow and does not represent a filename.
+\par {\b ODM_WMS_DEFINED }
+- The lpszData parameter contains a WMS-specific indication of the data to be returned.  Note that an application must know which DMS it is talking to and must understand the data indications supported by that DMS in order to use this attribute name.
+
+\par \pard 
+\par \pard \li720 {\i lpszData }- in - the data being passed to the WMS.  Must be NULL terminated.
+\par \pard 
+\par {\b Return value:}  0 if successful. {\b ODM_E_ITEM} if {\i attribute} is invalid or not supported by the WMS.  {\b ODM_E_HANDLE} if {\i pODMWFHandle} was invalid.  {\b ODM_E_FAIL} if the specified data was invali
+d or the WMS was unable to accept it for other reasons.
+\par 
+\par \pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFActivate
+\par \pard\plain \f5\fs20 void ODMWFActivate( ODMWFHANDLE pODMWFHandle, WORD action, LPSTR lpszWorkflowID )
+\par 
+\par This function is called when the user chooses the \ldblquote Get Workflow Info...\rdblquote 
+ menu item. This assumes that the calling application has kept track of the current workflows. It presents information on the workflow and attached documents which have been opened as
+ a result of ODMWFSelectObject and ODMWFGetItem calls. It may also be called from standard dialogs with
+in the application. This function causes the WMS to perform actions that do not require cooperation from the calling application.  Control is returned to the calling application after the specified action has been completed.  Note that a WMS is not requir
+ed to support all of these actions.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i dmHandle} - in - A Workflow handle obtained by a previous call to ODMWFRegisterApp.
+\par 
+\par {\i action} - in - One of the following action codes:
+\par 
+\par \pard \li1440 ODM_NONE - No specific is requested. The WMS should simply make itself visible and let the user select the action to be performed.
+\par 
+\par ODM_DELETE - The WMS should remove the workflow instance.
+\par 
+\par ODM_SHOWATTRIBUTES - The WMS should display the specified workflow\rquote s history, profile and attributes.
+\par 
+\par ODM_EDITATTRIBUTES - The WMS should display the specified workflow\rquote s attributes and the user should be put into edit mode. The WMS may not allow this operation while the workflow is active.
+\par \pard \li720 
+\par {\i lpszWorkflowID} - in - The ID of the workflow as identified by the WMS. If this value is NULL, then the WMS displays general information about the Workflow Management System.
+\par {\i 
+\par }\pard\plain \s3\sb240\sa60\keepn \b\f5 ODMWFGetWMSInfo
+\par \pard\plain \f5\fs20 void ODMWFGetWMSInfo( ODMWFHANDLE pODMWFHandle, LPSTR wmsId, LPWORD pwVerNo, LPDWORD pdwExtensions )
+\par 
+\par This function returns information to the application about the currently active WMS.
+\par 
+\par {\b Parameters:}
+\par 
+\par \pard \li720 {\i dmHandle} - in - A Workflow handle obtained by a previous call to ODMWFRegisterApp.
+\par 
+\par {\i wmsId} - out - This should point to an area at least 9 bytes long.{\b  }A NULL-terminated ID identifying the WMS is returned here.{\b  }This is the same ID embedded in workflow IDs returned by this WMS.
+\par 
+\par {\i pwVerNo} - out - The version of the ODMA API supported by this WMS is returned here.
+\par 
+\par {\i pdwExtensions} - out - Indications of extensions to the base ODMA API that are supported by this WMS are returned here. No extensions have been defined yet, so currently 0 will always be returned here.
+\par \pard 
+\par 
+\par }

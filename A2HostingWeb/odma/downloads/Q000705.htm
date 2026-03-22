@@ -1,0 +1,712 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<!--$$Header: /ODMACompagno/downloads/Q000705.htm 29    13-08-22 12:48 Orcmid $-->
+<title>Q000705: Changes Between ODMA Versions [latest]</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<!--webbot bot="Include" U-Include="../faq/2000/07/q000705b.htm" TAG="BODY" startspan -->
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033"><strong>
+		<a href="../faq/q000001.htm#Q000705" target="_self"><font color="#990033">Q000705</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+		<a href="../faq/q000001.htm" target="_self"><font color="#990033">
+		FAQtip</font></a><font color="#990033"><br>
+      </font></strong><font color="#990033"><strong><a href="../faq/2000/07/q000702.htm" target="_self">
+<font color="#990033">
+Changes Between ODMA Versions</font></a></strong></font><br>
+<em><strong><font size="5" color="#990033">0.20 Review Draft</font></strong></em></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../" target="_self"><b>ODMA</b></a></code><b><code>&gt;<a href="../faq/" target="_self">faq</a>&gt;<br>
+      <a href="../faq/2000/" target="_self">2000</a>&gt;<a href="../faq/2000/07/" target="_self">07</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="../faq/2000/07/q000705c.htm">Q000705c</a>&gt;</code></b><br>
+      <small><small><a href="#0.20" target="_self">0.20</a>
+		2013-08-22 12:48 -0700</small></small></p>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this FAQtip is available on the Internet at <br>
+			&lt;<b><kbd><a target="_top" href="../faq/2000/07/q000705b.htm">http://ODMA.info/faq/2000/07/Q000705b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This section:</b>&nbsp;&nbsp; <b>0.20 Review Draft </b>&lt;<b><kbd><a target="_top" href="../faq/2000/07/q000705c.htm">http://ODMA.info/faq/2000/07/Q000705c.htm</a></kbd></b>&gt;. 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small>
+</blockquote>
+
+<blockquote>
+  <P>The latest status on&nbsp; ODMA 2.0 is always available
+  on the Internet at</p>
+  <P align="center">
+  <b><code><a href="../support/odma20st.htm" target="_self">http://ODMA.info/support/odma20st.htm</a></code></b>.
+
+  <P align="left"><strong style="font-weight: 400"><em>This document is designed to
+  be used in the same file location as <font color="#0000FF">
+	<a href="odma20-3.htm" target="_self">HTML
+  edition 2.0-3</a></font>
+
+	of the ODMA 2.0 Specification and the <font color="#0000FF">
+	<a href="rata20-1.htm" target="_self">Errata</a></font>
+
+  for that edition.&nbsp; Shortcuts in this document depend on proximity to a
+  copy of the specification.&nbsp; A convenient way to make sure all necessary
+  materials are present is to download the complete <font color="#0000FF">
+	<a href="odma20d.htm" target="_self">ODMA
+  2.0 Documentation Files</a></font>
+
+	package.</em></strong>
+
+</blockquote>
+
+<h3><i>Summary:</i></h3>
+
+<blockquote><p>This response expands on the question &quot;<b>What Changed Between
+  ODMA Versions?</b>&quot;</p>
+
+  <p>The question is addressed in terms of what an ODMA-aware application would
+  see as different.&nbsp; There is also attention to what an ODMA-compliant DMS
+  will adapt to (or not) when agreeing to support a particular level of ODMA on behalf of
+  a requesting application.</p>
+
+  <p>This information is intended primarily for developers of ODMA-compliant
+  components.&nbsp; It is also useful as background for troubleshooting and
+  exploring interoperability questions.</p>
+	<p align="right"><i>Dennis E. Hamilton<br>
+  AIIM DMware Technical Coordinator<br>
+  Renton, Washington, 2000 August 29</i></p>
+
+	<blockquote>
+		<h3>1. <a href="#IntendedInteroperability" target="_self">Inter-Level Interoperability</a><br>
+		2. <a href="#ExperimentalResults" target="_self">Feature Introduction Levels</a><br>
+		3. <a href="#RecommendedApproach" target="_self">Analysis and Recommendations</a><br>
+		4. <a href="#Sources" target="_self">Sources and Resources</a></h3>
+		<blockquote>
+			<h3><em><a href="#Contributors" target="_self">Contributors</a></em><br>
+			<a href="#History" target="_self"><em>Revision History</em></a></h3>
+		</blockquote>
+	</blockquote>
+
+</blockquote>
+
+<hr color="#000080">
+<h2>1. <a name="IntendedInteroperability" target="_self">Inter-Level Interoperability</a></h2>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also</i>:</b></dt>
+      <dd><b><a href="Q000703.htm" target="_self">Q000703</a></b><a href="http://www.infonuovo.com/odma/downloads/Q000703.htm" target="_self">
+        <b>ODMA-Aware Application and Connection-Manager Version Compatibility<br>
+        </b></a><b><a href="odma20-3.htm" target="_self">ODMA 2.0 Specification</a> description
+        of <code><a href="odma20-3.htm#ODMRegisterApp" target="_self">ODMRegisterApp</a></code>
+        </b><i><code><b><a href="odma20-3.htm#version2.19" target="_self">version</a></b></code></i><b>
+        parameter</b></dd>
+    </dl>
+  </blockquote>
+  <p>The evolution from ODMA 1.0 through ODMA 1.5 to ODMA 2.0 has been with the 
+	<a href="odma20-3.htm#version2.19" target="_self">
+  requirement</a> that all versions of the API are downward compatible.&nbsp; Updates
+  to the specification are intended to be defined so that any DMS integration
+  developed to a newer version of the specification will operate successfully
+  with any ODMA-aware application constructed in correct conformance with an
+  earlier version of the specification.&nbsp;</p>
+  <p>Nevertheless, there are revisions to ODMA that do alter the described
+  behavior of interfaces defined under earlier version of the
+  specification.&nbsp;&nbsp;</p>
+  <p>This article summarizes when each API element is introduced and where any
+  alterations to the behavior of earlier elements has been added.</p>
+</blockquote>
+<h2>2. <a name="FeatureIntroductionLevels" target="_self">Feature Introduction Levels</a></h2>
+<blockquote>
+  <blockquote>
+<p><b>2.1 <a href="#ODMA1.0Baseline" target="_self">ODMA 1.0 Baseline<br>
+</a>2.2 <a href="#ODMA1.5Changes" target="_self">ODMA 1.5 Changes</a><br>
+2.3 <a href="#ODMA2.0Changes" target="_self">ODMA 2.0 Changes</a></b></p>
+  </blockquote>
+  <p>The following table lists the<b> </b>31 ODMA 2.0 API operations and the
+  single DMS initiation operation.&nbsp;&nbsp; The version of ODMA that
+  introduced a given operation is shown in the columns to the right, along with
+  any changes that arose in subsequent ODMA versions.</p>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="1" width="90%" id="table1" style="border-collapse: collapse" bordercolor="#000080">
+    <caption><i><b><a name="Table1" target="_self">Table 1</a>.&nbsp; Level of Individual ODMA Feature Introductions</b></i></caption>
+    <tr>
+      <td width="25%" align="center" valign="top"><b><i>API Operation</i></b></td>
+      <td width="20%" align="center" valign="top"><b><i><a href="#ODMA1.0Baseline" target="_self">ODMA 1.0?</a></i></b></td>
+      <td width="20%" align="center" valign="top"><b><i>ODMA 1.5?</i></b></td>
+      <td width="35%" align="center" valign="top"><b><i>ODMA 2.0?</i></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMActivate" target="_self">ODMActivate</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#Activate" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_NEWDOC</code></b> <b><i><code>action</code></i><code><br>
+        ODM_CHECKOUT</code></b> <b><i><code>action</code></i><code><br>
+        ODM_CANCELCHECKOUT</code></b> <b><i><code>action</code></i><code><br>
+        ODM_CHECKIN</code></b> <b><i><code>action</code></i><code><br>
+        ODM_SHOWHISTORY</code></b> <b><i><code>action</code></i><code><br>
+        ODM_E_ACCESS<br>
+        ODM_E_OFFLINE<br>
+        ODM_E_ARCHIVED<br>
+        ODM_E_NOSUPPORT<br>
+        ODM_W_NOACTION</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMCloseDoc" target="_self">ODMCloseDoc</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#CloseDoc" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_E_FAIL<br>
+        ODM_E_FILELOCKED</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMCloseDocEx" target="_self">ODMCloseDocEx</a></code></b></td>
+      <td width="20%" align="center" valign="top">-</td>
+      <td width="20%" align="center" valign="top">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><a href="odma20-3.htm#CloseDocEx" target="_self"><b><code>IODMDocMan2</code></b></a></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetAlternateContent" target="_self">ODMGetAlternateContent</a></code></b></td>
+      <td width="20%" align="center" valign="top">-</td>
+      <td width="20%" align="center" valign="top">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#GetAlternateContent" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDMS" target="_self">ODMGetDMS</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center">ODMA 2.0</td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDMSCount" target="_self">ODMGetDMSCount</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">ODMA 1.5</td>
+      <td width="35%" valign="top">
+        <p align="center">unchanged</td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDMSInfo" target="_self">ODMGetDMSInfo</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#GetDMSInfo" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_EXT_QUERY</code></b> <b><code>*<i>pdwExtensions<br>
+        </i>ODM_EXT_WORKFLOW</code></b> <b><code>*<i>pdwExtensions</i></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDMSList" target="_self">ODMGetDMSList</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">ODMA 1.5</td>
+      <td width="35%" valign="top">
+        <p align="center">unchanged</td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDocInfo" target="_self">ODMGetDocInfo</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#GetDocInfo" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top">22 <b><i><code>item</code></i></b> values<br>
+        <b><code>ODM_E_OFFLINE<br>
+        ODM_E_TRUNCATED<br>
+        ODM_E_NOSUPPORT</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetDocRelation" target="_self">ODMGetDocRelation</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#GetDocRelation" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetLeadMoniker" target="_self">ODMGetLeadMoniker</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#GetLeadMoniker" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top">
+        <p align="center">unchanged</td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMNewDoc" target="_self">ODMNewDoc</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#NewDoc" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_E_OFFLINE</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMOpenDoc" target="_self">ODMOpenDoc</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#OpenDoc" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_REFCOPY <i>flags</i></code></b><br>
+        <b><code>ODM_E_OFFLINE<br>
+        ODM_E_ARCHIVED<br>
+        ODM_E_INVARG<br>
+        ODM_E_ALREADYOPENED</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMQueryCapability" target="_self">ODMQueryCapability</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#QueryCapability" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMQueryClose" target="_self">ODMQueryClose</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#QueryClose" target="_self">IODMQuery</a></code></b></td>
+      <td width="35%" valign="top"><b><code>ODM_E_HANDLE</code></b>,<code><b><br>
+        ODM_NOERROR</b></code> replaced by <b><code>ODM_SUCCESS</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMQueryExecute" target="_self">ODMQueryExecute</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#QueryExecute" target="_self">IODMQuery</a></code></b></td>
+      <td width="35%" valign="top"><b><code><i>queryId</i>[]</code></b> maximum
+        changed from <b><code>ODM_DOCID_MAX</code></b> to <b><code>ODM_QUERYID_MAX</code></b>,<b><code><br>
+        ODM_E_HANDLE</code></b>,<code><b><br>
+        ODM_NOERROR</b></code> replaced by <b><code>ODM_SUCCESS</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMQueryGetResults" target="_self">ODMQueryGetResults</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#QueryGetResults" target="_self">IODMQuery</a></code></b></td>
+      <td width="35%" valign="top"><b><code><i>lpszDocId</i>[]</code></b> and <b><code><i>lpszDocName</i>[]</code></b>
+        minimum sizes,&nbsp;<br>
+        <b><code>ODM_E_HANDLE</code></b>, <b><code>ODM_E_REQARG</code></b>, <b><code>ODM_NOERROR</code></b>
+        replaced by <b><code>ODM_SUCCESS</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMQueryInterface" target="_self">ODMQueryInterface</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center"><a href="#ODMA1.0CM" target="_self">ODMA 1.0</a></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>E_ACCESS_DENIED<br>
+        E_FAIL</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMRegisterApp" target="_self">ODMRegisterApp</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center"><a href="#ODMA1.0CM" target="_self">ODMA 1.0</a></p>
+      </td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_E_REFUSED</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSaveAs" target="_self">ODMSaveAs</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#SaveAs" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_E_OFFLINE</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSaveAsEx" target="_self">ODMSaveAsEx</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SaveAsEx" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSaveDoc" target="_self">ODMSaveDoc</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#SaveDoc" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>ODM_E_NOOPEN</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSaveDocEx" target="_self">ODMSaveDocEx</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SaveDocEx" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSelectDoc" target="_self">ODMSelectDoc</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#SelectDoc" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODM_VIEWMODE2.24" target="_self">ODM_VIEWMODE</a>
+        *<i><a href="odma20-3.htm#pdwFlags2.24" target="_self">pdwFlag</a></i></code></b> input<br>
+        <b><code>ODM_E_OFFLINE<br>
+        ODM_E_FAIL</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSelectDocEx" target="_self">ODMSelectDocEx</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SelectDocEx" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSetAlternateContent" target="_self">ODMSetAlternateContent</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SetAlternateContent" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSetDMS" target="_self">ODMSetDMS</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">ODMA 1.5</td>
+      <td width="35%" valign="top"><b><code>ODM_NOERROR</code></b> replaced by <b><code>ODM_SUCCESS</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSetDocEvent" target="_self">ODMSetDocEvent</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SetDocEvent" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSetDocInfo" target="_self">ODMSetDocInfo</a></code></b></td>
+      <td width="20%" valign="top" align="center"><b><code>
+		<a href="odma20-3.htm#SetDocInfo" target="_self">IODMDocMan</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top">22 <b><i><code>item</code></i></b> values<br>
+        <b><code>ODM_E_ACCESS<br>
+		ODM_E_OFFLINE<br>
+        ODM_E_NOSUPPORT</code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMSetDocRelation" target="_self">ODMSetDocRelation</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">-</td>
+      <td width="35%" valign="top">
+        <p align="center"><b><code>
+		<a href="odma20-3.htm#SetDocRelation" target="_self">IODMDocMan2</a></code></b></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMUnRegisterApp" target="_self">ODMUnRegisterApp</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center"><a href="#ODMA1.0CM" target="_self">ODMA 1.0</a></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top">
+        <p align="center">unchanged</td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"></td>
+      <td width="20%" valign="top" align="center"></td>
+      <td width="20%" valign="top" align="center"></td>
+      <td width="35%" valign="top"></td>
+    </tr>
+    <tr>
+      <td width="25%" valign="top"><b><code>
+		<a href="odma20-3.htm#ODMGetODMInterface" target="_self">ODMGetODMInterface</a></code></b></td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">ODMA 1.0</td>
+      <td width="20%" valign="top" align="center">
+        <p align="center">unchanged</td>
+      <td width="35%" valign="top"><code><b>E_ACCESSDENIED</b></code>, <b><code>E_FAIL</code></b>,
+        <b><code>E_ODM_VERSION</code></b></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h3>2.1 <a name="ODMA1.0Baseline" target="_self">ODMA 1.0 Baseline</a></h3>
+<blockquote>
+  <p>ODMA 1.0 introduced 11 DMS-supported operations, 3 Connection-Manager
+  operations, and one integration operation between the Connection Manager and
+  the DMS.</p>
+  <p>The 11 DMS-implemented operations are identified by <b><code>IODMDocMan</code></b>
+  in the ODMA 1.0 column of <a href="#Table1" target="_self">Table 1</a>.</p>
+</blockquote>
+<h4>2.1.1 <a name="ODMA1.0CM" target="_self">ODMA 1.0 Connection Manager Operations</a></h4>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also</i>:</b></dt>
+      <dd><b><a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000901" target="_self">Q000901</a>:
+        Using COM</b></dd>
+    </dl>
+  </blockquote>
+  <p>The ODMA 1.0 Connection Manager implements three operations directly:</p>
+  <ul>
+    <li><a href="odma20-3.htm#ODMRegisterApp" target="_self"><b><code>ODMRegisterApp</code></b></a></li>
+    <li><a href="odma20-3.htm#ODMUnRegisterApp" target="_self"><b><code>ODMUnregisterApp</code></b></a></li>
+    <li><b><code><a href="odma20-3.htm#ODMQueryInterface" target="_self">ODMQueryInterface</a></code></b></li>
+  </ul>
+  <p>The first two are responsible for establishing and discarding an ODMA
+  session.&nbsp; The third uses the Connection Manager to request any COM
+  interface known to the application from the DMS integration 
+	<a href="odma20-3.htm#lpszDocId2.18" target="_self">identified
+  in the request</a>.</p>
+  <p><b><code>ODMRegisterApp</code></b> operations require the application to
+  specify the <a href="odma20-3.htm#version2.19" target="_self">minimum version</a> of ODMA
+  that the application can accept for its functions.&nbsp; The DMS integrations
+  have no means for discovering that level nor the level of the Connection
+  Manager that is being used.&nbsp; It is the Connection Manager that must
+  reconcile the <b><code>ODMRegisterApp</code></b> <b><i><code>
+	<a href="odma20-3.htm#version2.19" target="_self">version</a></code></i></b>
+  parameter from the application with the versions supported by individual DMS
+  integrations.</p>
+  <p><b><code>ODMQueryInterface</code></b> is a means by which an application
+  may dynamically discover additional features of a selected DMS using the
+  Microsoft Component Object Model (COM).&nbsp; These may be any of the COM
+  interfaces defined for ODMA of any version.&nbsp; These may also be
+  proprietary or other interfaces that a DMS integration happens to make
+  available and that the application is implemented to employ.&nbsp;&nbsp;</p>
+  <p>Microsoft COM interfaces, properly specified and implemented, are
+  inherently versioned.&nbsp; There are no ODMA versioning concerns for use of
+  the COM interfaces, and the Connection Manager allows any interfaces to be
+  requested, whether the universally-supported <code><b>IUnknown</b></code>
+  interface, the ODMA-defined ones, or any others that the application is able
+  to identify.&nbsp; The selected DMS will determine whether it supports the
+  requested interface and will respond accordingly.&nbsp;&nbsp;</p>
+  <p><b><code>ODMQueryInterface</code></b> delivers an <b><code>HRESULT</code></b>
+  code.&nbsp; If <b><code>ODMQueryInterface</code></b> has invalid parameters or
+  is unable to access a DMS integration, it will terminate the operation,
+  returning an <b><code>HRESULT</code></b> of <b><code>E_INVALIDARG</code></b>.&nbsp;
+  If <b><code>ODMQueryInterface</code></b> has valid parameters and is able to
+  access a DMS integration, the <b><code>HRESULT</code></b> will be produced by
+  the DMS integration's implementation of <b><code>IUnknown::QueryInterface</code></b>.&nbsp;
+  The permissible results are those defined by the Microsoft COM specification
+  and can be more than the <b><code>E_NOINTERFACE</code></b> case defined in the
+  ODMA 1.0 Specification.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</blockquote>
+<h4>2.1.2 <a name="ODMA1.0DMS-Supported" target="_self">ODMA 1.0 DMS-Implemented Operations</a></h4>
+<p>&nbsp;</p>
+<h3>2.2 <a name="ODMA1.5Changes" target="_self">ODMA 1.5 Changes</a></h3>
+<p>&nbsp;</p>
+<h3>2.3 <a name="ODMA2.0Changes" target="_self">ODMA 2.0 Changes</a></h3>
+<p>&nbsp;</p>
+<h2>3. <a name="AnalysisRecommendations" target="_self">Analysis and Recommendations</a></h2>
+<blockquote>
+  <p>[tbd following completion and review of <a href="#Table1" target="_self">Table 1</a>]</p>
+</blockquote>
+<blockquote>
+  <dl><font size="-1">
+  </font></dl>
+</blockquote>
+<h2><a href="#3" name="4" target="_self">4</a><b>. <a name="Sources" target="_self">Sources and Resources</a></b></h2>
+<blockquote>
+	<dl>
+		<dt><a name="ODMA1995" target="_self">ODMA (1995)</a>.</dt>
+		<dd>Open Document Management API Version 1.0a.&nbsp; ODMA Coalition, 
+		AIIM International, December 18, 1995.&nbsp; Available on the internet 
+		at &lt;<b><kbd><a href="odma10-2.htm" target="_self">http://ODMA.info/downloads/odma10-2.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA1996" target="_self">ODMA (1996)</a>.</dt>
+		<dd>Open Document Management API Version 1.5.&nbsp; ODMA Coalition, AIIM 
+		International, October 29, 1996.&nbsp; Available on the internet at &lt;<b><kbd><a href="odma15-2.htm" target="_self">http://ODMA.info/downloads/odma15-2.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA1997" target="_self">ODMA (1997)</a>.</dt>
+		<dd>
+		Open Document Management API Version 2.0.&nbsp; ODMA Coalition, AIIM 
+		International, September 19, 1997.&nbsp; Available on the internet at &lt;<b><kbd><a href="./#ODMA-20-Specification" target="_self">http://ODMA.info/downloads/#ODMA-20-Specification</a></kbd></b>&gt;.&nbsp; 
+		On-line review edition 2.0-3 available at &lt;<b><kbd><a href="odma20-3.htm" target="_self">http://ODMA.info/downloads/odma20-3.htm</a></kbd></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2000a" target="_self">ODMA (2000a)</a>.</dt>
+		<dd>ODMA Codes Missing in <b><kbd>Odma.h</kbd></b>.&nbsp; ODMA Incident 
+		Report X000002.&nbsp; 2001-05-21 version available at &lt;<b><a href="../support/X000002.htm" target="_self"><kbd>http://ODMA.info/support/X000002.htm</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2000b" target="_self">ODMA (2000b)</a>.</dt>
+		<dd>Omission of <kbd><b>0</b></kbd> and <b><kbd>ODM_NOERROR</kbd></b> 
+		from <b><kbd>ODMSTATUS</kbd></b>.&nbsp; ODMA Incident Report X000900.&nbsp; 
+		2000-09-10 version available at &lt;<b><a href="../support/X000900.htm" target="_self"><kbd>http://ODMA.info/support/X000900.htm</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="ODMA2001" target="_self">ODMA (2001)</a>.</dt>
+		<dd><b><kbd>odma.h</kbd> 2.0.0-1</b>.&nbsp; ODMA 2.0 Library Files.&nbsp; 
+		2001-09-04 edition.&nbsp; Available at &lt;<b><a href="odma200h.htm" target="_self"><kbd>http://ODMA.info/downloads/odma200h.htm</kbd></a></b>&gt;.<small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; This is the definitive header file for defining the 
+		ODMA-specific symbols and API signatures as established with the release 
+		of the ODMA 2.0 SDK.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+	</dl>
+</blockquote>
+
+
+  <hr color="#990033">
+
+<dl><small>
+		<dt><b><a name="Contributors" target="_self">Contributors</a>:</b></dt>
+	<dt><a href="mailto:infonuovo@email.com" target="_self">Dennis Hamilton</a></dt>
+
+	<dd>ran into this situation while reviewing the ODMA 2.0 Specification and documenting use of 
+	<a href="odma20L.htm" target="_self">ODMA 2.0
+      libraries</a>  in a way that maximizes interoperability across levels of ODMA.&nbsp;
+      On noticing that there were changes to down-level interfaces in ODMA 2.0, a
+      complete audit of the three specifications was conducted to establish
+      exactly what changed and what the impacts are.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><b><a name="RevisionHistory" target="_self">Revision History:</a></b></dt>
+
+    <dt><strong><a name="0.20" target="_self">0.20</a>: 2006-04-10-18:32 Preserve as Part of Refresh</strong></dt>
+	<dd>The material is captured on a page of the new folio style, with later 
+	versions produced as part of standard version progression.&nbsp; A Sources 
+	and Resources from another FAQtip is carried here just for later usefulness.&nbsp; 
+	The comments from previous versions concerning companion material apply to 
+	the download version of this page that will transclude pages of this folio.</dd>
+	<dt><strong><a name="0.15" target="_self">0.15</a>: 2006-04-06-23:04 Correct Table</strong></dt>
+	<dd>ODMSetDocInfo was adjusted to include ODM_E_ACCESS, discovered when 
+	preparing Q000702c.</dd>
+	<dt><strong><a name="0.10" target="_self">0.10: 2000-09-10</a> (orcmid)</strong></dt>
+    <dd>The running <font color="#FF0000"><b>review draft</b></font> is created to capture the results of experiments
+      with down-level application interoperability.&nbsp; It provides a starting point
+      for deeper analysis of possible barriers to full inter-level
+      interoperability.&nbsp; This document is a companion to the 
+	<a href="rata20-1.htm" target="_self">ODMA
+      2.0 Errata</a> and is organized to be downloaded as a package with that 
+	<a href="rata20-1.htm" target="_self">errata</a>
+      and the <a href="odma20-3.htm" target="_self">specification</a> to which it
+      applies.&nbsp; There are direct shortcuts to those documents that this
+      document depends on.</dd>
+	<dt><b><a name="0.00" target="_self">0.00</a> 2006-04-06-13:33 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder for this new folio that serve as a target of links and 
+	include-page components until more content is developed.</dd>
+
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../faq/construction.htm" target="_top"><img border="0" src="../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2000-08-29-15:43-0700 (pdt) by
+		<a rel="nofollow" href="../construction/orcmid.htm" target="_self">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 29 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+<!--webbot bot="Include" endspan i-checksum="34991" -->
+</body>
+</html>

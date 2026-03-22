@@ -1,0 +1,25 @@
+# Miser notes/2001/02/.htaccess 0.06 UTF-8 (ASCII)              dh:2013-11-29
+#
+# CASE SENSITIVITY CLEANUP FOR http://miser-theory.info/notes/2001/02/N* LINKS
+
+# RewriteEngine on
+# Options FollowSymLinks
+# RewriteRule ^N(.*)$ n$1 [L]
+
+
+# 0.06 2013-11-29-20:44 Disable the rules -- the desired result not obtained
+# 0.05 2013-11-29-20:36 Go back to $1 because $0 is not the intended case
+# 0.04 2013-11-29-20:11 Give up on redirection
+# 0.03 2013-11-29-20:01 Use $0, not $1, and restore redirection too.
+# 0.02 2013-11-29-19:50 Give up on Redirection
+#      It seems to simply scrap the rule if a redirect is specified.  This
+#      may be a base problem.  It is not critical.
+# 0.01 2013-11-29-19:42 Introduce [R=301,L] to redirect for as long as
+#      needed and then just support the now-official n-prefix forms.
+# 0.00 2013-11-29-18:08 Rewrite Nyymmnnx accession filenames to nyymmnnx form.
+#      This is a provisional arrangement to change URLs until enough time has
+#      passed long enough to use only the official n-prefixed form.
+#
+# $Header: /A2HostingWeb/miser/notes/2001/02/.htaccess 17    13-11-29 20:48 Orcmid $
+#
+#                *** end of Miser notes/2001/02/.htaccess ***

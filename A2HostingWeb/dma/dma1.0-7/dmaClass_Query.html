@@ -1,0 +1,79 @@
+<html><head><title>dmaClass_Query Reference</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff"><h3>
+ dmaClass_Query</h3><p>
+The complete definition of a query, including control settings.<p><b>Class ID:</b> dmaClass_Query<br>
+<b>Superclass:</b> <A href="dmaClass_DMA.html">DMA</A><br>
+<h4><b>Interfaces</b></h4><a href="IUnknown.html" > IUnknown</a><br><a href="IdmaObject.html" > IdmaObject</a><br><a href="IdmaProperties.html" > IdmaProperties</a><br><a href="IdmaEditProperties.html" > IdmaEditProperties</a>
+<h4><b>Properties</b></h4><p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Impl. Required</b></p></TD><TD><p><b>System Gen'ed</b></p></TD><TD><p><b>Read-Only</b></p></TD>
+<TD><p><b>Value Required</b></p></TD><TD><p><b>Type</b></p></TD><TD><p><b>Cardinality</b></p></TD><TD><p><b>Required Class</b></p></TD></TR><TR><TD><p><A name="TdmaProp_OIID">OIID</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ClassDescription">Class Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Class Description</p></TD></TR><TR><TD><p><A name="TdmaProp_This">This</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Query</p></TD></TR><TR><TD><p><A name="TdmaProp_CreatePending">Create Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_UpdatePending">Update Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DeletePending">Delete Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_QueryRoot">Query Root</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Query Root</p></TD></TR><TR><TD><p><A name="TdmaProp_BatchSizeHint">Batch Size Hint</A></p></TD><TD><p>-</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Integer32</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_MaximumResultItems">Maximum Result Items</A></p></TD><TD><p>-</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Integer32</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_TimeLimit">Time Limit</A></p></TD><TD><p>-</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Integer32</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_CollationSequenceId">Collation Sequence Id</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>ID</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR></TABLE><h4><b>Detailed Description</b></h4><p>
+<p>Query objects are passed to the ExecuteSearch method.  The main part of a Query is the Query Root property, which contains the entire description of the query.
+<h4><b>Property Descriptions</b></h4><p><b>• OIID     {<A name="dmaProp_OIID"></A><A href="dmaclass_query.html#TdmaProp_OIID">dmaProp_OIID</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Class Description     {<A name="dmaProp_ClassDescription"></A><A href="dmaclass_query.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• This     {<A name="dmaProp_This"></A><A href="dmaclass_query.html#TdmaProp_This">dmaProp_This</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Create Pending     {<A name="dmaProp_CreatePending"></A><A href="dmaclass_query.html#TdmaProp_CreatePending">dmaProp_CreatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Update Pending     {<A name="dmaProp_UpdatePending"></A><A href="dmaclass_query.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Delete Pending     {<A name="dmaProp_DeletePending"></A><A href="dmaclass_query.html#TdmaProp_DeletePending">dmaProp_DeletePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Query Root     {<A name="dmaProp_QueryRoot"></A><A href="dmaclass_query.html#TdmaProp_QueryRoot">dmaProp_QueryRoot</A>}</b>
+<p>
+This specifies the query to be performed.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• Batch Size Hint     {<A name="dmaProp_BatchSizeHint"></A><A href="dmaclass_query.html#TdmaProp_BatchSizeHint">dmaProp_BatchSizeHint</A>}</b>
+<p>
+
+</p><p>
+<p>This integer property is relevant for the case that result rows are generated incrementally on demand in groups of N.  The value of this property is a suggestion for N. If results are generated all at once, this property is simply ignored.
+<p>
+</p>
+<p><b>• Maximum Result Items     {<A name="dmaProp_MaximumResultItems"></A><A href="dmaclass_query.html#TdmaProp_MaximumResultItems">dmaProp_MaximumResultItems</A>}</b>
+<p>
+
+</p><p>
+<p>The value of this property indicates to the scope that it need not return more than the specified number of rows. If the result set is truncated as a result of reaching this upper limit, the result code DMARC_MAX_ROWS is returned. The value of this property is passed to all the component scopes
+<p>
+</p>
+<p><b>• Time Limit     {<A name="dmaProp_TimeLimit"></A><A href="dmaclass_query.html#TdmaProp_TimeLimit">dmaProp_TimeLimit</A>}</b>
+<p>
+This integer property gives a hint as to the maximum number of elapsed seconds between the time ExecuteSearch is called and the time query result items need no longer be returned. In the case of merged scopes, the hint applies to each of the component scopes separately as well as to the merged scope itself.
+</p><p>
+<p>When a result set is truncated because of this time limit being exceeded, IdmaResultRow::GetNextResultRow returns DMARC_TIMEOUT. If results are truncated for multiple different reasons (e.g., DMARC_MAX_ROWS and DMARC_TIMEOUT), the result DMARC_TRUNCATED is returned.
+<p>
+</p>
+<p><b>• Collation Sequence Id     {<A name="dmaProp_CollationSequenceId"></A><A href="dmaclass_query.html#TdmaProp_CollationSequenceId">dmaProp_CollationSequenceId</A>}</b>
+<p>
+This property specifies the text collation sequence to be used for all comparisons of string properties in all scopes executing the query.
+</p><p>
+<p>
+<p>
+</p>
+</body></html>

@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>cosample2.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996, 1997 by the 
+ *  Association for Information and Image Management Int'l
+ *                  1100 Wayne Avenue
+ *                  Silver Spring, MD 20910-5603
+ *                  Tel: 301/587-8202
+ *                  Fax: 301/587-2711
+ *  All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *
+ *  Containment Model code example: 
+ *      Adding a DocVersion object into a Container object 
+ *      using direct containment relationship DMA 1.0
+ *  
+ */
+
+#ifndef NULL
+#   define NULL    0
+#endif
+
+#include &lt;stdio.h&gt;
+#include &lt;dmatypes.h&gt;
+#include &lt;dmacom.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaidvar.h&gt;
+#include &lt;dmacaps.h&gt;
+
+//
+// Code example: Adding a DocVersion object into a Container object using 
+// direct containment relationship. 
+//
+// Also, demonstrates the use of the docspace capabilities to determine
+// support for direct containment.
+//
+// Assumes that connections to system and doc space have already been made
+// (see "System and Document Space Connection Example") and that the doc id 
+// of the target document has been found (by search or navigation)
+//
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+DmaRC
+ReportError(DmaRC rc, char *msg)
+{
+    // Do stuff here to display error msg
+    return DMARC_OK;
+}
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+DmaRC 
+Abort(DmaRC rc, char *msg)
+{
+    ReportError(rc, msg);
+    return (rc);
+}
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+DmaRC
+Message(char *pszMessage)
+{
+    // information message display code here
+    return DMARC_OK;
+}
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+DmaRC
+CheckContainmentCapability (LPIdmaDocSpace    pIDocSpace)
+{
+    DmaRC                   rc;
+    LPIdmaProperties        pIDocSpaceProps = NULL;
+    DmaInteger32            nCapabilityValue = DMA_TRUE; // default is set
+    LPIdmaListOfInteger32   pICapabilitiesList;
+
+    // Get the properties interface from the docspace
+    rc = pIDocSpace-&gt;QueryInterface ( IID_IdmaProperties, 
+                        (pDmapv)&amp;pIDocSpaceProps );
+    if ( rc != DMARC_OK )
+    {
+        Abort (rc,"Cannot get properties interface on DocSpace");
+        return DMARC_ABORT;
+    }
+
+    // Get the DocSpace Capabilities property
+    // Note: we must be authenticated to the docspace
+    // to obtain any object valued properties.
+    rc = pIDocSpaceProps-&gt;GetPropValObjectById (
+                                &amp;dmaProp_DocSpaceCapabilities,
+                                IID_IdmaListOfInteger32,
+                                (pDmapv)&amp;pICapabilitiesList );
+
+    if ( (rc != DMARC_OK) || (pICapabilitiesList == NULL) )
+    {
+        Abort (rc, "Cannot get the DocSpace's Capabilities property");
+        pIDocSpaceProps-&gt;Release();
+        return DMARC_ABORT;
+    }
+    else
+    {
+        // Get the capability value for direct containment
+        // Note: general docspace capabilities such as being a writable
+        // docspace, can all be determined via the various capability
+        // list values.
+        rc = pICapabilitiesList-&gt;GetInteger32 ( DMAC_CONTAIN_DIR, 
+                                &amp;nCapabilityValue );
+        if (( rc == DMARC_OK ) &amp;&amp; ( nCapabilityValue == DMA_TRUE ))
+        {
+            // direct containment is supported
+            pIDocSpaceProps-&gt;Release();
+            pICapabilitiesList-&gt;Release();
+            return DMARC_OK;
+        }
+        else
+        {
+            pIDocSpaceProps-&gt;Release();
+            pICapabilitiesList-&gt;Release();
+            return DMARC_FAILED;
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+DmaRC 
+InsertDocVersionIntoContainer(
+                  pDmaString        DocumentId, 
+                  pDmaString        pidContainer,
+                  LPIdmaSystem      pISystem,
+                  LPIdmaDocSpace    pIDocSpace )
+{
+    DmaRC                           rc;
+    LPIdmaProperties                pIDocVer             = NULL;
+    LPIdmaProperties                pIContainer          = NULL;
+    LPIdmaObjectFactory             pIObjectFactory      = NULL;
+    LPIdmaEditProperties            pIDirectRelationship = NULL;
+    LPIdmaListOfObject              pIChildrenList       = NULL;
+    LPIdmaConnection                pIConnection         = NULL;
+    LPIdmaObject                    pIFirstRelationship  = NULL;
+    LPIdmaBatch                     pIBatch              = NULL;
+    LPIdmaRelationshipOrdering      pIDirectRelationshipOrdering = NULL;
+
+
+    rc = CheckContainmentCapability ( pIDocSpace );
+    if ( rc != DMARC_OK )
+    {
+        Abort (rc, "Document space does not support direct containment");
+        // Note: must release all interface pointers obtained prior to
+        // any of the abonormal returns as below.
+        return DMARC_ABORT;
+    }
+
+    rc = pIDocSpace-&gt;ConnectObject( DocumentId, 
+                                    IID_IdmaProperties,
+                                    (pDmapv)&amp;pIDocVer );
+    if ( rc != DMARC_OK )
+    {
+        Abort (rc, "Failed to connect to doc ver");
+        return DMARC_ABORT;
+    }
+
+    // NOTE: for brevity, further error checking is omitted. All DMA calls
+    // should be followed by code similar to the above
+
+    rc = pIDocSpace-&gt;ConnectObject ( pidContainer, 
+                                     IID_IdmaProperties,
+                                     (pDmapv)&amp;pIContainer );
+
+    // Next, Get the DocSpace IObjectFactory interface,
+    // then create a new direct containment relationship object.
+
+    rc = pIDocSpace-&gt;QueryInterface( IID_IdmaObjectFactory, 
+                        (pDmapv)&amp;pIObjectFactory );
+    if ( rc != DMARC_OK )
+    {
+        // This could have been determined by checking the
+        // the appropriate capability value.
+        Abort(rc, "DocSpace does not allow object creation");
+        return DMARC_ABORT;
+    }
+    rc = pIObjectFactory-&gt;CreateObject(
+                        &amp;dmaClass_DirectContainmentRelationship,
+                        IID_IdmaEditProperties,
+                        (pDmapv)&amp;pIDirectRelationship );
+
+    // Check to see if this failed because the docspace 
+    // doesn't support direct containment
+
+    if ( rc != DMARC_OK )
+    {
+        Abort (rc, "Failed to get a direct containment relationship");
+        return DMARC_ABORT;
+    }
+
+    // Set the tail and head of the relationship object to point to the 
+    // container and docVersion, respectively
+    rc = pIDirectRelationship-&gt;PutPropValObjectById( &amp;dmaProp_Head,
+                                    pIDocVer );
+
+    rc = pIDirectRelationship-&gt;PutPropValObjectById( &amp;dmaProp_Tail,
+                                    pIContainer );
+
+  
+    // Get an interface to insert the relationship
+    rc = pIDirectRelationship-&gt;QueryInterface( IID_IdmaRelationshipOrdering,
+                                    (pDmapv)&amp;pIDirectRelationshipOrdering );
+
+    // release our property interface
+    pIDirectRelationship-&gt;Release();
+
+    // For this example, we want to insert this as the first relationship 
+    // in the containing folder. But we don't care where the relationship is 
+    // inserted on the document end (Because this is a direct containment 
+    // relationship,this will be the only direct relationship connecting 
+    // this document with this folder)
+
+    // Get the first relationship in the folder's dmaProp_Children list.
+    rc = pIContainer-&gt;GetPropValObjectById( &amp;dmaProp_Children,
+                                    IID_IdmaListOfObject,
+                                    (pDmapv) &amp;pIChildrenList );
+
+    rc = pIChildrenList-&gt;GetObject( 0, 
+                                    IID_IdmaObject,
+                                    (pDmapv)&amp;pIFirstRelationship );
+
+    rc = pIDirectRelationshipOrdering-&gt;SetOrdering( pIFirstRelationship, 
+                                    DMA_POS_FIRST,
+                                    NULL, 
+                                    DMA_POS_ANYWHERE );
+
+    //
+    // In order to make this containment relationship as persistent
+    // Invoke the IdmaBatch::ExecuteChanges() on the DocSpace to save this
+    // object into the repository
+    //
+    rc = pIDocSpace-&gt;QueryInterface( IID_IdmaBatch, 
+                                     (pDmapv)pIBatch );
+    if ( DMARC_OK == rc )
+    {
+        // Create a List object to hold the objects need to save change back
+        // to the repository
+        LPIdmaEditListOfObject pIChangeList;
+        rc = pIObjectFactory-&gt;CreateObject(
+                                    &amp;dmaClass_ListOfObject, 
+                                    IID_IdmaEditListOfObject, 
+                                    (pDmapv)&amp;pIChangeList );
+        if ( DMARC_OK == rc )
+        {
+            // Insert the new relationship object to the change list
+            rc = pIChangeList-&gt;InsertObject( 1, 
+                                    pIDirectRelationshipOrdering );
+            if ( DMARC_OK == rc )
+            {
+                //
+                // Execute Changes to save to the repository
+                //
+                DmaIndex32 ulIndex;
+                rc = pIBatch-&gt;ExecuteChanges( NULL, // no callback procedure
+                                   pIChangeList,
+                                   &amp;ulIndex,
+                                   DMA_MODIFY_UNPROTECTED,
+                                   DMA_FALSE );    // Don't refresh objects
+                if ( DMARC_OK == rc )
+                {
+                    //
+                    // ### the docVersion is inserted into the container ###
+                    //
+                }
+                else
+                {
+                    // Do your error handling here
+                    ReportError(rc, "Cannot save the relationship" );
+                }
+            }
+            else
+            {
+                // Do your error handling here
+                ReportError(rc, "Cannot insert the relationship object");
+            }
+
+            // Release the List interface
+            pIChangeList-&gt;Release();
+        }
+
+        // Release the IdmaBatch interface
+        pIBatch-&gt;Release();
+    }
+
+    // Release docSpace's object factory interface
+    pIObjectFactory-&gt;Release();
+
+    // release interface pointers
+    pIChildrenList-&gt;Release();
+    pIDirectRelationshipOrdering-&gt;Release();
+    pIDirectRelationship-&gt;Release();
+    pIContainer-&gt;Release();
+    pIDocVer-&gt;Release();
+    pIConnection-&gt;Release();
+
+    return DMARC_OK;
+}
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+</FONT>
+</PRE>
+</BODY>
+</HTML>

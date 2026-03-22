@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000903.htm 4     01-03-06 8:12 Orcmid $-->
+<title>X000903: ODMQueryExecute Fails to Identify Partial Results</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000903.htm">X000903</a>:
+<code>ODMQueryExecute</code>
+</b>  Fails to Identify Partial Results</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-06-08:09 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000903.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Functionality - Defect</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000903">X000903</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>6 - Serious</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Correction Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>
+        2.0.0 and <b><code>Odma.dll</code></b> 2.0.0</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd</a> </b></dt>
+          <dd><br>
+          </dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: tbd</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#VJMohan">V.
+        J. Mohan</a> (2000-09-18)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-09-19</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>    (2000-09-20):</h3>
+
+<blockquote>
+  <p>The operation <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryExecute">ODMQueryExecute</a></code></b>
+  is defined to provide <b>partial results</b>.&nbsp; When a query against
+  multiple DMS integrations is able to obtain results from only a portion of
+  them, <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.16ReturnValue">ODMSTATUS</a></code></b>
+  value <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_PARTIALSUCCESS2.16">ODM_E_PARTIALSUCCESS</a></code></b>
+  is to be returned.</p>
+  <p>In the implementations of the ODMA 2.0 Connection Managers, versions <b><code>ODMA32.dll</code></b>
+  2.0.0 and <b><code>Odma.dll</code></b> 2.0.0, there is an error such that <b><code>ODM_E_PARTIALSUCCESS</code></b>
+  is never reported.&nbsp; Instead, when there is a partial result <b><code>ODMQueryExecute</code></b>
+  will provide an <b><code>ODM_SUCCESS</code></b>&nbsp; response instead.</p>
+  <p>This situation is considered important: the functionality defined for ODMA
+  is not being delivered.&nbsp; There have been no reported incidents of this as
+  an experienced failure in actual usage of ODMA.&nbsp; This is attributed to
+  the rarity of ODMA-aware applications that provide use of the
+  ODMA-1.5-introduced query extensions.&nbsp; Also, partial results masquerading
+  as complete results are easily overlooked -- or attributed to DMS problems.</p>
+</blockquote>
+<h3><a name="Actions">Actions</a>    (2000-09-27):</h3>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the repair that is needed.&nbsp;
+      [2000-09-20: Completed]</li>
+    <li>In the <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">ODMA
+      2.0 Specification Errata</a>, identify the improper designation of <b><code>ODM_E_PARTIALSUCCESS</code></b>
+      as a failure (<b><code>E</code></b>) code rather than a warning (<b><code>W</code></b>)
+      code and propose introduction of <b><code>ODM_W_PARTIALSUCCESS</code></b>
+      as the preferred naming of the <b><code>ODMSTATUS</code></b> value.&nbsp;
+      This can be done as part of Incident <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000301">X000301</a>.
+      [2000-09-20: <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm#X000903-2">Completed</a>]</li>
+    <li>Open a project for developing a maintenance and functionality release
+      2.0.1 of the ODMA 2.0 Connection Managers.&nbsp; That release will include
+      the remedy for this incident, following more-comprehensive analysis.&nbsp;
+      This will be project <a href="http://www.infonuovo.com/odma/projects/P000902.htm">P000902</a>.
+      [2000-09-27: Project Opened]</li>
+    <li>Produce an updated, tested Connection Manager in which the repair is
+      confirmed.&nbsp;&nbsp;</li>
+    <li>Announce the Connection Manager revision and have it be available for
+      download.</li>
+    <li>Close this incident report when (1-5) are complete and it is clear that
+      proper operation of <b><code>ODMQueryExecute</code></b> is fully
+      confirmed.</li>
+  </ol>
+</blockquote>
+<h3><a name="Investigation">Investigation</a>    (2000-09-19):</h3>
+<blockquote>
+<p>The following steps were taken to confirm the claims made in this incident
+report:</p>
+  <ol>
+    <li>The ODMA 2.0 Connection Manager <a href="http://www.infonuovo.com/odma/downloads/default.htm#ODMA-20-Source">source
+      code</a> for ODMA32.dll 2.0.0 was inspected and the <a href="X000903a.htm">reported
+      defect</a> wasn't found.</li>
+    <li>The same source code was installed as a Microsoft VC++ 6.0 Project,
+      after being put under source-code control on a development system.&nbsp;
+      Recompiling using the original project files produced the error message
+      that was reported by V. J. Mohan.&nbsp; In step (1), Dennis had looked for
+      just the opposite error (<b><code>=</code></b> where <b><code>==</code></b>
+      was required).&nbsp; He also <a href="X000903b.htm">misread the
+      consequences</a> of the defective code when it was first located.&nbsp;
+      Duhh.</li>
+    <li>Analysis of the code around the error point revealed that <b><code>client.cpp</code></b>
+      function <b><code>ODMClient::ClientQueryExecute</code></b> has the
+      sequence<br>
+      <br>
+      <code>&nbsp;&nbsp;&nbsp; <font color="#008000">// Set the error code
+      return value</font><br>
+      &nbsp;&nbsp;&nbsp; <font color="#000000"><b>if</b> (odm == ODM_SUCCESS)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> (m_queryDMss.IsEmpty())<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#008000">//
+      no good results yet<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // ... code
+      for the true case ...<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#000000"><b>else</b>
+      odm </font><font color="#FF0000">==</font><font color="#000000">
+      ODM_E_PARTIALSUCCESS;<br>
+      </font></code></li>
+    <li>The <font color="#FF0000"><b><code>==</code></b></font> should be <b><code>=</code></b>
+      to ever assign <b><code>ODM_E_PARTIALSUCCESS</code></b> to the return
+      value.</li>
+    <li>There are indications that this entire block of code needs to be
+      carefully reviewed and the failure modes analyzed for accuracy of
+      detection and for precision of return-value derivation.</li>
+  </ol>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-09-20-11:50 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-06 8:12 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

@@ -1,0 +1,199 @@
+d061201h-0.52beta-DropNotes.txt 0.01 UTF-8                    dh:2007-02-05
+
+                               STABILIZATION NOTE
+
+              ODMJNI 1.0 0.52beta Windows Handle Stabilization
+              ------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   The 0.60beta release of ODMJNI 1.0 is made up of a series of drops
+   that complete the stabilization of functionality on an area.  These
+   are focused increments that stabilize around a particular function.
+
+   The 0.52beta drop is the first increment beyond the 0.50beta Feature-
+   Complete release.
+
+   This drop stabilizes the association of ODMA DMS dialog windows with the
+   windows of the ODMA-aware Java application.
+
+            CONTENT
+                Synopsis
+                1. Requirement
+                2. Approach
+                3. Changes
+                   3.1 OdmNative100
+                   3.2 odmjni100
+                   3.3 System setup and integration
+                4. Confirmation of Changes
+                   4.1 Regression check
+                   4.2 Correction confirmation
+                   4.3 OdmNative confirmation
+                Copyright Notice
+                Attribution
+                Revision History
+
+1. REQUIREMENT
+
+   The ODMA DMS must be informed of the Microsoft Windows native window
+   handle (HWND value) of the Java application at the time that the
+   connection with the ODMA DMS is established.  Modal dialogs displayed
+   by the DMS will then be correctly associated with the correct application
+   window on the GUI desktop.
+
+2. APPROACH
+
+   0.52beta introduces an alternative method for creating an ODMJNI
+   connection:
+
+            import info.odma.practical100.*;
+
+            import info.odma.odmjni100.*;
+
+            OdmConnection
+                MyOdma = OdmJniBind.application
+                            ( java.lang.String myAppId,
+                               java.awt.Window myAppWindow );
+
+   where the myAppWindow parameter is a reference to the the AWT Window
+   instance (or subclass) that corresponds to the main Window of the
+   application.
+
+   This window must already exist and should already be displayed when
+   the OdmJniBind.application operation is performed.  The implementation
+   of the OdmConnection interface and any further interfaces obtained from
+   it must all have their release() methods performed before the window is
+   closed and the application terminated.
+
+   ODMJNI now determines the native GUI window that is used in the
+   underlying implementation and retains that Windows handle for
+   communication to every ODMA DMS that is used during the lifetime
+   of the connection.
+
+3. CHANGES
+
+3.1 OdmNative100
+
+   The OdmBindNative100 factory function is extended to have an
+   additional HWND parameter that is the Windows handle of a native
+   window to be used as the main application window of modal dialogs from
+   any ODMA DMS used via the implemented IodmApplication100 interface and
+   any other interface implementations obtained from it.  The supplied
+   HWND parameter may be NULL.
+
+   There are no changes to OdmNative100 interfaces themselves.
+
+   Whenever it is necessary to connect with a DMS via the ODMA Connection
+   Manager (using the ODMRegisterApp API function), the supplied HWND value
+   is passed as a parameter.
+
+   If the supplied HWND value is NULL, OdmNative100 will attempt to obtain
+   a suitable HWND by an internal heuristic.  This heuristic is only
+   reliable for console applications and some Windows GUI applications,
+   not Java GUI applications.
+
+3.2 odmjni100
+
+   The OdmJniBind.application(java.lang.String myAppId) operation is
+   modifed to supply a NULL HWND parameter to OdmJniBindNative100 in
+   its getIodmNative implementation.
+
+   The new OdmJniBind.application(myAppId, myAppWindow) uses a different
+   native method, getIodmWinNative, that determines the Windows handle of
+   the supplied java.awt.Window instance.  This native implementation relies
+   on features JNI AWT libraries to access the AWT implementation and
+   retrieve native Windows information from the implementation.
+
+3.3 System Setup and Integration
+
+   The use of Java AWT libraries requires some additional setup and
+   integration.   These changes are incorporated in the scripts that are
+   updated in the 0.52beta drop:
+
+   3.3.1 Building odmjni100.dll.  The DLL construction requires additional
+   headers plus the jawt.lib file that is part of the JDK \lib directory.
+   The BuildDLL.bat script is updated to incorporate the additional library
+   files (using an options file, odmjni100.opt).  The OdmJNI.bat script is
+   modified to provide the additional LIB path.
+
+   3.3.2 Running ODMJNI Applications.  The odmjni100.dll now depends on the
+   jawt.dll that is part of the JDK \jre\bin directory.  The OdmJava.bat
+   script is updated to add that directory to the PATH environment variable.
+   Similar provisions must be made in deployment of ODMJNI for use with a
+   particular Java runtime.
+
+
+4. CONFIRMATION OF CHANGES
+
+4.1 Regression Check
+
+   An additional Java Swing test directory, test\CheckSwing, is added to the
+   odmjni100 test suite.  The program OdmClicker creates a minimal Swing
+   window that steps through OdmConnection interface operations.  The
+   presentation of DMS document-selection dialogs repeats until "Cancel" is
+   selected.
+
+   OdmClicker is not a demonstration of full and correct ODMA-aware
+   operation.  The only purpose is to obtain a connection and cause DMS
+   dialogs to appear.
+
+   The initial version worked with the 0.50beta release and functioned
+   correctly except the new application(myAppId, myAppWindow) operation is
+   not used.
+
+4.2 Correction Confirmation
+
+   After the the changes were made to OdmNative100 and odmjni100, the
+   OdmClicker was modified to use the new OdmJniBind.application method.
+   This modification confirms that the proper hWnd parameter is now being
+   passed down to ODMA for use by the ODMA DMS integrations.
+
+4.3 OdmNative Confirmation
+
+   There is no independent test at the OdmNative100 level.  The change
+   at this level is too simple to require an independent test program until
+   the OdmNative100 library is tested for wider use in native Windows
+   applications.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+               Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Stabilization Note: ODMJNI 1.0 0.52beta Windows Handle Stabiliza-
+        tion, ODMA Interoperability Exchange, ODMdev Development Note page
+        d061201h-0.52beta-DropNotes.txt 0.01, February 5, 2007.  Current
+        version available as part of the archive downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-02-05-22:30 Update to reflect the final status of 0.52beta
+0.00 2007-01-14-19:15 Sketch the 0.52beta Drop stabilization of Windows
+     handle location for use in making reliable DMS Dialog displays.
+
+
+$Header: /ODMdev/d061201h-0.52beta-DropNotes.txt 2     07-02-05 22:32 Orcmid $
+
+                 *** END OF d061201h-0.52beta-DropNotes.txt ***
+

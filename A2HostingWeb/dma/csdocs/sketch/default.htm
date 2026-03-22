@@ -1,0 +1,946 @@
+<html>
+<!--$$Heading:                                                           $-->
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>CSDocs Architecture Sketch</title>
+<!--$$Header: /InfoNuovo Conclave Web/dma/csdocs/sketch/default.htm 27    01-05-03 17:59 Orcmid $-->
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><em>CSDocs Architecture Sketch</em></h1>
+
+<h1 align="center">Compound/Structured-Document Extensions to DMA 1.0</h1>
+
+<blockquote>
+  <p align="left"><em>These pages provide a sketch of the overall architecture for CSDocs,
+  the extensions to the DMA 1.0 model for Compound/Structured Documents.</em></p>
+  <p align="left"><em>This is work in progress.&nbsp; It is organized in this fashion to
+  have more flexibility in annotation, cross linking, and other operations while the
+  architectural sketch is being drafted, explored, validated, and revised.&nbsp; The HTML is
+  used at a level that is easily incorporated back into one or more DMA Architecture Change
+  Proposals later in the process.</em></p>
+  <p align="left"><em><strong>This is an intermediate top-level piece to the sketch: a
+  sketch-of-the-sketch.&nbsp; This more-informal presentation is circulated and posted in
+  order to obtain early review and give all Technical Committee and DMA participants a sense
+  of the current direction.&nbsp; </strong>The key ideas are presented and developed in the <a href="#Approach">Architectural Approach</a> section.&nbsp; This is the roadmap being
+  followed.&nbsp;&nbsp; Later sections expand on the roadmap and provide current
+  information, location of specification drafts, and so on.&nbsp; The <a href="#NewStuff">What's
+  New?</a> section indicates where the authors and subcommittee are concentrating in current
+  work on the proposal.&nbsp; The <a href="#About">About This Material</a> section provides
+  information on how to obtain the latest information on the sketch and other CSDocs
+  activities.</em></p>
+  <p align="left"><em>The <strong>CSDocs Foundation</strong> draft proposal is now available
+  in <a href="CSDocsFoundation00.html">HTML</a> and <a href="CSDocsFoundation00.doc">Word
+  format</a>.</em></p>
+  <p align="center"><strong><em>This is sketch version 1.8 created on
+  2001-05-03-17:50 -0700 (pdt)</em></strong></p>
+  <hr>
+</blockquote>
+
+<blockquote>
+  <h2><a name="Content"><em>Content</em></a></h2>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><h3><a href="#NewStuff">What's New?</a></h3>
+    </li>
+    <li><h3><a href="#About">About This Material</a></h3>
+    </li>
+  </ul>
+</blockquote>
+
+<h2><a href="default.htm#Approach">Architectural Approach</a></h2>
+
+<blockquote>
+  <h3><a href="default.htm#CSDocsModularity">CSDocs Modularity</a></h3>
+  <h3><a href="default.htm#CSDocsFoundation">CSDocs Foundation</a></h3>
+  <h3><a href="default.htm#AdvancedFeatures">Advanced Features</a></h3>
+  <h3><a href="default.htm#PostponedExtensions">Postponed CSDocs Extensions</a></h3>
+</blockquote>
+
+<h2>CSDocs Foundation</h2>
+
+<blockquote>
+  <h3><a href="default.htm#Basic">Basic Compound/Structured Document Model</a></h3>
+  <h3><a href="#CSRootRenditions">CSRoot Renditions of Compound/Structured Documents</a></h3>
+  <h3><a href="default.htm#UniqueIdentifiability">Unique Identifiability of Persistent DMA
+  Elements</a></h3>
+  <h3><a href="default.htm#SpecifyingContentDependency">Specifying the Content Dependencies
+  of Compound/Structured Documents</a></h3>
+</blockquote>
+
+<h2>CSDocs Advanced Features</h2>
+
+<blockquote>
+  <h3><a href="default.htm#DirectNavigation">Direct Navigation to CSDocs Elements</a></h3>
+  <h3><a href="default.htm#VirtualElements">Virtual Elements</a></h3>
+</blockquote>
+
+<h2><a href="default.htm#Miscellaneous">Miscellaneous Topics</a></h2>
+
+<blockquote>
+  <h3><a href="default.htm#ElementURL">Access to DMA Elements by URL</a></h3>
+  <h3><a href="default.htm#PolicyMetadata">Metadata for Description of Policy Mechanisms</a></h3>
+  <h3><a href="default.htm#ReferentialIntegrityStrength">Specifying Referential-Integrity
+  Strength</a></h3>
+  <h3><a href="default.htm#FollowingVersions">Following New Versions with Relationships</a></h3>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1><a name="NewStuff">What's New?</a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="instidpo.htm">InstanceId Optionally-Supported on dmaClass_DMA objects: Position
+        statement and discussion</a></li>
+      <li><a href="instidid.htm">InstanceId has DmaId values: position statement and discussion</a></li>
+      <li><a href="CSDocsFoundation00.html">CSDocs Foundation Proposal</a>: initial draft (<a href="CSDocsFoundation00.doc">Microsoft Word 97</a>)</li>
+      <li><a href="CSDocsExisting00.html">CSDocs Information on Existing Systems</a>: initial draft
+        (<a href="CSDocsExisting00.doc">Microsoft Word 97</a>)</li>
+      <li>The sketch has been cleaned up editorially and there is more-careful use of UML in the
+        figures.</li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>Following the June 15-17, 1999 DMA Technical Committee meeting in Costa Mesa,
+  California, it was agreed to pursue the development of the proposal for the CSDocs
+  Foundation.&nbsp; On the June 29, 1999 CSDocs subcommittee conference call, there were
+  three topics (in two areas) to be deepened under the Foundation: <ol>
+    <li>How the <a href="#OverallRendition">level of abstraction of a CSRoot DocVersion</a> is
+      determined by a CSRoot-aware application,<br>
+      A brief position statement on CSRoot Renditions is included in the section on <a href="#CSRootRenditions">CSRoot Renditions, below</a>.</li>
+    <li>Where the<a href="#UniqueIdentifiability"> InstanceId</a> property is introduced into
+      the DMA class hierarchy.<br>
+      An expanded position statement on InstanceId generally, and location of the property
+      generally is now available <a href="instidpo.htm">here</a>.</li>
+    <li>How <a href="#UniqueIdentifiability">InstanceId</a> properties are formed, providing a
+      basis for referring to specific elements within an independently-persistent DMA object.<br>
+      An expanded position statement and discussion of the formation of InstanceId values is now
+      available <a href="instidid.htm">here</a>.</li>
+  </ol>
+  <p>The foundation proposal, promised for July 13 was not available at that time. &nbsp;
+  Discussion continued and the first draft of a complete foundation proposal was made
+  available on July 28.</p>
+  <p>While the CSDocs Foundation&nbsp; is being reviewed and advanced toward recommendation
+  by the CSDocs subcommittee for acceptance by the DMA Technical Committee, discussion and
+  proposal of Advanced Features will begin in parallel, via E-mail.</p>
+</blockquote>
+
+<h1><a name="About">About This Material</a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#DownloadLocations">Download Locations</a></li>
+      <li><a href="#RelatedResources">Related Materials and Information</a></li>
+    </ul>
+    <blockquote>
+      <p><a href="#Content"><em>to contents</em></a></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2 align="left"><a name="DownloadLocations">Download Locations</a></h2>
+
+<blockquote>
+  <p align="center"><font color="#008080"><strong><em>You are viewing a copy of the CSDocs
+  Architecture Sketch.&nbsp; It is not necessarily the latest version.</em></strong></font></p>
+</blockquote>
+
+<blockquote>
+  <p align="left"><strong><em>To obtain the latest version, look in&nbsp;</em></strong></p>
+  <ul>
+    <li><p align="left">The InfoNuovo.com site DMA Clearinghouse location <a href="http://www.infonuovo.com/dma/csdocs/sketch">http://www.infonuovo.com/dma/csdocs/sketch</a>.
+      &nbsp; A recent version of the material is at that location in the form of viewable web
+      pages.&nbsp;</p>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#About">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2 align="left"><a name="RelatedResources">Related Materials and Resources</a></h2>
+
+<blockquote>
+  <ul>
+    <li><p align="left">To obtain the ZIP file of all materials for this edition, <a href="cs990728.zip">click here</a>.</p>
+    </li>
+    <li><p align="left">To obtain the Microsoft PowerPoint slides of the CSDocs working
+      presentation to the June 15-17, 1999, DMA Technical Committee meeting, <a href="dhSketch.ppt">click here</a>.</p>
+    </li>
+    <li><p align="left">To obtain the <a href="CSDocsFoundation00.html">CSDocs Foundation Proposal</a>
+      (Microsoft Word 97), <a href="CSDocsFoundation00.doc">click here</a>.</p>
+    </li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p align="left"><em><a href="#About">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="Approach">Architectural Approach</a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="default.htm#CSDocsModularity">CSDocs Modularity</a></li>
+      <li><a href="default.htm#CSDocsFoundation">CSDocs Foundation</a></li>
+      <li><a href="default.htm#AdvancedFeatures">Advanced Features</a></li>
+      <li><a href="default.htm#PostponedExtensions">Postponed CSDocs Extensions</a></li>
+    </ul>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><em>It is intended that the CSDocs architecture be worked through and approved in
+  layers.&nbsp; The first level is for the foundation.&nbsp; Then there is an opportunity to
+  propose advanced extensions for a number of topics.&nbsp; Some developers require some or
+  all of the advanced extensions to deliver their complete compound-structured document
+  models.&nbsp; Other developers, and many applications, will operate at the simpler
+  foundation level, with more enforcement of the compounding rules by application agreement
+  instead of DocSpace object-model and policy mechanisms.</em></p>
+  <p><em>There are expected to be several architecture-change proposals as part of achieving
+  the CSDocs extensions.&nbsp; The foundation will be produced in a single proposal,
+  followed by supplements added to the foundation.</em></p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Approach">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="CSDocsModularity">CSDocs Modularity</a></h2>
+
+<blockquote>
+  <p>The table below shows the general modularization and progression of CSDocs
+  features.&nbsp;</p>
+</blockquote>
+
+<blockquote>
+  <div align="center"><center><table border="1" width="90%">
+    <tr>
+      <th width="15%" align="center" valign="middle" bordercolor="#000080" bordercolordark="#000080" bordercolorlight="#000080"><em><strong>Level</strong></em></th>
+      <th width="50%" align="center" valign="middle" bordercolor="#000080" bordercolordark="#000080"><em><strong>CSDocs Extensions</strong></em></th>
+      <th width="50%" align="center" valign="middle" bordercolor="#000080" bordercolordark="#000080"><em><strong>Generic DMA Extensions</strong></em></th>
+    </tr>
+    <tr>
+      <th width="15%" valign="middle" align="center" bordercolor="#000080" rowspan="3" bordercolordark="#000080" bordercolorlight="#000080"><p align="center"><a href="default.htm#FoundationLevel"><em><strong>Foundation</strong></em></a></th>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#Basic">Basic Compound/Structured Document Model</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080">-</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#OverallRendition">Overall Renditions of Compound/Structured Documents</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080">-</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#SpecifyingContentDependency">Specifying the Content Dependencies of
+      Compound/Structured Documents</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#UniqueIdentifiability">Unique Identifiability of Persistent DMA Elements</a></td>
+    </tr>
+    <tr>
+      <th width="15%" valign="middle" align="center" bordercolor="#000080" rowspan="6" bordercolordark="#000080" bordercolorlight="#000080"><p align="center"><a href="default.htm#AdvancedLevel"><em><strong>Advanced</strong></em></a></th>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#DirectNavigation">Direct Navigation to CSDocs Elements</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080">Direct Reference and
+      Navigation to Persistent DMA Elements*</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#VirtualComponents">Virtual Components in CSDocs</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#VirtualElements">DMA Extensions for Virtual Elements</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080" rowspan="3"><a href="default.htm#Miscellaneous">Miscellaneous</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#ElementURL">Access to DMA Elements by URL</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#PolicyMetadata">Metadata for Description of Policy Mechanisms</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080"><a href="default.htm#ReferentialIntegrityStrength">Specifying Referential-Integrity Strength</a></td>
+    </tr>
+    <tr>
+      <td valign="middle" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080"><a href="#FollowingVersions">Following New Versions of
+      Components</a></td>
+      <td width="50%" valign="middle" align="left" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080">Following New Versions with
+      Relationships*</td>
+    </tr>
+  </table>
+  </center></div>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em>* these two topics are not expanded upon in this sketch.&nbsp; The potential
+      generalization beyond the CSDocs-specific cases is straightforward.</em></p>
+      <p><em><a href="#Approach">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="CSDocsFoundation">CSDocs Foundation</a></h2>
+
+<blockquote>
+  <p>The first three topics are candidates for inclusion into a single CSDocs foundation
+  proposal: </p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>The <a href="default.htm#Basic">Basic Compound Document Model</a> establishes a new
+      Relationship class that represents the dependencies of root documents on component
+      documents.&nbsp; This is used for all compound-document dependencies under CSDocs. &nbsp;
+      The nomenclature around roots and components, and structures of them, is defined to be
+      application neutral.</li>
+    <li>The <a href="default.htm#OverallRendition">Overall Renditions</a> approach addresses the
+      way that renditions, if any, of a root document are related to the overall content of the
+      compound document that is represented.</li>
+    <li>The relationship between a root and component&nbsp; is often a relationship between an
+      element of the root's content structure (rendition or content element) and an element of
+      the component's content structure.&nbsp; The third foundational extension augments the
+      basic model so that the particular internal <a href="default.htm#SpecifyingContentDependency">elements involved in the relationship</a>
+      are explicitly identifiable.</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Approach">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="AdvancedFeatures">Advanced Features</a></h2>
+
+<blockquote>
+  <p>The advanced extensions for CSDocs are often best accomplished by introducing generic
+  extensions to DMA.</p>
+  <p>The advanced-level extensions are: </p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li><a href="#DirectNavigation">Direct navigation to dependently-persistent elements</a></li>
+    <li><a href="#VirtualElements">Virtual elements in compound relationships</a></li>
+    <li><a href="#ElementURL">Accessing DMA elements by URL</a></li>
+    <li><a href="#PolicyMetadata">Metadata for specifying constraints and policies</a></li>
+    <li><a href="#ReferentialIntegrityStrength">Referential-integrity strength</a></li>
+    <li><a href="#FollowingVersions">Following new versions of components</a>&nbsp;</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Approach">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h2><a name="PostponedExtensions">Postponed CSDocs Extensions</a></h2>
+
+<blockquote>
+  <p>There are also potential interactions with CBSearch that are not addressed in the
+  current sketch.</p>
+  <p>There are also potentially-complex interactions with extensions of the DMA 1.0
+  Versioning model to support complex configurations (especially branching).</p>
+  <p>Features of the current sketch might also be postponed to accelerate initial trial use
+  and agreement on the basic features of DMA CSDocs extensions.</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Approach">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="Basic">Basic Compound/Structured Document Model</a></h1>
+
+<blockquote>
+  <p><em>The basic compound document model establishes how the constituents of a compound
+  document can be represented in structures of separate DMA objects.&nbsp; The
+  interdependencies among the objects are established with DMA relationship objects:</em></p>
+</blockquote>
+
+<p align="center"><a href="csd990504-basic-scheme.vsd"><img src="csd990504-basic-scheme.gif" alt="Basic Compound Documents (UML)" width="497" height="373"></a></p>
+
+<p align="center"><strong><a name="Figure1">Figure 1</a> UML scheme for Basic Compound
+Documents (a) with typical instance (b)<br>
+[<a href="csd990504-basic-scheme.vsd">click for Visio version</a>]</strong></p>
+
+<blockquote>
+  <p>1. The CSDocs extension depends on a new optionally-supported subclass of the DMA 1.0
+  dmaClass_Relationship class. This is the <a href="dmaClass_CSRelationship.html">dmaClass_CSRelationship</a>
+  class and its subclasses.&nbsp; </p>
+  <p>2. The reflective property of a dmaClass_CSRelationship dmaProp_Tail property is always
+  a dmaProp_CSComponents enumeration property.&nbsp; <ul>
+    <li>Any DMA object that has a <a href="dmaClass_DocVersion-CSDocs.html#CSComponents">dmaProp_CSComponents</a>
+      property is usable as a CSRoot in a CSDocs compound document structure.&nbsp; </li>
+    <li>We call that object a CSRoot object.&nbsp; It can be at the Tail of one or more
+      CSRelationships.</li>
+  </ul>
+  <p>3. The reflective property of a dmaClass_CSRelationship dmaProp_Head property is always
+  a dmaProp_CSRoots enumeration property.&nbsp; <ul>
+    <li>Any DMA object that has a <a href="dmaClass_DocVersion-CSDocs.html#CSRoots">dmaProp_CSRoots</a>
+      property is usable as a CSComponent of a CSDocs compound document structure.</li>
+    <li>We call that object a CSComponent object.&nbsp;&nbsp; It can be at the Head of one or
+      more CSRelationships.</li>
+  </ul>
+  <p>In the basic CSDocs model, an object can be both a CSRoot and a CSComponent.&nbsp; A
+  DocSpace may support a variety of different families of CSDocs structures by use of
+  subclassing and relationship restrictions.</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Basic">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="CSRootRenditions">CSRoot Renditions of Compound/Structured Documents</a></h1>
+
+<blockquote>
+  <p><em>The basic compound document model does not establish anything about the application
+  of the CSDocs structures.&nbsp; Anything about what a CSDocs structure is for and how one
+  employs the DocVersions that comprise it depends on application-agreement, published
+  profiles, and other practices around use of the basic compound document model.</em></p>
+  <p><em>The CSRoot Renditions principles are the first that ground CSDocs for specific,
+  practical application: Determining the relationship between the semantics of a CSRoot and
+  of any renditions it has.</em></p>
+  <p><em>This portion of the foundation represents the CSDocs response to the following
+  questions:&nbsp;&nbsp; </em></p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><em>If a CSRoot DocVersion has renditions, what is their specific role, if any, in the
+      CSDocs model?&nbsp; </em></li>
+    <li><em>What restrictions does this place on the flexibility for implementing different
+      families of useful CSDocs structures?</em></li>
+  </ul>
+</blockquote>
+
+<h2><a name="CSRootRenditionsPosition">Current Position Statement</a></h2>
+
+<blockquote>
+  <p>Here is the current position on renditions of CSRoot DocVersions.&nbsp; It is reflected
+  in the initial CSDocs Foundation proposal.&nbsp; Further discussion will be held to
+  establish the final position included in the CSDocs Foundation proposal.</p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>The renditions of a CSRoot document, as for any DocVersion, are at the same level of
+      abstraction.&nbsp; Either all of the renditions are for the overall compound document or
+      none of them are.</li>
+    <li>The <a href="dmaClass_DocVersion-CSDocs.html">CSRoot Style property</a> is necessary to
+      specify when the CSRoot renditions are <strong>not</strong> complete renditions of the
+      overall document that the CSRoot stands at the root of.</li>
+    <li>A CSRoot can be a CSComponent.&nbsp; It can contribute its elements as components of
+      another CSRoot the same as any CSComponent DocVersion (see Specifying Content
+      Dependencies,&nbsp; <a href="#SpecifyingContentDependency">below</a>).</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#OverallRendition">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="UniqueIdentifiability">Unique Identifiability of Persistent DMA Elements</a></h1>
+
+<blockquote>
+  <p><em>The extensions that CSDocs depends on to accomplish identification of and
+  navigation to dependently-persistent components is of value in all areas of DMA 1.0.&nbsp;
+  Because of that, it is recommended that a general proposal also be produced.&nbsp; The
+  related <a href="#SpecifyingContentDependency">CSDocs extension</a> then specifies
+  precisely how those extensions are exploited for CSDocs.</em></p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2>Current Position Statement</h2>
+
+<blockquote>
+  <p>This is a generic extension to DMA 1.0:&nbsp; </p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li><a href="instidpo.htm#BasicPositionStatement">It&nbsp; adds the optionally-supported
+      dmaProp_InstanceId property to dmaClass_DMA</a>. </li>
+    <li>dmaProp_InstanceId is an implementation-optional, system-derived, read-only, and
+      value-not-required property.</li>
+    <li><a href="instidid.htm">The value of dmaProp_InstanceId is of type DmaId</a>.</li>
+    <li>The property is meaningful only on persistent DMA objects.&nbsp; On a DMA object
+      instance for which there is (presently) no corresponding persistent element, any
+      dmaProp_InstanceId property must have no value.</li>
+    <li>If the property is supported on a persistent DMA object, it will have a unique value
+      from the time the persistent form is created until that particular persistent form no
+      longer exists.&nbsp; The value is never reused for another object.</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>The CSDocs subcommittee is currently discussing position elements (1) and (3). These
+  are discussed and explored further <a href="instidpo.htm">in separate position statements</a>
+  on the InstanceId.</p>
+  <p>This property is a valuable adjunct in query and in the unique identification of
+  elements of independently-persistent objects.&nbsp; The property permits globally-unique,
+  unambiguous identification regardless of the context of an element and does not depend on
+  applications to provide supplemental properties or introduce other practices to allow
+  elements to be uniquely identified.&nbsp; </p>
+  <p>This property is valuable in the property list of an independently-persistent object
+  also.&nbsp; The dmaProp_OIID property is a string and it includes location information and
+  a DocSpace-specific object identifier (the ObjectId field) as part of that URL-format
+  string.&nbsp; When an independently-persistent object has an Instance Id, it is
+  appropriate for this to be encoded in the OIID as the value of either the
+  IdmaOIID::GetObjectIdText method or the IdmaOIID::GetGUID method.</p>
+  <p>The current methods for accessing objects by their dmaProp_OIID property values are
+  confined to independently-persistent objects.&nbsp; It would be inconsistent and
+  disruptive to have dependently-persistent elements suddenly be returned by such an
+  operation performed by a DMA 1.0 client.&nbsp; To allow <a href="#DirectNavigation">direct
+  access</a> to a dependently-persistent element that is uniquely identifiable requires<a href="#ElementURL"> further extension</a> to the DMA 1.0 model.&nbsp; </p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#UniqueIdentifiability">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="ElementRelationships">Extending Navigation to Identify Specific Elements</a></h2>
+
+<blockquote>
+  <p>DMA relationship Head and Tail properties can only have independently-persistent
+  objects as their values.&nbsp; In general, all navigation from one independent object to
+  another is to an independently-persistent object and not a dependently-persistent element
+  of any object.&nbsp; For compound documents and other applications, it is useful to
+  supplement navigational properties to identify specific elements as the object of
+  navigation.</p>
+  <p>The idea is that the property for navigating to the independently-persistent object be
+  supplemented by additional properties to make an &quot;extended reference&quot; that
+  provide a unique path to a desired internal element.&nbsp; The scheme involves general
+  principles requiring that an unambiguous path to the element be determined. </p>
+  <p>In many cases, as in CSDocs, <a href="#SpecifyingContentDependency">a specific path</a>
+  is employed.&nbsp; If a generic path to an arbitrary element of a document is needed, it
+  can be satisfied by a dmaClass_ListOfId valued property that has a sequence of alternating
+  property identifications and dmaProp_InstanceId values: propid[1], instid[1], propid[2],
+  instid[2], ..., propid[n], instid[n].&nbsp; (This &quot;element path&quot; could even
+  thread through more than one object to its target.)</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#UniqueIdentifiability">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="SpecifyingContentDependency">Specifying the Content Dependencies of
+Compound/Structured Documents</a></h1>
+
+<blockquote>
+  <p><em>The next level of specialization extends CSRelationship subclasses to provide more
+  information about the way in which a root document depends on its component documents.</em></p>
+  <p><em>The capabilities for specifying dependently-persistent components do not alter the
+  fundamental characteristics of the DMA relationship object model.&nbsp; Relationships are
+  always between independently-persistent objects.&nbsp; This extension allows the
+  relationship to also identify the specific elements that participate in the relationship
+  when it is meaningful to do so.</em></p>
+  <p><em>The extension has two parts:<small> </small></em><ol>
+    <li><em>Elements of&nbsp; CSDocs DocVersions have optional properties that give them a <a href="#UniqueIdentifiability">unique identification</a>.&nbsp; This allows another object
+      to carry DmaId-valued properties for locating a specific, unique element within a CSRoot
+      or CSComponent object.</em></li>
+    <li><em>Additional properties are provided on a CSRelationship to qualify the dmaProp_Head
+      and dmaProp_Tail.&nbsp; These are used to determine which element of the CSRoot and
+      CSComponent are involved in the particular compound dependency relationship that a
+      CSRelationship object represents.</em></li>
+  </ol>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p><em><a href="#SpecifyingContentDependency">to top of section</a><br>
+        <a href="#Content">to contents</a></em></p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <p>The specialization of CSRelationship to have accurate identification of elements is as
+  follows. <ul>
+    <li>The CSRelationship class description has optional-supported additional properties: the
+      dmaProp_HeadRenditionId property and the dmaProp_HeadContentElementId property.</li>
+  </ul>
+  <p>The rules of interpretation for these properties are as follows: <ul>
+    <li>If there is no dmaProp_HeadRenditionId property, then the component is the object
+      supplied by dmaProp_Head.&nbsp; Any further specialization depends on external agreements,
+      application conventions, and the profile of the CSDocs structure being used.</li>
+    <li>If there is a dmaProp_HeadRenditionId property, and it has a value, then the
+      relationship head is refined to the dmaProp_Renditions list element that has the matching
+      &nbsp;dmaProp_InstanceId property value.&nbsp; If it has no value, then the component is
+      the object supplied by dmaProp_Head and there is no specific rendition that participates
+      in the relationship.&nbsp; It must be assumed that the entire CSComponent is relevant.</li>
+    <li>If there is a dmaProp_HeadContentElementId property, and it has a value, then the
+      relationship head is further refined to the dmaProp_ContentElements list element (of the
+      established Rendition) that has the matching dmaProp_InstanceId property value. &nbsp;The
+      dmaProp_HeadRenditionId property must be implemented if the dmaProp_HeadContentElementId
+      property is implemented.&nbsp; If the dmaProp_HeadRenditionId property has a value and the
+      dmaProp_HeadContentElementId property does not, then there is no specific content element
+      that participates in the relationship.&nbsp; It must be assumed that the entire Rendition
+      is relevant.</li>
+  </ul>
+  <p>The additional properties dmaProp_TailRenditionId and dmaProp_TailContentElementId are
+  introduced and used in the same way to provide refined identification of that part of a
+  CSRoot that depends on the component identified in the particular relationship object.</p>
+  <p>[It is not expected that every case of dependency is meaningful. That is, having a
+  content element at the tail and a rendition at the head might not make sense.&nbsp; On the
+  other hand, the scheme is perfectly general and users and systems can implement the cases
+  that matter for the CSDocs structures being used.&nbsp; The CSDocs model does not say what
+  the CSRelationship dependency is, it says that there is one.&nbsp; Subclassing and
+  additional edge data can be used to deal with specialized cases to the degree that is
+  essential to a particular kind of CSDocs structure. -- dh:99-05-25]</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#SpecifyingContentDependency">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="DirectNavigation">Direct Navigation to CSDocs Elements</a></h1>
+
+<blockquote>
+  <p>With the CSDocs provisions for identifying specific elements, the next level of
+  extensions involves direct navigation to an element as the value of an object-valued
+  property.&nbsp; That is, a navigational property can be a direct &quot;short-cut&quot;
+  that allows direct navigation to the target element.</p>
+  <p>The ordinary way to navigate from some object to an identified element is as follows: <ol>
+    <li>Traverse through the object-valued property (e.g., dmaProp_Head) that locates the
+      independently-persistent object having the desired element.</li>
+    <li>Use the path of dmaProp_InstanceId property values in any supplemental properties to
+      navigate to the precise element.</li>
+  </ol>
+  <p>For example, to find a CSComponent element by traversal from a CSRelationship object,
+  the operations are as follows: <ol type="a">
+    <li>Get the CSComponent DocVersion by traversing the dmaProp_Head property of the
+      CSRelationship object.</li>
+    <li>If the CSRelationship object has a dmaProp_HeadRenditionId property with a value,
+      traverse to the CSComponent DocVersion's dmaProp_Renditions list-valued property. &nbsp;
+      Search the list and stop on the Rendition object whose dmaProp_InstanceId property value
+      matches that given by the dmaProp_HeadRenditionId property value.</li>
+    <li>If the CSRelationship object also has a dmaProp_HeadContentElementId property with a
+      value, use the Rendition object of (b) and traverse to its dmaProp_ContentElements
+      list-valued property.&nbsp; Walk through the list and stop on the Content Element whose
+      dmaProp_InstanceId property matches that given by the dmaProp_HeadContentElementId
+      property value.</li>
+  </ol>
+  <p>Direct navigation has the exact same semantics.&nbsp;&nbsp; The necessary InstanceId
+  values must be provided in the CSRelationship object.&nbsp; There are also optional
+  direct-navigation properties, the dmaProp_HeadElement object-valued property and the
+  dmaProp_TailElement object-valued property.</p>
+  <p>Direct-navigation properties have no reflective property. &nbsp; The object-valued
+  property in (1) and the individual path property elements in (2) may also be made system
+  derived and read-only if direct navigation is the required way to set up the path to the
+  element.</p>
+  <p>A direct navigation is created by inserting the target element into the element
+  property using IdmaEditProperties::PutPropValObjectBy... in the usual way.&nbsp; When the
+  CSRelationship object is made persistent, the proper values are &quot;snapped&quot; into
+  the object-valued property for the independently-persistent object having the element and
+  for the InstanceId-valued properties that represent the path to the element.</p>
+  <p>When an object having such a reference is used, the identifying elements are enough to
+  allow the element to be found by the traversal method (1-2) above.&nbsp; Alternatively,
+  the dmaProp_...Element property can be traversed directly and an element will be provided <strong>by
+  direct navigation as if </strong>the traversal had been performed silently and only the
+  ultimate element then returned.&nbsp; The result is exactly the same.</p>
+  <p>[Side note: When direct navigation is supported, the properties for navigation to the
+  independently-persistent object (e.g., dmaProp_Head) and for direct navigation to the
+  element (e.g., dmaProp_HeadElement), will appear to be bound simultaneously, including the
+  path from the independently-persistent object to the intended element. In the case when it
+  is the CSComponent DocVersion that is the target (with no rendition or content element
+  identified), the two navigations are the same and bound to the same instance.
+  --dh:99-06-02]</p>
+  <p>To introduce direct navigation in the CSRelationship model, the basic extension
+  involves adding optionally-implemented properties dmaProp_HeadElement and
+  dmaProp_TailElement.&nbsp; </p>
+  <p>Any CSRelationship subclass that implements dmaProp_HeadElement will usually have
+  dmaProp_Head, dmaProp_HeadRenditionId and (if implemented) dmaProp_HeadContentElementId as
+  system-derived and read-only.&nbsp; Any CSRelationship subclass that implements
+  dmaProp_TailElement will have dmaProp_Tail, dmaProp_TailRenditionId and (if implemented)
+  dmaProp_ContentElementId as system derived and read-only.</p>
+  <p>Further streamlining of operation is supported in query if the dmaProp_HeadElement and
+  dmaProp_TailElement properties are selectable and are usable in query expressions (e.g.,
+  are properties usable in join relationships).</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#DirectNavigation">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="VirtualElements">Virtual Elements</a></h1>
+
+<blockquote>
+  <p>Virtual elements are an extension to DMA for having elements that are derived from
+  other, shared elements.&nbsp; The relationship between the virtual element and the shared
+  element on which it is based is established with dmaClass_Relationship subclasses.&nbsp;
+  Access to the virtual element automatically yields the information of the shared element,
+  as if the shared element were accessed instead.&nbsp; </p>
+  <p>Virtual elements have many valuable applications independent of CSDocs.&nbsp; They
+  provide for sharing of the same content material among different DocVersions, including
+  between versions of the same or different document.</p>
+</blockquote>
+
+<h3>DMA Extensions for Virtual Elements</h3>
+
+<blockquote>
+  <p>In addition to the use of the unique identification model and related extensions for
+  identification and navigation of elements, a new optional interface is added to
+  dmaClass_DMA (to have it available above all persistent elements that might be
+  virtualized).</p>
+  <p>This interface, IdmaVirtualElement, works like IdmaVersionable.&nbsp; The method
+  IdmaVirtualElement::SetDerivation takes a dmaClass_Relationship subclass object as its
+  operand, and it establishes the head of that relationship as the source for the
+  implementation of the virtually-derived element.&nbsp; The current element (the one with
+  the IdmaVirtualElement interface) is made a virtual element when it is successfully made
+  persistent.</p>
+  <p>A simple kind of virtual derivation is when the derivation provides the head object as
+  the literal implementation of the virtual element with at-most trivial embellishments.</p>
+</blockquote>
+
+<h3><a name="VirtualComponents">CSDocs Virtually-Derived Components</a></h3>
+
+<blockquote>
+  <p>A CSRelationship can be a virtual-derivation relationship. &nbsp; All that is required
+  is for the appropriate elements of the CSRoot to offer IdmaVirtualElement interfaces and
+  for there to be a CSRelationship subclass that is compatible for use in holding the
+  virtual-derivation relationship.</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#VirtualComponents">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="Miscellaneous">Miscellaneous Topics</a></h1>
+
+<blockquote>
+  <p>There are a number of additional extensions that are important for advanced CSDocs
+  features and for the satisfaction of all of the agreed CSDocs requirements:</p>
+</blockquote>
+
+<h2><a name="ElementURL">Access to DMA Elements by URL</a></h2>
+
+<blockquote>
+  <p>There is a requirement to also provide for direct access to elements with DMA objects
+  by URL.&nbsp; This becomes possible as a consequence of unique identifiability, the
+  provision of paths to components, and the ability to navigate directly to elements.&nbsp; </p>
+  <p>There is also supplemental machinery required in order to establish an appropriate URL
+  protocol (part of dma://) or protocols (part of http:// as well, etc.)</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Miscellaneous">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="PolicyMetadata">Metadata for Description of Policy Mechanisms</a></h2>
+
+<blockquote>
+  <p>The exploration of CSDocs has exposed a number of places where it is important to
+  explicitly add policy information about DMA classes and properties.&nbsp; </p>
+  <p>For example, it is important to be able to determine whether an object-valued property
+  requires an independently-persistent object for its value or whether it treats all
+  supplied values as sources for creation of a dependently-persistent value.&nbsp; There are
+  other places where supplemental description is needed to support users in understanding
+  the conditions to be satisfied when creating a new object of some class, when supplying
+  values for properties, and so on.</p>
+  <p>This extension involves addition of a new metadata subclass for identified and
+  registerable policies, using aliasable metadata identifications.&nbsp; The properties of
+  the object employ at least the standard display name and description capabilities to
+  provide human usable explanatory material and supplemental documentation.</p>
+  <p>The rules for these properties in creation of merged scopes are the same as if these
+  properties are unknown user-defined extensions of metadata.</p>
+</blockquote>
+
+<p align="center"><img src="csd990629-constraint-uml.gif" alt="Constraint Metadata Class" align="middle" width="183" height="329"></p>
+
+<p align="center"><a name="Figure2">Figure 2</a>. Introduction of Constraint Metadata
+Class</p>
+
+<p align="center">[<a href="csd990629-constraint-uml.vsd">click for Visio version</a>]</p>
+
+<blockquote>
+  <p align="left">Constraint metadata are added as the value of dmaProp_Constraints
+  list-of-object properties of class and property descriptions.&nbsp; Typical usage of
+  constraints is to specify a policy that is enforced on the usage of a class or on the
+  value of a property.&nbsp; For example,</p>
+  <ul>
+    <li><p align="left">that an object-valued property must be supplied with an
+      independently-persistent object for its value</p>
+    </li>
+    <li><p align="left">that an object-valued property will make its value dependently
+      persistent if the object having the property is made persistent</p>
+    </li>
+    <li><p align="left">that all instances of a class are system-derived and read-only and can
+      not be independently created under a given metadata space</p>
+    </li>
+    <li><p align="left">that persisting an instance of a particular dmaClass_Container subclass
+      will result in an initial container and it will be listed immediately on the
+      dmaProp_InitialContainers list of all subsequent connections to the DocSpace</p>
+    </li>
+    <li><p align="left">that deletion of an instance of a particular dmaClass_DocVersion
+      subclass will result in deletion of every containment relationship object of which the
+      instance is a head object, provided that the requester is permitted to have deleted them
+      all individually</p>
+    </li>
+    <li><p align="left">that instances of a particular dmaClass_VersionSeries subclass for which
+      dmaProp_IsPrimarySeries is set cannot be deleted</p>
+    </li>
+  </ul>
+  <p align="left">There will be a number of well-known constraints that are registered along
+  with the introduction of constraint metadata.</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Miscellaneous">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="ReferentialIntegrityStrength">Specifying Referential-Integrity Strength</a></h2>
+
+<p>The variety of ways that CSDocs structures are used increases the importance of
+addressing ways to control the strength of the CSRelationship and how insertion,
+replacement, and deletion of the CSRelationship, of the CSRoot, and of the CSComponent are
+handled.&nbsp; </p>
+
+<p>This is a valuable place for <a href="#PolicyMetadata">policy metadata</a> also, when
+the DocSpace has a fixed, non-specifiable policy concerning insertion, deletion, and
+replacement of CSRelationship objects and the involved CSRoot and CSComponent.</p>
+
+<p>In addition to being able to tell what the insertion, deletion, and replacement/update
+policies are for a CSRelationship object, it is desirable to provide ways for a requester
+to <em>specify</em> what the rules are to be for a given CSRelationship.&nbsp; This might
+be through properties specified on the CSRelationship or by some other means, such as
+offering different subclasses for the different supported constraints.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Miscellaneous">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="FollowingVersions">Following New Versions of Components</a></h2>
+
+<p>There is a general requirement in compound/structured documents, and in other use of
+versioned objects (e.g., container elements), to have a form of relationship that follows
+objects in a changing version series.&nbsp; A Head or Tail property will automatically
+leap to a new current version of the Version Series being tracked, for example.&nbsp; </p>
+
+<p>This mechanism allows an application to publish or manage a compound document that is
+simply the latest view formed with all of the latest versions of the components. &nbsp;
+This is expected to be in addition to the simple form of CSDocs versions that always have
+specific components for a specific root, regardless of how any of them occur as versions
+under one or more configuration histories.</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Miscellaneous">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+<div align="center"><p align="right">
+    created 1999-04-30-14:09 -0700 (pdt) by Dennis E. Hamilton<br>
+    <em>$$Author: Orcmid $<br>
+    $$Date: 01-05-03 17:59 $<br>
+    $$Revision: 27 $</em> 
+  </p>
+</div>
+</body>
+</html>

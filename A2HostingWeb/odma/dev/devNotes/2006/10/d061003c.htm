@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061003c: OdmNative100 Implementation Setup00: VC++ Command Line </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061003c.htm 79    13-08-22 12:53 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d061003"><font color="#990033">d061003</font></a><br>
+      	</font></strong>
+<strong>
+
+  <font color="#990033">&nbsp;<a href="d061003.htm"><font color="#990033">ODMJNI 
+1.0 OdmNative100 ODMA-Access Implementation</font></a><br>
+      <em><font size="5">Setup00: VC++ Command Line</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</code></b></p>
+<p align="right"><code><b><a target="_top" href="d061003c.htm">d061003c</a>&gt;</b></code><br>
+</font>
+      <a href="#0.04"><font size="1">0</font><small><small>.04</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+	<blockquote>
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest OdmNative material can be found via &nbsp; &lt;<b><a href="d061003b.htm"><font face="Courier New, Courier, Monospace">http://ODMA.info/dev/devNotes/2006/10/d061003b.htm</font></a></b>&gt;.</li>
+				<li><b>Next package: Setup01</b> &lt;<b><font face="Courier New, Courier, Monospace"><a href="d061003d.htm">http://ODMA.info/dev/devNotes/2006/10/d061003d.htm</a></font></b>&gt; 
+				takes the next step by verifying command-line compilations using 
+				the Microsoft Platform SDK.<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>This page:</b>&nbsp;&nbsp;<b>Setup00&nbsp; </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061003c.htm">http://ODMA.info/dev/devNotes/2006/10/d061003c.htm</a></font></b>&gt;.&nbsp;</li>
+				<li><b><a name="Downloads">Downloads</a>:</b><ul>
+				<li><b><font face="Courier New, Courier, Monospace"><a target="_top" href="d061003c.txt">d061003c.txt</a></font></b>: 
+				0.04 Manifest for the Setup00 code archive (14,117 byte <kbd><b>
+				.txt</b></kbd> file dated 2006-11-05-12:04).</li>
+				<li><font face="Courier New, Courier, Monospace"><b>
+				<a target="_top" href="../../../devNotes/tBlzT8bS/10/d061003c-OdmNative100-Setup00.zip">d061003c-OdmNative100-Setup00.zip</a></b></font>: 0.04 archive 
+				of the development tree for the Setup00 mini-project (38,090 
+				byte <font face="Courier New, Courier, Monospace"><b>.zip</b></font> 
+				file dated 2006-11-05-12:05).&nbsp; Review the manifest to 
+				determine whether it is worthwhile to download the Zip archive.</li>
+			</ul></li>
+			</ul></div>
+			
+
+</small>
+
+<p>Setup00 is the first setup confirmation stage for development of the 
+OdmNative100 classes for use by ODMJNI operations.&nbsp;&nbsp; Setup00 confirms 
+the setup of computer folders and scripts for building standard C Language 
+applications using VC++ 2005 Express Edition from the command line.</p>
+<p>The folder tree of Setup00 is structured for installation alongside the 
+source trees for the other portions of ODMJNI 1.0 development: <kbd><b>practical100</b></kbd> and 
+<kbd><b>odmjni100</b></kbd>.</p>
+
+</blockquote>
+<h2><a name="1" target="_top" href="#1">1</a>. Overview</h2>
+<blockquote>
+<p>The Setup stages provide progressive confirmation of the 
+		software build configuration, each introducing further levels of native Microsoft Windows and 
+		ODMA Connection Manager functions.&nbsp; These provide basic 
+confirmation in using small standalone test programs.&nbsp; After all of the 
+basic provision are confirmed in this manner, more elaborate versions are 
+developed under the Visual C++ <kbd><b>OdmNative</b></kbd> classes and <b><kbd>IodmNative</kbd></b> interfaces.</p>
+<p>Setup00 confirms</p>
+		<ul>
+			<li>Creation of a batch script that accesses the Visual C++ 2005 compiler 
+			and libraries for command-line compiling.<br>
+&nbsp;&nbsp; </li>
+			<li>Compilation of a simple console application that is easily 
+			installed, tested, and used on any Win32 configuration.<br>
+&nbsp;&nbsp; </li>
+			<li>Verification that the compiled code has no dependencies on 
+			anything but the standard Windows platform for Windows 2000 and 
+			later.&nbsp; The executable is completely self-contained for running 
+			on any supported Win32 system.&nbsp; (The confirmation was done 
+			using Windows 98 SE.)<br>
+&nbsp;&nbsp; </li>
+			<li>Packaging of the Setup materials in a way that can be duplicated 
+			on the computers of other developers and reviewers of the ODMJNI 
+			project.</li>
+</ul>
+<p>Additional details are found in the manifest file for <a href="#Downloads">
+download</a> of the code and scripts.</p>
+</blockquote>
+
+<h2><a name="2" target="_top" href="#2">2</a>. Developer Notes: Implementation</h2>
+<blockquote>
+	<ul>
+		<li>Setup00 has only been tested with Visual C++ 2005 Express Edition.&nbsp; 
+		The development scripts, especially the file <b><kbd>OdmVC++.bat</kbd></b>, 
+		have not been tested with other Visual C++ 2005 product versions.&nbsp; 
+		See the manifest for further considerations. </li>
+	</ul>
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 OdmNative ODMA-Access Implementation Setup00: VC++ 
+		Command Line.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d061003c 0.04, November 7, 2006.&nbsp; Available 
+		with downloadable software at &lt;<font face="Courier New, Courier, Monospace"><b><a target="_top" href="d061003c.htm">http://ODMA.info/dev/devNotes/2006/10/d061003c.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.04">0.04</a> 2006-11-07-16:32 Link in Setup02</b></dt>
+	<dd>The available Setup02 package is links in the version linkage area.&nbsp; 
+	This package is not obsolete, since it tests different aspects of the 
+	OdmNative setup.</dd>
+	<dt><b><a name="0.03">0.03</a> 2006-11-05-18:00 Change Title</b></dt>
+	<dd>The purpose of each setup is included in the title and the attribution.</dd>
+	<dt><b><a name="0.02">0.02</a> 2006-11-05-12:42 Maintenance Update</b></dt>
+	<dd>The <font face="Courier New, Courier, Monospace"><b>d061003c.txt</b></font> and the 
+	<font face="Courier New, Courier, Monospace"><b>.zip</b></font> archive have been updated to correct and 
+	amplify some of the narrative information.</dd>
+	<dt><b><a name="0.01">0.01</a> 2006-11-04-22:09 Preserve Setup00 Materials</b></dt>
+	<dd>The <font face="Courier New, Courier, Monospace"><b>d061003c.txt</b></font> manifest and 
+	<font face="Courier New, Courier, Monospace"><b>d0610003c-OdmNative100-Setup00.zip</b></font> 
+	materials are preserved as downloads from this page.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-10-27-16:23 Provide Placeholder for 
+	Tracking 0.01 Build Setup</b></dt>
+	<dd>Create placeholder that will be populated with information about the
+	<font face="Courier New, Courier, Monospace"><b>OdmNative</b></font> build setup.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="60%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2006-10-27-16:23 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 79 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

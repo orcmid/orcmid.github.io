@@ -1,0 +1,484 @@
+<html>
+
+<head><!--$$Header: /nfoCentrale Compagno Web/dmware/activities/A020900B.htm 5     02-12-14 13:51 Orcmid $-->
+
+<title>A030100A: 2003-01-20 WebDAV Property System and Registration Discussion</title>
+<base target="_self">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div align="center"><center>
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%">
+  <tr>
+
+
+
+    <td width="31%" height="6"></td>
+
+    <td width="39%" height="6"><h1 align="center"><font color="#990033"><strong>WebDAV</strong></font><br>
+      <strong><font color="#990033">Working Group</font><br>
+      <a href="A020900.htm">Interim Meeting</a></strong></h1>
+ 
+    </td>
+    <td width="30%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">DMware</a>&gt;<br>
+      <a href="./" target="_top">Activities</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="a030100a.htm" target="_top">A030100A</a>&gt;</code></b><br>
+      <small><small><a href="#0.00">0.00</a> 2003-01-21-10:54 -0800 (pst)</small></small></p></td>
+      
+  </tr>
+</table>
+</font>
+</center></div>
+
+
+
+<blockquote>
+<p align="center"><i><b>Held at Apple Computer, Cupertino California</b></i></p>
+
+<h2 align="center"><font face="Arial, Helvetica, Geneva, Swiss, Sans Serif"><strong><i>
+      2003-01-10 Session Notes</i></strong></font></h2>
+
+  <hr color="#990033">
+
+<h2 align="left"><a href="#AttendancePreliminaries">Attendance and Preliminaries</a></h2>
+
+<h2 align="left"><a href="#ActionItems">Action Items</a></h2>
+
+</blockquote>
+
+<h2 align="left">1. <a href="#Agenda"> Agenda</a></h2>
+
+<h2 align="left">2. <a href="#ACLSpecificationStatus">Data Types for WebDAV
+Properties</a></h2>
+
+<h2 align="left">3. ACL Discussion</h2>
+
+<h2 align="left">4. <a href="#PropertyRegistration">Property Registration</a></h2>
+
+<blockquote>
+  <hr color="#990033">
+</blockquote>
+<h1 align="left"><font color="#990033">2. <a name="DataTypesForProperties">Data
+Types for WebDAV Properties</a></font></h1>
+<blockquote>
+<p align="left">Julian provides review of the approaches.</p>
+<p align="left">Julian's proposal is to reuse the W3C XML Schema type library
+and instant type attribute.&nbsp; It will use the same approach as other
+adopters of XML Scheme.</p>
+<p align="left">&lt;Z:released xmlns:Z=&quot;<a href="http://ns.example.org/standardds/z39.50">http://ns.example.org/standardds/z39.50</a>&quot;<br>
+</p>
+<p align="left">url <a href="http://greenbytes.de/tech/webdav">http://greenbytes.de/tech/webdav</a></p>
+<p align="left">Julian's slides are also on the site.</p>
+<p align="left">Also, draft-reschke-webdav-property-datatypes-latest.html there</p>
+<p align="left">Minimizations</p>
+<p align="left">- don't marshall type information for RFC2518-defiined
+properties and for plain strings (the default)</p>
+<p align="left">- PropFind doesn't require you to do anything to the
+specification, and they can be supplied and clients who don't understand that
+discard it, but&nbsp;</p>
+<p align="left">PropPatch behavior.&nbsp; Features discovery.&nbsp; &quot;Upon
+successful typed PROPPATCH, returned type in multistatus response body (allows
+client to detect whether the type attribute was recognized or just
+ignored.&quot;</p>
+<p align="left">Additional property information</p>
+<p align="left">- hidden flag as a display hint for generic property editors and
+clients</p>
+<p align="left">- protected flag [I didn't get what this was]&nbsp;</p>
+<p align="left">- displayname attribute</p>
+<p align="left">Current main issues -&nbsp;</p>
+<p align="left">more work on displayname marshalling (challenges of language of
+the client)</p>
+<p align="left">relationship to &quot;document types&quot; (schema definition
+for required property set)</p>
+<p align="left">only works for live properties</p>
+<p align="left">Discussion that SharePoint has its own approach already for
+schemas, and&nbsp;</p>
+<p align="left">Review of desirability of it from AIIM perspective, reflection
+on a couple of others&nbsp;</p>
+<p align="left">Eric responds to the idea of not dealing with the schema, and
+read-only aspects of this.</p>
+<p align="left">Lisa gets into this and there is discussion of nuts and bolts
+stuff.</p>
+<p align="left">Question about how constraints work, etc.</p>
+<p align="left">What do we do about the requirements?</p>
+<p align="left">Don't want to deal with (1) what is the schema and schema
+discovery, and also (2) knowing about a supported type and how to introduce it
+on a resource</p>
+<p align="left">We seem to be centered on the following:</p>
+<ul>
+  <li>
+    <p align="left">Having a specification that can be applied along with WebDAV
+    but is independent.</li>
+  <li>
+    <p align="left">Address the ability to know what one is seeing in looking at
+    a property, and maybe how to patch it differently, if it can be set.</li>
+  <li>
+    <p align="left">Don't interfere with there being more, but don't make any
+    effort to specify it as part of this activity.</li>
+  <li>
+    <p align="left">Have a separate mailing list.&nbsp; Work on the requirements
+    on the main list and have a pseudo charter that fits on a single power-point
+    slide.</li>
+</ul>
+<p align="left">What to do with this draft. There is one
+implementation.&nbsp;&nbsp;</p>
+<p align="left">Make it a WebDAV working group item.&nbsp;&nbsp;</p>
+<p align="left">Jim Whitehead wants to see this progress with DASL, and
+recommends that it becomes a working group draft in the next 2-3
+months.&nbsp;&nbsp;</p>
+<p align="left">Chris objected to the meta discussion and has issues with the
+substance of the proposal.</p>
+</blockquote>
+<h1 align="left"><font color="#990033">3. <a name="ACLProposal">ACL Proposal</a></font></h1>
+<h2 align="left">3.1 Discussion of IESG Comments by Lisa</h2>
+<blockquote>
+  <p align="left">IETF have strong IESG security requirements, and it is not
+  good enough to just defer to HTTP</p>
+  <p align="left">We can require digest authentication even though HTTP doesn't</p>
+  <p align="left">Basic must be over SSL/TLS</p>
+  <p align="left">Delete must be mapped to specific permissions, etc.</p>
+  <p align="left">Model is excessively complex</p>
+  <ul>
+    <li>
+      <p align="left">Too much flexibility, too many options</li>
+    <li>
+      <p align="left">Humans will err</li>
+    <li>
+      <p align="left">Clients will help humans err</li>
+    <li>
+      <p align="left">Flexibility is in itself a security hole</li>
+  </ul>
+  <p align="left">ACE Combination stuff is maybe too flexible - too many cases
+  of combo</p>
+  <p align="left">Ordering seems complex</p>
+  <p align="left">More slides from Lisa [find them, or find a URL]</p>
+  <p align="left">Be more specific about whether preconditions MUST or MAY be
+  met</p>
+</blockquote>
+<h2 align="left">3.2 Eric Sedlar discussion on the latest ACL draft</h2>
+<blockquote>
+  <p align="left">Now using Windows NT semantics.</p>
+  <p align="left">Has interesting problems of mixed denies and grants, etc.</p>
+  <p align="left">Ordering of ACEs - don't want to do that.</p>
+  <p align="left">POSIX has a model, NFSv4 chooses a standard, and goes with NT.</p>
+  <p align="left">&quot;If it works for the NFS guys, it can work for us
+  too.&quot;</p>
+  <p align="left">Table describing mappings between privileges &amp;
+  methods.&nbsp; Being worked on and some other things.</p>
+  <p align="left">What to do about new privileges, based on others, or custom
+  privileges, and what is the interaction that can occur when a request fails
+  because authorization failed.&nbsp; It could be because required permissions
+  are not held by the requester, etc.</p>
+</blockquote>
+<h2 align="left">3.3 Overall Discussion</h2>
+<blockquote>
+  <p align="left">Discussion about how custom privileges might be used and the
+  value of them.</p>
+  <p align="left">The error reporting stuff has not been added, and there might
+  not alway be a report because you might not be permitted to discover things
+  about the resource this way.</p>
+  <p align="left">[Why do I think this is not a context-grounded discussion?]</p>
+  <p align="left">Should we take that stand that &quot;If you have these
+  privileges, you MUST be granted access.&quot;&nbsp; This is an approach that
+  can be taken in some cases.</p>
+  <p align="left">We want to move to the MUST case wherever possible.</p>
+  <p align="left">Use of &quot;making abstract&quot; as a way out.&nbsp; That
+  only works for composition cases where abstraction works.&nbsp;</p>
+  <p align="left">Lisa introduces RS23010 defines a bunch of stuff.</p>
+  <p align="left">Proposal that there is a core set of privileges and the rules
+  that have to be followed.&nbsp; Then there is the question with regard to
+  advanced controls.</p>
+  <p align="left">&quot;If you do not have these privileges, you MUST be denied
+  access.&nbsp; If you do, you MAY be granted access.&quot;</p>
+  <p align="left">[I am really looking at how this is disconnected from a global
+  model, some kind of context within which it is occuring.]</p>
+  <p align="left">[Problems about being able to specify some things related to
+  modules of the specification.&nbsp; Talking about BIND and UNBIND privileges
+  for example, and defining MOVE as a BIND followed by an UNBIND, and defining
+  DELETE as an UNBIND operation.</p>
+  <p align="left">Table is necessary, whatever language is required to cover the
+  fact of custom privileges.&nbsp; It will say that being granted access may
+  require other custom privileges.&nbsp; And it will have to be figured
+  out.&nbsp; And the server might not tell you why access/operation is denied.</p>
+  <p align="left">Interesting example of overlapping permissions, such as a MOVE
+  failing because DELETE is not authorized, even though MOVE is authorized.</p>
+  <p align="left">Existing file systems have generic permissions (READ, etc.)
+  that extend to methods on a case-by-case basis.</p>
+  <p align="left">Will go to the NT model with no requirement on ordering.&nbsp;
+  You can stop when you get what you want, going to have one canonical.&nbsp;
+  Going to the NTFS model. The NFSv4 scheme can be mapped from all other
+  schemes.</p>
+  <p align="left">It is not possible to express all the limitations of existing
+  systems.&nbsp; For example, the rules for Unix access can't be imposed.</p>
+  <p align="left">Having generic problems about generic responses that don't let
+  you know how to confirm what happened.&nbsp; Going to the server manual is a
+  weird thing to require of an user.&nbsp;&nbsp;</p>
+  <p align="left">We are going to see if we can remove the ACL requirements
+  spec. from a document we promise to deliver.</p>
+  <p align="left">Modeling Unix File System access control is not a requirement,
+  and there is no sense here that it is important to do.</p>
+  <p align="left">Some things about MUST and MAY and changes.</p>
+  <p align="left">Discussion about restrictions on what is discoverable/visible,
+  and the principle that there can be more restrictions introduced as a
+  custom/implementation provision, but ACL can't be made less restrictive.</p>
+</blockquote>
+<h1 align="left"><font color="#990033">4. <a name="PropertyRegistration">Property Registration</a></font></h1>
+<blockquote>
+  <p align="left"><b><font color="#FF0000"><i>Review of Earlier Notes (Link to
+  those from here and cite the relevant pieces rather than have copy them here.</i></font></b></p>
+  <p align="left">Jim Whitehead provided an overview of the situation, raised by</p>
+  <ul>
+    <li>
+      <p align="left">So many properties being defined in 2518, and the allied
+      specifications, etc.</li>
+    <li>
+      <p align="left">People wanting to have a way to add properties and have them
+      be standardized in some sense</li>
+  </ul>
+      <p align="left">Dennis provided some background on how this became a
+      project on AIIM (that he has been sandbagging for well over a year
+      now).&nbsp; The purpose is provided on DMware site project description (<a href="http://DMware.info/projects/P010100.htm">http://DMware.info/projects/P010100.htm</a>).&nbsp;&nbsp;
+      <p align="left">Dennis summarized the levels that seem to be of concern,
+      and he came to ask which level do people see as appropriate, and if that
+      is the answer, what is the problem that is being solved:
+  <ul>
+    <li>
+      <p align="left">That a property identification is taken and has been used</li>
+    <li>
+      <p align="left">That a property identification has been taken and the
+      authority on the property is so-and-so.</li>
+    <li>
+      <p align="left">That a property identification has been taken by so-and-so
+      and here is how to find a description of the property intended for human
+      comprehension</li>
+    <li>
+      <p align="left">That a property identification&nbsp; ... and here's a
+      description intended for computer processing</li>
+  </ul>
+  <p align="left">Dennis assumes that the last bullet is over the edge for the
+  WebDAV community, although it matters for managed documents when we look at
+  metadata discovery requirements and even model discovery requirements (e.g.,
+  finding the rules for playing nice in manipulation of coordinated WebDAV
+  resources).&nbsp; Dennis has been operating on the assumption that there is
+  room enough in WebDAV&nbsp; for there to be private or specific-community
+  (i.e., vertical) agreements on properties (just like there are so many flavors
+  of XML agreements).&nbsp; But there is also a sense that some fundamental
+  registration approach be agreed in the overall community.</p>
+  <p align="left">Jim Whitehead described his initial assumption that something
+  like IANA MIME-type registration could work for WebDAV properties.&nbsp;
+  Dennis said that the requirement to put MIME-type specifications through the
+  Informational RFC process seemed particularly heavyweight and he thought the
+  community would want something easier to use.</p>
+  <p align="left">In the discussion, it was suggested that once an overall
+  procedure is established, making additional submissions could be as simple as
+  filling out a form and then going through a registration process that gave
+  rise to an Informational RFC by a very simple process, along with appearance
+  on an IANA registry.&nbsp; One benefit of using an IETF/IANA scheme is the
+  persistence of the IETF repository of rfcs, and its likely long-term stability
+  in contrast with anything that is maintained separately or by a small group.</p>
+  <p align="left">There was inconclusive discussion on how to follow up with
+  IETF/IANA on this.&nbsp; Dennis said he had enough to put something on the
+  list and widen the discussion. Jim Whitehead is going to do check with Ned
+  Freed on the IETF/IANA protocol for having their agreement to register
+  property registrations.</p>
+  <p align="left">&nbsp;</p>
+  <h1 align="left">http://DMware.info/activities/A020900.htm</h1>
+  <p align="left">It is also felt that the registry is needed for even the DAV:
+  properties, because there are so many and their status needs to be maintained
+  over time.&nbsp; The registry mechanism is not exclusively for the DAV:
+  properties, but it is important to handle them.</p>
+  <p align="left">The following explosion of topics was identified.&nbsp; It
+  became clear in the discussion that creating a registration procedure and
+  (especially) agreeing on what to register about a property will push back on
+  places where the property model is not adequately or clearly specified.</p>
+  <ol>
+    <li>
+      <p align="left">Registry for the DAV namespace and the rules for what are
+      these, which ones are being deprecated, and what to do with them.&nbsp;
+      The registry is something that can be used to normalize the DAV namespace.&nbsp;&nbsp;</li>
+    <li>
+      <p align="left">What to do about provisional, anticipatory, and experimental ones
+      that don't end up in a final specification.</li>
+    <li>
+      <p align="left">Discussion of grandfathering and/or
+      deprecating the stray DAV: properties that aren't in the specification, or
+      put (some) in the specification</li>
+    <li>
+      <p align="left">Discussion about DAV: as a reserved namespace and the
+      business of the URI of the namespace, DAV: as a URI prefix, etc.</li>
+    <li>
+      <p align="left">Say what are the rules for the DAV namespace.</li>
+    <li>
+      <p align="left">Dan Brotsky: The model for properties is not circumscribed
+      enough, but people want to know what the rules are --&nbsp;
+      <ul>
+        <li>
+          <p align="left">when can I be sure that a property will be dead,&nbsp;</li>
+        <li>
+          <p align="left">how I can find out if values have changed,
+      and&nbsp;</li>
+        <li>
+          <p align="left"> can the server enumerate this or that about the properties.&nbsp;&nbsp;</li>
+        <li>
+          <p align="left">The property model may not be tight
+      enough.&nbsp; There is also the problem of the syntax of the values.</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">Jim Whitehead thinks that property access (read)
+      interoperability can come with some ease and property creation/setting interoperability might
+      take more.&nbsp;&nbsp;We might want to take the easy case first.</li>
+    <li>
+      <p align="left">Jim Whitehead knows Ned Freed and this game would then
+      work.&nbsp; Then for us the question is what does the form look like and
+      what kind of things might not be OK to handle this way.&nbsp; Needs to be
+      discussed on the mailing list.</li>
+    <li>
+      <p align="left">What are the reasonable questions to answer on a property
+      registration questionnaire:
+      <ul>
+        <li>
+          <h2 align="left">Protected versus writable</h2>
+        </li>
+        <li>
+          <h2 align="left">Name and namespace
+          </h2>
+          <ul>
+            <li>
+              <h2 align="left">XML 1.1 recommendations on element and attribute
+          names.&nbsp; Any XML language rules work</h2>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 align="left">Static or dynamic</h2>
+        </li>
+        <li>
+          <h2 align="left">Live or dead
+          </h2>
+          <ul>
+            <li>
+              <h2 align="left">Great discussion about the distinctions live and dead,
+          etc., and what is going on here.</h2>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 align="left">authority defining the property</h2>
+        </li>
+        <li>
+          <h2 align="left">syntax of values</h2>
+        </li>
+        <li>
+          <h2 align="left">under what conditions will the property change</h2>
+        </li>
+        <li>
+          <h2 align="left">configuration versus not</h2>
+        </li>
+        <li>
+          <h2 align="left">syntax enforced versus not</h2>
+        </li>
+        <li>
+          <h2 align="left">is it searchable?</h2>
+        </li>
+        <li>
+          <h2 align="left">responds to PROPFIND ALL?</h2>
+        </li>
+        <li>
+          <h2 align="left">cacheable?</h2>
+        </li>
+        <li>
+          <h2 align="left">dependencies among properties</h2>
+        </li>
+        <li>
+          <h2 align="left">notes - things not covered in other questions</h2>
+        </li>
+        <li>
+          <h2 align="left">resource type that property defined on
+          </h2>
+          <ul>
+            <li>
+              <h2 align="left">collection only?</h2>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h2 align="left">conditions under which property can be written</h2>
+        </li>
+        <li>
+          <h2 align="left">terms and conditions of use, legal conditions</h2>
+        </li>
+        <li>
+          <h2 align="left">questions about permanence of properties and
+          invariance, invariance of the definition - we must take a stand on
+          this one way or the other.</h2>
+        </li>
+        <li>
+          <h2 align="left">inheritability -- it is a form of liveness</h2>
+        </li>
+        <li>
+          <h2 align="left">date of definition</h2>
+        </li>
+        <li>
+          <h2 align="left">software it appears in - who implements it</h2>
+        </li>
+        <li>
+          <h2 align="left">review authority and acceptance of the definition
+          </h2>
+          <ul>
+            <li>
+              <h2 align="left">DAV namespace properties</h2>
+            </li>
+            <li>
+              <h2 align="left">Use of namespace</h2>
+            </li>
+            <li>
+              <h2 align="left">Namespace registrations?</h2>
+            </li>
+          </ul>
+        </li>
+      </ul>
+              <h2 align="left"><font color="#990033">Create a document that
+              describes what is important to know about DAV properties (Julian)</font></h2>
+              <h2 align="left"><font color="#990033"><br>
+              &nbsp;Make a list of questions that we want to know the answers to
+              about WebDAV properties.</font></h2>
+      <h2 align="left"><font color="#990033">Have someone publish an example
+      document of this sort and see how it works as an example.&nbsp; Create
+      something on webDAV.org that finds these and people can develop a practice
+      around this.&nbsp; Make Google-appealing.</font></h2>
+    </li>
+    <li>
+      <h2 align="left">The work on this will drive tightening of the property
+      model.</h2>
+    </li>
+    <li>
+      <h2 align="left">This list may not be complete, and what do we do?&nbsp; Do
+      we understand enough to have a strawman list.</h2>
+    </li>
+    <li>
+      <h2 align="left">Dependent properties?</h2>
+    </li>
+    <li>
+      <h2 align="left">Semantics and syntax of the property</h2>
+    </li>
+  </ol>
+  <hr color="#990033">
+
+</blockquote>
+<dl>
+ 
+    <dt><small><b><a name="0.00">0.00</a> 2003-10-21 Original Notes Compiled (</b><b><a href="../construction/orcmid.htm">orcmid</a></b><b>)</b></dt>
+  </small>
+    <dd><small>Use September note as boilerplate and markup for what to develop
+      here.&nbsp; This only makes sense to the note-taker at this point.</small></dd>
+</dl>
+
+<p align="right"><small><small>created 2002-12-13-15:48 -0800 (pst) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-12-14 13:51 $<br>
+$$Revision: 5 $</em></small></small></p>
+</body>
+</html>

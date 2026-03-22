@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<HTML><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<TITLE>Q980101b: Word 97 Configuration</TITLE>
+<!--$$Header: /ODMACompagno/faq/1998/Q980101b.htm 28    13-08-22 12:48 Orcmid $-->
+</HEAD>
+<BODY stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="54750" -->
+
+
+    </td>
+
+
+    <td width="53%" height="6"><p align="center"><font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><strong>ODMA
+      <a href="../q000001.htm"><font color="#990033">FAQtip</font></a>   <a href="../q000001.htm#Q000801"><font color="#990033">Q980101</font></a><i><br />
+      </i><a href="Q980101.htm"><font color="#990033">Configuring Microsoft
+      Office for ODMA</font></a><i><big><big><br />
+      Word 97 Configuration</big></big></i></strong></font></p>
+    </td>
+
+
+
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../../" target="_top">ODMA</a>&gt;<br />
+      <a href="../" target="_top">FAQ</a>&gt;<br>
+      <a href="./" target="_top">1998</a>&gt;</code></b></p>
+
+
+
+      <p align="right"><b><code><a href="Q980101b.htm" target="_top">Q980101b</a>&gt;</code></b><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><br />
+      <small><small> <!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2007-07-28<!--webbot bot="Timestamp" endspan i-checksum="12476" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:16 -0700<!--webbot bot="Timestamp" endspan i-checksum="12026" -->
+      </small>
+      </small></font></p>
+
+
+
+    </td>
+  </tr>
+</table>
+
+<hr noshade color="#000080">
+<pre>From: ODMA TECH LIST [mailto:ODMATECH@FTPLIST.AIIM.ORG]On Behalf Of
+<a href="../Q000605.htm#RobertBarham">Robert Barham</a>
+Sent: <a href="Q980101b.msg">Thursday, 28 January 1999 09:19</a>
+To: ODMATECH@FTPLIST.AIIM.ORG
+Subject: Re: FW: ODMA and Word97
+
+
+When an ODMA application loads ODMA32.DLL, the Connection Manager will look in the
+registry and supply the default DMS for that user.  So, if your DMS is installed 
+in the registry as the default then Word should access your code automatically.  
+To make sure you are the default DMS, go to the registry, and open the 
+HKEY_CLASSES_ROOT\ODMA32 key.  Your DMS id should be installed here.  
+Lets say you are using ODMASAMP as your default DMS.  Under that id you install 
+the key:  DEFAULT.  Make sure that none of the other DMSs have the default key, 
+though.  The Connection Manager will use the first default it finds in the list.
+
+If you are running on an NT machine, you may need to add a registry entry to get 
+Word to work properly with ODMA.  Check for the following key:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\ODMA32\ANSIonNT       (it has no value set)
+
+Hope this helps.
+
+Robert Barham
+rbarham@novell.com
+
+&gt;&gt;&gt; KZITA &lt;KZITA@AIIM.ORG&gt; 01/27/99 06:34PM &gt;&gt;&gt;
+Can someone address this please?
+Thanks
+Kirstin
+
+
+&gt; -----Original Message-----
+&gt; From: Neal Gordon [SMTP:N.Gordon@kainos.com] 
+&gt; &lt;mailto:[SMTP:N.Gordon@kainos.com]&gt;
+&gt; Sent: Monday, January 25, 1999 9:39 AM
+&gt; To:   mwright@aiim.org 
+&gt; Subject:      ODMA and Word97
+&gt;
+&gt; I have Word 97 and both the ODMA 2.0 and 1.5 API developers kit.  How do I
+&gt; get the sample DMS and application to work with Word 97? Is there some
+&gt; other registry entry that needs to be set? I have installed the ODMA 2.0
+&gt; application and which of course sets up the registry entries, however we
+&gt; anticpated that after installing this, Word 97 should use the ODMA
+&gt; dialogs.
+&gt; Any help would be greatly appreciated.
+&gt;</pre>
+<pre>&nbsp;</pre>
+<hr noshade color="#000080">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="../construction.htm" target="_top"><img border="0" src="../../images/hardhat-thumb.gif" alt="Hard Hat Area Construction Zone" width="80" height="60"></a></td>
+    <td width="34%" valign="middle" align="center"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005d.htm" TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="62067" -->
+    </td>
+    <td width="37%">
+      <p align="right"><small><small>created 2000-10-20-08:18 </small></small><font size="-2">-0700
+      (pdt) by <a href="../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 28 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</BODY></HTML>

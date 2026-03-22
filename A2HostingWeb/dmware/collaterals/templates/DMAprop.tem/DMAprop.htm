@@ -1,0 +1,371 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>DMA Architecture Proposal</title>
+<!--$$Version:                                                                        $-->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">DMA Architecture Proposal for &lt;Topic&gt; </a></h1>
+
+<p align="left"><!--webbot bot="PurpleText" PREVIEW="This HTML template is a boilerplate document that may be used to produce a DMA Architecture Proposal in HTML format. This file was derived from George Florentine's ARCHTEMP.RTF, a refinement of the outline developed in the January, 1996, Technical Committee meeting.&nbsp; This version, a Microsoft FrontPage 98 template for a single page Web document, was derived by Dennis Hamilton on 1999 June 8.  It includes many changes to the template that have occured since 1996.  It adds two sections: one on New/Changed Data Types and Values, one on Implementation and Deployment.
+
+All of the &quot;rubric&quot; entries, providing instructions about usage of the boilerplate, such as this very paragraph, are in FP98 comments.&nbsp; The comments do not appear in the browsed page, although they do take space in the HTML file.&nbsp; When the appropriate editing has been performed, the comment can be deleted using the FrontPage 98 Editor. " --></p>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="INSTRUCTIONS:
+ 1. Replace the title at the top of this document body with one of your choosing. 
+ 2. Edit the Page Properties (File / Page Properties&#133; menu) to employ the title that you want for this material. 
+ 3. There is a bookmark in front of the main title, named Top. You can use this to provide a link back to the top from your proposal sections. 
+ 4. There is a bookmark at the end of the document, named Bottom. This is useful for rapidly getting to the end and finding any generic links that may be there. Notice that the table of content also has hyperlinks to standard boilerplate sections. 
+5. If Visual Source Safe is being used to manage the FrontPage 98 Web, you can leave the Visual Source Safe tags at the right below.  When you don't want those, or when the document is placed under a different kind of configuration management, delete the tags (items with $$ at the beginning).
+ 6. Delete these boilerplate comments when you've seen enough. " --></p>
+  <p align="right"><em>$$Author: Orcmid $<br>
+  $$Date: 00-05-15 21:41 $<br>
+  $$Revision: 2 $</em></p>
+</blockquote>
+
+<h3>Author: </h3>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Incorporate the appropriate name of the subcommittee and of the contributing authors in the line above. Make this entry a reference to the home page for the subcommittee if there is one. " --></p>
+</blockquote>
+
+<h3>Revision History</h3>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Enter the revision number and date on one line, then include change comments in a bulletted list below it." --></p>
+</blockquote>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Draft submissions should be labeled with some number less than 1.0, ie 0.8, 0.9, etc. Your first formal submission should be labeled 1.0, subsequent formal submissions should be rev-ved as 1.1, 1.2, 1.x, etc. " --></p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><em>Content </em></h2>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Overview">1. Functional Overview / Description</a> </h3>
+  <h3><a href="../dmaprop.tem/dmaprop.htm#NewTypes">2. New/Changed Data Types and Values</a></h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#NewProps">3. New/Changed Classes and Properties</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#NewFaces">4. New/Changed Interfaces</a></h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">5. Architectural Impacts</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#References">6. Reference Materials</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Experience">7. Existing Systems and Related Experiences</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Compliance">8. Compliance and Conformance Considerations</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#SampleUse">9. Sample Usage</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Glossary">10. Glossary / Nomenclature</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Impact">11. Impact on Existing Systems</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Performance">12. Performance Considerations</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Compatibility">13. Backwards Compatibility and Legacy
+  Considerations</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Specification">14. Incorporation Into DMA Specifications</a> </h3>
+  <h3><a href="../dmaprop.tem/dmaprop.htm#Deployment">15. Implementation and Deployment</a></h3>
+</blockquote>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="The table of content provides hyperlinks to the title lines of the appropriate sections. If you adjust the titles, you will want to adjust them here, too. Also, you'll need to be careful to maintain the document links. Starting out, it may be useful just to work with these sections and not be too creative. " --></p>
+</blockquote>
+
+<h1><a NAME="Overview">1. Functional Overview / Description </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section should provide a conceptual overview of the feature(s) included in your submission. Details about new interfaces and properties should be deferred to the sections below. This section should focus on how the architecture is extended and improved by this submission. 
+
+Because HTML provides a hypertext mechanism, it is desirable to keep descriptions here short and, as they expand, provide further details in expansion sections that are linked to from these main body sections. The sections that are reached should provide a way back to this point in the document as well as back to the top of this document. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="NewTypes">2. New/Changed Data Types and Values</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the data types that are change or altered in this proposal.  Also describe the new values and constants that are changed, removed, or introduced in this proposal.  Enter &quot;not applicable&quot; in this section if your submission introduces no new classes or properties.
+
+(These are described before the next two elements because there may be reference to them in the those topics.)" --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewProps">3. New/Changed Classes and Properties </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe new and changed classes and properties. This section might be excluded in draft submissions, although it must be considered in final submissions. Enter &quot;not applicable&quot; in this section if your submission introduces no new classes or properties. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a NAME="NewFaces">4. New/Changed Interfaces</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe new interfaces. May be excluded for draft submissions. Must be completed for final submissions. &quot;Not applicable&quot; if no new or changed interfaces. 
+
+In DMA, an interface is versioned rather than changed.  The predecessor may be dropped entirely from the specification, but it is technically not changed.  (The name might be reused, but the Interface ID would be changed.)
+
+An interface can be dropped immediately if it was never officially introduced into the spedification.  Otherwise, interfaces are generally &quot;retired&quot; after some set time has ellapsed.  The interface may be kept in configuration and reference implementation files even longer than that to support legacy implementations and their gradual displacement.  This can be discussed further in the section on Implementation and Deployment." --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp;</p>
+</blockquote>
+
+<h1><a NAME="ArchImpact">5. Architectural Impacts </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section should describe how the change impacts other parts of Architecture. Consider the effects of each section listed below. Enter &quot;Not applicable&quot; in the appropriate sections. This indicates that you have considered the impact, and believe there is none. 
+
+Another consideration for sections that can be large, like this one, and having many subsections, is provision of a section-level table of contents plus an overview. The subcontents here reflects the standard recommended subsections. Editing of titles and sections will also involve potential correction of the links. " --></p>
+</blockquote>
+
+<h3 align="center"><em>Architectural Impact Content </em></h3>
+
+<blockquote>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#IntModel">5.1 Integration Model</a></h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Query">5.2 Query</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Internationalization">5.3 Internationalization/Localization</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Content">5.4 Content</a><a HREF="../dmaprop.tem/dmaprop.htm#Content"> </a></h3>
+  <h3><a href="../dmaprop.tem/dmaprop.htm#Containment">5.5 Containment</a></h3>
+  <h3><a href="../dmaprop.tem/dmaprop.htm#Versioning">5.6 Versioning</a></h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Security">5.7 Security</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Naming">5.8 Naming</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#Requirements">5.9 Requirements Addressed</a> </h3>
+  <h3><a HREF="../dmaprop.tem/DMAprop.htm#FailureModes">5.10 Failure Modes / Crash Recovery</a> </h3>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="IntModel">5.1 Integration Model</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your change impact the DMA integration model ? The integration model addresses the following general areas: 
+- Service element integration 
+- Applications locating information about DMA systems in their environment 
+- Installing DMA systems into operating system environments 
+- DMA integration with other software architectures: 
+- - COM 
+- - ODMA 
+- - OLE 
+- - Internet technologies 
+- - - HTTP 
+- - - HTML 
+- - - MIME 
+- - - Java 
+- - OMG services " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Query">5.2 Query</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your change impact the DMA query model ? The query model addresses the following general areas: 
+
+- Query construction 
+- Query execution 
+- Result set management 
+
+If you are introducing new objects, do they participate in the query model (ie can they be queried ?) " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Internationalization">5.3 Internationalization/Localization </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How is this proposal affected by internationalization?  Does it impact internationalization provisions of DMA?  The DMA architecture supports the internationalization and localization of document management applications and systems through the use of multiple character set encodings, multiple languages, and multiple text ordering methodologies." --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Content">5.4 Content </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the content of objects accessed through DMA ? Are you changing the DMA content model ?Are you adding new content types ? Are you changing the way in which content is moved across a DMA system boundary ? " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Containment">5.5 Containment</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect thhe containment model?  If you are introducing new classes of objects, do they participate in the containment model (i.e., can they be contained in containers, and/or are they containers themselves)?" --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Versioning">5.6 Versioning</a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the versioning model?  If you are introducing new classes of objects, do they participate in the versioning model (i.e., can they be versioned)?" --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a name="Security">5.7 Security </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission affect the security of objects accessed through DMA systems ? Does your submissions change how authentication is done between DMA applications and DMA service elements ? Does your change improve/degrade the ability of document spaces to externalize their own security practices through DMA ? Are you adding any encryption capabilities ? " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Naming">5.6 Naming </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="How does your submission impact how things are named in DMA ? If you are introducing new objects, do they possess DmaIds? Can they be separately named, or only located through navigation of other objects? Are you introducing new naming concepts? Are you using a naming model from an extant system or standard (for example URLs?) " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h2><a NAME="Requirements">5.7 What requirement does this address? </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Whenever possible, trace the submission back to a specific requirements in the user requirements document for DMA. In general, our bias should be to strongly question any architecture change request that can't be linked back to a requirement. If our customer base didn't ask for this feature, why are we providing it ? " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h3>5.7.1 Why is this a good solution? </h3>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="In this section you should provide some self-critique of your approach. Describe alternatives that were discarded, and the criteria you used in determining that this change is a good solution to the problem. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h2><a NAME="FailureModes">5.8 Failure Modes / Crash Recovery </a></h2>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="You should discuss failure modes and crash recovery issues if your submission has any peculiarities in this regard. If your change significantly improves or degrades the ability of DMA compliant systems to recover from error conditions, describe the impact of your change in this section. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#ArchImpact">to Architectural Impact section</a> </p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="References">6. Reference Materials</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="We want to insure that consideration has been given to existing research into each of our topic areas. This area may be excluded in a draft submission, but must be completed in a final submission, and must include at least 2 references. These may be specific journals, or existing product documentation, or notes from a verbal/e-mail conversation with a topic expert. " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Experience">7. Existing Systems and Related Experiences </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This is similar to the previous section, but is more focused on existing product implementations. For example, the containment subcommittee might reference a journal arcticle describing electronic filing cabinets in section 6. In this section a list of the features and failings of existing implementations could be presented. This provides reviewers with insights into the state of the existing art in this particular technical area. " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compliance">8. Compliance &amp; Conformance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Define conformance criteria for your submission here.  For example, if your submission provides for wide ranging levels of conformance, or perhaps a very narrow range of conformance (works or doesn't), describe these features here in qualitative terms.  What is the minimum subset of features defined here that should be required of every DMA-compliant implementation?  What is strictly optional?  Even though compliance testing is not within the scope of DMA 1.0, list any suggestions here for how compliance testing of the features could be done in the future." --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="SampleUse">9. Sample Usage </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Provide an example of how this feature is used. This can be provided as either a code example, or as descriptive text. If you can't think up a compelling sample usage, you should not be suggesting this enhancement ! " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Glossary">10. Glossary / Nomenclature </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="List new or ambiguous terms you've used in your submission. Commonly used DMA terms such as &quot;document space&quot; or &quot;service provider interface&quot; do not need to be redefined in your submission. However, any new terms, or terms you feel have been ambiguously used prior to your submission should be included in this glossary. " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Impact">11. Impact on Existing Systems</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe how this change will impact existing systems that could be integrated into a DMA system. For example, including a containment model would allow repositories that have a containment model to externalize this through their document space. Browsers that support hierarchical navigation could navigate through DMA object hierarchies using the DMA containment model, and display these hierarchies in their UIs. 
+
+If you are making a change that will change the behavior of functionality already specified in DMA, specify the type of change in this section. " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Performance">12. Performance Considerations </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the performance impact of your suggested changes. Does your change force implementations that have poor performance ? Consider the fact that DMA systems will be implemented in distributed environments. " --></p>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Compatibility">13. Backwards Compatibility and Legacy Considerations</a> </h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This section is probably not applicable for the first round of submissions, but will be useful in subsequent revisions to the architecture. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a NAME="Specification">14. Incorporation Into DMA Specifications </a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Describe the specific changes that should be made to the architecture to incorporate your change. 
+
+Describe new sections that should be added, additions/deletions to existing sections. Specify if your change includes updates to the objects and interfaces Access databases used to generate the spec. " --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a name="Deployment">15. Implementation and Deployment</a></h1>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="Explain anything that needs to be paid attention to about the implementation and deployment of this change, especially into configuration management, trial use, and deployment into standard applications and middleware." --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<hr>
+
+<h5><a name="Bottom">End of Document </a></h5>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)" --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="../dmaprop.tem/DMAprop.htm#Top">to Top of Document</a> </p>
+</blockquote>
+<!-- This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com) -->
+</body>
+</html>

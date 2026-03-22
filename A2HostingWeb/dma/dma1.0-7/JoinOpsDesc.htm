@@ -1,0 +1,336 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Join Operators</TITLE>
+<META NAME="Template" CONTENT="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P>Join Operators</P>
+</B></FONT><P>A join operator node has two or three operands:</P>
+
+<UL>
+<LI>Operand 0 may be a searchable class node or a  join operator node</LI>
+<LI>Operand 1 is required to be a searchable class node</LI></UL>
+
+<P>For a cross join, these are the only operands permitted. For all the other join types, a third operand is required:</P>
+
+<UL>
+<LI>Operand 2 must be a normal query operator node for which the value of Join Participation is DMA_JOIN_PARTICIPATION_OPERAND, e.g. an &quot;equal&quot; operator.</LI>
+<LI>The operands of  the operand 2 node must be properties of searchable classes. One of the operands of the operand 2 node must be a property from the searchable class of operand 1. The other must be from one of the searchable classes in the subtree of operand 0.</LI></UL>
+
+<P>The value of the Operand Datatype property of the Query Operand Description of operands 0 and 1 of join operators is DMA_DATATYPE_CLASS .</P>
+<P>For cross joins, the Cartesian product is produced. For all other join operators, the searchable class or subordinate join expression from operand 0 is joined to the searchable class of operand 1 via the Boolean expression subtree whose root is operand 2.</P>
+<P>It is not required that a Join Operator be supported between all possible pairs of searchable classes in the document space.</P>
+<P>The well known join operators defined by DMA do not join objects from different document spaces. When a join operation is actually performed, it is performed by a single document space between searchable classes in its metadata. Undefined parts of the From Expression must be eliminated by the rules of three valued elimination. If three valued elimination is needed but is not available, the query fails with a query construction error. For the well known join operators specified by DMA, the results of evaluating a join in a merged scope is the union of the results of evaluating the join in its component scopes.</P>
+<B><FONT SIZE=4><P>Joins and Three Valued Elimination</P>
+</B></FONT><P>In the following tables, operand 0 is undefined if it is a searchable class node which specifies an undefined class, or if it is a join operator node which evaluates to undefined by recursive application of these rules.</P>
+<P>Operand 1 is &quot;Undefined&quot; if it is a searchable class node which specifies an undefined class.</P>
+<P>Operand 2 is &quot;Undefined&quot; if it specifies an operator which is undefined, or if it evaluates to &quot;Undefined&quot; because of &quot;Undefined&quot; operands.</P>
+<P>An outcome of "Undefined" for the root node of the From Expression results in the query returning zero rows.</P>
+<B><P>Cross Join</P>
+</B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=217>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<B><P>Op 0</B></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<B><P>Op 1</B></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<B><P>Outcome</B></TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="34%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Defined</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<B><P>Inner Join</P>
+</B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=301>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<B><P>Op 0</B></TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<B><P>Op 1</B></TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<B><P>Op 2</B></TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<B><P>Outcome</B></TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="24%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="28%" VALIGN="TOP">
+<P>Defined</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<B><P>Left Outer Join</P>
+</B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=355>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<B><P>Op 0</B></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><P>Op 1</B></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><P>Op 2</B></TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<B><P>Outcome</B></TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Defined (result is Op 0)</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Defined (result is Op 0)</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="21%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="39%" VALIGN="TOP">
+<P>Defined</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<B><P>Right Outer Join</P>
+</B>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=367>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<B><P>Op 0</B></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><P>Op 1</B></TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<B><P>Op 2</B></TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<B><P>Outcome</B></TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Defined (result is Op 1)</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Defined (result is Op 1)</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Undefined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Undefined</TD>
+</TR>
+<TR><TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="20%" VALIGN="TOP">
+<P>Defined</TD>
+<TD WIDTH="41%" VALIGN="TOP">
+<P>Defined</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<P>The following Join Operators are defined:</P>
+<P><A HREF="JoinOps.html">DMA-defined join operators</A></P></BODY>
+</HTML>

@@ -1,0 +1,746 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>ODF 1.3 Proposal: Protection Key Enhancements</TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 3.3  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Robin Cover">
+	<META NAME="CREATED" CONTENT="20110307;7593200">
+	<META NAME="CHANGEDBY" CONTENT="Dennis Hamilton">
+	<META NAME="CHANGED" CONTENT="20120611;21334548">
+	<META NAME="CLASSIFICATION" CONTENT="Protection-Key Enhancements v1.05">
+	<META NAME="DESCRIPTION" CONTENT="This version introduce the two enhanced methods AUTHZ160 and SHA1DK.  All simple password-based protection-key algorithms are deprecated, but still to be accepted by consumers for ODF 1.3 documents.">
+	<META NAME="KEYWORDS" CONTENT="ODF, OpenDocument, OASIS, Errata, ODF 1.3, Protection Keys">
+	<META NAME="Editor #1" CONTENT="Dennis E. Hamilton">
+	<META NAME="Editor #2" CONTENT="Editor #2">
+	<META NAME="Editor #3" CONTENT="Editor #3">
+	<META NAME="TC Chair" CONTENT="Michael Brauer, Oracle">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 1in; margin-right: 1in; margin-top: 0.5in; margin-bottom: 0.5in }
+		P { margin-bottom: 0.08in }
+		P.western { font-family: "Arial", sans-serif }
+		H1 { margin-top: 0.33in; margin-bottom: 0.08in; border-top: 1px solid #808080; border-bottom: none; border-left: none; border-right: none; padding-top: 0.08in; padding-bottom: 0in; padding-left: 0in; padding-right: 0in; color: #3b006f; page-break-before: always }
+		H1.western { font-family: "Arial", sans-serif; font-size: 18pt }
+		H1.cjk { font-family: "Times New Roman", serif; font-size: 18pt }
+		H1.ctl { font-family: "Arial", sans-serif; font-size: 18pt }
+		H2 { margin-bottom: 0in; border: none; padding: 0in; color: #3b006f; page-break-before: auto; page-break-after: auto }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt }
+		H2.cjk { font-family: "Times New Roman", serif; font-size: 14pt }
+		H2.ctl { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic; font-weight: normal }
+		TD P { margin-bottom: 0in; page-break-before: auto }
+		TD P.western { font-family: "Arial", sans-serif }
+		TH P { margin-bottom: 0in; background: transparent; page-break-before: auto }
+		TH P.western { font-family: "Arial", sans-serif }
+		P.attribute-value-list-western { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in; font-family: "Arial", sans-serif }
+		P.attribute-value-list-cjk { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in }
+		P.attribute-value-list-ctl { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in }
+		P.parent-element-list-western { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in; font-family: "Arial", sans-serif }
+		P.parent-element-list-cjk { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in }
+		P.parent-element-list-ctl { background: #e6e6e6; border: 1px solid #000000; padding: 0.02in }
+		P.default-value-western { background: transparent; font-family: "Arial", sans-serif }
+		P.default-value-cjk { background: transparent }
+		P.default-value-ctl { background: transparent }
+		A:link { color: #0000ff; text-decoration: none }
+		A.western:link { font-family: "Arial", sans-serif; so-language: zxx }
+		A.cjk:link { so-language: zxx }
+		A.ctl:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" LINK="#0000ff" DIR="LTR">
+<DIV TYPE=HEADER>
+	<P STYLE="margin-top: 0.06in; margin-bottom: 0in"><BR><BR>
+	</P>
+</DIV>
+<P STYLE="margin-bottom: 0.17in; border-top: 1px solid #808080; border-bottom: none; border-left: none; border-right: none; padding-top: 0.01in; padding-bottom: 0in; padding-left: 0in; padding-right: 0in; page-break-before: always">
+<FONT COLOR="#3b006f"><FONT SIZE=6><B><FONT SIZE=4>ODF 1.3 Proposal:
+Protection-Key Enhancements</FONT></B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; border-top: 1px solid #808080; border-bottom: none; border-left: none; border-right: none; padding-top: 0.01in; padding-bottom: 0in; padding-left: 0in; padding-right: 0in">
+<FONT COLOR="#3b006f"><FONT SIZE=5><B><FONT SIZE=3>Proposal v1.05</FONT></B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; border-top: 1px solid #808080; border-bottom: none; border-left: none; border-right: none; padding-top: 0.01in; padding-bottom: 0in; padding-left: 0in; padding-right: 0in">
+<FONT COLOR="#3b006f"><FONT SIZE=5><B><FONT SIZE=3>11 June 2012 </FONT></B></FONT></FONT>
+</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">This proposal
+introduces two protection-key authentication techniques that mitigate
+(but do not eliminate) risks associated with use of hash-code digest
+algorithms when the derived protection-key values are in plain view
+in XML elements of ODF documents.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The fundamental
+defect mitigated by the enhancements is that protection-key values in
+ODF 1.2 documents are not secret; current protection-key values are
+amenable to malicious re-use, including but not limited to discovery
+of the associated password.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Specification of
+these provisions in an early Committee Specification Draft for ODF
+1.3 secures an opportunity for experimental introduction in ODF 1.2
+extended documents and confirmation of practical utility and
+reliability of the additional techniques.  The proposed default
+method, AUTHZ160, can be applied immediately in ODF 1.2 and also ODF
+1.0/1.1 conforming documents without any limitation (see section C.
+Deployment Considerations).</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">This proposal
+does not reply on any support beyond that already expected of ODF
+consumers and producers for SHA1, HMAC-SHA-1, PBKDF2, and the
+generation of cryptographically-random strings of bytes.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"><BR><BR>
+</P>
+<DIV ID="Table of Contents1" DIR="LTR">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<P STYLE="margin-top: 0.17in; page-break-after: avoid"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Table
+		of Contents</B></FONT></P>
+	</DIV>
+	<P STYLE="margin-top: 0.04in; margin-bottom: 0.04in; background: transparent; page-break-before: auto">
+	1Rationale	2</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	1.1Vulnerability of Password Hash Values	2</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	1.2SHA1DK for Password-Based Protection-Key Values	2</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	1.3AUTHZ160 for Password-Less Protection-Key Values	3</P>
+	<P STYLE="margin-top: 0.04in; margin-bottom: 0.04in; background: transparent; page-break-before: auto">
+	2Proposed Changes	4</P>
+	<P STYLE="margin-top: 0.04in; margin-bottom: 0.04in; background: transparent; page-break-before: auto">
+	3Deployment Considerations	9</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	3.1Down-level Considerations	9</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	3.2Immediate Usability of AUTHZ160 for Default Protection Keys	9</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	3.3Confirmation of Resilient Down-Level Treatment	9</P>
+	<P STYLE="margin-left: 0.2in; margin-top: 0.02in; margin-bottom: 0.02in">
+	3.4Future-Proofing of Extended ODF 1.2 Consumers and Producers	9</P>
+</DIV>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"><BR><BR>
+</P>
+<H1 CLASS="western">1Rationale</H1>
+<H2 CLASS="western">1.1Vulnerability of Password Hash Values</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The use of
+password hashes in easily-discovered XML element and attribute values
+is subject to compromise of the hashed password.  Despite the use of
+increasingly-stronger digest algorithms to lengthen the time required
+for carrying out brute-force attempts to match the hash to a
+password, passwords must be assumed to be compromised when the hash
+values used become known.  This is the case when passwords are used
+to derive protection-key hash values that are recorded in ODF
+documents.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Recent (June
+2012) attacks against SHA1 password hashes confirm that discovery of
+passwords for SHA1 hashes has become commonplace.  Attacks against
+discovered SHA1 hashes are now being crowd-sourced among hacker
+groups on the Internet.  Once a password that has a given hash
+becomes known, the password and its hash become widely available on
+the internet, reducing the detection of the password to a
+database-look-up by members of hacker communities.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">These
+considerations are reason enough to deprecate the carrying of
+password hash values within XML elements of ODF documents for any
+purpose whatsoever.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">An additional
+difficulty is that ODF protection-key digest values are easily
+removed/replaced.  An extracted digest value can be re-purposed where
+the same hash procedure is used without having to know the password. 
+The digest value is all that is needed.  Extracted digests can also
+be published in compilation of known digest values for use in
+exploits and for comparison with digests associated with
+already-known or brute-force-guessed passwords.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">There are also
+&quot;transitive attack vectors&quot; enabled by exposed digest
+values.  For example, there is a place in the encryption procedures
+for ODF 1.0-1.2 documents where a password's SHA1 digest is used as
+an intermediate value. This becomes a point where known SHA1 digest
+values can be inserted in an attack on the encryption.  In this case,
+it is not necessary to discover the password.  Once a successful
+decryption has been discovered, it is possible to counterfeit other
+encryptions using that hash as if the same password was used.  It is
+highly desirable to arrange for the protection- key values in ODF
+documents to be useless in transitive attacks of this kind.</P>
+<H2 CLASS="western">1.2SHA1DK for Password-Based Protection-Key
+Values</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The first
+algorithm, SHA1DK, uses a customized password-based key-derivation
+procedure to derive a unique protection-key value that does not
+correspond to any conventional hash.  It is extremely costly but not
+impossible for a determined adversary to successfully attack an
+SHA1DK protection-key value.  The key vulnerability is the tendency
+for continued use of weak passwords.  In addition, the class of weak
+passwords is growing as attack methodologies improve.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Introduction of
+SHA1DK allows passwords to continue being used in deriving
+protection-key values; it is not invulnerable.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Using SHA1DK
+makes it extremely unlikely that the same protection-key value will
+ever be derived in a separate use of the same password by anyone. 
+That makes it very difficult for a culprit to detect situations where
+the same password is used by inspection of protection-key values
+alone.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">In addition,
+SHA1DK is designed so that the resulting protection-key value is not
+usable anywhere that a digest of other form is required in ODF
+documents, including in cryptographic procedures.  SHA1DK protection
+key values are resistant to transitive attacks so long as SHA1DK
+usage is confined to derivation of protection-key values (in ODF
+documents).  
+</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The SHA1DK
+procedure is also designed so that SHA1 digests in existing
+protection-key values can be replaced by SHA1DK protection-key values
+without requiring the password to be known.  It is not feasible to
+recover the SHA1 digest from an SHA1DK derived-key value.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Those are the
+primary benefits of SHA1DK.  There is no mitigation of the use of the
+value as a protection key on a forged or altered ODF document.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">[Note: An
+extension, SHA1DKX, allows, identification of the use case to be
+incorporated in the derivation of a digest, so that transitive use of
+the digest itself is impeded; different use-case identifications will
+lead to different SHA1DKX protection-key (or other
+password-authentication) codes.  Substitution of SHA1DKX can be
+considered if that is seen to be important.  Although this limits the
+context in which an SHA1DKX digest can be used for authentication of
+a password, there is no protection against either SHA1DKX or SHA1DK
+digests being created by use of a known SHA1 digest or, equivalently,
+a known password.]</P>
+<H2 CLASS="western">1.3AUTHZ160 for Password-Less Protection-Key
+Values</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"> AUTHZ160 is the
+default.  It is the recommended technique for deriving protection-key
+values.  This method is to be understood when there is a
+protection-key attribute and an accompanying
+protection-key-digest-algorithm attribute is absent.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The only
+constraint on AUTHZ160 implementations is that there be no
+relationship whatsoever between a chosen password and the
+protection-key value.  This also means that there is no interoperable
+means to &quot;unlock&quot; the associated protection simply by
+presentation of a password.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">AUTHZ160 is not
+specified beyond requiring that a password is not used to derive the
+protection-key value.  AUTHZ160 protection-key values cannot be
+directly attacked to discover a password used for its authentication:
+there is no such password.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The prospect
+that the protection-key value itself can be misused in some way by
+use on different or altered ODF documents is not eliminated.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The simplest
+approach to creation of an AUTHZ160 protection-key value is by
+generating a 160-bit cryptographically-random value.  This satisfies
+the essential condition that there be no password association.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Any
+authentication of requests to remove the protection set by use of an
+AUTHZ160 protection-key value is implementation defined.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">[Note: The first
+160 bits of an SHA1DK (better, SHA1DKX) derived key satisfies the
+conditions for use as an AUTHZ160 protection-key value.  The
+remaining 160 bits are all that is dependent on the password and the
+full SHA1DK (or SHA1DKX) derived key can be protected elsewhere by
+secret means.]</P>
+<H1 CLASS="western">2Proposed Changes</H1>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"><BR><BR>
+</P>
+<TABLE WIDTH=623 CELLPADDING=4 CELLSPACING=0 STYLE="page-break-before: auto; page-break-after: auto">
+	<COL WIDTH=74>
+	<COL WIDTH=531>
+	<THEAD>
+		<TR>
+			<TH WIDTH=74 STYLE="; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western"><FONT FACE="Arial, sans-serif">Section/<BR>Subsection</FONT></P>
+			</TH>
+			<TH WIDTH=531 STYLE="border: 1px solid #000000; padding: 0.04in">
+				<P CLASS="western"><FONT FACE="Arial, sans-serif">Instruction</FONT></P>
+			</TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">Front
+				Matter</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><I>Add
+				to end of Declared XML Namespaces</I><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><FONT FACE="Times New Roman, serif">〚<I> …
+				</I>〛</FONT></P>
+				<P CLASS="western">urn:oasis:names:tc:opendocument:xmlns:of:1.2</P>
+				<P CLASS="western">http://docs.oasis-open.org/ns/office/1.2/meta/odf#</P>
+				<P CLASS="western"><FONT COLOR="#0000ff"><U>http://docs.oasis-open.org/ns/office/1.3/protection#</U></FONT></P>
+				<P CLASS="western"><BR>
+				</P>
+				<P CLASS="western"><BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">1.3</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Insert
+				in the Normative References immediately following the entry for
+				[OWL] </I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U><B><SPAN STYLE="font-style: normal">[PKCS5]</SPAN></B><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+				</SPAN></SPAN><I><SPAN STYLE="font-weight: normal">PKCS #5 v2.0:
+				Password-Based Cryptography Standard</SPAN></I><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">.
+				 RSA Laboratories.  March 25, 1999.  Available on the Internet at
+				&lt;</SPAN></SPAN><A CLASS="western" HREF="http://www.rsa.com/rsalabs/node.asp?id=2127"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">http://www.rsa.com/rsalabs/node.asp?id=2127</SPAN></SPAN></A><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">&gt;.
+				 Also available as IETF Informational RFC 2898 at
+				&lt;http://www.ietf.org/rfc/rfc2898.txt&gt;</SPAN></SPAN></U></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">19.697</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Change
+				the end of the table:protection-key section.  Correct the data
+				type in the schema as well.</I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT FACE="Times New Roman, serif">〚<I> … </I>〛</FONT></P>
+				<P CLASS="western"><FONT COLOR="#ff0000"><STRIKE>The</STRIKE></FONT><FONT COLOR="#0000ff"><U>Any</U></FONT>
+				password shall be provided as a sequence of bytes in UTF-8
+				encoding. 
+				</P>
+				<P CLASS="western"><FONT COLOR="#0000ff"><U>Consumers shall not
+				silently ignore the presence of a </U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>table:protection-key</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				attribute.  A consumer that does not recognize or support the
+				specified </U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>table:protection-key-digest-algorithm</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				(including the default) shall not accept any password for release
+				of the protection key.  Any other means for removal of a
+				</U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>table:protection-key</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				and the associated protection is implementation-defined.</U></FONT></P>
+				<P CLASS="western"><FONT COLOR="#0000ff"><U>[Note: Protection
+				locks are neither password security, document security, nor
+				document integrity provisions.  There is no assurance of
+				confidentiality of any password employed in creation of
+				protection-key values.  In addition, protection-key attributes
+				themselves are easily defeated by removing/replacing them in the
+				XML elements that contain them.  The protection-key settings can
+				also be extracted and employed for unintended purposes.]</U></FONT></P>
+				<P CLASS="western"><BR><BR>
+				</P>
+				<P CLASS="parent-element-list-western">The <FONT FACE="Courier New, monospace"><FONT SIZE=2>table:protection-key</FONT></FONT>
+				attribute is usable with the following elements:
+				<FONT FACE="Courier New, monospace"><FONT SIZE=2>&lt;office:spreadsheet&gt;</FONT></FONT>
+				3.7 and <FONT FACE="Courier New, monospace"><FONT SIZE=2>&lt;table:table&gt;</FONT></FONT>
+				9.1.2.</P>
+				<P CLASS="attribute-value-list-western" ALIGN=LEFT><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">The
+				</SPAN></SPAN></SPAN></FONT></FONT><FONT FACE="Courier New, monospace"><FONT SIZE=2><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">table:protection-key</SPAN></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">
+				attribute has the data type </SPAN></SPAN></SPAN></FONT></FONT><FONT FACE="Courier New, monospace"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">string</SPAN></SPAN></SPAN></STRIKE></FONT></FONT><FONT FACE="Courier New, monospace"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">base64Binary</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">
+				18.2</SPAN></SPAN></SPAN></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">19.698</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Insert
+				text in the table:protection-key-digest-algorithm section
+				following the second paragaph.</I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT FACE="Times New Roman, serif">〚<I> … </I>〛</FONT><FONT FACE="Arial, sans-serif">The
+				password shall be provided as a sequence of bytes in UTF-8
+				encoding.</FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U>Algorithm
+				AUTHZ160 is defined as follows: The value encoded in the
+				protection-key attribute consists of exactly 20 octets (160 bits)
+				of binary data not derived from an user-provided password.  This
+				value shall be different for every occurrence of a protection-key
+				attribute in the document and the value shall be
+				indistinguishable from a cryptographically-random value.  Any
+				means by which consumers recognize the producer of the
+				protection-key value and authenticate a request to remove the
+				protection is implementation-defined. [Note: The binary data can
+				simply be a cryptographically-random value.  Use of a
+				protection-key value that is not derived from a password avoids
+				compromise of passwords by exposing their digest values in ODF
+				documents.] </U></FONT></FONT>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">Algorithm
+				SHA1DK is defined as follows: The value encoded in the
+				protection-key  attribute consists of exactly 40 octets (320
+				bits) of binary data.  The first 20 octets are a
+				cryptographically-random value, </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">.
+				 The </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				value shall be different for each occurrence of a protection-key
+				attribute in the ODF document.  The final 20 octets are a
+				cryptographically-derived value, </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dk</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				(for derived key).  The </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dk</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				value is derived from </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				and the UTF-8 encoding, </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">password</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">,
+				 Removal of the protection lock is authorized on acceptance of a
+				password for which SHA1DK produces a match to </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dk</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">.</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 0.5in; margin-bottom: 0in">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dk</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				= SHA1DK(</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">password</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">,
+				</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">)</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-left: 0.5in; margin-bottom: 0in">
+				<FONT COLOR="#0000ff"><U>       <FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">=
+				PBKDF2(</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">PRF</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">,
+				SHA1(</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">password</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">),
+				</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">,
+				</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">c</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">,
+				</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dkLen</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">)</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">where
+				dkLen = 20, the number of octets to be produced for </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">dk,</SPAN></U></I></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><U>
+				         <FONT FACE="Arial, sans-serif"><I><SPAN STYLE="font-weight: normal">PRF</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				is the underlying pseudorandom function HMAC-SHA-1 for use by
+				PBKDF2,</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">
+				</SPAN></U></I></FONT></FONT>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><U>
+				         <FONT FACE="Arial, sans-serif"><I><SPAN STYLE="font-weight: normal">c
+				= </SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">F</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">(</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">26+</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">[0]</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">)
+				</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">is
+				the iteration count for the PBKDF2 algorithm,</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><U>
+				         <FONT FACE="Arial, sans-serif"><I><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">[0]
+				is the initial octet of </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">salt</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				interpreted as an unsigned binary integer,</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in"><FONT COLOR="#0000ff"><U>
+				         <FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">F(</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">n</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">)
+				is the </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><I><U><SPAN STYLE="font-weight: normal">n</SPAN></U></I></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">-th
+				Fibonacci number (with F(26) = 121393)</SPAN></U></SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: normal">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U>and
+				PBKDF2 is as defined in [PKCS5].</U></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-weight: normal">
+				<FONT FACE="Arial, sans-serif"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>If
+				the value of </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>c</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				exceeds an implementation-defined threshhold for a consumer's
+				practical derivation of </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>dk,
+				dk</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				shall not be derived and no </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>password</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				value shall be accepted.  For a producer that implements SHA1DK,
+				the value of </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>salt</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				shall be such that </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>c</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				is within an  implementation-defined range for demanding but
+				practical derivations of </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>dk</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				by that producer.  [Note: The challenge is to have the </U></SPAN></FONT><FONT COLOR="#0000ff"><I><U>dk</U></I></FONT><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>
+				derivation computationally lengthy enough to discourage repeated
+				attacks on the password while being rapid enough to be acceptable
+				in creation and in the intended use of SHA1DK.]</U></SPAN></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">19.698</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal; text-decoration: none">
+				<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Change
+				text in the table:protection-key-digest-algorithm section
+				following the previous insertion.</I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT FACE="Times New Roman, serif">〚<I> … </I>〛</FONT></P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">Any other
+				procedures, their identifying IRIs, and their application to
+				derivation of <FONT FACE="Courier New, monospace"><FONT SIZE=2>table:protection-key</FONT></FONT>
+				values are implementation-defined.</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+				</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">Consumers shall
+				support <FONT COLOR="#0000ff"><U> the digest algorithms
+				identified by IRIs</U></FONT>
+				<CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1http://docs.oasis-open.org/ns/office/1.3/protection"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">http://www.w3.org/2000/09/xmldsig#sha1</SPAN></SPAN></STRIKE></FONT></A></CODE><CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1http://docs.oasis-open.org/ns/office/1.3/protection"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection</SPAN></U></SPAN></FONT></FONT></A></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">#authz160</SPAN></U></SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				(for AUTHZ160)</SPAN></U></SPAN></FONT></FONT></CODE><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1,">,</A><FONT COLOR="#ff0000"><STRIKE>
+				which is the default,</STRIKE></FONT>
+				<CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://docs.oasis-open.org/ns/office/1.3/protection#sha1kdf"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection#sha1dk</SPAN></U></SPAN></FONT></FONT></A></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				(for SHA1DK)</SPAN></U></SPAN></FONT></FONT></CODE>,
+				<FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>http://www.w3.org/2000/09/xmldsig#sha1</U></FONT></FONT>,
+				and <FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>http://www.w3.org/</U></FONT></FONT><FONT COLOR="#ff0000"><STRIKE>2000/09/xmldsig</STRIKE></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>2001/04/xmlenc</U></FONT></FONT><FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>#sha256</U></FONT></FONT>.
+				They may support other algorithms described in §5.7 of [xmlenc-core]
+				or alternative procedures. <FONT COLOR="#ff0000"><STRIKE>Producers
+				should use http://www.w3.org/2000/09/xmldsig#sha256. </STRIKE></FONT>
+				</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+				</P>
+				<P CLASS="default-value-western" ALIGN=LEFT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">Producers
+				that support </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">table:protection-key</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				shall support AUTHZ160 and should do so by omitting the
+				associated </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">table:protection-key-digest-algorithm</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				attribute.  Producers should support SHA1DK, using the explicit
+				IRI</SPAN></U></SPAN></FONT></FONT><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				</SPAN></U></SPAN></FONT></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection#sha1dk</SPAN></U></SPAN></FONT></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">.</SPAN></U></SPAN></FONT></FONT></CODE></P>
+				<P CLASS="default-value-western" ALIGN=LEFT STYLE="font-weight: normal">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">All
+				digest algorithms of §5.7 in </SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">[xmlenc-core]</SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">
+				are deprecated for use as  </SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal">table:protection-key-digest-algorithm</SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">
+				methods.  Producers should not employ those algorithms and their
+				IRI values.  [Note: Removal of all support for those  methods is
+				anticipated in a future version of this specification.]</SPAN></FONT></CODE></U></FONT></FONT></P>
+				<P CLASS="default-value-western" ALIGN=LEFT STYLE="font-weight: normal">
+				<FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">The
+				default value for this attribute is
+				</SPAN><CODE CLASS="attribute-value-instance"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal">http://www.w3.org/2000/09/xmldsig#sha1</SPAN></STRIKE></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>http://docs.oasis-open.org/ns/office/1.3/protection#authz160</U></SPAN></FONT></CODE></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">19.850</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Change
+				the end of the text:protection-key section.  Correct the data
+				type in the schema as well.</I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT FACE="Times New Roman, serif">〚<I> … </I>〛</FONT></P>
+				<P CLASS="western"><FONT COLOR="#ff0000"><STRIKE>The</STRIKE></FONT><FONT COLOR="#0000ff"><U>Any</U></FONT>
+				password shall be provided as a sequence of bytes in UTF-8
+				encoding. 
+				</P>
+				<P CLASS="western"><FONT COLOR="#0000ff"><U>Consumers shall not
+				silently ignore the presence of a </U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>text:protection-key</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				attribute.  A consumer that does not recognize or support the
+				specified </U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>text:protection-key-digest-algorithm</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				(including the default) shall not accept any password for release
+				of the protection key.  Any other means for removal of a
+				</U></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>text:protection-key</U></FONT></FONT><FONT COLOR="#0000ff"><U>
+				and the associated protection is implementation-defined.</U></FONT></P>
+				<P CLASS="western"><FONT COLOR="#0000ff"><U>[Note: Protection
+				locks are neither password security, document security, nor
+				document integrity provisions.  There is no assurance of
+				confidentiality of any password employed in creation of
+				protection-key values.  In addition, protection-key attributes
+				themselves are easily defeated by removing/replacing them in the
+				XML elements that contain them.  The protection-key settings can
+				also be extracted and employed for unintended purposes.]</U></FONT></P>
+				<P CLASS="western"><BR><BR>
+				</P>
+				<P CLASS="parent-element-list-western">The <FONT FACE="Courier New, monospace"><FONT SIZE=2>text:protection-key</FONT></FONT>
+				attribute is usable with the following elements:
+				<FONT FACE="Courier New, monospace">&lt;text:alphabetical-index&gt;</FONT>
+				8.8, <FONT FACE="Courier New, monospace">&lt;text:bibliography&gt;</FONT>
+				8.9, <FONT FACE="Courier New, monospace">&lt;text:illustration-index&gt;</FONT>
+				8.4, <FONT FACE="Courier New, monospace">&lt;text:index-title&gt;</FONT>
+				8.2.3, <FONT FACE="Courier New, monospace">&lt;text:object-index&gt;</FONT>
+				8.6, <FONT FACE="Courier New, monospace">&lt;text:section&gt;</FONT>
+				5.4, <FONT FACE="Courier New, monospace">&lt;text:table-index&gt;</FONT>
+				8.5, <FONT FACE="Courier New, monospace">&lt;text:table-of-content&gt;</FONT>
+				8.3 and <FONT FACE="Courier New, monospace">&lt;text:user-index&gt;</FONT>
+				8.7.</P>
+				<P CLASS="attribute-value-list-western" ALIGN=LEFT STYLE="font-weight: normal">
+				<FONT FACE="Arial, sans-serif"><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none">The
+				</SPAN></SPAN></FONT><FONT FACE="Courier New, monospace"><FONT SIZE=2><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none">text:protection-key</SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none">
+				attribute has the data type </SPAN></SPAN></FONT><FONT FACE="Courier New, monospace"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none">string</SPAN></SPAN></STRIKE></FONT></FONT><FONT FACE="Courier New, monospace"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>base64Binary</U></SPAN></FONT></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="text-decoration: none">
+				18.2</SPAN></SPAN></FONT></FONT></P>
+			</TD>
+		</TR>
+		<TR VALIGN=TOP>
+			<TH WIDTH=74 STYLE="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Arial, sans-serif">19.851</FONT></P>
+			</TH>
+			<TD WIDTH=531 STYLE="; border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+				<P CLASS="western" ALIGN=LEFT STYLE="font-weight: normal"><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〚</SPAN></FONT><FONT FACE="Arial, sans-serif"><I>Change
+				text in the text:protection-key-digest-algorithm section
+				following the second paragaph.</I></FONT><FONT FACE="Times New Roman, serif"><SPAN STYLE="font-style: normal">〛</SPAN></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT FACE="Times New Roman, serif">〚<I> … </I>〛</FONT><FONT FACE="Arial, sans-serif">The
+				password shall be provided as a sequence of bytes in UTF-8
+				encoding.</FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" ALIGN=LEFT STYLE="font-style: normal; font-weight: normal">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U>The
+				additional IRIs for the procedures AUTHZ160 and SHA1DK are used
+				in accordance with the definition of those procedures in 19.698.</U></FONT></FONT></P>
+				<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0in; font-style: normal; font-weight: normal">
+				<BR>
+				</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">Any other
+				procedures, their identifying IRIs, and their application to
+				derivation of <FONT FACE="Courier New, monospace"><FONT SIZE=2>text:protection-key</FONT></FONT>
+				values are implementation-defined.</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+				</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in">Consumers shall
+				support <FONT COLOR="#0000ff"><U> the digest algorithms
+				identified by IRIs</U></FONT>
+				<CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1http://docs.oasis-open.org/ns/office/1.3/protection"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">http://www.w3.org/2000/09/xmldsig#sha1</SPAN></SPAN></STRIKE></FONT></A></CODE><CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1http://docs.oasis-open.org/ns/office/1.3/protection"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection</SPAN></U></SPAN></FONT></FONT></A></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">#authz160</SPAN></U></SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				(for AUTHZ160)</SPAN></U></SPAN></FONT></FONT></CODE><A CLASS="western" HREF="http://www.w3.org/2000/09/xmldsig#sha1,">,</A><FONT COLOR="#ff0000"><STRIKE>
+				which is the default,</STRIKE></FONT>
+				<CODE CLASS="attribute-value-instance"><A CLASS="western" HREF="http://docs.oasis-open.org/ns/office/1.3/protection#sha1kdf"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection#sha1dk</SPAN></U></SPAN></FONT></FONT></A></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				(for SHA1DK)</SPAN></U></SPAN></FONT></FONT></CODE>,
+				<FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>http://www.w3.org/2000/09/xmldsig#sha1</U></FONT></FONT>,
+				and <FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>http://www.w3.org/</U></FONT></FONT><FONT COLOR="#ff0000"><STRIKE>2000/09/xmldsig</STRIKE></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><U>2001/04/xmlenc</U></FONT></FONT><FONT COLOR="#800080"><FONT FACE="Courier New, monospace"><U>#sha256</U></FONT></FONT>.
+				They may support other algorithms described in §5.7 of [xmlenc-core]
+				or alternative procedures. <FONT COLOR="#ff0000"><STRIKE>Producers
+				should use http://www.w3.org/2000/09/xmldsig#sha256. </STRIKE></FONT>
+				</P>
+				<P CLASS="western" STYLE="margin-bottom: 0in"><BR>
+				</P>
+				<P CLASS="default-value-western" ALIGN=LEFT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">Producers
+				that support </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">text:protection-key</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				shall support AUTHZ160 and should do so by omitting the
+				associated </SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">text:protection-key-digest-algorithm</SPAN></U></SPAN></FONT></FONT><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				attribute.  Producers should support SHA1DK, using the explicit
+				IRI</SPAN></U></SPAN></FONT></FONT><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">
+				</SPAN></U></SPAN></FONT></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://docs.oasis-open.org/ns/office/1.3/protection#sha1dk</SPAN></U></SPAN></FONT></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">.</SPAN></U></SPAN></FONT></FONT></CODE></P>
+				<P CLASS="default-value-western" ALIGN=LEFT STYLE="font-weight: normal">
+				<FONT COLOR="#0000ff"><FONT FACE="Arial, sans-serif"><U><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">All
+				digest algorithms of §5.7 in </SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">[xmlenc-core]</SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">
+				are deprecated for use as  </SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Courier New, monospace"><SPAN STYLE="font-style: normal">text:protection-key-digest-algorithm</SPAN></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT FACE="Arial, sans-serif"><SPAN STYLE="font-style: normal">
+				methods.  Producers should not employ those algorithms and their
+				IRI values.  [Note: Removal of all support for those  methods is
+				anticipated in a future version of this specification.]</SPAN></FONT></CODE></U></FONT></FONT></P>
+				<P CLASS="default-value-western" ALIGN=LEFT STYLE="font-weight: normal">
+				<FONT FACE="Arial, sans-serif"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>The
+				default value for this attribute is
+				</U></SPAN></FONT><CODE CLASS="attribute-value-instance"><FONT COLOR="#ff0000"><STRIKE><SPAN STYLE="font-style: normal"><U>http://www.w3.org/2000/09/xmldsig#sha1</U></SPAN></STRIKE></FONT></CODE><CODE CLASS="attribute-value-instance"><FONT COLOR="#0000ff"><SPAN STYLE="font-style: normal"><U>http://docs.oasis-open.org/ns/office/1.3/protection#authz160</U></SPAN></FONT></CODE></FONT></P>
+			</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<H1 CLASS="western">3Deployment Considerations</H1>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The
+protection-key extensions are designed so that an implementation of
+any version of ODF that supports at least (or only) the default SHA1
+method will not be disturbed when longer or different protection-key
+values are employed.  Password authentication will fail, as intended.</P>
+<H2 CLASS="western">3.1Down-level Considerations</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">It is sufficient
+that arbitrarily-long base64Binary encoding of the protection-key
+value be tolerated and only the expected size be used from that value
+down-level.  
+</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">ODF 1.2
+consumers are already faced with the prospect of unexpected
+protection-key lengths and unknown digest algorithm names.  ODF
+1.0/1.1 consumers may have greater difficulty depending on the
+resiliency of their implementations.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The desired
+situation is that any user-interface attempt to remove a lock for
+which the protection-key is derived by an unknown method will simply
+fail to accept any offered password.  This will be either because the
+protection-key value cannot be matched by an assumed digest algorithm
+or because the implementation does not recognize the identified
+digest algorithm or a specific protection-key value for a recognized
+algorithm.</P>
+<H2 CLASS="western">3.2Immediate Usability of AUTHZ160 for Default
+Protection Keys</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">In making
+AUTHZ160 the default protection-key method, the technique is
+immediately useable with down-level ODF 1.0/1.1/1.2 consumers.  By
+omitting the protection-key-digest-attribute when AUTHZ160 is the
+method, down level consumers will attempt to authenticate the
+protection key with an SHA1 password hash.  AUTHZ160 protection-key
+values have the correct format. However, authentication against an
+SHA1 password hash will fail.  That is the intended result.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">When producers
+employ AUTHZ160 for setting a protection lock, the user should be
+advised that the lock cannot be released by using and version of ODF
+consumer that expects a password-based authorization.</P>
+<H2 CLASS="western">3.3Confirmation of Resilient Down-Level Treatment</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"> A series of
+resiliency tests are being developed in the repository of the OASIS
+ODF Interoperability and Conformance (OIC) TC so that consumers at
+all levels can be tested to confirm that these additional provisions
+and others of their kind already allowed for in ODF 1.2 and beyond
+will not break consumers and fail appropriately when a
+protection-unlock attempt fails.</P>
+<H2 CLASS="western">3.4Future-Proofing of Extended ODF 1.2 Consumers
+and Producers</H2>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The nature of
+AUTHZ160 usage as a default, with no use of a
+protection-key-digest-algorithm attribute, is indistinguishable to a
+down-level consumer and any future consumer that accepts a default
+160-bit protection-key value.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">For migration to
+use of the additional protection-key digest methods, with explicit
+protection-key-digest-algorithm values, it is desirable to have proof
+of concept and trial use in advance of ratification of new ODF 1.3
+and versions beyond ODF 1.3.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">For provisional
+use in ODF 1.2 consumers and producers, the IRIs for AUTHZ160 and
+SHA1DK specified in this proposal shall not be used.  Producers
+should not use these IRIs except in conformance with approved OASIS
+Standard ODF specifications that provide for their use.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">Instead, there
+can be agreement on provisional IRIs, not using an OASIS namespace,
+for implementation-defined use in <I>extended </I>ODF 1.2 documents. 
+This is allowed in the ODF 1.2 specification.    These
+extended-document protection-key-digest-algorithm IRIs can be
+implementation-defined to identify the use of AUTHZ160 and SHA1DK
+exactly as specified in this proposal.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">A convenience
+for ODF 1.2 consumers that recognize such provisional IRIs is to also
+accept the OASIS-namespace IRIs proposed for AUTHZ160 and SHA1DK. 
+However, ODF 1.2 producers cannot produce those IRIs in ODF 1.2
+documents.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">This arrangement
+allows the ratification of these IRIs and the associated methods in
+ODF 1.3 to be usable down-level in ODF 1.2 consumers by ODF 1.3
+producers using the official IRIs, once an ODF 1.3 Standard is
+approved.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">The one risk to
+having ODF 1.2 consumers anticipate the enhanced protection-key IRIs
+and associated methods is if ODF 1.3 specifies those IRIs but alters
+the methods.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">This risk is
+avoided by the ODF TC agreeing that the IRIs specified in this
+proposal will not be employed in ODF 1.3 to identify any methods
+other than those proposed here.  The adoption of the methods in this
+proposal is not required.  Adoption of different methods, with
+different IRIs is also not prevented.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in">In the outside
+case, so long as future-proofing is maintained, some of the
+provisional implementations will continue to be for extended ODF 1.2
+documents and are likely to be usable in <I>extended</I> ODF 1.3
+documents as well.</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"><BR><BR>
+</P>
+<P STYLE="margin-top: 0.06in; margin-bottom: 0.06in"><BR><BR>
+</P>
+<DIV TYPE=FOOTER>
+	<P STYLE="margin-bottom: 0in"><A NAME="DocumentIdentifier"></A><FONT SIZE=1 STYLE="font-size: 8pt">P</FONT><FONT SIZE=1 STYLE="font-size: 8pt">rotection-Key
+	Enhancements, v1.05		11 June 2012 </FONT>
+	</P>
+	<P STYLE="margin-bottom: 0in"><FONT SIZE=1 STYLE="font-size: 8pt">ODF
+	1.3 Proposal	         	Page </FONT><FONT SIZE=1 STYLE="font-size: 8pt"><SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>10</SDFIELD></FONT><FONT SIZE=1 STYLE="font-size: 8pt">
+	of </FONT><FONT SIZE=1 STYLE="font-size: 8pt"><SDFIELD TYPE=DOCSTAT SUBTYPE=PAGE FORMAT=PAGE>10</SDFIELD></FONT></P>
+</DIV>
+</BODY>
+</HTML>

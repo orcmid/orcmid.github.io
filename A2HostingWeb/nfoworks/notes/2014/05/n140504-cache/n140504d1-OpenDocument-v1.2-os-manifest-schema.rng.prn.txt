@@ -1,0 +1,224 @@
+0001 <?xml version="1.0" encoding="UTF-8"?>
+0002 <!--
+0003         Open Document Format for Office Applications (OpenDocument) Version 1.2
+0004         OASIS Standard, 29 September 2011
+0005     Manifest Relax-NG Schema
+0006         Source: http://docs.oasis-open.org/office/v1.2/os/
+0007         Copyright (c) OASIS Open 2002-2011. All Rights Reserved.
+0008
+0009     All capitalized terms in the following text have the meanings assigned to them
+0010     in the OASIS Intellectual Property Rights Policy (the "OASIS IPR Policy"). The
+0011     full Policy may be found at the OASIS website.
+0012
+0013     This document and translations of it may be copied and furnished to others, and
+0014     derivative works that comment on or otherwise explain it or assist in its
+0015     implementation may be prepared, copied, published, and distributed, in whole or
+0016     in part, without restriction of any kind, provided that the above copyright
+0017     notice and this section are included on all such copies and derivative works.
+0018     However, this document itself may not be modified in any way, including by
+0019     removing the copyright notice or references to OASIS, except as needed for the
+0020     purpose of developing any document or deliverable produced by an OASIS
+0021     Technical Committee (in which case the rules applicable to copyrights, as set
+0022     forth in the OASIS IPR Policy, must be followed) or as required to translate it
+0023     into languages other than English.
+0024
+0025     The limited permissions granted above are perpetual and will not be revoked by
+0026     OASIS or its successors or assigns.
+0027
+0028     This document and the information contained herein is provided on an "AS IS"
+0029     basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+0030     LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT
+0031     INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR
+0032     FITNESS FOR A PARTICULAR PURPOSE.
+0033 -->
+0034 <grammar
+0035     xmlns="http://relaxng.org/ns/structure/1.0"
+0036
+0037     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+0038
+0039     xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0"
+0040 >
+0041 <start>
+0042     <choice>
+0043         <ref name="manifest"/>
+0044     </choice>
+0045 </start>
+0046 <define name="manifest">
+0047     <element name="manifest:manifest">
+0048         <ref name="manifest-attlist"/>
+0049         <oneOrMore>
+0050             <ref name="file-entry"/>
+0051         </oneOrMore>
+0052     </element>
+0053 </define>
+0054 <define name="manifest-attlist">
+0055     <attribute name="manifest:version">
+0056         <value>1.2</value>
+0057     </attribute>
+0058 </define>
+0059 <define name="file-entry">
+0060     <element name="manifest:file-entry">
+0061         <ref name="file-entry-attlist"/>
+0062         <optional>
+0063             <ref name="encryption-data"/>
+0064         </optional>
+0065     </element>
+0066 </define>
+0067 <define name="file-entry-attlist">
+0068   <interleave>
+0069     <attribute name="manifest:full-path">
+0070         <ref name="string"/>
+0071     </attribute>
+0072     <optional>
+0073         <attribute name="manifest:size">
+0074             <ref name="nonNegativeInteger"/>
+0075         </attribute>
+0076     </optional>
+0077     <attribute name="manifest:media-type">
+0078         <ref name="string"/>
+0079     </attribute>
+0080     <optional>
+0081         <attribute name="manifest:preferred-view-mode">
+0082             <choice>
+0083                 <value>edit</value>
+0084                 <value>presentation-slide-show</value>
+0085                 <value>read-only</value>
+0086                 <ref name="namespacedToken"/>
+0087             </choice>
+0088         </attribute>
+0089     </optional>
+0090     <optional>
+0091         <attribute name="manifest:version">
+0092             <ref name="string"/>
+0093         </attribute>
+0094     </optional>
+0095   </interleave>
+0096 </define>
+0097
+0098 <define name="encryption-data">
+0099     <element name="manifest:encryption-data">
+0100         <ref name="encryption-data-attlist"/>
+0101         <ref name="algorithm"/>
+0102         <optional>
+0103             <ref name="start-key-generation"/>
+0104         </optional>
+0105         <ref name="key-derivation"/>
+0106     </element>
+0107 </define>
+0108 <define name="encryption-data-attlist">
+0109   <interleave>
+0110     <attribute name="manifest:checksum-type">
+0111         <choice>
+0112             <value>SHA1/1K</value>
+0113             <ref name="anyURI"/>
+0114         </choice>
+0115     </attribute>
+0116     <attribute name="manifest:checksum">
+0117         <ref name="base64Binary"/>
+0118     </attribute>
+0119   </interleave>
+0120 </define>
+0121 <define name="algorithm">
+0122     <element name="manifest:algorithm">
+0123         <ref name="algorithm-attlist"/>
+0124         <ref name="anyElements"/>
+0125     </element>
+0126 </define>
+0127 <define name="algorithm-attlist">
+0128   <interleave>
+0129     <attribute name="manifest:algorithm-name">
+0130         <choice>
+0131             <value>Blowfish CFB</value>
+0132             <ref name="anyURI"/>
+0133         </choice>
+0134     </attribute>
+0135     <attribute name="manifest:initialisation-vector">
+0136         <ref name="base64Binary"/>
+0137     </attribute>
+0138   </interleave>
+0139 </define>
+0140 <define name="anyAttListOrElements">
+0141     <zeroOrMore>
+0142         <attribute>
+0143             <anyName/>
+0144             <text/>
+0145         </attribute>
+0146     </zeroOrMore>
+0147     <ref name="anyElements"/>
+0148 </define>
+0149 <define name="anyElements">
+0150     <zeroOrMore>
+0151         <element>
+0152             <anyName/>
+0153             <mixed>
+0154                 <ref name="anyAttListOrElements"/>
+0155             </mixed>
+0156         </element>
+0157     </zeroOrMore>
+0158 </define>
+0159 <define name="key-derivation">
+0160     <element name="manifest:key-derivation">
+0161         <ref name="key-derivation-attlist"/>
+0162         <empty/>
+0163     </element>
+0164 </define>
+0165 <define name="key-derivation-attlist">
+0166   <interleave>
+0167     <attribute name="manifest:key-derivation-name">
+0168         <choice>
+0169             <value>PBKDF2</value>
+0170             <ref name="anyURI"/>
+0171         </choice>
+0172     </attribute>
+0173     <attribute name="manifest:salt">
+0174         <ref name="base64Binary"/>
+0175     </attribute>
+0176     <attribute name="manifest:iteration-count">
+0177             <ref name="nonNegativeInteger"/>
+0178         </attribute>
+0179     <optional>
+0180         <attribute name="manifest:key-size">
+0181             <ref name="nonNegativeInteger"/>
+0182         </attribute>
+0183     </optional>
+0184   </interleave>
+0185 </define>
+0186 <define name="start-key-generation">
+0187     <element name="manifest:start-key-generation">
+0188         <ref name="start-key-generation-attlist"/>
+0189         <empty/>
+0190     </element>
+0191 </define>
+0192 <define name="start-key-generation-attlist">
+0193   <interleave>
+0194     <attribute name="manifest:start-key-generation-name">
+0195         <choice>
+0196             <value>SHA1</value>
+0197             <ref name="anyURI"/>
+0198         </choice>
+0199     </attribute>
+0200     <optional>
+0201         <attribute name="manifest:key-size">
+0202             <ref name="nonNegativeInteger"/>
+0203         </attribute>
+0204     </optional>
+0205   </interleave>
+0206 </define>
+0207 <define name="base64Binary">
+0208     <data type="base64Binary"/>
+0209 </define>
+0210 <define name="namespacedToken">
+0211     <data type="QName">
+0212         <param name="pattern">[^:]+:[^:]+</param>
+0213     </data>
+0214 </define>
+0215 <define name="nonNegativeInteger">
+0216     <data type="nonNegativeInteger"/>
+0217 </define>
+0218 <define name="string">
+0219     <data type="string"/>
+0220 </define>
+0221 <define name="anyURI">
+0222     <data type="anyURI"/>
+0223 </define>
+0224 </grammar>

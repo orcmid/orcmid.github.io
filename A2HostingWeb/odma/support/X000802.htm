@@ -1,0 +1,181 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000802.htm 5     00-11-10 10:18 Orcmid $-->
+<title>X00802- ODMA Connection Manager Passes Malformed Document IDs</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000802">X000802</a>:
+</b> 
+        ODMA Connection Manager Passes Malformed Document IDs</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-08-05-15:34 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Vulnerability - Dangerous</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000802">X000802</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>5 - Serious</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions"> Investigate Further and
+        Document</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: <code>ODMA32.dll</code></b> and <code><b>Odma.dll</b></code>,
+        distributed versions up to 2.0.0</td>
+      <td width="50%"><b>Repaired in: </b>none
+        <dl>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000801">X000801</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis E. Hamilton 2000-08-04</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-04</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+
+<p>The ODMA Connection Manager provides <a href="#Analysis">inadequate screening
+for validity</a> against malformed <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DocumentIDs">ODMA
+Document ID</a>s created by ODMA-compliant software.&nbsp; Malformed Document
+IDs submitted to the Connection Manager can be passed to a DMS integration in
+their malformed state.</p>
+
+<p>There are <b>no reported production incidents</b> attributable to this particular
+defect.&nbsp; It is documented as a warning for future trouble-shooting and for
+maintenance of Connection Manager implementations.</p>
+
+<p>This vulnerability is identified as <b>dangerous</b> for the following
+reasons:&nbsp;</p>
+
+<ul>
+  <li>It can occur as the result of a difficult-to-isolate coincidence of
+    contributing flaws between an ODMA-compliant DMS and an ODMA-aware
+    application.</li>
+  <li>It can occur when ODMA Document IDs are transported from one session to
+    another via data, message text, or other transfer, possibly between
+    different character-set/code-page regimes, and where malformed material is
+    not properly validated before use by the ODMA-aware application.</li>
+  <li>It is a potential means for disruption of ODMA and a DMS other than the
+    source of the malformed Document ID.</li>
+</ul>
+
+</blockquote>
+
+<h3><a name="Analysis">Analysis</a>:</h3>
+
+<blockquote>
+  <p>The ODMA Connection Manager examines the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DocumentIDs">ODMA
+  Document IDs</a> that are provided as parameters for a number of ODMA 2.0 API
+  functions.&nbsp; Examination of the Document ID determines the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#DMS_ID">DMS
+  ID</a> of the DMS integration to use in performing the requested operation.</p>
+
+  <p>Implementations of the ODMA Connection Manager up through <b><code>Odma.dll</code></b>
+  version 2.0.0 and <b><code>ODMA32.dll</code></b> 2.0.0 use the following
+  procedure for selecting the proper DMS:</p>
+
+  <ol>
+    <li>If the <b><i><code>lpszDocId</code></i></b> parameter to the requested
+      operation is a <b><code>NULL</code></b> or other invalid pointer, the
+      Connection Manager may fail (see Incident Report <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000801">X000801</a>).&nbsp;
+      If not, the Connection Manager will have treated <b><code>NULL[ ]</code></b>
+      as <b><code>&quot;&quot;</code></b>, a string of length <b><code>0</code></b>.&nbsp;&nbsp;</li>
+    <li>If <b><code>strlen(<i>lpszDocId</i>) &lt; 9</code></b>, the ODMA
+      Connection Manager will reject the request.</li>
+    <li>When the Document Id has at least 9 characters, the ODMA Connection
+      Manager simply <b>ignores the first 7 characters</b>.&nbsp; They are
+      assumed to be <b><code>::ODMA\</code></b> without actual confirmation.</li>
+    <li>Starting immediately after the 7th character, the Connection Manager
+      reads, as the <a href="../downloads/odma20-3.htm#DMS_ID">DMS ID</a>, all
+      characters prior to whichever occurs first:
+      <ul>
+        <li>the Null character, <b><code>'\0'</code></b>, marking the end of the
+          string,</li>
+        <li>a <b><code>\</code></b> character, or</li>
+        <li>the 16th character of the string</li>
+      </ul>
+    </li>
+    <li>The <a href="../downloads/odma20-3.htm#DMS_ID">DMS ID</a> string derived
+      in this fashion will have 0 to 8 characters, followed by a terminating
+      Null character, <b><code>'\0'</code></b>.&nbsp; It cannot contain any <b><code>\</code></b>
+      character.&nbsp; For example, the Document ID string <code><b>xxAMDOs\y</b></code>
+      will be parsed as having a Null DMS ID string, <b><code>&quot;&quot;</code></b>;
+      <code><b>??DM:MYODMASAMPLEDOCUMENT</b></code> will be parsed as having DMS
+      ID string <b><code>&quot;ODMASAMP&quot;</code></b>.</li>
+    <li>If the derived DMS ID string identifies a DMS integration that is
+      registered with the Connection Manager being used, the requested operation
+      will be performed with that DMS and the supplied ODMA Document ID will be
+      delivered to the corresponding operation of the DMS, along with the other
+      parameters of the request.</li>
+    <li>If the derived DMS ID string does not identify an usable DMS
+      integration, or the Connection Manager rejects the string earlier (as in
+      step 2), the requested operation will not be performed.&nbsp; Instead, the
+      Connection Manager will return an <b><code>ODMSTATUS</code></b> value of <b><code>ODM_E_FAIL</code></b>
+      or <code><b>ODM_E_DOCID</b></code>, as allowed.&nbsp; All parameters of
+      the operations are left intact, and no output parameters will have been
+      supplied.</li>
+    <li>In the special case of a rejected <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+      operation, <b><code>*<i><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ppvObj2.18">ppvObj</a></i></code></b>
+      will be set to <b><code>NULL</code></b> and the <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.18ReturnValue">HRESULT</a></code></b>
+      will be one of <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#E_FAIL2.18">E_FAIL</a></code></b>
+      or <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#E_INVALIDARG2.18">E_INVALIDARG</a></code></b>.</li>
+  </ol>
+
+</blockquote>
+
+<h3><a name="Actions">Actions</a>:</h3>
+
+<blockquote>
+  <ol>
+    <li>Identify and report those ODMA Connection Manager functions that accept
+      malformed Document ID strings.</li>
+    <li>Confirm that using a Null string for the DMS ID will not disrupt the
+      Connection Manager use of the Windows Registry when searching for a DMS
+      integration to use.</li>
+    <li>Demonstrate that these failures actually occur with the current ODMA 2.0
+      connection manager implementations, <b><code>Odma.dll</code></b> version
+      2.0.0 and <code><b>ODMA32.dll</b> </code> version
+      2.0.0.</li>
+    <li>Describe appropriate work-around and safeguard techniques.</li>
+    <li>Schedule correction in the next rebuild of ODMA Connection Manager
+      implementations.</li>
+  </ol>
+
+</blockquote>
+
+<blockquote>
+  <p>Please provide any relevant information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-05-12:47 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-11-10 10:18 $<br>
+$$Revision: 5 $</em></p>
+</body>
+</html>

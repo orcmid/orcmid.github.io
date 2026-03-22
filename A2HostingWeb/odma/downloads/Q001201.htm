@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q001201.htm 5     01-01-11 8:31 Orcmid $-->
+<title>Q001201: Versions to Develop For</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.aiim.org">AIIM</a> <a href="http://www.infonuovo.com/dmware"> DMware</a>
+<a href="http://www.infonuovo.com/odma"> ODMA</a> <a href="http://www.infonuovo.com/odma/faq"> FAQ</a>
+ <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">Q001201</a></h2>
+
+<h1 align="center"><b>Versions to Develop For</b></h1>
+
+<h5 align="center">&nbsp;<a href="#0.10">Version 0.10</a> L<span style="font-variant: small-caps">ast updated</span>
+ 2001-01-11-08:30 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/downloads/Q001201.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <p align="left"><font color="#0000FF"><strong><em>This information is also
+  part of ODMA 2.0 Library Files edition 2.0-1.&nbsp; For later editions and
+  current status, consult the <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">ODMA
+  2.0 Library Files</a> description page.</em></strong></font>
+</p>
+
+  <hr>
+
+<h3><i><a href="#Summary">Summary</a>:</i></h3>
+
+  <blockquote>
+
+<p><i>This response addresses questions&nbsp;about the appropriate version of
+ODMA to use in developing applications, in providing DMS integrations, and in
+configuring ODMA Connection Managers.</i></p>
+
+<p><i>There is information on achieving maximum interoperability in the way that
+ODMA versions are supported and ODMA software is configured.</i></p>
+
+  </blockquote>
+</blockquote>
+
+<h2>1. <a href="#RequiredFormat">ODMA-Aware Application Version Support</a></h2>
+
+<h2>2. <a href="#Usage">ODMA-Compliant DMS Version Support</a></h2>
+
+<h2>3. <a href="#ConnectionManager">Impact of Connection Manager Version</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h1><a name="Summary">Summary</a></h1>
+<blockquote>
+  <p><i>Tell them the answer.</i></p>
+</blockquote>
+<h1>1. <a name="ApplicationVersion">ODMA-Aware Application Version Support</a></h1>
+<blockquote>
+  <p>ODMA 1.0 is the most flexible for development of ODMA-aware applications
+  and other desktop tools.&nbsp; ODMA 1.0 is the level of API that is the most
+  likely to work with any ODMA-compliant DMS and ODMA Connection Manager.</p>
+  <p>Applications that rely on capabilities of ODMA 1.5 should be designed to
+  operate with ODMA 1.5 features as optionally available.&nbsp; [<i>Also say what
+  the consequences of requiring ODMA 1.</i>5 <i>are</i>.]</p>
+  <p>Applications that require direct use of advanced document-management
+  concepts, or that want to operate silently with a comparable DMS will require
+  ODMA 2.0 support.&nbsp; It is also desirable to have ODMA 2.0 functions used
+  as options.&nbsp; Say what the consequences of requiring ODMA 2.0 are.&nbsp;
+  Point out that an ODMA 2.0-compliant DMS can report that many
+  ODMA-2.0-specific operations are not supported in a given configuration.</p>
+</blockquote>
+<h1>2. <a name="DMSVersion">ODMA-Compliant DMS Version Support</a></h1>
+<blockquote>
+<p> ODMA 2.0 is the level of support that is most likely to work with any
+ODMA-aware application, Connection Manager, or tool.&nbsp; ODMA 2.0-compliant
+components must be designed to work properly when delivered requests from ODMA
+1.0 and ODMA 1.5 aware applications and when initiated by any version of ODMA
+Connection Manager.</p>
+<p>Because it is not known what features of ODMA 2.0 will be required by an ODMA
+2.0-aware application, it is preferable to provide ODMA 2.0 support, with
+limited implementations, than refuse to supply ODMA 2.0 interfaces.</p>
+<p>The support for the additional ODMA 1.5 interface is always
+optional.&nbsp;&nbsp;</p>
+</blockquote>
+<h1>3. <a name="ConnectionManager">Impact of Connection Manager Version</a></h1>
+<blockquote>
+<p>Using the latest available Connection Manager is critical to maximizing
+interoperability in all ODMA configurations.</p>
+  <p>For an application, if the Connection Manager version is lower than the
+  version required by the application, the Connection Manager can refuse the <b><code>ODMRegisterApp</code></b>
+  request.&nbsp;&nbsp; This is regardless of the availability of DMS
+  integrations that satisfy the version requirements of the registering
+  application.</p>
+  <p>For an application, if the Connection Manager version is lower than the
+  version whose <b><code>.lib</code></b> file was used in compiling the
+  application, the application may fail to load.&nbsp; We recommend defensive
+  development practices that avoid this for applications, but the risk is real
+  for legacy application implementations.&nbsp; (See the interoperability
+  confirmation FAQtip.)</p>
+  <p>For a DMS, if the Connection Manager version is lower than the version
+  supported by the DMS integration, the Connection Manager will operate
+  correctly with the DMS, but the additional supported ODMA functions will&nbsp;
+  not be utilized.&nbsp; (These functions may still be accessed via <b><code>ODMQueryInterface</code></b>,
+  but this is a peculiar and difficult case.)</p>
+  <hr>
+</blockquote>
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>initiated this FAQtip in support of ODMATech discussions on which ODMA
+      versions to develop for.</dd>
+  </dl>
+  </blockquote>
+
+  <h2><a name="History">Change History</a></h2>
+  <blockquote>
+    <dl>
+      <dt><b><a name="0.10">version 0.10</a>:</b> Is a place-holder and outline for
+    a note to be reviewed and developed further.&nbsp;&nbsp;</dt>
+    </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2000-12-11-13:49 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-01-11 8:31 $<br>
+$$Revision: 5 $</em></p>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000806.htm 4     00-08-08 9:21 Orcmid $-->
+<title>X00806 - Undefended *NULL Assignment Operations</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000806">X000806</a>:
+</b> 
+Undefended <b><code>*NULL</code></b> Assignment Operations</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-08-08-09:17 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Vulnerability - Warning</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000806">X000806</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Analysis">Confirmed 2000-08-07</a>.<br>
+        Documentation and Repair <a href="#Actions">to be scheduled</a>.</td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b> and <code><b>Odma.dll</b></code>,
+        all distributed versions up to 2.0.0</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: </b>none</dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000801">X000801</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis E. Hamilton 2000-08-05</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-05</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+  <p>An application that uses the <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></code></b>
+  or <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+  incorrectly can induce a crash in any
+version of the ODMA Connection Manager.&nbsp; No direct damage occurs, but users will lose any work in progress
+and the DMS being used may have incomplete materials in its collection.&nbsp;</p>
+
+<p>There are <b>no reported production incidents</b> attributable to this particular
+defect.&nbsp; It is documented as a warning for future trouble-shooting and for
+maintenance of Connection Manager implementations.</p>
+
+<p>This condition is most likely to occur in development or maintenance of an
+ODMA-aware application.&nbsp; The conditions necessary to provoke the crash are
+unlikely in well-behaved applications in production usage.</p>
+
+</blockquote>
+
+<h3><a name="Analysis">Analysis</a>:</h3>
+
+<blockquote>
+
+  <ol>
+    <li>The implementation of <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></code></b>
+      assigns a provisional <code><b>NULL</b></code> result for its output, <b><code>*<i><a href="../downloads/odma20-3.htm#pHandle2.19">pHandle</a></i></code></b>,
+      without validating <code><i><b>pHandle</b></i></code> first.&nbsp; If <b><i><code>pHandle</code></i></b>
+      is <b><code>NULL</code></b>, operation will fail, often with termination
+      of the running application.</li>
+    <li>The implementation of <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+      assigns a provisional <b><code>NULL</code></b> result for its output, <code> <b>*<i><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ppvObj2.18">ppvObj</a></i></b></code>,
+      without validating <b><i><code>ppvObj</code></i></b> first.&nbsp; If <b><i><code>ppvObj</code></i></b>
+      is <code><b>NULL</b></code>, operation will fail, usually with termination
+      of the running application.</li>
+  </ol>
+
+</blockquote>
+
+<h3><a name="Actions">Actions</a>:</h3>
+
+<blockquote>
+  <ol>
+    <li>Identify and report those ODMA Connection Manager functions that make
+      undefended assignments through pointers for results.&nbsp; <i><a href="#Analysis">Completed</a></i>:
+      2000-08-07.&nbsp;&nbsp;</li>
+    <li>Describe appropriate work-arounds and any safeguard techniques.</li>
+    <li>Schedule correction in the next rebuild of ODMA Connection Manager
+      implementations.</li>
+  </ol>
+
+</blockquote>
+
+<blockquote>
+  <p>Please provide any relevant information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-07-14:28 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-08 9:21 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

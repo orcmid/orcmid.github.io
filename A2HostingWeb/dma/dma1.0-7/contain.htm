@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DMA Containment Model</TITLE>
+<META NAME="doccomm" CONTENT=" <NEXTID N=" " 1"&gt;>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc374170723"><A NAME="_Toc375459548"><A NAME="_Toc378777813">DMA Containment Model</A></A></A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc374170725"><A NAME="_Toc375459550"><A NAME="_Toc378777815">Introduction</A></A></A></P>
+</B></FONT><I><P>Webster’s Ninth New Collegiate Dictionary</I> defines containment as:</P><DIR>
+<DIR>
+
+<P>&quot;The act, process, or means of containing&quot;</P></DIR>
+</DIR>
+
+<P>Contain is defined as:</P><DIR>
+<DIR>
+
+<P>&quot;To have within&quot;</P></DIR>
+</DIR>
+
+<P>Frequently, containment is referred to as &quot;foldering&quot; in document management and imaging systems, meaning the act of storing documents or images within folders as a means of organization. Within DMA, we have chosen to use the word container as a more neutral, canonical term, describing the semantics of objects containing other objects.</P>
+<P>This DMA containment model is intended to be sufficiently general and expressive to allow DMA providers to support a number of specialized containment metaphors, such as libraries, electronic file cabinets, electronic file drawers, folders, and so on.  However, it is beyond the scope of this version of the DMA specification to define a well-known class that has both containment and content properties.  Support for such objects may be added in a future version of the DMA specification, when support for compound documents is added.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc360355332"><A NAME="_Toc363021342"><A NAME="_Toc363021547"><A NAME="_Toc374170727"><A NAME="_Toc375459552"><A NAME="_Toc378777817">DMA Containment Model Overview</A></A></A></A></A></A></P>
+</B></FONT><P>The DMA containment model can be characterized as follows:</P>
+
+<UL>
+<LI>Containment is optional. DMA document spaces may choose the following options:</LI></UL>
+
+
+<UL>
+
+<UL>
+<LI>Support no containment at all</LI>
+<LI>Support classes that provide containment</LI></UL>
+
+<LI>Containment is expressed through three mechanisms</LI>
+
+<UL>
+<LI>Navigating containment hierarchies through traversal of properties using the <A HREF="IdmaProperties.html">IdmaProperties</A> interface.</LI>
+<LI>Expressing queries that include containment properties.</LI>
+<LI>Updating containers to insert and remove children and containees.</LI></UL>
+
+<LI>Two types of containment are defined: direct and referential.</LI>
+
+<UL>
+<I><LI>Direct containment</I>. This models a 1:N, or one-to-many, relationship. A containing object may contain multiple objects, but an object is directly contained within at most one containing object.  A containing object that directly contains another object is the <I>parent</I> of that object. An object that is directly contained within a parent object is a <I>child</I> of that parent.  Multiple directly contained objects are <I>children</I>.  Direct containment defines a strict hierarchy of objects with no cycles.  Document spaces implementing direct containment must prevent cycles.  For example, moving a parent into one of its children must be disallowed.  DMA does not limit the depth of the direct containment hierarchy, but a document space may choose to impose a limit.</LI>
+<I><LI>Referential containment</I>. This models an N:M, or many-to-many, relationship. Objects that are referentially contained within a containing object are referred to as <I>containees.</I> A containing object that referentially contains another object is referred to as a <I>container </I>of that object. A container may contain multiple containees. A containee may be contained within multiple containers.  Cycles in referential containment relationships are not disallowed by DMA, because they could be expensive to prevent.  A document space may choose to disallow them, however, in which case it is obligated to enforce this. DMA defines operations that modify containment hierarchies in such a fashion that cyclical referential containment can be supported.</LI></UL>
+
+<LI>If a document space chooses to support containment, it may support direct containment, referential containment, or both.</LI>
+<LI>The relationship between a container and a contained object is modeled explicitly in DMA with the introduction of a third object, the ContainmentRelationship object, and its subclasses DirectContainmentRelationship and ReferentialContainmentRelationship.  These objects provide a home for &quot;edge data&quot;, data which can be thought of as belonging to the edge between two vertices, the containing object and the contained object.</LI>
+<LI>Containment is expressed as a set of capabilities within the architecture. The DMA containment model does not impose a specific implementation on document space service providers. </LI>
+<LI>Preserving the ordering of containees (or children) of a specific container (or parent) is optional.</LI>
+<LI>Preserving the ordering of containers of a specific containee is optional.</LI>
+<LI>Objects in a containment relationship must both reside in the same document space.  That is, cross-document space containment is not supported in this version of the DMA containment model, although it may be added in a future version.</LI>
+<LI>Document spaces may support read-only containers. A read-only container has the following characteristics:</LI>
+
+<UL>
+<LI>Containers may be searched and navigated.</LI>
+<LI>Containers cannot be created, modified or deleted.</LI>
+<LI>DMA programming interfaces model read-only containers by returning an error for the following methods:</LI>
+
+<UL>
+<LI><A HREF="IdmaConnection.html#IdmaConnectionExecuteChange">IdmaConnection::ExecuteChange</A> (returns DMARC_READ_ONLY)</LI>
+<LI><A HREF="IdmaBatch.html#IdmaBatchExecuteChanges">IdmaBatch::ExecuteChanges</A> (returns DMARC_READ_ONLY)</LI>
+<LI><A HREF="IdmaClassDescription.html#IdmaClassDescriptionCreateInstance">IdmaClassDescription::CreateInstance</A> (when requested class is a subclass of <A HREF="dmaClass_ContainmentRelationship.html">dmaClass_ContainmentRelationship</A>, returns DMARC_NOT_CREATABLE<FONT FACE="Arial">)</LI>
+</FONT><LI><A HREF="IdmaObjectFactory.html#IdmaObjectFactoryCreateObject">IdmaObjectFactory::CreateObject</A> (when requested class is a subclass of dmaClass_ContainmentRelationship, returns DMARC_NOT_CREATABLE)</LI>
+<LI><A HREF="IdmaEditProperties.html">IdmaEditProperties</A> (on objects of subclass of dmaClass_ContainmentRelationship, returns DMARC_READ_ONLY)</LI>
+<LI><A HREF="IdmaRelationshipOrdering.html#IdmaRelationshipOrderingSetOrdering">IdmaRelationshipOrdering::SetOrdering</A> (returns DMARC_READ_ONLY)</LI></UL>
+</UL>
+</UL>
+
+<B><FONT SIZE=4><P><A NAME="_Toc374170728"><A NAME="_Toc375459553"><A NAME="_Toc378777818">Containment and the DMA Object Model</A></A></A></P>
+</B></FONT><P><A NAME="_Ref360616556">DMA chooses to express containment capabilities by providing a set of optional classes and properties within the DMA object model, along with a set of containment values in the <A HREF="dmaClass_DocSpace.html#dmaProp_DocSpaceCapabilities">DocSpaceCapabilities</A> property on the <A HREF="dmaClass_DocSpace.html">DocSpace</A> object. To discover the overall containment capabilities of a DocSpace, client applications can consult the containment settings in the DocSpaceCapabilities property.  Client applications can discover the containment capabilities of any particular class or object by checking for the presence of the optional containment properties on it.</P>
+<P>Figure 1 (below) shows a subset of the classes in the DMA object model, with an emphasis on containment and versioning.  The base class <A HREF="dmaClass_Containable.html">dmaClass_Containable</A> introduces properties needed by all DMA objects which can be contained, including properties for the object’s direct containment parent and referential containment containers.  The classes <A HREF="dmaClass_DirectContainmentRelationship.html">dmaClass_DirectContainmentRelationship</A> and <A HREF="dmaClass_ReferentialContainmentRelationship.html">dmaClass_ReferentialContainmentRelationship</A> logically tie containers and their contained objects together for direct and referential containment, respectively. (Relationship classes are discussed in more detail below.)  Lastly, <A HREF="dmaClass_Container.html">dmaClass_Container</A> introduces properties needed by all DMA objects which act as containers, including properties for children and containee objects.</P>
+<P ALIGN="CENTER"><IMG SRC="Image103.gif" WIDTH=702 HEIGHT=258></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375459843"><A NAME="_Toc375461081"><A NAME="_Toc378580355"><A NAME="_Toc378754739">Figure -1:  DMA Class Inheritance Hierarchy for Containment</A></A></A></A></P>
+</B></FONT><P></A>Five classes are used to express different types of containment behavior:</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=582>
+<TR><TD WIDTH="56%" VALIGN="TOP">
+<P><A HREF="dmaClass_DocVersion.html">dmaClass_DocVersion</A></TD>
+<TD WIDTH="44%" VALIGN="TOP">
+<P>No containment support. Content supported. Used to model simple documents.</TD>
+</TR>
+<TR><TD WIDTH="56%" VALIGN="TOP">
+<P><A HREF="dmaClass_Container.html">dmaClass_Container</A></TD>
+<TD WIDTH="44%" VALIGN="TOP">
+<P>Containment supported. Objects of this class can be used to model containment, but these objects do not directly include content. Useful for modeling folders, libraries, bookshelves, etc.</TD>
+</TR>
+<TR><TD WIDTH="56%" VALIGN="TOP">
+<P><A HREF="dmaClass_ContainmentRelationship.html">dmaClass_ContainmentRelationship</A></TD>
+<TD WIDTH="44%" VALIGN="TOP">
+<P>Base containment relationship class.  If this class is searchable, the document space supports querying for both direct and referential containment relationships in a single query.  If not, separate queries are required.</TD>
+</TR>
+<TR><TD WIDTH="56%" VALIGN="TOP">
+<P><A HREF="dmaClass_DirectContainmentRelationship.html">dmaClass_DirectContainmentRelationship</A></TD>
+<TD WIDTH="44%" VALIGN="TOP">
+<P>Specialized containment relationship class used to express direct containment only.  If this class is supported but not searchable, the document space may support querying for directly contained objects via the <A HREF="dmaClass_Containable.html#dmaProp_ParentContainer">dmaProp_ParentContainer</A> shortcut property on the contained object instead.</TD>
+</TR>
+<TR><TD WIDTH="56%" VALIGN="TOP">
+<P><A HREF="dmaClass_ReferentialContainmentRelationship.html">dmaClass_ReferentialContainmentRelationship</A></TD>
+<TD WIDTH="44%" VALIGN="TOP">
+<P>Specialized containment relationship class used to express referential containment only.</TD>
+</TR>
+</TABLE>
+
+<B><FONT SIZE=2><P ALIGN="CENTER">Table -1DMA Containment Classes</P>
+</B></FONT><P>A key design goal for DMA is to provide a self-describing system.  Applications can determine functionality at run time by interrogating capabilities of document spaces. The DocSpaceCapabilities list on the DocSpace object includes list elements indicating the following characteristics:</P>
+
+<UL>
+<LI>types of containment supported (direct and/or referential, or neither);</LI>
+<LI>whether containable objects are required to be contained;</LI>
+<LI>which well-known classes of objects may be contained;</LI>
+<LI>which ordering options for contained objects are supported;</LI>
+<LI>maximum depth of containment hierarchy.</LI></UL>
+
+<P>An application that connects to a DMA document space may also examine class descriptions to answer the following questions about containment capabilities:
+<P></P></P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=582>
+<TR><TD WIDTH="32%" VALIGN="TOP">
+<I><P>To ask..</I></TD>
+<TD WIDTH="68%" VALIGN="TOP">
+<I><P>Execute..</I></TD>
+</TR>
+<TR><TD WIDTH="32%" VALIGN="TOP">
+<P>What classes can I use to create objects that can act as containers?</TD>
+<TD WIDTH="68%" VALIGN="TOP">
+<P>Check for the presence of well-known containment properties -- <A HREF="dmaClass_Container.html#dmaProp_Children">dmaProp_Children</A> for direct containment, and/or <A HREF="dmaClass_Container.html#dmaProp_Containees">dmaProp_Containees</A> for referential containment <A HREF="dmaClass_Containable.html#dmaProp_ParentContainer"></A>
+<P>-- in the list of properties for each class description object in the <A HREF="dmaClass_DocSpace.html#dmaProp_ClassDescriptions">dmaProp_ClassDescriptions</A> property of dmaClass_DocSpace objects.</TD>
+</TR>
+<TR><TD WIDTH="32%" VALIGN="TOP">
+<P>What classes can I use to create objects that can be contained?</TD>
+<TD WIDTH="68%" VALIGN="TOP">
+<P>Check for the presence of well-known containment properties -- <A HREF="dmaClass_Containable.html#dmaProp_Parent">dmaProp_Parent</A> for direct containment, and/or <A HREF="dmaClass_Containable.html#dmaProp_Containers">dmaProp_Containers</A> for referential containment <A HREF="dmaClass_Containable.html#dmaProp_ParentContainer"></A>
+<P>-- in the list of properties for each class description object in the dmaProp_ClassDescriptions property of dmaClass_DocSpace objects.</TD>
+</TR>
+<TR><TD WIDTH="32%" VALIGN="TOP">
+<P>Can this particular object act as a container?</P>
+</TD>
+<TD WIDTH="68%" VALIGN="TOP">
+<P>Check for the presence of well-known containment properties -- dmaProp_Children for direct containment, and/or dmaProp_Containees for referential containment <A HREF="dmaClass_Containable.html#dmaProp_ParentContainer"></A>
+<P>-- in the class description’s list of properties for this object.</TD>
+</TR>
+<TR><TD WIDTH="32%" VALIGN="TOP">
+<P>Can this particular object be contained?</TD>
+<TD WIDTH="68%" VALIGN="TOP">
+<P>Check for the presence of well-known containment properties -- dmaProp_Parent for direct containment, and/or dmaProp_Containers for referential containment <A HREF="dmaClass_Containable.html#dmaProp_ParentContainer"></A>
+<P>-- in the class description’s list of properties for this object.</TD>
+</TR>
+</TABLE>
+
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc360355353"><A NAME="_Toc363021368"><A NAME="_Toc363021573">Table -2 Interrogating Containment Capabilities</P>
+</FONT><P><A NAME="_Toc374170729"><A NAME="_Toc375459554"><A NAME="_Toc378777819">Containment Relationship Objects</A></A></A></P>
+</B><P>The DMA object model associates containers with their contained objects by means of an object of class dmaClass_DirectContainmentRelationship or dmaClass_ReferentialContainmentRelationship.  These objects provide a place to hold &quot;edge data&quot;, that is, data which belong more to the edge between the containing and contained object vertices than to either vertex.  Containment relationship objects can also be used to enable arbitrary persistent ordering of the contained objects relative to the containing object, and/or to enable arbitrary persistent ordering of the containing objects relative to the contained object.</P>
+<P>Edge data can include both user- and system-defined properties that describe the relationship between the containing and the contained object.  For example, the relationship of a folder and a document contained in that folder referentially (Figure 3-2) could have properties such as:</P>
+
+<UL>
+<LI>filer (who filed this document in this folder)</LI>
+<LI>filing date (when this document was filed in this folder)</LI></UL>
+
+<P ALIGN="CENTER"><IMG SRC="Image85.gif" WIDTH=484 HEIGHT=123></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc378580356"><A NAME="_Toc378754740">Figure -2 Referential Containment Relationship Object Example</A></A></P>
+</B></FONT><P>These properties logically belong to the relationship between the containing and contained object, rather than to either of the related objects alone.  In referential containment, neither the containing nor contained object is a good home for these properties, as the containing object may have many contained objects, and an object may be referentially contained in many containing objects.  Each ReferentialContainmentRelationship object describes one such containing-to-contained object relationship, providing a natural place to store the properties associated with that single relationship.</P>
+<P>For symmetry and consistency of creation and update of containment relationships, both direct containment and referential containment are expressed in the DMA model via relationship objects.  However, direct containment is a one-to-many relationship (each child object has only one parent, while a parent can have many children), so it is possible to express direct containment via a property on the child object which directly references the parent, rather than going through an intermediate relationship object.  The DMA containment model provides such a property, ParentContainer (Figure 3-17), as a shortcut for simpler navigation and query.  This property shortcuts the DirectContainmentRelationship object and has the parent object as its value. The value is maintained by the document space, hence it is read-only from the perspective of a DMA client.  There is no reflective property in the parent object that points directly to the child object, so the shortcut is unidirectional.  Updates to direct containment relationships must still be done via the DirectContainmentRelationship object.  See the &quot;Containment and Query&quot; discussion later in this section for more on this property.</P>
+<P ALIGN="CENTER"><IMG SRC="Image86.gif" WIDTH=482 HEIGHT=147></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc378580357"><A NAME="_Toc378754741">Figure -3 Direct Containment Relationship Object Example</A></A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc363021343"><A NAME="_Toc363021548"><A NAME="_Toc374170730"><A NAME="_Toc375459555"><A NAME="_Toc378777820">Containment and Versioning</A></A></A></A></A></P>
+</B></FONT><P>Refer to the DMA containment class hierarchy diagram above for the inheritance relationships among DMA classes that describe versioning and containment. This class hierarchy enables objects that model versioning, such as DocVersions, VersionDescriptions, VersionSeries, and ConfigurationHistories, to be contained within a container.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc374170731"><A NAME="_Toc375459556"><A NAME="_Toc378777821">Containment and Persistence</A></A></A></P>
+</B></FONT><P>If a DMA document space implements containers, it must provide for persistent storage of containers and their properties.  A container is said to be <I>persistent</I> when its properties, including its enumeration of the objects contained within it, have been saved to a document space such that the container and its enumeration of objects can be located and accessed by any users of the document space possessing appropriate access rights.  Once it is persistent, the container remains accessible until deleted.  The sections below describe how containers are created, saved, modified, and deleted; the section is followed by a discussion about maintaining referential integrity in containment relationships.</P>
+<B><P><A NAME="_Toc374170732"><A NAME="_Toc375459557"><A NAME="_Toc378777822">Creating and Saving a Container</A></A></A></P>
+</B><P>A DMA client can create a transient object of class dmaClass_Container like any other DMA object by invoking IdmaClassDescription::CreateInstance() on the Class Description Object of that class, or by invoking IdmaObjectFactory::CreateObject() on the DocSpace object with the appropriate class identifier. The client then uses the IdmaEditProperties interface to change the properties of the container.  To insert an object into the container using direct containment, the client must first create a transient object of class dmaClass_DirectContainmentRelationship.  Then the client fills in the properties of the dmaClass_DirectContainmentRelationship object, including the Tail (parent) and Head (child) objects.  Optionally, the client can set the ordering of the child object within the parent, if the DocSpace supports ordering, by invoking IdmaRelationshipOrdering::SetOrdering() on the relationship object.</P>
+<P>When the DMA client is ready to save the container (make it persistent), the client first invokes the IdmaConnection::ExecuteChange() method on the container and any contained objects in it that are not yet persistent.  It can make the parent and child objects persistent in any order, as long as it makes both persistent before calling IdmaConnection::ExecuteChange() on the associated DirectContainmentRelationship object.  The order is important to maintain referential integrity:  the order insures that the related objects are always persistent before the relationship is made persistent, thus avoiding a persistent state with references to non-existent objects.</P>
+<P>If any of the contained objects being saved are themselves containers, the DMA client must also save each of their contained objects and relationship objects.  The DMA client could implement this naturally via a recursive algorithm which rippled the saves down the containment subtree.  This recursion would stop on any subtree element that is already persistent and has not been changed, and thus does not need to be made persistent again.  This means that the DMA client must separately save each subtree of modified containers and contained objects.</P>
+<P>Alternatively, a DMA client could batch all of these operations together in a single IdmaBatch::ExecuteChanges() call, taking care to order them as described above.  IdmaConnection::ExecuteChange() or IdmaBatch::ExecuteChanges() on a DirectContainmentRelationship object will fail if either the containing or contained object is not yet bound to an underlying persistent object.</P>
+<P>The process for creating referential containment relationships is identical to the above, except that an object of class dmaClass_ReferentialContainmentRelationship must be used instead of dmaClass_DirectContainmentRelationship.</P>
+<B><P><A NAME="_Toc374170733"><A NAME="_Toc375459558"><A NAME="_Toc378777823">Modifying a Container</A></A></A></P>
+</B><P>To modify a container, a DMA client must first obtain a transient copy of the container object through navigation or search.  From there, the DMA client can navigate to the containment relationship object(s) and the contained object(s).  As described above, the client can then modify properties on any of those objects through the IdmaEditProperties interface.  It can also change the ordering of the enumerations of contained and containing objects through the IdmaRelationshipOrdering interface on the relationship object(s), if the document space supports that interface.  Saving the container and any new or changed contained objects and associated relationships is done as described earlier for new containers.</P>
+<B><P><A NAME="_Toc374170734"><A NAME="_Toc375459559"><A NAME="_Toc378777824">Deleting a Container</A></A></A></P>
+</B><P>To delete a container’s persistent form from the document space, a DMA client first must empty the container and remove it from any other container referencing it.  The sequence of delete operations mirrors the sequence of operations used to create the containment relationship.  At a minimum, this means deleting all containment relationship objects that reference the container via either Tail (for its contained objects) or Head (for objects containing the container to be deleted).  (These can all be found by navigation.)  The DMA client may also choose to delete the contained objects themselves, but this is not required by the DMA architecture.</P>
+<P>To delete a persistent containment relationship object, a DMA client invokes the <A HREF="IdmaConnection.html#IdmaConnectionSetDeletePending">IdmaConnection::SetDeletePending()</A> method on the corresponding transient DMA object.  On the next call to IdmaConnection::ExecuteChange() (or IdmaBatch::ExecuteChanges()), the containment relationship object’s persistent form is deleted, which effectively removes the contained object from the container.  Once the container is empty and no longer contained directly or by reference in any other container, it can be deleted as well by calls to SetDeletePending() and ExecuteChange(s).  A DMA client could choose to batch the emptying of a container with the deletion of the container in one call to ExecuteChanges after the appropriate sequence of SetDeletePending() calls.</P>
+<P>A DMA client must similarly delete all containment relationship objects referencing a Containable object (such as a DocVersion) via Head before it can delete the Containable object itself.</P>
+<B><P>Maintaining Referential Integrity</P>
+</B><P>Document spaces are not required, but may choose, to enforce the referential integrity of their containers as a matter of policy.  Document spaces may enforce a policy that persistent containment relationship objects are not allowed to reference non-existing objects.  Document spaces that enforce referential integrity will return errors on methods that would result in a breach of referential integrity, such as deleting a child document without first deleting the direct containment relationship object referencing it.  DMA clients must create, modify, and delete containers, their containment relationship objects, and contained objects in the order described above to avoid such errors.</P>
+<P>If a document space has DMAC_CONTAIN_DIR_REQUIRED set to true in its DocSpaceCapabilities list, this means that it requires all Containable objects to be directly contained in parent containers at all times.  No free-floating Containable objects are allowed.  In this case, the ordering prescribed above for creating, modifying, or deleting a containment relationship will take the Containable object through an invalid persistent state in which it is not contained in any parent container.  For instance, the order for creating a containment relationship calls for making the freestanding Containable object persistent <I>before</I> tying it into a container by making the containment relationship itself persistent.</P>
+<P>Document spaces that elect to support this optional DMAC_CONTAIN_DIR_REQUIRED capability can work around the invalid state by supporting the IdmaBatch::ExecuteChanges() method and requiring its use for containment creation, deletion, and modification.  This type of support allows the document space to insure against the indefinite persistence of an invalid state.  DMA clients should be prepared to use IdmaBatch::ExecuteChanges() if they find it available and DMAC_CONTAIN_DIR_REQUIRED set to true; such a use avoids errors from the document space when the clients order method calls to preserve referential integrity at the expense of temporarily leaving a containable object uncontained.</P>
+<P>The discussion above applies to the DMAC_CONTAIN_REF_REQUIRED capability as well.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc360355354"><A NAME="_Toc363021369"><A NAME="_Toc363021574"><A NAME="_Toc374170735"><A NAME="_Toc375459560"><A NAME="_Toc378777825"></A></A></A>Containment and Query</A></A></A></A></A></A></P>
+</B></FONT><P>There are two styles of query in DMA -- (1) navigation, and (2) associative query. The navigational model of query is always handled the same way in DMA (i.e., by accessing properties of a DMA object the client has in hand using the IdmaProperties interface). The associative query model is also always handled the same way in DMA (i.e., by building a query object and invoking the ExecuteSearch method on a scope object). ExecuteSearch returns an interface to a result set object, and the result rows or &quot;hits&quot; of the query can be enumerated from it. The situation is the same for containment (i.e., since none are needed, there are no new ways of doing queries involving containment).</P>
+<B><P><A NAME="_Toc360355355"><A NAME="_Toc363021370"><A NAME="_Toc363021575"><A NAME="_Toc374170736"><A NAME="_Toc375459561"><A NAME="_Toc378777826">Navigational Queries</A></A></A></A></A></A></P>
+</B><P>The starting point for navigating through the containment hierarchy of a document space is the enumeration of InitialContainers on the DocSpace object.  Starting from the DocSpace object, use the IdmaProperties interface on that object to get to the InitialContainers enumeration object-valued property, and then use <A HREF="IdmaEnumOfObject.html#IdmaEnumOfObjectGetNextObject">IdmaEnumOfObject::GetNextObject()</A> to step through and select one of the containers in this enumeration.</P>
+<P>Consider a direct containment example. Suppose you have an initial container object in hand, and you wish to enumerate the children of the container. Use the IdmaProperties interface on the container object to obtain the Children property. This property is an enumeration-of-objects property, and it can be used to enumerate the direct containment relationship objects between the container object in hand and the contained objects. The child direct containment relationship objects are enumerated by calling the GetNextObject method of the IdmaEnumOfObject interface of this property. For each direct containment relationship object so obtained, the Head property is obtained via its IdmaProperties interface. The value of this property is the contained object.  (See <A HREF="quexp3.htm">quexp3.cpp</A> in the query sample code in the appendix for an illustration of this simple loop.)</P>
+<P>To enumerate the children of a container where the children are contained by reference (as opposed to direct containment), use the same method as discussed above except that the property Containees is substituted for the Children property.</P>
+<P>Typically, the container object in the example above would be either in the class dmaClass_Container or one of its subclasses, although it could be an object of any class supporting the Container containment properties. The contained objects typically will be either of class dmaClass_Containable or one of its subclasses, but they could be objects of any class that happen to support the Containable containment properties.</P>
+<P>To obtain the (unique) parent of an object contained by direct containment, one performs the following two steps. First, the Parent property of the contained object in hand is obtained via the IdmaProperties interface on it. This gives you a direct containment relationship object. (If this is not the case, the object in hand is not contained via direct containment.) Second, the Tail property of the relationship object is obtained via the IdmaProperties interface on it; this is the parent object.</P>
+<P>To obtain the container objects of an object contained by referential containment, one must write a loop similar to the loop for enumerating children. The biggest difference is that the Children property is replaced by the Containers property. Of course, the names of the variables should be changed to indicate that the parents are being enumerated in order to avoid confusion when reading the code. (See <A HREF="quexp3.htm">quexp3.cpp</A> in the query sample code in the appendix for an illustration of this loop as well.)</P>
+<B><P><A NAME="_Toc360355356"><A NAME="_Toc363021371"><A NAME="_Toc363021576"><A NAME="_Toc374170737"><A NAME="_Toc375459562"><A NAME="_Toc378777827">Associative Queries</A></A></A></A></A></A></P>
+</B><P>Associative queries in DMA involve building a query object with four main properties: (1) a select list, (2) a from list, (3) a query expression, and (4) an order by list. The query expression is a logical expression (i.e., an expression that returns a truth value), and it is perhaps best thought of as corresponding to a parse tree of a SQL-like query’s &quot;where&quot; condition. The four main properties of a query object correspond to the four main clauses of a SQL select statement.  (See <A HREF="quexp2.htm">quexp2.cpp</A> in the query sample code in the appendix for an illustration of an associative query involving containers.)</P>
+<P>Many document spaces use a Relational Database Management System (RDBMS) to store their document properties. When an RDBMS is used for this purpose, then for N:M relationships a natural way to model the data relationships in the database schema is to have a table where the rows of the relationship are stored, and to perform a join between tables as illustrated in the sample code in the appendix. (Referential containment is an N:M relationship.) This &quot;relationship&quot; table is also necessary when there is edge data for either direct or referential containment. However, not all document spaces support referential containment. Some support only direct containment with no edge data, and they do not rely on an RDBMS to do so; therefore, they do not have such a relationship table. In this case, the DirectContainmentRelationship object is synthetic. The DirectContainmentRelationship object being synthetic is merely an annoyance for navigational queries. However, it is more inconvenient when it appears in the parse tree. In its use in the parse tree, the document space has to scan the parse tree and figure out that it’s not really there to join to and so has to massage the parse tree to bypass it.</P>
+<P>DMA provides the ParentContainer property on objects of class dmaClass_Containable to solve this problem. The value of this property is the parent of the object in the direct containment relationship. It is not used for anything else. Its job is to bypass the relationship object between the child and its unique direct-containment parent. By joining the parent directly with the child, document spaces can bypass the intermediate relationship object.</P>
+<P>The metadata for a Scope will indicate the supported methods for querying containment relationships.  If dmaClass_ContainmentRelationship is marked as searchable, a DMA client may search for both direct and referential containment relationships in a single query.  If not, separate queries are required.  If the class dmaClass_DirectContainmentRelationship is marked as searchable, a DMA client may search for an object’s parent by means of the intermediate DirectContainmentRelationship object.  If the property ParentContainer is marked as searchable, a DMA client may search for an object’s parent container directly without going through an intermediate DirectContainmentRelationship object.</P></BODY>
+</HTML>

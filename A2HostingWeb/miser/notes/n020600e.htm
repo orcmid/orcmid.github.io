@@ -1,0 +1,1701 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /miserCompagno/notes/n020600e.htm 124   17-07-06 18:54 Orcmid $-->
+<!-- This document is based on the dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)  -->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>oMiser Sketch 0.05 [tombstone]</title>
+</head>
+
+<body stylesrc="../../../construction/c000005e.htm">
+
+&nbsp;<!--webbot bot="Include" U-Include="2002/06/n020600e.htm" TAG="BODY" startspan -->
+
+<h1 align="center"><font face="Arial, Helvetica, Geneva, Swiss, Sans Serif"><a NAME="Top"><i>
+The Miser Project</i></a><br>
+oMiser Sketch</font></h1>
+
+<p align="center"><font size="-1"><b><a href="#v0.03">V<span style="font-variant: small-caps">ersion</span>  
+ 0.03</a> L<span style="font-variant: small-caps">ast updated</span>                               
+2002-07-10-11:18 -0700 (pdt)<br>
+The latest version of this document is always at <code><font size="+0"><a href="http://miser-theory.info/sketch/osketch.htm">
+http://Miser-theory.info/sketch/osketch.htm</a></font></code>.&nbsp; For a 
+history of this document and its revisions, see Miser Note <a href="2002/06/n020600.htm">
+n020600: Miser Sketch Notes</a>.</b></font></p>
+
+<p align="left"><font size="-1">Here is a sketch of the foundation for any (and 
+every) Miser system.&nbsp; This is the <i> oMiser level</i> because it covers 
+the elementary, <b>‹ob›</b>  structure only.&nbsp; It is devoted exclusively to 
+Obs, seemingly alone in a world unto themselves.&nbsp; This simple, closed 
+structure is at the foundation of all extensions that are introduced to achieve 
+&quot;higher&quot; levels.&nbsp;&nbsp; </font></p>
+
+<p align="left"><font size="-1">oMiser and <b>‹ob›</b><b>&nbsp;</b>provide a rich yet 
+spare environment.&nbsp; oMiser is the launchpad for distinguishing how much we 
+rely on the familiar and how much is overlooked in our everyday approach to 
+computation, theories, logic, mathematics and especially to language itself.</font></p>
+
+<blockquote>
+  <hr>
+
+<h3><em>Content </em></h3>
+
+</blockquote>
+
+<h2>1. <a href="#Obs">Obs: All We Ever Need</a></h2>
+
+<h2>2. <a href="#Mechanism">The Computational Model</a></h2>
+
+<h2>3. <a href="#Completeness">Completeness and Universality</a></h2>
+
+<h2>4. <a href="#Bridging"> Bridging to the Useful</a></h2>
+
+<h2>5. <a href="#IndividualPower"> Individuals of Arbitrary Power</a></h2>
+
+<h2>&nbsp;&nbsp;&nbsp;&nbsp; <a href="#References">References</a></h2>
+
+<blockquote>
+  <hr>
+
+  <p style="border-style: double; border-width: 1">[<b>TYPOGRAPHY WARNING:</b> 
+	This document uses HTML entities for special characters, such as ¶ and 
+	similar symbols. Most of them will render properly in all current browsers.&nbsp; 
+	However, some character, such as <font FACE="Symbol">¹</font>
+  (not-equal from the Symbol font) and ‹ (left-pointing-single-guillamet from 
+	the Windows font) may not render well at all.&nbsp; It is the intention to 
+	use Unicode for this and related pages, and also use MathML styles.&nbsp; 
+	That has not been done and you may have difficulty rendering the present 
+	form of this document as intended. -- dh:2002-07-05] </p>
+
+<p>We want to put something up top about what we are doing here, and the 
+viewpoint that we want to encourage.&nbsp; [These are some loose notes until 
+there is more structure. -- dh:2002-07-03]</p>
+
+<p align="left">Two ways we want to look at Obs and the basic provisions of the 
+Miser system.</p>
+
+<p align="left">We have a computer implementation in mind.&nbsp; But it is 
+abstracted.&nbsp; Still a computer implementation, but not a fixed 
+implementation.&nbsp; So I will illustrate the computational nature of Miser by 
+informal means: diagrams, descriptions of behavior of a computer, and so on.</p>
+
+<p align="left">At the same time, there is also a theoretical system, a 
+mathematical structure, that the computational system honors in a particular 
+way.&nbsp;&nbsp;</p>
+
+<p align="left">I will give informal characterizations of the computational 
+system,&nbsp;using diagrams that are to be suggestive of valid interpretations of the 
+theory.</p>
+
+<p align="left">I will also give informal expression to the theoretical system 
+of which the computational system is to be a valid interpretation.&nbsp;&nbsp;</p>
+
+<p align="left">This illustrates how these two views can be brought together in 
+demonstration of what it means to manifest abstractions (theoretical entities) 
+by computational means.&nbsp; This sets the stage for a rigorously developed 
+manifestation in operational computer software and for a formally developed 
+exploration of the theoretical system that is its foundation.&nbsp;&nbsp;</p>
+
+<p>It is important to notice that the theory is being developed with a 
+computational interpretation in mind.&nbsp; I am interested in the operational 
+capabilities of the kind of system that I envision, while at the same time the 
+development of a theoretical system sharpens understanding and also provides a 
+venue for exploring the way that theory and reality can be said to collide in 
+the computer.&nbsp; The egg and the chicken have no existence apart.</p>
+
+  <p style="border-style: solid; border-width: 1">[This is turning into a 
+	hodgepodge of mixed levels of description and incoherently-connected 
+	concepts.&nbsp; It will be like that until some organization emerges where I 
+	can put the less-essential but later-significant material off to the side.&nbsp;&nbsp; 
+	Meanwhile I do this to gather my forces and ensure that the sketch that is 
+	distilled out remains consistent with what is to follow or expand on it.&nbsp; 
+	I will also begin separating the sketch into multiple web pages, probably on 
+	a major section basis, as those sections become complete enough to move onto 
+	pages of their own.&nbsp; The sketch will have a drill-down quality to it. 
+	-- dh:2002-07-05]</p>
+
+</blockquote>
+
+<h1>1. <a name="Obs">Obs: All We Ever Need</a></h1>
+
+<blockquote>
+
+<p style="border-style: solid; border-width: 1"><i>We mean by this that Obs are 
+sufficient.&nbsp; In principle, we don&#39;t need anything more to provide a 
+universal system of computation.&nbsp; It is neither practical nor desirable to 
+limit ourselves this way.&nbsp; We start here because this is the place where we 
+can reveal exactly what is involved in manifesting anything via computation and 
+then what is or is not remarkable by extensions that deliver computation on 
+more-familiar terms that, nevertheless, preserve Obs and their power.</i></p>
+
+</blockquote>
+
+<h2 align="left">1.1 Identity and Existence</h2>
+
+<div align="right">
+  <table border="0" cellspacing="3" width="95%" height="92">
+    <tr>
+      <td width="44%" align="left" height="86"></td>
+      <td width="56%" align="left" height="86">
+
+<p align="left"><i>Here it is argued that comparison, knowledge of existence, 
+and understanding of number, are essential to knowledge, but cannot be included 
+in perception since they are not affected through any sense organ.</i></p>
+
+      </td>
+    </tr>
+  </table>
+</div>
+
+<p align="right">-- Bertrand Russell on Knowledge and Perception in Plato.</p>
+
+<blockquote>
+
+<p align="left">[This section provides a basic flavor of the approach and how we 
+will toggle between several perspectives, always endeavoring to keep them 
+distinct. -- dh:2002-07-03]</p>
+
+</blockquote>
+
+<h3 align="left">1.1.1 Theoretical Structure</h3>
+
+<blockquote>
+  <p align="left">The structure, <b>‹ob›</b> = ‹<b>Ob</b>, <b>Of</b>, <b> Ot</b>› 
+	consists of&nbsp;</p>
+
+      <ul>
+        <li>
+          <p align="left">a collection, <b>Ob</b>, of elements (the individual 
+			Obs),&nbsp;</li>
+        <li>
+          <p align="left">a collection, <b>Of</b>,&nbsp; of functions over <b>Ob</b></li>
+        <li>
+          <p align="left">and a (semi-) formal system, <b>Ot</b>, with initial 
+			axioms that provides everything and only what there is to be (semi-) 
+			formally known about
+          <b>‹ob›</b>.</li>
+      </ul>
+  <p align="left">We are intentionally allowing ourselves to be obtuse about <b>
+	Ot</b> and whether it is properly in or of the structure <b>‹ob›</b>.&nbsp; 
+	We are not even clear on what it means to say that <b>‹ob›</b>  is a 
+	&quot;structure.&quot;&nbsp; We will leave it that way for now and tidy up later.&nbsp;&nbsp;<p align="left">
+	Something to deal with almost immediately is having it be clear when we are 
+	talking in our own language about the structure <b>‹ob›</b>, and when we are 
+	somehow speaking within the structure
+  <b>‹ob›</b>, and if it even makes sense to consider that one can speak that 
+	way.&nbsp;&nbsp;
+  <p align="left">
+  Keeping track of the multiple levels of language (our language, the 
+	metalanguage, the formal language, etc.) is important because we will 
+	identify features of <b>‹ob›</b> 
+  that are themselves linguistic in character.&nbsp; For now, this is just 
+	something to notice that may not always be obvious.&nbsp; We&#39;ll improve on 
+	that as we go.
+  <p align="left" style="border-style: solid; border-width: 1">
+  [I want a picture or diagram about the relationship of theories and 
+	interpretations to pave our way here. The key thing is that reasoning and 
+	deduction in the theory gives us some power regarding the interpretation.&nbsp; 
+	I keep wanting to do it later, but it seems that some initial depiction is 
+	necessary to build on as we acquire more theoretical content. -- 
+	dh:2002-07-05.]
+</blockquote>
+          <h3 align="left">1.1.2 Informal Conception</h3>
+<blockquote>
+
+<p align="left">There are Obs.&nbsp;&nbsp;That&#39;s all we know for now.&nbsp; Don&#39;t assume 
+anything.&nbsp; And don&#39;t confuse the notion of Obs with anything that you might 
+already know about objects or &quot;objects&quot; or object-oriented programming or 
+anything else.&nbsp; We&#39;ll look for prospective connections later.&nbsp; 
+Consider that, with oMiser, Obs have no relationship to classes and objects the 
+way they are spoken of by software developers.&nbsp;&nbsp;Although a relationship to 
+classes and sets in logic and mathematics is inescapable,&nbsp; I ask you to set 
+that aside too.&nbsp; We&#39;ll put it in later.</p>
+
+  <p align="left">
+	<img border="0" src="2002/06/n020600c1.png" align="left" alt="An Ob (conceptual)">For 
+	now, there is very little to know about Obs.&nbsp; They are some kind of 
+	abstraction.&nbsp; We will indicate how little we know by depicting an 
+	arbitrary Ob as a cloud-like entity.</p>
+
+  <p align="left">It is fundamental that there appear be many Obs -- an 
+	unlimited number, actually -- and however they come to<img border="0" src="2002/06/n020600c2.png" align="right" alt="Another Ob (conceptual)">
+  our attention, they are distinguished in some way.&nbsp; When the same Ob 
+	comes to our attention in more than one way, it is always recognizable as 
+	the same Ob. That&#39;s an essential quality for all interpretations that we 
+	want to allow.</p>
+
+<p align="left">This conception is reflected in the theory by the rules for 
+identity and distinction.&nbsp; It is not a complete formulation and we will 
+ultimately give this topic much closer scrutiny.</p>
+
+<p align="left">I said, &quot;There are Obs,&quot;&nbsp; as if Obs are.&nbsp; It is a way 
+of speaking.&nbsp; It is not that Obs are real or that <b>‹ob›</b> 
+can be found somewhere in physical reality.&nbsp; It is more like, &quot;consider 
+that there are Obs.&quot;&nbsp;&nbsp; There is no commitment other than to give Obs a 
+kind of theoretical standing, to speak theoretically.&nbsp; Later, when we have 
+more foundation under our belts, we can look to see in what ways, if any, Obs 
+may be &quot;more real&quot; than that.</p>
+
+<p align="left">There are no Obs except in this intangible sense in which we 
+speak as if they are.&nbsp; The theory gives us a way of speaking correctly 
+about Obs (since there is no way other than speaking -- including reading and 
+writing -- that we have for mutually envisioning what their characteristics are, 
+even conceptually), and we will use the language of theorizing just that way, in 
+speaking of <b>‹ob›</b>  and the qualities of Obs.&nbsp;&nbsp;</p>
+
+<p align="left" style="border-style: solid; border-width: 1">[I have 
+specifically omitted demonstration with a computer as a way of speaking about or 
+conveying something about <b>‹ob›</b>.&nbsp; This is worthy of a note, at some 
+point.&nbsp; I intend to address that case, but I am not prepared to claim it 
+just yet. -- dh:2002-07-05]</p>
+
+<p align="left">Speaking of <b>‹ob›</b>  and the Obs is to be taken as an act of 
+invention, even though we use the language of description.&nbsp;&nbsp;The descriptions are 
+free creations, yet they are <i>not</i> arbitrary.&nbsp; There is a logic to 
+them.&nbsp; We use the notations and concepts of mathematics and logic to 
+provide consistency in our speaking of Obs and <b>‹ob›</b>.&nbsp; That 
+consistency stems from our <i> fundamental premise</i>: <b>‹ob› </b> <i><b>is 
+lawful</b></i><b>.</b>&nbsp; That is to say, we <i>assert</i> that <b>‹ob›</b>  
+is lawful, and that the rules of logic apply and prevail.&nbsp; That is a rule 
+of the game of <b>‹ob›</b>.&nbsp; As the author (and referee) of the game, I&#39;m 
+giving that to you as the rule.&nbsp; If we find that there is something 
+inconsistent in the descriptions that are made, it is an error in the 
+descriptions and conceptualizations, not in the fundamental premise.&nbsp; No 
+mischief is permitted in that regard.&nbsp; Any mistakes that violate that 
+condition will be repaired and the premise restored.&nbsp; That&#39;s the nature of 
+the game.&nbsp; It may turn out that this is a game we cannot win.&nbsp; We will 
+only know through the faithful playing of it.</p>
+
+<p align="left">We are learning to speak using the language of logical theories.&nbsp; 
+Our demands on logic are simple at the beginning and we will start out with 
+informal and familiar styles of equations.</p>
+
+<p align="left">Let us begin with the first layer above the fundamental premise: 
+that of identity and distinction.&nbsp; We will pay more attention to the 
+conceptualization and the formalization of existence after that.</p>
+
+<p align="left" style="border-style: solid; border-width: 1">One thing to pick 
+up on later is that it is the structure that is the &quot;whole&quot; and when we have our 
+attention on individuals, speaking conceptually or in the language of the 
+theory, that should be taken as a way of viewing aspects of the whole.&nbsp; 
+Although we speak of individuation, and might speak of <b> Ob</b> as a set, it 
+is not that Obs (that is, the members of the conceptual set, Ob) are independent 
+entities.&nbsp; The obs are interdependent and inextricable with the structure, <b>
+‹ob›</b>.&nbsp; Everything else is a difficulty of language.&nbsp; Quote [<a href="#Quine1969">Quine1969</a>].</p>
+
+</blockquote>
+<h3 align="left"><a name="1.1.3">1.1.3</a>  Identity for Obs</h3>
+
+<blockquote>
+  <table border="0" cellspacing="3" width="95%" height="46">
+    <tr>
+      <td width="44%" align="left" height="40"></td>
+      <td width="56%" align="left" height="40">
+
+<p align="left"><i>Consider an arbitrary integer, </i>p<i>.&nbsp; For example, </i>
+q<i>.</i></p>
+
+      </td>
+    </tr>
+  </table>
+
+</blockquote>
+
+<p align="right">-- told to me in the 60s by one of my many language-loving 
+friends</p>
+
+<blockquote>
+
+  <p align="left"><b>1.1.3.1</b> There is an identity relationship among the Obs&nbsp; 
+	We borrow the common symbol &quot;=&quot; for the relationship of Ob identity.&nbsp; 
+	<img border="0" src="2002/06/n020600d3.png" align="right" alt="Some Obs (conceptual)">We 
+	will use the symbol in a way that makes it clear when we are referring to 
+	Obs and when we might be referring to something else where a similar notion 
+	of identity might apply.&nbsp;&nbsp;</p>
+
+  <p align="left"> <b>1.1.3.2</b> The intended interpretation of <var>x</var>&nbsp;=&nbsp;<var>y</var> 
+	is that Ob&nbsp;<var>x</var> is Ob&nbsp;<var>y</var>.</p>
+
+  <p align="left"><b>1.1.3.3 Reflexivity</b>. If <var>x</var> is an Ob, <var>x</var>&nbsp;=&nbsp;<var>x</var>.</p>
+
+  <p align="left"><b>1.1.3.4 Symmetry</b>. For any Obs <var>x</var> and <var>y</var>, 
+	if
+  <var>x</var>&nbsp;=&nbsp;<var>y</var>, then <var>y</var>&nbsp;=&nbsp;<var>x</var>.</p>
+
+  <p align="left"><b>1.1.3.5 Transitivity</b>. For any Obs <var>x</var>, <var>y</var>
+  and <var>z</var>, if <var>x</var>&nbsp;=&nbsp;<var>y</var> and <var>y</var>&nbsp;=&nbsp;<var>z</var><i>,</i> 
+	then
+  <var>x</var>&nbsp;=&nbsp;<var>z</var>.</p>
+
+  <p align="left"><b><a name="s1.1.3.6">1.1.3.6</a> Distinction</b>. <var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var> 
+	is equivalent to ¬(<var>x</var>&nbsp;=&nbsp;<var>y</var>) by definition, where &quot;¬<var>p&quot;</var> 
+	signifies &quot;not&nbsp;<var>p</var>.&quot;&nbsp; The intended interpretation of <var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var> 
+	is that Ob&nbsp;<var>x</var> is not Ob&nbsp;<var>y</var>, which is to say that Ob&nbsp;<var>x</var> 
+	and Ob&nbsp;<var>y</var> are distinct.</p>
+
+  <p align="left"><b>1.1.3.7 Identity Completeness</b>. For any Obs <var>x</var>
+  and <var>y</var>, it is the case that <var>x</var>&nbsp;=&nbsp;<var>y</var>&nbsp;or&nbsp;<var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var>.</p>
+
+  <p align="left"><b>1.1.3.8 Identity Consistency</b>. For any Obs <var>x</var>
+  and <var>y</var>, it is the case that&nbsp;¬(<var>x</var>&nbsp;=&nbsp;<var>y</var>&nbsp;and&nbsp;<var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var>).</p>
+
+  <p align="left"><b>1.1.3.9</b> The identity-completeness and 
+	identity-consistency conditions place a strong requirement on any valid 
+	interpretation of <b>‹ob›</b>, and are part of the assurance of a sound 
+	computational manifestation for Obs.&nbsp; It is usual to place/demonstrate 
+	these conditions at the level of (or about) the overall theory itself.&nbsp; 
+	Whether or not we will do so, the conditions are established for identity of 
+	Obs. [Find a better term if &quot;sound&quot; is inappropriate or misleading here.&nbsp; 
+	Also, look at what it is to assert consistency and completeness in this way 
+	as statements of <b>‹ob›</b>  theory, <b>Ot</b>.]</p>
+
+  <p align="left"><b>1.1.3.10 Consequences of Formality</b>.&nbsp; Here we begin 
+	to see the consequences of formal expression of a theory.&nbsp; Notice that 
+	the characteristics of identity (1.1.3.3-1.1.3.6), used in some form since 
+	the time of Euclid, would be ridiculous if we were speaking of definite, 
+	determined things.&nbsp; In that case, identity and distinctness are 
+	confirmable in our experience or by some empirical inspection or 
+	confirmation.&nbsp; A statement such as <var>x</var> = <var>x</var> would 
+	then seem unnecessary or, at best, trivial.</p>
+
+  <p align="left" style="border-style: solid; border-width: 1">[Put in that we 
+	are beginning to describe appropriate inferences among formal expressions.&nbsp; 
+	An appropriate reading of <var>x</var>&nbsp;=&nbsp;<var>x</var>, for example, is that 
+	any any form of this pattern where <var>x</var> is some formula for an Ob is 
+	to always be true in the theory.&nbsp; The axiom, 1.1.3.3 is required 
+	because it actually arises in chains of inference about the identity of Obs.&nbsp; 
+	So the obvious needs to be made explicit. More significantly, this simple 
+	condition is often violated in computational systems.&nbsp; That is, we use 
+	expressions for computation for which 1.1.3.3 fails, yet we reason about 
+	computations as if it doesn&#39;t.&nbsp; It is my profound desire to avoid that 
+	nonsense and, indeed, demonstrate that there is no reason to tolerate it.&nbsp; 
+	We will produce far superior and reliable computational results as a 
+	consequence. --dh:2002-07-05]</p>
+
+</blockquote>
+
+<h3 align="left">1.1.4 Distinction Among Obs</h3>
+
+<blockquote>
+
+<p align="left"><b>1.1.4.1</b> We use <var>x</var>&nbsp;¶&nbsp;<var>y</var> to signify an 
+ordering relationship among the Obs.&nbsp; The intended reading of <var> x</var>&nbsp;¶&nbsp;<var>y</var>
+is that Ob&nbsp;<i>x</i> is <i>
+prior</i> to Ob&nbsp;<i>y</i>.&nbsp; An important consequence is that if <var> x</var>&nbsp;¶&nbsp;<var>y</var>, 
+then Ob&nbsp;<i>x</i> must be distinct from Ob&nbsp;<i>y</i>.</p>
+
+  <p align="left"><b>1.1.4.2</b> [Irreflexivity] For any Ob&nbsp;<var>x</var>, ¬(<var>x</var>&nbsp;¶&nbsp;<var>x</var>).</p>
+
+  <p align="left"><b>1.1.4.3</b> [Asymmetry] For Ob&nbsp;<var>x</var> and Ob&nbsp;<var>y</var>, 
+	if <var> x</var>&nbsp;¶&nbsp;<var>y</var> then ¬(<var>y</var>&nbsp;¶&nbsp;<var>x</var>).</p>
+
+  <p align="left"><b>1.1.4.4</b> [Transitivity] For Ob&nbsp;<var>x</var>, Ob&nbsp;<var>y</var>, 
+	and Ob&nbsp;<var>z</var>, if <var> x</var>&nbsp;¶&nbsp;<var>y</var> and <var>y</var>&nbsp;¶&nbsp;<var>z</var>, 
+	then
+  <var> x</var>&nbsp;¶&nbsp;<var>z</var>.</p>
+
+  <p align="left"><b>1.1.4.5</b> [Distinctness] For Ob&nbsp;<var>x</var> and Ob&nbsp;<var>y</var>, 
+	if <var> x</var>&nbsp;¶&nbsp;<var>y</var> then <var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var>.</p>
+
+  <p align="left"><b><a name="1.1.4.6">1.1.4.6</a></b> [Identity Distinctness] 
+	For any Obs
+  <var>x</var>
+  and <var>y</var>, it is the case that&nbsp;</p>
+
+  <blockquote>
+    <p align="left"><var>x</var>&nbsp; =&nbsp;<var>y</var>&nbsp;if and only if&nbsp; ¬(<var>x</var>&nbsp;¶&nbsp;<var>y</var>&nbsp;<b>or</b>&nbsp;<var>y</var>&nbsp;¶&nbsp;<var>x</var>).</p>
+
+  </blockquote>
+
+<p align="left">This is an unusual notion of distinction.&nbsp; 
+<a href="#s1.1.3.6">Section 1.1.3.6</a> provides the usual notion, where 
+distinction is merely <var>x</var>&nbsp;<font FACE="Symbol">¹</font>&nbsp;<var>y</var>
+  with it becoming possible to infer more cases as constants, functions, and 
+axioms about them are introduced.&nbsp;&nbsp;</p>
+
+  <p align="left">[Introduce something about the difficulty of inference, and 
+	illustrate the kinds of inference we can make in this case.&nbsp; This is 
+	definitely the case of having a particular computational/constructive 
+	interpretation in mind.&nbsp; Maybe something about applied (equational) 
+	logic.]</p>
+
+</blockquote>
+
+<h3 align="left">1.1.5 Computational Manifestation of Obs</h3>
+
+<blockquote>
+  <p align="left" style="border-style: solid; border-width: 1">[Rework this part 
+	to have it that manifestations are erected and discarded as part of 
+	computations, but it is as if <b>‹ob›</b>  is always there.&nbsp; The 
+	manifestations preserve this illusion.&nbsp; Also, make it simpler and not 
+	so heavy.&nbsp; Finally, point out that it is an oMiser software library 
+	that provides the necessary manifestation.&nbsp; Later, we will even 
+	consider that, among all computers on which some manifestations of <b>‹ob›</b>  
+	are realized, there is every indication that it is the one and only <b>‹ob›</b>  
+	structure <i>anywhere</i>.&nbsp; We get to look at the Platonic illusion.&nbsp; 
+	This may belong in separate notes, but I want to remind myself to keep my 
+	use of language consistent with that prospect.]</p>
+
+  <p align="left">
+	<img border="0" src="2002/06/N020600d4.png" align="left" alt="An Ob Manifestation (conceptual)">Obs 
+	will be represented in the processes of conventional digital computers.&nbsp; 
+	This is accomplished by organization of computer memory and software in such 
+	a way that <i>Obs are manifest in the operation of the digital computer</i>.&nbsp;&nbsp;</p>
+
+  <p align="left">Manifestations are established using oMiser software libraries 
+	provided for use by computer programs on a variety of different computer 
+	systems.&nbsp; The library procedures deliver interfaces to manifestations 
+	of Obs.&nbsp; The operations available at the interfaces behave is as if the 
+	Obs are actually present somewhere &quot;behind&quot; the interfaces of the 
+	manifestations.&nbsp; The manifestations operate successfully as 
+	representatives of the Obs in the processing environment of the conventional 
+	computer system.</p>
+
+  <p align="left">In the implementation of oMiser, the manifestations are 
+	delivered <i>to other software</i> by the oMiser library procedures.&nbsp; 
+	It is done in such a way that the manifestation is successful and the 
+	developers of the other software can trust in that fact.&nbsp; There is also 
+	a software program, <i>oFrugal</i>, that uses the oMiser library and 
+	delivers access to <b>‹ob›</b> 
+  (as manifested) by interaction with the computer&#39;s user or operator.&nbsp; We 
+	will see below (section ???) that this is yet-another-manifestation and that 
+	it confronts us with the formal nature of computer operation at the boundary 
+	between computer interface and human operator.</p>
+
+  <p align="left">In the delivery of manifestations within the common 
+	computational model, a computer storage location typically serves as a 
+	placeholder for a manifestation.&nbsp; The storage holds a <i>man-handle</i> 
+	of some kind.&nbsp; The man-handle serves to locate a particular 
+	manifestation (interface).&nbsp; Man-handle storage elements are the means 
+	to keeping track of the Ob manifestations that a computer program is 
+	accessing.</p>
+
+  <p align="left">In an operating computer system, different man-handle storage 
+	might refer to the same manifestation interface.&nbsp; Different interfaces 
+	might provide manifestation of the same Ob.&nbsp; The form of identity 
+	maintained for computer storage, interfaces, and handles to interfaces is 
+	generally independent of the identity and distinction among the manifest Obs 
+	-- there are different worlds or domains involved.</p>
+
+  <p align="left">Part of a particular manifestation methodology is provision of 
+	an <i>oracle</i> that can confirm whether the manifestations accessible 
+	through two manifestation interfaces or two man-handles are for 
+	manifestations of the same Ob or not.&nbsp; oMiser provides such an oracle.&nbsp; 
+	That is, the identity of the manifest Obs is always determined. [Watch that 
+	language.]</p>
+
+  <p align="left">The possession of a valid man-handle to a manifestation 
+	interface establishes the (virtual) presence of the particular manifest Ob.&nbsp; 
+	Obs (may) have persistence beyond the existence of any manifestation and can 
+	reoccur as the Obs of subsequent manifestations.&nbsp; When we have a 
+	man-handle, we say that the Ob is <i>determined</i>.&nbsp; Much of what we 
+	say about the computational model revolves around an Ob being determined.&nbsp; 
+	There are operations that one can carry out with manifestations where an Ob 
+	cannot be determined, and no result is delivered.&nbsp; That is to say, 
+	oMiser never delivers a man-handle for a seeming manifestation that has no 
+	determined Ob.&nbsp; It just doesn&#39;t happen.&nbsp; We will discuss later 
+	what happens instead, if anything.</p>
+
+  <p align="left" style="border-style: solid; border-width: 1">We will again 
+	discuss the notion of determined Obs when we look at computability of the 
+	functions, <b>Of</b>.&nbsp; It will be important to make this a very sharp 
+	notion.&nbsp; Until then, we entertain&nbsp; the idea of a determined Ob in 
+	an informal way.</p>
+
+  <p align="left">At this point, you might say that the software that provides 
+	for manifestation of Obs is successful at perpetuating the illusion that 
+	there is an Ob &quot;there, somewhere,&quot; simply by ensuring that no behavior can 
+	be elicited that would contradict that illusion.</p>
+
+  <p align="left">One might also say that there is a <i>valid interpretation</i>
+  of <b>‹ob›</b>  in the operational behavior of the oMiser computer 
+	software.&nbsp;&nbsp;&nbsp;</p>
+
+  <p align="left">One could also say that oMiser <i>represents</i> <b>‹ob›</b> 
+  in the computational model of the computer system.&nbsp;&nbsp;</p>
+
+  <p align="left">We will prefer to say, in the common manner of computer 
+	science, that oMiser (actually, all of the oMisers) <i>implements</i> or <i>
+	realizes</i>
+  (that is, manifests) <b>‹ob›</b>.</p>
+
+  <p align="left">These perspectives are pretty much interchangeable at this 
+	level of conceptualization.&nbsp; I prefer realization, with no existence 
+	commitment more than that it is indeed a successful illusion.</p>
+
+</blockquote>
+
+  <h3 align="left">1.1.6 Existence and Interpretation</h3>
+
+<blockquote>
+
+<p align="left" style="border-style: solid; border-width: 1">[This section 
+requires much work.&nbsp; We want to talk about the requirements of formalism 
+that apply, and we want to talk about interpretation.&nbsp; A diagram would be 
+of great help.&nbsp; These notes include fragments from elsewhere. -- 
+dh:2002-07-05]</p>
+
+<p align="left"><b>Requirements of Formality</b>.&nbsp; [Clean this up between 
+the beginning, sections 1.1.3-1.1.4, and here.] Here we begin to see the 
+consequences of formal expression of a theory.&nbsp; Notice that in some sense, 
+the definitions and axioms (1.1.3.2-1.1.3.5) of identity, used in some form ever 
+since Euclid, would be ridiculous if we were speaking of definite, determined 
+things.&nbsp; In that case, identity and distinctness are confirmable in our 
+experience or by some empirical inspection or confirmation.&nbsp; These 
+statements are not about the things, but about the logical formalism by which we 
+are expressing what there is to say about the <i>theoretical</i> structure, <b>
+‹ob›</b>, abstracted from whatever actualities might be available, if any.&nbsp;&nbsp;</p>
+
+<p align="left">Talk in the computational and informal conceptions first.&nbsp; 
+This is a place to talk about using the language of theory to have our attention 
+on Obs without ever seeing one.&nbsp; And then that we get to make inferences 
+about them, still without having to see one.</p>
+
+<p align="left">We assert that the definite, determined object <b><font face="Arial">
+ob<span style="font-variant: small-caps">-NULL</span></font></b>
+ is an Ob.</p>
+
+<p align="left">Later, we get to look at how manifestation of <b><font face="Arial">
+ob<span style="font-variant: small-caps">-NULL</span></font></b>
+(or any other, but this one is assured) gives rise to all of <b>‹ob›</b>, that 
+Obs live only in <b>‹ob›</b>  (as it were) and are not reduced or 
+separable.&nbsp;&nbsp;This is a risk because we can formally separate Obs (e.g., by 
+writing (canonical) expressions for them).&nbsp; This confusion is to be 
+avoided.</p>
+
+</blockquote>
+
+<h2 align="left">1.2 Basics - Informal Theory</h2>
+
+<blockquote>
+
+<p align="left">[Here provide some standard information about Obs and the a-part 
+and b-part functions of obs.&nbsp; A diagrammatic presentation of some typical 
+Ob(s) will be employed to make our point.</p>
+
+  <p align="left">We don&#39;t know exactly where we will introduce that.&nbsp; We 
+	will actually deliver functions a and b first, then go into other cases.</p>
+
+<p align="left"><b>ob.a</b>(<var>z</var>) = <var> z</var> <b> or </b><b>ob.a</b>(<var>z</var>) 
+¶ <var>z</var></p>
+
+<p align="left"><b>ob.b</b>(<var>z</var>) = <var> z</var> <b> or</b> <b>ob.b</b>(<var>z</var>) 
+¶ <var>z</var></p>
+
+<p align="left">If <b>ob.a</b>(<var>z</var>) = <var>z</var>, then <b>ob.b</b>(<var>z</var>) 
+= <var>z</var>.</p>
+
+<p align="left"><b>1.2.1</b> The set of Obs is closed with respect to the 
+primitive Ob functions <b>ob.a</b>, <b>ob.b</b>, <b>ob.c</b>, and <b>ob.e</b>. 
+The primitive functions are well-defined and total.</p>
+
+<p align="left"><b>1.2.2</b> The individuals, singletons, and combinations 
+partition the Obs.&nbsp; Every Ob is exactly one of these.</p>
+
+<p align="left">We need to motivate the peculiar notation <b> ob.a</b> and also 
+discourage people from confusing it, at this point, with notations of 
+object-oriented programming systems.&nbsp; (I haven&#39;t chosen whether to use 
+bold-face or not, at this time.)</p>
+
+<p align="left" style="border-style: solid; border-width: 1">[There is something 
+interesting in the way we look at Obs as kinds of rooted trees.&nbsp; It would 
+appear that there are no inverses for the functions <b> ob.a</b> and <b>ob.b</b>.&nbsp; 
+This is a curious thing with regard to statements I am making about <b>‹ob›</b> 
+being inseparable.&nbsp; I am not sure where or whether it matters to introduce 
+that.&nbsp; -- dh:2002-07-05]</p>
+
+</blockquote>
+
+<h2 align="left">1.3 Combinations</h2>
+
+<blockquote>
+  <p align="left"><b>1.3.1</b> If <var>z</var> = <b>ob.c</b>(<var>x</var>, <var>
+	y</var>), then
+  <b>ob.a</b>(<var>z</var>) = <var>x</var> and <b>ob.b</b>(<var>z</var>) = <var>
+	y</var> and <var>z</var> is a <i>combination</i>.&nbsp;</p>
+
+  <p align="left"><b>1.3.2</b> For any Ob <var>z</var>, <var>z</var> = <b>ob.c</b>(<b>ob.a</b>(<var>z</var>),
+  <b>ob.b</b>(<var>z</var>)) if and only if <var> z</var> is a combination.</p>
+
+  <p align="left"><b>1.3.3</b> We define is-combination(<var>z</var>) to be 
+	equivalent to the proposition that&nbsp; <var>z</var> = <b>ob.c</b>(<b>ob.a</b>(<var>z</var>),
+  <b>ob.b</b>(<var>z</var>))</p>
+
+  <p align="left"><b>ob.c</b>(<var>x</var>, <var>y</var>)&nbsp; = <b>ob.c</b>(<var>m</var>,
+  <var>n</var>) if-and-only-if <var> x</var> = <var> m</var> and <var> y</var> =
+  <var> n</var>. This is the <i>ordered-pair condition</i>.&nbsp; [<a href="#Quine1969">Quine1969</a>]</p>
+
+  <p align="left">If <i> z</i> = <b>ob.c</b>(<var>x</var>, <var>y</var>), then <var> 
+	x</var>&nbsp;¶&nbsp;<var>z</var>
+  and <var>y</var>&nbsp;¶&nbsp;<var>z</var>.</p>
+
+</blockquote>
+
+<h2 align="left">1.4 Singletons</h2>
+
+<blockquote>
+  <p align="left">If z = <b>ob.e</b>(<var>x</var>), then <b>ob.a</b>(<var>z</var>) 
+	=
+  <var>x</var> and <b>ob.b</b>(<var>z</var>) = <var>z</var>.</p>
+
+  <p align="left"><b>1.1.1.6</b> For any Ob <var>z</var>, If <b>ob.a</b>(<var>z</var>)
+  <font FACE="Symbol">¹</font> <var>z</var> and <b>ob.b</b>(<var>z</var>) = <var>
+	z</var>, then <var>z</var> is a <i>singleton</i> and <var>z</var> = <b>ob.e</b>(<b>ob.a</b>(<var>z</var>)).</p>
+
+  <p align="left">If <var>z</var> = <b>ob.e</b>(<var>x</var>), then <var>x</var>
+  ¶ <var>z</var>.</p>
+
+  <p align="left"><b>ob.e</b>(<var>x</var>) = <b>ob.e</b>(<var>m</var>) 
+	if-and-only-if
+  <var>x</var> = <var>m</var>.</p>
+
+  <p align="left">We define is-singleton(z) to be equivalent to the proposition 
+	that <var>z</var> = <b>ob.e</b>(<b>ob.a</b>(<var>z</var>))</p>
+
+</blockquote>
+<h2 align="left">1.5 Individuals</h2>
+
+<blockquote>
+
+<p align="left"><b>1.5.1</b> For any Ob <var>z</var>, If <b>ob.a</b>(<var>z</var>) 
+=
+<var>z</var> and <b>ob.b</b>(<var>z</var>) = <var>z</var>, then <var>z</var> is 
+an <i>individual</i>.</p>
+
+<p align="left"><b>1.5.2</b> We define is-individual(z) to be equivalent to the 
+proposition that <var>z</var> = <b>ob.a</b>(<var>z</var>).&nbsp; (This is 
+sufficient by virtue of 1.2.)</p>
+
+<p align="left">[Note that we have enough to tell, in the theory, that we have 
+an individual, but if there is more than one of them, this is not enough to tell 
+us <i>which</i> individual we have our attention on.&nbsp; We handle this with ¶ 
+as a way to express, in this applied theory, that the constants we use are for 
+individuals and they are for different individuals. -- dh:2002-07-08]</p>
+
+</blockquote>
+
+<h2 align="left">1.6 Why It&#39;s All We Need</h2>
+
+<blockquote>
+
+<p align="left">We express the idea that Obs are equivalent to expressions or 
+numbers or some form of carrier for other things.&nbsp; That is, Obs can be 
+employed as elements of formal expression, and they are as rich and capable as 
+any, even though not what we would normally think of.&nbsp;&nbsp;</p>
+
+<p align="left">This will get to enumerability and some related matters.&nbsp; 
+We generally go right to the demonstration that Ob interpretations can 
+themselves be interpreted.&nbsp;&nbsp;</p>
+
+<p align="left">Demonstration of countability and of formal adequacy will be 
+done by simply providing a grammar for formalization of Ob that accounts for all 
+the Obs there are.</p>
+
+<p align="left">We won&#39;t have a satisfactory resolution of the role of 
+individuals at this point, except the appeal of having an arbitrary supply of 
+them will be recognized as a benefit in comparison with working over a fixed 
+alphabet.</p>
+
+<p align="left">It might be useful to introduce a diagram for (formal) 
+interpretation just as we will have for theory interpretation.</p>
+
+</blockquote>
+
+<h1>2. <a name="Mechanism">The Computational Model</a></h1>
+
+<blockquote>
+  <p>We have described all of the primitive functions of <b>‹ob› </b> but two<b>.&nbsp; </b>
+	It is asserted that these functions, with =, provide a complete theory for 
+	Obs, given some way to characterize all the effective procedures that there 
+	are on Obs.</p>
+
+</blockquote>
+
+<h2>2.1 The Apply-Eval Functions</h2>
+
+  <h3>2.1.1 The Universal Functions in Of</h3>
+
+<blockquote>
+  <p>We are going to define two functions that we assert are in <b>Of</b>.&nbsp; 
+	We signify that with this notation in theoretical language:</p>
+
+  <p><b>2.1.1.1 ob.ap</b>: <b> Ob</b> × <b> Ob</b> <font FACE="Symbol">®</font>
+  <b>Ob</b> is in <b>Of</b>.</p>
+
+  <p><b>2.1.1.2 ob.ev</b>: <b> Ob</b> × <b>Ob</b> × <b>Ob</b> <font FACE="Symbol">
+	®</font>
+  <b>Ob</b> is in <b>Of</b>.</p>
+
+  <p>We express the nature of these functions in the following way:</p>
+
+</blockquote>
+
+<h3>2.1.2 ob.ap Definition</h3>
+
+<blockquote>
+
+  <p><b>ob.ap</b>(<var>p</var>, <var>x</var>)</p>
+
+  <p>&nbsp; =&nbsp; <b>if</b> is-individual(<var>p</var>)&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>then</b>  oApInt(<var>p</var>, <var>x</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b> <b>if</b> is-singleton(<var>p</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>then</b> <b>ob.a</b>(<var>p</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>else</b> oEvForm(<var>p</var>, <var>x</var>, <b>ob.a</b>(<var>p</var>),
+  <b>ob.b</b>(<var>p</var>))</p>
+
+  <p>The intended interpretation of <b>ob.ap</b>(<var>p</var>, <var>x</var>) is 
+	as the application of the function expressed (or coded) in Ob <var>p</var>, 
+	taking Ob <var>x</var> as that function&#39;s single operand.&nbsp;&nbsp;</p>
+
+  <table border="2" cellspacing="3" width="90%" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080">
+    <tr>
+      <td width="33%" align="center"><b>procedure <var>p</var></b></td>
+      <td width="33%" align="center"><b>ob.ap(<var>p</var>, <var>x</var>)</b></td>
+      <td width="34%" align="center"><b>Notes</b></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center">individual</td>
+      <td width="33%" align="center">  oApInt(<var>p</var>, <var>x</var>)</td>
+      <td width="34%">the applicative interpretation of individual <var>p</var>
+        with argument Ob <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b>ob.e</b>(<var>c</var>)</td>
+      <td width="33%" align="center"><var>c</var></td>
+      <td width="34%">the constant result, <var>c</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b>ob.c</b>(<var>rator</var>, <var>rand</var>)</td>
+      <td width="33%" align="center">oEvForm(<var>p</var>, <var>x</var>, <var>
+		rator</var>,
+        <var>rand</var>)</td>
+      <td width="34%">the evaluation of the applicative form <var>p</var> with 
+		a-part as ope<var>rator</var> and b-part as ope<var>rand</var></td>
+    </tr>
+  </table>
+
+</blockquote>
+
+  <h3><a name="2.1.3">2.1.3</a> oApInt Definition</h3>
+
+<blockquote>
+  <p>oApInt is an auxilliary function for the definition of <b>ob.ap</b>.&nbsp; 
+	The key purpose is to assign to each individual an associated function, <var>
+	f</var>:<b> Ob</b> <font FACE="Symbol">®</font>
+  <b>Ob</b>.&nbsp; [It is important to note that this is an interpretation, 
+	realized using the function oApInt.&nbsp; It is not that the individual Ob 
+	is a function.]</p>
+
+  <p>Every individual Ob has an applicative interpretation.&nbsp; The function 
+	designation oApInt(<var>p</var>, <var>x</var>) applies the applicative 
+	interpretation of individual Ob <var>p</var> to the Ob <var>x</var> and 
+	yields whatever Ob, if any, is determined by that applicative 
+	interpretation.&nbsp; [We might later become comfortable saying that the 
+	form oApInt(<var>p</var>) is the interpretation, and oApInt(<var>p</var>) <var>
+	x</var> is its application.&nbsp; That is the direction we are going, but we 
+	will hold back for now. --dh:2002-07-08]</p>
+
+  <p>It is not necessary that every applicative interpretation be determined.&nbsp; 
+	Another way of putting it is to say that oApInt is a partial function.</p>
+
+  <p>[We will quickly deal with the ambiguity of there being an applicative 
+	interpretation for every individual Ob <var>p</var> and the interpretation 
+	not being determined.]</p>
+
+  <p>The following applicative interpretations are given:</p>
+
+  <table border="2" cellspacing="3" width="90%" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080">
+    <tr>
+      <td width="33%" align="center"><b>individual <var>p</var></b></td>
+      <td width="33%" align="center"><b>oApInt(<var>p</var>, <var>x</var>)</b></td>
+      <td width="34%" align="center"><b>Notes</b></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-NULL</span></font></b></td>
+      <td width="33%" align="center"><var>x</var></td>
+      <td width="34%">the identity function on Obs</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-SELF</span></font></b></td>
+      <td width="33%" align="center">[tbd]</td>
+      <td width="34%">[tbd]</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b></td>
+      <td width="33%" align="center">[tbd]</td>
+      <td width="34%">[tbd]</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-A</span></font></b></td>
+      <td width="33%" align="center"><b>ob.a</b>(<var>x</var>)</td>
+      <td width="34%">the a-part of Ob <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><font face="Arial"><b>ob<span style="font-variant: small-caps">-B</span></b></font></td>
+      <td width="33%" align="center"><b>ob.b</b>(<var>x</var>)</td>
+      <td width="34%">the b-part of Ob <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b></td>
+      <td width="33%" align="center"><b>ob.c</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <var>x</var>)</td>
+      <td width="34%"><b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>
+        combined with <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-D</span></font></b></td>
+      <td width="33%" align="center"><b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-D</span></b></font>,
+  <var>x</var>)</td>
+      <td width="34%"><font face="Arial"><b>ob<span style="font-variant: small-caps">-D</span></b></font>
+        combined with <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font></td>
+      <td width="33%" align="center"><b>ob.e</b>(<var>x</var>)</td>
+      <td width="34%">the singleton consisting of <var>x</var></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><font face="Arial"><b>ob<span style="font-variant: small-caps">-F</span></b></font></td>
+      <td width="33%" align="center">[tbd]</td>
+      <td width="34%">[tbd]</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><font face="Arial"><b>ob<span style="font-variant: small-caps">-G</span></b></font></td>
+      <td width="33%" align="center">[tbd]</td>
+      <td width="34%">[tbd]</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center">. . .</td>
+      <td width="33%" align="center">&nbsp;</td>
+      <td width="34%">&nbsp;</td>
+    </tr>
+  </table>
+  <p>The names of constants for distinct individuals are not important to the 
+	theory. The names have been chosen as an aid to us in remembering the nature 
+	of their applicative interpretations (or other interpretations).&nbsp; The 
+	individuals that are essential for <b>ob.ap</b> to provide a complete 
+	computational model for Ob are ones with applicative interpretation <b>ob.a</b>,
+  <b>ob.b</b>, and <b>ob.e</b>.&nbsp; It is inessential whether the others have 
+	known, useful applicative interpretations or not.</p>
+
+</blockquote>
+
+  <h3><a name="2.1.4">2.1.4</a> oEvForm Definition</h3>
+
+<blockquote>
+
+  <p>oEvForm(<var>p</var>, <var>x</var>, <var>rator</var>, <var>rand</var>)</p>
+
+  <p>&nbsp; =&nbsp; <b>if</b> <var>rator</var> = <b><font face="Arial">ob<span style="font-variant: small-caps">-D</span></font></b><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>then</b> <b>if</b> <b>ob.ev</b>(<var>p</var>,
+  <var>x</var>, <b>ob.a</b>(<var>rand</var>)) <font FACE="Symbol">¹</font>  <b>
+	ob.ev</b>(<var>p</var>,
+  <var>x</var>, <b>ob.b</b>(<var>rand</var>))<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>then</b> <b><font face="Arial">ob<span style="font-variant: small-caps">-A</span></font></b><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>else</b> <b><font face="Arial">ob<span style="font-variant: small-caps">-B</span></font></b><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b> <b>if</b> <var>rator</var> = <b><font face="Arial">
+	ob<span style="font-variant: small-caps">-C</span></font></b><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>then</b> <b>ob.c</b>(<b>ob.ev</b>(<var>p</var>, <var>x</var>, <b>ob.a</b>(<var>rand</var>)),
+  <b>ob.ev</b>(<var>p</var>, <var>x</var>, <b>ob.b</b>(<var>rand</var>)) )<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>else</b> <b>ob.ap</b>(<b>ob.ev</b>(<var>p</var>, <var>x</var>, <var>rator</var>),
+  <b>ob.ev</b>(<var>p</var>, <var>x</var>, <var>rand</var>) )</p>
+
+  <p>It is intended that there be no special forms other than these.&nbsp; That 
+	is, it the use of <b><font face="Arial">ob<span style="font-variant: small-caps">-D</span></font></b>
+  and <b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>
+  here is to be the only exception to the <b>ob.ap</b> evaluation of an <b>ob.c</b>(<var>rator</var>,
+  <var>rand</var>) form.&nbsp; Ever.&nbsp; [That is so the reading of Obs as 
+	formulae never changes as we expand beyond oMiser.&nbsp; This is actually a 
+	tentative situation, and we might not be able to enforce this.&nbsp; I have 
+	no exception in mind except for the possible explicit indication of a 
+	tail-recursion operation.&nbsp; At some point, there needs to be an oracle 
+	for determining whether or not a special form is in hand.&nbsp; This would 
+	allow more exceptions without having to know all of them.&nbsp; We are not 
+	ready to deal with that just now.&nbsp; -- dh:2002-07-08]</p>
+
+  <table border="2" cellspacing="3" width="90%" bordercolor="#000080" bordercolorlight="#000080" bordercolordark="#000080">
+    <tr>
+      <td width="33%" align="center"><b><var>rator</var></b></td>
+      <td width="33%" align="center"><b>oEvForm(<var>p</var>, <var>x</var>, <var>
+		rator</var>,
+        <var>rand</var>)</b></td>
+      <td width="34%" align="center"><b>Notes</b></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"> <b><font face="Arial">ob<span style="font-variant: small-caps">-D</span></font></b></td>
+      <td width="33%" align="center">If<b> ob.ev</b>(<var>p</var>,
+  <var>x</var>, <b>ob.a</b>(<var>rand</var>)) <font FACE="Symbol">¹</font>  <b>
+		ob.ev</b>(<var>p</var>,
+  <var>x</var>, <b>ob.b</b>(<var>rand</var>)), then yield <b><font face="Arial">
+		ob<span style="font-variant: small-caps">-A</span></font></b>
+        else yield <b><font face="Arial">ob<span style="font-variant: small-caps">-B</span></font></b></td>
+      <td width="34%">if the two parts of <var>rand</var> evaluate to different 
+		Obs, return <b><font face="Arial">ob<span style="font-variant: small-caps">-A</span></font></b>, 
+		else return <b><font face="Arial">ob<span style="font-variant: small-caps">-B</span></font></b></td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b></td>
+      <td width="33%" align="center"><b>ob.c</b>(<b>ob.ev</b>(<var>p</var>, <var>
+		x</var>, <b>ob.a</b>(<var>rand</var>)),
+  <b>ob.ev</b>(<var>p</var>, <var>x</var>, <b>ob.b</b>(<var>rand</var>)) )</td>
+      <td width="34%">the evaluation of the two parts of <var>rand</var> made 
+		the parts of a combination</td>
+    </tr>
+    <tr>
+      <td width="33%" align="center"><i>other</i></td>
+      <td width="33%" align="center"><b>ob.ap</b>(<b>ob.ev</b>(<var>p</var>, <var>
+		x</var>, <var>rator</var>),
+  <b>ob.ev</b>(<var>p</var>, <var>x</var>, <var>rand</var>) )</td>
+      <td width="34%">the evaluation of the <var>rator</var> applied to the 
+		evaluation of the <var>rand</var></td>
+    </tr>
+  </table>
+
+</blockquote>
+
+<h3>2.1.5 ob.ev Definition</h3>
+
+<blockquote>
+  <p><b>ob.ev</b>(<var>p</var>, <var>x</var>, <var>phi</var>)</p>
+
+  <p>&nbsp; =&nbsp; <b>if </b>is-individual(<var>phi</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>then</b>  oEvInt(<var>p</var>, <var>x</var>,
+  <var>phi</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b> <b>if</b> is-singleton(<var>phi</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>then</b> <b>ob.a</b>(<var>phi</var>)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>else</b>  oEvForm(<var>p</var>, <var>x</var>,
+  <b>ob.a</b>(<var>phi</var>), <b>ob.b</b>(<var>phi</var>))</p>
+
+  <p>The intended interpretation of <b>ob.ev</b> is as a function that assigns 
+	to any Ob <var>phi</var> as a formula the evaluation of that formula as an 
+	Ob.&nbsp; The arguments <var>p</var> and <var>x</var> are the
+  <i> applicative context</i> of the evaluation.&nbsp;&nbsp;</p>
+
+</blockquote>
+<h3>2.1.6 oEvInt Definition</h3>
+
+<blockquote>
+  <p>Every individual Ob has an eval interpretation.&nbsp; This interpretation 
+	is the evaluation of the Ob as a formula or formal expression.&nbsp; The 
+	intended interpretation is based on the same principle as for oApInt, except 
+	there are only a few well-defined individuals that have any evaluation 
+	interpretation other than themselves.</p>
+
+  <p><b>2.1.6.1</b>  <b>oEvInt(<font face="Arial">ob<span style="font-variant: small-caps">-SELF</span></font>)</b>.&nbsp;&nbsp;</p>
+
+  <p>oEvInt(<var>p</var>, <var>x</var>, <b><font face="Arial">ob<span style="font-variant: small-caps">-SELF</span></font></b>) 
+	= <var>p</var></p>
+
+  <p><b>2.1.6.2</b>  <b>oEvInt(<font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font>)</b>.&nbsp;&nbsp;</p>
+
+  <p>oEvInt(<var>p</var>, <var>x</var>, <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	= <var>x</var></p>
+
+  <p><b>2.1.6.3</b>  <b>oEvInt(<var>other</var>)</b>.&nbsp;&nbsp;</p>
+
+  <p>oEvInt(<var>p</var>, <var>x</var>, <var>other</var>) = <var>other</var>, 
+	for those other individuals introduced so far.</p>
+
+  <p>There will probably be other non-trivial oEvInt&nbsp;</p>
+
+  <p>&nbsp;</p>
+
+</blockquote>
+
+<h1>3. <a name="Completeness">Completeness and Universality</a></h1>
+
+<h2>3.1 Completeness and Universality from a Computational Perspective</h2>
+
+<blockquote>
+
+<p>Discussion of the idea of computational completeness over Ob and then provide 
+the demonstration of combinatory completeness (or applicative completeness, 
+which might be a better way to put it).</p>
+
+<p>OK, the introduction of µ as a prefix doesn&#39;t really work here.&nbsp;&nbsp; 
+It is kind of like introducing a kind of <i>O</i>(<var>f</var>) notation, which 
+is a tempting idea but I don&#39;t want it in <b>‹ob›</b>.&nbsp; I think it works 
+better to use <b> µ</b> as a relation symbol.&nbsp; This will be a 
+metalinguistic discussion, because the right hand side of <b> µ</b>
+will be from a different theory!&nbsp; Also, I need a section to at least sketch 
+enough of Combinatory Algebra to have it be better motivated here.&nbsp; Many 
+Obs will be seen to realize various combinatory expressions, and so it is useful 
+to have that established to appeal to.&nbsp; I also have need to extend my use 
+of language like &quot;the combinator that ap(<b>cS</b>, <b>cK</b>)&nbsp; is.&quot;&nbsp; 
+I had an insight about that this morning in the shower, so maybe it will come 
+back to me in the barber chair.&nbsp; All of this is to be gone through in 
+version 0.04 of the sketch.&nbsp; -- dh:2002-07-10]</p>
+
+</blockquote>
+
+<h2>3.2 Combinatory Algebra and Its Realization</h2>
+
+<blockquote>
+
+<p>We will demonstrate that the two combinators, <b>cS</b> and <b>cK</b>, are 
+representable in Ob.&nbsp; We use <b> ob.ap</b> as the interpretation of the 
+combinatory application operation, and then show two Obs that realize the 
+combinators that <b>cS</b> and
+<b>
+cK</b> are.&nbsp; [This is imprecise language and we have to straighten that 
+out. -- dh:2002-07-08]</p>
+
+<p>The combinator <b>cK</b> is such that ap(ap(<b>cK</b>, <b>c</b><var>x</var>),
+<b>c</b><var>y</var>) is the combinator that <b>c</b><var>x</var> is. [We need 
+to say more about the notational niceties being applied here.&nbsp; We are using 
+typestyles and prefixes and particular phrasings to remind ourselves that we are 
+operating in the combinatory theory, <b>Ct</b>, even though it is not laid out, 
+just being appealed to, for now.&nbsp; I am keeping such expressions distinct 
+from those about <b>‹ob›</b>.&nbsp;&nbsp; This will be sorted out as I first 
+make the demonstration and then explore more-direct ways of explaining what is 
+happening. -- dh:2002-07-09]</p>
+
+<p>The combinator <b>cS</b> is such that&nbsp;</p>
+
+<p>ap(ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), <b>c</b><var>z</var>)&nbsp;</p>
+
+<p> is the combinator that ap(ap(<b>c</b><var>x</var>, <b>c</b><var>z</var>), 
+ap(<b>c</b><var>y</var>,
+<b>c</b><var>z</var>)) is.</p>
+
+<p>Note that combinators are not Obs.&nbsp; The function ap(<b>c</b><var>c1</var>,
+<b>c</b><var>c2</var>) is a function on combinators that yields combinators.</p>
+
+<p>For the demonstration of universality, we will show that there is a 
+realization of combinatory algebra in <b>‹ob›</b>.</p>
+
+<p>We take as the interpretation of ap, the Ob function <b>ob.ap</b>.&nbsp;&nbsp;</p>
+
+<p>The realizations of combinators are not necessarily unique Obs.&nbsp; We will 
+say that a combinator, <b>c</b><var>c</var>, has a realization in <b>‹ob›</b>
+if there is some Ob, a µ<b>c</b><var>c</var>, which is a realization of the 
+combinator that
+<b>c</b><var>c</var>
+is, and</p>
+
+<blockquote>
+  <p>For combinators <b>c</b><var>c</var>, <b>c</b><var>d</var>,&nbsp;</p>
+
+  <p> <b>ob.ap</b>(µ<b>c</b><var>c</var>, µ<b>c</b><var>d</var>) is a 
+	realization of the combinator that ap(<b>c</b><var>c</var>, <b>c</b><var>d</var>) 
+	is:</p>
+
+  <p> <b>ob.ap</b>( µ<b>c</b><var>c</var>, µ<b>c</b><var>d</var>) is a µap(<b>c</b><var>c</var>, <b>
+	c</b><var>d</var>).</p>
+
+</blockquote>
+<p>Since all combinators in combinatory algebra can be expressed as applicative 
+expressions involving only the combinators <b>cS</b> and c<b>K</b>, our work is 
+done if we can show that there are Obs that are µ<b>cS</b> and µ<b>cK</b>.</p>
+
+</blockquote>
+
+<h2>3.3 Realizing c<b>K</b></h2>
+
+<blockquote>
+  <p>For a µ<b>cK</b>, use <b><font face="Arial">ob<span style="font-variant: small-caps">-E</span></font></b>.</p>
+
+  <p><b>ob.ap</b>(<b>ob.ap</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>, 
+	µ<b>c</b><var>x</var>), µ<b>c</b><var>x</var></p>
+
+<p>&nbsp; =&nbsp; <b>ob.ap</b>(<b>ob.e</b>(µ<b>c</b><var>x</var>), µ<b>c</b><var>y</var>)</p>
+
+<p>&nbsp; = µ<b>c</b><var>x</var></p>
+
+  <p>So the definition of <b>cK</b> is realized.&nbsp; Any µ<b>c</b><var>x</var>
+  (an Ob) is preserved intact, so that realization of combinator <b>c</b><var>x</var>
+  is preserved, whatever combinator <b>c</b><var>x</var> is.&nbsp; Likewise, the 
+	intermediate form</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <b>ob.ap</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>, 
+	µ<b>c</b><var>x</var>) = <b>ob.e</b>(µ<b>c</b><var>x</var>)&nbsp;</p>
+
+  <p>realizes the combinator that ap(<b>cK</b>, <b>c</b><var>x</var>) is.&nbsp; 
+	That is, <b>ob.e</b>(µ<b>c</b><var>x</var>) is a µap(<b>cK</b>, <b>c</b><var>x</var>).</p>
+
+</blockquote>
+
+<h2>3.4&nbsp; Realizing cS</h2>
+
+<blockquote>
+
+<p style="border-style: solid; border-width: 1">I have an existing solution, 
+from Miser 0.xx, that is much better because it uses some intermediate Obs and 
+allows this to be done in more direct pieces.&nbsp; Also, the intermediate Obs 
+are useful idioms for common situations in writing &quot;programs&quot; for <b>ob.ap</b>
+and formulae for <b>ob.ev</b>.&nbsp; This will be done in version 0.04. -- 
+dh:2002-07-10</p>
+
+  <p>We will work through the problem backwards to see how these realizations 
+	are done, and to make the problem manageable:</p>
+
+</blockquote>
+<p><b>3.4.1</b> For a µ<b>cS</b>  we require that</p>
+
+<blockquote>
+  <p><b>ob.ap</b>(<b>ob.ap</b>(<b>ob.ap</b>(µ<b>cS</b>, µ<b>c</b><var>x</var>), 
+	µ<b>c</b><var>y</var>), µ<b>c</b><var>z</var>)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.ap</b>(<b>ob.ap</b>(µ<b>c</b><var>x</var>, µ<b>c</b><var>z</var>),
+  <b>ob.ap</b>(µ<b>c</b><var>y</var>, µ<b>c</b><var>z</var>))</p>
+
+  <p>and that <b>ob.ap</b>(<b>ob.ap</b>( µ<b>cS</b>, µ<b>c</b><var>x</var>), µ<b>c</b><var>y</var>) 
+	is a µap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>).</p>
+
+</blockquote>
+<p><b>3.4.2</b> For a µap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>)</p>
+
+<blockquote>
+  <p>use <b>ob.c</b>(&nbsp; <b>ob.c</b>(<b>ob.e</b>(µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>(µ<b>c</b><var>y</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	).</p>
+
+  <p>Then, in that case,&nbsp;</p>
+
+  <p><b>ob.ap</b>(µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), 
+	µ<b>c</b><var>z</var>)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.ap</b>( <b>ob.c</b>(&nbsp; <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>y</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	µ<b>c</b><var>z</var>)</p>
+
+  <p>&nbsp; = oEvForm(µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), 
+	µ<b>c</b><var>z</var>,</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>y</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	)</p>
+
+  <p>&nbsp; = <b>ob.ap</b>(<b>ob.ev</b>(µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>),
+  <b>c</b><var>y</var>), µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	ob.ev</b>( µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), 
+	µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>y</var>), <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; = <b>ob.ap</b>(oEvForm(µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>),
+  <b>c</b><var>y</var>), µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(µ<b>c</b><var>x</var>),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	oEvForm( µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>( µ<b>c</b><var>y</var>),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; = <b>ob.ap</b>(<b>ob.ap</b>(<b>ob.ev</b>(µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>),
+  <b>c</b><var>y</var>), µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>( µ<b>c</b><var>x</var>) ),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.ev</b>( µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), 
+	µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <font face="Arial">
+  <b>ob<span style="font-variant: small-caps">-ARG</span></b></font>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	ob.ap</b>(<b>ob.ev</b>(µap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), 
+	µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>( µ<b>c</b><var>y</var>) ),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.ev</b>(µap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), µ<b>c</b><var>z</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <font face="Arial">
+  <b>ob<span style="font-variant: small-caps">-ARG</span></b></font>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.ap</b>(<b>ob.ap</b>(µ<b>c</b><var>x</var>, µ<b>c</b><var>z</var>),&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.ap</b>(µ<b>c</b><var>y</var>, µ<b>c</b><var>z</var>) ).</p>
+
+  <p>which is a µap(ap(<b>c</b><var>x</var>, <b>c</b><var>z</var>), ap(<b>c</b><var>y</var>,
+<b>c</b><var>z</var>)) and a µap(ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>), <b>
+	c</b><var>z</var>)&nbsp;</p>
+
+  <p>[We can maybe make this not so laborious if we demonstrate the expansion 
+	through oEvForm as examples back in the definitions of <b>ob.ap</b> and <b>
+	ob.ev</b>, in section 2,.&nbsp; On the other hand, we only need to go 
+	through these details to demonstrate this particular case, and we will 
+	streamline this kind of development in later applications.-- dh:2002-07-09]</p>
+
+</blockquote>
+<p><b>3.4.3</b> For a µap(<b>cS</b>, <b>c</b><var>x</var>)</p>
+
+<blockquote>
+  <p>use <b>ob.c</b>( <b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.e</b>(<b>ob.c</b>(<b>ob.e</b>(µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	) )</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	).</p>
+
+  <p>Then, in that case,</p>
+
+  <p><b>ob.ap</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>)</p>
+
+  <p>&nbsp; = <b>ob.ap</b>( <b>ob.c</b>( <b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.e</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	) )</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	µ<b>c</b><var>y</var>)</p>
+
+  <p>&nbsp; = oEvForm(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>( <b>ob.e</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	) )</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; = <b>ob.c</b>(<b>ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>
+	ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,
+  <b>ob.c</b>( <b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	) )</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	oEvForm(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-C</span></font></b>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>( <b>ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>) 
+	)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>
+	ob.c</b>(<font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.e</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(oEvForm(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </b><font face="Arial"><b>ob<span style="font-variant: small-caps">-E</span></b></font>,&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b></p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.ap</b>(<b>ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-E</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.ev</b>(µap(<b>cS</b>, <b>c</b><var>x</var>), µ<b>c</b><var>y</var>,
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.ap</b>(<b><font face="Arial">ob<span style="font-variant: small-caps">-E</span></font></b>,</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	µ<b>c</b><var>y</var></p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp; =&nbsp; <b>ob.c</b>(<b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>x</var>),
+  <b><font face="Arial">ob<span style="font-variant: small-caps">-ARG</span></font></b>),</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>ob.c</b>(<b>ob.e</b>( µ<b>c</b><var>y</var>),<var> </var><b><font face="Arial">
+	ob<span style="font-variant: small-caps">-ARG</span></font></b>)&nbsp;</p>
+
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	)</p>
+
+  <p>&nbsp;&nbsp;&nbsp;which is a µ ap(ap(<b>cS</b>, <b>c</b><var>x</var>), <b>c</b><var>y</var>).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+</blockquote>
+
+  <p><b>3.4.4</b> For µ<b>cS</b></p>
+
+<blockquote>
+  <p><b><font color="#FF0000">[OK, One More to Go.&nbsp; This was easier the 
+	last time I did it.&nbsp; I need to figure out how I cut it back and kept it 
+	manageable. -- dh:2002-07-09]</font></b></p>
+
+</blockquote>
+
+<h1>4. <a name="Bridging"> Bridging to the Useful</a></h1>
+
+<blockquote>
+  <p>The limitations of operating with Ob manifestations because there is no 
+	externally/humanly-meaningful function.&nbsp; We can represent everything, 
+	but communicate almost nothing.&nbsp; We don&#39;t even have the formalism of <b>
+	‹ob›</b> 
+  theory available.&nbsp; We just have raw access to the manifestation of <b>
+	‹ob›</b>, not the formalism (or metalanguage) in which we have been 
+	expressing Obs.</p>
+
+<p>The idea of persistent description of Obs.&nbsp; That will be later.&nbsp; We 
+can &quot;write&quot; Obs in XML and we can &quot;write&quot; Obs in the scripting language, Frugal.</p>
+
+  <p>More than that, there is the use of the Applicative Interpretation model, 
+	and its extensions, to connect to the world in extremely useful, some might 
+	say meaningful, ways.</p>
+
+  <p>Building-out and bridging will happen in this progression.&nbsp;&nbsp;</p>
+
+  <p>First, we will develop [o]Frugal, a scripting language that allows us to 
+	express oMiser computations in something that is shareable among people and 
+	that provides an external language that we can use to quickly manifest an <b>
+	‹ob›</b> 
+  and exercise it in breadboard/prototype mode.&nbsp;&nbsp;</p>
+
+  <p>We will also develop obXML, a format in XML for expressing an [o]Miser Ob 
+	such that it can be exchanged and then (re-) manifest on the same or 
+	different computers at later times.&nbsp; The idea of manifestation 
+	elsewhere and re-manifestation will provide interesting considerations.</p>
+
+  <p>With oMiser, there is no identified way, <i>internal</i> to <b>‹ob›,</b> 
+  to deal with symbols.&nbsp; So there is no way to deliver symbols to oMiser 
+	and create computations that work with those symbols and incorporate symbols 
+	in the result. This impairs our ability, using <b>‹ob›</b>  itself, to 
+	provide formal manipulations (still on Obs) and that allow us to have Obs be 
+	convenient expressions for forms that are tied to the intended purpose of 
+	having our computations be interpretations of other important theories: 
+	arithmetic, logic, and applications that arise in the purposive use of 
+	computation. The inputs and results are still Obs, but we have a form of 
+	individuals that makes Obs useful as symbolic <i>expressions</i> that are 
+	tied to the purpose of an oMiser computation. This takes us to the <i>sMiser 
+	level</i>.&nbsp; This is done by establishing a family of individual obs 
+	that provide an external-world identity, expressed as a spelled symbol.</p>
+
+  <p>sMiser is accompanied by [s]Frugal, a scripting language that allows us to 
+	take advantage of symbols (for people) in commanding Miser computations and 
+	operating in the enriched sMiser world.&nbsp; (An [o]Frugal version exists 
+	merely as a prototype fixture for exercising oMiser and obtaining obXML as a 
+	way to save and restore our early work.)</p>
+
+  <p>sMiser is a baby step toward the development of iMiser, an 
+	interactive/imperative system.&nbsp; It deals with important considerations 
+	of language, identity, and the use of symbols that are not normally 
+	separated out.&nbsp; We have a world without symbols, then we extend oMiser 
+	with symbols that allow an interesting external sense of identity.&nbsp; We 
+	have not actually done anything, but the result is far more convenient.</p>
+
+</blockquote>
+
+<h1>5. <a name="IndividualPower">Individuals of Arbitrary Power</a></h1>
+
+<blockquote>
+
+<p>We now discuss the fact that every individual has an applicative 
+interpretation.&nbsp; Now, in oMiser, the application of any Ob to an Ob, 
+produces an Ob.&nbsp; This would appear to not be very fruitful.&nbsp;</p>
+
+  <p>Consider that an individual Ob can be the <b>‹ob›</b>  manifestation of an 
+	object in some other system than <b>‹ob›</b>.&nbsp; We cannot see, directly 
+	in the <b>‹ob›</b>  manifestations, what these other manifestations are.&nbsp; 
+	But whatever they accomplish, if we have a complete primitive set of 
+	operations on them, also provided via Ob manifestations, we know that we can 
+	create <i>every</i> computable function on those objects using the 
+	already-established computational completeness of oMiser for computations on 
+	Obs.</p>
+
+  <p>This is a giant leap, and better motivational examples will be needed.&nbsp; 
+	It also helps to have Frugal-ese and sMiser to appeal to.</p>
+
+  <p>Which new kinds of theories do we manifest this way?&nbsp; Well, for 
+	starters, the ones that let us express sFrugal and obXML processing in <b>
+	‹ob›</b> 
+  itself.</p>
+
+</blockquote>
+
+<h1><a name="References">References</a></h1>
+
+<dl>
+  <dt>&nbsp;</dt>
+  <dt>[McCarthy1960]</dt>
+  <dd>Find the C.ACM Paper on theory for computation and the introduction of 
+	S-Expressions, LISP, etc.&nbsp; It is now on-line as part of McCarthy&#39;s 
+	papers.</dd>
+  <dt>&nbsp;</dt>
+  <dt>[More1979]</dt>
+  <dd>More, Trenchard.&nbsp; Various technical reports and conference papers.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; Find his use of individuals and singletons and 
+	construct a reference for it.&nbsp; It should be in the APL 79 proceedings 
+	and in IBM research papers before that.&nbsp; Iverson may have incorporated 
+	that into something by now, too.&nbsp; [I still have a file folder on Array 
+	Theory. Look there.]<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[Proskurowski1980]</dt>
+  <dd>Proskurowski, Andrzej.&nbsp; On the Generation of Binary Trees.&nbsp; <i>
+	J. ACM <b>27</b></i>, 1 (January 1980), 1-2.&nbsp; [Tear sheet in file on 
+	sorting]<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  
+ 
+      <dt>
+		<a name="Quine1969" href="http://orcmid.com/readings/logic.htm#Quine1969">
+		[Quine1969]</a></dt>
+      <dd>Quine, Willard Van Orman.&nbsp; <i>Set Theory and Its Logic</i>.&nbsp; 
+		Revised edition.&nbsp; Harvard University Press (Cambridge, MA: 1963, 
+		1969).&nbsp; ISBN 0-674-80207-1 pbk.&nbsp; <a href="http://orcmid.com/readings/logic.htm">
+		Readings in Logic</a>&nbsp; Capture the quote about classes and 
+		individuation not involving separation, extraction, or anything else 
+		like that.<br>
+        &nbsp;&nbsp;&nbsp;</dd>
+    
+  <dt>[Rosenbloom1950]</dt>
+  <dd>Rosenbloom, Paul C.&nbsp; <i>The Elements of Mathematical Logic</i>.&nbsp; 
+	Dover (New York: 1950).&nbsp;&nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; My expression of combinatory algebra is based on 
+	that given in Rosenbloom&#39;s Chapter 3 section on combinatory logics.<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[Russell-PlatoQuote]</dt>
+  <dd>Russell, Bertrand.&nbsp; On Knowledge and Perception in Plato.&nbsp; Now 
+	where the heck did he say that.<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[Solomon1980]</dt>
+  <dd>Solomon, Marvin., Finkel, Raphael A.&nbsp; A Note on Enumerating Binary 
+	Trees.&nbsp; <i>J. ACM <b>27</b></i>, 1 (January 1980), 3-5.&nbsp; [Tear 
+	sheet in file on sorting]<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[Strachey-McG]</dt>
+  <dd>Strachey, Christopher.&nbsp; The McG Paper on macro generation, British 
+	Computer Journal.&nbsp; Find that puppy again.<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[Wittgenstein ...]</dt>
+  <dd>of course</dd>
+  <dd>&nbsp;</dd>
+</dl>
+
+<hr>
+
+<dl><font size="-1">
+      <dt><b><a name="v0.03">version 0.03 2002-07-10</a> (orcmid)</b> </dt>
+      <dd>This is recreated version 0.03, not like the original one, but 
+		capturing what I had in mind for it, and more.&nbsp; The main goal is to 
+		complete section 1.&nbsp; The expansion of sections 2 and 3 has led me 
+		to freeze this version, because I now see where rework is required.&nbsp; 
+		It is time to begin version 0.04 as an overhaul and also look at 
+		reorganization for what is now a pretty long document.&nbsp; I was 
+		getting where I felt I was losing my grip on the demonstration of 
+		combinatory completeness in <b>‹ob›</b>, and then found an old 
+		1980-12-15 note of mine where I had worked it out and that still works, 
+		though my explanation of what&#39;s happening is now along different lines, 
+		using the manifestation metaphor which is new for me (whew).&nbsp; 
+		[dh:2013-12-10-16:26 The links among files and images are revised to 
+		provide case-sensitive consistency among the materials.&nbsp; This and 
+		related updates provide for correct presentation on the web.&nbsp; There 
+		are no changes to the substantive content.]<br>
+        &nbsp;&nbsp;&nbsp;</dd>
+      <dt><b><a name="v0.02" href="2002/06/n020600d.htm">version 0.02 2002-07-03</a> 
+		(orcmid)</b> </dt>
+      <dd>Complete the first round on identity and start filling in later 
+		sections with placeholders and basic notes, but not developed beyond 
+		giving some statements of my intentions.&nbsp; This version is broken 
+		off after a crash leaves me having to recreate changes here.&nbsp; This 
+		provokes my providing more-careful attention to preserving history and 
+		archiving of versions even though this is still a crude progression 
+		before the sketch is ready for daylight.&nbsp; I also want to make it 
+		available for early review and discussion with associates.<br>
+        &nbsp;&nbsp;&nbsp;</dd>
+      <dt><b><a name="v0.01" href="2002/06/N020600c.htm">version 0.01 2002-06-21</a> 
+		(orcmid)</b> </dt>
+  <dd> Start building the basic sketch so that people who are familiar with this 
+	kind of system can get a sense of it until I stitch more in here and build 
+	out the notes that have already been identified/started.&nbsp; There will 
+	also be additional notes to support the sketch.</dd>
+
+</font></dl>
+
+<p align="right"><font size="-2">created 2002-06-16-18:31 -0700 (pdt) by <a href="2002/construction/orcmid.htm"> 
+orcmid</a><em><br>
+$$Author: Orcmid $<br>
+$$Date: 17-07-06 18:54 $<br>
+$$Revision: 124 $</em></font></p>
+
+<!--webbot bot="Include" endspan i-checksum="19278" -->        
+        
+</body>        
+</html>        

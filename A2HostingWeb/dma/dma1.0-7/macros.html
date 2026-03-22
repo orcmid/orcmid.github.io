@@ -1,0 +1,53 @@
+<html><head><title>DMA Macros</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="macros.html"></a>Macros</h2>
+<p>This section describes the macros defined for the DMA specification.</p>
+<h3><a name="MacroDMA_CREATE_STRING"></a>DMA_CREATE_STRING</h3><p>    <b>Syntax</b><br>void <b>DMA_CREATE_STRING</b> (<br>void*    <i>_allocfn(size_t)</i>,<br>const DmaUInteger32    <i>_charcount</i>,<br>const DmaWChar *    <i>_srcwchars</i>,<br>ppDmaString    <i>_ppstr</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>_allocfn(size_t)</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to allocator function.</p></TD></TR>
+<TR><TD><p><i>_charcount</i></p></TD><TD><p>input</p></TD><TD><p>The number of DmaWChar characters supplied in srcwchars.</p></TD></TR>
+<TR><TD><p><i>_srcwchars</i></p></TD><TD><p>input</p></TD><TD><p>The source character string for initializing the DmaString.</p></TD></TR>
+<TR><TD><p><i>_ppstr</i></p></TD><TD><p>output</p></TD><TD><p>pointer to where the pDmaString of the new string is delivered</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This is a macro. Clients should assume this macro (which is a little intricate) is a block of code.  Clients should not assume it is a function or expression, even though its behavior is as if it is implemented by a procedure.
+</p><p>
+DMA_CREATE_STRING creates a new DmaString using the supplied allocator. Because DMA_CREATE_STRING is a macro, the supplied allocator can be a method on an interface (e.g., imalloc-&gt;Alloc).  The initial value of the string is a copy of the first _charcount characters of _srcwchars.  The pointer to the constructed DmaString is delivered into the output location, _ppstr.
+</p><p>
+The input arguments must be valid.  The macros are NOT expected to check for valid input arguments. The macro will either succeed or return with *_ppstr set to NULL.</p></p>
+<h3><a name="MacroDMA_FREE_STRING"></a>DMA_FREE_STRING</h3><p>    <b>Syntax</b><br>void <b>DMA_FREE_STRING</b> (<br>void    <i>_freeFn( void *memblock )</i>,<br>pDmaString    <i>_pstr</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>_freeFn( void *memblock )</i></p></TD><TD><p>input</p></TD><TD><p>The pointer to the function to be used for freeing the memory</p></TD></TR>
+<TR><TD><p><i>_pstr</i></p></TD><TD><p>input</p></TD><TD><p>The pointer to the DmaString to be freed</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This is a macro. Clients should assume this macro is a block of code.  Clients should not assume it is a function or expression.
+</p><p>
+The macro free’s the DmaString using the specified de-allocator. It is legal to supply a NULL _pstr value, in which case the macro perform no operation.
+</p><p>
+There are no error returns.</p></p>
+<h3><a name="MacroDMA_GET_STRING_CHAR_COUNT"></a>DMA_GET_STRING_CHAR_COUNT</h3><p>    <b>Syntax</b><br>DmaUInteger32 <b>DMA_GET_STRING_CHAR_COUNT</b> (<br>const pDmaString    <i>_pstr</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>_pstr</i></p></TD><TD><p>input</p></TD><TD><p>The DmaString</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This is a macro. Clients can safely assume this macro is an expression.
+</p><p>
+The macro returns the number of characters in the string. The terminating NULL of a string is not counted.
+</p><p>
+There are no error returns. The macro returns 0 if a NULL input is supplied.</p></p>
+<h3><a name="MacroDMA_GET_STRING_TEXT"></a>DMA_GET_STRING_TEXT</h3><p>    <b>Syntax</b><br>const DmaWChar* <b>DMA_GET_STRING_TEXT</b> (<br>pDmaString    <i>_pstr</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>_pstr</i></p></TD><TD><p>input</p></TD><TD><p>The DmaString</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This is a macro. Clients can safely assume this macro is an expression.
+</p><p>
+The macro returns a pointer to a sequence of characters.  There is a null character at the end.
+</p><p>
+There are no error returns. The macro returns NULL, if a NULL input is supplied.</p></p>
+<p></p>
+</body></html>

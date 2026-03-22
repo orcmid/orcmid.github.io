@@ -1,0 +1,511 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d070701e: ODMJNI 1.0 0.60 Stable Candidate Public Beta </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2007/07/d070701e.htm 23    13-08-22 12:53 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d070701"><font color="#990033">d070701</font></a><br>
+      	</font></strong><strong><font color="#990033">&nbsp;<a href="d070701.htm"><font color="#990033">ODMJNI 
+1.0 Public Beta</font></a><br>
+      <em><font size="5">0.60 Stable Candidate</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <small><font face="monospace"><p align="right"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br />
+      <a href="../">2007</a>&gt;<a target="_top" href="./">07</a>&gt;</b></p>
+      <p align="right"><b><a target="_top" href="d070701e.htm">d070701e</a>&gt;</b></font><br />
+      <small>
+		<a href="#0.01">0.01</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+
+<p>
+<div style="border-style:dotted;border-width:1px">
+<table width="100%" cellpadding="2" style="border-style:none; border-collapse:collapse; padding-left:4px; padding-right:4px; padding-top:4px; padding-bottom:4px" id="table1" >
+	<tr>
+		<td width="95%" valign="top" align="left"><small>
+		<ul>
+			<li><b>Latest version:</b> 
+				The latest ODMJNI 1.0 
+				Public Beta material can be found via &nbsp; &lt;<b><font face="monospace"><a href="d070701b.htm">http://ODMA.info/dev/devNotes/2007/07/d070701b.htm</a></font></b>&gt;.</li>
+			<li><b>Previous version: </b><b>0.59 Public Transition Candidate</b> &lt;<b><font face="monospace"><a href="d070701d.htm">http://ODMA.info/dev/devNotes/2007/07/d070701d.htm</a></font></b>&gt;.<br>&nbsp;&nbsp;&nbsp; 
+			</li>
+			<li><b>This version: 0.60 Stable Candidate Public Beta 0.01 </b>&lt;<b><font face="monospace"><a href="d070701e.htm">http://ODMA.info/dev/devNotes/2007/07/d070701e.htm</a></font></b>&gt;.&nbsp; 
+			This release is formed simply by deleting all deprecated elements 
+			from the 0.59 Transition Candidate, by satisfying the regression 
+			checks, and by declaring the public beta&nbsp; of stable interfaces 
+			for candidate use.&nbsp; Apart from bug fixes, useful additions, and 
+			hardening of the underlying implementation, this API will be 
+			preserved for the lifetime of ODMJNI 1.0.<br>
+&nbsp;&nbsp;&nbsp; </li>
+			<li><b>Downloads: <font color="#800080">{to be defined}</font></b></li>
+		</ul></small></td>
+		<td width="5%">
+		<div align="right">
+			<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="59500" --></div>
+		</td>
+	</tr>
+</table></div>
+</p>
+
+<blockquote>
+	<p>The 0.60 Stable Candidate is a complete release in which there are no 
+	deprecated interface elements.&nbsp; The elements in the 0.60-level API are 
+	those that will be preserved in all future ODMJNI 1.0 releases.&nbsp;&nbsp; 
+	The only changes will be for repairing defects, adding additional features 
+	(if any), and hardening the underlying implementation.&nbsp; Refactoring of 
+	the underlying implementation for improved maintainability and easier 
+	verification is to be accomplished by later releases that will have no 
+	impact on the interfaces exposed for application-software usage.</p>
+	<blockquote>
+		<h3>1. <a href="#1">Purpose and Scope</a><br>2. <a href="#2">Breaking Changes</a><br>&nbsp;&nbsp;&nbsp; 2.1 
+		<span style="font-weight: 400"><a href="#2.1">Removal of Deprecated 
+		Methods in Viewable, Editable, and Working Documents</a></span><br>&nbsp;&nbsp;&nbsp; 2.2 
+		<a href="#2.2"><span style="font-weight: 400">Removal</span></a><span style="font-weight: 400"><a href="#2.2"> of 
+		Deprecated
+		<font face="monospace">OdmFormat</font> Class Methods now in
+		<font face="monospace">OdmFormatCheck</font> Interface</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.3 <br>3. <a href="#3">Development Approach</a><br>
+&nbsp;&nbsp;&nbsp; 3.1 <span style="font-weight: 400"><a href="#3.1">Summarize 
+		Changes</a><br>
+&nbsp;&nbsp;&nbsp; </span>3.2<span style="font-weight: 400"> </span>
+		<a href="#3.2"><font face="monospace">practical100</font><span style="font-weight: 400"> 
+		Changes</span></a><span style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp; </span>3.3<span style="font-weight: 400"> </span>
+		<a href="#3.3"><font face="monospace">odmjni100</font><span style="font-weight: 400"> 
+		Changes</span></a><span style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp; </span>3.4<span style="font-weight: 400"> <a href="#3.4">
+		Packaging of 0.60 Beta</a></span><br>
+&nbsp;&nbsp;&nbsp; 3.5 <span style="font-weight: 400"><a href="#3.5">Additional Materials for 
+		Adopters</a></span><br>4. <a href="#4">Bugs and Caveats</a><br>
+		5. <a href="#5">Developer Notes</a></h3>
+	</blockquote>
+</blockquote>
+<h2><a name="1" target="_top" href="#1">1</a>. Purpose and Scope</h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd}</b></font></p>
+</blockquote>
+<h2><a name="2" target="_top" href="#2">2</a>. Breaking Changes</h2>
+<h3><a name="2.1" target="_top" href="#2.1">2.1</a> Removal of Deprecated 
+Methods of Viewable, 
+Editable, and Working Documents</h3>
+<blockquote>
+	<p><font color="#800080"><b>{tbd}</b></font></p>
+</blockquote>
+<h3><a name="2.2" target="_top" href="#2.2">2.2</a> Removal of Deprecated
+<font face="monospace">OdmFormat</font> Class Methods Now In <font face="monospace">
+OdmFormatCheck</font> Interface</h3>
+<blockquote>
+	<p><font color="#800080"><b>{tbd}</b></font></p>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a>. Development Approach</h2>
+<h3><b><a name="3.1" target="_top" href="#3.1">3.1</a></b> Summarize Changes
+</h3>
+<h3><a name="3.2" target="_top" href="#3.2">3.2</a> <font face="monospace">
+practical100</font> Changes<span style="font-weight: 400"> </span></h3>
+<h3><a name="3.3" target="_top" href="#3.3">3.3</a> <font face="monospace">
+odmjni100</font> Changes </h3>
+<h3><a name="3.4" target="_top" href="#3.4">3.4</a> Packaging of 0.60 Beta</h3>
+<h3><a name="3.5" target="_top" href="#3.5">3.5</a> Additional Materials for 
+Adopters</h3>
+<h2><b><a name="4" target="_top" href="#4">4</a>. Bugs and Caveats</b></h2>
+<h2><a name="5" target="_top" href="#5">5</a>. <b>Developer Notes</b></h2>
+<blockquote>
+	<dl>
+		<dt><b>2007-12-02-10:04 The Problems of Building to a Quality Release</b></dt>
+		<dd>Apart from just being a slow worker, I also find it very tedious and 
+		taxing to be on the homeward leg of the ODMJNI 1.0 Development.&nbsp; 
+		From a technical point of view, 0.60 is intended to be a stable, 
+		usable-in-production release.&nbsp; The only code updates will be for 
+		the coordinated use of the same parameter-format checking in odmjni100 
+		as in OdmNative100.&nbsp; The only tricky spot, at the moment, has to do 
+		with the proper behavior of transferToNewDocument when the DMS returns 
+		success and no new docId.<br>
+&nbsp;&nbsp;&nbsp; But 0.60 is not a polished release, and that is why it is 
+		called 0.60.&nbsp; There is much work required to provide the improved 
+		packaging, documentation, and worked examples to make ODMJNI 1.0 a 
+		dependable open-source description.&nbsp; This will all happen after 
+		0.60 is available, in a series of supplements that accompany the 
+		movement of the code base to the ActiveODMA project on SourceForge.&nbsp; 
+		That takes us to 0.70.<br>
+&nbsp;&nbsp; The 0.70 release is all about deployment packaging.&nbsp; This may 
+		be a slim activity based on how much is going into it now, or I may 
+		realize that I am attempting too much up front and can accelerate 0.60 
+		release because is this provision for 0.70. <br>
+&nbsp;&nbsp; Later on, when 0.70 is declared, there will also be a major 
+		refactoring of the internal implementation.&nbsp; This is required to 
+		not disrupt applications that use ODMJNI 1.0 in any way whatsoever.&nbsp; 
+		The reason it is out there at 0.80 is precisely because we want all of 
+		the tools and tests and definitions in place to provide good assurance 
+		and confirmation that no regression has occurred and nothing is broken.&nbsp;
+		<br>
+&nbsp;&nbsp; That&#39;s why &quot;hardening&quot; is an 0.90 activity, because we want to do 
+		the most strenuous hardening activity against the refactored code base.&nbsp;
+		<br>
+&nbsp;&nbsp;&nbsp; And finally, the 1.0 stage doesn&#39;t happen until all code is 
+		signed and certified in some way.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; Now you know why this seems like such a long and tortuous 
+		progression, when the code starts out being stable enough to rely on in 
+		production (with good precautionary testing) at 0.60.<br>
+&nbsp;&nbsp;&nbsp; I was reminded of this by Oren Eini&#39;s blog post today.<br>
+&nbsp;&nbsp;&nbsp; <i><b>see also:</b></i> Oren Eini:
+		<a target="_top" href="http://ayende.com/Blog/archive/2007/12/02/Releasing-Open-Source.aspx">
+		Releasing Open Source</a>. <i>Ayende @ Rahien</i> (web log), 2007-12-02.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-27-18:40 Bugs and Caveats Needed</b></dt>
+		<dd>There may still be known bugs or at least caveats for 0.60, in 
+		addition to the breaking changes.&nbsp; Some of these will be about the 
+		shallow level of testing and the poor automation, missing and inadequate 
+		documentation, etc.&nbsp; I am anxious to get a clean 0.60 laid down and 
+		downloadable.&nbsp; It may well be that surrounding materials, 
+		especially improved confirmation tests and documentation comes after the 
+		code is available.&nbsp; Other materials can come out of the build-up of 
+		a stable deployment process that includes presence under the SourceForge 
+		ActiveODMA project.&nbsp; Completion of that, and any 
+		documentation-related build (maybe for JavaDoc) will culminate in 0.70, 
+		a release that can be reached more-or-less at leisure.&nbsp; I do want 
+		to be at least defining the 0.80 refactor by the time of the AIIM 2008 
+		meeting in early March, though.<br>
+&nbsp;&nbsp; I am willing to get the code flat and then see what is revealed by 
+		more testing and any take-up for other Java-based applications.&nbsp; If 
+		there are bugs to fix, 0.6x releases can be made.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-21-20:27 Narrowing in on 0.60 Definition</b></dt>
+		<dd>The easiest changes to make for 0.60 consist of deleting all 
+		deprecated methods from the Java code of practical100 and odmjni100 and 
+		verifying that the regression checks all pass.&nbsp; This may actually 
+		catch defects in the 0.59/0.60 regression checks, but if everything 
+		compiles with the changes made, there should be great confidence in that 
+		result.<br>
+&nbsp;&nbsp; There are two other changes that are required.&nbsp; The first 
+		consists of the implementation of native string format-checking code in 
+		OdmNative100.lib and introducing an OdmJniFormat extension of 
+		OdmNullFormat that uses Java native methods to access those library 
+		functions.&nbsp; This is done now to stabilize the behavior and to catch 
+		any discrepancies in production usage as early as possible.<br>
+&nbsp;&nbsp; The second change has to do with stabilizing the implementation of 
+		transferToNewDocument and having applications informed that the original 
+		working document is to be used to save any new content.&nbsp; This is a 
+		breaking change and it needs to be put in here.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; I&#39;m now confident that this is the extent of the 
+		modifications required for 0.60.&nbsp; I am willing to do all further 
+		refinements, including addition of documentation, improvement of web 
+		pages, release notes, examples, more confirmation tests, and so on, in 
+		the interval to 0.70 and even up until 0.80 work starts.&nbsp; That will 
+		again make major changes to odmjni100 and to OdmNative100, but these 
+		should not have any impact on the productive use of ODMJNI 1.0 starting 
+		with 0.60.<br>
+&nbsp;&nbsp; If there are any requirements for bug fixes, we can consider 0.6x 
+		and 0.7x intermediate drops with fixes.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-18-19:17 Cleaning Up <font face="monospace">
+		transferToNewDocument</font></b></dt>
+		<dd>I haven&#39;t checked the behavior with <b><font face="monospace">
+		ODMASAMP</font></b> yet, but I suspect that <b><font face="monospace">
+		transferToNewDocument</font></b> misfires if a DMS does not return a new
+		<b><font face="monospace">docId</font></b> as part of its successful 
+		response.&nbsp; This means, according to ODMA 1.0 and all later 
+		specifications, that the existing DMS document should be used.&nbsp; 
+		This means that there should be a save to the current <b>
+		<font face="monospace">docLocation</font></b>, if there are any changes 
+		to be committed.&nbsp; <br>
+&nbsp;&nbsp; The only way I can distinguish that for an application is to give 
+		it a successful <b><font face="monospace">OdmPendingDocument</font></b> 
+		interface that has a null <b><font face="monospace">docLocation</font></b>, 
+		indicating that the existing working document should be used, and any 
+		new content should be saved to that document via <b>
+		<font face="monospace">commitChanges</font></b>.<br>
+&nbsp;&nbsp; I&#39;m satisfied with that resolution but I need some reality checks.&nbsp; 
+		First, what happens now, secondly does <b><font face="monospace">
+		ODMASAMP</font></b> provide a reliable behavior that I can check?&nbsp; 
+		Finally, what do other applications do?&nbsp; In particular, I can see 
+		what Microsoft Word does, that being an important and useful indicator.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-17-19:48 Worrying About Binding Mismatches</b></dt>
+		<dd>In C and C++, it is easy to use header files that do not match the
+		<font face="monospace"><b>.lib</b></font> or the <font face="monospace">
+		<b>.dll</b></font> that is actually bound to at another stage or at 
+		runtime.&nbsp; There are practices that avoid this, and the use of 
+		interface identifiers (IIDs) is also very helpful in maintaining of the 
+		agreement between a header file used in compiling and the code used at 
+		run-time.<br>
+&nbsp;&nbsp; One problem I have with the way <b><font face="monospace">
+		OdmFormatCheck</font></b> works is that <b><font face="monospace">
+		OdmNative100</font></b> interfaces and class loaders must defend 
+		themselves with format checks and these checks might be inconsistent 
+		with the filters in <b><font face="monospace">OdmFormatCheck</font></b>.<br>
+&nbsp;&nbsp; For 0.60, I want to solve this problem by having the <b>
+		<font face="monospace">OdmNative100</font></b> code that is run by <b>
+		<font face="monospace">odmjni100</font></b> native methods and the <b>
+		<font face="monospace">odmjni100</font></b> implementation of <b>
+		<font face="monospace">OdmFormatCheck</font></b> use the identical 
+		implementation.&nbsp; That will be done.&nbsp; It is the only new code 
+		in 0.60, but it is important to get that into the deployed software.<br>
+&nbsp;&nbsp; I had it in my head that I needed some way to check, at runtime, 
+		that <b><font face="monospace">OdmNative100</font></b> was using the 
+		same format-checking code that the <b><font face="monospace">odmjni100</font></b> 
+		native methods in support of <b><font face="monospace">OdmFormatCheck</font></b> 
+		were also using.&nbsp; I figured I needed to use some sort of common key 
+		(such as an IID) by which <b><font face="monospace">odmjni100</font></b> 
+		told <b><font face="monospace">OdmNative100</font></b> what format 
+		checking code was being used.<br>
+&nbsp;&nbsp; I finally got to the idea that I might as well make the <b>
+		<font face="monospace">OdmNative100</font></b> format checking code have 
+		a COM interface except then it wouldn&#39;t be useable from static methods, 
+		and it appeared that static native methods would be good enough on the 
+		Java side.<br>
+&nbsp;&nbsp; If I&#39;d drawn a diagram I might have seen more quickly what a waste 
+		of time this worry is.&nbsp; The <b><font face="monospace">odmjni100</font></b> 
+		native methods are implemented via a single <b><font face="monospace">
+		odmjni100.dll</font></b> and <b><font face="monospace">odmjni100.cpp</font></b> 
+		file.&nbsp; The compilation of <b><font face="monospace">odmjni100.dll</font></b> 
+		uses an <b><font face="monospace">OdmNative100.lib</font></b>.&nbsp; All 
+		I have to do is make sure the format-checking code that <b>
+		<font face="monospace">OdmNative100</font></b> is bound to be in that 
+		very library.&nbsp; Then <b><font face="monospace">odmjni100</font></b> 
+		will be bound to that same code and so will the <b>
+		<font face="monospace">OdmNative100</font></b> implementation that is 
+		bound by the <b><font face="monospace">odmjni100</font></b> code.&nbsp; 
+		It is easy.&nbsp; No worries.&nbsp; I might need to deal with binding 
+		checks and binding matches somewhere else in the future.&nbsp; Not here.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-25-17:53 Regression Tests Targeted for 0.60</b></dt>
+		<dd>In the creation of 0.59/0.60 regression tests from the existing 
+		pre-0.59 checks, I am changing them only enough to avoid deprecated 0.59 
+		elements.&nbsp; That leaves serious gaps in test coverage, especially of 
+		failure cases and format-checking consistency between odmjni100 and 
+		OdmNative100.&nbsp; Those checks important for an assurance that 0.60 is 
+		stable for use will be added for the 0.60 release with 
+		more-comprehensive checks added along the way to 1.00.<br>
+&nbsp;&nbsp; I am not sure whether the gaps will be catalogued here or in a 
+		separate folio devoted to testing.&nbsp; The second option may be more 
+		appropriate as a way to focus attention all the way through ODMJNI 1.0 
+		and to the point where fully automated end-to-end tests can be provide 
+		as part of overall ODMA hardening.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-08-14:00 Concern About Test Coverage</b></dt>
+		<dd>I wonder how to get better coverage and better regressions.&nbsp; 
+		One thing to do is to have notes pages up for future stages so that I 
+		have a place to record concerns that are intended to be resolved no 
+		later than that point.&nbsp; I also need a practice of reviewing the 
+		developer notes.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-09-29-17:03 Careful Provision for Variants</b></dt>
+		<dd>To implement variants the way I describe, just below, I must be 
+		careful that the <b><font face="monospace">practical100</font></b> and
+		<b><font face="monospace">odmjni100</font></b> classes can be derived 
+		from in useful ways, while also maintaining the separation of concerns 
+		and other features around least surface for confined usages.&nbsp; I 
+		think the use of <b><font face="monospace">practical100</font></b> by <b>
+		<font face="monospace">odmjni100</font></b> is cause for confidence in 
+		the building of variant interfaces and implementations atop the <b>
+		<font face="monospace">practical100</font></b> interfaces and null 
+		implementations.&nbsp; <br>
+&nbsp;&nbsp; It may take additional care to allow for variant derivations atop
+		<b><font face="monospace">odmjni100</font></b> classes as well.&nbsp; I 
+		will have to watch that and make sure that some of the access conditions 
+		are not so strict that variants in supplemental packages cannot be added 
+		in this way.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-09-29-15:22 Safe Ways to Build Synchronized Variants</b></dt>
+		<dd>ODMJNI 1.0 is a kit, and people are encouraged to make their own 
+		variants (just so they are not called ODMJNI <i>m</i>.<i>n</i>).&nbsp; 
+		Then, in order to be able to stay synchronized with any additions and 
+		especially any defect repairs and improved implementations, how does one 
+		do this in a safe way that does not create a maintenance headache for 
+		the variant.&nbsp; My thinking is that the way odmjni100 classes derive 
+		from <b><font face="monospace">practical100</font></b> classes is an 
+		useful model.&nbsp; Variants should derive from those and rely on their 
+		implementations as much as possible.&nbsp; <br>
+&nbsp;&nbsp; I think this is an useful model for those who want to extend ODMJNI 
+		for improved integration with their applications and use of ODMA.&nbsp;
+		<br>
+&nbsp;&nbsp; This is not a fool-proof approach, but I think it retains the 
+		greatest flexibility for synchronizing with ODMJNI repairs and 
+		improvements that follow creation of a variant.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-09-29-12:21 No 0.6x Releases Intended</b> [from notebook 
+		#59.38]</dt>
+		<dd>My idea is to save 0.6x releases for breaking changes.&nbsp; If I 
+		have to do that, then I can&#39;t just issue a new build of 0.60.&nbsp; If 
+		there are other defect repairs, including comments and documentation 
+		corrections, I am thinking that will involve a replacement 0.60 build.&nbsp; 
+		This is a little odd, so I will start making builds part of the release 
+		version.&nbsp; That is, the first archive would be identified 0.60.00, 
+		and so on.&nbsp; <br>
+&nbsp;&nbsp; [dh:2007-10-10 The introduction of documentation, examples, and 
+		more tests might be worth making an 0.6x drop, but I don&#39;t think it 
+		needs to be done as a bundle like that.]<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-09-23-15:05 Get to 0.60 as Stable with No Further Breaking 
+		Changes </b>(from <a href="d070701d.htm#2007-09-23-15:05">0.59 notes</a>)</dt>
+		<dd>I am emphatic that there will only making critical fixes and 
+		non-breaking additions to application-visible interfaces starting with 
+		0.60 beta.&nbsp; The 0.59 beta will be the same except for deprecated 
+		elements.&nbsp; Deprecated elements will be retained in 0.59 to simplify 
+		confirmation and transition of existing code to the 0.60 interfaces.&nbsp; 
+		Deprecated elements will be removed from the 0.60 interfaces and 
+		implementations.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-09-17-21:00 Use the Idea of Stable Open Beta for 0.60 </b>
+		(from <a href="d070701d.htm#2007-09-17-21:00">0.59 notes</a>)</dt>
+		<dd>The Facebook Developers Wiki has an interesting
+		<a target="_top" href="http://wiki.developers.facebook.com/index.php?title=Data_Store_API_documentation&oldid=5821">
+		&quot;open beta&quot; statement</a> that is along the lines I mean for what can be 
+		counted on in 0.59 and especially 0.60: &quot; ... API is in open BETA now. 
+		... Any application can access it now.&nbsp; Everything ... should be 
+		fully working now, and we will ... minimize interface change as much 
+		as possible, but since this is still in beta, please make sure you have 
+		some backup of your data.&nbsp; Thanks!&quot;&nbsp; [dh:2007-10-03-14:48 
+		In my case I want this to be a no-kidding promise around stability, 
+		although I might have to make .6x additions if there are 
+		application-threatening (and user-data) problems uncovered in the public 
+		beta.]<br>&nbsp;&nbsp; </dd>
+	</dl>
+</blockquote>
+<small>
+	<small>
+	<small>
+
+</small>
+
+</small>
+
+</small>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 0.60 Stable Candidate Public Beta.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d070701e 0.01, October 25, 2007.&nbsp; Available at &lt;<font face="monospace"><b><a target="_top" href="d070701e.htm">http://ODMA.info/dev/devNotes/2007/07/d070701e.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.01">0.01</a> 2007-10-25-18:31 Adjust Around Regression</b></dt>
+	<dd>Added placeholder for Bugs and Caveats and indicated that there will be 
+	additions for gaps in the regression checks.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-10-10-16:31 Provide Placeholder</b></dt>
+	<dd>This page is put up as a placeholder for holding a sketch and notes on 
+	the 0.60 public-beta release that is being envisioned to follow the 
+	now-in-development 0.59 release.</dd></dl>
+		</small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top" rel="nofollow">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../../2006/01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="36747" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-10-10-16:31 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 23 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

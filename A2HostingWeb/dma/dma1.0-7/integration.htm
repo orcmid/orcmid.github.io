@@ -1,0 +1,372 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DMA Integration Model</TITLE>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc378777766">DMA Integration Model</A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc378777768">Introduction</A></P>
+</B></FONT><P>The DMA Integration Model defines how DMA components are assembled, how these components interact and how client applications interact with these components.</P>
+<P>The principal DMA components visible to DMA client applications are as follows:</P>
+
+<UL>
+<LI>System Manager Object</LI>
+<LI>System Objects</LI>
+<LI>DocSpace Objects</LI></UL>
+
+<P>Additional components participating in the integration infrastructure are follows:</P>
+
+<UL>
+<LI>Text Ordering Service Objects</LI>
+<LI>OIID Parser Service Objects</LI>
+<LI>Scope Factory Service Objects</LI></UL>
+
+<P>The System Manager is a COM object that can create new DMA System objects, which in turn can create new DMA DocSpace objects.</P>
+<P>DMA Text Ordering service objects enable text collation logic to be decoupled from DMA System or DocSpace object implementations. </P>
+<P>DMA OIID Parser service objects enable OIID parsing logic to be decoupled from the DMA System Manager implementation.</P>
+<P>DMA Scope Factory service objects enable merged scope creation to be decoupled from the DMA System object implementation.</P>
+<P>The System Manager is implemented in an operating environment dependent manner.  AIIM intends to provide System Manager implementations for popular environments including Microsoft Windows 32 and various Unix platforms.  The mechanism that clients utilize to create System Manager objects is both platform and language specific.</P>
+<P>DMA <I>service providers</I> implement the remaining objects. A uniform (although platform specific) mechanism is defined by which service providers can be called upon to deliver instances of the objects they implement.</P>
+<B><P><A NAME="_Toc378777769">Integration Model Principles</A> </P>
+</B><P>The following UML figure illustrates the relationships between the DMA Integration model components.</P>
+<B><FONT SIZE=2><P ALIGN="CENTER">&nbsp;</P>
+</B></FONT><P><IMG SRC="Image107.gif" WIDTH=530 HEIGHT=554></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc378754727">Figure -1 DMA Integration Model Components</A></P>
+</B></FONT><P>DMA doesn’t specify a traditional functional client API.  Instead, the DMA client API can be viewed as one function which delivers System Manager objects and a set of the methods in COM interfaces delivered by those System Manager objects which in turn deliver other objects.</P>
+<P>Similarly, DMA doesn’t specify a traditional functional server side SPI.  Instead, DMA specifies a set of COM interfaces that DMA Service Objects must implement, COM interfaces for registering DMA Service Objects and a single function for activating a DMA Service Object.</P>
+<P>DMA also doesn’t impose restrictions on the distribution of DMA implementation other than requiring that the initial means of obtaining the initial System Manager object be callable by the client application.  As the rest of the client’s interaction is via method calls on COM interfaces, the underlying implementation of any of the DMA COM objects may be remote from the client’s point of presence.  </P>
+<B><FONT SIZE=4><P><A NAME="_Toc378777770">The Client View: Access to DMA Systems and Document Spaces</A> </P>
+</FONT><P><A NAME="_Toc378777771">Application Connection to the System Manager</A></P>
+</B><P>A DMA application obtains (connects to) a System Manager object by a well known mechanism. The only currently defined mechanism supports C and C++ client implementations on the Win32 platform. Virtually identical mechanisms are likely to be specified for C and C++ applications on other platforms. This mechanism may or may not be accessible from other implementation languages; where it is not, DMA may define alternative mechanisms in the future.</P>
+<P>For DMA 1.0 on the Win32 platform, a System Manager object is obtained by calling the <A HREF="cfunc.html#CFuncdmaConnectSystemManager">dmaConnectSystemManager</A> function, which is exported by the DMA10.DLL dynamic link library. On other platforms, the same function will be used, although the packaging of that function (e.g. shared library, static library, etc.) is not currently defined.</P>
+<P>The following is the general signature for dmaConnectSystemManager.</P>
+<PRE>DmaRC dmaConnectSystemManager (
+ &#9;pDmaVoid <I>pEnvInfo</I>,
+ &#9;pDmaOpaqueString <I>pProfile</I>,
+ &#9;Dmapv <I>pIMalloc</I>,
+ &#9;DmaInteger32 <I>lCharSetEncodingID</I>,
+ &#9;pDmaString <I>pLocaleName</I>,
+ &#9;REFIID <I>riid</I>,
+ &#9;pDmapv <I>ppISysMgr</I>) </PRE>
+<P>The following sections discuss how an application selects values for each of these parameters.</P>
+<P>The <I>pEnvInfo</I> parameter should be NULL or operating environment specific data that is required to define the execution environment that the System Manager object must operate within.  It’s required value will be specified for each operating environment System Manager implementation. For Win32, this parameter should be NULL.</P>
+<P>The <I>pProfile</I> parameter should be NULL or operating environment specific data that is required to locate System Manager configuration information such as a registry key name.  Allowable values will be specified for each operating environment System Manager implementation. For Win32, this parameter should be NULL.</P>
+<P>The <I>pIMalloc</I> parameter should be NULL or a reference to a COM interface of an object that supplies an IMalloc interface. If this parameter is NULL, the System Manager provides a default IMalloc implementation that is used throughout the lifetime of the System Manager and any of its children. For the Win32 platform, the default implementation is that returned by the CoGetMalloc API.</P>
+<P>The System Manager and all of its children will employ this IMalloc interface in constructing all storage structures delivered as output parameters from methods on their interfaces. This applies any time that an interface delivers an output pointer that is not a pointer to an interface, including pointers embedded in the data reached by such outputs (hereafter referred to as <I>non-interface output pointers</I>).  In addition, any interfaces supplied as parameters to methods on the System Manager or its must deliver non-interface outputs that were allocated with this same IMalloc interface.</P>
+<P>The <I>lCharSetEncodingID</I> parameter specifies a character set encoding that the System Manager object and all its children will utilize for any DmaString parameters.  Its value will typically specify Unicode when operating in a Microsoft COM environment.</P>
+<P>The <I>pLocaleName</I> parameter specifies the name of a locale that the System Manager object and any System objects returned via the System Manager’s EnumerateSystems method are requested to operate within.  A NULL value indicates that the System Manager and System objects returned from EnumerateSystems may choose a default locale to operate within based upon implementation choices or operating environment information, for example the current Windows or Unix locale.</P>
+<P>The <A HREF="nls.htm">DMA Internationalization and Localization</A><I> </I>chapter discusses character set encoding and locale names in more detail.</P>
+<P>The <I>riid</I> parameter must be a reference to an interface identifier (IID) for an interface supported by a System Manager object.  This will typically be a reference to IID_IdmaSystemManager.</P>
+<P>The <I>ppISysMgr</I> parameter is used to return a reference to the requested interface on a System Manager object.</P>
+<P>If the <B>dmaConnectSystemManager<I> </B></I>function is successful, a DMARC_SUCCESS return code value is returned, otherwise one of a small set of error return codes will be returned.</P>
+<B><P><A NAME="_Toc378777772">Accessing DMA Systems</A> </P>
+</B><P>A DMA application obtains (connects to) a DMA System object using methods on the System Manager object’s <A HREF="IdmaSystemManager.html">IdmaSystemManager</A> interface.  The <A HREF="IdmaSystemManager.html#IdmaSystemManagerEnumerateSystems">EnumerateSystems</A> method is used to return an <A HREF="IdmaEnumOfObject.html">IdmaEnumOfObject</A> interface that can be used to enumerate all of the System objects that a System Manager can connect to.  A specific System can be connected to using the <A HREF="IdmaSystemManager.html#IdmaSystemManagerConnectSystem">ConnectSystem</A> method.</P>
+<P>DMA Systems are the first full fledged DMA object that an application encounters.  They support the <A HREF="IdmaObject.html">IdmaObject</A> and <A HREF="IdmaProperties.html">IdmaProperties</A> interfaces and as such exist within a DMA class hierarchy, have properties and are described by DMA meta-data.</P>
+<P>The properties specific to a System object include a Display Name, a Descriptive Text, a list of supported Locale Names and the current Locale Name.  The values of the Display Name and Descriptive Text properties would typically have values based upon the value of the current Locale Name property.</P>
+<P>The System objects returned by the EnumerateSystems and ConnectSystem methods may represent unauthenticated connections to DMA systems.  If the system requires user authentication, it will indicate so by providing an <A HREF="IdmaAuthentication.html">IdmaAuthentication</A> interface on the System object. </P>
+<P>Applications should determine whether authentication is required before attempting to invoke any methods other than those used to browse the object’s property values and meta-data.  If the interface is not present, the object does not require explicit authentication. Otherwise authentication can be achieved using methods available on the IdmaAuthentication interface.  The use of these methods is described in more detail in a later section.</P>
+<P>Object valued properties cannot be accessed if the System object is in an unauthenticated state.  Attempts to access an object valued property in an unauthenticated state will yield a DMARC_NOT_AUTHENTICATED<I> </I> return code.</P>
+<B><P><A NAME="_Toc378777773">Accessing DMA Document Spaces</A> </P>
+</B><P>A DMA application obtains (connects to) a DMA DocSpace object using methods on the System object’s <A HREF="IdmaSystem.html">IdmaSystem</A> interface.  The <A HREF="IdmaSystem.html#IdmaSystemEnumerateDocSpaces">EnumerateDocSpaces</A> method is used to return an IdmaEnumOfObject interface that can be used to enumerate all of the DocSpace objects that a System can connect to.  A specific DocSpace can be connected to using the <A HREF="IdmaSystem.html#IdmaSystemConnectDocSpace">ConnectDocSpace</A> method.</P>
+<P>The properties specific to a DocSpace object include a Display Name, a Descriptive Text, a list of supported Locale Names and the current Locale Name.  The values of the Display Name and Descriptive Text properties would typically have values based upon the value of the current Locale Name property.</P>
+<P>The DocSpace objects returned by the EnumerateDocSpaces and ConnectDocSpace methods may represent unauthenticated connections to DMA document spaces.  If the document space requires user authentication, it will indicate so by providing an IdmaAuthentication interface on the DocSpace object.</P>
+<P>Applications should determine whether authentication is required before attempting to invoke any methods other than those used to browse the object’s property values and meta-data.  If the interface is not present, the object does not require explicit authentication, otherwise authentication can be achieved using methods available on the IdmaAuthentication interface.  The use of these methods is described in more detail in a later section.</P>
+<P>Object valued properties cannot be accessed if the DocSpace object is in an unauthenticated state.  Attempts to access an object valued property in an unauthenticated state will yield a <I>not authenticated </I> return code.</P>
+<P>Applications may use DMA DocSpace objects to instantiate objects managed by the document space.  These objects may be instantiated from a DocSpace object using DMA addressability, navigation and searching which are discussed in the DMA Object Model and DMA Query Model sections of this document.</P>
+<B><P><A NAME="_Toc378777774">Client Access Summary</A></P>
+</B><P>The following figure and notes describe how character set encoding and locale name data affect the DMA client integration model.</P>
+<P><IMG SRC="IMG00006.GIF" HEIGHT=573 WIDTH=622></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc378754728">Figure -2 DMA Integration Model and Localization Considerations</A> </P>
+</B></FONT><P>&nbsp;</P><DIR>
+
+<P>1. &#9;The client gets an IdmaSystemManager interface pointer by calling a well-known exported dmaConnectSystemManager entry point on the System Manager shared library. Via parameters to dmaConnectSystemManager, the client establishes the character set encoding to be used within the context of the System Manager object, and optionally a locale name.</P>
+<P>2. &#9;The client application calls the IdmaSystemManager::EnumerateSystems() method to enumerate visible systems. This method returns an enumerator object that supplies unauthenticated  System objects.</P>
+<P>3. &#9;Alternatively, the client connects to a system by calling the IdmaSystemManager::ConnectSystem() method specifying one of the locale names that is supported by the system.  The list of applicable locale names may be established by a prior call to IdmaSystemManager::EnumerateSystems and subsequent inspection of the System object’s Local Names property.</P></DIR>
+
+<P>At this point in time, the system object has been created and its CharSetEncodingID and LocaleName properties may be interrogated.  Their values will correspond to the system’s registered character set encoding and the locale name specified to IdmaSystemManager::ConnectSystem().</P><DIR>
+
+<P>4. &#9;The client invokes the IdmaSystem::EnumerateDocSpaces method to enumerate the Document Spaces that a DMA system supports.  This method returns an enumerator object that supplies unauthenticated  DocSpace objects.</P>
+<P>5. &#9;Alternatively, the client invokes the IdmaSystem::ConnectDocSpace() method specifying one of the locale names supported by the Document Space. The list of applicable locale names may be established by a prior call to IdmaSystem::EnumerateDocSpaces and subsequent inspection of the DocSpace object’s Local Names property.</P></DIR>
+
+<P>At this point in time, a DocSpace object has been created and its LocaleName property may be interrogated.  Its value will be the locale name that was specified to the IdmaSystem::ConnectDocSpace() method.</P>
+<P>Behind the scenes, IdmaSystem::ConnectDocSpace() activated the Document Space service object by invoking the DMA_GetServiceObject() function, specifying the DMA system’s character set encoding and optionally a locale name, which created a DocSpace object and returned the IdmaDocSpace COM interface pointer.</P>
+<B><P><A NAME="_Toc378777775">Authentication</A></P>
+</B><P>DMA factors authentication into a separate IdmaAuthentication interface which may be present on DMA System and DocSpace objects.  Typically, user authentication is performed by invoking the <A HREF="IdmaAuthentication.html#IdmaAuthenticationAuthenticateUser">AuthenticateUser</A> method, which implements an authentication model derived from the ODBC SQLBrowseConnect model. </P>
+<P>DMA authentication is based upon an iterative stateless exchange of information between the client and System or Document Space, hereafter both are referred to as the <I>service</I>.  The client supplies authentication parameters to the service via a DmaString parameter.  If the service requires additional authentication parameters, the service provides the client with a DmaString parameter that describes the additional authentication parameters.  This exchange typically starts with the client providing the service an empty authentication parameter string and iteratively refining it’s authentication parameter string until successfully authenticated or a failure is detected.</P>
+<P>DMA currently defines two mechanisms that DMA System and Document Space implementations may use to implement authentication.  DMA System and Document Space providers are encouraged to use one or both of these mechanisms instead of inventing equivalent mechanisms.  Use of these documented mechanisms will increase interoperability by decreasing the need for out of band agreements between DMA application providers and DMA System and Document Space providers.  The authentication mechanism is extensible; DMA System and Document Space providers are free to extend the authentication mechanism as required for their particular need.</P>
+<B><FONT SIZE=2><P>The DMA Authentication Protocol</P>
+</B></FONT><P ALIGN="JUSTIFY">The DMA Authentication mechanism is best described as a protocol.  The client submits a <I>request message</I> and the service responds with a <I>response message.</I>  Each of these messages is encoded in a DmaString and syntactically conforms to the following BNF syntax based upon the ODBC SQLBrowseConnect syntax:</P><DIR>
+<DIR>
+<DIR>
+
+<CODE><P>request-message ::= connection-string</P>
+<P>response-message ::= connection-string</P>
+<P>connection-string ::= attribute[&quot;;&quot; connection-string]</P>
+<P>attribute ::= [ &quot;*&quot; ] keyword &quot;=&quot; value</P>
+<P>keyword ::= dma-keyword | provider-keyword</P>
+<P>dma-keyword ::= { &quot;SCHEME&quot; | &quot;UID&quot; | &quot;PWD&quot; |&quot;KRB-VERSION&quot; | &quot;KRB-PRINCIPAL&quot; |&quot;KRB-TICKET&quot; | &quot;KRB-AUTH&quot; } [ &quot;:&quot; localized-identifier ]</P>
+<P>provider-keyword ::= identifier [ &quot;:&quot; localized-identifier ]</P>
+<P>value ::= &quot;{&quot; value-list &quot;}&quot; | &quot;?&quot; | identifier</P>
+<P>value-list ::= identifier [ &quot;:&quot; localized-identifier ][ &quot;,&quot; value-list ]</P></DIR>
+</DIR>
+</DIR>
+
+</CODE><I><P>identifier</I> and <I>localized-identifier</I> consist of one or more characters.  <I>keyword</I> is to be case insensitive.</P>
+<P>An asterisk preceding a keyword indicates that the keyword is optional and need not be present in the next request message.</P>
+<B><FONT SIZE=2><P>DMA Authentication Schemes</P>
+</B></FONT><P>The service response to an empty request message indicates which DMA authentication schemes the service supports.  DMA 1.0 defines two authentication schemes and allows providers to extend the set of DMA authentication schemes.  The DMA-BASIC scheme provides for a typical user-id and password based authentication.  The DMA-KERBEROS scheme provides a mechanism for the client to provide the service with a Kerberos ticket and authenticator.</P>
+<P>The following examples illustrate Authenticate method calls by showing input string, output string and return code values.</P>
+<P>An initial Authenticate method call is used to determine which authentication schemes are supported:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "" or NULL</P>
+<P>Output string = "SCHEME={DMA-BASIC,DMA-KERBEROS,&lt;other&gt;}"</P>
+<P>Return Code = DMARC_NEED_MORE_DATA</P></DIR>
+</DIR>
+
+</CODE><P>Note: the service responds with one or more schemes. &lt;other&gt; denotes a scheme not standardized by DMA and must not start with the &quot;DMA-&quot; prefix.</P>
+<B><FONT SIZE=1><P> DMA-BASIC Authentication</P>
+</B></FONT><P>The Client selects the DMA-BASIC scheme:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "SCHEME=DMA-BASIC"</P>
+<P>Output string = "SCHEME=DMA-BASIC;UID:UserName=?;PWD:Password=?"</P>
+<P>Return Code = DMARC_NEED_MORE_DATA</P></DIR>
+</DIR>
+
+</CODE><P>The Client provides user-id and password:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "SCHEME=DMA-BASIC;UID=Joe DMA;PWD=DMA4ME"</P>
+<P>Output string = NULL</P>
+<P>Return Code = DMARC_SUCCESS</P></DIR>
+</DIR>
+
+</CODE><P>The DMARC_SUCCESS return code indicates that the user has been successfully authenticated.</P>
+<B><FONT SIZE=1><P> DMA-KERBEROS Authentication</P>
+</B></FONT><P>The DMA-KERBEROS scheme supports different versions of Kerberos.  A Kerberos scheme authentication message exchange follows:</P>
+<P>The client selects the DMA-KERBEROS scheme:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "SCHEME=DMA-KERBEROS"</P>
+<P>Output string = "SCHEME=DMA-KERBEROS;KRB-VERSION={4,5,DCE}"</P>
+<P>Return Code = DMARC_NEED_MORE_DATA</P></DIR>
+</DIR>
+
+</CODE><P>The client selects the DMA-KERBEROS version DCE:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "SCHEME=DMA-KERBEROS;KRB-VERSION=DCE"</P>
+<P>Output string = "SCHEME=DMA-KERBEROS;KRB-VERSION=DCE;KRB-PRINCIPAL=DmaSystem@realm;KRB-AUTH=?;KRB-TICKET=?"</P>
+<P>Return Code = DMARC_NEED_MORE_DATA</P></DIR>
+</DIR>
+
+</CODE><P>The response supplies the client with a Kerberos principal identifier via the KRB-PRINCIPAL value and requests that the client supply an appropriate Kerberos Authenticator and Ticket via the KRB-AUTH and KRB-TICKET values respectively.</P>
+<P>The Client responds with an appropriate authenticator and ticket:</P><DIR>
+<DIR>
+
+<CODE><P>Input string = "SCHEME=DMA-KERBEROS;KRB-VERSION=DCE;KRB-PRINCIPAL= DmaSystem@realm;KRB-AUTH=&lt;Base-64&gt;;KRB-TICKET=&lt;Base-64&gt;"</P>
+<P>Output string = NULL</P>
+<P>Return Code = DMA_SUCCESS</P></DIR>
+</DIR>
+
+</CODE><P>where &lt;Base-64&gt; is a Base64 encoding per RFC 1521 of the Kerberos Authenticator and Ticket encrypted values.<FONT FACE="Arial"> </P>
+</FONT><B><FONT SIZE=2><P>Encryption</P>
+</B></FONT><P>In DMA 1.0, there is no mechanism to support end-to-end encryption of authentication information using the DMA-BASIC scheme.  It is reasonable for a distributed DMA middleware to encrypt the connection strings such that they never appear in the clear on a network.  The current model requires that the DMA middleware decrypt the connection string before presenting it to a Document Space Service Object or returning it to a client.  As such, the authentication information will at least be transiently stored in the clear by the DMA middleware at the Document Space Service Object and client points of presence.</P>
+<B><P><A NAME="_Toc378777776">Automatic Authentication</A></P>
+</B><P>DMA 1.0 also provides a mechanism that enables System and DocSpace Service Objects to implement authentication without any caller supplied parameters through the use of the <A HREF="IdmaAuthentication.html#IdmaAuthenticationAutoAuthenticateUser">AutoAuthenticateUser</A> method.  Possible implementations of this method could be predicated upon a client application’s environmental state or an earlier successful authentication.</P>
+<P>A client application has control over automatic authentication in that it may choose to attempt automatic authentication by invoking the AutoAuthenticateUser method or utilize an interactive authentication mechanism by invoking the AuthenticateUser method.</P>
+<B><P><A NAME="_Toc378777777">Identifying and Accessing Persistable Document Space Objects</A></P>
+</B><P>DMA objects with persistent state have non-null Object Instance ID (OIID) property values.  DMA OIIDs are defined using an Uniform Resource Locator (URL) syntax and are intended to be useable as Internet URLs and can be encapsulated in ODMA Document IDs.</P>
+<P>DMA 1.0 OIIDs consist of two mandatory GUIDs, one that is a DMA System ID, and another that is a DMA DocSpace ID, along with a document space specific object identifier.  If the document space uses GUIDs as its internal object identifier or maintains a GUID association with its internal object identifier, it may expose this Object ID in the DMA OIID.</P>
+<P>Methods for extracting the DMA System ID, DocSpace ID, and optional Object ID exist on the IdmaOIID interface which is required to be supported on the System Manager object.  These methods can be used along with other DMA methods to instantiate a DMA object given its OIID.  The following illustrates one possible object instantiation mechanism:</P>
+
+<UL>
+<LI>Get a System Manager object (SysMgr) using dmaConnectSystemManager</LI>
+<LI>Use SysMgr-&gt;QueryInterface(IID_IdmaOIID) to get an IdmaOIID interface (Oiid)</LI>
+<LI>Use SysMgr-&gt;ConnectSystem(Oiid-&gt;GetSystemId(OIID)) to connect to the system (System) that generated the OIID.  Authenticate yourself if necessary.</LI>
+<LI>Use System-&gt;ConnectDocSpace(Oiid-&gt;GetDocSpaceId(OIID)) to connect to the document space (DocSpace) that generated the OIID.  Authenticate yourself if necessary.</LI>
+<LI>Use DocSpace-&gt;ConnectObject(OIID) to instantiate the DMA object</LI></UL>
+
+<B><FONT SIZE=2><P>DMA OIID Syntax Specification</P>
+</B></FONT><P>This section defines the syntax of DMA Object Instance IDs (OIIDs) using Internet URL conventions and defines how DMA OIIDs are to be encapsulated in ODMA Document Ids.</P>
+<P>DMA OIIDs are considered logically<I> to </I>be an Uniform Resource Locator (URL) to a persistent DMA object.  A DMA client application can get an in-memory instance of a persistent DMA object when presented with a DMA OIID.  Implicit in this assumption is that the client application can:</P>
+
+<UL>
+<LI>Can access a DMA Point of Presence (POP) that can connect to the DMA system that generated the OIID.</LI>
+<LI>Can connect to and successfully authenticate itself to the DMA System that generated the OIID</LI>
+<LI>Can connect to and successfully authenticate itself to the DMA DocSpace that generated the OIID</LI>
+<LI>Has sufficient authorization to instantiate the DMA object</LI></UL>
+
+<P>DMA OIIDs can be easily exchanged by client applications in a manner similar to an HTTP URL.  For instance, an application should be able to embed a DMA OIID in an e-mail message or a database.  While there has been some discussion that it may be preferable for DMA OIIDs to be presentable in a human readable form, there is no existing requirement for this.  Likewise, there is no existing requirement that they be sufficiently short for a human to memorize or manually record, e.g. write it down on paper.</P>
+<B><FONT SIZE=1><P>The DMA URL Scheme</P>
+</B></FONT><P>This proposal defines DMA OIIDs as a DMA URL scheme (consistent with RFC 1738) and as ODMA encapsulated DMA URLs.  DMA URLs describe the identity of a DMA object and a mechanism exists to locate a DMA object in a hierarchical manner relative to a DMA System and DMA DocSpace.  The informal syntax for a DMA URL is:</P>
+<B><P ALIGN="JUSTIFY">dma://[&lt;dma pop&gt;]/&lt;system id&gt;/&lt;docspace id&gt;/&lt;object id&gt;[;guid=&lt;object guid&gt;]</P>
+</B><P>NLS character set issues would have been introduced if the System and DocSpace were encoded as human readable names in the DMA URL.  For this reason, the System and DocSpace DmaIds (GUIDs) are utilized instead of the human readable names so as to avoid character set and name stability problems.</P>
+<P ALIGN="JUSTIFY">Following this line of reasoning, the syntax for the OIID components is:</P>
+<P ALIGN="JUSTIFY">&lt;dma pop&gt; := &lt;host name&gt;</P>
+<P ALIGN="JUSTIFY">&lt;system id&gt; ::= &lt;Textualized System DmaId&gt;</P>
+<P ALIGN="JUSTIFY">&lt;docspace id&gt; ::= &lt;Textualized DocSpace DmaId&gt;</P>
+<P ALIGN="JUSTIFY">&lt;object id&gt; ::= &lt;Printable ASCII per HTTP URL conventions&gt;</P>
+<P ALIGN="JUSTIFY">&lt;object guid&gt; ::= &lt;Textualized Object DmaId&gt;</P>
+<P>The &lt;dma pop&gt; (read DMA Point of Presence) is a host name (e.g. library.xyz.com) that can be optionally present in the DMA OIID.  Its purpose is to provide a DMA client with a name of an Internet host that most likely can connect to an OIID’s DMA System and DMA DocSpace.  The host name may include a userid and password per Internet URL conventions.   The &quot;file&quot; and proposed &quot;ldap&quot; URL schemes provide precedence for this URL component being optional.</P>
+<P ALIGN="JUSTIFY">At present, connection to a remote DMA point of presence is not specified using a DMA API or protocol.  DMA definition of an application protocol would be required in order to perform this type of connection and as such is outside of the DMA 1.0 scope of effort. DMA 1.0 requires the &lt;dma pop&gt; to not be present in OIIDs generated by DMA DocSpaces and that the &lt;dma pop&gt; field be ignored upon presentation to a DMA 1.0 system. </P>
+<P>The &lt;system id&gt; is the DMA GUID used to register the DMA System that generated the OIID.  It is considered a hint in that a DMA DocSpace may be accessible from multiple DMA Systems.  Any DMA System that supports the DMA DocSpace &lt;docspace id&gt; may suffice for accessing the persistent object referenced by the OIID, however the system &lt;system id&gt; is considered the best choice since it was known to work at some time in the past.</P>
+<P>The &lt;object id&gt; is any sequence of data encoded into an allowed subset of ASCII according to the rules governing Internet URLs.  The &quot;/&quot;, &quot;;&quot; and &quot;?&quot; characters (and a few others) are reserved for use by the DMA URL scheme and cannot appear in the &lt;object id&gt; (they must be escaped).  Beyond the encoding rules, the structure of the &lt;object id&gt; is determined entirely by the underlying Document Space implementation.</P>
+<P>If a Document Space maintains a DMA GUID for a particular object, it is encouraged to expose that object GUID in its DMA URL using the optional &quot;;guid=&lt;object guid&gt;&quot; syntax.</P>
+<B><FONT FACE="Arial" SIZE=2><P>DMA URL Examples:</P>
+
+<UL>
+</B></FONT><LI>All URL components specified except object id tag<BR>
+<BR>
+dma://library.xyz.com/01234567-8901-2345-6789-012345678901/<BR>
+ &#9;01234567-8901-2345-6789-012345678901/1000034</LI></UL>
+
+
+<UL>
+<LI>&lt;dma pop&gt; omitted per DMA 1.0 conventions<BR>
+<BR>
+dma:/// 01234567-8901-2345-6789-012345678901/<BR>
+ &#9;01234567-8901-2345-6789-012345678901/1000034</LI></UL>
+
+
+<UL>
+<LI>An URL with an object guid tag<BR>
+<BR>
+dma:/// 01234567-8901-2345-6789-012345678901/<BR>
+ &#9;01234567-8901-2345-6789-012345678901/<BR>
+ &#9;type=34;guid=01234567-8901-2345-6789-012345678901</LI></UL>
+
+
+<UL>
+<LI>An URL with an object guid tag and a trivial &lt;object id&gt;<BR>
+<BR>
+dma:/// 01234567-8901-2345-6789-012345678901/<BR>
+ &#9;01234567-8901-2345-6789-012345678901/<BR>
+ &#9;;guid=01234567-8901-2345-6789-012345678901</LI></UL>
+
+<B><FONT SIZE=1><P>ODMA Encapsulation</P>
+</B></FONT><P>It has been proposed to the ODMA SPT that the vendor name &quot;DMA&quot; be reserved for encapsulation of DMA URLs in ODMA Document IDs.  An encapsulated DMA ID conforms to the following syntax:</P>
+<B><P>::ODMA\DMA\</B>&lt;DMA OIID&gt;</P>
+<P> This encapsulation enables ODMA Document IDs to be treated by DMA implementations as DMA OIIDs from an input parameter perspective.  Any method that takes a pDmaOIID input parameter will handle either the DMA URL form or the ODMA encapsulated DMA URL form.  DMA implementations will not generate the ODMA encapsulated DMA URL form of an OIID as a return parameter.</P>
+<P>Note: ODMA Document Ids are encoded using the &quot;native character set of the system&quot;, e.g. Unicode in Windows 32.  DMA OIIDs are always encoded in US-ASCII.  As such, character set translation will likely need to occur in an ODMA/DMA implementation above the DMA API. </P>
+<B><FONT SIZE=1><P>BNF for DMA URLs</P>
+</B></FONT><P>This is a BNF-like description of the DMA OIID Uniform Resource Locator syntax, using the conventions of RFC822, except that "|" is used to designate alternatives, and brackets [] are used around optional or repeated elements. Briefly, literals are quoted with "", optional elements are enclosed in [brackets], and elements may be preceded with &lt;n&gt;* to designate n or more repetitions of the following element; n defaults to 0.</P>
+<FONT SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P>
+</FONT><CODE><PRE>dmaurl         = &quot;dma://&quot; [login] &quot;/&quot; dmasystem &quot;/&quot;<BR>
+ &#9;&#9;&#9;dmadocspace &quot;/&quot; dmaobjectid [ dmaobjectguid ] 
+dmasystem      = dmaguid
+dmadocspace    = dmaguid
+dmaobjectid    = oidchars
+dmaobjectguid  = &quot;;guid=&quot; dmaguid
+dmaguid           = 1*dmaguidchar
+dmaguidchar       = hex | &quot;-&quot;
+oidchars       = *oidchar
+oidchar        = alpha | digit | safe | ":" | "@" | "&amp;" | "="
+
+; URL schemeparts for ip based protocols:
+login          = [ user [ ":" password ] "@" ] hostport
+hostport       = host [ ":" port ]
+host           = hostname | hostnumber
+hostname       = *[ domainlabel "." ] toplabel
+domainlabel    = alphadigit | alphadigit *[ alphadigit | "-" ] alphadigit
+toplabel       = alpha | alpha *[ alphadigit | "-" ] alphadigit
+alphadigit     = alpha | digit
+hostnumber     = digits "." digits "." digits "." digits
+port           = digits
+user           = *[ uchar | ";" | "?" | "&amp;" | "=" ]
+password       = *[ uchar | ";" | "?" | "&amp;" | "=" ]
+urlpath        = *xchar    
+
+; Miscellaneous definitions
+lowalpha       = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" |
+                 "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" |
+                 "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" |
+                 "y" | "z"
+hialpha        = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" |
+                 "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" |
+                 "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+
+alpha          = lowalpha | hialpha
+digit          = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
+                 "8" | "9"
+safe           = "$" | "-" | "_" | "." | "+"
+extra          = "!" | "*" | "'" | "(" | ")" | ","
+national       = "{" | "}" | "|" | "\" | "^" | "~" | "[" | "]" | "`"
+punctuation    = "&lt;" | "&gt;" | "#" | "%" | &lt;"&gt;</PRE>
+
+<P>&nbsp;</P>
+<P>reserved       = ";" | "/" | "?" | ":" | "@" | "&amp;" | "="</P>
+<P>hex            = digit | "A" | "B" | "C" | "D" | "E" | "F" |</P>
+<P>                 "a" | "b" | "c" | "d" | "e" | "f"</P>
+<P>escape         = "%" hex hex</P>
+<P>unreserved     = alpha | digit | safe | extra</P>
+<P>uchar          = unreserved | escape</P>
+<P>xchar          = unreserved | reserved | escape</P><DIR>
+<DIR>
+
+<P>digits         = 1*digit</P></DIR>
+</DIR>
+
+</CODE><B><FONT SIZE=4><P><A NAME="_Toc378777778">DMA Service Objects</A></P>
+</B></FONT><P>DMA System, DocSpace, Text Ordering, OIID Parser and Scope Factory implementations are types of DMA Service Objects.  The DMA Service Object model provides a simple operating environment neutral mechanism for registering service providers and a uniform (although platform dependent) mechanism for the System Manager or a service object to obtain instances of other service objects.</P>
+<P>DMA is silent about how DMA Service Object implementations are distributed and installed at various points of presence.  DMA does specify how a DMA Service Object is registered and publishes its existence at a point of presence and how a DMA Service Object delivers a requested COM interface.</P>
+<B><P><A NAME="_Toc378777779">Service Object Registration</A></P>
+</B><P>The DMA System Manager and System objects support the <A HREF="IdmaServiceRegistry.html">IdmaServiceRegistry</A> interface.  This interface has methods for registering and publishing service elements. A single program module may provide the implementation for multiple Service Objects each of which are described by a distinct service element.</P>
+<P>When registered, each service element is given a distinct <I>RegistrationID</I> which can later be used to retrieve, publish, unpublish or remove the service element information.  The DMA Service Registry maintains the following information for each service element:</P>
+
+<UL>
+<LI>A <I>ServiceObjectId</I> which is a persistent DmaId value for the service object.  For System service objects this is the System Id, for DocSpace service objects this is the DocSpace ID and for Text Ordering service objects, this is the Collation Sequence ID. For a Scope Factory, it must be the value dmaServiceObject_ScopeFactory and for an OIID Parser similarly dmaServiceObject_OIIDParser.</LI>
+<LI>A <I>ServiceObjectTypeId</I> which is a DmaId indicating which type of service object this service element describes.  It may be one of dmaServiceType_System, dmaServiceType_DocSpace, dmaServiceType_TextOrdering, dmaServiceType_ScopeFactory or dmaServiceType_OIIDParser.</LI>
+<LI>A <I>Profile</I> string which will be supplied to the service object implementation during activation and may be used by the service object implementation to locate additional configuration information.</LI>
+<LI>A <I>ModuleTypeId</I> which is a DmaId indicating what type of Module implements this service object and, by implication, the means by which an instance of the object can be obtained.  DMA 1.0 defines a module type for Windows 32 DLLs.  Other module types for Unix shared libraries could easily be added.</LI>
+<LI>A <I>ModuleLocation</I> which is a string describing the location of the Module implementing the service object. The form of this string is dependent upon the ModuleTypeID. For the Win32 DLL module type, it will be the pathname of a DLL containing the service object implementation.</LI>
+<LI>A <I>CharSetEncodingId</I> which describes which character set encoding this service object implementation supports.</LI></UL>
+
+<P>Registering a service element makes that service element registry information available at the point of presence where the service element was registered (the point of service).  Publishing the service element makes the service element registry information available at all points of presence which can reach the point of service.</P>
+<B><P><A NAME="_Toc378777780">Service Object Activation</A></P>
+</B><P>Activation of a DMA service object requires that the service object’s module be loaded and that a function in that module be invoked, returning the desired object. These steps will vary according to the type of module in which the service object is implemented. DMA System Manager and System objects must provide the implementation of this activation logic.</P>
+<P>For the Win32 DLL module type, the DLL referenced by the ModuleLocation parameter will export the <A HREF="cfunc.html#CFuncDMA_GetServiceObject">DMA_GetServiceObject</A> function as described below.  It is likely that on other platforms a similar mechanism (e.g. using shared libraries) will be defined and that these will employ an entry point with the same general signature. Other module types and activation mechanisms may also be defined, for Win32 as well as for other platforms.</P>
+<P>The general signature for the DMA_GetServiceObject function is as follows:</P>
+<PRE>DmaRC DMA_GetServiceObject (
+&#9;pDmaVoid pvEnvInfo, 
+&#9;pDmaOpaqueString pProfile, 
+&#9;Dmapv pIMalloc, 
+&#9;Dmapv punkParent, 
+&#9;DmaInteger32 lCharSetEncodingID, 
+&#9;pDmaString pLocaleName, 
+&#9;pDmaId pServiceObjectTypeID, 
+&#9;pDmaId pServiceObjectID, 
+&#9;DMA_REFIID riid, 
+&#9;Dmappv ppIServiceObject );</PRE>
+<P>This function is invoked using <I>Profile, CharSetEncodingID, ServiceObjectTypeID, and ServiceObjectID </I>parameter values extracted from a Service Registry.  The values for the other parameters are generally derived from parameters specified on the dmaConnectSystemManager function and the IdmaSystemManager::ConnectSystem and IdmaSystem::ConnectDocSpace methods as appropriate.</P>
+<P>A successful DMA_GetServiceObject call returns the COM interface specified by the <I>riid</I> parameter on a service object instance. </P>
+<B><P><A NAME="_Toc378777781">The System Object View: Integrating Systems for Access</A> </P>
+<FONT SIZE=2><P><A NAME="_Toc378777782">Installing a System Object at the point of access</A></P>
+</B></FONT><P>The installation of a DMA System service object is performed by a DMA application program operating with a connection to a DMA System Manager.  The installation application registers and publishes the System service object using the DMA System Manager’s IdmaServiceRegistry interface, after which time, clients of that DMA System Manager may connect to the newly installed System using the IdmaSystemManager::ConnectSystem or IdmaSystemManager::EnumerateSystems methods. </P>
+<B><FONT SIZE=2><P><A NAME="_Toc378777783">Typical Connection Entry into the System Service Object Implementation Program</A> </P>
+</B></FONT><P>System Service Object implementations are required to honor DMA_GetServiceObject requests for the IdmaSystem interface.  The IdmaSystemManager::ConnectSystem method simply activates the System service object and calls its DMA_GetServiceObject function passing downward it’s <I>riid</I> input parameter.</P>
+<B><P><A NAME="_Toc378777784">The DocSpace Object View: Integrating DocSpace Objects into Systems</A> </P>
+<FONT SIZE=2><P><A NAME="_Toc378777785">Installing a DocSpace Service Object at a Point of Service</A></P>
+</B></FONT><P>The installation of a DMA DocSpace service object is performed by a DMA application program operating with a connection to a DMA System.  The installation application registers and publishes the DocSpace service object using the DMA System’s IdmaServiceRegistry interface, after which time, clients of that DMA System may connect to the newly installed DocSpace using the IdmaSystem::ConnectDocSpace or IdmaSystem::EnumerateDocSpaces methods.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc378777786">Typical Connection Entry into the DocSpace Service Object Implementation Program</A></P>
+</B></FONT><P>DocSpace Service Object implementations are required to honor DMA_GetServiceObject requests for the IdmaDocSpace interface.  The IdmaSystem::ConnectDocSpace method simply activates the DocSpace service object and calls its DMA_GetServiceObject function passing downward it’s <I>riid</I> input parameter.</P>
+<B><P><A NAME="_Toc378777787">The Text Ordering Object View: Integrating Text Ordering Objects for Access</A> </P>
+<FONT SIZE=2><P><A NAME="_Toc378777788">Installing a Text Ordering Service Object at a Point of Service</A></P>
+</B></FONT><P>The installation of a DMA Text Ordering service object is performed by a DMA application program operating with a connection to a DMA System Manager.  The installation application registers the Text Ordering service object using the DMA System’s IdmaServiceRegistry interface.  Text Ordering Service Objects are not directly accessible by client applications.  They are typically utilized by System Service Objects which utilize their parent object’s (System Manager) registry to locate a text ordering service element offering a needed text ordering.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc378777789">Typical Connection Entry into the Text Ordering Service Object Implementation Program</A></P>
+</B></FONT><P>Text Ordering Service Object implementations are required to honor DMA_GetServiceObject requests for the IdmaTextOrdering interface.</P>
+<B><P>The Scope Factory Object View: Integrating a Scope Factory Object for Access </P>
+<FONT SIZE=2><P>Installing a Scope Factory Service Object at a Point of Service</P>
+</B></FONT><P>The installation of a DMA Scope Factory service object is performed by a DMA application program operating with a connection to a DMA System.  The installation application registers the Scope Factory service object using the DMA System’s IdmaServiceRegistry interface. Scope Factory Service Objects are not directly accessible by client applications.  They are accessed indirectly through the <A HREF="IdmaScopeFactory.html">IdmaScopeFactory</A> interface of the System object through which they are registered.</P>
+<B><FONT SIZE=2><P>Typical Connection Entry into the Scope Factory Service Object Implementation Program</P>
+</B></FONT><P>Scope Factory Service Object implementations are required to honor DMA_GetServiceObject requests for the IdmaScopeFactory interface.</P>
+<B><P>The OIID Parser Object View: Integrating OIID Parser Objects for Access </P>
+<FONT SIZE=2><P>Installing a OIID Parser Service Object at a Point of Service</P>
+</B></FONT><P>The installation of a DMA OIID Parser service object is performed by a DMA application program operating with a connection to a DMA System Manager.  The installation application registers the OIID Parser service object using the DMA System’s IdmaServiceRegistry interface.  OIID Parser Service Objects are not directly accessible by client applications.  They are accessed indirectly through the <A HREF="IdmaOIID.html">IdmaOIID</A> interface of the System Manager object with which they are registered.</P>
+<B><FONT SIZE=2><P>Typical Connection Entry into the OIID Parser Service Object Implementation Program</P>
+</B></FONT><P>OIID Parser Service Object implementations are required to honor DMA_GetServiceObject requests for the IdmaOIID interface.</P>
+</BODY>
+</HTML>

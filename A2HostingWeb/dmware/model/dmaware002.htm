@@ -1,0 +1,882 @@
+<html>
+
+<head>
+<title>DMAware Open-Source Model</title>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<!--$$Version:                                                                        $-->
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">Model for DMAware Open-Source Development and
+Distribution</a></h1>
+
+<blockquote>
+  <p align="left"><em>DMAware is the working name for the open-source development and
+  distribution of document-management software based on the work of the AIIM Document
+  Management Alliance.&nbsp; </em></p>
+  <p align="left"><em>The subject matter of the DMAware clearinghouse is public,
+  openly-contributed DMA software, documentation, and metadata definitions.&nbsp; </em></p>
+  <p align="left"><em>The DMAware clearinghouse accepts other open-source contributions that
+  further the integrated usage of standards-based document-management technology.
+  &nbsp;&nbsp; Links are provided to other work that contributes to interoperability of
+  document-management solutions.</em></p>
+  <blockquote>
+    <p align="left"><em>This is a draft of in-progress work.&nbsp; For access to the latest
+    version, visit <a href="http://www.infonuovo.com/DMAware">http://www.infonuovo.com/DMAware</a>.</em></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h3>Author:</h3>
+
+<blockquote>
+  <p><a href="mailto:infonuovo@email.com">Dennis E. Hamilton</a>, Technical Committee
+  Chairman, <a href="http://www.aiim.org">AIIM Document Management Alliance</a></p>
+</blockquote>
+
+<h3>Revision History:</h3>
+
+<blockquote>
+  <p><strong>This is <a href="#0.02">draft 0.02</a></strong> of <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2003-03-03<!--webbot bot="Timestamp" endspan i-checksum="12176" --></p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><em>Content </em></h2>
+  </blockquote>
+  <h2>1. <a href="#Introduction">Introduction</a></h2>
+  <h2>2. <a href="#DMAwareClearinghouse">DMAware Clearinghouse</a></h2>
+  <h2>3. <a href="#OpenSourceLicensing">Open-Source Licensing</a></h2>
+  <h2>4. <a href="#ContributionProcedures">Contribution Procedures</a></h2>
+  <h2>5. <a href="#OpenSourceAccountability">Open-Source DMAware Availability and
+  Accountability</a></h2>
+  <h2>6. <a href="#ProjectManagement">Open-Source Project Management</a></h2>
+  <h2>7. <a href="#SpecificationClearinghouse">Specifications, Definitions, and Metadata
+  Clearinghouse</a></h2>
+  <h2>8. <a href="#ExistingMaterials">Existing Specifications and Software</a></h2>
+  <h2>9. <a href="#Transition">Implementation and Transition</a></h2>
+  <h2>10. <a href="#References">References and Resources</a></h2>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><a href="#Contributors"><em>Contributors</em></a></h2>
+    <h2><a href="#ChangeHistory"><em>Change History</em></a></h2>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h1><a NAME="Introduction">1.&nbsp; Introduction</a></h1>
+
+<blockquote>
+  <p>DMAware is the name for clearinghouse and open-source development activities to be
+  carried out with the institutional sponsorship of AIIM International.&nbsp; The DMAware
+  clearinghouse provides an archive of the technical specifications and sample software
+  developed by the AIIM Document Management Alliance.&nbsp; The DMAware clearinghouse
+  provides an open, public forum for access to, discussion of, application of, and
+  contribution to this body of work.&nbsp;&nbsp;&nbsp; </p>
+  <p>To provide for the widest availability and reusability of the material, the current DMA
+  1.0 materials and proposed extensions to DMA 1.0 are being shared openly and organized for
+  further development using open-source practices and licenses.&nbsp; </p>
+  <p>This approach is being undertaken for the following purposes:<ul>
+    <li>To make the efforts of the Document Management Alliance and other contributors to
+      document-management interoperability as widely-accessible and usable as possible</li>
+    <li>To encourage the open contribution of participants in businesses, institutions, and
+      government in the review and improvement of this technical work and in the achievement of
+      interoperability in document management applications through the application of common
+      software architectures, integration frameworks, interchange techniques, and protocol
+      agreements</li>
+    <li>To cultivate the creation of community-owned software components that are primarily
+      valuable only when commonly used and openly shared among a diverse community of interests
+      and application</li>
+    <li>To establish a high level of quality and accountability for critical interoperable
+      elements through their full disclosure, peer inspection, carefully-managed maintenance,
+      extensive usage, and widespread community adoption</li>
+    <li>To encourage the contribution of scientists, scholars, and artisans to the ongoing
+      exploration, development, and refinement of interoperability techniques in document
+      management, providing an avenue for placing new ideas and innovations into practice</li>
+  </ul>
+</blockquote>
+
+<h1><a name="DMAwareClearinghouse">2.&nbsp; DMAware Clearinghouse</a></h1>
+
+<blockquote>
+  <p>The heart of the DMAware clearinghouse is a World-Wide Web site, operated as part of
+  the <a href="http://aiim.www.org">AIIM Web site</a> (at http://www.aiim.org),&nbsp; that
+  provides access to all information and participants of the DMAware community.<ul>
+    <li>Archives of information that is available for reference and for use</li>
+    <li>Status information on completed work and any comments, experiences, and defects that
+      have been reported</li>
+    <li>Distribution lists for discussions among DMAware users, contributors, and developers</li>
+  </ul>
+  <p>The DMAware clearinghouse provides three levels of material:<ol>
+    <li>Specifications, standards, and documentation that offer models, frameworks, interfaces,
+      and procedures of value in the achievement of document-management interoperability</li>
+    <li>Computer software that supports document-management system interoperability along with
+      technical materials and documentation related to the application of that software</li>
+    <li>User experiences and common definitions for user-meaningful information (e.g., metadata)
+      that enhances the interoperability of systems as well as the interchange and reusability
+      of managed materials</li>
+  </ol>
+  <p>Although initial material for the DMAware clearinghouse is related to technical
+  integration methodologies and software interfaces for interoperable access to varied
+  document collections, coverage will expand to areas of usage and practice once technical
+  interoperability becomes established.</p>
+</blockquote>
+
+<h1><a name="OpenSourceLicensing">3.&nbsp; Open-Source Licensing</a></h1>
+
+<blockquote>
+  <p>To ensure that DMAware software is freely available for continuing community
+  development, improvement, and refinement, open-source licensing practices are adopted.</p>
+  <p>Rather than define a unique open-source license, the efforts of the broader open-source
+  community are utilized.&nbsp; The Open Source Initiative provides definitions and
+  certification that will be relied upon for DMAware [<a href="#[OSI]">OSI</a>].</p>
+</blockquote>
+
+<h2><a name="AIIMCopyright">3.1 Copyright Held by AIIM International</a></h2>
+
+<blockquote>
+  <p>License to all copyrighted subject matter contributed to DMAware will generally be held
+  by AIIM International.&nbsp; Where copyright is retained by the contributing party, an
+  appropriate OSI-approved license must be provided that permits unrestricted redistribution
+  by AIIM International and any recipient of a distribution of the contributed material.</p>
+  <p>Submitters of new contributions must provide a transfer agreement that includes
+  affirmation that the contributor has the right to make the contribution under the covering
+  license (section <a href="#LicenseRequirement">4.1</a>)</p>
+</blockquote>
+
+<h2><a name="OSIapproved">3.2 OSI Approved Open-Source License</a></h2>
+
+<blockquote>
+  <p>All license statements employed for DMAware will conform to the Open-Source Definition
+  [<a href="#[OSD]">OSD</a>] and be approved by the Open Source Initiative [<a href="#[OSI]">OSI</a>].
+  &nbsp; Contributors may use any OSI-approved license.&nbsp; There are nine qualities that
+  the current version, OSD 1.7, stipulates as characteristics of open-source licenses.
+  &nbsp; Here is the proposed application to open-source DMAware:<ol>
+    <li><strong>Unrestricted Free Redistribution</strong><p>The materials covered by the license
+      may be freely redistributed without modification.</p>
+    </li>
+    <li><a name="SourceCodeInclusion"><strong>Source Code Inclusion</strong></a><p>The materials
+      must include source code and the license allows redistribution in source code form as well
+      as compiled form.</p>
+      <p>Redistribution in a form that omits source code must be accompanied by a
+      well-publicized means for obtaining the source code without difficulty and at nominal
+      cost, if any.&nbsp; Source code deposited in the DMAware clearinghouse may be used for
+      this purpose (<a href="#DerivedWorksAllowed">3</a>), below.</p>
+    </li>
+    <li><a name="DerivedWorksAllowed"><strong>Derived Works Allowed</strong></a><p>&quot;The
+      license must allow modifications and derived works, and must allow them to be distributed
+      under the same terms as the license of the original software.&quot;</p>
+      <p>It is being discussed whether distribution of derived works be <em>required</em> to be
+      under the same terms as the license of the original software.&nbsp; Under the OSD, it is
+      only necessary that creators of derived works be <em>allowed</em> to do so. &nbsp; There
+      are OSI-approved licenses in both camps, so either approach will be allowed.&nbsp; The
+      question remains open for any DMAware-customized licenses that might be developed (section
+      <a href="#ProgramsLibrariesComponents">3.3</a>).</p>
+      <p>It is proposed that distributed forms of open-source derived works can be deposited,
+      with appropriate source code, in the DMAware clearinghouse.&nbsp; Such deposited source
+      code may be used to satisfy availability of omitted source code in satisfaction of item (<a href="#SourceCodeInclusion">2</a>), above.</p>
+    </li>
+    <li><strong>Integrity of the Source Preservable</strong><p>&quot;The license may restrict
+      source-code from being distributed in modified form <em>only</em> if the license allows
+      the distribution of 'patch files' with the source code for the purpose of modifying the
+      program at build time. The license must explicitly permit distribution of software built
+      from modified source code. The license may require derived works to carry a different name
+      or version number from the original software.&quot;</p>
+      <p>It is proposed for DMAware that separately-distributed derived works must be distinctly
+      identified in a way that avoids all possibility of confusion with the original work or
+      subsequent versions of that work, and that provides access to the source for the original
+      as well as for any derived open-source work.</p>
+    </li>
+    <li><strong>No Discrimination Against Persons or Groups</strong><p>&quot;The license must
+      not discriminate against any person or group of persons.&quot;</p>
+    </li>
+    <li><strong>No Discrimination Against Fields of Endeavor</strong><p>&quot;The license must
+      not restrict anyone from making use of the program in a specific field of endeavor. For
+      example, it may not restrict the program from being used in a business, or from being used
+      for genetic research.&quot;</p>
+    </li>
+    <li><strong>Distribution of License without Added Restraints</strong><p>&quot;The rights
+      attached to the program must apply to all to whom the program is redistributed without the
+      need for execution of an additional license by those parties.&quot;</p>
+    </li>
+    <li><strong>License Not Specific to a Product</strong><p>&quot;The rights attached to the
+      program must not depend on the program's being part of a particular software distribution.
+      If the program is extracted from that distribution and used or distributed within the
+      terms of the program's license, all parties to whom the program is redistributed should
+      have the same rights as those that are granted in conjunction with the original software
+      distribution.&quot;</p>
+    </li>
+    <li><strong>License Must Not Contaminate Other Software</strong><p>&quot;The license must
+      not place restrictions on other software that is distributed along with the licensed
+      software. For example, the license must not insist that all other programs distributed on
+      the same medium must be open-source software.&quot; </p>
+    </li>
+  </ol>
+</blockquote>
+
+<h2><a name="ProgramsLibrariesComponents">3.3 Licenses Differentiate Programs, Libraries,
+and Components</a></h2>
+
+<blockquote>
+  <p><em>Up to three specific OSI-approved license statements will be recommended (after
+  development, if needed)&nbsp; for specific application to DMAware as needed.&nbsp; This is
+  to provide for differentiation among general open-source software, open-source libraries
+  that may be used in the construction of closed-source software, and open-source components
+  that may be co-operated with closed-source software.&nbsp; </em></p>
+  <p><em>Existing OSI-approved licenses will be usable. &nbsp; It is intended that
+  contributors may make use of any OSI-approved licenses, whether or not DMAware-specific
+  licenses are also established.&nbsp; DMAware licenses will not be introduced where there
+  is an available OSI-approved license that serves the requirements.</em></p>
+  <h3><a name="GeneralLicense"><strong>3.3.1 General Open-Source Licensing</strong></a></h3>
+  <p><em>There are a variety of OSI-approved general open-source licenses.&nbsp; It is
+  probably unnecessary to craft an additional license for this purpose.</em></p>
+  <p>A general open-source license, comparable in strength to the GNU General Public License
+  [<a href="#[GPL]">GPL</a>] will be recommended for use with DMAware.&nbsp; This license
+  (and OSI-approved alternatives) applies to open-source distribution of complete software
+  elements, such as <ul>
+    <li>fully-implemented client programs, </li>
+    <li>reference implementations of document spaces and other services,</li>
+    <li>tools for installation, operation, administration, testing, and verification of
+      &nbsp;document systems</li>
+  </ul>
+  <p>This license will conform to the Open-Source Definition (<a href="#OSIapproved">section
+  3.2</a>).&nbsp; The key feature of a strong GPL is that all derivative works of any kind
+  are required to be made available under open-source conditions and must be distributed
+  under license conditions that do not diminish access to the source materials, the ability
+  of others to inspect, redistribute, and the ability to make further open-source derivative
+  works.</p>
+  <h3><a name="LibraryLicensing"><strong>3.3.2 Open-Source Library Licensing</strong></a></h3>
+  <p>The purpose of a library-level license is to encourage the separable distribution of
+  library software and allow for its use in building certain larger programs and components
+  (dependent works) that incorporate the library software in some form.&nbsp; A library
+  license can be used to release the qualifying dependent work from treatment as a
+  derivative work and to authorize closed-source dependent works.</p>
+  <p>A library-level open-source license, comparable in strength to the GNU Lesser General
+  Public License [<a href="#[LGPL]">LGPL</a>] will be recommended for open-source
+  distribution of libraries valuable in the construction of other libraries and in the
+  construction of complete software elements of various kinds.&nbsp; <ul>
+    <li>The library-level open-source license permits certain uses of the library in
+      construction of other software (the dependent work) without requiring the resulting
+      combination to be open-source.&nbsp; </li>
+    <li>Derivative works of the open-source library are still required to be preserved as
+      open-source software. </li>
+    <li>Independently-developed substitutions that provide the same interfaces and functions as
+      the open-source library may be permitted (see <a href="#ComponentLicensing">3.3.3</a>)</li>
+    <li>There may be conditions on the identification of dependencies on the library, and
+      availability of the library, in notices that accompany forms of the dependent work.</li>
+  </ul>
+  <p>The DMA header files and other library-definition elements are subject to this kind of
+  license, as are interface definitions expressed in the Interface Definition Language (IDL)
+  and other special forms, to the extent that copyrighted subject-matter is involved.</p>
+  <p>The purpose of the open-source library license is to allow libraries that are
+  contributed, developed, and redistributed as open-source software to be employed in the
+  construction of closed-source software (whether freeware, shareware, or commercial
+  software) and in the construction of new open-source software.&nbsp; However, any
+  derivative work based on an open-source library that is itself a library is required to be
+  an open-source library and satisfy other conditions of the open-source library license.
+  &nbsp; In addition, there can be licensing conditions on the notification that must be
+  provided concerning the use of open-source libraries in the composition of other open- and
+  closed-source dependent software.</p>
+  <p>Open-source library licenses distinguish between creating derivative libraries and
+  depending on libraries in the composition of non-library software.&nbsp; Allowing
+  closed-source usage encourages interoperability, reduces redundancy of useful library
+  implementations, and expands the community of application for the library, contributing to
+  its achievement of high reliability and utility.&nbsp; It also provides an avenue for
+  developers of close-source software to contribute useful libraries to the open-source
+  community and retain full rights to application of the library (and open-source
+  improvements of it) in their closed-source applications.</p>
+  <h3><a name="ComponentLicensing">3.3.3 Open-Source Component Licensing</a></h3>
+  <p>If necessary, there will also be a separate open-source component license recommended
+  for use with open-source DMAware components.&nbsp; The purpose is to assert that the
+  covered components be separable with no restriction on certain combinations even were it
+  determined that such combinations constituted derivative works or compilations under
+  copyright law.&nbsp; This is similar to the purpose of the library-level open-source
+  agreement, and it might be the case that a single license form can cover both cases.</p>
+  <p>Components, which are relatively-new kinds of software artifacts, have qualities of
+  complete software elements and also of libraries.&nbsp; The open-source component license
+  is comparable in strength to the GNU Lesser General Public License [<a href="#[LGPL]">LGPL</a>]
+  and provides for open-source distribution of components: software elements that are not
+  independently operable but are employed in conjunction with software system elements and
+  libraries.&nbsp; Open-source components are similar to open-source libraries except that
+  combination with other elements occurs only in the course of processing operations and is
+  entirely ephemeral.&nbsp; The combination need never occur as a complete work fixed in a
+  tangible medium.</p>
+  <p>Examples of components in DMAware include plug-in service elements for converting URLs
+  in different character-set encodings, comparing texts in different collation sequences,
+  providing error message translations in different user languages, creating
+  cross-repository searches (merging scopes), and providing reference or test
+  implementations of system objects and other componentized functionality of document
+  services.&nbsp; In the reference implementation of DMA 1.0, the DMA System Manager is
+  accessed and operated as a shared component by any DMA application that requires access to
+  DMA services (delivered by further components).</p>
+  <p>Characteristics to be considered and provided for in arriving at a component license,
+  if needed, include<ul>
+    <li>The component is completely separable and distributable separately even when
+      redistributed with other software and installed in conjunction with the installation of
+      other software&nbsp; </li>
+    <li>Provision that open-source components may be operated in conjunction with other
+      components and software elements that are not also open-source certified.&nbsp; </li>
+    <li>Conditions under which derivative works of the open-source components are required by
+      the license to be preserved as open-source software.</li>
+    <li>Permitting substitutions of closed-source components that are not derivative works yet
+      provide the same interfaces and functionality, so long as the closed-source solution is
+      clearly differentiated and cannot confused with the open-source component (and
+      vice-versa).</li>
+    <li>How redistribution and installations of the open-source components, derivative or
+      otherwise, are to be identified and notice provided of their open-source status and
+      availability</li>
+  </ul>
+  <p>Open-source implementations of Java classes, of ActiveX components, DMA service
+  elements, and similar packaged components benefit from this form of licensing.
+  &nbsp;&nbsp; Components have emerged since the creation of the GNU GPL and LGPL licenses.
+  The objective is to permit, at the option of the contributor, free commingling of
+  closed-source and open-source components in operations of open-source and closed-source
+  systems without diluting the open-source license on the open-source components themselves.
+  &nbsp;&nbsp; </p>
+  <p>One of the key qualities of open-source components and open-source libraries is
+  agreement on standardization of interfaces and allowance for substitutability of
+  open-source and closed-source elements that honor those interfaces.&nbsp; The interface is
+  preserved as equally available for use with either kind of implementation.&nbsp; Likewise,
+  the application of the interface in the construction of open- and closed-source software
+  is not restricted.</p>
+</blockquote>
+
+<h1><a name="ContributionProcedures">4.&nbsp; Contribution Procedures</a></h1>
+
+<h2><a name="LicenseRequirement">4.1 License and Release Required</a></h2>
+
+<blockquote>
+  <p><em>The open-source nature of contributions will be clearly specified and be
+  authoritative.</em></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>4.1.1 </strong>New contributions must be clearly packaged with appropriate
+  open-source license statements.</p>
+  <p><strong>4.1.2</strong> New contributions must be accompanied by a formal release
+  statement that attests to the authority of the contributor to make the contribution, that
+  transfers copyright to AIIM International if appropriate, and that asserts the absence of
+  any encumbrance to the license.&nbsp; The material will be distributed as open-source
+  certified software.</p>
+  <p><strong>4.1.3</strong> The DMAware clearinghouse will maintain records of the history
+  of new contributions and modifications to contributions so that the origin of all material
+  is readily auditable and confirmable.</p>
+</blockquote>
+
+<h2><a name="OpenSourceLimitation">4.2 Limitation to Open-Source and Public-Domain
+Materials</a></h2>
+
+<blockquote>
+  <p><em>So that users of DMAware material are always clear on the usability of software
+  obtained from the DMAware clearinghouse, only open-source and public-domain software will
+  be provided on the clearinghouse site.</em></p>
+  <p><strong>4.2.1</strong> Contributions of software that are not made under an
+  OSI-approved open-source license appropriate to the software will be rejected.&nbsp; The
+  clearinghouse materials will not be commingled with non-open-source software.&nbsp; People
+  who access software provided through the DMAware clearinghouse will have the reasonable
+  expectation that all materials will be either OSI-certified or public-domain
+  material.&nbsp; Public-domain materials will be clearly identified.</p>
+  <p><strong>4.2.2</strong> The DMAware clearinghouse will allow announcements and posting
+  of information for locating other materials, proprietary and otherwise, that may be of
+  interest and value to the DMAware user community.&nbsp;&nbsp; However, only open-source
+  and public-domain materials, as already described, will be directly available via the
+  DMAware clearinghouse.</p>
+</blockquote>
+
+<h2><a name="DependencyDisclosure">4.3 Disclosure of Dependencies and Tool Requirements</a></h2>
+
+<blockquote>
+  <p><em>It is important that a recipient of the contribution have sufficient information to
+  be able to reproduce the construction of operational forms of the software elements.
+  &nbsp; There will be packaging requirements for ensuring that contributions provide that
+  information, including the following:</em></p>
+  <p><strong>4.3.1 </strong>Contributions must provide sufficient dependency and
+  construction information such that any compiled or derived software elements can be
+  reconstructed and the reconstruction confirmed (i.e, the elements when recompiled and
+  rebuilt or rederived are reproduced exactly in every material respect).</p>
+  <p><strong>4.3.2</strong> Any dependency of the open-source software portions on <em>non-redistributable</em>
+  materials that must be obtained elsewhere are clearly identified along with information on
+  where to obtain the necessary materials.&nbsp; (Such materials include non-redistributable
+  debugging versions of run-time libraries, non-redistributable include files that are
+  packaged with proprietary compilers and proprietary library systems, and run-time
+  libraries and subsystems that are not restricted from redistribution.)</p>
+  <p><strong>4.3.3 </strong>All dependency of the contributed software on tools, generic or
+  specific, that are not included as part of the contribution must be clearly identified and
+  the actual versions of tools used in construction and confirmation of the element must be
+  identified so that all tool operations can be reproduced.&nbsp; (This includes parameters
+  and option settings that must be provided for proper tool operation.)</p>
+  <p><a name="4.3.4"><strong>4.3.4</strong></a> Any dependency of the open-source software
+  on <em>redistributable</em> materials and tools that are included under separate license
+  conditions must be clearly identified, the redistributed material must be clearly
+  identified, the applicable license statement must identify the material to which it
+  applies and the license must be included.&nbsp; The separate license for redistributable
+  materials must permit continued redistribution as part of redistribution of the
+  open-source material and of any derivative open-source works of that material.&nbsp; (An
+  example of this case is the library file <tt>dmacom.h</tt> that is subject to
+  redistribution as part of DMAware under terms and conditions established by Microsoft
+  Corporation.)</p>
+</blockquote>
+
+<h1><a name="OpenSourceAccountability">5.&nbsp; Open-Source DMAware Availability and
+Accountability</a></h1>
+
+<blockquote>
+  <p><em>The status of all available and under-development DMAware will be fully reported on
+  the DMAware clearinghouse site.&nbsp; Reports of difficulties, suspected defects, and
+  proposed remedies will be openly available.&nbsp; The DMAware site will maintain an
+  account of the history, provenance, and known status of all DMAware open-source releases.
+  &nbsp; Users of DMAware or of products that depend upon open-source DMAware are able to
+  confirm the condition and history of the specific versions involved.</em></p>
+</blockquote>
+
+<h2>5.1 Availability and Archiving</h2>
+
+<blockquote>
+  <p>Availability of open-source releases of DMAware software will be announced on
+  appropriate archive news groups and other avenues.&nbsp; The DMAware clearinghouse site
+  will provide a catalog of the current status of all open-source releases, including
+  providing means for downloading the material from the DMAware clearinghouse site. &nbsp;
+  Other sites can redistribute and make available open-source DMAware materials as provided
+  for in the applicable open-source licenses.</p>
+</blockquote>
+
+<h2>5.2 Registration and Acknowledgment of License Conditions</h2>
+
+<blockquote>
+  <p>Users who wish to download open-source DMAware materials may be required to register
+  prior to being given download privileges.&nbsp; The registration process is used to ensure
+  that the requester is informed of the license conditions that apply to the material and
+  knowingly consents to those conditions.&nbsp; Registration also provides a contact
+  mechanism if there is need to follow-up or communicate with the requester at a later
+  time.&nbsp; It is the policy of the DMAware site that the identity of requesters who have
+  accessed DMAware materials not be disclosed and not be used for any other purpose.</p>
+</blockquote>
+
+<h2>5.3 Information about On-Going Development, Identified Defects, Available Remedies,
+and Usage Experience</h2>
+
+<blockquote>
+  <p>Distribution lists will be available for discussion of DMAware, provision of
+  trouble-shooting information and problem reports, and other discussions related to the use
+  and any difficulties with the open-source DMAware software.</p>
+  <p>Defect reports, proposed patches, and change suggestions will be announced and posted
+  on the DMAware clearinghouse site.</p>
+</blockquote>
+
+<h2>5.4 Reference to Clearinghouse from Distributed Materials</h2>
+
+<blockquote>
+  <p>Users of software systems that include open-source DMAware programs, libraries, or
+  components will be able to confirm, from information that accompanies those software
+  elements, the history and current status of the specific DMAware software versions that
+  are employed.&nbsp; License materials supplied to those users will include instructions on
+  how to identify the versions and confirm their status.</p>
+</blockquote>
+
+<h1><a name="ProjectManagement">6.&nbsp; Open-Source Project Management</a></h1>
+
+<blockquote>
+  <p><em>There will be reliable procedures for the consistent maintenance of those
+  open-source contributions for which the DMAware clearinghouse serves as the primary
+  development, distribution, and archive point.&nbsp; These procedures and guidelines will
+  establish how open-source DMAware projects are constituted and the leadership roles and
+  accountabilities that govern management of contributions and development of revisions.</em></p>
+  <p><em>In general, there is no particular procedure for developing a contribution and
+  submitting it along the lines proposed in Section 4, <a href="#ContributionProcedures">Contribution
+  Procedures</a>.&nbsp; The need for open-source project management arises when maintenance
+  and further development of an existing contribution is carried out by an informal
+  open-source team.&nbsp; In many ways, the project management requirement is similar to the
+  rules that a club might have to reach agreement on direction and tasks.&nbsp; There
+  becomes a need to establish how disagreements are to be resolved and who is allowed to
+  participate in those decisions.</em></p>
+  <p><em>It is expected that there will be very few specific procedures initially, and that
+  more-detailed project management agreements will be introduced as the first projects are
+  carried forward.</em></p>
+  <p>Contributions of open-source DMAware software will be maintained and updated using
+  agreed software project and configuration management practices.&nbsp; The project
+  management approach of the Apache Project [<a href="#[Apache]">Apache</a>] will serve as
+  the model for DMAware project management.&nbsp; As DMAware open-source development
+  projects are undertaken, there will be identification of<ul>
+    <li>roles and responsibilities - defining the recognized roles in the project<ul>
+        <li>participating users</li>
+        <li>contributing developers</li>
+        <li>development team </li>
+        <li>managing body</li>
+      </ul>
+    </li>
+    <li>communication structure - defining how users and developers communicate with regard to
+      the project<ul>
+        <li>user lists</li>
+        <li>contributor lists</li>
+        <li>development team lists</li>
+        <li>announcement lists</li>
+      </ul>
+    </li>
+    <li>decision making - defining how action items are proposed and agreement reached<ul>
+        <li>classification of action items</li>
+        <li>consensus process</li>
+        <li>non-consensus resolution process</li>
+        <li>standing of participants in decision making</li>
+      </ul>
+    </li>
+    <li>configuration management - defining how the project's source code and other materials
+      are organized and developed<ul>
+        <li>definitive repository location and structure</li>
+        <li>requirements for license on submissions</li>
+        <li>access rights to repository</li>
+        <li>maintaining and reporting accurate status of configuration elements in the repository</li>
+        <li>distinguishing categories of development: branches, changes, and patches</li>
+        <li>formats for submissions to and distributions from the repository</li>
+      </ul>
+    </li>
+    <li>project management - defining the roles and responsibility of any management oversight
+      for the project<ul>
+        <li>eligibility to participate in management process</li>
+        <li>relationship of project management and the institutional sponsor (AIIM International)</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h1><a name="SpecificationClearinghouse">7.&nbsp; Specifications, Definitions, and
+Metadata Clearinghouse</a></h1>
+
+<blockquote>
+  <p>Documentation and specifications will be available via the DMAware clearinghouse, both
+  for download and on-line viewing.&nbsp; Redistribution and creation of derivative works of
+  these materials will be governed by notices provided in the documentation itself.</p>
+  <p>An important contribution of the DMAware clearinghouse is providing a place for users
+  of DMAware to publish and exchange application-valuable information.&nbsp; There will be
+  an electronic clearinghouse for users to publish class and property definitions and
+  property identifications that are valuable for use between organizations and individuals
+  in achieving interoperability and interchange of managed-document information.&nbsp; </p>
+  <p>The DMAware clearinghouse will provide a registry in which users can publish useful
+  properties and class definitions and also publish descriptions of those items in any
+  number of languages.&nbsp; Material publicized and described in the registry will be
+  freely usable in other usages of DMAware and in interoperable use of document-management
+  systems.</p>
+  <p>The intention is to employ registry-information data formats that are easily
+  interchanged and employed in conjunction with standards-based metadata repository systems.</p>
+</blockquote>
+
+<h1><a name="ExistingMaterials">8.&nbsp; Existing Specifications and Software</a></h1>
+
+<blockquote>
+  <p><em>The specifications and software produced under the AIIM Document Management
+  Alliance will be available for distribution and usage from the DMA 1.0 section of the
+  DMAware clearinghouse.&nbsp; These materials are <strong>not</strong> under open-source
+  license and certain rights to use and manipulate the materials are reserved under terms
+  and conditions of the DMA participation agreement, regardless of any open-source
+  provisions that may be introduced in further work.&nbsp;&nbsp; </em></p>
+</blockquote>
+
+<h2>8.1 Preservation of DMA 1.0 Materials and Software</h2>
+
+<blockquote>
+  <p><strong>8.1.1 </strong>Existing software and documents that have been contributed
+  without restriction to the AIIM Document Management Alliance will be maintained under
+  copyright of AIIM International.&nbsp; This software and its source code will be
+  segregated in the DMAware clearinghouse as DMA 1.0 material.&nbsp; This material has no
+  additional license conditions on its downloading or usage (except for restrictions on any
+  redistributed elements that might apply: see section <a href="#4.3.4">4.3.4</a>). &nbsp;
+  This material includes the DMA 1.0 samples and the source code employed in the creation of
+  the DMA System Manager for Win32, file <tt>dma10.dll</tt>.</p>
+  <p><strong><a name="8.1.2">8.1.2</a> </strong>Electronic versions of the DMA 1.0
+  specifications, the accompanying code samples and supporting documentation -- primarily
+  the final proposals that were adopted as part of formulating DMA 1.0 -- will be segregated
+  as part of the DMA 1.0 material of the DMAware clearinghouse.&nbsp; This material will be
+  maintained under copyright of AIIM International.&nbsp; There is no limitation on the
+  downloading and redistribution of this material in unchanged form.&nbsp; All other rights,
+  including the creation of derivative works, are strictly reserved in accordance with the
+  Document Management Alliance participation agreement under which the DMA 1.0 specification
+  was produced and made available.</p>
+  <p><strong>8.1.3 </strong>All DMA enhancement proposals that have been put forward for
+  trial-use in the DMA Technical Committee will be made available as supplemental material
+  of the DMAware DMA 1.0 collection.&nbsp; Usage of this material is limited in exactly the
+  same manner as the DMA 1.0 specification itself.</p>
+  <p><strong>8.1.4</strong> Certain supplemental data files constitute a database by which
+  portions of the DMA 1.0 specification and interface libraries are produced.&nbsp; The data
+  files applicable to creation of the DMA 1.0 specification will be preserved in conjunction
+  with the electronic versions of the specification.&nbsp; This data is usable to recreate
+  the DMA 1.0 specification or an authorized derivative work based on that specification.</p>
+  <p><strong>8.1.5</strong> Apart from other work informally preserved under the DMAware
+  clearinghouse, such as presentations and training materials, no other materials from the
+  development of the DMA 1.0 specifications and related materials will be preserved as part
+  of DMAware.</p>
+</blockquote>
+
+<h2>8.2 Transfer of DMA 1.0 Materials to Open-Source Development</h2>
+
+<blockquote>
+  <p><strong>8.2.1</strong> The interface library that is maintained as part of DMA 1.0
+  support will be kept as part of the electronic DMA 1.0 specification (<a href="#8.1.2">8.1.2</a>).
+  &nbsp; A derivative of this library will be updated and packaged as an open-source
+  software library.&nbsp; This library consists entirely of definitions of interfaces and
+  supporting data-element values.&nbsp; The appropriate license statements will be included
+  in the updated package, satisfying the requirements of an open-source DMAware contribution
+  (<a href="#ContributionProcedures">section 4</a>).</p>
+  <p><strong>8.2.2</strong> The DMA System Manager will also be repackaged and recreated as
+  an open-source DMAware contribution.&nbsp; The appropriate license statements will be
+  included in the updated package.&nbsp; All further work on the reference middleware,
+  including maintenance of this code base, will be carried out as an open-source development
+  project.&nbsp; Special provisions to coordinate the maintenance of a single implementation
+  for each hardware-software platform on which the System Manager is implemented.&nbsp; The
+  objective is to provide installation practices and a consistent progressions of versions
+  so that there can always be a single implementation operating on a given computer, shared
+  by all applications and all installed DMA components. </p>
+  <p><strong>8.2.3</strong> Introduction of derivatives any other DMA 1.0 materials as
+  open-source DMAware contributions will depend upon voluntary contributions by individuals
+  and organizations having the authority to contribute, as specified in <a href="#ContributionProcedures">section 4</a>.</p>
+</blockquote>
+
+<h1><a name="Transition">9.&nbsp; Implementation and Transition</a></h1>
+
+<blockquote>
+  <p>The DMAware clearinghouse will be populated in accordance with the following
+  provisional task definitions.</p>
+</blockquote>
+
+<h2>9.1 Establish DMA 1.0 Specification Archive</h2>
+
+<blockquote>
+  <p>The DMA 1.0 specifications and existing reference software, along with other
+  contributions made during the operation of the Document Management Alliance are reusable
+  by members of the Alliance in accordance with the participation agreement that all DMA
+  members have accepted.&nbsp; These members have certain rights distinct from the
+  open-source usage of subsequent derivatives.&nbsp; To provide a clear division between
+  pre-open-source and post-open-source activities, the DMA 1.0 specifications, interface
+  definitions, and contributed software are kept segregated within the clearinghouse.&nbsp;
+  These materials are available as part of the foundation for subsequent DMAware, but there
+  status is different.</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li>Inventory DMA materials on&nbsp; <a href="ftp://ftp.aiim.org">ftp.aiim.org</a> site.</li>
+    <li>Identify all DMA 1.0 and trial-use material to be preserved.</li>
+    <li>Organize materials on a working web site for review and verification.&nbsp; Include
+      historical copies of the participation agreement and identification of the DMA members
+      that have use of the DMA 1.0 DMAware under the terms of that agreement.</li>
+    <li>Bring up provisional DMAware web on <a href="http://www.aiim.org">http://www.aiim.org</a></li>
+    <li>Make DMA 1.0 specifications and&nbsp; background proposal information available via
+      DMAware web as the official base definitions.</li>
+    <li>Archive all interface definitions (header files), interface and documentation
+      maintenance tools, and contributed software for reference under the DMA participation
+      agreement.</li>
+    <li>Make all DMA extension proposals available via the DMAware web site for information and
+      voluntary trial use application.</li>
+  </ul>
+  <p>The DMA 1.0 specification, proposed extensions, and reference software are fixed and
+  represent the DMAware base level.&nbsp; Any derivatives made as part of the open-source
+  activity are separated as supplements or replacements, archived in a distinct way and
+  &nbsp; identified to avoid any confusion between further open-source development, the DMA
+  1.0 base, and any independent use based on the DMA 1.0 participation agreement.</p>
+</blockquote>
+
+<h2>9.2 Establish Interface-Definition Archive</h2>
+
+<blockquote>
+  <ul>
+    <li>Collect DMA 1.0 interface definitions for use as baseline open-source library /
+      component interfaces using the latest published DMA header files and interface databases.</li>
+    <li>Add all DMA 1.0 trial-use definitions for companion use as open-source library /
+      component interface definitions</li>
+    <li>Provide a clearinghouse for additional library and component interfaces defined by
+      open-source contributors of further libraries and components.</li>
+  </ul>
+</blockquote>
+
+<h2>9.3 Provide Current DMA System Manager Reference Implementation</h2>
+
+<blockquote>
+  <ul>
+    <li>Archive the DMA 1.0 System Manager (Amigo B) reference implementation for reuse as the
+      common Win32 implementation and as the base for porting and further development</li>
+    <li>Collect all known problem reports and fixes made to the System Manager by users</li>
+    <li>Organize for further continuation as an open-source development</li>
+  </ul>
+</blockquote>
+
+<h2>9.4 Provide Follow-On Clearinghouse</h2>
+
+<blockquote>
+  <p>As contributions become available, extend the clearinghouse to provide for archiving
+  and dissemination of<ul>
+    <li>further DMAware interface definitions, protocol proposals, API extensions and
+      alternatives: developed, contributed, and discussed on DMAware distribution lists and
+      submitted in an agreed proposal format (e.g., using IETF-draft format as a model). </li>
+    <li>open-source client, service-element, and middleware software</li>
+    <li>related open-source libraries and components</li>
+    <li>related-open source utilities, tools, and databases for support of document-management
+      systems and their interoperability</li>
+    <li>registration of definitions and description translations of useful document classes,
+      properties, interfaces and other metadata that contributes to interoperability by being
+      reused in document-system applications of others</li>
+    <li>appropriate tracking, change-control, and problem reporting/resolution support for
+      maintenance and continuing development of the open-source software and the metadata
+      clearinghouse</li>
+  </ul>
+  <p>Upon dissolution of the Document Management Alliance, materials not captured and
+  supported under the DMAware clearinghouse are no long assured to be available.</p>
+</blockquote>
+
+<h1><a name="References">10. References and Resources</a></h1>
+
+<blockquote>
+  <dl>
+    <dt><a name="[Apache]">[Apache]</a></dt>
+    <dd><a href="http://www.apache.org/ABOUT_APACHE.html">About the Apache HTTP Server Project</a>.&nbsp;
+      published on the web at http://www.apache.org/ABOUT_APACHE.html.&nbsp; <a href="http://www.apache.org/">Apache Software Foundation</a> (Forest Hill, MD: February,
+      1999).</dd>
+    <dt>[GNU Software]</dt>
+    <dd><a href="http://www.gnu.ai.mit.edu/software/software.html">Software</a>.&nbsp; 1999
+      November 6 update published on the web at
+      http://www.gnu.ai.mit.edu/software/software.html.&nbsp; <a href="http://www.gnu.org">Free
+      Software Foundation</a> (Boston, MA: 1996, 1997, 1998, 1999).&nbsp; This useful catalog of
+      GNU and related software, some under GPL, some available under other terms, provides an
+      useful sketch of the reach of the GNU effort.&nbsp; It shows the kinds of information that
+      a clearinghouse can provide around a focused open-source effort.</dd>
+    <dt><a name="[GPL]">[GPL]</a></dt>
+    <dd><a href="http://www.opensource.org/licenses/gpl-license.html">The GNU General Public
+      License</a>. version 2, June 1991.&nbsp; <a href="http://www.opensource.org/licenses/">An
+      OSI approved license</a> published on the web at
+      http://www.opensource.org/licenses/gpl-license.html.&nbsp; <a href="http://www.gnu.org">Free
+      Software Foundation</a> (Boston, MA: 1989, 1991).</dd>
+    <dt><a name="[LGPL]">[LGPL]</a></dt>
+    <dd><a href="http://www.opensource.org/licenses/lgpl-license.html">The GNU Lesser General
+      Public License</a>.&nbsp; version 2.1, January 1999.&nbsp; <a href="http://www.opensource.org/licenses/">An OSI approved license</a> published on the
+      web at www.opensource.org/licenses/lgpl-license.html.&nbsp; <a href="http://www.gnu.org">Free
+      Software Foundation</a> (Boston, MA: 1991, 1999).</dd>
+    <dt><a name="[OSD]">[OSD]</a></dt>
+    <dd><a href="http://www.opensource.org/osd.html">The Open Source Definition</a>.&nbsp;
+      Version 1.7 published on the web at http://www.opensource.org/osd.html.&nbsp; <a href="http://www.opensource.org">Open Source Initiative</a>.&nbsp; A key definition of the
+      qualities of an open-source license and the terms and conditions that apply to software
+      that is approved as open-source certified.</dd>
+    <dt><a name="[OSI]">[OSI]</a></dt>
+    <dd><a href="http://www.opensource.org">Open Source Initiative</a>. web site at
+      http://www.opensource.org.&nbsp; Open Source Initiative (California: 1999).</dd>
+    <dt><a name="[OSICertificationMark]">[OSImark]</a></dt>
+    <dd><a href="http://www.opensource.org/certification-mark.html">The OSI Certification Mark
+      and Program</a>. published on the web at
+      http://www.opensource.org/certification-mark.html.&nbsp; <a href="http://www.opensource.org">Open Source Initiative</a> (California: 1999).&nbsp; OSI
+      has developed a two-step certification process.&nbsp; A license is reviewed for conforming
+      to the Open Source Definition and then approved.&nbsp; Distributions of software under
+      that approved license may be identified as OSI Certified Open Source, using the OSI
+      Certification Mark.&nbsp; A number of open-source licenses are already OSI approved,
+      including the GPL and LGPL.</dd>
+    <dt><a name="[ProCon]">[ProCon]</a></dt>
+    <dd>Harvey, Joan (ed.).&nbsp; <a href="http://www.techrepublic.com/download_item.jhtml?id=dr00519991004jon99.htm">Open
+      Source: An Introduction to the new programming paradigm</a>.&nbsp; TechRepublic White
+      Paper.&nbsp; <a href="http://www.techrepublic.com">TechRepublic</a> (Louisville, KY:
+      October, 1999).&nbsp; published on the web at
+      http://www.techrepublic.com/download_item.jhtml?id=dr00519991004jon99.htm.&nbsp; This is a
+      comprehensive survey of the open-source movement, with analysis of the importance for
+      information technology organizations.&nbsp; Pros and cons on the use of open-source
+      development within an enterprise are presented.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p><a href="#Top">to Top of Document</a> </p>
+  </blockquote>
+</blockquote>
+
+<hr>
+
+<h2><a name="Contributors">Contributors</a></h2>
+
+<blockquote>
+  <p>The following people contributed to the development of this document:<dl>
+    <dt><a href="mailto:BFANNING@aiim.org">Betsy Fanning</a>, <a href="http://www.aiim.org">AIIM
+      International</a></dt>
+    <dd>reviewer; contributed leads to additional references and sources</dd>
+    <dt><a href="mailto:infonuovo@email.com">Dennis E. Hamilton</a>, DMA Technical Committee
+      Chair, <a href="http://www.infonuovo.com">InfoNuovo</a></dt>
+    <dd>editor; principal author</dd>
+    <dt><a href="mailto:Jean.Heminway@usa.xerox.com">Jean Heminway</a>, DMA Advisory Council
+      Chair, <a href="http://www.xerox.com">Xerox Corporation</a></dt>
+    <dd>reviewer, clarifications for sections 8 and 9 </dd>
+    <dt><a href="mailto:kana@src.ricoh.co.jp">Katsumi Kanasaki</a>, DMA TC Asia-Japan
+      Vice-Chair, <a href="http://www.ricoh.com">Ricoh Company, Ltd</a>.</dt>
+    <dd>reviewer, discussion of derivative-work constraints in section 3.2</dd>
+    <dt><a href="mailto:RSauvain@crt.xerox.com">Richard Sauvain</a>, DMA TC North American
+      Vice-Chair, <a href="http://www.xerox.com">Xerox Corporation</a></dt>
+    <dd>reviewer, clarification of difference between DMA 1.0 and open-source DMAware,
+      clarifying whether the DMA 1.0 specifications can be changed or revised (sections 8 and
+      9), examples for components, keeping project management light-weight, clarification of
+      introductory paragraph</dd>
+    <dt><a href="mailto:mrcs@iname.com">Michael Seaman</a>, <a href="http://www.filenet.com">FileNET
+      Corporation</a></dt>
+    <dd>reviewer, clarification of System Manager support requirements and tightening of
+      nomenclature around &quot;middleware.&quot;</dd>
+  </dl>
+</blockquote>
+
+<h2><a name="ChangeHistory">Change History</a></h2>
+
+<blockquote>
+  <dl>
+    <dt><a name="0.02"><strong>draft 0.02</strong></a> 1999-11-23-14:42 pst (-0800) by dh</dt>
+    <dd>&quot;<a href="#ChangeHistory">Change History</a>&quot; section added.<br>
+      references &quot;<a href="#Top">to Top of Document</a>&quot; corrected to be internal
+      shortcuts and not web site references.<br>
+      Section <a href="#DerivedWorksAllowed">3.2 (3)</a> updated to include requirement for
+      deposit of derivative works and section <a href="#SourceCodeInclusion">3.2 (2)</a> revised
+      to allow access to source code to be satisfied by reference to the deposited copy.<br>
+      Remembered to run the FrontPage 98 spelling checker.<br>
+      &quot;<a href="#Contributors">Contributors</a>&quot; section added.<br>
+      Changed titles in the References sections to also be hyperlinks to the sources, even
+      though these may not be presented correctly on conversion to versions of Microsoft Word
+      older than Word 97.&nbsp; The references were revised to provide hyperlinks for all
+      web-published materials and sources.<br>
+      Removed dates from section 9 and replaced section with a simple road map.&nbsp; Clarified
+      the separation between DMA 1.0 material and subsequent open-source materials.<br>
+      Copyright retention by AIIM is relaxed for material which is contributed under existing
+      copyright, so long as the material is OSI-certified.<br>
+      Added more examples and cases for libraries and components in section 3.<br>
+      Affirmed that project management is intended to be light-weight, applies beyond initial
+      contribution, and is more like having bylaws for a club<br>
+      Left open determination of whether or not derivative works must be redistributed under the
+      same conditions (section 3.2 (3)).<br>
+      Provided more motivation for the purpose of library and component licenses separate from a
+      general software license.<br>
+      Emphasized the special status of the DMA System Manager and the importance of having all
+      applications and components installed on a computer be able to rely on a single, shared
+      system-manager copy.<br>
+      Completed sections 1 and 2.<br>
+      Minor adjustments between the Word and HTML versions. </dd>
+    <dt><a name="0.01"><strong>draft 0.01</strong></a> 1999-11-10-12:00 pst (-0800) by dh</dt>
+    <dd>Initial draft circulated for review and comment among DMA officers and key contributors</dd>
+    <dt>&nbsp;</dt>
+    <hr>
+  </dl>
+</blockquote>
+
+<p align="right"><em>$$Author: Orcmid $<br>
+$$Date: 13-08-22 12:19 $<br>
+$$Revision: 14 $</em></p>
+
+<blockquote>
+  <blockquote>
+    <p><a href="#Top">to Top of Document</a> </p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This document is based on the dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)" --><a href="mailto:(mailto:infonuovo@email.com"></a></p>
+  <h5><a name="Bottom">End of Document </a></h5>
+</blockquote>
+</body>
+</html>

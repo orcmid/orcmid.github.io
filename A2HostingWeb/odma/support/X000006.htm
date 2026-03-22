@@ -1,0 +1,239 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000006.htm 4     01-03-10 17:51 Orcmid $-->
+<title>X000006: ODMQueryCapability Crash</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000006.htm">X000006</a>:
+<code>ODMQueryCapability</code> Crash</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-17:48 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000006.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Functionality -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000006">X000006</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b> 2.0.0</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd><b><a href="http://www.infonuovo.com/odma/support/X000902.htm">X000902</a>:
+<code>E_ODMVERSION</code>
+</b> neither Defined nor Implementable, <b><code> <br>
+            </code><a href="X00-log.htm#X000809">X000809</a>: </b>Down-level <b><i><code>version</code></i></b> 
+            Support Not Implemented,<br>
+            <b><a href="X00-log.htm#X000808">X000808</a></b>: <code><b>ODMRegisterApp</b> </code> Filters <b><i><code>version</code></i></b>
+            Incorrectly,<b><code><br>
+            </code><a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">
+Q000705</a>:
+            </b> Changes Between ODMA Versions,<br>
+            <b><a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">Q000703</a></b>: ODMA-Aware Application and Connection-Manager
+Version Compatibility<br>
+            <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">ODMA
+            2.0 Specification</a> section <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.19">2.19</a>
+            <code><b><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></b></code>,
+            and section <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.14">2.14</a>
+            <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMQueryCapability">ODMQueryCapability</a></code></b>.<br>
+            ODMA 2.0 Specification <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">Errata</a>.</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: tbd</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#DalGhotra">Dal
+            Ghotra</a> (<a href="http://www.infonuovo.com/odma/support/x000006a.msg">1999-03-30</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Recorded</b>: 2001-03-09</td>
+      <td width="50%" valign="top"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>3. <a href="#WorkAround">Working Around the Problem</a></h3>
+
+<h3>4. <a href="#Investigation">Analysis</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>     (2001-03-10)</h2>
+
+<blockquote>
+  <p align="left">When an ODMA Application requests an operation that is defined
+  by the level of ODMA supported by the Connection Manager implementation, but
+  for a later version of ODMA than the DMS integration supports, it appears that
+  the ODMA 2.0 Connection Manager can crash.</p>
+
+  <p align="left"><i>Why is this considered critical?</i></p>
+
+  <p align="left">Middleware must not crash in predictable cases for which
+  defensive measures are appropriate and <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm#ODMA1.0CM">well-defined</a>.&nbsp;&nbsp;</p>
+
+  <p align="left">An ODMA-aware application can have this arise under innocent
+  conditions.&nbsp; A version-support expectation can be confounded when using a
+  document whose ODMA Document ID is supplied indirectly and the document is
+  managed by a DMS different than the default DMS for the application.</p>
+
+</blockquote>
+
+<h2>2. <a name="Actions">Actions</a> Toward Resolution (2001-03-10)</h2>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the problem to be confirmed.&nbsp;
+      [2001-03-10: Completed]</li>
+    <li>Develop appropriate ODMA 2.0 Specification Errata entries for <b><code>ODMQueryCapability</code></b>
+      (and all other non-ODMA-1.0 operations) to have it be clear what response
+      can be expected when the DMS does not provide support for the non ODMA-1.0
+      operation.&nbsp; Also, point out that <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMGetDMSInfo">ODMGetDMSInfo</a></code></b>,
+      the only precautionary avenue for an application, does not have sufficient
+      provision for failure cases.</li>
+    <li>Inspect the ODMA 2.0 Connection Manager implementation and identify the
+      conditions under which the software fails to defend against version
+      mismatches between application and DMS integration.</li>
+    <li>Construct a repeatable demonstration of the problem, if needed to
+      establish that the problem is in the Connection Manager and not in a DMS
+      integration.</li>
+    <li>Implement any needed correction in project <a href="http://www.infonuovo.com/odma/projects/P000902.htm">P000902:
+      ODMA Connection Manager Release 2.0.1</a>.</li>
+    <li>Evaluate the need for specific trouble-shooting procedures for
+      situations in which version matching and confirmation of upward/downward
+      compatibility is important.</li>
+  </ol>
+</blockquote>
+
+<h2>3. <a name="WorkAround">Working Around the Problem</a></h2>
+
+<blockquote>
+
+<p>Colin O'Brien suggests that the function <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMGetDMSInfo">ODMGetDMSInfo</a></code></b>,
+supported by all ODMA DMSs, be used to identify the version that is
+supported.&nbsp; If the returned <b><code>*<i><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#pwVerNo2.7">pwVerNo</a></i></code></b>
+value is at least 200, for example, then the operation <b><code>ODMQueryCapability</code></b>
+is safe to perform.</p>
+
+</blockquote>
+
+<h2>4. <a name="Investigation">Analysis</a>      of Incident</h2>
+
+<h3>4.1 Preliminary Investigation (2001-03-10)</h3>
+
+<blockquote>
+
+<p>The incident report has been taken at face value, along with the suggestions
+for a workaround.&nbsp; Even though the workaround is effective, the additional
+actions for resolving this incident and providing appropriate ODMA Connection
+Manager support for inter-version interoperability will be pursued as part of
+further investigation.</p>
+
+  <p align="left">
+  This incident is important to resolve because it undermines the reliability of
+  the ODMA Connection Manager as the key bridge to
+  implementation of interoperability among different levels of ODMA
+  implementation:&nbsp;&nbsp;</p>
+
+  <ol>
+    <li>
+      <p align="left">It is inappropriate for the ODMA 2.0 Connection Manager
+      implementation to depend on all DMS integrations having full ODMA 2.0
+      support.&nbsp; This nullifies the ODMA upward/downward <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">compatibility
+      assurance</a>.&nbsp;&nbsp;</li>
+    <li>
+      <p align="left">There are defined responses (i.e., <b><code>ODM_E_FAIL</code></b>
+      and <b><code>ODM_E_NOSUPPORT</code></b>) for every case where a requested
+      ODMA operation is not implemented.&nbsp; These responses must be inserted
+      by the Connection Manager when an ODMA operation not supportable by the
+      DMS is requested.</li>
+    <li>
+      <p align="left">In the specific case of the ODMA 2.0 <b><code><a href="../downloads/odma20-3.htm#ODMQueryCapability">ODMQueryCapability</a></code></b>
+      operation, an ODMA 2.0 (or later) Connection Manager can be made to
+      determine whether an identified function is even <i>supportable</i> with
+      the interfaces offered by a given DMS, inserting an <b><code><a href="../downloads/odma20-3.htm#ODM_E_NOSUPPORT2.14">ODM_E_NOSUPPORT</a></code></b>
+      result when the function is clearly not supported.&nbsp;</li>
+    <li>
+      <p align="left">If the <b><code>ODMQueryCapability</code></b> <b><i><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#function2.14">function</a></code></i></b>
+      parameter identifies a function this is supportable by the interfaces
+      offered by a given DMS, but <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#IODMDocMan2-Interface">IODMDocMan2</a>::</code></b><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#QueryCapability"><b><code>QueryCapability</code></b></a>
+      is itself not supported, it is appropriate for the Connection Manager to
+      insert an <b><code><a href="../downloads/odma20-3.htm#ODM_E_FAIL2.14">ODM_E_FAIL</a></code></b>
+      response.&nbsp;</li>
+  </ol>
+
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#DalGhotra">Dal
+      Ghotra</a></dt>
+    <dd>detected a Connection Manager failure in exercising ODMQueryInterface
+      and <a href="x000006a.msg">reported the problem</a> along with related
+      questions about access to the DMS COM interfaces.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed old ODMA Tech mail for untracked incidents, logged this
+      incident (2000-08-11) and then recorded the incident (2001-03-09) as part
+      of having all <a href="http://www.infonuovo.com/odma/projects/P010200.htm">backlog
+      recorded</a>.&nbsp; The response is an expansion on the original provided
+      by Colin O'Brien.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien">Colin
+      O'Brien</a></dt>
+    <dd><a href="http://www.infonuovo.com/odma/support/x000006b.msg">responded</a>
+      to Dal Ghotra with suggestion of a workaround involving&nbsp;</dd>
+    <dd>&nbsp;</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-03-09-22:04 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-10 17:51 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

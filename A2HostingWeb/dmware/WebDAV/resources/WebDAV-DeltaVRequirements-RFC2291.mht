@@ -1,0 +1,1419 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: RFC 2291
+Date: Sat, 12 Feb 2000 10:49:19 -0800
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://andrew2.andrew.cmu.edu/rfc/rfc2291.html
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2919.6600
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>RFC 2291</TITLE>
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-Type>
+<META content=3D"MSHTML 5.00.2919.6307" name=3DGENERATOR></HEAD>
+<BODY><PRE>Network Working Group                                         =
+ J. Slein
+Request for Comments: 2291                            Xerox Corporation
+Category: Informational                                       F. Vitali
+                                                  University of Bologna
+                                                           E. Whitehead
+                                                            U.C. Irvine
+                                                              D. Durand
+                                                      Boston University
+                                                          February 1998
+</PRE>
+<DT><EM><A name=3Dpage-1>Page 1</A></EM>
+<DD>
+<P>
+<CENTER>
+<H3>Requirements for a Distributed Authoring and =
+Versioning</H3></CENTER>
+<CENTER>
+<H3>Protocol for the World Wide Web</H3></CENTER>
+<DL>
+  <P>
+  <DT>Status of this Memo
+  <DD>
+  <P>This memo provides information for the Internet community. It does =
+not=20
+  specify an Internet standard of any kind. Distribution of this memo is =
+
+  unlimited.=20
+  <P></P>
+  <DT>Copyright Notice
+  <DD>
+  <P>Copyright (C) The Internet Society (1998). All Rights Reserved.=20
+  <P></P>
+  <DT>Abstract
+  <DD>
+  <P>Current World Wide Web (WWW or Web) standards provide simple =
+support for=20
+  applications which allow remote editing of typed data. In practice, =
+the=20
+  existing capabilities of the WWW have proven inadequate to support =
+efficient,=20
+  scalable remote editing free of overwriting conflicts. This document =
+presents=20
+  a list of features in the form of requirements for a Web Distributed =
+Authoring=20
+  and Versioning protocol which, if implemented, would improve the =
+efficiency of=20
+  common remote editing operations, provide a locking mechanism to =
+prevent=20
+  overwrite conflicts, improve link management support between non-HTML =
+data=20
+  types, provide a simple attribute-value metadata facility, provide for =
+the=20
+  creation and reading of container data types, and integrate versioning =
+into=20
+  the WWW.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-1>1</A> Introduction</STRONG>
+  <DD>
+  <P>This document describes functionality which, if incorporated in an=20
+  extension to the existing HTTP proposed standard [HTTP], would allow =
+tools for=20
+  remote loading, editing and saving (publishing) of various media types =
+on the=20
+  WWW to interoperate with any compliant Web server. As much as =
+possible, this=20
+  functionality is described without suggesting a proposed =
+implementation, since=20
+  there are many ways to perform the functionality within the WWW =
+framework. It=20
+  is also=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-2>Page 2</A></EM>
+  <DD>
+  <P>possible that a single mechanism could simultaneously satisfy =
+several=20
+  requirements.=20
+  <P>This document reflects the consensus of the WWW Distributed =
+Authoring and=20
+  Versioning working group (WebDAV) as to the functionality that should =
+be=20
+  standardized to support distributed authoring and versioning on the =
+Web. As=20
+  with any set of requirements, practical considerations may make it =
+impossible=20
+  to satisfy them all. It is the intention of the WebDAV working group =
+to come=20
+  as close as possible to satisfying them in the specifications that =
+make up the=20
+  WebDAV protocol.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-2>2</A> Rationale</STRONG>
+  <DD>
+  <P>Current Web standards contain functionality which enables the =
+editing of=20
+  Web content at a remote location, without direct access to the storage =
+media=20
+  via an operating system. This capability is exploited by several =
+existing HTML=20
+  distributed authoring tools, and by a growing number of mainstream=20
+  applications (e.g., word processors) which allow users to write =
+(publish)=20
+  their work to an HTTP server. To date, experience from the HTML =
+authoring=20
+  tools has shown they are unable to meet their users' needs using the=20
+  facilities of Web standards. The consequence of this is either =
+postponed=20
+  introduction of distributed authoring capability, or the addition of=20
+  nonstandard extensions to the HTTP protocol or other Web standards. =
+These=20
+  extensions, developed in isolation, are not interoperable.=20
+  <P>Other authoring applications have wanted to access document =
+repositories or=20
+  version control systems through Web gateways, and have been similarly=20
+  frustrated. Where this access is available at all, it is through =
+nonstandard=20
+  extensions to HTTP or other standards that force clients to use a =
+different=20
+  interface for each vendor's service.=20
+  <P>This document describes requirements for a set of standard =
+extensions to=20
+  HTTP that would allow distributed Web authoring tools to provide the=20
+  functionality their users need by means of the same standard syntax =
+across all=20
+  compliant servers. The broad categories of functionality that need to =
+be=20
+  standardized are:=20
+  <P>Properties <BR>Links <BR>Locking <BR>Reservations <BR>Retrieval of=20
+  Unprocessed Source <BR>Partial Write <BR>Name Space Manipulation=20
+  <BR>Collections=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-3>Page 3</A></EM>
+  <DD>
+  <P>Versioning <BR>Variants <BR>Security <BR>Internationalization=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-3>3</A> Terminology</STRONG>
+  <DD>
+  <P>Where there is overlap, usage is intended to be consistent with =
+that in the=20
+  HTTP 1.1 specification [HTTP].=20
+  <P>Client <BR>A program which issues HTTP requests and accepts =
+responses.=20
+  <P>Collection <BR>A collection is a resource that contains other =
+resources,=20
+  either directly or by reference.=20
+  <P>Distributed Authoring Tool <BR>A program which can retrieve a =
+source entity=20
+  via HTTP, allow editing of this entity, and then save/publish this =
+entity to a=20
+  server using HTTP.=20
+  <P>Entity <BR>The information transferred in a request or response.=20
+  <P>Hierarchical Collection <BR>A hierarchical organization of =
+resources. A=20
+  hierarchical collection is a resource that contains other resources, =
+including=20
+  collections, either directly or by reference.=20
+  <P>Link <BR>A typed connection between two or more resources.=20
+  <P>Lock <BR>A mechanism for preventing anyone other than the owner of =
+the lock=20
+  from accessing a resource.=20
+  <P>Member of Version Graph <BR>A resource that is a node in a version =
+graph,=20
+  and so is derived from the resources that precede it in the graph, and =
+is the=20
+  basis of those that succeed it.=20
+  <P>Property <BR>Named descriptive information about a resource.=20
+  <P>Reservation <BR>A declaration that one intends to edit a resource.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-4>Page 4</A></EM>
+  <DD>
+  <P>Resource <BR>A network data object or service that can be =
+identified by a=20
+  URI.=20
+  <P>Server <BR>A program which receives and responds to HTTP requests.=20
+  <P>User Agent <BR>The client that initiates a request.=20
+  <P>Variant <BR>A representation of a resource. A resource may have one =
+or more=20
+  representations associated with it at any given time.=20
+  <P>Version Graph <BR>A directed acyclic graph with resources as its =
+nodes,=20
+  where each node is derived from its predecessor(s).=20
+  <P>Write Lock <BR>A lock that prevents anyone except its owner from =
+modifying=20
+  the resource it applies to.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4>4</A> General Principles</STRONG>
+  <DD>
+  <P>This section describes a set of general principles that the WebDAV=20
+  extensions should follow. These principles cut across categories of=20
+  functionality.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.1>4.1</A> User Agent =
+Interoperability</STRONG>
+  <DD>
+  <P>All WebDAV clients should be able to work with any WebDAV-compliant =
+HTTP=20
+  server. It is acceptable for some client/server combinations to =
+provide=20
+  special features that are not universally available, but the protocol =
+should=20
+  be sufficient that a basic level of functionality will be universal.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.2>4.2</A> Client Simplicity</STRONG>
+  <DD>
+  <P>The WebDAV extensions should be designed to allow client=20
+  <BR>implementations to be simple.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-5>Page 5</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.3>4.3</A> Legacy Client Support</STRONG>
+  <DD>
+  <P>It should be possible to implement a WebDAV-compliant server in =
+such a way=20
+  that it can interoperate with non-WebDAV clients. Such a server would =
+be able=20
+  to understand any valid HTTP 1.1 request from an ordinary Web client =
+without=20
+  WebDAV extensions, and to provide a valid HTTP 1.1 response that does =
+not=20
+  require the client to understand the extensions.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.4>4.4</A> Data Format =
+Compatibility</STRONG>
+  <DD>
+  <P>WebDAV-compliant servers should be able to work with existing =
+resources and=20
+  URIs [URL]. Special additional information should not become a =
+mandatory part=20
+  of document formats.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.5>4.5</A> Replicated, Distributed =
+Systems</STRONG>
+  <DD>
+  <P>Distribution and replication are at the heart of the Internet. All =
+WebDAV=20
+  extensions should be designed to allow for distribution and =
+replication.=20
+  Version trees should be able to be split across multiple servers. =
+Collections=20
+  may have members on different servers. Any resource may be cached or=20
+  replicated for mobile computing or other reasons. Consequently, the =
+WebDAV=20
+  extensions must be able to operate in a distributed, replicated =
+environment.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.6>4.6</A> Parsimony in Client-Server=20
+  Interactions</STRONG>
+  <DD>
+  <P>The WebDAV extensions should keep to a minimum the number of =
+interactions=20
+  between the client and the server needed to perform common functions. =
+For=20
+  example, publishing a document to the Web will often mean publishing =
+content=20
+  together with related properties. A client may often need to find out =
+what=20
+  version graph a particular resource belongs to, or to find out which =
+resource=20
+  in a version graph is the published one. The extensions should make it =
+
+  possible to do these things efficiently.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.7>4.7</A> Changes to HTTP</STRONG>
+  <DD>
+  <P>WebDAV adds a number of new types of objects to the Web: =
+properties,=20
+  collections, version graphs, etc. Existing HTTP methods such as DELETE =
+and PUT=20
+  will have to operate in well-defined ways in this expanded =
+environment. WebDAV=20
+  should explicitly address not only new methods, headers, and MIME =
+types, but=20
+  also any required changes to the existing HTTP methods and headers.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-6>Page 6</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-4.8>4.8</A> Alternate Transport =
+Mechanisms</STRONG>
+  <DD>
+  <P>It may be desirable to transport WebDAV requests and responses by =
+other=20
+  mechanisms, particularly EMail, in addition to HTTP. The WebDAV =
+protocol=20
+  specification should not preclude a future body from developing an=20
+  interoperability specification for disconnected operation via EMail.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5>5</A> Requirements</STRONG>
+  <DD>
+  <P>In the requirement descriptions below, the requirement will be =
+stated,=20
+  followed by its rationale.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.1>5.1</A> Properties</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.1.1>5.1.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P>It must be possible to create, modify, read and delete arbitrary =
+properties=20
+  on resources of any media type.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.1.2>5.1.2</A> Rationale</STRONG>
+  <DD>
+  <P>Properties describe resources of any media type. They may include=20
+  bibliographic information such as author, title, publisher, and =
+subject,=20
+  constraints on usage, PICS ratings, etc. These properties have many =
+uses, such=20
+  as supporting searches on property values, enforcing copyrights, and =
+the=20
+  creation of catalog entries as placeholders for objects which are not=20
+  available in electronic form, or which will be available later.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.2>5.2</A> Links</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.2.1>5.2.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P>It must be possible to create, modify, read and delete typed links =
+between=20
+  resources of any media type.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.2.2>5.2.2</A> Rationale</STRONG>
+  <DD>
+  <P>One type of link between resources is the hypertext link, which is=20
+  browsable using a hypertext style point-and-click user interface. =
+Links,=20
+  whether they are browsable hypertext links, or simply a means of =
+capturing a=20
+  relationship between resources, have many purposes. Links can support=20
+  pushbutton printing of a multi-resource document in a prescribed =
+order,=20
+  jumping to the access control page for a resource, and quick browsing =
+of=20
+  related information, such as a table=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-7>Page 7</A></EM>
+  <DD>
+  <P>of contents, an index, a glossary, a bibliographic record, help =
+pages, etc.=20
+  While link support is provided by the HTML "LINK" element, this is =
+limited=20
+  only to HTML resources [HTML]. Similar support is needed for bitmap =
+image=20
+  types, and other non-HTML media types.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3>5.3</A> Locking</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.1>5.3.1</A> General Principles</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.1.1>5.3.1.1</A> Independence of locks. =
+It must be=20
+  possible to lock a</STRONG>
+  <DD>resource without performing an additional retrieval of the =
+resource, and=20
+  without committing to editing the resource.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.1.2>5.3.1.2</A> Multi-Resource Locking. =
+It must be=20
+  possible to take out a</STRONG>
+  <DD>lock on multiple resources residing on the same server in a single =
+action,=20
+  and this locking operation must be atomic across these resources.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.2>5.3.2</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.2.1>5.3.2.1</A> Write Locks. It must be =
+possible=20
+  to restrict modification of</STRONG>
+  <DD>a resource to a specific person.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.2.2>5.3.2.2</A> Lock Query. It must be =
+possible to=20
+  find out whether a given</STRONG>
+  <DD>resource has any active locks, and if so, who holds those locks.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.2.3>5.3.2.3</A> Unlock. It must be =
+possible to=20
+  remove a lock.</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.3.3>5.3.3</A> Rationale</STRONG>
+  <DD>
+  <P>At present, the Web provides limited support for preventing two or =
+more=20
+  people from overwriting each other's modifications when they save to a =
+given=20
+  URI. Furthermore, there is no way to discover whether someone else is=20
+  currently making modifications to a resource. This is known as the =
+"lost=20
+  update problem," or the "overwrite problem." Since there can be =
+significant=20
+  cost associated with discovering and repairing lost modifications, =
+preventing=20
+  this problem is crucial for supporting distributed authoring. A write =
+lock=20
+  ensures that only one person may modify a resource, preventing =
+overwrites.=20
+  Furthermore, locking support is a key component of many versioning =
+schemes, a=20
+  desirable capability for distributed authoring.=20
+  <P>An author may wish to lock an entire web of resources even though =
+he is=20
+  editing just a single resource, to keep the other resources from =
+changing. In=20
+  this way, an author can ensure that if a local hypertext web is =
+consistent in=20
+  his distributed authoring tool, it will then be=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-8>Page 8</A></EM>
+  <DD>
+  <P>consistent when he writes it to the server. Because of this, it =
+should be=20
+  possible to take out a lock without also causing transmission of the =
+contents=20
+  of a resource.=20
+  <P>It is often necessary to guarantee that a lock or unlock operation =
+occurs=20
+  at the same time across multiple resources, a feature which is =
+supported by=20
+  the multiple-resource locking requirement. This is useful for =
+preventing a=20
+  collision between two people trying to establish locks on the same set =
+of=20
+  resources, since with multi- resource locking, one of the two people =
+will get=20
+  a lock. If this same multiple-resource locking scenario was repeated =
+by using=20
+  atomic lock operations iterated across the resources, the result would =
+be a=20
+  splitting of the locks between the two people, based on resource =
+ordering and=20
+  race conditions.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4>5.4</A> Reservations</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4.1>5.4.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4.1.1>5.4.1.1</A> Reserve. It must be =
+possible for a=20
+  principal to register</STRONG>
+  <DD>with the server an intent to edit a given resource, so that other=20
+  principals can discover who intends to edit the resource.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4.1.2>5.4.1.2</A> Reservation Query. It =
+must be=20
+  possible to find out whether a</STRONG>
+  <DD>given resource has any active reservations, and if so, who =
+currently holds=20
+  reservations.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4.1.3>5.4.1.3</A> Release Reservation. It =
+must be=20
+  possible to release the</STRONG>
+  <DD>reservation.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.4.2>5.4.2</A> Rationale</STRONG>
+  <DD>
+  <P>Experience from configuration management systems has shown that =
+people need=20
+  to know when they are about to enter a parallel editing situation. =
+Once=20
+  notified, they either decide not to edit in parallel with the other =
+authors,=20
+  or they use out-of-band communication (face- to-face, telephone, etc.) =
+to=20
+  coordinate their editing to minimize the difficulty of merging their =
+results.=20
+  Reservations are separate from locking, since a write lock does not=20
+  necessarily imply a resource will be edited, and a reservation does =
+not carry=20
+  with it any access restrictions. This capability supports versioning, =
+since a=20
+  check-out typically involves taking out a write lock, making a =
+reservation,=20
+  and getting the resource to be edited.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-9>Page 9</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.5>5.5</A> Retrieval of Unprocessed Source =
+for=20
+  Editing</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.5.1>5.5.1</A> Functional =
+Requirement</STRONG>
+  <DD>
+  <P>The source of any given resource must be retrievable by any =
+principal with=20
+  authorization to edit the resource.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.5.2>5.5.2</A> Rationale</STRONG>
+  <DD>
+  <P>There are many cases where the source stored on a server does not=20
+  correspond to the actual entity transmitted in response to an HTTP =
+GET.=20
+  Current known cases are server side include directives, and Standard=20
+  Generalized Markup Language (SGML) source which is converted on the =
+fly to=20
+  HyperText Markup Language (HTML) [HTML] output entities. There are =
+many=20
+  possible cases, such as automatic conversion of bitmap images into =
+several=20
+  variant bitmap media types (e.g. GIF, JPEG), and automatic conversion =
+of an=20
+  application's native media type into HTML. As an example of this last =
+case, a=20
+  word processor could store its native media type on a server which=20
+  automatically converts it to HTML. A GET of this resource would =
+retrieve the=20
+  HTML. Retrieving the source would retrieve the word processor native =
+format.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.6>5.6</A> Partial Write.</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.6.1>5.6.1</A> Functional =
+Requirement</STRONG>
+  <DD>
+  <P>After editing a resource, it must be possible to write only the =
+changes to=20
+  the resource, rather than retransmitting the entire resource.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.6.2>5.6.2</A> Rationale</STRONG>
+  <DD>
+  <P>During distributed editing which occurs over wide geographic =
+separations=20
+  and/or over low bandwidth connections, it is extremely inefficient and =
+
+  frustrating to rewrite a large resource after minor changes, such as a =
+
+  one-character spelling correction. Support is needed for transmitting =
+"insert"=20
+  (e.g., add this sentence in the middle of a document) and "delete" =
+(e.g.=20
+  remove this paragraph from the middle of a document) style updates. =
+Support=20
+  for partial resource updates will make small edits more efficient, and =
+allow=20
+  distributed authoring tools to scale up for editing large documents.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-10>Page 10</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7>5.7</A> Name Space Manipulation</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.1>5.7.1</A> Copy</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.1.1>5.7.1.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P>It must be possible to duplicate a resource without a client =
+loading, then=20
+  resaving the resource. After the copy operation, a modification to =
+either=20
+  resource must not cause a modification to the other.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.1.2>5.7.1.2</A> Rationale</STRONG>
+  <DD>
+  <P>There are many reasons why a resource might need to be duplicated, =
+such as=20
+  changing ownership, preparing for major modifications, or making a =
+backup. Due=20
+  to network costs associated with loading and saving a resource, it is =
+far=20
+  preferable to have a server perform a resource copy than a client.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.2>5.7.2</A> Move/Rename</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.2.1>5.7.2.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P>It must be possible to change the location of a resource without a =
+client=20
+  loading, then resaving the resource under a different name. After the =
+move=20
+  operation, it must no longer be possible to access the resource at its =
+
+  original location.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.7.2.2>5.7.2.2</A> Rationale</STRONG>
+  <DD>
+  <P>It is often necessary to change the name of a resource, for example =
+due to=20
+  adoption of a new naming convention, or if a typing error was made =
+entering=20
+  the name originally. Due to network costs, it is undesirable to =
+perform this=20
+  operation by loading, then resaving the resource, followed by a delete =
+of the=20
+  old resource. Similarly, a single rename operation is more efficient =
+than a=20
+  copy followed by a delete operation. Note that moving a resource is =
+considered=20
+  the same function as renaming a resource.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8>5.8</A> Collections</STRONG>
+  <DD>
+  <P>A collection is a resource that is a container for other resources, =
+
+  including other collections. A resource may belong to a collection =
+either=20
+  directly or by reference. If a resource belongs to a collection =
+directly, name=20
+  space operations like copy, move, and delete applied to the collection =
+also=20
+  apply to the resource. If a resource belongs to a collection by =
+reference,=20
+  name space operations applied to the collection affect only the =
+reference, not=20
+  the resource itself.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-11>Page 11</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.1>5.8.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.1.1>5.8.1.1</A> List Collection. A =
+listing of all=20
+  resources in a specific</STRONG>
+  <DD>collection must be accessible.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.1.2>5.8.1.2</A> Make Collection. It must =
+be=20
+  possible to create a new</STRONG>
+  <DD>collection.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.1.3>5.8.1.3</A> Add to Collection. It =
+must be=20
+  possible to add a resource to</STRONG>
+  <DD>a collection directly or by reference.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.1.4>5.8.1.4</A> Remove from Collection. =
+It must be=20
+  possible to remove a</STRONG>
+  <DD>resource from a collection.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.8.2>5.8.2</A> Rationale</STRONG>
+  <DD>
+  <P>In [URL] it states that, "some URL schemes (such as the ftp, http, =
+and file=20
+  schemes) contain names that can be considered hierarchical." =
+Especially for=20
+  HTTP servers which directly map all or part of their URL name space =
+into a=20
+  filesystem, it is very useful to get a listing of all resources =
+located at a=20
+  particular hierarchy level. This functionality supports "Save As..." =
+dialog=20
+  boxes, which provide a listing of the entities at a current hierarchy =
+level,=20
+  and allow navigation through the hierarchy. It also supports the =
+creation of=20
+  graphical visualizations (typically as a network) of the hypertext =
+structure=20
+  among the entities at a hierarchy level, or set of levels. It also =
+supports a=20
+  tree visualization of the entities and their hierarchy levels.=20
+  <P>In addition, document management systems may want to make their =
+documents=20
+  accessible through the Web. They typically allow the organization of =
+documents=20
+  into collections, and so also want their users to be able to view the=20
+  collection hierarchy through the Web.=20
+  <P>There are many instances where there is not a strong correlation =
+between a=20
+  URL hierarchy level and the notion of a collection. One example is a =
+server in=20
+  which the URL hierarchy level maps to a computational process which =
+performs=20
+  some resolution on the name. In this case, the contents of the URL =
+hierarchy=20
+  level can vary depending on the input to the computation, and the =
+number of=20
+  resources accessible via the computation can be very large. It does =
+not make=20
+  sense to implement a directory feature for such a name space. However, =
+the=20
+  utility of listing the contents of those URL hierarchy levels which do =
+
+  correspond to collections, such as the large number of HTTP servers =
+which map=20
+  their name space to a filesystem, argue for the inclusion of this =
+capability,=20
+  despite not being meaningful in all=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-12>Page 12</A></EM>
+  <DD>
+  <P>cases. If listing the contents of a URL hierarchy level does not =
+makes=20
+  sense for a particular URL, then a "405 Method Not Allowed" status =
+code could=20
+  be issued.=20
+  <P>The ability to create collections to hold related resources =
+supports=20
+  management of a name space by packaging its members into small, =
+related=20
+  clusters. The utility of this capability is demonstrated by the broad=20
+  implementation of directories in recent operating systems. The ability =
+to=20
+  create a collection also supports the creation of "Save As..." dialog =
+boxes=20
+  with "New Level/Folder/Directory" capability, common in many =
+applications.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9>5.9</A> Versioning</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1>5.9.1</A> Background and General=20
+  Principles</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1.1>5.9.1.1</A> Stability of versions. =
+Most=20
+  versioning systems are intended</STRONG>
+  <DD>to provide an accurate record of the history of evolution of a =
+document.=20
+  This accuracy is ensured by the fact that a version eventually becomes =
+
+  "frozen" and immutable. Once a version is frozen, further changes will =
+create=20
+  new versions rather than modifying the original. In order for caching =
+and=20
+  persistent references to be properly maintained, a client must be able =
+to=20
+  determine that a version has been frozen. Any successful attempt to =
+retrieve a=20
+  frozen version of a resource will always retrieve exactly the same =
+content, or=20
+  return an error if that version (or the resource itself) is no longer=20
+  available.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1.2>5.9.1.2</A> Operations for Creating =
+New=20
+  Versions. Version management</STRONG>
+  <DD>systems vary greatly in the operations they require, the order of =
+the=20
+  operations, and how they are combined into atomic functions. In the =
+most=20
+  complete cases, the logical operations involved are:=20
+  <P>
+  <UL>
+    <LI>Reserve existing version </LI></UL>
+  <UL>
+    <LI>Lock existing version </LI></UL>
+  <UL>
+    <LI>Retrieve existing version </LI></UL>
+  <UL>
+    <LI>Request or suggest identifier for new version </LI></UL>
+  <UL>
+    <LI>Write new version </LI></UL>
+  <UL>
+    <LI>Release lock </LI></UL>
+  <UL>
+    <LI>Release reservation </LI></UL>
+  <P>With the exception of requesting a new version identifier, all of =
+these=20
+  operations have applications outside of versioning and are either =
+already part=20
+  of HTTP or are discussed in earlier sections of these requirements. =
+Typically,=20
+  versioning systems combine reservation, locking, and retrieval -- or =
+some=20
+  subset of these -- into an atomic checkout function. They combine =
+writing,=20
+  releasing=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-13>Page 13</A></EM>
+  <DD>
+  <P>the lock, and releasing the reservation -- or some subset of these =
+-- into=20
+  an atomic checkin function. The new version identifier may be assigned =
+either=20
+  at checkout or at checkin.=20
+  <P>The WebDAV extensions must find some balance between allowing =
+versioning=20
+  servers to adopt whatever policies they wish with regard to these =
+operations=20
+  and enforcing enough uniformity to keep client implementations simple. =
+
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1.3>5.9.1.3</A> The Versioning Model. =
+Each version=20
+  typically stands in a</STRONG>
+  <DD>"derived from" relationship to its predecessor(s). It is possible =
+to=20
+  derive several different versions from a single version (branching), =
+and to=20
+  derive a single version from several versions (merging). Consequently, =
+the=20
+  collection of related versions forms a directed acyclic graph. In the=20
+  following discussion, this graph will be called a "version graph". =
+Each node=20
+  of this graph is a "version" or "member of the version graph". The =
+arcs of the=20
+  graph capture the "derived from" relationships.=20
+  <P>It is also possible for a single resource to participate in =
+multiple=20
+  version graphs.=20
+  <P>The WebDAV extensions should support this versioning model, though=20
+  particular servers may restrict it in various ways.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1.4>5.9.1.4</A> Versioning Policies. =
+Many writers,=20
+  including Feiler [CM] and</STRONG>
+  <DD>Haake and Hicks [VSE], have discussed the notion of versioning =
+styles=20
+  (referred to here as versioning policies, to reflect the nature of=20
+  client/server interaction) as one way to think about the different =
+policies=20
+  that versioning systems implement. Versioning policies include =
+decisions on=20
+  the shape of version histories (linear or branched), the granularity =
+of change=20
+  tracking, locking requirements made by a server, etc. The protocol =
+should=20
+  clearly identify the policies that it dictates and the policies that =
+are left=20
+  up to versioning system implementors or administrators.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.1.5>5.9.1.5</A> It is possible to =
+version=20
+  resources of any media type.</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2>5.9.2</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.1>5.9.2.1</A> Referring to a version =
+graph.=20
+  There must be a way to refer</STRONG>
+  <DD>to a version graph as a whole.=20
+  <P>Some queries and operations apply, not to any one member of a =
+version=20
+  graph, but to the version graph as a whole. For example, a client may =
+request=20
+  that an entire graph be moved, or may ask for a version history. In =
+these=20
+  cases, a way to refer to the whole version graph is required.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-14>Page 14</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.2>5.9.2.2</A> Referring to a specific =
+member of=20
+  a version graph. There</STRONG>
+  <DD>must be a way to refer to each member of a version graph. This =
+means that=20
+  each member of the graph is itself a resource.=20
+  <P>Each member of a version graph must be a resource if it is to be =
+possible=20
+  for a hypertext link to refer to specific version of a page, or for a =
+client=20
+  to request a specific version of a document for editing.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.3>5.9.2.3</A> A client must be able to =
+determine=20
+  whether a resource is a</STRONG>
+  <DD>version graph, or whether a resource is itself a member of a =
+version=20
+  graph.=20
+  <P>A resource may be a simple, non-versioned resource, or it may be a =
+version=20
+  graph, or it may be a member of a version graph. A client needs to be =
+able to=20
+  tell which sort of resource it is accessing.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.4>5.9.2.4</A> There must be a way to =
+refer to a=20
+  server-defined default</STRONG>
+  <DD>member of a version graph.=20
+  <P>The server should return a default version of a resource for =
+requests that=20
+  ask for the default version, as well as for requests where no specific =
+version=20
+  information is provided. This is one of the simplest ways to guarantee =
+
+  non-versioning client compatibility. This does not rule out the =
+possibility of=20
+  a server returning an error when no sensible default exists.=20
+  <P>It may also be desirable to be able to refer to other special =
+members of a=20
+  version graph. For example, there may be a current version for editing =
+that is=20
+  different from the default version. For a graph with several branches, =
+it may=20
+  be useful to be able to request the tip version of any branch.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.5>5.9.2.5</A> It must be possible, =
+given a=20
+  reference to a member of a</STRONG>
+  <DD>version graph, to find out which version graph(s) that resource =
+belongs=20
+  to.=20
+  <P>This makes it possible to understand the versioning context of the=20
+  resource. It makes it possible to retrieve a version history for the =
+graphs to=20
+  which it belongs, and to browse the version graph. It also supports =
+some=20
+  comparison operations: It makes it possible to determine whether two=20
+  references designate members of the same version graph.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.6>5.9.2.6</A> Navigation of a version =
+graph.=20
+  Given a reference to a</STRONG>
+  <DD>member of a version graph, it must be possible to discover and =
+access the=20
+  following related members of the version graph.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-15>Page 15</A></EM>
+  <DD>
+  <P>
+  <UL>
+    <LI>root member of the graph </LI></UL>
+  <UL>
+    <LI>predecessor member(s) </LI></UL>
+  <UL>
+    <LI>successor member(s) </LI></UL>
+  <UL>
+    <LI>default member of the graph </LI></UL>
+  <P>It must be possible in some way for a versioning client to access =
+versions=20
+  related to a resource currently being examined.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.7>5.9.2.7</A> Version Topology. There =
+must be a=20
+  way to retrieve the</STRONG>
+  <DD>complete version topology for a version graph, including =
+information about=20
+  all members of the version graph. The format for this information must =
+be=20
+  standardized so that the basic information can be used by all clients. =
+Other=20
+  specialized formats should be <BR>accommodated, for servers and =
+clients that=20
+  require information that cannot be included in the standard topology.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.8>5.9.2.8</A> A client must be able to =
+propose a=20
+  version identifier to be</STRONG>
+  <DD>used for a new member of a version graph. The server may refuse to =
+use the=20
+  client's suggested version identifier. The server should tell the =
+client what=20
+  version identifier it has assigned to the new member of the version =
+graph.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.9>5.9.2.9</A> A version identifier =
+must be=20
+  unique across a version graph.</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.10>5.9.2.10</A> A client must be able =
+to supply=20
+  version-specific properties</STRONG>
+  <DD>to be associated with a new member of a version graph. (See =
+Section 5.1=20
+  "Properties" above.) At a minimum, it must be possible to associate =
+comments=20
+  with the new member, explaining what changes were made.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.2.11>5.9.2.11</A> A client must be able =
+to query=20
+  the server for information</STRONG>
+  <DD>about a version tree, including which versions are locked, which =
+are=20
+  reserved for editing, and by whom (Session Tracking).=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.9.3>5.9.3</A> Rationale</STRONG>
+  <DD>
+  <P>Versioning in the context of the world-wide web offers a variety of =
+
+  benefits:=20
+  <P>It provides infrastructure for efficient and controlled management =
+of large=20
+  evolving web sites. Modern configuration management systems are built =
+on some=20
+  form of repository that can track the revision history of individual=20
+  resources, and provide the higher-level tools to manage those saved =
+versions.=20
+  Basic versioning capabilities are required to support such systems.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-16>Page 16</A></EM>
+  <DD>
+  <P>It allows parallel development and update of single resources. =
+Since=20
+  versioning systems register change by creating new objects, they =
+enable=20
+  simultaneous write access by allowing the creation of variant =
+versions. Many=20
+  also provide merge support to ease the reverse operation.=20
+  <P>It provides a framework for coordinating changes to resources. =
+While=20
+  specifics vary, most systems provide some method of controlling or =
+tracking=20
+  access to enable collaborative resource development.=20
+  <P>It allows browsing through past and alternative versions of a =
+resource.=20
+  Frequently the modification and authorship history of a resource is =
+critical=20
+  information in itself.=20
+  <P>It provides stable names that can support externally stored links =
+for=20
+  annotation and link-server support. Both annotation and link servers=20
+  frequently need to store stable references to portions of resources =
+that are=20
+  not under their direct control. By providing stable states of =
+resources,=20
+  version control systems allow not only stable pointers into those =
+resources,=20
+  but also well-defined methods to determine the relationships of those =
+states=20
+  of a resource.=20
+  <P>It allows explicit semantic representation of single resources with =
+
+  multiple states. A versioning system directly represents the fact that =
+a=20
+  resource has an explicit history, and a persistent identity across the =
+various=20
+  states it has had during the course of that history.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.10>5.10</A> Variants</STRONG>
+  <DD>
+  <P>Detailed requirements for variants will be developed in a separate=20
+  document.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.10.1>5.10.1</A> Functional =
+Requirements</STRONG>
+  <DD>
+  <P>It must be possible to send variants to the server, describing the=20
+  relationships between the variants and their parent resource. In =
+addition, it=20
+  must be possible to write and retrieve variants of property labels, =
+property=20
+  descriptions, and property values.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.10.2>5.10.2</A> Rationale</STRONG>
+  <DD>
+  <P>The HTTP working group is addressing problems of content =
+negotiation and=20
+  retrieval of variants of a resource. To extend this work to an =
+authoring=20
+  environment, WEBDAV must standardize mechanisms for authors to use =
+when=20
+  submitting variants to a server. Authors need to be able to provide =
+variants=20
+  in different file or document formats, for different uses. They need =
+to=20
+  provide variants optimized for different=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-17>Page 17</A></EM>
+  <DD>
+  <P>clients and for different output devices. They need to be able to =
+provide=20
+  variants in different languages in the international environment of =
+the Web.=20
+  In support of internationalization requirements (See 5.12 below), =
+variants=20
+  need to be supported not just for the content of resources, but for =
+any=20
+  information intended for human use, such as property values, labels, =
+and=20
+  descriptions.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.11>5.11</A> Security</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.11.1>5.11.1</A> Authentication. The WebDAV =
+
+  specification should state how the</STRONG>
+  <DD>WebDAV extensions interoperate with existing authentication =
+schemes, and=20
+  should make recommendations for using those schemes.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.11.2>5.11.2</A> Access Control. Access =
+control=20
+  requirements are specified in</STRONG>
+  <DD>a separate access control work in progress [AC].=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.11.3>5.11.3</A> Interoperability with =
+Security=20
+  Protocols. The WebDAV</STRONG>
+  <DD>specification must provide a minimal list of security protocols =
+which any=20
+  compliant server / client must support. These protocols should insure =
+the=20
+  authenticity of messages and the privacy and integrity of messages in =
+transit.=20
+
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.12>5.12</A> Internationalization</STRONG>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.12.1>5.12.1</A> Character Sets and=20
+Languages</STRONG>
+  <DD>
+  <P>Since Web distributed authoring occurs in a multi-lingual =
+environment,=20
+  information intended for user comprehension must conform to the IETF =
+Character=20
+  Set Policy [CHAR]. This policy addresses character sets and encodings, =
+and=20
+  language tagging.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-5.12.2>5.12.2</A> Rationale</STRONG>
+  <DD>
+  <P>In the international environment of the Internet, it is important =
+to insure=20
+  that any information intended for user comprehension can be displayed =
+in a=20
+  writing system and language agreeable to both the client and the =
+server. The=20
+  information encompassed by this requirement includes not only the =
+content of=20
+  resources, but also such things as display names and descriptions of=20
+  properties, property values, and status messages.=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-6>6</A> Acknowledgements</STRONG>
+  <DD>
+  <P>Our understanding of these issues has emerged as the result of much =
+
+  thoughtful discussion, email, and assistance by many people, who =
+deserve=20
+  recognition for their effort.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-18>Page 18</A></EM>
+  <DD>
+  <P>Terry Allen, tallen@sonic.net <BR>Alan Babich, FileNet, =
+babich@filenet.com=20
+  <BR>Dylan Barrell, Open Text, dbarrell@opentext.ch <BR>Barbara =
+Bazemore, PC=20
+  DOCS, barbarab@pcdocs.com <BR>Martin Cagan, Continuus Software,=20
+  Marty_Cagan@continuus.com Steve Carter, Novell, srcarter@novell.com =
+<BR>Dan=20
+  Connolly, World Wide Web Consortium, connolly@w3.org <BR>Jim =
+Cunningham,=20
+  Netscape, jfc@netscape.com <BR>Ron Daniel Jr., Los Alamos National =
+Laboratory,=20
+  rdaniel@lanl.gov Mark Day, Lotus, Mark_Day@lotus.com <BR>Martin J. =
+Duerst,=20
+  mduerst@ifi.unizh.ch <BR>Asad Faizi, Netscape, asad@netscape.com =
+<BR>Ron Fein,=20
+  Microsoft, ronfe@microsoft.com <BR>David Fiander, Mortice Kern =
+Systems,=20
+  davidf@mks.com <BR>Roy Fielding, U.C. Irvine, fielding@ics.uci.edu =
+<BR>Mark=20
+  Fisher, Thomson Consumer Electronics, FisherM@indy.tce.com Yaron Y. =
+Goland,=20
+  Microsoft, yarong@microsoft.com <BR>Phill Hallam-Baker, MIT, =
+hallam@ai.mit.edu=20
+  <BR>Dennis Hamilton, Xerox PARC, hamilton@parc.xerox.com <BR>Andre van =
+der=20
+  Hoek, University of Colorado, Boulder, <BR>andre@cs.colorado.edu =
+<BR>Del=20
+  Jensen, Novell, dcjensen@novell.com <BR>Gail Kaiser, Columbia =
+University,=20
+  kaiser@cs.columbia.edu <BR>Rohit Khare, World Wide Web Consortium,=20
+  khare@w3.org <BR>Ora Lassila, Nokia Research Center,=20
+  ora.lassila@research.nokia.com Ben Laurie, A.L. Digital, =
+ben@algroup.co.uk=20
+  <BR>Mike Little, Bellcore, little@bellcore.com <BR>Dave Long, America =
+Online,=20
+  dave@sb.aol.com <BR>Larry Masinter, Xerox PARC, =
+masinter@parc.xerox.com=20
+  <BR>Murray Maloney, SoftQuad, murray@sq.com <BR>Jim Miller, World Wide =
+Web=20
+  Consortium, jmiller@w3.org <BR>Howard S. Modell, Boeing,=20
+  howard.s.modell@boeing.com <BR>Keith Moore, University of Tennessee,=20
+  Knoxville, moore@cs.utk.edu Henrik Frystyk Nielsen, World Wide Web =
+Consortium,=20
+  frystyk@w3.org Jon Radoff, NovaLink, jradoff@novalink.com <BR>Alan =
+Robertson,=20
+  alanr@bell-labs.com <BR>Henry Sanders, Microsoft, <BR>Andrew Schulert, =
+
+  Microsoft, andyschu@microsoft.com <BR>Christopher Seiwald, Perforce =
+Software,=20
+  seiwald@perforce.com Einar Stefferud, stef@nma.com <BR>Richard Taylor, =
+U.C.=20
+  Irvine, taylor@ics.uci.edu <BR>Robert Thau, MIT, rst@ai.mit.edu =
+<BR>Sankar=20
+  Virdhagriswaran, sv@hunchuen.crystaliz.com <BR>Dan Whelan, FileNet,=20
+  dan@FILENET.COM <BR>Gregory J. Woodhouse, gjw@wnetc.com=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-19>Page 19</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-7>7</A> References</STRONG>
+  <DD>
+  <P>[AC] J. Radoff, "Requirements for Access Control within Distributed =
+
+  Authoring and Versioning Environments on the World Wide Web", =
+unpublished=20
+  manuscript, &lt;<A=20
+  =
+href=3D"http://lists.w3.org/Archives/Public/w3c-">http://lists.w3.org/Arc=
+hives/Public/w3c-</A>=20
+  dist-auth/1997AprJun/0183.html&gt;=20
+  <P>[CHAR] Alvestrand, H., "IETF Policy on Character Sets and =
+Languages", <A=20
+  href=3D"http://andrew2.andrew.cmu.edu/rfc/rfc2277.html">RFC 2277</A>, =
+January=20
+  1998.=20
+  <P>[CM] P. Feiler, "Configuration Management Models in Commercial=20
+  Environments", Software Engineering Institute Technical Report=20
+  CMU/SEI-91-TR-7, <PRE>   &lt;<A =
+href=3D"http://www.sei.cmu.edu/products/publications/91.reports/91.tr.007=
+.html">http://www.sei.cmu.edu/products/publications/91.reports/91.tr.007.=
+html</A>&gt;
+</PRE>
+  <P>[HTML] Berners-Lee, T., and D. Connolly, "HyperText Markup Language =
+
+  Specification - 2.0", <A=20
+  href=3D"http://andrew2.andrew.cmu.edu/rfc/rfc1866.html">RFC 1866</A>, =
+November=20
+  1995.=20
+  <P>[HTTP] Fielding, R., Gettys, J., Mogul, J., Frystyk, H., and T.=20
+  Berners-Lee, "Hypertext Transfer Protocol -- HTTP/1.1", <A=20
+  href=3D"http://andrew2.andrew.cmu.edu/rfc/rfc2068.html">RFC 2068</A>, =
+January=20
+  1997.=20
+  <P>[ISO 10646] ISO/IEC 10646-1:1993. "International Standard -- =
+Information=20
+  Technology -- Universal Multiple-Octet Coded Character Set (UCS) -- =
+Part 1:=20
+  Architecture and Basic Multilingual Plane."=20
+  <P>[URL] Berners-Lee, T., Masinter, L., and M. McCahill. "Uniform =
+Resource=20
+  Locators (URL)", <A =
+href=3D"http://andrew2.andrew.cmu.edu/rfc/rfc1738.html">RFC=20
+  1738</A>, December 1994.=20
+  <P>[VSE] A. Haake, D. Hicks, "VerSE: Towards Hypertext Versioning =
+Styles",=20
+  Proc. Hypertext'96, The Seventh ACM Conference on Hypertext, 1996, =
+pages=20
+  224-234.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-20>Page 20</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-8>8</A> Authors' Addresses</STRONG>
+  <DD>
+  <P>Judith Slein <BR>Xerox Corporation <BR>800 Phillips Road 128-29E=20
+  <BR>Webster, NY 14580=20
+  <P>EMail: <A =
+href=3D"mailto:slein@wrc.xerox.com">slein@wrc.xerox.com</A>=20
+  <P>Fabio Vitali <BR>Department of Computer Science <BR>University of =
+Bologna=20
+  <BR>ITALY=20
+  <P>EMail: <A href=3D"mailto:fabio@cs.unibo.it">fabio@cs.unibo.it</A>=20
+  <P></P>
+  <DT><STRONG><A name=3Dsec-E>E</A> James Whitehead, Jr.</STRONG>
+  <DD>Department of Information and Computer Science <BR>University of=20
+  California <BR>Irvine, CA 92697-3425=20
+  <P>Fax: 714-824-4056 <BR>EMail: <A=20
+  href=3D"mailto:ejw@ics.uci.edu">ejw@ics.uci.edu</A>=20
+  <P>David G. Durand <BR>Department of Computer Science <BR>Boston =
+University=20
+  <BR>Boston, MA=20
+  <P>EMail: <A href=3D"mailto:dgd@cs.bu.edu">dgd@cs.bu.edu</A>=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD>
+  <DT><EM><A name=3Dpage-21>Page 21</A></EM>
+  <DD>
+  <P></P>
+  <DT><STRONG><A name=3Dsec-9>9</A> Full Copyright Statement</STRONG>
+  <DD>
+  <P>Copyright (C) The Internet Society (1998). All Rights Reserved.=20
+  <P>This document and translations of it may be copied and furnished to =
+others,=20
+  and derivative works that comment on or otherwise explain it or assist =
+in its=20
+  implementation may be prepared, copied, published and distributed, in =
+whole or=20
+  in part, without restriction of any kind, provided that the above =
+copyright=20
+  notice and this paragraph are included on all such copies and =
+derivative=20
+  works. However, this document itself may not be modified in any way, =
+such as=20
+  by removing the copyright notice or references to the Internet Society =
+or=20
+  other Internet organizations, except as needed for the purpose of =
+developing=20
+  Internet standards in which case the procedures for copyrights defined =
+in the=20
+  Internet Standards process must be followed, or as required to =
+translate it=20
+  into languages other than English.=20
+  <P>The limited permissions granted above are perpetual and will not be =
+revoked=20
+  by the Internet Society or its successors or assigns.=20
+  <P>This document and the information contained herein is provided on =
+an "AS=20
+  IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING TASK =
+FORCE=20
+  DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT =
+LIMITED TO ANY=20
+  WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY =
+RIGHTS=20
+  OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A =
+PARTICULAR=20
+  PURPOSE.=20
+  <P></P>
+  <DT>
+  <HR>
+
+  <DD></DD></DL></DD></BODY></HTML>

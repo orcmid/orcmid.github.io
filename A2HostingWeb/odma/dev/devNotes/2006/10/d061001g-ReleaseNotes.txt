@@ -1,0 +1,331 @@
+d061001g-ReleaseNotes.txt 0.07       UTF-8                    dh:2007-03-10
+
+                           RELEASE NOTES [DRAFT]
+
+          info.odma.practical100 Component Development 0.56beta
+          -----------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061001g.htm>.
+
+     *********************************************************************
+     *  WARNING: The earlier versions of ReleaseNotes.txt and 0.00-0.03  *
+     *  d061001g-practical100-0.56beta.zip archive drops are OBSOLETE.   *
+     *  OdmFormat.java changed to support the 0.57beta odmjni100 drop.   *
+     *  There were also corrections of defects and packaging.            *
+     *      Use an archive that contains version 0.07 or later of this   *
+     *  d061001g-ReleaseNotes.txt file.                                  *
+     *********************************************************************
+
+
+   The ODMJNI 1.0 0.56beta distribution is provided to accomplish six
+   important steps in the progression to full ODMJNI 1.0:
+
+     1. Begin clean-up and improved documentation of the practical100
+        package.
+
+     2. Provide any bug fixes that are noticed in the beta usage of
+        the practical100 package, essentially unchanged since 0.30alpha.
+
+     3. Introduce the info.odma.practical100.OdmFormat class and static
+        methods for verifying the format of text data elements accepted
+        as parameters by practical100 interface and class implementations.
+
+     4. Enable the active filtering of parameters in the null implementa-
+        tions within the practical100 package.  The encounter of any ill-
+        formed text element will result in an unchecked OdmError exception
+        as specified in the definition of practical100 behaviors.
+
+     5. Increase the quality of testing of null implementations by providing
+        more coverage of all paths that are possible under null conditions.
+        (The testing of all of the filter and exception cases isn't complete
+        until at least 0.58beta and perhaps 0.60beta.)
+
+        [update 2007-03-03: There is no change to the tests in this cycle.
+        New tests will be introduced starting with 0.58beta.]
+
+     6. Perform regression against the 0.54beta odmjni implementations to
+        ensure that the introduction of validations do not interfere with
+        legitimate formats used in existing odmjni100 classes and tests.
+
+
+
+
+   CONTENT
+
+     1. Breaking Changes
+     2. Deprecated Classes and Methods
+     3. New Classes and Interfaces
+     4. New Methods
+        4.1 OdmNullBind
+        4.2 OdmFormat
+     5. Simple Improvements and Bug Fixes
+     6. Deployment and Testing
+        6.1 Deployment
+        6.2 Testing improvements
+        6.3 Validations and hardening of interfaces
+     Copyright Notice
+     Revision History
+
+
+1. BREAKING CHANGES
+
+   There are no breaking changes in 0.56beta.
+
+   The changes to the info.odma.practical100 package are all additive.
+
+   The enforcement of formats that is added to the null implementations is
+   part of the specified behavior for these components.  Previous beta
+   releases were based on the data being correct and, when defensive, would
+   fail silently.  0.56beta adds explicit failure, as provided for in the
+   component-interface specifications.
+
+   The addition of the OdmFormat class also provides the previously-defined
+   means for checking externally-provided data prior to submission to any
+   practical100 interface or object.  In this way, encounter of an ill-
+   formed text parameter is always an application failure met with an
+   unchecked OdmError exception.
+
+
+2. DEPRECATED CLASSES AND METHODS
+
+   The constructor for OdmNullConnection is changed from public to
+   protected in this release, making it unavailable for direct use by
+   application programs.  The class info.odma.practical100.OdmNullConnection
+   remains public for use by other packages that subclass the practical100
+   null-implementation classes.
+
+   Applications should by now be using methods of the class OdmNullBind
+   to establish null connections.
+
+
+3. NEW CLASSES AND INTERFACES
+
+   The class info.odma.practical100.OdmFormat has public static methods
+   that may be used to verify that a particular kind of ODMA string
+   parameter is in the correct form.  This class was proposed in the
+   0.30alpha Pre-Release Notes.  It is being implemented in 0.56beta.
+
+
+4. NEW METHODS
+
+4.1 OdmNullBind
+
+   For compatibility with the OdmJniBind methods for initiation of
+   connections, an additional info.odma.practical100.OdmNullBind method
+   is introduced:
+
+        public static
+            OdmConnection
+                application(  java.lang.String appId,
+                               java.awt.Window appWindow
+                              )
+                       throws OdmError
+
+   This form of the OdmNullBind.application method accepts an appWindow
+   as well as an Application ID string.  The appWindow parameter should
+   be provided by Java GUI applications so that any modal dialogs from the
+   ODMA DMS can be associated with the appropriate application window.
+
+   If this method is used, the appWindow parameter must not be null.  The
+   appId format must also be well-formed.  Failure to satisfy those
+   requirements will result in an unchecked OdmError exception.
+
+   [update 2007-03-03: We identify where unchecked OdmError exceptions
+   can be thrown as advice to developers.  We have decided not to document
+   other cases, such as the JVM OutOfMemoryError and other unchecked JVM
+   exceptions.]
+
+
+4.2 OdmFormat
+
+   The class info.odma.practical100.OdmFormat has public static methods
+   that may be used to verify that a particular kind of ODMA string
+   parameter is in the correct form.  The methods that will be available
+   as part of the 0.56beta release are
+
+        boolean wfAppId(java.lang.String appId);
+                    /* determine whether appId is well-formed as an
+                       ODMA Application ID acceptable to ODMJNI
+                       */
+
+        boolean wfDocFormatName(java.lang.String docFormatName);
+                    /* determine whether docFormatName is well-formed as
+                       an ODMA Document Format Name acceptable to
+                       ODMJNI
+                       */
+
+        boolean wfDocId(java.lang.String docId);
+                    /* determine whether docId is well-formed as an
+                       ODMA Document ID acceptable to ODMJNI
+                       */
+
+   In addition, there are helper methods that may be useful in applications
+   and in ODMJNI itself for providing information about strings delivered by
+   ODMJNI 1.0 operations:
+
+        boolean wfDocIdPrefix(java.lang.String docId);
+                    /* determine whether the docId has a well-formed
+                       prefix through the end of the DMS ID portion:
+                        "::ODMA\dmsIdTxt\"
+                       */
+
+        java.lang.String prefixDmsId(java.lang.String docId);
+                    /* returns the DMS ID portion of the docId string,
+                       provided that wfDocIdPrefix(docId) is true;
+                       returns null otherwise
+                       */
+
+        boolean safeDocId(java.lang.String docId)
+                    /* determines whether the well-formed Document ID is
+                       also in a restricted character set that is safer
+                       for interchange via different media, e-mail, etc.
+                       */
+
+
+   [Preliminary list: Additional formats for strings that can be specified
+    to ODMJNI will be added as there is a practical need.  The use of "wf"
+    for well-formed is intended to emphasize that the check is for the
+    required syntactic form.  There is no indication, with these filters,
+    that the string is a genuine identifer for a specific entity of that
+    kind.]
+
+
+5. SIMPLE IMPROVEMENTS AND BUG FIXES
+
+   The BuildClasses.bat file is modified to erase all *.class files before
+   (re-) compiling the practical100 classes.  Although this forces complete
+   recompilation every time, it ensures that any failed compile of a class
+   will not mislead the compiler into treating that class as current.
+
+   [2007-03-10 DEFECT REPAIR: The OdmFormat.java version 0.10 corrects
+    an error in OdmFormat.wfDocIdPrefix that caused all docId strings to be
+    rejected by each of the methods wfDocId, wfDocIdPrefix, prefixDmsId,
+    and safeDocId.  The implementation of openKnownDocument in odmjni100
+    0.57beta requires OdmFormat 0.10 or later, in zip package 0.04 or
+    later.]
+
+
+6. DEPLOYMENT AND TESTING
+
+6.1 Deployment
+
+   The 0.56beta release of practical100 is ** an update to ** the still-
+   valid elements of the practical100 development tree. [updated 2007-03-04:
+   Instead of providing a complete refresh of the practical100 portion of
+   the development tree, we are simply distributing the changed material.
+   This is a very small, incremental update.]
+
+   If your copy of the ODMJNI development tree is anchored at <folder>,
+   prepare for deployment as follows:
+
+        - Place the d061001g-practical100-0.56beta.zip file in <folder>.
+
+        - DO  NOT DELETE <folder>\info\odma\practical100
+
+        - Following your preparations, unzip d061001g-practical100-
+          0.56beta.zip directly into <folder> using folder names.
+
+        - If you are asked whether files in the zip should replace the same
+          files in you development tree, answer "Yes to All".
+
+   The material will be found in this directory tree:
+
+        <folder>\
+            |       d061001g.txt                Manifest file
+            |       d061001g-license.txt        BSD-style license
+            |       d061001g-ReleaseNotes.txt   version of this file
+            :----info\odma\practical100\
+                                            the classes and source code
+                                            with the updates
+
+
+   There are no changes to the practical100\test\ subtree.
+
+
+6.2 Testing
+
+   The test program in <folder>\info\odma\practical100\test\Null01 can be
+   used as already set up on your system.  The test is exercised using the
+   RunNull01.bat script.
+
+   The tests in <folder>\info\odma\odmjni100\test\ subfolders Check04 and
+   CheckSwing can be run to confirm that nothing has changed with these
+   updates.
+
+   [update 2007-03-10: The new test odmjni100\test\Check04\RunCheckKnown.bat
+    in odmjni100 0.57beta will confirm the OdmFormat.wfDocId and related
+    Document ID helper functions using known Document IDs obtained using
+    the OdmConnection.chooseDocument method as a source.]
+
+
+6.3 Validations and Hardening of Interfaces
+
+   This is the first step in hardening the ODMJNI 1.0 interfaces, and
+   enforcing the format requirements of the components by explicit verifica-
+   tion and throwing of unchecked exceptions.
+
+   Additional validations will be made during the 0.58beta updates to the
+   odmjni100 package.
+
+   Extensive verification of the hardening and checking of validations will
+   be introduced as part of the 0.60beta distribution.  As additional
+   hardening is accomplished in later distributions, there will be suitable
+   regression against this 0.56beta level of the practical100 package.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the original on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: info.odma.practical100 Component Development
+        0.56beta.  ODMA Interoperability Exchange, ODMdev Development Note
+        page d061001g-ReleaseNotes.txt 0.07, March 10, 2007.  Current
+        version available through
+        <http://ODMA.info/dev/devNotes/2006/10/d061001g.htm>.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.07 2007-03-10-23:28 Declare packages before 0.04 to be obsolete, with
+     information about the defect that is repaired with the OdmFormat.java
+     in the 0.04 package.  Correct blemishes noted in 0.06 and add further
+     information about coordinated use with odmjni100 0.57beta.
+0.06 2007-03-07-16:35 Correct the attribution entry and update the warning
+     about obsolete versions of the package.
+0.05 2007-03-07-11:16 Correct line breaks and reflect existence of an
+     updated archive with classes built from the latest code
+0.04 2007-03-06-17:19 Update to reflect the OdmFormat.wfDocId change for
+     compatibility with the 0.57beta release of odmjni100.
+0.03 2007-03-04-17:39 Update to account for 0.56beta being a simple
+     incremental update and not a complete refresh of the practical100
+     development tree.
+0.02 2007-03-03-16:57 Update this note to reflect the state of the drop
+     as completed for 0.56beta.  The status of testing is changed and the
+     description of implemented methods is updated.  There are also a few
+     clarifying additions that do not obsolete anything in previous notes.
+0.01 2007-02-23-10:46 Complete the initial draft while also adding design
+     notes to the web page.
+0.00 2007-02-22-18:30 Incomplete draft of the release notes for 0.56beta
+     using an older note for boilerplate
+
+$Header: /ODMdev/d061001g-ReleaseNotes.txt 10    07-03-10 23:30 Orcmid $
+
+                  *** END OF d061001g-ReleaseNotes.txt ***

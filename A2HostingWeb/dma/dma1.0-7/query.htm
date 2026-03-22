@@ -1,0 +1,633 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DMA Query Model</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc372700047"><A NAME="_Toc374175072"><A NAME="_Toc374886656"><A NAME="_Toc375040222"><A NAME="_Toc375118079"><A NAME="_Toc375120535"><A NAME="_Toc375459528"><A NAME="_Toc375996780"><A NAME="_Toc376662261"><A NAME="_Toc376664748"><A NAME="_Toc377235864"><A NAME="_Toc377869673"><A NAME="_Toc378559583"><A NAME="_Toc378657096"><A NAME="_Toc378658012"><A NAME="_Toc378694164"><A NAME="_Toc378695251"><A NAME="_Toc378777793">DMA Query Model</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc374175074"><A NAME="_Toc374886658"><A NAME="_Toc375040224"><A NAME="_Toc375118081"><A NAME="_Toc375120537"><A NAME="_Toc375459530"><A NAME="_Toc375996782"><A NAME="_Toc376662263"><A NAME="_Toc376664750"><A NAME="_Toc377235866"><A NAME="_Toc377869675"><A NAME="_Toc378559585"><A NAME="_Toc378657098"><A NAME="_Toc378658014"><A NAME="_Toc378694166"><A NAME="_Toc378695253"><A NAME="_Toc378777795">Introduction</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>Query (i.e., associative retrieval), especially across multiple document spaces, is the central mechanism of DMA to retrieve the properties of independently persistent objects.</P>
+<P>Document spaces support collections of documents. These collections have some organizing principles that are appropriate and valuable in support of the intended use of the documents. In DMA, the organization of the documents in a document space (i.e., the metadata) is available for examination. Every DMA document space "publishes" its metadata and the types of query operations it supports. Not every document space need support the same search technology or organization of objects. However, whatever technology and organization that is used is expressed through DMA in a uniform way. That is, just as different document spaces can organize their objects in various ways, how those objects are explored and distinguished by searching may also vary. Nevertheless, applications have a uniform way to determine the search capabilities of any document space. </P>
+<P>A Document Space <A HREF="dmaClass_Scope.html">Scope</A> object supplies information about searchable classes and query capabilities. Given a scope object, the following questions can be answered: </P>
+
+<UL>
+<LI>What are the searchable classes of persistent objects in the document space? </LI>
+<LI>What are the properties of the searchable classes that are available for query formulation? </LI>
+<LI>What are the query operators that are supported?</LI>
+<LI>What properties can be selected for presentation in a Query Result Row? </LI>
+<LI>What options are available for the ordering the Query Result Rows produced by a query? </LI></UL>
+
+<P>The following discusses how scopes are used to answer these questions. </P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700049"><A NAME="_Toc374175075"><A NAME="_Toc374886659"><A NAME="_Toc375040225"><A NAME="_Toc375118082"><A NAME="_Toc375120538"><A NAME="_Toc375459531"><A NAME="_Toc375996783"><A NAME="_Toc376662264"><A NAME="_Toc376664751"><A NAME="_Toc377235867"><A NAME="_Toc377869676"><A NAME="_Toc378559586"><A NAME="_Toc378657099"><A NAME="_Toc378658015"><A NAME="_Toc378694167"><A NAME="_Toc378695254"><A NAME="_Toc378777796">Scope Object</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>All search operations are constructed and initiated using a scope object. Each document space can supply a scope object. Obtaining the desired scope object is the first step in performing a query.<BR>
+</P>
+<P ALIGN="CENTER"><IMG SRC="Image157.gif" WIDTH=256 HEIGHT=316></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119270"><A NAME="_Toc375459836"><A NAME="_Toc375461074"><A NAME="_Toc375997803"><A NAME="_Toc377235561"><A NAME="_Toc378580348"><A NAME="_Toc378652416"><A NAME="_Toc378754732">Figure -1</P>
+<P ALIGN="CENTER"> Creation of a Document Space Scope object</A></A></A></A></A></A></A></A> </P>
+</B></FONT><P>One or more Scope objects can be combined into a new merged Scope object by calling the IdmaScopeFactory:: CreateScope method on the DMA System object. That is the scope merging mechanism. A merged Scope object has the same interface as an individual document space Scope object, but it provides a combined view of the metadata of its component scopes. A merged Scope object transparently distributes (possibly massaged) query requests to each of its component Scope objects, and the Query Result Set object it returns delivers a merged set of Query Result Rows from the Query Result Set objects of the component Scope objects. </P>
+<P>An application can always use a document space Scope object directly to perform queries. There is no requirement that a merged Scope object be used to perform query operations. </P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700050"><A NAME="_Toc374175076"><A NAME="_Toc374886660"><A NAME="_Toc375040226"><A NAME="_Toc375118083"><A NAME="_Toc375120539"><A NAME="_Toc375459532"><A NAME="_Toc375996784"><A NAME="_Toc376662265"><A NAME="_Toc376664752"><A NAME="_Toc377235868"><A NAME="_Toc377869677"><A NAME="_Toc378559587"><A NAME="_Toc378657100"><A NAME="_Toc378658016"><A NAME="_Toc378694168"><A NAME="_Toc378695255"><A NAME="_Toc378777797">Basic Search Formulation Process</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>A typical scenario for formulation of a query is the following: </P>
+
+<UL>
+<LI>Create a target Scope object: Either (1) Create an individual document space Scope object by calling IdmaObjectFactory:: CreateObject on the document space object. Or (2) create a set of individual document space Scope objects as in (1), and then create a merged Scope object designating them as its component Scope objects by calling IdmaScopeFactory:: CreateScope on the System object.</LI>
+<LI>Use the target Scope object's properties to find the classes of objects that can be searched, the properties of the searchable classes that can participate in a query and that can be delivered as results of a query, the kinds of query operations that can be performed, and how properties can be used in ordering the Query Result Rows of the query. </LI>
+<LI>Use this information to construct a Query object and its dependent Query Node objects based on user input.</LI>
+<LI>Call the Scope object's IdmaScope:: ExecuteSearch method, passing it the Query object in order to set up the query. A Query Result Set object is returned by ExcuteSearch.</LI>
+<LI>Repeatedly call the IdmaResultSet:: GetNextResultRow method on the Query Result Set object to get each Query Result Row object.</LI></UL>
+
+<P>A variation is to save (for example, in a file) the data in the Query object and all its dependent objects by serializing all their properties, and later reuse the saved query data to recreate the Query object and all of its dependent objects.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700051"><A NAME="_Toc374175077"><A NAME="_Toc374886661"><A NAME="_Toc375040227"><A NAME="_Toc375118084"><A NAME="_Toc375120540"><A NAME="_Toc375459533"><A NAME="_Toc375996785"><A NAME="_Toc376662266"><A NAME="_Toc376664753"><A NAME="_Toc377235869"><A NAME="_Toc377869678"><A NAME="_Toc378559588"><A NAME="_Toc378657101"><A NAME="_Toc378658017"><A NAME="_Toc378694169"><A NAME="_Toc378695256"><A NAME="_Toc378777798">The ExecuteSearch</A> Method</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>A query is initiated by calling the ExecuteSearch method in the IdmaScope interface on the Scope object. This method takes, as input, a description of the query to perform and produces a Query Result Set object as output. The Query Result Set object can be used to generate the collection of Query Result Row objects that conform to the constraints of the query. The ExecuteSearch method does not keep a pointer to the Query object or any of its dependent subobjects. Thus, changes to the Query object or any of its subobjects after the ExecuteSearch method has returned will have no effect on the execution of the query. It is an error to change the Query object or any of its dependent subobjects during the execution of the ExecuteSearch method, and the results of doing so are unpredictable.</P>
+<P>The ExecuteSearch method has the following signature:</P>
+<PRE>DmaRc IdmaScope:: ExecuteSearch(<BR>
+                      Dmapv         pIQueryObject,<BR>
+                      Dmapv         pICallback,<BR>
+                      DmaBoolean    bRequestElimination,<BR>
+                      DMA_REFIID    riidResultSet,<BR>
+                      pDmapv        ppIResultSet);<BR>
+</PRE>
+<P>The parameters of the ExecuteSearch method are the following: </P>
+
+<UL>
+<LI>pIQueryObject<BR>
+This is a pointer to the query object. The query object is the root of a tree of objects that specify the details of the query.</LI>
+<LI>pICallback<BR>
+This is a pointer to a callback interface or NULL. The ReportProgress method of the callback interface might (at the option of the implementation) be called at intervals during the execution of the ExecuteSearch method.</LI>
+<LI>bRequestElimination<BR>
+This is a Boolean parameter that, if TRUE, requests the scope to use three valued elimination to deal with classes, properties, and operators it doesn't fully understand. (Three valued elimination is a generalization of ANSI standard SQL three valued logic, and is explained below.) The client should always pass FALSE for this parameter. Then ExecuteSearch will return errors for undefined properties and classes in the Query object, since these are query construction errors committed by the client.</LI>
+<LI>riidResultSet<BR>
+ExecuteSearch returns a Query Result Set object in *ppIResultSet. This parameter specifies the desired interface on the Query Result Set object.</LI>
+<LI>ppIResultSet<BR>
+ExecuteSearch returns a Query Result Set object in *ppIResultSet. The Query Result Rows are enumerated by calling the GetNextResultRow method of the IdmaResultSet interface of this object.</LI></UL>
+
+<P>The ExecuteSearch method on an individual document space Scope object initializes the query, but may or may not synchronously retrieve or initiate asynchronous retrieval of any Query Result Rows. Retrieval of Query Result Rows may optionally be postponed until the GetNextResultRow method is called on the Query Result Set object. Query Result Rows may all be retrieved at once and buffered internally, or may be retrieved incrementally either singly or in batches as GetNextResultRow is called. The choice of retrieval policy is left to the implementation of ExecuteSearch.</P>
+<P>The ExecuteSearch method on a merged Scope object calls the ExecuteSearch method of all of its component scopes before returning.</P>
+<P>More detail for ExecuteSearch can be found in the interfaces reference section.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700052"><A NAME="_Toc374175078"><A NAME="_Toc374886662"><A NAME="_Toc375040228"><A NAME="_Toc375118085"><A NAME="_Toc375120541"><A NAME="_Toc375459534"><A NAME="_Toc375996786"><A NAME="_Toc376662267"><A NAME="_Toc376664754"><A NAME="_Toc377235870"><A NAME="_Toc377869679"><A NAME="_Toc378559589"><A NAME="_Toc378657102"><A NAME="_Toc378658018"><A NAME="_Toc378694170"><A NAME="_Toc378695257"><A NAME="_Toc378777799">Query Result Sets</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>The Query Result Set object is the primary output parameter of IdmaScope:: ExecuteSearch.</P>
+<P>The objects produced by a Query Result Set object are called Query Result Row objects. The Query Result Set object generates Query Result Row objects that satisfy the search request. Each Query Result Row object has the properties that correspond to each property selected in the Selections list property of the main Query Root object. </P>
+<P>Sequencing through the Query Result Row objects is performed by calling the IdmaResultSet:: GetNextResultRow method on the Query Result Set object.<BR>
+</P>
+<P ALIGN="CENTER"><IMG SRC="Image158.gif" WIDTH=336 HEIGHT=321></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119271"><A NAME="_Toc375459837"><A NAME="_Toc375461075"><A NAME="_Toc375997804"><A NAME="_Toc377235562"><A NAME="_Toc378580349"><A NAME="_Toc378652417"><A NAME="_Toc378754733">Figure -2 Execution of a Query</A></A></A></A></A></A></A></A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc372700054"><A NAME="_Toc374175079"><A NAME="_Toc374886663"><A NAME="_Toc375040229"><A NAME="_Toc375118086"><A NAME="_Toc375120542"><A NAME="_Toc375459535"><A NAME="_Toc375996787"><A NAME="_Toc376662268"><A NAME="_Toc376664755"><A NAME="_Toc377235871"><A NAME="_Toc377869680"><A NAME="_Toc378559590"><A NAME="_Toc378657103"><A NAME="_Toc378658019"><A NAME="_Toc378694171"><A NAME="_Toc378695258"><A NAME="_Toc378777800">Scopes and Their Creation</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>A Document Space Scope object provides the interface to the query engine of a single document space.  A merged Scope object provides a unified interface to one or more document space query engines.</P>
+<P>Any Scope object provides the metadata required to construct a query against itself. It also provides the IdmaScope interface, which includes the ExecuteSearch method. The ExecuteSearch method returns a Query Result Set object, which can be used to return the Query Result Row objects satisfying the query.</P>
+<B><P><A NAME="_Toc333230792"><A NAME="_Toc374175080"><A NAME="_Toc374886664"><A NAME="_Toc375040230"><A NAME="_Toc375118087"><A NAME="_Toc375120543"><A NAME="_Toc375459536"><A NAME="_Toc375996788"><A NAME="_Toc376662269"><A NAME="_Toc376664756"><A NAME="_Toc377235872"><A NAME="_Toc377869681"><A NAME="_Toc378559591"><A NAME="_Toc378657104"><A NAME="_Toc378658020"><A NAME="_Toc378694172"><A NAME="_Toc378777801">Propert</A>ies of Scopes</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>A Scope object has a Searchable Class  Descriptions property that is a list of Class Description objects for each class of objects that can be searched in a query operation using the Scope object. In general metadata spaces must preserve the partial inheritance order of all of the DMA-defined classes it contains. However, the partial ordering of the classes can not always be preserved in a merged scope under the union option (see Merging Metadata below). Therefore, a merged scope is permitted (but not required) to have the searchable classes appear as immediate subclasses of  class DMA.</P>
+<P>The Scope also has an Operators property that is a list of Operator Description objects. Each element of this list is an object that describes a query operator supported by the Scope object. A Query Operator Description object has properties that define which operator is being described, the data type of the value produced by the operator, a description of the operands required by the operator, etc. </P>
+<P>The Class Descriptions in the Scope's Searchable Class Descriptions list provide search information. In particular, the Property Description objects in the Properties list of these Class Description objects provide information that includes the following: </P>
+
+<UL>
+<LI>Is Searchable<BR>
+Indicating whether a property can be used in the Query Expression, and thus can be the basis of a search. </LI>
+<LI>Is Selectable<BR>
+Indicating whether the property can be selected as a property of a returned Query Result Row object. </LI>
+<LI>Query Operator Description list<BR>
+Containing the Operator Description objects of query operators of which this property can be an operand.</LI>
+<LI>Is Orderable<BR>
+Specifying whether this property can be used to help control the ordering of the Query Result Rows of a query. </LI></UL>
+
+<P>Class Description objects have a property, Has Include Subclasses, that specifies whether subclass searches are supported by the current class. If subclass searches are supported, then a query can be constructed that specifies that rows from the class and all of its subclasses are to be returned in the Query Result Rows. For example, if the class is Legal Documents with subclasses Depositions and Contracts, the query would return Query Result Rows from all three of these classes, as long as they satisfied the search condition. If the class is DocVersion, then the search spans all document classes.</P>
+<P>Class Description objects have another property, Has Proper Subclass Properties, that specifies whether properties from the subclasses can be mentioned in the search condition. For example, continuing the Legal Documents example with subclasses Depositions and Contracts, if Has Include Subclasses were DMA_TRUE, then the query condition could mention properties from the classes Depositions and Contracts, even though the only class mentioned in the From Expression of the query contained was Legal Documents. The Proper Subclass Property Descriptions list property of the Class Description object is a list of the property descriptions for all the subclasses of the current class. This property is important: A property could be included in multiple subclasses, and have slightly different characteristics in each one. The Property Descriptions in the Proper Subclass property Descriptions list resolves how such properties should be treated in &quot;include subclasses&quot; queries.</P>
+<P>Thus, if Has Include Subclasses and Has Proper Subclass Properties were both DMA_TRUE for the DocVersion class, searches could be made across all searchable document classes using any of the properties of any document class in the search condition.</P>
+<P>The Query Construction Class Descriptions list property has Class Descriptions for all classes needed to construct a Query object and any of its subobjects. This includes Query, Query Node and all its subclasses, List Of Object, List Of Binary, List Of Boolean, etc.</P>
+<P>The Scope also has a Collation Sequence Ids property, which is a list of the Ids of the collation sequences supported by the scope.</P>
+<P>A document space Scope object uses the logical connection of the Document Space object from which it was generated to access the document space query engine. However, the Scope object itself does not supply the IdmaConnection interface.</P>
+<P>If for some reason the connection to the document space is permanently lost (i.e., due to an unavailable host), then the Scope object cannot be used for issuing ExecuteSearch. In this case, a new Document Space object and Scope object must be constructed.</P>
+<P>All metadata spaces are stable, including the metadata space of a Scope object. Thus, the Scope's metadata cannot be "refreshed". Instead, a new Scope must be constructed. Client applications can rely on the stability of metadata.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700056"><A NAME="_Toc374175081"><A NAME="_Toc374886665"><A NAME="_Toc375040231"><A NAME="_Toc375118088"><A NAME="_Toc375120544"><A NAME="_Toc375459537"><A NAME="_Toc375996789"><A NAME="_Toc376662270"><A NAME="_Toc376664757"><A NAME="_Toc377235873"><A NAME="_Toc377869682"><A NAME="_Toc378559592"><A NAME="_Toc378657105"><A NAME="_Toc378658021"><A NAME="_Toc378694173"><A NAME="_Toc378695259"><A NAME="_Toc378777802">Query Object</A>s</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>This section describes the properties of the Query object and its subtree of dependent objects. The Query object has properties for the search condition, plus properties that affect the execution of the query, but that have nothing to do with the search condition. More detail on the Query object and its dependent objects can be found in the reference section on objects and properties.</P>
+<P>The properties introduced by the Query object include the following:</P>
+
+<UL>
+<LI>Query Root object</LI>
+<LI>Batch Size Hint</LI>
+<LI>Maximum Result Items</LI>
+<LI>Time Limit</LI>
+<LI>Collation Sequence Id</LI></UL>
+
+<P>The Query Root object is the search condition, and is represented by a subtree of dependent objects.</P>
+<P>The Batch Size Hint property is for Scopes that perform incremental generation of Query Result Rows as opposed to generating all the Query Result Rows before returning any. It is the number of Query Result Rows to get as a unit and save in buffers. The hint may be ignored by the implementation.</P>
+<P>The Maximum Result Items property give a hint as to the maximum number of Query Result Rows each document space scope should generate. The hint may be ignored by implementations. A document space may or may not have a default value for this property.</P>
+<P>The Time Limit property gives a hint as to the maximum number of elapsed seconds to allow allow for execution of the query. This the time between the call on IdmaScope:: ExecuteSearch, and the last call on IdmaResultSet:: GetNextResultRow that may return a Query Result Row object. Implementations may choose to ignore this hint. A document space may or may not have a default value for this property.</P>
+<P>The Collation Sequence Id specifies which collation sequence all Scope objects involved in the query will use.</P>
+<P>The Query Root object is now described in detail.</P>
+<B><P><A NAME="_Toc374175082"><A NAME="_Toc374886666"><A NAME="_Toc375040232"><A NAME="_Toc375118089"><A NAME="_Toc375120545"><A NAME="_Toc375459538"><A NAME="_Toc375996790"><A NAME="_Toc376662271"><A NAME="_Toc376664758"><A NAME="_Toc377235874"><A NAME="_Toc377869683"><A NAME="_Toc378559593"><A NAME="_Toc378657106"><A NAME="_Toc378658022"><A NAME="_Toc378694174"><A NAME="_Toc378777803">Query Root Object</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>The Query Root object is the root of a tree of dependent objects that specify the main search condition. If the user specified the query using a query language (as opposed to user interface gestures, e.g. pulldown boxes, etc.), then the Query Root object tree may be thought of as a parse tree plus some other properties. If there is a subquery, then one of the dependent objects is another Query Root object which itself it the root of another dependent tree of objects, etc.</P>
+<P>The parse tree paradigm has numerous benefits. It decouples the client software from the query engine software in the document spaces. It makes the DMA API independent of the user interface. It makes DMA independent of the query language used by the client, or even if a query language is used at all as opposed to some other approach, e.g. form based UI's. (It should be noted that due to SQL's importance, the parse tree must fit very well with SQL. The parse tree must also fit well with various different content based retrieval approaches, and query languages other than SQL.) The parse tree paradigm also aids software upgrades to the computers on the network. (Older software can deal more gracefully with unknown or extended parse tree objects from future software releases, than older parsers can deal with future query language syntax extensions.) The parse tree paradigm is extremely extensible, which is critical. Finally, the parse tree paradigm has run time efficiency advantages.</P>
+<P>The Query Root object includes the following native properties:</P>
+
+<UL>
+<LI>From Expression</LI>
+<LI>Selections</LI>
+<LI>Query Expression</LI>
+<LI>Orderings</LI>
+<LI>Distinct Rows Requested</LI></UL>
+
+<P>The Query Root object inherits the Operands property from the Query Node class.</P>
+<P>The properties of the Query Root object will now be described in the above order.</P>
+<B><FONT SIZE=2><P>Subqueries</P>
+</B></FONT><P>A Query Root object (and descendents) may appear as an operand of an operator in the Query Expression subtree of a superior Query Root, forming a subquery. The subquery Query Root may have zero, one or more elements in its Selections list, depending on the operator for which the subquery is an operand.</P>
+<P>In considering the <A HREF="dmaClass_QueryOperandDescription.html">Operand Description</A> which admits a subquery the following rules apply:</P>
+
+<UL>
+<LI>A subquery is considered to be an expression. Thus the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_AllowsExpression">Allows Expression</A> property of the Operand Description must be TRUE.</LI>
+<LI>If the Selections list of the subquery is empty, the subquery is considered to generate a singleton result of data type Class. Thus the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_AllowsSingleton">Allows Singleton</A> property of the Operand Description must be TRUE and the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_OperandDataType">Operand Data Type</A> Property must specify DMA_DATATYPE_CLASS (or DMA_DATATYPE_ANY). The Exists operator is the only operator defined in DMA 1.0 which accepts such an operand.</LI>
+<LI>If the Selections list of the subquery contains exactly one element, the subquery is considered to generate a list result of data type corresponding to the data type of the select property. Thus the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_AllowsList">Allows List </A>property of the Operand Description must be TRUE and the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_OperandDataType">Operand Data Type</A> property value must match with the data type of the selection property (or must be DMA_DATATYPE_ANY). The various "In" operators specified in DMA 1.0 accept such an operand.</LI>
+<LI>If the Selections list of the subquery contains more than one element, the subquery is considered to generate a list result of data type Object. Thus the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_AllowsList">Allows List </A>property of the Operand Description must be TRUE and the <A HREF="dmaClass_QueryOperandDescription.html#dmaProp_OperandDataType">Operand Data Type</A> property must specify DMA_DATATYPE_OBJECT (or DMA_DATATYPE_ANY). There are no well-known operators specified in DMA 1.0 that accept such an operand.</LI></UL>
+
+<B><FONT SIZE=2><P><A NAME="_Toc333230796"><A NAME="_Toc374175083">From</A> Expression</A></P>
+</B></FONT><P>The value of the From Expression property is the root of a tree of dependent objects that includes an object for each searchable class involved in the query, and the conditions which relates those searchable classes. (In SQL, these conditions are called "join" conditions.)</P>
+<P>Since, as in SQL, a searchable class may occur more than once in a From Expression object tree, the client must assign a unique non negative integer to each searchable class object in the From Expression object tree. The properties in the Selections, Query Expression, and Orderings use the value of this number to refer back to the particular instance of the searchable class in the From Expression object tree to which they belong. This integer valued property of Query Searchable Class objects is called Searchable Class Occurrence.</P>
+<P>The From Expression object maps well to the SQL 92 "from" clause. The From Expression corresponds to a basic subset of what the SQL 92 standard allows. A simple linear list of searchable classes as in the SQL 89 standard does not give enough control to the query composer as to how classes are joined. Plus, SQL 89 leaves it to proprietary extensions to specify the type of join desired (e.g., inner, left outer, etc.). The From Expression eliminates these problems, is in line with industry standard practice, and makes it easier for non-SQL based query engines to get a handle on what classes are being joined and in what order.</P>
+<P>In order to understand how searchable classes are related in the From Expression, one must understand something about the various types of joins in SQL. There are at least the following types of joins in SQL:</P>
+
+<UL>
+<LI>INNER JOIN</LI>
+<LI>LEFT OUTER JOIN</LI>
+<LI>RIGHT OUTER JOIN</LI>
+<LI>FULL OUTER JOIN</LI>
+<LI>CROSS JOIN</LI></UL>
+
+<P>Consider equi-joins, i.e., joins in which a property in the first searchable class has a value equal to a property in the second searchable class. The inner equi-join is often what is wanted.</P>
+<P>However, what happens when one of the properties is null, say, the property for the rightmost searchable class? The answer for inner joins is that no row is returned in the answer set. This is sometimes undesirable:</P>
+<P>Suppose the first searchable class is "Specs", a subclass of DocVersion, with properties OIID and SpecNumber. Suppose the other searchable class is "Authors", with properties SpecOIID, Name, Address, and PhoneNum. Suppose the query was "get the spec whose SpecNumber is 1234 and also get the information about all its authors". Then, you want to join the row in Specs to the rows in Authors on the condition "Specs.OIID = Authors.SpecOIID".</P>
+<P>Suppose that you enter information about a particular spec. with spec number 1234 into the document database, but at the time that you enter it, you don't know anything about the authors. Then using an inner join in your query would give you no Query Result Row. Most query authors wouldn't like that. They would want to get the row from Specs even though it doesn't join to anything in Authors. This is why the left outer join was invented. It does exactly that.</P>
+<P>The right outer join does what the left outer join does, but from the point of view of the second searchable class.</P>
+<P>The full outer join is a combination of a left outer join and a right outer join.</P>
+<P>Finally, the cross join is simply the Cartesian product. Generally, a full blown Cartesian product is seldom, if ever, what is desired, but that's what SQL gives you if you mention more than one table in the "from" clause, and don't do a join. For Cross Joins, the last operand of the Query Join Op object is null.</P>
+<P>In DMA, joins are performed only within document spaces, never across document spaces.</P>
+<P>It is possible for the From Expression object to consist of a single searchable class operand. In that case the searchable class is not joined with any other.</P>
+<P>If more than one searchable class is involved, then the searchable classes will be joined together, and the value of the From Expression property is a Query Join Op object that is the root of a tree of dependent objects. For example, suppose searchable class S1 is to be joined to searchable class S2, and the properties involved are S1.P1, and S2.P2 . Suppose the P1 and P2 properties are integers. Further suppose that the type of join is "inner join". Using SQL 92 notation, this could be written as "S1 INNER JOIN S2 ON S1.P1 = S2.P2". That would be represented by the following From Expression object tree:<BR>
+</P>
+<P ALIGN="CENTER"><IMG SRC="Image159.gif" WIDTH=602 HEIGHT=515></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119272"><A NAME="_Toc375459838"><A NAME="_Toc375461076"><A NAME="_Toc375997805"><A NAME="_Toc377235563"><A NAME="_Toc378580350"><A NAME="_Toc378652418"><A NAME="_Toc378754734">Figure -3 Example "From Expression"</A></A></A></A></A></A></A></A></P>
+</B></FONT><P>The class of the From Expression object must be either Query Searchable Class or Query Join Operator.<B> </B>In the first case, no join is involved, and there is only one node in the From Expression object tree. In the second case, at least one join is involved. Only the first operand of the Query Join Operator object may be another join Query Join Operator object. The second operand must be a Query Searchable Class object. This means, that the From Expression tree can only extend down its leftmost branch. Thus, the joins are performed in a simple linear sequence.</P>
+<P>Sometimes, e.g., in the case of the EXISTS operator, it is necessary to specify additional joins in the Query Expression. These joins specify conditions of the form "S1.P1 = S2.P2", just as for "ON" conditions in the From Expression. These joins are inner joins.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371590962"><A NAME="_Toc374175084">Selections</A></A></P>
+</B></FONT><P>The purpose of the Selections property is to designate the Property values to be included in each Query Result Row.</P>
+<P>The Selections property is object valued. It is a list of objects of class Query Node. All the list elements must be of class Query Property. Each property in the list must be a property of a searchable class in the Scope object's Searchable Class Descriptions list. Furthermore, each property in the list must have the value DMA_TRUE for the Is Selectable property of its Property Description object.</P>
+<P>Note that, as previously explained, the value of the property Searchable Class Occurrence of Query Property objects refers back to a unique occurrence of a Query Searchable Class object in the From Expression of the Query Root object.</P>
+<P>The Selections list must not be null for the main query. It must be null for subqueries that are operands of the EXISTS operator. The Selections list must be non-null for subqueries under the IN operators, and, it must contain exactly one element of class Query Property, which is a base datatype property of a persistent object.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc374175085">Query Expression</A></P>
+</B></FONT><P>The Query Expression property is the root of a tree of dependent objects that specify a Boolean search condition. If the Query Expression property is NULL, then no constraint is put on the persistent objects to be selected. If the Query Expression property is not NULL, then it is the root of an operator/operand subtree of Query Node objects that specifies a Boolean condition. If the value of the Boolean condition is DMA_TRUE, the current objects under scan are returned in the Query Result Set. Otherwise, they are not.</P>
+<P>The issue of partially defined expressions can arise when queries are done with merged Scope objects, and when some properties have no value (i.e., are NULL).</P>
+<B><FONT SIZE=1><P>Query Execution With Merged Scopes</P>
+</B></FONT><P>Consider the case that the Scope object involved in the query is a merged Scope object, as opposed to a Scope object for an individual document space. The metadata of the component Scope objects is merged together to form the metadata for the merged scope object. There are two merge options (which will be discussed in detail below) - union and intersection. The intersection option retains only metadata common to all the component scopes. The union option takes the set union of the metadata of the component scopes. Thus, under the union option, the metadata of the merged scope may have searchable classes, properties, and query operators that are not defined in some of the component scopes.</P>
+<P>The IdmaScope:: ExecuteSearch method of the merged scope object passes the query on to each of the component Scope objects by calling their IdmaScope:: ExecuteSearch methods. It saves the Query Result Set objects returned by the component scopes and enumerates all the Query Result Rows. It merges the Query Result Row objects and returns the them through the Query Result Set object returned from the original ExecuteSearch call on the merged Scope.</P>
+<P>Thus, it can be seen that in the case of the union option for merging metadata, if the query passed on to the component scopes is not modified, the ExecuteSearch method of a component scope can be passed a Query object containing classes and properties that are not defined in that component scope. This gives rise to the issue of partially defined expressions.</P>
+<B><FONT SIZE=1><P>Partially Defined Query Expressions</P>
+</B></FONT><P>It is important to note that partially defined expressions can arise in Query Expressions even if all classes, properties, and operators are completely defined. For example, consider the Query Expression "X / Y &gt; Z". Suppose the value of Z is zero in the current row under scan by the query engine of a document space. What happens, you might ask? As another example, consider the same query expression, only this time, in the current row under scan, Z is non zero, but X has no value (alternatively, one could say that X is NULL). What happens, you might ask?</P>
+<P>The answers to these questions in ANSI standard SQL are as follows.</P>
+<P>If any part of an arithmetic expression is undefined, the whole arithmetic expression is considered undefined. This includes division by zero, NULL properties, etc.</P>
+<P>If any part of a string expression is undefined, the whole string expression is considered undefined. This includes NULL properties, etc.</P>
+<P>For operators that can produce a Boolean value, a third truth value is added called UNKNOWN. In SQL, there are manifest constants that can be used in queries for all three truth values: TRUE, FALSE, and UNKNOWN. This is referred to as "three valued logic". If part of the expression is not defined, but it doesn't matter, then TRUE or FALSE is returned. If the undefined part of the Boolean expression can affect the truth value of the expression, then the expression evaluates to UKNNOWN.</P>
+<P>A relational operator (e.g., "&gt;", "&gt;=", "&lt;", "&lt;=", "=", "!=", etc.) returns UNKNOWN if either of its operands is undefined. (Note that this implies that "x = x" evaluates to UNKNOWN if x is NULL.)</P>
+<P>The logical operators AND, OR, and NOT can return TRUE, FALSE, or UNKNOWN. The logical operator evaluates to TRUE or FALSE if the partially defined expression matters to the value of the expression. Otherwise, it evaluates to UNKNOWN.</P>
+<P>For "A AND B", if A or B or both is FALSE, the value of the expression is FALSE. If A is TRUE, the value of the expression is B. If B is TRUE, the value of the expression is A. Thus, for example, if A is TRUE, and B is UNKNOWN, then the value of "A AND B" is UNKNOWN.</P>
+<P>For "X OR Y", if X or Y or both is TRUE, the value of the expression is TRUE. If X is FALSE, the value of the expression is Y. If Y is FALSE, the value of the expression is X. Thus, for example, if X is FALSE, and B is UNKNOWN, the value of "X OR Y" is UNKNOWN.</P>
+<P>For "NOT Z", if Z is TRUE, the value is FALSE, and if Z is FALSE, the value is TRUE. If Z is UNKNOWN, the value of "NOT Z" is UNKNOWN.</P>
+<P>Query Expressions are Boolean expressions. (The terminology "Boolean expression" is used by SQL, even though there are three truth values, not just the traditional two.) </P>
+<P>The rule in ANSI standard SQL that determines whether the current row under scan is included in the result set or not is this: The current row (or set of joined rows) under scan is returned as one of the Query Result Rows if the truth value of the Query Expression is TRUE. Otherwise, the row is not returned. In other words, if the Query Expression evaluates to UNKNOWN or FALSE, the row (or set of joined rows) is omitted from the Query Result Rows.</P>
+<P>In order to deal with performing queries on merged scopes formed under union rules, DMA query adopts the standard three valued logic of ANSI SQL, and extends it in the obvious way to undefined classes and properties. Thus, for example, in a Query Expression, if a property is undefined, it is usually treated as if it were defined but NULL when a copy of the Query object is massaged. This massaging of Query objects to eliminate undefined classes and properties is referred to as &quot;three valued elimination&quot;. </P>
+<P>The rules of three valued elimination are developed by making the obvious and straightforward extension of the philosophy of three valued logic. In three valued elimination, for arithmetic operators and other operators in the Query Expression whose return value is of one of the DMA base datatypes other than Boolean, an undefined property anywhere in the subexpression below the operator results in the closest ancestor relational operator node above the operator being replaced by the DMA_UNKNOWN truth value constant node.</P>
+<P>In the case of a merged Scope object formed under union combination rules, the ExecuteSearch method of the merged Scope object is permitted to make an internal copy of the original Query Expression, massage it using three valued elimination, and then pass it on to a component scope, so that the ExecuteSearch methods of the component Scope objects see only queries for which everything is defined as far as the metadata of the component Scope object is concerned.</P>
+<B><FONT SIZE=1><P>Operations Across Document Spaces</P>
+</B></FONT><P>None of the well known operators defined by DMA can be evaluated with operands that come from different component scopes. The merged scope is allowed to treat as undefined any operand which is undefined relative to the component scope to which the query is being delivered. A query expression is evaluated relative to each component scope as if the operands from other component scopes are undefined. Three valued elimination is used to eliminate the undefined operands in the query.</P>
+<P>A Document Space may or may not support three valued elimination, but it is required to support three valued logic. If three valued elimination is needed and is not available, the query fails with a query construction error.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc333230798"><A NAME="_Toc374175086">Order</A>ings</A></P>
+</B></FONT><P>The Orderings property is a list of Query Order By Node objects that control the ordering of the Query Result Rows. Each Query Order By Node object refers to an element in the Selections list via its Selections Index property, and indicates whether the order is ascending or descending via its Descending Requested property. The ordering is a multi-part ordering. The main ordering is on the first element in the Orderings list. Then, the ordering within that is on the second element in the Orderings list, etc.</P>
+<P>The collating sequence to be used by all the Scope objects involved in the query can be specified by setting the Collation Sequence Id property of the Query object. If this property is not set in the Query object, then (a) if the Scope is for a Document Space, its default sequence is used, and (b) if the Scope object is a merged Scope object, an attempt is made to find a collation sequence supported by all the component scopes. If the component scopes do not have a collation sequence in common, the ExecuteSearch method returns an error.</P>
+<P>Properties that are defined in the current Query Result Row may have a NULL value. As far as the Orderings list is concerned, the NULL value collates before all other values.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc374175087">Distinct</A> Rows Requested</P>
+</B></FONT><P>The Distinct Rows Requested property of the Query Root object specifies whether duplicate Query Result Rows are to be discarded or not. If duplicates are to be discarded, you can expect a sort to be involved, and you can expect to wait until all Query Result Rows are retrieved and sorted before the first Query Result Row will be returned by the IdmaResultSet:: GetNextResultRow method on the Query Result Set object.</P>
+<P>If the Has Arbitrary Order By property is DMA_TRUE for all component Scope objects of a merged Scope object, then the middleware (i.e., the software implementing the merged Scope object) need not perform a sort and suppress duplicate Query Result Rows. What the middleware is free to do instead is to extend the Orderings list in the copies of the query passed to the component Scope objects such that it includes all the elements of the Selections list. Then, the middleware can perform a merge on the Query Result Row objects returned from the component Query Result Set objects instead of a sort. Note that the middleware can't just set the Distinct Rows Requested to DMA_TRUE in the copies of the Query object passed on to the component Scope objects and assume there will be no duplicate Query Result Rows. While doing that would cause the component Query Result Set objects to return distinct Query Result Rows, there can still be duplicate Query Result Rows across the component Query Result Set objects, and it is not necessarily the case that the Query Result Rows returned by the component Query Result Set objects will all be sorted in exactly the same way.</P>
+<B><P><A NAME="_Toc374175088"><A NAME="_Toc374886667"><A NAME="_Toc375040233"><A NAME="_Toc375118090"><A NAME="_Toc375120546"><A NAME="_Toc375459539"><A NAME="_Toc375996791"><A NAME="_Toc376662272"><A NAME="_Toc376664759"><A NAME="_Toc377235875"><A NAME="_Toc377869684"><A NAME="_Toc378559594"><A NAME="_Toc378657107"><A NAME="_Toc378658023"><A NAME="_Toc378694175"><A NAME="_Toc378777804">Example Query Object</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>Suppose one wanted to find the titles of all documents with "Smith" as any part of the name of the Author. This could be done with the query "SELECT Title FROM DocVersion(InclSubclasses = TRUE) WHERE Author LIKE '%Smith%'". This would find all documents regardless of their searchable class. The Query object and its dependent subobjects would look like the following:</P>
+<P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER"><IMG SRC="Image160.gif" WIDTH=601 HEIGHT=677></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119273"><A NAME="_Toc375459839"><A NAME="_Toc375461077"><A NAME="_Toc375997806"><A NAME="_Toc377235564"><A NAME="_Toc378580351"><A NAME="_Toc378652419"><A NAME="_Toc378754735">Figure -4 Example Query Object</A></A></A></A></A></A></A></A></P>
+</FONT><FONT SIZE=4><P><A NAME="_Toc372700057"><A NAME="_Toc374175089"><A NAME="_Toc374886668"><A NAME="_Toc375040234"><A NAME="_Toc375118091"><A NAME="_Toc375120547"><A NAME="_Toc375459540"><A NAME="_Toc375996792"><A NAME="_Toc376662273"><A NAME="_Toc376664760"><A NAME="_Toc377235876"><A NAME="_Toc377869685"><A NAME="_Toc378559595"><A NAME="_Toc378657108"><A NAME="_Toc378658024"><A NAME="_Toc378694176"><A NAME="_Toc378695260"><A NAME="_Toc378777805">Query Result Sets</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>A Query Result Set object is the vehicle for delivering the results produced by a query. The objects returned by calling IdmaResultSet:: GetNextResultRow of a Query Result Set object are called Query Result Row objects. They are delivered in the order specified in the Orderings list of the Query object, assuming that the Ordering list is not null. Each element of the Orderings list refers back to an element in the Selections list of the Query object. </P>
+<B><P><A NAME="_Toc333230803"><A NAME="_Toc374175090"><A NAME="_Toc374886669"><A NAME="_Toc375040235"><A NAME="_Toc375118092"><A NAME="_Toc375120548"><A NAME="_Toc375459541"><A NAME="_Toc375996793"><A NAME="_Toc376662274"><A NAME="_Toc376664761"><A NAME="_Toc377235877"><A NAME="_Toc377869686"><A NAME="_Toc378559596"><A NAME="_Toc378657109"><A NAME="_Toc378658025"><A NAME="_Toc378694177"><A NAME="_Toc378777806">Query Result Set Objects</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>Query Result Set objects are returned by IdmaScope:: ExecuteSearch.</P>
+<P>All Query Result Set objects support the IdmaResultSet interface, which includes the methods GetNextResultRow, TerminateResults, and ReExecuteQuery.</P>
+<P>The GetNextResultRow method is used to produce each Query Result Row object that satisfies the query.</P>
+<P>The TerminateResults method stops further query results from being produced from the underlying Query Result Set Object.</P>
+<P>The ReExecuteQuery method can be used to restart the query without rebuilding the Query object and without calling ExecuteSearch again. The Query Result Row objects produced (by GetNextResultRow) after ReExecuteQuery is called will reflect any relevant changes made to the persistent stores of the document spaces involved in the interim.</P>
+<B><P><A NAME="_Toc374175091"><A NAME="_Toc374886670"><A NAME="_Toc375040236"><A NAME="_Toc375118093"><A NAME="_Toc375120549"><A NAME="_Toc375459542"><A NAME="_Toc375996794"><A NAME="_Toc376662275"><A NAME="_Toc376664762"><A NAME="_Toc377235878"><A NAME="_Toc377869687"><A NAME="_Toc378559597"><A NAME="_Toc378657110"><A NAME="_Toc378658026"><A NAME="_Toc378694178"><A NAME="_Toc378777807">Query Result Row Objects</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>Query Result Row objects are generated by IdmaResultSet:: GetNextResultRow. The result row object contains a sequence of properties that correspond one-to-one with the properties specified in the Selections list of the query.</P>
+<P>Unlike the other DMA objects, the Property Description list of the Class Description object of a Query Result Row object must be created dynamically at query execution time. This is because the Selections list elements are not known until IdmaScope:: ExecuteSearch is called to generate a Query Result Set object. </P>
+<P>The Query Result Row object is self describing, and every Query Result Row produced from the same Query Result Set object for the same query has the same metadata information. The Property Descriptions list of the Class Description object of a Query Result Row object begins with Property Descriptions of some properties defined by DMA (and possibly some implementation defined properties), and ends with a contiguous list of the Property Descriptions of the Properties in the Selections list, in the same order in which these Properties appear in the Selections list. </P>
+<P>The value of the Select List Offset property is an index into the Property Descriptions list of the Class Description of the Query Result Row object of which the Select List Offset property is a Property. The value of the Select List Offset property is the list index of the Property Description of the first Property in the Selections list. </P>
+<P>Thus, given a Query Result Row object, the client can obtain the value of the Property Descriptions list property (say L) of its Class Description, as well as  the integer value of its Select List Offset property (say X). Then, starting with the list element at index X of list L, the client can sequence through the Property Descriptions of the Properties in the Selections list, in order of increasing list index. Similarly, by calling the appropriate IdmaProperties:: GetPropVal{datatype}ByIndex method with index value equal to X plus the (zero relative) index into the Selections list, the client can obtain the values corresponding to the Selections list elements in the current Query Result Row object. This is true, even if the same property appears more than once in the Selections list. In contrast, note that the IdmaProperties:: GetPropVal{datatype}ById methods can not be used to get the values of all the Selections list elements if a property is selected more than once, because these methods have no way to distinguish between the multiple occurrences. </P>
+<P>Therefore, using the GetPropVal{datatype}ByIndex methods instead of the GetPropVal{datatype}ById methods of IdmaProperties to get the values of the properties of a Query Result Row that were in the Selections list of the query is required, so that Query Result Row properties can keep their proper Id values, even if they appear more than once in the Selections list. The GetPropVal{datatype}byId and PutPropVal{datatype}ById methods return the error DMARC_BAD_PROPID when used on Query Result Row objects to access properties that appear in the Selections list of the query. This restriction does not apply to properties in the Query Result Row that were not in the Selections list of the query.</P>
+<P>Each Query Result Row object produced from the same Query Result Set object has the same metadata information. This is true, even if some selected elements have null values in the current Query Result Row object. If an attempt is made to obtain the value of a property from the current Query Result Row object that is null, the DMARC_VALUE_NOT_SET result code is returned (the same as for any property of any DMA object that has a null value).</P>
+<P>Query Result Row objects do not support the IdmaConnection interface. </P>
+<P>However, if the Object Instance Id property is in the Selections list, its value can be obtained and passed to the IdmaDocSpace:: ConnectObject() method (assuming this method is available). The ConnectObject method will then attempt to create a scratchpad DMA object connected to a persistent object in the target document space. </P>
+<P>Likewise, if a Selections list element is an object valued property (such as the This property of a class in the From list), and the element has a corresponding value in the current Query Result Row, accessing that object valued property will result in a DMA object that provides the appropriate interfaces. Thus, for example, the object might provide the IdmaConnection interface.</P>
+<P>Query Result Row objects delivered to the client must be released by the client.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591115"><A NAME="_Toc374175103">Result Row Class Descriptions</A></A></P>
+</FONT><FONT SIZE=1><P><A NAME="_Toc371591116">Duplicate Id's</A></P>
+</B></FONT><P>It is not possible to search properly within a single document space if two classes have the same Id. Therefore, this is considered a bug in the document space schema. Similarly, properties should only have the same Id (i.e., has an alias in common) if they are the same. It is a rule of the metadata model that the property descriptions of a single class description be distinct – they have no property Id in common.</P>
+<P>This rule is relaxed for Query Result Row Class Descriptions. They are synthetic, and dynamically created depending upon the query. In constructing the Query Result Row Class Description it is permissible to reuse the corresponding property Id’s and property descriptions of Selections elements, even though this may result in duplicate properties in the Result Row Class Description. The Result Row properties corresponding to the Selections list properties may be only by accessed by index, not by Id, as explained above. The only properties of the Result Row accessible by Id are those not produced from the Selections list. This prevents duplication of Id’s having any effect on the use of the result row, including access to properties of the Result Row object itself.</P>
+<P>The client can construct a query with the same property in the select list more than once. This probably won't matter, unless, possibly, you want to save the Query Result Set object and query it later according to Properties in its Selections list. Therefore, it is allowed but not required that an implementation disambiguate the properties in a Query Result Set Class Description. </P>
+<B><FONT SIZE=1><P>Synthesized Object Properties</P>
+</B></FONT><P>A Query Result Set object may, but is not required to, synthesize Query Result Row class property descriptions for its projection of Selections list elements. If property descriptions are synthesized, rather than reused from some other metadata space, there are a number of properties in the Selections property descriptions that become irrelevant and are appropriately omitted in the Query Result Row class description.</P>
+<P>&nbsp;</P>
+<P>The following table illustrates allowable simplifications of the Property Description properties in the synthesized Query Result Row Class Description, for those properties in the Selections list of the query. All synthesized Query Result Row properties are effectively System Generated and Read Only, whether or not the Property description specifies that.</P>
+
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=7 WIDTH=559>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<B><P>Property Name</B></TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<B><P>Imple-</P>
+<P>mented</P>
+<P>?</B></TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<B><P>Value</P>
+<P>Reqd</B></TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<B><P>Comment</B></TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>OIID</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Class Description</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Some metadata space’s property Description Class applicable to this Property Description instance</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>This</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Create Pending</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Update Pending</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Delete Pending</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Display Name</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>optional: ideally the scope’s name for the selected property, perhaps with some qualification that reflects the selection or From class.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Descriptive Text</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>optional: ideally the scope’s description for the selected property, reflecting the nature of the selection also.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Ids</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful. Can be the scope’s values.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Property Data Type</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>The correct data type (e.g.., object)</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Cardinality</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>As appropriate.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is Selectable</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is Searchable</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is Orderable</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Query Operator Descriptions</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>optional: Empty list preferred to maintain metadata space simplicity.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is System Generated</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Always true.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Read Only</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Always true.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is Value Required</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>true only if values were required for the selected property of the scope and all result rows have a value for the property.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Is Hidden</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Always false for result row properties corresponding to Seleciotns elements; can be true for all other properties.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Default Value</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Property Selections {data type}</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not too useful. Can be hints to applicaton about values that will be found. Copy the values from the scope’s Property Description. For object valued properties, should be omitted to simplify metadata space interactions.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Property Maximum {data type}</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Can be hint to applications about the range the values will be in. Obtained from the scope’s Property Description.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Property Mininum {data type}</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes </TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Can be hint to applications about the range the values will be in. Obtained from the scope’s Property Description.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Required Class</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Not useful. Null value maintains metadata space simplicity for the result set.</TD>
+</TR>
+<TR><TD WIDTH="27%" VALIGN="TOP">
+<P>Reflective Property Id</TD>
+<TD WIDTH="11%" VALIGN="TOP">
+<P>Yes</TD>
+<TD WIDTH="10%" VALIGN="TOP">
+<P>-</TD>
+<TD WIDTH="53%" VALIGN="TOP">
+<P>Cannot be synthesized. Should always be omitted.</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700059"><A NAME="_Toc374175092"><A NAME="_Toc374886671"><A NAME="_Toc375040237"><A NAME="_Toc375118094"><A NAME="_Toc375120550"><A NAME="_Toc375459543"><A NAME="_Toc375996795"><A NAME="_Toc376662276"><A NAME="_Toc376664763"><A NAME="_Toc377235879"><A NAME="_Toc377869688"><A NAME="_Toc378559598"><A NAME="_Toc378657111"><A NAME="_Toc378658027"><A NAME="_Toc378694179"><A NAME="_Toc378695261"><A NAME="_Toc378777808">Sear</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A>ching Across Multiple Repositories</P>
+</B></FONT><P>The key feature of DMA is the ability to perform queries across multiple, heterogeneous, legacy Document Space repositories. Clients accomplish this by calling the IdmaScope:: ExecuteSearch method on a merged Scope object and then using the merged Query Result Set object returned by ExecuteSearch. By using the merged Scope object and merged Query Result Set object, the client is, in effect, able to treat the combination of the component Scope objects as if they were a single Scope object. The software that implements the merged Scope object, the merged Query Result Set object, merged Query Result Row objects and that coordinates the queries across the component Scope objects is called middleware.</P>
+<P>The merged Scope object (1) presents a unified view of the set of Document Space (and/or merged Scope) objects that are its Component Scope objects, (2) provides coordination of queries across its Component Scope objects, and (3) merges Query Result Row objects from the Query Result Set objects produced by its Component Scope objects into a single sequence of  Query Result Row objects.</P>
+<P>Merged Scope objects, the merged Query Result Set objects, and the merged Query Result Row objects present exactly the same set of DMA COM interfaces as do Scope objects, Query Result Set objects, and Query Result Row objects of individual Document Spaces, respectively. </P>
+<P>It is required that the middleware rely on only the public DMA interfaces on its component Scope objects to merge their metadata into a single set of metadata for the merged Scope object. It is also required that the middleware rely on only the public DMA interfaces of its component Scope objects, the Query Result Set objects, and the Query Row objects to perform queries. Since only publicly available interfaces are used, any client could provide the functionality of merged scopes, if it so desired. The middleware may take advantage of additional interfaces and additional properties of the component Scope and Result Set objects, e.g., for performance reasons, but it must not depend on any such provisions in order to operate successfully.</P>
+<B><P><A NAME="_Toc374175093"><A NAME="_Toc374886672"><A NAME="_Toc375040238"><A NAME="_Toc375118095"><A NAME="_Toc375120551"><A NAME="_Toc375459544"><A NAME="_Toc375996796"><A NAME="_Toc376662277"><A NAME="_Toc376664764"><A NAME="_Toc377235880"><A NAME="_Toc377869689"><A NAME="_Toc378559599"><A NAME="_Toc378657112"><A NAME="_Toc378658028"><A NAME="_Toc378694180"><A NAME="_Toc378777809">Creating a Merged Scope Object</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>The following object instance diagram illustrates the creation of a merged Scope object from component Scope objects. </P>
+<P ALIGN="CENTER"><IMG SRC="Image123.gif" WIDTH=324 HEIGHT=368></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119274"><A NAME="_Toc375459840"><A NAME="_Toc375461078"><A NAME="_Toc375997807"><A NAME="_Toc377235565"><A NAME="_Toc378580352"><A NAME="_Toc378652420"><A NAME="_Toc378754736">Figure -5 Creation of a Merged Scope Object</A></A></A></A></A></A></A></A></P>
+</B></FONT><P>A Merged Scope object is constructed from a list of component Scope objects (typically these would be Document Space Scope objects). The middleware merges the metadata of the component Scope objects and presents a unified view of the merged metadata as the metadata of the merged Scope object. </P>
+<P>This specification does not provide for coordinated update across multiple repositories. Update of only one document space repository at a time is specified. </P>
+<P>This specification does not provide for updating of metadata. </P>
+<P>The only mechanism specified for cross repository references (including containment) is that a transfer element of a rendition of a document may be a URL.</P>
+<P>The merged Scope object is constructed from other Scope objects. Therefore the operations that it can perform are limited by the methods that can be performed on its component Scope objects. Thus, if one of its component Scope objects loses its Document Space connection, the ExecuteSearch method will become unavailable on that component Scope object. </P>
+<P>Since a Merged Scope object presents a merged view of the metadata of several component Scopes that can be very different, there is a distinct possibility that the merged Scope object is not very useful. However, in general, given that there is a reasonable attempt by Document Space administrators to use common classes of objects and properties, merged Scope objects can be a powerful tool.</P>
+<P>If a merged Scope object is built using the union rules (see below), a client may be able to construct a query expression that a Document Space may not fully understand. If this is the case, then three valued elimination (see the above section on &quot;Partially Defined Query Expressions&quot;) can optionally be used to make the query meaningful. The bRequestElimination parameter to the ExecuteSearch method influences how three valued elimination is used to reduce partially understood queries to fully understood queries. Clients (other than merged Scope implementations) should pass DMA_FALSE for the value of this input parameter, for then ExecuteSearch will return errors for malformed queries instead of attempting to execute the reduced query and possibly returning confusing results. Returning errors is normally the desired behavior in this case. </P>
+<B><P><A NAME="_Toc374175094"><A NAME="_Toc374886673"><A NAME="_Toc375040239"><A NAME="_Toc375118096"><A NAME="_Toc375120552"><A NAME="_Toc375459545"><A NAME="_Toc375996797"><A NAME="_Toc376662278"><A NAME="_Toc376664765"><A NAME="_Toc377235881"><A NAME="_Toc377869690"><A NAME="_Toc378559600"><A NAME="_Toc378657113"><A NAME="_Toc378658029"><A NAME="_Toc378694181"><A NAME="_Toc378777810">Merged Scopes Are an Optional Feature</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>In order to support the trivial case of the use of DMA without merged Scope objects, the existence of merged Scope objects is optional. That implies that the System object is not required to support the IdmaScopeFactory:: CreateScope method. In the event that this method is not supported, the client is limited to performing query operations to a single Document Space, or must perform its own unification of Document Space Scopes.</P>
+<B><P><A NAME="_Toc374175095"><A NAME="_Toc374886674"><A NAME="_Toc375040240"><A NAME="_Toc375118097"><A NAME="_Toc375120553"><A NAME="_Toc375459546"><A NAME="_Toc375996798"><A NAME="_Toc376662279"><A NAME="_Toc376664766"><A NAME="_Toc377235882"><A NAME="_Toc377869691"><A NAME="_Toc378559601"><A NAME="_Toc378657114"><A NAME="_Toc378658030"><A NAME="_Toc378694182"><A NAME="_Toc378777811">Query Execution With Merged Scopes</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>The following diagram illustrates the objects involved in executing a query on a merged Scope object.</P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119275"><A NAME="_Toc375459841"><A NAME="_Toc375461079"><A NAME="_Toc375997808"><A NAME="_Toc377235566"><A NAME="_Toc378580353"><A NAME="_Toc378652421"><A NAME="_Toc378754737"><IMG SRC="Image156.gif" WIDTH=624 HEIGHT=837><BR>
+Figure -6 Objects Involved With Merged Scope</A></A></A></A></A></A></A></A> </P>
+</B></FONT><P>In the above diagram, the lowest Scope object in the diagram is the merged Scope object. It keeps internal interface pointers to two component Scope objects which are higher in the diagram. Internal interface pointers are indicated by thin line arrows in the diagram. Method invocation on one object that generates a new object is indicated by a wide arrow that is labeled with the name of the method invoked. The client's original Query object is the lowest Query object in the diagram. The client's call on the ExecuteSearch method takes this object as a parameter. This is indicated by a thin line arrow from the Query object to the parentheses of the ExecuteSearch method. The upper two Query objects in the diagram are generated by the client's call on ExecuteSearch. The two generated Query objects need not be identical to the original Query object. The middleware is allowed (but not required) to copy the original Query object, massage it (e.g., by using three valued elimiation, or by modifying the Orderings list, etc.), and pass it on to the ExecuteSearch method of a component Scope object. Remember that ExecuteSearch does not keep a pointer to the Query object passed to it. Therefore, the upper two Query objects in the diagram would be released by the middleware after it calls the ExecuteSearch method on the component Scope objects. The Query Result Set object generated by the client's original ExecuteSearch call keeps internal interface pointers to the Query Result Set objects generated by the secondary ExecuteSearch calls on the component Scope Objects.</P>
+<P>The Class Description of the Query Result Row objects are synthesized from the Selections list and the metadata of the underlying Scope object by ExecuteSearch. The Property Description list of this Class Description includes descriptions of properties corresponding to all elements of the Selections list. There is a positional correspondence between the elements of the Selections list of the Query object and a sequence of Property Descriptions in the Property Description list of the Query Result Row object. This has already been described above.</P>
+<P>If the Orderings list of the Query object is not null, Query Result Row objects are enumerated by the IdmaResultSet:: GetNextResultRow method of the merged Query Result Set object in the order defined by the Orderings list. As stated above, the middleware might enhance the Orderings list. A reason the middleware might do this is to return unique Query Result Row objects by performing a merge instead of a sort of the Query Result Row objects returned by the component Query Result Set objects.</P>
+<P>The ExecuteSearch method on a merged Scope object is required to call the ExecuteSearch method on each of its component Scope objects before it returns.</P>
+<B><P><A NAME="_Toc371591106"><A NAME="_Toc374175096"><A NAME="_Toc374886675"><A NAME="_Toc375040241"><A NAME="_Toc375118098"><A NAME="_Toc375120554"><A NAME="_Toc375459547"><A NAME="_Toc375996799"><A NAME="_Toc376662280"><A NAME="_Toc376664767"><A NAME="_Toc377235883"><A NAME="_Toc377869692"><A NAME="_Toc378559602"><A NAME="_Toc378657115"><A NAME="_Toc378658031"><A NAME="_Toc378694183"><A NAME="_Toc378777812">Merging </A>Metadata</A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B><P>If there were no commonality across document spaces, then querying across multiple repositories would be uninteresting. But, as it turns out, there usually is, in fact, some commonality across document spaces. However, this commonality is often obscured by technical details. </P>
+<P>For example, the name of a subclass of DocVersion might be "Depositions" in one document space, and "depositions" in another, and "DEPOS" in a third. A fourth document space might have the name of the depositions class in Kanji or Shift-JIS or Hebrew character set. And yet, these searchable classes are semantically close enough, that the client wishes to consider them the same for purposes of his query. This same problem exists for properties and relationship types. The problem may be referred to as the <B>unification</B> problem. We wish to unify these different searchable classes (and properties and relationships) across the document spaces when they are semantically the same as far as the users are concerned. DMA abandons the approach of unifying searchable classes, properties, relationship types, etc. by name. Instead, DMA unifies strictly by Id.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591107"><A NAME="_Toc374175097">Id's</A></A></P>
+</B></FONT><P>Searchable class Id's, property Id's, Query Result Set Id's, Query operator Id's, collating sequence Id's, etc. are of type DmaId, which is defined to be a standard DCE UUID structure. DCE UUID's are unique over all space and time. COM clients are familiar with DCE UUID's, because COM interface ID's are DCE UUID's. Reliance is placed on the wonderful feature of DmaId values that each DmaId value ever generated is unique over all time and space. This prevents naming collisions without the need for a central registration authority, and thereby facilitates adding properties, adding operators, add collating sequences, uniquely identifying queries in progress for purposes of cancellation, etc.</P>
+<P>Searchable classes, properties, relationship types, etc. are assigned Id's to identify them. In order to promote cross repository query interoperability, each searchable class, property, and relationship type can potentially be assigned a list of alias Id's. DMA defines two properties (or classes) to be semantically the same if the intersection of the Ids property lists is non-null, i.e., when the two lists have at least one Id in common. When such a match exists, we say that the properties, (or classes) are <B>unifiable</B>. When such a match does not exist, we say that the properties (or etc.) are not unifiable. Unified searchable classes and properties are considered to be semantically the same for purposes of cross repository query.</P>
+<P>When merging metadata either under union or intersection, the resulting value of the Ids property in the unified class or property or operator is always the intersection of the Ids.</P>
+<P>The first step in the unification process is merging searchable classes.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591108"><A NAME="_Toc374175098">Merging Searchable Classes</A></A></P>
+</B></FONT><P>A scope object instance includes a snapshot of the metadata of an individual document space, or is a merged Scope, and the metadata is the result of a merge from one or more individual Document Space Scopes. The individual Document Spaces provide Scopes with the metadata of the individual Document Space. The middleware merges component Scope metadata into a merged Scope.</P>
+<B><FONT SIZE=1><P><A NAME="_Toc371591109">Searchable Class Hierarchy</A></P>
+</B></FONT><P>In general, it is impossible to unify the searchable classes of two component scopes and yet preserve the partial ordering of both class hierarchies in the merged scope. The following are two cases where the partial ordering of the class hierarchies can not be preserved in the merged hierarchy. In the figures, class A unifies with class A', and class B unifies with class B'.</P>
+<P ALIGN="CENTER"><IMG SRC="Image118.gif" WIDTH=294 HEIGHT=681></P>
+<B><FONT SIZE=2><P ALIGN="CENTER"><A NAME="_Toc375119276"><A NAME="_Toc375459842"><A NAME="_Toc375461080"><A NAME="_Toc375997809"><A NAME="_Toc377235567"><A NAME="_Toc378580354"><A NAME="_Toc378652422"><A NAME="_Toc378754738">Figure -7 Cases Where Partial Ordering Cannot Be Preserved</A></A></A></A></A></A></A></A></P>
+</B></FONT><P>Therefore, DMA takes the position that a merged scope is permitted (but not required) to have the searchable classes appear as immediate subclasses of class DMA. The Searchable Class Descriptions property lists all the searchable classes of the Scope.</P>
+<P>Nothing of critical importance is lost, since the full class hierarchies for all of the individual document space scopes are still available to the client. What <B>is</B> critical is to maximize interoperability. By not requiring strict mapping between the class hierarchies of individual document spaces, interoperability is maximized.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591110">Merge Options</A></P>
+</B></FONT><P>The client must choose one of two options for merging the metadata of individual document space scopes - union or intersection. The intersection option keeps only the metadata common to all individual scopes. The intersection might be empty. The union option keeps all the metadata of all the individual scopes, unifying as much as it can. It is expected that the union option will be more useful to DMA clients. It is also expected that the query expression part of most queries will concentrate mostly on unifiable searchable classes and properties.</P>
+<P>In DMA 1.0 neither union nor intersection of metadata is required to be supported.</P>
+<P>The creation of a merged scope is allowed to fail for certain combinations of component scopes under both union and intersection.</P>
+<P>The searchable classes of the component scopes are merged in a pairwise manner. Thus, if class A in the first component scope unifies with class A' in the second component scope, that is because they have at least one alias class ID in common. If class A'' in the third component scope unifies with class A' in the second component scope, that is because they have at least one alias Id in common. However, there is no guarantee that class A and class A'' have a common alias Id. We take the position that the third class does not unify with the first two. Thus, the final result of unification may depend upon the order in which unification is attempted. In order to make the result definite, we specify the following rules.</P>
+<OL>
+
+<LI>The component scopes are scanned in increasing list index order. The final merged scope is developed incrementally by merging in one component scope at a time.</LI>
+<LI>The classes of the current merged scope and the current component scope are scanned in increasing list index order. Each class in the component scope is attempted to be merged with the current class in the merged scope. The outer loop is on the merged scope, and the inner loop is on the component scope. When two classes unify, the alias list of the final merged class is the intersection of the two alias lists, both under union and intersection rules.</LI>
+<LI>When two classes unify, the properties of the classes are scanned in increasing list index order. The outer loop is on the class in the merged scope, and the inner loop is on the class in the component scope. When two properties of two classes unify, the alias list of the final merged property is the intersection of the two alias lists, both under union and intersection rules.</LI></OL>
+
+<P>Once it has been discovered that two searchable classes unify, their metadata must be unified under the option chosen - union or intersection. </P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591111"><A NAME="_Toc374175099">Merging Class Descriptions</P>
+</FONT><FONT SIZE=1><P>Merging the Name Property Index Property</P>
+</B></FONT><P>The Name Property Index property of a merged class description will have a value if and only if all the component classes which unified into the merged class have a value for Name Property Index and the properties thereby identified unify.</P>
+<B><FONT SIZE=2><P>Merging Propert</A></A>y Descriptions</P>
+</B></FONT><P>If two properties should be unified according to their primary and alias Id's, then they<B> both must have the same base datatype</B>. Also, the two properties must also have the <B>same cardinality</B>. In other words, both must be scalars, or both must be lists, or both must be enumerations. Otherwise, the merge fails and returns an error. The sizes of the two properties may differ, their maximum and minimum values may differ, and their list of allowable values may differ.</P>
+<P>The following are the rules for combining the Property Descriptions of two unified searchable classes under the union option: </P>
+
+<UL>
+<LI>Property Descriptions are unified on the basis of their Ids property. The resulting value of the Ids property is the intersection of the two Ids properties.<BR>
+<BR>
+If a Property Description for the new searchable class does not unify, it is added to the list of Property Descriptions being developed.<BR>
+<BR>
+If a Property Description for the new searchable class unifies, the Property Description developed so far is modified according to the following rules.</LI>
+<LI>Compare the descriptive properties (e.g., property name, descriptive text). Use the properties of the first Property Description. </LI>
+<LI>Compare the constraint properties of the two Property Descriptions. The merge should weaken the constraints. That means select the maximum of the two &quot;max value&quot; properties, and select the minimum of the two &quot;min value&quot; properties. If there is a value constraint list, then union the values.</LI>
+<LI>Compare the Default Value {data type} property of the two Property Descriptions. If both have a non null value, and if these values are equal, then this value is the value for the Default Value {data type} property. Otherwise, there is no value for the Default Value {data type} property.</LI>
+<LI>Compare the Is Selectable properties of each property description. If one property is selectable and the other is not, then make the Is Selectable property of the synthesized Property Description be selectable. </LI>
+<LI>Compare the Is Searchable properties of each property description. If one property is searchable and the other is not then make the Is Searchable property of the synthesized Property Description be searchable.</LI>
+<LI>Under union merge, the Is Orderable property should set to DMA_TRUE if the merged scope implements sorting of the component scope result sets. Otherwise, it is formed from the AND of the Is Orderable property values of the component scopes.. However, if the merged scope has no supported collation sequences and chooses not to fail scope creation, the Is Orderable property of any string property description should be set to DMA_FALSE.</LI>
+<LI>The Required Class property of a merged property description will have a value if and only if  the required classes of all the component properties unify.</LI>
+<LI>The Reflective Property Id property of a merged property description will have a value if and only if the required classes of all the component properties unify, and every component property has a reflective property id, and all the properties thereby identified unify.</LI>
+<LI>The value of the Is Value Required property is DMA_TRUE in the merged scope if and only if it has the value DMA_TRUE in all the component scopes, i.e., it is the AND of the values in the component scopes.</LI></UL>
+
+<P>The following are the rules for combining the Property Descriptions of two unified searchable classes under the intersection option:</P>
+
+<UL>
+<LI>Property Descriptions are unified on the basis of their Ids property. The resulting value of the Ids property is the intersection of the two Ids properties.<BR>
+<BR>
+If a Property Description for the new searchable class does not unify, it is discarded.<BR>
+<BR>
+If a Property Description for the new searchable class unifies, the Property Description developed so far is modified according to the following rules.</LI>
+<LI>Compare the descriptive properties (i.e., property name, descriptive text). Keep the properties of the first Property Description.</LI>
+<LI>Compare the constraint properties of the two Property Descriptions. The merge should strengthen the constraints. That means select the minimum of the two &quot;max value&quot; properties, and select the maximum of the two &quot;min value&quot; properties. Intersect the value constraint lists. </LI>
+<LI>Compare the Default Value {data type} property of the two Property Descriptions. If both have a non null value, and if these values are equal, then this value is the value for the Default Value {data type} property. Otherwise, there is no value for the Default Value {data type} property.</LI>
+<LI>Compare the Is Selectable properties of each property description. If one property is selectable and the other is not, then make the Is Selectable property of the synthesized Property Description be not selectable. </LI>
+<LI>Compare the Is Searchable properties of each property description. If one property is searchable and the other is not then make the Searchable property of the synthesized Property Description be not searchable.</LI>
+<LI>Under intersection merge, the Is Orderable property is formed from the AND of the Is Orderable property values of the component scopes. However, if the merged scope has no supported collation sequences and chooses not to fail scope creation, the Is Orderable property of any string property description should be set to DMA_FALSE.</LI>
+<LI>The Required Class property of a merged property description will have a value if and only if  the required classes of all the component properties unify.</LI>
+<LI>The Reflective Property Id property of a merged property description will have a value if and only if the required classes of all the component properties unify, and every component property has a reflective property id, and all the properties thereby identified unify.</LI>
+<LI>The value of the Is Value Required property is DMA_TRUE in the merged scope if and only if it has the value DMA_TRUE in all the component scopes, i.e., it is the AND of the values in the component scopes.</LI></UL>
+
+<B><FONT SIZE=2><P><A NAME="_Toc371591114">Merging Scope Properties</A></P>
+</FONT><FONT SIZE=1><P>Merging the Arbitrary Order By Property</P>
+</B></FONT><P>The scope property Has Arbitrary Order By should be set to DMA_TRUE if the merged scope implements sorting of component scope result sets. Otherwise, it should be set to the AND of the values of the Has Arbitrary Order By property of the component scopes.</P>
+<B><FONT SIZE=1><P>Merging the Distinct Property</P>
+</B></FONT><P>The scope property Has Distinct should be set to DMA_TRUE if and only if the merged scope supports returning only distinct result rows. This will depend on the abilities of the merged scope implementation as well as the characteristics of the component scopes as far as their values for the Has Arbitrary Order By and Has Distinct properties.</P>
+<B><FONT SIZE=1><P>Merging the Collation Sequence Ids Property</P>
+</B></FONT><P>The Collation Sequence Ids list property of the merged scope is generated as follows:</P>
+
+<UL>
+<LI>First, the intersection of the lists from the component scopes is formed. If the resulting list is empty, merged scope creation will fail with error DMARC_NO_COLLATIONS.</LI>
+<LI>Then, any id which specifies a collation sequence which is neither implemented natively by the merged scope nor supported by an installed text ordering service is removed. If the result of this processing is an empty list, merged scope creation may fail (with DMARC_NO_COLLATIONS), or alternatively adjustments may be made to the Is Orderable property of any string property descriptions, as noted above.</LI></UL>
+
+<B><FONT SIZE=1><P>Merging the Operators Property</P>
+</B></FONT><P>Merging the list of query operators is straightforward. For intersection, only the operators common to all child scopes survive. For union, they all survive.</P>
+<P>Both query operators and join operators are in the list of operators of the scope object.</P>
+<B><FONT SIZE=2><P><A NAME="_Toc371591113"><A NAME="_Toc374175102"><A NAME="_Toc374175101">Merging Query Construction Classes</A></P>
+</B></FONT><P>The properties of the well known query construction classes in the merged scope must include at least the union of the properties of the corresponding classes from the component scopes, whether merging under intersection or union rules.</P>
+<P>The merged scope must present the Query Construction Classes in a class hierarchy which conforms to that of the DMA specification.</P>
+<B><FONT SIZE=2><P>Merging Query Operand Descriptions</P>
+</FONT><FONT SIZE=1><P>Merging the Operand Data Type Property</P>
+</B></FONT><P>For intersection merge, either the values of the two Operand Data Type properties must be the same, or one of the values must be DMA_DATATYPE_ANY, in which case the value of the merged property is the value of the other property. </P>
+<P>For union merge, either the values of the two Operand Data Type properties must be the same, or one of the values must be DMA_DATATYPE_ANY, in which case the value of the merged property is DMA_DATATYPE_ANY.</P>
+<B><FONT SIZE=1><P>Merging the Boolean Properties</P>
+</B></FONT><P>In general, the Boolean properties (Allows Singleton, Allows List, Allows Constant, Allows Property, Allows Expression) are AND'ed for intersection, and OR'ed for union merge.</P>
+<B><FONT SIZE=2><P>Merging Query Operator Descriptions</P>
+</FONT><FONT SIZE=1><P>Merging the Result Type Property</P>
+</B></FONT><P>For the merge to succeed, the value of the two Result Type properties must be equal, and must indicate a base data type (i.e., must be one of DMA_DATATYPE_BINARY, DMA_DATATYPE_BOOLEAN, DMA_DATATYPE_DATETIME, DMA_DATATYPE_FLOAT64, DMA_DATATYPE_ID, DMA_DATATYPE_INTEGER32, DMA_DATATYPE_OBJECT, DMA_DATATYPE_STRING). The merged value is the same as the value of the two properties.</P>
+<B><FONT SIZE=1><P>Merging the Is List Property</P>
+</B></FONT><P>For the merge to succeed, the value of the two Is List properties must be the same. The merged value is the same as the value of the two properties.</P>
+<B><FONT SIZE=1><P>Merging the Is Safe To Eliminate Property</P>
+</B></FONT><P>The Is Safe To Eliminate property is AND’ed under both the intersection and union options.</P>
+<B><FONT SIZE=1><P>Merging the Join Participation Property</P>
+</B></FONT><P>For intersection merge, the following rules are considered in sequence until one is applicable:</P>
+<OL START=0>
+
+<LI>If the value of the Join Participation property of either class is not equal to  DMA_JOIN_PARTICIPATION_NONE, DMA_JOIN_PARTICIPATION_OPERAND, or DMA_JOIN_PARTICIPATION_OPERATOR, then the merge fails with a DMARC_OPERATOR_MERGE_CONFLICT error.</LI>
+<LI>Otherwise, if the value of the Join Participation property is equal for both classes, then the value of the merged property is the same as that of the two classes.</LI>
+<LI>Otherwise, if the value of the Join Participation property of one class is DMA_JOIN_PARTICIPATION_NONE, and the value for the other class is DMA_JOIN_PARTICIPATION_OPERAND, then the value for the merged property is DMA_JOIN_PARTICIPATION_NONE.</LI>
+<LI>Otherwise, the value of Join Participation is DMA_JOIN_PARTICIPATION_OPERATOR for one class, and a different value for the other class, and the error DMARC_OPERATOR_MERGE_CONFLICT is returned for the merge operation.</LI></OL>
+
+<P>For union merge, the following rules are considered in sequence until one is applicable:</P>
+<OL START=0>
+
+<LI>If the value of the Join Participation property of either class is not equal to  DMA_JOIN_PARTICIPATION_NONE, DMA_JOIN_PARTICIPATION_OPERAND, or DMA_JOIN_PARTICIPATION_OPERATOR, then the merge fails with a DMARC_OPERATOR_MERGE_CONFLICT error.</LI>
+<LI>Otherwise, if the value of the Join Participation property is equal for both classes, then the value of the merged property is the same as that of the two classes.</LI>
+<LI>Otherwise, if the value of the Join Participation property of one class is DMA_JOIN_PARTICIPATION_NONE, and the value for the other class is DMA_JOIN_PARTICIPATION_OPERAND, then the value for the merged property is DMA_JOIN_PARTICIPATION_OPERAND.</LI>
+<LI>Otherwise, the value of Join Participation is DMA_JOIN_PARTICIPATION_OPERATOR for one class, and the other class has a different value, and the error DMARC_OPERATOR_MERGE_CONFLICT is returned for the merge operation.</LI></OL>
+
+<B><FONT SIZE=2><P>Miscellaneous Merging Rules</A></A></P>
+</B></FONT><P>Usually, but not always, Boolean flags are AND'ed for intersection, and OR'ed for union.</P>
+<P>The merged scope is required to construct a metadata space which conforms to the object model specification and includes the query construction classes and the unified searchable classes merged according to the merge rules.</P>
+</BODY>
+</HTML>

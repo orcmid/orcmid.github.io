@@ -1,0 +1,283 @@
+d061201g-ReleaseNotes.txt 0.01       UTF-8                    dh:2007-01-25
+
+                                 RELEASE NOTES
+
+                ODMJNI 1.0 0.50beta Feature-Complete Release
+                --------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201g.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   The ODMJNI 1.0 0.50alpha distribution is provided to accomplish these
+   important elements in the progression to full ODMJNI 1.0:
+
+     1. Provide usable implementations of all of the functions defined
+        by info.odma.practical100 interfaces.
+
+     2. Provide confirmation of operation for the four key scenarios:
+        access to existing ODMA DMS documents with or without creation of
+        new changes (using chooseDocument and openKnownDocument), creation
+        of new documents (using acceptNewDocument), and making new documents
+        as variations of existing ones (using transferToNewDocument).
+
+     3. Serving as the foundation for stabilization and hardening and also
+        improving usability while providing for integration testing of all
+        ODMJNI 1.0 API functions (2).
+
+     4. Provide additional foundation for a suite of ODMJNI test versions
+        that are useful in verifying that applications behave properly
+        under the full range of circumstances.  (See the 0.40alpha
+        Release notes for additional information.  That note is available
+        at <http://ODMA.info/dev/devNotes/2006/12/d061201f.htm>.)
+
+     5. Provide a stable foundation for refactoring to provide high internal
+        integrity, reduced threat surface, and confirmable reliability.  Any
+        additional functionality that is found essential in operational use
+        can be considered from this point as well.
+
+
+   CONTENT
+
+     Synopsis
+
+     1. Summary of Changes
+        1.1 Minor Practical100 changes
+        1.2 odmjni100 additions
+        1.3 OdmNative additions
+
+     2. Confirmation of Changes
+        2.1 odmjni100 test\Check04 CheckChoice and CheckNew
+        2.2 OdmNative100 test\Check06 CheckChoice.exe and CheckNew.exe
+
+     3. Caveats and Deferred Features
+        3.1 openKnownDocument not enabled
+        3.2 Other caveats
+
+     4. Beyond 0.50beta
+
+     Copyright Notice
+     Revision History
+
+1. SUMMARY OF CHANGES
+
+   This release has a modest number of changes that involve a significant
+   increase in test-coverage requirements.
+
+   There are two new classes: OdmPending in OdmNative and OdmJniPend in
+   odmjni100.  These provide objects that are returned for the practical100
+   operations acceptNewDocument and transferToNewDocument (the latter
+   usable in both Save As ... and Export scenarios).
+
+   Everything else is by implementation of additional native Java methods
+   and replacement of existing null implementations by functioning ones.
+
+   There is some refactoring of OdmNative interfaces and classes to improve
+   the coupling and coherence of the document implementations.  The new
+   OdmNative100.lib is not usable with code developed using older libraries
+   and interface definitions.
+
+
+1.1 Minor Practical100 Changes
+
+   The Practical100 package has no significant changes from the version
+   released as part of 0.40alpha.
+
+   The Practical100 interfaces are unchanged from the definitions used in
+   0.25alpha and documented in the 0.30alpha Pre-Release Notes.
+
+   The Practical100.OdmNullPending class has been modified to be public
+   but with a protected constructor.  This allows for extension of
+   OdmNullPending as an approach to delivering specific implementations
+   that overlay (and incorporate) the null behaviors.
+
+
+1.2 odmjni100 Additions
+
+   1.2.1 OdmJniPend.  This new class is an extension of OdmNullPending.
+   It provides the Java implementation used when either acceptNewDocument
+   or transferToNewDocument reach a point where an OdmNative OdmPending100
+   interface is successfully returned from their supporting native Java
+   methods.  The commitContent method will deliver an OdmJniWork implementa-
+   tion of the OdmWorkingDocument that represents the newly-created DMS
+   document.
+
+   1.2.2 OdmJniView.  The transferToNewDocument implementation will be
+   extended to use native Java functions to exercise an ODMSaveAs function
+   for the existing DMS document.  The result from that point on is the
+   same as for an OdmConnection.acceptNewDocument function.
+
+   1.2.3 OdmJniApp.  The acceptNewDocument implementation is extended to
+   rely on native Java functions to perform an ODMNewDoc and related
+   operations that set up a fresh document for which the initial content
+   is awaited.
+
+   1.2.4 odmjni100.dll.  The code of odmjni100.cpp is expanded to provide
+   native Java functions that support the acceptNewDocument, transferTo- NewDocument, and commitContent functions of the
+   completed OdmJni classes.
+
+
+1.3 OdmNative100 Additions
+
+   1.3.1. OdmPending100 and OdmPending.  The OdmPending100 interface is
+   defined in OdmPending100.hpp.  The OdmPending100.cpp file implements the
+   interface via class OdmPending and a factory function.  The header file
+   OdmBindWorking100.hpp defines the factory function for internal use in
+   the OdmNative implementations.  The structure of OdmPending100.cpp
+   follows very closely that of OdmWorking100.cpp.
+
+   1.3.2 OdmNative100.cpp and the OdmNative100i.hpp internal interface
+   is modified so that the appropriate helper functions needed by both
+   OdmWorking100 and OdmPending100 are available from the OdmNative100i
+   interface that is delivered to their constructors.
+
+   1.3.3 OdmWorking100 is updated to provide the implementation of
+   transferToNewDocument.  The current stub is reviewed for appropriateness.
+
+   1.3.4 The OdmNative100.lib is built using the new OdmNative100.obj,
+   OdmWorking100.obj, and OdmPending100.obj.
+
+
+
+2. CONFIRMATION OF CHANGES
+
+2.1 odmjni100 test\Check04 CheckChoice and CheckNew
+
+   The Check03 test directory is cloned into a Check04 directory with two
+   test programs and a separate class of shared code.  A major change is
+   actual launching of retrieved Sample DMS documents for viewing and
+   modification using Windows Notepad.  The saved documents can be
+   committed as new/changed content.
+
+    - CheckChoice.java is the regression counterpart of Check03.java.  It
+      confirms the basic choice and commitChanges scenario.  After that was
+      accomplished, it was extended to provide exercise of a Save As ...
+      new DMS Document scenario on any opened working document.
+
+    - CheckNew.java  is a basic version of the CheckChoice working document
+      operations.  Instead of obtaining the document via a DMS document
+      selection, a new document is created using the DMS, the Pending
+      document is exercised, and further manipulations are performed using
+      the previously confirmed handling of working documents.
+
+    - CheckUtil.java is a class that provides static methods that are
+      used in common between CheckChoice and CheckNew.  The CheckUtil class
+      also has a native method that is used to issue Windows console
+      commands.  That method is used by CheckChoice and CheckNew to launch
+      documents retrieved from the DMS in an editor.
+
+   The ODMA logs, transcripts, and screen captures made during verification
+   with CheckChoice and CheckNew are also useful examples for what to expect
+   when testing ODMJNI 1.0 integration into a Java-based ODMA-aware
+   application.
+
+
+2.2 OdmNative100 test\Check06 CheckChoice.exe and CheckNew.exe.
+
+   In much the same manner as the split-up for odmjni100 Check04 programs,
+   the OdmNative100 Check06 directory will be used for compilation of
+   programs cloned from Check05.cpp.
+
+   Beside the transcripts of operation, the correct performance of the
+   functions is confirmable by inspection of the Odma32.log from the ODMA
+   2.0 Connection Manager.
+
+
+3. CAVEATS AND DEFERRED FEATURES
+
+3.1 openKnownDocument Not Enabled.
+
+   The openKnownDocument functionality of OdmConnection is not enabled by
+   the 0.50beta implementation.  This function, although simple to implement
+   is used in three situations:
+
+      a. An ODMA Document ID is obtained from another source, possibly even
+         e-mail, and used as a command-line parameter (just like a file)
+         in launching the Java-based ODMA-aware application.
+
+      b. An ODMA Document ID is embedded in document content and the
+         associated document needs to be accessed for implementation of
+         some linking function
+
+      c. The application itself retains the ODMA Document ID and other
+         properties as part of its Recent Documents history or similar
+         functionality
+
+   Because these all involve re-introduction of an ODMA Document ID from
+   an external source, this function is deferred until format checking of
+   parameters is implemented.
+
+3.2 Other Caveats
+
+   Review the 0.40alpha Release Notes for othere caveats that apply for now.
+   <http://ODMA.info/dev/devNotes/2006/12/d061201f.htm>.
+
+
+4. BEYOND 0.50BETA
+
+   [This section to be expanded.]
+
+   There are three top-priority items to be introduced during stabilization
+   and beta experience.  There are also lower-priority items that will be
+   added for selection over the course of the beta period until a stable
+   release 1.0 is reached.
+
+   Top Priorities, in decreasing order of immediacy:
+
+   4.1 Associating DMS dialogs with the correct Window of the Java-based
+       application.
+
+   4.2 Translation of DMS document property text values into the correct
+       Java Unicode characters to match the character set being used on
+       Microsoft Windows by the ODMA DMS integration.
+
+   4.3 Providing strict checking of the format of text values passed to
+       ODMJNI by the Java-based application.
+
+   4.4 Updating the "Guide and Usage Scenarios" document to agree with the
+       latest definitions and the implementation, so there is an useful
+       reference for those who have not followed along in the development
+       so far.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+           Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: ODMJNI 1.0 0.50beta Feature-Complete Release.
+        ODMA Interoperability Exchange, ODMdev Development Note page
+        d061201g-ReleaseNotes.txt 0.01, January 25, 2007.  Current version
+        available as part of the archive downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201g.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-01-25-21:52 Update to reflect the actual state of the 0.50beta
+     release.  This is intended to be sufficient for rapid turnover to
+     a development team without the depth required for someone starting
+     with ODMJNI at this point.
+0.00 2007-01-14-19:15 Begin provisional 0.50beta Release Notes using the
+     0.40alpha release notes version 0.01 for model text.
+
+$Header: /ODMdev/d061201g-ReleaseNotes.txt 2     07-01-25 22:34 Orcmid $
+
+                    *** END OF d061201g-ReleaseNotes.txt ***
+

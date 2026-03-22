@@ -1,0 +1,330 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<!--$$Header: /InfoNuovo Conclave Web/dma/integration/MNCS/sketch.htm 6     00-02-24 14:43 Orcmid $-->
+<title>MNCS Sketch</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">DMA Architecture Sketch for MNCS: </a></h1>
+
+<h1 align="center"><a NAME="Top">Multinational Character Set Extensions to DMA 1.0</a></h1>
+
+<h3>Authors: DMA Integration Subcommittee</h3>
+
+<blockquote>
+  <p>:Larry Bonham, Xerox Corporation</p>
+  <p>Dennis E. Hamilton, InfoNuovo</p>
+</blockquote>
+
+<blockquote>
+  <p>Hitoshi Tanaka, Hitachi Corporation, Ltd.</p>
+</blockquote>
+
+<h3>Revision History</h3>
+
+<blockquote>
+  <p><strong>Version 0.3 -</strong> 2000-02-24 Editorial Clean-Up (D. Hamilton)<ul>
+    <li>Changed table of contents and outline to eliminate DMA Architecture Proposal materials
+      and reduce function to that of just the sketch.&nbsp; The two companion proposal drafts
+      provide the detailed treatment.</li>
+    <li>Add reference section and provide some cross-references.</li>
+    <li>This is still an early draft and does not provide a comprehensive treatment.</li>
+  </ul>
+  <p><strong>Version 0.2 </strong>- 1999-06-09 Updated Sketch by Dennis Hamilton<ul>
+    <li>Created two separate proposal documents, one for MNCS Extensions to DMA 1.0, another for
+      the MNCS Library for Portability and Reuse.&nbsp; These are separate ideas and they can be
+      discussed separately.&nbsp; </li>
+    <li>Replaced the sketch by a simplifed presentation of the key ideas, with cross references
+      to the proposal documents.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><strong>Version 0.1</strong> - 1999-06-08 Original Sketch by Dennis Hamilton</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h2><em>Content </em></h2>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <h3><a HREF="sketch.htm#Overview">1. Overview of the Sketch</a> </h3>
+  <h3><a href="#What">2. What is MNCS?</a></h3>
+  <h3><a href="#Why">3. Why MNCS?</a> </h3>
+  <h3><a href="#When">4. When Does MNCS Apply?</a></h3>
+  <h3><a href="#Where">5. Where Does MNCS Apply?</a> </h3>
+  <h3><a HREF="sketch.htm#References">6. Frequently-Asked Questions</a> </h3>
+  <h3><a href="#Resources">7. References and Resources</a> </h3>
+</blockquote>
+
+<h1><a NAME="Overview">1. Overview of the Sketch</a></h1>
+
+<blockquote>
+  <p>Support for MNCS Extensions are specified in two separate proposals.&nbsp; The first
+  proposal describes the impact on the binary interfaces standardized by DMA [<a href="#[MNCS-ext]">MNCS-ext</a>].&nbsp; That determines all of the additional interfaces
+  and the string formats that are used with the additional interfaces.&nbsp; The first
+  proposal is complete unto itself and is all that is required to implement the MNCS
+  extensions.</p>
+  <p>The second proposal provides programming support for creation of
+  string-format-independent programs that can be compiled to operate with one MNCS
+  string-format or another simply by changing some macro definitions and #include
+  dependencies.&nbsp; The recommended macros and their usage are defined in &quot;DMA
+  Architecture Proposal for MNCS String Manipulation Library [<a href="#[MNCS-lib]">MNCS-lib</a>].&quot;
+  &nbsp;&nbsp; The use of the MNCS Library is entirely optional.&nbsp; It is implemented and
+  provided so that developers can use a portable, common solution readily available to all
+  of the DMA community.</p>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="What">2. What Is MNCS?</a></h1>
+
+<blockquote>
+  <p>A new DMAString Data type is introduced: DmaString_A.&nbsp; This datatype provides for
+  character strings that consist of counted sequences of 8-bit (octet) character-string
+  elements.</p>
+  <p>The principle of operation of DmaString_A is the same as DmaString, except for octets
+  instead of for 16-bit character string elements.&nbsp; (Technically, DmaString is the
+  DmaString_B format, but the _B suffix is never used in DMA.)</p>
+  <p>The new data type is introduced in the usual forms,</p>
+  <blockquote>
+    <p>pDmaString_A,</p>
+    <p>ppDmaString_A, </p>
+  </blockquote>
+  <p>and so on.&nbsp; Basically, every DmaString form already defined is supplemented by an
+  additional DmaString_A form.</p>
+  <p>There are also additional character set encodings, many that are specific to
+  DmaString_A usage.&nbsp; These additional character set encoding names and numbers are</p>
+  <blockquote>
+    <blockquote>
+      <p><font color="#FF0000"><u><strong>Include table of new character-set encoding names and
+      their codes here.</strong></u></font></p>
+    </blockquote>
+  </blockquote>
+  <p><font color="#000000">For convenience in programming, there is also a <em>generic</em>
+  character-string data type, DmaString_T.&nbsp; This is provided in the DMA interface
+  definitions and supporting files and is used when the program is designed to operate with
+  any one of DmaString_A, DmaString, or any additional character string formats that may be
+  introduced using the same principles.&nbsp; </font><u><strong><font color="#FF0000">The
+  discussion of DmaString_T and other macros used to simplify portability of programs
+  between multinational string formats is discussed in a companion sketch.&nbsp; It is kept
+  separate because it is important to distinguish what impacts DMA interfaces and what is
+  simply an accommodation for the source program and having no impact on the proper
+  interfacing between DMA-integrated components.</font></strong></u></p>
+  <p><font color="#000000">The DmaString_T is not an actual data type that is ever seen at a
+  DMA interface or delivered to a method.&nbsp; DmaString_T is a &quot;macro&quot; that will
+  at any time actually be implemented by DmaString_A, DmaString, or another string format.</font></p>
+  <blockquote>
+    <blockquote>
+      <p><font color="#FF0000"><u><strong>Consider whether any new result codes need to be
+      defined for failure to obtain the right kind of character string support from a supplied
+      object or any binding problems related to inconsistency in character string support.</strong></u></font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="Why">3. Why MNCS?</a></h1>
+
+<blockquote>
+  <p>omitted in this draft</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp; </p>
+</blockquote>
+
+<h1><a name="When">4. When Does MNCS Apply?</a></h1>
+
+<blockquote>
+  <p>For MNCS, there are two kinds of interface changes: additions to the integration-model
+  interfaces and replication of standard DMA 1.0 COM interfaces.</p>
+  <p><font color="#FF0000"><u><strong>We need to extract out a definition (included in the
+  glossary section) for what it means for two objects to be MNCS-compatible.&nbsp; </strong></u></font><ul>
+    <li><font color="#FF0000"><u><strong>It is delivered from a particular MNCS interface form.</strong></u></font></li>
+    <li><font color="#FF0000"><u><strong>All interfaces that it supports are supported in that
+      &nbsp; MNCS form</strong></u></font></li>
+    <li><font color="#FF0000"><u><strong>It accepts interfaces of that MNCS form on any objects
+      that are delivered to it via an interface parameter to a method.</strong></u></font></li>
+  </ul>
+  <p><font color="#FF0000"><u><strong>The IUnknown, IMalloc, and similar interfaces that
+  have no DmaString parameters to their methods, are automatically accepted as being all of
+  the MNCS forms.</strong></u></font></p>
+  <p>It is conceivable that an object could support more than one MNCS string format, but it
+  would require that the prevailing character set encoding be equally representable in the
+  multiple formats.&nbsp; Objects are permitted to support more than one MNCS format, they
+  are simply never required to do so.</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a>&nbsp;</p>
+</blockquote>
+
+<h1><a name="Where">5. Where Does MNCS Apply?</a></h1>
+
+<blockquote>
+  <p>omitted from this draft.</p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a name="FAQ">6. Frequently-Asked Questions</a></h1>
+
+<blockquote>
+  <h3>Why Not Use pDmaString as a way to supply and receive pDmaString_A and other formats
+  also?</h3>
+  <blockquote>
+    <p><strong>pDmaString</strong> and <strong>ppDmaString</strong> must be strongly typed in
+    order for distributed operation to occur.&nbsp; That is, having <strong>pDmaString</strong>
+    be the same as <strong>void*</strong> isn't acceptable for distributed operation. &nbsp;
+    Arrays of 8-bit elements don't &quot;union&quot; consistently into arrays of 16-bit
+    elements across a network.&nbsp; When the elements take more than one storage byte (as for
+    16-bit elements), it is necessary to match the potentially-different byte orderings on the
+    sending and the receiving machines.&nbsp; This cannot be done properly by the
+    method-remoting mechanism unless the method used has a strongly-typed choice of string
+    format.&nbsp; It is important to use an explicit type that accurately reflects the
+    understood element size as a container for a binary integer.&nbsp; </p>
+  </blockquote>
+  <h3>Couldn't you include data in the DmaString to communicate the string format and
+  character-set encoding?</h3>
+  <blockquote>
+    <p>The original proposal for <strong>DmaString</strong> relied on such a concept.&nbsp; In
+    the trial-use employment of DMA 0.90, we resorted to the current, simplified <strong>DmaString
+    </strong>based on the Microsoft<strong> BSTR</strong> format used with COM.&nbsp; This
+    allowed trial-use components to all work in Unicode and accomodates any other 16-bit
+    character-set encodings that DMA applications might use.</p>
+    <p>A key advantage of a separate string type is that it is not necessary to inspect every
+    string to see what format it is in.&nbsp; There is a big difference in using a string
+    without having to inspect it or any parameters carried with it.&nbsp; Having to
+    &quot;check&quot; every string moves exception processing to a very expensive place in
+    what is ordinarily routine, straightforward use of text-formatted information.</p>
+    <p>The disadvantage of separate string types is that the &quot;binding&quot; to a string
+    format does occur at a high level.&nbsp; Based on the assumption that most DMA requesters
+    and providers will be operating in a single string format for 99.99% of their usage around
+    the planet, regardless of character-set encoding and language, this is not much of a
+    limitation.&nbsp; Most people won't notice it.&nbsp; At the same time, the MNCS extension
+    allows programs to operate in more than one format in one of two ways: (1) Compile the
+    same program once for each format to be supported, using different copies per format or
+    (2) allow dynamic determination of formats and provide duplicated logic, as needed, in the
+    implementation of object classes and templates within the application.&nbsp; The MNCS
+    extension supports either approach and makes (1) as easy as it ever gets.</p>
+  </blockquote>
+  <h3>Well, why not just use BSTR (the DmaString implementation) forever?</h3>
+  <blockquote>
+    <p>That isn't going to work in the long run.&nbsp; There are always legacies to support,
+    and eventually BSTR will be a legacy format.&nbsp; There is already a 32-bit Unicode and
+    its adoption will raise the need to come up with another format (let's call it <strong>DmaString_C</strong>
+    for now).&nbsp; Also, there is already a large legacy of repositories and electronic
+    documents that do not use a 16-bit character set encoding.&nbsp; Most of these use some
+    form of octet (8-bit) character-set encoding and they need not be reconcilable with any
+    current16-bit encoding.&nbsp; </p>
+  </blockquote>
+  <h3>I thought that Unicode was the standard for DMA.&nbsp; What's the Problem?</h3>
+  <blockquote>
+    <p><strong>DmaString</strong> is the standard string format and Unicode (ISO-10646-UCS-2)
+    &nbsp; is the standard character-set encoding that is expected to be available. &nbsp;
+    However, DMA explicitly allows for the use of different character-set encodings. &nbsp;
+    MNCS extends the formats that are usable in directly delivering those non-Unicode
+    (ISO-10646-UCS-2) character-set encodings.</p>
+    <p>Under DMA 1.0, a DMA Provider can offer to operate in a number of different
+    character-set encodings.&nbsp; MNCS extends that to operation in a number of different
+    string formats commonly associated with important character-set encodings (e.g., EBCDIC,
+    shift-JIS and the many variations on ASCII (ISO-646) used for different European-language
+    character-set encodings). MNCS allows performance optimization in some cases, by using an
+    efficient and already-supported combination of string format and character-set encoding.
+    &nbsp; MNCS also allows legacy character-set encodings, especially rich ones developed for
+    use in Asia, that do not have a clean mapping to Unicode to be used and accessed.</p>
+    <p>There<strong> is</strong> a loss of interoperabiity when a DMA Provider supports only a
+    non-Unicode character set encoding, whether using <strong>DmaString</strong> or another
+    MNCS format.&nbsp; Sometimes that can be remedied mechanically if there is an acceptable
+    mapping to the Unicode character set, although there could be a loss of efficiency because
+    of conversion efforts.&nbsp; In this case Unicode would work for interoperability and the
+    &quot;native&quot; code would work for full fidelity and best performance.&nbsp; MNCS
+    allows those arrangements to be developed by tolerating &quot;native&quot; as well as
+    interoperable cases.</p>
+  </blockquote>
+  <h3>Doesn't the COM Specification Require Unicode?</h3>
+  <blockquote>
+    <p>It might seem so.&nbsp; The specific statement is in The <em>Component Object Model
+    Specification</em> [<a href="#[COMspec]">COMspec</a>], Section 3.1.1, The Interface Binary
+    Standard:</p>
+    <blockquote>
+      <font SIZE="2"><p ALIGN="JUSTIFY">Finally, and quite significantly, <i><b>all strings
+      passed through all COM interfaces</b></i> (and, at least on Microsoft platforms, all COM
+      APIs) <i><b>are Unicode strings</b></i>. There simply is no other reasonable way to get
+      interoperable objects in the face of (i) location transparency, and (ii) a high-efficiency
+      object architecture that doesn&#146;t in all cases intervene system-provided code between
+      client and server. Further, this burden is in practice not large.</font></p>
+    </blockquote>
+    <p ALIGN="JUSTIFY">This is the use of &quot;Unicode&quot; that is included in the index of
+    the document.&nbsp; This is not worded as a statement of requirement, it is rather a
+    practical observation of a valuable idea, one that is also honored in DMA 1.0.&nbsp; The
+    following example is used in <em>The Component Object Model Specification</em> [<a href="#[COMspec]">COMspec</a>], Section 1.4.3.1, Robustly Evolving Functionality Over
+    Time:</p>
+    <blockquote>
+      <font SIZE="2"><p ALIGN="JUSTIFY">To illustrate the </font><font FACE="Arial" SIZE="1">QueryInterface</font><font SIZE="2"><i> </i>cornerstone, imagine a client that wishes to display the contents of a
+      number of text files, and it knows that for each file format (ASCII, RTF, Unicode, etc.)
+      there is some object class associated with that format. Besides a basic interface like </font><font FACE="Arial" SIZE="1">IUnknown</font><font SIZE="2">, which we&#146;ll call interface A,
+      there are two others that the client wishes to use to achieve its ends: interface B allows
+      a client to tell an object to load some information from a file (or to save it), and
+      interface C allows a client to request a graphical rendering of whatever data the object
+      loaded from a file and maintains internally.</font></p>
+    </blockquote>
+    <p ALIGN="JUSTIFY">It is the case that many functions of COM itself that do pass strings
+    and use Unicode for encoding those strings.&nbsp; There are also numerous exceptions,
+    including use of octet-formatted strings, use of uninterpreted streams of bytes that may
+    carry character-set encodings (as in the ASCII, RTF, Unicode mention above) and cases of
+    using string-format data with no assumptions whatsoever about character-set encoding.
+    &nbsp; For example, in <em>Component Object Model Specification</em> [<a href="#[COMspec]">COMspec</a>],
+    section 2.6.4, Naming Elements (for IStorage):</p>
+    <blockquote>
+      <font SIZE="2"><p>Strings passed to storage</font><font FACE="Times" SIZE="2">-</font><font SIZE="2">related functions which name files are passed on un-interpreted and unchanged to
+      the file system</font></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+
+<h1><a name="Resources">7. References and Resources</a></h1>
+
+<blockquote>
+  <dl>
+    <dt><a name="[MNCS-ext]">[MNCS-ext]</a></dt>
+    <dd>include reference to <a href="mncs-ext.htm">extension proposal</a></dd>
+    <dt><a name="[MNCS-lib]">[MNCS-lib]</a></dt>
+    <dd>include reference to <a href="mncs-lib.htm">library proposal</a></dd>
+    <dt><a name="[COMspec]">[COMspec]</a></dt>
+    <dd>include reference to COM specification.</dd>
+  </dl>
+</blockquote>
+
+<hr>
+
+<h5><a name="Bottom">End of Document </a></h5>
+
+<blockquote>
+  <p><!--webbot bot="PurpleText" PREVIEW="This document was originally based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com).  It was customized to be a sketch on 1999-06-09." --></p>
+</blockquote>
+
+<blockquote>
+  <p><a HREF="sketch.htm#Top">to Top of Document</a> </p>
+</blockquote>
+<!-- This document based on dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com) -->
+
+<p align="right"><em>$$Author: Orcmid $<br>
+$$Date: 00-02-24 14:43 $<br>
+$$Revision: 6 $</em></p>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040801: Blog Slamdown Procedure </title>
+<!--$$Header: /A2HostingWeb/orcmid/BlunderDome/B040801.htm 28    26-03-22 14:13 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong><a href="./"><font color="#990033">BlunderLab</font></a></strong></font><font color="#990033"><strong> </strong></font>
+
+      <font color="#990033"><strong> <a href="B000001-log.htm"><font color="#990033">Notebook</font></a>
+      <a href="B000001-log.htm#B040801"><font color="#990033">B040801</font></a><br>
+      <big><big><i>Blog Slamdown Procedure</i></big></big></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="B040802.htm" target="_top">B040801</a>&gt;</code></b><br>
+      <small><small><a href="#0.00">0.00</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" -->
+      </small>
+      </small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<h2 align="left"><a name="Overview">Overview</a></h2>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+  <dl>
+      <dt><i>see also:</i></dt>
+    <dd><b><a href="../sostegno/X040702C.htm">X040702C</a>:&nbsp;Incident
+      Response Setup</b></dd>
+  </dl>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <p align="left">Some incidents that occur with web logs on nfoCentrale may
+  involve corruption of material on the site.&nbsp; The procedure here is for
+  responding to such an incident as rapidly and simply as possible.&nbsp; The
+  idea is to&nbsp;</p>
+
+  <ul>
+    <li>
+      <p align="left">Quickly capture everything needed for forensic analysis.</li>
+    <li>
+      <p align="left">Rapidly remove any corrupted material from being
+      accessible to readers of the blogs.</li>
+    <li>
+      <p align="left">Post simple notices in place of all corrupted material and
+      that block off the accident scene incident response is underway.</li>
+  </ul>
+  <p align="left">That is as far as the slamdown procedure takes us.&nbsp; It
+  secures the scene so that additional procedures can follow:</p>
+  <ul>
+    <li>
+      <p align="left">Initiate enough incident analysis to determine how to
+      recover.</li>
+    <li>
+      <p align="left">Clear away the damage, restore the blog, and resume
+      operation.</li>
+    <li>
+      <p align="left">Continue incident analysis enough to identify the root
+      cause.</li>
+    <li>
+      <p align="left">Review lessons learned.</li>
+    <li>
+      <p align="left">Revise operating procedures to reflect lessons
+      learned..&nbsp;&nbsp;</li>
+  </ul>
+</blockquote>
+<h2 align="left"><a name="Summary">Procedure Summary</a></h2>
+<blockquote>
+  <blockquote>
+    <ol>
+      <li>
+        <p align="left"><b><a href="#TotalLock-Out">Lock Out <kbd>Blogger.com</kbd></a></b></li>
+      <li>
+        <p align="left"><a href="#BackupBlog"><b>Backup Blog Materials</b></a></li>
+      <li>
+        <p align="left"><a href="#IncidentSiteFeed"><b>Put Incident Notice in
+        Site Feed</b></a></li>
+      <li>
+        <p align="left"><a href="#MarkIncidentScene"><b>Put Down Incident
+        Markers</b></a></li>
+      <li>
+        <p align="left"><a href="#InitiateAnalysis"><b>Initiate Analysis</b></a></li>
+    </ol>
+  </blockquote>
+</blockquote>
+<h2 align="left">1.&nbsp; <a name="BloggerLockOut">Lock Out Blogger</a></h2>
+<blockquote>
+  <p align="left">The first step is to prevent FTP access from Blogger.com to
+  the blog files when</p>
+  <ul>
+    <li>
+      <p align="left">the incident involves damage or unexpected changes
+      produced by Blogger.com</li>
+    <li>
+      <p align="left">there is any other reason to suspect that Blogger.com has
+      lost operational integrity</li>
+  </ul>
+  <h3 align="left">1.1 <a name="TotalLock-Out">Total Lock-Out</a></h3>
+  <p align="left">If there is any concern that continued FTP access of
+  Blogger.com to the blog is unsafe, the simplest action is to revoke all FTP
+  privileges to the account set up for Blogger.com usage.&nbsp;</p>
+  <p align="left">So long as there is a total lock-out, no blog postings of any
+  kind will occur:</p>
+  <ul>
+    <li>
+      <p align="left">comments will not be accepted</li>
+    <li>
+      <p align="left">no pages can be updated on the blog</li>
+  </ul>
+  <p align="left">The only new postings to the blog will be restored files and
+  new ones created as part of the incident response.&nbsp; These postings are
+  performed by the web-site administrator, not Blogger.com.</p>
+  <h3 align="left">1.2 <a name="SelectiveLock-Out">Selective Lock-Out</a></h3>
+  <p align="left">The access control to different blog directories can be
+  updated to selectively remove authorizations of the blogger account to perform
+  FTP access.&nbsp; This allows a total lock-out to be rescinded with some
+  portions of the blog sites still shut down while incident resolution
+  continues.</p>
+</blockquote>
+<h2 align="left">2.&nbsp; <a name="BackupBlog">Backup Blog Materials</a></h2>
+<blockquote>
+  <blockquote>
+  <dl>
+     <dt><i>variation:</i></dt>
+     <dd>
+      <b>
+      Depending on the nature of the damage and opportunities for action, it may be desirable to perform
+      <a href="#IncidentSiteFeed">
+      steps 3</a> and <a href="#MarkIncidentScene"> 4</a> before taking this action.</b></dd>
+  </dl>
+  </blockquote>
+  <p align="left">Generally, a complete current backup is made.&nbsp; This
+  captures any damaged material and also any material that may not have been
+  backed up at this point.</p>
+  <p align="left">Because nfoCentrale backup is done onto a site image that is
+  also versioned in a Visual SourceSafe repository, we will have the last known
+  good values of every page as well as the latest values of every
+  page.&nbsp;&nbsp;</p>
+  <p align="left">This is done quickly by</p>
+  <ol>
+    <li>
+      <p align="left">Checking out all of the VSS pages for the blog image into
+      the image of the site</li>
+    <li>
+      <p align="left">FTP transfer of all hosted-site blog pages to the blog
+      image on the development system</li>
+    <li>
+      <p align="left">Check in of the pages that were checked out (updating
+      those that have changed)</li>
+    <li>
+      <p align="left">Check in of new pages from the site that had not been
+      transfered to the blog image before.</li>
+  </ol>
+</blockquote>
+<h2 align="left">3.&nbsp; <a name="IncidentSiteFeed">Put Incident Notice in Site
+Feed</a></h2>
+<blockquote>
+  <p align="left">If the Atom Site feed is itself corrupted or is suspected of
+  providing references to corrupted material, the simple immediate action is to
+  slam down an incident notice into the site feed:</p>
+  <ol>
+    <li>
+      <p align="left">Check out the atom feed page in the site image.</li>
+    <li>
+      <p align="left">Copy a generic notice over the site image version,
+      touching the date as needed to have the feed be more recent than the
+      last-posted one.</li>
+    <li>
+      <p align="left">FTP the copy to the hosted site so that no feed downloads
+      will retrieve any damaged material.</li>
+    <li>
+      <p align="left">Generally do not check in the feed with the incident
+      notice.&nbsp; This is a temporary expedient until the feed can be restored
+      from an earlier, undamaged version.</li>
+  </ol>
+  <p align="left">This is always done first to avoid syndication of damaged or
+  incorrect material.&nbsp;&nbsp;</p>
+</blockquote>
+<h2 align="left">4.&nbsp; <a name="MarkIncidentScene">Put Down Incident Markers</a></h2>
+<blockquote>
+  <p align="left">There are generic incident markers to be put down as follows:</p>
+  <ol>
+    <li>
+      <p align="left"><a href="B040801C.htm"><b>The Web Log Status page is replaced with an incident
+      marker</b></a> so that anyone who checks that page at this time will see that
+      there is an incident being addressed even though there is no other
+      information.&nbsp; This is accomplished copying the incident-response-in-progress
+      version atop the current version as easily and quickly as possible.&nbsp;
+      See <b><a href="B040801C.htm">B040801C: Web Log Status Page</a></b>.</li>
+    <li>
+      <p align="left">The default web log page and any damaged or failed post
+      pages are overlain in the same way.&nbsp; Each page is checked out, if it
+      already has material in the site image, and then a generic incident-scene
+      marker is put down on top in their place.</li>
+    <li>
+      <p align="left">The same is done for any archive pages that are corrupted
+      or missing.</li>
+    <li>
+      <p align="left">All of the incident markers are uploaded to the hosted
+      site via FTP.</li>
+  </ol>
+  <p align="left">At this point, there should be no damaged material in the
+  hosted blog, with no broken links into or out of that blog.&nbsp; No one is
+  exposed to damage any longer.&nbsp;&nbsp; Now we must clear the scene so that
+  recovery and forensic analysis can both occur.</p>
+</blockquote>
+<h2 align="left">5.&nbsp; <a name="InitiateAnalysis">Initiate Analysis</a></h2>
+<blockquote>
+  <blockquote>
+  <dl>
+
+     <dt><i>variation:</i></dt>
+
+     <dd>
+      <b>Make sure that <a href="#BackupBlog">backups of material</a> required
+      for forensic analysis have been made before this process begins.&nbsp;
+      Also, depending on how hastily markers were placed in Web Log Status and
+      the Site Feed, an early step will be to replace those emergency measures
+      with more informative substitutes.</b></dd>
+  </dl>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p align="left">It is now necessary to arrange everything so that restoration
+  of operation and resolution of the incident can proceed as independently as
+  possible:</p>
+  <ol>
+    <li>
+      <p align="left">A new incident is opened, unless there is an existing
+      incident which applies to the current situation.&nbsp; Enough initial
+      information is placed in the incident report to provide some indication of
+      what happened and what the next steps are.</li>
+    <li>
+      <p align="left">The slam of the Web Log Status page is revoked and a
+      new checkout initiated (on the development site).&nbsp; The Web Log Status
+      is updated to reflect the interruption and tie the new incident report to
+      the status summary and status history.</li>
+    <li>
+      <p align="left">The new material is checked in, transferred to the site
+      image, and posted via FTP to the hosted site.&nbsp; There is now initial
+      information on the condition of the site and the incident being worked on.</li>
+    <li>
+      <p align="left">The slam of the atom feed done in 3(1) is
+      revoked.&nbsp; If a damaged atom feed was produced as part of the
+      incident, it is branched from the backup and sequestered with the incident
+      material.&nbsp; Then the original branch is rolled-back to an usable
+      version, an incident notice inserted manually into the feed, and that is
+      used to restore the site feed.</li>
+    <li>
+      <p align="left">In the same way, the checkout of each place where an
+      incident marker is put down is rescinded, any damaged material is branched
+      over to the incident material, and the production version rolled
+      back.&nbsp; (If there is only the incident marker, that becomes the
+      production version instead.)&nbsp; The restored earlier versions will
+      incorporate incident information and indicators of their restored status
+      as appropriate.</li>
+  </ol>
+  <p align="left">At the end of this process, all damaged materials have been
+  captured as part of the incident materials and the production site has been
+  restored to a combination of rolled-back-to earlier materials and incident
+  markers.&nbsp;&nbsp;</p>
+  <p align="left">Now any further incident analysis and recovery effort is
+  undertaken.</p>
+</blockquote>
+
+  <hr color="#990033">
+
+<small><dl>
+     <dt><b><a name="0.00">0.00</a>    2004-08-03-15:47 Initiate Provisional Version (<a href="../construction/orcmid.htm">orcmid</a>)</b></dt>
+  <dd>
+    Start this with a provisional page and sketch that holds the materials we
+    want to create.&nbsp; Use the accompanying <a href="B040801A.htm">diary and job
+    jar</a> to record steps to take in evolving toward more-polished versions.</dd>
+</dl></small>
+
+
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm" target="_top"><img border="0" src="wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-08-03-15:47 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:13 $<br>
+      $$Revision: 28 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

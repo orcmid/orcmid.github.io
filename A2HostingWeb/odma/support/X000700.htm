@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000700.htm 7     00-09-13 11:30 Orcmid $-->
+<title>X000700 - Win16 Down-Level Interoperability Problems Warning</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="X00-log.htm#X000700">X000700</a>: Win16 Down-Level Interoperability Problems</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated </span>2000-09-13-1127 -0700 (pdt)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Reliability - Warning</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000700"> X000700</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: Investigate and Confirm</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: </b><kbd><b>Odma.dll</b>, <b>Odma.lib</b> </kbd>versions
+        1.0, 1.5, and 2.0</td>
+      <td width="50%"><b>Repaired in: </b>none</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: open</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">Dennis Hamilton</a> 2000-07-24</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-07-24</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>Summary:</h3>
+
+<blockquote>
+  <ol>
+    <li>In experimenting with down-level interoperability (<a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">FAQtip
+      Q000703 here</a>), a Win16 client (<b><code>MultODMA</code></b> from the
+      ODMA 1.0 toolkit) compiled for ODMA 1.0 was found to not operate with the
+      Win16 Connection Managers for ODMA 1.5 and ODMA 2.0.</li>
+    <li>As part of the <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">same experiment</a>, it was
+      confirmed that up-level Win16 clients can also fail badly when operated
+      with a down-level Connection Manager.&nbsp; The ODMA 2.0 Win16 client, <b><code>ODMATest</code></b>,
+      fails badly when operated with Connection Managers earlier than ODMA 2.0.</li>
+  </ol>
+  <p>The underlying causes have not been identified.&nbsp; This is a warning
+  that there may be interoperability problems between levels of Win16 ODMA-aware
+  clients and different versions of the Win16 Connection Manager.&nbsp;&nbsp;</p>
+  <p>There is much less difficulty with inter-level operation on Win32.&nbsp;
+  The experimental results obtained so far are documented in <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">FAQtip
+  Q000703, ODMA-Aware Application and ODMA Connection-Manager Version
+  Compatibility</a>.</p>
+  <p>This incident is given a low priority based on the fact that no problem
+  reports have ever arisen as a result of this situation.&nbsp;&nbsp;</p>
+</blockquote>
+
+  <h3>Action:</h3>
+<blockquote>
+  <ol>
+    <li>Developers, maintainers, and integrators of Win16 ODMA-aware
+      applications are cautioned to be on alert for potential difficulties using
+      Win16 Connection Manager implementations different than the one for which
+      the ODMA-aware application was built.</li>
+    <li>Experts in Win16 applications are requested to advise AIIM DMware of
+      their own experience and understanding of Win16 <b><code>.lib</code></b>
+      and <b><code>.dll</code></b> differences that account for this difficulty.</li>
+    <li>We request that people who continue to support ODMA-aware Win16
+      applications conduct the <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">FAQtip Q000703</a>
+      experiment using that application.&nbsp; There is supporting information
+      on setting up such experiments in <a href="http://www.infonuovo.com/odma/downloads/Q000706.htm">a
+      companion note</a>.</li>
+    <li>Consider whether it is worthwhile to remove support for the Win16
+      Connection Manager beyond the current ODMA 2.0 version, not attempting any
+      further upgrades or changes to support Win16 in future ODMA SDK releases.</li>
+  </ol>
+  <p>Send information and feedback to the <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA
+  Tech List</a> or directly to the <a href="mailto:infonuovo@email.com">AIIM
+  DMware Technical Coordinator</a>.</p>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-07-28-08:47 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-09-13 11:30 $<br>
+$$Revision: 7 $</em></p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html><head><title>DMA Data Types</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2>DMA Property DataTypes</h2>
+<p>The following are the property datatypes defined in DMA 1.0:</p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD>
+<TD><p><b>Define Name</b></p></TD>
+<TD><p><b>Description</b></p></TD>
+</TR>
+<TR>
+<TD><p>Binary</p></TD>
+<TD><p>DMA_DATATYPE_BINARY</p></TD>
+<TD><p>Base data type DmaBinaryValue. Array of unsigned 8 bit bytes.</p></TD></TR><TR>
+<TD><p>Boolean</p></TD>
+<TD><p>DMA_DATATYPE_BOOLEAN</p></TD>
+<TD><p>Base data type DmaBoolean. Can take on at least the values DMA_TRUE, DMA_FALSE, and DMA_UNKNOWN.</p></TD></TR><TR>
+<TD><p>Date Time</p></TD>
+<TD><p>DMA_DATATYPE_DATETIME</p></TD>
+<TD><p>Base data type pDmaDateTime. A DMA string holding a date time in a format described in the DMA Internationalization and Localization section.</p></TD></TR><TR>
+<TD><p>Float64</p></TD>
+<TD><p>DMA_DATATYPE_FLOAT64</p></TD>
+<TD><p>Base data type DmaFloat64. An IEEE standard floating point number.</p></TD></TR><TR>
+<TD><p>ID</p></TD>
+<TD><p>DMA_DATATYPE_ID</p></TD>
+<TD><p>Base data type DmaId. A DCE UUID or Microsoft GUID.</p></TD></TR><TR>
+<TD><p>Integer32</p></TD>
+<TD><p>DMA_DATATYPE_INTEGER32</p></TD>
+<TD><p>Base data type DmaInteger32. A signed integer that can take on at least the values -2,147,483,648 to +2,147,483,647.</p></TD></TR><TR>
+<TD><p>Object</p></TD>
+<TD><p>DMA_DATATYPE_OBJECT</p></TD>
+<TD><p>Base data type Dmapv. A COM interface pointer to a DMA object.</p></TD></TR><TR>
+<TD><p>String</p></TD>
+<TD><p>DMA_DATATYPE_STRING</p></TD>
+<TD><p>Base data type pDmaString. A DMA string. (See the DMA Internationalization and Localization section.)</p></TD></TR><TR>
+<TD><p>Any Base Datatype</p></TD>
+<TD><p>DMA_DATATYPE_ANY_BASE_DATATYPE</p></TD>
+<TD><p>Not a base data type.  Indicates that any base data type will be acceptable in the context in which it is used. It is used to specify the base data type of the operand to the operators such as dmaQueryOperator_IsNull and dmaQueryOperator_IsDefined.</p></TD></TR><TR>
+<TD><p>Class</p></TD>
+<TD><p>DMA_DATATYPE_CLASS</p></TD>
+<TD><p>Not a base data type.  This value is used as the result type for a join operator, and as the required data type in operand descriptions where a join expression, searchable class or subquery with empty select list is required.</p></TD></TR><TR>
+<TD><p>Result Row</p></TD>
+<TD><p>DMA_DATATYPE_RESULT_ROW</p></TD>
+<TD><p>Not a base data type.  This indicates that the value is a query result row object.</p></TD></TR>
+</TABLE></body>

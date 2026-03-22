@@ -1,0 +1,1384 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>MSDN Home</title>
+</head>
+
+<body>
+
+<div style="DISPLAY: none">
+  <img height="0" hspace="0" src="http://c.microsoft.com/trans_pixel.asp?source=msdn&TYPE=PV&p=library_en-us_dnglobspec_html&r=http%3A//msdn.microsoft.com/library/shared/deeptree/asp/rightframe.asp%3Fdtcfg%3D/library/deeptreeconfig.xml%26url%3D/library/en-us/dnglobspec/html/ws-inspection.asp%3Fframe%3Dtrue%26hidetoc%3Dfalse" width="0" border="0">
+</div>
+<script language="JavaScript"><!--
+   function BrowserData()
+{
+		this.userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)";
+
+		this.bot = false;
+
+		this.browser = "MSIE";
+
+		this.majorVer = 6;
+
+		this.minorVer = "0";
+
+		this.betaVer = "0";
+
+		this.platform = "NT";
+
+		this.platVer = "5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322";
+
+		this.getsNavBar = true;
+
+		this.doesActiveX = true;
+
+		this.doesPersistence = true;
+
+		this.fullVer = 6;
+
+   }
+
+   var oBD = new BrowserData();
+
+   //--></script>
+<script language="JavaScript"><!--
+   function BrowserData()
+{
+		this.userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)";
+
+		this.bot = false;
+
+		this.browser = "MSIE";
+
+		this.majorVer = 6;
+
+		this.minorVer = "0";
+
+		this.betaVer = "0";
+
+		this.platform = "NT";
+
+		this.platVer = "5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322";
+
+		this.getsNavBar = true;
+
+		this.doesActiveX = true;
+
+		this.doesPersistence = true;
+
+		this.fullVer = 6;
+
+   }
+
+   var oBD = new BrowserData();
+
+   //--></script>
+<script>
+	if( self == top )
+{
+	location = "/library/en-us/dnglobspec/html/ws-inspection.asp";
+}
+
+</script>
+<xml id="xmlPageContext"><eyebrow findmenu="false">
+	<item label="MSDN Home" url="/default.asp"/>
+	<item label="MSDN Library" url="/library/default.asp"/>
+	<item label="XML and Web Services" url="/library/en-us/dnanchor/html/WebServicesAnchor.asp" id="msdnlib2079" xmlsrc="/library/en-us/toc/msdnlib/msdnlib2079_.xml"/><item label="Specifications" url="/library/en-us/dnglobspec/html/wsspecsover.asp" id="msdnlib2080"/><item label="Metadata Specifications Index Page" url="/library/en-us/dnglobspec/html/wsmetaspecindex.asp" id="dnglobspec7" xmlsrc="/library/en-us/toc/dnglobspec/dnglobspec7_.xml"/><item label="Web Services Inspection Language (WS-Inspection) 1.0" url="/library/en-us/dnglobspec/html/ws-inspection.asp" id="dnglobspec11"/></eyebrow></xml>
+<script>
+var sContentID = "_758361"; 
+ </script>
+<!--VENUS_START-->
+<!---VENUS_END--->
+<script language="javascript">
+var doImage = doImage;
+var TType = TType;
+
+function mhHover(tbl, idx, cls)
+{
+	var t, d;
+	if (document.getElementById)
+		t = document.getElementById(tbl);
+	else
+		t = document.all(tbl);
+	if (t == null) return;
+	if (t.getElementsByTagName)
+		d = t.getElementsByTagName("TD");
+	else
+		d = t.all.tags("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}
+
+function setMSResearch() {
+  var time = new Date();
+  if( document.cookie.indexOf( 'msresearch=1 ') == -1 ) {
+    document.cookie = 'msresearch=' + time.getTime() + ':' + escape( document.location) + ':' + escape( document.referrer) + '; path=/; domain=.microsoft.com; ';
+  }
+}
+
+function footerjs(doc)
+{
+	if (doImage == null)
+	{
+		var tt = TType == null ? "PV" : TType;
+		doc.write('<layer visibility="hide"><div style="display:none"><img src="http://c.microsoft.com/trans_pixel.asp?source=msdn&TYPE=' + tt + '&p=library_en-us_dnglobspec_html&r=http%3a%2f%2fmsdn.microsoft.com%2flibrary%2fshared%2fdeeptree%2fasp%2frightframe.asp%3fdtcfg%3d%2flibrary%2fdeeptreeconfig.xml%26url%3d%2flibrary%2fen-us%2fdnglobspec%2fhtml%2fws-inspection.asp%3fframe%3dtrue%26hidetoc%3dfalse" width=0 height=0 hspace=0 vspace=0 border=0 /></div></layer>'
+	);
+	}
+
+	if( ( document.cookie.indexOf( 'msresearch=1 ') == -1 ) 
+	 && ( document.cookie.indexOf( 'msresearch=')   != -1 ) ) {
+	  setInterval( "setMSResearch()", 1000 );
+	}
+}
+</script>
+<table height="24" cellSpacing="0" cellPadding="4" width="100%" bgColor="#ffffff" border="0">
+  <tbody>
+    <tr>
+      <td class="eyebrow" vAlign="center" align="left" width="100%">&nbsp;&nbsp;
+        <a class="small" href="http://msdn.microsoft.com/default.asp" target="_top">MSDN
+        Home</a>&nbsp;&gt;&nbsp; <a class="small" href="http://msdn.microsoft.com/library/default.asp" target="_top">MSDN
+        Library</a>&nbsp;&gt;&nbsp; <a class="small" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/WebServicesAnchor.asp" target="_top">XML
+        and Web Services</a>&nbsp;&gt;&nbsp; <a class="small" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnglobspec/html/wsspecsover.asp" target="_top">Specifications</a>&nbsp;&gt;&nbsp;
+        <a class="small" href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnglobspec/html/wsmetaspecindex.asp" target="_top">Metadata
+        Specifications Index Page</a><a href></a></td>
+    </tr>
+  </tbody>
+</table>
+<table class="clsContainer" style="TABLE-LAYOUT: fixed" cellSpacing="0" cellPadding="15" width="100%" border="0" float="left">
+  <tbody>
+    <tr>
+      <td vAlign="top">
+        <table class="clsPartContainer" id="topTable" style="FLOAT: right; MARGIN-LEFT: 8px; MARGIN-RIGHT: 6px" cellSpacing="0" cellPadding="0" width="145" border="0">
+          <tbody>
+            <tr>
+              <td vAlign="top"><!-- Page Options web part Start -->
+                <table class="clsPart" id="BF309568-1CD4-4c9c-A46E-BB1CA97E0C97" cellSpacing="0" cellPadding="0" width="145" border="0">
+                  <tbody>
+                    <tr>
+                      <td class="clsPartHead" vAlign="center" align="left" width="15" height="19"><img class="clsPartHead" src="gripblue.gif" align="absMiddle" width="15" height="19"></td>
+                      <td class="clsPartHead" vAlign="center" align="middle" width="115"><b class="clsPartHead">Page
+                        Options</b></td>
+                      <td class="clsPartRight" vAlign="center" align="right" width="25" height="19"><img class="clsMinimize" src="downlevel.gif" align="absMiddle" width="25" height="19"></td>
+                    </tr>
+                    <tr>
+                      <td colSpan="3">
+                        <table id="Table1" cellSpacing="0" cellPadding="0" width="100%" bgColor="#ffffff" border="0">
+                          <tbody>
+                            <tr>
+                              <td vAlign="top" width="1" bgColor="#6699cc">
+                                <div style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 1px; PADDING-TOP: 0px">
+                                </div>
+                              </td>
+                              <td vAlign="top" width="145" bgColor="#f1f1f1"><IFRAME id=frmRatingsOptions 
+src="/msdn-online/shared/components/ratings/ratings.aspx?opt=1&amp;ContentID=_758361&amp;HideDiscuss=1" 
+frameBorder=0 width="100%" scrolling=no height=130>
+                                </IFRAME>
+                              </td>
+                              <td vAlign="top" width="1" bgColor="#6699cc">
+                                <div style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 1px; PADDING-TOP: 0px">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td vAlign="top" bgColor="#6699cc" colSpan="3" height="1">
+                                <div style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 1px; PADDING-TOP: 0px">
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- Page Options web part end -->
+                <div class="storeUserData" id="oLayout">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!--TOOLBAR_START-->
+        <!--TOOLBAR_EXEMPT-->
+        <!--TOOLBAR_END-->
+        <!-- Begin Content -->
+        <!--NONSCROLLING BANNER START-->
+        <div id="nsbanner">
+          <div id="TitleRow">
+            <h1 class="dtH1"><a name="ws-inspection"></a>Web Services Inspection
+            Language (WS-Inspection) 1.0</h1>
+          </div>
+        </div>
+        <!--NONSCROLLING BANNER END-->
+        <p>Authors:<br>
+        <a href="mailto:keithba@microsoft.com">Keith Ballinger</a>, Microsoft<br>
+        <a href="mailto:peterbr@us.ibm.com">Peter Brittenham</a>, IBM<br>
+        <a href="mailto:ashokma@microsoft.com">Ashok Malhotra</a>, Microsoft<br>
+        <a href="mailto:nagy@watson.ibm.com">William A. Nagy</a>, IBM<br>
+        <a href="mailto:stefanph@microsoft.com">Stefan Pharies</a>, Microsoft</p>
+        <p>Copyright � 2001 <a href="http://www.ibm.com/">International
+        Business Machines Corporation</a>, <a href="http://www.microsoft.com/">Microsoft
+        Corporation</a></p>
+        <hr noShade SIZE="1">
+        <h2 class="dtH1">Abstract</h2>
+        <p>The WS-Inspection specification provides an XML format for assisting
+        in the inspection of a site for available services and a collection of
+        rules for how inspection-related information should be made available
+        for consumption. A WS-Inspection document provides a means for
+        aggregating references to pre-existing service description documents
+        which have been authored in any number of formats. These inspection
+        documents are then made available at the point-of-offering of the
+        service as well as through references which may be placed within a
+        content medium such as HTML.</p>
+        <h2 class="dtH1">Status</h2>
+        <p>This draft represents the current thinking with regard to locating
+        and inspecting services within IBM and Microsoft. It consolidates
+        concepts found in ADS and DISCO (earlier proposals in this space).</p>
+        <h2 class="dtH1">Table of Contents</h2>
+        <p><a href="#ws-inspection_introduction" target="_self">1 Introduction</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_designgoals" target="_self">1.1
+        Design Goals</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectiondocumentexample" target="_self">1.2
+        WS-Inspection Document Examples</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_notationalconventions" target="_self">1.3
+        Notational Conventions</a><br>
+        <a href="#ws-inspection_inspectiondefinition" target="_self">2.0
+        Inspection Document Definition</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectiondocumentstructure" target="_self">2.1
+        WS-Inspection Document Structure</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_languageextensibilitybindings" target="_self">2.1.1
+        Language Extensibility and Bindings</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_documentation" target="_self">2.1.2
+        Documentation</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_services" target="_self">2.2
+        Services</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_textdescriptionsofservices" target="_self">2.2.1
+        Text Descriptions of Services</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_servicenames" target="_self">2.2.2
+        Service Names</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_servicedescriptionreferences" target="_self">2.2.3
+        Service Description References</a><u><br>
+        </u>&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_inspectionreferences" target="_self">2.3
+        Links to Other Inspection Documents and Related Aggregation Information
+        Sources</a><br>
+        <a href="#ws-inspection_wsdlbinding" target="_self">3.0 WSDL Binding</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_howwsdlextends" target="_self">3.1
+        How the WSDL Binding Extends the WS-Inspection Specification</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionwsdlreference" target="_self">3.2
+        wsilwsdl:reference</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionwsdlreferencedservice" target="_self">3.2.1
+        wsilwsdl:referencedService</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionwsdlimplementedbinding" target="_self">3.2.2
+        wsilwsdl:implementedBinding</a><br>
+        <a href="#ws-inspection_uddibindings" target="_self">4.0 UDDI Binding</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_howuddiextends" target="_self">4.1
+        How the UDDI Binding Extends the WS-Inspection Specification</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionuddibusinessdescription" target="_self">4.2
+        wsiluddi:businessDescription</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionuddiservicedescription" target="_self">4.3
+        wsiluddi:serviceDescription</a><br>
+        <a href="#ws-inspection_additionalbindings" target="_self">5.0
+        Developing Additional Bindings</a><br>
+        <a href="#ws-inspection_inspectionpublication" target="_self">6.0
+        Inspection Document Publication</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_fixednameinspections" target="_self">6.1
+        Fixed Name Inspection Documents</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_linkedinspections" target="_self">6.2
+        Linked Inspection Documents</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ws-inspection_linkingtoinspectionswithinhtml" target="_self">6.2.1
+        Linking to Inspection Documents within HTML</a><br>
+        <a href="#ws-inspection_references" target="_self">7.0 References</a><br>
+        <a href="#ws-inspection_notesonuris" target="_self">A 1 Notes on URIs</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_xmlnamespaces" target="_self">A
+        1.1 XML Namespaces and Schema Locations</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_relativeuris" target="_self">A
+        1.2 Relative URIs</a><br>
+        <a href="#ws-inspection_completewsinspectiongrammar" target="_self">A 2
+        The Complete WS-Inspection Grammar</a><br>
+        <a href="#ws-inspection_schemas" target="_self">A 3 Schemas</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsinspectionschema" target="_self">A
+        3.1 WS-Inspection Schema</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_wsdlbindingschema" target="_self">A
+        3.2 WSDL Binding Schema</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_uddibindingschema" target="_self">A
+        3.3 UDDI v1 Binding Schema</a><br>
+        &nbsp;&nbsp;&nbsp;<a href="#ws-inspection_uddiv2bindingschema" target="_self">A
+        3.4 UDDI v2 Binding Schema</a></p>
+        <hr noShade SIZE="1">
+        <h2 class="dtH1"><a name="ws-inspection_introduction"></a>1.
+        Introduction</h2>
+        <p>Recently, a number of specifications have been developed which seek
+        to describe Web Services at varying levels. The proposed standards for
+        describing services at a functional level, WSDL [<a href="#ws-inspection_refwsdl" target="_self">1</a>],
+        and for describing them from a more business-centric perspective, the
+        UDDI [<a href="#ws-inspection_refuddi" target="_self">2</a>] schema, are
+        but two examples. What is missing, however, is the ability to tie
+        together, at the point of offering of the service, these various sources
+        of information in a manner which is both simple to create as well as to
+        utilize. The WS-Inspection specification addresses this need by defining
+        an XML grammar which facilitates the aggregation of references to
+        different types of service description documents, and then provides a
+        well-defined pattern of usage for instances of this grammar. By doing
+        this, the WS-Inspection specification provides a means by which to
+        inspect sites for service offerings.</p>
+        <p>Because there have already been attempts made to gather together and
+        publish much of the description information at a single location, the
+        WS-Inspection specification also provides a means by which these
+        existing repositories can be referenced and utilized, so as not to have
+        to duplicate information if the duplication is not desired.</p>
+        <h3 class="dtH1"><a name="ws-inspection_designgoals"></a>1.1 Design
+        Goals</h3>
+        <p>The two major design goals of the WS-Inspection specification are
+        simplicity and extensibility. For the most part, a WS-Inspection
+        document is nothing more than an aggregation of pointers to service
+        description documents. This makes WS-Inspection documents fairly easy to
+        write and maintain. Because a WS-Inspection document may point to a
+        variety of service description document formats, WS-Inspection documents
+        may be created in such a way as to allow the consumer of the document to
+        pick and choose from the available descriptions, and to only access
+        those which they are capable of understanding. As new description
+        formats arise, new references can be added to existing WS-Inspection
+        documents without requiring that a modification be made to the base
+        WS-Inspection schema.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectiondocumentexample"></a>1.2
+        WS-Inspection Document Examples</h3>
+        <p>The following is an example of a simple WS-Inspection document for a
+        single service which provides stock quote information. The service has a
+        corresponding HTTP accessible WSDL document which describes its
+        interface.</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/stockquote.wsdl&quot; /&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;</pre>
+        <p>The next, more complex example, shows the WS-Inspection document for
+        two sample services which happen to be providing financial tools. The
+        first, a stock quote service, has two available descriptions; one in an
+        HTTP-accessible WSDL document, and the other in a UDDI directory. The
+        second service is described by only an anonymous FTP-accessible WSDL
+        document. The WS-Inspection document also contains a link to another
+        WS-Inspection document.</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+            xmlns:wsiluddi=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/&quot;&gt;
+  &lt;service&gt;
+    &lt;abstract&gt;A stock quote service with two descriptions&lt;/abstract&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/stockquote.wsdl&quot;/&gt;
+    &lt;description referencedNamespace=&quot;urn:uddi-org:api&quot;&gt;
+       &lt;wsiluddi:serviceDescription location=&quot;http://www.example.com/uddi/inquiryapi&quot;&gt;
+         &lt;wsiluddi:serviceKey&gt;4FA28580-5C39-11D5-9FCF-BB3200333F79&lt;/wsiluddi:serviceKey&gt;
+       &lt;/wsiluddi:serviceDescription&gt;
+    &lt;/description&gt;
+  &lt;/service&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;ftp://anotherexample.com/tools/calculator.wsdl&quot;/&gt;
+  &lt;/service&gt;
+  &lt;link referencedNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+        location=&quot;http://example.com/moreservices.wsil&quot;/&gt;
+&lt;/inspection&gt;
+</pre>
+        <p>A detailed description of the elements used in these two examples can
+        be found in Section 2.</p>
+        <p>Note: For these examples, the referenced WSDL documents are assumed
+        to each contain a single WSDL service element. See Section 3 for more
+        information.</p>
+        <h3 class="dtH1"><a name="ws-inspection_notationalconventions"></a>1.3
+        Notational Conventions</h3>
+        <ol type="1">
+          <li>The keywords &quot;MUST&quot;, &quot;MUST NOT&quot;,
+            &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;,
+            &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;,
+            &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be
+            interpreted as described in RFC-2119 [<a href="#ws-inspection_refkeywords" target="_self">3</a>].
+          <li>The following namespace prefixes are used throughout this
+            document:
+            <table class="data">
+              <tbody>
+                <tr vAlign="top">
+                  <th class="data" align="left" width="12%">prefix</th>
+                  <th class="data" align="left" width="69%">namespace URI</th>
+                  <th class="data" align="left" width="19%">definition</th>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">wsil</td>
+                  <td class="data" width="69%">http://schemas.xmlsoap.org/ws/2001/10/inspection/</td>
+                  <td class="data" width="19%">WS-Inspection namespace for the
+                    WS-Inspection framework.</td>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">wsilwsdl</td>
+                  <td class="data" width="69%">http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/</td>
+                  <td class="data" width="19%">WS-Inspection namespace for the
+                    WS-Inspection WSDL binding.</td>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">wsiluddi</td>
+                  <td class="data" width="69%">http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/</td>
+                  <td class="data" width="19%">WS-Inspection namespace for the
+                    WS-Inspection UDDI binding.</td>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">uddi</td>
+                  <td class="data" width="69%">urn:uddi-org:api</td>
+                  <td class="data" width="19%">API and document namespace
+                    defined by the UDDI v1 specification.</td>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">uddiv2</td>
+                  <td class="data" width="69%">urn:uddi-org:api_v2</td>
+                  <td class="data" width="19%">API and document namespace
+                    defined by the UDDI v2 specification.</td>
+                </tr>
+                <tr vAlign="top">
+                  <td class="data" width="12%">(other)</td>
+                  <td class="data" width="69%">(various)</td>
+                  <td class="data" width="19%">All other namespace prefixes are
+                    samples only. In particular, URIs starting with
+                    &quot;http://example.com&quot; represent some
+                    application-dependent or context-dependent URI [<a href="#ws-inspection_refuri" target="_self">4</a>].</td>
+                </tr>
+              </tbody>
+            </table>
+          <li>This specification uses an <b>informal syntax</b> to describe the
+            XML grammar of a WS-Inspection document:
+            <ul type="disc">
+              <li>The syntax appears as an XML instance, but the values indicate
+                the data types instead of values.
+              <li>Characters are appended to elements and attributes as follows:
+                &quot;?&quot; (0 or 1), &quot;*&quot; (0 or more), &quot;+&quot;
+                (1 or more).
+              <li>Elements names ending in &quot;...Â&quot; (such as
+                &lt;element...Â/&gt; or &lt;element...Â&gt;)
+                indicate that elements/attributes irrelevant to the context are
+                being omitted.
+              <li>Grammar in bold has not been introduced earlier in the
+                document, or is of particular interest in an example.
+              <li>&lt;-- extensibility element --&gt; is a placeholder for
+                elements from some &quot;other&quot; namespace (like ##other in
+                XSD).
+              <li>The XML namespace prefixes (defined above) are used to
+                indicate the namespace of the element being defined.
+              <li>Examples starting with &lt;?xml contain enough information to
+                conform to this specification; others examples are fragments and
+                require additional information to be specified in order to
+                conform.</li>
+            </ul>
+          </li>
+        </ol>
+        <h2 class="dtH1"><a name="ws-inspection_inspectiondefinition"></a>2.0
+        Inspection Document Definition</h2>
+        <p>This section describes the core elements of the WS-Inspection
+        language. Binding extensions for WSDL and UDDI are included in Sections
+        3 and 4.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectiondocumentstructure"></a>2.1
+        WS-Inspection Document Structure</h3>
+        <p>A WS-Inspection document contains an <b>inspection</b> element at the
+        root, and references to individual service descriptions or links to
+        collections of service descriptions as descendants. The grammar of a
+        WS-Inspection document is as follows:</p>
+        <pre class="code">&lt;wsil:inspection&gt;
+  &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+  &lt;wsil:service&gt; *
+    &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; *
+    &lt;wsil:name xml:lang=&quot;&quot;? ... /&gt; *
+    &lt;wsil:description referencedNamespace=&quot;uri&quot; location=&quot;uri&quot;?&gt; *
+      &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+      &lt;-- extensibility element --&gt; ?
+    &lt;/wsil:description&gt;
+  &lt;/wsil:service&gt;
+  &lt;wsil:link referencedNamespace=&quot;uri&quot; location=&quot;uri&quot;?/&gt;  *
+    &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+    &lt;-- extensibility element --&gt; ?
+  &lt;/wsil:link&gt;
+&lt;/wsil:inspection&gt;
+</pre>
+        <p>with the additional constraint that the <b>inspection</b> element
+        MUST contain at least one <b>service</b> child or one <b>link</b> child,
+        and MAY contain a combination of both. A more exact definition of the
+        grammar, which includes the above constraint, may be found in Appendix
+        2. Each of the aforementioned elements is described in the corresponding
+        section below.</p>
+        <h4 class="dtH1"><a name="ws-inspection_languageextensibilitybindings"></a>2.1.1
+        Language Extensibility and Bindings</h4>
+        <p>In the WS-Inspection specification, the term <b>binding</b> refers to
+        the process of associating specific description format/retrieval related
+        information with a more abstract WS-Inspection entity. For example,
+        hints describing what type of information may be found in a referenced
+        document of a particular type, or information concerning the retrieval
+        of such documents require the use of description format specific
+        bindings. The WS-Inspection specification allows elements representing a
+        specific technology (referred to here as <b>extensibility elements</b>)
+        under both <b>description</b> and <b>link</b> elements. Extensibility
+        elements MUST use an XML namespace different from that of the base
+        WS-Inspection language.</p>
+        <p>Extensibility elements allow innovation in the area of service
+        description without having to revise the base WS-Inspection
+        specification. This document recommends that specifications defining
+        such description formats also define any necessary WS-Inspection
+        extensions required to reference them.</p>
+        <p>See Sections 3 and 4 for examples of extensibility elements defined
+        as part of the base WS-Inspection specification.</p>
+        <h4 class="dtH1"><a name="ws-inspection_documentation"></a>2.1.2
+        Documentation</h4>
+        <p>The WS-Inspection specification uses the optional <b>abstract</b>
+        element as a container where a small textual description can be placed.
+        The content of this element is intended for human consumption. The
+        abstract element is allowed inside any base WS-Inspection language
+        element which allows child elements.</p>
+        <p>An optional <b>xml:lang</b> attribute, as defined in [<a href="#ws-inspection_refxml" target="_self">5</a>],
+        may be specified on the element to indicate the language in which the
+        abstract has been written. Multiple abstract elements which have the
+        same value for the xml:lang attribute MAY appear as siblings.</p>
+        <h3 class="dtH1"><a name="ws-inspection_services"></a>2.2 Services</h3>
+        <p>The <b>service</b> element acts as the delineator between collections
+        of description references for services. An <b>inspection</b> element may
+        contain any number of <b>service</b> elements within it. Each <b>service</b>
+        element MAY have one or more <b>abstract</b> elements and one or more <b>name</b>
+        elements, and MUST have at least one <b>description</b> element, but MAY
+        have more.</p>
+        <h4 class="dtH1"><a name="ws-inspection_textdescriptionsofservices"></a>2.2.1
+        Text Descriptions of Services</h4>
+        <p>One or more <b>abstract</b> elements may be used within a service
+        element to provide a location where a small textual description about
+        the service can be placed. The content of this abstract is intended for
+        human consumption, and is only intended to provide a small fragment of
+        useful information about the service. Upon receiving a WS-Inspection
+        document, a tool may use this field to ask the user if they wish to gain
+        more information about the service, without requiring that any of the
+        referenced descriptions be obtained beforehand. It is not the purpose of
+        this element to replace a more complete service description language.</p>
+        <p>More complex sets of documentation MAY be added through the use of
+        description elements which point to full fledged description documents.</p>
+        <h4 class="dtH1"><a name="ws-inspection_servicenames"></a>2.2.2 Service
+        Names</h4>
+        <p>The <b>name</b> element may be used to associate a name with a
+        particular service. As with the abstract element, the name element is
+        intended only for human consumption, and as such is not guaranteed to be
+        unique.</p>
+        <p>An optional <b>xml:lang</b> attribute may be specified on the element
+        to indicate the language in which the name has been written. Multiple
+        name elements which have the same value for the xml:lang attribute MAY
+        appear as siblings.</p>
+        <h4 class="dtH1"><a name="ws-inspection_servicedescriptionreferences"></a>2.2.3
+        Service Description References</h4>
+        <p>The most useful part of the inspection is the information contained
+        within the <b>description</b> elements. These elements can be used to
+        provide pointers to service description documents of various forms,
+        allowing the consumer to process only the ones that they find useful.
+        The <b>referencedNamespace</b> attribute identifies the namespace to
+        which the referenced document belongs. For example, the value of the
+        referencedNamespace attribute on a description element which points to a
+        WSDL document would be &quot;http://schemas.xmlsoap.org/wsdl/&quot;.
+        Consumers of WS-Inspection documents may use the referencedNamespace
+        attribute to determine whether or not it is of value to them to retrieve
+        the referenced description document.</p>
+        <p>The optional <b>location</b> attribute MAY be used to provide the
+        actual reference to the description. The value of the location attribute
+        MUST be a valid URL, and the description MUST be retrievable from that
+        URL using the primary access mechanism for the scheme specified in the
+        URL (e.g. for an HTTP URL, the document must be retrievable by
+        performing an HTTP GET on the provided URL.) If the document cannot be
+        retrieved using the primary access mechanism, or if more information is
+        necessary to perform the retrieval, then that information MUST be
+        specified using the extensibility mechanism.</p>
+        <p>One extensibility element MAY appear under the <b>description</b>
+        element to provide any additional information which is needed to
+        retrieve or process the service description, or any hints about the
+        contents of the description document which may prove useful for the
+        consumer deciding whether or not that particular service description
+        should be retrieved. The extensibility element used MUST be the
+        supported binding, if one exists, for the document namespace specified
+        by the <b>referencedNamespace</b> attribute of the parent description
+        element. A binding is &quot;supported&quot; if its definition is
+        included as part of this specification, or if it is agreed upon by the
+        controlling body of the specification for the description mechanism
+        which is being bound to. If there is no supported binding for a
+        particular description mechanism, then interoperability is not
+        guaranteed.</p>
+        <p>While every attempt should be made to insure that the information
+        contained within a WS-Inspection document is accurate, consumers of the
+        document MUST NOT assume that the information provided matches exactly
+        what is in the referenced document. While bindings may be used to
+        provide hints about referenced documents, they MUST NOT be used as the
+        final source of service description information.</p>
+        <p>Authors of WS-Inspection documents need make every attempt to make
+        sure that the information contained within the documents is accurate,
+        but consumers of the documents MUST NOT assume that the information
+        provided matches exactly what is in the referenced document. The final
+        decision must be made by retrieving and processing the referenced
+        document.</p>
+        <h3 class="dtH1"><a name="ws-inspection_inspectionreferences"></a>2.3
+        Links to other Inspection Documents and Related Aggregation Information
+        Sources</h3>
+        <p>The <b>link</b> element allows WS-Inspection documents to reference
+        additional aggregations of service descriptions, such as other
+        WS-Inspection documents or UDDI repositories.</p>
+        <p>A hierarchy of WS-Inspection documents could be created, for example,
+        using link elements of the following form:</p>
+        <pre class="code">&lt;wsil:link referencedNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+           location=&quot;uri of WS-Inspection document&quot;&gt;
+</pre>
+        <p>Because many service descriptions will be published only within other
+        information registries, such as UDDI, the link element may be used to
+        prevent service providers from having to create inspection documents
+        with large numbers of service elements which contain only single
+        description elements, all pointing back to the same location in the
+        information registry. By using link elements of the following form:</p>
+        <pre class="code">&lt;wsil:link referencedNamespace=&quot;uri&quot; location=&quot;uri&quot;?&gt;
+  &lt;-- extensibility element --&gt;
+&lt;/wsil:link&gt;
+</pre>
+        <p>the service provider is able to indicate to the consumer of the
+        WS-Inspection link that they should look in the indicated location for
+        additional service description aggregations. This gives the provider the
+        ability to reference the pre-existing information while still allowing
+        it to be discovered through the WS-Inspection inspection process.</p>
+        <p>The link element MUST only be used to reference well-defined service
+        description aggregations, such as WS-Inspection documents and UDDI
+        businessEntities.</p>
+        <p>The referencedNamespace attribute on the link element identifies the
+        namespace of the linked aggregation source. The optional location
+        attribute MAY be used to provide the actual link to the source if it is
+        retrievable from the provided URL using the primary access mechanism for
+        the scheme specified in the URL. If the aggregation cannot be retrieved
+        using the primary access mechanism, then that information MUST be
+        specified using the extensibility mechanism.</p>
+        <p>One extensibility element MAY appear under the link element to
+        provide any additional information which is needed to retrieve the
+        aggregation which has been linked. The extensibility element MUST be a
+        supported binding for the document namespace specified by the
+        referencedNamespace attribute of the parent link element. See Section
+        2.2.3 for a definition of supported bindings.</p>
+        <p>The WS-Inspection specification does not specify a pattern for
+        processing the link elements: a consumer MAY follow the links as they so
+        desire, and a service provider MUST NOT assume that they will be
+        followed at all. In addition, the WS-Inspection specification does not
+        impose any restrictions upon the structure created by the references, so
+        it is up to the processor of WS-Inspection documents to make sure that
+        circular references are not followed endlessly.</p>
+        <p>The following example shows a WS-Inspection document which contains
+        two links to other WS-Inspection documents:</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;&gt;
+  &lt;link referencedNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+        location=&quot;http://example.com/financial/services.wsil&quot;/&gt;
+  &lt;link referencedNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+        location=&quot;http://example.com/purchasing/poservices.wsil&quot;/&gt;
+&lt;/inspection&gt;
+</pre>
+        <h2 class="dtH1"><a name="ws-inspection_wsdlbinding"></a>3.0 WSDL
+        Binding</h2>
+        <p>The WS-Inspection specification includes a binding for WSDL 1.1 which
+        provides the following capabilities:
+        <ul type="disc">
+          <li>Indication of the type(s) of WSDL bindings which appear in the
+            referenced WSDL document.
+          <li>Specification of which WSDL service is being referenced if
+            multiple exist within the same document.
+          <li>Indication of whether or not a particular referenced WSDL document
+            is providing endpoint information.</li>
+        </ul>
+        <p>Note that use of the WSDL binding is OPTIONAL if the referenced WSDL
+        document has one or no service elements. In those cases, a reference to
+        a WSDL document MAY be made with only the <b>description</b> element. If
+        the referenced WSDL document has more than one service element, then the
+        WSDL binding MUST be used to indicate which service element is being
+        referenced.</p>
+        <p>The WS-Inspection specification allows references to be made to any
+        WSDL document, irrespective of the contents of that document. Any
+        portion of a WSDL description for a single service which is contained in
+        a retrievable unit, e.g. a single file, may be referenced. The only
+        constraint which is imposed is that two referenced WSDL documents within
+        the same WS-Inspection service MAY NOT contain conflicting information.
+        This mechanism MUST NOT be used as a substitute for the WSDL import
+        element; they are not equivalent.</p>
+        <p>Because WSDL is a description format and does not specify a retrieval
+        mechanism for its documents, this binding only applies to the
+        WS-Inspection description element.</p>
+        <h3 class="dtH1"><a name="ws-inspection_howwsdlextends"></a>3.1 How the
+        WSDL Binding Extends the WS-Inspection Specification</h3>
+        <p>The WSDL binding extends the WS-Inspection specification using the
+        following extension element:</p>
+        <pre class="code">&lt;inspection <b>xmlns:wsilwsdl=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/</b> ...&gt;
+  &lt;service ...&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;uri&quot;&gt;
+<b>      &lt;wsilwsdl:reference endpointPresent=&quot;boolean&quot;?&gt;</b>
+<b>        &lt;wsilwsdl:referencedService&gt;qname&lt;/wsilwsdl:referencedService&gt; ?</b>
+<b>        &lt;wsilwsdl:implementedBinding&gt;qname&lt;/wsilwsdl:implementedBinding&gt; *</b>
+<b>      &lt;/wsilwsdl:reference&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;
+</pre>
+        <p>The interpretation of the WSDL extension, including additional
+        restrictions, is described in the following section.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectionwsdlreference"></a>3.2
+        wsilwsdl:reference</h3>
+        <p>The WS-Inspection WSDL binding element <b>reference</b> acts as the
+        container element for the rest of the binding information. The reference
+        element MAY have an <b>endpointPresent</b> attribute, a single <b>referencedService</b>
+        child, and/or one or more <b>implementedBinding</b> children, but MUST
+        have at least one of the three.</p>
+        <p>The <b>endpointPresent</b> attribute MAY be used to indicate whether
+        or not the referenced WSDL document contains endpoint information. If
+        the attribute has a boolean value of true (or 1), then the referenced
+        WSDL document MUST contain a service element. If the attribute has a
+        boolean value of false (or 0), then the referenced WSDL document MUST
+        NOT contain a service element. A WS-Inspection consumer that is looking
+        only for service endpoint information may choose to examine this
+        attribute to determine whether or not a referenced WSDL document should
+        be retrieved.</p>
+        <p>The following example shows a WS-Inspection document for the stock
+        quote service that appeared in Section 1.2. In this case, the WSDL
+        document which describes the service is assumed to be split into three
+        files, with the &quot;main&quot; file importing the other two.</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+            xmlns:wsilwsdl=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/&quot;&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/stockquote/main.wsdl&quot;&gt;
+    &lt;/description&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/stockquote/bindings.wsdl&quot;&gt;
+<b>       &lt;wsilwsdl:reference endpointPresent=&quot;false&quot;/&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;
+</pre>
+        <p>Notice that references have only been created for two of the three
+        WSDL files. As was stated earlier, The WS-Inspection specification does
+        not impose any restrictions upon what WSDL information is referenced.</p>
+        <h4 class="dtH1"><a name="ws-inspection_wsinspectionwsdlreferencedservice"></a>3.2.1
+        wsilwsdl:referencedService</h4>
+        <p>Although WSDL allows multiple services to be described within a
+        single document, WS-Inspection references are made at a per-service
+        level. If a referenced WSDL document contains more than one WSDL service
+        element, then the WS-Inspection WSDL binding's <b>referencedService</b>
+        element MUST be used to specify which service is being referenced. The
+        QName specified by the referencedService element MUST be a valid QName
+        corresponding to a service in the referenced WSDL document.</p>
+        <p>The following example shows a WS-Inspection document for the stock
+        quote and calculator services that appeared in Section 1.2. In this
+        case, the WSDL document is assumed to contain descriptions for multiple
+        financial services.</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+            xmlns:wsilwsdl=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/&quot;&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/finance.wsdl&quot;&gt;
+<b>       &lt;wsilwsdl:reference&gt;</b>
+<b>         &lt;wsilwsdl:referencedService 
+            xmlns:ns1=&quot;http://example.com/finance.wsdl&quot;&gt;
+               ns1:StockQuoteService
+         &lt;wsilwsdl:referencedService&gt;  </b>
+<b>       &lt;/wsilwsdl:reference&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/finance.wsdl&quot;&gt;
+<b>       &lt;wsilwsdl:reference&gt;</b>
+<b>         &lt;wsilwsdl:referencedService 
+            xmlns:ns1=&quot;http://example.com/finance.wsdl&quot;&gt;
+               ns1:CalculatorService
+         &lt;wsilwsdl:referencedService&gt;  </b>
+<b>       &lt;/wsilwsdl:reference&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;
+</pre>
+        <h4 class="dtH1"><a name="ws-inspection_wsinspectionwsdlimplementedbinding"></a>3.2.2
+        wsilwsdl:implementedBinding</h4>
+        <p>The implementedBinding element MAY be used to indicate the type(s) of
+        bindings which appear in a referenced WSDL document. A reference element
+        MAY have multiple implementedBinding elements as children. The QName
+        specified by the implementedBinding element MUST be a valid QName
+        corresponding to a binding in the referenced WSDL document.</p>
+        <p>The following example shows a WS-Inspection document for the stock
+        quote and calculator services that appeared in the example in Section
+        1.2. The first service has a reference to a WSDL description which
+        implements two bindings: http://example.com/stockquote.wsdl/StockQuoteSoapBinding
+        and http://example.com/stockquote.wsdl/StockSymbolLookupSoapBinding. The
+        second service also has a reference to a WSDL description, but it does
+        not provide any additional information about the bindings contained
+        within that document.</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+            xmlns:wsilwsdl=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/&quot;&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/stockquote.wsdl&quot;&gt;
+<b>       &lt;wsilwsdl:reference&gt;</b>
+<b>         &lt;wsilwsdl:implementedBinding 
+            xmlns:ns1=&quot;http://example.com/stockquote.wsdl&quot;&gt;
+               ns1:StockQuoteSoapBinding
+         &lt;/wsilwsdl:implementedBinding&gt;</b>
+<b>         &lt;wsilwsdl:implementedBinding 
+            xmlns:ns1=&quot;http://example.com/stockquote.wsdl&quot;&gt;
+               ns1:StockSymbolLookupSoapBinding
+         &lt;/wsilwsdl:implementedBinding&gt;</b>
+<b>       &lt;/wsilwsdl:reference&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+  &lt;service&gt;
+    &lt;description referencedNamespace=&quot;http://schemas.xmlsoap.org/wsdl/&quot;
+                 location=&quot;http://example.com/tools/calculator.wsdl&quot;/&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;
+</pre>
+        <h2 class="dtH1"><a name="ws-inspection_uddibindings"></a>4.0 UDDI
+        Bindings</h2>
+        <p>Many service descriptions will be stored in UDDI registries, so the
+        WS-Inspection specification provides a set of usage patterns for
+        references to this information. This is accomplished using a set of UDDI
+        extensibility elements that provide references to UDDI businessEntity or
+        businessService entries from the version 1 and version 2 UDDI
+        specifications. The bindings for the two versions are identical, except
+        for the schemas which are used to represent them. The
+        referencedNamespace attribute on a link or description element which
+        references a version 1 UDDI document has a value of &quot;urn:uddi-org:api&quot;,
+        while it has a value of &quot;urn:uddi-org:api_v2&quot; for a version 2
+        document.</p>
+        <h3 class="dtH1"><a name="ws-inspection_howuddiextends"></a>4.1 How the
+        UDDI Binding Extends the WS-Inspection Specification</h3>
+        <p>The UDDI binding extends the WS-Inspection specification using the
+        following extension elements:</p>
+        <pre class="code">&lt;inspection <b>(xmlns:wsiluddi://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/</b>
+<b>             | xmlns:wsiluddi://schemas.xmlsoap.org/ws/2001/10/inspection/uddiv2/)</b> ... &gt;
+  &lt;link ... &gt;
+<b>    &lt;wsiluddi:businessDescription location=&quot;uri&quot;?&gt;</b>
+<b>      &lt;wsiluddi:discoveryURL useType=&quot;nmtoken&quot;&gt; ?</b>
+<b>      &lt;wsiluddi:businessKey&gt; ?</b>
+<b>    &lt;/wsiluddi:businessDescription&gt;</b>
+  &lt;/link&gt;  
+
+  &lt;service ... &gt;
+    &lt;description ... &gt;
+ <b>     &lt;wsiluddi:serviceDescription location=&quot;uri&quot;?&gt;</b>
+<b>        &lt;wsiluddi:discoveryURL useType=&quot;nmtoken&quot;&gt; ?</b>
+<b>        &lt;wsiluddi:serviceKey&gt; ?</b>
+<b>      &lt;/wsiluddi:serviceDescription&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+&lt;/inspection&gt;
+</pre>
+        <p>The interpretation of these UDDI extensions are described in the
+        following sections.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectionuddibusinessdescription"></a>4.2
+        wsiluddi:businessDescription</h3>
+        <p>Users who choose to register their service descriptions in UDDI can
+        create WS-Inspection references which instruct consumers to use UDDI to
+        discover service description information. The WS-Inspection <b>link</b>
+        element, together with UDDI extensibility elements, describes the record
+        which should be retrieved. For UDDI, the link element will contain only
+        the <b>referencedNamespace</b> attribute. The <b>location</b> attribute
+        is not used with the <b>link</b> element when it contains a UDDI <b>businessDescription</b>
+        element. The following example illustrates this usage:</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+    xmlns:wsiluddi=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/&quot;
+    xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;&gt;
+  &lt;link referencedNamespace=&quot;urn:uddi-org:api&quot;&gt;
+<b>    &lt;wsiluddi:businessDescription location=&quot;http://www.example.com/uddi/inquiryapi&quot;&gt;</b>
+<b>      &lt;wsiluddi:businessKey&gt;3C9CADD0-5C39-11D5-9FCF-BB3200333F79&lt;/wsiluddi:businessKey&gt;</b>
+<b>      &lt;wsiluddi:discoveryURL useType=&quot;businessEntity&quot;&gt;</b>
+<b>        http://www.example.com/uddi?3C9CADD0-5C39-11D5-9FCF-BB3200333F79</b>
+<b>      &lt;/wsiluddi:discoveryURL&gt;</b>
+<b>    &lt;/wsiluddi:businessDescription&gt;</b>
+  &lt;/link&gt;
+&lt;/inspection&gt;
+</pre>
+        <p>When using the UDDI extension elements, the <b>link</b> element must
+        contain a reference to the UDDI namespace. This indicates that the
+        extensibility elements contained with this element are used to reference
+        a UDDI businessEntity. The WS-Inspection extension is specified using
+        the <b>businessDescription</b> element. This element must contain either
+        a UDDI <b>businessKey</b> element, a UDDI <b>discoveryURL</b> element,
+        or both.</p>
+        <p>The value of the businessKey element is to be used in conjunction
+        with the UDDI <b>get_businessDetail</b> message. To use the businessKey,
+        the businessDescription element must contain a <b>location</b>
+        attribute. The value of this attribute is the URL for the UDDI registry
+        inquiry interface, and is used to issue a HTTP POST with the
+        get_businessDetail message to the registry. The response to this message
+        is the UDDI businessEntity record that is associated with the business
+        key.</p>
+        <p>If a discoveryURL element is present, the UDDI businessEntity record
+        may be retrieved via an HTTP GET issued against the URL that is
+        specified in the value of this element. If both a businessKey element
+        and a discoveryURL element are present, then the consumer of the
+        WS-Inspection document may choose which method is used to retrieve the
+        record.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectionuddiservicedescription"></a>4.3
+        wsiluddi:serviceDescription</h3>
+        <p>References to single service descriptions which exist within UDDI may
+        also be referenced through WS-Inspection documents. By using the
+        description element along with added extensibility elements, the correct
+        record can be retrieved. The following example illustrates this usage:</p>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;inspection targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+    xmlns:wsiluddi=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/&quot;
+    xmlns=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;&gt;
+  &lt;service&gt;
+    &lt;name&gt;UDDI Service Description&lt;/name&gt;
+    &lt;description referencedNamespace=&quot;urn:uddi-org:api&quot;&gt;
+  <b>    &lt;wsiluddi:serviceDescription location=&quot;http://www.example.com/uddi/inquiryapi&quot;&gt;</b>
+<b>        &lt;wsiluddi:serviceKey&gt;4FA28580-5C39-11D5-9FCF-BB3200333F79&lt;/wsiluddi:serviceKey&gt;</b>
+<b>        &lt;wsiluddi:discoveryURL useType=&quot;businessEntity&quot;&gt;</b>
+<b>          http://www.example.com/uddi?3C9CADD0-5C39-11D5-9FCF-BB3200333F79</b>
+<b>        &lt;/wsiluddi:discoveryURL&gt;</b>
+<b>      &lt;/wsiluddi:serviceDescription&gt;</b>
+    &lt;/description&gt;
+  &lt;/service&gt;
+&lt;/description&gt;
+</pre>
+        <p>The WS-Inspection <b>description</b> element contains a reference to
+        a single UDDI service description using the <b>serviceDescription</b>
+        extension element. The UDDI <b>serviceKey</b> element must appear as a
+        child of the serviceDescription element. The value of the serviceKey
+        element is used in conjunction with the UDDI <b>get_serviceDetail</b>
+        message to retrieve the UDDI service description.</p>
+        <p>The UDDI <b>discoveryURL</b> element may also appear as a child of
+        the serviceDescription element. If present, it may be used to retrieve a
+        UDDI businessEntity via HTTP GET. A single service description is
+        extracted from the UDDI businessEntity using the specified serviceKey.</p>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectionuddimetadescription"></a><a name="ws-inspection_additionalbindings"></a>5.0
+        Developing Additional Bindings</h3>
+        <p>As is the case with the most common uses of WSDL documents, a
+        reference to most description documents can be made using a simple <b>description</b>
+        element, as illustrated in Section 2.2.3, without requiring that any
+        additional information be present. As was previously mentioned, however,
+        there are some instances, such as with UDDI, in which the <b>description</b>
+        element or <b>link</b> element cannot alone provide enough information
+        to allow for the retrieval of the desired information. There are also
+        instances, such as with many WSDL documents, where it is useful to be
+        able to provide additional information about the referenced document.
+        Although this specification has created bindings for two of the most
+        prevalent service description mechanisms, WSDL in Section 3.0 and UDDI
+        in Section 4.0, it is not feasible for it to do so for all of the other
+        pre-existing description mechanisms. It is therefore left to the
+        community to determine when new bindings need to be developed, and to
+        agree upon their format and usage. The following are a few guidelines to
+        help in the design of these new bindings:
+        <ul type="disc">
+          <li>Each binding MAY have one root element for extending the <b>description</b>
+            element, and one for extending the <b>link</b> element, but MUST NOT
+            have more than one for each. The binding MAY use the same root
+            element for extending both.
+          <li>The binding MUST limit the amount of information about the
+            referenced description which is exposed. It is not the intention of
+            the WS-Inspection document to replace the description document.
+          <li>The binding MAY use elements from the description language for
+            which it was created where appropriate, but SHOULD limit the amount
+            by which their associated semantics are altered.</li>
+        </ul>
+        <h2 class="dtH1"><a name="ws-inspection_inspectionpublication"></a>6.0
+        Inspection Document Publication</h2>
+        <p>The WS-Inspection grammar only provides a partial solution to the
+        problem of advertising services. The second necessary component is that
+        of providing a consistent means of locating and accessing the
+        inspections which have been created. If the WS-Inspection documents
+        cannot be easily located, then they provide minimal added value. To this
+        end, the WS-Inspection specification provides two methods of usage for
+        inspection documents, describing where they should be placed, and how
+        they should be found. The two usage patterns are defined in the
+        following sections.</p>
+        <h3 class="dtH1"><a name="ws-inspection_fixednameinspections"></a>6.1
+        Fixed Name Inspection Documents</h3>
+        <p>WS-Inspection documents, when available, need to be able to be easily
+        located. If a URL is obtained,which does not directly correspond to a
+        WS-Inspection document, and perhaps not directly to any type of
+        document, then it would be desirable to use what has been given and
+        still be able to retrieve any inspection related documents which have
+        been made available at that location. To this end, a WS-Inspection
+        document named inspection.wsil MAY be placed wherever the most common
+        entry points to websites/applications deployed on the server may be.<br>
+        <br>
+        For example, the company example.com would create an inspection.wsil
+        file in the root of its web server (available through http://example.com/inspection.wsil).
+        If they offer services through http://example.com/financial and http://example.com/shipping
+        then they may also put inspection.wsil files accessible under each of
+        those URIs as well. It is possible that the inspection.wsil file at the
+        root level may only contain pointers to the other WS-Inspection files.<br>
+        <br>
+        The inspection.wsil documents do not necessarily have to be static
+        documents; they MAY be dynamically generated upon request.<br>
+        <br>
+        By providing a consistently named WS-Inspection file, applications can
+        be easily modified to inspect sites for available services.</p>
+        <h3 class="dtH1"><a name="ws-inspection_linkedinspections"></a>6.2
+        Linked Inspection Documents</h3>
+        <p>Besides assisting those who are actively inspecting sites, the
+        WS-Inspection specification also allows for a mechanism to inform users
+        about service inspection related documents through other types of
+        content, such as HTML pages. The exact mechanism by which the inspection
+        documents are referenced is dependent upon the content type, but a
+        binding for HTML is described in the following section.</p>
+        <h4 class="dtH1"><a name="ws-inspection_linkingtoinspectionswithinhtml"></a>6.2.1
+        Linking to Inspections Documents within HTML</h4>
+        <p>WS-Inspection documents can be linked to in HTML pages through the
+        use of a <b>META</b> tag carrying the value of <b>serviceInspection</b>
+        in its <b>name</b> attribute. The corresponding <b>content</b> attribute
+        on the tag must be a valid URI indicating the location of a
+        WS-Inspection document. Typically, one would include this tag on highly
+        visible pages, like the root document of the server. It is possible to
+        reference multiple WS-Inspection documents by including several <b>META</b>
+        tags within the same HTML page. The document at the location specified
+        in the <b>content</b> attribute MUST be a WS-Inspection document, it
+        cannot be another HTML document.</p>
+        <p>The following example shows an HTML fragment which has references to
+        three WS-Inspection documents:</p>
+        <pre class="code">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;META name=&quot;serviceInspection&quot; content=&quot;localservices.wsil&quot;&gt;
+    &lt;META name=&quot;serviceInspection&quot; content=&quot;http://www.example.com/calculators.wsil&quot;&gt;
+    &lt;META name=&quot;serviceInspection&quot; content=&quot;ftp://www.anotherexample.com/translators.wsil&quot;&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+   ...
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+        <h2 class="dtH1"><a name="ws-inspection_references"></a>7.0 References</h2>
+        <p>[<a name="ws-inspection_refwsdl"></a>1] Web Services Description
+        Language (WSDL) 1.1 &quot;<a href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">http://www.w3.org/TR/2001/NOTE-wsdl-20010315</a>&quot;<br>
+        [<a name="ws-inspection_refuddi"></a>2] Universal Description,
+        Discovery, and Integration (UDDI) 2.0 &quot;<a href="http://www.uddi.org/">http://www.uddi.org</a>&quot;<br>
+        [<a name="ws-inspection_refkeywords"></a>3] S. Bradner, &quot;Key words
+        for use in RFCs to Indicate Requirement Levels&quot;, <a href="http://www.normos.org/ietf/rfc/rfc2119.txt">RFC
+        2119</a>, Harvard University, March 1997<br>
+        [<a name="ws-inspection_refuri"></a>4] T. Berners-Lee, R. Fielding, L.
+        Masinter, &quot;Uniform Resource Identifiers (URI): Generic
+        Syntax&quot;, <a href="http://www.normos.org/ietf/rfc/rfc2396.txt">RFC
+        2396</a>, MIT/LCS, U.C. Irvine, Xerox Corporation, August 1998.<br>
+        [<a name="ws-inspection_refxml"></a>5] Extensible Markup Language (XML)
+        1.0 &quot;<a href="http://www.w3.org/TR/2001/NOTE-wsdl-20010315">http://www.w3.org/TR/2001/NOTE-wsdl-20010315</a>&quot;</p>
+        <h2 class="dtH1"><a name="ws-inspection_notesonuris"></a>A 1 Notes on
+        URIs</h2>
+        <p>This section does not directly contribute to the specification, but
+        provides background that may be useful when implementing the
+        specification.</p>
+        <h3 class="dtH1"><a name="ws-inspection_xmlnamespaces"></a>A 1.1 XML
+        Namespaces and Schema Locations</h3>
+        <p>It is a common misperception to equate the targetNamespace of an XML
+        schema or the value of the xmlns attribute in XML instances with the
+        location of the corresponding schema. Since namespaces are in fact URIs,
+        and URIs may be locations, and you may be able to retrieve a schema from
+        that location, it does not mean that is the only schema that is
+        associated with that namespace. There can be multiple schemas associated
+        with a particular namespace, and it is up to a processor of XML to
+        determine which one to use in a particular processing context.</p>
+        <h3 class="dtH1"><a name="ws-inspection_relativeuris"></a>A 1.2 Relative
+        URIs</h3>
+        <p>Throughout this document you see fully qualified URIs used in
+        WS-Inspection documents. The use of a fully qualified URI is simply to
+        illustrate the referencing concepts. The use of relative URIs is
+        completely allowed and is warranted in many cases. For information on
+        processing relative<br>
+        URIs, see <a href="http://www.normos.org/ietf/rfc/rfc2396.txt">http://www.normos.org/ietf/rfc/rfc2396.txt</a>.</p>
+        <h2 class="dtH1"><a name="ws-inspection_completewsinspectiongrammar"></a>A
+        2 The Complete WS-Inspection Grammar</h2>
+        <pre class="code">&lt;wsil:inspection&gt;
+  &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+[  &lt;wsil:service&gt;  
+     &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; *
+     &lt;wsil:name xml:lang=&quot;&quot;? ... /&gt; *
+     &lt;wsil:description referencedNamespace=&quot;uri&quot; location=&quot;uri&quot;?&gt; *
+       &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+       &lt;-- extensibility element --&gt; ?
+     &lt;/wsil:description&gt;
+   &lt;/wsil:service&gt;
+|
+   &lt;wsil:link referencedNamespace=&quot;uri&quot; location=&quot;uri&quot;?/&gt;
+     &lt;wsil:abstract xml:lang=&quot;&quot;? ... /&gt; * 
+     &lt;-- extensibility element --&gt; ?
+   &lt;/wsil:link&gt; ] +
+&lt;/wsil:inspection&gt;
+</pre>
+        <h2 class="dtH1"><a name="ws-inspection_schemas"></a>A3 Schemas</h2>
+        <h3 class="dtH1"><a name="ws-inspection_wsinspectionschema"></a>A 3.1
+        WS-Inspection Schema</h3>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;schema targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+  xmlns:wsil=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/&quot;
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  elementFormDefault=&quot;qualified&quot;&gt;
+
+  &lt;complexType name=&quot;typeOfAbstract&quot;&gt;
+    &lt;simpleContent&gt;
+      &lt;extension base=&quot;xsd:string&quot;&gt;
+        &lt;attribute ref=&quot;xml:lang&quot; use=&quot;optional&quot;/&gt;
+      &lt;/extension&gt;
+    &lt;/simpleContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name=&quot;itemWithAbstracts&quot; abstract=&quot;true&quot;&gt;
+    &lt;sequence&gt;
+      &lt;element name=&quot;abstract&quot; type=&quot;wsil:typeOfAbstract&quot; minOccurs=&quot;0&quot; 
+         maxOccurs=&quot;unbounded&quot;/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+  
+  &lt;complexType name=&quot;nameType&quot;&gt;
+    &lt;simpleContent&gt;
+      &lt;extension base=&quot;xsd:string&quot;&gt;
+        &lt;attribute ref=&quot;xml:lang&quot; use=&quot;optional&quot;/&gt;
+      &lt;/extension&gt;
+    &lt;/simpleContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name=&quot;referenceType&quot;&gt;
+    &lt;complexContent&gt;
+      &lt;extension base=&quot;wsil:itemWithAbstracts&quot;&gt;
+        &lt;attribute name=&quot;referencedNamespace&quot; type=&quot;anyURI&quot; use=&quot;required&quot;/&gt;
+        &lt;attribute name=&quot;location&quot; type=&quot;anyURI&quot; use=&quot;optional&quot;/&gt;
+      &lt;/extension&gt;
+    &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+  
+  &lt;complexType name=&quot;descriptionType&quot;&gt;
+    &lt;complexContent&gt;
+      &lt;extension base=&quot;wsil:referenceType&quot;&gt;
+        &lt;sequence&gt;
+          &lt;any namespace=&quot;##other&quot; minOccurs=&quot;0&quot; processContents=&quot;lax&quot;/&gt;
+        &lt;/sequence&gt;
+      &lt;/extension&gt;
+    &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name=&quot;linkType&quot;&gt;
+    &lt;complexContent&gt;
+      &lt;extension base=&quot;wsil:referenceType&quot;&gt;
+        &lt;sequence&gt;
+          &lt;any namespace=&quot;##other&quot; minOccurs=&quot;0&quot; processContents=&quot;lax&quot;/&gt;
+        &lt;/sequence&gt;
+      &lt;/extension&gt;
+    &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+  
+  &lt;complexType name=&quot;serviceType&quot;&gt;
+    &lt;complexContent&gt;
+      &lt;extension base=&quot;wsil:itemWithAbstracts&quot;&gt;
+        &lt;sequence&gt;
+          &lt;element name=&quot;name&quot; type=&quot;wsil:nameType&quot; minOccurs=&quot;0&quot; 
+               maxOccurs=&quot;unbounded&quot;/&gt;
+          &lt;element name=&quot;description&quot; type=&quot;wsil:descriptionType&quot; 
+               minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;/&gt;
+        &lt;/sequence&gt;
+      &lt;/extension&gt;
+    &lt;/complexContent&gt;
+  &lt;/complexType&gt;
+            
+  &lt;element name=&quot;inspection&quot;&gt;
+    &lt;complexType&gt;
+      &lt;complexContent&gt;
+        &lt;extension base=&quot;wsil:itemWithAbstracts&quot;&gt;
+          &lt;sequence minOccurs='1' maxOccurs='unbounded'&gt;
+            &lt;choice&gt;
+              &lt;element name=&quot;service&quot; type=&quot;wsil:serviceType&quot;/&gt;
+              &lt;element name=&quot;link&quot; type=&quot;wsil:linkType&quot;/&gt;
+            &lt;/choice&gt;
+          &lt;/sequence&gt;
+        &lt;/extension&gt;
+      &lt;/complexContent&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+
+&lt;/schema&gt;
+</pre>
+        <h3 class="dtH1"><a name="ws-inspection_wsdlbindingschema"></a>A 3.2
+        WSDL Binding Schema</h3>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;schema targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/&quot;
+  xmlns:wsilwsdl=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/wsdl/&quot;
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  elementFormDefault=&quot;qualified&quot;&gt;
+
+  &lt;complexType name=&quot;reference&quot;&gt;
+    &lt;sequence&gt;
+      &lt;element name=&quot;referencedService&quot; type=&quot;xsd:QName&quot; minOccurs=&quot;0&quot;/&gt;
+      &lt;element name=&quot;implementedBinding&quot; type=&quot;xsd:QName&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; /&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name=&quot;endpointPresent&quot; type=&quot;xsd:boolean&quot; use=&quot;optional&quot;/&gt;
+  &lt;/complexType&gt;
+
+  &lt;element name=&quot;reference&quot; type=&quot;wsilwsdl:reference&quot; /&gt;
+
+&lt;/schema&gt;
+</pre>
+        <h3 class="dtH1"><a name="ws-inspection_uddibindingschema"></a>A 3.3
+        UDDI v1 Binding Schema</h3>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;schema targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/&quot;
+  xmlns:wsiluddi=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddi/&quot;
+  xmlns:uddi=&quot;urn:uddi-org:api&quot;
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  elementFormDefault=&quot;qualified&quot;&gt;
+
+  &lt;import namespace=&quot;urn:uddi-org:api&quot; schemaLocation=&quot;http://www.uddi.org/schema/2001/uddi_v1.xsd&quot;/&gt;
+
+  &lt;complexType name=&quot;descriptionType&quot;&gt;
+    &lt;sequence&gt;
+      &lt;element name=&quot;discoveryURL&quot; type=&quot;uddi:DiscoveryUrl&quot; minOccurs=&quot;0&quot;/&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name=&quot;location&quot; type=&quot;anyURI&quot; use=&quot;optional&quot;/&gt;
+  &lt;/complexType&gt;
+
+  &lt;!-- This element is to be used as a child of a WS-Inspection link --&gt;
+  &lt;element name=&quot;businessDescription&quot;&gt;
+    &lt;complexType&gt;
+      &lt;complexContent&gt;
+        &lt;extension base=&quot;wsiluddi:descriptionType&quot;&gt;
+          &lt;sequence&gt;
+            &lt;element name=&quot;businessKey&quot; type=&quot;xsd:string&quot; minOccurs=&quot;0&quot;/&gt;
+          &lt;/sequence&gt;
+        &lt;/extension&gt;
+      &lt;/complexContent&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+
+  &lt;!-- This element is to be used as a child of a WS-Inspection description --&gt;
+  &lt;element name=&quot;serviceDescription&quot;&gt;
+    &lt;complexType&gt;
+      &lt;complexContent&gt;
+        &lt;extension base=&quot;wsiluddi:descriptionType&quot;&gt;
+          &lt;sequence&gt;
+            &lt;element name=&quot;serviceKey&quot; type=&quot;xsd:string&quot;/&gt;
+          &lt;/sequence&gt;
+        &lt;/extension&gt;
+      &lt;/complexContent&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+
+&lt;/schema&gt;
+</pre>
+        <h3 class="dtH1"><a name="ws-inspection_uddiv2bindingschema"></a>A 3.4
+        UDDI v2 Binding Schema</h3>
+        <pre class="code">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;schema targetNamespace=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddiv2/&quot;
+  xmlns:wsiluddi=&quot;http://schemas.xmlsoap.org/ws/2001/10/inspection/uddiv2/&quot;
+  xmlns:uddi=&quot;urn:uddi-org:api_v2&quot;
+  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  xmlns=&quot;http://www.w3.org/2001/XMLSchema&quot;
+  elementFormDefault=&quot;qualified&quot;&gt;
+
+  &lt;import namespace=&quot;urn:uddi-org:api_v2&quot; schemaLocation=&quot;http://www.uddi.org/schema/2001/uddi_v2.xsd&quot;/&gt;
+
+  &lt;complexType name=&quot;descriptionType&quot;&gt;
+    &lt;sequence&gt;
+      &lt;element name=&quot;discoveryURL&quot; type=&quot;uddi:discoveryURL&quot; minOccurs=&quot;0&quot;/&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name=&quot;location&quot; type=&quot;anyURI&quot; use=&quot;optional&quot;/&gt;
+  &lt;/complexType&gt;
+
+  &lt;!-- This element is to be used as a child of a WS-Inspection link --&gt;
+  &lt;element name=&quot;businessDescription&quot;&gt;
+    &lt;complexType&gt;
+      &lt;complexContent&gt;
+        &lt;extension base=&quot;wsiluddi:descriptionType&quot;&gt;
+          &lt;sequence&gt;
+            &lt;element name=&quot;businessKey&quot; type=&quot;uddi:businessKey&quot; minOccurs=&quot;0&quot;/&gt;
+          &lt;/sequence&gt;
+        &lt;/extension&gt;
+      &lt;/complexContent&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+
+  &lt;!-- This element is to be used as a child of a WS-Inspection description --&gt;
+  &lt;element name=&quot;serviceDescription&quot;&gt;
+    &lt;complexType&gt;
+      &lt;complexContent&gt;
+        &lt;extension base=&quot;wsiluddi:descriptionType&quot;&gt;
+          &lt;sequence&gt;
+            &lt;element name=&quot;serviceKey&quot; type=&quot;uddi:serviceKey&quot;/&gt;
+          &lt;/sequence&gt;
+        &lt;/extension&gt;
+      &lt;/complexContent&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+
+&lt;/schema&gt;</pre>
+        <!--closes the topic content div-->
+        <!--FOOTER_END-->
+        <!-- End Content -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table style="WIDTH: 100%" cellSpacing="0" cellPadding="0" border="0">
+  <tbody>
+    <tr>
+      <td style="WIDTH: 600px" noWrap></td>
+    </tr>
+    <tr>
+      <td><IFRAME id=frmRatings 
+src="/msdn-online/shared/components/ratings/ratings.aspx?ContentID=_758361&amp;HideDiscuss=1" 
+frameBorder=0 width="100%" scrolling=no 
+height=250>
+        </IFRAME>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br style="OVERFLOW: hidden; LINE-HEIGHT: 1px" clear="all">
+<table id="msviFooter" cellSpacing="0" cellPadding="0" width="100%">
+  <tbody>
+    <tr vAlign="bottom">
+      <td id="msviFooter2" style="FILTER: ">
+        <div id="msviLocalFooter">
+          <nobr><a href="http://go.microsoft.com/?linkid=317027">Manage Your
+          Profile</a> |</nobr><WBR>
+          <nobr><a href="http://msdn.microsoft.com/isapi/gomscom.asp?target=/legal/">Legal</a>
+          |</nobr><WBR>
+          <nobr><a href="http://register.microsoft.com/contactus30/contactus.asp?domain=msdn">Contact
+          Us</a> |</nobr><WBR>
+          <nobr><a href="http://msdn.microsoft.com/flash/">MSDN Flash Newsletter</a></nobr>
+        </div>
+        <div id="msviGlobalFooter">
+          <span dir="ltr">�2004 Microsoft Corporation. All rights reserved.&nbsp;</span><nobr><a href="http://www.microsoft.com/info/cpyright.mspx">Terms
+          of Use</a> |</nobr><WBR>
+          <nobr><a href="http://www.microsoft.com/info/privacy.mspx">Privacy
+          Statement</a></nobr>
+        </div>
+      </td>
+      <td width="105" bgColor="#669aff"><img title alt="Microsoft" src="http://msdn.microsoft.com/library/toolbar/3.0/text.aspx?t=TQ%3d%3d&f=FFFFFF&b=669AFF&font=Microsoft+Logo+95%2c+13.5pt&w=105&h=29&a=0&l=0&v=0&c=p7fMCifCOtX%2bJ5SQCkICNeYZbK0%3d" border="0"></td>
+    </tr>
+  </tbody>
+</table>
+<script language="javascript">var msviFooter2;if (document.getElementById){msviFooter2 = document.getElementById("msviFooter2");msviFooter2.style.filter = "";}</script>
+<table style="WIDTH: 658px; ; WIDTH: expression(msviFooter2.offsetWidth); HEIGHT: 58px; ; HEIGHT: expression(msviFooter2.offsetHeight+1)" height="58" cellSpacing="0" cellPadding="0" width="100%">
+  <tbody>
+    <tr vAlign="top">
+      <td>
+        <div style="WIDTH: 200px">
+        </div>
+      </td>
+      <td style="FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FFFFFF', endColorStr='#669AFF', gradientType='1')" width="100%"></td>
+    </tr>
+  </tbody>
+</table>
+<script language="javascript">footerjs(document);</script>
+<LAYER visibility="hide">
+<div style="DISPLAY: none">
+  <img height="0" hspace="0" src="http://c.microsoft.com/trans_pixel.asp?source=msdn&TYPE=PV&p=library_en-us_dnglobspec_html&r=http%3a%2f%2fmsdn.microsoft.com%2flibrary%2fshared%2fdeeptree%2fasp%2frightframe.asp%3fdtcfg%3d%2flibrary%2fdeeptreeconfig.xml%26url%3d%2flibrary%2fen-us%2fdnglobspec%2fhtml%2fws-inspection.asp%3fframe%3dtrue%26hidetoc%3dfalse" width="0" border="0">
+</div>
+</LAYER>
+
+</body>
+
+</html>

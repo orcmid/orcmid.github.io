@@ -1,0 +1,231 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q001000.htm 4     00-10-20 10:01 Orcmid $-->
+<title>Q001000: DocRelation Usage</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.aiim.org">AIIM</a> <a href="http://www.infonuovo.com/dmware"> DMware</a>
+<a href="http://www.infonuovo.com/odma"> ODMA</a> <a href="http://www.infonuovo.com/odma/faq"> FAQ</a>
+ <a href="http://www.infonuovo.com/odma/downloads/Q001000.htm">Q001000</a></h2>
+
+<h1 align="center"><b>DocRelation Usage</b></h1>
+
+<h5 align="center">&nbsp;<a href="#0.10">Version 0.10</a> L<span style="font-variant: small-caps">ast updated</span>
+ 2000-10-18-22:26 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/downloads/Q001000.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+
+<p><i>This response addresses questions about Document Relationship usage:</i></p>
+
+<ul>
+  <li><i>Must an ODMA 2.0 DMS support Document Relationships?</i></li>
+  <li><i>How can an application determine when a particular relationship is not
+    supported?&nbsp;</i></li>
+</ul>
+
+</blockquote>
+
+  <hr>
+
+<blockquote>
+  <p align="left"><font color="#0000FF"><strong><em>This information is also
+  part of ODMA 2.0 Documentation Files edition 2.0-1.&nbsp; For later editions
+  and current status, consult the <a href="odma20D.htm">ODMA 2.0 Documentation
+  Files</a> description page.</em></strong></font>
+  <p align="left"><font color="#0000FF"><strong><em>This document is designed to
+  be used in the same file location as <a href="odma20-3.htm">HTML edition 2.0-3</a>
+  of the ODMA 2.0 Specification and the <a href="rata20-1.htm">Errata</a> for
+  that edition.&nbsp; Shortcuts in this document depend on proximity to a copy
+  of the specification.&nbsp; A convenient way to make sure all necessary
+  materials are present is to download the complete <a href="odma20D.htm">ODMA
+  2.0 Documentation Files</a> package.</em></strong></font>
+</blockquote>
+
+<h2>1. <a href="#RequiredSupport">Required DocRelation Support</a></h2>
+
+<h2>2. <a href="#Usage">Document Relationship Operations</a></h2>
+
+<h2>3. <a href="#RecommendedPractice">Recommended Practices</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h1>1. <a name="RequiredSupport">Required DocRelation Support</a></h1>
+<blockquote>
+  <p>It is <b><i> not</i></b> <i><b> necessary</b></i> for an ODMA 2.0 DMS to support Document
+  Relationships.&nbsp;&nbsp;</p>
+  <p>The <b><code><a href="odma20-3.htm#2.10ReturnValue">ODMSTATUS</a></code></b> result code <b><code><a href="odma20-3.htm#ODM_E_NOSUPPORT2.30">ODM_E_NOSUPPORT</a></code></b>
+  is possible for both <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+  and <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>.&nbsp;</p>
+  <p>ODMA 2.0 operation <b><code><a href="odma20-3.htm#ODMQueryCapability">ODMQueryCapability</a></code></b>
+  can be used to determine whether there is any support at all for each of <b><code><a href="odma20-3.htm#ODM_QC_GETDOCRELATION2.14">ODMGetDocRelation</a></code></b>
+  and <b><code><a href="odma20-3.htm#ODM_QC_SETDOCRELATION2.14">ODMSetDocRelation</a></code></b>.&nbsp; It is valuable to establish
+  this prior to using those operations on a given document.</p>
+  <p>When an ODMA DMS integration provides for relationships among documents, the relationships can be
+  traced using the ODMA 2.0 API.&nbsp; Operation <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+  allows parent-child relationships to be enumerated and navigated.</p>
+  <p>The ODMA 2.0 API does not control what documents may be in relationships to others, nor all of the constraints that might apply to the
+  relationships.&nbsp; It is presumed that additional configuration of the DMS
+  integration and of the repository operate behind the scenes of the ODMA
+  2.0 API.&nbsp; Control of relationship support, if available, is presumably
+  through the DMS user interface.</p>
+  <p>Operation <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>, if supported, allows
+  parent-child relationships to be created, updated, and deleted.&nbsp; Again, the
+  success of the operation will depend upon constraints and policies of the DMS
+  integration and the underlying repositories.</p>
+  <p>The ODMA Document Relationship operations are effectively stateless.&nbsp;
+  That is, a document need not be opened when its relationships are navigated or
+  manipulated.&nbsp; Likewise there is no implication that the <a href="odma20-3.htm#ODM_CHECKOUT2.1">check-out status</a> of
+  a document has any impact on the ability to perform Document Relationship
+  operations.</p>
+</blockquote>
+<h1>2. <a name="Usage">Document Relationship Operations</a></h1>
+<blockquote>
+  <blockquote>
+<p><b><i>see also</i>: <a href="rata20-1.htm">ODMA
+2.0 Specification Errata</a> on <a href="rata20-1.htm#DocRelationUsage">DocRelation
+Usage</a></b></p>
+  </blockquote>
+  <p>The ODMA 2.0 Document Relationship model provides the possibility of any document
+(rendition) being a child or a parent. The specific relations provided will
+depend on the implementation made available via the DMS integration.</p>
+</blockquote>
+<h2>2.1 ODMA 2.0 Document Relationship Model</h2>
+<blockquote>
+<p>In the ODMA 2.0 model, there is the possibility of any document being a child
+in more than one way, as well as being a parent in more than one way. It is even
+possible to realize different orderings of how the child sees all of its parent
+and how a parent sees all of its children in the navigation of a set of Document
+Relations.&nbsp;</p>
+<p> The degree to which a given DMS integration supports these cases will
+depend on the implementation and can generally be discovered only by
+trial-and-error or independent knowledge of the DMS integration's model for
+document relationships.</p>
+</blockquote>
+<h3>2.1.1 Documents Relate as Parents and as Children</h3>
+<blockquote>
+<p>Document Relationship operations are always performed using the ODMA Document
+ID of a particular document as the anchor for the operation.&nbsp; This will be
+specified by the <a href="odma20-3.htm#lpszDocId2.10"><b><code>lpszDocId</code></b></a>
+parameter.&nbsp; This ODMA Document ID also determines the DMS that will be
+employed to operate on the Document Relationship.</p>
+<p>The <b><code><a href="odma20-3.htm#pdwFlags2.10">pdwFlags</a></code></b>
+parameter specifies whether the relationship being operated with is to a child
+or a parent of the anchor document.</p>
+</blockquote>
+<h3>2.1.2 Parent-Child Document Relationships are Unique</h3>
+<blockquote>
+<p>In the ODMA 2.0 Document Relationship model, a document cannot be a child of
+the same document more than once, and (consequently) cannot be the parent of the same document
+more than once.&nbsp;&nbsp;</p>
+<p> That's because there is no way to specify when a different relationship with
+the same parent and child is intended: the
+relationships are uniquely identifiable only by the ODMA Document ID of the parent
+and of the child.</p>
+<p>The ability to control ordering in the list is not useful as a way to
+introduce multiple relationships between the same pair of parent and child
+documents.&nbsp; Ordering is not required to be supported, in which case there is no way to
+introduce a relationship that differs only by position.&nbsp; When relationship
+ordering is supported, the placement must be unambiguous, making
+duplicate siblings in the same list of children (or parents)
+unworkable.&nbsp;&nbsp;</p>
+<p>Because <b><code> <a href="odma20-3.htm#ODMSetDocRelation"> ODMSetDocRelation</a></code></b> is also used to <i>change</i>
+ and <i>delete</i>
+an existing relationship, there are not enough parameters and flags to
+unambiguously operate if more than one parent-to-child document relationship can
+exist between the same parent and child document.</p>
+</blockquote>
+<h2>2.2 ODMGetDocRelation Considerations</h2>
+<blockquote>
+<p>On <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>, when Document Relationships are supported, a common
+response is <b><code> <a href="odma20-3.htm#ODM_E_NORELATION2.10"> ODM_E_NORELATION</a></code></b> when an application requests information about a
+relationship that does not exist.&nbsp; <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b> is
+a straightforward operation: It reports what is there and fails when the
+requested relationship is not present.</p>
+</blockquote>
+<h2>2.3 ODMSetDocRelation Considerations</h2>
+<blockquote>
+  <p><code><b><a href="odma20-3.htm#ODMGetDocRelation">ODMSetDocRelation</a></b></code> is used to establish and to alter
+  Document Relationships that a given document participates in.&nbsp; In these
+  cases, it is possible to request a Document Relationship, or change to an
+  existing Document Relationship, that the DMS integration does not
+  support.&nbsp; When the requested relationship is not supported, <b><code> <a href="odma20-3.htm#ODM_E_FAIL2.30"> ODM_E_FAIL</a></code></b> is the most likely
+response (to avoid implying that <b><code> <a href="odma20-3.htm#ODMSetDocRelation"> ODMSetDOcRelation</a></code></b> is itself
+  unsupported). <b><code>
+<a href="odma20-3.htm#ODM_E_ACCESS2.30">
+ODM_E_ACCESS</a></code></b> can occur when it is a matter of access rights rather
+  than a limitation of the Document Relationship implementation.&nbsp; <code><b><a href="odma20-3.htm#ODM_E_NOSUPPORT2.30">ODM_E_NOSUPPORT</a></b></code>
+  can also be reported for an unsupported Document Relationship case.&nbsp;
+  However, <code><b><a href="odma20-3.htm#ODM_E_NOSUPPORT2.30">ODM_E_NOSUPPORT</a></b></code> can be mistaken for there being
+  no Document Relationship support, rather than there being no support for an
+  individual case.</p>
+</blockquote>
+<h1>3. <a name="RecommendedPractice">Recommended Practice</a></h1>
+<blockquote>
+  <p>Before using <code><b><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></b></code> on a particular
+  document, first check for support of this function using <b><code><a href="odma20-3.htm#ODMQueryCapability">ODMQueryCapability</a></code></b>.&nbsp;
+  If the function is supported, then accept any <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>
+  <b><code><a href="odma20-3.htm#ODM_E_NOSUPPORT2.30">ODM_E_NOSUPPORT</a></code></b> result value as an indication that the
+  requested relationship is not supported.&nbsp; Likewise, <b><code><a href="odma20-3.htm#ODM_E_FAIL2.30">ODM_E_FAIL</a></code></b>
+  may be an indication that the requested operation violates a requirement of
+  the DMS.</p>
+  <p>In performing <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b> and <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>
+  operations, it is possible for unexpected and surprising situations to arise
+  as the result of different users or applications operating against the same
+  ODMA documents.&nbsp; Designs for ODMA-aware applications should anticipate
+  that there is no assurance of stability of a document's relationships between
+  one ODMA Document Relationship operation and another.</p>
+  <p>Finally, it is important to realize that the different documents involved
+  in an ODMA Document Relationship need not be sensible to the same ODMA-aware
+  applications.&nbsp; For example, the same application may not be capable of
+  processing or editing both the parent and the child documents in an ODMA
+  Document Relationship.&nbsp; In principle, it is not even required that the
+  parent and child documents be supported by the same ODMA DMS
+  integration.&nbsp; Creative use of <b><code><a href="odma20-3.htm#ODMActivate">ODMActivate</a></code></b> may be
+  required to support an user in navigating to and using documents that are
+  paired in ODMA Document Relationships.</p>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd><a href="http://www.infonuovo.com/odma/downloads/Q001000b.htm">researched the question</a> and organized versions 0.10 for
+      initial trial and review.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#VJMohan">V.J. Mohan</a></dt>
+    <dd>noticed that DocRelation <a href="http://www.infonuovo.com/odma/downloads/Q001000a.htm">seemed underspecified
+      </a>and
+      requested clarification</dd>
+  </dl>
+  </blockquote>
+
+  <h2><a name="History">Change History</a></h2>
+  <blockquote>
+    <p><b><a name="0.10">version 0.10</a></b> Minimalist information providing a
+    sketch to be reviewed and developed further.&nbsp;&nbsp;</p>
+  </blockquote>
+</font>
+
+<p align="right">created 2000-10-17-13:11 -0700 (pdt) by <a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-10-20 10:01 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+ODMRegisterApp
+	Input parameters:
+	version=100(64)
+	lpszAppId=	MSOutlook;
+	dwEnvData=5309080(510298)
+	Output parameters:
+	odmHandle=71895248(44908d0)
+	Return value=0(0)
+ODMNewDoc
+	Input parameters:
+	odmHandle=71895248(44908d0)
+	dwFlags=16(10)
+	lpszFormat=.txt;
+	lpszDocLocation=Not Defined
+	Output parameters:
+	lpszDocId=::ODMA\FRNODMA\;
+	Return value=0(0)
+ODMSaveAs
+	Input parameters:
+	odmHandle=71895248(44908d0)
+	lpszDocId=::ODMA\FRNODMA\;
+	lpszFormat=.txt;
+	pcbCallBack address=823698922(3118a5ea)
+	pInstanceData address=52793216(3258f80)
+	Output parameters:
+	lpszNewDocId=::ODMA\FRNODMA\DZ4MLR9VANIJH4BS\0\0\FRN$NULL;
+	Return value=0(0)

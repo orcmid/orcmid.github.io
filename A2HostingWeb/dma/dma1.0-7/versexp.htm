@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Versioning Example</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 by the Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  Code example: Versioning Example
+ *
+ */
+
+#include &lt;dmatypes.h&gt;
+#include &lt;dmacom.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+#include &lt;dmacfunc.h&gt;
+
+#ifndef NULL
+#define NULL    0
+#endif
+
+// This example creates a new versioned entity (Configuration History
+//  and primary Version Series), then makes a Reservation against the
+//  version series and checks in a new DocVersion.
+//
+// The following function is assumed to exist outside this module
+//  for initialising (but not saving) a new DocVersion object. See
+//  the content samples to see how this might be done.
+extern DmaRC PrepareNewDocVer ( IdmaObjectFactory *pIFactory,
+                                DMA_REFIID riidDovVer,
+                                pDmapv ppIDocVer );
+
+// Forward declarations
+DmaRC DoExecuteChange ( IUnknown *punkToSave );
+
+DmaRC VersionExample (
+    IdmaObjectFactory *pIFactory )
+{
+    // Step 1: Create a Configuration History object
+    IdmaEditProperties *pedpropCfg;
+    DmaRC rc = pIFactory-&gt;CreateObject ( &amp;dmaClass_ConfigurationHistory,
+                                         IID_IdmaEditProperties,
+                                         (pDmapv)&amp;pedpropCfg );
+    if ( rc != DMARC_OK )
+        return rc;
+
+    // All remaining error handling omitted
+
+    // Set any extended properties of Config History
+    // *** None in this example ***
+
+    // Step 2: Create a Version Series object
+    IdmaEditProperties *pedpropVerSer;
+    rc = pIFactory-&gt;CreateObject ( &amp;dmaClass_VersionSeries,
+                                   IID_IdmaEditProperties,
+                                   (pDmapv)&amp;pedpropVerSer );
+
+    // Step 3: associate Version Series with Config History as primary
+    rc = pedpropVerSer-&gt;PutPropValObjectById ( &amp;dmaProp_ConfigurationHistory,
+                                               pedpropCfg );
+    rc = pedpropVerSer-&gt;PutPropValBooleanById ( &amp;dmaProp_IsPrimarySeries,
+                                                DMA_TRUE );
+
+    // Step 4: save both objects. Note that the order is important
+    rc = DoExecuteChange ( pedpropCfg );
+    rc = DoExecuteChange ( pedpropVerSer );
+
+    // The Config History object is not required in what follows.
+    pedpropCfg-&gt;Release();
+
+    // Get the Version Series interface
+    IdmaVersionSeries *pIVerSer;
+    rc = pedpropVerSer-&gt;QueryInterface ( IID_IdmaVersionSeries,
+                                         (pDmapv)&amp;pIVerSer );
+    // The EditProperties interface is no longer required
+    pedpropVerSer-&gt;Release();
+
+    // Step 5: Create a Reservation object
+    IdmaEditProperties *pedpropRes;
+    rc = pIFactory-&gt;CreateObject ( &amp;dmaClass_Reservation,
+                                   IID_IdmaEditProperties,
+                                   (pDmapv)&amp;pedpropRes );
+
+    // Set any extended properties of Reservation object
+    // *** None in this example ***
+
+    // Step 6: Make the reservation against the version series
+    pIVerSer-&gt;SetReserveNext ( pedpropRes );
+    pedpropRes-&gt;Release();      // no longer required
+    DoExecuteChange ( pIVerSer );
+
+    // Step 7: Prepare new Version Description
+    IdmaEditProperties *pedpropVerDesc;
+    rc = pIFactory-&gt;CreateObject ( &amp;dmaClass_VersionDescription,
+                                   IID_IdmaEditProperties,
+                                   (pDmapv)&amp;pedpropVerDesc );
+
+    // Set any extended properties of Version Description object
+    // *** None in this example ***
+
+    // Step 8: Prepare new DocVersion
+    IdmaVersionable *pverDocVer;
+    rc = PrepareNewDocVer ( pIFactory, IID_IdmaVersionable,
+                            (pDmapv)&amp;pverDocVer );
+
+    // Step 9: Make the checkin
+    rc = pverDocVer-&gt;SetCheckIn ( pIVerSer, pedpropVerDesc );
+    pIVerSer-&gt;Release();
+    pedpropVerDesc-&gt;Release();
+    rc = DoExecuteChange ( pverDocVer );
+    pverDocVer-&gt;Release();
+
+    return rc;
+}
+
+DmaRC DoExecuteChange (
+    IUnknown *punkSave )
+{
+    IdmaConnection *pconnSave;
+    DmaRC rc = punkSave-&gt;QueryInterface ( IID_IdmaConnection,
+                                          (pDmapv)&amp;pconnSave );
+    if ( rc == DMARC_OK )
+    {
+        rc = pconnSave-&gt;ExecuteChange ( NULL,
+                                        DMA_MODIFY_UNPROTECTED,
+                                        DMA_TRUE );     // refresh
+        pconnSave-&gt;Release();
+    }
+
+    return rc;
+}    
+</FONT>
+</PRE>
+</BODY>
+</HTML>

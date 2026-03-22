@@ -1,0 +1,270 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/dmware/Web-DM/webDAV-Arrives.htm 4     02-09-02 15:02 Orcmid $-->
+<title>DMware Web-DM: WebDAV Arrives</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><b>WebDAV Arrives</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.15">Version
+0.15</a></span>&nbsp; <font color="#FF0000"><span style="text-transform: uppercase">InITIAL
+Draft </span></font>L<span style="font-variant: small-caps">ast updated</span>
+ 2002-02-28-11:10 -0800 (pst)
+</h5>
+
+<p align="center"><i>Highly preliminary notes, subject to complete revamping.</i>
+</p>
+
+<blockquote>
+
+  <hr>
+
+  <h3><i>Content</i></h3>
+</blockquote>
+<h2>1. <a href="#1">Web What?</a></h2>
+
+<h2>2. <a href="#2">WebDAV's Subtle Intrusion</a></h2>
+<h2 align="left">3. <a href="#3">Opportunity or Distraction?</a></h2>
+<h2 align="left">4. <a href="#4">Scaled Introduction?</a></h2>
+<h2 align="left">5. <a href="#5">Getting Technical, Learning More</a></h2>
+
+<blockquote>
+
+  <hr>
+</blockquote>
+<h1 align="left"><a name="1">1</a>. Web What?</h1>
+<blockquote>
+  <p align="left">Don't be confused about XML and WebDAV</p>
+  <p align="left">[The WebDAV timeline.&nbsp; Need a table of the dates and
+  specifications - both in terms of the progress of WebDAV specifications and
+  the availability of working products.&nbsp;&nbsp; Need to mention vendors to
+  support the subtle introduction and availability as an intrinsic capability on
+  the standard office-computer desktop.]</p>
+  <p align="left">WebDAV is a protocol.</p>
+  <ul>
+    <li>
+      <p align="left">An extension of HTTP, the protocol that spans the Web
+      <ul>
+        <li>
+          <p align="left">Every browser uses it to connect with web sites</li>
+        <li>
+          <p align="left">Every web site uses it to accept requests and create
+          responses</li>
+        <li>
+          <p align="left">It involves accessing sites, requesting information
+          and material, accepting responses, and posting information (e.g., from
+          user-completed forms)</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">The core extensions provide specific support for authoring
+      and managed documents
+      <ul>
+        <li>
+          <p align="left">allow entire resources to be created, locked, edited,
+          and replaced</li>
+        <li>
+          <p align="left">provides extensible profile information separate from
+          resources, uses XML as the common carrier of extension information and
+          of document profile information</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">Additional modules of the DAV family provide for
+      <ul>
+        <li>
+          <p align="left">versioning, management of collaborative changes, and
+          configuration of complex materials</li>
+        <li>
+          <p align="left">access control on individual resources</li>
+        <li>
+          <p align="left">search across multiple DAV collections</li>
+        <li>
+          <p align="left">extended capability for sharing resources in multiple
+          collections</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">Is oriented around the Web model of URIs as
+      identifications and of resources that are located by URIs [need a little
+      glossary of the toolcraft and lingo around IETF and Web specifications? -
+      sidebar on learning the lingo?]</li>
+    <li>
+      <p align="left">&nbsp;</li>
+  </ul>
+</blockquote>
+<h1 align="left"><a name="2">2</a>. WebDAV's Subtle Intrusion</h1>
+<blockquote>
+  <p align="left">Subtle Intrusion of WebDAV</p>
+  <p align="left">The protocol isn't what matters.&nbsp; It enables
+  something.&nbsp; We want to move our attention to that.&nbsp; What it allows
+  is the introduction and substitution/scaling of interoperable fixtures that
+  can be configured, customized, and applied in work practices that involve or
+  require managed documents.</p>
+  <p align="left">[some place point out how the chicken-and-egg problem was
+  solved for the WebDAV protocol -- the ease of using the Internet as the
+  laboratory and the public availability of clients and servers that can be
+  operated ad lib.&nbsp; Maybe later.]</p>
+  <p align="left">The available clients and fixtures that are able to cooperate
+  with document-management services via WebDAV</p>
+  <ul>
+    <li>
+      <p align="left">Standard Browsers, including Internet Explorer since 5.x
+      and Netscape ...</li>
+    <li>
+      <p align="left">Web Folders [what are they called in XP?] as a way to
+      bring DAV-reachable document collections to the desktop just like a shared
+      file system
+      <ul>
+        <li>
+          <p align="left">the ease of something familiar</li>
+        <li>
+          <p align="left">the ease of migration/scaling from simple to
+          more-organized</li>
+        <li>
+          <p align="left">[look at properties and searching as room for
+          expansion]</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">desktop applications, such as components of Office 2000
+      and Office XP that manipulate WebDAV-accessed documents as well as any
+      others
+      <ul>
+        <li>
+          <p align="left">[mention parallel with ODMA?]</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">custom desktop applications for exploring and managing
+      document collections via WebDAV access.</li>
+  </ul>
+  <p align="left">The available services and document-management systems that
+  support organization of collections and their authoring via WebDAV:</p>
+  <ul>
+    <li>
+      <p align="left">Web servers, including IIS 5 and Apache with mod_dav
+      installed</li>
+    <li>
+      <p align="left">Public DAV servers that have been placed on the Internet
+      for people to experiment with, perform trials, etc.&nbsp; [point out this
+      key feature of being able to start easily and to confirm operation --
+      wonderful for developers to establish compatibility with each other, and
+      also for users to confirm operation]</li>
+  </ul>
+  <p align="left">Other tools</p>
+  <ul>
+    <li>
+      <p align="left">Test suite and confirmation procedure for DAV
+      servers.&nbsp; [Is there the equivalent for clients -- a server that
+      creates logs and reports on how the client honors the DAV protocol?</li>
+  </ul>
+  <p align="left">&nbsp;</p>
+</blockquote>
+<h1 align="left"><a name="3">3</a>. Opportunity or Distraction?</h1>
+<blockquote>
+  <p align="left">Like it or not, there will be questions about WebDAV.&nbsp;
+  Why not use it?&nbsp; Won't it make document management more affordable,
+  doesn't its connection with XML take us into the future?&nbsp; Can't we extend
+  document management and extraction of organizational knowledge by using
+  WebDAV-supporting products?</p>
+  <p align="left">We are still in the early adopter stage, so what about that?</p>
+</blockquote>
+<h1 align="left"><a name="4">4</a>. Scaled Introduction?</h1>
+<blockquote>
+  <p align="left">Is this an opportunity for exploration, getting ahead of the
+  learningt.&nbsp; Also, the greatest maturity with DAV is with basics, so it is
+  useful to start with the basics, swimming with water wings, and extending ones
+  reach as opportunities become available for applying extended capabilities of
+  the youngest and in-progress specifications.</p>
+  <p align="left">Things that DAV doesn't do for you, but that your
+  configuration and integration may need to address:</p>
+  <p align="left">Establish the profiles that matter to you for your
+  documents.&nbsp; The basic DAV properties are designed for use in coordinating
+  the protocol, with some elementary ones for the managed resources
+  themselves.&nbsp; This does not cover application-specific and document-type
+  specific properties that are important in your work settings.&nbsp;&nbsp;</p>
+  <p align="left">Discovering the limitations of different services and
+  offerings with regard to how they can model your situation and your profiling,
+  retention, security, auditability, and locatability requirements.&nbsp; There
+  is more work to be done to increase the available DAV-lore at this level.</p>
+</blockquote>
+<h1 align="left"><a name="5">5</a>. Learning More, Getting Technical</h1>
+<blockquote>
+<p align="left">[Use table, side-bar boxes for some of the key materials.&nbsp;
+Stitch together with a little prose.&nbsp; Big question to answer - getting
+versed in the specification process versus finding out what there is to
+integrate and how to do it.]</p>
+<p align="left">WebDAV.org as the hub for all things DAV</p>
+  <p align="left">IETF Specifications and Their Status - how to find out where
+  things are</p>
+  <ul>
+    <li>
+      <p align="left">Project Status</li>
+    <li>
+      <p align="left">Specifications and Drafts</li>
+    <li>
+      <p align="left">Archives</li>
+    <li>
+      <p align="left">Anything about the unusually-open IETF process and the
+      complete open record of e-mails</li>
+  </ul>
+  <p align="left">Where to Ask Questions, Follow Discussion</p>
+  <ul>
+    <li>
+      <p align="left">Include the WebDAV-Documentation Project, <a href="http://www.stonebeat.org/">http://www.stonebeat.org/</a>
+      both as an example of collaborative Web&nbsp; capabilities and as a
+      growing compilation of questions and answers -&nbsp;</li>
+    <li>
+      <p align="left">Include DMware Discussion list and the Web-DM list</li>
+    <li>
+      <p align="left">Mention the WebDAV lists</li>
+    <li>
+      <p align="left">Product related lists, such as the Microsoft discussion
+      lists on Sharepoint and WebStorage</li>
+  </ul>
+  <p align="left">Experimenting with WebDAV - You want to know how to use it,
+  not build it</p>
+  <ul>
+    <li>
+      <p align="left">Clients you already have</li>
+    <li>
+      <p align="left">Pseudo-DAV services to explore
+      <ul>
+        <li>
+          <p align="left">Servers with FrontPage extensions - Via Web Folders</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">DAV Servers available on the Web to experiment with</li>
+    <li>
+      <p align="left">Explore what is available with regard to attributes of
+      documents</li>
+  </ul>
+  <p align="left">[Is there a reference on where the Records-Management property
+  set and usage of WebDAV is being discussed.&nbsp; Check with Jim Whitehead and
+  look at xml.gov.]</p>
+  <hr>
+</blockquote>
+  <dl><font size="-1">
+    <dt><b><a name="0.15">Version 0.15</a>: Expanded Draft (orcmid)</b></dt>
+    <dd>&nbsp;</dd>
+    <dt><strong><a name="0.10">Version 0.10</a>: Initial Draft (orcmid)</strong></dt>
+    <dd>Choose an outline and create an overview of the ideas that we want to
+      explore here.&nbsp;Flesh out with enough notes to invite preliminary
+      review.</dd>
+  </font></dl>
+
+<p align="right"><font size="-2">created 2002-02-27-22:07 -0800 (pst) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-09-02 15:02 $<br>
+$$Revision: 4 $</em></font></p>
+</body>
+</html>

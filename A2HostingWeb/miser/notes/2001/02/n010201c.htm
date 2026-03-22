@@ -1,0 +1,657 @@
+<html>
+
+<head>
+<title>n010201: Manifest Abstractions - Initial Notes</title>
+<!--$$Header: /miserCompagno/notes/2001/02/n010201c.htm 21    17-08-29 16:40 Orcmid $-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080" alink="#FF0000" text="#000080">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="../../n000001.htm#n010201"><font color="#990033">n010201</font></a><br>
+		<a href="n010201.htm"><font color="#990033">Manifest Abstractions</font></a><br /> 
+      
+      
+
+      	<i><font size="5">Initial Notes</font></i></font></b></font></p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">notes</a>&gt;<br>
+		<a href="../" target="_top">2001</a>&gt;<a target="_top" href="./">02</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="n010201c.htm">n010201c</a>&gt;</code></b><br>
+      <small><small><a href="#v0.11">0.11</a> 
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2017-08-29 16:40<!--webbot bot="Timestamp" endspan i-checksum="25258" --></small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest Manifest Abstractions 
+				material is at <br>
+				&lt;<b><a href="n010201b.htm">http://miser-theory.info/2001/02/n010201b.htm</a></b>&gt;.</li>
+				<li>&nbsp;<b>This page:</b>&nbsp;<b>&nbsp;0.11 Initial Notes </b>&lt;<b><a href="n010201c.htm">http://miser-theory.info/2001/02/n010201c.htm</a></b>&gt;.&nbsp;&nbsp; 
+				This is consists of notes that were subdivided from a longer set 
+				to be narrowed to the specific case of manifest abstractions.</li>
+			</ul></div>
+			
+
+</small>
+
+<p align="right">&nbsp;</p>
+
+<blockquote>
+  <p align="left"><font size="-1"><b>This is a piece of an exploration that has 
+	been broken into components.</b></font></p>
+
+  <ul>
+    <li>
+      <p align="left"><font size="-1"><b>R010101: <a href="http://orcmid.com/readings/R010101.htm">
+		Do Programs Teach Algorithms?</a></b></font></li>
+    <li>
+      <p align="left"><font size="-1"><b>Miser Note n010201:
+		<a href="n010201.htm">Manifest Abstractions</a></b></font></li>
+    <li>
+      <p align="left"><font size="-1"><b>Miser Note n010202:
+		<a href="n010202.htm">Homage to the Bit</a></b></font></li>
+    <li>
+      <p align="left"><font size="-1"><b>Miser Note n010204:
+		<a href="n010204.htm">Framework Versus Structure</a></b></font></li>
+    <li>
+      <p align="left"><font size="-1"><b>Miser Note n010205:
+		<a href="n010205.htm">Programs Are Rarely Algorithms</a></b></font></li>
+  </ul>
+</blockquote>
+
+<hr>
+
+
+<blockquote>
+
+
+<h3 align="left">
+        <i><a href="#Summary">Summary</a></i>
+        </h3>
+
+
+</blockquote>
+
+
+<dl><b><font size="+1">
+      <dt><font size="+2">
+        1.
+      </font>
+      
+</font><font size="+2"> <a href="#AlgorithmImplementations">The Very Idea</a></font><font size="+1"></dt>
+      <dt>&nbsp;</dt>
+      <dt><font size="+2">2. </font>
+      
+</font><font size="+2"><a href="#FrameworkBaggage">Framework Baggage</a></font></dt>
+  <font size="+1">
+      <dd>&nbsp;</dd>
+  <dt><font size="+2">3. </font></font><font size="+2"><a href="#ManifestingAbstractions">
+	Manifesting Abstractions</a></font></dt>
+  <font size="+1">
+      <dd>&nbsp;</dd>
+  <dt><font size="+2">4. </font>
+      
+</font><font size="+2"> <a href="#SeparatingAlgorithmImplementationDesign"> 
+	Semantic Commitments</a></font></dt>
+      
+  </dl>
+
+
+  <font size="+1">
+
+
+  <blockquote>
+    <h3><i><a href="#Summary">References</a></i></h3>
+  </blockquote>
+      
+</font></b>
+
+
+    <hr color="#990033">
+
+
+<h2 align="left">
+        <a name="Summary">Summary</a>
+        </h2>
+
+
+<blockquote>
+  <p>Say something</p>
+</blockquote>
+<h1 align="left">
+        1. <a name="TheVeryIdea">The Very Idea</a>
+        </h1>
+
+
+<blockquote>
+
+
+<p align="left">Say something more.
+        </p>
+
+
+</blockquote>
+
+
+<h1 align="left">2. <a name="FrameworkBaggage">Framework Baggage</a>
+        </h1>
+
+
+<blockquote>
+  <p style="border-style: double"><i>We point out that we are talking about a 
+	computational mechanism that is organized in such a way that behavior is 
+	delivered as if an abstraction&nbsp; is actually present.&nbsp; However, all 
+	we have is behavior that can be so interpreted.</i></p>
+  <p style="border-style: double"><i>How the behavior is elicited is through 
+	programs -- via formal expression, and we will adopt a notation that is 
+	intended to support that.</i></p>
+  <p style="border-style: double"><i>So we have two levels of framework 
+	already:&nbsp;</i></p>
+  <ol>
+    <li>
+      <p style="border-style: double"><i>whatever the supporting machinery of 
+		the computational mechanism is that allows us to introduce these 
+		programs and have them operate in a way that allows us our 
+		interpretation, or that validly admits that interpretation.</i></li>
+    <li>
+      <p style="border-style: double"><i>The formal expression by which we state 
+		to the mechanism the behavior we want.</i></li>
+  </ol>
+  <p style="border-style: double"><i>Then there is the additional fact that we 
+	are talking about (1-2) here, and we are using a formal expression to do it.</i></p>
+  <p align="left" style="border-style: double"><i>ADAPT THIS MATERIAL:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; Point out that we pretty much always say more than is 
+	essential.&nbsp; And it is still important to have a form of expression that 
+	has it be understood that the algorithm is definitely and always more 
+	abstract than the implementation.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; Every expression of an algorithm has baggage.&nbsp; 
+	This includes assumptions about the existence of orderings, the assumption 
+	of 0-origin indexing, the use of natural numbers for indexes, and the 
+	stability of the objects involved.&nbsp; That the algorithm is effectively 
+	carried out atomically, while itself being composed of definite steps, is a 
+	key assumption in almost all expression of algorithms.&nbsp; This is part of 
+	the framework.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; Then there is the simple use of ordinary language 
+	along with borrowing of mathematical objects and notations, all more 
+	framework for expressing algorithms.&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; The value of using ordinary language and distinct 
+	notations from that for program code must not be underestimated.&nbsp; It 
+	gives us a way of distinguishing the two, and of being able to establish 
+	what is essential and what is incidental (but perhaps inescapable baggage) 
+	of the given implementation.&nbsp; We can also begin to separate the baggage 
+	of the algorithmic framework and the baggage of the implementation system.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; It is important that we appreciate the value of 
+	having more than one perspective on this.&nbsp; It gives us a place to 
+	separate problem from solution, and be clear which is a statement of what.&nbsp; 
+	the algorithm-implementation separation contributes to the separation of the 
+	abstraction from the statements of it.&nbsp;&nbsp;</i>
+</blockquote>
+
+
+<h1 align="left">3. <a name="ManifestingAbstractions">Manifesting Abstractions</a></h1>
+
+
+<blockquote>
+
+
+<p align="left" style="border-style: double"><i>ADAPT THIS MATERIAL: Consider 
+that the level of abstraction for statements of algorithms might need to be 
+improved.&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; One way is to notice that the objects appealed to in 
+the statement of the algorithm might be at the wrong level.&nbsp; A large part 
+of the baggage in our example is related to the level at which we deal with 
+ordered lists via indexes.&nbsp; There might be a way to change the level such 
+that we address lists in other terms that are somehow liberated from the baggage 
+about indexes and their origins.&nbsp; It might be a quite different algorithm, 
+assuming quite different basic operations, and we won&#39;t go there.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Another approach is to make reliance on abstract 
+elements explicit rather than tacit.&nbsp; What we might get to is a form of 
+expression of algorithms that can be taken as concrete, given a representation 
+of the abstract elements.&nbsp;&nbsp;</i>
+        </p>
+
+
+<p align="left" style="border-style: double"><i>
+&nbsp;&nbsp;&nbsp;&nbsp; We are always going to have algorithmic baggage.&nbsp; 
+Can we arrange baggage in such a way that the baggage is understandable and the 
+abstracted algorithm is pretty clear?&nbsp; We take a look at a toy case using 
+an abstract structure for the bit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; This might be better described as <b>manifesting 
+abstractions</b>.&nbsp; That is, we want to make the subject-matter of the 
+algorithm, the structures that are understood, explicitly abstracted so that we 
+can see what the dependencies are.&nbsp; To do this, we still need a framework, 
+but one that makes explicit that which was originally tacit.&nbsp; (2001-02-20)</i>
+        </p>
+
+
+<p align="left" style="border-style: double"><i>&nbsp;&nbsp;&nbsp;&nbsp; Add the 
+definition of manifest and manifestation that matters to us here.</i>
+        </p>
+
+
+  <p align="left" style="border-style: double">The bit abstraction began as an 
+	exercise early in the original Miser Project when I began to look at how to 
+	abstract out data types from algorithms, and look at the kind of automatic 
+	program transformations that become available as a consequence.&nbsp; The 
+	title for this is <i>Homage to the Bit</i>, and I fancy publishing it in <i>
+	BIT</i>, on some anniversary occasion.&nbsp; Here is a sketch, with the full 
+	treatment better done in its own paper.&nbsp; I will put enough in this 
+	article to expand on the problem of baggage and what one must deal with to 
+	&quot;deliver abstractions&quot; into the concrete world of a programming system.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 1. Consider that we arrange a way for data types to 
+	always be typical of their class.&nbsp; We won&#39;t expand on that here, just 
+	introduce it as the adopted approach.&nbsp; We want to introduce concrete 
+	data types that have certain qualities that preserve abstractness in some 
+	useful and extremely practical sense.&nbsp; In particular, the 
+	implementations are fully substitutable, and this can be done selectively 
+	and anywhere in a computational method.&nbsp; We illustrate this idea by 
+	presenting a &quot;concrete abstraction&quot; for one of the most fundamental data 
+	types of all, the binary bit.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 2. For example, when <i><code>b</code></i> is an <b><i><code>
+	01bit</code></i></b>
+  (read &quot;oh-one-bit&quot;) then <code><i>b</i>.0</code> is the 0-bit and <code><i>b</i>.1</code>
+  is the 1-bit.&nbsp; If we have an <b><i><code>01bit</code></i></b>, we can get 
+	any <b><i><code>01bit</code></i></b> we want.&nbsp; Every instance is 
+	typical of the class.&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 3. Notice how much framework we are heaping on this 
+	very simple notational invention.&nbsp; I mean some <b><i><code>01bit</code></i></b>,
+  <i><code>b</code></i>, and I specify features of <code><i><b>01bit</b></i></code>s 
+	by using the <code>.</code>-notation.&nbsp; That is, the <code>0</code>
+  feature, <code><i>b</i>.0</code>, is the 0-bit of <b><i><code>01bit</code></i></b>s, 
+	and the <code>1</code> feature, <code><i>b</i>.1</code>, is the 1-bit of <b><i><code>
+	01bit</code></i></b>s.&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 4. Don&#39;t worry about this too much.&nbsp; This is not 
+	an ordinary way of speaking, and the notation is used in a critical way.&nbsp; 
+	Just look and notice how we are using ordinary language to talk about a 
+	concrete (implemented) thing, and what it takes for us to be rigorous in 
+	doing that.&nbsp;&nbsp;Also notice that almost everything is in our (framework) 
+	language.&nbsp; What makes these concrete abstractions, in our way of 
+	speaking here, is that we have a rigorous (formal) framework language that 
+	allows us to say all there is that can be discerned about some things.&nbsp; 
+	They have some concrete existence, lets suppose, but we are only able to 
+	&quot;see&quot; them as if there is an actual abstraction there.&nbsp; That is, the 
+	framework guarantees that we don&#39;t get to see (in the framework context) 
+	anything more than the abstraction.&nbsp; Now, notice how this is not 
+	entirely true.&nbsp; For one thing, the idea of bits is extremely simple.&nbsp; 
+	What we have here is a pretty elaborate framework so we can talk about them 
+	as if they are something that can be talked about!&nbsp; Basically, <b><i><code>
+	01bit</code></i></b>s are concrete abstractions that have two distinct 
+	individuals.&nbsp; The one we call the 0-bit is designated <code><i><b>01bit</b></i>.0</code>.&nbsp; 
+	The one we call the 1-bit is designated <code><b><i>01bit</i></b>.1</code>.&nbsp; 
+	And the way that we have of telling whether the one we have in hand, <i><code>
+	b</code></i>, is the 0-bit or not is by the designation <code><i>b</i>.is-0</code>.&nbsp; 
+	Notice that almost everything in the framework is about how we are going to 
+	designate individuals and tell which one is at hand, so to speak.&nbsp; Our 
+	biggest job is agreement on language and terminology.&nbsp; (2001-02-21)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 5. Even at this point, you don&#39;t have any assurance 
+	that <b><i><code>01bit</code></i></b>s have anything to do with our everyday 
+	notion of bits other than I have said so.&nbsp; That is, there are 0-bits, 
+	1-bits, and they are different.&nbsp; That&#39;s about all there is to bits.&nbsp; 
+	It doesn&#39;t even matter how I pick one <code><i> <b>01bit</b></i></code>
+  individual to be the 0-bit and the other to be the 1-bit, so long as I keep it 
+	all straight.&nbsp; This is important: there are syntactic features that 
+	allow us to converse about bits and think we know what we are talking about.&nbsp; 
+	It happens that the choice of feature is arbitrary, although it must be 
+	fixed.&nbsp; (The notion of the dual of Boolean algebras lurks in here.&nbsp; 
+	We&#39;ll not go into that here.)&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 6. I am saying that to come up with a concrete 
+	abstraction, we need to fix the features and their expression.&nbsp; The 
+	labels don&#39;t matter, the discrimination among the features and any specific 
+	behavioral conditions are what matter.&nbsp; So much baggage.&nbsp; So few 
+	bits.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 7. When we have an <b><i><code>01bit</code></i></b>, 
+	how do we know which bit we have?&nbsp; We have to take a position about 
+	that to be able to operate with these objects.&nbsp; We could take a common 
+	approach and introduce a proposition that applies to all bits: <code><i>b</i>.is-0</code>.&nbsp; 
+	The framework assumption here is that we have some notion of truth or, at 
+	the very least, are able to deal conditionally with the answers to 
+	questions.&nbsp; This is pretty fundamental for algorithmic frameworks, so 
+	we&#39;ll go with <code><i>b</i>.is-0</code>.&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 8. There is a metaquestion here too.&nbsp; How do I 
+	know that I have an <b><i><code>01bit</code></i></b> at hand?&nbsp; Hold 
+	that thought.&nbsp; (2001-02-20)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 9. <code><i>b</i>.is-0</code> works for <b><i><code>
+	01bit</code></i></b>s because in our ordinary notion of binary bits, a given 
+	bit is either the 0-bit or it isn&#39;t, and if it isn&#39;t it must be the 1-bit.&nbsp; 
+	The use of a specific proposition is a little inconvenient when generalizing 
+	to more-interesting finite sets, and we will ultimately prefer to introduce 
+	some equality determination for members of abstractions like <b><i><code>
+	01bit</code></i></b>s.&nbsp; Either way, we are making even more framework 
+	assumptions.&nbsp; For now, <code><i>b</i>.is-0</code>
+  works just dandy.
+        </p>
+
+
+<p align="left" style="border-style: double">Now, if I presented you with a 
+programming system&#39;s fixed data type, <b><code>01bit</code></b>,&nbsp; and said 
+these are (representations of) the binary bits and here&#39;s a notation for 
+specifying them and examining them, I wouldn&#39;t have done much.&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 1. I would have presented you with an implementation 
+that has an intended interpretation as binary bits.&nbsp; It might even have the 
+intended pragmatic interpretation of corresponding to the binary bits of an 
+underlying computational mechanism with the assurance that these bits correspond 
+to the bits in the memory system of that mechanism.&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 2. I want to do something different than that.&nbsp; 
+The <b><i><code>01bit</code></i></b>s are intended to be concrete abstractions, 
+and we don&#39;t want to lose the abstractness of it.&nbsp; There might be some 
+flavor of <code><i><b>01bit</b></i></code> that has all of that connection to a 
+predictable and known implementation.&nbsp; But that is not to be assumed of <b><i><code>
+01bit</code></i></b>s generally.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 3. Here is a Python-flavored function using <b><i><code>
+01bit</code></i></b>s:<br>
+  <br>
+  <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>def</b> 01and(<i>a</i>:
+  <i><b>01bit</b></i>, <i>b</i>: </code><b><i><code>01bit</code></i></b><code>) </code><b><i><code>
+01bit</code></i></b><code>:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>if</b> <i>a</i>.is-0:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>return</b> <i>a</i><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>else:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return</b> <i>b<br>
+  <br>
+  </i></code>Although I would never expect to be able to say this in Python (it 
+not being in the spirit of the language), I am using this form for contrast and 
+to have an existing framework.&nbsp; This is also an imperfect model, so take it 
+as merely exemplary.<br>
+  &nbsp;&nbsp;&nbsp; 4. What I want to suggest is programming-system machinery 
+where the <code>01and</code> function is understood as the expression of an 
+algorithm as much as that is possible in a concrete programming system.&nbsp; In 
+particular, this definition does not depend on a fixed sense of <b><code>01bit</code></b>, 
+but simply requires delivery of <b><code><i>01bit</i></code></b>s -- parameters 
+that have the features of <b><i><code>01bit</code></i></b>s and that satisfy 
+whatever conditions exist for a concrete flavor to satisfy the abstraction.<br>
+  &nbsp;&nbsp;&nbsp; 5. It might be more general to suggest the following 
+notation, not unlike the template notion of some languages:<br>
+  <br>
+  <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>def</b> 01and(<i>bit</i>:
+  <b><i>01bit</i></b>)(<i>a</i>: <i>bit</i>, <i>b</i>: </code><i><code>bit</code></i><code>)
+  </code><i><code>bit</code></i><code>:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>if</b> <i>a</i>.is-0:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>return</b> <i>a</i><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>else:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return</b> <i>b<br>
+  </i><br>
+  </code>This might provide a stronger sense of what is intended.&nbsp; I am 
+concerned that this implies too much and I am not wedded to this approach.&nbsp; 
+So far.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 6. I haven&#39;t said how one defines <b><code><i>01bit</i></code></b>
+  in this kind of system.&nbsp; I&#39;m not prepared to make a commitment to that, 
+which is my nice way of saying I haven&#39;t figured it out yet.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 7. What you can count on is that if any <i>a</i> and <i>
+b</i>
+  are supplied that do not satisfy the conditions for the concrete abstraction, <i>
+bit</i>, then the function fails.&nbsp; It doesn&#39;t return a result, it fails.&nbsp; 
+Furthermore, if the implementation of the function returns a result, it is 
+assured to satisfy the concrete abstraction, <i>bit</i>.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 8. Given this function, <code>01and</code>, assume 
+that the programming system allows ways that one can cast an existing object 
+that has the necessary qualities of a <i>bit</i> as an <b><code><i>01bit</i></code></b>.&nbsp; 
+That is, one does not have to be content with arranging things to be <b><code><i>
+01bit</i></code></b>s before they are useable in operations defined on <b><code><i>
+01bit</i></code></b>s.&nbsp; We could instead define an <b><i><code>01bit</code></i></b> 
+over some other type, lets say <b><i><code>Boolean</code></i></b>,&nbsp; in 
+which we specify how the features of an <b><code><i>01bit</i></code></b> are 
+derived from the features of a <b><i><code>Boolean</code></i></b>.&nbsp; This 
+gives an interpretation of a <b><i><code>Boolean</code></i></b> as an <b><i><code>
+01bit</code></i></b>.&nbsp; Generally, there are many ways to do this, so we 
+might want to name particular interpretations or use a descriptive notation in 
+which we show the particular interpretation.&nbsp; Suppose we use the name <b><code><i>
+Boolean01bit</i></code></b>
+  for the interpretation that has <b><code>true</code></b> be the 1-bit and <b><code>
+false</code></b>
+  be the 0-bit.&nbsp; Then <code><b><i>Boolean01bit</i></b>(<b><i>Boolean</i></b>.true)</code> 
+is <code><b><i>01bit</i></b>.1</code>.&nbsp; (2001-02-20)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 9. There&#39;s something I want to add here, but I have 
+forgotten it for the moment. It is about how all we are talking about is the 
+features of some hidden thing, a concrete thing that we only want to see in 
+accordance with an abstraction that it supports.&nbsp; We are, let us say, using 
+these concrete abstractions as attributive views onto something.&nbsp; The 
+something is the concrete part.&nbsp; The abstraction is what we have when we 
+only allow those particular attributions to be seen as the features.&nbsp; The 
+validity of the concrete abstraction is that its behavior never contradicts the 
+abstraction.&nbsp; In computing terms, we would talk about hiding an 
+implementation.&nbsp; In logic, we would say that we have a valid interpretation 
+of the abstraction.&nbsp; (2001-02-21)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 10. There can be ways to cast values from <b><i><code>
+01bit</code></i></b>
+  to <b><i><code>Boolean</code></i></b>, and this means that the result of <code>
+01and</code>
+  can be made into a <b><code><i>Boolean</i></code></b> without much difficulty.&nbsp; 
+For example, <code><b><i>01bitBoolean</i></b>(<b><i>01bit</i></b>.1)</code>
+could be <code><b><i>Boolean</i></b>.true</code>.<br>
+&nbsp;&nbsp;&nbsp; 11. I am messing with the typography here.&nbsp; I am not 
+quite prepared to concede that <code><b><i>Boolean01bit</i></b></code> and <b><code><i>
+01bitBoolean</i></code></b>
+are regular functions (with regard to whatever functions are in the framework), 
+so I have used <b><i>special typograhy</i></b> in their names.&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; 12. It can appear, at this point, that we haven&#39;t done 
+anything.&nbsp; That is, We have made explicit a way to use <code><i><b>01bit</b></i></code>s 
+as <b><code><i>Boolean</i></code></b>s and <b><i><code>Boolean</code></i></b>s 
+as <b><code><i>01bit</i></code></b>s.&nbsp; Aren&#39;t we just stating the obvious?&nbsp; 
+Exactly so.&nbsp; We have made explicit what, in some frameworks, is not only 
+taken as tacit, but it might not even be recognized that such is being done -- 
+that there is any other way to look at it.&nbsp; Until I told you that the 
+definitions of <b><code><i>Boolean01bit</i></code></b> and <b><code><i>
+01bitBoolean</i></code></b>
+were the obvious ones, I say it wasn&#39;t obvious yet.&nbsp; One could jump to 
+those conclusions, but there is no basis in anything said up to this point.&nbsp; 
+(2001-02-20)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 13. Here&#39;s the next piece of information.&nbsp; All 
+there is to know about <code><b><i>01bit</i></b></code>s is what you&#39;ve been 
+told here.&nbsp; That is, the only known features are <code><b><i>01bit</i></b>.0</code>,
+<code><b><i>01bit</i></b>.1</code>, and <code><b><i>01bit</i></b>.is-0</code>.&nbsp; 
+All that is implied for <b><i><code>Boolean</code></i></b>s, so far, is that 
+there are <code><b><i>Boolean</i></b>.true</code> and <code><b><i>Boolean</i></b>.false</code>.&nbsp; 
+One might suppose that there is also a <code><b><i>Boolean</i></b>.is-false</code>, 
+in which case our suspicions about there being no difference here, other than a 
+choice of labels, are difficult to resist.&nbsp; However, that there is such a 
+prospect is different than it being so.&nbsp; And we have not said whether there 
+are <i>only</i> these features of <code><i><b>Boolean</b></i></code>s.&nbsp; In 
+fact, I assert that there is no <code><b><i>Boolean</i></b>.is-false</code> as 
+part of the definition for <b><i><code>Boolean</code></i></b>s.&nbsp; There is, 
+however, a <code><b><i>Boolean</i></b>.is-true</code>.&nbsp; (Notice that we 
+still haven&#39;t said what kind of object is determined by the <b><i><code>01bit</code></i></b>.is-0 
+and <b><i><code>Boolean</code></i></b>.is-true features.) (2001-02-20)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 14. Here&#39;s a little more.&nbsp; Let <b><i><code>N</code></i></b>
+be a concrete abstraction for the natural numbers (or at least the Peano 
+numbers).&nbsp; Feature <code> <b><i>N</i></b>.0</code>
+is the zero or origin of the naturals, <b><i><code>N</code></i></b><code>.s</code>
+is the successor of whatever natural number that an <b><i><code>N</code></i></b>
+represents, and <b><i><code>N</code></i></b><code>.p</code> is the predecessor 
+of whatever natural number an <b><i><code>N</code></i></b> represents.&nbsp; It 
+happens that <code><b><i>N</i></b>.0.p</code> is always <code><b><i>N</i></b>.0</code>
+in this formulation.&nbsp; Finally, <code><b><i>N</i></b>.is-0</code> is defined 
+analogously to <code><b><i>01bit</i></b>.is-0</code>.&nbsp; That is all there is 
+to know about <b><i><code>N</code>&#39;</i></b>s.&nbsp; It is <i>useful</i> to 
+introduce <b><code><i>BooleanN</i></code></b> so that <code><b><i>BooleanN</i></b>(<i><b>N</b></i>.0)</code>
+is <code><b><i>Boolean</i></b>.false</code> and <code><b><i>BooleanN</i></b>(<b><i>N</i></b>.s)</code>
+is <code><b><i>Boolean</i></b>.true</code>.&nbsp; Likewise, <code><i><b>NBoolean</b></i>(<b><i>Boolean</i></b>.false)</code>
+is <code><b><i>N</i></b>.0</code> and <code><i><b>NBoolean</b></i>(<i><b>Boolean</b></i>.true)</code>
+is <code><i><b>N</b></i>.0.s</code>.&nbsp; (2001-02-20)
+        </p>
+
+
+<p align="left" style="border-style: double">&nbsp;&nbsp;&nbsp;&nbsp; 1. It may 
+seem that <b><i><code>Boolean</code></i></b>s and <b><code><i>01bit</i></code></b>s 
+are not much different and they could be defined to be the same or equivalent in 
+some way.&nbsp; While it might be useful to do that, I am intentionally avoiding 
+doing so here.&nbsp; Where we to do that, there is still no such obvious 
+equivalence between <b><i><code>Boolean</code></i></b>s and <b><i><code>N</code></i></b>&#39;s, 
+even though the interpretations <b><i><code>BooleanN</code></i></b> and <b><i><code>
+NBoolean</code></i></b>
+are very useful in practice (and are tacitly employed in the C programming 
+language and its relatives.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2. I am going to make a framework commitment now.&nbsp; 
+Suppose that features <code><b><i>01bit</i></b>.is-0</code>, <code><b><i>Boolean</i></b>.is-true</code>, 
+and <code><b><i>N</i></b>.is-0</code> are all <b><i><code>Boolean</code></i></b>s.&nbsp; 
+I immediately no longer require <code><b><i>Boolean.</i></b>is-true</code> and 
+one might plausibly claim that <b><code><i>Boolean</i></code></b>s are now more 
+primitive and essential than <b><i><code>01bit</code></i></b>s.&nbsp; The 
+algorithmic framework inherently depends on <b><i><code>Boolean</code></i></b>s.&nbsp; 
+It is what we use to be specific about having the answer to a question and being 
+able to operate conditionally with that answer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3. One can argue that ensnarling the framework with a 
+commitment to a particular concrete abstraction for choice is unnecessary and 
+also inconsistent with the idea of carefully managing the choice of 
+abstractions.&nbsp; It is the case that the statement of algorithms depends 
+almost always on having a way to distinguish particular objects and vary the 
+progression of operations based on that.&nbsp;&nbsp; But this need not be the 
+best way to deal with it.&nbsp; That is not important for this discussion.&nbsp; 
+The point here is how things can fall into place when one makes such a 
+commitment.&nbsp;&nbsp; It is also the case that there is an underlying 
+commitment that becomes invisible while shaping the statement of algorithms.&nbsp; 
+(2001-02-20)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4. In thinking about whether we collapse the truth 
+system of the framework with <b><code><i>Boolean</i></code></b> or not, I 
+realize there is a similar concern with regard to explicit identity.&nbsp; I 
+defined these concrete abstractions using is- features, avoiding having an 
+explicit identity (and the messiness of binary operations, which I didn&#39;t want 
+to drag in).&nbsp; On the other hand, natural formulations of axiomatic theories 
+for structures <b><i><code>Boolean</code></i></b>, <b><i><code>01bit</code></i></b>, 
+and <b><i><code>N</code></i></b>, all appeal to some identity function.&nbsp; I 
+could look to see how to avoid use of identity there, but I don&#39;t see how to 
+avoid it, especially for <b><i><code>N</code></i></b>.&nbsp; I am becoming more 
+inclined not to collapse any framework structure with these (supposedly) 
+concrete structures.&nbsp; I will also have to cure myself of the idea of 
+concrete abstractions, finding better terminology.&nbsp; (2001-02-21)
+        </p>
+
+
+</blockquote>
+
+
+    <h1 align="left">4. <a name="SemanticCommitments">Semantic Commitments</a></h1>
+
+
+<h2 align="left"><i><a name="References">References</a></i>
+        </h2>
+
+
+<p align="left" style="border-style: double">Cross-reference the kindred notes 
+as appropriate.&nbsp; Also to notational conventions.
+        </p>
+
+
+<p align="left" style="border-style: double">Also consider George Mealy&#39;s paper 
+on &quot;Notions&quot; and anything else that suggests what is useful here.
+        </p>
+
+
+<p align="left" style="border-style: double">Russell&#39;s discussion of attributive 
+sets, rather than extensional ones might be useful too.
+        </p>
+
+
+<p align="left" style="border-style: double">We can also contrast this kind of 
+idealism with Platonism and even neo-Platonism if we want, but probably not 
+here.
+        </p>
+
+
+<dl>
+ 
+      <dt>&nbsp;</dt>
+ 
+</dl>
+
+
+    <hr color="#990033">
+
+<h3 align="left"><i><a name="History">History</a></i></h3>
+
+<dl><font size="-1">
+	<dl>
+		<dt><b><a name="v0.11">0.11</a> 2014-03-29 Transpose into Folio 
+		Structure</b></dt>
+		<dd>This page is preserved in the folio structure as the initial notes.&nbsp;
+		</dd>
+		<dt><b><a name="v0.10">0.10</a> 2002-02-25-23:27 Last Update of the 
+		Content</b></dt>
+		<dd>This is the level at which the content is frozen</dd>
+		<dt><b><a name="v0.00">0.00</a> 2001-03-10-08:12 Make Separate Sketch 
+		for Exploration</b> (orcmid)</dt>
+		<dd>Initial exploration of this topic began in an exploratory note that 
+		needed to be broken apart so that I could complete a simple argument 
+		that programs are insufficient for instilling an understanding of 
+		algorithms.&nbsp;&nbsp;&nbsp;</dd>
+	</dl></font>
+</dl>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" --></td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2001-03-10-08:12 -0800 (pst) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 17-08-29 16:40 $<br>
+		$$Revision: 21 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<p align="right">&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000009.htm 3     01-03-06 13:20 Orcmid $-->
+<title>X000009: Incorrect ODMOpenDoc ODM_REFCOPY Flag</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000009.htm">X000009</a>:
+Incorrect <code>ODMOpenDoc</code> <code>ODM_REFCOPY</code> Flag</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-06-08:24 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000011.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Functionality -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000009">X000009</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Correction Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code><a href="http://www.infonuovo.com/odma/downloads/odma200h.htm">Odma.h
+        2.0.0</a></code></b></td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd>ODMA 2.0 Specification section <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.13">2.13</a>,
+            <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>
+            definition of <code> <b><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_REFCOPY2.13">ODM_REFCOPY</a></b></code>,<code> <b><br>
+            </b></code>ODMA 1.5 Specification definition of <b><code><a href="http://www.infonuovo.com/odma/downloads/odma15-2.htm#opendoc">ODMOpenDoc</a></code></b>,<br>
+            Q000705: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+            Between ODMA Versions</a>,<br>
+            P000702: <a href="http://www.infonuovo.com/odma/projects/p00-log.htm#P000702">ODMA
+            Library Release 2.0.1</a> project</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: tbd</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#PaulOSullivan">Paul
+            O'Sullivan</a> (<a href="http://www.infonuovo.com/odma/support/x000009a.msg">1999-11-03</a>)</dd>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#BobSt.Jean">Bob
+            St. Jean</a> (<a href="http://www.infonuovo.com/odma/support/x000009a.msg">1999-11-03</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Recorded</b>: 2001-03-06</td>
+      <td width="50%" valign="top"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>3. <a href="#WorkAround">Working Around the Problem</a></h3>
+
+<h3>4. <a href="#Investigation">Analysis</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>    (2001-03-06)</h2>
+
+<blockquote>
+  <p>In the original ODMA 2.0 Library header file <b><code><a href="http://www.infonuovo.com/odma/downloads/odma200h.htm">Odma.h</a></code></b>,
+  the value for <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>
+  flag <b><code><a href="../downloads/odma20-3.htm#ODM_REFCOPY2.13">ODM_REFCOPY</a></code></b>
+  is incorrectly defined.</p>
+
+  <p>The value, introduced in ODMA 2.0, is the same as if&nbsp;</p>
+
+  <p align="center"><b><code><a href="../downloads/odma20-3.htm#ODM_VIEWMODE2.13">ODM_VIEWMODE</a>
+  | <a href="../downloads/odma20-3.htm#ODM_MODIFYMODE2.13">ODM_MODIFYMODE</a></code></b>&nbsp;</p>
+
+  <p align="left">were specified for the value of&nbsp; the <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>
+  <b><i><code><a href="../downloads/odma20-3.htm#flags2.13">flags</a></code></i></b>
+  parameter.&nbsp; Consequently, a correct use of <b><code>ODM_REFCOPY</code></b>
+  will be rejected for error <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_E_INVARG2.13">ODM_E_INVARG</a></code></b>
+  by all versions of ODMA DMS integrations, whether for ODMA 2.0 or for earlier
+  versions of ODMA.</p>
+
+  <p align="left"><i>Why is this considered critical?</i></p>
+
+  <p align="left">The incorrectly-defined value makes it impossible to ever
+  successfully test the <b><code>ODM_REFCOPY</code></b> case with an ODMA-aware
+  application or a properly operating ODMA 2.0-compliant DMS integration.&nbsp;
+  Consequently, production installations should never encounter the problem this
+  defect causes.</p>
+
+  <p align="left">The problem is considered critical because there is a risk of
+  independently-introduced repairs that damage the interoperability of ODMA
+  implementations.&nbsp; In addition, <b><code>ODM_REFCOPY</code></b>
+  functionality is not successfully deliverable until this situation is
+  remedied.&nbsp;</p>
+
+</blockquote>
+
+<h2>2. <a name="Actions">Actions</a> Toward Resolution (2001-03-06)</h2>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the repair that is needed.&nbsp;
+      [2001-03-06: Completed]</li>
+    <li>Open a project for developing a maintenance and functionality release
+      2.0.1 of the ODMA 2.0 Libraries.&nbsp; That release will remedy several
+      defects in the current library header files.&nbsp;
+      This will be project <a href="http://www.infonuovo.com/odma/projects/p00-log.htm#P000702">P000702</a>.</li>
+    <li>Present a workaround for this specific problem.&nbsp;</li>
+    <li>Look at what it would take to have Connection Manager trace logging
+      provide detailed flag and result code reporting.</li>
+    <li>Close this incident report when (1-5) are complete and it is clear that
+      proper handling of flags for <b><code>ODMOpenDoc</code></b> is fully
+      confirmed.</li>
+  </ol>
+</blockquote>
+
+<h2>3. <a name="WorkAround">Working Around the Problem</a></h2>
+
+<h2>4. <a name="Investigation">Analysis</a>      of Incident (2001-03-06):</h2>
+
+<blockquote>
+  <p align="left">The value of 3 is incorrect.&nbsp; The correct value is
+  4.&nbsp; That will always be the correct value.</p>
+
+  <p align="left">This situation will be experienced only by an ODMA-aware
+  application that <i>requires</i> an ODMA 2.0 DMS integration in order to
+  operate, and that requests an <b><code>ODM_REFCOPY</code></b>.&nbsp; this
+  request will always fail if the original header files are used.&nbsp; In
+  addition, no ODMA 2.0 DMS integration constructed with those header files will
+  be able to perform a valid <b><code>ODM_REFCOPY</code></b> case of <b><code>ODMOpenDoc</code></b>.&nbsp;
+  An <b><code>ODM_E_INVARG</code></b> response should always occur instead.</p>
+
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed old ODMA Tech mail for untracked incidents, logged this
+      incident (2000-08-11) and then recorded the incident (2001-03-06) as part
+      of having all <a href="http://www.infonuovo.com/odma/projects/P010200.htm">backlog
+      recorded</a>.</dd>
+    <dt><a href="../faq/Q000605.htm#PaulOSullivan">Paul O'Sullivan</a></dt>
+    <dd>reported the original incident.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#BobSt.Jean">Bob
+      St. Jean</a></dt>
+    <dd>confirmed the error and specified the correction.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-03-06-08:24 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-06 13:20 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

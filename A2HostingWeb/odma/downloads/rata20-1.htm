@@ -1,0 +1,767 @@
+<html>
+
+<head><!--$$Header: /InfoNuovo Conclave Web/odma/downloads/rata20-1.htm 17    02-11-22 15:33 Orcmid $-->
+
+<title>ODMA 2.0 Specification Errata 2.0.-1 </title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<blockquote>
+<h1>
+  <CENTER><B><a name="titleblock" href="http://www.infonuovo.com/odma"><font color="#9c6200" face="verdana, arial, helvetica, geneva, sans serif">Open Document 
+  Management API</font></a></B></CENTER></h1>
+<h2>
+  <CENTER>Version 2.0 Errata</CENTER></h2>
+  <P align="center">
+  <a href="#2.0-1">E<span style="font-variant: small-caps">rrata</span>  2.0-1</a> <b><font color="#FF0000">Review
+  Draft</font></b> <span style="font-variant: small-caps">last
+  updated</span>              2001-05-20-10:49 -0700 (pdt)
+  <P align="center">All errata to the ODMA 2.0
+  Specification&nbsp;<br>
+  compiled since January 1, 2000.
+  <P align="left"><font size="-1">For the latest information on ODMA and the ODMA
+  Specifications, consult the <a href="http://www.infonuovo.com/odma">ODMA</a>
+  section of the <a href="http://www.infonuovo.com/dmware">AIIM DMware
+  Clearinghouse</a> at <a href="http://www.infonuovo.com/dmware">http://www.infonuovo.com/dmware</a>.&nbsp;
+  The latest edition of the ODMA 2.0 Specification is always available
+  on the Internet at</font>
+  <P align="center">
+  <a href="http://www.infonuovo.com/odma/downloads/odma20.htm">http://www.infonuovo.com/odma/downloads/odma20.htm</a>.
+<p align="left"><font color="#0000FF"><strong><em>This information is also part
+of ODMA 2.0 Documentation Files edition 2.0-1.&nbsp; For later editions and
+current status, consult the <a href="odma20D.htm">ODMA 2.0 Documentation Files</a>
+description page.</em></strong></font>
+<p align="left"><font color="#0000FF"><strong><em>This document is designed to
+be used in the same file location as <a href="odma20-3.htm">HTML edition 2.0-3</a>.&nbsp;
+Shortcuts in this document depend on proximity to a copy of the specification.&nbsp;
+A convenient way to make sure all necessary materials are present is to download
+the complete <a href="odma20D.htm">ODMA 2.0 Documentation Files</a> package.</em></strong></font>
+</blockquote>
+
+<div align="center">
+  <center>
+  <table border="2" width="100%" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" bgcolor="#FFFFFF">
+    <tr>
+      <td width="7%" align="center">
+        <p align="center"><b><i>I<span style="font-variant: small-caps">tem</span></i></b></td>
+      <td width="7%" align="center"><i><b>S<span style="font-variant: small-caps">TATUS</span></b></i></td>
+      <td width="40%" align="center"><i><b>E<span style="font-variant: small-caps">rrata</span>,
+        C<span style="font-variant: small-caps">oncerns</span>, and C<span style="font-variant: small-caps">larifications</span></b></i></td>
+    </tr>
+  </center>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left"><a href="odma20-3.htm#1.1¶2" name="1.1">1.1¶2</a>
+        on case insensitivity of <a href="odma20-3.htm#DocumentIDs">Document IDs</a></p>
+      </td>
+  <center>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+  </center>
+      <td width="40%" align="center" valign="top">
+        <p align="left">The case insensitivity of Document IDs has implications
+        on the use of DMS IDs in <a href="odma20-3.htm#InstallingDMS">registry
+        entries</a> and on the formatting of other DocId information that might
+        also appear in registries, profile files, and other material.&nbsp;
+        There is no assurance that two separate occurrences of a DMS ID, for
+        example, will be in the same single case.&nbsp; Software that examines
+        and compares DMS IDs should take this into account.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left"><a href="odma20-3.htm#1.1¶3">1.1¶3</a>
+        on <a href="odma20-3.htm#DMS_ID">DMS IDs</a></p>
+      </td>
+  <center>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+  </center>
+      <td width="40%" align="center" valign="top">
+        <p align="left">The statement &quot;The 
+  ODMA group members will coordinate these IDs to ensure their uniqueness.&quot;
+        is inaccurate.&nbsp; There is no formal coordination mechanism and there
+        is no longer an &quot;ODMA group.&quot;&nbsp; The new <a href="http://www.infonuovo.com/dmware">AIIM
+        DMware</a> clearinghouse will provide a registry for ODMA DMS IDs.&nbsp;
+        Contribution of already-used DMS IDs and reservations of DMS IDs is and will
+        continue to be
+        entirely voluntary.</p>
+  </td>
+    </tr>
+  <center>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.1¶5">1.1¶5</a>
+        on using <a name="simple characters">simple characters</a> in Document
+        IDs</td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">There are more concerns than
+        just avoiding characters that are used in local console and script command
+        lines.&nbsp; Because Document IDs are transferred in the code page of
+        the application, DMS implementations must account for transfer of
+        Document IDs in data and documents (especially e-mail messages and
+        workflow objects) to systems where different code pages may have to be
+        used. To ensure interoperability, it is valuable for DMS implementations
+        to stick to a subset of ISO 646 printable
+        characters that avoids the <a href="odma20-3.htm#Table1-1">listed
+        characters</a> and any others having special significance in URLs, for
+        example.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.1¶5">1.1¶5</a>
+        grammar</td>
+      <td width="7%" align="center" valign="top">2000-08-03<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">The phrase &quot;Although the technical definition of a document ID is a case insensitive, 
+  null-terminated strings of printable characters, ...&quot; is perhaps best
+        read &quot;Although the technical definition of a document ID is as a
+        case insensitive, null-terminated string of printable characters,
+        ...&quot;.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">1.3 <a href="odma20-3.htm#ErrorHandling">Error
+        Handling</a> non-failure cases</td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">There are also &quot;warning
+        responses&quot; that do not indicate failures.&nbsp; <b><code><a href="odma20-3.htm#ODM_W_NOACTION2.30">ODM_W_NOACTION</a></code></b>
+        indicates a benign condition, for example.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">1.3 <a href="odma20-3.htm#ErrorHandling">Error
+        Handling</a> down/up-level considerations</td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">The negotiation of an ODMA
+        version during <code><b><a href="odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></b></code>
+        also has implications for the result codes that an ODMA requester is
+        prepared to deal with.&nbsp; Assume that a later-version DMS will not
+        deliver any result codes other than those documented for the level
+        requested by the application.&nbsp; The implications of the ODMA
+        Specifications are that users of the API will never encounter result
+        codes other than those documented in the specification for the
+        negotiated version.&nbsp; This has
+        not been made explicit, and there is also no statement about any prospects
+        for
+        unexpected <b><code>ODMSTATUS</code></b> values.&nbsp;&nbsp;<br>
+        &nbsp;&nbsp; For example, the result code <b><code><a href="odma20-3.htm#ODM_E_INVARG2.13">ODM_E_INVARG</a></code></b>
+        introduced with ODMA 2.0 was also made a possible <b><code><a href="odma20-3.htm#2.13ReturnValue">ODMSTATUS</a></code></b>
+        from the ODMA 1.0 function <b><code><a href="odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>.&nbsp;
+        This can be a big surprise for an ODMA-aware application developed to an
+        earlier version of the ODMA Specification.&nbsp; Likewise, an ODMA
+        2.0-aware application is not assured to see the ODMA 2.0-expected
+        error-reporting behavior for <b><code><a href="odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>
+        when it happens to be operating with an ODMA 1.0-compliant DMS.&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.5¶2">1.5<font FACE="Times New Roman">¶2</font></a><font FACE="Times New Roman">
+        Where <a href="odma20-3.htm#DocumentFormatNames">Document Format</a> is
+        specified</font></td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">Document format is specifiable
+        in <b><code><a href="odma20-3.htm#ODMGetAlternateContent">ODMGetAlternateContent</a></code></b>,
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>,
+        <b><code><a href="odma20-3.htm#ODMNewDoc">ODMNewDoc</a></code></b>, <b><code><a href="odma20-3.htm#ODMSaveAs">ODMSaveAs</a></code></b><a href="odma20-3.htm#ODMSaveAs">,</a>
+        <b><code><a href="odma20-3.htm">ODMSaveAsEx</a></code></b>, <b><code><a href="odma20-3.htm#ODMSetAlternateContent">ODMSetAlternateContent</a></code></b>,
+        <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>,
+        and <b><code><a href="odma20-3.htm#ODMSelectDocEx">ODMSelectDocEx</a></code></b>.&nbsp;
+        Both <b><code><a href="odma20-3.htm#ODMSaveAs">ODMSaveAs</a></code></b>
+        and <b><code><a href="odma20-3.htm#ODMSaveAsEx">ODMSaveAsEx</a></code></b>
+        provide for format-specification via callback procedure.&nbsp; The
+        document attributes <b><code><a href="odma20-3.htm#ODM_ALTERNATE_RENDERINGS">ODM_ALTERNATE_RENDITIONS</a></code></b>
+        and <b><code><a href="odma20-3.htm#ODM_CONTENTFORMAT">ODM_CONTENT_FORMAT</a></code></b>
+        use document format identifications which are potentially accessible by <b><code><a href="odma20-3.htm#ODMGetDocInfo">ODMGetDocInfo</a></code></b>
+        and <b><code><a href="odma20-3.htm#ODMSetDocInfo">ODMSetDocInfo</a></code></b>.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.7¶2">1.7<font FACE="Times New Roman">¶2</font></a><font FACE="Times New Roman">
+        on <a href="odma20-3.htm#CharacterSets" name="CharacterSetConversion">Character Set Conversion</a></font></td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" align="left" valign="top">Although an application may be
+        sharing Document Ids with itself on different platforms, in the general
+        case the application will not be able to determine the destination
+        application or platform on which an exported Document Id will be
+        used.&nbsp; This is also not a question that users will be able to
+        answer.&nbsp; It is important to employ character sets in a way that
+        Document Ids are likely to be transportable via some neutral, <a href="#simple characters">simple
+        character set</a>, such as a subset of ISO 646 printable characters that
+        occur in almost all ISO-standardized character codes.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.8">1.8</a>
+        <a href="odma20-3.htm#ApplicationInterfaces">Application Interfaces</a><font FACE="Times New Roman">
+        section statement on using COM</font></td>
+      <td width="7%" align="center" valign="top">2000-11-01<br>
+        tbd</td>
+      <td width="40%" valign="top">The first paragraph is misleading.&nbsp; The
+        C Language API and the COM interfaces are not operationally
+        equivalent.&nbsp; The C Language API defined by <b><code>odma.h</code></b>
+        is supported by the ODMA Connection Manager.&nbsp; Except for the <b><code><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+        operation, all interfaces defined in <b><code>odmacom.h</code></b> are
+        those supplied by DMS-integration modules and are not operations or
+        interfaces supplied by the ODMA Connection Manager.&nbsp; Although the
+        COM operations are related to (a subset of) the C API operations, and
+        are similarly-named, they are not the same operations.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.8¶3">1.8<font FACE="Times New Roman">¶3</font></a><font FACE="Times New Roman">
+        on using COM Query Interface</font></td>
+      <td width="7%" align="center" valign="top">2000-07-09<br>
+        tbd</td>
+      <td width="40%" valign="top">The use of <code><b>IODMDocMan::QueryInterface</b></code>
+        is not limited to the default DMS.&nbsp; The operation will query for an
+        available interface from whatever DMS supplied the <b><code><a href="odma20-3.htm#IODMDocMan-Interface">IODMDocMan</a></code></b>
+        interface (or other COM interface) being used.&nbsp; To have interfaces
+        to multiple DMS integrations, use <b><code><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+        to obtain one COM interface to start with (e.g., <b><code>IUnknown</code></b>,
+        the always-supported interface) for each DMS of interest.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.9">1.9</a>
+        <a name="SmartQuotes">Use of quotes</a> in <a href="odma20-3.htm#QuerySyntax">Query
+        Syntax</a> &lt;<a href="odma20-3.htm#&lt;term&gt;">term</a>&gt; and &lt;<a href="odma20-3.htm#&lt;condition&gt;">condition</a>&gt;
+        forms</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">The syntax forms given in the table use
+        balanced quotations, <font FACE="Times New Roman"><b><code>‘</code></b></font>
+        ... <font color="#000000"><b><code>’</code></b>, which are code-page
+        specific characters</font>.<font color="#000000"> This may be a
+        word-processor &quot;smart&quot;-quotes artifact and not the actual
+        syntax.&nbsp; The single-quote character, <b><code>'</code></b>, is
+        probably intended in the rules for &lt;<a href="odma20-3.htm#&lt;term&gt;">term</a>&gt;
+        and &lt;<a href="odma20-3.htm#&lt;condition&gt;">condition</a>&gt; and
+        in the explanations for creating single quotes in &lt;<a href="odma20-3.htm#&lt;word&gt;">word</a>&gt;
+        and &lt;<a href="odma20-3.htm#&lt;attribute_value&gt;">attribute_value</a>&gt;
+        texts.&nbsp; This needs to be confirmed against the ODMA 1.5
+        specification and any actual implementations.&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.9">1.9</a>
+        <a href="odma20-3.htm#QuerySyntax">Query Syntax</a> &lt;<a href="odma20-3.htm#&lt;expression&gt;">expression</a>&gt;
+        misspelled</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">The rule name &lt;<a href="odma20-3.htm#&lt;expression&gt;">expressioin</a>&gt;
+        should be &lt;expression&gt;</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.9">1.9</a>
+        <a href="odma20-3.htm#QuerySyntax">Query Syntax</a> &lt;<a href="odma20-3.htm#&lt;condition&gt;">condition</a>&gt;
+        and &lt;<a href="odma20-3.htm#&lt;attribute&gt;">attribute</a>&gt; rules
+        are malformed</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">The correct rule for &lt;condition&gt;
+        is&nbsp;
+        <p align="center">&lt;condition&gt; :: &lt;<a href="odma20-3.htm#&lt;attribute&gt;">attribute</a>&gt; &lt;<a href="odma20-3.htm#&lt;op&gt;">op</a>&gt;
+        <code><b>‘</b></code>&lt;<a href="odma20-3.htm#&lt;attribute_value&gt;">attribute_value</a>&gt;<code><b>’</b></code></p>
+  </center>
+      <p align="left">and the <code><b>‘</b></code>&lt;<a href="odma20-3.htm#&lt;attribute_value&gt;">attribute_value</a>&gt;<b><code>’</code></b>
+      element should be deleted from the front of the &lt;<a href="odma20-3.htm#&lt;attribute&gt;">attribute</a>&gt;
+      rule.</td>
+    </tr>
+  <center>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.9">1.9</a>
+        <a href="odma20-3.htm#QuerySyntax">Query Syntax</a> formalism not
+        defined</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">There is neither reference nor definition of
+        the particular syntactic-definition notation employed in this
+        section.&nbsp; Rules for admissible and required white space and for
+        case sensitivity are omitted.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.9">1.9</a>
+        <a href="odma20-3.htm#QuerySyntax">Query Syntax</a> character-set
+        requirements</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">For an application to be able to create query
+        formulae, it must be operating in a code page that includes this
+        character set:
+        <p align="center"><b><code>0 1 2 3 4 5 6 7 8 9</code></b><br>
+        <b><code>a b c d e f g h i j k l m n o p q r s t u v w x y z<br>
+        A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+        = &lt; ! &gt; ( ) ' _ </code></b><code><b>‘ </b></code><code><b>’ +
+        - : \ , / .<br>
+        </b></code>and at least the space character</p>
+  </center>
+      <p align="left">including characters required for attribute values that
+      are ODMA Document IDs, date-time values, format names, and lists of
+      keywords.&nbsp; This is another condition requiring consistent
+      availability of a <a href="#CharacterSetConversion">simple character set</a>
+      that is translatable among all acceptable code pages.</td>
+    </tr>
+  <center>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#1.10">1.10</a>
+        <a href="odma20-3.htm#QueryExamples">Query Examples</a> use of quotation
+        characters</td>
+      <td width="7%" align="center" valign="top">2000-07-10<br>
+        tbd</td>
+      <td width="40%" valign="top">The examples all employ balanced quotations, <font FACE="Times New Roman"><b><code>‘</code></b></font>
+        ... <font color="#000000"><b><code>’</code></b>, which are code-page
+        specific characters</font>.<font color="#000000"> This may be a
+        word-processor &quot;smart&quot;-quotes artifact and not the actual
+        syntax.&nbsp; The single-quote character, <b><code>'</code></b>, is
+        probably intended, as noticed for the <a href="#SmartQuotes">Query
+        Syntax</a> also. This needs to be confirmed against the ODMA 1.5
+        specification and any available implementations.&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a name="lpszDocId" href="odma20-3.htm#lpszDocId2.13">Description
+        of <b><code><i>lpszDocId</i></code></b></a> parameters:<br>
+        <a href="odma20-3.htm#2.1">2.1</a> <b><code><a href="odma20-3.htm#ODMActivate">ODMActivate</a></code></b>,<br>
+        <a href="odma20-3.htm#2.2">2.2</a> <b><code><a href="odma20-3.htm#ODMCloseDoc">ODMCloseDoc</a></code></b>,<br>
+        <a href="odma20-3.htm#2.3">2.3</a> <b><code><a href="odma20-3.htm#ODMCloseDocEx">ODMCloseDocEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.4">2.4</a> <b><code><a href="odma20-3.htm#ODMGetAlternateContent">ODMGetAlternateContent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.9">2.9</a> <b><code><a href="odma20-3.htm#ODMGetDocInfo">ODMGetDocInfo</a></code></b>,<br>
+        <a href="odma20-3.htm#2.10">2.10</a> <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>,<br>
+        <a href="odma20-3.htm#2.11">2.11</a> <b><code><a href="odma20-3.htm#ODMGetLeadMoniker">ODMGetLeadMoniker</a></code></b>,<br>
+        <a href="odma20-3.htm#2.13">2.13</a> <b><code><a href="odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>,<br>
+        <a href="odma20-3.htm#2.20">2.20</a> <b><code><a href="odma20-3.htm#ODMSaveAs">ODMSaveAs</a></code></b>,<br>
+        <a href="odma20-3.htm#2.21">2.21</a> <b><code><a href="odma20-3.htm#ODMSaveAsEx">ODMSaveAsEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.22">2.22</a> <b><code><a href="odma20-3.htm#ODMSaveDoc">ODMSaveDoc</a></code></b>,<br>
+        <a href="odma20-3.htm#2.23">2.23</a> <b><code><a href="odma20-3.htm#ODMSaveDocEx">ODMSaveDocEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.26">2.26</a> <b><code><a href="odma20-3.htm#ODMSetAlternateContent">ODMSetAlternateContent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.28">2.28</a> <b><code><a href="odma20-3.htm#ODMSetDocEvent">ODMSetDocEvent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.29">2.29</a> <b><code><a href="odma20-3.htm#ODMSetDocInfo">ODMSetDocInfo</a></code></b>,<br>
+        <a href="odma20-3.htm#2.30">2.30</a> <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b></td>
+      <td width="7%" align="center" valign="top"><font color="#000000">2000-06-30<br>
+        tbd</font></td>
+      <td width="40%" valign="top"><font color="#000000">(Description of <b><code><i><a href="odma20-3.htm#lpszDocId2.18">lpszDocId</a></i></code></b>
+        for <a href="odma20-3.htm#2.18"> 2.18</a> <b><code><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b> is
+        <a href="#lpszDocId2.18"> addressed separately</a>.)</font>
+        <p><font color="#000000">The description of <b><i><code>lpszDocId</code></i></b>
+        in many of the sections overlooks the fact that the parameter is a <i>pointer</i>
+        to the first byte of a document ID.&nbsp; It is <code><b>*</b><i><b>lpszDocId</b></i></code>
+        (better yet, <b><code><i>lpszDocId</i>[]</code></b>) that carries the
+        document ID.&nbsp; Accomplished C/C++ programmers will completely
+        overlook this careless language, automatically understanding what is
+        meant.&nbsp; People who do not use C/C++ and who want to understand
+        these interfaces are supported by more rigorous ways of speaking.&nbsp;
+        It is recommended that the use of a pointer and the use of pointed-to
+        material always be clearly differentiated.</font></p>
+        <p><font color="#000000">Definitions such as</font></p>
+        <blockquote>
+          <dl>
+            <dt><b><i><code>lpszDocId</code></i></b> -
+              <b> in</b> -&nbsp;</dt>
+            <dd> A null-terminated <a href="odma20-3.htm#DocumentIDs"> document ID</a>. This is typically obtained 
+  by a call to <a href="odma20-3.htm#ODMSelectDoc"><b><code> ODMSelectDoc</code></b></a>, <b><code><a href="odma20-3.htm#ODMSelectDocEx"> ODMSelectDocEx</a></code></b> or
+              <b><code><a href="odma20-3.htm#ODMNewDoc"> ODMNewDoc</a></code></b>.&nbsp;</dd>
+          </dl>
+        </blockquote>
+        <p>are perhaps better expressed as&nbsp;</p>
+        <blockquote>
+          <dl>
+            <dt><b><i><code>lpszDocId</code></i></b> -
+              <b> in</b> -&nbsp;</dt>
+            <dd> Pointer to the beginning of a null-terminated <a href="odma20-3.htm#DocumentIDs"> document ID</a>.
+              <b><code><i>lpszDocId</i>[]</code></b> is typically obtained 
+  by a call to <a href="odma20-3.htm#ODMSelectDoc"><b><code> ODMSelectDoc</code></b></a>, <b><code><a href="odma20-3.htm#ODMSelectDocEx"> ODMSelectDocEx</a></code></b> or
+              <b><code><a href="odma20-3.htm#ODMNewDoc"> ODMNewDoc</a></code></b>.&nbsp;</dd>
+          </dl>
+        </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">Failure
+        to Find a DMS:<br>
+        <a href="odma20-3.htm#2.1">2.1</a> <b><code><a href="odma20-3.htm#ODMActivate">ODMActivate</a></code></b>,<br>
+        <a href="odma20-3.htm#2.2">2.2</a> <b><code><a href="odma20-3.htm#ODMCloseDoc">ODMCloseDoc</a></code></b>,<br>
+        <a href="odma20-3.htm#2.3">2.3</a> <b><code><a href="odma20-3.htm#ODMCloseDocEx">ODMCloseDocEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.4">2.4</a> <b><code><a href="odma20-3.htm#ODMGetAlternateContent">ODMGetAlternateContent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.9">2.9</a> <b><code><a href="odma20-3.htm#ODMGetDocInfo">ODMGetDocInfo</a></code></b>,<br>
+        <a href="odma20-3.htm#2.10">2.10</a> <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>,<br>
+        <a href="odma20-3.htm#2.11">2.11</a> <b><code><a href="odma20-3.htm#ODMGetLeadMoniker">ODMGetLeadMoniker</a></code></b>,<br>
+        <a href="odma20-3.htm#2.13">2.13</a> <b><code><a href="odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>,<br>
+        <font color="#000000"><a href="odma20-3.htm#2.18"> 2.18</a>  <code> <b><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></b></code>,</font><br>
+        <a href="odma20-3.htm#2.20">2.20</a> <b><code><a href="odma20-3.htm#ODMSaveAs">ODMSaveAs</a></code></b>,<br>
+        <a href="odma20-3.htm#2.21">2.21</a> <b><code><a href="odma20-3.htm#ODMSaveAsEx">ODMSaveAsEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.22">2.22</a> <b><code><a href="odma20-3.htm#ODMSaveDoc">ODMSaveDoc</a></code></b>,<br>
+        <a href="odma20-3.htm#2.23">2.23</a> <b><code><a href="odma20-3.htm#ODMSaveDocEx">ODMSaveDocEx</a></code></b>,<br>
+        <a href="odma20-3.htm#2.26">2.26</a> <b><code><a href="odma20-3.htm#ODMSetAlternateContent">ODMSetAlternateContent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.28">2.28</a> <b><code><a href="odma20-3.htm#ODMSetDocEvent">ODMSetDocEvent</a></code></b>,<br>
+        <a href="odma20-3.htm#2.29">2.29</a> <b><code><a href="odma20-3.htm#ODMSetDocInfo">ODMSetDocInfo</a></code></b>,<br>
+        <a href="odma20-3.htm#2.30">2.30</a> <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b></td>
+      <td width="7%" align="center" valign="top"><font color="#000000">2000-08-03<br>
+        tbd</font></td>
+      <td width="40%" valign="top">All API (not COM) requests that take an <b><i><code><a href="odma20-3.htm#lpszDocId2.1">lpszDocId</a></code></i></b>
+        parameter must be routed to a DMS that is able to work with the
+        identified document.&nbsp; The specification does not address this case:
+        What is the response if the <code><i><b>lpszDocId</b></i><b>[]</b></code>
+        <a href="odma20-3.htm#DocumentIDs">Document ID</a> string is improperly
+        formed or the <a href="odma20-3.htm#DMS_ID">DMS ID</a> is for a DMS that
+        can't be found or connected?
+        <p>It would appear that the only possible responses, depending on the
+        operation, is one of <b><code><a href="odma20-3.htm#ODM_E_DOCID2.1">ODM_E_DOCID</a></code></b>
+        and <b><code><a href="odma20-3.htm#ODM_E_FAIL2.1">ODM_E_FAIL</a></code></b>.&nbsp;
+        For <b><code><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>,
+        the prospects are <b><code><a href="odma20-3.htm#E_INVALIDARG2.18">E_INVALIDARG</a></code></b>
+        and <b><code><a href="odma20-3.htm#E_FAIL2.18">E_FAIL</a></code></b>.</p>
+        <p>Inspection of the ODMA 2.0.0 versions of ODMA Connection Managers
+        confirms that these are indeed the possible responses.&nbsp; If the
+        particular operation has only one of <b><code>ODM_E_DOCID</code></b> and
+        <b><code>ODM_E_FAIL</code></b> as a valid <code><b>ODMSTATUS</b></code>
+        value, then the one permitted value is used.&nbsp; Otherwise, either
+        response is possible and the implementations have ways of producing
+        both.</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.2">2.2</a>
+        <b><code><a href="odma20-3.htm#ODMCloseDoc">ODMCloseDoc</a></code></b> <b><i><code>activeTime</code></i></b>
+        parameter</td>
+      <td width="7%" align="center" valign="top">2000-06-28<br>
+        tbd</td>
+      <td width="40%" valign="top"><font color="#000000">In the function
+        prototype for <b><code><a href="odma20-3.htm#ODMCloseDoc">ODMCLoseDoc</a></code></b>,
+        the <b><i><code>activeTime</code></i></b> parameter is incorrectly shown
+        as <b><i><code>active Time</code></i></b>, with a space in the
+        name.&nbsp;&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.3¶1">2.3<font FACE="Times New Roman">¶1</font></a><font FACE="Times New Roman">
+        <b><code><a href="odma20-3.htm#ODMCloseDocEx">ODMCloseDocEx</a></code></b>
+        <b><i><code>pdwFlags</code></i></b> misspelling</font></td>
+      <td width="7%" align="center" valign="top">2000-06-28<br>
+        tbd</td>
+      <td width="40%" valign="top"><font color="#000000">In the <a href="odma20-3.htm#2.3¶1">first
+        paragraph</a>, <b><code><i>pdwFlags</i></code></b> is misspelled as <b><i><code>pwdFlags</code></i></b>.</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#ODMGetDMS">2.5</a>
+        <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>
+        Result Value</td>
+      <td width="7%" align="center" valign="top">2000-06-29<br>
+        tbd</td>
+      <td width="40%" valign="top"><font color="#000000">In the function
+        prototype for <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>,
+        the result value is incorrectly shown as having type <b><code>WORD</code></b>, but
+        the result values are all <b><code>ODMSTATUS</code></b> values.&nbsp; In
+        <b><code><a href="odma200h.htm">odma.h</a></code></b>,
+        <b><code>ODMSTATUS</code></b> is specified in the declaration for <b><code>ODMGetDMS</code></b>.&nbsp;
+        Applications should be sure to place any result from this function into
+        a value of type <code><b>ODMSTATUS</b></code>, not type <code><b>WORD</b></code>.</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.5">2.5</a>
+        <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>
+        introduction of <b><code>LPCSTR</code></b></td>
+      <td width="7%" align="center" valign="top">2000-07-11<br>
+        tbd</td>
+      <td width="40%" valign="top"><font color="#000000">In the function
+        prototype for <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>,
+        the parameter type <b><code>LPCSTR</code></b> is introduced for the
+        first time.&nbsp; The Microsoft <b><code>wtypes.h</code></b> definition
+        to <b><code>const char*</code></b> is a contract that the provided character string will not be altered in any way by action of the
+        function.&nbsp; This extremely-valuable provision is under-used for the
+        ODMA 2.0 API.&nbsp; Everywhere that an <b><code>LPSTR</code></b> is
+        specified for an <b>in</b>-parameter, the <b><code>LPCSTR</code></b>
+        type is preferable and could have been safely specified.&nbsp; This
+        provides additional diagnostic protection and operating predictability
+        when building ODMA-compliant products.</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.5ReturnValue">2.5</a>
+        <a href="odma20-3.htm#ODMGetDMS"><b><code>ODMGetDMS</code></b></a> usage
+        of <b>Returns Value</b></td>
+      <td width="7%" align="center" valign="top">2000-07-11<br>
+        tbd</td>
+      <td width="40%" valign="top"><font color="#000000">The <a href="odma20-3.htm#2.5ReturnValue">list
+        of return values</a> for <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>
+        is titled &quot;<b>Returns Value</b>&quot; instead of &quot;<b>Return
+        Value</b>&quot; as used in all other function descriptions.</font></td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">&nbsp;<a href="odma20-3.htm#2.7">2.7¶1</a>
+        <code><b><a href="odma20-3.htm#ODMGetDMSInfo">ODMGetDMSInfo</a> </b></code>typo</td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">The last sentence of the first paragraph,
+        &quot;The application <i><b> if</b></i> free to ...&quot; should begin
+        &quot;The application is free to ...&quot;</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.8">2.8</a>
+        <b><code><a href="odma20-3.htm#ODMGetDMSList">ODMGetDMSList</a></code></b>
+        nomenclature</td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">This section speaks of returning DMSs.&nbsp; <a href="odma20-3.htm#DMS_ID">DMS
+        Ids</a> are returned.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.8">2.8¶1</a>
+        <b><code><a href="odma20-3.htm#ODMGetDMSList">ODMGetDMSList</a></code></b>
+        platform functionality</td>
+      <td width="7%" align="center" valign="top">2000-08-03<br>
+        tbd</td>
+      <td width="40%" valign="top">This function does not necessarily return a
+        DMS Id for every DMS &quot;currently registered on the
+        system.&quot;&nbsp; It returns a DMS Id for each registered DMS that is
+        available to the requesting application via an <b><code><a href="odma20-3.htm#ODMGetDMS">ODMGetDMS</a></code></b>
+        request.&nbsp; For example, a Win32 application will receive a list of
+        DMS Ids for which there are registered Win32 DMS Integrations;&nbsp; DMS
+        Ids for which there are only Win16 DMS Integrations are not returned to
+        a Win32 application.&nbsp; (See specification section 5, <a href="odma20-3.htm#InstallingDMS">Installing
+        a DMS</a>.)</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.10" name="DocRelationUsage">2.10</a>
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+        and <a href="odma20-3.htm#2.30">2.30</a> <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>
+        <b><code>ODMSTATUS</code></b> value <code><b>ODM_E_NOSUPPORT</b></code></td>
+      <td width="7%" align="center" valign="top">2000-10-17<br>
+        see <a href="Q001000.htm">Q001000:
+        DocRelation Usage</a></td>
+      <td width="40%" valign="top">The <b><code>ODM_E_NOSUPPORT</code></b>
+        status is ambiguous between the function not being supported and the
+        requested operation not being supported.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.10">2.10</a>
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+        <b><code><i><a href="odma20-3.htm#pdwFlags2.10">pdwFlags</a></i></code></b></td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">This is a pointer to the flags
+        parameter.&nbsp; It is more appropriate to refer to <b><code>*<i>pdwFlags</i></code></b>
+        as providing the input Flag option, <b><code>*<i>pdwFlags</i></code></b>
+        as providing any output values.</td>
+    </tr>
+  </center>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.10">2.10</a>
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+        <b><code><a href="odma20-3.htm#ODM_E_REQARG2.10">ODM_E_REQARG</a></code></b>
+        status</td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        repaired in <a href="odma20-3.htm#ODM_E_INVARG2.10">2.0-3</a></td>
+      <td width="40%" valign="top">This entry was collapsed into the preceding
+        entry for <b><code><a href="odma20-3.htm#ODM_E_INVARG2.10">ODM_E_INVARG</a></code></b>.&nbsp;
+        It has been separated into a free-standing Return Value entry in edition
+        2.0-3.
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.10">2.10</a>
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+        <b><code>*<i><a href="odma20-3.htm#pdwFlags2.10out">pdwFlags</a></i></code></b>
+        output values</td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">The <b><code>*</code><i><code><a href="odma20-3.htm#pdwFlags2.10out">pdwFlags</a></code></i></b>
+        output settings <b><code><a href="odma20-3.htm#ODM_REL_FIXED2.10">ODM_REL_FIXED</a></code></b>,
+        <b><code><a href="odma20-3.htm#ODM_REL_RELEASED2.10">ODM_REL_RELEASED</a></code></b>,
+        and <b><code><a href="odma20-3.htm#ODM_REL_LATEST2.10">ODM_REL_LATEST</a></code></b>
+        are described as if inputs rather than outputs.&nbsp; It is not clear to
+        whom these are to be understood as instructions, and what is meant by
+        specifying them back to the application.
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.10">2.10</a>
+        <b><code><a href="odma20-3.htm#ODMGetDocRelation">ODMGetDocRelation</a></code></b>
+        <b><code>*<i><a href="odma20-3.htm#pdwFlags2.10out">pdwFlags</a></i></code></b>
+        output value <b><code><a href="odma20-3.htm#ODM_REL_RELEASED2.10">ODM_REL_RELEASED</a></code></b></td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">The wording for this case is very difficult
+        to understand.
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.11">2.11</a>
+        <b><code><a href="odma20-3.htm#ODMGetLeadMoniker">ODMGetLeadMoniker</a></code></b>
+        <b><code>*<i><a href="odma20-3.htm#ppMoniker2.11">ppMoniker</a></i></code></b>
+        output value</td>
+      <td width="7%" align="center" valign="top">2000-06-30<br>
+        tbd</td>
+      <td width="40%" valign="top">It is in <b><code>*<i><a href="odma20-3.htm#ppMoniker2.11">ppMoniker</a></i></code></b>
+        where an <i>interface pointer</i> for the lead moniker's <b><code>IMonitor</code></b>
+        interface will be returned.&nbsp; Note that the application is
+        responsible for releasing this interface.&nbsp;&nbsp;
+        <p>Generally, this function is underspecified and much more information
+        is required before it is clear how the Moniker can be used.
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">&nbsp;</td>
+      <td width="7%" align="center" valign="top">&nbsp;</td>
+      <td width="40%" valign="top">&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.16" name="X000903-2">2.16</a>
+        <b><code><a href="odma20-3.htm#ODMQueryExecute">ODMQueryExecute</a></code></b>
+        <b><code><a href="odma20-3.htm#2.16ReturnValue">ODMSTATUS</a></code></b>
+        value <b><code><a href="odma20-3.htm#ODM_E_PARTIALSUCCESS2.16">ODM_E_PARTIALSUCCESS</a></code></b>
+        mis-identified</td>
+      <td width="7%" align="center" valign="top">2000-09-20<br>
+        tbd</td>
+      <td width="40%" valign="top"><b><code>ODM_E_PARTIALSUCCESS</code></b>
+        should be identified as <b><code>ODM_W_PARTIALSUCCESS</code></b> because
+        there is a result produced in <b><code><i><a href="odma20-3.htm#queryId2.16">queryId</a></i>[]</code></b>.&nbsp;
+        A warning indication, not a failure result, is appropriate.&nbsp; See
+        incident reports <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000301">X000301</a>
+        and <a href="http://www.infonuovo.com/odma/support/X000903.htm">X000903</a>.
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top">&nbsp;</td>
+      <td width="7%" align="center" valign="top">&nbsp;</td>
+      <td width="40%" valign="top">&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="left" valign="top"><a href="odma20-3.htm#2.18">2.18</a>
+        <b><code><a href="odma20-3.htm#ODMQueryInterface" name="lpszDocId2.18">ODMQueryInterface</a></code></b>
+        description of <b><i><code><a href="odma20-3.htm#lpszDocId2.18">lpszDocId</a></code></i></b></td>
+      <td width="7%" align="center" valign="top">2000-08-03<br>
+        tbd</td>
+      <td width="40%" valign="top">As for a <a href="#lpszDocId">number of other
+        functions</a>, the <b><i><code><a href="#lpszDocId">lpszDocId</a></code></i></b>
+        parameter is spoken of as being the document ID instead of a <i>pointer</i>
+        to the document ID.&nbsp; The description of <b><code><a href="odma20-3.htm#ODMQueryInterface">ODMQueryInterface</a></code></b>
+        is a perfect illustration of the confusion that this makes possible: It
+        is the pointer that may be Null, even though there are also null strings
+        to consider.
+        <p>The description</p>
+        <blockquote>
+          <dl>
+            <dt><b><i><code><a href="odma20-3.htm#lpszDocId2.18">lpszDocId</a></code></i></b> -
+              <b> in</b> -&nbsp;</dt>
+            <dd> An ODMA <a href="#DocumentIDs"> document ID</a> or Null. If Null then the 
+  application's default DMS is queried for the interface. Otherwise the DMS that 
+  created this document ID is queried.</dd>
+          </dl>
+        </blockquote>
+        <p>is more rigorous when put in the form</p>
+        <blockquote>
+          <dl>
+            <dt><b><i><code>lpszDocId</code></i></b> -
+              <b> in</b> -&nbsp;</dt>
+            <dd> Pointer to the beginning of an ODMA <a href="#DocumentIDs"> document ID</a> or Null. If Null then the 
+  application's default DMS is queried for the interface. Otherwise the DMS
+              specified in the <b><code><i>lpszDocId</i>[]</code></b> document ID is
+              queried for a COM interface.</dd>
+          </dl>
+        </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left"><a href="odma20-3.htm#2.19">2.19</a> <b><code><a href="odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></code></b>
+        <b><code><a href="odma20-3.htm#2.19ReturnValue">ODMSTATUS</a></code></b>
+        values
+      </td>
+      <td width="7%" align="center" valign="top">
+        2000-10-30<br>
+        tbd
+      </td>
+      <td width="40%" valign="top">In accordance with incident report <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X001001">X001001</a>,
+        these result codes are ill-defined.&nbsp; More-appropriate definition of
+        the failure cases is
+        <blockquote>
+          <dl>
+            <dt><b><code><a name="ODM_E_NODMS2.19" href="odma20-3.htm#ODM_E_NODMS2.19">ODM_E_NODMS</a></code></b>&nbsp;</dt>
+            <dd> ODMA has no default DMS for this application</dd>
+            <dt><b><code><a name="ODM_E_CANTINIT2.19" href="odma20-3.htm#ODM_E_CANTINIT2.19">ODM_E_CANTINIT&nbsp;</a></code></b></dt>
+            <dd> ODMA initialization failed</dd>
+            <dt><b><code><a name="ODM_E_VERSION2.19" href="odma20-3.htm#ODM_E_VERSION2.19">ODM_E_VERSION&nbsp;</a></code></b></dt>
+            <dd> ODMA configurationdoes not support the requested version of 
+  the API</dd>
+            <dt><b><code><a name="ODM_E_REFUSED2.19" href="odma20-3.htm#ODM_E_REFUSED2.19">ODM_E_REFUSED</a></code></b>&nbsp;</dt>
+            <dd> (deprecated)<br>
+              Operation with the available default DMS has been refused by
+              the DMS.&nbsp; This should be treated the same as <b><code>ODM_E_NODMS</code></b>.</dd>
+          </dl>
+        </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        &nbsp;
+      </td>
+      <td width="7%" align="center" valign="top">
+        &nbsp;
+      </td>
+      <td width="40%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left"><a href="odma20-3.htm#3.1">3.1</a> <b><code><a href="odma20-3.htm#ODMGetODMInterface">ODMGetODMInterface</a></code></b>
+        <b><code><a href="odma20-3.htm#3.1ReturnValue">HRESULT</a></code></b> <b><code><a href="odma20-3.htm#E_ODM_VERSION3.1">E_ODM_VERSION</a></code></b>
+      </td>
+      <td width="7%" align="center" valign="top">
+        2000-09-10<br>
+        tbd
+      </td>
+      <td width="40%" valign="top">In accordance with incident report <a href="http://www.infonuovo.com/odma/support/X000902.htm">X000902</a>,
+        this result code is not possible to produce and is not
+        implemented.&nbsp; It should simply be stricken from the specification.</td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left">&nbsp;
+      </td>
+      <td width="7%" align="center" valign="top">
+        &nbsp;
+      </td>
+      <td width="40%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="7%" align="center" valign="top">
+        <p align="left"><a href="odma20-3.htm#B1¶2">B.1¶2</a>
+        on when documents are saved into a DMS</p>
+      </td>
+  <center>
+      <td width="7%" align="center" valign="top">
+        <p align="center">2000-07-09<br>
+        tbd</p>
+      </td>
+      <td width="40%" valign="top">The statement &quot;<b><code><a href="odma20-3.htm#ODMSaveAs">ODMSaveDoc</a></code></b> is the only ODMA function that actually saves a document into a 
+  DMS.&quot; is no longer true.&nbsp; <b><code><a href="odma20-3.htm#ODMSaveDocEx">ODMSaveDocEx</a></code></b>
+        also saves a document..&nbsp; And the use of the new operations <b><code><a href="odma20-3.htm#ODMSetAlternateContent">ODMSetAlternateContent</a></code></b>
+        and <b><code><a href="odma20-3.htm#ODMSetDocRelation">ODMSetDocRelation</a></code></b>
+        introduce further implications about whether a document exists in the
+        DMS, whether or not it has any document file in the default format there
+        too.</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p align="left">Formal management of ODMA support began in May 2000.&nbsp; Capturing and
+publicizing errata to the ODMA 2.0 specification starts with <a href="odma20-3.htm">HTML
+Edition 2.0-3</a> published in August 2000.&nbsp; Some errata involve <a href="http://www.infonuovo.com/odma/support/active.htm"> incident
+reports</a> which are the basis for troubleshooting and amendments to the
+specification, to the ODMA software, and to ODMA usage practices.</p>
+<p align="left">This document is a companion to <a href="odma20-3.htm">Edition 2.0-3</a> of
+the ODMA 2.0 Specification, web page <b><code><a href="odma20-3.htm">odma20-3.htm</a></code></b>.&nbsp;
+It can be downloaded to the same location as a copy of <b><code><a href="odma20-3.htm">odma20-3.htm</a></code></b>
+and reviewed by browser there without needing any Internet connection.&nbsp; All
+references to portions of <b><code><a href="odma20-3.htm">odma20-3.htm</a></code></b>
+will make use of the local copy and operate correctly.</p>
+  <hr>
+
+  <dl><font size="-1">
+      <dt><b><a name="2.0-1">Errata
+      2.0-1</a> Initial Errata Compilation   <font color="#FF0000">Intermediate
+        Review Draft</font> </b> </dt>
+    <dd>Initial errata collected while making final web version of
+    <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">
+    HTML edition 2.0-3</a> of the ODMA 2.0 specification.</dd>
+  </font></dl>
+<p align="right">created 2000-07-09-15:45 -0700 (pd) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-11-22 15:33 $<br>
+$$Revision: 17 $</em></p>
+</body>
+</html>

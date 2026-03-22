@@ -1,0 +1,1005 @@
+<html>
+
+<head><!--$$Header: /InfoNuovoCompagno/odma/downloads/odma20L.htm 15    05-02-03 16:13 Orcmid $-->
+
+<title>ODMA 2.0 Library Files (zip package 2.0.0-1)</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"></td>
+    <td width="60%" height="6"><h1 align="center"><em><font face="Arial"><strong><a href="http://www.infonuovo.com/dmware">AIIM
+      DMware</a></strong></font></em></h1>
+      <h1 align="center"><font face="Arial"><strong><a href="http://www.infonuovo.com/odma">ODMA</a>
+      <a href="http://www.infonuovo.com/odma/support/odma20st.htm"> 2.0</a>  <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm"> Library Files</a></strong></font></h1>
+    </td>
+    <td width="20%" height="6"></td>
+  </tr>
+</table>
+</center></div>
+
+<blockquote>
+  <p align="center"><font size="-1">Copyright ? 2000 AIIM International<br>
+  </font><a href="#2.0.0-1">V<span style="font-variant: small-caps">ersion </span>2.0.0-1</a>
+  <b><font color="#FF0000">Review Draft</font></b> <span style="font-variant: small-caps">Last updated</span>   
+  2001-01-11-08:28 -0800 (pst)</p>
+  <p><em>The </em><b>Open Document Management API (ODMA) Coalition</b><em>
+  defined and developed libraries for building ODMA-compliant software
+  products in conformance with the </em><a href="http://www.infonuovo.com/odma/support/odma20st.htm"><b>ODMA 2.0 Specification</b></a><em>.</em></p>
+  <p><em>The </em><b>ODMA 2.0 Library Files</b><em><strong> </strong>are
+  those </em><em>definition files needed to construct ODMA-aware applications
+  and ODMA-compliant DMS integrations.&nbsp; These files are also
+  employed in the construction, maintenance, and porting of the ODMA 2.0 Connection
+  Manager.&nbsp; Along with the specification itself, these are the essential
+  software files for ODMA 2.0 software-development projects.</em></p>
+  <p>&nbsp;<font color="#0000FF"><strong><em>This information applies to Zip Package
+  2.0.0-1 of the ODMA 2.0 Library Files.&nbsp; </em></strong></font><font color="#0000FF"><strong><em>For
+  later versions and current status, consult the <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">ODMA
+  2.0 Library Files</a> description page.</em></strong></font></p>
+  <hr>
+  <h3><a name="Content"><em>Content</em></a></h3>
+</blockquote>
+
+<h2>1. <a href="#Prerequisites">Prerequisites</a></h2>
+
+<h2>2. <a href="#ObtainingFiles">Obtaining ODMA 2.0 Library Files</a></h2>
+
+  <h2>3. <a href="#LibraryContent">ODMA 2.0 Library Content</a> <font size="+0">(package
+  version 2.0.0-1)</font></h2>
+
+<blockquote>
+
+<dl>
+  <dt><font size="+1"><b>3.1<code> <a href="#odma.h">Odma.h</a></code> (version 2.0.0-1)</b></font></dt>
+  <dd><b>The basic ODMA 2.0 API definitions (C and C++) used by ODMA-aware
+    applications</b></dd>
+  <dt>&nbsp;</dt>
+  <dt><font size="+1"><b>3.2<code> <a href="#odmacom.h">Odmacom.h</a></code> (version 2.0.0-1)</b></font></dt>
+  <dd><b>The basic ODMA 2.0 COM Interface definitions for use by ODMA-aware COM
+    clients, COM servers, and ODMA-compliant DMS integrations.</b></dd>
+  <dt>&nbsp;</dt>
+  <dt><font size="+1"><b>3.3<code> <a href="#odma.lib">Odma.lib</a></code> (version 2.0.0-1)</b></font></dt>
+  <dd><b>The Microsoft object library for binding a 16-bit (Windows 3.11
+    compatible) application to the 16-bit implementation of the ODMA Connection
+    Manager, <code><font size="+1">Odma.dll</font></code>.</b></dd>
+  <dt>&nbsp;</dt>
+  <dt><font size="+1"><b>3.4<code> <a href="#odma32.lib">ODMA32.lib</a></code> (version 2.0.0-1)</b></font></dt>
+  <dd><b>The Microsoft object library for binding a Win32 (Windows 95, Windows
+    NT, or later) application to the 32-bit implementation of the ODMA
+    Connection Manager, <code><font size="+1">ODMA32.dll</font></code>.</b></dd>
+</dl>
+
+</blockquote>
+
+<h2>4. <a href="#UsingOdma.h">Using <b><code><font size="+2">Odma.h</font></code></b></a></h2>
+
+<h2>5. <a href="#UsingOdmacom.h">Using <b><code><font size="+2">Odmacom.h</font></code></b></a></h2>
+
+<h2>6. <a href="#Using.lib">Using <b><code><font size="+2">Odma.lib</font></code></b> and
+<b><code><font size="+2">ODMA32.lib</font></code></b></a></h2>
+
+<blockquote>
+
+<h3><i><a href="#ChangeHistory">Change History</a></i></h3>
+
+  <hr>
+</blockquote>
+
+<h1>1. <a name="Prerequisites">Prerequisites</a></h1>
+
+<blockquote>
+  <blockquote>
+
+<p><b>1.1 <a href="#Access-ViewingRequirements">Access-Viewing Requirements</a><br>
+1.2 <a href="#Development-ToolRequirements">Development-Tool Requirements</a></b></p>
+
+  </blockquote>
+  <p>The ODMA 2.0 Library Files (edition 2.0.0-1) are designed specifically for
+  development of ODMA-compliant software on the Microsoft Windows platform
+  (Intel PC architecture).&nbsp; The libraries are for use by programs developed in
+  C/C++ Language and constructed using standard development tools (e.g.,
+  Microsoft Visual Studio) for the Windows platform.</p>
+
+  <p>The materials included in the ODMA 2.0 Library Files package may be
+  informative and useful for other purposes as well.&nbsp; There is no special
+  effort to satisfy other applications, though.</p>
+
+<p>To determine whether there are more-suitable materials for your purposes,
+please consult the latest information on the AIIM DMware ODMA site:</p>
+
+  <ul>
+    <li><a href="http://www.infonuovo.com/odma/support/odma20st.htm"><b>ODMA 2.0
+      Status</b></a> for the latest information on ODMA materials and the
+      supported versions of ODMA</li>
+    <li><a href="http://www.infonuovo.com/odma/support/"><b>ODMA Support</b></a>
+      for overall information for all versions, including any later than ODMA
+      2.0.</li>
+    <li><a href="http://www.infonuovo.com/downloads"><b>ODMA Downloads</b></a>
+      for all materials available for download, including more-recent and
+      alternative materials to the ODMA 2.0 Library Files.</li>
+    <li><a href="http://www.infonuovo.com/odma/faq/"><b>ODMA FAQ</b></a> for
+      responses to Frequently-Asked-Questions on ODMA trouble-shooting,
+      development, and support beyond those included in the ODMA 2.0 Library
+      Files package.</li>
+  </ul>
+  <p>For more information on how ODMA 2.0 Library Files edition 2.0.0-1
+  materials are applied, it is also useful to review the following sections of
+  this document:</p>
+  <ul>
+    <li><b>Section 3, <a href="#LibraryContent">ODMA 2.0 Library Content</a></b><br>
+      for information on the actual content (in <a href="#Table1">Table 1</a>)&nbsp;</li>
+    <li><b>Section 4, <a href="#UsingOdma.h">Using </a></b><code><b><a href="#UsingOdma.h">Odma.h</a><br>
+      </b></code>for prerequisites to consider when applying the ODMA API in
+      C/C++ programs</li>
+    <li><b>Section 5, <a href="#UsingOdmacom.h">Using <code>Odmacom.h</code></a></b><br>
+      for prerequisites to consider when accessing or delivering Microsoft COM
+      interfaces for ODMA in C/C++ programs</li>
+    <li><b>Section 6, <a href="#Using.lib">Using <code>Odma.lib</code> and <code>ODMA32.lib</code></a></b><br>
+      for considerations in binding to the ODMA API, and the development tools
+      needed for delivering 16-bit (Win16) and 32-bit (Win32) ODMA-compliant
+      Intel-architecture components</li>
+  </ul>
+</blockquote>
+<h2>1.1 <a name="Access-ViewingRequirements">Access-Viewing Requirements</a></h2>
+<blockquote>
+  <p>To access and use the material, you require:</p>
+  <ol>
+    <li>A web browser or <b>HTML viewer</b> that supports HTML 3.2, including
+      tables.</li>
+    <li>A <b>ZIP-archive decompression utility</b> that will extract files from
+      WinZIP-compatible archives.</li>
+    <li>An <b>Internet connection and web browser</b> for accessing the ODMA
+      sites and downloading necessary materials.&nbsp;&nbsp;&nbsp;</li>
+  </ol>
+  <p>It is also important to have a current copy of the <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">ODMA
+  2.0 specification</a> and <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">any
+  errata</a> compiled for it.</p>
+</blockquote>
+<h2>1.2 <a name="Development-ToolRequirements">Development-Tool Requirements</a></h2>
+<blockquote>
+  <p>To develop ODMA-compliant software using the ODMA 2.0 Library Files, you
+  will need</p>
+  <ol>
+    <li>A C/C++ compiler system for developing Win32 applications that can use
+      Win32 interfaces and be bound to Win32 Dynamic Link Libraries
+      (DLLs).&nbsp; If you wish to construct a Win32 DMS integration, the
+      programming-language system must support construction of Win32-compliant
+      DLLs.</li>
+    <li>A C/C++ compiler system for developing 16-bit (Win16) applications that
+      can use 16-bit Windows interfaces and be bound to 16-bit DLLs.&nbsp;
+      Current Microsoft tools do not support development for Win16.&nbsp; It is
+      necessary to obtain older development products from Microsoft or other
+      sources if construction and maintenance of Win16 components is important.</li>
+    <li>A licensed set of Windows headers and Windows libraries, usually
+      provided with the chosen programming-language system.</li>
+  </ol>
+  <p>It is also important to review <a href="../support/odma20st.htm">current
+  issues</a>, <a href="http://www.infonuovo.com/odma/support/X00-log.htm">incident
+  reports</a>, and <a href="http://www.infonuovo.com/odma/faq/">FAQ</a> that may
+  impact your development of ODMA-2.0-compliant components.</p>
+  <p>If you have not already done so, it is valuable to obtain the ODMA 2.0
+  Software Development Kit (SDK) for component samples and the ODMA 2.0
+  Connection Managers.&nbsp;&nbsp; This and other material that may be of value
+  can be located via the <a href="http://www.infonuovo.com/odma/downloads/">ODMA
+  Downloads page</a>.</p>
+</blockquote>
+
+<h1>2. <a name="ObtainingFiles">Obtaining</a> ODMA 2.0 Library Files</h1>
+
+<blockquote>
+  <blockquote>
+
+<p><b>2.1 <a href="#IdentifyCurrentFiles">Identify Current Files</a><br>
+2.2 <a href="#DownloadLatestFiles">Download 2.0.0-1 Files</a><br>
+2.3 <a href="#ExtractDevelopmentFiles">Extract Files for Development Use</a></b></p>
+
+  </blockquote>
+</blockquote>
+
+<h2>2.1 <a name="IdentifyCurrentFiles">Identify Current Files</a></h2>
+
+<blockquote>
+
+<p>This document applies to the original library files created for ODMA
+2.0.&nbsp; They are available on-line as <a href="#LibraryContent">ODMA 2.0
+Library Files</a> package version 2.0.0-1.&nbsp;&nbsp;</p>
+
+<p>Unless you have already done so, and are satisfied that the 2.0.0-1 files are
+what you want, you should check on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA</a> site for the <a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">latest
+description</a> of ODMA 2.0 Libraries.&nbsp; That description of the current
+ODMA 2.0 library can be found on
+the <a href="http://www.infonuovo.com/odma">AIIM DMware ODMA development site</a>
+at URL</p>
+
+<p align="center"><b><code><a href="http://www.infonuovo.com/odma/downloads/odma20L.htm">http://www.infonuovo.com/odma/downloads/odma20L.htm</a></code></b></p>
+
+  <p align="left"><b>If there is more-recent material that is more-appropriate for
+  your purposes, locate the instructions that apply to that material and employ
+  them in place of this description.&nbsp; Do not continue with these
+  instructions.</b></p>
+
+  <p align="left">If package version 2.0.0-1 is the available material that you
+  elect to use, continue with these instructions.</p>
+
+</blockquote>
+
+<h2>2.2 <a name="DownloadLatestFiles"> Download 2.0.0-1 Files</a></h2>
+
+<blockquote>
+
+<p>ODMA 2.0 Library Files edition 2.0.0-1 is distributed in the Zip archive file
+<b><code><a href="http://www.infonuovo.com/odma/downloads/odma200L-1.htm">odma200L-1.zip</a></code></b>.&nbsp;&nbsp;</p>
+
+  <p>Download the <b><code>.zip</code></b> file from the designated
+  location.&nbsp; Choose a suitable working destination, such as a place where
+  you intend to extract the contents.&nbsp; Rename the file as needed to satisfy
+  requirements of your operating system.&nbsp; It is valuable to choose
+  locations and names that avoid confusion between this library package and any
+  others that become available.</p>
+
+<p>If you obtain the .zip file by other means, you can confirm that you have the
+correct package by reviewing the <b><code>odma200L-1.zip</code></b> Content in <a href="#Table1">Table
+1</a>.</p>
+
+</blockquote>
+
+<h2>2.3 <a name="ExtractDevelopmentFiles"> Extract Files for Development Use</a></h2>
+
+<blockquote>
+
+<p>The files incorporated in <b><code>odma200L-1.zip</code></b> are designed to
+be extracted together into a single file-system directory.&nbsp; Using typical
+Zip-file extraction software, an <i>Extract All</i> operation to a chosen
+directory will deliver the entire content exactly as described in <a href="#Table1">Table
+1</a>.</p>
+
+<p>All documentation is in HTML format, and the package can be reviewed using
+the page <b><code>odma20L.htm</code></b> as the starting point.</p>
+
+<p>Two kinds of files are provided for use with programming-language systems:</p>
+
+  <ul>
+    <li>C/C++ header files <b><code><a href="#odma.h">Odma.h</a></code></b> and <b><code><a href="#odmacom.h">Odmacom.h</a></code></b></li>
+    <li>development-system link library files <b><code><a href="#odma.lib">Odma.lib</a></code></b>
+      and <b><code><a href="#odma32.lib">ODMA32.lib</a></code></b></li>
+  </ul>
+  <p>&nbsp;</p>
+</blockquote>
+
+<h1>3. <a name="LibraryContent">ODMA 2.0</a> Library Content <font size="+0">(package
+version 2.0.0-1)</font></h1>
+
+<blockquote>
+  <div align="center">
+    <center>
+    <table border="0" width="90%">
+      <caption><b><a name="Table1">Table 1</a>.&nbsp; <code>odma200L-1.zip</code> Content</b></caption>
+      <tr>
+        <th width="15%" align="center" valign="middle"><b><i><span style="font-variant: small-caps">Name</span></i></b></th>
+        <th width="8%" align="center"><b><i><span style="font-variant: small-caps">Size
+          (</span>bytes<span style="font-variant: small-caps">)</span></i></b></th>
+        <th width="20%" align="center"><b><i><span style="font-variant: small-caps">Time
+          Stamp<br>
+          (</span>local time<span style="font-variant: small-caps">)</span></i></b></th>
+        <th width="8%" align="center"><b><i><span style="font-variant: small-caps">Edition</span></i></b></th>
+        <th width="45%" align="center"><b><i><span style="font-variant: small-caps">Description</span></i></b></th>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b>odma20L.htm</b></code></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>-</code></td>
+      <td width="20%" align="center" valign="top">
+        <p align="center"><code>-</code></td>
+      <center>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">Description of the package, how to use it, and how to
+        obtain later material.</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="#odma.h">Odma.h</a></b></code></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>11567</code></p>
+      </td>
+      <center>
+      <td width="20%" align="center" valign="top">
+        <p align="center"><code>1998-04-09-12:31</code></p>
+      </td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">ODMA 2.0 Definitions and Interfaces for C/C++ construction
+        of ODMA-compliant software</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><b><code><a href="#odmacom.h">Odmacom.h</a></code></b></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>5652</code></p>
+      </td>
+      <center>
+      <td width="20%" align="center" valign="top">
+        <p align="center"><code>1998-01-16-17:07</code></p>
+      </td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">ODMA 2.0 Definitions and Interfaces for C/C++ construction
+        of ODMA-compliant software that provides or uses the ODMA-defined
+        Microsoft COM interfaces.</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><b><code><a href="#odma.lib">Odma.lib</a></code></b></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>12288</code></td>
+      <center>
+      <td width="20%" valign="top" align="center">
+        <p align="center"><code>1998-05-07-15:39</code></p>
+      </td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">Library for binding ODMA 2.0-aware Win16 applications to
+        the Win16 ODMA 2.0.0-1 Connection Manager</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><b><code><a href="#odma32.lib">ODMA32.lib</a></code></b></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>&nbsp;18860</code></p>
+      </td>
+      <center>
+      <td width="20%" valign="top" align="center">
+        <p align="center"><code>1998-05-07-13:10</code></p>
+      </td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">Library for binding ODMA 2.0-aware Win32 applications to
+        the Win32 ODMA 2.0.0-1 Connection Manager</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="odma200c.htm">odma200c.htm</a></b></code></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>9458</code></td>
+      <center>
+      <td width="20%" valign="top" align="center"><code>2000-08-19-16:56</code></td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">HTML-viewable rendition of <b><code><a href="#odmacom.h">Odmacom.h</a></code></b></td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="odma200h.htm">odma200h.htm</a></b></code></td>
+      </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>16071</code></td>
+      <center>
+      <td width="20%" valign="top" align="center"><code>2000-08-11-18:01</code></td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">2.0.0-1</span></td>
+      <td width="45%">HTML-viewable rendition of <b><code><a href="#odma.h">Odma.h</a></code></b></td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="Q990401.htm">Q000014.htm</a></b></code></td>
+      <td width="8%" align="center" valign="top">
+        -</td>
+      <td width="20%" valign="top" align="center"><i>-</i></td>
+      <td width="8%" align="center" valign="top"><i>-</i></td>
+      <td width="45%"><i>Q000014: Creating ODMA Document IDs</i>.&nbsp; Using
+        Document IDs with a DMS Integration</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="Q000703.htm">Q000703.htm</a></b></code></td>
+    </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>25576</code></td>
+      <center>
+      <td width="20%" valign="top" align="center"><code>2000-09-11-12:57</code></td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">0.13</span></td>
+      <td width="45%"><i>Q000703: ODMA-Aware Application and
+        Connection-Manager Version Compatibility.&nbsp; </i>Information on
+        choosing the proper version of definitions and libraries</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="Q000706.htm">Q000706.htm</a></b></code></td>
+    </center>
+      <td width="8%" align="center" valign="top">
+        <p align="right"><code>36819</code></td>
+      <center>
+      <td width="20%" valign="top" align="center"><code>2000-09-11-13:30</code></td>
+      <td width="8%" align="center" valign="top"><span style="font-variant: small-caps">0.14</span></td>
+      <td width="45%"><i>Q000706: ODMA Version-Interoperability Configuration.&nbsp; </i>Information on setting up the ODMA SDKs for testing
+        with all versions of ODMA Connection Managers and samples</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="Q000901.htm">Q000901.htm</a></b></code></td>
+      <td width="8%" align="center" valign="top">
+        <code>-</code></td>
+      <td width="20%" valign="top" align="center">-</td>
+      <td width="8%" align="center" valign="top"><i>-</i></td>
+      <td width="45%"><i>Q000901: Using COM.&nbsp; </i>Information on the way
+        that Microsoft COM is applied for ODMA and on using COM with ODMA.</td>
+      </tr>
+      <tr>
+        <td width="15%" valign="top"><code><b><a href="Q001201.htm">Q001201.htm</a></b></code></td>
+      <td width="8%" align="center" valign="top">
+        -</td>
+      <td width="20%" valign="top" align="center"><i>-</i></td>
+      <td width="8%" align="center" valign="top"><i>-</i></td>
+      <td width="45%"><i>Q001201: Versions to Develop For</i>.</td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</blockquote>
+
+<h2>3.1 <a name="odma.h">Odma.h</a> (version 2.0.0-1)</h2>
+
+<blockquote>
+  <blockquote>
+
+<p><b>3.1.1 <a href="#Odma.h-FileFormat">Format</a><br>
+3.1.2 <a href="#Odma.h-Symbols">Symbols</a><br>
+3.1.3 </b><a href="#Odma.h-Dependencies"><b>Dependencies</b><br>
+</a><i>see also</i>, <b>4. <a href="#UsingOdma.h">Using <code>Odma.h</code></a></b></p>
+
+  </blockquote>
+  <b><code>Odma.h</code></b> 2.0.0-1 is the original file of ODMA 2.0
+  definitions for creating ODMA-compliant programs in the C and C++
+  languages.&nbsp;&nbsp; The file is required for any ODMA-compliant component
+  that depends on or integrates with an ODMA 2.0 Connection Manager.&nbsp; <b><code>Odma.h</code></b>
+  is also employed in construction of the ODMA 2.0 Connection Managers.
+  <p><b><code>Odma.h</code></b> 2.0.0 depends on the Microsoft Windows Win16 and
+  Win32 platforms and their definitions.&nbsp; The file is not designed for use
+  on any other platform.</p>
+  <p>For more information on appropriate usage of <b><code>odma.h</code></b>,
+  see section 4, <a href="#UsingOdma.h">Using <b><code>Odma.h</code></b></a>.</p>
+</blockquote>
+
+  <h3>3.1.1 <a name="Odma.h-FileFormat">Format</a></h3>
+
+<blockquote>
+  <p><b><code>Odma.h</code></b> 2.0.0-1 is a 11,567-byte file with timestamp of <code>1998-04-09-12:31</code>.&nbsp;
+  The file is encoded in the ISO 8859-1 Latin 1 Character-Set, best displayed
+  using Windows ANSI code page 1252.&nbsp; There are tab (<b><span style="font-variant: small-caps">HT</span></b>)
+  characters in the file, with line separations using carriage-return/line-feed
+  (<b><span style="font-variant: small-caps">CR</span></b>/<b><span style="font-variant: small-caps">LF</span></b>)
+  pairs.</p>
+  <p>The first seven lines of the file contain the following identifying
+  information:</p>
+  <pre><font color="#000000">/* odma.h - Definitions, prototypes, etc. for Open Document Managment API
+     (ODMA) version 2.0.
+
+     COPYRIGHT (C) 1994, 1995
+     AIIM International
+     All Right Reserved
+*/</font></pre>
+</blockquote>
+
+    <h3>3.1.2 <a name="Odma.h-Symbols"> Symbols</a></h3>
+
+<blockquote>
+  <p align="left">The file defines and uses the C/C++ pre-processor symbol <b><code>ODMA_H</code></b>
+  to avoid duplicate processing of the <b><code>Odma.h</code></b> definitions.</p>
+  <p align="left">All definitions of C/C++ types, preprocessor symbols, and
+  function prototypes use symbols beginning with the three-character prefix
+  &quot;<b><code>ODM</code></b>.&quot;&nbsp; No other form of symbol is
+  introduced by processing of <b><code>Odma.h</code></b>.</p>
+</blockquote>
+
+  <h3 align="left">3.1.3 <a name="Odma.h-Dependencies"> Dependencies</a></h3>
+
+<blockquote>
+  <p>The file depends <i>implicitly</i> on other headers files of the Microsoft
+  Windows platform.&nbsp;&nbsp; The definitions in Microsoft header file <b><code>&lt;wtypes.h&gt;</code></b>
+  (and others introduced by <b><code>wtypes.h</code></b> as needed) are
+  sufficient.&nbsp;</p>
+  <table border="0" width="90%">
+    <tr>
+      <td width="15%">If</td>
+      <td width="50%"><b><code>#include &lt;wtypes.h&gt;</code></b></td>
+    </tr>
+    <tr>
+      <td width="15%">or</td>
+      <td width="50%"><b><code>#include &lt;windows.h&gt;</code></b></td>
+    </tr>
+    <tr>
+      <td width="15%">precede</td>
+      <td width="50%"><b><code>#include &quot;Odma.h&quot;</code></b></td>
+    </tr>
+  </table>
+  <p align="left">then this dependency is satisfied.&nbsp; If <b><code>&lt;wtypes.h&gt;</code></b>
+  is not part of the Microsoft platform-specific materials, or if it fails on
+  the platform you are compiling for, use <code> <b>&lt;windows.h&gt;</b></code>
+  instead.&nbsp;&nbsp;</p>
+  <p align="left"><b><code>Odma.h</code></b>   adjusts for platform dependencies
+  depending on six preprocessor symbols: <b><code>WIN32</code></b>, <b><code>_WINDOWS_</code></b>,
+  <b><code>_MSDOS</code></b>, <b><code>unix</code></b>, <b><code>_UNIX</code></b>,
+  and <b><code>__cplusplus</code></b>.</p>
+</blockquote>
+
+<h2>3.2 <a name="odmacom.h">Odmacom.h</a> (version 2.0.0-1)</h2>
+
+<blockquote>
+  <blockquote>
+
+<p><b>3.2.1 <a href="#Odmacom.h-FileFormat">Format</a><br>
+3.2.2 <a href="#Odmacom.h-Symbols">Symbols</a><br>
+3.2.3 </b><a href="#Odmacom.h-Dependencies"><b>Dependencies</b><br>
+</a><i>see also</i>, <b>5. <a href="#UsingOdmacom.h">Using <code>Odmacom.h</code></a></b></p>
+
+  </blockquote>
+</blockquote>
+
+<dl>
+  <dd><b><code>Odmacom.h</code></b> 2.0.0-1 is the original form of ODMA 2.0
+    definitions for creating COM-dependent ODMA components in C and C++.&nbsp; <b><code>Odmacom.h</code></b> 2.0.0 is required by
+    ODMA-aware applications that use ODMA 2.0-specified COM interfaces.&nbsp;
+    The file is also required for programs that supply the ODMA 2.0-defined COM
+    interfaces.&nbsp; <b><code>Odmacom.h</code></b> is employed in the
+    construction of the ODMA 2.0 Connection Managers.
+    <p><b><code>Odmacom.h</code></b> 2.0.0 depends on the Microsoft Windows
+    Win16 and Win32 platforms and their definitions.&nbsp; The file is not
+    designed for use on any other platform.</p>
+    <p>For more information on appropriate usage of <b><code>Odmacom.h</code></b>,
+    see section 5, <a href="#UsingOdmacom.h">Using <b><code>Odmacom.h</code></b></a>.</p>
+  </dd>
+</dl>
+
+<h3>3.2.1 <a name="Odmacom.h-FileFormat">Format</a></h3>
+
+<dl>
+  <dd>
+    <p><b><code>Odmacom.h</code></b> 2.0.0-1 is a 5,652-byte file with timestamp
+    of <code>1998-01-16-17:07</code>.&nbsp; The file is encoded in the ISO
+    8859-1 Latin 1 Character-Set, best displayed using Windows ANSI code page
+    1252.&nbsp; There are tab (<b><span style="font-variant: small-caps">HT</span></b>)
+    characters in the file, with line separations using
+    carriage-return/line-feed (<b><span style="font-variant: small-caps">CR</span></b>/<b><span style="font-variant: small-caps">LF</span></b>)
+    pairs.</p>
+    <p>The first seven lines of the file contain the following identifying
+    information:</p>
+    <pre><font color="#000000">/* odmacom.h - Component Object Model related definitions, macros, etc. for
+   ODMA version 2.0.
+
+    COPYRIGHT (C) 1994, 1995
+    AIIM International
+    All Rights Reserved
+*/</font></pre>
+  </dd>
+</dl>
+
+    <h3 align="left">3.2.2 <a name="Odmacom.h-Symbols"> Symbols</a></h3>
+<blockquote>
+  <blockquote>
+    <dl>
+      <div align="left">
+        <dt><b><i>see also</i>: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Q000705</a>:
+          Changes Between ODMA Versions</b></dt>
+      </div>
+    </dl>
+  </blockquote>
+    <p align="left"><b><code>Odmacom.h</code></b> defines and uses the C/C++ pre-processor symbol <b><code>ODMACOM_H</code></b>
+    to avoid duplicate processing of the <b><code>Odmacom.h</code></b>
+    definitions.</p>
+    <p align="left">All <b><code>Odmacom.h</code></b> definitions of
+    ODMA-specific C/C++ types, preprocessor symbols, interface classes,
+    structures, constant values, and function prototypes employ symbols beginning
+    with the following prefixes:
+  <blockquote>
+    <blockquote>
+      <p align="left"><b><code>IODM<br>
+      IID_ODM<br>
+      LPODM<br>
+      ODM</code></b></p>
+    </blockquote>
+  </blockquote>
+  <p>When used in C++ programs, <b><code>odmacom.h</code></b> defines a number
+  of C++ class methods as part of COM interface definitions (<a href="#Table2">Table
+  2</a>).&nbsp; These methods
+  can conflict with method names used in other C++ class definitions (e.g., ones
+  from the Microsoft Foundation Classes), especially when multiple inheritance
+  is employed.&nbsp; This is a consideration when constructing
+  C++ classes that offer or inherit ODMA-defined COM interfaces.</p>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b><a name="Table2">Table 2</a>.&nbsp; Odmacom.h C++ Interface Method Names</b></caption>
+    <tr>
+      <td width="33%" align="center">
+        <p align="center"><b><code>IODMDocMan</code> interface</b></td>
+      <td width="33%" align="center">
+        <p align="center"><b><code>IODMQuery</code> interface</b></td>
+      <td width="34%" align="center">
+        <p align="center"><b><code>IODMDocMan2</code> interface</b></td>
+    </tr>
+  </center>
+  <tr>
+    <td width="33%">
+      <p align="right"><b><code>QueryInterface</code></b></td>
+    <td width="33%">
+      <p align="right"><b><code>QueryInterface</code></b></td>
+    <td width="34%">
+      <p align="right"><b><code>QueryInterface</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%">
+      <p align="right"><b><code>AddRef</code></b></td>
+    <td width="33%">
+      <p align="right"><b><code>AddRef</code></b></td>
+    <td width="34%">
+      <p align="right"><b><code>AddRef</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>Release</code></b></td>
+    <td width="33%" align="right"><b><code>Release</code></b></td>
+    <td width="34%" align="right"><b><code>Release</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>SelectDoc</code></b></td>
+    <td width="33%" align="right"><b><code>QueryExecute</code></b></td>
+    <td width="34%" align="right"><b><code>CloseDocEx</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>OpenDoc</code></b></td>
+    <td width="33%" align="right"><b><code>QueryGetResults</code></b></td>
+    <td width="34%" align="right"><b><code>SaveAsEx</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>SaveDoc</code></b></td>
+    <td width="33%" align="right"><b><code>QueryClose</code></b></td>
+    <td width="34%" align="right"><b><code>SaveDocEx</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>CloseDoc</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>SelectDocEx</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>NewDoc</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>QueryCapability</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>SaveAs</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>SetDocEvent</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>Activate</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>GetAlternateContent</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>GetDocInfo</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>SetAlternateContent</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>SetDocInfo</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>GetDocRelation</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>GetDMSInfo</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"><b><code>SetDocRelation</code></b></td>
+  </tr>
+  <tr>
+    <td width="33%" align="right"><b><code>GetLeadMoniker</code></b></td>
+    <td width="33%" align="right"></td>
+    <td width="34%" align="right"></td>
+  </tr>
+  </table>
+</div>
+  <h3>3.2.3 <a name="Odmacom.h-Dependencies"> Dependencies</a></h3>
+<blockquote>
+  <p><b><code>Odmacom.h</code></b> depends <i>implicitly</i> on other header files of the Microsoft Windows platform.&nbsp;&nbsp; The definitions
+  from Microsoft header file <b><code>&lt;wtypes.h&gt;</code></b> (and others
+  introduced by <b><code>wtypes.h</code></b> as needed) are sufficient.&nbsp;&nbsp;</p>
+</blockquote>
+  <div align="center">
+    <center>
+    <blockquote>
+      <table border="0" width="90%">
+        <tr>
+          <td width="15%">If</td>
+          <td width="50%"><b><code>#include &lt;wtypes.h&gt;</code></b></td>
+        </tr>
+        <tr>
+          <td width="15%">or</td>
+          <td width="50%"><b><code>#include &lt;windows.h&gt;</code></b></td>
+        </tr>
+        <tr>
+          <td width="15%">precede</td>
+          <td width="50%"><b><code>#include &quot;Odma.h&quot;</code></b></td>
+        </tr>
+      </table>
+    </blockquote>
+    </center>
+  </div>
+<blockquote>
+  <p align="left">then this dependency is satisfied.&nbsp; If <b><code>&lt;wtypes.h&gt;</code></b>
+  is not part of the Microsoft platform-specific materials, or if it fails on
+  the platform you are compiling for, use <b><code>&lt;windows.h&gt;</code></b>.</p>
+  <p align="left">The file depends <i>explicitly</i> on inclusion of <b><code><a href="#odma.h">&quot;odma.h&quot;</a></code></b>
+  for its correct processing, and checks for the pre-processor symbol <b><code>ODMA_H</code></b>
+  to avoid duplicate inclusion of <b><code>Odma.h</code></b>.&nbsp;&nbsp;&nbsp;</p>
+  <p align="left"><b><code>Odmacom.h</code></b> depends on the following files
+  provided for Microsoft Windows platforms: <b><code>&lt;objbase.h&gt;</code></b>
+  (Win32), <b><code>&lt;memory.h&gt;</code></b> (not Win32), <b><code>&lt;compobj.h&gt;</code></b>
+  (not Win32), <b><code>&lt;ole2.h&gt;</code></b> (all), and <b><code>&lt;moniker.h&gt;</code></b>
+  (all).&nbsp;&nbsp;</p>
+  <p align="left">Five preprocessor symbols are used to coordinate the
+  processing of definitions:&nbsp; <b><code>WIN32</code></b>, <b><code>_OBJBASE_H_</code></b>,
+  <b><code>__COMPOBJ_H_</code></b>, <code><b>_OLE2_H_</b></code>, and <code><b>__cplusplus</b></code>.&nbsp;
+  The preprocessor symbol <b><code>INTERFACE</code></b> is undefined and
+  redefined as part of the use of Windows-platform interface-definition macros
+  employed in the processing of <code><b>Odmacom.h</b></code> interface
+  definitions.</p>
+</blockquote>
+
+<h2>3.3 <a name="odma.lib">Odma.lib</a> (version 2.0.0-1)</h2>
+
+  <blockquote>
+    <blockquote>
+      <p><b>3.3.1 <a href="#Odma.lib-FileFormat">Format</a><br>
+      3.3.2 <a href="#Odma.lib-Symbols">Symbols</a><br>
+      3.3.3 </b><a href="#Odma.lib-Dependencies"><b>Dependencies</b><br>
+      </a><i>see also</i>, <b>6. <a href="#Using.lib">Using <code>Odma.lib</code></a></b><a href="#Using.lib">
+      and <code><b>ODMA32.lib</b></code></a></p>
+
+    </blockquote>
+    <p>ODMA-aware applications that operate on the 16-bit Windows (Win16)
+    platform must be bound to <b><code>Odma.dll</code></b>, the Connection
+    Manager for Win16.&nbsp; This binding can occur dynamically or
+    statically.&nbsp; When binding is done statically, <b><code>Odma.lib</code></b>
+    is used as part of linking the application program or component.
+</p>
+
+    <p><b><code>Odma.lib</code></b> version 2.0.0 is the Win16 object library
+    file to use for static binding to the <i><b> ODMA 2.0</b></i> Connection Manager for Win16,
+    <b><code>O</code></b><b><code>dma.dll</code></b> version 2.0.0.&nbsp; The
+    library is not useful for binding to earlier versions of the Win16
+    Connection Manager.</p>
+    <p>For more&nbsp;information on usage of <b><code>Odma.lib</code></b>, see
+    section 6, <a href="#Using.lib">Using <b><code>Odma.lib</code></b> and <b><code>ODMA32.lib</code></b></a>.</p>
+  </blockquote>
+    <h3>3.3.1 <a name="Odma.lib-FileFormat">Format</a></h3>
+  <blockquote>
+    <p><b><code>Odma.lib</code></b> 2.0.0-1 is a 12,288-byte file with timestamp
+    of <code>1998-05-07-15:39</code>.&nbsp; The file is encoded in the Microsoft
+    development tools <span style="font-variant: small-caps">MSLIBR</span> format.</p>
+    <p>Inprise Turbo Dump 5.0.16.6 recognizes the file.&nbsp; Inspection of the <b><code>TDUMP</code></b>
+    report yields two kinds of information:</p>
+    <ol>
+      <li>A large number of ODMA Connection Manager 2.0.0 internal function
+        names are visible in <b><code>Odma.lib</code></b> as C++
+        names.</li>
+      <li>The public, documented API entries are identified, in agreement with
+        the ordinally-numbered list given in section 3.3.2, <a href="#Odma.lib-Symbols">Symbols</a>.&nbsp;
+        In MSLIBR files, the exported names are always fully-capitalized (e.g., <b><code>ODMREGISTERAPP</code></b>
+        for <b><code>ODMRegisterApp</code></b>).</li>
+    </ol>
+  </blockquote>
+  <h3>3.3.2 <a name="Odma.lib-Symbols">Symbols</a></h3>
+  <blockquote>
+    <p>The following definitions are provided by <b><code>Odma.lib</code></b>
+    2.0.0:</p>
+    <pre>LIBRARY         ODMA
+DESCRIPTION     'ODMA 2.0 Connection Manager 16-Bit'
+CODE            MOVEABLE DISCARDABLE
+DATA            MOVEABLE SINGLE
+
+HEAPSIZE        16392
+
+EXPORTS
+    ODMRegisterApp         @2
+    ODMUnRegisterApp       @3
+    ODMSelectDoc           @4
+    ODMOpenDoc             @5
+    ODMSaveDoc             @6
+    ODMCloseDoc            @7
+    ODMNewDoc              @8
+    ODMSaveAs              @9
+    ODMActivate            @10
+    ODMGetDocInfo          @11
+    ODMSetDocInfo          @12
+    ODMGetDMSInfo          @13
+    ODMQueryInterface      @14
+    ODMGetLeadMoniker      @15
+	
+    ODMQueryExecute        @16
+    ODMQueryGetResults     @17
+    ODMQueryClose          @18
+	
+    ODMGetDMSCount         @19
+    ODMGetDMSList          @20
+    ODMGetDMS              @21
+    ODMSetDMS              @22
+
+    ODMCloseDocEx          @23
+    ODMSaveAsEx            @24
+    ODMSaveDocEx           @25
+    ODMSelectDocEx         @26
+    ODMQueryCapability     @27
+    ODMSetDocEvent         @28
+    ODMGetAlternateContent @29
+    ODMSetAlternateContent @30
+    ODMGetDocRelation      @31
+    ODMSetDocRelation      @32</pre>
+  </blockquote>
+  <h3>3.3.3 <a name="Odma.lib-Dependencies">Dependencies</a></h3>
+  <blockquote>
+    <p><b><code>Odma.lib</code></b> version 2.0.0 does not depend on the
+    presence of any other libraries in providing access to the 16-bit (Win16)
+    ODMA 2.0 Connection Manager.</p>
+  </blockquote>
+
+<h2>3.4 <a name="odma32.lib">ODMA32.lib</a> (version 2.0.0-1)</h2>
+
+<blockquote>
+  <blockquote>
+    <p><b>3.4.1 <a href="#ODMA32.lib-FileFormat">Format</a><br>
+    3.4.2 <a href="#ODMA32.lib-Symbols">Symbols</a><br>
+    3.4.3 </b><a href="#Odma32.lib-Dependencies"><b>Dependencies</b><br>
+    </a><i>see also</i>, <b>6. <a href="#Using.lib">Using <code>Odma.lib</code></a></b><a href="#Using.lib">
+    and <code><b>ODMA32.lib</b></code></a></p>
+
+  </blockquote>
+    <p>ODMA-aware applications that operate on the 32-bit Windows (Win32)
+    platform must be bound to <b><code>ODMA32.dll</code></b>, the Connection
+    Manager for Win32.&nbsp; This binding can occur dynamically or
+    statically.&nbsp; When binding is done statically, <b><code>ODMA32.lib</code></b>
+    is used when linking the application program or component.
+</p>
+
+    <p><b><code>ODMA32.lib</code></b> version 2.0.0 is the Win32 object library
+    file to use for static binding to the <i><b> ODMA 2.0</b></i> Connection Manager for
+    Win32,
+    <b><code>ODMA32.dll</code></b> version 2.0.0.&nbsp; The library is not
+    useful for binding to earlier versions of the Win32 Connection Manager.</p>
+    <p>For more&nbsp;information on usage of <b><code>ODMA32.lib</code></b>, see
+    section 6, <a href="#Using.lib">Using <b><code>Odma.lib</code></b> and <b><code>ODMA32.lib</code></b></a>.</p>
+</blockquote>
+  <h3>3.4.1 <a name="ODMA32.lib-FileFormat">Format</a></h3>
+  <blockquote>
+    <p><b><code>ODMA32.lib</code></b> 2.0.0-1 is a 18,860-byte file with timestamp
+    of <code>1998-05-07-13:10</code>.&nbsp; The file is encoded in Microsoft
+    Common Object Format File (COFF) binary Library format.&nbsp;&nbsp;</p>
+    <p>Library Information:</p>
+    <blockquote>
+      <p>time date stamp: 1998-05-07-02:10:13<br>
+      machine: i386<br>
+      linker version: 5.10<br>
+      operating system version: 4.00</p>
+    </blockquote>
+  </blockquote>
+  <h3>3.4.2 <a name="ODMA32.lib-Symbols">Symbols</a></h3>
+  <blockquote>
+    <p>The following definitions are provided by <b><code>ODMA32.lib</code></b>
+    2.0.0:</p>
+    <pre>LIBRARY         ODMA32
+DESCRIPTION     'ODMA 2.0 Connection Manager 32-Bit'
+CODE            MOVEABLE DISCARDABLE
+DATA            MOVEABLE SINGLE
+
+HEAPSIZE        16392
+
+EXPORTS
+    ODMRegisterApp         @2
+    ODMUnRegisterApp       @3
+    ODMSelectDoc           @4
+    ODMOpenDoc             @5
+    ODMSaveDoc             @6
+    ODMCloseDoc            @7
+    ODMNewDoc              @8
+    ODMSaveAs              @9
+    ODMActivate            @10
+    ODMGetDocInfo          @11
+    ODMSetDocInfo          @12
+    ODMGetDMSInfo          @13
+    ODMQueryInterface      @14
+    ODMGetLeadMoniker      @15
+	
+    ODMQueryExecute        @16
+    ODMQueryGetResults     @17
+    ODMQueryClose          @18
+	
+    ODMGetDMSCount         @19
+    ODMGetDMSList          @20
+    ODMGetDMS              @21
+    ODMSetDMS              @22
+
+    ODMCloseDocEx          @23
+    ODMSaveAsEx            @24
+    ODMSaveDocEx           @25
+    ODMSelectDocEx         @26
+    ODMQueryCapability     @27
+    ODMSetDocEvent         @28
+    ODMGetAlternateContent @29
+    ODMSetAlternateContent @30
+    ODMGetDocRelation      @31
+    ODMSetDocRelation      @32</pre>
+  </blockquote>
+  <h3>3.4.3 <a name="Odma32.lib-Dependencies"> Dependencies</a></h3>
+<blockquote>
+    <p><b><code>ODMA32.lib</code></b> version 2.0.0 does not depend on the
+    presence of any other libraries in providing static binding to the 32-bit
+    (Win32) ODMA 2.0 Connection Manager.</p>
+</blockquote>
+
+<h1>4. <a name="UsingOdma.h">Using <b><code><font size="+3">Odma.h</font></code></b></a></h1>
+
+<blockquote>
+  <ul>
+    <li>Who uses Odma.h?</li>
+    <li>What level of Interoperability is desired?</li>
+    <li>Using the appropriate ODMA Version</li>
+    <li>Incorporating Odma.h into programs.</li>
+    <li>Watching out for the dependencies.</li>
+    <li>Tips on Usage</li>
+  </ul>
+</blockquote>
+
+<h1>5. <a name="UsingOdmacom.h">Using <b><code><font size="+3">Odmacom.h</font></code></b></a></h1>
+
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also:</i></b></dt>
+      <dd><b>Q00901: <a href="Q000901.htm">Using COM</a></b></dd>
+    </dl>
+  </blockquote>
+  <ul>
+    <li>Who uses Odmacom.h?</li>
+    <li>What level of Interoperability is desired?</li>
+    <li>Using the appropriate ODMA Version</li>
+    <li>Incorporating Odma.h into programs.</li>
+    <li>Important Precautions</li>
+    <li>Tips on Usage</li>
+    <li>Confirming ODMA Operation</li>
+  </ul>
+</blockquote>
+
+<h1>6. <a name="Using.lib">Using <b><code><font size="+3">Odma.lib</font></code></b> </a> and
+<b><code><font size="+3">ODMA32.lib</font></code></b></h1>
+
+<blockquote>
+  <ul>
+    <li>Who Uses Odma.lib and ODMA32.lib</li>
+    <li>Win16 and Win32 considerations</li>
+    <li>Choosing Type of Binding&nbsp;</li>
+    <li>Using the Correct Library for Platform, Binding, and ODMA Version</li>
+    <li>Important Precautions</li>
+    <li>Tips on Usage</li>
+    <li>Confirming ODMA Operation</li>
+  </ul>
+  <hr>
+</blockquote>
+
+<h2 align="left"><em><a name="ChangeHistory">Change History</a></em></h2>
+
+<dl><font size="-1">
+  <dt><strong><a name="2.0.0-1">version 2.0.0-1</a>  Initial Packaging of Materials
+    (orcmid)</strong></dt>
+  <dd>The basic materials, <b><code>Odma.h</code></b>, <b><code>Odmacom.h</code></b>,
+    <b><code>Odma.lib</code></b>, and <b><code>ODMA32.lib</code></b> are zipped
+    &quot;as is&quot; along with this accompanying <b><code>odma20L.htm</code></b>
+    (package 2.0.0-1) description.&nbsp; HTML versions of the definition files
+    are provided in the browser-viewable pages&nbsp; <b><code><a href="odma200h.htm">odma200h.htm</a></code></b> and <b><code><a href="odma200c.htm">odma200c.htm</a></code></b>.&nbsp;
+    Supplemental notes that support effective use of the libraries are also
+    provided: <code> <b><a href="Q000703.htm">Q000703.htm</a></b></code>, <code><b><a href="Q000706.htm">Q000706.htm</a></b></code>,
+    <code>
+    <b><a href="Q990401.htm">Q000014.htm</a></b></code>,<b><code> <a href="Q000901.htm">Q000901.htm</a></code></b>,
+    and <b><code><a href="Q001201.htm">Q001201.htm</a></code></b>.</dd>
+</font></dl>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-07-11-15:36 -0700 (pdt) by <a href="mailto:orcmid@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 05-02-03 16:13 $<br>
+$$Revision: 15 $</em></p>
+</body>
+</html>

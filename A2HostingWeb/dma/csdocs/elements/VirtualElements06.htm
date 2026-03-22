@@ -1,0 +1,2274 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>DMA Architecture Proposal for Virtual Elements</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center" style="text-align:center"><a name="_Toc389905201"><span class="Strong"
+style="mso-bookmark: _Toc389897700">DMA Architectural Proposal for<o:p> </o:p> </span></a><span
+class="Strong">Virtual Elements</span></h1>
+
+<p align="left"><a name="_Toc389897701"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal">Authors:</b> </span></a><span
+style="mso-bookmark: _Toc389897946">DMA TC Compound/Structured Document Subcommittee</span></p>
+
+<blockquote>
+  <p class="MsoBodyTextIndent2"><span style="mso-bookmark: _Toc389897946">Richard Sauvain
+  (Xerox Corporation, Chair), Mitsuru Akizawa (Hitachi, Ltd.), Alan Babich (FileNET), Chuck
+  Fay (FileNET), Jim Green (FileNET), Dennis Hamilton (InfoNuovo), Katsumi Kanasaki (Ricoh,
+  Ltd.), Yoshifumi Sato (Hitachi, Ltd.)</span></p>
+</blockquote>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal">Revision 0.6, 1999 November 15<o:p> </o:p> </b></span></p>
+
+<h1><span style="mso-bookmark: _Toc389897946"><a name="_Toc468090748"><span
+style="mso-bookmark: _Toc389897703">1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Revision History</span></a></span></h1>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt"><span
+style="mso-bookmark: _Toc389897703">Revision </span><span
+style="mso-bookmark: _Toc389897946">0.1, 1999 August 20, Richard Sauvain<o:p> </o:p> </span></span></b></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Initial Virtual Elements draft, incorporating
+material from the current CSDocs sketch, a proposal (CDCousins03.doc) by Steve Cousins,
+and recent discussions between Richard Sauvain and Dennis Hamilton.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt">Revision 0.2, 1999
+September 2, Richard Sauvain<o:p> </o:p> </span></b></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Incorporate comments from CSDocs phone
+conference of 31 August 99: <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Move dmaProp_VirtualElementSource to
+dmaClass_ContentElement and make it optionally support IdmaVirtualElement, thus avoiding
+having to add three new classes (Virtual Content Element, Virtual Content Transfer, and
+Virtual Content Reference)<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Drop the idea of a new relationship class
+(dmaClass_ContentRelationship) in between dmaClass_relationship and
+dmaClass_CSRelationship.<span style="mso-spacerun:
+yes">&nbsp; </span>Instead, make
+dmaClass_VERelationship a sibling of the foundation proposal's<span
+style="mso-spacerun: yes">&nbsp;&nbsp; </span>dmaClass_CSRelationship.<span
+style="mso-spacerun: yes">&nbsp; </span>This gets rid of one more class, at the expense of
+defining the rendition and content head and tail IDs twice. <o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt">Revision 0.3, 1999
+October 6, Richard Sauvain<o:p> </o:p> </span></b></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Incorporate comments from CSDocs phone
+conference of 21Sep 99 and related e-mail: <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Revise section 7 to include capability <b
+style="mso-bidi-font-weight:normal">DMAC_CONTENT_VCE_TO_VCE</b>, so that the notions of
+VCE support and VCEs pointing to other VCEs are<b style="mso-bidi-font-weight:normal"> </b>independent.<o:p>
+</o:p></span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Describe reflective properties of head and
+tail of a VERelationship as &#147;unspecified&#148;, to allow the possibility of
+additional properties being added to doc ver classes.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Introduce IdmaVirtualElement at
+dmaClass_ContentElement instead of dmaClass_DMA<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Augment the description of content element
+changes in section 5 with a discussion of locking, a statement about precedence of content
+element properties in a VCE situation, a clarification that instanceID does not change
+when a real content element is changed into a virtual one, and some deletion rules.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add a note about versioning.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add to section 10 a second sample (for
+removing a VCE from a<span style="mso-spacerun: yes">&nbsp; </span>rendition)<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt">Revision 0.4, 1999
+October 27, Richard Sauvain<o:p> </o:p> </span></b></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Incorporate comments from CSDocs phone
+conference of 12 Oct 99 and e-mail from Dennis Hamilton: <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Paradigm shift from proposing VCEs with hints
+about generalizing, to proposing Virtual Elements, with VCE as a specific instance. This
+entailed numerous wording changes.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Major rewrite of section 5.1, including
+deletion rules, precedence of property values, treatment of instanceId<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Name change: dmaProp_VirtualElementSource to
+dmaProp_SharedElement.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add IdmaVirtualElement::RemoveDerivation to
+enable changing a virtual element back into a real one. Revise wording of SetDerivation.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Revise capabilities so that the notions of
+Virtual Element support, Virtual being sharable, and VCE support are<b
+style="mso-bidi-font-weight:normal"> </b>independent.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add third sample &#150; turning a VCE into a
+real one<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Correct justification wordings in section
+11.1 (alternatives considered)<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Correction of section 16 (Failure modes)<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add references to the WebDAV advanced
+collections spec and our requirements document.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt">Revision 0.5, 1999
+November 15, Richard Sauvain<o:p> </o:p> </span></b></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Incorporate comments from CSDocs phone
+conference of<span style="mso-spacerun: yes">&nbsp; </span>2 Nov 99: <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Change &#147;doc ver&#148; to
+&#147;DocVersion&#148; throughout<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Change 5.1.1.5<span style="mso-spacerun: yes">&nbsp;
+</span>from Deletion Rules to Deletion Policy example.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add paragraph under 5.1.1.6 (Sample behavior
+for virtual content elements) to explain behavior when relationship object has been
+deleted or head object is not found.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Change reflective properties discussion in
+5.1.2.3 to say there are no <i style="mso-bidi-font-style:
+normal">predefined</i>
+properties on the doc ver class that allow navigation back to the VERelationship object.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l23 level1 lfo46;
+tab-stops:list .75in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Remove deletion rules in 5.1.2.3 so that the
+prevailing rules of the relationship model apply. <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l23 level1 lfo46;
+tab-stops:list .75in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Revise discussion of checkout of a DocVersion
+that has virtual elements.<span style="mso-spacerun:
+yes">&nbsp; </span>Having that
+operation clone the VERelationship objects (so that all content is preserved in the new
+version) is inconsistent with current versioning practice and could be damaging to
+interoperable use of DMA.<span style="mso-spacerun: yes">&nbsp; </span>Instead, Dennis
+will add a SetDeepCheckOut method in the foundation proposal; this method will clone any
+relationship objects that have the checked out object at their tails. Section 8.6 revised
+accordingly.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.55in;mso-list:l34 level1 lfo26;
+tab-stops:list .05in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style="font-size:10.0pt">Suggest in section 17 a rewording of DMARC_BAD_REFERENCE so that
+it is also usable for virtual elements<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.55in;mso-list:l34 level1 lfo26;
+tab-stops:list .05in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style="font-size:10.0pt">Add reference to Relationship Strength proposal<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389897946"><b
+style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt">Revision 0.6, 1999
+November 24, Richard Sauvain<o:p> </o:p> </span></b></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Incorporate comments from CSDocs phone
+conference of<span style="mso-spacerun: yes">&nbsp; </span>23 Nov 99: <o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">In 5.1.2.2, change &#145;Class if object' for
+dmaProp_SharedBy to dmaClass_Relationship (with certain restrictions) rather than
+dmaClass_VERelationship. This allows the possibility of using a CSRelationship or other
+relationship classes in the future if they contain properties to uniquely identify the
+Head and Tail objects.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Revise 5.1.1.6<span style="mso-spacerun: yes">&nbsp;
+</span>to describe behavior if a virtual content element is made real without the client
+supplying information about a new source of content.<span style="mso-spacerun: yes">&nbsp;
+</span>This is like creating a new content element without supplying a new source of
+content, and normal content element behavior should occur:<span style="mso-spacerun: yes">&nbsp;
+</span>DMARC_NOT_FOUND should be returned by the IdmaContentTransfer copy or get methods.
+Invoked on such an object.<span style="mso-spacerun: yes">&nbsp; </span>Specify same
+behavior if head of relationship is missing.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l34 level1 lfo26;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">In 5.1.2.3, the first two bullets under
+Deletion Rules did not make sense and were deleted.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet"
+style="margin-left:.75in;mso-list:l23 level1 lfo46;
+tab-stops:list .75in"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:10.0pt;font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">The proposal in section 17 to generalize the
+meaning of DMARC_BAD_REFERENCE to make it more suited to dangling references<span
+style="mso-spacerun: yes">&nbsp; </span>is withdrawn. That error code has a particular
+meaning in the context of IdmaConnection::ExecuteChange, which must be preserved.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet" style="mso-list:l1 level1 lfo2"><span
+style="mso-bookmark: _Toc389897946"><span style="font-size:
+10.0pt;font-family:Symbol">·<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style="font-size:10.0pt">Add hyperlinks to References.<o:p> </o:p> </span></span></p>
+
+<p class="MsoListBullet" style="margin-left:0in;text-indent:0in;mso-list:none"><span
+style="mso-bookmark: _Toc389897946">&nbsp;<o:p> </o:p> </span></p>
+
+<h1><span style="mso-bookmark: _Toc389897946"><a name="_Toc468090749">2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Table
+of Contents</a></span></h1>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in"><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun:
+yes"> </span>TOC \o <span style='mso-element:field-separator'></span><![endif]--> 1<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; <a href="_Toc468090748"></a></span><a
+href="#_Toc468090748">Revision History</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">2<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090749">Table
+of Contents</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">3<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090750">Functional
+Overview/Description</a></p>
+
+<blockquote>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">3.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Rationale</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">3.2<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Sketch of the proposal</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">3.3<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Diagram of shared content elements</p>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">4<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090754">Glossary/Nomenclature</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">5<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090755">New/Changed
+Classes and Properties</a></p>
+
+<blockquote>
+  <p class="MsoToc3" style="tab-stops:60.0pt right dotted 6.0in">5.1.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090756">dmaClass_ContentElement</a></p>
+  <blockquote>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.1<span
+    style="mso-tab-count:1"> </span>Support for IdmaVirtualElement</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.2<span
+    style="mso-tab-count:1"> </span>Introduction of dmaProp_SharedBy</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.3<span
+    style="mso-tab-count:1"> </span>Introduction of dmaProp_SharedElement</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.4<span
+    style="mso-tab-count:1"> </span>Requirement for instanceId</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.5<span
+    style="mso-tab-count:1"> </span>Deletion policy example</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.6<span
+    style="mso-tab-count:1"> </span>Content retrieval behavior for virtual content elements</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.7<span
+    style="mso-tab-count:1"> </span>Precedence of property values</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.8<span
+    style="mso-tab-count:1"> </span>Switching from virtual to real and vice versa</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.1.9<span
+    style="mso-tab-count:1"> </span>Locking</p>
+  </blockquote>
+  <p class="MsoToc3" style="tab-stops:60.0pt right dotted 6.0in">5.1.2<span
+  style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090766">dmaClass_VERelationship</a></p>
+  <blockquote>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.2.1<span
+    style="mso-tab-count:1"> </span>Interfaces</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.2.2<span
+    style="mso-tab-count:1"> </span>Properties</p>
+    <p class="MsoToc4" style="tab-stops:1.0in right dotted 6.0in">5.1.2.3<span
+    style="mso-tab-count:1"> </span>Detailed Description</p>
+  </blockquote>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">6<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090770">New/Changed
+Interfaces</a></p>
+
+<blockquote>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">6.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>IdmaVirtualElement</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">6.2<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Description</p>
+  <blockquote>
+    <p class="MsoToc3" style="tab-stops:60.0pt right dotted 6.0in">6.2.1<span
+    style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span>IdmaVirtualElement::SetDerivation</p>
+    <p class="MsoToc3" style="tab-stops:60.0pt right dotted 6.0in">6.2.2<span
+    style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span>IdmaVirtualElement::RemoveDerivation</p>
+  </blockquote>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">7<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090775">New/Changed
+Types, Values, and Macros</a></p>
+
+<blockquote>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">7.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>New Capabilities</p>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">8<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090777">Architectural
+Impacts</a></p>
+
+<blockquote>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Integration Model</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.2<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Query</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.3<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Internationalization/Localization</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.4<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Content</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.5<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Containment</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.6<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span><a href="#_Toc468090783">Versioning</a></p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.7<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Security</p>
+  <p class="MsoToc2" style="tab-stops:.5in right dotted 6.0in">8.8<span
+  style="mso-tab-count:1">&nbsp;&nbsp; </span>Naming</p>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">9<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Compliance &amp; Conformance
+Issues</p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">10<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090787">Sample Usage</a></p>
+
+<blockquote>
+  <p class="MsoToc2" style="tab-stops:48.0pt right dotted 6.0in">10.1<span
+  style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; </span>Creation of a virtual content
+  element</p>
+  <p class="MsoToc2" style="tab-stops:48.0pt right dotted 6.0in">10.2<span
+  style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; </span>Removing a VCE from a<span
+  style="mso-spacerun: yes">&nbsp; </span>rendition</p>
+  <p class="MsoToc2" style="tab-stops:48.0pt right dotted 6.0in">10.3<span
+  style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp; </span>Changing a virtual content
+  transfer element back to a real one</p>
+</blockquote>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">11<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090791">What
+Requirement Does This Address?</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">12<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090792">Extant Systems
+with Similar Features and Related Experiences</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">13<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090793">Impact on
+Existing Systems</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">14<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090794">Backwards
+Compatibility</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">15<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090795">Performance
+Impact</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">16<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090796">Failure
+Modes/Crash Recovery</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">17<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090797">How Is This
+Incorporated into the Specification?</a></p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">18<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span>How Is This Incorporated into the Code
+and Library Configurations?</p>
+
+<p class="MsoToc1" style="tab-stops:24.0pt right dotted 6.0in">19<span
+style="mso-tab-count:1">&nbsp;&nbsp;&nbsp; </span><a href="#_Toc468090799">Reference
+Materials</a></p>
+
+<p class="MsoToc1" style="tab-stops:.5in"><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--> &nbsp;<o:p> </o:p> </p>
+
+<h1><a name="_Toc468090750"><span style="mso-bookmark: _Toc389899425">3<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Functional
+Overview/Description</span></a></h1>
+
+<h2><a name="_Toc468090751">3.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span>Rationale</a></h2>
+
+<p class="MsoNormal">The ability to share components between documents is a useful feature
+for representing some kinds of compound and structured documents (for instance SGML
+documents that share an external DTD, or HTML documents that share a .GIF file).</p>
+
+<p class="MsoNormal">This proposal provides that feature by giving DMA the ability to
+define &#145;virtual&#146; objects that take their data from other persistent objects.</p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:2\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><a
+name="_Toc468090752">3.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Sketch of the proposal</a></h2>
+
+<p class="MsoNormal">A new virtual element relationship class (dmaClass_VERelationship) is
+defined as a subclass of dmaClass_Relationship. VERelationships are specialized for
+building virtual elements,<span style="mso-spacerun: yes">&nbsp; </span>which are elements
+which share some aspect of another element.</p>
+
+<p class="MsoNormal">Virtual content elements are defined as one specific instance of
+virtual elements. The content element class is given two new optional, system derived,
+read only properties:</p>
+
+<p class="MsoNormal"
+style="margin-left:21.0pt;text-indent:-.25in;mso-list:l3 level1 lfo27;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>&#147;shared element&#148;, a virtual element relationship object that
+allows navigation to the real content element, the one which is being shared.</p>
+
+<p class="MsoNormal"
+style="margin-left:21.0pt;text-indent:-.25in;mso-list:l3 level1 lfo27;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>&#147;shared by&#148;, an enumeration of virtual element relationships that
+allow navigation to the objects which share this element.</p>
+
+<p class="MsoNormal">A content element which has the &#147;shared element&#148; property
+is termed a &#145;virtual content element&#146; (VCE).</p>
+
+<p class="MsoNormal">Finally, a new interface (IdmaVirtualElement) is defined for
+constructing virtual elements.</p>
+
+<p class="MsoNormal">This proposal depends on the CSDocs Foundation proposal <a
+href="#Foundation">[2]</a>, in the sense of assuming that it becomes part of the DMA spec.</p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:3\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><a
+name="_Toc468090753">3.3<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Diagram of shared content elements</a></h2>
+
+<p class="MsoNormal">Here is an example, adapted from a paper by Steve Cousins <a
+href="#Cousins">[1]</a>, of using virtual content elements in a document (C) with two
+renditions, one SGML (C_R0) and one HTML (C_R1).<span style="mso-spacerun: yes">&nbsp; </span>The
+document contains two figures, each of which is treated as a sub-document (DocVers A and
+B).<span style="mso-spacerun:
+yes">&nbsp; </span>The figures each have two renditions,
+one TIFF (A_R0 and B_R0) and one JPEG (A_R1 and B_R1).<span style="mso-spacerun: yes">&nbsp;
+</span>Each figure rendition has a single content element (four altogether, labeled
+A_CE0.0, A_CE1.0, B_CE0.0, and B_CE1.0 in the figures).<span style="mso-spacerun: yes">&nbsp;
+</span>The SGML rendition of C is associated with the TIFF renditions of the figures, and
+the HTML rendition is associated with the JPEG renditions.</p>
+
+<p class="MsoNormal">&nbsp;<o:p> </o:p> </p>
+
+<p class="MsoNormal" style="page-break-after:avoid" align="center"><span
+style="font-size:10.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:6in;
+ height:584.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/windows/TEMP/msoclip1/01/clip_image001.wmz"
+  o:title=""/>
+</v:shape><![endif]--> <img border="0" src="VCEStruct.gif" v:shapes="_x0000_i1025"
+width="576" height="779"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Visio.Drawing.4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1007546036">
+ </o:OLEObject>
+</xml><![endif]--> </p>
+
+<p class="MsoCaption"><span style="color:red">&nbsp;<o:p> </o:p> </span></p>
+
+<h1><a name="_Toc468090754"><span style="mso-bookmark: _Toc389899426">4<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Glossary/Nomenclature</span></a></h1>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899426"><a
+name="ClassesAndProperties"><b style="mso-bidi-font-weight:normal"><i
+style="mso-bidi-font-style:normal">Virtual Element<o:p> </o:p> </i></b></a></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: ClassesAndProperties">A virtual element is
+one that is derived from another element, the shared element.<span
+style="mso-spacerun:
+yes">&nbsp; </span>The virtual element's dependency on the shared
+element is explicitly reflected in a DMA relationship.<span style="mso-spacerun: yes">&nbsp;
+</span>The virtual element is usable as if it is an independent element, and users can
+usually ignore whether a virtual element is being used.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: ClassesAndProperties"><b
+style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal">Shared Element<o:p> </o:p> </i></b></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: ClassesAndProperties">The element that a
+virtual element derives from &#150; the place where it gets its data.<span
+style="mso-spacerun:
+yes">&nbsp; </span>In a virtual element relationship, the shared
+element is the head of the relationship.</span></p>
+
+<h1><span style="mso-bookmark: _Toc389901443"><span
+style="mso-bookmark: ClassesAndProperties"><a name="_Toc468090755">5<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>New/Changed
+Classes</a></span><span style="mso-bookmark: _Toc468090755"> and Prop</span></span></h1>
+
+<p><a name="Interfaces"><span style="mso-bookmark: _Toc389899428"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dmaClass_VERelationship is introduced as subclass of dmaClass_Relationship.</span></a></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l17 level1 lfo28;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dmaClass_ContentElement is given a new relationship property to identify the
+source of the content.<span style="mso-spacerun:
+yes">&nbsp; </span>If there is a value
+for this property, the content element becomes virtual and shares the data of another
+content element.</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l17 level1 lfo28;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dmaClass_ContentElement is given a new &#145;enumeration of
+relationships&#146; property to keep track of the objects that share it.</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l17 level1 lfo28;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dmaClass_ContentElement is given a new optional interface IdmaVirtualElement
+which is used in order to construct a virtual content element.</span></p>
+
+<h3><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090756"><span
+style="font-size:16.0pt;
+mso-bidi-font-size:10.0pt">5.1.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp; </span></span><span
+style="font-size:16.0pt;mso-bidi-font-size:10.0pt">dmaClass_ContentElement</span></a><span
+style="font-size:16.0pt;mso-bidi-font-size:10.0pt"><o:p> </o:p> </span></span></h3>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">The existing class
+dmaClass_ContentElement is augmented as follows, to allow both virtual content transfer
+and virtual content reference objects.<span style="mso-spacerun: yes">&nbsp; </span>Many
+comments in the following are expressed as principles for virtual objects in general;
+these principles would apply also to other classes of virtual elements defined in the
+future.</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090757">5.1.1.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Support
+for IdmaVirtualElement</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">A new optional interface
+IdmaVirtualElement (defined later in this proposal) is added to dmaClass_ContentElement.</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090758"><span
+style="mso-bookmark:
+_Toc457811786">5.1.1.2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Introduction
+of dmaProp_SharedBy</span></a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">A new (optional, system
+generated) property is added to enable navigation to the objects which share this content
+element. Support for this property is required if virtual content elements are supported.</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Implementation: not required</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Read-only</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">System-derived</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Value: optional</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Type: object</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Cardinality: Enum</span></p>
+
+<p class="MsoToc1"
+style="margin-top:3.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Class if object: dmaClass_VERelationship</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">&nbsp;<o:p> </o:p> </span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428"><i
+style="mso-bidi-font-style:normal">Description: </i>this property is an enumeration of
+VERelationship objects whose dmaProp_Head points to this content element. If has a NULL
+value, the content element is not shared. The doc space is required to update this
+property whenever a sharing relationship is added or deleted.<span
+style="mso-spacerun:
+yes">&nbsp; </span>That is, when a VERelationship object pointing to
+this content element is made persistent, that relationship object must be added to the
+enumeration. If a VERelationship object pointing to this content element is deleted (e.g.,
+because its parent DocVersion has been deleted), that relationship object must be removed
+from the enumeration.</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090759">5.1.1.3<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Introduction
+of dmaProp_SharedElement</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">A new relationship-valued
+property (dmaProp_SharedElement ) is defined to enable the concept of virtual elements,
+which indicate a persistent object that is the source of the data for this element.
+Support for this property is required if virtual elements are supported.<span
+style="mso-spacerun: yes">&nbsp; </span>If a value is present for this property, the
+element is said to be <i style="mso-bidi-font-style:normal">virtual</i>. In general, this
+property can be supported on any class of objects whose instances can be based on other
+(shared) elements.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">This proposal defines
+shared content elements by introducing dmaProp_SharedElement on dmaClass_ContentElement:</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Implementation not required</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Read-only</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">System-derived</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Value-optional</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Type: object</span></p>
+
+<p class="MsoToc1"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">Cardinality: scalar</span></p>
+
+<p class="MsoNormal" style="text-indent:.5in"><span style="mso-bookmark: _Toc389899428">Class
+if object: dmaClass_Relationship</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428"><i
+style="mso-bidi-font-style:normal">Description</i>: the value of this property is set by
+the DMA doc space when the virtual element is made persistent.<span
+style="mso-spacerun: yes">&nbsp; </span>The head of the relationship is the persistent
+element that will be the source of the data for this virtual element.<span
+style="mso-spacerun: yes">&nbsp; </span>The tail of the relationship is the virtual
+object.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">There is a constraint on
+the relationship object: it must be a subclass of dmaClass_Relationship that contains
+properties which uniquely identify the shared and sharing objects. For virtual content
+elements, dmaClass_VERelationship is such a subclass.<span style="mso-spacerun:
+yes">&nbsp;
+</span>It contains the properties</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">dmaProp_HeadRenditionId</span></p>
+
+<p class="MsoToc1"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">dmaProp_TailRenditionId</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">dmaProp_HeadContentElementId</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">dmaProp_TailContentElementId</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">&nbsp;<o:p> </o:p> </span></p>
+
+<p class="MsoNormal" style="margin:0in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">that uniquely identify a content element, given its
+parent DocVersion.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">If the capability
+DMARC_VIRTUAL_ELEMENTS_SHARABLE is set, the source of a virtual element&#146;s data may be
+another virtual element. This allows chains of virtual elements that eventually point to a
+real element.<span style="mso-spacerun: yes">&nbsp; </span>In the case of virtual content
+elements, the semantics of such a chain is that any virtual element in the chain will
+deliver the content of the real element at the end of the chain.</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090760">5.1.1.4<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Requirement
+for instanceId</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Note that any virtual or
+shared element must have a value for dmaProp_InstanceID (defined in the Foundation
+Proposal </span><a href="#Foundation"><span style="mso-bookmark: _Toc389899428">[2]</span></a><span
+style="mso-bookmark: _Toc389899428">).</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090761">5.1.1.5<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Deletion
+policy example</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Deletion of objects becomes
+more complex when they are virtual or shared.<span style="mso-spacerun: yes">&nbsp; </span>As
+mentioned section 5.1.2.3 below, DMA relationship policy as implemented by a particular
+doc space governs deletion of shared or sharing objects.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">One reasonable example of
+deletion policy is the following:</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l19 level1 lfo44;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>If an object is pointed at by a VERelationship (i.e. if it has a value for
+dmaProp_SharedBy), requests to delete the object (or any independently persistent object
+of which it is a part) are failed with DMARC_OBJECT_REFERENCED. All sharing relationships
+must be removed before an element can be deleted.</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l19 level1 lfo44;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Virtual elements that are not shared may be deleted as usual. The
+VERelationship object in dmaProp_SharedElement is deleted as a side effect.</span></p>
+
+<p class="MsoToc1" style="tab-stops:.5in"><span style="mso-bookmark: _Toc389899428">The
+application of is policy to content elements would mean that</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:0in;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;mso-list:l44 level1 lfo37;
+tab-stops:list .5in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>A shared content element cannot be deleted</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:0in;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;mso-list:l44 level1 lfo37;
+tab-stops:list .5in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>A DocVersion or rendition containing a shared content element cannot be
+deleted</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428"><b
+style="mso-bidi-font-weight:normal">Note: </b><span style="mso-spacerun: yes">&nbsp;</span>Two
+objects can become &#147;cross-linked&#148; if each shares one of the other&#146;s
+objects. In that case (under the above policy) neither can be deleted until the sharing
+relationship is broken (by modifying the referencing objects to remove the sharing
+relationships).</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090762">5.1.1.6<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Content
+retrieval behavior for virtual content elements</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">If a client calls
+IdmaContentTransfer::GetStream on a virtual content transfer element, the returned stream
+will contain the same data as if it had been called on the content element that is the
+head of the relationship object given in dmaProp_SharedElement.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">If a client retrieves the
+value of dmaProp_ContentLocation on a virtual content reference object, it will get the
+same value that is in dmaProp_ContentLocation on the real element.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">If chains of virtual
+elements are present, the chain is followed to the real element at the end of the chain.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">There are two potential
+anomalies that can occur when retrieving content data using virtual elements:<span
+style="mso-spacerun: yes">&nbsp;</span></span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l10 level1 lfo43;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>A virtual content element is made real without the client supplying information
+about a new source of content, hence dmaProp_SharedElement has no value</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l10 level1 lfo43;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>The head object of the relationship given in dmaProp_SharedElement is missing.</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:0in;text-indent:0in"><span
+style="mso-bookmark: _Toc389899428">In either case, this is analogous to creating a new
+content element without supplying a source of content, and normal content element behavior
+should occur: DMARC_NOT_FOUND should be returned by IdmaContentTransfer copy or get
+methods invoked on such an object.<span style="mso-spacerun: yes">&nbsp;</span></span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090763">5.1.1.7<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Precedence
+of property values</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Since a virtual object
+points to a real object, and they can both have properties, the relationship of the two
+sets of properties is important.<span style="mso-spacerun: yes">&nbsp; </span>The general
+principle is that the two sets of properties are independent.<span
+style="mso-spacerun: yes">&nbsp; </span>There may be exceptions when important for
+workable semantics.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">For content elements, there
+are three exceptions:</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l31 level1 lfo38;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>dmaProp_ComponentType</span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389899428">The component type of the VCE may differ from that of
+the real CE, or may track it &#150; and this tracking or lack thereof may vary from
+instance to instance.</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l31 level1 lfo38;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>dmaProp_ContentLocation</span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389899428">This property must track the dmaProp_ContentLocation
+of the shared element for the concept of virtual content reference objects to make any
+sense at all. The doc space must enforce this.</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l31 level1 lfo38;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>dmaProp_RetrievalName</span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389899428">The retrieval name of a virtual content transfer
+object may differ from that of the real CE, or may track it &#150; and this tracking or
+lack thereof may vary from instance to instance.</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090764">5.1.1.8<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Switching
+from virtual to real and vice versa</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Since virtual and real
+content elements are both of class dmaClass_ContentElement, it is possible to change a
+content element from real to virtual or vice versa by calling methods in
+IdmaVirtualElement and calling ExecuteChange on the parent DocVersion. The instanceID
+value of the content element does not change if this is done.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">If a virtual element is
+changed to real, the client is expected to supply the information that would be present in
+a real element before ExecuteChange is called.<span style="mso-spacerun: yes">&nbsp; </span>For
+example, when a virtual content transfer element is made real, the client would first call
+IdmaContentTransfer::SetCaptureResource or SetCaptureStream in addition to
+IdmaVirtualElement::RemoveDerivation</span></p>
+
+<h4><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090765">5.1.1.9<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Locking</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">When a doc space locks a
+DocVersion containing VCEs, it must also lock all the DocVersions that contain the sources
+of these VCEs (that is, that contain the content elements -- real or virtual -- that the
+VCEs point at). If it is unable to do so, it must fail the lock request.</span></p>
+
+<h3><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090766"><span
+style="font-size:16.0pt;
+mso-bidi-font-size:10.0pt">5.1.2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp; </span></span><span
+style="font-size:16.0pt;mso-bidi-font-size:10.0pt">dmaClass_VERelationship</span></a><span
+style="font-size:16.0pt;mso-bidi-font-size:10.0pt"><o:p> </o:p> </span></span></h3>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">This is a new class
+introduced by this proposal.<span style="mso-spacerun: yes">&nbsp; </span>It is a
+relationship that is specialized to identify a dependently persistent DMA object (such as
+a rendition or content element) as the source of a virtual element.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428"><b
+style="mso-bidi-font-weight:normal">Class ID:</b> dmaClass_VERelationship<br>
+<b style="mso-bidi-font-weight:normal">Impl. Required:</b> -<br>
+<b style="mso-bidi-font-weight:normal">Searchable:</b> -<br>
+<b style="mso-bidi-font-weight:normal">Addressable:</b> -<br>
+<b style="mso-bidi-font-weight:normal">Parent Class:</b> dmaClass_Relationship<br>
+<b style="mso-bidi-font-weight:normal">Name Property:</b> Not Assigned</span></p>
+
+<h4
+style="mso-list:l20 level4 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:1\:0\:\.%3\:1\:0\:\.%4\:1\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389899428"><a name="_Toc468090767">5.1.2.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Interfaces</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">(Same as for
+dmaClass_Relationship)</span></p>
+
+<h4
+style="mso-list:l20 level4 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:1\:0\:\.%3\:1\:0\:\.%4\:2\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389899428"><a name="_Toc468090768">5.1.2.2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Properties</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Same as for
+dmaClass_Relationship plus</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428"><span style="mso-spacerun:
+yes">&nbsp;</span>dmaProp_HeadRenditionId</span></p>
+
+<p class="MsoToc1"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="mso-bookmark: _Toc389899428">dmaProp_TailRenditionId</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">dmaProp_HeadContentElementId</span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="mso-bookmark: _Toc389899428">dmaProp_TailContentElementId</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">as in the CSRelationship
+class of the Foundation proposal </span><a href="#Foundation"><span
+style="mso-bookmark: _Toc389899428">[2]</span></a><span
+style="mso-bookmark: _Toc389899428">).</span></p>
+
+<h4
+style="mso-list:l20 level4 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:1\:0\:\.%3\:1\:0\:\.%4\:3\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389899428"><a name="_Toc468090769">5.1.2.3<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Detailed
+Description</a></span></h4>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">The dmaClass_VERelationship
+class is a specialization of Relationship for enabling sharing of dependently persistent
+objects -- in particular, content objects or (in the future) renditions.<span
+style="mso-spacerun: yes">&nbsp;</span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">NOTE: while the CSDocs
+subcommittee sees use cases for content element to content element relationships, and for
+DocVersion to DocVersion relationships, the definition is sufficiently general to handle
+other relationships (such as DocVersion to rendition) if they should be useful.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Semantics and usage rules
+are as follows.</span></p>
+
+<p class="Address"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:5.0pt;
+margin-left:0in"><span
+style="mso-bookmark: _Toc389899428">Reflective properties</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">VERelationships are
+intended to enable sharing of content elements between documents (and possibly in the
+future, sharing of renditions between documents).<span style="mso-spacerun: yes">&nbsp; </span>The
+reflective properties for the Head and Tail properties are unspecified.<span
+style="mso-spacerun: yes">&nbsp; </span>Relationships can point only to independently
+persistent objects &#150; in this case DocVersions.<span style="mso-spacerun: yes">&nbsp; </span>There
+are no predefined reflective properties on the DocVersion class that allow navigation back
+to the VERelationship object that has the DocVersion linked as a Head or Tail property..<span
+style="mso-spacerun: yes">&nbsp; </span>However, we want to allow the possibility of
+vendors defining such reflective properties should they find them useful.</span></p>
+
+<p class="Address"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:5.0pt;
+margin-left:0in"><span
+style="mso-bookmark: _Toc389899428">Deletion rules</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899428">Rules of use for DMA
+relationships in general (see the DMA 1.0 spec and Relationship Strength proposal </span><a
+href="#Strength"><span style="mso-bookmark: _Toc389899428">[<span
+style="mso-bookmark:_Hlt468086855">6</span>]</span></a><span
+style="mso-bookmark: _Toc389899428">) determine policy on the following:</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l18 level1 lfo42;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Whether a VERelationship must be deleted when the object at is head is
+deleted</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l18 level1 lfo42;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899428"><span style="font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Whether a VERelationship must be deleted when the object at is tail is
+deleted</span></p>
+
+<h1><span style="mso-bookmark: _Toc389899428"><a name="_Toc468090770">6<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>New/Changed
+Interfaces</a></span></h1>
+
+<h2><a name="_Toc468090771">6.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span>IdmaVirtualElement</a></h2>
+
+<p class="MsoNormal">This is a new interface introduced by this proposal.<span
+style="mso-spacerun: yes">&nbsp; </span>It provides a way to create virtual elements,
+i.e., to establish sharing relationships, and to remove them. A simple kind of virtual
+derivation is when the derivation provides the head object as the literal implementation
+of the virtual element with at-most trivial embellishments.</p>
+
+<h2><a name="_Toc468090772"><span style="mso-bookmark:
+_Toc396103480">6.2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Description</span></a></h2>
+
+<p class="MsoNormal" style="mso-list:skip">This interface provides a way to create virtual
+elements, such as virtual content elements, and to remove them.</p>
+
+<h3 style="mso-list:l20 level3 lfo47"><a name="_Toc468090773">6.2.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>IdmaVirtualElement::SetDerivation</a></h3>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Syntax</b><br>
+DmaRC <b style="mso-bidi-font-weight:normal">IdmaVirtualElement::SetDerivation </b>(<br>
+Dmapv <i style="mso-bidi-font-style:normal">pIRelationship</i>)</span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><br>
+<b style="mso-bidi-font-weight:normal"><span style="mso-spacerun:
+yes">&nbsp;</span>Parameters</b></span></p>
+
+<table border="0" cellspacing="0" cellpadding="0"
+style="margin-left:.4pt;border-collapse:
+ collapse;mso-table-layout-alt:fixed;mso-padding-alt:0in 0in 0in 0in">
+  <tr>
+    <td width="114" valign="top"
+    style="width:85.5pt;border:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-begin'></span><span
+  style='mso-bookmark:TypesValuesMacros'>PRIVATE</span><![endif]--> <!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-end'></span><![endif]--> <span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Name</b></span></td>
+    <td width="66" valign="top"
+    style="width:49.5pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Mode</b></span></td>
+    <td width="444" valign="top"
+    style="width:332.95pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Description</b></span></td>
+  </tr>
+  <tr>
+    <td width="114" valign="top"
+    style="width:85.5pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><i
+    style="mso-bidi-font-style:normal">pIRelationship</i></span></td>
+    <td width="66" valign="top"
+    style="width:49.5pt;border-top:none;border-left:none;
+  border-bottom:solid black .75pt;border-right:solid black .75pt;mso-border-top-alt:
+  solid black .75pt;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Input</span></td>
+    <td width="444" valign="top"
+    style="width:332.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">An
+    interface pointer to a subclass of dmaClass_Relationship that has properties appropriate
+    for identifying the source of the virtual element. dmaClass_VERelationship is an
+    appropriate subclass for virtual content elements.</span></td>
+  </tr>
+</table>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Description</b></span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Records
+the intention to make the persistent object that is the head of the relationship act as
+the source for the virtually-derived element.<span style="mso-spacerun: yes">&nbsp; </span>When
+the virtual element is made persistent (with ExecuteChange on the related independently
+persistent object), this intention will be effected.<span style="mso-spacerun: yes">&nbsp;
+</span>The relationship object supplied as argument will be made persistent and its tail
+properties filled in.</span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">If
+the object is already virtual, the relationship that was already there will be deleted and
+replaced by the one given as an argument.</span></p>
+
+<p class="MsoNormal"
+style="border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0in;mso-padding-alt:0in 0in 3.0pt 0in"><span
+style="mso-bookmark:TypesValuesMacros">The ability for a virtual element to point to
+another virtual element raises the issue of cycles. Cycles in chains of virtual element
+references are undesirable because the semantics of virtual elements imply the ability to
+reach a real element, and this does not happen with a virtual element cycle.<span
+style="mso-spacerun: yes">&nbsp;</span></span></p>
+
+<p
+style="border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0in;mso-padding-alt:0in 0in 3.0pt 0in"><span
+style="mso-bookmark:TypesValuesMacros">To prevent cycles, the doc space is required to
+fail (with the error code DMARC_CONSTRAINT_VIOLATED) creation of any virtual element that
+would result in a cycle.</span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Return Values</b></span></p>
+
+<table border="0" cellspacing="0" cellpadding="0"
+style="margin-left:.4pt;border-collapse:
+ collapse;mso-table-layout-alt:fixed;mso-padding-alt:0in 0in 0in 0in">
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-begin'></span><span
+  style='mso-bookmark:TypesValuesMacros'>PRIVATE</span><![endif]--> <!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-end'></span><![endif]--> <span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Name</b></span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Description</b></span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_BAD_PARAMETER</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Invalid
+    input parameter.</span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_BAD_OBJECT</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Inappropriate
+    object passed as parameter to this function</span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_OK</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Success.</span></td>
+  </tr>
+</table>
+
+<p class="MsoNormal"><span style="mso-bookmark:TypesValuesMacros">&nbsp;<o:p> </o:p> </span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Deferred Return Values</b></span></p>
+
+<table border="0" cellspacing="0" cellpadding="0"
+style="margin-left:.4pt;border-collapse:
+ collapse;mso-table-layout-alt:fixed;mso-padding-alt:0in 0in 0in 0in">
+  <tr>
+    <td width="210" valign="top"
+    style="width:157.85pt;border:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-begin'></span><span
+  style='mso-bookmark:TypesValuesMacros'>PRIVATE</span><![endif]--> <!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-end'></span><![endif]--> <span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Name</b></span></td>
+    <td width="366" valign="top"
+    style="width:274.15pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Description</b></span></td>
+  </tr>
+  <tr>
+    <td width="210" valign="top"
+    style="width:157.85pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_ACCESS_DENIED</span></td>
+    <td width="366" valign="top"
+    style="width:274.15pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">The
+    requester has insufficient access rights to perform the requested operation.</span></td>
+  </tr>
+  <tr>
+    <td width="210" valign="top"
+    style="width:157.85pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_CONSTRAINT_VIOLATED</span></td>
+    <td width="366" valign="top"
+    style="width:274.15pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">The
+    operation violates a constraint of the operation.</span></td>
+  </tr>
+  <tr>
+    <td width="210" valign="top"
+    style="width:157.85pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_OBJECT_LOCKED</span></td>
+    <td width="366" valign="top"
+    style="width:274.15pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">The
+    lock(s) on the persistent object prohibit the attempted operation.</span></td>
+  </tr>
+</table>
+
+<p class="MsoNormal"><span style="mso-bookmark:TypesValuesMacros">&nbsp;<o:p> </o:p> </span></p>
+
+<h3 style="mso-list:l20 level3 lfo47"><span style="mso-bookmark:TypesValuesMacros"><a
+name="_Toc468090774">6.2.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span>IdmaVirtualElement::RemoveDerivation</a></span></h3>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Syntax</b><br>
+DmaRC <b style="mso-bidi-font-weight:normal">IdmaVirtualElement:: RemoveDerivation </b>()</span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><br>
+<b style="mso-bidi-font-weight:normal">Description</b></span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Records
+the intention to change the object from virtual to real.<span style="mso-spacerun: yes">&nbsp;
+</span>When ExecuteChange is called on the related independently persistent object, this
+intention will be effected (by removing this object from the dmaProp_SharedBy property of
+head object of the relationship object that is the value of dmaProp_SharedElement,
+deleting that relationship, and setting the value of dmaProp_SharedElement to NULL).</span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Return Values</b></span></p>
+
+<table border="0" cellspacing="0" cellpadding="0"
+style="margin-left:.4pt;border-collapse:
+ collapse;mso-table-layout-alt:fixed;mso-padding-alt:0in 0in 0in 0in">
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-begin'></span><span
+  style='mso-bookmark:TypesValuesMacros'>PRIVATE</span><![endif]--> <!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-end'></span><![endif]--> <span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Name</b></span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Description</b></span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_NOT_FOUND</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Requested
+    item not found. (there is no derivation to remove)</span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_OK</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">Success.</span></td>
+  </tr>
+</table>
+
+<p class="MsoNormal"><span style="mso-bookmark:TypesValuesMacros">&nbsp;<o:p> </o:p> </span></p>
+
+<p class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+style="mso-bidi-font-weight:normal">Deferred Return Values</b></span></p>
+
+<table border="0" cellspacing="0" cellpadding="0"
+style="margin-left:.4pt;border-collapse:
+ collapse;mso-table-layout-alt:fixed;mso-padding-alt:0in 0in 0in 0in">
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-begin'></span><span
+  style='mso-bookmark:TypesValuesMacros'>PRIVATE</span><![endif]--> <!--[if supportFields]><span
+  style='mso-bookmark:TypesValuesMacros'></span><span style='mso-element:field-end'></span><![endif]--> <span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Name</b></span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border:solid black .75pt;
+  border-left:none;mso-border-left-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros"><b
+    style="mso-bidi-font-weight:normal">Description</b></span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_ACCESS_DENIED</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">The
+    requester has insufficient access rights to perform the requested operation.</span></td>
+  </tr>
+  <tr>
+    <td width="228" valign="top"
+    style="width:171.0pt;border:solid black .75pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">DMARC_OBJECT_LOCKED</span></td>
+    <td width="396" valign="top"
+    style="width:296.95pt;border-top:none;border-left:
+  none;border-bottom:solid black .75pt;border-right:solid black .75pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  padding:0in 0in 0in 0in"><p
+    class="MsoNormal" style="mso-list:skip"><span style="mso-bookmark:TypesValuesMacros">The
+    lock(s) on the persistent object prohibit the attempted operation.</span></td>
+  </tr>
+</table>
+
+<p class="MsoNormal"><span style="mso-bookmark:TypesValuesMacros">&nbsp;<o:p> </o:p> </span></p>
+
+<h1><span style="mso-bookmark:TypesValuesMacros"><a name="_Toc468090775">7<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>New/Changed
+Types, Values, and Macros</a></span></h1>
+
+<h2><a name="_Toc468090776">7.1<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span>New Capabilities</a></h2>
+
+<p class="MsoNormal">New values for dmaProp_Capabilities on dmaClass_DocSpace are
+proposed:</p>
+
+<p class="MsoNormal"><a name="ArchitecturalImpacts"><span
+style="mso-bookmark: _Toc389899429"><b style="mso-bidi-font-weight:normal">DMAC_VIRTUAL_ELEMENTS<o:p>
+</o:p></b></span></a></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429">If set, then the doc space
+supports the basic virtual elements features</span></p>
+
+<p class="Menu"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:5.0pt;
+margin-left:.5in;mso-list:l36 level1 lfo39;tab-stops:list .5in"><span
+style="mso-bookmark: _Toc389899429"><span style="font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>A subclass (such as dmaClass_VERelationship) of dmaClass_Relationship that
+has the appropriate properties for identifying shared objects</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.5in;text-indent:-.25in;mso-list:l14 level1 lfo25;
+tab-stops:list .5in"><span
+style="mso-bookmark: _Toc389899429"><span style="font-family:
+Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>dmaProp_InstanceID on virtual and shared objects</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429">If reset, none of the above
+are supported.</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429"><b
+style="mso-bidi-font-weight:normal">DMAC_VIRTUAL_CONTENT_ELEMENTS<o:p> </o:p> </b></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429">If set, then the doc space
+supports virtual content elements (i.e., content elements can be shared).
+dmaClass_VERelationship is supported and dmaClass_ContentElement supports the properties
+dmaProp_SharedElement and dmaProp_SharedBy. DmaClass_ContentElement and dmaClass_Rendition
+both support dmaProp_InstanceID<b style="mso-bidi-font-weight:
+normal"><o:p> </o:p> </b></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429"><b
+style="mso-bidi-font-weight:normal">DMAC_VIRTUAL_ELEMENTS_SHAREABLE<o:p> </o:p> </b></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429">If set, then virtual
+elements can be shared (that is the source of a virtual element can be another virtual
+element).</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899429">If reset, virtual elements
+are not sharable and the source of a virtual element must be a real element. That is, the
+value of dmaProp_SharedElement must be a relationship object whose head is an element that
+has no value for dmaProp_SharedElement.</span></p>
+
+<h1><a name="_Toc468090777">8<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Architectural Impacts</a></h1>
+
+<h2><a name="_Toc468090778"><span style="mso-bookmark: _Toc389901446">8.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Integration Model</span></a></h2>
+
+<p><a name="_Toc389907220"><span style="mso-bookmark: _Toc389901447">None.</span></a></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:2\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901447"><a name="_Toc468090779"><span
+style="mso-bookmark:QueryModel">8.2<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Query</span></a></span></h2>
+
+<p class="MsoNormal">The DMA query model is not changed by this proposal.</p>
+
+<p class="MsoNormal">It should be noted that the ability to share content elements may
+engender the need for queries that answer questions of the form &#147;what documents is
+this piece of content used in&#148;.</p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:3\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><a
+name="_Toc468090780"><span style="mso-bookmark: _Toc389901448">8.3<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Internationalization/Localization</span></a></h2>
+
+<p class="MsoNormal"><a name="_Toc389907222"><span style="mso-bookmark: _Toc389901449">None.</span></a></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:4\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901449"><a name="_Toc468090781"><span
+style="mso-bookmark:ContentModel">8.4<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Content</span></a></span></h2>
+
+<p class="MsoNormal"><a name="_Toc389907223"><span style="mso-bookmark: _Toc389901450">This
+changes the DMA content model so that content elements can be shared between documents.<span
+style="mso-spacerun: yes">&nbsp; </span>It also provides a mechanism (IdmaVirtualElement)
+for sharing other objects (e.g. renditions) in the future.</span></a></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389901450">Client code for content
+retrieval through a virtual content transfer element is exactly the same as for ordinary
+content transfer elements.</span></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:5\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901450"><a name="_Toc468090782"><span
+style="mso-bookmark:ContainmentModel">8.5<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Containment</span></a></span></h2>
+
+<p class="MsoNormal"><a name="_Toc389907224"><span style="mso-bookmark: _Toc389901451">None.<span
+style="mso-spacerun: yes">&nbsp; </span>This proposal does not change the containment
+model.<span style="mso-spacerun: yes">&nbsp;</span></span></a></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:6\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901451"><a name="_Toc468090783"><span
+style="mso-bookmark:VersioningModel">8.6<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Versioning</span></a></span></h2>
+
+<p class="Address"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:5.0pt;
+margin-left:0in"><a
+name="_Toc389907225"><span style="font-style: normal; mso-bookmark: _Toc389901452">The DMA
+versioning model is not changed by this proposal, but we need to specify the semantics of
+versioning a DocVersion that contains a VCE and of versioning a DocVersion whose content
+elements are referenced by VCEs.<o:p> </o:p> </span></a></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l11 level1 lfo30;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901452">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Using IdmaVersionSeries::SetCheckOutNext and ExecuteChange on a DocVersion that
+contains VCEs does NOT clone the entire document.<span style="mso-spacerun:
+yes">&nbsp; </span>To
+quote from the spec:</span></p>
+
+<p class="Blockquote"><span style="mso-bookmark: _Toc389901452">&#147;When the versionable
+object is &quot;cloned&quot;, the versionable object and all dependent persistable
+subordinate objects are copied recursively. Cloning sets the navigation properties to null
+but preserves other properties with the exception of the OIID which is given a new
+value.&#148;</span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389901452">dmaProp_SharedElement is a navigation property, so the
+VERelationships are not cloned, hence content that is virtual is lost.<span
+style="mso-spacerun: yes">&nbsp;</span></span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389901452">There are two workarounds for this.<span
+style="mso-spacerun: yes">&nbsp; </span>Either the client must &#145;manually&#146;
+rebuild the lost VERelationship objects, or the new &#147;deep&#148; checkout method
+(tentatively named SetExtendedCheckoutNext) proposed in the Foundation proposal must be
+used.</span></p>
+
+<p class="DefinitionList"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in"><span
+style="mso-bookmark: _Toc389901452">Note that when a new version of a document that
+contains VCEs is checked in, the doc space must update the dmaProp_SharedBy property
+values on the shared content elements.</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l11 level1 lfo30;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901452">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>When versioning a DocVersion whose content elements are referenced by VCEs, no
+changes are made in the referring DocVersions.<span style="mso-spacerun: yes">&nbsp; </span>They
+continue to point to the content elements in the old version.</span></p>
+
+<h2
+style="text-indent: 0; mso-text-indent-alt: -.4in; mso-list: l20 level2 lfo18; mso-list-change: %1\:1\:0\:\.%2\:7\:0\: Richard W\. Sauvain 19991006T1106"><span
+style="mso-bookmark: _Toc389901452"><a name="_Toc468090784">8.7<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Security</a></span></h2>
+
+<p class="MsoNormal"><a name="_Toc389907226"><span style="mso-bookmark: _Toc389901453">If
+an object-level security model is ever added to DMA, it will have to comprehend sharing of
+content elements.</span></a></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:8\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901453"><a name="_Toc468090785"><span
+style="mso-bookmark: NamingModel">8.8<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Naming</span></a></span></h2>
+
+<p class="MsoNormal"><a name="_Toc389907227"><span style="mso-bookmark: _Toc389901454">N/A</span></a></p>
+
+<h1><span style="mso-bookmark: _Toc389901454"><a name="_Toc468090786"><span
+style="mso-bookmark:Conformance">9<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Compliance &amp; Conformance Issues</span></a></span></h1>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389901454"><a name="_Toc389907233"><span
+style="mso-bookmark: _Toc389899433">Everything in this proposal is optional for a doc
+space to support.</span></a></span></p>
+
+<h1><span style="mso-bookmark: _Toc389901454"><a name="_Toc468090787"><span
+style="mso-bookmark:SampleUsage">10<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Sample Usage</span></a></span></h1>
+
+<p class="Address"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:5.0pt;
+margin-left:0in"><span
+style="mso-bookmark: _Toc389901454">These samples are sketched in pseudocode.</span></p>
+
+<h2
+style="mso-list:l20 level2 lfo18;mso-list-change:&quot;%1\:1\:0\:\.%2\:1\:0\:&quot; &quot;Richard W\. Sauvain&quot; 19991006T1106"><span
+style="mso-bookmark: _Toc389901454"><a name="_Toc468090788">10.1<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Creation of a virtual content element</a></span></h2>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389901454">This example sketches
+creation of a new single rendition single virtual content element<span
+style="mso-spacerun: yes">&nbsp; </span>(VCE) DocVersion that points to an already
+persistent DocVersion&#146;s content element.</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">1.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Using
+doc space object factory, build a new DocVersion DV1, its rendition R1, and a fresh
+content object C1.<span style="mso-spacerun: yes">&nbsp; </span>Link them together as is
+usual for a DMA document (see content sample &#147;ctnewdoc&#148;).<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">2.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Navigate
+to the DocVersion whose content element is to be the source for the VCE.<span
+style="mso-spacerun: yes">&nbsp; </span>Call it DV2.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">3.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Navigate
+to the DV2 rendition of interest, and save its InstanceID.<span style="mso-spacerun: yes">&nbsp;
+</span>Call the instanceID R2ID.<o:p> </o:p> </span></span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l21 level1 lfo19;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:
+Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">4.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style="font-family:Arial;mso-bidi-font-family:
+&quot;Times New Roman&quot;">Navigate to
+the R2 content element of interest and save its InstanceID. .<span
+style="mso-spacerun: yes">&nbsp; </span>Call the instanceID C2ID.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">5.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Use
+doc space object factory to make a fresh VERelationship object REL1 and get an edit props
+interface on it.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">6.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Set
+properties on REL1 as follows:<span style="mso-spacerun: yes">&nbsp; </span>Head to DV2,
+Head rendition ID to R2ID, Head contentID to C2ID.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">7.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Get
+an IdmaVirtualElement interface on C1; call its SetDerivation method giving REL1 as an
+argument.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l21 level1 lfo19;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">8.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Call
+ExecuteChange on DV1.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"><span
+style="font-family: Arial; mso-bidi-font-family: Times New Roman; mso-bookmark: _Toc389901454">&nbsp;<o:p>
+</o:p></span></p>
+
+<h2><span style="mso-bookmark: _Toc389901454"><a name="_Toc468090789">10.2<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp; </span>Removing a VCE from a<span
+style="mso-spacerun: yes">&nbsp; </span>rendition</a></span></h2>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l24 level1 lfo31;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">1.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Use
+the content elements list to navigate to the virtual content element of interest.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l24 level1 lfo31;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">2.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Use
+IdmaEditList::DeleteElement to delete the virtual content element<o:p> </o:p> </span></span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l24 level1 lfo31;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:
+Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">3.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+style="font-family:Arial;mso-bidi-font-family:
+&quot;Times New Roman&quot;">Call
+ExecuteChange on the parent DocVersion.<o:p> </o:p> </span></span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:0in;text-indent:0in"><span
+style="mso-bookmark: _Toc389901454">Note that this is exactly the same as deleting a real
+content element.<span style="mso-spacerun: yes">&nbsp; </span>The doc space is responsible
+for updating dmaProp_SharedBy on the real content element that the VCE pointed to.</span></p>
+
+<h2><span style="mso-bookmark: _Toc389901454"><a name="_Toc468090790">10.3<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp; </span>Changing a virtual
+content transfer element back to a real one</a></span></h2>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l43 level1 lfo41;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">1.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Navigate
+to the VCE of interest C and to its parent DocVersion D<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l43 level1 lfo41;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">2.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Get
+C&#146;s IdmaVirtualElement interface and call the RemoveDerivation method.<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l43 level1 lfo41;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454"><span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">3.<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Get
+C&#146;s IdmaContentTransfer interface and call SetCaptureResource to supply the new
+source of data for the content object<o:p> </o:p> </span></span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l43 level1 lfo41;
+tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389901454">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;">Get
+an IdmaConnection interface on D and call ExecuteChange</span></span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389901454">&nbsp;<o:p> </o:p> </span></p>
+
+<h1><span style="mso-bookmark: _Toc389901454"><a name="_Toc468090791"><span
+style="mso-bookmark:RequirementsAddressed">11<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>What
+Requirement Does This Address?</span></a></span></h1>
+
+<p class="MsoNormal">The following items from our requirements document <a
+href="#Requirements">[4]</a> are addressed by this proposal:</p>
+
+<p class="MsoNormal">#16 Individual content elements must be sharable among an arbitrary
+number of documents.</p>
+
+<p class="MsoNormal">#18 From a compound document you must be able to navigate to all its
+components.</p>
+
+<p class="MsoNormal">#19 From a component you must be able to navigate to all compound
+documents in which it participates</p>
+
+<p class="MsoNormal">#24 The proposal will include a set of compound document capabilities
+for addition to the doc space dmaProp_Capabilities</p>
+
+<p class="MsoNormal"><a name="_Toc389907228"><span
+style="font-size: 18.0pt; mso-bidi-font-size: 10.0pt; mso-bookmark: _Toc389904815">Why is
+this a good solution?</span></a><span style="font-size:18.0pt;mso-bidi-font-size:10.0pt"><o:p> </o:p>
+</span></p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l25 level1 lfo23;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>It provides a way to share content elements between documents in a fairly
+general framework that would allow other kinds of virtual elements in the future.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l25 level1 lfo23;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>DMA 1.0 content retrieval clients would work unchanged in doc spaces which
+support virtual content elements.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l25 level1 lfo23;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>It introduces only one new class and two new properties.</p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">Alternatives that were
+considered and rejected:<o:p> </o:p> </b></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l6 level1 lfo22;tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Allowing dmaProp_SharedBy to be optional on a shared element.</p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:0in;text-indent:0in">This
+would violate requirement 19, as well as make it impossible to enforce referential
+integrity on virtual element relationships. Unless reflective DocVersion properties for
+head and tail of a VERelationship were defined, which is not required, there would be no
+way to tell if a content element is shared, hence it&#146;s deletion could cause dangling
+references).<span style="mso-spacerun: yes">&nbsp; </span>We might wish to reconsider this
+decision if an important legacy system can be found that tolerates dangling references.</p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l32 level1 lfo29;tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Adding a new Virtual Content Element class below dmaClass_ContentElement,
+and subclassing that VCE class for virtual content transfer and virtual content reference
+objects.</p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:0in;text-indent:0in">This
+adds classes unnecessarily.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l6 level1 lfo22;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Adding new virtual content element subclasses below ContentTransfer and
+ContentReference.<span style="mso-spacerun: yes">&nbsp;</span></p>
+
+<p class="MsoNormal">This would increase the number of new classes without adding
+functionality.<span style="mso-spacerun: yes">&nbsp; </span>Allowing existing content
+elements to optionally support virtual element properties and the IdmaVirtualElement
+interface does the job.</p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l15 level1 lfo24;tab-stops:list .25in"><a
+name="ExtantSystemsExperiences"><span style="mso-bookmark: _Toc389899431"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Having a single virtual content element class which can be retargeted to
+transfer or reference style content elements.</span></a></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899431">We preferred not to alter
+the existing content model in any way.</span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l15 level1 lfo24;tab-stops:list .25in"><span
+style="mso-bookmark: _Toc389899431"><span style="font-family:Wingdings">§<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Putting IdmaVirtualElement on dmaClass_DMA</span></p>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899431">This would automatically
+make that interface available on other persistable classes (such as Rendition) if that
+should be desired in the future.<span style="mso-spacerun: yes">&nbsp; </span>However it
+was felt that this was not worth putting such a special-purpose interface on the base
+class.</span></p>
+
+<h1><span style="mso-bookmark: _Toc389899431"><a name="_Toc468090792">12<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Extant
+Systems with Similar Features and Related Experiences</a></span></h1>
+
+<p class="MsoNormal"><a name="_Toc389907232"><span style="mso-bookmark: _Toc389899432">Documentum
+allows sharing of content elements &#150; see </span></a><a href="#Extant"><span
+style="mso-bookmark: _Toc389899432">[3]</span></a><span
+style="mso-bookmark: _Toc389899432">. DMA virtual content elements are similar to WebDAV
+bindings - see </span><a href="#WebDAV"><span style="mso-bookmark: _Toc389899432">[5]</span></a><span
+style="mso-bookmark: _Toc389899432">.</span></p>
+
+<h1><a name="_Toc468090793"><span style="mso-bookmark: _Toc389899435">13<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Impact
+on Existing Systems</span></a></h1>
+
+<p><a name="_Toc389907236"><span style="mso-bookmark: _Toc389899436">Those DMA 1.0 systems
+that use referential containment to express compound documents with shared document
+content may wish to consider using virtual content elements instead.</span></a></p>
+
+<h1><span style="mso-bookmark: _Toc389899436"><a name="_Toc468090794"><span
+style="mso-bookmark:BackwardsCompatibility">14<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Backwards
+Compatibility</span></a></span></h1>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899436">Nothing in DMA 1.0 is
+deleted or changed by this proposal. It consists purely of optional additions.</span></p>
+
+<h1><span style="mso-bookmark: _Toc389899436"><a name="_Toc468090795"><span
+style="mso-bookmark:PerformanceImpact">15<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Performance
+Impact</span></a></span></h1>
+
+<p class="MsoNormal"><a name="_Toc389907237"><span style="mso-bookmark: _Toc389899437">Sharing
+of content elements has the potential to adversely impact performance on creating,
+modifying, and deleting DocVersions that participate in content element sharing.</span></a></p>
+
+<h1><span style="mso-bookmark: _Toc389899437"><a name="_Toc468090796"><span
+style="mso-bookmark: _Toc389901455">16<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Failure Modes/Crash Recovery</span></a></span></h1>
+
+<p class="MsoNormal"><span style="mso-bookmark: _Toc389899437"><a name="_Toc389907230"><span
+style="mso-bookmark: _Toc389899430">If deletion of an object while it is still shared is
+allowed, this will introduce the possibility of a relationship to an object that does not
+exist.</span></a></span></p>
+
+<h1><a name="_Toc468090797"><span style="mso-bookmark: _Toc389899438">17<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>How
+Is This Incorporated into the Specification?</span></a></h1>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l12 level1 lfo45;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>IdmaVirtualElement must be added to the methods and interfaces database.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l12 level1 lfo45;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The definitions of dmaClass_ContentElement in the classes and properties
+database must be updated to reflect the new properties and interfaces introduced here.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l12 level1 lfo45;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The new class dmaClass_VERelationship must be added to the classes and
+properties database.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l12 level1 lfo45;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>Two new DMA properties, dmaProp_SharedBy and dmaProp_SharedElement, must be
+added to the classes and properties database.</p>
+
+<p class="MsoNormal"
+style="margin-left:.25in;text-indent:-.25in;mso-list:l12 level1 lfo45;
+tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The new values for dmaProp_Capabilities proposed here must be added to the
+Conformance section of the spec.</p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.25in;mso-list:l12 level1 lfo45;tab-stops:list .25in"><span
+style="font-family:Wingdings">§<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>The object and content model sections must be updated (in particular,
+VERelationship must be added to the class hierarchy diagram).<span
+style="mso-spacerun: yes">&nbsp;</span></p>
+
+<h1><a name="_Toc468090798"><span style="mso-bookmark:CodeAndLibraryIncorporation">18<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>How
+Is This Incorporated into the Code and Library Configurations?</span></a></h1>
+
+<p class="MsoNormal">New sample code must be produced.</p>
+
+<h1><a name="_Toc468090799"><span style="mso-bookmark:ReferenceMaterials">19<span
+style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Reference
+Materials</span></a></h1>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in"><span
+style="mso-bookmark:Cousins">[<a name="Cousins">1</a>] </span><i
+style="mso-bidi-font-style:normal">&#147;Compound Structured Documents&#148;</i> proposal
+by Steve Cousins, 6 Oct 1998, <span style="font-size:10.0pt;font-family:Courier">ftp://ftp.aiim.org/DMA/TechnicalCommittee/CSDocs/WorkingPapers/<o:p>
+</o:p></span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="font-size:10.0pt;
+font-family:Courier">CDCousins03.doc<o:p> </o:p> </span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="font-size:10.0pt;
+font-family:Courier">&nbsp;<o:p> </o:p> </span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in"><a
+name="Foundation">[2] </a>&#147;<i style="mso-bidi-font-style:normal">DMA Architecture
+Proposal for Compound/structured Documents (CSDocs) Foundation</i>&#148;, by Dennis
+Hamilton, <span style="font-size:10.0pt;font-family:Courier">ftp://ftp.aiim.org/DMA/TechnicalCommittee/CSDocs/Proposals/New/<o:p>
+</o:p></span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="font-size:10.0pt;
+font-family:Courier">CSDocsFoundation04.doc<o:p> </o:p> </span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">&nbsp;<o:p>
+</o:p></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in"><a
+name="Extant">[3] </a>&#147;<i style="mso-bidi-font-style:normal">Analysis of Extant
+Compound/Structured Document Systems</i>&#148;, at <span
+style="font-size:10.0pt;font-family:Courier">ftp://ftp.aiim.org/DMA/TechnicalCommittee/CSDocs/Proposals/New/<o:p>
+</o:p></span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><span
+style="font-size:10.0pt;
+font-family:Courier">CSDocsExisting00.doc<o:p> </o:p> </span></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">&nbsp;<o:p>
+</o:p></p>
+
+<p class="MsoToc1"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in;tab-stops:.5in"><a
+name="Requirements">[4] </a>&#147;<i style="mso-bidi-font-style:normal">DMA Compound &amp;
+Structured Documents Sub-committee Proposed Requirements</i>&#148;,<span
+style="mso-spacerun: yes">&nbsp; </span>1 Mar 99, <span
+style="font-size:10.0pt;
+font-family:Courier">ftp://ftp.aiim.org/DMA/TechnicalCommittee/CSDocs/WorkingPapers/<o:p>
+</o:p></span></p>
+
+<p class="MsoToc1"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in"><span
+style="font-size:
+10.0pt;font-family:Courier">CSDocs Requirements Table.doc<o:p> </o:p> </span></p>
+
+<p class="DefinitionCompact"
+style="margin-top:0in;margin-right:0in;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in">&nbsp;<o:p>
+</o:p></p>
+
+<p class="DefinitionCompact"
+style="margin-top:5.0pt;margin-right:0in;margin-bottom:
+5.0pt;margin-left:.5in;text-indent:-.5in"><a
+name="WebDAV">[5] </a>&#147;<i style="mso-bidi-font-style:normal">WebDAV Advance
+Collections draft specification</i>&#148;. The advanced collections team has split its
+draft into 3 parts, one on bindings, one on redirect references, and one on ordered
+collections.<span style="mso-spacerun: yes">&nbsp; </span>Here are the URLs:<span
+style="font-family:Arial;mso-bidi-font-family:&quot;Times New Roman&quot;;layout-grid-mode:
+line"><o:p>
+</o:p></span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><u><span
+style="font-size:10.0pt;
+font-family:Courier;color:blue;layout-grid-mode:line">http://www.ietf.org/internet-drafts/draft-ietf-webdav-binding-protocol-01.txt</span></u><span
+style="font-size:10.0pt;font-family:Courier;layout-grid-mode:line"><o:p> </o:p> </span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><u><span
+style="font-size:10.0pt;
+font-family:Courier;color:blue;layout-grid-mode:line">http://www.ietf.org/internet-drafts/draft-ietf-webdav-redirectref-protocol-01.txt</span></u><span
+style="font-size:10.0pt;font-family:Courier;layout-grid-mode:line"><o:p> </o:p> </span></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><u><span
+style="font-size:10.0pt;
+font-family:Courier;color:blue;layout-grid-mode:line">http://www.ietf.org/internet-drafts/draft-ietf-webdav-ordering-protocol-01.txt<o:p></span></u></p>
+
+<p class="MsoNormal" style="margin-left:.25in"><u><span
+style="font-size:10.0pt;
+font-family:Courier;color:blue;layout-grid-mode:line">&nbsp;<o:p> </o:p> </span></u></p>
+
+<p class="MsoNormal"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-indent:-.5in"><span
+style="mso-bookmark:Strength">[6] </span><i style="mso-bidi-font-style:normal">&#147;DMA
+Architecture Proposal for Relationship Object &#145;Strength&#146; Property&#148;</i>,<span
+style="mso-spacerun: yes">&nbsp; </span>by Jim Green,
+ftp://ftp.aiim.org/DMA/TechnicalCommittee/CSDocs/Proposals/New/</p>
+
+<p class="MsoToc4"
+style="margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:.5in">CSDocsRelationshipStrength04.doc</p>
+</body>
+</html>

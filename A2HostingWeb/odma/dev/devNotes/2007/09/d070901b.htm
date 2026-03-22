@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d070901b: ODMJNI 1.0 Packaging [latest information] </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2007/09/d070901b.htm 56    13-08-22 12:53 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="d070901c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+</td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d070901"><font color="#990033">d070901</font></a><br>
+      	</font></strong><strong><font color="#990033">&nbsp;<a href="d070901.htm"><font color="#990033">ODMJNI 
+1.0 Packaging</font></a><br>
+      <em><font size="5">0.59 Public Beta Transition Packaging [draft]</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <small><p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2007</a>&gt;<a target="_top" href="./">09</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b><a target="_top" href="d070901c.htm">d070901c</a>&gt;</b></font><br>
+      <small>
+		<a href="#0.02">0.02</a>
+		2013-08-22 12:53 -0700 
+      </small></p></small>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+
+<p>
+<div style="border-style:dotted;border-width:1px">
+<table width="100%" cellpadding="2" style="border-style:none; border-collapse:collapse; padding-left:4px; padding-right:4px; padding-top:4px; padding-bottom:4px" id="table1" >
+	<tr>
+		<td width="95%" valign="top" align="left"><small>
+		<ul>
+			<li><b>Latest version:</b> 
+				The latest ODMJNI 1.0 Packaging material can be found via &nbsp; &lt;<b><font face="monospace"><a href="d070901b.htm">http://ODMA.info/dev/devNotes/2007/09/d070901b.htm</a></font></b>&gt;.<br>&nbsp;&nbsp;&nbsp; 
+			</li>
+			<li><b>This version: 0.59 Public Beta Transition Packaging 0.02 </b>&lt;<b><font face="monospace"><a href="d070701c.htm">http://ODMA.info/dev/devNotes/2007/09/d070901c.htm</a></font></b>&gt;.&nbsp; 
+			This page describes the provisional packaging approach used as a 
+			step toward 0.60 Public Beta packaging and on to professional-level 
+			package creation.<br>
+&nbsp;&nbsp; </li>
+			<li><b>Downloads: <font color="#800080">{to be defined}</font></b></li>
+		</ul></small></td>
+		<td width="5%">
+		<div align="right">
+			
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	</div>
+		</td>
+	</tr>
+</table></div>
+</p>
+
+<p>The first packaging effort and addition of the <b><font face="monospace">
+OdmDeploy100</font></b> portion of the development tree occurred with the 
+<a href="../../2006/11/d061101n.htm">0.58beta release</a>.&nbsp; With the 0.59 beta transition candidate, that portion of the 
+development tree is renamed <b><font face="monospace">OdmPackage100</font></b> to avoid confusion with 
+the broader deployment topic.</p>
+<p>The documentation and formalization of the packaging approach, along with 
+refactoring for smoothness, is part of <a href="../07/d070701d.htm">0.59 
+Public Beta Transition Candidate development</a>.&nbsp; Along with other 
+elements of 0.59beta, this activity is a dress-rehearsal for the approach to be 
+used with 0.60beta.</p>
+<h2><a name="1" target="_top" href="#1">1</a>. Summary</h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd}</b></font></p>
+</blockquote>
+<h2><a name="2" target="_top" href="#2">2</a>. Approach</h2>
+<blockquote>
+	<p><font color="#800080"><b>{tbd}</b></font></p>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a>. Development Progression</h2>
+<h3><b><a name="3.1" target="_top" href="#3.1">3.1</a></b> Summarize Changes
+<span style="font-weight: 400">(started 2007-09-20;<i> in progress</i>)</span></h3>
+<blockquote>
+	<p>This folio is created to carry those 0.59beta work items pertaining to 
+	ODMJNI packaging.</p>
+</blockquote>
+<blockquote>
+	<p>&nbsp;</p>
+</blockquote>
+<h2><b><a name="4" target="_top" href="#4">4</a>. Developer Notes</b></h2>
+<blockquote>
+	<dl>
+		<dt><b>2007-10-09-18:39 No Automation for Now</b></dt>
+		<dd>The 0.30-practical100 regression set can be automated because it 
+		does not have any dependencies on presence of the ODMA Connection 
+		Manager or any DMS integrations.&nbsp; The other regression sets cannot 
+		be automated because all of those confirmation tests depend upon human 
+		interaction and availability of an end-to-end connection through to an 
+		ODMA-compliant DMS integration.&nbsp; Until we are able to substitute 
+		some sort of automatically-driven back end stack, there is nothing to be 
+		done here.&nbsp; (Note that one substitution could be with odmjni100 but 
+		it seems far better to do it on the other side of the ODMA Connection 
+		manager with a mock integration that can be used in many other cases.)<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-09-18:34 It is <font face="monospace">OdmPackage100</font>!</b></dt>
+		<dd>I reviewed all of the manifests and scripts in the <b>
+		<font face="monospace">OdmDeploy100\</font></b> tree.&nbsp; There was 
+		only one dependency on that name, and it was in an example within <b>
+		<font face="monospace">ODMJNI100.txt</font></b>.&nbsp; This will be easy 
+		to repair.&nbsp; There is no place that actually depends on the name of 
+		this portion of the tree.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-08-14:24 Is it <font face="monospace">OdmDeploy100</font> 
+		or <font face="monospace">OdmPackage100</font>?</b></dt>
+		<dd>When I created this folio, I said that the relevant portion of the 
+		development tree would be renamed OdmPackage100.&nbsp; That is 
+		reasonable to do, since deployment is maybe broader.&nbsp; I have mixed 
+		feelings about this.&nbsp; It will depend how things look when I get to 
+		where the <b><font face="monospace">OdmDeploy100</font></b> tree is 
+		reviewed for revamping for 0.59.&nbsp; If I can rename easily, I will.&nbsp; 
+		If it is going to be renamed at all, the sooner the better.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-04-18:30 Working Regression Sets into the Runtime 
+		Packaging</b></dt>
+		<dd>The ideal place to have regression sets is as part of the runtime 
+		packaging.&nbsp; This means I need to figure out how to move the <b>
+		<font face="monospace">practical100</font></b> and <b>
+		<font face="monospace">odmjni100</font></b> regression sets under the <b>
+		<font face="monospace">OdmDeploy100</font></b> structure and make part 
+		of the Runtime deliverable.&nbsp; Anyone should be able to repeat the 
+		regression tests, and set up to do them, not just the <b>
+		<font face="monospace">OdmClicker</font></b> test or anything that 
+		replaces it.&nbsp; (<b><font face="monospace">OdmNative100</font></b> is 
+		spun out into a separate project so its regression is separate.&nbsp; 
+		ODMJNI 1.0 is an adopter of <b><font face="monospace">OdmNative100</font></b>, 
+		not its provider.)<br>
+&nbsp;&nbsp; The challenge is to have this one set work for regression on the 
+		final &quot;build&quot; -- the runtime packaging, a Jar file in the class path or 
+		adjacent to an application, and also with new code in the development 
+		tree where the class path is into the source tree where new modules are 
+		being developed and tested.<br>
+&nbsp;&nbsp; If I need a branch in the script, I should make the default be that 
+		the program runs as a regression against the package.&nbsp; I could also 
+		have these scripts called by scripts over in the development tree.&nbsp; 
+		All things to think about.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b><a name="2007-09-23-17:57">2007-09-24-08:00</a> Thoughts on 
+		Minimizing the Packaging/Installation Surface</b></dt>
+		<dd>Reflecting on an experience with the OpenOffice.org installer, I was 
+		thinking how much installer bloat costs when excessive material is 
+		installed on the end-user system.&nbsp; When both the distributed 
+		package (say a released .exe file) and the installation files have to be 
+		retained for uninstall and upgrading to work, that is a serious burden.&nbsp; 
+		Done badly, it doubles the space taken by material (not counting the 
+		after-installation software), it burdens hard-drive maintenance (disk 
+		optimizers have to look at all of it), virus scanning (and adds to the 
+		computer threat surface), and most of all it is a fragile arrangement 
+		depending on user participation when it should be built into the 
+		installed application files.&nbsp; <br>
+&nbsp;&nbsp; <br>
+		ODMJNI 1.0 is mostly repackaged by application developers to go with <i>
+		their</i> package.&nbsp; Still, I want to package everything in a way 
+		where the minimum baggage is carried along and the amount of ODMJNI 1.0 
+		needed for different purposes can be selectively extracted.&nbsp; I also 
+		want to provide guidance so that application developers can confidently 
+		incorporate ODMJNI packaging in their distributions and that anyone can 
+		troubleshoot that the ODMJNI portion has been installed successfully.<br>
+&nbsp;&nbsp; <i>see also:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </i>Dennis E. Hamilton:
+		<a href="http://orcmid.spaces.live.com/blog/cns!33894F6489994BA7!528.entry">
+		OpenOffice.org: Installation Hot Tip!</a>&nbsp; <i>Orcmid&#39;s Live Hideout</i> 
+		(web log), 2007-09-24. <br>
+&nbsp;&nbsp; </dd>
+		<dt><b><a name="2007-09-23">2007-09-23</a> Needing to Take OdmDeploy100 
+		Seriously</b></dt>
+		<dd>I introduced the <b><font face="monospace">OdmDeploy100</font></b> portion of the development tree as 
+		part of creating the .jar and runtime packages that were included with 
+		0.58beta.&nbsp; But I didn&#39;t remember that there is no place where that 
+		material and its maintenance is documented in ODMdev until taking apart 
+		my 0.59beta progression statement from 2007-09-20 for distribution of 
+		the major items to the devNotes where those items are to be accounted 
+		for.&nbsp; I might find something in older notes, as they are recovered 
+		retroactively, but I&#39;m not expecting that.</dd>
+	</dl>
+</blockquote>
+<small>
+	<small>
+	<small>
+
+</small>
+
+</small>
+
+</small>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 Packaging - 0.59 Public Beta Transition Packaging.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d070901c 0.02, October 9, 2007.&nbsp; Available at &lt;<font face="monospace"><b><a target="_top" href="d070901c.htm">http://ODMA.info/dev/devNotes/2007/09/d070901c.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.02">0.02</a> 2007-10-09-18:43 Commit to OdmPackage100 
+	Naming</b></dt>
+	<dd>The renaming is carried out.&nbsp; There is no risk to doing this.&nbsp; 
+	It changes the development tree for post 0.58beta work, and there is no 
+	problem with the content of the folder.</dd>
+	<dt><b><a name="0.01">0.01</a> 2007-10-08-15:03 Add Notes about Unified 
+	Regression</b></dt>
+	<dd>I am looking for a way to have a unified regression, based on my 
+	experience with 0.59beta so far.&nbsp; Initial notes on this are introduced, 
+	along with other tidying up.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-09-24-16:21 Provide Placeholder</b></dt>
+	<dd>This page is put up as a placeholder for description of 0.59beta 
+	packaging as a provisional step toward the 0.60beta Public Beta packaging.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top" rel="nofollow">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../../2006/01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+</td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-09-24-15:47 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 56 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="64289" -->
+</body>
+</html>

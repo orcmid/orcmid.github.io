@@ -1,0 +1,192 @@
+n140501b4.txt 0.01                    UTF-8                     dh:2014-11-06
+
+       TRACKED CHANGES: NAVIGATING THE DOCUMENT-FORMAT ANTI-PATTERN
+       ============================================================
+
+                    DCHANGES 2014 POST-WORKSHOP REVISION
+                    ------------------------------------
+
+                        SUMMARY AND ARCHIVE MANIFEST
+
+The supporting files and the revised review submission for the post-
+workshop proceedings are in the package
+
+    n140501b4-RCT-2014-10-17-1749-DChangesRevision.zip
+
+This summary provides
+        Abstract
+        Table of Content
+        References
+        Archive Manifest
+        Summary Revision History
+
+ABSTRACT
+
+    Editing of word-processing documents at the presentation level,
+    with visible tracking of changes, operates at a different level of
+    abstraction and granularity than the recorded form in common
+    document-file formats. The consequent mismatches along with
+    other limitations of standards for document-file formats present
+    an anti-pattern that impedes reliable inter-product exchange of
+    change-tracked documents. Analysis of the situation for ODF
+    change-tracking reveals simple extensions and definitions that
+    supplement the current specification without introducing any
+    conflicts. Patterns of systematic testing for conformant document
+    files, compliant processing, and verifiable interoperability are
+    identified as essential prerequisites to dependable improvement
+    of change-tracking in collaborative settings.
+
+TABLE OF CONTENT
+
+    ABSTRACT
+    Categories and Subject Descriptors
+    General Terms
+    Keywords
+     1. INTRODUCTION
+     2. THE SITUATION
+        2.1 Terminology: Manifest Equivalence
+        2.2 User Context: Manipulated Manifestation
+        2.3 Focus of Document Format Standards
+        2.4 Unspecified Interoperability
+        2.5 Interpretation Under-Specification
+        2.6 The Document-Format Anti-Pattern
+     3. ODF TRACKED-CHANGE FEATURES
+        3.1 ODF Change-Tracking Foundation
+        3.2 Tracked-Deletion Representation
+        3.3 Cross-Cutting Markup Effects
+        3.4 Atomicity Failures and Copy Conflicts
+     4. RCT APPROACH
+        4.1 Profile Specification
+        4.2 Test Assertions and Test Suites
+        4.3 RCT Manifestation Fidelity
+        4.4 RCT Compliance Assessment
+        4.5 RCT Interchange Confirmation
+        4.6 RCT Change-Tracking Confirmation
+        4.7 Works-For-Me-Not
+        4.8 RCT Extension Technique
+     5. CONCLUSIONS
+     6. ACKNOWLEDGMENT
+     7. REFERENCES
+
+REFERENCES
+
+    [1]	Tim Bray, Jean Paoli, C. M. Sperberg-McQueen, Eve Maler, and François
+        Yergeau (editors).  Extensible Markup Language (XML) 1.0 (Fourth
+        Edition).  W3C Recommenda¬tion 16 August 2006, edited in place 29
+        September 2006.  http://www.w3.org/TR/2006/REC-xml-20060816
+
+    [2]	Jacques Durand (editor).  Interoperability Guidelines. OASIS
+        Guidelines & Best Practice, 2012-01-14.  Available at
+        https://www.oasis-open.org/policies-guidelines/interoperability-guidelines
+
+    [3]	Ecma International.  Office Open XML File Formats, 4th edition.
+        Standard ECMA-376, December 2012.
+        http://www.ecma-international.org/publications/standards/Ecma-376.htm
+
+    [4]	Martin Fowler.  Technical Debt Quadrant.  Web site article,
+        2009-10-14. Accessed 2014-10-03 at
+        http://martinfowler.com/bliki/TechnicalDebtQuadrant.html
+
+    [5]	Jonathan Marsh, Daniel Veillard, and Norman Walsh (editors).  xml:id
+        Version 1.0.  W3C Recommendation 9 September 2005.
+        http://www.w3c.org/TR/2005/REC-xml-id-20050909
+
+    [6]	Microsoft Corporation.  Office File Formats.  Microsoft Developer
+        Network MSDN Library.  Accessed 2014-06-19 at
+        http://msdn.microsoft.com/en-us/library/cc313118(v=office.12).aspx
+
+    [7]	Microsoft Corporation.  OLE Background.  Microsoft Developer Network
+        MSDN Library.  Accessed 2014-06-18 at
+        http://msdn.microsoft.com/en-us/library/19z074ky.aspx
+
+    [8]	OASIS.  Guidelines to Writing Conformance Clauses.  2014-04-25 draft
+        update, OASIS Technical Committee Handbook (on-line). Accessed
+        2014-10-03 at
+        http://docs.oasis-open.org/templates/TCHandbook/ConformanceGuidelines.html
+
+    [9]	OASIS.  Open Document Format for Office Applications (OpenDocument)
+        Version 1.2.  29 September 2011 OASIS Standard. master document
+        introducing further parts by reference,
+        http://docs.oasisopen.org/office/v1.2/os/OpenDocument-v1.2-os.html
+
+   [10] OASIS.  Open Document Format for Office Applications (OpenDocument)
+        Version 1.2 Part 1: OpenDocument Schema.  29 September 2011 OASIS
+        Standard. Available at http://docs.oasis-open.org/office/v1.2/os/
+
+   [11]	OASIS.  Test Assertion Model Version 1.0.  15 October 2012 OASIS
+        Standard. All forms available at
+        http://docs.oasis-open.org/tag/model/v1.0/os/
+
+   [12]	The Unicode Consortium.  The Unicode Standard Version 5.2.0 defined
+        by: The Unicode Standard, Version 5.2 (Mountain View, CA: The Unicode
+        Consortium, 2009. ISBN 978-1-936213-00-9).
+        http://www.unicode.org/versions/Unicode5.2.0/
+
+   [13]	Terry Winograd and Fernando Flores.  Understanding Computers and
+        Cognition.  Addison-Wesley (Reading, MA: 1987). ISBN-0-201-11297-3.
+
+
+ARCHIVE MANIFEST
+
+The 12 archive components are
+
+n140501b4.txt Summary and Archive Manifest (this file)
+
+RCT-2014-10-17-1749-Doc-Antipatterns-Revision.doc
+    The Microsoft Office Word 97-2003 formatted document derived
+    by editing of the PrePrint version.
+
+RCT-2014-10-17-1749-Doc-Antipatterns-Revision.pdf
+    The PDF derived from the .doc file.  This is the file that
+    was submitted for review as the post-workshop proceedings
+    version of the paper.
+
+RCT-2014-09-27-1021-RCT-DocReality.vsd
+    The Visio Diagram for Figure 1 of the revision document
+
+RCT-2014-06-17-1621-AntiPattern.vsd
+    The Visio Diagram for Figure 2 of the revision document
+    Used in common with all versions since the original submission
+RCT-2014-06-17-1621-AntiPattern.png
+    The PNG diagram derived from the Visio Diagram of the same name
+
+RCT-2014-08-16-1628-DeletionScenario.xslx
+    Excel used to create block figures of the Deletion Scenario
+RCT-2014-08-16-1658-DeletionScenario.vsd
+    Visio Diagram using the Excel diagram (as extended metafile)
+    with the arrow added to show pointing from the <text:change>
+    element.  This provides Figure 3 of the revision document.
+    The diagram is unchanged from the Workshop Preprint.
+
+RCT-2014-10-16-1107-LibO-xcut-select.png
+    Image for Figure 4 of the revision document.  A screen capture
+    from LibreOffice 4.3.1.2 on Windows 8.1 x64.
+
+RCT-2014-10-16-1109-LibO-xcut-delete.png
+    Image for Figure 5 of the revision document.  This shows the
+    change-tracked deletion after deleting the seletion shown in
+    Figure 4.
+
+RCT-2014-10-16-1113-LibO-xcut-saved.png
+    Image for Figure 6 of the revised document.  This shows the
+    altered change-tracking deletion that appears on reloading
+    the saved file observed in Figure 5.
+
+RCT-2014-10-16-1115-LibO-xcut-accepted.png
+    Image for Figure 7 of the revised document.  This shows the
+    altered change-tracking when the deletion is accepted.
+
+
+SUMMARY REVISION HISTORY
+
+0.01 2014-11-06-08:36 Expanded Summary
+     The manifest is expanded to provide an expanded summary that provides
+     information about the report without download or access to the complete
+     materials.
+
+0.00 2014-10-23-16:17 Initial Manifest
+     Provided for preservation of the submission and the components
+     used in its construction.
+
+                     *** end of n140501b4.txt ***
+

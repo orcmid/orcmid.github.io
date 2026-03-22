@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMACompagno/faq/1999/Q990401.htm 39    13-08-22 12:48 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q990401: Creating ODMA Document IDs</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<TABLE border=0 width="100%">
+  <TBODY>
+  <tr>
+    <td width="20%" height="6"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="54750" -->
+    </td>
+    <td width="60%" height="6"><p align="center"><font color="#990033"><b><a href="../q000001.htm"><font color="#990033">FAQ</font></a> 
+      </b> <a href="../q000001.htm#Q990401"><b><font color="#990033">Q990401</font></b><br>
+      </a><br />
+
+      <b><i><big>
+
+<big>Creating ODMA Document IDs</big></big></i></b></font></p>
+
+    </td> 
+    <td width="20%" height="6" align="right"> 
+      <p><b><code><a href="../../" target="_top">ODMA</a>&gt;<br>
+      <a href="../" target="_top">FAQ</a>&gt;<br>
+      <a href="./" target="_top">1999</a>&gt;<br>
+      <br>
+      <a href="Q990401.htm" target="_top">Q990401</a>&gt;</code>
+      <br /><a href="#0.51"><small><small>0.51</small></small></a><small><small> <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2010-08-30<!--webbot bot="Timestamp" endspan i-checksum="12473" -->  
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:19 -0700<!--webbot bot="Timestamp" endspan i-checksum="12074" --></small></small></b></td>
+  </tr>
+ </TBODY></TABLE>
+ </font>
+
+  <hr noshade color="#000080">
+
+  <p align="left"><font color="#0000FF"><strong><em>This information is also
+  part of ODMA 2.0 Library Files edition 2.0-1.&nbsp; For later editions and
+  current status, consult the <a href="../../downloads/odma20L.htm">ODMA
+  2.0 Library Files</a> description page.</em></strong></font>
+</p>
+
+<h3><i><a href="#Summary">Summary</a>:</i></h3>
+
+  <blockquote>
+
+<p><i>This response addresses questions&nbsp;about the freedom that a DMS
+integration has to produce ODMA Document IDs that fit with its purposes.</i></p>
+
+<p><i>There is information on achieving maximum interoperability and
+international acceptability in the way ODMA Document IDs are formatted.</i></p>
+
+  </blockquote>
+
+<h2>1. <a href="#RequiredFormat">Required Document ID Format</a></h2>
+
+<h2>2. <a href="#Usage">Document ID Usage</a></h2>
+
+<h2>3. <a href="#RecommendedPractice">Interoperability Considerations</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+
+  <hr noshade color="#000080">
+
+<h1><a name="Summary">Summary</a></h1>
+<blockquote>
+<p>ODMA depends on <a href="../../downloads/odma20-3.htm#DocumentIDs"> ODMA Document IDs</a>
+for locating the correct DMS
+integrations to use in performing individual operations on managed documents.&nbsp; In the
+<a href="../../downloads/odma20-3.htm">
+ODMA specification</a>,&nbsp; most operations require a Document ID as a parameter.</p>
+<p>It is necessary for a DMS Integration to provide and then to accept those ODMA
+Document IDs of its creation.&nbsp;&nbsp;</p>
+<p>ODMA middleware will reject a Document ID that does not identify an available
+DMS.&nbsp; A DMS must reject all ODMA requests having Document IDs that are
+invalid for that DMS.</p>
+<p>ODMA dictates the format for that part of the ODMA Document ID that is used
+by ODMA middleware for selecting a DMS.&nbsp; The remainder of the Document ID
+is determined by the DMS.&nbsp;&nbsp;</p>
+<p>The only constraints on the DMS-determined portion of the ODMA Document ID
+are ones on the characters used and on the overall size of the Document
+ID.&nbsp; The specific method for distinguishing individual documents under
+control of an ODMA DMS is completely determined by the DMS implementation.</p>
+<p>This FAQtip presents the basic requirements and additional considerations for
+creating and using ODMA Document IDs.</p>
+</blockquote>
+<h1>1. <a name="RequiredFormat">Required Document ID Format</a></h1>
+<blockquote>
+  <dl>
+    <dd>
+      <dt><b><i>see also:&nbsp;</i></b></dt>
+    <dd>
+      <b><a href="../../downloads/odma20-3.htm">ODMA 2.0
+      Specification</a>, <a href="../../downloads/odma20-3.htm#1.1">Section
+      1.1, Document IDs</a></b>
+      <dd><b><a href="../../downloads/rata20-1.htm">ODMA
+        Version 2.0 Errata</a> on <a href="../../downloads/rata20-1.htm#1.1">Section 1.1,
+        Document IDs<br>
+        </a>X010100: <a href="../../support/X010100.htm">Inappropriate
+        Messages to Users</a></b></dd>
+      <dd><b>X000802: <a href="../../support/X000802.htm">
+        ODMA Connection Manager Passes Malformed Document IDs<br>
+        </a>X000805: <a href="../../support/X00-log.htm#X000805">Connection Manager does not adjust to code-page in
+        use<br>
+        </a>X000804: </b><a href="../../support/X00-log.htm#X000804"><b>
+        Connection Manager depends on non-Standard string function <code>stricmp</code></b></a></dd>
+  </dl>
+<p>ODMA has simple requirements for Document IDs:</p>
+  <ol>
+    <li>A Document ID must be a text string in the local single-byte
+character set.<br>
+    </li>
+    <li> It must take no more than <b><code><a href="../../downloads/odma20-3.htm#ODM_DOCID_MAX">ODM_DOCID_MAX</a></code></b>
+      units of <b><code>char</code></b> storage, including the terminating <b><code> '\0'</code></b> character.<br>
+    </li>
+    <li> It must be used in a case-insensitive
+way and should be <a href="../../downloads/odma20-3.htm#CharacterSets"> formatted</a>
+      so that it can be provided on a command line or embedded in text (e.g., in
+      e-mail)
+without problem.<br>
+    </li>
+    <li> The first part of the ODMA Document ID must satisfy a simple fixed
+      format:
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><b><code>::ODMA\<i><a href="../../downloads/odma20-3.htm#DMS_ID">dms-id</a></i>\</code></b>...</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+    </li>
+    <li>where <i><b><code>dms-id</code></b></i> is at least <code><b> 1</b></code> and at most
+      <b><code>(<a href="../../downloads/odma20-3.htm#ODM_DMSID_MAX">ODM_DMSID_MAX</a>-1)</code></b>
+characters.&nbsp;&nbsp;<br>
+    </li>
+    <li> There should be no spaces or punctuation in the <b><i><code><a href="../../downloads/odma20-3.htm#DMS_ID">dms-id</a></code></i></b>
+      portion.&nbsp; Non-printable characters are never permitted.&nbsp; For
+      maximum international interoperability, employ only the Roman letters <b><code>A</code></b>
+      to <b><code>Z</code></b> and the decimal digits <b><code>0</code></b> to <b><code>9</code></b>
+      in the <b><code><i><a href="../../downloads/odma20-3.htm#DMS_ID">dms-id</a></i></code></b>.</li>
+  </ol>
+<p>The <b><i><code><a href="../../downloads/odma20-3.htm#DMS_ID">dms-id</a></code></i></b> is used by ODMA middleware to determine
+the
+correct DMS integration to use for operating with the identified
+document.&nbsp;&nbsp;</p>
+  <p>Current ODMA middleware depends on the leading part of the ODMA Document ID
+  being in the ISO 646 (ANSI) 7-bit character encoding.&nbsp; Use of characters
+  having additional, 8-bit character codes may lead to confusion in interchange
+  of the Document IDs, especially between platforms having different default
+  character-set encodings.&nbsp; Proper case-insensitive interpretation of the <b><code><i><a href="../../downloads/odma20-3.htm#DMS_ID">dms-id</a></i></code></b>
+  by middleware is assured only when these limitations have been honored.</p>
+</blockquote>
+<h1>2. <a name="Usage">Document ID Usage</a></h1>
+<blockquote>
+<p> Applications are required to treat ODMA Document IDs as
+&quot;opaque,&quot; having no predictable structure.&nbsp;&nbsp;Applications
+that retain Document IDs longer than the current session must take precautions
+to ensure that the information is recorded in a way that preserves its fidelity
+to the original if ever resubmitted as a parameter to a future ODMA operation.&nbsp;
+This includes making sure that any dependencies on a particular character-set
+encoding (e.g., a particular code page) are captured in a way that conversion
+for a system with a different&nbsp;character-set encoding preserves the
+characters of the ODMA Document ID.&nbsp; (Any code page or character-set
+encoding that incorporates the ASCII character set has this quality, so long as
+DMS integrations are designed to employ only those characters in ODMA Document
+IDs.)</p>
+<p>ODMA middleware does not examine that part of an ODMA Document ID that follows the
+<b><code>::ODMA\<i>dms-id</i>\</code></b> portion of any Document ID not
+manufactured by the middleware itself (i.e., for ODMA 1.5 <a href="../../downloads/odma20-3.htm#ODMQueryExecute">query
+results</a>).&nbsp;&nbsp;</p>
+<p>So long as the length, character-set and character-code
+requirements of ODMA are satisfied, the remainder of the Document ID can be
+encoded in any way that allows the DMS integration to locate the identified
+document in the future.&nbsp;</p>
+  <p>When a DMS integration is atop a document-management system having its own identification scheme, the common approach is to recode such
+identifications, with sufficient supplemental data so that the original
+identification can be recovered by inspection of the ODMA Document ID. The
+supplemental information may include identification of the specific repository
+that was used, so that identifications applicable to one repository will not be
+mistaken for similarly-identified documents of other repositories supported by
+  the same DMS integration.</p>
+<p>How this is done is dependent on the implementation of the DMS
+Integration.</p>
+<p>For example, the following ODMA Document ID applies for a fictitious DMS
+Integration,&nbsp;</p>
+  <p><code><b>::ODMA\DM-FOO\AA345961-A67C-11d4-A462-F0B953C1AECD#4E7C9FA0-A67D-11d4-0001</b></code></p>
+<p>where there is a globally-unique and privately-generated identifier for
+the <code>DM-FOO</code>-integrated repository, and then a unique
+within-repository document identification
+following the &quot;<b><code>#</code></b>&quot;-separator.</p>
+<p>There is a special case that each DMS integration must support: The <b><code><a href="../../downloads/odma20-3.htm#ODMNewDoc">
+ODMNewDoc</a></code></b> function returns a place-holder that is used temporarily until an
+<b><code><a href="../../downloads/odma20-3.htm#ODMSaveAs">ODMSaveAs</a></code></b>
+or <a href="../../downloads/odma20-3.htm#ODMSaveAsEx"><b><code>ODMSaveAsEx</code></b></a>
+operation is performed to establish the official ODMA Document ID for a
+new document.&nbsp; Each DMS has its own implementation of <a href="../../downloads/odma20-3.htm#PreferredInitialFileCreation"> this
+scheme</a>.&nbsp;
+For example,</p>
+  <blockquote>
+    <p><b><code>::ODMA\DM-FOO\#9803</code></b></p>
+  </blockquote>
+  <p>might constitute a placeholder for a reservation issued for a pending document
+that the DMS is waiting for the application to define further.&nbsp;&nbsp;</p>
+  <p> Some DMS
+  integrations use even simpler schemes than this, having a specific, constant ODMA
+Document ID that is used for all pending new documents of that DMS.&nbsp;&nbsp;
+  The DMS doesn't generate an original ODMA Document ID until the application
+  performs an ODMSaveAs or ODMSaveAsEx for the first time on the new document.</p>
+<p>There are many other variations.&nbsp; Here are some ODMA Document IDs
+produced by some DMS integrations:</p>
+  <blockquote>
+  <p align="left"><b><code>::ODMA\ODMASAMP\11-15-50-99<br>
+  ::ODMA\MHODMA\NULL;0;0<br>
+  ::ODMA\MHODMA\Clients;217303;1<br>
+  ::ODMA\GRPWISE\DXU-WG-DM.DXU_PO_DM1.WG3_CO_DM1:6302.1<br>
+  ::ODMA\WORLDOX\T:\DOCS\FOONARD\999\999\MISC\0647098.WPD<br>
+  ::ODMA\DOCUMNTM\0912d68780006116</code></b></p>
+  </blockquote>
+</blockquote>
+<h1>3. <a name="RecommendedPractice">Interoperability Considerations</a></h1>
+<blockquote>
+<p><i>Job Jar:</i></p>
+<ol>
+  <li><i>Find more-precise reference for ISO 646 and related specifications.</i></li>
+  <li><i>Remember to mention the problem of different lengths between Win16 and Win32.</i></li>
+  <li><i>Locate the discussion about provision on command lines.</i></li>
+  <li><i>Provide guidance about registering DMS IDs.&nbsp;&nbsp;</i></li>
+  <li><i>Look at clearly differentiating between application usage and DMS usage.</i></li>
+</ol>
+<p>For ODMA DMS integrations to interoperate successfully across multiple
+computers, the <b><i><code> <a href="odma20-3.htm#DMS_ID">dms-id</a></code></i></b> should be unique among
+all known DMS integrations.&nbsp; In this way, an ODMA Document ID is
+never supplied to a DMS integration for which it is not intended.</p>
+<p>It is also strongly recommended that the ODMA Document ID be globally
+unique.&nbsp; ODMA Document IDs may be stored in files, carried in documents as
+links to other documents, and transmitted to others using e-mail and other
+transfer techniques.&nbsp; A Document ID may be used much later than when it is
+first delivered in a response to an ODMA operation.&nbsp; Globally-unique ODMA Document IDs
+allow a DMS integration to determine whether it actually has access to the repository to
+which the Document ID applies, or not.</p>
+
+</blockquote>
+
+  <hr noshade color="#000080">
+
+<h2><a name="Contributors">Contributors</a></h2>
+<font size="-1">
+  <dl>
+    <dt><a href="../Q000605.htm#BalazBranislav">Balaz
+      Branislav</a> (2000-10-13)</dt>
+    <dd>asked questions about the <a href="Q990401C.htm">requirement for and
+      variability</a> of ODMA Document IDs and what are the requirements</dd>
+    <dt><a href="../Q000605.htm#DalGhotra">Dal Ghotra</a> (1999-04-12)</dt>
+    <dd>raised the <a href="Q990401B.htm">original
+      questions</a> concerning what one can do with the DMS-specified part of an
+      ODMA Document ID.</dd>
+    <dt><a href="../Q000605.htm#orcmid">Dennis Hamilton</a> (2000-10-20)</dt>
+    <dd>collected the contributed material and drafted the <a href="Q990401D.htm"> response</a> used for
+      this FAQtip.</dd>
+  </dl>
+
+  <h2><a name="History">Change History</a></h2>
+    <dl>
+      <dt><b><a name="0.51">0.51</a> 2005-02-03-16:23 Transfer from Q000014 to
+        1999/Q990401</b></dt>
+      <dd>As part of the 2005 ODMA refresh, move to a convenient place, upgrade
+        page style, and add a <a href="Q990401A.htm"> job jar and diary</a>.&nbsp; Perform light editing of
+        wordings.</dd>
+      <dt><a name="0.50"><b>0.50 </b> </a><b><a name="0.50">2001-02-12 </a>Add Document ID example,
+        correcting punctuation</b>.&nbsp;&nbsp;</dt>
+      <dd>
+        Expand section on interoperability considerations.</dd>
+      <dt><b><a name="0.35">0.35</a> 2000-11-29 Expand on practices and use of
+        DMS ID</b>.</dt>
+      <dt><b><a name="0.25">0.25</a></b>&nbsp;<b>2000-11-13</b> <b>Initial complete statement
+        for review</b></dt>
+      <dt><b><a name="0.10">0.10</a> 2000-10-16 Place-holder and outline for
+    a note to be reviewed and developed further.&nbsp;</b>&nbsp;</dt>
+    </dl>
+
+  <hr noshade color="#000080">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a rel="nofollow" href="../construction.htm" target="_top"><img border="0" src="../../images/hardhat-thumb.gif" alt="Hard Hat Area (Construction Zone)" width="80" height="60"></a></td>
+    <td width="34%" valign="middle" align="center"><!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005d.htm" TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="62067" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2000-10-1</font></font><font size="-2">6-13:01</font><font size="-1">
+  <font size="-2"> -0700 (pdt) by <a rel="nofollow" href="../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 39 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

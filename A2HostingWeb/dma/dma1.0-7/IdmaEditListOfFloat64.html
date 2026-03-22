@@ -1,0 +1,53 @@
+<html><head><title>Interfaces and Methods: IdmaEditListOfFloat64</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaEditListOfFloat64"></a>IdmaEditListOfFloat64</h2>
+<p>This interface provides methods for modifying lists that contain 64 bit float values.
+</p><p>
+This interface offers all the methods of the IdmaEditList interface,  as well as those listed below.</p></p>
+<h3><a name="IdmaEditListOfFloat64InsertFloat64"></a>IdmaEditListOfFloat64::InsertFloat64</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditListOfFloat64::InsertFloat64</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaFloat64    <i>fFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list where the value will be placed.</p></TD></TR>
+<TR><TD><p><i>fFloatValue</i></p></TD><TD><p>input</p></TD><TD><p>The float value that will be inserted into the list.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function inserts a float value into the list given on an ordinal position provided by the caller.  All list elements that have indexes greater then iIndex at the time of the call will have their index in the list incremented by one.  Permitted values for iIndex are 0 through n, where n is the number of elements in the list at the time of the call. A value of n appends a new value to the end of the list.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditListOfFloat64ReplaceFloat64"></a>IdmaEditListOfFloat64::ReplaceFloat64</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditListOfFloat64::ReplaceFloat64</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaFloat64    <i>fFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list where the value will be placed.</p></TD></TR>
+<TR><TD><p><i>fFloatValue</i></p></TD><TD><p>input</p></TD><TD><p>The new float value that will replace the value in the list.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Replaces a float value in a list with the supplied float value given an ordinal position value.  Valid values for iIndex are 0 through <i>n</i>-1, where <i>n</i> is the number of elements in the list at the time of the call.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+</TABLE>
+</body></html>

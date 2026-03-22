@@ -1,0 +1,22 @@
+<html><head><title>Interfaces and Methods: IdmaTextOrdering</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaTextOrdering"></a>IdmaTextOrdering</h2>
+<p>This is the interface delivered by text ordering service elements, providing string ordering using a particular text collation sequence.</p>
+<h3><a name="IdmaTextOrderingCompareStrings"></a>IdmaTextOrdering::CompareStrings</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaTextOrdering::CompareStrings</b> (<br>
+pDmaString    <i>pString1</i>,<br>pDmaString    <i>pString2</i>,<br>pDmaInteger32    <i>pResult</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pString1</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to a DmaString</p></TD></TR>
+<TR><TD><p><i>pString2</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to a DmaString</p></TD></TR>
+<TR><TD><p><i>pResult</i></p></TD><TD><p>output</p></TD><TD><p>Return value indicating whether string1 is greater than, equal or less than string2</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method has semantics identical to the POSIX strcoll function in that it returns a result value of 0 if the strings are lexically identical, less than 0 if string1 is lexically less than string2 and greater than 0 if string1 is lexically greater than string2.  
+</p><p>
+The CompareStrings method implements the lexical comparison per the conventions of the collation sequence offered by the text ordering service element. If the collation sequence is locale-dependent, then the locale with which the text ordering service object was instantiated will apply.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

@@ -1,0 +1,157 @@
+<html><head><title>Interfaces and Methods: IdmaContentTransfer</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaContentTransfer"></a>IdmaContentTransfer</h2>
+<p>This interface provides access to content data (represented by objects of dmaClass_ContentTransfer)  which is directly captured and managed by a document space.</p>
+<h3><a name="IdmaContentTransferCopyToResource"></a>IdmaContentTransfer::CopyToResource</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaContentTransfer::CopyToResource</b> (<br>
+pDmaString    <i>pDestName</i>,<br>DmaInteger32    <i>flags</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pDestName</i></p></TD><TD><p>input</p></TD><TD><p>A string that contains a locally accessible resource name in URL format.</p></TD></TR>
+<TR><TD><p><i>flags</i></p></TD><TD><p>input</p></TD><TD><p>Flags that modify creation of the file</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Makes a copy of the captured data in a resource of the specified name.
+</p><p>
+This method is optional on already persistent content transfer elements and should return DMARC_NOT_SUPPORTED on a content transfer element which has not yet been saved.
+</p><p>
+If the copy occurs successfully the client is responsible for removing the resource when it is no longer needed. The resource is owned by the client, and the content transfer element will retain no memory of its existence. 
+</p><p>
+The flags parameter is a bitwise OR of any of the following integer values: 
+</p><pre>
+<b>DMA_CREATE_REPLACE_EXISTING</b>
+
+This flag dictates behaviour if the resource named by pDestName already exists
+at the time this method is called. If the flag is set, the resource should be replaced 
+with the source material. 
+If this flag is not set, the method leaves the existing resource intact and returns
+DMARC_NO_ACCESS. This flag is ignored if the specified resource
+does not yet exist.
+
+<b>DMA_CREATE_PRESERVE_DATETIME</b>
+Specifies how the creation time of the resource should be set. If the flag is set 
+and the document space has recorded the creation time of incoming 
+document content, the creation time of the new resource is set to original 
+creation time of the document content. If the flag is not set, the creation 
+time for the resource should be set according to platform defaults. 
+(Typically, to the current time).
+</pre><p>
+For a document space which supports content replacement, a call to SetCaptureStream or SetCaptureResource causes subsequent calls to this method to behave as for the new case, which is to return DMARC_NOT_SUPPORTED. In other words, the existing content  rendered inaccessible through this content element instance.
+</p><p>
+It is not required that a document space which supports this method support all possible forms of URL. However, at minimum the file: form should be supported.
+</p><p>
+If the URL supplied includes security credentials, these should be used to access the resource in order to complete the data transfer. Otherwise, the operation must be performed using the security context of the calling thread. This should hold irrespective of whether the service provider operates in a separate process with its own security context.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_URL</p></TD><TD><p>The resource URL is not syntactically valid.</p></TD></TR>
+<TR><TD><p>DMARC_DEVICE_ERROR</p></TD><TD><p>An error has occurred reading or writing a hardware device.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_URL_PROTOCOL_NOT_SUPPORTED</p></TD><TD><p>The URL protocol specified in the reference is not supported.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaContentTransferGetResourceName"></a>IdmaContentTransfer::GetResourceName</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaContentTransfer::GetResourceName</b> (<br>
+ppDmaString    <i>ppName</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>ppName</i></p></TD><TD><p>output</p></TD><TD><p>Returns a resource name in URL format.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method behaves differently according to whether it is applied to a new (unsaved) content element or to an existing persistent content element.
+</p><p>
+In the former case, this method provides a way to interrogate the capture mode for the object. If resource name mode has been specified, the method will return a copy of the URL supplied to SetCaptureResource. If stream mode has been specified or no mode has yet been set, the method will return DMARC_VALUE_NOT_SET.
+</p><p>
+In the latter case this method returns a resource name that the client application may be able use to directly access the captured content data.
+</p><p>
+This methods makes no guarantee that the application will in fact be able to access the content data via the resource name returned, since this depends on the protocol specified in the URL and on the security which is applied to it.
+</p><p>
+For a docspace which supports content replacement, a call to SetCaptureStream or SetCaptureResource causes subsequent calls to this method to behave as for the new case. In other words, the existing content is rendered inaccessible through this content element instance.
+</p><p>
+This method must be supported if SetCaptureResource is supported; otherwise support is optional.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaContentTransferGetStream"></a>IdmaContentTransfer::GetStream</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaContentTransfer::GetStream</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIStream</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIStream</i></p></TD><TD><p>output</p></TD><TD><p>Returns a stream object that can deliver the captured data.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method behaves differently according to whether it is applied to a new (unsaved) content element or to an existing persistent content element.
+</p><p>
+In the former case, this method provides a way to interrogate the capture mode for the object. If stream mode has been specified, the method will return a reference to the stream object supplied to SetCaptureStream. If resource name mode has been specified or no mode has yet been set, the method will return DMARC_VALUE_NOT_SET.
+</p><p>
+In the latter case, the method returns a stream object providing direct access to the captured content data.
+</p><p>
+In both cases, the method exhibits "by reference" behaviour. A second or subsequent call returns a reference to the same object as the first call. In both cases, the position of the seek pointer on the stream object is undefined.
+</p><p>
+For a document space which supports content replacement, a call to SetCaptureStream or SetCaptureResource causes subsequent calls to this method to behave as for the new case. In other words, the existing content is rendered inaccessible through this content element instance.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaContentTransferSetCaptureResource"></a>IdmaContentTransfer::SetCaptureResource</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaContentTransfer::SetCaptureResource</b> (<br>
+pDmaString    <i>pResourceName</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pResourceName</i></p></TD><TD><p>input</p></TD><TD><p>A URL format string specifying the name of the resource containing the content data which is to be captured.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Requests content capture from a named resource (aka "by filename").
+</p><p>
+This method is optional. Where supported, it may be so only for new (unsaved) content transfer element objects or for already saved content transfer elements (allowing for content replacement).
+</p><p>
+It is strongly recommended that the document space validate the resource name at the time of this method invocation, to determine that it is of a supported syntax and refers to an existing resource. It is not however recommended that the document space attempt to place a lock of some kind on the resource in an attempt to ensure its availability through to the time the content element is saved, since this may be expensive and may interfere with other legitimate operations which take place in the interim. It is therefore the case that (re)validation must be performed at the time the content element is made persistent.
+</p><p>
+It is not required that a document space which supports this method support all possible forms of URL. However, at minimum the file: form should be supported.
+</p><p>
+If the client application does not set a value for the Retrieval Name property of the content transfer element object to which this method is applied, the implementation is permitted to parse a suitable value out of pResourceName. However, this should not become visible as the property value until after the content element is made persistent.
+</p><p>
+If the URL specified includes security credentials, these should be used to access the content data. Otherwise, access to the content data must be attempted under the security context of the client thread which called this method effective at the time of the call, and the ExecuteChange operation should fail if this is not sufficient. This should hold irrespective of whether the service provider operates in a separate process with its own security context.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_URL_PROTOCOL_NOT_SUPPORTED</p></TD><TD><p>The URL protocol specified in the reference is not supported.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_URL</p></TD><TD><p>The resource URL is not syntactically valid.</p></TD></TR>
+<TR><TD><p>DMARC_DEVICE_ERROR</p></TD><TD><p>An error has occurred reading or writing a hardware device.</p></TD></TR>
+<TR><TD><p>DMARC_RESOURCE_NOT_FOUND</p></TD><TD><p>The indicated resource was not found.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaContentTransferSetCaptureStream"></a>IdmaContentTransfer::SetCaptureStream</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaContentTransfer::SetCaptureStream</b> (<br>
+Dmapv    <i>pStream</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pStream</i></p></TD><TD><p>input</p></TD><TD><p> An interface pointer to an object capable of providing an IdmaStream interface.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Requests content capture from a stream and specifies the stream from which to capture. This method must be supported on a new (not yet saved) content transfer element by all document space implementations. A document space which supports update of captured content may also allow this on a previously saved content transfer element as a way of effecting content replacement.
+</p><p>
+This method may be invoked an arbitrary number of times, in arbitrary combination with calls to SetCaptureResource on the same content transfer object.  The ultimate effect when this object is saved is as if only the most recent call had been issued.
+</p><p>
+The stream supplied must be positioned at the beginning of the data to be captured. The implementation must capture the data using only the ReadStreamData method of the stream, since the stream is not required to support arbitrary positioning.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_DEVICE_ERROR</p></TD><TD><p>An error has occurred reading or writing a hardware device.</p></TD></TR>
+</TABLE>
+</body></html>

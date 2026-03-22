@@ -1,0 +1,180 @@
+d061003g.txt 0.01                    UTF-8                    dh:2006-11-26
+
+            CONTENT OF d061003g-OdmNative100-Setup04.zip ARCHIVE
+
+      ODMJNI 1.0 OdmNative Setup04: 0.20alpha OdmNative100 Integration
+      ----------------------------------------------------------------
+
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061003g.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              source code that is contained in this archive.
+              If the license has has been separated from the
+              archive, obtain a copy at
+                 <http://ODMA.info/dev/DevNotes/2006/10/d061003g.htm>
+              or <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Manifest
+     2. Tools Required
+     3. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. MANIFEST
+
+   [provisional:
+        This archive is designed to be extracted to the <folder>
+        location that is the Java classpath point for the ODMJNI 1.0
+        packages.
+
+        The extraction, with preservation of subdirectories, will
+        install material in the following hierarchy at that point:
+
+            <folder>
+                    d061003g.txt - this manifest
+                    d061003g-OdmNative100-license.txt
+                        [the overall OdmNative100 license statement.]
+                /info
+                    /odma
+                        /OdmNative100
+                                BuildOdmNative100.bat
+                                Odma32api100.h
+                                Odma32types100.h
+                                OdmNative100.cpp
+                                OdmNative100.hpp
+                                OdmNative100.obj
+                                OdmNative100i.hpp
+                                OdmNative100-license.txt
+                                OdmPSDK.bat
+                                OdmVC++.bat
+                            /test
+                                /Setup04
+                                    BuildSetup04.bat
+                                    BuildSetup04-0.02alpha.log.txt
+                                    OdmNative100-license.txt
+                                    OdmNativeTestDefault.reg
+                                    OdmNativeTestNoDefault.reg
+                                    Setup04.cpp
+                                    Setup04-2006-11-23-1340-ODMATest32.png
+                                    Setup04-2006-11-23-1341-ODMATest32.png
+                                    Setup04-2006-11-23-1348-Test.log.txt
+                                    Setup04-2006-11-23-2054-Odma32.log.txt
+                                    Setup04-2006-11-23-2126-Odma32.log.txt
+                                    Setup04-2006-11-25-2257-0.20alpha.png
+                                    Setup04-2006-11-25-2259-0.20alpha.png
+                                    Setup04-2006-11-25-2259-Odma32.log.txt
+                                    Setup04-2006-11-25-2300-0.20alpha.png
+                                    Setup04-2006-11-25-2301-0.20alpha-reference.log.txt
+                                    Setup04-reference.exe
+
+2. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061003g-OdmNative100-Setup04.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+         ODMA 2.0 SDK or other resource for obtaining the ODMA32.dll form of
+                      the ODMA 2.0 Connection Manager.  Installation and
+                      removal of ODMA32.dll can be used to confirm that
+                      TestSetup04 properly detects the presence of the
+                      Connection Manager.
+
+       An ODMA-compliant DMS integration, such as the ODMASAMP sample or
+                      a production DMS for use in confirming access as a
+                      default DMS for the Setup04 application
+                      identification "OdmNativeTest"
+
+       Microsoft Visual C++ 2005 Express Edition for rebuilding the
+                      software, if desired.  The libraries and command-
+                      line compiler that were used are from the version
+                      of VC++ 2005 Express identified as Microsoft Visual
+                      Studio 2005 Version 8.0.50727.42 (RTM.050727-4200).
+                      Other identifications can be seen in the log files
+                      from BuildSetup04.bat.
+
+       Microsoft Windows Platform SDK for providing the native Windows
+                      API libraries used in OdmNative100 development.
+                      The March 2006, Microsoft Platform SDK for Windows
+                      Server 2003 R2 was used in producing the 0.20alpha
+                      OdmNative100 integration.
+
+       Microsoft Windows Regedit utility for setting and removing default
+                      DMS registry entries for ODMA Application ID
+                      "OdmNativeTest" used by Setup04-reference.exe when
+                      checking for presence of a default DMS.
+
+
+3. INSTALLATION AND USAGE
+
+   [to-be-supplied]
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2006 NuovoDoc <http://NuovoDoc.com>
+  Portions Copyright © 1994-1998 AIIM International <http://www.aiim.org>
+                   and the respective contributors to ODMA.
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        ODMJNI 1.0 OdmNative ODMA-Access Implementation Setup04: 0.20alpha
+        Integration.  AIIM ODMA Interoperability Exchange, ODMdev
+        Development Note page d061003g 0.01, November 26, 2006.  Available
+        at <http://ODMA.info/dev/devNotes/2006/10/d061003g.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2006-11-07-16:19 Incorporation of the essential information for escrow
+     of the 0.20alpha OdmNative100 Integration.
+0.00 2006-11-07-14:37 Initial draft manifest derived from d061003e.txt 0.02
+
+$Header: /ODMdev/d061003g.txt 1     06-11-26 9:52 Orcmid $
+
+                        *** END OF d061003g.txt ***
+

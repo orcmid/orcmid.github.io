@@ -1,0 +1,200 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000200.htm 3     01-03-05 13:46 Orcmid $-->
+<title>X000200: MS Office Between Win98 &amp; NT</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000200.htm">X000200</a>:
+</b>MS Office Between Win98 &amp; NT</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-05-13:47 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000200.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%">
+        <dl>
+          <dt><b>Category: <font color="#FF0000"> Fatal Error -
+        Critical</font></b></dt>
+          <dd>(escalated 2001-03-04)</dd>
+        </dl>
+      </td>
+      <td width="50%" valign="top"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000200.htm">X000200</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>
+        2.0.0 and <b><code>ODMASAMP</code></b> 2.0.0 with <b>Microsoft Word 2000</b> on <b>Windows
+        NT</b>.</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd>X001000: <a href="X001000.htm">Microsoft Word 2000 Save Failure<br>
+            </a>X000100: <code><a href="http://www.infonuovo.com/odma/support/X000100.htm">ODMASAMP</a></code><a href="X000100.htm">
+            with Word on NT</a></dd>
+          <dd>
+            Q000606: <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000606">Troubleshooting
+            Microsoft Word ODMA Integrations</a><br>
+            Q000602: <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000602">Where
+            Is Support Information for Microsoft Office?</a><br>
+            Q000001: <a href="http://www.infonuovo.com/odma/faq/Q000001.htm">Configuring
+            MS Office for ODMA</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: tbd</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#BoonLong">Boon
+            Long</a>  (<a href="x000200A.msg">2000-02-03</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Recorded</b>: 2001-03-04</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#HappeningToYou"> If This Is Happening to You</a></h3>
+
+<h3>3. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>4. <a href="#Investigation">Investigation of Incident</a></h3>
+
+<h3>5. <a href="#Demonstration">Demonstration of Word 2000 Save Failures</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>   (2001-03-05)</h2>
+
+<blockquote>
+
+  <p>In using Microsoft Word as a benchmark ODMA-aware
+  application while testing a new DMS integration, it was noticed that Word 2000
+  operates differently with ODMA on Windows NT than it does on Windows 98.</p>
+  <p>The differences in the use of ODMA operations suggest that Microsoft Word
+  2000 does not use ODMA properly on Windows NT.&nbsp; Documents that are
+  created for storage into an ODMA DMS may be lost with no indication of a
+  problem.&nbsp; Changes to documents retrieved from an ODMA DMS may also be
+  lost.</p>
+  <p>Analysis so far suggests that the problems originate in Microsoft Word
+  2000.&nbsp; The Save failure is triggered by some difference in Microsoft Word
+  2000 configurations on Windows NT 4.0 and on Windows 2000.</p>
+  <p>There are very few reports of this incident, suggesting that it does not
+  occur systematically in most Microsoft Office configurations using ODMA.</p>
+</blockquote>
+  <h3>1.1 Work Around:</h3>
+<blockquote>
+  <p>After configuring Word 2000 to operate with ODMA, conduct integration
+  trials where it is not important whether a document is lost.&nbsp;&nbsp;</p>
+  <p>Create a test document in Word 2000, using File | New.&nbsp; You should
+  receive an invitation form the DMS to provide information about the document
+  you want to create.</p>
+  <p>When entry of the document is complete, Use the File | Close menu selection
+  to end editing of the document.&nbsp; If the document is closed without any
+  invitation to save the document, you may be seeing this incident.</p>
+  <p>Use File | Save or the Save button to always force documents to be saved
+  via ODMA.&nbsp; Do this any time a modified ODMA-accessed document is open in
+  Microsoft Word 2000 and you want to ensure that the document is saved to the
+  DMS.&nbsp; Do this before using File | Close or closing Word 2000.</p>
+</blockquote>
+  <h3>1.2 Configurations Confirmed</h3>
+
+<blockquote>
+
+<blockquote>
+  <p>This incident has occurred with the following configuration:</p>
+</blockquote>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="2" width="85%" bordercolorlight="#0000FF" bordercolordark="#000080" bordercolor="#0000FF">
+    <tr>
+      <td width="33%" valign="top" align="left">
+        Microsoft Word 2000
+      </td>
+      <td width="33%" valign="top" align="left">Microsoft Windows NT 4.0 with
+        ODMA Connection Manager <code>ODMA32.dll</code> 2.0.0</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h2>2. <a name="HappeningToYou">If This Is Happening to You</a></h2>
+
+<h2>3. <a name="Actions">Actions</a> Toward Resolution</h2>
+
+<blockquote>
+<p>The following actions are being taken to resolve this incident:</p>
+
+</blockquote>
+<h2>4. <a name="Investigation">Investigation</a>      of Incident</h2>
+<blockquote>
+<p>The following steps are being taken to confirm the claims made in this incident
+report:</p>
+</blockquote>
+
+<h2>5. <a name="Demonstration">Demonstration</a> of Word 2000 Save Failures</h2>
+<blockquote>
+  <p>&nbsp;</p>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed old ODMA Tech mail for untracked incidents, logged this
+      incident (2000-08-11) and then recorded the incident (2001-03-04) as part
+      of having all <a href="http://www.infonuovo.com/odma/projects/P010200.htm">backlog
+      recorded</a>.&nbsp; Identified apparent relationship to <a href="http://www.infonuovo.com/odma/support/X001000.htm">X001000</a>
+      and <a href="http://www.infonuovo.com/odma/support/X000100.htm">X000100</a> and initiated further investigation to confirm that.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#BoonLong">Boon
+      Long</a></dt>
+    <dd>provided the <a href="http://www.infonuovo.com/odma/support/x000200a.msg">initial notification</a> that the
+      ODMA trace logs were different between operation of Word 2000 on Windows
+      98 and on Windows NT.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-03-04-08:17 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-05 13:46 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/com.orcmid/LLC/pa/pn/ALPHA/J040603b.htm 30    26-03-22 14:17 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>J040603b: Compiling Num.java 0.01</title>
+<base target="_self">
+</head>
+
+<body stylesrc="../../../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../../../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../../../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="15139" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Java <a href="../../../../J000001-log.htm"><font color="#990033">Project</font></a>
+      <a href="../../../../J000001-log.htm#J040603"><font color="#990033">J040603</font></a><br>
+      com.orcmid.LLC.pa.pn ALPHA <a href="J040603.htm"><font color="#990033">Compiling</font></a></strong></font><font color="#990033"><strong><em><big><big><br>  
+      &nbsp;Compiling Num.java 0.01</big></big></em></strong></font></p>           
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<b><code><a href="../../../../" target="_top">com.orcmid</a>&gt;<br>
+      <a href="../../../" target="_top">LLC</a>&gt;<a href="../../" target="_top">pa</a>&gt;<a href="../" target="_top">pn</a>&gt;<br>
+<a href="./">ALPHA</a>&gt;</code></b>
+</font>
+
+      <b><code><br>
+      <br>
+      <a href="J040603b.htm" target="_top">J040603b</a>&gt;
+      </code></b><br>
+<a href="#0.20">
+      <small><small>
+      0.20</a> <!--webbot bot="Timestamp" S-Type="EDITED"                     
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->-<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<hr noshade color="#990033">
+
+
+
+<p>We establish that the interface definition can be compiled easily.&nbsp; It 
+is also shown that we  
+have some flexibility in the naming of the files so that different expressions of  
+the interface definition don't have to employ conflicting file names.</p> 
+
+
+
+<blockquote>
+  <blockquote>
+
+
+
+<h3>1. <a href="#Objectives">Objectives</a><br>    
+2. <a href="#TwoVersions">Two Versions</a><br>     
+&nbsp;&nbsp;&nbsp;&nbsp; <small>2.1 <a href="#Num-0.01.java"> Num-0.01.java</a></small><br>    
+&nbsp;&nbsp;&nbsp;&nbsp; <small>2.2 <a href="#Num-0.01a.java"> Num-0.01a.java</a></small><br>    
+3. <a href="#Package-InternalConfirmed"> Package-Internal Access Confirmed</a>&nbsp;<br>    
+4. <a href="#Num.class"> The Num-0.01a.java Num.class File</a><br>     
+5. <a href="#CompilationEnvironment"> Compilation Environment</a></h3>      
+  </blockquote>
+</blockquote>
+
+
+
+<p>The files employed in this experiment are archived in <b><kbd><a href="J040603b.zip">J040603b.zip</a></kbd></b>  
+ (WinZip file).&nbsp; File <b><kbd><a href="J040603b.txt">J040603b.txt</a></kbd></b> 
+is the manifest carried in the current archive.</p> 
+<h2>1. <a name="Objectives">Objectives</a></h2> 
+<blockquote>
+  <p>We are going make some leisurely confirmation of Java compiler     
+  characteristics.&nbsp; If we succeed in our experiments, these will assist us     
+  in working informally with experimental and ALPHA code while anticipating the     
+  more rigorous package structure that we intend to end up with.</p>    
+  <p>The objective of this exercise is to confirm that we can compile units of a     
+  package without much concern for the package name that we choose.&nbsp; In     
+  particular, we would like to use the production package name although we are     
+  operating within a single directory and working with user-created compilation     
+  units all for the same package.&nbsp;&nbsp;</p>    
+  <p>In addition, we don't want to be locked into a specific source-program      
+  name, even though the compiled interface class will always be a <b><kbd>Num.class</kbd></b>      
+  file.</p>     
+  <p>Finally, we want to see how forgiving the compiler will be with respect to Class Path     
+  requirements in the early stages of development.&nbsp; We would like to     
+  minimize the branching of directory trees, and be able to work with new     
+  versions at the same time there is a production version of a package also     
+  being used.&nbsp; We      
+  do not confirm any of that here;&nbsp; that is done in the next experiments we must undertake.</p>     
+</blockquote>
+<h2>2. <a name="TwoVersions"> Two Versions</a></h2> 
+<blockquote>
+<p>The ALPHA materials are exploratory, and this area is more of a laboratory                    
+than a vehicle for delivering stable software.&nbsp; When ALPHA material is                    
+mature enough to be made into a stable release, that release is pulled-together                    
+on the <a href="J040602.htm"> main package tree</a> without supplanting any current stable production     
+version of a package.</p>                   
+
+
+
+
+</blockquote>
+<h3>2.1&nbsp;&nbsp;&nbsp; <a name="Num-0.01.java">Num-0.01.java</a></h3>                  
+
+
+
+
+<blockquote>
+<p>The file <b><kbd> Num-0.01.java</kbd></b>&nbsp;holds <a href="http://miser-theory.info/astraendo/a040601g.htm#2004-05-22-1846">the       
+version</a> that <a href="J040603.txt" target="_top"> Bill Anderson created</a> in wanting to understand how the proposed       
+interface was intended to work.</p>                  
+
+
+
+
+  <pre style="border-style: double; border-width: 2"><b><font color="#800080">package</font></b><font color="#000000"> com.orcmid.cs.pa;
+
+<b>public </b></font><b><font color="#0000FF">interface</font></b><font color="#000000"> Num
+{
+
+    <b>public int</b> next();
+
+    <b>public int</b> pred();
+
+    <b>public </b></font><b><font color="#0000FF">boolean</font></b><font color="#000000"> is0();
+}
+
+</font><font color="#008000">/* sent by band@acm.org on 2004-05-22-1846 -0700
+   This version reflects an interesting and very instructive
+   misunderstanding of what I had in mind.
+   $H<!-- -->eader: /Java2/com/orcmid/llc/pa/pn/Num.java 1     04-05-23 9:27 Orcmid $
+   */</font></pre>
+<p>&nbsp;Because I wanted to give different versions of the file different names       
+so that they could be kept together, if desired, I had changed the name of the       
+file from <b><kbd>Num.java</kbd></b>.&nbsp; I knew this could work, but I had       
+forgotten how I did it before.&nbsp;&nbsp;</p>                  
+
+
+
+
+<p>As Java developers can predict, this interface definition is not acceptable       
+to the Java compiler.</p>                  
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre>
+<b><font color="#C0C0C0">[0]C:\java2\projects\com\orcmid\LLC\pa\pn&gt; </font><font color="#FFFF00">javac Num-0.01.java</font><font color="#C0C0C0">
+Num-0.01.java:3: class Num is public, should be declared in a file named Num.jav
+a
+public interface Num
+       ^
+1 error
+</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+</blockquote>
+
+
+  <h3>&nbsp;2.2 <a name="Num-0.01a.java"> Num-0.01a.java</a></h3>     
+
+
+<blockquote>
+
+
+  <p>The only objection is that a public (interface) class must be compiled from       
+  a file with the same name.&nbsp; The file <b><kbd> Num-0.01a.java</kbd></b> is exactly the same       
+  as the 0.01 version except that the interface is not declared to be public.&nbsp;      
+  Again, the file name is not the same as the name of the interface.</p>     
+
+
+  <pre style="border-style: double; border-width: 2"><font color="#008000">/* Num-0.01a.java Experimentation with compilation options. */</font><font color="#000000">
+</font><font color="#800080"><b>package</b></font><font color="#000000"> com.orcmid.cs.pa;
+
+</font><font color="#0000FF"><b>interface</b></font><font color="#000000"> Num
+{
+
+    <b>public int</b> next();
+
+    <b>public int</b> pred();
+
+    <b>public</b> </font><font color="#0000FF">boolean</font><font color="#000000"> is0();
+}
+
+</font><font color="#008000">/* sent by band@acm.org on 2004-05-22-1846 -0700
+   This version reflects an interesting and very instructive
+   misunderstanding of what I had in mind.
+   2004-09-14-09:52 I corrected the name in a comment.  I have not adjusted
+        this file at all.  It is just for experimenting with what the 
+        compiler assumes.
+   $H<!-- -->eader: /Java2/com/orcmid/llc/pa/pn/Num-0.01a.java 2     04-09-14 9:54 Orcmid $
+   */</font></pre>
+
+
+  <p>Making the new file, above, and removing the <b><kbd>public</kbd></b> 
+  access modifier on the interface leads to an acceptable compilation:</p>
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre>
+<b><font color="#C0C0C0">[0]C:\java2\projects\com\orcmid\LLC\pa\pn&gt; </font><font color="#FFFF00">javac Num-0.01a.java         </font><font color="#C0C0C0">
+
+[0]C:\java2\projects\com\orcmid\LLC\pa\pn&gt;
+</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  <p>The file <b><kbd>Num.class</kbd></b> is produced without any warnings or 
+  error messages.</p>
+
+
+  <p>Notice that the package name (<b><kbd>com.orcmid.cs.pa</kbd></b>) and the      
+  file location where we compiled <b><kbd> Num-0.01a.java</kbd></b> (... <b><kbd>com\orcmid\LLC\pa\pn</kbd></b>)      
+  are not directly related, and we have encountered no difficulty with that so      
+  far.&nbsp;</p>
+
+
+</blockquote>
+
+
+  <h2>3.&nbsp;&nbsp;&nbsp; <a name="Package-InternalConfirmed">Package-Internal      
+  Access Confirmed</a></h2>     
+
+
+<blockquote>
+
+
+  <p>There are two factors that govern how the use of the package name for our 
+  ALPHA development will work:</p>
+
+
+  <ol>
+    <li><b>When a class (or interface) is not declared <kbd>public</kbd>, it is 
+      only accessible from within the package in which it is defined </b>[<a href="http://java.sun.com/docs/books/jls/index.html" target="_top">Java2</a>:     
+      <a href="http://java.sun.com/docs/books/jls/second_edition/html/names.doc.html#102765" target="_top">6.6.1</a>,     
+      <a href="http://java.sun.com/docs/books/jls/second_edition/html/names.doc.html#62666" target="_top">6.6.3</a>,     
+      <a href="http://java.sun.com/docs/books/jls/second_edition/html/names.doc.html#36060" target="_top">6.6.4</a>]<b>.</b>&nbsp; That is useful because we don't want      
+      these ALPHA definitions to be widely usable, we want them to only be      
+      confirmed and tested within their own under-development package.</li>     
+    <li><b>When a class (or interface) is not declared public, its name is not 
+      required to have any relationship to the name of the file that contains 
+      its declaration</b>.&nbsp; The compiler will produce a class file with the      
+      correct name, so that it can be found when compiling and executing other      
+      units of the same package, and that is sufficient.&nbsp; (<b><i>Exception:</i></b>     
+      It is      
+      permissable for a compiler to require that a class that is referred to      
+      from another compilation unit of the same package be in a file of the same      
+      name [<a href="http://java.sun.com/docs/books/jls/index.html" target="_top">Java2</a>:     
+      <a href="http://java.sun.com/docs/books/jls/second_edition/html/packages.doc.html#26783" target="_top">7.6</a>].&nbsp; This is not a requirement of the compiler      
+      implementation that we are using.&nbsp; There will be no difficulty so      
+      long as we arrange to explicitly compile the <b><kbd>Num.class</kbd></b>      
+      that we intend to use.)</li>    
+  </ol>
+  <p>The second case is more a matter of the compiler design and use of file      
+  systems.&nbsp; We are going to take advantage of this tolerance in the <a href="#CompilationEnvironment">Java      
+  implementation</a> that we are using.&nbsp; We will also confirm it in an      
+  additional experiment.</p>     
+  <p>There is a certain degree of trial-and-error about how a given Java      
+  implementation behaves, and how it recognizes and enforces the Java package      
+  system.&nbsp;&nbsp;</p>
+  <p>We are ignoring the impact of any additional requirements that using a      
+  package name will impose on using the interface, even from within the      
+  package.&nbsp; That is also to be confirmed by experiment.</p>     
+</blockquote>
+
+
+<h2>4. <a name="Num.class">The Num-0.01a.java Num.class file</a></h2>       
+
+
+
+<blockquote>
+
+
+<p>Inspection of the binary <b><kbd>Num.class</kbd></b> file produced from <b><kbd>Num-0.01a.java</kbd></b> 
+reveals how little is retained:</p>      
+
+
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080" width="653">
+  <tr>
+    <td width="641">
+
+<pre style="background-color: #C0C0C0"><font color="#0000FF"><b> Num.class    ¦ F1 Help ¦ Commands: BFGHINPWX ¦     Col 0    Line 1          0%</b></font></pre>
+<pre style="background-color: #000080; color: #0000FF"><font color="#FFFFFF">0000 0000 CA FE BA BE 00 00 00 2E  00 0C 07 00 0A 07 00 0B   Êþº¾......▫..▫..
+0000 0010 01 00 04 6E 65 78 74 01  00 03 28 29 49 01 00 04   ▫.▫next▫.▫()▫▫.▫
+0000 0020 70 72 65 64 01 00 03 69  73 30 01 00 03 28 29 5A   pred▫.▫is0▫.▫()Z
+0000 0030 01 00 0A 53 6F 75 72 63  65 46 69 6C 65 01 00 0E   ▫..SourceFile▫.▫
+0000 0040 4E 75 6D 2D 30 2E 30 31  61 2E 6A 61 76 61 01 00   Num-0.01a.java▫.
+0000 0050 14 63 6F 6D 2F 6F 72 63  6D 69 64 2F 63 73 2F 70   ▫com/orcmid/cs/p
+0000 0060 61 2F 4E 75 6D 01 00 10  6A 61 76 61 2F 6C 61 6E   a/Num▫.▫java/lan
+0000 0070 67 2F 4F 62 6A 65 63 74  06 00 00 01 00 02 00 00   g/Object▫..▫.▫..
+0000 0080 00 00 00 03 04 01 00 03  00 04 00 00 04 01 00 05   ...▫▫▫.▫.▫..▫▫.▫
+0000 0090 00 04 00 00 04 01 00 06  00 07 00 00 00 01 00 08   .▫..▫▫.▫.▫...▫.▫
+0000 00A0 00 00 00 02 00 09                                  ...▫..            </font></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+</blockquote>
+  <p>&nbsp;</p>
+<h2>5. <a name="CompilationEnvironment">Compilation Environment</a></h2>         
+  <blockquote>
+<p>The computer used for this compilation is Compagno, a <a href="../../../../../blog/2004/06/SysInfo-2004-06-02-0805.htm">Dell  
+  Inspiron 7000 with Intel Pentium II and <b>Windows XP (Build 2600) SP1</b></a></p> 
+    <p>The Java 2 platform used is   
+
+
+
+  <a href="http://java.sun.com/j2se/1.4.1/index.html" target="_top"><b>Java 2   
+  Platform, Standard Edition v 1.4.1</b> SDK (1.4.1_02)</a> for Microsoft 
+  Windows.
+
+
+    </p>
+    <p><b>T</b>he command line interface used is&nbsp;<b> </b><a href="http://jpsoft.com/4ntdes.htm" target="_top"><b>JP Software 4NT</b></a>          
+  Command Processor version 5.00 (Build 101). At the time of the compilation          
+    exhibited here, the following settings were in effect:</p>          
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre><font color="#C0C0C0">
+[0]c:\comando\orcmid&gt; </font><font color="#FFFF00"><b>ver</b></font><font color="#C0C0C0">
+
+4NT  5.00U   Windows XP 5.1
+
+[0]c:\comando\orcmid&gt; </font><font color="#FFFF00"><b>path</b></font><font color="#C0C0C0">
+Path=C:\JAVA2\SDK1.4.1.02\BIN;C:\WINDOWS\SYSTEM32;C:\WINDOWS;C:\WINDOWS\SYSTEM32
+\WBEM;C:\COMANDO\TOOLS
+
+[0]c:\comando\orcmid&gt; </font><font color="#FFFF00"><b>set</b></font><font color="#C0C0C0">
+CLASSPATH=.
+COMPUTERNAME=COMPAGNO
+ComSpec=C:\comando\4NT\4nt.exe
+HOMEDRIVE=C:
+HOMEPATH=\Documents and Settings\Dennis E. Hamilton
+LOGONSERVER=\\COMPAGNO
+NUMBER_OF_PROCESSORS=1
+OS=Windows_NT
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH
+PROCESSOR_ARCHITECTURE=x86
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 5 Stepping 2, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=0502
+PROMPT=[$z]$P$g$s
+SESSIONNAME=Console
+USERDOMAIN=COMPAGNO
+USERNAME=orcmid
+USERPROFILE=C:\Documents and Settings\Dennis E. Hamilton
+windir=C:\WINDOWS
+
+[0]c:\comando\orcmid&gt;</font></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  <pre></pre>
+  <p>&nbsp;</p> 
+  </blockquote>
+  <hr noshade color="#990033">
+
+<dl>
+  <small><dt><b><a name="0.20">0.20</a> 2004-09-18-09:43 Update for the Zip Package</b></dt> 
+  <dd>Tidy up for being packaged in the J040603b.zip as an MHTML file that 
+    preserves this very information.</dd></small>
+  <dt><b><small><a name="0.10">0.10</a> 2004-09-18-00:11 Complete confirmation of Package-Internal    
+    flexibility</small></b></dt><dd><small>The&nbsp;appropriate references are   
+    linked in and the materials used are preserved in a ZIP file.&nbsp; We have   
+    no further use of them.</small></dd>         
+  <dt><b><small><a name="0.00">
+    0.00</a>   2004-06-12-18:27 Setup for Documenting            
+    Compiles (<a href="../../../../../construction/orcmid.htm">orcmid</a>)</b></dt>           
+  </small>
+  <dd><small>I noticed a problem compiling files with different names than the              
+    classes declared in them.&nbsp; Start working through it out loud so others              
+    can see what is going on too.</small></dd>             
+</dl>
+
+<font size="-1">
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm"><img border="0" src="../../../../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../../../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="62976" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created </font></font><font size="-2"> 2004-06-12-14:09
+      -0700 (pdt)</font><font size="-1"><font size="-2"> by <a href="../../../../../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 30 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

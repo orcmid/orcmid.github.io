@@ -1,0 +1,24 @@
+<html><head><title>Interfaces and Methods: IdmaListOfString</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaListOfString"></a>IdmaListOfString</h2>
+<p>This interface provides methods for handling lists that contain strings of character data.
+</p><p>
+This interface offers all the methods of the IdmaList interface,  as well as those listed below.</p></p>
+<h3><a name="IdmaListOfStringGetString"></a>IdmaListOfString::GetString</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaListOfString::GetString</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>ppDmaString    <i>ppStringValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position of the value of interest.</p></TD></TR>
+<TR><TD><p><i>ppStringValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns the string value at iIndex in the list.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function will return the string value that resides in the <i>iIndex</i>-th position in the list.
+</p><p>
+Valid values for iIndex are 0 through <i>n</i>-1, where <i>n</i> is the number of elements in the list at the time of the call.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

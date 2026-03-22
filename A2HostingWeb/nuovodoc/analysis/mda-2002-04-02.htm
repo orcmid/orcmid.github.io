@@ -1,0 +1,229 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /NuovoDocCompagno/analysis/mda-2002-04-02.htm 6     05-12-13 20:49 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>MDA: Model-Driven Architecture Road-Show Notes</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<div align="center"><center>
+
+<table border="0" width="90%" height="3">
+  <tr>
+    <td width="20%" height="6"><a href="../"><img border="0" src="../images/NuovoDoc-logo.gif" alt="NuovoDoc" width="178" height="123"></a></td>
+    <td width="60%" height="6"><h2 align="center"><em> <a href="../"> NuovoDoc</a>
+      <a href="../activities/">Analysis</a>:</em></h2>
+      <h1 align="center"><em>Model Driven Architecture</em></h1>
+    </td>
+    <td width="20%" height="6"></td>
+  </tr>
+</table>
+</center></div>
+</font>
+<blockquote>
+<div align="center"><center>
+
+
+
+<p align="center">
+  <small><b>version <a href="#0.10">0.10</a> last updated 2002-04-02-09:13 -0800 (pst)</b></small>
+</p>
+</center></div>
+
+  <p><em>Look at the basic slides and the symbols.</em>
+<p><em>Look at MDA benefits and consider the impact of preservation of
+long-lived materials.</em><p><em>Where do I talk about the life-cycle issues --
+look at retention periods.</em><p><em>How do we move up to requirements and
+communication with users and design of experiences and accomodation of models
+that are truly system models.</em>
+  <p><em>There are five points addressing the concerns of developers
+  wondering about continued ODMA employment in document applications and in desktop interfaces of:</em>
+  <ol>
+    <li><strong><em><a href="#success">MDA Concepts</a></em></strong></li>
+    <li><strong><em><a href="#stability">Model Lifecycle</a></em></strong></li>
+    <li><strong><em><a href="#stability">Model Realization</a></em></strong></li>
+    <li><strong><em><a href="#reqmodel">System Requirements Modeling</a></em></strong></li>
+    <li><strong><em><a href="#opportunity">MDA Opportunities</a></em></strong></li>
+    <li><strong><em><a href="#resources">Resources and References</a></em></strong></li>
+  </ol>
+  <hr>
+
+<p>I am regularly told that the OMG Model-Driven Architecture is
+important.&nbsp; By colleagues in Japan.</p>
+
+<p>I took the opportunity to come to OMG's roadshow sessions on MDA to find out
+more, and especially find out what people are looking to MDA for.&nbsp;&nbsp;</p>
+
+</blockquote>
+
+<h2>1. <a name="concepts">MDA Concepts</a></h2>
+
+<blockquote>
+
+<p>Scope of MDA.&nbsp; Is it really limited to Software Engineering?&nbsp;&nbsp;</p>
+
+<p>How do we finesse the absence of semantics? - by using a template or pattern
+view that allows the semantics to be out-of-band yet the pattern has recognized
+application</p>
+
+<p>Use UML to express information and service models (see Frankel p.4 top)</p>
+
+<p>UML is more than one language and with profiling</p>
+
+<p>With MOF ability to describe arbitrary language grammars, one can introduce
+specialized languages for particular domains</p>
+
+  <p>Some of that work done, more required (Frankel)</p>
+
+  <p>Need to look at the metadiscussion somehow.</p>
+
+  <p>Need a really good diagram of what is happening.</p>
+
+  <p>MOF just night tied in properly.&nbsp;&nbsp; Very obscure.&nbsp; How can
+  this be explained, motivated, and illustrated?</p>
+
+</blockquote>
+
+<h2>2. <a name="lifecycle">MDA Lifecycle</a></h2>
+
+<blockquote>
+
+<p>What is the lifecycle of an MDA-based model?&nbsp; Can you model it in MDA?</p>
+
+<p>What is it as a performance architecture?</p>
+
+<p>Availability of Tools</p>
+
+  <ul>
+    <li>IBM WebSphere, presumably also in Eclipse</li>
+    <li>Borland Enterprise Studio</li>
+    <li>Rational Workbench coming</li>
+  </ul>
+  <p>Link to Opportunities</p>
+  <p>How do I diagram the architecture of an MDA lifecycle.</p>
+  <p>Frankel illustrations of Web Services</p>
+  <ul>
+    <li>Business driver is exposing services over the internet, that's the real
+      deal</li>
+    <li>Not HTML, etc.</li>
+    <li>The lower-level technologies are important but we'd like to be as
+      loosely coupled to underlying technologies as possible</li>
+  </ul>
+</blockquote>
+
+<h2>3. <a name="realization">Model Realization</a></h2>
+
+<blockquote>
+
+<p>How are these models enacted, moved into implementations of interoperable
+components</p>
+
+<p>What is the flow and wizardry that takes us through the from model to code,
+and what is the confirmation and detailing process.&nbsp; (Think of a Disney
+animation and the storyboarding of a film?)</p>
+
+<p>How does that work over time?</p>
+
+  <ul>
+    <li>like the MAKE problem</li>
+    <li>Versioning and legacy preservation techniques</li>
+    <li>Interworking with legacy components</li>
+  </ul>
+  <p>Deployment is an intriguing situation</p>
+</blockquote>
+
+<h2>4. <a name="reqmodel">System Requirements Modeling</a></h2>
+
+<blockquote>
+
+<p>How do users influence MDAs?</p>
+
+<p>At what level do we interact with users?</p>
+
+  <p>Tying into informal models above or in conjunction with formal models, but
+  can sketch out basic concepts and architectures.&nbsp; Can be formalized and
+  machine processed in some way.&nbsp;&nbsp;</p>
+
+  <p>Frankel terms: Business Processes (ebXML) and Choreographies (WSCL from
+  W3C, etc.)</p>
+
+  <ul>
+    <li>Central concept is business processes and choreographies</li>
+    <li>Doesn't have to use UML or be formal</li>
+    <li>Can use MOF to do a new language altogether</li>
+  </ul>
+</blockquote>
+
+<h2>5. <a name="opportunity">MDA Opportunities</a></h2>
+
+<blockquote>
+  <p>Mine Harmon's links and also his analysis - MDA becomes something that
+  people will rally around, and in 2-3 years mature MDA tools emerge</p>
+  <p>MDA will be described as a market, and will grow to $2G annual market by
+  2005 (a doubling)</p>
+  <p>Missing is the integration with application requirements and system
+  architecture activity</p>
+  <p>Configuration Management opportunity?&nbsp; In the sense of how the actual
+  configuration of an extended system is captured and then how transformations
+  of it can be conceived, explored, and deployed.&nbsp; The paper on using the
+  ISO model as a basis for documenting configurations may be what is needed to
+  deal with the physical as well as the recorded and the&nbsp;</p>
+
+<p>&nbsp;</p>
+
+</blockquote>
+
+<h2>6. <a name="resources">Resources and References</a></h2>
+
+<blockquote>
+
+<p>How to embrace/explore with MDA (look at Hanson's recommendations)</p>
+
+  <p>Ones from the slide set.</p>
+
+  <p>Materials on the OMG site.&nbsp; Specifications</p>
+
+  <p>Associations and Groups that might provide higher-level material</p>
+
+  <ul>
+    <li>Vendors</li>
+    <li>Academics</li>
+    <li>Focused sites -- fan outlets</li>
+    <li>Find out more about Yourdon's Cutter Consortium</li>
+  </ul>
+  <p>Other references.</p>
+
+  <p>Frankels book, &quot;OMG Press.&quot;</p>
+
+  <p>Jim Clark - just recently went to work for Microsoft.&nbsp; This is <i>the</i>
+  Jim Clark?</p>
+
+  <p>UMM - look at p.11 lower slide UMM = UN/CEFACT Modeling Methodology</p>
+
+<hr>
+
+
+</blockquote>
+<h3><i>History</i></h3>
+<blockquote><font size="-1">
+  <p><b><a name="0.10">version 0.10</a> 2002-04-02</b> captured during MDA
+  presentations in Bellevue, Washington&nbsp;</p>
+  </font>
+</blockquote>
+
+
+<p align="right"><font size="-2">created 2002-04-02-09:13 by <a href="../construction/orcmid.htm"> orcmid</a><br><em>$$Author: Orcmid $<br>
+  $$Date: 05-12-13 20:49 $<br>
+  $$Revision: 6 $</em>
+  </font>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Q001000b: Researching DocRelation</TITLE>
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q001000b.htm 6     00-10-18 13:57 Orcmid $-->
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h2 align="center"><a href="Q001000.htm">ODMA FAQtip Q01000</a> </h2>
+<h1 align="center">Q001000b: Researching DocRelation </h1>
+<h2 align="center">
+        DocRelation Usage </h2>
+<P align="center">L<span style="font-variant: small-caps">ast</span>
+U<span style="font-variant: small-caps">pdated</span>     2000-10-17-13:59 -0700 (pdt) </P>
+<hr>
+<pre>From: Dennis E. Hamilton [mailto:infonuovo@email.com]
+Sent: <a href="q001000b.msg">Sunday, 15 October 2000 13:20</a>
+To: VJ Mohan
+Cc: ODMA Tech
+Subject: RE: DocRelation in ODMA 2.0
+
+
+Hi, VJ!
+
+I am starting a FAQ topic on your question.  It is a good one.  The FAQ will be
+<a href="Q001000.htm">Q001000</a> in the log.
+
+I am sending this response to ODMA Tech also, so that we can get the expertise 
+of others on your question.
+
+1.    WHAT PRODUCTS SUPPORT DOCUMENT RELATIONSHIPS AS DEFINED IN ODMA 2.0?
+
+I think Colin O'Brien is probably the most expert on this part of ODMA 2.0.
+
+Our list of ODMA-compliant DMS integrations does not distinguish whether or 
+not document relationships are supported.  It does identify ODMA 2.0-compliant 
+integrations.  Take a look at 
+
+	http://www.infonuovo.com/faq/ODMAdmss.htm
+
+2.    WHAT OF DOCRELATIONS MUST AN ODMA 2.0 DMS SUPPORT?
+
+It is not necessary for an ODMA 2.0 DMS to support DocRelations at all.  Notice 
+that the ODMSTATUS result code ODM_E_NOSUPPORT is possible for both 
+ODMGetDocRelation and ODMSetDocRelation.  Also, the ODMA operation 
+ODMQueryCapability can be used to determine whether there is any support at all, 
+independently, for ODMGetDocRelation and ODMSetDocRelation.
+
+3.    CAN A DOCUMENT THAT IS A PARENT OF A DOCRELATION ALSO BE A CHILD OF A 
+(ANOTHER) DOC RELATION
+
+The ODMA 2.0 DocRelation model provides the possibility of any document 
+(rendition) being a child or a parent.  The specific relations provided 
+will depend on the implementation made available via the DMS integration.  
+
+On ODMGetDocRelation, when Document Relationships are supported, a common 
+response is ODM_E_NORELATION when an application requests information about 
+a relationship that does not exist.
+
+On ODMSetDocRelation, when setting Document Relationships is supported but 
+the requested relationship that is not supported, ODM_E_FAIL is the most 
+likely response (to avoid implying that ODMSetDOcRelation is itself not 
+supported).  ODM_E_ACCESS could be used, but could be misleading when it 
+isn't a matter of access rights but of constraints implemented by the DMS.  
+For example, a DMS might require strict hierarchy of parentage, so requesting 
+an additional parent on an existing child would not be permitted.  ODM_E_FAIL 
+is almost all that is permitted.
+
+NOTE: I am going to add an ODMA 2.0 Errata item on the ambiguity of using 
+ODM_E_NOSUPPORT for a rejected case versus not supporting setting of the 
+Document.  
+
+RECOMMENDED PRACTICE: Before using ODMSetDocRelation, always check for support 
+using ODMQueryCapability.  If the function is supported, treat ODM_E_NOSUPPORT 
+as meaning that the request is for an invalid case in the DMS support of Document 
+Relationships for the identified document.
+
+4.	CAN A CHILD DOCUMENT PARTICIPATE IN MORE THAN ONE RELATIONSHIP AS A CHILD
+
+In the ODMA 2.0 model, there is the possibility of any document being a child 
+in more than one way, as well as being a parent in more than one way.  It is even 
+possible to realize different orderings of how the child sees all of its parent 
+and how a parent sees all of its children in the navigation of a set of Document 
+Relations.  The degree to which a given DMS integration supports these cases will 
+depend on the implementation and can generally be discovered only by trial-and-
+error or independent knowledge of the DMS integration's model for document 
+relationships.
+
+Nevertheless, there is an implication that a document cannot be a child of the 
+same document more than once, and cannot be the parent of the same document more 
+than once.  That's because there is no way to specify this:  the relationships 
+are uniquely identifiable only by the Document Id of the parent and the child.  
+Placement in the (implicit) list of parents or children is controlled by knowing 
+the name of the preceding document in the same list, so this implies some 
+uniqueness.  Because ODMSetDocRelation is also used to *change* an existing 
+relationship, there are not enough parameters and flags to unambiguously operate 
+if more than one parent-to-child document relationship can exist between the 
+same parent and child document.
+
+
+Does this help?  Please send more questions!
+
+Thanks,
+
+-- Dennis</pre>
+<pre>&nbsp;</pre>
+<hr>
+<P align="right"><a name="created">created</a>      2000-10-17-13:59 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-10-18 13:57 $<br>
+$$Revision: 6 $</em> </P></BODY></HTML>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Q010103b: Accessing ODMA with VB and VBA</TITLE>
+<!--$$Header: /ODMACompagno/downloads/Q010103b.htm 5     07-07-28 11:14 Orcmid $-->
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h2 align="center"><a href="Q001000.htm">ODMA FAQtip</a>  <a href="../faq/q000001.htm#Q010103">Q010103</a><br>
+        Visual Basic Access to ODMA Functions </h2>
+<h1 align="center"><a href="Q010103.htm">Q010103</a>b: Accessing ODMA With VB
+and VBA </h1>
+<P align="center"><font size="-1">L<span style="font-variant: small-caps">ast</span>
+U<span style="font-variant: small-caps">pdated</span>       2002-05-07-13:59 -0700 (pdt) </font></P>
+<hr>
+<p><kbd>From: ODMA TECH LIST [ODMATECH@FTPLIST.AIIM.ORG] on behalf of <a href="../faq/Q000605.htm#SimonTomlinson"> Simon
+Tomlinson</a> [simon.tomlinson@LASERFORM.CO.UK]<br>
+Sent: <a href="q010103b.msg"> Monday, 27 March 2000 02:30</a><br>
+To: ODMATECH@FTPLIST.AIIM.ORG<br>
+Subject: <a href="q010103b.txt"> Re: ODMA in VB or VBA?</a><br>
+<br>
+Ragnar Thor Mikkelsen,<br>
+<br>
+Our application is a VB written app.  We wrote a VB ActiveX DLL that handles all the ODMA calls.  It's very easy and straight forward to use in VB or
+VBA.
+</kbd></p>
+<p><kbd>I've included below the VB declarations you'll need in order to use ODMA.&nbsp;
+These are our own declarations and they may differ in design to how you need to use them, but most of them should work in the outset.
+</kbd></p>
+<p><kbd>We spent a year making our application ODMA compliant and have found and
+fixed many VB related issues and problems with ODMA.<br>
+<br>
+Hope that helps,<br>
+Simon J Tomlinson&nbsp;<br>
+Senior Analyst Programmer&nbsp;<br>
+Laserform International Ltd.&nbsp;<br>
+300 Lincoln House, High Holborn, London.&nbsp;<br>
+0171 333 0666&nbsp;<br>
+<br>
+CONFIDENTIALITY NOTICE:&nbsp;<br>
+The contents of this mail are confidential to Laserform and the addressee.&nbsp;
+If you are not the addressee, please return this mail to us quickly, delete it, and destroy any copies or printouts.<br>
+</kbd></p>
+<pre style="border-style: solid; border-width: 1"><kbd>
+'VB ODMA Delcarations
+'~~~~~~~~~~~~~~~~~
+Public Declare Function ODMRegisterApp Lib &quot;odma32.dll&quot; (pOdmHandle As Long, _
+ByVal Version As Integer, ByVal lpszAppId As String, ByVal hwnd As Long, ByVal Reserved As Long) As Integer
+Declare Sub ODMUnRegisterApp Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long)
+Declare Function ODMSelectDoc Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, ByVal lpszDocId As String, _
+pdwFlags As Long) As Integer
+Declare Function ODMOpenDoc Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, ByVal Flags As Long, _
+ByVal lpszDocId As String, ByVal lpszDocLocation As String) As Integer
+Declare Function ODMSaveDoc Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, ByVal lpszDocId As _
+String, ByVal lpszNewDocId As String) As Integer
+Declare Function ODMSaveAs Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, ByVal lpszDocId As String, _
+ByVal lpszNewDocId As String, ByVal lpszFormat As String, ByVal pcbCallBack As Long, _
+ByVal pInstanceData As Long) As Integer
+Declare Function ODMNewDoc Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, _
+ByVal lpszDocId As String, ByVal dwFlags As Long, ByVal lpszFormat As String, _
+ByVal lpszDocLocation As Long) As Integer
+Function ODMCloseDoc Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, _
+ByVal lpszDocId As String, ByVal activeTime As Long, ByVal pagesPrinted As Long, _
+ByVal sessionData As Long, ByVal dataLen As Long) As Integer
+Declare Function ODMGetDocInfo Lib &quot;odma32.dll&quot; (ByVal odmHandle As Long, _
+ByVal lpszDocId As String, ByVal item As Integer, ByVal lpszData As _
+String, ByVal dataLen As Integer) As Integer
+
+Public Enum Errors
+E_FAIL = -1
+S_OK = 0
+ODM_E_FAIL = 1 ' Unspecified failure
+ODM_E_CANCEL = 2 ' Action was cancelled at user's request
+ODM_E_NODMS = 3 ' DMS not registered
+ODM_E_CANTINIT = 4 ' DMS failed to initalize
+ODM_E_VERSION = 5 ' DMS doesn't support the requested
+'version of ODMA
+ODM_E_APPSELECT = 6 ' User has indicated that he wants to use
+'the application's file selection
+'capabilities rather than those of the
+'DMS.
+ODM_E_USERINT = 7 ' Requested action cannot be performed
+'without user interaction, but silent
+'mode was specified.
+ODM_E_HANDLE = 8 ' The DMHANDLE argument was invalid.
+ODM_E_ACCESS = 9 ' User does not have requested access
+'rights to specified document.
+ODM_E_INUSE = 10 ' Document is currently in use and cannot
+'be accessed in specified mode.
+ODM_E_DOCID = 11 ' Invalid document ID
+ODM_E_OPENMODE = 12 ' The specified action is incompatible
+'with the mode in which the document was
+'opened.
+ODM_E_NOOPEN = 13 ' The specified document is not open.
+ODM_E_ITEM = 14 ' Invalid item specifier.
+ODM_E_OTHERAPP = 15 ' Selected document was for another app.
+End Enum
+
+Public Enum DocOpenModes
+ODM_MODIFYMODE = 1 ' Open document in a modifiable mode.
+ODM_VIEWMODE = 2 ' Open document in non-modifiable mode.
+ODM_NONE = 0 ' No specific action is requested.
+End Enum
+
+Public Enum DocViewModes
+ODM_DELETE = 1 ' Delete the specified document.
+ODM_SHOWATTRIBUTES = 2 ' Display the specified document's profile
+'or attributes.
+ODM_EDITATTRIBUTES = 3 ' Edit the specified document's profile or
+'attributes.
+ODM_VIEWDOC = 4 ' Display the specified document in a
+'viewer window.
+ODM_OPENDOC = 5 ' Open the specified document in its
+'native application.
+End Enum
+
+Public Enum DocInfo
+ODM_AUTHOR = 1 ' Author of the document.
+ODM_NAME = 2 ' Descriptive name of the document.
+ODM_TYPE = 3 ' Type of the document.
+ODM_TITLETEXT = 4 ' Suggested text to display in the
+'document window's title bar.
+ODM_DMS_DEFINED = 5 ' DMS defined data.
+ODM_CONTENTFORMAT = 6 ' String describing document's format
+ODM_SILENT = 16 ' Don't interact with the user while
+
+End Enum
+
+Public Enum typeLengths
+ODM_DOCID_MAX = 255 ' Maximum length of a document ID including the terminating NULL character.
+ODM_DMSID_MAX = 9 ' Maximum length of a DMS ID including the terminating NULL character.
+ODM_FILENAME_MAX = 255 ' Maximum length of a filename returned by ODMA including the 
+</kbd>' <kbd>terminating NULL character. Platform dependent.
+End Enum
+
+Public Enum odmaVersion
+NOTIME = &amp;HFFFFFFFF
+ODM_API_VERSION = 100 ' Version of the API
+End Enum
+
+</kbd></pre>
+<p><kbd>-----Original Message-----<br>
+From: Ragnar Thor Mikkelsen [mailto:ragnar.mikkelsen@NESTOR.NO]<br>
+Sent: Monday, March 27, 2000 11:03 AM<br>
+To: ODMATECH@FTPLIST.AIIM.ORG<br>
+Subject: ODMA in VB or VBA?<br>
+<br>
+<br>
+Do I need a C/C++ compiler to make an ODMA aware application or can I use<br>
+Visual Basic?<br>
+I have used VBA in MsOffice and AutoCAD to trigger registration of documents<br>
+and logging of actions in a document database. What is the simplest way to<br>
+logg all opens and saves in ODMA compliant applications?<br>
+<br>
+Regards,<br>
+<br>
+For Nestor AS&nbsp;<br>
+Ragnar Thor Mikkelsen&nbsp;<br>
+Fagansvarlig DAK og Dokumenth?dtering&nbsp;<br>
+Telefon: 73 54 03 09  ,   Faks: 73 94 38 61&nbsp;<br>
+Epost: ragnar.mikkelsen@nestor.no&nbsp;<br>
+</kbd></p>
+<hr>
+<P align="right"><a name="created">created</a>       2002-05-07-13:59 -0700 (pdt) by
+<a href="mailto:orcmid@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 07-07-28 11:14 $<br>
+$$Revision: 5 $</em> </P></BODY></HTML>

@@ -1,0 +1,37 @@
+<html><head><title>Interfaces and Methods: IdmaRelationshipOrdering</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaRelationshipOrdering"></a>IdmaRelationshipOrdering</h2>
+<p>This interface provides methods for manipulating the relative ordering of multiple relationship 'arrows' pointing out of a single Head or into a single Tail. 
+</p><p>
+The methods below affect only the local scratch copies of the objects.  To make these changes persistent, IdmaConnection::ExecuteChange() or IdmaBatch::ExecuteChanges() must be invoked on the relationship object.</p></p>
+<h3><a name="IdmaRelationshipOrderingSetOrdering"></a>IdmaRelationshipOrdering::SetOrdering</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaRelationshipOrdering::SetOrdering</b> (<br>
+Dmapv    <i>pIHeadRelationship</i>,<br>DmaInteger32    <i>ulHeadWhere</i>,<br>Dmapv    <i>pITailRelationship</i>,<br>DmaInteger32    <i>ulTailWhere</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pIHeadRelationship</i></p></TD><TD><p>input</p></TD><TD><p>Another Relationship object of the same class as the current object.  The current object and pIHeadRelationship object must have a common Head object.</p></TD></TR>
+<TR><TD><p><i>ulHeadWhere</i></p></TD><TD><p>input</p></TD><TD><p>Position of the current object relative to pIHeadRelationship object.</p></TD></TR>
+<TR><TD><p><i>pITailRelationship</i></p></TD><TD><p>input</p></TD><TD><p>Another Relationship object of the same class as the current object.  The current object and pITailRelationship object must have a common Tail object.</p></TD></TR>
+<TR><TD><p><i>ulTailWhere</i></p></TD><TD><p>input</p></TD><TD><p>Position of the current object relative to pITailRelationship object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method manipulates the relative ordering of multiple relationship 'arrows' pointing out of a single Head or into a single Tail. It allows inserting before or after a specified existing relationship object, or first or last in the enumeration, or in an arbitrary document-space-defined order.
+</p><p>
+The values for ulHeadWhere and ulTailWhere are selected from the following set:  DMA_POS_BEFORE inserts the current object immediately before the other object.  DMA_POS_AFTER inserts the current object immediately after the other object. DMA_POS_FIRST inserts the current object as the first element of the enumeration.  DMA_POS_LAST inserts the current object as the last element of the enumeration. DMA_POS_NO_CHANGE does not change the ordering (useful for setting an initial ordering).  DMA_POS_DEFAULT leaves the choice of where the current object is inserted up to the doc space implementation.  Only DMA_POS_DEFAULT is required to be supported if this interface is implemented.  For DMA_POS_FIRST and DMA_POS_LAST, the 'other object' argument must be NULL.
+
+</p><p>
+In the context of containment, the Head and Tail properties of a Referential Containment Relationship object, for instance, are objects of class Containable and Container, respectively.  The reflective property for Head is Containers in an object of class Containable.  The reflective property for Tail is Containees in an object of class Container.  Thus, invoking this method on a Referential Containment Relationship object after setting the Head and Tail properties will insert the relationship object into the Containers and Containees enumerations of the related Containable and Container objects.
+</p><p>
+Similarly, the Head and Tail properties of a Direct Containment Relationship object are objects of class Containable and Container, respectively.  The reflective property pairs are Head and Parent, and Tail and Children.  Note that Parent is a singleton Direct Containment Relationship object, rather than an enumeration, due to the 1:N nature of direct containment.  In this case, the only valid values for pIHeadRelationship and ulHeadWhere are null and DMA_POS_DEFAULT, respectively.
+</p><p>
+If multiple calls are made to this method without intervening calls on ExecuteChange or ExecuteChanges, each such call completely replaces the intended effect of the preceding call. Thus, when ExecuteChange or ExecuteChanges is invoked, the only ordering change to the persistent store will be those reflecting the most recent call to SetOrdering.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_UNSUPPORTED_ORDERING</p></TD><TD><p>An unacceptable value was provided for an ordering parameter.</p></TD></TR>
+</TABLE>
+</body></html>

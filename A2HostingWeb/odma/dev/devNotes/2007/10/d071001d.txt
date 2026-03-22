@@ -1,0 +1,229 @@
+d071001d.txt 0.01           UTF-8                   dh:2007-11-21
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+     USAGE OF d071001d-0.30-practical100.zip REGRESSION-SET ARCHIVE
+
+        This material is for confirmation testing of the Java
+        info.odma.practical100 package of the ODMJNI 1.0 Java-ODMA
+        Bridge.
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2007/10/d071001d.htm>.
+        Consult that page for the latest information on updates and
+        the range of practical100 version that this regression check
+        is usable for.
+
+        Versions of this regression set are redistributed as components
+        of archives containing material the regression set provides
+        confirmation tests of.  The list of archives carrying this
+        material is also found at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001d.htm>.
+
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this regression set, it is necessary to have already
+   satisfied the following minimum prerequisites:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Creation of a development tree, starting at some folder, <folder>,
+        in which are already installed the practical100 classes to be
+        confirmed with this regression set, either in a development tree or
+        in a distribution .jar file.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to a <folder> location for
+   which there is not already a <folder>\0.30-practical100 subdirectory.
+   Any previous 0.30-practical100 subdirectory should be deleted.
+
+   When the material is extracted, with subdirectories, there will be
+   the following structure:
+
+    <folder>
+            d071001d-0.30-practical100.zip 0.00
+                                This archive, from which the content has
+                                been extracted in the folders, below
+
+        0.30-practical100/
+                d071001d.txt 0.01, this manifest, 10,003 byte file
+                                dated 2007-11-19-21-18:08
+                d071001d-license.txt 0.00, 3,621 byte file
+                                dated 2007-11-19-19.33
+
+            Null01/
+                    ConWriter.class 0.01 utility input-output,
+                                367 byte file dated 2006-10-23-22:16
+                    IConOut.class 0.01 utility input-output,
+                                480 byte file dated 2006-10-23-22:16
+                    Null01.class 0.00 confirmation test,
+                                4,852 byte file dated 2006-12-18-20:12
+                    Null01-source.zip 0.00 source code files,
+                                27,743 byte file dated 2007-10-11-16:49
+                    OdmJava.bat 0.05 Java environment setup script,
+                                3,179 byte file dated 2007-03-31-15:15
+                    RunNull01.bat 0.02 regression-check script,
+                                2,602 byte file dated 2007-11-21-16:38
+
+                results/
+                    Null01-0.58-2007-10-07-1457.txt transcript
+                                of test conducted against 0.58 practical100,
+                                3,530 byte file dated 2007-11-18-21:37
+                    Null01-0.59-2007-11-18-2111.txt transcript
+                                of tst conducted against practical100 0.59,
+                                3,701 byte file dated 2007-11-18-21:30
+                    Null01-0.59-2007-11-21-1643.txt transcript of a retest
+                                performed using RunNull01 0.02
+
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d071001d-0.30-practical100.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files and batch scripts
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java runtime such as the JRE 1.5 and JDK 1.5 used to develop
+                      and run the Null01 application in this archive.
+
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   The RunNull01.bat script is used to carry out the Null01 regression check
+   of the practical100 package.
+
+   The RunNull01.bat script depends on the Java setup defined when it runs
+   the included OdmJava.bat script.
+
+   Adjust OdmJava.bat as necessary to locate the Java version that is used
+   for the tests.  It is assumed that a Java Development Kit (JDK) is used.
+   If there is only a Java runtime, OdmJava should be corrected such that
+   the PATH statement in the script works properly.
+
+   Also adjust OdmJava.bat to set the %OdmClasses% environment variable so
+   that the practical100 classes can be located.  This can be any of
+
+     * the directory where there is a jar file to be used, where the jar
+       file itself will be named when the RunNull01 script is performed
+
+     * the full-path file name of a jar file to be used (and it is not
+       necessary to name it when the RunNull01 script is performed)
+
+     * the directory that has a subfolder sequence info/odma/practical100,
+       with the info.odma.practical100 package in the practical100 folder.
+
+   Operation of the confirmation check is by starting a console session and
+   changing to the 0.30-regression\Null01 folder wherever it has been
+   extracted.  Perform the confirmation test using command
+
+        RunNull01 <optional-package>
+
+   where the <optional-package> is used in the case where %OdmClasses% is
+   the location of a .jar file to be used.  The <optional-package> parameter
+   is of the form
+
+        \package.jar
+
+   when it is used.
+
+   Consult the transcripts in the results folder for illustrations of the
+   configurations used when those confirmation tests were performed.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  For further details and contact information
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate this archive on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        ODMJNI 1.0 0.30-practical100 Regression Set archive d071001d-0.30-
+        practical100.zip. ODMA Interoperability Exchange, ODMdev Development
+        Note page d071001d.txt 0.0 (manifest), November 19, 2007.
+        Current version available for download at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001d.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+
+0.01 2007-11-21-17:53 Update to reflect the addition of OdmJava.bat and
+     update to RunNull01 0.02 for using the OdmJava.bat in the Null01
+     folder.  This makes the instructions cleaner and eliminates any
+     dependency between where 0.30-practical is extracted and where the
+     practical100 package is located.
+0.00 2007-11-19-19:47 Customize initial manifest for the regression set.
+
+$Header: /ODMdev/info/odma/practical100/0.30-practical100/d071001d.txt 5     07-11-21 18:08 Orcmid $
+
+                       *** end of d071001d.txt ***

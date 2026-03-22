@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d130301b: Software-Component Toolcraft Approach [latest] </title>
+<!--$$Header: /nfoWorksCompagno/dev/2013/03/d130301b.htm 356   17-06-14 20:22 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="d130301c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a href="http://nfoWorks.org" target="_top">
+<img border="0" src="../../../images/nfoWorks-2014-06-02-1702-LogoSmall.png" alt="nfoWorks: tools for document interoperability" width="160" height="100"></a><a href="http://nfoWare.com" target="_top">
+<!-- included from the http://nfoworks.org/construction/templates/00/c000005b.htm  template of 2014-06-05-17:10 -0700 -->
+</a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../d000001.htm#d130301"><font color="#990033">d130301</font></a> 
+nfoWorks </strong></font>
+
+		<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a><font color="#990033"><br>
+      <i><font size="5">&nbsp;</font><font size="4"><a href="d140502.htm"><font color="#990033">Software-Component 
+Toolcraft</font></a></font></i><br>
+      <em><font size="5">nfoWorks Approach Sketch</font></em></font></strong></p>
+</font>
+
+    </td>
+    
+    <td width="28%" height="6">
+
+
+
+
+      <small>
+
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+
+
+      <p align="right">
+		<b><font face="monospace"><a target="_top" rel="nofollow" href="../../../">nfoWorks</a>&gt;<a target="_top" rel="nofollow" href="../../">dev</a>&gt;<br>
+		<a target="_top" rel="nofollow" href="../">2013</a>&gt;<a rel="nofollow" target="_top" href="./">03</a>&gt;<br>
+&nbsp;</font></b></p>
+
+      <p align="right"><b><font face="monospace">
+		<a rel="nofollow" target="_top" href="d130301c.htm">d130301c</a>&gt;</font></b><br>
+      </font></font></small>
+
+      <font size="1"><a href="#v0.00">0.00</a>
+		2017-06-14 20:22 </font></small>
+
+      </p>
+
+
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> available on the Internet at
+			<br>&lt;<b><font face="monospace"><a href="d130301b.htm">http://nfoWorks.org/dev/2013/03/d130301b.htm</a></font></b>&gt;<br>&nbsp;</li>
+			<li><b>Toolcraft Approach Sketch </b>most-recent electronic update available 
+			at <b>&nbsp;</b>&lt;<b><font face="monospace"><a href="d130301c.htm">http://nfoWorks.org/dev/2013/03/d130301c.htm</a></font></b>&gt;. </li>
+		</ul>
+</div></small></blockquote>
+
+       
+          
+
+<small>
+<p><font size="3">Reuse of common components is important for simplification of 
+testing and confirmation that working code is being used.&nbsp; It is also 
+valuable to ensure that consistent behavior is provided wherever the common 
+component is relied upon.</font></p>
+<p><font size="3">The reusable components are intended to be portable across 
+some family of platforms.&nbsp; There are degrees of reusability and there will 
+often be integration of lower-level components into customized higher-level 
+modules that are targeted to distinct platforms (such as Java, .NET, COM, WinRT, 
+JavaScript, and so on).&nbsp; There can even be computer processor 
+specializations.</font></p>
+<p><font size="3">To accomplish these varied levels of reusability along with 
+specializations for performance and, sometimes, safety reasons, there will also 
+be shared software-code units that are smaller than integrated functions they 
+must be combined into for one use or another.&nbsp; Because such embedded units 
+depend on assurances of the integrated function for their correct operation, 
+such embedded units are generally not exposed by the integrated function for 
+independent usage. </font></p>
+<p><font size="3">This sketch outlines the different levels that will be 
+employed in a toolcraft framework organized for the achievement of such 
+reusability and portability.</font></p>
+<p><font size="3">The concepts will be demonstrated in the implementation of 
+cryptographic primitives and utilities for their use in document forensics, 
+personal clouds, personal data exchange, and other application settings.</font></p>
+<p><font size="3">See, e.g.,
+<a href="http://nfoworks.org/dev/2012/07/d120701c.htm">DKx Proof-of-Concept 
+Sketch</a> for an activity in which the software-component toolcraft will be 
+applied.</font></p>
+<p><b><font size="3" color="#800080">{Ed.Note: The general toolcraft concern is 
+for the development of implementations that are able to be wrapped and 
+interoperated in a variety of ways on a variety of platforms.&nbsp; There must 
+be consideration of ptimization cases: one for in-process objects and the other 
+for piece-parts for compilation into use cases for cryptographic primitives and 
+other objects where direct incorporation is preferable to library linking.&nbsp; 
+There is also consideration for prototyping, proof-of-concept, and testing, 
+including cross-confirmation against existing implementations.}</font></b></p>
+<dl>
+	<dl>
+		<dt><b><a target="_top" name="Attribution" href="#Attribution">
+		Attribution:</a></b> </dt>
+	</dl>
+	<blockquote>
+		<dl>
+			<dt>Hamilton, Dennis E. </dt>
+			<dd>Software-Component Toolcraft: <i>nfoWorks</i> Approach Sketch.&nbsp; <i><b>nfoWorks</b></i> 
+            devNote page d130301c 0.00 March 9, 2013.&nbsp; Accessed at &lt;<font face="monospace"><b><a target="_top" href="d130301c.htm">http://nfoWorks.org/dev/2013/03/d130301c.htm</a></b></font>&gt;.</dd>
+		</dl>
+	</blockquote>
+	<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+    <dt><b><a name="v0.01">0.01</a> Placeholder for adding substantive material</b></dt>
+    <dd>[TBD]</dd>
+	<dt><strong><a name="v0.00">0.00</a> 2013-03-09-10:44 Initial Placeholder</strong></dt> 
+      <dd>Provide initial placeholder content for sketching the toolcraft 
+      approach.&nbsp; 
+      The content is not refined beyond a minimum for initial usage. </dd>        
+    </dl></small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      
+<!-- included from nfoWorks construction/templates/00/c000005d.htm of 2008-04-07-11:14 -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWorks /construction/templates/00/c000005f.htm of 2011-10-01-18:46 -0700 -->
+ 	<i><b><a href="../../../" target="_top">nfoWorks</a></b></i>.<br />This work is 
+	licensed under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font>
+</td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2012-05-02-12:06 -0700 (pdt) <br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-06-14 20:22 $<br>
+      $$Revision: 356 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="17632" -->
+</body>
+</html>

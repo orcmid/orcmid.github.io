@@ -1,0 +1,200 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /ODMACompagno/faq/Q000900.htm 7     07-07-28 11:15 Orcmid $-->
+<title>Q000900: Why So Many Bugs</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+<base target="_self">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="./">ODMA FAQtip</a></h2>
+
+<h1 align="center"><b><a href="q000001.htm#Q000900">Q000900</a>:&nbsp;Why So Many
+Defects?</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.10">Version
+0.10</a></span>&nbsp; <font color="#FF0000"><span style="text-transform: uppercase">InITIAL
+Draft </span></font>L<span style="font-variant: small-caps">ast updated</span>
+ 2002-11-22-15:18 -0700 (pst)<br>
+The <a href="http://ODMA.info/faq/Q000900.htm">latest
+version</a> of this information is available at the <a href="http://DMware.info/" target="_top">AIIM
+DMware</a> <a href="http://ODMA.info/" target="_top">ODMA site</a>.
+</h5>
+
+  <hr>
+
+<blockquote>
+  <h3><i>Content</i></h3>
+</blockquote>
+<h2>1. <a href="#Overview">Overview</a></h2>
+
+<h2>2. <a href="#ComparingIncomparables">Comparing Incomparables</a></h2>
+<h2 align="left">3. <a href="#GettingWhatYouMeasure">Getting What You Measure
+For</a></h2>
+<h2 align="left">4. <a href="#WhyChange">Why the Change?</a></h2>
+<h2 align="left">5. <a href="#WhatToExpect">What You Can Expect</a></h2>
+
+  <hr>
+  <h1 align="left">1. <a name="Overview">Overview</a></h1>
+<blockquote>
+  <p align="left">Since May, 2000, a number of <a href="http://www.infonuovo.com/odma/support/X00-log.htm">defects</a>,
+  <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">errata</a>, <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">irregularities</a>,
+  and <a href="http://www.infonuovo.com/odma/faq/Q00-log.htm">questions</a>
+  have been recorded against the ODMA 2.0 Specification and ODMA software,
+  especially the Connection Manager implementations.&nbsp; This is reflected in
+  the &quot;<a href="../support/default.htm#KnownProblems">box
+  score</a>&quot; on the <a href="../support/">ODMA
+  Support</a> page.</p>
+  <p align="left">We are now (September 2000) part way through a full and
+  systematic audit of the ODMA materials.&nbsp; Based on experience so far, it
+  is easy to predict that more defects will be uncovered.&nbsp; The defect
+  population will grow, taper off, and decrease as repairs and updates are made.</p>
+  <p align="left">I am concerned that developers of ODMA-compliant products, and
+  users of ODMA-enabled DMS integrations will assume too much about the
+  condition of ODMA because of the highly-visible compilation of these
+  statistics and the supporting defect analyses.&nbsp;&nbsp;</p>
+  <p align="left">This ODMA FAQtip presents my perspective about fully-open and
+  public defect analysis for ODMA:</p>
+  <ol>
+    <li>
+      <p align="left"><b>ODMA is stable and successful.</b>&nbsp; There's no
+      question about that.&nbsp; Most of the defects that have been uncovered
+      through auditing have not disrupted or damaged the use of ODMA &quot;in
+      the wild.&quot;&nbsp; Nevertheless, they present pitfalls to maintainers
+      of the ODMA software.&nbsp; They provide potential distractions and
+      discouraging experiences for people using the software in a development
+      setting.&nbsp;&nbsp;</li>
+    <li>
+      <p align="left"><b>ODMA is middleware.</b>&nbsp; This implies a greater
+      level of accountability and stability than is imposed on standalone,
+      easily-substitutable products.&nbsp; In particular, any question about the
+      integrity of ODMA software inserts spurious concerns in the
+      troubleshooting of integrations, even when ODMA has nothing to do with
+      it.&nbsp; (See the laborious history of incident report <a href="http://www.infonuovo.com/odma/support/X000500.htm">X000500</a>.)&nbsp;
+      It is not unusual for experts on newsgroups to point to the use of ODMA
+      when someone reports an application difficulty, even though all known
+      cases have been unfounded.</li>
+    <li>
+      <p align="left"><b>We are raising the bar.</b>&nbsp; I stand for ODMA
+      software being impeccable.&nbsp; The Connection Manager and other fixtures
+      are now readily open for inspection, with audit results and test results
+      openly-available.&nbsp; There are to be sufficient test fixtures to
+      readily troubleshoot and confirm integrations involving ODMA.&nbsp; We
+      will be able to make future upgrades without ever destabilizing ODMA or
+      giving anyone reason to lose confidence in its reliability and
+      stability.&nbsp; To achieve that level, we must be unflinchingly objective
+      about where we are starting from.&nbsp; When a defect is uncovered, it
+      will be repaired quickly and thoroughly without introducing new problems.</li>
+    <li>
+      <p align="left"><b>It will look painful.&nbsp; </b>I am reminded that
+      there is no reason why a journey must resemble the outcome. Getting to a
+      higher-level of support and reliability will look messy.&nbsp; There are
+      few contributors involved so far.&nbsp; Auditing and stabilization of ODMA
+      is happening retroactively in the midst of sustaining support for ODMA and
+      promotion of improvements to ODMA, along with migration to <a href="http://DMware.info/" target="_top">AIIM
+      DMware</a>.&nbsp; There will be on-going construction and re-organization
+      of materials for some time, and we can't stop the clock to do it.</li>
+  </ol>
+  <p align="left">That's the basic idea.&nbsp; The following sections elaborate
+  on some key ideas that may help in any appraisal of what you are seeing as
+  ODMA support continues:</p>
+  <ul>
+    <li>
+      <p align="left">It is inappropriate to assume much about the quality of
+      ODMA based on the support statistics and incident reports.&nbsp; I notice
+      that I use many software products for which I have no idea what their
+      non-disclosed (and perhaps unmeasured) support statistics might be.&nbsp;
+      How about you? (<a href="#ComparingIncomparables">Section
+      2</a>).</li>
+    <li>
+      <p align="left">If there is no actual confirmation and measurement of
+      specific software qualities, there is no basis for expecting to find them
+      satisfied.&nbsp; ODMA was developed under a particular model of what was
+      appropriate.&nbsp; It was successful in that regard.&nbsp; (<a href="#GettingWhatYouMeasure">Section
+      3</a>).</li>
+    <li>
+      <p align="left">We now know that middleware adds more uncontrolled
+      variables to integration situations.&nbsp; This makes it easy for
+      middleware to be suspect in any difficulties that occur in that
+      integration.&nbsp; Developers can even be discourage from pursuing use of
+      middleware if there is anything to stumble over.&nbsp; Especially since
+      there's always someone with a better idea.&nbsp; We too could just move on
+      to greener pastures.&nbsp; Or we could take the opportunity to raise the
+      bar and see what that provides.&nbsp; (<a href="#WhyChange">Section 4</a>)&nbsp;&nbsp;</li>
+    <li>
+      <p align="left">In bringing stability and predictability to ODMA, I have a
+      likely story about how we will proceed and what the stages will look
+      like.&nbsp; (<a href="#WhatToExpect">Section 5</a>)</li>
+  </ul>
+</blockquote>
+<p align="right"><i>Dennis E. Hamilton<br>
+  AIIM DMware Technical Coordinator<br>
+  Renton, Washington<br>
+  September 24, 2000</i></p>
+<blockquote>
+  <p align="left">&nbsp;</p>
+</blockquote>
+  <h1 align="left">2. <a name="ComparingIncomparables">Comparing Incomparables</a></h1>
+<blockquote>
+  <p align="left">It is inappropriate to assume much about the quality of
+      ODMA based on the support statistics and incident reports.&nbsp; I notice
+      that I use many software products for which I have no idea what their
+      non-disclosed (and perhaps unmeasured) support statistics might be.&nbsp;
+      How about you? (<a href="#ComparingIncomparables">Section
+      2</a>).</p>
+</blockquote>
+  <h1 align="left">3. <a name="GettingWhatYouMeasure">Getting What You Measure
+  For</a></h1>
+<blockquote>
+  <p align="left">If there is no actual confirmation and measurement of
+      specific software qualities, there is no basis for expecting to find them
+      satisfied.&nbsp; ODMA was developed under a particular model of what was
+      appropriate.&nbsp; It was successful in that regard.&nbsp; (<a href="#GettingWhatYouMeasure">Section
+      3</a>).</p>
+</blockquote>
+  <h1 align="left">4. <a name="WhyChange">Why the Change?</a></h1>
+<blockquote>
+  <p align="left">We now know that middleware adds more uncontrolled
+      variables to integration situations.&nbsp; This makes it easy for
+      middleware to be suspect in any difficulties that occur in that
+      integration.&nbsp; Developers can even be discourage from pursuing use of
+      middleware if there is anything to stumble over.&nbsp; Especially since
+      there's always someone with a better idea.&nbsp; We too could just move on
+      to greener pastures.&nbsp; Or we could take the opportunity to raise the
+      bar and see what that provides.&nbsp; (<a href="#WhyChange">Section 4</a>)&nbsp;&nbsp;</p>
+</blockquote>
+  <h1 align="left">5. <a name="WhatToExpect">What You Can Expect</a></h1>
+<blockquote>
+  <p align="left">It is probably a good thing that I didn't fill this in when I
+  could have in September, 2000.&nbsp; Looking back today, from November, 2002,
+  I am no longer confident about predicting future developments for ODMA and the
+  stabilization of the software and, most importantly, the ongoing improved
+  usage of ODMA for integration between desktop applications and
+  document-management systems.</p>
+  <p align="left">There are also some lessons that have been learned in the past
+  two years about why ODMA is difficult and how something so simple is
+  deteriorating in terms of use and successful integrations. That's without any
+  change to the ODMA specification and the supporting software.</p>
+  <p align="left">This will be good to review another time.&nbsp;&nbsp;</p>
+</blockquote>
+  <hr>
+<blockquote>
+  <dl><font size="-1">
+    <dt><strong><a name="0.10">Version 0.10</a>: Initial Draft (orcmid)</strong></dt>
+    <dd>Choose an outline and create an overview of the ideas I want to explore
+      here.&nbsp; Get review of this much from contributors that I have been
+      working with.</dd>
+  </font></dl>
+</blockquote>
+
+<p align="right"><small><small>created 2000-09-18-17:25 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 07-07-28 11:15 $<br>
+$$Revision: 7 $</em></small></small></p>
+</body>
+</html>

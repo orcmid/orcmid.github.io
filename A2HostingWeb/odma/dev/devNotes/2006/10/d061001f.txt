@@ -1,0 +1,297 @@
+d061001f.txt 0.00                    UTF-8                   dh:2007-02-22
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+         CONTENT OF d061001f-practical100-0.30alpha.zip ARCHIVE
+
+
+        ODMJNI 1.0 practical100 0.30alpha Evolutionary Prototype
+        --------------------------------------------------------
+
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061001f.htm>.
+        There is additional information on the origin and usage of
+        this material at that location.
+
+        This package was introduced as part of the ODMJNI 1.0
+        0.30alpha Document-Access and later releases through 0.54beta.
+        For more information on those releases, consult web page
+        <http://odma.info/dev/devNotes/2006/12/d061201e.htm>.
+
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+
+The info.odma.practical100 package provides basic interfaces, classes, and
+other definitions for implementing ODMA 1.0 access from Java-based
+desktop applications on Microsoft Windows.  The component interfaces are
+designed to shield Java-based applications from ODMA API details.  The
+package provides a practical level of ODMA-aware operations suitable for
+typical office-desktop applications.
+
+This distribution provides info.odma.practical100 components that define
+the interfaces to ODMJNI 1.0 functionality.
+
+There is also a null implementation of that functionality.  This provides
+the behavior that arises when no ODMA Connection Manager is available to
+be used on behalf of the Java application.
+
+To obtain operations with any available ODMA support, the odmjni100 package
+must also be used.  See <http://ODMA.info/dev/devNotes/2006/12/d061201.htm>
+for the available complete packages.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this distribution, the following minimum prerequisites
+   are required:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+
+   Development of Java programs that rely on the info.odma.practical100
+   package of classes and interfaces will require proficiency in the Java
+   language.
+
+   There are extensive comments in the material to guide the reviewer and
+   adopter in understanding the intention for the software and the methods
+   used.  The code annotations are insufficient for reliable understanding
+   in the absence of the prerequisites.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to the <folder> location that is
+   the Java classpath point for the ODMJNI 1.0 packages on your computer.
+
+   The extraction, with preservation of subdirectories, will install
+   material in the following hierarchy when extraction is into the directory
+   at <folder>:
+
+            <folder>/
+                    d061001f.txt - 0.04 this manifest, 12,864 byte file
+                        dated 2007-02-22-15:26
+                    d061001f-license.txt 0.01 copy of the Open Document
+                        Management API License 1.0 applied to the archive
+                        d061001f-practical100-0.30alpha.zip and its content.
+                        3,434 byte file dated 2007-02-22-13:46
+                    d061001f-PreReleaseNotes.txt 0.06, 33,885 byte file
+                        dated 2007-02-22-12:56 with updates to reflect
+                        the final release characteristics
+                info/
+                    odma/
+                        practical100/
+                                BuildClasses.bat 0.01, 2,439 byte file
+                                    dated 2006-12-17-20:00
+                                OdmJava.bat 0.02, 2,595 byte file dated
+                                    2007-02-05-20:48
+
+                                OdmConnection.java 0.07, 2006-12-17-13:39
+                                OdmDocument.java 0.06, 2006-12-17-14:06
+                                OdmError.java 0.03, 2006-12-18-13:53
+                                OdmInterface.java 0.08, 2006-12-17-13:04
+                                OdmNull.java 0.01, 2006-12-18-20:30
+                                OdmPendingDocument.java 0.03,
+                                    2006-12-17-14:35
+                                OdmViewingDocument.java 0.08,
+                                    2006-12-17-15:13
+                                OdmWorkingDocument.java 0.07,
+                                    2006-12-17-20:27
+
+                                OdmNullBind.java 0.01, 2006-12-17-20:05
+                                OdmNullCache.java 0.02, 2006-12-18-21:09
+                                OdmNullConnection.java 0.09,
+                                    2006-12-18-20:58
+                                OdmNullDocument.java 0.05, 2006-12-17-18:04
+                                OdmNullPendingDocument.java 0.07,
+                                    2007-01-20-18:02
+                                OdmNullWorkingDocument.java 0.07,
+                                    2007-01-07-23:17
+
+                                [plus all other source-code, scripts, and
+                                 compiled classes for the practical100
+                                 package]
+                            test/
+                                Null01/
+                                    BuildNull01.bat 0.00, 2006-12-17-20:53
+                                    RunNull01.bat 0.00, 2006-12-17-20:56
+                                    Null01.java 0.00, 2006-12-17-21:16
+
+                                    [plus other scripts and source code
+                                     and compiled classes for the
+                                     RunNull01 test.]
+
+
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061003e-practical100-0.20alpha.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java SE JDK such as the JDK 1.5 used to develop all of the Java
+                      applications in this distribution.
+
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   ** NOTE: If the same <folder> has been used to hold earlier materials
+   from practical100 development, it is is recommended that all material
+   at and below the <folder>\info\odma\practical100 be deleted before
+   extracting the material in this archive.
+
+
+4.1 Necessary Customization
+
+   All of the Java applications in this package depend on the OdmJava.bat
+   script for establishing the Java environment.  OdmJava.bat should be
+   backed up (or renamed) and then modified to reflect the <folder>
+   location and the location of the JDK that is installed.  The modifica-
+   tions should also be backed up to a location where they can be reused
+   with future distributions of the practical100 development tree.
+
+
+4.2 Demonstrating Operation
+
+   There is a single demonstration program in practical100/test/Null01:
+
+   Perform RunNull01.bat in a console window from the directory containing
+   the script.  OdmJava.bat is used in this script.
+
+   This program demonstrates an exercise of the Null Implementation of the
+   practical100 classes and interfaces.  This is the behavior that is seen
+   when there is no ODMA Connection Manager installed when an ODMA-aware
+   Java-based application is run.
+
+
+4.3 Use in Developing Applications
+
+   This version of practical100 contains definitions for three interfaces:
+
+        info.odma.practical100.OdmConnection
+
+        info.odma.practical100.OdmPendingDocument
+
+        info.odma.practical100.OdmWorkingDocument
+
+   In addition, there are is now an implementation of a null-initiation
+   class,
+
+        info.odma.practical100.OdmNullBind
+
+   There are additional interfaces and classes that are used as part of the
+   implementation.  For ODMA-aware applications, it is the above three
+   interfaces and the single OdmNullBind class that are important for
+   early testing and review.
+
+   The material in the package is organized in a Java class-path hierarchy.
+   At the end of the folder hierarchy
+
+        info\odma\practical100
+
+   all of the contents for package info.odma.practical100 are provided.
+
+   At the end of the folder hierarchy
+
+        info\odma\practical100\test\Null01
+
+   there is the test program with supporting utility classes and scripts.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Content of d061001f-practical100-0.30alpha.zip Archive: ODMJNI 1.0
+        practical100 0.30alpha Evolutionary Prototype. ODMA Interoperability
+        Exchange, ODMdev Development Note page d061001f.txt 0.04, February
+        22, 2007.  Current version available as part of the archive at
+        <http://ODMA.info/dev/devNotes/2006/10/d061001f.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.04 2007-02-22-14:44 Update to include the license, PreRelease notes,
+     and extended manifest information.
+0.03 2007-02-05-20:48 Replace OdmJava.bat with version that provides path
+     to awt.dll as needed with odmjni100 components.
+0.02 2007-01-20-18:02 Replace OdmNullPendingDocument.java to provide public
+     class but protected constructor
+0.01 2007-01-07-23:17 Replace OdmNullWorkingDocument.java to provide public
+     class but protected constructor
+0.00 2006-12-10-15:30 Adapt from d061001e.txt 0.00 to provide an account of
+     the 0.30alpha practical100 packaging as produced for the 0.25
+     regression test.
+
+$Header: /ODMdev/d061001f.txt 14    07-02-22 15:26 Orcmid $
+
+                       *** end of d061001f.txt ***

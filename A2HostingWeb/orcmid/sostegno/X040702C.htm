@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X040702C: Blogger FTP Corruption - Incident Response Setup </title>
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/X040702C.htm 30    26-03-22 14:18 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report <a href="x000001-log.htm#X040702"><font color="#990033">X040702</font></a><br>
+      <a href="x040702.htm"><font color="#990033">&nbsp;Blogger FTP Corruption</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>Incident Response Setup</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">sostegno</a>&gt;</code></b></p>
+      <p align="right"><code><a href="X040702C.htm" target="_top"><b>X040702C</b></a><b>&gt;</b></code><br>
+      <a href="#0.20"><small><small>0.20</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+  <h2 align="left">&nbsp; <a name="Status"> Approach</a></h2>
+
+<blockquote>
+  <h3 align="left">1. <a href="#Announcement">Announcement</a><br>
+  2. <a href="#Expectations">Set Expectations</a><br>
+  3. Practice Incident Response</h3>
+</blockquote>
+  <p align="left">The site blogs are currently locked down, and the <a href="X040702B.htm"><b> latest
+  notice</b></a> is in effect [2004-07-29]</p>
+
+  <p align="left">The goal is to revive the blogs one at a time, verifying that I can post successfully without
+  further corruption.&nbsp; Before
+  I do that, I will establish an incident-response procedure that allows for
+  rapid response, roll-back, and reporting in the event of a new incident.</p>
+
+  <p align="left">This is being accomplished in small steps:</p>
+
+  <ol>
+    <li>
+      <p align="left"><a href="#Announcement"><b>Announce this process</b></a>
+      in case anybody is watching.</li>
+    <li>
+      <p align="left"><b><a href="#Expectations">Let people know</a></b> what they will see as recovery take place.</li>
+    <li>
+      <p align="left"><b><a href="../BlunderDome/B040801.htm">Make the incident-response setup</a></b> for <b><a href="../BlunderDome/wingnut/">Spanner
+      Wingnut</a></b> first.</li>
+    <li>
+      <p align="left">Practice the incident response on Spanner Wingnut, tuning
+      the process and the materials.</li>
+    <li>
+      <p align="left">Stabilize Spanner Wingnut as the the model for incident
+      response and reporting on all of the blogs.</li>
+    <li>
+      <p align="left">For each production blog, clone the appropriate
+      incident-response materials and then reactivate the blog:
+      <ul>
+        <li>
+          <p align="left">Post an entry announcing the reactivation.</li>
+        <li>
+          <p align="left">Make other adjustments for being in full operation,
+          including template changes</li>
+        <li>
+          <p align="left">Restore operation with attention to regular backups.</li>
+        <li>
+          <p align="left">Post an entry when full operation is restored.</li>
+      </ul>
+    </li>
+    <li>
+      <p align="left">Continue operation with appropriate backup procedures so
+      that new incidents are captured rapidly and the blog is restored to
+      operation quickly.</li>
+  </ol>
+
+<h2 align="left"><a name="1">1</a>. <a name="Announcement">Announcement</a></h2>
+
+<blockquote>
+  <p align="left">The following notice is added in the Spanner Wingnut site
+  feed, followed by replication in the other site feeds:</p>
+
+  <p style="border: 3px double #990033"><b><font color="#990033"><small>BLOG
+  RECOVERY STATUS: 2004-07-29-16:45 -0700</small></font></b><font color="#000080"><br />
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_top"><img border="0" src="http://orcmid.com/images/hardhat-logo.gif" alt="CAUTION!! Blasting. Hard Hat Areas. Turn off all radio transmitters." align="left" hspace="4" vspace="2" width="160" height="115" /></a><b>My
+  three main blogs were locked down on Friday, July 2.&#160; I am now preparing
+  to restore operation.&#160; Before I do that, I am putting in place a
+  rapid-response structure for site lockdown, incident capture, and site
+  roll-back.&#160; I will have that ready as I restore each blog to
+  operation.&#160; Recovery procedures will first be practiced and verified at <a href="http://orcmid.com/BlunderDome/wingnut/">Spanner
+  Wingnut's Muddleware Lab</a>.&#160; Then the non-experimental blogs will be
+  restored one-by-one: <a href="http://orcmid.com/blog/lair.asp" target="_blank">Orcmid's Lair</a>,
+  <a href="http://miser-theory.info/astraendo/pn/" target="_blank">Numbering Peano</a>, 
+  and <a href="http://orcmid.com/BlunderDome/clueless/" target="_blank">Professor von Clueless in the Blunder Dome</a>.&#160;
+  The development of the incident-response procedure can be tracked <a href="http://orcmid.com/sostegno/X040702C.htm" target="_blank">here</a>. -- <i>Dennis E.   
+  Hamilton</i></b>
+  </font></p>
+  <p>This announcement is formed here with the following conditions:</p>
+  <ul>
+    <li>The <kbd>&amp;nbsp;</kbd> entities that FrontPage inserts for extra
+      spacing must be replaced by the direct character entity for a non-breaking
+      (mandatory) space:&nbsp; <kbd>&amp;#160;</kbd>.</li>
+    <li><b><kbd>&lt;img</kbd> ... <kbd>&gt;</kbd> </b> must be replaced by <b><kbd> &lt;img</kbd> ...
+      <kbd>
+      /&gt;</kbd></b> to satisfy XHTML formatting.</li>
+    <li><b><kbd>&lt;br&gt;</kbd></b> must be done as <b><kbd>&lt;br /&gt;</kbd></b>
+      and the same for all other unbalanced HTML constructs.</li>
+    <li>Make sure that all borders show up in preview, adding the <kbd><b>px</b></kbd>-suffix
+      to attributes that need it.</li>
+    <li>All URLs, including in <b><kbd>&lt;img&gt;</kbd></b>-elements, must be absolute URLs.</li>
+  </ul>
+  <p>The notice is added at the beginning of a site-feed entry is as the content
+  material of an entry having the following customized form:</p>
+  <pre><font color="#000000">    &lt;entry&gt;
+        &lt;title mode=&quot;escaped&quot; type=&quot;text/html&quot;&gt;</font><font color="#0000FF"><b>Incident Response Setup</b></font><font color="#000000">&lt;/title&gt;
+        &lt;link href=&quot;</font><font color="#0000FF"><b>http://orcmid.com/sostegno/X040702C.htm</b></font><font color="#000000">&quot; 
+              rel=&quot;alternate&quot; title=&quot;</font><b><font color="#0000FF">X040702C: Incidence Response Setup</font></b><font color="#000000">&quot; 
+              type=&quot;text/html&quot;/&gt;
+        &lt;id&gt;</font><b><font color="#0000FF">http://orcmid.com/sostegno/X040702C.htm</font></b><font color="#000000">&lt;/id&gt;
+        &lt;modified&gt;</font><b><font color="#0000FF">2004-07-30T18:20:00Z</font></b><font color="#000000">&lt;/modified&gt;
+        &lt;issued&gt;</font><font color="#0000FF"><b>2004-07-29T16:45:00-07:00</b></font><font color="#000000">&lt;/issued&gt;
+        &lt;content type=&quot;application/xhtml+xml&quot; 
+</font>                 <font color="#000000">xml:base=&quot;</font><b><font color="#0000FF">http://orcmid.com/BlunderDome/wingnut/</font></b><font color="#000000">&quot; 
+                 xml:lang=&quot;en-US&quot; &gt;
+            &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+            </font><b><font color="#008000">&lt;!-- The content material goes in this space. --&gt;</font></b><font color="#000000">
+            &lt;/div&gt;
+        &lt;/content&gt;
+    &lt;/entry&gt;</font></pre>
+  <p><font color="#000000">The variable information is shown in </font><font color="#0000FF"><b><kbd>blue
+  text</kbd></b></font><font color="#000000">.</font></p>
+</blockquote>
+
+
+
+
+<h2><a name="2">2</a>.&nbsp;&nbsp;&nbsp; <a name="Expectations">Set Expectations</a></h2>
+<blockquote>
+  <p>This is the notice designed for announcing what can be expected to each of
+  the currently locked-down site feeds:</p>
+  <p style="border: 3px double #990033"><b><font color="#990033"><small>BLOG
+  RECOVERY STATUS: 2004-08-14-16:12 -0700</small></font></b><font color="#000080"><br />
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_top"><img border="0" src="http://orcmid.com/BlunderDome/B040801B3.gif" alt="Yield to emergency vehicles" align="left" hspace="4" vspace="2" width="102" height="193" /></a><b><br />
+  My three main blogs were locked down on Friday, July 2.&#160; <a href="http://orcmid.com/sostegno/x040702.htm" target="_blank">An
+  incident analysis and recovery operation</a> is in progress.&#160; When the <a href="http://orcmid.com/sostegno/X040702C.htm">Incident
+  Response Setup</a> is completed and recovery accomplished, this is
+  what you can expect:<br />
+  <br />
+  &#160;&#160; 1. When the lockdown is ended and posting resumes</b>, the
+  default blog page (the one with current postings) and the Atom feed will be
+  restored to earlier, correct versions.&#160; The lockdown notice and
+  recovery-status announcements such as this one will disappear.<b><br />
+  &#160;&#160; 2. New blog entries</b> <b>will provide an account of the
+  incident and the recovery</b>.&#160; There may also be a brief chattering of
+  changes as template adjustments and other alterations are made.&#160;
+  Information about any previous or ongoing incidents and their recovery is
+  found on the <b><a href="http://orcmid.com/sostegno/X040701.htm" target="_blank">Web
+  Log Status</a></b> page<b>.<br />
+  &#160;&#160; 3. In the event of a future incident,</b> there may be sudden
+  replacement of blog pages and the atom feeds<b>.&#160; </b>This <b><a href="http://orcmid.com/BlunderDome/B040801.htm" target="_blank">incident
+  slam-down</a></b> step is designed to confine the incident and prevent further
+  access to damaged material.&#160; The blog will be recovered to an earlier
+  state, and then recovered from that point.&#160; There will be incident
+  announcements as needed.&#160;&#160;<b>&#160;--&#160;<i>Dennis&#160;E.&#160;Hamilton</i></b></font></p>
+</blockquote>
+  <h2><a name="3">3</a>.&nbsp;&nbsp;&nbsp; <a name="Practice">Practice</a>
+  Incident Response</h2>
+<blockquote>
+  <p>[to be continued]</p>
+</blockquote>
+
+
+
+
+  <hr color="#990033">
+
+<dl>
+ 
+<dt><small><b><a name="0.20">0.20</a> 2004-08-01-00:00 Prepare for Incident
+  Response Practice</b></small></dt>
+
+<dd><small>The announcement of what to expect is drafted and will be posted as
+  soon as there is enough on future-incident slam-down to link to.</small></dd>
+ 
+<dt><small><b><a name="0.01">0.01</a> 2004-07-29-16:45 Create Announcement</b></small></dt>
+
+<dd><small>Create an overview and setup the announcement that for advising
+  readers of the coming changes.</small></dd>
+ 
+<small>
+ 
+    <dt><b><a name="0.00">0.00</a>    2004-07-24-19:11 Create boilerplate to fill
+      in with next steps</b></small></dt>
+
+<small>
+ 
+    <dd>Capture enough details to include in the next feed announcement..</dd>
+
+</dl></small>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="construction.htm" target="_top"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-24-19:11 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:18 $<br>
+      $$Revision: 30 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

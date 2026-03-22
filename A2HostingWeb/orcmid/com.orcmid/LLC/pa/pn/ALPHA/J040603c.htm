@@ -1,0 +1,793 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/com.orcmid/LLC/pa/pn/ALPHA/J040603c.htm 29    26-03-22 14:17 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>J040603b: Compiling Num.java 0.1x</title>
+<base target="_self">
+</head>
+
+<body stylesrc="../../../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../../../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../../../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="15139" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Java <a href="../../../../J000001-log.htm"><font color="#990033">Project</font></a>
+      <a href="../../../../J000001-log.htm#J040603"><font color="#990033">J040603</font></a><br>
+      com.orcmid.LLC.pa.pn ALPHA <a href="J040603.htm"><font color="#990033">Compiling</font></a></strong></font><font color="#990033"><strong><em><big><big><br>  
+      &nbsp;Compiling Num.java 0.1x</big></big></em></strong></font></p>                      
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<b><code><a href="../../../../" target="_top" name="AnchorBlock">com.orcmid</a>&gt;<br>
+      <a href="../../../" target="_top">LLC</a>&gt;<a href="../../" target="_top">pa</a>&gt;<a href="../" target="_top">pn</a>&gt;<br>
+<a href="./">ALPHA</a>&gt;</code></b>
+</font>
+
+      <b><code><br>
+      <br>
+      <a href="J040603c.htm" target="_top">J040603c</a>&gt;
+      </code></b><br>
+<a href="#0.10">
+      <small><small>
+      0.10</a> <!--webbot bot="Timestamp" S-Type="EDITED"                                 
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->-<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:09 -0700<!--webbot bot="Timestamp" endspan i-checksum="12068" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<hr noshade color="#990033">
+
+
+
+<p>Here we develop the the interface definition that we intend to use as the           
+reference for all further development in files <b><kbd>Num-0.1<i><u>x</u></i>.java</kbd></b>.&nbsp;       
+These will continue to be used until we have to expand the methods (likely) and/or       
+introduce JavaDoc (probably later).</p>          
+
+
+
+<p>The 0.1<i>x</i> versions are used to</p>      
+
+
+
+<ul>
+  <li><b>Confirm compilation</b>&nbsp;</li>     
+  <li><b>Verify binding to package-internal classes</b> and applications that support            
+    and employ the interface</li>          
+  <li><b>Explore the nature of package identification</b> and, in some way, tie the interface to       
+    authoritative descriptions of what it is</li>     
+  <li><b>Reconfirm compilations</b> when upgrading J2SE SDKs for security 
+    reasons or other purposes, although some major change in Java or the 
+    platform being used could derail what we have here.&nbsp; See <a href="#CompilationEnvironment">section 
+    5</a>, Compilation Environment, for anything that is known in that regard.</li>    
+</ul>
+<p>The files employed in this experiment are archived in <b><kbd><a href="J040603c.zip">J040603c.zip</a></kbd></b>             
+ (WinZip file).&nbsp; File <b><kbd><a href="J040603c.txt">J040603c.txt</a></kbd></b>            
+is the manifest carried in the current WinZip archive.</p>      
+<p>Here's how we are establishing the next, basic reference level for <b><kbd>Num-0.1<i><u>x</u></i>.java</kbd></b> 
+and the <b><kbd>com.orcmid.LLC.pa.pn</kbd></b> ALPHA material:</p>
+
+
+
+<blockquote>
+  <blockquote>
+
+
+
+<h3>1. <a href="#Objectives">Basics</a><br>               
+2. <a href="#TwoVersions">The Reference Interface</a><br>               
+&nbsp;&nbsp;&nbsp;&nbsp; <small>2.1 <a href="#Num-0.10.java">Num-0.10.java</a></small><br>               
+&nbsp;&nbsp;&nbsp;&nbsp; <small>2.2 <a href="#Num-0.10.class">Num-0.10.class           
+Compilation</a></small><br>     
+3. <a href="#Package-InternalConfirmed"> Verifying Package-Internal Access</a>&nbsp;<br>          
+&nbsp;&nbsp;&nbsp;&nbsp; <small>3</small><small>.1 <a href="#Stubby-0.10.java">Stubby-0.10.java</a></small><br>               
+&nbsp;&nbsp;&nbsp;&nbsp; <small>3</small><small>.2 <a href="#Stubby.class">Stubby.class           
+Compilation<br>
+</a></small>     
+&nbsp;&nbsp;&nbsp;&nbsp; <small>3.3 <a href="#StubbyRun">StubbyRun Demonstration</a></small><br>              
+4. <a href="#InAName">com.orcmid.LLC.pa.pn.Num</a>: What's In A Name?<br>        
+&nbsp;&nbsp;&nbsp;&nbsp; <small>4</small><small>.1 <a href="#Considerations">Binding  
+Considerations</a></small><br>           
+&nbsp;&nbsp;&nbsp;&nbsp; <small>4</small><small>.2 <a href="#Beyond">To Version 
+0.11 and Beyond</a></small><br>        
+5. <a href="#CompilationEnvironment"> Compilation Environment</a></h3>                  
+  </blockquote>
+</blockquote>
+
+
+
+<p>&nbsp;</p>     
+<h2>1. <a name="Basics">Basics</a></h2>        
+<blockquote>
+  <p><b><a name="1.1">1.1</a></b> We are going to define a simple interface.&nbsp; It's full name is <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>.&nbsp;&nbsp;</p>          
+  <p><b><a name="1.2">1.2</a></b> If there is some Java object, <i>SumO</i>, that implements this interface,           
+  then we can establish access to that interface by a statement like</p>          
+  <blockquote>
+    <p><b><kbd>com.orcmid.LLC.pa.pn.Num <i>N</i> = <i>SumO</i>;</kbd></b></p>
+  </blockquote>
+  <p><b><a name="1.3">1.3</a></b> If we have a reference to a <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>   
+  interface (such as <i><kbd><b>N</b></kbd></i>, above), then these expressions</p>  
+  <blockquote>
+    <p><b><kbd><i>N</i>.aum()<br>
+    <i>N</i>.dim()<br>
+    <i>N</i>.aum().aum().aum().aum()<br>
+    <i>N</i>.aum().aum().dim().dim()</kbd></b></p>
+  </blockquote>
+  <p>all return <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b> interfaces (if they           
+  return anything).&nbsp;&nbsp;</p>         
+  <p><b><a name="1.4">1.4</a></b> These additional expressions return <b><kbd>boolean</kbd></b>           
+  values (if they return anything):</p>          
+  <blockquote>
+    <p><b><kbd><i>N</i>.allo()<br>
+    <i>N</i>.aum().allo()<br>
+    <i>N</i>.dim().allo()<br>
+    <i>N</i>.dim().dim().dim().allo()<br>
+    ( <i>N</i>.allo() ? <i>N</i>.aum().allo() : <i>N</i>.dim().allo() )<br> 
+    ( <i>N</i>.allo() ? <i>N</i>.aum() : <i>N</i>.dim() ).allo()</kbd></b></p>
+  </blockquote>
+  <p>whatever all <i>that</i> means.&nbsp;&nbsp;</p>          
+  <p><b><a name="1.5">1.5</a></b> Throwing an exception from a method is considered equivalent to not         
+  returning anything.&nbsp; Simply disappearing into the ether also counts as        
+  not returning anything.&nbsp; We consider throwing an exception superior to       
+  simply disappearing, never to return, never to return.</p>       
+  <p><b><a name="1.6">1.6</a></b> The key point is that all we know, with the interface declaration that we      
+  make in the next section, is</p>    
+  <ul>
+    <li>The name of the interface class, <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>.</li>
+    <li>The names and signatures (prototypes) of the three methods: <b><kbd>aum()</kbd></b>, 
+      <b><kbd>dim()</kbd></b>, and <b><kbd>allo()</kbd></b></li>
+    <li>Some incidental matters that are automatic baggage of the interface           
+      declaration (and we'll be very keen to know what some of those are, down           
+      the road)&nbsp;</li>          
+    <li>The Java rules that apply to any class that is declared to implement the           
+      interface</li>
+  </ul>
+  <p><b><a name="1.7">1.7</a></b> If this is all that matters (because it is really all that is known) to the           
+  Java processor, it should be clear that there is not much to tell us when an           
+  implementation of the interface is &quot;correct&quot; or honors some       
+  Java-recognized interface &quot;contract.&quot;&nbsp;&nbsp;&nbsp;</p>          
+  <p><b><a name="1.8">1.8</a></b> The next steps, after completing some housekeeping, will be to set the        
+  stage for seeing how we           
+  can&nbsp;</p>
+  <ol>
+    <li>Know what the intended behavior is for interface <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>&nbsp;</li>        
+    <li>Recognize when assertion that some class implements the interface is           
+      valid</li>
+    <li>Identify the authoritative source in the matter</li>
+  </ol>
+</blockquote>
+<h2>2. <a name="ReferenceInterface"> The Reference Interface</a></h2>  
+
+
+
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <dl>
+        <dt><i><b>see also:</b></i></dt>
+        <dd><b><a href="J040603b.htm">J040603b</a>: Compiling Num.java 0.01<br>
+          <a href="http://miser-theory.info/astraendo/a040601i.htm" target="_top">A040601i</a>: 
+          Assuming Contexts and Meanings (Miser Project)</b></dd>
+      </dl>
+    </blockquote>
+  </blockquote>
+  <p>After kicking around the earlier 0.01 efforts and knowing I wanted to use a            
+fully-object-oriented manifestation of Peano Numerals, I contrived a simple            
+three-method interface that is similar to earlier trials.&nbsp; There is also            
+improvement of the package name to fit with the narrative that is envisioned for            
+this exploration.&nbsp; The method names are also replaced by ones chosen to avoid suggesting           
+much, leaving the readers to recognize that one should not read much into the       
+  nomenclature (at           
+least, not until it becomes familiar from discussion and usage).</p>                            
+
+
+
+
+</blockquote>
+
+
+<h3>2.1 <a name="Num-0.10.java"> Num-0.10.java</a></h3>                   
+
+
+
+
+<blockquote>
+  <p><b><a name="2.1.1">2.1.1</a> <kbd>Num-0.10.java</kbd></b>&nbsp;provides minimal specification       
+  of <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b> in terms that have any impact on Java processors.&nbsp; The        
+  intention is to demonstrate&nbsp; how little meaning            
+  is inherent in the compilation unit for the interface.</p>                            
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.2-1">Fig. 2-1</a></b> Num-0.10.java source</caption>
+  <tr>
+    <td>
+
+<pre><font color="#008000"><b>/* Num-0.10.java */</b></font><font color="#000000">
+
+</font><b><font color="#800080">package</font></b><font color="#000000"> com.orcmid.LLC.pa.pn;
+
+</font><font color="#0000FF"><b>interface</b></font><font color="#000000"> Num
+<b>{</b>
+
+    <b>public</b> Num <i>aum</i>();
+
+    <b>public</b> Num <i>dim</i>();
+
+    <b>public</b> </font><font color="#0000FF"><b>boolean</b></font><font color="#000000"> <i>allo</i>();
+<b>}</b>
+
+</font><b><font color="#008000">/* 0.10 2004-09-18-14:35 create basic package with minimal suggestive namings and
+        demonstration of what the compiler makes of it.
+   $H<!-- -->eader: /Java2/com/orcmid/LLC/pa/pn/Num-0.10.java 2     04-09-18 14:36 Orcmid $
+   */</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+</blockquote>
+
+
+
+<blockquote>
+
+
+<p><b><a name="2.1.2">2.1.2</a></b> This&nbsp;is the minimalist source program.&nbsp;&nbsp; As far as the Java           
+language is concerned, there is no more conveyed here than in earlier           
+versions.&nbsp;&nbsp; This is the one we will take as the basic reference for as           
+long as we stick to three simple methods.</p>          
+
+
+</blockquote>
+<h3>2.2 <a name="Num-0.10.class"> Num-0.10.class</a> Compilation</h3>
+
+
+
+<blockquote>
+<p><b><a name="2.2.1">2.2.1</a></b> Compilation of <b><kbd>Num-0.10.java</kbd></b> will produce a single <b><kbd> Num.class</kbd></b> file.&nbsp; This file incorporates enough information for the Java compiler           
+and virtual-machine to implement the interface and provide access to           
+implementations of it.</p>          
+
+
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080" width="653">
+  <caption><b><a name="Fig.2-2">Fig. 2-2</a></b> Num-0.10.class Compilation 
+    (Console Session)</caption>
+  <tr>
+    <td width="641" style="background-color: #0000FF">
+
+<pre><b><font color="#C0C0C0">[dh:2004-09-18-14:36] C:\...\pn&gt; </font><font color="#FFFF00">javac Num-0.10.java</font><font color="#C0C0C0">
+
+[dh:2004-09-18-14:37] C:\...\pn&gt; </font><font color="#FFFF00">list /X Num.class</font><font color="#C0C0C0">
+</font><span style="background-color: #C0C0C0"><font color="#000080"> Num.class    ¦ F1 Help ¦ Commands: BFGHINPWX ¦     Col 0    Line 1          0% 
+</font></span><span style="background-color: #000080"><font color="#C0C0C0">0000 0000 CA FE BA BE 00 00 00 2E  00 0C 07 00 0A 07 00 0B   Êþº¾......&#07;..&#07;..   
+0000 0010 01 00 03 61 75 6D 01 00  1C 28 29 4C 63 6F 6D 2F   &#01;.&#03;aum&#01;.&#28;()Lcom/   
+0000 0020 6F 72 63 6D 69 64 2F 4C  4C 43 2F 70 61 2F 70 6E   orcmid/LLC/pa/pn   
+0000 0030 2F 4E 75 6D 3B 01 00 03  64 69 6D 01 00 04 61 6C   /Num;&#01;.&#03;dim&#01;.&#04;al   
+0000 0040 6C 6F 01 00 03 28 29 5A  01 00 0A 53 6F 75 72 63   lo&#01;.&#03;()Z&#01;..Sourc   
+0000 0050 65 46 69 6C 65 01 00 0D  4E 75 6D 2D 30 2E 31 30   eFile&#01;..Num-0.10   
+0000 0060 2E 6A 61 76 61 01 00 18  63 6F 6D 2F 6F 72 63 6D   .java&#01;.&#24;com/orcm   
+0000 0070 69 64 2F 4C 4C 43 2F 70  61 2F 70 6E 2F 4E 75 6D   id/LLC/pa/pn/Num   
+0000 0080 01 00 10 6A 61 76 61 2F  6C 61 6E 67 2F 4F 62 6A   &#01;.&#16;java/lang/Obj   
+0000 0090 65 63 74 06 00 00 01 00  02 00 00 00 00 00 03 04   ect&#06;..&#01;.&#02;.....&#03;&#04;   
+0000 00A0 01 00 03 00 04 00 00 04  01 00 05 00 04 00 00 04   &#01;.&#03;.&#04;..&#04;&#01;.&#05;.&#04;..&#04;   
+0000 00B0 01 00 06 00 07 00 00 00  01 00 08 00 00 00 02 00   &#01;.&#06;.&#07;...&#01;.&#08;...&#02;.   
+0000 00C0 09                                                 .                  
+                                                                                
+</font>
+</span><span style="background-color: #0000FF"><font color="#C0C0C0">[dh:2004-09-18-14:50] C:\...\pn&gt; </font><font color="#FFFF00">rename Num.class Num-0.10.class</font><font color="#C0C0C0">
+C:\java2\projects\com\orcmid\LLC\pa\pn\Num.class -&gt; C:\java2\projects\com\orcmid
+\LLC\pa\pn\Num-0.10.class
+     1 file renamed
+
+[dh:2004-09-18-14:50] C:\...\pn&gt;
+</font></span></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+<p><b><a name="2.2.2">2.2.2</a></b> The class file is renamed to <b><kbd>Num-0.10.class</kbd></b> for           
+  preservation and future comparison with other <b><kbd>Num.class</kbd></b>           
+  compilations.&nbsp; The name must be <b><kbd>Num.class</kbd></b>  in order to       
+access the compilation unit properly.</p>         
+</blockquote>
+<h2>3. <a name="VerifyingAccess">Verifying Package-Internal Access</a></h2>          
+<h3>3.1 <a name="Stubby-0.10.java">Stubby-0.10.java</a></h3>           
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <dl>
+        <dt><i><b>see also:</b></i></dt>
+        <dd><b><a href="J040603b.htm">J040603b</a>: Compiling Num.java 0.01, <a href="J040603b.htm#Package-InternalConfirmed" target="_top">Section 
+          3</a></b></dd>
+      </dl>
+    </blockquote>
+  </blockquote>
+<p><b><a name="3.1.1">3.1.1</a> <kbd>Num-0.10.java</kbd></b> is written so that <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>           
+is accessible only from other compilation units of the same <b><kbd>com.orcmid.LLC.pa.pn</kbd></b>           
+package.&nbsp; We're going to verify how that is done with a simple class that asserts implementation of the       
+interface.&nbsp;           
+The source file is <b><kbd>Stubby-0.10.java</kbd></b>:</p>                    
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.3-1">Fig. 3-1</a></b> Stubby-0.10.java source</caption>
+  <tr>
+    <td>
+
+<pre><font color="#008000"><b>/* Stubby-0.10.java */</b></font><font color="#000000">
+
+</font><b><font color="#990033">package</font></b><font color="#000000"> com.orcmid.LLC.pa.pn;
+
+</font><b><font color="#0000FF">class</font></b><font color="#000000"> Stubby <b>implements</b> com.orcmid.LLC.pa.pn.Num
+<b>{</b>
+
+    <b>public</b> com.orcmid.LLC.pa.pn.Num a<i>um</i>()
+    <b>{</b>   <b>throw new</b> java.lang.<i>ArithmeticException</i>(</font><font color="#0000FF">&quot;No such Stubby Numeral&quot;</font><font color="#000000">);
+        <b>}</b>
+
+    <b>public</b> com.orcmid.LLC.pa.pn.Num <i>dim</i>()
+    <b>{</b>   <b>return</b> this; <b>}</b>
+
+    <b>public</b> </font><b><font color="#0000FF">boolean</font></b><font color="#000000"> <i>allo</i>()
+    <b>{</b>   <b>return</b> true; <b>}</b>
+<b>}</b>
+
+</font><b><font color="#008000">/* 0.10 2004-09-18-18:02 create a basic stub that implements the minimal
+        degenerate case (says me).
+   $H<!-- -->eader: /Java2/com/orcmid/llc/pa/pn/Stubby-0.10.java 2     04-09-18 18:21 Orcmid $
+   */</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+<p><b><a name="3.1.2">3.1.2</a></b> Observations:</p>           
+  <ol>
+    <li>The class Stubby is defined as package-internal, just as the interface <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b> 
+      is.</li>
+    <li>In Stubby, all type names are written out in full so that           
+      identifications are as unambiguous as I can make them within the           
+      provisions of the Java language.&nbsp; I will           
+      do the same in the next version of <b><kbd>Num-0.1<i><u>x</u></i>.java</kbd></b>.</li>         
+    <li>The Java compiler will require that Stubby offer at least public methods       
+      matching the names and signatures of the&nbsp; methods declared as part of       
+      interface <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>.</li>         
+    <li>In Stubby, the <b><kbd>aum()</kbd></b> method has no defined result and           
+      an unchecked exception is thrown.&nbsp; Although the Java language and API        
+      define unchecked exceptions as always allowed, I will modify the next           
+      version of <b><kbd>Num-0.1<i><u>x</u></i>.java</kbd></b> to specify that <b><kbd>aum()</kbd></b>        
+      throws this exception.&nbsp; That is important-to-document technical           
+      information.&nbsp; The requirements for implementation of the <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>           
+      interface will also reflect that this is the only method exception that is       
+      allowed to be thrown intentionally.</li>      
+    <li>In demonstrating successful package access, it is unimportant whether Stubby satisfies        
+      any requirements for           
+      the interface beyond what is conveyed in Java language.&nbsp; At this        
+      point, I am still making up the behavioral requirements as I go along.&nbsp; Nevertheless,           
+      Stubby is likely to be a valid implementation, albeit for a degenerate case.</li>          
+  </ol>
+</blockquote>
+  <h3>3.2 <a name="Stubby.class">Stubby.class</a> Compilation</h3>
+
+<blockquote>
+  <p><b><a name="3.2.1">3.2.1</a></b> Compiling Stubby confirms what I thought might be a difficulty.&nbsp;           
+  Although you can produce a package-internal compilation unit anywhere, you can           
+  only find one at a proper classpath location.&nbsp; Operating in the same           
+  directory where a <b><kbd>Num.class</kbd></b> is already compiled, I obtain this result:</p>          
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.3-2">Fig. 3-2</a></b> Stubby-0.10.java Compilation 
+    (Console Session)</caption>
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre><font color="#C0C0C0">
+</font><b><font color="#C0C0C0">[dh:2004-09-18-18:11] C:\...\pn&gt; </font><font color="#FFFF00">javac Stubby-0.10.java</font><font color="#C0C0C0">
+Stubby-0.10.java:5: cannot resolve symbol
+symbol  : class Num
+location: package pn
+class Stubby implements com.orcmid.LLC.pa.pn.Num
+                                            ^
+Stubby-0.10.java:8: cannot resolve symbol
+symbol  : class Num
+location: package pn
+    public com.orcmid.LLC.pa.pn.Num aum()
+                               ^
+Stubby-0.10.java:12: cannot resolve symbol
+symbol  : class Num
+location: package pn
+    public com.orcmid.LLC.pa.pn.Num dim()
+                               ^
+3 errors
+
+[dh:2004-09-18-18:13] C:\...\pn&gt; </font><font color="#FFFF00">javac -classpath .;C:\java2\projects Stubby-0.1
+0.java</font><font color="#C0C0C0">
+
+[dh:2004-09-18-18:14] C:\...\pn&gt; </font><font color="#FFFF00">cd</font><font color="#C0C0C0">
+C:\java2\projects\com\orcmid\LLC\pa\pn
+</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+<p><b><a name="3.2.2">3.2.2</a></b> However, the working directory is beneath a point in the  
+computer directory hierarchy that    
+works as the proper class path, and everything compiles properly when that class  
+path is set.</p>            
+
+
+
+
+  <table border="1" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <tr>
+    <td>
+
+<p><b><a name="3.2.3">3.2.3</a> Clueless Moment:</b>&nbsp; At first I thought that I could get away with something and not have to provide a           
+properly-structured class path for the path-internal usages.&nbsp;  My initial compilations were done with jEdit's           
+JCompiler plug-in and Stubby seemed to compile just fine without my doing anything about class        
+paths.&nbsp;          
+  <i>Au</i>  <i>contraire</i>, the JCompiler plug-in is configured to discover the class path for the package of           
+  the current source file and it was able to do that.&nbsp;  In fact, I figured out how to          
+write my own command line,           
+  above, from the JCompiler log:</p><pre><font color="#008000">&gt; compile
+Compiling C:\java2\projects\com\orcmid\LLC\pa\pn\Stubby-0.10.java...
+
+Command line:
+javac -classpath .;C:\java2\projects -g C:\java2\projects\com\orcmid\LLC\pa\pn\Stubby-0.10.java
+
+JCompiler done.</font></pre>          
+
+
+    </td>
+  </tr>
+</table>
+
+
+</blockquote>
+
+
+<h3>&nbsp;</h3>          
+
+
+<h3>3.3 <a name="StubbyRun">StubbyRun</a> Demonstration</h3>                   
+<blockquote>
+  <p><b><a name="3.3.1">3.3.1</a></b> Having come this far, we can also demonstrate how package-internal classes          
+  can be used as part of a package-internal (and public) application          
+  class.&nbsp; <b><kbd>StubbyRun.java</kbd></b> is the simplest demonstration I          
+  could think of without input-output.&nbsp; The program must fail with a <b><kbd>java.lang.ArithmeticException</kbd></b>.&nbsp;          
+  The only question is, which one?</p>                   
+
+
+
+
+  <table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.3-3">Fig. 3-3</a></b> StubbyRun.java 0.10 source</caption>
+  <tr>
+    <td>
+
+<pre><font color="#008000"><b>/</b></font><b><font color="#008000">* StubbyRun.java */</font></b>
+<font color="#000000">
+</font><b><font color="#990033">package</font></b><font color="#000000"> com.orcmid.LLC.pa.pn;
+
+<b>public </b></font><b><font color="#0000FF">class</font></b><font color="#000000"> StubbyRun
+<b>{</b>
+    <b>public static </b></font><b><font color="#0000FF">void</font></b><font color="#000000"> <i>main</i>(java.lang.String[] arg)
+    <b>{</b>   com.orcmid.LLC.pa.pn.Num N = <b>new</b> com.orcmid.LLC.pa.pn.<i>Stubby</i>();
+        <b>if</b> (N.<i>dim</i>().<i>allo</i>()) 
+            N = N.<i>aum</i>();
+        <b>else throw new</b> java.lang.<i>ArithmeticException</i>(</font><font color="#0000FF">&quot;Stubby Failed&quot;</font><font color="#000000">);
+        <b>} /</b></font><b><font color="#008000">/ main(string[])</font></b><font color="#000000">
+
+    <b>} </b></font><b><font color="#008000">// StubbyRun</font></b><font color="#000000">
+</font>
+<b><font color="#008000">/* 0.10 2004-09-18-20:17 create a Java application that simply lets Stubby do
+        its degenerate thing.  All this application does is blow up.
+   $H<!-- -->eader: /Java2/com/orcmid/LLC/pa/pn/StubbyRun.java 1     04-09-18 20:30 Orcmid $
+   */</font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  <p><a name="&nbsp;3.3.2">&nbsp;<b>3.3.2</b> </a> And here is what we get for our efforts:</p>                  
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.3-4">Fig. 3-4</a></b> StubbyRun Execution (Console 
+    Session)</caption>
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre><font color="#C0C0C0">
+<b>[dh:2004-09-18-21:10] C:\...\pn&gt; </font><font color="#FFFF00">javac -classpath .;C:\java2\projects StubbyRun.
+java</font><font color="#C0C0C0">
+
+[dh:2004-09-18-21:11] C:\...\pn&gt; </font><font color="#FFFF00">java -cp .;C:\java2\projects com.orcmid.LLC.pa.
+pn.StubbyRun</font><font color="#C0C0C0">
+Exception in thread &quot;main&quot; java.lang.ArithmeticException: No such Stubby Numeral
+
+        at com.orcmid.LLC.pa.pn.Stubby.aum(Stubby-0.10.java:9)
+        at com.orcmid.LLC.pa.pn.StubbyRun.main(StubbyRun.java:10)
+
+[dh:2004-09-18-21:11] C:\...\pn&gt;</font></b><font color="#C0C0C0">
+</font></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  <p>which is exactly what I was looking for (after figuring out how to write        
+  the <b><kbd>java</kbd></b> command properly).&nbsp;&nbsp;</p>                
+
+
+  <p><b><a name="3.3.3">3.3.3</a></b> Here we can see that&nbsp;</p>                
+  <ul>
+    <li>The Java engine uses the full names of types in providing Exception       
+      messages.</li>
+    <li>Although the program relies on interfaces to exercise Num operations, it       
+      is the interface-implementing class that does the work and that is       
+      identified in messages.&nbsp; From Exception messages alone one wouldn't       
+      know that an interface was involved at all.</li>      
+    <li>Information about source-code modules (e.g., <b><kbd>Stubby-0.10.java</kbd></b>) 
+      is retained in the compiled classes and used in creating Exception 
+      messages.</li>
+  </ul>
+</blockquote>
+
+
+  <h2>4. com.orcmid.LLC.pa.pn.Num: What's <a name="InAName"> In A Name</a>?</h2>          
+<blockquote>
+
+
+  <p>We have established workable compilation techniques for package <b><kbd>com.orcmid.LLC.pa.pn</kbd></b>         
+  elements.&nbsp; We now have enough experience with what actually happens to         
+  tidy up a little.&nbsp; At the same time, we want to begin looking at what can       
+  be identified.&nbsp; Given enough identifiers, we want to build up assurance       
+  that a person can find authoritative information         
+  about an interface and appropriate implementations of it (and how one can tell       
+  that).</p>          
+</blockquote>
+
+
+  <h3>4.1 Binding <a name="Considerations">Considerations</a></h3>           
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <dl>
+        <dt><i><b>see also:</b></i></dt>
+        <dd><b><a href="J040602.htm">J040602</a>: Peano Numerals ALPHA  
+          Organization<br>
+          <a href="J040602c.htm">J040602c</a>: Situating Peano Numeral </b>where 
+          these ideas are elaborated and demonstrated further.</dd>
+      </dl>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p>We're ready to establish the scaffolding and         
+  framework on which we can build more.&nbsp;&nbsp;</p>                 
+  <p><b><a name="4.1.1">4.1.1</a></b> We are not going to offer more         
+  &quot;meaning&quot; for interface <b><kbd>com.orcmid.LLC.pa.pn.Num</kbd></b>         
+  here.&nbsp;&nbsp; Rather, we want to provide a place where someone can find         
+  whatever authoritative information there is, as it is progressively built-up.&nbsp;&nbsp;</p>                 
+  <p><b><a name="4.1.2">4.1.2</a></b> We         
+  consider the following ways that someone could want to know what the package <b><kbd>com.orcmid.LLC.pa.pn</kbd></b>         
+  is all about (among others discussed under the <a href="J040602c.htm">organization 
+  topic</a>):</p>                 
+  <ol>
+    <li><b><a name="4.1.2.2">Source code from the package is encountered</a></b>.&nbsp; Links to authoritative locations         
+      about the code can be provided in each file.&nbsp; This is particularly         
+      important for ALPHA and other material that are not part of a stable         
+      release.&nbsp; Preserving links to authoritative material is also       
+      important in case the code has been repackaged in such a way that the       
+      package name isn't sufficient to suggest a primary source. Links are also one way to locate licensing         
+      information,&nbsp; documentation, and support status that might not accompany the source code.&nbsp;</li>       
+    <li><b><a name="4.1.2.3">One of the ZIP archives is available</a>.&nbsp;</b>&nbsp; Archives, such         
+      as <b><kbd>J040603c.zip</kbd></b>, the one for these experiments, include         
+      the source code files.&nbsp; In addition there is sufficient descriptive information 
+      to consult without accessing the         
+      web.&nbsp; All of that material also leads to authoritative sources.&nbsp;&nbsp; A valuable feature of detached information,&nbsp; 
+      is the presence of links to the authoritative material and determine         
+      whether there are known defects in the material being used and whether         
+      there is more recent material.&nbsp; It might also be important to learn         
+      that the material is obsolete or revoked in some fashion.&nbsp;&nbsp;      
+      <ol type="a">
+        <li>One direct feature would be to specify a link to where a source       
+          element is archived.&nbsp;&nbsp;</li>      
+        <li>The manifest or other special element in the archive itself should       
+          link to the location of the authoritative version as a means to       
+          finding recent history and status.</li>      
+      </ol>
+    </li> 
+  </ol>
+</blockquote>
+<h3>4.2 To Version 0.11 and <a name="Beyond">Beyond</a></h3>
+<blockquote>
+  <p>It is now time to put all of this talking around the changes to be made to 
+  the material and to change something.&nbsp; This will happen in another 
+  page.&nbsp; We will preserve the version 0.10 material (except for notes 
+  concerning its obsolescence) and build a new ZIP archive.&nbsp; Instead of 
+  describing all of this again, however, we streamline the presentation of 
+  differences by incorporating more about what's up in the files and the 
+  archives.</p>
+</blockquote>
+<h2>5. <a name="CompilationEnvironment">Compilation Environment</a></h2>             
+  <blockquote>
+<p><b><a name="5.1">5.1</a></b> The computer used for these compilations is <a href="../../../../../centrale/compagno/"><b>Compagno</b></a>, a <a href="../../../../../blog/2004/06/SysInfo-2004-06-02-0805.htm">Dell    
+  Inspiron 7000 with Intel Pentium II and <b>Windows XP (Build 2600) SP1</b></a></p> 
+<p><b><a name="5.2">5.2</a></b> The Java 2 platform used is      
+
+
+
+  <a href="http://java.sun.com/j2se/1.4.1/index.html" target="_top"><b>Java 2   
+  Platform, Standard Edition v 1.4.1</b> SDK (1.4.1_02)</a> for Microsoft    
+  Windows.&nbsp;<b><font color="#990033"> I</font><font color="#990033"><span style="font-variant: small-caps">mportant 
+Note </span>2004-12-02:</font> This version of the J2SE Platform and some of its 
+successors <a href="../../../../../BlunderDome/clueless/2004/10/uh-oh-time-to-refresh-java.asp">have 
+security defects</a> in their Java Virtual Machine (JVM).&nbsp; This will 
+require an upgrade.&nbsp; It is recommended that you use a later version of the 
+J2SE SDK that does not have any security defects recorded against it.&nbsp; At 
+the moment, version 1.4.2_06 is the oldest secure release.</b>
+
+
+    </p>
+    <p><b><a name="5.3">5.3</a></b> I used <b><a href="http://www.jEdit.org/">jEdit</a> version 4.1 final</b>          
+    as a programmer's editor.&nbsp; The jEdit colorizations are used in the          
+    source-code illustrations on this page.&nbsp; <b>JCompiler plug-in 1.50</b>          
+    is used for launching compiles and matching error messages to source code          
+    (with support from other prerequisite plug-ins).&nbsp; <b>SourceControl          
+    plug-in 0.52</b> is used for integration of jEdit with <b>Visual Source Safe          
+    6.0c</b> (Build 9447).         
+
+
+    </p>
+    <p><b><a name="5.4">5.4</a></b> The command line interface used is&nbsp;<b> </b><a href="http://jpsoft.com/4ntdes.htm" target="_top"><b>JP Software 4NT</b></a>                      
+  Command Processor version 5.00 (Build 101). At the time of the compilation                      
+    exhibited here, the following settings were in effect.&nbsp; There is a            
+    change in the command-line prompt from the <b><kbd><a href="J040603b.htm">Num-0.01.java</a></kbd></b><a href="J040603b.htm">          
+    work</a>.&nbsp; Now the prompt provides a dateline and abbreviates the            
+    working-directory path.</p>                     
+
+<table border="2" cellspacing="1" bordercolorlight="#000080" bordercolordark="#000080" bordercolor="#000080">
+  <caption><b><a name="Fig.5-1">Fig. 5-1</a></b> 4NT Console-Session Environment</caption>
+  <tr>
+    <td bgcolor="#0000FF">
+
+<pre><font color="#C0C0C0">
+<b>[dh:2004-09-18-14:21] C:\...\pn&gt; </b></font><b><font color="#FFFF00">ver</font><font color="#C0C0C0">
+
+4NT  5.00U   Windows XP 5.1
+
+[dh:2004-09-18-14:23] C:\...\pn&gt; </font><font color="#FFFF00">path</font><font color="#C0C0C0">
+Path=C:\JAVA2\SDK1.4.1.02\BIN;C:\WINDOWS\SYSTEM32;C:\WINDOWS;C:\WINDOWS\SYSTEM32
+\WBEM;C:\COMANDO\TOOLS
+
+[dh:2004-09-18-14:23] C:\...\pn&gt; </font><font color="#FFFF00">set</font><font color="#C0C0C0">
+ALLUSERSPROFILE=C:\Documents and Settings\All Users
+APPDATA=C:\Documents and Settings\Dennis E. Hamilton\Application Data
+CLASSPATH=.
+CommonProgramFiles=C:\Program Files\Common Files
+COMPUTERNAME=COMPAGNO
+ComSpec=C:\comando\4NT\4nt.exe
+HOMEDRIVE=C:
+HOMEPATH=\Documents and Settings\Dennis E. Hamilton
+LOGONSERVER=\\COMPAGNO
+NUMBER_OF_PROCESSORS=1
+OS=Windows_NT
+Path=C:\JAVA2\SDK1.4.1.02\BIN;C:\WINDOWS\SYSTEM32;C:\WINDOWS;C:\WINDOWS\SYSTEM32
+\WBEM;C:\COMANDO\TOOLS
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH
+PROCESSOR_ARCHITECTURE=x86
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 5 Stepping 2, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=0502
+ProgramFiles=C:\Program Files
+PROMPT=[dh:$j-$m]$s$W$g$s
+SESSIONNAME=Console
+SystemDrive=C:
+SystemRoot=C:\WINDOWS
+TEMP=C:\DOCUME~1\DENNIS~1.HAM\LOCALS~1\Temp
+TMP=C:\DOCUME~1\DENNIS~1.HAM\LOCALS~1\Temp
+USERDOMAIN=COMPAGNO
+USERNAME=orcmid
+USERPROFILE=C:\Documents and Settings\Dennis E. Hamilton
+windir=C:\WINDOWS
+
+[dh:2004-09-18-14:23] C:\...\pn&gt;
+<a href="file:///C:/java2/projects/com/orcmid/LLC/pa/pn">C:\java2\projects\com\orcmid\LLC\pa\pn</a></font></b></pre>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  <p>&nbsp;</p> 
+  </blockquote>
+  <hr noshade color="#990033">
+
+<dl>
+  <small><dt><b><a name="0.10">0.10</a> 2004-09-19-15:07 Complete the coverage of all 0.10-level cases</b></dt>                    
+  <dd>All of the 0.10 material is completed before undertaking an 0.11 reference 
+    definition and test case. </dd></small>              
+  <dt><b><small><a name="0.00">
+    0.00</a>    2004-09-18-13:57 Setup for Documenting                   
+    Compiles and Package Structure (<a href="../../../../../construction/orcmid.htm">orcmid</a>)</b></dt>                 
+  </small>
+  <dd><small>Confirm that the revised interface compiles and then determine how 
+    it is referenced from another compilation unit of the same package.</small></dd>             
+</dl>
+
+<font size="-1">
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm"><img border="0" src="../../../../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../../../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="62976" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2"><a name="created">created</a> </font></font><font size="-2"> 2004-06-12-14:09 
+      -0700 (pdt)</font><font size="-1"><font size="-2"> by <a href="../../../../../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 29 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

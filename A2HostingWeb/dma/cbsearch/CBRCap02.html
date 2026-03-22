@@ -1,0 +1,507 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Version" CONTENT="8.0.3410">
+<meta NAME="Date" CONTENT="10/11/96">
+<title>DMA Architecture Enhancement Proposal for Content Based Search Capabilities</title>
+</head>
+
+<body TEXT="#000000" BGCOLOR="#FFFFFF">
+<strong><font SIZE="6">
+
+<p><a NAME="_Toc389897700"></a><a NAME="_Toc389897806"></a><a NAME="_Toc389897945"></a><a
+NAME="_Toc389898743"></a><a NAME="_Toc389898757"></a><a NAME="_Toc389899422"></a><a
+NAME="_Toc389899442"></a><a NAME="_Toc389901439"></a><a NAME="_Toc389904799"></a><a
+NAME="_Toc389905093"></a><a NAME="_Toc389905201">DMA Architecture Enhancement Proposal for
+</a></font><a href="cbsearch.htm"><font SIZE="6">Content Based Search</font></a><font
+SIZE="6"> Capabilities</p>
+</font></strong>
+
+<p><a NAME="_Toc389897701">Authors: </a>DMA Query SC: Mitsuru Akizawa, Yoshifumi Sato, Ann
+Palmer, Jim Green, Dennis Hamilton, Alan Babich</p>
+<b>
+
+<h1><a NAME="_Toc389898744"></a><a NAME="_Toc389898758"></a><a NAME="_Toc389899423"></a><a
+NAME="_Toc389899443"></a><a NAME="_Toc389901440"></a><a NAME="_Toc389904800"></a><a
+NAME="_Toc389905094"></a><a NAME="_Toc389905202"></a><a NAME="_Toc389906235"></a><a
+NAME="_Toc389907139"></a><a NAME="_Toc389907213"></a><a NAME="_Toc389907567"></a><a
+NAME="_Toc455918516"></a><a NAME="RevisionHistory">Revision History</a></h1>
+</b><div align="center"><center>
+
+<table border="2" cellspacing="4" width="80%" bordercolor="#000080"
+bordercolorlight="#000080" bordercolordark="#000080">
+  <tr>
+    <td><strong>HTML Rendition: </strong>This HTML rendition was produced from the Microsoft
+    Word 97 file <a href="CBRCap02.doc">CBRCap02.doc</a>.&nbsp; It might not be the latest
+    version of the CBSearch extensions to DMA 1.0.&nbsp; Check the <a
+    href="cbsearch.htm#About">definitive sources</a> for the latest version.&nbsp; There may
+    be a later packaging of complete, current CBSearch materials there.</td>
+  </tr>
+</table>
+</center></div>
+
+<ol>
+  <p><b>Version 1.1:</b> 12/06/98 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Alan Babich</p>
+  <p>(<a href="CBRCap02.doc">CBRCap02.doc</a>) Removed Word macro, changed paper size to 8
+  ½ X 11. Fixed spelling errors. No change to proposal content.</p>
+  <b><p>Version 1.0:</b> 12/06/98 Mitsuru Akizawa, Yoshifumi Sato, Ann Palmer, Jim Green,
+  Alan Babich</p>
+  <p>Initial version.</p>
+  <hr>
+</ol>
+
+<h1><a NAME="_Toc389898745"></a><a NAME="_Toc389898759"></a><a NAME="_Toc389899424"></a><a
+NAME="_Toc389899444"></a><a NAME="_Toc389901441"></a><a NAME="_Toc389904801"></a><a
+NAME="_Toc389905095"></a><a NAME="_Toc389905203"></a><a NAME="_Toc389906236"></a><a
+NAME="_Toc389907140"></a><a NAME="_Toc389907214"></a><b><a NAME="TableOfContents">Table of
+Contents</a></h1>
+</b>
+
+<ol>
+  <b><h2><a href="#RevisionHistory">Revision History</a></b> </h2>
+  <b><h2><a href="#TableOfContents">Table of Contents</a></b></h2>
+  <b><h2><a href="#FunctionalOverview">Functional Overview/Description</a></b></h2>
+  <h2><b>Glossary/Nomenclature</b></h2>
+  <h2><a href="#ClassesAndProperties"><b>New/Changed Classes and Properties</b></a></h2>
+  <blockquote>
+    <h3><a href="#dmaClass_DocSpace">dmaClass_DocSpace</a></h3>
+  </blockquote>
+  <blockquote>
+    <blockquote>
+      <h4><a href="#dmaProp_DocSpaceCapabilities">dmaProp_DocSpaceCapabilities</a></h4>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <h5><a href="#DMAC_CONTENT_SEARCH">DMAC_CONTENT_SEARCH</a></h5>
+        <h5><a href="#DMAC_CBR_QUERY_RESTRICTIONS">DMAC_CBR_QUERY_RESTRICTIONS</a></h5>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <h2>New/Changed Interfaces</h2>
+  <h2>Architectural Impacts</h2>
+  <blockquote>
+    <h3>Integration Model</h3>
+    <h3>Query</h3>
+    <h3>Internationalization/Localization</h3>
+    <h3>Content</h3>
+    <h3>Containment</h3>
+    <h3>Versioning</h3>
+    <h3>Security</h3>
+    <h3>Naming</h3>
+    <h3>Performance Impact</h3>
+    <h3>Failure Modes/Crash Recovery</h3>
+  </blockquote>
+  <h2><a href="#SampleUsage">Sample Usage</a> </h2>
+  <h2><a href="#BackwardsCompatibility">Backwards Compatibility</a></h2>
+  <h2><a href="#ExistingSystemsImpact">Impact on Existing Systems</a></h2>
+  <h2>Compliance &amp; Conformance Issues</h2>
+  <h2><a href="#RequirementsAddressed">What Requirement Does This Address?</a></h2>
+  <h2><a href="#SolutionValue">Why is this a good solution?</a></h2>
+  <h2>Existing Systems with Similar Features and Related Experiences</h2>
+  <h2>Reference Materials</h2>
+  <h2><a href="#IncorporationInSpecification">How Is This Incorporated into the
+  Specification?</a></h2>
+  <hr>
+</ol>
+
+<h1><a NAME="_Toc389899445"></a><a NAME="_Toc389901442"></a><a NAME="_Toc389904802"></a><a
+NAME="_Toc389905096"></a><a NAME="_Toc389905204"></a><a NAME="_Toc389906237"></a><a
+NAME="FunctionalOverview">Functional Overview/Description</a></h1>
+
+<ol>
+  <p>This proposal describes query capabilities for content search. This proposal assumes
+  the content search proposal.</p>
+</ol>
+
+<h1><a NAME="_Toc389899434"></a><a NAME="_Toc389899454"></a><a NAME="_Toc389901460"></a><a
+NAME="_Toc389904821"></a><a NAME="_Toc389905115"></a><a NAME="_Toc389905223"></a><a
+NAME="_Toc389906256"></a><a NAME="_Toc389907160"></a><a NAME="_Toc389907234"></a><a
+NAME="_Toc389907588"></a><a NAME="_Toc455918519"></a><a NAME="Glossary">Glossary/Nomenclature</a></h1>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389899426"></a><a NAME="_Toc389899446"></a><a NAME="_Toc389901443"></a><a
+NAME="_Toc389904803"></a><a NAME="_Toc389905097"></a><a NAME="_Toc389905205"></a><a
+NAME="_Toc389906238"></a><a NAME="_Toc389907142"></a><a NAME="_Toc389907216"></a><a
+NAME="_Toc389907570"></a><a NAME="_Toc455918520"></a><a NAME="ClassesAndProperties">New/Changed
+Classes</a> and Properties</h1>
+
+<h2><a NAME="_Toc455918521"></a><a NAME="dmaClass_DocSpace51">dmaClass_Doc</a><a
+NAME="dmaClass_DocSpace"></a>Space</h2>
+
+<h3><a NAME="_Toc455918522">dmaProp_DocSp</a><a NAME="dmaProp_DocSpaceCapabilities"></a>aceCapabilities</h3>
+
+<blockquote>
+  <p>The value of the list element at index <strong>DMAC_LEVEL</strong> is changed from 1 to
+  2.</p>
+</blockquote>
+
+<blockquote>
+  <p>The following capabilities are to be added at the end of the Query capabilities:</p>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h4><a NAME="_Toc455918523"></a><a NAME="DMAC_CONTENT_SEARCH">DMAC_CONTENT_SEARCH</a></h4>
+  </blockquote>
+</blockquote>
+
+<ol>
+  <ol>
+    <blockquote>
+      <p>If set, DMAC_QUERY is set, and content search is supported. The class Content Search is
+      supported, and it may have one or more subclasses. </p>
+    </blockquote>
+    <blockquote>
+      <p>If reset, then content search is not supported and the Content Search class is not
+      supported.</p>
+    </blockquote>
+  </ol>
+</ol>
+
+<blockquote>
+  <blockquote>
+    <h4><a NAME="_Toc455918524"></a><a NAME="DMAC_CBR_QUERY_RESTRICTIONS">DMAC_CBR_QUERY_RESTRICTIONS</a></h4>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>If DMAC_CONTENT_SEARCH is set, then the following restrictions apply to queries
+      containing content conditions as well as property conditions. A query which incorporates
+      only content conditions is always allowed and is not affected by these restrictions. If
+      DMAC_CONTENT_SEARCH is reset, then this capability is ignored. </p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>The following restrictions are listed in order of least restrictive to most
+      restrictive. These restrictions apply only to the case where a query contains both content
+      conditions and property conditions. This capability is an integer with one of the
+      following values: </p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <ul>
+        <li><a NAME="DMAC_CBR_RESTRICT_NONE">DMAC_CBR_RESTRICT_NONE </a></li>
+      </ul>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>This value indicates that there are no restrictions to the placement or the number of
+        content conditions in a query. This means that content conditions can be freely mingled
+        with property conditions at any level in the query tree. </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <ul>
+        <li><a NAME="DMAC_CBR_RESTRICT_PURE">DMAC_CBR_RESTRICT_PURE </a></li>
+      </ul>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>This value indicates that content conditions may be mingled with property conditions.
+        However, where there is a content condition, all nodes of the query tree subordinate to
+        that condition may contain only content conditions. This restriction means that a query
+        may contain any number of content conditions (subqueries), and each content condition
+        subtree may contain only content conditions. </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <ul>
+        <li><a NAME="DMAC_CBR_RESTRICT_AND_OR">DMAC_CBR_RESTRICT_AND_OR</a></li>
+      </ul>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>This value indicates that content conditions can exist only as an operand of the top
+        level operator, and the top level operator must be either AND or OR. This restriction
+        means that a query may contain one and only one set of content conditions and content
+        conditions may not occur at any lower point in a query tree. The content condition
+        subquery may contain only content conditions. </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <ul>
+        <li><a NAME="DMAC_CBR_RESTRICT_AND">DMAC_CBR_RESTRICT_AND </a></li>
+      </ul>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <p>This value indicates that content conditions can exist only as an operand of the top
+        level operator, and the top level operator must be AND. This restriction means that a
+        query may contain one and only one set of content conditions and content conditions may
+        not occur at any lower point in a query tree. . The content condition subtree may contain
+        only content conditions. </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a NAME="_Toc389899428"></a><a NAME="_Toc389899448"></a><a NAME="_Toc389901444"></a><a
+NAME="_Toc389904804"></a><a NAME="_Toc389905098"></a><a NAME="_Toc389905206"></a><a
+NAME="_Toc389906239"></a><a NAME="_Toc389907143"></a><a NAME="_Toc389907217"></a><a
+NAME="_Toc389907571"></a><a NAME="_Toc455918525"></a><a NAME="InterfacesAndMethods">New/Changed
+Interfaces</a></h1>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389899429"></a><a NAME="_Toc389899449"></a><a NAME="_Toc389901445"></a><a
+NAME="_Toc389904805"></a><a NAME="_Toc389905099"></a><a NAME="_Toc389905207"></a><a
+NAME="_Toc389906240"></a><a NAME="_Toc389907144"></a><a NAME="_Toc389907218"></a><a
+NAME="_Toc389907572"></a><a NAME="_Toc455918526"></a><a NAME="ArchitecturalImpacts">Architectural
+Impacts</a></h1>
+
+<h2><a NAME="_Toc389901446"></a><a NAME="_Toc389904806"></a><a NAME="_Toc389905100"></a><a
+NAME="_Toc389905208"></a><a NAME="_Toc389906241"></a><a NAME="_Toc389907145"></a><a
+NAME="_Toc389907219"></a><a NAME="_Toc389907573"></a><a NAME="_Toc455918527"></a><a
+NAME="IntegrationModel">Integration Model</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901447"></a><a NAME="_Toc389904807"></a><a NAME="_Toc389905101"></a><a
+NAME="_Toc389905209"></a><a NAME="_Toc389906242"></a><a NAME="_Toc389907146"></a><a
+NAME="_Toc389907220"></a><a NAME="_Toc389907574"></a><a NAME="_Toc455918528"></a><a
+NAME="Query">Query</a></h2>
+
+<h2><a NAME="_Toc389901448"></a><a NAME="_Toc389904808"></a><a NAME="_Toc389905102"></a><a
+NAME="_Toc389905210"></a><a NAME="_Toc389906243"></a><a NAME="_Toc389907147"></a><a
+NAME="_Toc389907221"></a><a NAME="_Toc389907575"></a><a NAME="_Toc455918529"></a><a
+NAME="Internationalization">Internationalization/Localization</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901449"></a><a NAME="_Toc389904809"></a><a NAME="_Toc389905103"></a><a
+NAME="_Toc389905211"></a><a NAME="_Toc389906244"></a><a NAME="_Toc389907148"></a><a
+NAME="_Toc389907222"></a><a NAME="_Toc389907576"></a><a NAME="_Toc455918530"></a><a
+NAME="Content">Content</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901450"></a><a NAME="_Toc389904810"></a><a NAME="_Toc389905104"></a><a
+NAME="_Toc389905212"></a><a NAME="_Toc389906245"></a><a NAME="_Toc389907149"></a><a
+NAME="_Toc389907223"></a><a NAME="_Toc389907577"></a><a NAME="_Toc455918531"></a><a
+NAME="Containment">Containment</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901451"></a><a NAME="_Toc389904811"></a><a NAME="_Toc389905105"></a><a
+NAME="_Toc389905213"></a><a NAME="_Toc389906246"></a><a NAME="_Toc389907150"></a><a
+NAME="_Toc389907224"></a><a NAME="_Toc389907578"></a><a NAME="_Toc455918532"></a><a
+NAME="Versioning">Versioning</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901452"></a><a NAME="_Toc389904812"></a><a NAME="_Toc389905106"></a><a
+NAME="_Toc389905214"></a><a NAME="_Toc389906247"></a><a NAME="_Toc389907151"></a><a
+NAME="_Toc389907225"></a><a NAME="_Toc389907579"></a><a NAME="_Toc455918533"></a><a
+NAME="Security">Security</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901453"></a><a NAME="_Toc389904813"></a><a NAME="_Toc389905107"></a><a
+NAME="_Toc389905215"></a><a NAME="_Toc389906248"></a><a NAME="_Toc389907152"></a><a
+NAME="_Toc389907226"></a><a NAME="_Toc389907580"></a><a NAME="_Toc455918534"></a><a
+NAME="Naming">Naming</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389899436"></a><a NAME="_Toc389899456"></a><a NAME="_Toc389901462"></a><a
+NAME="_Toc389904823"></a><a NAME="_Toc389905117"></a><a NAME="_Toc389905225"></a><a
+NAME="_Toc389906258"></a><a NAME="_Toc389907162"></a><a NAME="_Toc389907236"></a><a
+NAME="_Toc389907590"></a><a NAME="_Toc455918535"></a><a NAME="PerformanceImpact">Performance
+Impact</a></h2>
+
+<ol>
+  <ol>
+    <p>N/A</p>
+  </ol>
+</ol>
+
+<h2><a NAME="_Toc389901455"></a><a NAME="_Toc389904816"></a><a NAME="_Toc389905110"></a><a
+NAME="_Toc389905218"></a><a NAME="_Toc389906251"></a><a NAME="_Toc389907155"></a><a
+NAME="_Toc389907229"></a><a NAME="_Toc389907583"></a><a NAME="_Toc455918536"></a><a
+NAME="FailureModes">Failure Modes/Crash Recovery</a></h2>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389899433"></a><a NAME="_Toc389899453"></a><a NAME="_Toc389901459"></a><a
+NAME="_Toc389904820"></a><a NAME="_Toc389905114"></a><a NAME="_Toc389905222"></a><a
+NAME="_Toc389906255"></a><a NAME="_Toc389907159"></a><a NAME="_Toc389907233"></a><a
+NAME="_Toc389907587"></a><a NAME="_Toc455918537"></a><a NAME="SampleUsage">Sample Usage</a></h1>
+
+<ol>
+  <p>If a document space supports unrestricted content search, the list element at index
+  DMAC_CBR_CONTENT_SEARCH would be DMA_TRUE, and the list element at index
+  DMAC_CBR_QUERY_RESTRICTIONS would be DMA_CBR_RESTRICT_NONE.</p>
+</ol>
+
+<h1><a NAME="_Toc389899437"></a><a NAME="_Toc389899457"></a><a NAME="_Toc389901463"></a><a
+NAME="_Toc389904824"></a><a NAME="_Toc389905118"></a><a NAME="_Toc389905226"></a><a
+NAME="_Toc389906259"></a><a NAME="_Toc389907163"></a><a NAME="_Toc389907237"></a><a
+NAME="_Toc389907591"></a><a NAME="_Toc455918538"></a><a NAME="BackwardsCompatibility">Backwards
+Compatibility</a></h1>
+
+<ol>
+  <p>This proposal is backwards compatible.</p>
+</ol>
+
+<h1><a NAME="_Toc389899435"></a><a NAME="_Toc389899455"></a><a NAME="_Toc389901461"></a><a
+NAME="_Toc389904822"></a><a NAME="_Toc389905116"></a><a NAME="_Toc389905224"></a><a
+NAME="_Toc389906257"></a><a NAME="_Toc389907161"></a><a NAME="_Toc389907235"></a><a
+NAME="_Toc389907589"></a><a NAME="_Toc455918539"></a><a NAME="ExistingSystemsImpact">Impact
+on Existing Systems</a><a NAME="_Toc389899432"></a><a NAME="_Toc389899452"></a><a
+NAME="_Toc389901458"></a><a NAME="_Toc389904819"></a><a NAME="_Toc389905113"></a><a
+NAME="_Toc389905221"></a><a NAME="_Toc389906254"></a><a NAME="_Toc389907158"></a><a
+NAME="_Toc389907232"></a><a NAME="_Toc389907586"></a></h1>
+
+<ol>
+  <p>There is no impact on existing systems.</p>
+</ol>
+
+<h1><a NAME="_Toc455918540"></a><a NAME="Conformance">Compliance &amp; Conformance Issues</a></h1>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389901454"></a><a NAME="_Toc389904814"></a><a NAME="_Toc389905108"></a><a
+NAME="_Toc389905216"></a><a NAME="_Toc389906249"></a><a NAME="_Toc389907153"></a><a
+NAME="_Toc389907227"></a><a NAME="_Toc389907581"></a><a NAME="_Toc455918541"></a><a
+NAME="RequirementsAddressed">What Requirement Does This Address?</a></h1>
+
+<ol>
+  <p>This addresses the requirement of advertising content search capabilities.</p>
+</ol>
+
+<h1><a NAME="_Toc389904815"></a><a NAME="_Toc389905109"></a><a NAME="_Toc389905217"></a><a
+NAME="_Toc389906250"></a><a NAME="_Toc389907154"></a><a NAME="_Toc389907228"></a><a
+NAME="_Toc389907582"></a><a NAME="_Toc455918542"></a><a NAME="SolutionValue">Why is this a
+good solution?</a></h1>
+
+<ol>
+  <p>This is a good solution, because it is aligned with the existing mechanism.</p>
+</ol>
+
+<h1><a NAME="_Toc389899431"></a><a NAME="_Toc389899451"></a><a NAME="_Toc389901457"></a><a
+NAME="_Toc389904818"></a><a NAME="_Toc389905112"></a><a NAME="_Toc389905220"></a><a
+NAME="_Toc389906253"></a><a NAME="_Toc389907157"></a><a NAME="_Toc389907231"></a><a
+NAME="_Toc389907585"></a><a NAME="_Toc455918543"></a><a NAME="ExistingSystemExperience">Existing
+Systems with Similar Features and Related Experiences</a></h1>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389899430"></a><a NAME="_Toc389899450"></a><a NAME="_Toc389901456"></a><a
+NAME="_Toc389904817"></a><a NAME="_Toc389905111"></a><a NAME="_Toc389905219"></a><a
+NAME="_Toc389906252"></a><a NAME="_Toc389907156"></a><a NAME="_Toc389907230"></a><a
+NAME="_Toc389907584"></a><a NAME="_Toc455918544"></a><a NAME="ReferenceMaterials">Reference
+Materials</a></h1>
+
+<ol>
+  <p>N/A</p>
+</ol>
+
+<h1><a NAME="_Toc389899438"></a><a NAME="_Toc389899458"></a><a NAME="_Toc389901464"></a><a
+NAME="_Toc389904825"></a><a NAME="_Toc389905119"></a><a NAME="_Toc389905227"></a><a
+NAME="_Toc389906260"></a><a NAME="_Toc389907164"></a><a NAME="_Toc389907238"></a><a
+NAME="_Toc389907592"></a><a NAME="_Toc455918545"></a><a
+NAME="IncorporationInSpecification">How Is This Incorporated into the Specification</a>?</h1>
+
+<blockquote>
+  <p>As per section 5, add the new capabilities, and change the format level.</p>
+</blockquote>
+
+<blockquote>
+  <p>&nbsp;</p>
+  <hr>
+</blockquote>
+
+<p align="right"><font color="#000080">html rendition derived 1999-07-29-21:23 -0700 (pdt)<em><br>
+$$Date: 00-02-17 15:07 $<br>
+$$Revision: 4 $</em></font></p>
+</body>
+</html>

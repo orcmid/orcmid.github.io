@@ -1,0 +1,188 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>Interfaces and Methods: IdmaVersionSeries2</title>
+</head>
+
+<body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<h2><a name="IdmaVersionSeries"></a>IdmaVersionSeries2</h2>
+
+<p>This interface provides extensions of the IdmaVersionSeries interface to facilitate
+versioning of complex objects such as compound-structured documents.&nbsp; This is <strong>draft
+version 0.01</strong> of 1999-11-23 of the proposal for this interface.</p>
+
+<p>All methods of IdmaVersionSeries are supported by this interface.&nbsp; In addition,
+the following interface is supported.</p>
+
+<h3><a name="IdmaVersionSeriesSetCheckOutNext"></a>IdmaVersionSeries::SetExtendedCheckOutNext</h3>
+
+<p>Support for this method is optional.</p>
+
+<p><b>Syntax</b><br>
+DmaRC <b>IdmaVersionSeries2::SetExtendedCheckOutNext</b> (<br>
+Dmapv <i>pReservation</i>)</p>
+
+<p><b>Parameters</b></p>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Mode</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td><i>pReservation</i></td>
+    <td>input</td>
+    <td>Pointer to an interface of a new, unsaved reservation object</td>
+  </tr>
+</table>
+<b>
+
+<p>Description</b></p>
+
+<p>Performs all of the operations of IdmaVersionSeries::SetCheckOutNext except the working
+Versionable object is constructed differently.&nbsp; </p>
+
+<p>For SetExtendedCheckoutNext, the working Versionable object is an <em>extended</em>
+clone of the current Versionable object in the version series.&nbsp; The general effect is
+to also make clones of those relationships for which the checked-out Versionable object is
+at the tail, with the same objects at the heads of those relationships.&nbsp; For example,
+if a referential container were versionable, the initial clone would share the same
+referentially-contained content.&nbsp; A checked-out CSRoot will share the original
+CSComponents and a checked-out Versionable object with virtual elements will have the same
+virtual elements.</p>
+
+<p>When the extended clone is created, the versionable object and all dependent
+persistable subordinate objects are copied recursively. All system-derived properties
+(such as dmaProp_This, dmaProp_OIID, and dmaProp_InstanceId) that are specific to a given
+(dependent) object are given appropriate new values for the clone.&nbsp; </p>
+
+<p>Independently-persistent objects that are directly reachable by navigation from the
+original Versionable object (including any of its dependently-persistent subordinates) may
+have counterparts -- projections -- in the extended clone according to the following
+rules:
+
+<ol>
+  <li>An independently-persistent object is projectable into the extended clone if and only if<ol
+    type="a">
+      <li>It is not Versionable;</li>
+      <li>It has a dmaProp_Tail property the value of which is the original Versionable object; </li>
+      <li>It is reachable by navigation through an object-valued property, or EnumOfObject element
+        of the original Versionable object (including any of its dependently-persistent
+        subordinates); and</li>
+      <li>The independently-persistent objects that can be directly reached by navigation from the
+        independently-persistent object through elements other than dmaProp_Tail have no
+        restriction against being reached by an additional independently-persistent object in the
+        same way(s). </li>
+    </ol>
+  </li>
+  <li>Exactly one projection is cloned for each projectable object, regardless of the number
+    of ways that it will be reachable by navigation from the extended clone.</li>
+  <li>When the projection is created, <ol type="a">
+      <li>the original projectable object and all dependent peristable subordinate objects are
+        copied recursively;</li>
+      <li>All system-derived properties that are specific to a given (dependent) object are given
+        appropriate new values for the projection;</li>
+      <li>The dmaProp_Tail property of the projection is set to be the extended clone and any
+        related properties (e.g., ones with InstanceId values that apply to the tail object) are
+        defined accordingly;</li>
+      <li>All other navigation elements to independently-persistent objects from the projectable
+        object are copied into the projection -- the same objects become reachable by navigation
+        in the same ways from the projection.</li>
+    </ol>
+  </li>
+  <li>When the an object-valued property of the original Versionable object has a projectable
+    object as its value, the extended clone has the projection as the value of that property.
+    &nbsp; Otherwise the value of the property in the clone is determined in the same way as
+    for SetCheckOutNext.</li>
+  <li>When an EnumOfObject property of the original Versionable object has projectable objects
+    as its elements, the corresponding property of the extended clone will deliver the
+    projections of those projectable objects.&nbsp; Otherwise the value of the EnumOfObject
+    property in the extended clone is determined in the same way as for SetCheckOutNext. </li>
+</ol>
+
+<p> When the original Versionable object has no projectable objects reachable by
+navigation, these rules lead to the same result as the IdmaVersionSeries::SetCheckOutNext
+operation.&nbsp; The treatment of ListOfObject properties with values that are not
+dependently persistent is the same as for the IdmaVersionSeries::SetCheckOutNext
+operation.</p>
+
+<p>The reservation created when the Extended Check Out is executed can be resolved with a
+check-in, or can be revoked. Revoking a reservation created as a consequence of
+SetExtendedCheckOutNext does not delete the working Versionable object.</p>
+
+<p><b>Return Values</b> </p>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>DMARC_BAD_OBJECT</td>
+    <td>An inappropriate object was passed as parameter to this function. For example, the
+    object does not support a required interface or is of an inappropriate class.</td>
+  </tr>
+  <tr>
+    <td>DMARC_CONFLICTING_OPERATION</td>
+    <td>The call on this primary intentional method logically conflicts with a prior call on a
+    different primary intentional method.</td>
+  </tr>
+  <tr>
+    <td>DMARC_NO_MEMORY</td>
+    <td>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</td>
+  </tr>
+  <tr>
+    <td>DMARC_NOT_SUPPORTED</td>
+    <td>This method is not supported in the context of this session or object.</td>
+  </tr>
+  <tr>
+    <td>DMARC_OK</td>
+    <td>(S_OK) Success.</td>
+  </tr>
+  <tr>
+    <td>DMARC_RESERVATION_PENDING</td>
+    <td>The connection is already holding a request for a reservation. There cannot be more
+    than one at a time.</td>
+  </tr>
+</table>
+
+<p><b>Deferred Return Values</b> </p>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>DMARC_NO_CURRENT_VERSION</td>
+    <td>The version series has no current version.</td>
+  </tr>
+  <tr>
+    <td>DMARC_OBJECT_LOCKED</td>
+    <td>The lock(s) on the persistent object prohibit the attempted operation.</td>
+  </tr>
+  <tr>
+    <td>DMARC_OBJECT_MODIFIED</td>
+    <td>The object has been modified since it was retrieved.</td>
+  </tr>
+  <tr>
+    <td>DMARC_RESERVATION_EXISTS</td>
+    <td>The version series is already holding a reservation.</td>
+  </tr>
+  <tr>
+    <td>DMARC_RESERVATION_NOT_ALLOWED</td>
+    <td>The condition of the version series does not permit a reservation, though no
+    reservation is currently present.</td>
+  </tr>
+</table>
+
+<hr>
+
+<p align="right"><em>$$Author: Orcmid $<br>
+$$Date: 99-11-23 23:12 $<br>
+$$Revision: 1 $</em></p>
+</body>
+</html>

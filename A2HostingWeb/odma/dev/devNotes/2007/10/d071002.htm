@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMdevCompagno/devnotes/2007/10/d071002.htm 65    13-08-22 12:53 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d071002: ODMA64 3.0 Interoperability</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="67%" height="6">
+      <p align="center">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong>
+		<a href="../../d000001.htm#d071002"><font color="#990033">d071002</font></a><br>
+      	<i><font size="5">ODMA64 3.0 Interoperability</font></i></strong></font></p>
+    </td>
+    
+    <td width="18%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <small><p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2007</a>&gt;<a target="_top" href="./">10</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b>
+		<a target="_top" href="d071002.htm">d071002</a>&gt;</b></font><br>
+      </small>
+</font>
+      <small><small><a href="#0.02">0.02</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<blockquote>
+	<div style="float: right">
+		<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="59500" --></div>
+	<p>Work on the
+	<a target="_top" href="http://odma.info/faq/2007/07/q070701b.htm">ODMJNI 
+	Java-ODMA Integration</a> reveals a great deal about the appeal of ODMA in 
+	its particular niche.&nbsp; There is still no comparable integration 
+	arrangement that solves the problem that ODMA was introduced to address in 
+	1994.&nbsp; At that time Windows 3.11 occupied the desktop and Windows NT 
+	was not yet established as the platform it would become.</p>
+	<p>The ODMJNI 1.0 work also exposes those significant limitations that 
+	hamper ODMA usage on contemporary systems: </p>
+	<ul>
+		<li>absence of end-to-end Unicode support </li>
+		<li>weak integration into the GUI of desktop applications </li>
+		<li>no integration in the Java, .NET, and ActiveX/COM worlds </li>
+		<li>inadequate provisions for troubleshooting, integration confirmation, 
+		and configuration management on the desktop</li>
+	</ul>
+	<p align="left">These and other limitations are attributable to the common 
+	reliance of the 16-bit and 32-bit APIs and ODMA Connection Managers on what 
+	are now mainly-obsolete technologies.&nbsp; The fundamental constraints were 
+	perpetuated as ODMA 1.0 evolved to the 1997 establishment of ODMA 2.0 and 
+	then remained at that level.</p>
+	<p align="left">The current transition of Windows and desktop applications 
+	to 64-bit processors and x64 implementations imposes a natural end-of-life 
+	for ODMA 2.0 and the ODMA32 implementation.&nbsp; ODMA32 will fade away 
+	along with the 32-bit processors (and 64-bit compatibility arrangements) on 
+	which it is hosted.&nbsp; </p>
+	<p align="left">This major transition also represents an opportunity for an 
+	ODMA64 (and an unleashed ODMA 3.0) that is unhampered by ODMA32 and ODMA 2.0 
+	limitations. Assuming that the specialized appeal of ODMA lingers on, 
+	perpetuation in an ODMA64 implementation can provide a practical migration 
+	of the ODMA &quot;sweet spot&quot; to the arriving generation of managed-document 
+	applications.</p>
+	<p align="left">This on-line folio is the place for capturing initial 
+	efforts at envisioning an ODMA64.&nbsp; The technical tension is around</p>
+	<ul>
+		<li>
+		<p align="left">preserving the value that ODMA uniquely provides for 
+		managed-document integration on the desktop</li>
+		<li>
+		<p align="left">overcoming the limitations of ODMA32 and the ODMA 2.0 
+		specification</li>
+		<li>
+		<p align="left">avoiding the second-system syndrome and reaching farther 
+		than necessary for the preservation of ODMA's primary benefits</li>
+		<li>
+		<p align="left">ensuring that the ODMA64 integration layer is 
+		unquestionably the most-dependable software of the managed-document 
+		&quot;stack&quot; from office productivity software to document management systems 
+		and back</li>
+	</ul>
+	<p align="left">Whether there is adequate demand and investment for taking 
+	ODMA this far is a different matter.&nbsp; This envisioning is intended to 
+	be informative and useful either way.&nbsp; </p>
+	<p align="left">It is not expected that meaningful availability of an ODMA64 
+	with these qualities could occur before 2010.&nbsp; That's partly because of 
+	the low level of activity around ODMA development.&nbsp; It's mainly because 
+	of the preparations that must occur around ODMA32 to set the stage.&nbsp; 
+	Interest in such a venture may simply not last that long.</p>
+</blockquote>
+<h2 align="left"><a name="Materials">Available Materials</a></h2>
+<ul>
+	<li>
+	<p align="left"><b>d071002b: <a href="d071002b.htm">ODMA64 3.0 
+	Interoperability 
+	[latest information]</a></b><br>
+&nbsp;&nbsp; </p></li>
+	<li><b>d071002c: <a href="d071002c.htm">Opportunities and Constraints</a></b></li>
+	<li><b>d071002a: <a href="d071002a.htm">Diary &amp; Job Jar</a></b>&nbsp;&nbsp; </li>
+</ul>
+<blockquote>
+	<dl>
+		<dt><i><b>see also:</b></i></dt>
+		<dd>
+		<b>d080101: <a href="../../2008/01/d080101.htm">ODMA Roadmap</a><br>
+		d080102: <a href="../../2008/01/d080102.htm">ODMA Effectiveness</a></b></dd>
+		<dd><b>d071003: <a href="d071003.htm">ODMA32 2.5 Integration</a></b><br>
+		<b>d071004: <a href="d071004.htm">ODMA32 Core</a></b></dd>
+		<dd><b>ODMA q070701:
+		<a target="_top" href="http://odma.info/faq/2007/07/q070701.htm">ODMJNI 
+		Java-ODMA Integration Kit</a></b><br>
+		<b>NuovoDoc Analysis:
+		<a target="_top" href="http://nuovodoc.com/analysis/ODMA-Analysis.htm">
+		ODMA -- Where's It Going?</a></b><br>
+		<b>Professor von Clueless:
+		<a target="_top" href="http://orcmid.com/BlunderDome/clueless/2007/11/dmware-how-about-that-odma64.asp">
+		How About That ODMA64?</a></b> (weblog post, 2007-11-10)</dd>
+	</dl>
+</blockquote>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMA64 3.0 Interoperability.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note d071002 0.02, February 15, 2008.&nbsp; Available at &lt;<font face="monospace"><b><a target="_top" href="d071002.htm">http://ODMA.info/dev/devNotes/2007/10/d071002.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dt><b><a name="RevisionHistory" href="#RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.02">0.02</a> 2008-02-15-20:02 Rename to Fit the Future ODMA 
+Progression</b></dt>
+<dt><b><a name="0.01">0.01</a> 2007-10-28-18:42 Correct ODMA Core Reference</b></dt>
+<dd>We use this as a way to break away from the pure placeholder, recognizing 
+that there is more here now.</dd>
+<dt><b><a name="0.00">0.00</a>  2007-10-26-08:38 create&nbsp;placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="d071002a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; The first objective is provision of a target for cross 
+	references that also serves as a placeholder for further details, developer 
+	notes, and work items.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%">
+      <p><a href="index.htm" target="_top">
+		<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../../2006/01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="36747" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-10-25-19:20 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 65 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

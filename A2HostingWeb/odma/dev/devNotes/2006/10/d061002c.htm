@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061002c: ODMJNI 1.0 Guide &amp; Usage Scenarios Review Draft 0.10 </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061002c.htm 69    13-08-22 12:53 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+<a href="../../d000001.htm#d061002"><font color="#990033">d061002</font></a><br>
+      	</font></strong><strong>
+
+  <font color="#990033">&nbsp;<a href="d061002.htm"><font color="#990033">ODMJNI 
+1.0 Guide &amp; Usage Scenarios</font></a><br>
+      <em><font size="5">0.10 Review Draft</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</code></b></p>
+<p align="right"><code><b><a target="_top" href="d061002c.htm">d061002c</a>&gt;</b></code><br>
+</font>
+      <a href="#0.01"><font size="1">0</font><small><small>.01</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+
+<small>
+	<blockquote>
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest&nbsp;<i>ODMJNI 1.0 Guide &amp; 
+				Usage Scenarios</i> document version can be found via &nbsp; &lt;<b><kbd><a href="d061002b.htm">http://ODMA.info/dev/devNotes/2006/10/d061002b.htm</a></kbd></b>&gt;.</li>
+				<li><b>Next version: 0.20 Review Draft</b> &lt;<b><kbd><a href="d061002d.htm">http://ODMA.info/dev/devNotes/2006/10/d061002d.htm</a></kbd></b>&gt;.&nbsp; 
+				That version obsoletes this draft.<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>This page:</b>&nbsp;&nbsp;<b>0.10 Review Draft </b>&lt;<b><kbd><a href="d061002c.htm">http://ODMA.info/dev/devNotes/2006/10/d061002c.htm</a></kbd></b>&gt;.&nbsp; 
+				<b>This version is now obsolete.&nbsp;</b> Later versions 
+				provide greater functionality.&nbsp; There are also breaking 
+				changes between the information in this guide and later 
+				versions.</li>
+				<li><b>Downloads:</b> The material of the 0.10 Review draft is 
+				provided in two forms:<ol>
+					<li> <b><kbd><a href="d061002c.pdf">d061002c.pdf</a></kbd></b>
+					<b>: Adobe Acrobat .pdf </b>&nbsp;44, 685 byte file dated 
+					2006-10-05-01:00</li>
+					<li> <a href="d061002c.zip"><kbd><b>d061002c.zip</b></kbd>
+					</a> <b>: Microsoft Word 2003 .doc </b>155,136 byte file 
+					dated 2006-10-05-01:00 in a WinZip .zip file of 43,608 bytes 
+					dated 2006-10-26-22:45</li>
+				</ol>
+				</li>
+			</ul></div>
+</blockquote>
+
+</small>
+
+<h2><a name="1" target="_top" href="#1">1</a>. Summary</h2>
+
+<h2><a name="2" target="_top" href="#2">2</a>. Developer Notes: Changes</h2>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 Guide &amp; Usage Scenarios, 0.10 Review Draft.&nbsp;&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d061002c 0.01, October 
+		27, 2006.&nbsp; Available at &lt;<kbd><b><a target="_top" href="d061002c.htm">http://ODMA.info/dev/devNotes/2006/10/d061002c.htm</a></b></kbd>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.01">0.01</a> 2006-10-27-14:47 Report as Obsolete and Link 
+	to Next Version</b></dt>
+	<dt><b><a name="0.00">0.00</a> 2006-10-26-20:05 Provide Placeholder for 
+	Already-Created Review Draft 0.10</b></dt>
+	<dd>This page is put up as a placeholder for preservation of Review Draft 
+	0.10.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="60%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2006-10-26-20:05 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 69 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>n140501: RCT ODF 1.2 Change-Tracking Repair Development</title>
+<!--$$Header: /nfoWorksCompagno/notes/2014/05/n140501.htm 154   17-06-14 20:22 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006.htm of 2005-08-17T20:25Z -->
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="18%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://nfoWorks.org" target="_top">
+<img border="0" src="../../../images/nfoWorks-2014-06-02-1702-LogoSmall.png" alt="nfoWorks: tools for document interoperability" width="160" height="100"></a><a href="http://nfoWare.com" target="_top">
+<!-- included from the http://nfoworks.org/construction/templates/00/c000005b.htm  template of 2014-06-05-17:10 -0700 -->
+</a>
+<!--webbot bot="Include" endspan i-checksum="61274" --></td>
+    
+    <td width="56%" height="6">
+      <p align="center"><font color="#990033"><strong>
+		<a href="../../n000001.htm#n140501"><font color="#990033">n140501</font></a> 
+		nfoWorks </strong></font>
+
+		<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong><a href="../../n000001.htm"><font color="#990033">nfoNote</font></a></strong></font><font color="#990033"><strong><br>
+      <i><font size="5">RCT: ODF 1.2 Change-Tracking Repair<br>
+&nbsp;Development</font></i></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="right">
+		<b><font face="monospace"><a target="_top" rel="nofollow" href="../../../">
+        nfoWorks</a>&gt;<a target="_top" rel="nofollow" href="../../">notes</a>&gt;<br>
+		<a target="_top" rel="nofollow" href="../">2014</a>&gt;<a rel="nofollow" target="_top" href="./">05</a>&gt;</font></b></p>
+</font>
+</font>
+
+</font>
+
+      <p align="right"><b><font face="monospace">
+		<a rel="nofollow" target="_top" href="n140501.htm">n140501</a>&gt;</font></b><br>
+      <small>&nbsp;<a href="#v0.07">0.07</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2017-06-14 20:22 -0700<!--webbot bot="Timestamp" endspan i-checksum="28217" -->
+      </small></p></small>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<dl>
+		<font color="#800080">
+			</dl>
+					<p></p></font>
+<blockquote>
+	<p>Repaired Change-Tracking (RCT) is an approach to change-tracking for ODF 
+	1.2 documents that corrects and extends the existing provisions of ODF 1.2 
+	change-tracking for document text.</p>
+	<p>The specification of RCT is accomplished by an extension profile that 
+	includes foreign extensions to ODF 1.2 documents.&nbsp; These extensions are 
+	designed so that (1) they are safely ignored by strict ODF 1.2 document 
+	consumers and (2) they can be adopted by OASIS, with appropriate
+	<a href="http://nfoworks.org/ns/odf/#p1.3">namespace reservations</a>, in a 
+	manner that is safe for early adopters of the extension.</p>
+	<p>Promulgation of the extensions beyond the scope of the RCT 
+	specification.&nbsp; It is recognized that there needs to be two kinds of 
+	adoption for the RCT repairs to be effective:</p>
+	<ol>
+		<li>Incorporation of support for the extensions in a processor having 
+		native ODF support.&nbsp; The preferable case is Apache OpenOffice, 
+		since Apache License 2.0 updates and the related issue/feature tracking 
+		is adaptable to all products with the same code-base ancestry.<br>
+&nbsp;&nbsp; </li>
+		<li>Incorporation of support for the extensions in converters between 
+		ODF and Microsoft Office Word formats, the benchmarks for text document 
+		change-tracking.</li>
+	</ol>
+	<p>The RCT activity does contribute test documents for the handling of 
+	repaired change-tracking.&nbsp; </p>
+	<p align="right">-- Dennis E. Hamilton<br>
+	Seattle, Washington<br>
+	2014-05-04<br>
+	2014-07-08</p>
+</blockquote>
+<h2><a name="s1" href="#s1">1</a>. Introduction</h2>
+<blockquote>
+  <p>RCT extensions are repairs to existing ODF 1.2 change-tracking provisions.&nbsp; 
+	Development starts from the the explicit provisions of ODF 1.2.&nbsp; It is 
+	presumed that conforming ODF 1.2 producers only produce tracked-change 
+	information that can be presented, accepted, and rejected by ODF 1.2 
+	consumers that rely exclusively on the ODF 1.2 provisions.&nbsp; </p>
+	<p>It is known that prominent implementations employ tacit arrangements that 
+	are undocumented implementation-dependent deviations.&nbsp; It is not 
+	possible to address that.&nbsp; Instead, RCT provides explicit approaches to 
+	what has been tacit before, allowing RCT-aware consumers to interpret the 
+	information in a reliable, interoperable manner.&nbsp; This allows deviating 
+	producers to now convey RCT information on the correct interpretation of 
+	their tracked changes.&nbsp; The supporting analysis and principled basis 
+	for RCT may also lead to tracked-change forms that are dealt with more 
+	reliably even by RCT-unaware ODF 1.2 consumers.&nbsp; The approach is made 
+	understandable by construction of exemplary cases using a fictitious 
+	office-productivity software system, <a href="../../../bso">Blue Sky Office</a>.</p>
+	<p>This approach is very different than the hypothetical
+	<a href="../../2013/03/n130301.htm">SCT scheme</a>, which is entirely 
+	incompatible with ODF 1.2 change-tracking.&nbsp; SCT for ODF is a mechanism 
+	that preserves digital signatures of documents with the modifications kept 
+	separate, the combination permitting a digital signature that is also 
+	preserved in the making of further changes.&nbsp; That level of document 
+	integrity changes the manner in which all kinds of changes are captured and 
+	presented, including use of form fields, spreadsheet cell entries, etc.&nbsp; 
+	Even were SCT the objective, the analysis and approach undertaken by RCT is 
+	an important contribution.&nbsp; SCT handles more changes, and in a 
+	different way, but the changes that RCT accommodates must also be supported 
+	in SCT.</p>
+	<p>It is fundamental to RCT that all extension is by introduction of 
+	attributes that can be safely ignored as foreign attributes by RCT-unaware 
+	ODF consumers.&nbsp; And, just as for all ODF 1.2 provisions, consumers that 
+	are RCT-aware can have implementation-defined limitations on interpretation 
+	of cases.</p>
+	<p>RCT provides information for representing individual changes as 
+	compositions of simpler changes.&nbsp; Even when an ODF 1.2 consumer does 
+	not treat the combinations as atomic, the component changes tend to be more 
+	accurate for interoperable interchange.</p>
+	<p>RCT is also intended to be more resilient in the face of change 
+	overlapping and change collisions, where the order of acceptance/rejection 
+	of changes is important for accuracy of change provenance.</p>
+	<p>It is characteristic of ODF 1.2 change-tracking and similar approaches 
+	that changes that are accepted and rejected are no longer tracked.&nbsp; 
+	This loses provenance information about the change history of a document.&nbsp; 
+	It is legitimate for tracked-change entries to become orphaned and ignored 
+	in various ways.&nbsp; RCT includes an extension for signaling retention of 
+	orphaned tracked-change information in order to preserve document history.</p>
+	<p>Suites of test cases are important for the achievement of RCT, confirming 
+	the benign handling of RCT-based tracked changes by down-level 
+	implementations.&nbsp; The test cases are also important in their support 
+	for making heretofore tacit practices explicit and mitigating interchange 
+	failures that happen even among the same implementations.</p>
+	<p>The latest details of RCT development are tracked on the
+	<a href="n140501b.htm">Roadmap page</a>.&nbsp; The organization of materials 
+	into hypertext of the RCT specification is envisioned and developed in the
+	<a href="../../../dev/2014/06/d140605.htm">RCT Organization</a> folder.</p>
+</blockquote>
+<h2>&nbsp;</h2>
+<div style="float: right">
+	<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+				<a href="../../../construction/templates/00/c000006c.htm">visits to popular <b><i>nfoWorks</i></b> pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+				<a href="http://www3.clustrmaps.com/counter/maps.php?url=http://nfoWorks.org" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://nfoWorks.org" style="border:0px;" alt="Locations of visitors to nfoWorks" title="Locations of visitors to nfoWorks" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+</a></td>
+			</tr>
+			<!-- Inserted from nfoWorks /construction/templates/00/c000006c1.htm of 2014-11-04-10:24 -0800 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="45866" --></div>
+<h2>
+<a name="s2" href="#s2">2</a>. Related Material</h2>
+<blockquote>
+	<ul>
+		<li><b><a href="n140501b.htm">n140501b</a>: RCT: ODF 1.2 Change-Tracking 
+		Repair Roadmap [latest]<br>
+&nbsp;&nbsp;&nbsp; </b></li>
+		<li><b><a href="n140501c.htm">n140501c</a>: Roadmap Initial Sketch</b></li>
+		<li><b><a href="n140501-cache">n140501-cache</a>: Resources captured for 
+		RCT development</b></li>
+		<li><b><a href="n140501a.htm">n140501a</a>: Diary &amp; Job Jar<br>&nbsp;&nbsp; 
+		</b></li>
+		<li><b>
+		<a href="../../../dev/2014/08/d140801-suite/default.htm#d140801b3">
+		DChanges 2014 Program</a>, available at &lt;<font face="Courier New"><a href="https://sites.google.com/site/dchanges14/program">https://sites.google.com/site/dchanges14/program</a></font>&gt;.</b></li>
+		<li><b><a href="../../../rct">RCT</a>: Repaired Change-Tracking ODF 1.2 Extension Profile (hypertext)</b></li>
+		<li><b><a href="../../../bso">BSO</a>: Blue Sky Office FTW Edition</b></li>
+		<li><b><a href="../../../dev/2014/06/d140605.htm">d140605</a>: RCT 
+		Profile Organization</b></li>
+		<li><b><a href="../../../dev/2014/05/d140501.htm">d140501</a>: 
+		Provisional Namespace <font face="Courier New">ns/odf/1.2/rct#</font></b></li>
+		<li><b><a href="../../../dev/2014/06/d140604.htm">d140604</a>: RCT 
+		Interoperability Assessment</b></li>
+		<li><b><a href="../../../dev/2014/06/d140603.htm">d140603</a>: RCT 
+		Application Assessment</b></li>
+		<li><b><a href="../../../dev/2014/06/d140602.htm">d140602</a>: RCT 
+		Extension Down-Level Resiliency</b></li>
+		<li><b><a href="n140502.htm">n140502</a>: ODF 1.2 Change-Tracking 
+		Complexity</b></li>
+		<li><b><a href="n140503.htm">n140503</a>: ODF 1.2 Text-Document Schema 
+		Analysis</b></li>
+		<li><b><a href="../06/n140602.htm">n140602</a>: Conformant ODF 1.2 
+		Documents</b></li>
+		<li><b><a href="../../2013/03/n130301.htm">n130301</a>: SCT: Savage 
+		Change-Tracking</b></li>
+	</ul>
+</blockquote>
+		<font color="#800080">
+			</p>
+  </font>
+
+<dl><small>
+		<font color="#800080">
+
+
+
+
+  </font></small></dl>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+	<dl>
+		<dt><b><a target="_top" name="Attribution" href="#Attribution">
+		Attribution:</a></b> </dt>
+</dl>
+<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E. </dt>
+		<dd>RCT: ODF 1.2 Change-Tracking Repair.&nbsp;&nbsp; <i><b>nfoWorks</b></i> 
+		nfoNote folio n140501 0.07, November 6, 2014.&nbsp; Accessed at &lt;<font face="monospace"><b><a target="_top" href="n140501.htm">http://nfoWorks.org/notes/2014/05/n140501.htm</a></b></font>&gt;.</dd>
+	</dl>
+</blockquote>
+
+<dt><b><a name="RevisionHistory">Revision History:</a><br>
+&nbsp;</b></dt>
+<dt><b><a name="v0.07">0.07</a> 2014-11-06-09:19 Light Editing</b></dt>
+<dd>Be consistent in use of Roadmap and Initial Sketch</dd>
+<dt><b><a name="v0.06">0.06</a> 2014-09-04-16:44 Add DChanges 2014 link</b></dt>
+<dd>The official program is linked as the first place that any formal 
+presentation of RCT appears.</dd>
+<dt><b><a name="v0.05">0.05</a> 2014-07-11-14:00 Add RCT Organization</b></dt>
+<dd>The organization document is linked in the related materials.</dd>
+<dt><b><a name="v0.04">0.04</a> 2014-07-10-21:17 Add BSO</b></dt>
+<dd>The related Blue Sky Office material is linked in and its use identified in 
+the Introduction section..</dd>
+<dt><b><a name="v0.03">0.03</a> 2014-07-08-10:22 Stabilize Overview</b></dt>
+<dd>Replace Ed.Notes with Overview statement, updated synopsis, and links to the 
+roadmap.</dd>
+<dt><b><a name="v0.02">0.02</a> 2014-07-01-17:32 Diversify Titles with Initial 
+Sketch</b></dt>
+<dd>The hub document (n140501b) is identified as the roadmap, and nomenclature 
+is adjusted accordingly, with some addition to the initial sketch.</dd>
+<dt><b><a name="v0.01">0.01</a> 2014-06-10-17:29 Add Related Materials</b></dt>
+<dd>Connections to supporting and sibling materials are added.</dd>
+<dt><b><a name="v0.00">0.00</a>  2014-05-05-15:47 Cover Page for Initial 
+Material</b></dt>
+  <dd>Serve as placeholder.&nbsp; Also start a <a href="n140501a.htm">job jar</a> page for recording work 
+  items for building more content.&nbsp; </dl></small>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%">
+      <p><a href="index.htm" target="_top">
+		<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<!-- included from nfoWorks construction/templates/00/c000005d.htm of 2008-04-07-11:14 -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWorks /construction/templates/00/c000005f.htm of 2011-10-01-18:46 -0700 -->
+ 	<i><b><a href="../../../" target="_top">nfoWorks</a></b></i>.<br />This work is 
+	licensed under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font>
+<!--webbot bot="Include" endspan i-checksum="48845" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2014-05-05-15:47 -0700 (pdt) by
+<a rel="nofollow" target="_top" href="http://orcmid.com/construction/orcmid.htm">
+      orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-06-14 20:22 $<br>
+      $$Revision: 154 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

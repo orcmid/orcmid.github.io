@@ -1,0 +1,238 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DMA Internationalization and Localization</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc372700091"><A NAME="_Toc374170770"><A NAME="_Toc374175151"><A NAME="_Toc374886722"><A NAME="_Toc375040281"><A NAME="_Toc375118138"><A NAME="_Toc375120594"><A NAME="_Toc375459588"><A NAME="_Toc375626267"><A NAME="_Toc375650583"><A NAME="_Toc375717705"><A NAME="_Toc375996838">DMA Internationalization and Localization</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>The DMA architecture supports the internationalization and localization of document management applications and systems through (1) the use of the Unicode universal character set encoding, (2) a locale inspired mechanism for specifying a client’s language, (3) support for multiple text ordering methodologies, and (4) a locale independent date/time representation. </P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700093"><A NAME="_Toc374170772"><A NAME="_Toc374175153"><A NAME="_Toc374886724"><A NAME="_Toc375040283"><A NAME="_Toc375118140"><A NAME="_Toc375120596"><A NAME="_Toc375459590"><A NAME="_Toc375626269"><A NAME="_Toc375650585"><A NAME="_Toc375717707"><A NAME="_Toc375996840">Internationalization affected DMA Data Types</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>The only data type utilized by the DMA COM API for representing possibly unconstrained textual data is the DmaString data type (actually only pDmaString and ppDmaString references to this data type are utilized). </P>
+<P>The DMA DateTime property type is defined as a syntactically constrained DmaString. This section defines the syntax that DMA will employ through its API for DateTime properties in a manner that is unambiguous with respect to time zones, language, and cultural conventions. </P>
+<P>DMA Object Instance Identifiers (OIID) are represented using a syntactically constrained DmaString data type.  DMA OIIDs are not viewed as localizable textual data by the DMA Internationalization and Localization model, and as such are not discussed further in this section.</P>
+<B><P><A NAME="_Toc374170773"><A NAME="_Toc374175154"><A NAME="_Toc375996841">DmaString Data Type</A></A></A></P>
+</B><P>DMA follows the Microsoft OLE Automation conventions with regards to its string data type and utilizes a Microsoft BSTR conformant in-memory data representation for DmaStrings.</P>
+<P>A BSTR can be thought of as a pointer to a null terminated array of <I>wchar_t</I> characters. The BSTR character data array is preceded in memory by a 32-bit integer that contains the length of the BSTR character data array.  This feature allows efficient marshalling of the BSTR since the character data array length is explicit. In many cases, the BSTR can be treated as a normal null terminated string since the pointer is to the first element in the character data array.  DMA adopted the BSTR data representation to facilitate the introduction of DMA language bindings for languages such as Visual Basic and Java.</P>
+<P>DMA specifies that four macros be defined in the DMA header files for manipulating DMA’s BSTR conformant strings.  The macro names are listed below:</P><DIR>
+<DIR>
+
+<FONT SIZE=2><P></FONT><A HREF="macros.html#MacroDMA_CREATE_STRING"><FONT SIZE=2>DMA_CREATE_STRING</FONT></A></P>
+<FONT SIZE=2><P></FONT><A HREF="macros.html#MacroDMA_FREE_STRING"><FONT SIZE=2>DMA_FREE_STRING</FONT></A></P>
+<FONT SIZE=2><P></FONT><A HREF="macros.html#MacroDMA_GET_STRING_TEXT"><FONT SIZE=2>DMA_GET_STRING_TEXT</FONT></A></P>
+<FONT SIZE=2><P></FONT><A HREF="macros.html#MacroDMA_GET_STRING_CHAR_COUNT"><FONT SIZE=2>DMA_GET_STRING_CHAR_COUNT</FONT></A></P></DIR>
+</DIR>
+
+<P>These macros are defined in the Macros Reference section of this specification.</P>
+<B><P><A NAME="_Toc374170774"><A NAME="_Toc374175155"><A NAME="_Toc375996842">DateTime Properties</A></A></A></P>
+</B><P>DMA utilizes a locale-independent date/time format. DMA clients are expected to transform DMA date/time values into locale and platform specific representations as required for user presentation. A DmaDateTime is a specialization of a DmaString with the following syntax derived from ISO 8601: </P><DIR>
+<DIR>
+
+<B><P>YYYYMMDDThhmmss[,f]Z</B> </P></DIR>
+</DIR>
+
+<P>where: </P><DIR>
+<DIR>
+
+<B><P>YYYY</B> represents a four-digit year number according to the Gregorian calendar<BR>
+<B>MM</B> represents a two-digit month in the range 01-12<BR>
+<B>DD</B> represents a two-digit day in the range 01-31<BR>
+<B>hh</B> represents a two-digit hour in the range 00-23<BR>
+<B>mm</B> represents a two-digit minute in the range 00-59<BR>
+<B>ss</B> represents a two-digit second in the range 00-59<BR>
+<B>f</B> represents decimal fractions of a second to arbitrary precision </P></DIR>
+</DIR>
+
+<P>The literal "T" separates the date and time components. The optional literal "," (comma) separates the time and fractional seconds components. The literal "Z" is mandatory and indicates that the time is represented in Coordinated Universal Time (also known as UTC or GMT). </P>
+<P>Midnight is represented by a time (hhmmss) of 000000 and indicates the start of the specified date. Applications desiring to store only dates using DateTime properties should specify a time component of midnight. </P>
+<P>A Document Space implementation may not be able to store DateTime values persistently with the precision specified by the caller. DMA does not require that a Document Space implement DateTime persistence with any specific precision.  However, the Document Space must accept and return DateTime values per the syntax described in this section. </P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700094"><A NAME="_Toc374170775"><A NAME="_Toc374175156"><A NAME="_Toc374886725"><A NAME="_Toc375040284"><A NAME="_Toc375118141"><A NAME="_Toc375120597"><A NAME="_Toc375459591"><A NAME="_Toc375626270"><A NAME="_Toc375650586"><A NAME="_Toc375717708"><A NAME="_Toc375996843">Character Set Encodings</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>DMA 1.0 specifies that the Unicode (UCS-2) character set encoding must be supported by all DMA 1.0 compliant implementations.  Support for other character set encodings is neither encouraged nor discouraged by the specification.  (The DMA architecture is based upon principles that enable supporting additional character sets encodings.)</P>
+<P>DMA 1.0 requires that all DmaStrings passed through COM interfaces on a System Manager object, or objects derived from it, must utilize a common character set encoding. The common character set encoding is an attribute of a DMA System and is bound to a System Manager object instance at creation time. DMA API callers (both applications and service objects) are responsible for presenting and accepting DmaString data in the System Manager's common character set encoding.</P>
+<P>In order to support use in countries other than the United States, DMA supports the expression of characters utilized by the local languages. Latin based languages draw from a relatively small character set and are generally encoded one character per byte whereas Asian languages draw from much larger character sets and require multiple byte encodings. In order to support non-ASCII character set encodings, the DMA architecture has the following characteristics: </P>
+<OL>
+
+<LI>Character set neutrality with regards to the handling of DmaStrings <BR>
+<BR>
+Character set neutrality means that DMA will not require the use of any specific code point to represent a character nor shall it construe that a code point can be represented with a single byte of storage. </LI>
+<P>The DMA System Manager and middleware pass DmaString data between a client and a System or DocSpace implementation, respectively, in whole, and as such should be character set neutral.  However, queries on merged scopes may require the merging of result sets from individual document spaces possibly requiring that the DMA middleware compare DmaString data to determine relative order. DMA's Service Object mechanism is utilized to support the installation of third-party provided DmaString text ordering implementations. </P>
+<LI>Unambiguity with regards to character set encodings <BR>
+<BR>
+A client application must be able to determine with which character set encoding a DmaString is encoded. This capability does not require that each DmaString be tagged with a character set encoding ID, only that within the context of use the character set encoding is unambiguous. </LI></OL>
+
+<B><P><A NAME="_Toc374170776"><A NAME="_Toc374175157"><A NAME="_Toc375996844">DMA </A></A></A>Character Set Encoding Identifiers</P>
+</B><P>A DMA character set encoding identifier is represented using a DmaInteger. DMA will not administer a registry of character set identifiers, instead DMA character set encoding identifier values will be drawn from the <A HREF="ftp://ftp.isi.edu/in-notes/iana/assignments/character-sets">Internet Assigned Number Authority (IANA) Character Set Registry</A> (which is utilized by various Internet standards including MIME and HTTP). The IANA Character Set Registry defines a name and possibly several aliases for each character set. The IANA Character Set Registry also defines unique integer values, (referred to as the MIBenum value) for these character sets. DMA character set encoding identifiers utilize the IANA Character Set registry MIBenum values. </P>
+<P>DMA character set encoding identifier values for some "commonly occurring" character sets are enumerated in the following table.<BR>
+</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=6 WIDTH=499>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>Character Set Encoding Standard (Description) </TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>DMA Character Set Encoding Identifier Value<BR>
+(IANA MIBenum Value) </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO-10646-UCS-2 (Unicode)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>1000 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ANSI X3.4-1968 (US ASCII)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>3 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-1:1987 (Latin1)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>4 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-2:1987 (Latin2)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>5 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-3:1987 (Latin3)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>6 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-4:1987 (Latin4)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>7 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-5:1988 (Latin/Cyrillic)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>8 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-6:1987 (Latin/Arabic)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>9 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-7:1987 (Latin/Greek)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>10 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-8:1987 (Latin/Hebrew)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>11 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO 8859-9:1989 (Latin5)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>12 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>Shift JIS (MS Kanji)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>17</TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>EUC Packed Format for Japanese (EUC-J)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>18</TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>EUC-KR (KS C 5861-1992, RFC 1557)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>38 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>KS C 5601-1987 (Korean, RFC 1345)</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>36 </TD>
+</TR>
+<TR><TD WIDTH="68%" VALIGN="TOP">
+<P>ISO-10646-UCS-4</TD>
+<TD WIDTH="32%" VALIGN="TOP">
+<P>1001</TD>
+</TR>
+</TABLE>
+
+<B><FONT SIZE=2><P ALIGN="CENTER">Table -1 DMA Character Set Encoding Identifier values</P>
+</B></FONT><P>DMA 1.0’s standard character set encoding, Unicode (ISO-10646-UCS-2), has a DMA character set encoding identifier value of 1000.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700095"><A NAME="_Toc374170777"><A NAME="_Toc374175158"><A NAME="_Toc374886726"><A NAME="_Toc375040285"><A NAME="_Toc375118142"><A NAME="_Toc375120598"><A NAME="_Toc375459592"><A NAME="_Toc375626271"><A NAME="_Toc375650587"><A NAME="_Toc375717709"><A NAME="_Toc375996845">Language Support</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>In order to support implementation of global enterprise document management systems that serve clients whom use different languages, potentially located in different countries, the DMA architecture allows implementations to be capable of presenting textual information to a client in a language specified by the client. Furthermore, a client can determine which languages are supported for the various components of a DMA Document System. (These requirements are referred to collectively as the localization requirement.) </P>
+<P>DMA defines a language via a locale name mechanism. Language is the primary attribute that DMA 1.0 will infer from a locale name. A locale name will consist of a <I>&lt;language, subtab&gt;</I> two-tuple and will be represented as a DmaString value syntactically conformant with an Internet language tag value as defined per <A HREF="http://ds.internic.net/rfc/rfc1766.txt">RFC 1766</A>. Locale names will normally consist of a two-letter ISO 639 language abbreviation, a hyphen, and a two-letter ISO 3166 country code (e.g. en-US, English in the United States), although RFC 1766 allows other minor variations. Per RFC 1766, language and subtag components consist of alphabetic characters drawn from the US-ASCII character repertoire (a-z, A-Z). A DMA locale name value will use the character set encoding of the DMA system in which context it is utilized. </P>
+<P>DMA addresses the localization requirement by (a) requiring that a DMA system implementation and DMA document spaces provide the client with one or more supported locale names and (b) allowing for the client to specify one of the supported locale names when instantiating a System or DocSpace object. </P>
+<P>DMA imposes no requirements on a system or document space implementation with regards to the degree to which an implementation supports a locale. A client's specification of a locale when instantiating an IdmaSystem or IdmaDocSpace object simply expresses the clients preference for resource and capability localization. </P>
+<P>The DMA System Manager implementation must be capable of providing the client with localized System names and descriptions. </P>
+<P>The DMA System implementation may utilize the locale to provide the client with localized "Descriptive Text" and "Display Name" property values for the ClassDescription and PropertyDescription objects associated with the system object. The DMA System implementation may also utilize the locale to present localized message text (returned by the IdmaSystem::GetResultCodeDescription method). </P>
+<P>The Document Space Service Object implementation may utilize the locale to provide the client with localized "Descriptive Text" and "Display Name" property values for the ClassDescription and PropertyDescription objects associated with Document Space objects. </P>
+<P>The Document Space Service Object may also utilize the locale to otherwise modify the capabilities of a Document Space, such as providing the client with Ordering IDs meaningful to that locale only. </P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700096"><A NAME="_Toc374170778"><A NAME="_Toc374175159"><A NAME="_Toc374886727"><A NAME="_Toc375040286"><A NAME="_Toc375118143"><A NAME="_Toc375120599"><A NAME="_Toc375459593"><A NAME="_Toc375626272"><A NAME="_Toc375650588"><A NAME="_Toc375717710"><A NAME="_Toc375996846">System Manager Internationalization</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>The System Manager provides clients with the capability to bootstrap into a DMA object model environment by connecting to a DMA System. The System Manager also provides the capability to register system and text ordering service objects. </P>
+<P>A DMA System may be registered more than once with the DMA System Manager with distinct character set encodings.  This mechanism enables a logical system to be registered, (for example, utilizing the Unicode and Shift-JIS character set encodings).  This use of multiple System registration indicates that such Systems are to be treated identically other than with respect to character set encoding.  For example, they can be thought of as providing access to the same collections of documents.</P>
+<B><FONT SIZE=4><P><A NAME="_Toc372700097"><A NAME="_Toc374170779"><A NAME="_Toc374175160"><A NAME="_Toc374886728"><A NAME="_Toc375040287"><A NAME="_Toc375118144"><A NAME="_Toc375120600"><A NAME="_Toc375459594"><A NAME="_Toc375626273"><A NAME="_Toc375650589"><A NAME="_Toc375717711"><A NAME="_Toc375996847">Text Collation</A></A></A></A></A></A></A></A></A></A></A></A></P>
+</B></FONT><P>DMA text collation (ordering) occurs only within the context of a DMA query and is described in detail in the Query section of this document. DMA middleware only deals with text collation when performing queries on merged scopes involving textual properties.  Text Ordering Service Objects may be registered with the System Manager for use by System Service Object implementations.  Text Ordering Service Objects implement one or more text collations (orderings) specific DmaString comparisons and are intended to be utilized by DMA System Service Object implementations to perform full- or merge-sorts on query result rows.</P>
+<B><P><A NAME="Collations"></A>Well-known DMA Text Collation Sequences</P>
+</B><P>DMA 1.0 defines the following well-known text collation sequences:</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=590>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<B><P ALIGN="CENTER">Name</B></TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<B><P ALIGN="CENTER">Define Name</B></TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<B><P ALIGN="CENTER">Description</B></TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P>Case Sensitive Code Point Comparison</TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<P>dmaCollation_CaseSensitiveCodePoint</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Strict code-point based comparison</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P>Case Insensitive Code Point Comparison</TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<P>dmaCollation_CaseInsensitiveCodePoint</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Compares strings case-insensitively and locale independently.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P>Case Sensitive Lexicographical Comparison</TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<P>dmaCollation_CaseSensitiveLexicographic</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Compares using lexicographic ordering in the current locale.</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="TOP">
+<P>Case Insensitive Lexicographical Comparison</TD>
+<TD WIDTH="40%" VALIGN="TOP">
+<P>dmaCollation_CaseInsensitiveLexicographic</TD>
+<TD WIDTH="33%" VALIGN="TOP">
+<P>Compares based on lower case lexicographic ordering in the current locale.</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<B><P>Detailed Descriptions</P>
+</B><P>This section provides a detailed discussion of the text collation sequences listed above.</P>
+
+<UL>
+<LI>Case Sensitive Code Point Comparison {dmaCollation_CaseSensitiveCodePoint}</LI></UL>
+
+<P>Compares and orders strings strictly according to the code point values of the characters. This is a locale-independent collation sequence. Under the Unicode character set encoding, comparison of strings using this collation sequence delivers results exactly as for the ANSI C runtime function wcscmp.</P>
+
+<UL>
+<LI>Case Insensitive Code Point Comparison {dmaCollation_CaseInsensitiveCodePoint}</LI></UL>
+
+<P>Compares and orders strings according to the code point values of the characters after (logically) converting them to lower case. Ordering is based on the numerical values of the lower case character codes rather than the lexicographical order of those characters. Therefore, this is a locale-independent collation sequence. Under the Unicode character set encoding, comparison of strings using this collation sequence delivers results exactly as for the Microsoft C runtime function _wcsicmp.</P>
+
+<UL>
+<LI>Case Sensitive Lexicographical Comparison {dmaCollation_CaseSensitiveLexicographic}</LI></UL>
+
+<P>Compares and orders strings according to the lexicographical ordering of the characters as determined by the current character set encoding and locale. Under the Unicode character set encoding, comparison of strings using this collation sequence delivers results as for the ANSI C runtime function wcscoll.</P>
+
+<UL>
+<LI>Case Insensitive Lexicographical Comparison {dmaCollation_CaseInsensitiveLexicographic}</LI></UL>
+
+<P>Compares and orders strings by (logically) convert to lower case and then applying the lexicographical ordering as determined by the current character set encoding and locale. Under the Unicode character set encoding, comparison of strings using this collation sequence delivers results exactly as for the Microsoft C runtime function _wcsicoll.</P>
+</BODY>
+</HTML>

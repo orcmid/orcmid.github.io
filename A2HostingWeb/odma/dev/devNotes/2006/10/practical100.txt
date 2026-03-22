@@ -1,0 +1,74 @@
+practical100.txt 0.01alpha            UTF-8                  dh:2006-10-19
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+                   EVOLUTIONARY PROTOTYPE VERSION 0.01alpha
+
+The info.odma.practical100 package provides basic interfaces, classes, and
+other definitions for implementing ODMA 1.0 access from Java-based
+desktop applications on Microsoft Windows.  The component interfaces are
+designed to shield Java-based applications from ODMA API details.  The
+package provides a practical level of ODMA-aware operations suitable for
+typical office-desktop applications.
+
+    Content
+        1. The Package
+        2. Installing Version 0.01alpha
+        3. Compiling and Exercising the Material
+
+
+1. THE PACKAGE
+
+   This version contains definitions for two interfaces:
+
+        info.odma.practical100.Connection
+
+        info.odma.practical100.Document
+
+   [Note the change from simple100 used in the preliminary documentation.]
+
+   It is in a Zip file that contains folder path info\odma\practical100\
+
+   All of the content is in the practical100 subfolder.
+
+
+2. INSTALLING VERSION 0.01alpha
+
+   Choose a folder that can be used as a Java classpath node.  Extract all
+   content of the Practical100-0.01alpha.zip file into that folder.  This
+   should provide the additional subfolder path info\odma\practical100\
+
+   There is a copy of this file in the practical100\ subfolder.
+
+
+3. COMPILING AND EXERCISING THE MATERIAL
+
+   The material is designed to be compiled using the javac command-line
+   compiler.
+
+   The MyJava.bat file has two settings that must be corrected.  The
+   file describes the modifications that are required.
+
+   The BuildAlpha.bat file is executed to confirm that the two interface
+   definitions compile.
+
+   There are no test applications included in this package.  The basic
+   exercise is to ensure that the Zip material has been extracted
+   correctly and the MyJava.bat file adjusted for
+
+      - the location of the Java JDK that is used in the compilation
+      - the correct location of the material on the classpath for
+        compilation of the interfaces
+
+
+0.01 2006-10-19-00:17 Update information to reflect the included material,
+     its installation, and how to duplicate the compilation of the classes.
+
+0.00 2006-10-18-11:47 Create Basic Structure for the first alpha prototype
+     The class-path directory structure is created and this file initiated
+     as the current overview.
+
+$Header: /MyProjects/java/ODMdev/info/odma/practical100/practical100.txt 2     06-10-19 0:29 Orcmid $
+
+                       *** end of practical100.txt ***

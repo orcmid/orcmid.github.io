@@ -1,0 +1,136 @@
+<html><head><title>Interfaces and Methods: IdmaAuthentication</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaAuthentication"></a>IdmaAuthentication</h2>
+<p>Methods dealing with authenticating a user to a DMA system or document space.
+</p><p>
+This interface is implemented by a System or DocSpace object which requires authentication of users. If such authentication is not required, the interface need not be implemented.</p></p>
+<h3><a name="IdmaAuthenticationAuthenticateUser"></a>IdmaAuthentication::AuthenticateUser</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaAuthentication::AuthenticateUser</b> (<br>
+pDmaString    <i>pStringIn</i>,<br>ppDmaString    <i>ppStringOut</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pStringIn</i></p></TD><TD><p>input</p></TD><TD><p>(optional) A pointer to a string containing the connection string, which is a set of keyword/value pairs.</p></TD></TR>
+<TR><TD><p><i>ppStringOut</i></p></TD><TD><p>output</p></TD><TD><p>A pointer to a pDmaString string returned by the function. This string contains the connection string with additional keywords needed added to the pStringIn contents. If the connection was made, this pointer will be set to NULL.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method is used to authenticate the user to the DMA System (via the typical ODBC BrowseConnect style dialog).  The caller can test whether authentication is required by specifying a NULL value for pStringIn and testing for a return value of DMARC_ALREADY_AUTHENTICATED.  This method may only be used to initially authenticate a user or test for whether a user is already authenticated, it cannot be used to change a user’s authentication once set.   Attempts to do so will return DMARC_ALREADY_AUTHENTICATED.
+</p><p>
+Other methods on a DMA system object may fail with a return code of DMARC_NOT_AUTHENTICATED if called before the user is authenticated via this method.
+</p><p>
+The DMA Connection Authentication mechanism is best described as a protocol.  The client submits a request message (pStringIn) and the service responds with a response message (pointed to by pStringOut).  Each of these messages is encoded in a DmaString and syntactically conforms to the following BNF syntax based upon the ODBC SQLBrowseConnect syntax:
+</p><p>
+</p><pre>
+request-message ::= connection-string<br>
+response-message ::= connection-string<br>
+connection-string ::= attribute[";" connection-string]<br>
+attribute ::= [ "*" ] keyword "=" value<br>
+keyword ::= dma-keyword | provider-keyword<br>
+dma-keyword ::= { "SCHEME" | "UID" | "PWD" | "KRB-VERSION" |<br>
+    "KRB-PRINCIPAL" | "KRB-TICKET" | "KRB-AUTH" } [ ":" localized-identifier ]<br>
+provider-keyword ::= identifier [ ":" localized-identifier ]<br>
+value ::= "{" value-list "}" | "?" | identifier<br>
+value-list ::= identifier [ ":" localized-identifier ] <br>
+     [ "," value-list]  
+</pre><p>
+identifier and localized-identifier consist of one or more characters. keyword is to be case insensitive. An asterisk preceding a keyword indicates that the keyword is optional and need not be present in the next request message.
+</p><p> 
+<b>DMA Authentication Schemes</b> 
+</p><p>
+The service response to an empty request message shall indicate which DMA authentication schemes the service supports.  DMA 1.0 defines two authentication schemes and allows providers to extend the set of DMA authentication schemes.  The DMA-BASIC scheme provides for a typical user-id and password based authentication.  The DMA-KERBEROS scheme provides a mechanism for the client to provide the service with a Kerberos ticket and authenticator. 
+</p><p> 
+</p><pre>
+input connection string = ""<br>
+output connection string = "SCHEME={DMA-BASIC, <br>
+     DMA-KERBEROS,&lt;other&gt;}"<br>
+return code =  DMARC_NEED_MORE_DATA<br> 
+</pre><p>
+Note: the service responds with one or more schemes. &lt;other&gt; denotes a scheme not standardized by DMA and must not start with the "DMA-" prefix.
+</p><p> 
+
+<b>DMA-BASIC Authentication</b> 
+
+</p><p> 
+The Client selects the DMA-BASIC scheme: 
+</p><p>  
+</p><pre>
+input connection string = "SCHEME=DMA-BASIC"<br>
+output connection string = "SCHEME=DMA-BASIC; <br>
+     UID:UserName=?; PWD:Password=?"<br>
+return code =  DMARC_NEED_MORE_DATA<br> 
+
+</pre><p>
+The Client provides userid and password:
+</p><p>  
+</p><pre>
+input connection string = "SCHEME=DMA-BASIC; <br>
+     UID=Joe DMA;PWD=DMA4ME"<br>
+output connection string = NULL<br>
+return code = DMARC_SUCCESS<br> 
+
+</pre><p>
+<b>DMA-KERBEROS Authentication</b> 
+
+</p><p>
+The DMA-KERBEROS scheme supports different versions of Kerberos.  A Kerberos scheme authentication message exchange follows:
+</p><p>
+Client selects the DMA-KERBEROS scheme: 
+</p><p>  
+</p><pre>
+input connection string = "SCHEME=DMA-KERBEROS"<br>
+output connection string = "SCHEME=DMA-KERBEROS; <br>
+     KRB-VERSION={4,5,DCE}"<br>
+return code =  DMARC_NEED_MORE_DATA<br> 
+
+</pre><p>
+Client selects the DMA-KERBEROS version DCE:
+</p><p>  
+</p><pre>
+input connection string = "SCHEME=DMA-KERBEROS;<br>
+     KRB-VERSION=DCE"<br>
+output connection string = "SCHEME=DMA-KERBEROS;<br>
+     KRB-VERSION=DCE;<br>
+     KRB-PRINCIPAL=DmaSystem@realm;<br>
+     KRB-AUTH=?;KRB-TICKET=?"<br>
+return code =  DMARC_NEED_MORE_DATA<br> 
+
+</pre><p>
+The response supplies the client with a Kerberos principal identifier via the KRB-PRINCIPAL value and requests that the client supply an appropriate Kerberos Authenticator and Ticket via the KRB-AUTH and
+KRB-TICKET values respectively.
+</p><p>
+The Client responds:
+</p><p>  
+</p><pre>
+input connection string = "SCHEME=DMA-KERBEROS;<br>
+     KRB-VERSION=DCE;<br>
+    KRB-PRINCIPAL=DmaSystem@realm;<br>
+     KRB-AUTH=&lt;Base-64&gt;;<br>
+     KRB-TICKET=&lt;Base-64&gt;"<br>
+output connection string = NULL<br>
+return code = DMARC_SUCCESS<br> 
+
+</pre><p>
+where &lt;Base-64&gt; is a Base64 encoding per RFC 1521 of the Kerberos Authenticator and Ticket encrypted values.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ALREADY_AUTHENTICATED</p></TD><TD><p>The user is already authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NEED_MORE_DATA</p></TD><TD><p>(Warning) Indicates that more data is required to complete the browse connection operation.</p></TD></TR>
+<TR><TD><p>DMARC_NETWORK_UNAVAILABLE</p></TD><TD><p>The network needed to perform this operation is not available.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaAuthenticationAutoAuthenticateUser"></a>IdmaAuthentication::AutoAuthenticateUser</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaAuthentication::AutoAuthenticateUser</b> ( )</p>    <b>Description</b>    </p>
+<p>This method is used to request  authentication without any caller supplied parameters.  DMA System and Document Space implementations are not required to but may implement this behavior.  DMA does not specify the implementation of the AutoAuthentication method, however such implementation may be predicated upon prior established authentication state or environmental state.
+</p><p>
+A client can prevent automatic authentication by not calling this method and instead utilize the IdmaAuthentication::Authenticate method to perform explicit authentication.
+</p><p>
+Other methods on a DMA system object may fail with a return code of DMARC_NOT_AUTHENTICATED if called before the user is authenticated via this method or the IdmaAuthentication::Authenticate method.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ALREADY_AUTHENTICATED</p></TD><TD><p>The user is already authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NETWORK_UNAVAILABLE</p></TD><TD><p>The network needed to perform this operation is not available.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

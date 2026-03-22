@@ -1,0 +1,630 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: Textism: Renderance
+Date: Mon, 21 Apr 2008 13:13:57 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C8A3B1.8E593910"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3198
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://textism.com/2008/04/07/renderance
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=3Den xml:lang=3D"en" =
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>Textism: =
+Renderance</TITLE>
+<META http-equiv=3Dcontent-type content=3D"text/html; charset=3Dutf-8">
+<META http-equiv=3DContent-Language content=3Den-ca>
+<META http-equiv=3Dimagetoolbar content=3Dfalse>
+<META content=3D"The personal site of Dean Allen: boyfriend and =
+oppressor."=20
+name=3Ddescription>
+<META content=3Dwidth=3D800 name=3Dviewport>
+<META content=3DTextism name=3DDC.title>
+<META content=3D"text, type, scripting, data, food, weimaraners" =
+name=3DDC.subject>
+<META content=3D"Dean Allen - http://textism.com" =
+name=3DDC.creator><LINK=20
+href=3D"/favicon.ico" type=3Dimage/x-icon rel=3D"Shortcut Icon"><LINK=20
+href=3D"http://www.myopenid.com/server" rel=3Dopenid.server><LINK=20
+href=3D"http://textism.myopenid.com" rel=3Dopenid.delegate><LINK=20
+href=3D"http://textism.com/css/textism.css" type=3Dtext/css =
+rel=3Dstylesheet>
+<SCRIPT src=3D"http://textism.com/js/hideshow.js" =
+type=3Dtext/javascript></SCRIPT>
+<LINK title=3DTextism href=3D"http://textism.com/feed" =
+type=3Dapplication/rss+xml=20
+charset=3Dutf-8 rel=3Dalternate>
+<SCRIPT src=3D"http://textism.com/mint/?js" =
+type=3Dtext/javascript></SCRIPT>
+
+<META content=3D"MSHTML 6.00.6000.16640" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV id=3Dmain>
+<DIV id=3Dhover onmouseover=3D"tD('tnav')" onmouseout=3D"tD('tnav')">
+<H1><A title=3D"Link to top level" =
+href=3D"http://textism.com/">Textism</A></H1>
+<UL id=3Dtnav style=3D"DISPLAY: none">
+  <LI><A title=3D"About this site"=20
+  href=3D"http://textism.com/colophon">Colophon</A></LI>
+  <LI><A title=3D"Photos. Dogs. Frequent."=20
+  href=3D"http://textism.com/oliver/daily">Oliver, Daily</A></LI>
+  <LI><A title=3D"Irregular bleats and blats"=20
+  href=3D"http://twitter.com/textism">Das Twitter</A></LI>
+  <LI><A title=3D"Contact by email"=20
+href=3D"mailto:dean@textism.com">Contact</A></LI></UL><BR></DIV>
+<H2><A title=3D"Permanent link to this item"=20
+href=3D"http://textism.com/2008/04/07/renderance">Renderance</A></H2>
+<H3><SPAN class=3Doutleft>7 Apr 2008, 11am</SPAN></H3>
+<P><SPAN class=3Doutright><IMG height=3D70 alt=3D"Safari kerning"=20
+src=3D"http://textism.com/img/safarikern.png" width=3D85><BR>Safari: =
+right face, bad=20
+kern</SPAN></P>
+<P>Here=E2=80=99s a seemingly insurmountable, earth-in-the-balance =
+problem I could use=20
+some help with. Safari evidently has no trouble rendering a standard,=20
+Apple-installed font face like Helvetica Neue Light when it=E2=80=99s =
+named in <SPAN=20
+class=3Dcaps>CSS</SPAN> by its PostScript handle =
+=E2=80=98HelveticaNeue-Light=E2=80=99, but it=20
+ignores the font=E2=80=99s metrics and kerns letter pairs like David =
+Carson on a bad=20
+day. I=E2=80=99d thought <A title=3D"Wikipedia article on Apple's Core =
+Text technology"=20
+href=3D"http://en.wikipedia.org/wiki/Core_Text">Core Text</A> was a =
+system-wide=20
+thing these days, but then I=E2=80=99ve been out of it for awhile.</P>
+<P><SPAN class=3Doutright><IMG height=3D70 alt=3D"Firefox kerning"=20
+src=3D"http://textism.com/img/firefoxkern.png" width=3D85><BR>Firefox: =
+wrong face,=20
+decent kern</SPAN></P>
+<P>Firefox and other mozilla browsers, on the other hand, =
+<EM>won=E2=80=99t</EM> render=20
+a standard, Apple-installed font like Helvetica Neue Light, cascading =
+past it to=20
+the plain Roman, however the kerning seems to be respected.</P>
+<P>I=E2=80=99ve tried using <A title=3D"A List Apart article on =
+@font-face"=20
+href=3D"http://www.alistapart.com/articles/cssatten/">@font-face</A> =
+rules to=20
+refer to a TrueType file of the font, but then it just gets weirder: =
+Safari=20
+loads it, but the metrics are even more wonky. Firefox (as of the 3.0b5 =
+I=E2=80=99m=20
+using) won=E2=80=99t load the .ttf file at all.</P>
+<P>As Fielding Goodney=C2=B9 <SPAN class=3Doutright>=C2=B9Martin Amis,=20
+<CITE>Money</CITE></SPAN>would have it, =E2=80=98I hate it when I =
+can=E2=80=99t <EM>figure</EM>=20
+things=E2=80=99. Any browser geeks out there who can shed some light on =
+this, or suggest=20
+workarounds? (Other than doing pictures of words that is, not keen on =
+that.)=20
+Dean at this domain. Thanks in advance.</P>
+<P><SPAN class=3Dcaps>UPDATE</SPAN> &nbsp;<A =
+href=3D"http://blog.kno.at/">Christian=20
+Knoflach</A> points out that Firefox 2, unlike Firefox 3=20
+beta,&nbsp;<EM>will</EM> render any system font as long as you reference =
+its=20
+screen name, e.g., =E2=80=9CHelvetica Neue Light=E2=80=9D, but FF2 still =
+has Safari=E2=80=99s bad=20
+letterspacing problem. Here=E2=80=99s hoping the release version of =
+Firefox 3 will solve=20
+both issues, and all will be good and right for the seventeen of us in =
+the world=20
+who care about this sort of malarkey.</P>
+<P><SPAN class=3Dcaps>UPDATE</SPAN> 2 &nbsp;Evidently kerning in Safari =
+has been=20
+an <A href=3D"http://bugs.webkit.org/show_bug.cgi?id=3D6136">issue of =
+complaint</A>=20
+for some time (thx Daniele).&nbsp;</P>
+<P><SPAN class=3Dcaps>UPDATE</SPAN> <SPAN class=3Dcaps>THE</SPAN> <SPAN=20
+class=3Dcaps>LAST&nbsp;</SPAN> <A href=3D"http://l-c-n.com/">Philippe=20
+Wittenbergh</A> (and a few others I stupidly brushed off earlier for =
+suggesting=20
+font-weight was the way to do it) says that FF3 beta&nbsp;<EM>does</EM> =
+know=20
+what it=E2=80=99s doing when it comes to rendering different weights =
+(and not simply=20
+shaving off pixels as older browsers have done):</P>
+<BLOCKQUOTE>
+  <P>What Gecko 1.9 (Firefox 3) does is correct by the logic of <SPAN=20
+  class=3Dcaps>CSS</SPAN>.</P>
+  <P>You select a font =E2=80=98family=E2=80=99 (Helvetica Neue), and =
+then a specific face (by=20
+  font-weight in this case).</P>
+  <P>p {font-family: =E2=80=98Helvetica Neue=E2=80=99, sans-serif; =
+font-weight: 300;}</P>
+  <P>This will work correctly in Gecko and, when it comes out, Safari =
+3.2 (full=20
+  support for various font-weights was only checked in in Webkit last =
+Friday,=20
+  2008.04.04).</P>
+  <P>Add =E2=80=98HelveticaNeue-Light=E2=80=99 for backwards =
+compatibility with older=20
+  browsers.</P></BLOCKQUOTE>
+<P>So Safari in the near future, and looky here.&nbsp;Firefox 3.0b5, you =
+
+beautiful bastard you:</P>
+<P><IMG height=3D74 alt=3D"Firefox 3b5 light helv neue kerning"=20
+src=3D"http://textism.com/img/ff3b5kerning.png" width=3D213></P>
+<P>Still looks like complete pants on Windows, but no surprises there. =
+Thanks to=20
+all for the tips.</P></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://textism.com/img/safarikern.png
+
+iVBORw0KGgoAAAANSUhEUgAAAFUAAABGCAIAAAAy1U84AAAOBmlDQ1BJQ0MgUHJvZmlsZQAAeJyt
+l2k01W33x/fvnOMc8zzLnJkImcs8lCnzEMIxz/NYuiUiZCiSkikls5A5U2SeQ0IUhZSpSOg8L3ru
+/73Wf61nPW+e76vP9V3r2uva+3rxXRuAitjBz88LBQDePkEBxtpqXJZW1ly4GUCAEqiAFxQc8IF+
+qhcv6sF/1N4UIAAAE2IOfn5eEo77dpLabJbBqcX67P25k//5HgAAUAZYWlkDIKIAQO/6h1UAgN7x
+D5sCAH1okF8QAOIGAPR4NwcnAOQKAIgGmBqrAyDFAEDp+ocbAIDS8Q/3AgBlCN41CACZAcDS+ji5
++wDgNgCw55ycA/EAlKIAcNkpEO8NQJkEABLe3r5OAJQtACCI9wsIAqBcBoCTllbWXH+eHJoNoHIf
+AM3yj2f5FaA0CYCp/B+P3wCA7gdAg90/3q4xIACAMI4EukhJAgAAQq4GQLRAIOzyA+DSAY7TCITD
+AgLhuBAAPQfQ7oUPDgj597wQZAjgv53/9PxvoREAFACiierFyBM9wHETt5BeIjukuE+lSL1Oe49e
+ixHF1MhizvrxhD/7AWcw1w6PK+843xn+VIFPQpLC4SIvxZBTquLREq2nD6TOSHueyZeZlMPJyym4
+KN5Rajm7rEyuIqVqoRaunq3RoDmltaNDfp7vgoKukZ6jfqDBDcM7F/ONqo07TaZM180IFgyWolYa
+1raXwmzSbJ/ZtV9+Y7/m8BvP5CTpbOji53rHrdF9yZPCS9Hb2yfHd8jvKEAo0Czor+DSkMnQo3De
+iPORPlfSr76Imr52EM1yXT7G4oZ/bEJczs3K+JcJ/bcmEmeTFpIXby+mLKTOpb1Nn74zcXc4ozez
+7V5dVsn9nOzbD6IeeuVYPdLIPZXHlA/5awVjhQ2PHxXFPHF7alAs/YytBF2yUTpZ1lr+pCK1MqIK
+X633XLqGtRZqV+r6X1TUpzX4Nxo2CTdjmt+1VLVef2nUxtG23l7bcbVTq4uqa+ZVXrdbj3jP/uuX
+vbF9uv3U/ZMD9wathliHZoezRsxH6UZHxm6Na07ARPNk8BvxN2tThdM2Mwwzw29vzirPHrx7MRc8
+LzP/a6Ht/c1F4yWOpY0PLR+Tlq1XBFd+fOr4nLRqvsa1trpe9SVs49xXzNfeb4mbBlvUW2Pb6TvG
+u3S7k98zfljssezN7ef+xB8IHHz5VXHofyR9tH/c+DuScJZAAEDhMJxYYmI+UhqyHYpyKjcaBtpq
+ejmGaiYO5lCWPjbWE0HsvZzsXJ7cdTxHJxX4QvjLBGaFsMKnRExEQ8UenGoTXzyNkuSRUpa2ORMh
+kyFbKdcjv6DwXYn4LOs5EWVFlfOqlmpO6v4aVzTjtNK07+sUnC+5UKVbp9eg32TQYthyscWo1bjd
+5JXpgNm4+azFsuWW1fElMhsWWwE76cuq9noOFo7O+FCnZOfHLm2u790RDz5Pfa8Q70KfId89f44A
+zUCPoNvBNSFToQfhbBFnI+2u/HW1IKrr2sdo1HXumHM3LGP94mJv3osvSqi+1ZLYlfQ6ue92b0pv
+ak/aq/S2O013azPKM4vuPcxKvx+XHf7A86FNjv4jpVyRPJZ8bP5OwXxh3+PaotwniU/Dil2emZao
+l0qX8ZUzVZBUHFVuVn2onnzeU/Oi9kld5osb9f4NlxrVmwSbSZvXW3pa816Gtum1c7ZvdXR0pnbZ
+vxJ/9bt7sCf7tWuvdB+qb7g/e8B5UGLw19Cr4eQRs1H20eWx0nH/CbmJ48muN/FT+tO009MzD97a
+zfLMfn5XMRc6r7ZAuTD/vmIxesnsg/BH5OPMcsVKzCeLzyKfj1dH1/LXA76obdBuLH2t+BaxqblF
+vfV2O2/HdVdsd/t73Y+wPcW93/vtP6MP1H6hf3UdxhypH6OPO39fJ6gQCAAoIvQGURuuhiSHDE/B
+SzlG7UOLoktkoGK8wrTKosZafIKc3Y9jgkucO5bn3UlRviD+BoF9oVPCDiKZor1iB+KCEmanr0uW
+Sk1IH8pwy2rIOcvHKBQovlR6e3ZXmVSFS/WMmo66lYarZrBWtHaSTsb5nAuFus/0yvQrDKoMKy9W
+GFUYV5pUm9aY1Zu3WHRY9lmNWr+9tGSzZrtp9+Pygf2xI4IndqJxZncRdlVw03N39Aj3TPMq9+71
++eB76E8bIBR4Lsgo2DkkLDQh7H74s4jGyN4r01dXonauEaLJrzPH8NwQiZWMk7kpFy+XcOaWRKJg
+EnsyzW3U7e2UxdShtIb0wjvJd0MybDM17glmkWd9uz+SXfUg5aFPju4jgVxU7lxefX5agVeh1mOu
+xwdF409Kn94otnsmV0JX8q20r6yoPLrCrlKpirXqZ/XU85qa1FrvuvMv+Oqh/l1DbWNik32zVAtR
+y5vWwpe+bfLtqPa+jtRO8y62rvevCrtdegR71l6X9Hr0Cfet9RcPuAzyD64MPR52HOEaeT+aM3Zp
+nGV8euLO5MU3lG8GphKmtWYwM51v/5pVeYd693oudf7SgtDCr/dDi4+Xoj5Yf5RbZlr+sTLxqfpz
+yqr3mu668BeyL9sbC1/HvvVt9mz1bo/uLOxu/SDe49lX+ml+4Psr/jD/qPF47PcqgQDwJ/sAALAy
+APmZAJYaABcaAbKXAPgrAGiHAC5SAJjKA8rFBVB6g4ASif07PwAFWCAHeuAAYZABdTACe/CH65AB
+xdAK47AKBIQJkUDOI3gkCslGGpFZ5AjFiVJHuaPSUE2oZTQ1+hzaB52HnsSQYtQwVzFNmJ9E8kSR
+RG1YDFYPm4FdxIniInEDxBzEAcS9JFwkESRTpNKkGaT7ZJfIOsiFyO9SAIUvxSKlCWUvlQpVE7Us
+dR2NLE0zrSptH50p3SK9N/0vhgRGFsYSJiWmUWYn5l8sqayCrF1s9myEE/nsGuyrHImc4pwTXKHc
+bNxtPHheHG/pScOTu3z3+VX41wTuCqoKbgnlC5uI4ERaRYPFxMW+nHom7i4hLPHtdI1khJSGNJX0
+/JlKmRuytnLy8izyxworiqNK7Wdrz5UqP1EpVC1QK1R/qlGuWa/VrT2ts3GBSJdHT03f1SDFsOXi
+hjGnialpktlrC6yljlWy9bgNs+1lu6eXtxyUHOPxU858LqGuQ+78HjGeH721fcr9mPzjAyHoWggm
+ND1cIKL7ikcU07XX0ZExkje+xpXGe96SSPyZ3J1yPy3gjlGG7D3e+wwPKHPIcynyaQvZigSfyj3T
+L3Uuv16ZW11X01M3Vj/dON080TrQ1tHR1NXY3fK6u29y4PMwjLKPK0+6TmXM9L8jmtd8H780ssz0
+yX61ZP37V+XNxO3Z76J7MT/nDuWPswkEAEAADVggBWpgBHY4CWIgC2pgADbgCZGQBLlQA32wBIcI
+IyKNmCKhyAOkA/mMokLJo5xQaah21Db6JNoanYYewOAw2ph4zCARLZE10WOiTexZbDJ2ASeJi8ct
+EssTZxDvkpiQvCBlJY0mXSczJ3tFLk3+lIKNIp2SjDKOCkMVQ01EnUBDRZNFy0tbTadG94begwHF
+8JBRhnGcyYeZjLmE5TzLGustNlG2kRNB7Gzsrzh8Odk5B7kiuYW4p3lieaV4F08m8cnzfeJPF1AW
++CKYLaQr9Fu4RsRDlFd0QSz7lKU4s/hbiZzTDpKCkptSDdIxZwxlOGS+ybbLZcj7KFxQFFIiV9o9
+u3BuUPmlSq1qpVqFeqXGc80GrU7tYZ3585u6GL0T+rIG5oZhF3OMuo23TDnMDM1jLJot96wlL/nb
+PLf9flnGPtyhFY84aTonuoy5sbg7epR5/vK+4JPju+uvF1AcRBLsF7IQZhI+Emly5X1UwF8U0VUx
+5rFIXEW8/S2GxKHkhBTtNJL0kbvZmW5Zitm0D77mDOVW52cVxhQFPMU/syw1KjeoNKw2rNGt06iX
+bxRpZm5Fv9xon+hseVXS87A3vT95MGk4ZTRzPH/y+VTfzKd3xPOn3zss3fs4+Ylh1Wb9ycbe5oXt
+gt3jPdufbYf8x6n/9/84IAMaYAZOEITToAQ6YA5OEASxkAVl0AlvYQchR4QQbcQVuYWUI2PIPooD
+pYXyQz1E9aMO0MJoW3Q6uh+DxihjojBtRAiRJlEi0QSWHeuOfYHD4ixxZcQIsRVxDQkViQ/JMOlp
+0kzSYzIXsnFyFfIqCl6KLEpqyltUOKo4amLqJBo6moe0grT1dDp0c/SBDGQMRYwqjHNMEczMzI0s
+1ixHrHlsmmwbJzLZ1di3OQo4zbhIuFq5/Xn4eGZ5U05qnPzJV86PF2AWGBG8KaQmDMJtItGimmLk
+YpOnHol7SiicJju9IPlcKkHa4YySDLPMvuy0XJN8rkK8YrCS81mrc0bK+ioGqiZqtuqeGlGad7XK
+tQd0Ni5Q68rqOeqnGXQbHhnJGYeaNJmBua5FtuVXa7VL2Ta7dhcvVznQOYbjF511XKrdTrgneOx7
+uXhP+Wr7NQaIBz4N5gnJC+MOfxwpeqUhSu/aSnRsjOiN2bjUeP1b1IkzyUUpYWmGd0QyKDJ3sxay
+hx92PmrIqyooe1z2pKK4tuRl2UDFfNV2Da6Os16h0bw5uDWlLa+juKu0++nrnL6kgZAhmxHVMaEJ
+ujcw9W1mYXZsrn2haDHqg94y7crI59g1qfXZjchvjJsV2zo7y9+j97j3Ow7wh7ij8t9mBALAn30J
+AACI3PUd8PA/lrdX8N81UQBA7uxjZgIAxAAg6BKgZfw3gzvogwPg/+xpAABYaoCHzgAAbROx+f+/
+bpBzWBAAgLqvX3iAu6tbEJeqn5+XsyjXeR/8KVEuSQkJOfgXRA8T5vAnsMcAAAAJcEhZcwAACxMA
+AAsTAQCanBgAAAYUSURBVHic7Vp/aBNXHH8u6S7j4MwyaEhLOiMeLGaGRVxktFspREKdQimLdN3m
+kG5UV1qqnJJC/UetVjxLULq2f4xJhCJmurLEZdmGWkgYZFujjiyym0ZSsCRijZFjuSXB/ZHm7pIm
+10SifePy+eu9d9979z73vr/e927N06dPgYjx0movYJVR4y9u1PiLGzX+4kaNv7hR4y9u1PiLG2Ln
+L61AlkksxB6nq70ARYMKlVR50goeX74odWWE9MSrvoKWwVOfaLGqT1smKtL/57LKuucxadmoiD/z
+vFaxelhTQf0rwyw+pgUlpIAOnDw2vWQkMqP1qGVtWthjSFEFhpS7guqjEv8nQRSKlZaKNmAALPFf
++2o9hqHPurIXg6rHP95u/x/MRezxX+z8K7H/VUKGYZLpNJACkAYyGSqparIEL//EQsg3O/tLIBSN
+J/njcqVu63stLe9uri/qi+mF0J0HKVAH6lIgVbdOp8UE3xeM/DOLoemJSW8kWfRqPBr0OIIeBzDs
+6NuzU1/wEjKJoG3cwXZlhp6xvUaBNwCd/Sco94EhWynyfARc4wMjzsX8QYnKNNytY7vJwFfnfDGB
+SeDafybsPkjO8EeUurYd27ZuaKxHEcDQiXuh3378zkWxp5CIa4iUjhHt/CxD3drbffPQdHDpDfrt
+p9/AjzfXF1cCmPafDpGjfPJ4z/DYkYEuo1ajwFAEQTGFSt+8kzj5JdFt5KSoGdvlUP5ESGsfwekA
+iNtHzi2UeCRE/P3nJyNcT0eMEUZ10exRgrf2nOgzs/2IZ3I2lskXUfcOW7hu0j866cuXAAAAyjkB
+Df/E3KUAa/Py3UcHcMHMWaHvHLawe5z83nOzQABRm3gCIBmwFzgCJuwmXRQs/MO+q6xRK82fNdev
+fIva1GWULbXjXu/8sv1Vm3otONf120/7WDXJhKdGZwA09h+7+gOVays/MONCshzqt+8y5NrBX+8u
+P5sipv3WYo6A+XncFgQAwMJ/8d5fOd2XGcz6ss+Mqi2tylz7xh/3i0hINL3WDq6b9NvO+6jZrx25
+6AAFfzp6l1V+/WZtBXcijW/lXkD0xu2ixQlE027t4BQq7rWT0wG2C0f8l77MNunEw9gCw6xQNVm6
+DZE+CEVzPSa13MNnoWnvtwQHHNSyC7gFCv73b3MBPOggDzsEZEsDqSud5yKmfuufh0aDeVmlwbrf
+BIX+g1Q1JomGYwIVF0Sz7R1l3kjTJo0EDv1P55eKZDJZKUkBJJNPkmkAShToaMppuxbNG4rYL9zS
+QsFf/loDANnFyXefON6sqPb3ECZkI13Lh6+N26DQf0VDY64Zn48Kl5ifAbSTtEWKX4pCwT+d5hwA
+/WTlk28eMkwWmRLen3JOuDj28p5TU2cI7uwAhf6jjevkuaq5/6ffPza2l/tFIDN/5otj2UwOKHeM
+HdlZkDrRlJN0cXHPsHvQiAGAdQ623ci6Ayj2H2DrDPJcO3L95qKQLB+J4PVgrq3cuKEwb2SoCZ7Z
+y3Tdnzersm1tF2FWAgALf6Bo3c7m6fFL386Vdxc9+42X7by9dX3BVTdJ8lIeA9HXyvOrWCfRp4SG
+P1Bt2cZG57h/6vycUNEqi8Qtp4uNaLKWZk2e0YTdEzM8p2cZ3qMuiCqYnuhrg4U/QLUftnH5iXfq
+8OVbQmZAh2dHxq+x3ZZP31fwrjJh9+gMt/d4h9WkLuJSMH0XNPwB0Fr2GXmJj2d8iLzsW1ye0jEx
+3wXywOg09ysCbtm1mUefoc7y62hNHfvaNaUeCoX/X4JE1XN08NFBG7txlMc+5LE36Yz6jRuU2Cup
+fx7eDc15AwWx3GDtN/E2l3af5Zs9TuRXRwtQbf75qWypA1lJYFpijJg8QgZ4/5lEgv5I0F9UXIa3
+Ef1dfNUOuyd4ig/Mg/twwVhabf5SKZZLZQEmcCArDRTfe/IM5bty8aJH6COAXGf5yGLSq/IGGWqa
+x77JPNipXaGWUsn/Dy8ciVj4b+rOvfmFR/F/QV0qRQOAoo2vr39Tt0mjqs7POFDzfwGAyP+vCmr8
+xY0af3Gjxl/cqPEXN2r8xY0af3Gjxl/cEDv//wAdMBLiIlo2FAAAAABJRU5ErkJggg==
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://textism.com/img/firefoxkern.png
+
+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
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://textism.com/img/ff3b5kerning.png
+
+iVBORw0KGgoAAAANSUhEUgAAANUAAABKCAMAAAAbruEnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+bWFnZVJlYWR5ccllPAAAAYBQTFRFgX5+//jhjbbdo6Ghzuz8/uzOfqjRstz1eIq4xpp6/f7////2
+u7OpnMLitot5jXp537aP2cu/9ePL47uVo6mz4e72w8PD6Ojp0qiE09HPwNHjeX2l48CZ9f//+OC7
+qH551eLt+ePBo8zqeXqZ9ujZqJqK5/3/28e09u/r///vu7u7nHp5wKuZdpvG7e3teYul4fn/uIN5
+qLbCjZehwMnO8dWyi6nF/OfFjo+Q+f7////5tb/G7///rdPtveP48Ovfx97s/vzo6u3w6uvu39TL
+7O71///07s+ppY555MWk//PX5dzRe5ay4PT//fbv8PX56fT9wdbn//br7fT11LKReXqQwpF53Pb/
+2Pb/eXqF7evr+fn53Pn/6cei/fr51/P/0PD/x+f69dax+fr9jomF//n0eYGTlpOQ5OnyysG42cOu
+5tbE9dq17NrHhJCggYKQgYmQ7e3r7evtiYGF5uTjgYmW3fL+6v72ncfmztTX09rh+vb0lIN5eYGF
+eXl5////2HOvXgAABURJREFUeNrsmftbEzkUhgvlUoaWylIFLN3SQhUsbZFyR5SbFXHVZQFLWxVR
+RFdc96Lrrrsy86/vJJNJcjIzvcA4fZYn+anNpDN5k/NlvnPq0y5i80kqSSWpJJWkklSSSlJJKkkl
+qSRV06lel7PV2nrMjYeOlctripdUfWr11unCM7tvqmpp/8JRPVHVvaKXVJe+CdXiwPx8brJ5VKNX
++JbSOXKg5/PZd2e/eVSwDelUra7HHGT0nqrv21B1nfpGJi8aVbPfwpLqAlA9r1QWGqV6Wm3E88or
+Z7exWKkoDQw/E9Wj3pQPvbp+jQzTO3eX17LlHdEYrWfLd5WxcvaPO3HdTazojqt81+qYuh8E36D7
+lT5MDUNbhQePBr+iq39OXSYXChv4+aX80mXXqH6a4N7Jx9uktx192zsAI9+jvuhfN8FbvFQUHFPh
+HX8518bbqkBM20qxi7O30L69C3M9MXeovgtDr2He9xn6ErjFjdxCI0ttKPi4htTFq2wrLpiXZS5o
+A7EEuBa9phW6QE/gmhtU5Cn5pS+DRmComRjxRCocW8A0Sbzm/F7tA6qWOLnf4ODPKeDJMJWxMlPT
+5sWMhh+Tn6aP73CBqh3v1CyJ51/SHMlqGtrEIfxMXT1j/f39hq7K+qd1BVDhSc7+SIJ7l2yISZXb
+1AduL7AgKQV9bLjR8+LcVON43UP0+2oPRzIHpJXgJqjvJDgDGRXeC3Y/7R5bJhK50YcaL131lJsP
+XuOOc1Pdg1A6Zg+nJl5aLWksqio+sGgeKAFe8QO0w6DiDyAjneCH94k/PwsVZsiA9xRe7NtkQ7ro
+Shsfk1otKotu0f1GiowqyV3DwWA+jG6frU1uhGoOrD8bYQZBC5XWM1NUNaguiVQoxg2pYCrggVvC
+4jG7GnewLI1QDcCp0sWl8kmQoJkDoqpCNSOG0OJ1vz/ymVIB0RR6xDVwNGINUI3HhQCgqLfBwRdA
+Swg31Ynqe7ynMSeTBTNv+57zUqEIGHlqNyTJMif6YkpqdVAZMZtbUZpLZT1xZkBYGNO0RKoTFf41
+cl5Tw4/tDPGB2FM6dJsKh8vpRx9oR4KlSFBvUxeVdp9u7m+RL2sL1WaMemCsuEZl21rF0pt4UjpT
+aaObvJ+KDFenqtXjJhUXl0RZobqpNO1OkHfMPzz0nqq0dMOmXYVVKdVyVlalQrnUxsQR3a9Dz6ky
+NTJgmjnAGlItKtT+fUD2LDrpJdVW2MF1afAI3MNZA+Cvhwq9g0/CVKZeUaEp25TxFEWBourEJgBI
+q04qkgXgA9QrKutb0LRyIV5UrcTz8tJyoJr5OH8UsjowbAS9ojKcrGADsI3q5ESF7ed7po+qVNb8
+iC6dZ1RzNrnnS3YyGDmVcX0XSsuBKiGa8GZQ4VQ4A84LnHJ1cKJa5vqZtLDZeWGZDF6HZSisNEmZ
+PKMycuEO8U8T9ZArVIB0kkoLSpJOBieXI0VRpp6eFmbdghXhCruMJCHYvxleWpgqaZ2M8SNmr5Qh
+z092ugPHV43KwkmakQiFClFauJYU2vn901ubGpNZtHp9sslu6CEVqR2oaj4SJOW7vTZWqPjbIjmz
+66VDPXCVFDmP/RE/8Uxkabyk0tqFWisxo/dVq53ipWUgkuIJ/1/j+ITglHMH3Iz3LQw1euqiGrKx
+371fuSmscE4pOmmTUJoeq/u6YfJQVRCdluyMGOW5PmwrnE8RzGSXeLRYe+qism9jvUF/JPUmMv22
+sZ996l/PPra58Ggj6M/rt1z6Z8eT/6/+r01SSSpJJakklaSSVJJKUkkqSSWpvG//CTAAtXfZ3vGE
+Gb8AAAAASUVORK5CYII=
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://textism.com/css/textism.css
+
+* {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: =
+0px; FONT-SIZE: 100%; PADDING-BOTTOM: 0px; MARGIN: 0px; VERTICAL-ALIGN: =
+baseline; BORDER-LEFT: 0px; COLOR: #000; PADDING-TOP: 0px; =
+BORDER-BOTTOM: 0px; FONT-FAMILY: inherit; TEXT-DECORATION: none; =
+outline: 0
+}
+BODY {
+	FONT: 1em/1.71em 'Helvetica Neue','HelveticaNeue',helvetica,sans-serif; =
+BACKGROUND-COLOR: #fff
+}
+#hover {
+	MARGIN-BOTTOM: -1.5em
+}
+#tnav {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0px; LIST-STYLE-TYPE: none
+}
+#tnav LI {
+	FONT-SIZE: 90%; FLOAT: left; MARGIN-RIGHT: 1em
+}
+#main {
+	PADDING-BOTTOM: 3em; MARGIN: 0px auto; WIDTH: 800px; PADDING-TOP: 3em
+}
+#main P {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+H2 {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+H3 {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+H4 {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+OL {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+UL {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+DD {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+PRE {
+	FONT-WEIGHT: normal; MARGIN: 0.5em 160px
+}
+#main P {
+	MARGIN-BOTTOM: 0.71em
+}
+BLOCKQUOTE P {
+	PADDING-LEFT: 1em; COLOR: #666
+}
+BLOCKQUOTE EM {
+	COLOR: #666
+}
+BLOCKQUOTE STRONG {
+	COLOR: #666
+}
+BLOCKQUOTE SPAN.caps {
+	COLOR: #666
+}
+H1 {
+	MARGIN-TOP: 1em; FONT-WEIGHT: 300; FONT-SIZE: 50px; MARGIN-BOTTOM: =
+0.2em; MARGIN-LEFT: 151px; COLOR: #666; FONT-FAMILY: =
+HelveticaNeue-Light,"Helvetica Neue Light","Helvetica =
+Neue",helvetica,sans-serif
+}
+H1 A {
+	COLOR: #666
+}
+H1 A:hover {
+	COLOR: #666
+}
+H2 {
+	MARGIN-TOP: 1.5em; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 0.71em; COLOR: =
+#a90000
+}
+H4 {
+	MARGIN-TOP: 1.5em; FONT-SIZE: 1em; TEXT-TRANSFORM: uppercase; =
+LETTER-SPACING: 0.1em
+}
+A {
+	COLOR: #a90000
+}
+A:hover {
+	COLOR: #000
+}
+.caps {
+	FONT-SIZE: 90%; TEXT-TRANSFORM: uppercase; LETTER-SPACING: 0.1em
+}
+.outleft {
+	CLEAR: right; PADDING-RIGHT: 20px; FONT-SIZE: 90%; FLOAT: left; =
+MARGIN-LEFT: -160px; WIDTH: 135px; COLOR: #666; TEXT-ALIGN: right
+}
+.outright {
+	CLEAR: right; PADDING-LEFT: 20px; FONT-SIZE: 90%; FLOAT: right; WIDTH: =
+135px; COLOR: #666; MARGIN-RIGHT: -160px; TEXT-ALIGN: left
+}
+.outright EM {
+	COLOR: #666
+}
+.outright STRONG {
+	COLOR: #666
+}
+.outright CITE {
+	COLOR: #666
+}
+.outleft EM {
+	COLOR: #666
+}
+.outleft STRONG .outleft CITE {
+	COLOR: #666
+}
+#bottomnav {
+	MARGIN: 1em auto; WIDTH: 800px; TEXT-ALIGN: center
+}
+#bottomnav A {
+	MARGIN-LEFT: 1em; MARGIN-RIGHT: 1em
+}
+.older {
+	FLOAT: left; TEXT-ALIGN: left
+}
+.newer {
+	FLOAT: right; TEXT-ALIGN: right
+}
+PRE {
+	FONT: 1em/1.71 monospace
+}
+CODE {
+	FONT: 1em/1.71 monospace
+}
+
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://textism.com/js/hideshow.js
+
+function tD(id)=0A=
+{=0A=
+	if (!document.getElementById)=0A=
+	{=0A=
+		return false;=0A=
+	}=0A=
+=0A=
+	var obj =3D document.getElementById(id);=0A=
+=0A=
+	if (obj.style.display =3D=3D 'none')=0A=
+	{=0A=
+		obj.style.display =3D 'block';=0A=
+	}=0A=
+=0A=
+	else=0A=
+	{=0A=
+		obj.style.display =3D 'none';=0A=
+	}=0A=
+}
+------=_NextPart_000_0000_01C8A3B1.8E593910
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://textism.com/mint/?js
+
+var Mint =3D new Object();=0A=
+Mint.save =3D function() =0A=
+{=0A=
+	var now		=3D new Date();=0A=
+	var debug	=3D false; // this is set by php =0A=
+	if (window.location.hash =3D=3D '#Mint:Debug') { debug =3D true; };=0A=
+	var path	=3D =
+'http://textism.com/mint/?record&key=3D3564333858384c6b303838613063413231=
+';=0A=
+	path 		=3D path.replace(/^https?:/, window.location.protocol);=0A=
+	=0A=
+	// Loop through the different plug-ins to assemble the query string=0A=
+	for (var developer in this) =0A=
+	{=0A=
+		for (var plugin in this[developer]) =0A=
+		{=0A=
+			if (this[developer][plugin] && this[developer][plugin].onsave) =0A=
+			{=0A=
+				path +=3D this[developer][plugin].onsave();=0A=
+			};=0A=
+		};=0A=
+	};=0A=
+	// Slap the current time on there to prevent caching on subsequent page =
+views in a few browsers=0A=
+	path +=3D '&'+now.getTime();=0A=
+	=0A=
+	// Redirect to the debug page=0A=
+	if (debug) { window.open(path+'&debug&errors', =
+'MintLiveDebug'+now.getTime()); return; };=0A=
+	=0A=
+	var ie =3D /*@cc_on!@*/0;=0A=
+	if (!ie && document.getElementsByTagName && (document.createElementNS =
+|| document.createElement))=0A=
+	{=0A=
+		var tag =3D (document.createElementNS) ? =
+document.createElementNS('http://www.w3.org/1999/xhtml', 'script') : =
+document.createElement('script');=0A=
+		tag.type =3D 'text/javascript';=0A=
+		tag.src =3D path + '&serve_js';=0A=
+		document.getElementsByTagName('head')[0].appendChild(tag);=0A=
+	}=0A=
+	else if (document.write)=0A=
+	{=0A=
+		document.write('<' + 'script type=3D"text/javascript" src=3D"' + path =
++ '&amp;serve_js"><' + '/script>');=0A=
+	};=0A=
+};=0A=
+if (!Mint.SI) { Mint.SI =3D new Object(); }=0A=
+Mint.SI.Referrer =3D =0A=
+{=0A=
+	onsave	: function() =0A=
+	{=0A=
+		var encoded =3D 0;=0A=
+		if (typeof Mint_SI_DocumentTitle =3D=3D 'undefined') { =
+Mint_SI_DocumentTitle =3D document.title; }=0A=
+		else { encoded =3D 1; };=0A=
+		var referer		=3D =
+(window.decodeURI)?window.decodeURI(document.referrer):document.referrer;=0A=
+		var resource	=3D =
+(window.decodeURI)?window.decodeURI(document.URL):document.URL;=0A=
+		return '&referer=3D' + escape(referer) + '&resource=3D' + =
+escape(resource) + '&resource_title=3D' + escape(Mint_SI_DocumentTitle) =
++ '&resource_title_encoded=3D' + encoded;=0A=
+	}=0A=
+};=0A=
+Mint.save();
+------=_NextPart_000_0000_01C8A3B1.8E593910--

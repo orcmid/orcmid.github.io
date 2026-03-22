@@ -1,0 +1,41 @@
+<html><head><title>Interfaces and Methods: IdmaVersionable</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaVersionable"></a>IdmaVersionable</h2>
+<p>This interface provides the ability to check in versions of versionable objects (initially Document Versions) in DMA.</p>
+<h3><a name="IdmaVersionableSetCheckIn"></a>IdmaVersionable::SetCheckIn</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaVersionable::SetCheckIn</b> (<br>
+Dmapv    <i>pIVersionSeries</i>,<br>Dmapv    <i>pIVersionDescription</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pIVersionSeries</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to an interface on a VersionSeries object</p></TD></TR>
+<TR><TD><p><i>pIVersionDescription</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to an interface on a new Version Description object which points to this versionable object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Records the intention to perform a checkin of the versionable object against a specified version series. In order for this operation to succeed the client must be holding a reservation against the specified version series. In addition, if the Reservation object which records that reservation has a non-null value for the NewVersion property, then the current versionable object (the target of the SetCheckIn method) must be a scratchpad for that (cloned) object. This method call captures references to the version series and version description objects.
+</p><p> 
+When the ExecuteChange operation is invoked following this method call, the following changes are made in the persistent store:
+</p><p> -- The Versionable object is saved (if not already persistent) or updated. The VersionDescriptions property of the Versionable object will be extended to include the newly created version description (see below).
+</p><p> -- The Reservation object resolved by the checkin is deleted.
+</p><p> --  A new Version Description is created in the persistent store reflecting the extended properties of the referenced Version Description scratchpad at the time of ExecuteChange, and with appropriate generated values for the Version Series, Version and IsCurrentVersion properties.
+</p><p> --  If there is a Current Version Description of the specified Version Series, its IsCurrentVersion property is updated to DMA_FALSE.
+</p><p> --  The persistent state of the referenced Version Series is modified such that the Current Version Description property references the newly created Version Description and that the latter appears at the end of the Version Descriptions enum property.
+</p><p> 
+The ExecuteChange operation is not permitted to change the scratchpads of the referenced Version Series or Version Description objects.
+</p><p> 
+If the document space supports threaded versioning, then multiple calls to SetCheckIn may be allowed, even with the same parameters, without an intervening call on ExecuteChange. If the document space does not support threaded versioning, this method fails, if the object has been previously checked in, or if there is already a checkin pending for this object</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ACCESS_DENIED</p></TD><TD><p>(E_ACCESSDENIED) The requester has insufficient access rights to perform the requested operation.</p></TD></TR>
+<TR><TD><p>DMARC_MULTIPLE_CHECKIN_NOT_SUPPORTED</p></TD><TD><p>The implementation does not support multiple different checkins on the same object (i.e., threaded versioning).</p></TD></TR>
+<TR><TD><p>DMARC_NO_RESERVATION</p></TD><TD><p>The Version Series is not holding a reservation at this time.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_MODIFIED</p></TD><TD><p>The object has been modified since it was retrieved.</p></TD></TR>
+</TABLE>
+</body></html>

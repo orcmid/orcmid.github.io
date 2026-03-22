@@ -1,0 +1,247 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>dmaClass_DMA for CSDocs</title>
+<!--$$Header: /InfoNuovo Conclave Web/dma/csdocs/sketch/dmaClass_DMA-CSDocs.html 5     99-08-31 20:47 Orcmid $-->
+</head>
+
+<body TEXT="#000000" LINK="#0000FF" BGCOLOR="#FFFFFF">
+
+<h3>dmaClass_DMA</h3>
+
+<p>The DMA base class.</p>
+
+<table border="1" width="30%" bgcolor="#BFFFFF" bordercolor="#0000FF"
+bordercolorlight="#00FFFF" bordercolordark="#000080">
+  <tr>
+    <td width="100%"><blockquote>
+      <p><font color="#000080"><strong>with additions for the CSDocs Foundation 0.02</strong></font></p>
+    </blockquote>
+    </td>
+  </tr>
+</table>
+
+<p><b>Class ID:</b> dmaClass_DMA<br>
+<b>Superclass:</b> None<br>
+</p>
+
+<h4><b>Interfaces</b></h4>
+<a href="IUnknown.html">
+
+<p>IUnknown</a><br>
+<a href="IdmaObject.html">IdmaObject</a><br>
+<a href="IdmaProperties.html">IdmaProperties</a> </p>
+
+<h4><b>Properties</b></h4>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Impl.<br>
+    Required</b></td>
+    <td><b>System<br>
+    Gen'ed</b></td>
+    <td><b>Read-<br>
+    Only</b></td>
+    <td><b>Value<br>
+    Required</b></td>
+    <td><b>Type</b></td>
+    <td><b>Cardinality</b></td>
+    <td><b>Required<br>
+    Class</b></td>
+    <td><b>Reflective<br>
+    Property</b></td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_OIID">OIID</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>String</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_ClassDescription">Class Description</a></td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Class Description</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_This">This</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>DMA</td>
+    <td>This</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_CreatePending">Create Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_UpdatePending">Update Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_DeletePending">Delete Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080"><a name="TdmaProp_InstanceId" href="#InstanceId">Instance Id</a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">-</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">Yes</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">Yes</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">-</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">DmaId</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">Scalar</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#000080" bordercolorlight="#0000FF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+</table>
+
+<h4><b>Detailed Description</b></h4>
+
+<p>The ultimate superclass of all DMA classes. </p>
+
+<p>The Object ID, Create Flag, Update Flag and Delete Flag properties introduced here
+should only be implemented in subclasses which represent independently persistable
+objects. </p>
+
+<h4><b>Property Descriptions</b></h4>
+
+<p><b>&#149; OIID {<a name="dmaProp_OIID"></a><a href="#TdmaProp_OIID">dmaProp_OIID</a>}</b>
+</p>
+
+<p>This property is the unique instance Id of this particular object. </p>
+
+<p><b>&#149; Class Description {<a name="dmaProp_ClassDescription"></a><a
+href="#TdmaProp_ClassDescription">dmaProp_ClassDescription</a>}</b> </p>
+
+<p>The Class Description object describing this object's class. </p>
+
+<p>This property provides access from this object to the descriptive information about the
+class of this object. </p>
+
+<p><b>&#149; This {<a name="dmaProp_This"></a><a href="#TdmaProp_This">dmaProp_This</a>}</b>
+</p>
+
+<p>A synthetic, object-valued property that has as its implicit value the DMA object
+itself. It's primary purpose is to enable the expression of relationships among objects in
+DMA queries and to select candidate objects in query results. </p>
+
+<p>This object-valued property is an exception to the general rules for the by-reference
+behavior of object-valued properties. When the property is supported by an object, the
+behavior of </p>
+
+<p>rc = pMyObjectProperties -&gt; GetPropValObjectById(&amp;dmaProp_This, riid,
+ppIObjectValue) </p>
+
+<p>is equivalent to that of the preferable, always-supported operation </p>
+
+<p>rc = pMyObjectProperties -&gt; QueryInterface(riid, ppIObjectValue) </p>
+
+<p>Using a DMA object&#146;s IdmaProperties interface, the property behaves as if it is
+always bound and has nothing to do with any persistent object associated with the DMA
+object. Refreshing and other operations between a scratchpad object and a persistent
+object have no impact whatsoever on the This property of a DMA object. </p>
+
+<p><b>[</b> In every class description for a DMA Object inherited from the dmaClass_DMA
+class, the Required Class of Object restriction is always to the very class being
+described. In addition, proper subclasses of that class will never occur. This is part of
+the system-generated quality of dmaProp_This properties. <b>]</b> </p>
+
+<p><b>&#149; Create Pending {<a name="dmaProp_CreatePending"></a><a
+href="#TdmaProp_CreatePending">dmaProp_CreatePending</a>}</b> </p>
+
+<p>If set, this flag indicates to ExecuteChange and ExecuteChanges that the current
+scratchpad object is to be created as a new persistent object. </p>
+
+<p><b>&#149; Update Pending {<a name="dmaProp_UpdatePending"></a><a
+href="#TdmaProp_UpdatePending">dmaProp_UpdatePending</a>}</b> </p>
+
+<p>If set, this flag indicates to ExecuteChange and ExecuteChanges that the current object
+is already persistent, and its properties are to be modified. </p>
+
+<p><b>&#149; Delete Pending {<a name="dmaProp_DeletePending"></a><a
+href="#TdmaProp_DeletePending">dmaProp_DeletePending</a>}</b> </p>
+
+<p>If set, this flag indicates to ExecuteChange and ExecuteChanges that the current object
+is already persistent, and is to be deleted. </p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="100%" bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><b>&#149; <a name="InstanceId"><font color="#000080">Instance Id</font></a>
+    {<a name="dmaProp_DeletePending"></a><a href="#TdmaProp_InstanceId">dmaProp_InstanceId</a>}</b>
+    <p><font color="#000080">This optional property is meaningful only on objects that have
+    corresponding representations as persistent objects.&nbsp; The object may be dependently
+    persistent or independently persistent.</font></p>
+    <p><font color="#000080">If a class description specifies that this property is supported,
+    but an instance of the class is not derived from an already-persistent object, the
+    Instance Id property of the instance will have no value. </font></p>
+    <p><font color="#000080">When an instance of a class supporting Instance Id is an image of
+    an already-persistent object, the value of Instance Id will be a globally-unique DmaId
+    that applies specifically to that already-persistent object.&nbsp; An Instance Id value is
+    set when an object is first created as persistent using an Execute Change operation or
+    equivalent.&nbsp; An Instance Id for a persistent object is is never changed, even if the
+    persistent object is updated.&nbsp; If a persistent object is replaced, the replacement
+    will have a different Instance Id value.</font></p>
+    <p><font color="#000080">When an independently-persistent object has an Instance Id
+    property, there is a relationship between the value of Instance Id and the OIID property.
+    &nbsp; When there is an InstanceId, either</font><ul>
+      <li><font color="#000080">the &lt;object id&gt; portion of the OIID string contains the
+        Instance Id value in &lt;Textualized Object DmaId&gt; format, or else</font></li>
+      <li><font color="#000080">the optional &lt;object guid&gt; portion of the OIID string is
+        present and contains the Instance id value in &lt;Textualized Object DmaId&gt; format.</font></li>
+    </ul>
+    </td>
+  </tr>
+</table>
+
+<p align="right"><font color="#0000FF"><em>$$Author: Orcmid $<br>
+$$Date: 99-08-31 20:47 $<br>
+$$Revision: 5 $</em></font></p>
+</body>
+</html>

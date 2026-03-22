@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>cosample1.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996, 1997 by the 
+ *  Association for Information and Image Management Int'l
+ *                  1100 Wayne Avenue
+ *                  Silver Spring, MD 20910-5603
+ *                  Tel: 301/587-8202
+ *                  Fax: 301/587-2711
+ *  All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *
+ *  Containment Model code example: 
+ *      Enumerate InitialContainer objects of a DocSpace in DMA 1.0
+ *  
+ */
+
+#ifndef NULL
+#   define NULL    0
+#endif
+
+
+#include &lt;stdio.h&gt;
+#include &lt;dmatypes.h&gt;
+#include &lt;dmacom.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaidvar.h&gt;
+
+//
+// Assumes that connections to system and doc space have already been made
+// (see "System and Document Space Connection Example")
+//
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+void EnumInitialContainers(LPIdmaDocSpace pIDocSpace)
+{
+    DmaRC             rc;
+    LPIdmaProperties  pIPropsDocSpace = NULL;
+
+    // Get the docSpace's properties interface
+    rc = pIDocSpace-&gt;QueryInterface( IID_IdmaProperties, 
+                              (pDmapv)&amp;pIPropsDocSpace );
+
+    if ( rc == DMARC_OK )
+    {
+        LPIdmaEnumOfObject pIEnumRootContainers = NULL;
+
+        //
+        // Get the list of initial containers in the docSpace using
+        // the predefined DMA property Id -- dmaProp_InitialContainers
+        //
+
+        rc = pIPropsDocSpace-&gt;GetPropValObjectById(
+                              &amp;dmaProp_InitialContainers,
+                              IID_IdmaEnumOfObject, 
+                              (pDmapv)&amp;pIEnumRootContainers );
+
+        if ( (rc == DMARC_OK) &amp;&amp; (pIEnumRootContainers != NULL) )
+        {
+            DmaIndex32  nNumReturn;
+            IUnknown    *pIRootContainer;
+
+            // Now enumerate each of these root containers one at a time
+
+            rc = pIEnumRootContainers-&gt;GetNextObject( 1, // get one item 
+                              &amp;pIRootContainer,
+                              &amp;nNumReturn );
+
+            while ( (rc == DMARC_OK) &amp;&amp; (nNumReturn == 1) )
+            {
+                //
+                // ### Process this initial container here! ###
+                //     For example, the container may be 
+                //     enumerated to list the objects contained in it.
+                // 
+
+                // Release the initial container interface
+                pIRootContainer-&gt;Release();
+
+                // Get the next initial container in the enumerator
+                rc = pIEnumRootContainers-&gt;GetNextObject( 1, // get one item
+                              &amp;pIRootContainer,
+                              &amp;nNumReturn );
+            }
+
+            // Release the enumerator
+            pIEnumRootContainers-&gt;Release();
+        }
+
+        // Release the docSpace properties interface
+        pIPropsDocSpace-&gt;Release();
+    }
+}
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+</FONT>
+</PRE>
+</BODY>
+</HTML>
+

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/centrale/web/iis/c030400.htm 32    26-03-22 14:17 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>C030400: IIS Host Default-Page Precedence</title>
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div align="center"><center>
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="29024" -->
+
+
+    </td>
+
+    <td width="53%" height="6"><h1 align="center"><font color="#990033"><strong><i>Host
+      Default-Page Precedence</i></strong></font></h1>
+    </td>
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../../../" target="_top">orcmid</a>&gt;<br>
+      <a href="../../" target="_top">centrale</a>&gt;<br>
+      <a href="../" target="_top">web</a>&gt;<br>
+      <a href="./">IIS</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="c030400.htm" target="_top">C030400</a>&gt;</code></b><br>
+      <a href="#0.01">
+      <small>
+      <small>
+      0.01</small></small></a><small><small>&nbsp;<!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2008-08-28<!--webbot bot="Timestamp" endspan i-checksum="12548" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->17:27 -0700<!--webbot bot="Timestamp" endspan i-checksum="12062" -->
+      (pst)</small></small></p></td>
+  </tr>
+</table>
+</font>
+</center></div>
+<small>
+  <hr color="#990033">
+    <p align="left">Each IIS server is configured to resolve direct references to
+    folders by searching for a default page within the folder.&nbsp; With IIS, the
+    search order is controlled separately for each subweb, and each can have its
+    own default-page precedence rules.<p align="left">The <a href="../../compagno/"> Compagno</a>
+configuration&nbsp; for development of <a href="../../">Centrale</a> sites is hosted on IIS 5.1
+    under Microsoft Windows XP Pro.&nbsp; Each site-development subweb can be adjusted
+    so that
+access on Compagno matches the host-service default-page behavior.&nbsp; That
+leaves open the question of what an individual hosting service provides.</small><p align="left"><small>To
+test the hosting service, typically also an IIS server, I upload a set of
+potential default pages and see which one is served up.&nbsp; Then I delete
+that one and see what comes to the top next.&nbsp; That's the drill.&nbsp;
+Eventually I will be left with a set of pages that are not recognized as
+defaults and cannot be used.&nbsp; I will, however, have established what the
+server response for access to the index of a directory is.</small>
+<blockquote>
+  <h3 align="left">1. <a href="#DeterminingPrecedence">Determining Precedence</a><br>
+  2. <a href="#PrecedenceConvention">Precedence Convention</a><br>
+  3. <a href="#Missing-Default">Missing-Default Treatment</a><br>
+  4. <a href="#OpenQuestions">Open Questions</a></h3>
+</blockquote>
+<small>
+  <hr color="#990033">
+</small>
+
+    <h2 align="left">1. <a name="DeterminingPrecedence">Determining Precedence</a></h2>
+<blockquote>
+
+    <p align="left">This section has the following potential default pages:
+    <ul>
+      <li>
+        <p align="left"><b><code><a href="default.asp">default.asp</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        #3&nbsp;</code></b></li>
+      <li>
+        <p align="left"><a href="default.aspx"><b><code>default.aspx</code></b></a><b><code>&nbsp;&nbsp;&nbsp;
+        (not recognized)</code></b></li>
+      <li>
+        <p align="left"><a href="default.htm"><b><code>default.htm</code></b></a><b><code>&nbsp;&nbsp;&nbsp;&nbsp;
+        #1</code></b></li>
+      <li>
+        <p align="left"><a href="default.html"><b><code>default.html</code></b></a><b><code>&nbsp;&nbsp;&nbsp;
+        #2</code></b></li>
+      <li>
+        <p align="left"><a href="index.htm"><b><code>index.htm</code></b></a><b><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        #4</code></b></li>
+      <li>
+        <p align="left"><a href="index.html"><b><code>index.html</code></b></a><b><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        #5</code></b></li>
+    </ul>
+    <p align="left">The actual precedence on the hosting site was determined by
+    uploading a full set of self-identifying versions for each page.&nbsp; A
+    browser was directed to the <a href="http://orcmid.com/centrale/web/iis/" target="_top">URL
+    of the directory</a> to see which page is presented by default.&nbsp; Each
+    time the browser presented a given file, it was deleted on the server and
+    the URL refreshed in the browser.&nbsp; This was done until the server no
+    longer provided a default page.&nbsp; In the above list, <b><code>#1</code></b>
+    has precedence over all other default candidates, whether or not they are
+    present.&nbsp; Likewise, <b><code>#5</code></b> will only be presented if no
+    other default is available.<p align="left">In the absence of a default page,
+    the server presents the following message for this directory:
+    <blockquote>
+      <p align="left" style="border-style: solid; border-width: 2"><font color="#000000"><br>
+      <kbd>&nbsp;&nbsp;&nbsp; </kbd><big><big><b>Directory Listing Denied</b></big></big><br>
+      <br>
+      <kbd>&nbsp;&nbsp;&nbsp; </kbd>This Virtual Directory does not allow
+      contents to be listed.<br>
+      &nbsp;&nbsp;&nbsp;</font>
+    </blockquote>
+</blockquote>
+<h2 align="left">2. <a name="PrecedenceConvention">Precedence Convention</a></h2>
+<blockquote>
+  <p align="left">Based on the precedence already provided at the hosting site,
+  the development-site precedence was altered to match.&nbsp; This description is updated to reflect that precedence and to also be
+  useful in detecting that hosting-site precedence has not changed.<p align="left">In
+  addition, the following conventions are used for all pages anchored on
+  nfoCentrale:
+  <ul>
+    <li>
+      <p align="left"><b><code><a href="default.htm">default.htm</a><br>
+      </code></b>will always be used if present.&nbsp; None of the
+      lower-precedence pages will be displayed as the default page even if they
+      are there.&nbsp; They can be explicitly accessed however.&nbsp; For
+      orcmid, this default page is reserved for when we want to intentionally
+      block visibility of a <b><code>default.asp</code></b>.&nbsp; This page has
+      been used in the past as a standard default without consideration of
+      having a default.asp page.&nbsp; We will end that practice and make <b><code>default.asp</code></b>
+      instead, whether or not there is any ASP processing required.</li>
+    <li>
+      <p align="left"><b><code><a href="default.html">default.html</a></code></b><br>
+      is the next lower level of precedence.&nbsp; This file name is not used in
+      ordinary sections.<br>
+      &nbsp;&nbsp;&nbsp;</li>
+    <li>
+      <p align="left"><b><code><a href="default.asp">default.asp</a></code></b><br>
+      is next in order of usage.&nbsp; Generally, this means that a <b><code>default.htm</code></b>
+      page should not be employed if there is a chance that a <b><code>default.asp</code></b>
+      page will also be introduced and be intended to have the highest
+      precedence.&nbsp; Since this is the only <b><code>.asp</code></b> default
+      page, this is always reserved for that use, with <b><code>default.htm</code></b>
+      introduced only when we want to block or obscure a <b><code>default.asp</code></b>
+      page.<br>
+      &nbsp;&nbsp;&nbsp;</li>
+    <li>
+      <p align="left"><b><code><a href="index.htm">index.htm</a></code></b><br>
+      is the next-lowest-precedence default page of all.&nbsp; It is used only for
+      default or explicit entry to the construction structure of a web section.</li>
+    <li>
+      <p align="left"><b><code><a href="index.html">index.html</a></code></b><br>
+      is the lowest-precedence default page.&nbsp; Although there might be some
+      value in using it, the convention here is to use only <b><code>index.htm</code></b>
+      in ordinary sections<br>
+      &nbsp;&nbsp;&nbsp;</li>
+    <li>
+      <p align="left">Unrecognized Pages<br>
+      There are also pages that this server does not recognize as default
+      pages.&nbsp; In particular,
+      <ul>
+        <li>
+          <p align="left"><a href="default.aspx">default.aspx</a> is not
+          recognized as a default page.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+<h2 align="left">3. <a name="Missing-Default">Missing-Default Treatment</a></h2>
+<blockquote>
+  <p align="left">The Centrale web sites do not allow access to directories
+  that have no default page.&nbsp; Instead, the server presents an error
+  page.&nbsp;&nbsp;<p align="left">It is the practice with this site to never
+  provide such an error message for normal Web requests.&nbsp; Instead, there is
+  always a default page in every reachable section.&nbsp; That page might
+  present an HTTP error condition, or it might make a default
+  presentation.&nbsp; A default-page announcement about the inaccessibility of
+  content is usually provided using an <b><code>index.htm</code></b> page.
+</blockquote>
+
+  <h2 align="left">4. <a name="OpenQuestions">Open Questions</a></h2>
+<blockquote>
+  <p align="left">Although the use of this default scheme is sufficient for
+  providing two or three levels of access to default pages, there are additional
+  questions that remain to be resolved:
+  <ul>
+    <li>
+      <p align="left">Can the default-page precedence of the anchor site be
+      controlled by virtue of its support for FrontPage extensions, or any other
+      way?</li>
+    <li>
+      <p align="left">Can the error responses and the content of error-response
+      message from the hosting server be controlled as part of the service?</li>
+    <li>
+      <p align="left">Can ISAPI filtering be instituted, and can executables and
+      scripts be introduced for full ASP functionality?</li>
+    <li>
+      <p align="left">Can Web Service requests be intercepted and masked or
+      accepted?</li>
+    <li>
+      <p align="left">What is the impact of SSL usage on the treatment of
+      default pages and also the use of cloaking?</li>
+  </ul>
+
+  <hr color="#990033">
+</blockquote>
+
+<dl>
+
+
+  <dt><small><b><a name="0.01">0.01</a> 2003-12-13 Create Centrale analysis of
+    default rules applicable for nfoCentrale.net hosting (orcmid)</b></small></dt>
+  <dd><small>This page is&nbsp;derived from version 0.00 and used to identify
+    the search order of the </small><a href="http://nfoCentrale.net" target="_top"><b><code><small>nfoCentrale.net</small></code></b></a><small>
+    host used to anchor Orcmid's Lair and other sites.</small></dd>
+
+<small>
+
+
+  <dt><b><a name="0.00">0.00</a>     2003-04-20 Report initially-determined
+    precedence for Software Engineering Group Project (<a href="../../../construction/orcmid.htm">orcmid</a>)</b></dt>
+  </small>
+  <dd><small>The Group3 Project site for KIT eLearning module MSC-SE-030320-02
+    was implemented on the student.kitcampus.com server.&nbsp;&nbsp; Determining
+    the search order and matching it on my development configuration was
+    important for the creation of a scaffolding structure where the scaffolding
+    of a web presence site was never removed..</dd>
+  </dl>
+</small>
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005c.htm" TAG="BODY" startspan
+      -->
+<a href="../../../construction/index.htm" target="_top">
+<img border="0" src="../../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Hard Hat Area" align="left" width="80" height="57">
+</a>
+<!-- included from orcmid /construction/c000005b.htm of 2003-08-03-10:24 -0700 -->
+
+<!--webbot bot="Include" endspan i-checksum="15381"
+      -->
+
+
+
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="14556" -->
+
+
+
+    </td>
+    <td width="37%">
+      <p align="right"><small><small>created 2003-12-13-15:14 -0800 (pst) by <a href="../../../construction/orcmid.htm"> orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 32 $</em></small></small></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

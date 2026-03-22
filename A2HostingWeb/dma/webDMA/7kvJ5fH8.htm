@@ -1,0 +1,350 @@
+<html>
+
+<head>
+<title>DMA-WebDAV Convergence Analysis</title>
+</head>
+
+<body>
+
+<h1 align="center"><em>WebDMA</em></h1>
+
+<h1 align="center">DMA - WebDAV Convergence Analysis</h1>
+
+<p align="left"><big><em>These tables of notes compile areas of intersection,
+disagreement, and absence of features to be examined for DMA-WebDAV Convergence. &nbsp;
+They are based on early meetings and E-mail discussions and are neither comprehensive nor
+validated through careful scrutiny and agreement on concepts.</em></big></p>
+
+<p align="left"><big><em>This information is posted for early review and to elicit
+additional thinking by those involved in exploring DMA-WebDAV convergence: WebDMA.</em></big></p>
+
+<p align="left"><em><big>I am personally optimistic that there is a feasible DMA - WebDAV
+convergence.&nbsp; And there are many details to wrestle with.&nbsp; This compilation is
+meant to get us thinking, not scare us off.</big><!--webbot bot="PurpleText" PREVIEW="Manipulated on 99-06-16 at DMA TC Day #2" --></em></p>
+
+<p align="right"><big><em>-- Dennis E. Hamilton</em></big></p>
+
+<p align="right"><em>$$Author: Orcmid $<br>
+$$Date: 13-08-22 12:15 $<br>
+$$Revision: 12 $</em></p>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h3 align="left"><em>Content</em></h3>
+  </blockquote>
+  <h2 align="left"><a href="#Intersections">Areas of Intersection</a></h2>
+  <h2 align="left"><a href="#Differences">Areas of Difference</a></h2>
+  <h2 align="left"><a href="#Absences">Mutually-Absent Features</a></h2>
+  <p align="left">&nbsp;</p>
+  <blockquote>
+    <h3 align="left"><a href="#Resources"><em>References and Resources</em></a></h3>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1><a name="Intersections">Areas of Intersection</a></h1>
+<div align="center"><center>
+
+<table border="1" width="90%">
+  <tr>
+    <th width="20%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><p align="center">Similar Feature</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">WebDAV Similarity</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">DMA Similarity</th>
+    <th width="35%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Considerations</th>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Unique Identifiers">Unique Identifiers</a> used</td>
+    <td width="25%">URLs and URIs</td>
+    <td width="25%">OIIDs and GUIDs <!--webbot bot="PurpleText" PREVIEW="D2: Question about rootedness.  The DMA OIID is like a URL but it gets to the site and within the site there is a locally-unique identifier that the DocSpace / WebSite.  One way to look at the DMA OIID is as a property of the resource, not as a structured locator.  There is a one-true-name facility in DMA and not in WebDAV.   This doesn't map to the guy in WebDAV.  
+   Then we discussed the issues of granularity and what are first-class, etc." --></td>
+    <td width="35%">DMA needs HTTP URL for DocVersion components to deliver resources via
+    WebDAV</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="PropertySystems">Property Systems</a> used</td>
+    <td width="25%">URI-based namespaces<!--webbot bot="PurpleText" PREVIEW="IRI changed to URI.  dh:1999-06-11." --></td>
+    <td width="25%">GUID-based unique identifications and on-line descriptions</td>
+    <td width="35%">How easily are they mapped together?</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Containers">Containers</a> used</td>
+    <td width="25%"><a href="#FundamentalObject">mandatory</a> Collections ?</td>
+    <td width="25%"><a href="#FundamentalOrganizer">optional </a>Direct Containment</td>
+    <td width="35%">Cf. <a href="#FundamentalOrganizer">Fundamental Organization Differences</a>
+    and <a href="#ReferentialContainment">Referential Containment Differences</a>.</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Locking">Locking</a> used</td>
+    <td width="25%">Exclusive and non-Exclusive Write Locks, all locking or no locking at an
+    implementation<p><!--webbot bot="PurpleText" PREVIEW="&lt;DT2&gt;" -->a DAV lock is the
+    entire resource and the body.</p>
+    <p>A lock-discovery property is there on locked resources gives you the lock type, who
+    took it out, etc.</p>
+    <p>Collections can be locked on the top or all the way down<!--webbot bot="PurpleText" PREVIEW="&lt;/DT2&gt;" --></td>
+    <td width="25%">Read Locks and Exclusive Locks with staleness detection and
+    synchronization of data, in great combinations of optionality<p>No deep locking, no
+    principal concept.<!--webbot bot="PurpleText" PREVIEW="DT2 - DMA only has one level.  DMA locks are not persistent and WebDAV locks are persistent and can be timed out by the server.  There is expiration of locks." -->&nbsp; </td>
+    <td width="35%">If WebDAV locks are optional, mapping possible.<p>DMA might borrow the
+    WebDAV / HTTP principal concept and restate its model without loss of compatibility.</td>
+  </tr>
+  <tr>
+    <td width="20%">Document Submission/Update used</td>
+    <td width="25%">PUT/PROPPATCH</td>
+    <td width="25%">ExecuteChange</td>
+    <td width="35%">DMA benefits from an aggregate creation/change method that supports WebDAV</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="RD-1">Resource Discovery - 1</a> used</td>
+    <td width="25%">content negotiation</td>
+    <td width="25%">Rendition list</td>
+    <td width="35%">Discovery of resource in a desired form.&nbsp; Cf. <a href="#RD-2">Resource
+    Discovery - 2</a></td>
+  </tr>
+  <tr>
+    <td width="20%">Authentication</td>
+    <td width="25%">SHTTP and SSL standards apply<!--webbot bot="PurpleText" PREVIEW="WebDAV requires implementations to have digest authentication.  It is a MUST.  You can offer others.  Section 17.1 of DAV spec.  Can't use basic over clear.  Not adding another hole and discourage use of existing holes." --></td>
+    <td width="25%">no exposure of transport security<p>adapts ODBC/SQL-CLI challenge response
+    mechanism</td>
+    <td width="35%">DMA can benefit from adoption of WebDAV principle model, access
+    control/user model, and arrangement to employ global authentication</td>
+  </tr>
+</table>
+</center></div>
+
+<h1><a name="Differences">Areas of Difference</a></h1>
+<div align="center"><center>
+
+<table border="1" width="90%">
+  <tr>
+    <th width="20%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><p align="center">Different Feature</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">WebDAV Difference</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">DMA Difference</th>
+    <th width="35%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Considerations</th>
+  </tr>
+  <tr>
+    <td width="20%"><a name="FundamentalObject">Fundamental Object</a> different</td>
+    <td width="25%">Resource with Properties</td>
+    <td width="25%">DocVersion with Properties and Renditions</td>
+    <td width="35%">DMA expressible in WebDAV by inverting view from Rendition.</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="FundamentalOrganizer">Fundamental Organizing Mechanism</a>
+    different</td>
+    <td width="25%">Collections mandated by URL Structure</td>
+    <td width="25%">Relationships <p>Direct Containment is optional secondary and partial
+    organization with no implied naming structure</td>
+    <td width="35%">Unique rooted containment hierarchy is optional in DMA, with edge
+    information in Relationship between Container and Containee</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Query">Query</a> different</td>
+    <td width="25%">none<p>DASL is becoming stable enough in 1999</td>
+    <td width="25%">complete Object-Oriented Query Model<p>CBSearch stabilizing in 1999</td>
+    <td width="35%">resolve issues around strongly-typed query forms (DMA) versus free-form
+    undifferentiated query forms (WebDAV)<p>DMA can use a DASL method if it maps to CBSearch
+    model and name-spaces are mapped, perhaps?</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Cross-RepositoryQuery">Cross-Repository Query</a> Mechanism
+    different</td>
+    <td width="25%">none<p>Assumes accomplished by Web indexing and search services</td>
+    <td width="25%">fully-defined query-model composition scheme<p>elementary scheme for
+    reconciling the metamodels of different repositories</td>
+    <td width="35%">Determine whether can operate with DASL -&gt; DMA mapping and not expose
+    DMA scopes can expediting early convergence.</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Versioning">Versioning</a> different</td>
+    <td width="25%">none<p>proposal underway</td>
+    <td width="25%">linear versioning model complete<p>room for configuration management
+    additions</td>
+    <td width="35%">DMA versioning allows object to be a version in more than one way, with
+    Version History relationship providing edge information for each occurence as a version</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="CSDocs">Compound-Structured Documents</a> different<!--webbot bot="PurpleText" PREVIEW="CSDocs differences entry added.  dh:1999-06-11." --></td>
+    <td width="25%">none<p>&nbsp;</td>
+    <td width="25%">CSDocs relational model for expressing relationship of compound-structured
+    documents and separately presented components</td>
+    <td width="35%">WebDAV Advanced Collections seen as a representation for compound
+    documents?&nbsp; If so, can it differentiate compounding/structure exporting from
+    containment (e.g., collective organization)?</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="PropertySpace">Arbitrary Property Sheet</a> and Name Space
+    differences</td>
+    <td width="25%">XML expression of property information<p>Multiple namespaces for property </td>
+    <td width="25%">object interface expression of property information without serial form<p>one
+    decentralized DMA class and property namespace</td>
+    <td width="35%">DMA can benefit from mechanism that is harmonious with XML property-sheet
+    import/export.<p>DMA namespace mapping to XML namespaces requires work.&nbsp; Might fit
+    the DMA alias principle in a different form.</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="UnconstrainedPropertySet">Unconstrained Property Set</a>
+    differences</td>
+    <td width="25%">WebDAV sites can allow each object to have unique set of properties</td>
+    <td width="25%">DMA object properties strongly tied to class descriptions and DocSpace
+    schema, which is indelible for duration of a connection</td>
+    <td width="35%">DMA extension to support import-preservation-export of arbitrary bundle
+    and projection onto DMA property schemata of the object is worth exploring.</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="DocumentInterchange">Document Interchange</a> different</td>
+    <td width="25%">defined serial interchange with XML and MIME resources<p>defined transfer
+    (Copy/Move) procedures</td>
+    <td width="25%">individual content-element delivery only<p>no wholesale interchange or
+    import/export model</td>
+    <td width="35%">DMA can benefit with a seriallization and interchange format compatible
+    with WebDAV</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="PopularProperties">Popular Properties</a> different</td>
+    <td width="25%">introducing Dublin Core<p>provisions for multiple property name spaces</td>
+    <td width="25%">well-known properties only defined sufficient to support the model.<p>Application-defined
+    properties issued in single decentralized namespace.</td>
+    <td width="35%">DMA can benefit, upon agreeable name-space mapping scheme, from the
+    availability of application-oriented property sets defined for WebDAV</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="DocModel">Document Models</a> different</td>
+    <td width="25%">none</td>
+    <td width="25%">model for managed documents and for renditions as content of managed
+    documents</td>
+    <td width="35%">Look at DOM for WebDAV, projection of DMA onto WebDAV</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="ClassPropertyTypeModel">Class, Property, Type Model</a>
+    differences</td>
+    <td width="25%">none?<p>implementation may have restictions on objects, but WebDAV schemel
+    does not model it</td>
+    <td width="25%">Strongly Typed with Explicit Class Model and Inheritance Rules</td>
+    <td width="35%">DMA view inversion around rendition = resource may resolve these</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="MetamodelSchema">Metamodel and Schema</a> differences</td>
+    <td width="25%">none?</td>
+    <td width="25%">All objects carry descriptions and there is an explicit metamodel for
+    classes and properties of every repository</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="ReferentialContainment">Referential Container</a> differences</td>
+    <td width="25%">none<p>Advanced Collections corresponding to Referential Containment or
+    Mixed Containment?</td>
+    <td width="25%">Container can employ both referential and direct containment.<p>Containables
+    (including containers) can be contained referentially (many times) and directly (at most
+    once).&nbsp; Containment-relationship objects provide edge differentiation.</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="RelationshipModel">Relationship Model</a> differences</td>
+    <td width="25%">none?</td>
+    <td width="25%">Explicit well-defined relationship model with relationships carried in
+    content-less &quot;resources&quot;</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="Authorization">Authorization</a> differences</td>
+    <td width="25%">Access Control proposal</td>
+    <td width="25%">none</td>
+    <td width="35%">Is WebDAV providing resource-level or finer individual authorization?
+    &nbsp; Can it be used for that for DMA?&nbsp; DMA can get value from this.<!--webbot bot="PurpleText" PREVIEW="from Bernard Chester: In your last table (Missing from Both) I'd add &quot;individual document access control&quot;.  While DMA has an authorization scheme at the moment, neither has an explicit scheme for controlling the access to individual documents.  This was put here on the assumption that the Access Control for WebDAV proposal will provide document / resource-level security.  dh:1999-06-11." --></td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="UserModel">User Model </a>differences</td>
+    <td width="25%">HTTP principals?</td>
+    <td width="25%">none</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="RD-2">Resource Discovery - 2</a> differences</td>
+    <td width="25%">Web search and URLs used to discover resources</td>
+    <td width="25%">Access model explicitly (and rigidly) controls systems that can be reached
+    and location of the collections available through each system</td>
+    <td width="35%">About ability to know what resources there are and where they are located.
+    &nbsp; Cf. <a href="#RD-1">Resource Discovery - 1</a>.</td>
+  </tr>
+</table>
+</center></div>
+
+<h1><a name="Absences">Mutually-Absent Features</a></h1>
+<div align="center"><center>
+
+<table border="1" width="90%">
+  <tr>
+    <th width="20%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080"><p align="center">Feature</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">WebDAV</th>
+    <th width="25%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">DMA</th>
+    <th width="35%" valign="middle" align="center" bordercolor="#808080" bordercolorlight="#808080" bordercolordark="#808080">Considerations</th>
+  </tr>
+  <tr>
+    <td width="20%"><a name="AAA">Logging and Accounting</a> Missing</td>
+    <td width="25%">not protocol; no defined administration</td>
+    <td width="25%">no defined administration</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="DocumentConversion">Document Conversion</a> Missing</td>
+    <td width="25%">none</td>
+    <td width="25%">none</td>
+    <td width="35%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="DocumentTransformation">Document Transformation</a> Missing</td>
+    <td width="25%">none</td>
+    <td width="25%">none</td>
+    <td width="35%">What does this mean?</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="SchemaInterchange">Schema Definition and Interchange</a> Missing</td>
+    <td width="25%">?</td>
+    <td width="25%">Use of XML and MOF modelling may provide powerful mapping of DMA
+    Metamodels</td>
+    <td width="35%">DMA benefits greatly from an XML-based schema definition and interchange
+    mechanism that supports enterprise metamodel repositories and resource definition
+    repositories</td>
+  </tr>
+  <tr>
+    <td width="20%"><a name="TCS">Standard Transaction</a> Coordination Missing</td>
+    <td width="25%">none ?</td>
+    <td width="25%">DMA has a custom transaction model not conformant with any standard
+    transaction-bracketing model</td>
+    <td width="35%">Support for alternative 2-phased commit mechanism crucial to DMA
+    acceptability in Enterprise Information Technology infrastructure</td>
+  </tr>
+</table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<h1><a name="Resources">References and Resources</a></h1>
+
+<dl>
+  <dt>Nguyen, Van-Si.&nbsp; Discussion of OMG DRI Approach.&nbsp; </dt>
+  <dd>Hitachi-Xerox OMG DRI Workshop.&nbsp; Powerpoint Slides.&nbsp; Xerox Corporation. &nbsp;
+    Private distribution (May 24, 1999: Tokyo). Comment: Date and distribution corrected.
+    dh:1999-06-11</dd>
+</dl>
+
+<h1><a name="Contributors">Contributors</a></h1>
+
+<blockquote>
+  <p><a href="mailto:Bernard.Chester@cwix.com">Bernard Chester</a></p>
+  <p><a href="mailto:infonuovo@email.com">Dennis E. Hamilton</a></p>
+</blockquote>
+
+<hr>
+
+<p align="center"><em>last updated on <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d %H:%M" startspan -->2006-08-28 18:07<!--webbot bot="Timestamp" endspan i-checksum="25916" --> -0700 (pdt) by orcmid</em></p>
+
+<p align="center"><em>created on 1999-06-10 13:40 -0700 (pdt) by orcmid<!--webbot bot="PurpleText" PREVIEW="Added Creation date as recorded in Visual Source Safe. dh:1999-06-11." --></em></p>
+</body>
+</html>

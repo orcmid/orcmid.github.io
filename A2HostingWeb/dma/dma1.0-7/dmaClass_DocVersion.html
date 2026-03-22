@@ -1,0 +1,73 @@
+<html><head><title>dmaClass_DocVersion Reference</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff"><h3>
+ dmaClass_DocVersion</h3><p>
+A document version is single document stored in a Document Space.<p><b>Class ID:</b> dmaClass_DocVersion<br>
+<b>Superclass:</b> <A href="dmaClass_Versionable.html">Versionable</A><br>
+<h4><b>Interfaces</b></h4><a href="IUnknown.html" > IUnknown</a><br><a href="IdmaObject.html" > IdmaObject</a><br><a href="IdmaProperties.html" > IdmaProperties</a><br><a href="IdmaEditProperties.html" > IdmaEditProperties</a> [Optional]<br><a href="IdmaConnection.html" > IdmaConnection</a> [Optional]<br><a href="IdmaVersionable.html" > IdmaVersionable</a> [Optional]
+<h4><b>Properties</b></h4><p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Impl. Required</b></p></TD><TD><p><b>System Gen'ed</b></p></TD><TD><p><b>Read-Only</b></p></TD>
+<TD><p><b>Value Required</b></p></TD><TD><p><b>Type</b></p></TD><TD><p><b>Cardinality</b></p></TD><TD><p><b>Required Class</b></p></TD></TR><TR><TD><p><A name="TdmaProp_OIID">OIID</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ClassDescription">Class Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Class Description</p></TD></TR><TR><TD><p><A name="TdmaProp_This">This</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Doc Version</p></TD></TR><TR><TD><p><A name="TdmaProp_CreatePending">Create Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_UpdatePending">Update Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DeletePending">Delete Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_Parent">Parent</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Direct Containment Relationship</p></TD></TR><TR><TD><p><A name="TdmaProp_ParentContainer">Parent Container</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Container</p></TD></TR><TR><TD><p><A name="TdmaProp_Containers">Containers</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Referential Containment Relationship</p></TD></TR><TR><TD><p><A name="TdmaProp_VersionDescriptions">Version Descriptions</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>Enum</p></TD><TD><p>
+Version Description</p></TD></TR><TR><TD><p><A name="TdmaProp_CurrentOfSeriesCount">Current Of Series Count</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>Integer32</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_RenditionsPresent">Renditions Present</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>List</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_Renditions">Renditions</A></p></TD><TD><p>-</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>List</p></TD><TD><p>
+Rendition</p></TD></TR></TABLE><h4><b>Detailed Description</b></h4><p>
+<p>This is the base class for objects representing "documents". It introduces the properties which support the representation of document content (if supported) and inherits properties which support versioning and containment of documents (if supported). A document space may allow actual instances of DocVersion to be created, or it may only allow instances of subclasses of DocVersion.
+<h4><b>Property Descriptions</b></h4><p><b>• OIID     {<A name="dmaProp_OIID"></A><A href="dmaclass_docversion.html#TdmaProp_OIID">dmaProp_OIID</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Class Description     {<A name="dmaProp_ClassDescription"></A><A href="dmaclass_docversion.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• This     {<A name="dmaProp_This"></A><A href="dmaclass_docversion.html#TdmaProp_This">dmaProp_This</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Create Pending     {<A name="dmaProp_CreatePending"></A><A href="dmaclass_docversion.html#TdmaProp_CreatePending">dmaProp_CreatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Update Pending     {<A name="dmaProp_UpdatePending"></A><A href="dmaclass_docversion.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Delete Pending     {<A name="dmaProp_DeletePending"></A><A href="dmaclass_docversion.html#TdmaProp_DeletePending">dmaProp_DeletePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Parent     {<A name="dmaProp_Parent"></A><A href="dmaclass_docversion.html#TdmaProp_Parent">dmaProp_Parent</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Parent Container     {<A name="dmaProp_ParentContainer"></A><A href="dmaclass_docversion.html#TdmaProp_ParentContainer">dmaProp_ParentContainer</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Containers     {<A name="dmaProp_Containers"></A><A href="dmaclass_docversion.html#TdmaProp_Containers">dmaProp_Containers</A>}</b>
+<br><i>Property Inherited from Containable</i>
+<p><b>• Version Descriptions     {<A name="dmaProp_VersionDescriptions"></A><A href="dmaclass_docversion.html#TdmaProp_VersionDescriptions">dmaProp_VersionDescriptions</A>}</b>
+<br><i>Property Inherited from Versionable</i>
+<p><b>• Current Of Series Count     {<A name="dmaProp_CurrentOfSeriesCount"></A><A href="dmaclass_docversion.html#TdmaProp_CurrentOfSeriesCount">dmaProp_CurrentOfSeriesCount</A>}</b>
+<br><i>Property Inherited from Versionable</i>
+<p><b>• Renditions Present     {<A name="dmaProp_RenditionsPresent"></A><A href="dmaclass_docversion.html#TdmaProp_RenditionsPresent">dmaProp_RenditionsPresent</A>}</b>
+<p>
+List of the types of renditions contained within the DocVersion at the time is was last made persistent.
+</p><p>
+<p>A system-generated (and read-only) list of Strings which reflect the rendition types of the renditions in the document.  This property is static except over a Refresh and does not dynamically track the state of the Renditions list.  Therefore, the client application may not in general assume that the number or order of elements in this list correspond to that of the Renditions list.  
+<p>However, if neither the Rendition list nor any of the rendition objects it contains have been modified since the DocVersion was connected or last refreshed, then it is required that the two lists be synchronized.
+<p>
+</p>
+<p><b>• Renditions     {<A name="dmaProp_Renditions"></A><A href="dmaclass_docversion.html#TdmaProp_Renditions">dmaProp_Renditions</A>}</b>
+<p>
+List of Renditions contained within this DocVersion
+</p><p>
+<p>
+<p>
+</p>
+</body></html>

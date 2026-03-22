@@ -1,0 +1,86 @@
+J040603c.txt               PEANO NUMERALS ALPHA           0.00 dh:2004-09-18
+                                                          0.10 dh:2004-09-19
+                                                 
+
+                       CONTENT OF J040603c.zip ARCHIVE
+                       -------------------------------
+             DEVELOPMENT OF Java com.orcmid.LLC.pa.pn ALPHA 0.10
+                       
+    Archive: <http://orcmid.com/com.orcmid/LLC/pa/pn/ALPHA/J040603c.zip>
+     Status: <http://orcmid.com/com.orcmid/LLC/pa/pn/ALPHA/J040603c.txt>
+             Consult this document for the latest content of this archive
+             and the status of its development and support.
+    Package: com.orcmid.LLC.pa.pn ALPHA
+             published at <http://orcmid.com/com.orcmid/LLC/pa/pn/ALPHA/>
+    Details: <http://orcmid.com/com.orcmid/LLC/pa/pn/ALPHA/J040603c.htm>
+     Theory: <http://miser-theory.info/astraendo/A040601.htm>
+    Discuss: <http://miser-theory.info/astraendo/pn/>
+             the Numbering Peano blog.
+    Contact: <http://NuovoDoc.com/contact.htm>
+
+             
+MANIFEST
+     
+This archive version provides the following materials:
+
+      J040603c.txt  0.10 This file and content description
+
+     Num-0.10.java  ALPHA 0.10 version of com.orcmid.LLC.pa.pn.Num
+    Num-0.10.class  Compiled class for comparison with other ones
+                    to determine what the substantive differences
+                    are, if any.
+
+  Stubby-0.10.java  ALPHA 0.10 version of com.orcmid.LLC.pa.pn.Stubby,
+                    a stub class that demonstrates that the Num
+                    interface is implemented  using the proper
+                    classpath settings.
+
+    StubbyRun.java  ALPHA 0.10 of a test application that accesses the Num
+                    interface of Stubby to provide a crude exercise of each 
+                    Num method.
+                    
+PREREQUISITES
+
+  1. You must have a Java installation with J2SE 1.4.1 or later.  The 
+     programs in this archive have been tested with J2SE 1.4.1 only.  
+     There are no known dependencies on features introduced since JDK 1.0.
+     
+  2. You must have WinZip or a comparable Zip utility for extracting the
+     material from the archive.  The Zip archive of this project was
+     produced using WinZip 8.1 SR-1 (5266).
+     
+  3. You must be able to set the class path of your Java compiler and 
+     Java run-time to use these programs as shipped.
+     
+  4. You may require Microsoft Internet Explorer in order to view any
+     MHTML files off-line.  The MHTML (extension .MHT) files that are 
+     included in archives for this project are produced using Microsoft 
+     Internet Explorer 6.0.2800.1106.xpsp2.030422-1633 SP1. The most 
+     recent versions of these pages are also available on-line for viewing
+     by most browsers.
+     
+INSTALLATION
+
+  1. Create a directory hierarchy  ...cp/com/orcmid/LLC/pa/pn/
+     where cp is a directory that you name as a classpath.  It is all
+     right if there are additional subtrees of cp, cp/com/, etc., so long
+     as the directory ...cp/.../pn is available for use with this ALPHA
+     material.
+     
+  2. UnZip the J040603c.zip archive into the ...cp/.../pn directory.  In what
+     follows, operate in that directory as your working directory.
+  
+  3. Setting the classpath to ...cp, compile the following files with javac:
+     Num-0.10.java, Stubby-0.10.java, and StubbyRun.java, in that order.
+     
+  4. The execution of StubbyRun is obtained by using the classpath and java
+     to run com.orcmid.LLC.pa.pn.StubbyRun
+     
+  5. There are worked examples and more details about these files on the 
+     details page, 
+     <http://orcmid.com/com.orcmid/LLC/pa/pn/ALPHA/J040603c.htm>.
+     
+
+$Header: /Java2/com/orcmid/llc/pa/pn/J040603c.txt 2     04-09-19 18:27 Orcmid $
+
+                          ** END OF J040603c.txt **

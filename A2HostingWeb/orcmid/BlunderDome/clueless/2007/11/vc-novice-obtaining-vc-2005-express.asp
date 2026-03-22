@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- PROFESSOR VON CLUELESS BLOGGER.COM TEMPLATE
+     :mode=html:
+     2006-11-30-21:38 Restore the technorati claim for the official domain and blog URL
+     2006-10-29-08:57 Clean up template for the move under nfocentrale.com and http://orcmid.com
+     2006-03-12-15:53 Add ClstrMap to my page
+     2006-03-08-19:59 Add an "about" link that Alex Barnett showed me is needed
+     2006-02-16-17:16 Claim the blog as nfoCentrale.net/orcmid/BlunderDome/clueless on Technorati
+        and also fix the hard-hat logo to use the direct site.
+     2004-10-28-23:12 Line up title block material better and add rating
+        items from NewsGator Online.
+     2004-10-03-12:35 Add link to template source in the construction-
+        history block.  This might be something more useful later.
+     2004-10-03-08:45 Refresh template to reflect improvements from Orcmid's
+        Lair, cleaning up links too.
+     2004-09-01-23:21 Space out the recent titles so they are easier to see.
+     2004-09-01-22:12 Let's make the title block more interesting.
+     2004-09-01-21:13 Revert to the Basic model used by Numbering Peano.
+        Establish a simpler, well-behaved case that I can customize further
+        once I have the basic appearance handled.
+     2004-08-31-22:36 See how to swap the two columns.  I want the narrow
+        column on the left.  I am willing to give up some of the pretties
+        to have that work out.  It doesn't provide what I want though.
+     2004-06-26 Add Atom-feed links to the page.
+     2004-02-27 Douglas Bowman Rounders 2 template style from Blogger
+  $$Header: /A2HostingWeb/orcmid/BlunderDome/clueless/2007/11/vc-novice-obtaining-vc-2005-express.asp 1     08-10-07 14:34 Orcmid $
+  -->
+
+<head>
+<title>Professor von Clueless in the Blunder Dome: VC++ Novice: Obtaining VC++ 2005 Express Edition</title>
+<meta http-equiv="Content-Language" content="en-us" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta name="generator" content="Blogger" />
+<link rel="alternate" type="application/atom+xml" title="Professor von Clueless in the Blunder Dome - Atom" href="http://orcmid.com/BlunderDome/clueless/clu-atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="Professor von Clueless in the Blunder Dome - RSS" href="http://orcmid.com/BlunderDome/clueless/rss.xml" />
+<link rel="service.post" type="application/atom+xml" title="Professor von Clueless in the Blunder Dome - Atom" href="http://www.blogger.com/feeds/7336679/posts/default" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=7336679" />
+<link rel="alternate" type="application/atom+xml" title="Professor von Clueless in the Blunder Dome - Atom" href="http://orcmid.com/BlunderDome/clueless/clu-atom.xml" />
+<style type="text/css">
+@import url("http://www.blogger.com/css/blog_controls.css");
+@import url("http://www.blogger.com/dyn-css/authorization.css?targetBlogID=7336679");
+</style>
+<script type="text/javascript" src="http://www.blogger.com/js/backlink.js"></script>
+<script type="text/javascript" src="http://www.blogger.com/js/backlink_control.js"></script>
+<script type="text/javascript">var BL_backlinkURL = "http://www.blogger.com/dyn-js/backlink_count.js";var BL_blogId = "7336679";</script>
+
+<base target="_top" />
+<style>
+body	{background:#666666;margin: 0px;font-family: Verdana, Arial, sans-serif;color: black;}
+.blogtitle	{font-family: Verdana, Arial, sans-serif;color: white;font-size:32px;margin-left:20px;margin-bottom:1px; text-transform:uppercase;}
+.links	{font-family: Verdana, Arial, sans-serif;font-size:11px;}
+A.links:hover{color:white;}
+A	{font-weight:bold;text-decoration:none;}
+A:hover	{color:red;}
+.date	{font-family: Verdana, Arial, sans-serif;color: black;font-size:16px;font-weight:bold;margin:10px;}
+.posts	{font-family: Verdana, Arial, sans-serif;color: black;font-size:12px;margin:10px;margin-top:0px;}
+.byline	{font-family: Verdana, Arial, sans-serif;color: #999999;font-size:11px;}
+</style>
+</head>
+
+<body bgcolor="#666666" marginwidth="0" marginheight="0" 
+      link="#336699" vlink="#336699" alink="red"> <!-- 2004-08-31 -->
+
+<div><br />
+<table align="center" width="95%" border="0" cellspacing="0" cellpadding="0">
+<tr><!-- PAGE TOP WITH BLOG TITLE -->
+  <!-- 2004-10-03 -->
+  <td bgcolor="#cccccc" width="25%" valign="middle" align="right">
+  <a href="http://orcmid.com/viaggio/V040801.htm" target="_top">
+  <img border="0" src="http://orcmid.com/viaggio/orc-DW-2004-08-07a1.PNG" 
+       alt="Blunder Dome Sighting" width="120" height="145" /></a></td>  
+  <td bgcolor="#aaaaaa" width="%55" valign="middle" 
+      align="center"><h2 align="center"><a target="_top" 
+      href="http://orcmid.com/BlunderDome/clueless/">Professor von Clueless in the Blunder Dome</a></h2></td>
+  <td bgcolor="#aaaaaa" width="%20" 
+      valign="middle" align="right"><!-- 2004-10-28 -->
+  <a href="http://orcmid.com/status.htm" 
+     target="_top">status</a>&nbsp;<br />
+  <!-- 2004-10-03 -->&nbsp;<br />
+  <a href="http://NuovoDoc.com/privacy.htm" 
+     target="_top">privacy</a>&nbsp;<br />
+  &nbsp;<br />
+    <a href="http://orcmid.com/construction/orcmid.htm" 
+     target="_top">about</a>&nbsp;<br />
+  <a href="http://NuovoDoc.com/contact.htm" 
+     target="_top">contact</a>&nbsp;</td>
+</tr>
+<tr><!-- PAGE BODY WITH TWO COLUMNS -->
+  
+    <td bgcolor="#cccccc" valign="top" align="right">
+        <!-- LEFT COLUMN: Descriptions, Links, and Buttons -->
+    <br />
+	<div class="posts">
+	  Hangout for experimental confirmation and demonstration of software, computing, and networking.  The exercises don't always work out.  The professor is a bumbler and the laboratory assistant is a skanky dufus.<br />
+	  <br />
+      <div class="links">
+      <a href="" title="Atom feed">
+         <img border="0" src="http://orcmid.com/blog/atom-feed.bmp"
+              alt="Click for Atom feed" /></a> 
+      <br />
+      <a href="" title="Atom feed">Atom Feed</a> 
+      <p><b>Associated Blogs</b><br /> <!-- 2004-10-03 -->
+         &#160;<br />
+         <a href="http://edge_city.blogspot.com/">Edge City</a><br />
+         &#160;<br />
+         <a href="http://miser-theory.info/astraendo/pn/">Numbering
+            Peano</a><br />
+         &#160;<br />
+         <a href="http://orcmid.com/blog/">Orcmid's Lair</a><br />
+         <!-- 2004-10-03 -->&#160;<br />
+         <a href="http://www.praxis101.com/blog/">Praxis101</a><br />
+         &#160;<br />
+         <a href="http://orcmid.com/BlunderDome/wingnut/">Spanner 
+            Wingnut's Muddleware Lab</a>
+      </p>
+      </div>
+    <!--  In accordance to the Blogger terms of service, 
+          please leave this button somewhere on your blogger-powered page. 
+          Thanks!
+          -->	
+	<a href="http://www.blogger.com/">
+    <img src="http://buttons.blogger.com/bloggerbutton1.gif" 
+         width="88" height="31" border="0" 
+         alt="This page is powered by Blogger. Isn't yours?" /></a>
+    <script type="text/javascript" src="http://embed.technorati.com/embed/jtusn5qc9r.js"></script>
+            <!-- 2006-11-30 -->
+    <p align="right"><a href="http://clustrmaps.com/counter/maps.php?url=http://nfocentrale.net/orcmid/" id="clustrMapsLink"><img src="http://clustrmaps.com/counter/index2.php?url=http://nfocentrale.net/orcmid/" border=1 alt="Locations of visitors to this page"onError="this.onError=null; this.src='http://www.meetomatic.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://clustrmaps.com/'">
+       </a>  <!-- 2006-03-12 --></p>
+    <p><b>Recent Items</b><br /><!-- 2004-09-01 -->
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/11/vc-novice-visual-studio-2008-express.asp">VC++ Novice: Visual Studio 2008 Express Edition Ar...</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/11/cp4e-novice-computer-programming-and.asp">CP4E: Novice Computer Programming and the OLPC XO</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/11/dmware-how-about-that-odma64.asp">DMware: How About That ODMA64?</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/10/vc-novice-error.asp">VC++ Novice: &quot;Runtime Error!&quot;</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/10/cybersmith-apln-seattle-meeting-with.asp">Cybersmith: APLN Seattle Meeting with Jim Benson</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/10/nwcpp-herb-sutter-things-your.asp">NWCPP: Herb Sutter - Things Your Programming Langu...</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/08/vc-novice-what-about-vc-2008-orcas.asp">VC++ Novice: What About VC++ 2008 (Orcas) Express ...</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/07/videography-stumbling-around-my-webcam.asp">Videography: Stumbling Around my Webcam</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/07/cybersmith-how-software-is-built.asp">Cybersmith: How Software Is Built</a><br />
+    
+    &#160;<br />
+    <a href="http://orcmid.com/BlunderDome/clueless/2007/06/cybersmith-design-stamina-and-technical.asp">Cybersmith: Design Stamina and Technical Debt</a><br />
+    </p>
+
+    <p><b>Archives</b><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_06_13_clu-chive.asp'>2004-06-13</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_06_20_clu-chive.asp'>2004-06-20</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_06_27_clu-chive.asp'>2004-06-27</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_08_29_clu-chive.asp'>2004-08-29</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_09_05_clu-chive.asp'>2004-09-05</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_09_12_clu-chive.asp'>2004-09-12</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_09_19_clu-chive.asp'>2004-09-19</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_10_10_clu-chive.asp'>2004-10-10</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_10_24_clu-chive.asp'>2004-10-24</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_11_07_clu-chive.asp'>2004-11-07</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_11_28_clu-chive.asp'>2004-11-28</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_12_05_clu-chive.asp'>2004-12-05</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_12_12_clu-chive.asp'>2004-12-12</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2004_12_26_clu-chive.asp'>2004-12-26</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_01_30_clu-chive.asp'>2005-01-30</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_02_06_clu-chive.asp'>2005-02-06</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_03_06_clu-chive.asp'>2005-03-06</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_03_13_clu-chive.asp'>2005-03-13</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_03_20_clu-chive.asp'>2005-03-20</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_04_03_clu-chive.asp'>2005-04-03</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_04_10_clu-chive.asp'>2005-04-10</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_04_17_clu-chive.asp'>2005-04-17</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_04_24_clu-chive.asp'>2005-04-24</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_05_01_clu-chive.asp'>2005-05-01</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_05_08_clu-chive.asp'>2005-05-08</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_05_15_clu-chive.asp'>2005-05-15</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_05_29_clu-chive.asp'>2005-05-29</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_06_05_clu-chive.asp'>2005-06-05</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_06_12_clu-chive.asp'>2005-06-12</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_06_19_clu-chive.asp'>2005-06-19</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_06_26_clu-chive.asp'>2005-06-26</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_07_10_clu-chive.asp'>2005-07-10</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_07_17_clu-chive.asp'>2005-07-17</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_07_31_clu-chive.asp'>2005-07-31</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_08_28_clu-chive.asp'>2005-08-28</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_10_09_clu-chive.asp'>2005-10-09</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_10_16_clu-chive.asp'>2005-10-16</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_10_23_clu-chive.asp'>2005-10-23</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_11_13_clu-chive.asp'>2005-11-13</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_11_27_clu-chive.asp'>2005-11-27</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_12_04_clu-chive.asp'>2005-12-04</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2005_12_18_clu-chive.asp'>2005-12-18</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_01_08_clu-chive.asp'>2006-01-08</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_02_05_clu-chive.asp'>2006-02-05</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_02_12_clu-chive.asp'>2006-02-12</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_02_19_clu-chive.asp'>2006-02-19</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_03_05_clu-chive.asp'>2006-03-05</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_03_12_clu-chive.asp'>2006-03-12</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_03_26_clu-chive.asp'>2006-03-26</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_04_23_clu-chive.asp'>2006-04-23</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_04_30_clu-chive.asp'>2006-04-30</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_07_16_clu-chive.asp'>2006-07-16</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_07_30_clu-chive.asp'>2006-07-30</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_08_06_clu-chive.asp'>2006-08-06</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_09_03_clu-chive.asp'>2006-09-03</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_10_08_clu-chive.asp'>2006-10-08</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_10_22_clu-chive.asp'>2006-10-22</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_10_29_clu-chive.asp'>2006-10-29</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_11_26_clu-chive.asp'>2006-11-26</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2006_12_10_clu-chive.asp'>2006-12-10</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_01_28_clu-chive.asp'>2007-01-28</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_02_04_clu-chive.asp'>2007-02-04</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_02_11_clu-chive.asp'>2007-02-11</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_03_11_clu-chive.asp'>2007-03-11</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_03_25_clu-chive.asp'>2007-03-25</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_04_08_clu-chive.asp'>2007-04-08</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_06_03_clu-chive.asp'>2007-06-03</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_06_10_clu-chive.asp'>2007-06-10</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_06_17_clu-chive.asp'>2007-06-17</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_07_01_clu-chive.asp'>2007-07-01</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_07_08_clu-chive.asp'>2007-07-08</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_08_19_clu-chive.asp'>2007-08-19</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_09_30_clu-chive.asp'>2007-09-30</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_10_07_clu-chive.asp'>2007-10-07</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_10_21_clu-chive.asp'>2007-10-21</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_11_04_clu-chive.asp'>2007-11-04</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_11_11_clu-chive.asp'>2007-11-11</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_11_18_clu-chive.asp'>2007-11-18</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2007_11_25_clu-chive.asp'>2007-11-25</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2008_01_27_clu-chive.asp'>2008-01-27</a><br />
+    
+    <a href='http://orcmid.com/BlunderDome/clueless/2008_02_03_clu-chive.asp'>2008-02-03</a><br />
+    </p>
+
+	</div>
+    </td>
+    
+	<td bgcolor="white" colspan="2" valign="top" align="left">
+        <!-- RIGHT COLUMN: The Silly content 2004-10-03 -->
+    
+	
+      <h3><a name="2007-11-23" href="#2007-11-23">
+          <font color="#660000">2007-11-23</font></a></h3>
+   	
+
+	<div class="posts">
+	<a name="4401859885542718079"></a>
+    
+    <h2><font color="#000080"><!-- 2004-08-31 -->
+    
+    VC++ Novice: Obtaining VC++ 2005 Express Edition
+    
+    </font></h2>
+    
+    
+    <p>
+	<div style="clear:both;"></div><div class="wlWriterSmartContent" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:24af749d-2b4f-4942-8ff2-4453eef570cf" style="padding-right: 0px; display: inline; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px">Technorati Tags: <a href="http://technorati.com/tags/VC++%20Novice" rel="tag">VC++ Novice</a>, <a href="http://technorati.com/tags/Visual%20C++%202005%20Express%20Edition" rel="tag">Visual C++ 2005 Express Edition</a>, <a href="http://technorati.com/tags/downloads" rel="tag">downloads</a>, <a href="http://technorati.com/tags/programming%20idioms" rel="tag">programming idioms</a>, <a href="http://technorati.com/tags/software%20development" rel="tag">software development</a>, <a href="http://technorati.com/tags/CP4E" rel="tag">CP4E</a>, <a href="http://technorati.com/tags/SE4E" rel="tag">SE4E</a>, <a href="http://technorati.com/tags/toolcraft" rel="tag">toolcraft</a></div> <p>Although <a href="http://www.microsoft.com/express/">Visual C++ 2008 Express Edition</a> is <a href="http://orcmid.com/BlunderDome/clueless/2007/11/vc-novice-visual-studio-2008-express.asp">now available</a>, it's also possible to download and install Visual C++ 2005 Express Edition.&nbsp; With care, you can use these two editions side-by-side.&nbsp; If you are starting with the 2008 edition, it is probably unnecessary to have the 2005 Edition though.&nbsp; </p> <p>If you've been using VC++ 2005 Express Edition, you may want to make a collection of the complete software for archival purposes and in case you ever need to use it to work with a VC++ 2005 project in the future.&nbsp; This post recommends how to do that.</p> <blockquote> <p><strong><em>see also:<br>&nbsp;&nbsp;&nbsp; </em></strong>2007-11-25 Toolcraft: <a href="http://orcmid.com/BlunderDome/clueless/2007/11/toolcraft-making-discs-from-cddvd-image.asp">Making Discs from CD/DVD Image Downloads</a><br>&nbsp;&nbsp;&nbsp; 2007-11-19 VC++ Novice: <a href="http://orcmid.com/BlunderDome/clueless/2007/11/vc-novice-visual-studio-2008-express.asp">Visual Studio 2008 Express Edition Arrives</a><br>&nbsp;&nbsp;&nbsp; 2007-06-10 VC++ Novice: <a href="http://orcmid.com/BlunderDome/clueless/2007/06/vc-novices-what-visual-express-edition.asp">What's the Visual C++ Express Edition?</a></p></blockquote> <h3>Obtaining All of the Components</h3> <p align="center"><a title="Finding Previous Versions at the Visual Studio 2008 Express Developer Center" href="http://www.microsoft.com/express/"><img src="http://zfffqg.bay.livefilestore.com/y1pSnwPiUtxyHc52OCqduvv6lTKfU02C8NX8FsRJ275nNy8Gpop83G1dtbA329u19CnRXNyoBhGY6t4ScARjhjTOg"></a></p></img> <p>The <a href="http://www.microsoft.com/express/">Visual Studio 2008 Express Developers Center</a> is a major redesign of the site for Express Editions.&nbsp; From the home page, select the Previous Version option.&nbsp; This will take you to the source of Visual Studio 2005 Express Editions:</p> <p align="center"><a title="Visual Studio 2005 Express Editions Overview Page" href="http://www.microsoft.com/express/2005/"><img src="http://zfffqg.bay.livefilestore.com/y1pSnwPiUtxyHcd37_y7Z86Q9WEhqjH-t0CiZfJKly1A8Utcxf_2l_694KFh_Q8E3t3t6su4FfJXYrLit9ALTcs_A"></a></p></img> <p>This is the key page for access to all of the materials that you will need to preserve the complete Visual C++ 2005 Express Edition software:</p> <ol> <li>The original VC++ 2005 Express Edition software on CD-ROM<br>&nbsp;&nbsp; <li>The VC++ 2005 Express Edition SP1 update (a download)<br>&nbsp;&nbsp;&nbsp; <li>The VC++ 2005 Express Edition SP1 supplement for Windows Vista (an additional download)<br>&nbsp;&nbsp; <li>The Microsoft Platform SDK for Windows Server 2003 R2 on CD-ROM</li></ol> <h3>Finding the VC++ 2005 Express CD-ROM Download</h3> <p>You will want all four of the components that make up the complete working VC++ 2005 Express Edition setup.&nbsp; Later you can download other SDKs and software that works with these essential components for development Windows applications with VC++ 2005 Express.</p> <p>The ISO image of the CD-ROM is more difficult to locate than the VS 2008 Express DVD.&nbsp; I will start with that, because the CD-ROM is the easiest and most-reliable way to install VC++ 2005 EE now and at any time in the future, on the same machine or on another one.&nbsp; </p> <p>On the VS 2005 Express overview page, select the <a href="http://www.microsoft.com/express/2005/faq/Default.aspx">FAQ</a>:</p> <p align="center"><a title="Visual Studio 2005 Express Edition FAQ Index" href="http://www.microsoft.com/express/2005/faq/Default.aspx"><img style="margin: 0px 10px 5px 0px" src="http://zfffqg.bay.livefilestore.com/y1pSnwPiUtxyHePm7wnz4CD3LSq-fblPj2MTb5PWxh9pQhjScPXffjUZct3CVsAas4_bs8lilMiKIvqGAkS-OLj4w"></a></p></img> <p>The <a href="http://www.microsoft.com/express/2005/faq/Default.aspx#install">Installation question</a> provides the advice we are interested in:</p> <p align="center"><a title="VS 2005 Express Edition Installation FAQ" href="http://www.microsoft.com/express/2005/faq/Default.aspx#install"><img src="http://zfffqg.bay.livefilestore.com/y1pSnwPiUtxyHcY64r6mAzibV6bBnT_5Nm9DXsZNAyWuXRMk6ea_f2k67AamoUMufja5_CImTYOe2uFneGMt6-4WQ"></a></p></img> <p>The Manual Installation Instructions provide links to the ISO images for downloading:</p> <p align="center"><a title="The ISO image download link on the Manual Installation Instructions page" href="http://www.microsoft.com/express/2005/download/offline.aspx"><img style="margin: 0px 0px 5px" src="http://zfffqg.bay.livefilestore.com/y1pSnwPiUtxyHdq_Ceg2lqucW03jzRbvAVbNiuckHgkwnLZWf7sPm1xiXAwlMWuYuoTMWG7TkaeZo2p29BLXJ_oIQ"></a></p></img> <p><img style="margin: 0px 5px 5px 0px" src="http://ljnpwg.bay.livefilestore.com/y1pSnwPiUtxyHdTkAwFYMfdM1C6wYRngtUFCKikoaIse61PgI_6nJN0jvUUH7j6RDhaLx47WKaSINnlcG4sL3M3Rw" align="left"></img>You can download either the .IMG File or the .ISO File.&nbsp; There is no difference (they are identical except for the name).&nbsp; I recommend the .ISO image simply because available CD-ROM creation software tends to recognize that file extension automatically.&nbsp; Also, notice that the size of the file is stated in two different ways.&nbsp; Don't worry about it.&nbsp; This is the same download that has been available since November 2005.&nbsp; Internet Explorer will say the file is 462MB and it will show up in Windows Explorer as 473,720 KB, but the File Properties will confirm that it is 462 MB (485,089,280 bytes).&nbsp; [Since the file size is misstated on the download page, it would seem that the CRC Number is likely to be incorrect as well, making the information very unhelpful to the target audience for this software.]</p> <p>There are additional instructions on that page for different ways to use the ISO image.&nbsp; </p> <h3>Obtaining the Additional Material</h3> <p>After a successful download of the ISO image, download the additional material.</p> <p>Return to the <a href="http://www.microsoft.com/express/2005/">Visual Studio 2005 Express Edition Overview Page</a>.&nbsp; Select the <a href="http://www.microsoft.com/express/2005/download/default.aspx">Download</a> item on the menu.</p> <p><strong>Go to Step 2 on the Download page</strong>.&nbsp; Review the SP1 Release Notes.&nbsp; Download the Visual C++ 2005 Express SP1 file.&nbsp; Save that for use after any fresh installation of the Express Edition.</p> <p><strong>Also download the Visual Studio 2005 SP1 Update for Windows Vista</strong>.&nbsp; This is a supplement to SP1 that is to be installed after SP1 on Windows Vista systems.&nbsp; Even if you don't have Windows Vista now, save this update in case you will want to install VC++ 2005 Express on Vista in the future.</p> <h3>Obtaining the Platform SDK for Developing Windows GUI Applications</h3> <p>The Platform SDK and other SDKs available for Windows are not needed to have a functioning Visual C++ 2005 Express Edition.&nbsp; It is useful to download the ISO CD-ROM image of the Platform SDK now, creating the CD-ROM, and then using it later whenever it is needed.&nbsp; You can do this for other SDKs that interest you as well.</p> <p>After downloading the Visual Studio 2005 SP1 and its Vista update, select the link for the <a href="http://www.microsoft.com/express/2005/platformsdk/default.aspx">Platform SDK Instructions</a>.&nbsp; Remember where you found these.&nbsp; These instructions must be <strong>followed very carefully</strong> after you have a confirmed installation of VC++ 2005 Express Edition without the SDK.&nbsp; We'll go into that in a separate post.</p> <p>For now, we just want the correct Platform SDK for download and burning to a CD-ROM.&nbsp; On the Instructions page, follow <a href="http://www.microsoft.com/downloads/details.aspx?familyid=0baf2b35-c656-4969-ace8-e4c0c0716adb&amp;displaylang=en">Platform SDK</a> link in Step 2.&nbsp; This takes you to the web-install page, "Microsoft Windows Server 2003 R2 Platform SDK Web Install."&nbsp; <strong>Do not do the Web install</strong>.&nbsp; As always, we want to obtain a CD-ROM image that we can burn and preserve.</p> <p>Scroll to the bottom of the web-install page to the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=0baf2b35-c656-4969-ace8-e4c0c0716adb&amp;displaylang=en#RelatedLinks">Related Resources</a> section.&nbsp; Click the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=E15438AC-60BE-41BD-AA14-7F1E0F19CA0D&amp;displaylang=en">Windows Server 2003 R2 Platform SDK ISO Download</a> link.&nbsp; This is the file that you want.&nbsp; It is a 410MB download of an .ISO image file.&nbsp; This is what you need for a PSDK that goes with the VC++ 2005 Express Edition.</p> <p><strong>Don't Worry About the PSDK Name</strong>.&nbsp; If you look at the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=E15438AC-60BE-41BD-AA14-7F1E0F19CA0D&amp;displaylang=en#Requirements">System Requirements</a> section of the download page, you'll see that this PSDK is suitable for developing Windows applications for all versions of Windows back to Windows XP.&nbsp; (It works for earlier versions of Windows also, although those are no longer considered "supported.").&nbsp; <strong>Important:</strong> <a href="http://orcmid.com/BlunderDome/clueless/2007/06/code-monkey-challenge-what-is-psdk.asp">Don't download anything else that seems to be a Platform SDK</a>. And don't attempt to install the PSDK files anywhere but where the CD-ROM installs them.&nbsp; Any other actions will create a mess that is almost impossible to clean up without having to delete everything and start over.&nbsp; There will be more guidance on avoiding that and other pitfalls.&nbsp; For now, just know that this is the appropriate PSDK and we'll identify any additional versions only when it is appropriate.</p> <p>There's far more toolcraft and experience to be gained with these packages and additional SDKs, utilities, examples, and libraries from Microsoft and from other sources.&nbsp; For now, download all of it, make a CD-ROM for VC++ 2005 Express and for the Platform SDK.&nbsp; Then you're ready to attempt installation in gradual steps.</p> <hr> <small> <p>[<strong>update 2005-11-26</strong>: I added a link to a tutorial on making CD/DVD discs from the downloaded <font face="monospace"><strong>.iso</strong></font> image files.]</p></small>  <div style="clear:both; padding-bottom:0.25em"></div>
+    </p>
+	<span class="byline">posted by orcmid
+       at <a href="http://orcmid.com/BlunderDome/clueless/2007/11/vc-novice-obtaining-vc-2005-express.asp">11/23/2007 02:14:00 PM</a>,
+       rating 
+       <script src="http://www.newsgator.com/ngs/ratings.aspx?rurl=http://orcmid.com/BlunderDome/clueless/2007/11/vc-novice-obtaining-vc-2005-express.asp">
+       </script> data by <a href="http://www.newsgator.com">NewsGator 
+                             Online</a><!-- 2004-10-28 --></span>
+	       
+ 		<div class="blogComments">
+			&nbsp;<br /><b><i>Comments:</i></b><!-- 2004-10-03 -->     
+			
+        <a class="comment-link" href="http://www.blogger.com/comment.g?blogID=7336679&postID=4401859885542718079">Post a Comment</a>
+		</div>
+	
+	</div>
+    
+    </td>
+</tr>
+</table>
+
+&#160;<br />
+<table align="center" width="95%" border="0" cellspacing="0" cellpadding="0"
+       bgcolor="white">
+    <!-- The bottom engineering-paper block for this format. 
+         2004-10-03 -->    
+<tr>
+     <td width="31%"><small><small>
+         <a href="http://orcmid.com/BlunderDome/clueless/construction.htm" 
+            target="_top"><!-- 2004-10-03 -->
+            <img border="0" 
+                 src="http://orcmid.com/images/hardhat-logo.gif" 
+                 alt="Construction Zone (Hard Hat Area)" align="left" width="80" height="57" />
+                 <!-- 2006-02-16 -->
+         </a></small></small></td>
+     <td width="28%" valign="middle" align="center">
+         <small><small><b>You are navigating the </b>
+         <a href="http://orcmid.com/BlunderDome/" target="_top">Blunder 
+            Dome</a></small></small></td> 
+     <td width="41%">
+         <p align="right"><small><small>
+         <a href="http://orcmid.com/BlunderDome/clueless/default.asp.template.txt">template</a> created 2004-06-17-20:01 -0700 (pdt) 
+         by <a href="http://orcmid.com/construction/orcmid.htm">orcmid</a><br />
+         <em>$$Author: Orcmid $<br />
+         $$Date: 08-10-07 14:34 $<br />
+         $$Revision: 1 $</em></small></small></p>
+     </td>
+</tr>
+</table>
+
+</div>
+
+</body>
+</html>

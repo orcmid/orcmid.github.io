@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>i990501b1: ODMA - Where's It Going: Latest Analysis </title>
+<!--$$Header: /NuovoDocCompagno/info/1999/05/i990501b1.htm 28    23-01-06 14:30 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006c.htm of 2005-08018T20:44Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="i990501g1.htm" TAG="BODY" startspan -->
+<div align="center">
+	<table border="0" width="90%" id="table1">
+		<tr>
+			<td valign="top" align="left" width="100%" colspan="3">
+			<p><i>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#9090A0">&nbsp;<a rel="nofollow" href="../../../"><img border="0" src="../../../images/NuovoDoc-button.gif" alt="NuovoDoc" width="82" height="62"></a><b>design for document system interoperability</b></font></i><hr color="#9090A0" align="left"></td>
+		</tr>
+		<tr>
+			<td valign="top" align="left" width="100%" colspan="3">
+			<p align="left"><b>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070">
+			<small><a target="_top" rel="nofollow" href="http://NuovoDoc.com/"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">NuovoDoc</font></a><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"> </font>&gt;
+			<a target="_top" rel="nofollow" href="../../../analysis">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">
+			Analysis</font></a> &gt;
+			<a target="_top" rel="nofollow" href="../../../analysis/odma-analysis.htm"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">
+			ODMA Direction</font></a> &gt;
+			<a target="_top" rel="nofollow" href="i990501g1.htm"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">
+			2006-03-04 
+			update</font></a></small></font></b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+		</tr>
+		<tr>
+			<td valign="top" align="left" width="100%" colspan="3">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h1><font color="#9090A0"><span style="font-style: italic">ODMA: 
+			Where's It Going?</span></font></h1>
+			<blockquote><font color="#707070">
+  <p>ODMA has done its job.&nbsp; Now ODMA is fading away.&nbsp; </p>
+  <p>In the four years since the last update of 
+	this analysis, ODMA has been steadily disappearing from use.&nbsp; ODMA 
+	functions are now too narrow and constrained to satisfy the ordinary 
+	expectations and requirements for document-processing systems, especially in 
+	international settings. </p>
+  <p>The ODMA API will slowly disappear.&nbsp; It's limitations are too awkward 
+	for newer, Unicode-based applications to accommodate.&nbsp; Developers no 
+	longer acquire the necessary skills for using the API and building 
+	native Windows components that honor it.&nbsp;&nbsp; </p>
+				<p>ODMA usage will linger in legacy support and perhaps 
+				special-purpose niches and experimental applications.</p></font>
+				
+			</blockquote>
+			</td>
+		</tr>
+		<tr>
+			<td width="65%" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h3><font color="#606060"><span style="font-weight: 400">
+			<a name="1" target="_top" href="#1" style="text-decoration: none"><font color="#606060">1</font></a>.
+			<a name="Success">Success</a></span></font></h3>
+			<blockquote>
+				<p><font size="2" color="#707070">
+				<a name="1.1" target="_top" href="#1.1" style="text-decoration: none"><font color="#606060">1.1</font></a> 
+				In 1994, ODMA 1.0 delivered smooth integration between document-management systems and document applications on the desktop.</font></p>
+				<p><font size="2" color="#707070"><a name="1.2" target="_top" href="#1.2" style="text-decoration: none"><font color="#606060">1.2</font></a> Users of 
+				ODMA-aware desktop 
+				applications can operate with documents from locally-connected 
+				document-management systems in the same way that file-system 
+				documents are used.&nbsp; It is not necessary to leave the 
+				desktop application in order to interact with 
+				document-management functions that apply to the document being 
+				worked on.</font></p>
+				<p><font size="2" color="#707070"><a name="1.3" target="_top" href="#1.3" style="text-decoration: none"><font color="#606060">1.3</font></a> 
+				Developers of document-management systems can provide a single 
+				ODMA-compliant desktop component to integrate with every ODMA-aware 
+				application on the desktop.</font></p>
+				<p><a href="#1.4" name="1.4" style="text-decoration: none">
+				<font size="2" color="#606060">1.4</font></a><small><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+				ODMA integration separates all document-management-specific 
+				behavior from the desktop application, and vice versa.&nbsp; 
+				ODMA document applications don't have to be implemented with any 
+				assumptions about how a DMS stores files, how it creates 
+				documents, how it finds documents, and how it retrieves 
+				documents.</font></small></p>
+				<p><a href="#1.5" name="1.5" style="text-decoration: none">
+				<font size="2" color="#606060">1.5</font></a><small><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"> 
+				The desktop application doesn't have 
+				to implement any interactions with the operator about finding and storing 
+				documents in the DMS.&nbsp; The DMS provides all user dialogs
+                that may be needed in order to carry out requests from the document application.</font></small></p>
+				<p align="center"><a name="Figure1">
+				<img border="0" src="i990501g2.jpg" width="502" height="334" alt="ODMA Application-DMS Integration (block diagram)"></a><small><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><br />
+				<em><a href="#Figure1" style="text-decoration: none"><font size="2" color="#606060">Figure 1</font></a>.&nbsp; ODMA Integration between application and DMS</em></font></small></p>
+				<p><em style="font-style: normal">
+				<font size="2" color="#707070"><a name="1.6" target="_top" href="#1.6" style="text-decoration: none"><font color="#606060">1.6</font></a> The single ODMA Connection 
+				Manager provides plug-and-play connection between all ODMA-aware 
+				applications and all DMS interfaces available on the same 
+				desktop computer.</font></em></p>
+			</blockquote></font>
+			</td>
+			<td width="4%" valign="top" align="left" rowspan="5">
+			&nbsp;</td>
+			<td width="31%" valign="top" align="left" rowspan="5">
+			<small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<div style="border-style: solid; border-width: 2px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ol>
+				<li><a href="#Success"><font color="#707070">Success</font></a><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><a href="#Stability"><font color="#707070">Stability</font></a><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><a href="#Disappearance"><font color="#707070">Disappearance</font></a><br>&nbsp;&nbsp;&nbsp;&nbsp;  
+				</li>
+				<li><a href="#Limitations"><font color="#707070">Limitations</font></a><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><a href="#Niche"><font color="#707070">Niche</font></a></li>
+			</ol>
+			</div>
+			&nbsp; 
+			</font></small>
+			<small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+			<h3><span style="font-weight: 400">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#606060">
+			More Information</font></span></h3>
+			<ul type="circle">
+				<li><a target="_top" href="http://ODMA.info"><font color="#707070">ODMA 
+				Interoperability Exchange</font></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li>
+				<a target="_top" href="http://orcmid.com/blog/2005/12/odma-little-middleware-that-could.asp">
+				<font color="#707070">ODMA: The Little Middleware That Could</font></a><br>
+&nbsp;&nbsp;&nbsp;</li>
+				<li>
+				<a target="_top" href="http://www.aiim.org"><font color="#707070">AIIM International</font></a> 
+				-
+				<a target="_top" href="http://www.aiim.org/standards.asp?ID=28639"><font color="#707070">
+				Standards Program</font></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li>
+				<a target="_top" href="http://DMware.info/"><font color="#707070">
+				DMware Interoperability Exchange</font></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li>
+				<a target="_top" href="http://NuovoDoc.com/products/"><font color="#707070">NuovoDoc: 
+				ActiveODMA Development</font></a></li>
+			</ul>
+			
+			<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp; </p>
+			
+			
+		
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+				<a href="../../../construction/templates/00/c000006.htm">visits to popular <b>NuovoDoc</b> pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+			<small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+				<a href="http://clustrmaps.com/counter/maps.php?url=http://NuovoDoc.com/analysis" id="clustrMapsLink0"><img src="http://clustrmaps.com/counter/index2.php?url=http://NuovoDoc.com/analysis" border=1 alt="Locations of visitors to this page" onError="this.onError=null; this.src='http://www.meetomatic.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://clustrmaps.com/'">
+</a>
+				</font></small></td>
+			</tr>
+			<!-- Inserted from NuovoDoc /construction/templates/00/c000006c1.htm of 2008-06-24-21:17 -0700 -->
+		</table>
+	
+	</font></small></td>
+			</tr>
+		<tr>
+			<td width="65%" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h3><font color="#606060"><span style="font-weight: 400">
+			<a name="2" target="_top" href="#2" style="text-decoration: none"><font color="#606060">2</font></a>.
+			<a name="Stability">Stability</a></span></font></h3>
+			<blockquote>
+				<p><font size="2" color="#707070">
+				<a name="2.1" target="_top" href="#2.1" style="text-decoration: none"><font color="#606060">2.1</font></a> 
+				The Basic ODMA 1.0 functions are preserved in all versions.&nbsp; 
+				Addition of further features ended with the 1997 release of 2.0.</font></p>
+				<p><font size="2" color="#707070"><a name="2.2" target="_top" href="#2.2" style="text-decoration: none"><font color="#606060">2.2</font></a> The easiest way for a 
+				desktop application to integrate with ODMA-aware DMS 
+				integrations is to require only ODMA 1.0 functions.&nbsp; 
+				Additional functions can be discovered dynamically when that is 
+				useful for the application.</font></p>
+				<p><font size="2" color="#707070"><a name="2.3" target="_top" href="#2.3" style="text-decoration: none"><font color="#606060">2.3</font></a> 
+				DMS integrations can be designed to support all ODMA 2.0 
+				functions while operating smoothly with applications that rely 
+				only on the ODMA 1.0 functions.</font></p>
+
+			</blockquote></font>
+			</td>
+			</tr>
+		<tr>
+			<td width="65%" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h3><font color="#606060"><span style="font-weight: 400">
+			<a name="3" target="_top" href="#3" style="text-decoration: none"><font color="#606060">3</font></a>.
+			<a name="Disappearance">Disappearance</a></span></font></h3>
+			<blockquote>
+				<p><font size="2" color="#707070">
+				<a name="3.1" target="_top" href="#3.1" style="text-decoration: none"><font color="#606060">3.1</font></a> 
+				The desktop has moved to component models and to the Internet 
+				for distributed integration technologies.&nbsp; ODMA is left 
+				behind.</font></p>
+				<p><font size="2" color="#707070"><a name="3.2" target="_top" href="#3.2" style="text-decoration: none"><font color="#606060">3.2</font></a> While ODMA arises in legacy situations, it is disappearing relative to the 
+				continuing expansion of other approaches for connection 
+				applications and services:</font></p>
+				<ul type="circle">
+					<li><font size="2" color="#707070">Component models 
+					(especially ActiveX) for integration on the native Windows 
+					platform<br>
+&nbsp;&nbsp;&nbsp; </font></li>
+					<li><font size="2" color="#707070">Direct integration over 
+					the web via Web Folders and WebDAV<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </font></li>
+					<li><font size="2" color="#707070">System frameworks, 
+					including Java and .NET, that require quite different 
+					application development, deployment and integration 
+					approaches<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </font></li>
+					<li><font size="2" color="#707070">New office-application 
+					models around smart clients, web services,&nbsp; and 
+					web-hosting</font></li>
+				</ul>
+
+				<p><font size="2" color="#707070"><a name="3.3" target="_top" href="#3.3" style="text-decoration: none"><font color="#606060">3.3</font></a> 
+				As document-management adopters 
+				migrate from legacy systems to non-ODMA-compliant DMS products, 
+				support for ODMA by desktop applications becomes invisible and 
+				irrelevant.</font></p>
+				<font size="2" color="#707070">
+			</blockquote></font>
+			</td>
+		</tr>
+		<tr>
+			<td width="65%" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h3><font color="#606060"><span style="font-weight: 400">
+			<a name="4" target="_top" href="#4" style="text-decoration: none"><font color="#606060">4</font></a>.
+			<a name="Limitations">Limitations</a></span></font></h3>
+			<blockquote>
+				<p><font size="2" color="#707070">
+				<a name="4.1" target="_top" href="#4.1" style="text-decoration: none"><font color="#606060">4.1</font></a> 
+				The ODMA API requires the use of C++ and the Windows Platform 
+				SDK on native (i86) Windows.&nbsp; Use of different programming 
+				languages and development tools, if possible at all, is 
+				complicated.</font></p>
+				<p><font size="2" color="#707070"><a name="4.2" target="_top" href="#4.2" style="text-decoration: none"><font color="#606060">4.2</font></a> The ODMA Connection 
+				Manager uses its own &quot;class loader&quot; to access the services of an 
+				ODMA-compliant DMS integration.&nbsp; Creating a Dynamic Link 
+				Library (DLL file) in the proper format requires use of C++ and 
+				the Windows Platform SDK on native (i86) Windows.</font></p>
+				<p><font size="2" color="#707070"><a name="4.3" target="_top" href="#4.3" style="text-decoration: none"><font color="#606060">4.3</font></a> The communication of text 
+				information through the ODMA API is limited to single-byte or 
+				double-byte code sequences corresponding to the local Windows 
+				system-default code page.&nbsp; The specification is vague in 
+				this area and usages of bytes with values in range 0x80-0xFF in 
+				API text elements has risky interoperability.</font></p>
+				<p><font size="2" color="#707070"><a name="4.4" target="_top" href="#4.4" style="text-decoration: none"><font color="#606060">4.4</font></a> There is no explicit 
+				provision for communication of Unicode encoding forms via API 
+				text elements.</font></p>
+			</blockquote>
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td width="65%" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h3><font color="#606060"><span style="font-weight: 400">
+			<a name="5" target="_top" href="#5" style="text-decoration: none"><font color="#606060">5</font></a>.
+			<a name="Niche">Niche</a></span></font></h3>
+			<blockquote>
+				<p><small><font color="#707070">
+				<a name="5.1" target="_top" href="#5.1" style="text-decoration: none"><font color="#606060">5.1</font></a> </font>
+				</small><font size="2" color="#707070">The beneficiaries of ODMA 
+				are DMS customers, developers and vendors, especially in small 
+				and specialized document-management markets.&nbsp; The value of 
+				ODMA hinges on the continuing availability of ODMA support in 
+				the desktop applications of choice.</font></p>
+				<p><font size="2" color="#707070"><a name="5.2" target="_top" href="#5.2" style="text-decoration: none"><font color="#606060">5.2</font></a> In practice, ODMA is a 
+				legacy-supporting feature of desktop applications.&nbsp; Support 
+				is not expanding into more applications.&nbsp; Generally, 
+				support is at best stable.</font></p>
+				<p><font size="2" color="#707070"><a name="5.3" target="_top" href="#5.3" style="text-decoration: none"><font color="#606060">5.3</font></a> 
+				Steps 
+				can be taken to remove some ODMA limitations.&nbsp; The 
+				benefit is to niche cases: </font></p>
+				<ul type="circle">
+					<li><font size="2" color="#707070">Special-purpose 
+					ODMA-aware applications developed to access 
+					document-management systems as part of a work process<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </font></li>
+					<li><font size="2" color="#707070">Custom integration of an 
+					existing repository for access from conventional and 
+					special-purpose desktop applications as part of a system 
+					integration or vertical-application integration<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </font></li>
+					<li><font size="2" color="#707070">Experimental and 
+					prototype development using ODMA as a lightweight path for 
+					early integration and testing.</font></li>
+				</ul>
+				<p><font size="2" color="#707070"><a name="5.4" target="_top" href="#5.4" style="text-decoration: none"><font color="#606060">5.4</font></a> Whether there is further 
+				development depends on the existence of volunteers that are both 
+				willing and able to make the kind of community contribution that 
+				brought ODMA into existence in the first place.</font></p>
+			</blockquote>
+			</font>
+			</td>
+		</tr>
+		</table>
+	<table border="0" width="95%" id="table2">
+		<tr>
+			<td width="33%" align="left"><a href="i990501g.htm">
+			<img border="0" src="../../../images/hardhat-button.gif" width="17" height="22" alt="Document Engineering" align="left" hspace="0"></a></td>
+			<td width="33%">
+			<p align="center">
+			<font face="Times New Roman" style="font-size: smaller" color="#707070">
+			© 2006 </font>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070">
+			NuovoDoc</font></td>
+			<td width="33%">
+			<p align="right"><!-- included from the NuovoDoc info/2005/12/i051205c1.htm 
+			                      version 0.75 of 2005-12-23-13:09 -0800 --><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070"><small>
+			2023-01-06 14:30 -0800</small></font></p></td>
+		</tr>
+	</table>
+	</div>
+
+  <!--webbot bot="Include" endspan i-checksum="51359" -->
+
+  </body>
+</html>

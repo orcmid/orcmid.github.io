@@ -1,0 +1,100 @@
+<html><head><title>Interfaces and Methods: IdmaDocSpace</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaDocSpace"></a>IdmaDocSpace</h2>
+<p>This is the specialized interface for the DMA Document Space object.  It provides methods for construction of new objects in the Document Space and for manipulating objects that are managed by the Document Space.</p>
+<h3><a name="IdmaDocSpaceConnectAndLockObject"></a>IdmaDocSpace::ConnectAndLockObject</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaDocSpace::ConnectAndLockObject</b> (<br>
+pDmaString    <i>pObjectId</i>,<br>DmaInteger32    <i>lLockType</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pObjectId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the globally unique object instance identifier (OIID) of the persistent object to be retrieved. </p></TD></TR>
+<TR><TD><p><i>lLockType</i></p></TD><TD><p>input</p></TD><TD><p>The type of lock to be obtained on the object. One of DMA_LOCK_READ, DMA_LOCK_WRITE, or DMA_LOCK_EXIST.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on the resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>An interface on the object created, which will be NULL if the method fails.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>ConnectAndLockObject is the same as ConnectObject, except that a lock is atomically placed on the object connected to if the method succeeds. This method is supported if and only if the locking methods (i.e., ApplyLock and RemoveLock) are supported.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ACCESS_DENIED</p></TD><TD><p>(E_ACCESSDENIED) The requester has insufficient access rights to perform the requested operation.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_LOCK_TYPE</p></TD><TD><p>The lock type is invalid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_LOST_CONNECTION</p></TD><TD><p>The logical connection of the current object to the persistent store has been lost permanently. The operation could not be completed.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaDocSpaceConnectObject"></a>IdmaDocSpace::ConnectObject</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaDocSpace::ConnectObject</b> (<br>
+pDmaString    <i>pObjectId</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pObjectId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the globally unique object instance identifier (OIID) of the persistent object to be retrieved.  This identifier may be known by the caller or obtained from previously instantiated objects.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>An interface on the object created, which will be NULL if unsuccessful on an initial open.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>ConnectObject makes a scratchpad copy in the client's process space of the referenced persistent object (I.e. it instantiates an object that is already persistent).  A snapshot of the object’s properties will be set from the persistent store; they may be changed using the IdmaEditProperties interface.  Changes can be made persistent using the IdmaConnection::ExecuteChange method.
+</p><p>
+At any time the object can be checked against the persistent copy for consistency using the IdmaConnection::IsCurrent call.  If the object has changed, or the caller simply wants the properties refreshed, the IdmaConnection::ExecuteRefresh call may be used.  That method will not instantiate a new object, but will retrieve a new copy of the persistent information into the existing instance.
+</p><p>
+If the persistent object has been locked for exclusive use by another connection, the ConnectObject method will not be successful.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.
+</p><p>
+If pObjectId does not refer to an existing persistent object, DMARC_NOT_FOUND will be returned.
+</p><p>
+This method fails with the error DMARC_NOT_AUTHENTICATED if the document space is not in an authenticated state.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaDocSpaceExecuteDisconnect"></a>IdmaDocSpace::ExecuteDisconnect</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaDocSpace::ExecuteDisconnect</b> ( )</p>    <b>Description</b>    </p>
+<p>Terminates the logical connection to the underlying document repository. This may be useful to free up connection resources in environments in which direct control cannot be exercised over the lifetime of the DocSpace COM object and objects obtained from it.
+</p><p> 
+Once this method is executed successfully, other methods (on the DocSspace object or objects obtained from it) that need the connection to function will return DMARC_DISCONNECTED. 
+</p><p>
+Note that if the DocSpace object and all objects generated from it are released, the connection is implicitly closed. ExecuteDisconnect() just provides a way of doing this explicitly. Once a DocSpace object is disconnected, it cannot be reconnected.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaDocSpaceGetScope"></a>IdmaDocSpace::GetScope</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaDocSpace::GetScope</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIScope</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting Document Space object.</p></TD></TR>
+<TR><TD><p><i>ppIScope</i></p></TD><TD><p>output</p></TD><TD><p>Returns the selected interface for the merged scope object.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns a Scope Object for the Document Space.  The scope supplies the meta-data used to formulate the parameters for a query operation and to execute a query operation.
+</p><p>
+Cross document space queries can be performed by placing document space scope objects on an object list and using the IdmaScopeFactory::CreateScope function to create a merged scope.  The merged scope can be used to formulate and execute queries coordinated across multiple document spaces.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.
+</p><p>
+This method fails with the error DMARC_NOT_AUTHENTICATED if the document space is not in an authenticated state.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_AUTHENTICATED</p></TD><TD><p>The user is not authenticated.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

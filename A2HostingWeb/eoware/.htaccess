@@ -1,0 +1,19 @@
+# eoWare.org/.htaccess           UTF-8 (ASCII)               dh:2008-09-12
+#
+# GLOBAL CONFIGURATION PARAMETERS FOR eoWare.org SITE.
+
+AddCharset utf-8 .txt
+#   Deliver all .txt-extension files as UTF-8 from this site
+
+<IfModule headers_module>
+Header set X-UA-Compatible: IE=EmulateIE7
+</IfModule>
+
+
+# 0.01 2008-09-12-19:18 Add IE=EmulateIE7 via custom header.
+# 0.00 2008-09-12-19:11 Take boilerplate from the nfoWorks.org/.htaccess.
+#      This file supplements/over-rides parameters specified at public_html.
+#
+# $Header: /A2HostingAccount/public_html/eoware/.htaccess 3     08-09-12 19:18 Orcmid $
+#
+#                       *** end of eoWorks.org/.htaccess ***

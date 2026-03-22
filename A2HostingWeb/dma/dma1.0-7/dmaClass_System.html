@@ -1,0 +1,99 @@
+<html><head><title>dmaClass_System Reference</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff"><h3>
+ dmaClass_System</h3><p>
+A DMA system is a collection of Document Spaces.<p><b>Class ID:</b> dmaClass_System<br>
+<b>Superclass:</b> <A href="dmaClass_DMA.html">DMA</A><br>
+<h4><b>Interfaces</b></h4><a href="IUnknown.html" > IUnknown</a><br><a href="IdmaObject.html" > IdmaObject</a><br><a href="IdmaProperties.html" > IdmaProperties</a><br><a href="IdmaObjectFactory.html" > IdmaObjectFactory</a> [Optional]<br><a href="IdmaOIID.html" > IdmaOIID</a><br><a href="IdmaAuthentication.html" > IdmaAuthentication</a> [Optional]<br><a href="IdmaScopeFactory.html" > IdmaScopeFactory</a> [Optional]<br><a href="IdmaServiceRegistry.html" > IdmaServiceRegistry</a> [Optional]<br><a href="IdmaSystem.html" > IdmaSystem</a>
+<h4><b>Properties</b></h4><p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Impl. Required</b></p></TD><TD><p><b>System Gen'ed</b></p></TD><TD><p><b>Read-Only</b></p></TD>
+<TD><p><b>Value Required</b></p></TD><TD><p><b>Type</b></p></TD><TD><p><b>Cardinality</b></p></TD><TD><p><b>Required Class</b></p></TD></TR><TR><TD><p><A name="TdmaProp_OIID">OIID</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ClassDescription">Class Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Class Description</p></TD></TR><TR><TD><p><A name="TdmaProp_This">This</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+System</p></TD></TR><TR><TD><p><A name="TdmaProp_CreatePending">Create Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_UpdatePending">Update Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DeletePending">Delete Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_CharacterSetEncoding">Character Set Encoding</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>Integer32</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_LocaleName">Locale Name</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_SystemOIIDPrefix">System OIID Prefix</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_LocaleNames">Locale Names</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>String</p></TD><TD><p>List</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DisplayName">Display Name</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DescriptiveText">Descriptive Text</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_SystemId">System Id</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>ID</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR></TABLE><h4><b>Detailed Description</b></h4><p>
+<p>A DMA system may be comprised of a single Document Space or multiple Document Spaces, and may be supplied/implemented by different vendors.
+<p>Object valued properties cannot be accessed if the System object is in an unauthenticated state. (Lists that have non object-valued elements are not considered object-valued properties for this purpose, even though a DMA object interface is employed for delivery of those values.)  Attempts to access an object valued property in an unauthenticated state will yield a DMARC_NOT_AUTHENTICATED return code.
+<p>A DMA system object is a source of system-specific, system-level services as well.  These services are available via interfaces, such as IdmaScopeFactory and IdmaObjectFactory, which may be optionally available.  Any locale-dependent interfaces that are provided for system-level services always honor the System object dmaProp_Locale property value established when the particular DMA System object is instantiated.
+<h4><b>Property Descriptions</b></h4><p><b>• OIID     {<A name="dmaProp_OIID"></A><A href="dmaclass_system.html#TdmaProp_OIID">dmaProp_OIID</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Class Description     {<A name="dmaProp_ClassDescription"></A><A href="dmaclass_system.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• This     {<A name="dmaProp_This"></A><A href="dmaclass_system.html#TdmaProp_This">dmaProp_This</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Create Pending     {<A name="dmaProp_CreatePending"></A><A href="dmaclass_system.html#TdmaProp_CreatePending">dmaProp_CreatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Update Pending     {<A name="dmaProp_UpdatePending"></A><A href="dmaclass_system.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Delete Pending     {<A name="dmaProp_DeletePending"></A><A href="dmaclass_system.html#TdmaProp_DeletePending">dmaProp_DeletePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Character Set Encoding     {<A name="dmaProp_CharacterSetEncoding"></A><A href="dmaclass_system.html#TdmaProp_CharacterSetEncoding">dmaProp_CharacterSetEncoding</A>}</b>
+<p>
+Indicates the Character Set that this system uses.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• Locale Name     {<A name="dmaProp_LocaleName"></A><A href="dmaclass_system.html#TdmaProp_LocaleName">dmaProp_LocaleName</A>}</b>
+<p>
+Indicates the name of the Locale this object is currently operating in.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• System OIID Prefix     {<A name="dmaProp_SystemOIIDPrefix"></A><A href="dmaclass_system.html#TdmaProp_SystemOIIDPrefix">dmaProp_SystemOIIDPrefix</A>}</b>
+<p>
+The system prefix part to be used when constructing an OIID.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• Locale Names     {<A name="dmaProp_LocaleNames"></A><A href="dmaclass_system.html#TdmaProp_LocaleNames">dmaProp_LocaleNames</A>}</b>
+<p>
+The list of locales this object supports.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• Display Name     {<A name="dmaProp_DisplayName"></A><A href="dmaclass_system.html#TdmaProp_DisplayName">dmaProp_DisplayName</A>}</b>
+<p>
+A string containing a user-intelligible name for the class/property/... being described.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• Descriptive Text     {<A name="dmaProp_DescriptiveText"></A><A href="dmaclass_system.html#TdmaProp_DescriptiveText">dmaProp_DescriptiveText</A>}</b>
+<p>
+Text documenting this object.
+</p><p>
+<p>
+<p>
+</p>
+<p><b>• System Id     {<A name="dmaProp_SystemId"></A><A href="dmaclass_system.html#TdmaProp_SystemId">dmaProp_SystemId</A>}</b>
+<p>
+The persistent Id that identifies this System.
+</p><p>
+<p>
+<p>
+</p>
+</body></html>

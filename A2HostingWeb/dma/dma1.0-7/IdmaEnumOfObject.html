@@ -1,0 +1,36 @@
+<html><head><title>Interfaces and Methods: IdmaEnumOfObject</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaEnumOfObject"></a>IdmaEnumOfObject</h2>
+<p>This interface provides the methods for handling enumerators that contain references to DMA Objects.</p>
+<h3><a name="IdmaEnumOfObjectGetNextObject"></a>IdmaEnumOfObject::GetNextObject</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEnumOfObject::GetNextObject</b> (<br>
+DmaIndex32    <i>iNumItems</i>,<br>IUnknown**    <i>pArray</i>,<br>pDmaIndex32    <i>piNumReturned</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iNumItems</i></p></TD><TD><p>input</p></TD><TD><p>Indicates the number of items requested from the enumeration object.</p></TD></TR>
+<TR><TD><p><i>pArray</i></p></TD><TD><p>output</p></TD><TD><p>An array with at least ulNumItems elements. The array elements will be set to pointers to the IUnknown interface for the objects returned.</p></TD></TR>
+<TR><TD><p><i>piNumReturned</i></p></TD><TD><p>output</p></TD><TD><p>Returns the actual number of objects returned in pArray.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function will return the next <i>iNumItems</i>  objects in the object enumeration. 
+</p><p>
+If there are N elements remaining, but N is less than <i>iNumItems</i>  and greater than zero, then the first N elements of the array will be valid and the method will return DMARC_OK. The actual number will be returned in <i>piNumReturned</i>.
+</p><p>
+If there are no items to return, <i>*piNumReturned</i> will be set to zero and an error code will be returned. 
+</p><p>
+If an error occurs while generating the first object, an error code will be returned, no objects will be returned, and *piNumReturned will be set to zero. The enumeration will be positioned at the object in error.
+</p><p>
+If an error occurs while generating an object other than the first object, as many objects as were successfully enumerated will be returned, *piNumReturned will be set to the number of objects successfully returned, and DMARC_OK will be returned. The enumeration will be positioned on the object that caused the error.
+</p><p>
+If an error is returned, and GetNextObject is called again, an error may or may not be returned, depending upon whether the error condition still exists. If the error condition no longer exists (e.g., a "low memory" condition has been resolved), the numeration of objects will proceed normally starting at the current position of the enumeration.
+</p><p>
+Once all objects have been enumerated, DMARC_AT_ENUM_END is returned on all subsequent calls
+</p><p>
+The array pArray will contain references to the IUnknown interface for each of the returned objects. These interfaces must be released using the IUnknown::Release method when no longer needed by the client, and in all circumstances <i>*piNumReturned</i> reflects exactly the number of such interfaces. However, the client application may rely upon the fact that this number will be non-zero only in the case that the method returns DMARC_OK.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_AT_ENUM_END</p></TD><TD><p>The enumerator object is positioned at the end of the component objects.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+</body></html>

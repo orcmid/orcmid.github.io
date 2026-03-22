@@ -1,0 +1,21 @@
+# miser-theory.info/.htaccess       UTF-8 (ASCII)               dh:2013-11-29
+#
+# GLOBAL CONFIGURATION PARAMETERS FOR the miser-theory.info SITE.
+
+AddCharset utf-8 .txt
+#   Deliver all .txt-extension files as UTF-8 from this site
+
+<IfModule headers_module>
+Header set X-UA-Compatible: IE=EmulateIE7
+</IfModule>
+
+
+# 0.02 2013-11-29-16:49 Clone as part of repaving and case-sensitivity 
+#      adjustment of miser-theory.info
+# 0.01 2008-09-12-19:18 Add IE=EmulateIE7 via custom header.
+# 0.00 2008-09-12-19:11 Take boilerplate from the nfoWorks.org/.htaccess.
+#      This file supplements/over-rides parameters specified at public_html.
+#
+# $Header: /A2Apache/public_html/miser/.htaccess 5     13-11-29 16:54 Orcmid $
+#
+#                 *** end of miser-theory.info/.htaccess ***

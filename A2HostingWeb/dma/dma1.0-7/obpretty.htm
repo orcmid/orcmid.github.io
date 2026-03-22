@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Pretty Print Example</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 The Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  
+ * Code example: Pretty printing of a DMA object's properties. 
+ *
+ */
+
+#include &lt;stdio.h&gt;
+
+#include &lt;dmatypes.h&gt;
+#include &lt;dmacom.h&gt;
+#include &lt;dmastr.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+
+/* Global reference to in effect IMalloc */
+extern IMalloc *g_pMalloc;
+
+char * g_rgpszTypes[] =
+{
+    "Illegal(0)",
+    "Binary",
+    "Boolean",
+    "DateTime",
+    "Float64",
+    "Id",
+    "Integer32",
+    "Object"    
+    "String",
+};
+
+void PrintDmaId (
+    DmaId *pId )
+{
+    printf ( "%8.8lx-%4.4lx-%4.4lx-", pId-&gt;Data1, pId-&gt;Data2, pId-&gt;Data3 );
+    printf ( "%2.2x%2.2x-", pId-&gt;Data4[0], pId-&gt;Data4[1] );
+    for ( int I = 2; I &lt; 8 ; I++ )
+    {
+        printf("%2.2x", pId-&gt;Data4[I] );
+    }
+}    
+
+void GetAndPrintPropByIndex (
+    IdmaProperties *pprop,
+    DmaIndex32 iProp,
+    DmaInteger32 lDatatype )
+{
+    DmaRC rc;
+
+    switch ( lDatatype )
+    {
+    case DMA_DATATYPE_BOOLEAN:
+        {
+            DmaBoolean bValue;
+            rc = pprop-&gt;GetPropValBooleanByIndex ( iProp, &amp;bValue );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "%s\n", bValue ? "TRUE" : "FALSE" );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_INTEGER32:
+        {
+            DmaInteger32 lValue;
+            rc = pprop-&gt;GetPropValInteger32ByIndex ( iProp, &amp;lValue );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "%d\n", lValue );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_FLOAT64:
+        {
+            DmaFloat64 fValue;
+            rc = pprop-&gt;GetPropValFloat64ByIndex ( iProp, &amp;fValue );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "%f\n", fValue );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_STRING:
+        {
+            pDmaString pValue;
+            rc = pprop-&gt;GetPropValStringByIndex ( iProp, &amp;pValue );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "%ws\n", DMA_GET_STRING_TEXT(pValue) );
+                DMA_FREE_STRING ( g_pMalloc-&gt;Free, pValue );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_DATETIME:
+        {
+            pDmaString pValue;
+            rc = pprop-&gt;GetPropValDateTimeByIndex ( iProp, &amp;pValue );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "%ws\n", DMA_GET_STRING_TEXT(pValue) );
+                DMA_FREE_STRING ( g_pMalloc-&gt;Free, pValue );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_ID:
+        {
+            DmaId idValue;
+            rc = pprop-&gt;GetPropValIdByIndex ( iProp, &amp;idValue );
+            if ( rc == DMARC_OK )
+            {
+                PrintDmaId ( &amp;idValue );
+                printf ( "\n" );
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_OBJECT:
+        {
+            IdmaProperties *ppropSub;
+            rc = pprop-&gt;GetPropValObjectByIndex ( iProp, IID_IdmaProperties,
+                                                  (pDmapv)&amp;ppropSub );
+            if ( rc == DMARC_OK )
+            {
+                printf ( "OBJECT\n" );
+
+                ppropSub-&gt;Release();
+            }
+        }
+        break;
+
+    case DMA_DATATYPE_BINARY:
+        {
+            DmaBinaryValue dbvValue;
+            rc = pprop-&gt;GetPropValBinaryByIndex ( iProp, &amp;dbvValue );
+            if ( rc == DMARC_OK )
+            {
+                DmaUInteger32 ulLineCount = 0;
+                for ( DmaUInteger32 iByte = 0; iByte &lt; dbvValue.cbBytes ; iByte++ )
+                {
+                    printf ( "%2.2x", dbvValue.pbBytes[iByte] );
+                    if ( ulLineCount == 7 )
+                        printf ( "-" );
+                    else if ( ulLineCount == 15 )
+                        printf ( "\n" );
+                    else
+                        printf ( " " );
+
+                    ulLineCount = (ulLineCount + 1) % 16;
+                }
+
+                g_pMalloc-&gt;Free ( dbvValue.pbBytes );
+            }
+        }
+        break;
+
+    default:
+        printf ( "UNKNOWN DATATYPE %d\n", lDatatype );
+        rc = DMARC_OK;
+        break;
+    }
+
+    if ( rc == DMARC_VALUE_NOT_SET )
+    {
+        printf ( "VALUE NOT SET\n" );
+    }
+    else if ( rc != DMARC_OK )
+    {
+        printf ( "ERROR[%lx]\n", rc);
+    }
+
+}
+
+void PrettyPrint (
+    IdmaProperties *pObj )
+{
+    DmaRC rc;
+    
+    IdmaProperties *ppropCD;
+
+    // First, get the class descriptor for the object
+    rc = pObj-&gt;GetPropValObjectById ( &amp;dmaProp_ClassDescription,
+                                      IID_IdmaProperties,
+                                      (pDmapv) &amp;ppropCD );
+    if ( rc == DMARC_OK )
+    {
+        // Further error handling omitted
+
+        IdmaListOfObject *pPropList;
+        rc = ppropCD-&gt;GetPropValObjectById ( &amp;dmaProp_PropertyDescriptions,
+                                             IID_IdmaListOfObject,
+                                             (pDmapv) &amp;pPropList );
+        DmaInteger32 cProps;
+        rc = pPropList-&gt;GetElementCount ( &amp;cProps );
+
+        for ( int iProp = 0; iProp &lt; cProps ; iProp++ )
+        {
+            DmaRC rc;
+
+            IdmaProperties *ppropPD;
+
+            printf("%d: ", iProp );
+
+            rc = pPropList-&gt;GetObject ( iProp, IID_IdmaProperties,
+                                               (pDmapv)&amp;ppropPD );
+
+            pDmaString pName;
+
+            rc = ppropPD-&gt;GetPropValStringById ( &amp;dmaProp_DisplayName, 
+                                                 &amp;pName );
+            printf ( "%ws: ", DMA_GET_STRING_TEXT(pName) );
+            DMA_FREE_STRING ( g_pMalloc-&gt;Free, pName );
+
+            DmaInteger32 lDatatype;
+            rc = ppropPD-&gt;GetPropValInteger32ById ( &amp;dmaProp_DataType,
+                                                    &amp;lDatatype );
+            DmaInteger32 lCardinality;
+            rc = ppropPD-&gt;GetPropValInteger32ById ( &amp;dmaProp_Cardinality,
+                                                    &amp;lCardinality );
+            if ( lCardinality == DMA_CARDINALITY_SINGLE )
+            {
+                GetAndPrintPropByIndex ( pObj, iProp, lDatatype );
+            }
+            else if ( lCardinality == DMA_CARDINALITY_LIST )
+            {
+                printf ( "LIST of %s: ", g_rgpszTypes[lDatatype] );
+            }
+            else
+            {
+                printf ( "ENUM of %s\n", g_rgpszTypes[lDatatype] );
+            }
+
+            ppropPD-&gt;Release();
+        }
+
+        pPropList-&gt;Release();
+        ppropCD-&gt;Release();
+    }
+    else
+    {
+        printf ( "Error %lx retrieving class description\n", rc );
+    }
+}    
+</FONT>
+</PRE>
+</BODY>
+</HTML>

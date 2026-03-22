@@ -1,0 +1,446 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q000703.htm 8     00-09-11 13:04 Orcmid $-->
+<title>ODMA FAQtip Q000703: ODMA Application and Connection-Manager Version
+Compatibility</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma/faq">AIIM DMware ODMA FAQ</a></h2>
+
+<h1 align="center"><b><a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">Q000703</a>: ODMA-Aware Application and Connection-Manager
+Version Compatibility</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.12">Version
+0.13</a></span>&nbsp; L<span style="font-variant: small-caps">ast updated</span>
+ 2000-09-11-12:51 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h3><i>Summary:</i></h3>
+
+<blockquote><font size="+1">
+
+<p>This response expands on the question &quot;What ODMA-level applications are compatible with the different ODMA Connection
+Manager versions?&quot;</p>
+
+<p>This information is intended primarily for
+developers.&nbsp; It is also useful to integrators and information-technology
+staff concerned with maintaining interoperable ODMA configurations.</p>
+
+</font></blockquote>
+
+<h2>1. <a href="#IntendedInteroperability">Intended Down-Level Interoperability</a></h2>
+
+<h2>2. <a href="#ExperimentalResults">Experimental Results</a></h2>
+
+<h2>3. <a href="#RecommendedApproach">Recommended Approach</a></h2>
+
+<h2>4. <a href="#TroubleshootingConsiderations">Troubleshooting Considerations</a></h2>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+<h1>1. <a name="IntendedInteroperability">Intended Down-Level Interoperability</a></h1>
+<blockquote>
+  <p>The evolution from ODMA 1.0 through ODMA 1.5 to ODMA 2.0 has been with the
+  requirement that all versions of the API are upward compatible.&nbsp; Updates
+  to the specification are intended to preserve operation of ODMA-compliant
+  products produced in compliance with earlier versions of the
+  specification.&nbsp;</p>
+  <p>Does this compatibility include &quot;plug-and-play&quot; interoperability
+  among ODMA-compliant products that were physically constructed using different
+  versions of ODMA software libraries?&nbsp;&nbsp;</p>
+  <p>Yes.</p>
+  <p>Requiring ODMA-aware applications to be updated and re-released each time
+  there's a new ODMA connection manager is an unacceptable configuration and
+  integration burden.&nbsp; It is imperative that ODMA-aware applications
+  developed with earlier (down-level) versions of ODMA operate without change when
+  later (up-level) versions of the ODMA connection manager are installed on the
+  same computer software platform.&nbsp;&nbsp;</p>
+  <p> The only exceptions should be for
+  resolution of ODMA-related defects in specific versions of the libraries and
+  Connection Manager and/or in the ODMA-aware applications.&nbsp; Because
+  interoperability-decreasing repairs are so disruptive of down-level
+  interoperability, stability is often given preference to loss of
+  interoperability except when there is a critical defect that is damaging to
+  predictable, stable operation and the reliable preservation of the work of
+  users.</p>
+  <p>Satisfying this requirement has the following implications:</p>
+  <ul>
+    <li>A correctly-built ODMA-compliant DMS integration will operate with any
+      version of the ODMA Connection Manager supplied for the same platform
+      (e.g., Win32).</li>
+    <li>A correctly-built ODMA Connection Manager will operate properly with DMS
+      integrations that are compliant with earlier, later, or the same version
+      of specification and platform (e.g., Win16) as the Connection Manager.</li>
+    <li>A correctly-built ODMA Connection Manager will operate properly when
+      accessed by applications built with <b><code>.lib</code></b> files for the
+      same or earlier versions of the ODMA Connection Manager on the same
+      platform.</li>
+    <li>The quality with which up-level DMA-aware applications accommodate
+      down-level ODMA Connection Managers depends on the ingenuity with which
+      coherent behavior is incorporated into the application's design.&nbsp;
+      (See section 3, <a href="#RecommendedApproach">Recommended Approach</a>.)</li>
+  </ul>
+  <p>The expected situation is illustrated in Table 1.</p>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b><a name="Table1">Table 1</a>.&nbsp; <i>Expected</i> Interoperability</b></caption>
+    <tr>
+      <td width="30%">
+        <p align="center"></td>
+      <td width="45%" colspan="3">
+        <p align="center"><b><i>Connection Manager</i></b></td>
+    </tr>
+  </center>
+  <tr>
+    <td width="30%">
+      <p align="right"><b><i><a href="#ApplicationBindings">Application Bindings</a></i></b></td>
+    <center>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 1.0</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 1.5</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 2.0</span></b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><span style="font-variant: small-caps">ODMA 1.0</span></b>
+        <b><code>.lib</code></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><span style="font-variant: small-caps">ODMA 1.5</span></b>
+        <b><code>.lib</code></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FFFF00"><b><a href="#fail">fail</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><span style="font-variant: small-caps">ODMA 2.0</span></b>
+        <b><code>.lib</code></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FFFF00"><b><a href="#fail">fail</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FFFF00"><b><a href="#fail">fail</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b>ok</b></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><a name="fail">fail</a></b></dt>
+      <dd>The application will usually fail on start-up as the result of not
+        being able to find support for all of the API in the Connection Manager
+        that is present.&nbsp; System responses are typically <a href="#fail-4">inscrutable</a>.&nbsp;
+        A serious user-centric application would be arranged to bind dynamically
+        and degrade functionality rather than fail to operate in ways that
+        undermine the confidence of users in the application.&nbsp;</dd>
+      <dt><b><a name="ApplicationBindings">Application Bindings</a></b></dt>
+      <dd>If an application binds to a level of library that is more than
+        required (e.g., the Application is constructed to use a lower level of
+        ODMA function than the level for which the library is designed), opportunities to
+        fit into more configurations of ODMA are lost for no reason.&nbsp; See
+        section 3, <a href="#RecommendedApproach">Recommended Approach</a>.</dd>
+    </dl>
+  </blockquote>
+</blockquote>
+<h1>2. <a name="ExperimentalResults">Experimental Results</a></h1>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><i>see also</i>:</b></dt>
+      <dd><b><a href="http://www.infonuovo.com/odma/downloads/Q000706.htm">Q000706</a>:
+        ODMA Version-Interoperability Configuration</b></dd>
+    </dl>
+  </blockquote>
+  <p align="left">SDKs for ODMA 1.0, 1.5 and 2.0 were installed in a single
+  configuration for easily testing and troubleshooting inter-level
+  interoperability.</p>
+  <p align="left">Two test applications were chosen from the releases of
+  ODMA:&nbsp; <b><code>MultODMA</code></b> and <b><code>ODMATest</code></b>.&nbsp;</p>
+  <p align="left">&nbsp;<code><b>MultODMA</b></code> is a simple ODMA-aware
+  document-editor application included in the ODMA 1.0 Development Kit.&nbsp;
+  The two versions (Win16 and Win32) of <b><code>MultODMA.exe</code></b> are
+  constructed using the ODMA 1.0 libraries.</p>
+  <p align="left"><b><code>ODMATest</code></b> is a modified ODMA-aware
+  document-editor application that also allows the ODMA 2.0 settings to be
+  explored.&nbsp; <b><code>ODMATest.exe</code></b> (Win16) and <b><code>ODMATest32.exe</code></b>
+  (Win32) are constructed using ODMA 2.0 libraries.</p>
+  <p align="left">The ODMA 2.0 Sample DMS Integration, <b><code>ODMASAMP</code></b>,
+  was used in all tests.&nbsp; The ODMA 2.0 version was used because the
+  interoperability of DMS integrations with different connection managers is not
+  in doubt.&nbsp; That interoperability was also confirmed in this experiment.</p>
+  <p align="left">These applications and the DMS were chosen because they are
+  simple, available to anyone, and fully available for inspection and further
+  experimentation.&nbsp;</p>
+</blockquote>
+<h2><a name="2.1">2.1</a> Interoperability Among Versions of Win16 Components</h2>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b>Table 2.&nbsp; ODMA Win16 Interoperability</b></caption>
+    <tr>
+      <td width="30%">
+        <p align="center"></td>
+      <td width="45%" colspan="3">
+        <p align="center"><b><i>ODMA 16 Connection Manager</i></b></td>
+    </tr>
+  </center>
+  <tr>
+    <td width="30%">
+      <p align="right"><b><i>Application Bindings</i></b></td>
+    <center>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 1.0</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 1.5</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA 2.0</span></b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><code>MultODMA 16</code> <span style="font-variant: small-caps">&amp;</span></b>
+        <b><code>ODMA.lib </code><span style="font-variant: small-caps">1.0.0</span></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FF0000"><b><a href="#fail-1">fail-1</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FF0000"><b><a href="#fail-1">fail-1</a></b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><span style="font-variant: small-caps">ODMA 1.5</span></b>
+        <b><code>.lib</code></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><code>ODMATest</code> <span style="font-variant: small-caps">&amp;</span>
+        <code>ODMA.lib </code><span style="font-variant: small-caps">2.0.0</span></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FF0000"><b><a href="#fail-2">fail-2</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FF0000"><b><a href="#fail-4">fail-3</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+  <blockquote>
+    <dl>
+      <dt><b><a name="fail-1">fail-1</a></b></dt>
+      <dd><b><code>MultODMA</code></b> fails to detect the ODMA connection
+        manager or DMS and operates as a stand-alone file-based application
+        instead.</dd>
+      <dt><a name="fail-2"><b>fail-2</b></a></dt>
+      <dd><b><code>ODMATest</code></b> crashes with a General Protection Fault
+        on startup.</dd>
+      <dt><a name="fail-3"><b>fail-3</b></a></dt>
+      <dd><b><code>ODMATest</code></b> fails inscrutably: Open and Save menu
+        selections result in no operations and no menus, neither file-system nor
+        DMS based.</dd>
+      <dt><a name="ok"><b>ok</b></a></dt>
+      <dd>Documents are correctly created in the single document collection
+        shared between the Win16 and Win32 <b><code>ODMASAMP</code></b> DMS
+        integrations.&nbsp; Documents created in <b><code>ODMASAMP</code></b> by
+        all successful applications (Win16 or Win32) are accessible, whether
+        using the same or different version of ODMA Connection Manager.&nbsp; A
+        high level of interoperability is achieved.</dd>
+    </dl>
+  </blockquote>
+  <p>These initial results suggest that it is <i>not</i> possible to easily
+  achieve the desired level of interoperability with the ODMA Win16 libraries
+  and Connection Managers.</p>
+  <p>There is no deeper analysis of underlying cause at this point.&nbsp; The
+  situation is being investigated as a <a href="http://www.infonuovo.com/odma/support/X000700.htm">defect</a>.</p>
+</blockquote>
+<h2><a name="2.2">2.2</a> Interoperability Among Versions of Win32 Components</h2>
+<div align="center">
+  <center>
+  <table border="0" width="90%">
+    <caption><b>Table 3.&nbsp; ODMA Win32 Interoperability</b></caption>
+    <tr>
+      <td width="30%">
+        <p align="center"></td>
+      <td width="45%" colspan="3">
+        <p align="center"><b><i>ODMA 32 Connection Manager</i></b></td>
+    </tr>
+  </center>
+  <tr>
+    <td width="30%">
+      <p align="right"><b><i>Application Bindings</i></b></td>
+    <center>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA32 1.0</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA32 1.5</span></b></td>
+    <td width="15%">
+      <p align="center"><b><span style="font-variant: small-caps">ODMA32 2.0</span></b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><code>MultODMA 32</code> <span style="font-variant: small-caps">&amp;</span></b>
+        <b><code>ODMA32</code></b><b><code>.lib </code><span style="font-variant: small-caps">1.0.0</span></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><code>ODMA32.lib </code><span style="font-variant: small-caps">1.5.0</span></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#C0C0C0"><b>not
+        tested</b></td>
+    </tr>
+    <tr>
+      <td width="30%">
+        <p align="right"><b><code>ODMATest32</code> <span style="font-variant: small-caps">&amp;</span>
+        <code>ODMA32.lib </code><span style="font-variant: small-caps">2.0.0</span></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FFFF00"><b><a href="#fail-4">fail-4</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#FFFF00"><b><a href="#fail-4">fail-4</a></b></td>
+      <td width="15%" align="center" bordercolor="#000080" bordercolorlight="#0000FF" bordercolordark="#000000" style="border: 2 solid #000080" bgcolor="#00FF00"><b><a href="#ok">ok</a></b></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+  <dl>
+    <blockquote>
+      </blockquote>
+      <dt><a name="fail-4"><b>fail-4</b></a></dt>
+      <dd><b><code>ODMATest32</code></b> fails at startup, with an error message
+        indicative of a problem with <b><code>ODMA32.DLL</code></b>.&nbsp; This
+        is still an <a href="#fail-3">inscrutable failure</a>, but with enough distinctness that a
+        trouble-shooting procedure can help.</dd>
+  </dl>
+  <p>These initial results suggest that it is definitely possible to achieve a
+  high level of interoperability with the ODMA Win32 libraries and Connection
+  Managers.</p>
+  <p>Deeper analysis may reveal subtle effects that are not apparent in this
+  crude test using basic ODMA-aware fixtures.</p>
+    </blockquote>
+<h1>3. <a name="RecommendedApproach">Recommended Approach</a></h1>
+<blockquote>
+  <p>When an ODMA-aware application is developed, there are two questions to
+  answer with regard to ODMA interoperability:&nbsp;</p>
+  <blockquote>
+    <ol>
+      <li>level of API (i.e., functionality) to employ?</li>
+      <li>version of API libraries (i.e., release level) to employ?</li>
+    </ol>
+  </blockquote>
+  <p>The easiest way to stay within a particular level of ODMA functionality is
+  to use the version of <b><code>odma.h</code></b> that corresponds to that
+  level (1.0, 1.5, or 2.0).&nbsp;&nbsp;</p>
+  <p>The easiest, most-interoperable way to compile the application for
+  distribution is by using the lowest version of ODMA <b><code>.lib</code></b>
+  file for which linking succeeds.</p>
+  <p>The easiest way to insure the widest support for interoperability <i>and</i>
+  functionality of Win32 applications is simply to install the ODMA 2.0 level
+  Connection Manager, <b><code>odma32.dll</code></b>.&nbsp;&nbsp;</p>
+  <p>For any new implementations of ODMA-aware applications, using the Win32
+  software platform is <a href="#2.2">clearly preferable</a>, provided that all
+  intended DMS integrations have Win32 versions.&nbsp;&nbsp;&nbsp;</p>
+  <p>For integration on Win16, pray that all of the DMS-aware applications are
+  bound to the same library and install that version of the Win16 ODMA
+  Connection Manager.&nbsp; The Win32 and Win16 Connection Managers do <i>not</i>
+  have to be at the same level to interoperate correctly.&nbsp; However, logging
+  functions are not provided in <b><code>Odma.dll</code></b> releases prior to
+  version 2.0.0.&nbsp;&nbsp;</p>
+</blockquote>
+<h1>4. <a name="TroubleshootingConsiderations">Troubleshooting Considerations</a></h1>
+<blockquote>
+  <p>Developers of ODMA-aware applications need to document the behavior of
+  their application with different versions of ODMA Connection Managers.&nbsp;
+  If a specific Connection Manager is needed, spell it out.&nbsp; Be aware that
+  operation with other Connection Managers will be attempted at some point,
+  probably inadvertently as a side-effect of DMS installation or upgrade.&nbsp;
+  It is important to have troubleshooting procedures that make it easy to
+  confirm when it is a binding and Connection Manager version mismatch that
+  accounts for a failure of the ODMA-aware application to operate.</p>
+  <p>There is no easy way to determine which ODMA <b><code>.lib</code></b> was
+  used, if any, for the static binding of an ODMA-aware application.&nbsp; It is
+  important to know this for trouble-shooting of application problems.&nbsp; It
+  would be helpful if such dependency information were built into material
+  included with the application, where it can always be found by a technician or
+  an user engaged in a customer-support call.&nbsp; Extended <b><code>Help |
+  About ...</code></b> information is a good place, as is a separate <b><code>readme.txt</code></b>
+  file that can be read even when the application fails to start.</p>
+  <p>Likewise, it can be very important to know the version of <b><code>odma.h</code></b>
+  (and <code><b>odmacom.h</b></code> if applicable) that is used in the
+  construction of an ODMA-aware application.&nbsp; Inter-version
+  interoperability failures may arise as the result of defects or other bit rot
+  in different editions of <b><code>odma.h</code></b>.&nbsp; Knowing the version
+  of library that is used will help to isolate such cases when troubleshooting.</p>
+  <p align="right"><i>Dennis E. Hamilton<br>
+  AIIM DMware Technical Coordinator<br>
+  Renton, Washington, 2000 July 24</i></p>
+  <hr>
+</blockquote>
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <dl>
+    <dt><a href="mailto:infonuovo@email.com">Dennis Hamilton</a></dt>
+    <dd>ran into this situation while documenting use of <a href="odma20L.htm"> ODMA 2.0
+      libraries</a> and choosing the <b><code>odma.lib</code></b> and <b><code>odma32.lib</code></b>
+      files that maximize interoperability across levels of ODMA.</dd>
+  </dl>
+</blockquote>
+<h2><a name="History">History</a></h2>
+<blockquote>
+  <dl><font size="-1">
+    <dt><b><a name="0.13">Version 0.13</a>: 2000-09-11 (orcmid)</b></dt>
+    <dd>adjusted to reflect upgrade of Q000703a to Q000706.</dd>
+    <dt><b><a name="0.12">Version 0.12: 2000-07-29 (orcmid)</a></b></dt>
+    <dd>Moved to <a href="http://www.infonuovo.com/odma/downloads">odma/downloads</a>
+      area for ease in packaging with library materials and cross-referencing
+      with that material via simple shortcuts.&nbsp; Stitch the material
+      together so that users can employ this tip as part of a library
+      download.&nbsp; Tweak and correct some typos.</dd>
+    <dt><b><a name="0.11">Version 0.11: 2000-07-28</a> (orcmid)</b></dt>
+    <dd>Correct one layout problem and an incorrect shortcut.&nbsp; Tweak the
+      title.</dd>
+    <dt><strong><a name="0.10">Version 0.10: 2000-07-26</a> (orcmid)</strong></dt>
+    <dd>The initial version is created to capture the results of experiments
+      with down-level application interoperability.&nbsp; It provides a starting point
+      for deeper analysis of possible barriers to full inter-level
+      interoperability.</dd>
+  </font></dl>
+</blockquote>
+
+<p align="right">created 2000-07-24-15:30 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-09-11 13:04 $<br>
+$$Revision: 8 $</em></p>
+</body>
+</html>

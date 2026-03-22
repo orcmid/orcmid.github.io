@@ -1,0 +1,77 @@
+<html><head><title>Interfaces and Methods: IdmaOIID</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaOIID"></a>IdmaOIID</h2>
+<p>Methods that deal specifically with DMA object instance identifiers.</p>
+<h3><a name="IdmaOIIDGetDocSpaceId"></a>IdmaOIID::GetDocSpaceId</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaOIID::GetDocSpaceId</b> (<br>
+pDmaString    <i>pOIID</i>,<br>pDmaId    <i>pDocSpaceId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pOIID</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to the OIID</p></TD></TR>
+<TR><TD><p><i>pDocSpaceId</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to a caller-allocated DmaId into which the docspace-id component of the OIID input parameter is extracted.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method extracts the docspace-id from the OIID input parameter and returns the docspace-id in a DmaId structure.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping these return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaOIIDGetGuid"></a>IdmaOIID::GetGuid</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaOIID::GetGuid</b> (<br>
+pDmaString    <i>pOIID</i>,<br>pDmaId    <i>pObjectGUID</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pOIID</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to a DMA OIID</p></TD></TR>
+<TR><TD><p><i>pObjectGUID</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to a DmaId into which the object-guid component of the OIID input parameter is extracted</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method extracts the optional object-guid from the OIID input parameter and returns the object-guid in a DmaId structure.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping DMA return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaOIIDGetObjectIdText"></a>IdmaOIID::GetObjectIdText</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaOIID::GetObjectIdText</b> (<br>
+pDmaString    <i>pOIID</i>,<br>ppDmaString    <i>ppObjectText</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pOIID</i></p></TD><TD><p>input</p></TD><TD><p>The OIID to be parsed.</p></TD></TR>
+<TR><TD><p><i>ppObjectText</i></p></TD><TD><p>output</p></TD><TD><p>The returned object Id component</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This will extract the object identifier component from an OIID, if it is possible to successfully parse and locate this component.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaOIIDGetSystemId"></a>IdmaOIID::GetSystemId</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaOIID::GetSystemId</b> (<br>
+pDmaString    <i>pOIID</i>,<br>pDmaId    <i>pSystemId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pOIID</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to the OIID</p></TD></TR>
+<TR><TD><p><i>pSystemId</i></p></TD><TD><p>output</p></TD><TD><p>Pointer to a DmaId into which the system-id component of the OIID input parameter is extracted</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method extracts the system-id from the OIID input parameter and returns the system-id in a DmaId structure.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping these return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OIID</p></TD><TD><p>The supplied buffer does not contain a valid OIID.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

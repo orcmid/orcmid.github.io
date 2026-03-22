@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040603: Atom Feed Me, Feed Me </title>
+<!--$$Header: /A2HostingWeb/orcmid/BlunderDome/B040603.htm 27    26-03-22 14:13 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong><a href="./"><font color="#990033">BlunderLab</font></a></strong></font><font color="#990033"><strong> </strong></font>
+
+      <font color="#990033"><strong> <a href="B000001-log.htm"><font color="#990033">Notebook</font></a>
+      <a href="B000001-log.htm#B040603"><font color="#990033">B040603</font></a></strong></font><font color="#990033"><strong><br>
+      <big><big>Atom Feed Me, Feed Me</big></big></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="B040603.htm" target="_top">B040603</a>&gt;</code></b><br>
+      <small><small><a href="#0.00">0.00</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" -->
+      </small>
+      </small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote>
+  <p align="center"><i>This is provisional material on hooking up an atom feed
+  with Blogger.
+  </i></p>
+
+</blockquote>
+
+<p align="left">Look up Version of Blogger this applies to, point out this
+applies to a blog that is published via FTP setup, not on Blogspot.</p>
+
+<p align="left">Specify the Feed in the Setup of Your Blog, if you haven't
+already</p>
+
+<p align="left"><img border="0" src="B040603C.png" width="712" height="646"></p>
+
+<p align="left">Verify that the feed is present.</p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; Go to the identified URL, such as <a href="http://orcmid.com/BlunderDome/wingnut/wingnut-atom.xml">http://orcmid.com/BlunderDome/wingnut/wing-atom.xml</a></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; Show what it looks like in browser if the XSL
+is honored</p>
+
+<p align="center"><img border="0" src="B040603B.png" alt="Formatted Presentation of Atom XML Feed" width="546" height="406"></p>
+
+<p align="left">&nbsp;&nbsp;&nbsp; Show what it looks like if it is not that,
+and how to get it if there is a problem (after the button is there)</p>
+
+<blockquote>
+  <pre><font color="#800080"><b>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;</b></font>
+<b><font color="#800080">&lt;?xml-stylesheet href=&quot;http://www.blogger.com/styles/atom.css&quot; type=&quot;text/css&quot;?&gt;</font></b>
+&lt;feed version=&quot;0.3&quot; xmlns=&quot;http://purl.org/atom/ns#&quot;&gt;
+    &lt;link href=&quot;http://www.blogger.com/atom/7350804&quot;
+          rel=&quot;service.post&quot;
+          title=&quot;Spanner Wingnut's Muddleware Lab&quot; type=&quot;application/x.atom+xml&quot;/&gt;
+    &lt;link href=&quot;http://www.blogger.com/atom/7350804&quot;
+          rel=&quot;service.feed&quot;
+          title=&quot;Spanner Wingnut's Muddleware Lab&quot; type=&quot;application/x.atom+xml&quot;/&gt;
+    &lt;title mode=&quot;escaped&quot; type=&quot;text/html&quot;&gt;Spanner Wingnut's Muddleware Lab&lt;/title&gt;
+    <i><font color="#008000"><b>&lt;!-- dh:2004-06-26-12:48 Additional Material omitted ... --&gt;</b></font></i>
+    &lt;entry&gt;
+        &lt;link href=&quot;http://www.blogger.com/atom/7350804/108760589802570863&quot; 
+              rel=&quot;service.edit&quot; 
+              title=&quot;Playing the Name Game&quot; type=&quot;application/x.atom+xml&quot;/&gt;
+        <i><font color="#008000"><b>&lt;!-- dh:2004-06-26-12:48 Even More Material omitted ... --&gt;</b></font></i>
+    &lt;/entry&gt;
+&lt;/feed&gt;</pre>
+</blockquote>
+
+<p align="left">For a button, need to have the image in a place where it can be
+used easily by absolute URL:</p>
+
+<p align="center"><img border="0" src="../blog/atom-feed.bmp" width="80" height="15"></p>
+
+<p align="left">Figure out where you want to put it.</p>
+
+<p align="center"><img border="0" src="B040603D.png" width="481" height="413"></p>
+
+<p align="left">Why I like it there.</p>
+
+<p align="left">Here is the text:</p>
+
+<blockquote>
+  <pre>&lt;a href=&quot;http://orcmid.com/blog/lair-atom.xml&quot; target=&quot;_top&quot;&gt;
+    &lt;img border=&quot;0&quot; src=&quot;http://orcmid.com/blog/atom-feed.bmp&quot; 
+         alt=&quot;Click for Atom feed&quot; /&gt;
+&lt;/a&gt;
+&lt;br /&gt;
+&lt;a href=&quot;http://orcmid.com/blog/lair-atom.xml&quot; title=&quot;Atom feed&quot;&gt;Atom Feed&lt;/a&gt;</pre>
+</blockquote>
+<p align="left">The initial customization for the Muddleware site is</p>
+
+<blockquote>
+  <pre>&lt;a href=&quot;http://orcmid.com/BlunderDome/wingnut/wing-atom.xml&quot; target=&quot;_top&quot;&gt;
+    &lt;img border=&quot;0&quot; src=&quot;http://orcmid.com/blog/atom-feed.bmp&quot; 
+         alt=&quot;Click for Atom feed&quot; /&gt;
+&lt;/a&gt;
+&lt;br /&gt;
+&lt;a href=&quot;http://orcmid.com/BlunderDome/wingnut/wing-atom.xml&quot; 
+   title=&quot;Click for Atom feed&quot;&gt;Atom Feed&lt;/a&gt;</pre>
+</blockquote>
+<p align="left">Where I want to put it on my page:</p>
+
+<p align="center">&nbsp;<img border="0" src="B040603E.png" width="348" height="646"></p>
+
+<p align="left">Because it is a small, fixed amount of material that I don't
+want people to have to hunt for, I am going to put it above the &quot;Previous
+Posts&quot; lists in the same block.</p>
+
+<p align="left">Find your template:</p>
+
+<p align="center"><img border="0" src="B040603F.png" width="625" height="568"></p>
+
+<p align="left">I added the Modification line to show that I am changing this
+template.&nbsp; I will also back it up and do some other things.&nbsp; But this
+time,</p>
+
+<p align="left">Find the place where the sidebar begins.&nbsp; For this Rounders
+template, it will be like this (with many blank lines deleted to make it
+easier), almost at the end of the template:</p>
+
+<blockquote>
+  <pre><font color="#000000">&lt;!-- Begin #sidebar --&gt;
+&lt;div id=&quot;sidebar&quot;&gt;
+  &lt;!-- Begin #profile-container --&gt;
+   &lt;$BlogMemberProfile$&gt;
+  &lt;!-- End #profile --&gt;
+
+  &lt;!-- Begin .box --&gt;
+  &lt;div class=&quot;box&quot;&gt;&lt;div class=&quot;box2&quot;&gt;&lt;div class=&quot;box3&quot;&gt;
+    &lt;h2 class=&quot;sidebar-title&quot;&gt;Previous Posts&lt;/h2&gt;
+  &lt;ul id=&quot;recently&quot;&gt;
+    &lt;BloggerPreviousItems&gt;
+        &lt;li&gt;&lt;a href=&quot;&lt;$BlogItemPermalinkURL$&gt;&quot;&gt;&lt;$BlogPreviousItemTitle$&gt;&lt;/a&gt;&lt;/li&gt;
+     &lt;/BloggerPreviousItems&gt;
+  &lt;/ul&gt;</font></pre>
+</blockquote>
+<p align="left">This is exactly what we are looking for.&nbsp; I insert my
+changes right before the Previous Posts title.&nbsp; Using the Preview button,
+and moving material around to eliminate insertion of spaces and also appear the
+way I want, I finally arrive at the following insertions to the template:</p>
+
+<blockquote>
+  <pre><font color="#000000">&nbsp; &lt;!-- Begin .box --&gt;
+  &nbsp; &lt;div class=&quot;box&quot;&gt;&lt;div
+  class=&quot;box2&quot;&gt;&lt;div class=&quot;box3&quot;&gt;</font>
+  <font color="#800080"><b>&lt;blockquote&gt;&lt;!-- 2004-06-26-14:40 Add Atom Feed links to sidebar --&gt;&lt;a 
+</b></font>       <font color="#800080"><b>href=&quot;http://orcmid.com/BlunderDome/wingnut/wing-atom.xml&quot;&nbsp;
+       title=&quot;Click for Atom feed&quot;&gt;&lt;small&gt;Atom Feed&lt;/small&gt;&lt;/a&gt;&lt;br /&gt;
+      &lt;a href=&quot;http://orcmid.com/BlunderDome/wingnut/wing-atom.xml&quot; target=&quot;_top&quot;&gt;
+      &lt;img border=&quot;0&quot; src=&quot;http://orcmid.com/blog/atom-feed.bmp&quot;&nbsp;
+         alt=&quot;Click for Atom feed&quot; /&gt;
+      &lt;/a&gt;&lt;br /&gt;
+  &lt;/blockquote&gt;</b></font>
+<font color="#000000">  &nbsp;&nbsp;&nbsp; &lt;h2 class=&quot;sidebar-title&quot;&gt;Previous Posts&lt;/h2&gt;
+  &nbsp; &lt;ul id=&quot;recently&quot;&gt;
+  &nbsp;&nbsp;&nbsp; &lt;BloggerPreviousItems&gt;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;li&gt;&lt;a href=&quot;&lt;$BlogItemPermalinkURL$&gt;&quot;&gt;&lt;$BlogPreviousItemTitle$&gt;&lt;/a&gt;&lt;/li&gt;
+  &nbsp;&nbsp;&nbsp;&nbsp; &lt;/BloggerPreviousItems&gt;
+  &nbsp; &lt;/ul&gt;</font>
+</pre>
+
+</blockquote>
+<p align="left">I apply the changes.&nbsp; I do not do anything to republish the
+site.&nbsp; Instead, I simply create a new post, a short one, and post it.&nbsp;
+Make a page that describes what you did and post it&nbsp; I check the details
+and notice what files have been created or updated as a result:</p>
+
+<p align="center"><img border="0" src="B040603G.png" width="662" height="568"></p>
+
+<p align="left">Then I view the blog and see that the note is there and there is
+now an Atom Feed link and a button on the sidebar:</p>
+
+<p align="center"><img border="0" src="B040603H.png" width="740" height="517"></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left">Look for the button and link on your &quot;current&quot;
+page.&nbsp; Try both of them from there -- you should see the message i in your
+browser (see above)</p>
+
+<p align="left">Look for the button on the archive page.&nbsp; It should work
+just like on the current page.</p>
+
+<p align="left">Got to the separate posting of the new article and see if the
+link and button are there.</p>
+
+  <hr color="#990033">
+
+<small><dl>
+     <dt><b><a name="0.00">0.00</a> 2004-06-26-11:28 Initiate Provisional Version (<a href="../construction/orcmid.htm">orcmid</a>)</b></dt>
+  <dd>
+    Start this with a provisional page and sketch that holds the images that we
+    want to use.&nbsp; Use the accompanying <a href="B040603A.htm">diary and job
+    jar</a> to record steps to take in evolving toward more-polished versions.</dd>
+</dl></small>
+
+
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm" target="_top"><img border="0" src="wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-06-26-11:28 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:13 $<br>
+      $$Revision: 27 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,1776 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: Writing I-Ds and RFCs using XML
+Date: Mon, 3 Apr 2000 12:05:03 -0700
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://memory.palace.org/authoring/writing-rfcs.html
+X-MimeOLE: Produced By Microsoft MimeOLE V5.00.2919.6600
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Writing I-Ds and RFCs using XML</TITLE>
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-Type>
+<STYLE type=3Dtext/css>.title {
+	COLOR: #990000; FONT-FAMILY: helvetica, arial, sans-serif; FONT-SIZE: =
+22px; FONT-WEIGHT: bold; LINE-HEIGHT: 22px; TEXT-ALIGN: right
+}
+.filename {
+	COLOR: #666666; FONT-FAMILY: helvetica, arial, sans-serif; FONT-SIZE: =
+18px; FONT-WEIGHT: bold; LINE-HEIGHT: 28px; TEXT-ALIGN: right
+}
+P.copyright {
+	COLOR: #000000; FONT-FAMILY: verdana, charcoal, helvetica, arial, =
+sans-serif; FONT-SIZE: 10px
+}
+P {
+	MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em
+}
+OL {
+	MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em
+}
+UL.text {
+	MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em
+}
+PRE {
+	COLOR: #333333; MARGIN-LEFT: 3em
+}
+UL.toc {
+	COLOR: #000000; FONT-FAMILY: verdana, charcoal, helvetica, arial, =
+sans-serif; LINE-HEIGHT: 16px
+}
+H3 {
+	COLOR: #333333; FONT-FAMILY: helvetica, arial, sans-serif; FONT-SIZE: =
+16px; LINE-HEIGHT: 16px
+}
+H4 {
+	COLOR: #000000; FONT-FAMILY: helvetica, arial, sans-serif; FONT-SIZE: =
+14px
+}
+TD.header {
+	COLOR: #ffffff; FONT-FAMILY: arial, helvetica, san-serif; FONT-SIZE: =
+10px; valign: top
+}
+TD.author-text {
+	COLOR: #000000; FONT-FAMILY: verdana, charcoal, helvetica, arial, =
+sans-serif; FONT-SIZE: 10px
+}
+TD.author {
+	COLOR: #000000; FONT-FAMILY: verdana, charcoal, helvetica, arial, =
+sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; MARGIN-LEFT: 4em
+}
+A:link {
+	COLOR: #990000; FONT-FAMILY: MS Sans Serif, verdana, charcoal, =
+helvetica, arial, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; =
+TEXT-TRANSFORM: uppercase
+}
+A:visited {
+	COLOR: #333333; FONT-FAMILY: MS Sans Serif, verdana, charcoal, =
+helvetica, arial, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; =
+TEXT-TRANSFORM: uppercase
+}
+A:unknown {
+	COLOR: #333333; FONT-FAMILY: MS Sans Serif, verdana, charcoal, =
+helvetica, arial, sans-serif; FONT-SIZE: 10px; FONT-WEIGHT: bold; =
+TEXT-TRANSFORM: uppercase
+}
+.link2 {
+	COLOR: #ffffff; FONT-FAMILY: monaco, charcoal, geneva, MS Sans Serif, =
+helvetica, monotype, verdana, sans-serif; FONT-SIZE: 9px; FONT-WEIGHT: =
+bold; TEXT-DECORATION: none
+}
+.RFC {
+	COLOR: #666666; FONT-FAMILY: monaco, charcoal, geneva, MS Sans Serif, =
+helvetica, monotype, verdana, sans-serif; FONT-SIZE: 9px; FONT-WEIGHT: =
+bold; TEXT-DECORATION: none
+}
+.hotText {
+	COLOR: #ffffff; FONT-FAMILY: charcoal, monaco, geneva, MS Sans Serif, =
+helvetica, monotype, verdana, sans-serif; FONT-SIZE: 9px; FONT-WEIGHT: =
+normal; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content=3D"MSHTML 5.00.3013.2600" name=3DGENERATOR></HEAD>
+<BODY aLink=3D#000000 bgColor=3D#ffffff link=3D#990000 vLink=3D#666666>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D30 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#000000 height=3D30 vAlign=3Dcenter =
+width=3D30><FONT=20
+      color=3D#666666 face=3D"monaco, MS Sans Serif" size=3D1><B><SPAN=20
+      class=3DRFC>&nbsp;RFC&nbsp;</SPAN></B> </FONT><FONT =
+color=3D#ffffff=20
+      face=3D"charcoal, MS Sans Serif, helvetica, arial, sans-serif" =
+size=3D1><SPAN=20
+      class=3DhotText>2629</SPAN> </FONT></TD></TR>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<TABLE border=3D0 cellPadding=3D0 cellSpacing=3D0 width=3D"66%">
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE border=3D0 cellPadding=3D2 cellSpacing=3D1 width=3D"100%">
+        <TBODY>
+        <TR vAlign=3Dtop>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">Network =
+Working=20
+Group</TD>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">M.T. =
+Rose</TD></TR>
+        <TR vAlign=3Dtop>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">Request for =
+Comments:=20
+            2629</TD>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">Invisible =
+Worlds,=20
+          Inc.</TD></TR>
+        <TR vAlign=3Dtop>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">Category:=20
+          Informational</TD>
+          <TD bgColor=3D#666666 class=3Dheader width=3D"33%">June=20
+      1999</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV align=3Dright><FONT color=3D#990000 face=3D"monaco, MS Sans Serif"=20
+size=3D+3><B><BR><SPAN class=3Dtitle>Writing I-Ds and RFCs using=20
+XML</SPAN></B></FONT></DIV><FONT face=3D"verdana, helvetica, arial, =
+sans-serif"=20
+size=3D2>
+<H3>Status of this Memo</H3>
+<P>This memo provides information for the Internet community. It does =
+not=20
+specify an Internet standard of any kind. Distribution of this memo is=20
+unlimited.</P>
+<H3>Copyright Notice</H3>
+<P>Copyright (C) The Internet Society (1999). All Rights Reserved.</P>
+<H3>Abstract</H3>
+<P>This memo presents a technique for using XML (Extensible Markup =
+Language) as=20
+a source format for documents in the Internet-Drafts (I-Ds) and Request =
+for=20
+Comments (RFC) series. </P><A name=3Dtoc>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D30 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#000000 height=3D30 vAlign=3Dcenter =
+width=3D30><FONT=20
+      color=3D#666666 face=3D"monaco, MS Sans Serif" size=3D1><B><SPAN=20
+      class=3DRFC>&nbsp;RFC&nbsp;</SPAN></B> </FONT><FONT =
+color=3D#ffffff=20
+      face=3D"charcoal, MS Sans Serif, helvetica, arial, sans-serif" =
+size=3D1><SPAN=20
+      class=3DhotText>2629</SPAN> </FONT></TD></TR>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Table of Contents</H3>
+<UL class=3Dtoc compact><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor1">1.<=
+/A>&nbsp;=20
+  Introduction<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor2">2.<=
+/A>&nbsp;=20
+  Using the DTD to Write I-Ds and RFCs<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xml_basics">=
+2.1</A>&nbsp;=20
+  XML basics<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#front_matter=
+">2.2</A>&nbsp;=20
+  Front matter<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor3">2.2=
+.1</A>&nbsp;=20
+  The title Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#author">2.2.=
+2</A>&nbsp;=20
+  The author Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#date">2.2.3<=
+/A>&nbsp;=20
+  The date Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor4">2.2=
+.4</A>&nbsp;=20
+  Meta Data Elements<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor5">2.2=
+.5</A>&nbsp;=20
+  The abstract Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor6">2.2=
+.6</A>&nbsp;=20
+  The note Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor7">2.2=
+.7</A>&nbsp;=20
+  Status, Copyright Notice, Table of Contents<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#ipr">2.2.7.1=
+</A>&nbsp;=20
+  Conformance with RFC 2026<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor8">2.2=
+.8</A>&nbsp;=20
+  Everything in the Front<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor9">2.3=
+</A>&nbsp;=20
+  The Middle<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#section">2.3=
+.1</A>&nbsp;=20
+  The section Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#t">2.3.1.1</=
+A>&nbsp;=20
+  The t Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor10">2.=
+3.1.2</A>&nbsp;=20
+  The list Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#figure">2.3.=
+1.3</A>&nbsp;=20
+  The figure Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">2.3.1.=
+4</A>&nbsp;=20
+  The xref Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#eref">2.3.1.=
+5</A>&nbsp;=20
+  The eref Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#iref">2.3.1.=
+6</A>&nbsp;=20
+  The iref Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor11">2.=
+3.1.7</A>&nbsp;=20
+  The vspace Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#back_matter"=
+>2.4</A>&nbsp;=20
+  Back matter<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#references">=
+2.4.1</A>&nbsp;=20
+  The references Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor12">2.=
+4.2</A>&nbsp;=20
+  Appendices<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor13">2.=
+4.3</A>&nbsp;=20
+  Copyright Status<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor14">3.=
+</A>&nbsp;=20
+  Processing the XML Source File<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor15">3.=
+1</A>&nbsp;=20
+  Editing<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor16">3.=
+1.1</A>&nbsp;=20
+  Checking<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xml2rfc">3.2=
+</A>&nbsp;=20
+  Converting to Text Format<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor17">3.=
+3</A>&nbsp;=20
+  Converting to HTML Format<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor18">3.=
+4</A>&nbsp;=20
+  Viewing<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor19">3.=
+5</A>&nbsp;=20
+  Searching<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor20">4.=
+</A>&nbsp;=20
+  Security Considerations<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.referenc=
+es">=A7</A>&nbsp;=20
+  References<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.authors"=
+>=A7</A>&nbsp;=20
+  Author's Address<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc">A.</A>&=
+nbsp;=20
+  The rfc Element<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.dtd">B.<=
+/A>&nbsp;=20
+  The RFC DTD<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor21">C.=
+</A>&nbsp;=20
+  Acknowledgements<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.index">=A7=
+</A>&nbsp;=20
+  Index<BR></B><B><A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.copyrigh=
+t">=A7</A>&nbsp;=20
+  Full Copyright Statement<BR></B></UL><BR clear=3Dall><A =
+name=3Danchor1><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>1.&nbsp;Introduction</H3>
+<P>This memo describes how to write a document for the I-D and RFC =
+series using=20
+<A href=3D"http://memory.palace.org/authoring/writing-rfcs.html#XML">the =
+
+Extensible Markup Language</A>[1] (XML). This memo has three goals:=20
+<OL class=3Dtext>
+  <LI>To describe a simple XML Document Type Definition (DTD) that is =
+powerful=20
+  enough to handle the simple formatting requirements of RFC-like =
+documents=20
+  whilst allowing for meaningful markup of descriptive qualities.=20
+  <LI>To describe software that processes XML source files, including a =
+tool=20
+  that produces documents conforming to <A=20
+  =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#refs.RFC2223=
+">RFC=20
+  2223</A>[2], HTML format, and so on.=20
+  <LI>To provide the proof-of-concept for the first two goals (this memo =
+was=20
+  written using this DTD and produced using that software). </LI></OL>
+<P></P>
+<P>It is beyond the scope of this memo to discuss the political =
+ramifications of=20
+using XML as a source format for RFC-like documents. Rather, it is =
+simply noted=20
+that adding minimal markup to plain text:=20
+<UL class=3Dtext>
+  <LI>allows the traditional production of textual RFC-like documents =
+using=20
+  familiar editors;=20
+  <LI>requires some, albeit minimal, additions to existing software=20
+  environments; and,=20
+  <LI>permits information to be organized, searched, and retrieved using =
+both=20
+  unstructured and structured mechanisms. </LI></UL>
+<P></P><A name=3Danchor2><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>2.&nbsp;Using the DTD to Write I-Ds and RFCs</H3>
+<P>We do not provide a formal or comprehensive description of XML. =
+Rather, this=20
+section discusses just enough XML to use a Document Type Declaration =
+(DTD) to=20
+write RFC-like documents. </P>
+<P>If you're already familiar with XML, skip to <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#rfc.dtd">The=
+ RFC=20
+DTD</A> to look at the DTD. </P>
+<H4><A name=3Dxml_basics>2.1</A>&nbsp;XML basics</H4>
+<P>There are very few rules when writing in XML, as the syntax is =
+simple. There=20
+are five terms you'll need to know:=20
+<OL class=3Dtext>
+  <LI>An "element" usually refers to a start tag, an end tag, and all =
+the=20
+  characters in between, e.g., "&lt;example&gt;text and/or nested=20
+  elements&lt;/example&gt;"=20
+  <LI>An "empty element" combines the start tag and the end tag, e.g.,=20
+  "&lt;empty/&gt;". You don't find these in HTML.=20
+  <LI>An "attribute" is part of an element. If present, they occur in =
+the start=20
+  tag, e.g., "&lt;example name=3D'value'&gt;". Of course, they can also =
+appear in=20
+  empty elements, e.g., "&lt;empty name=3D'value'/&gt;".=20
+  <LI>An "entity" is a textual macro that starts with "&amp;". Don't =
+worry about=20
+  these, you'll only use them whenever you want to put a "&amp;" or a =
+"&lt;" in=20
+  your text.=20
+  <LI>A "token" is a string of characters. The first character is either =
+a=20
+  letter or an underscore ("_"). Any characters that follow are either =
+letters,=20
+  numbers, an underscore, or a period ("."). </LI></OL>
+<P></P>
+<P>First, start your source file with an XML declaration, a reference to =
+the=20
+DTD, and the "rfc" element: </P></FONT><PRE>    &lt;?xml =
+version=3D"1.0"?&gt;
+    &lt;!DOCTYPE rfc SYSTEM "rfc2629.dtd"&gt;
+    &lt;rfc&gt;
+        ...
+    &lt;/rfc&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>Ignore the first two lines -- the declaration and the reference -- =
+and simply=20
+treat them as opaque strings. Nothing else should be present after the=20
+"&lt;/rfc&gt;" tag. </P>
+<P>Second, make sure that all elements are properly matched and nested. =
+A=20
+properly matched element that starts with "&lt;example&gt;" is =
+eventually=20
+followed with "&lt;/example&gt;". (Empty elements are always matched.) =
+Elements=20
+are properly nested when they don't overlap. </P>
+<P>For example, </P></FONT><PRE>    &lt;outer&gt;
+        ...
+        &lt;inner&gt;
+            ...
+        &lt;/inner&gt;
+        ...
+    &lt;/outer&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>is properly nested. </P>
+<P>However, </P></FONT><PRE>    &lt;outer&gt;
+        ...
+        &lt;inner&gt;
+            ...
+        &lt;/outer&gt;
+        ...
+    &lt;/inner&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>overlaps, so the elements aren't properly nested. </P>
+<P>Third, never use "&lt;" or "&amp;" in your text. Instead, use either=20
+"&amp;lt;" or "&amp;amp;", respectively. </P>
+<P>Fourth, there are two quoting characters in XML, 'apostrophe' and=20
+"quotation". Make sure that all attributes values are quoted, e.g., =
+"&lt;example=20
+name=3D'value'&gt;", If the value contains one of the quoting =
+characters, then use=20
+the other to quote the value, e.g., "&lt;example name=3D'"'&gt;", If the =
+value=20
+contains both quoting characters, then use one of them to quote the =
+value, and=20
+replace occurrances of that character in the attribute value with either =
+
+'&amp;apos;' (apostrophe) or "&amp;quot;" (quotation), e.g., =
+"&lt;example=20
+name=3D'"&amp;apos;"'&gt;". </P>
+<P>If you want to put a comment in your source file, here's the syntax:=20
+</P></FONT><PRE>        &lt;!-- comments can be multiline,
+         if you wish --&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>Finally, XML is case sensitive. </P>
+<H4><A name=3Dfront_matter>2.2</A>&nbsp;Front matter</H4>
+<P>Immediately following the "&lt;rfc&gt;" tag is the "front" element:=20
+</P></FONT><PRE>    &lt;?xml version=3D"1.0"?&gt;
+    &lt;!DOCTYPE rfc SYSTEM "rfc2629.dtd"&gt;
+    &lt;rfc&gt;
+        &lt;front&gt;
+            &lt;title ...&gt;
+            &lt;author ...&gt;
+            &lt;author ...&gt;
+            &lt;date ...&gt;
+            &lt;area ...&gt;
+            &lt;workgroup ...&gt;
+            &lt;keyword ...&gt;
+            &lt;keyword ...&gt;
+            &lt;abstract ...&gt;
+            &lt;note ...&gt;
+        &lt;/front&gt;
+        ...
+    &lt;/rfc&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>(Note that in all examples, indentation is used only for expository=20
+purposes.) </P>
+<P>The "front" element consists of a "title" element, one or more =
+"author"=20
+elements, a "date" element, one or more optional "area" elements, one or =
+more=20
+optional "workgroup" elements, one or more optional "keyword" elements, =
+an=20
+optional "abstract" element. and, one or more optional "note" elements. =
+</P>
+<H4><A name=3Danchor3>2.2.1</A>&nbsp;The title Element</H4>
+<P>The "title" element identifies the title of the document. Because the =
+title=20
+will be used in the headers of the document when formatted according to =
+<A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#refs.RFC2223=
+">[2]</A>,=20
+if the title is more than 42 characters, then an abbreviation should =
+also be=20
+provided, e.g., </P></FONT><PRE>    &lt;title abbrev=3D"Much Ado about =
+Nothing"&gt;
+    The IETF's Discussion on "Source Format of RFC Documents"
+    &lt;/title&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Dauthor>2.2.2</A>&nbsp;The author Element</H4>
+<P>Each "author" element identifies a document author. Since a document =
+may have=20
+more than one author, more than one "author" element may be present. If =
+the=20
+author is a person, then three attributes must be present in the=20
+"&lt;author&gt;" tag, "initials", "surname", and "fullname", e.g., =
+</P></FONT><PRE>    &lt;author initials=3D"M.T." surname=3D"Rose"
+            fullname=3D"Marshall T. Rose"&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "author" element itself consists of an "organization" element, =
+and, an=20
+optional "address" element. </P>
+<P>The "organization" element is similar to the "title" element, in that =
+an=20
+abbreviation may be paired with a long organization name using the =
+"abbrev"=20
+attribute, e.g., </P></FONT><PRE>    &lt;organization abbrev=3D"ISI"&gt;
+        USC/Information Sciences Institute
+    &lt;/organization&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "address" element consists of an optional "postal" element, an =
+optional=20
+"phone" element, an optional "facsimile" element, an optional "email" =
+element,=20
+and, an optional "uri" element. </P>
+<P>The "postal" element contains one or more "street" elements, followed =
+by any=20
+combination of "city", "region" (state or province), "code" (zipcode or =
+postal=20
+code), and "country" elements, e.g., </P></FONT><PRE>    &lt;postal&gt;
+        &lt;street&gt;660 York Street&lt;/street&gt;
+        &lt;street&gt;M/S 40&lt;/street&gt;
+        &lt;city&gt;San Francisco&lt;/city&gt; =
+&lt;region&gt;CA&lt;/region&gt;
+        &lt;code&gt;94110&lt;/code&gt;
+        &lt;country&gt;US&lt;/country&gt;
+    &lt;/postal&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>This flexibility is provided to allow for different national formats =
+for=20
+postal addresses. Note however, that although the order of the "city", =
+"region",=20
+"code", and "country" elements isn't specified, at most one of each may =
+be=20
+present. Regardless, these elements must not be re-ordered during =
+processing by=20
+an XML application (e.g., display applications must preserve the =
+ordering of the=20
+information contained in these elements). Finally, the value of the =
+"country"=20
+element should be a two-letter code from ISO 3166. </P>
+<P>The "phone", "facsimile", "email", and "uri" elements are simple, =
+e.g.,=20
+</P></FONT><PRE>    &lt;phone&gt;+1 415 695 3975&lt;/phone&gt;
+    &lt;email&gt;mrose@not.invisible.net&lt;/email&gt;
+    &lt;uri&gt;http://invisible.net/&lt;/uri&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Ddate>2.2.3</A>&nbsp;The date Element</H4>
+<P>The "date" element identifies the publication date of the document. =
+It=20
+consists of a month and a year, e.g., </P></FONT><PRE>    &lt;date =
+month=3D"February" year=3D"1999" /&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "date" element also has an optional day attribute. </P>
+<H4><A name=3Danchor4>2.2.4</A>&nbsp;Meta Data Elements</H4>
+<P>The "front" element may contain meta data -- the content of these =
+elements=20
+does not appear in printed versions of the document. </P>
+<P>A document has one or more optional "area", "workgroup" and "keyword" =
+
+elements, e.g., </P></FONT><PRE>    &lt;area&gt;General&lt;/area&gt;
+    &lt;workgroup&gt;RFC Beautification Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;RFC&lt;/keyword&gt;
+    &lt;keyword&gt;Request for Comments&lt;/keyword&gt;
+    &lt;keyword&gt;I-D&lt;/keyword&gt;
+    &lt;keyword&gt;Internet-Draft&lt;/keyword&gt;
+    &lt;keyword&gt;XML&lt;/keyword&gt;
+    &lt;keyword&gt;Extensible Markup Language&lt;/keyword&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "area" elements identify a general category for the document =
+(e.g., one=20
+of "Applications", "General", "Internet", "Management", "Operations", =
+"Routing",=20
+"Security", "Transport", or "User"), while the "workgroup" elements =
+identify the=20
+IETF working groups that produced the document, and the "keyword" =
+elements=20
+identify useful search terms. </P>
+<H4><A name=3Danchor5>2.2.5</A>&nbsp;The abstract Element</H4>
+<P>A document may have an "abstract" element, which contains one or more =
+<A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#t">"t" =
+elements</A>.=20
+In general, only a single "t" element is present, e.g., </P></FONT><PRE> =
+   &lt;abstract&gt;
+        &lt;t&gt;This memo presents a technique for using XML
+        (Extensible Markup Language) as a source format
+        for documents in the Internet-Drafts (I-Ds) and
+        Request for Comments (RFC) series.&lt;/t&gt;
+    &lt;/abstract&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Danchor6>2.2.6</A>&nbsp;The note Element</H4>
+<P>A document may have one or more "note" elements, each of which =
+contains one=20
+or more <A =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#t">"t"=20
+elements</A>. There is a mandatory "title" attribute. In general, the =
+"note"=20
+element contains text from the IESG, e.g., </P></FONT><PRE>    &lt;note =
+title=3D"IESG Note"&gt;
+        &lt;t&gt;The IESG has something to say.&lt;/t&gt;
+    &lt;/note&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Danchor7>2.2.7</A>&nbsp;Status, Copyright Notice, Table of=20
+Contents</H4>
+<P>Note that text relating to the memo's status, copyright notice, or =
+table of=20
+contents is not included in the document's markup -- this is =
+automatically=20
+inserted by an XML application when it produces either a text or HTML =
+version of=20
+the document. </P>
+<H4><A name=3Dipr>2.2.7.1</A>&nbsp;Conformance with RFC 2026</H4>
+<P>If an Internet-Draft is being produced, then the "ipr" attribute =
+should be=20
+present in the "&lt;rfc&gt;" tag at the beginning of the file. The value =
+of the=20
+attribute should be one of:=20
+<BLOCKQUOTE class=3Dtext>
+  <DL>
+    <DT>full2026:=20
+    <DD>indicating that the document is in full conformance with all the =
+
+    provisions of Section 10 of RFC 2026;=20
+    <DT>noDerivativeWorks2026:=20
+    <DD>indicating that the document is in full conformance with all the =
+
+    provisions of Section 10 of RFC 2026 except that the right to =
+produce=20
+    derivative works is not granted; or,=20
+    <DT>none:=20
+    <DD>indicating that the document is NOT offered in accordance with =
+Section=20
+    10 of RFC 2026, and the author does not provide the IETF with any =
+rights=20
+    other than to publish as an Internet-Draft. =
+</DD></DL></BLOCKQUOTE>In the latter=20
+case, a copyright notice will not be automatically inserted during =
+processing by=20
+an XML application.=20
+<P></P>
+<P>Consult <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#refs.RFC2026=
+">[3]</A>=20
+for further details. </P>
+<P>Finally, if the Internet-Draft is being submitted to an automated =
+process,=20
+then the "docName" attribute should be present in the "&lt;rfc&gt;" tag =
+at the=20
+beginning of the file. The value of this attribute contains the document =
+(not=20
+file) name associated with this Internet-Draft, e.g., </P></FONT><PRE>   =
+ &lt;rfc ipr=3D"full" docName=3D"draft-mrose-writing-rfcs-01"&gt;
+        ...
+    &lt;/rfc&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P></P>
+<H4><A name=3Danchor8>2.2.8</A>&nbsp;Everything in the Front</H4>
+<P>So, putting it all together, we have, e.g., </P></FONT><PRE>    =
+&lt;front&gt;
+        &lt;title&gt;Writing I-Ds and RFCs using XML&lt;/title&gt;
+   =20
+        &lt;author initials=3D"M.T." surname=3D"Rose"
+                fullname=3D"Marshall T. Rose"&gt;
+            &lt;organization&gt;Invisible Worlds, =
+Inc.&lt;/organization&gt;
+   =20
+            &lt;address&gt;
+                &lt;postal&gt;
+                    &lt;street&gt;660 York Street&lt;/street&gt;
+                    &lt;street&gt;M/S 40&lt;/street&gt;
+                    &lt;city&gt;San Francisco&lt;/city&gt; =
+&lt;region&gt;CA&lt;/region&gt;
+                    &lt;code&gt;94110&lt;/code&gt;
+                    &lt;country&gt;US&lt;/country&gt;
+                &lt;/postal&gt;
+   =20
+                &lt;phone&gt;+1 415 695 3975&lt;/phone&gt;
+                &lt;email&gt;mrose@not.invisible.net&lt;/email&gt;
+                &lt;uri&gt;http://invisible.net/&lt;/uri&gt;
+            &lt;/address&gt;
+        &lt;/author&gt;
+   =20
+        &lt;date month=3D"February" year=3D"1999" /&gt;
+   =20
+        &lt;area&gt;General&lt;/area&gt;
+        &lt;workgroup&gt;RFC Beautification Working =
+Group&lt;/workgroup&gt;
+        &lt;keyword&gt;RFC&lt;/keyword&gt;
+        &lt;keyword&gt;Request for Comments&lt;/keyword&gt;
+        &lt;keyword&gt;I-D&lt;/keyword&gt;
+        &lt;keyword&gt;Internet-Draft&lt;/keyword&gt;
+        &lt;keyword&gt;XML&lt;/keyword&gt;
+        &lt;keyword&gt;Extensible Markup Language&lt;/keyword&gt;
+        &lt;abstract&gt;
+            &lt;t&gt;This memo presents a technique for using XML
+            (Extensible Markup Language) as a source format
+            for documents in the Internet-Drafts (I-Ds) and
+            Request for Comments (RFC) series.&lt;/t&gt;
+        &lt;/abstract&gt;
+    &lt;/front&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Danchor9>2.3</A>&nbsp;The Middle</H4>
+<P>The "middle" element contains all the sections of the document except =
+for the=20
+bibliography and appendices: </P></FONT><PRE>    ...
+    &lt;/front&gt;
+    &lt;middle&gt;
+        &lt;section ...&gt;
+        &lt;section ...&gt;
+        &lt;section ...&gt;
+    &lt;/middle&gt;
+    &lt;back&gt;
+    ...
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "middle" element consists of one or more "section" elements. </P>
+<H4><A name=3Dsection>2.3.1</A>&nbsp;The section Element</H4>
+<P>Each "section" element contains a section of the document. There is a =
+
+mandatory attribute, "title", that identifies the title of the section. =
+There is=20
+also an optional attribute, "anchor", that is used for cross-referencing =
+with <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">the =
+"xref"=20
+element</A>, e.g., </P></FONT><PRE>    &lt;section anchor=3D"intro" =
+title=3D"Introduction"&gt;
+        ...
+    &lt;/section&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "section" element is recursive -- each contains any number and=20
+combination of "t", "figure", and "section" elements, e.g., =
+</P></FONT><PRE>    &lt;section title=3D"The Middle"&gt;
+        ...
+        &lt;section title=3D"The section Element"&gt;
+            ...
+            &lt;section title=3D"The t Element"&gt;...&lt;/section&gt;
+            &lt;section title=3D"The list =
+Element"&gt;...&lt;/section&gt;
+            &lt;section title=3D"The figure =
+Element"&gt;...&lt;/section&gt;
+            &lt;section title=3D"The xref =
+Element"&gt;...&lt;/section&gt;
+            &lt;section title=3D"The eref =
+Element"&gt;...&lt;/section&gt;
+            &lt;section title=3D"The iref =
+Element"&gt;...&lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/section&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Dt>2.3.1.1</A>&nbsp;The t Element</H4>
+<P>The "t" element contains any number and combination of paragraphs, =
+lists, and=20
+figures. If a cross-reference is needed to a section, figure, or =
+reference, <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">the =
+"xref"=20
+element</A> is used; similarly, if an external-reference is needed, <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#eref">the =
+"eref"=20
+element</A> is used. Indexing of text is provided by the <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#iref">the =
+"iref"=20
+element</A>. </P>
+<H4><A name=3Danchor10>2.3.1.2</A>&nbsp;The list Element</H4>
+<P>The "list" element contains one or more items. Each item is a "t" =
+element,=20
+allowing for recursion, e.g., </P></FONT><PRE>    &lt;list =
+style=3D"numbers"&gt;
+        &lt;t&gt;The first item.&lt;/t&gt;
+        &lt;t&gt;The second item, which contains two bulleted sub-items:
+            &lt;list style=3D"symbols"&gt;
+                &lt;t&gt;The first sub-item.&lt;/t&gt;
+                &lt;t&gt;The second sub-item.&lt;/t&gt;
+            &lt;/list&gt;
+        &lt;/t&gt;
+    &lt;/list&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "list" element has an optional attribute, "style", having the =
+value=20
+"numbers" (for numeric lists), "symbols" (for bulleted lists), "hanging" =
+(for=20
+hanging lists), or, "empty" (for indented text). If a "list" element is =
+nested,=20
+the default value is taken from its closest parent; otherwise, the =
+default value=20
+is "empty". </P>
+<P>When nested within a "hanging list" element, the "t" element has an =
+optional=20
+attribute, "hangText" that specifies the text to be inserted, e.g., =
+</P></FONT><PRE>    &lt;list style=3D"hanging"&gt;
+        &lt;t hangText=3D"full2026:"&gt;indicating that the document is =
+in
+        full conformance with all the provisions of Section 10 of
+        RFC 2026;&lt;/t&gt;
+
+        &lt;t hangText=3D"noDerivativeWorks2026:"&gt;indicating that the
+        document is in full conformance with all the provisions of
+        Section 10 of RFC 2026 except that the right to produce
+        derivative works is not granted; or,&lt;/t&gt;
+
+        &lt;t hangText=3D"none:"&gt;indicating that the document is NOT
+        offered in accordance with Section 10 of RFC 2026, and
+        the author does not provide the IETF with any rights other
+        than to publish as an Internet-Draft.&lt;/t&gt;
+    &lt;/list&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<H4><A name=3Dfigure>2.3.1.3</A>&nbsp;The figure Element</H4>
+<P>The "figure" element groups an optional "preamble" element, an =
+"artwork"=20
+element, and an optional "postamble" element together. The "figure" =
+element also=20
+has an optional "anchor" attribute that is used for cross-referencing =
+with <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">the =
+"xref"=20
+element</A>. There is also an optional "title" attribute that identifies =
+the=20
+title of the figure. </P>
+<P>The "preamble" and "postamble" elements, if present, are simply text. =
+If a=20
+cross-reference is needed to a section, figure, or reference, <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">the =
+"xref"=20
+element</A> is used; similarly, if an external-reference is needed, <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#eref">the =
+"eref"=20
+element</A> is used. Indexing of text is provided by the <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#iref">the =
+"iref"=20
+element</A>. </P>
+<P>The "artwork" element, which must be present, contains "ASCII =
+artwork".=20
+Unlike text contained in the "t", "preamble", or "postamble" elements, =
+both=20
+horizontal and vertical whitespace is significant in the "artwork" =
+element. </P>
+<P>So, putting it all together, we have, e.g., </P></FONT><PRE>    =
+&lt;figure anchor=3D"figure_example"&gt;
+        &lt;preamble&gt;So,
+        putting it all together, we have, e.g.,&lt;/preamble&gt;
+        &lt;artwork&gt;
+            ascii artwork goes here...
+   =20
+            be sure to use "&amp;lt;" or "&amp;amp;" instead of "&lt;" =
+and "&amp;",
+            respectively!
+        &lt;/artwork&gt;
+        &lt;postamble&gt;which is a very simple =
+example.&lt;/postamble&gt;
+    &lt;/figure&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>which is a very simple example. </P>
+<P>If you have artwork with a lot of "&lt;" characters, then there's an =
+XML=20
+trick you can use: </P></FONT><PRE>    &lt;figure&gt;
+        &lt;preamble&gt;If you have artwork with a lot of "&amp;lt;"
+        characters, then there's an XML trick you can
+        use:&lt;/preamble&gt;
+        &lt;artwork&gt;&lt;![CDATA[
+            ascii artwork goes here...
+   =20
+            just don't use "]]" in your artwork!
+        ]]&gt;&lt;/artwork&gt;
+        &lt;postamble&gt;The "&amp;lt;![CDATA[ ... ]]&gt;" construct is =
+called
+        a CDATA block -- everything between the innermost brackets
+        is left alone by the XML application.&lt;/postamble&gt;
+    &lt;/figure&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "&lt;![CDATA[ ... ]]&gt;" construct is called a CDATA block -- =
+everything=20
+between the innermost brackets is left alone by the XML application. =
+</P>
+<P>Because the "figure" element represents a logical grouping of text =
+and=20
+artwork, an XML application producing a text version of the document =
+should=20
+attempt to keep these elements on the same page. Because <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#refs.RFC2223=
+">RFC=20
+2223</A>[2] allows no more than 69 characters by 49 lines of content on =
+each=20
+page, XML applications should be prepared to prematurely introduce page =
+breaks=20
+to allow for better visual grouping. </P>
+<P>Finally, the "artwork" element has two optional attributes: "name" =
+and=20
+"type". The former is used to suggest a filename to use when storing the =
+content=20
+of the "artwork" element, whilst the latter contains a suggestive =
+data-typing=20
+for the content. </P>
+<H4><A name=3Dxref>2.3.1.4</A>&nbsp;The xref Element</H4>
+<P>The "xref" element is used to cross-reference sections, figures, and=20
+references. The mandatory "target" attribute is used to link back to the =
+
+"anchor" attribute of the "section", "figure", and "reference" elements. =
+The=20
+value of the "anchor" and "target" attributes should be formatted =
+according to=20
+the token syntax in <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xml_basics">=
+XML=20
+basics</A>. </P>
+<P>If used as an empty element, e.g., </P></FONT><PRE>    according to =
+the token syntax in &lt;xref target=3D"xml_basics" /&gt;.
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>then the XML application inserts an appropriate phrase during =
+processing,=20
+such as "Section 2.1" or "&lt;a href=3D"#xml_basics"&gt;XML =
+Basics&lt;/a&gt;".=20
+</P>
+<P>If used with content, e.g., </P></FONT><PRE>    conforming to =
+&lt;xref target=3D"refs.RFC2223"&gt;RFC 2223&lt;/xref&gt;.
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>then the XML application inserts an appropriate designation during=20
+processing, such as "RFC 2223[2]" or "&lt;a =
+href=3D"#refs.RFC2223"&gt;RFC=20
+2223&lt;/a&gt;". Although the XML application decides what "an =
+appropriate=20
+designation" might be, its choice is consistent throughout the =
+processing of the=20
+document. </P>
+<H4><A name=3Deref>2.3.1.5</A>&nbsp;The eref Element</H4>
+<P>The "eref" element is used to reference external documents. The =
+mandatory=20
+"target" attribute is a <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#URI">URI</A>=
+[4],=20
+e.g., </P></FONT><PRE>    &lt;eref =
+target=3D"http://metalab.unc.edu/xml/"&gt;Cafe con Leche&lt;/eref&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>Note that while the "target" attribute is always present, the "eref" =
+element=20
+may be empty, e.g., </P></FONT><PRE>    &lt;eref =
+target=3D"http://invisible.net/" /&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>and the XML application inserts an appropriate designation during =
+processing=20
+such as "[9]" or "&lt;a=20
+href=3D"http://invisible.net/"&gt;http://invisible.net/&lt;/a&gt;". </P>
+<H4><A name=3Diref>2.3.1.6</A>&nbsp;The iref Element</H4>
+<P><A name=3Danchor22></A>The "iref" element is used to add information =
+to an=20
+index. The mandatory "item" attribute is the primary key the information =
+is=20
+stored under, whilst the optional "subitem" attribute is the secondary =
+key,=20
+e.g., </P></FONT><PRE>    &lt;iref item=3D"indexing" subitem=3D"how to" =
+/&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>Finally, note that the "iref" element is always empty -- it never =
+contains=20
+any text. </P>
+<H4><A name=3Danchor11>2.3.1.7</A>&nbsp;The vspace Element</H4>
+<P>The "vspace" element, which may occur only inside the "t" element, is =
+used by=20
+the author to provide formatting guidance to the XML application. There =
+is an=20
+attribute, "blankLines", that indicates the number of blank lines that =
+should be=20
+inserted. A physical linebreak is specified by using the default value, =
+"0".=20
+</P>
+<P>In addition, the "vspace" element can be used to force a new physical =
+
+paragraph within a list item, e.g., </P></FONT><PRE>    &lt;list =
+style=3D"numbers"&gt;
+        &lt;t&gt;This is list item.
+           &lt;vspace blankLines=3D"1" /&gt;
+           This is part of the same list item,
+           although when displayed, it appears
+           as a separate physical paragraph.&lt;/t&gt;
+    &lt;/list&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>An XML application producing a text version of the document should =
+exercise=20
+care when encountering a value for "blankLines" that causes a pagebreak =
+-- in=20
+particular, if a "vspace" element causes a pagebreak, then no further =
+blank=20
+lines should be inserted. This allows authors to "force" a pagebreak by =
+using an=20
+arbitrarily large value, e.g., "blankLines=3D'100'". </P>
+<P>Finally, note that the "vspace" element is always empty -- it never =
+contains=20
+any text. </P>
+<H4><A name=3Dback_matter>2.4</A>&nbsp;Back matter</H4>
+<P>Finally, the "back" element is used for references and appendices:=20
+</P></FONT><PRE>        ...
+        &lt;/middle&gt;
+        &lt;back&gt;
+            &lt;references&gt;
+                &lt;reference ...&gt;
+                &lt;reference ...&gt;
+            &lt;/references&gt;
+            &lt;section ...&gt;
+            &lt;section ...&gt;
+        &lt;/back&gt;
+    &lt;/rfc&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "back" element consists of an optional "references" element, and, =
+one or=20
+more optional "section" elements. The "back" element itself is optional, =
+if your=20
+document doesn't have any references or appendices, you don't have to =
+include=20
+it. </P>
+<H4><A name=3Dreferences>2.4.1</A>&nbsp;The references Element</H4>
+<P>The "references" element contains the document's bibliography. It =
+contains=20
+one or more "reference" elements. </P>
+<P>Each "reference" element contains a "front" element and one or more =
+optional=20
+"seriesInfo" elements. </P>
+<P>We've already discussed the "front" element back in <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#front_matter=
+">Front=20
+matter</A>. </P>
+<P>The "seriesInfo" element has two attributes, "name" and "value" that =
+identify=20
+the document series and series entry, respectively. </P>
+<P>The "reference" element has an optional "anchor" attribute that is =
+used for=20
+cross-referencing with <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xref">the =
+"xref"=20
+element</A>, e.g., </P></FONT><PRE>    &lt;reference =
+anchor=3D"refs.RFC2200"&gt;
+        &lt;front&gt;
+            &lt;title&gt;Internet Official Protocol =
+Standards&lt;/title&gt;
+            &lt;author initials=3D"J." surname=3D"Postel"
+                    fullname=3D"Jon Postel"&gt;
+                &lt;organization abbrev=3D"ISI"&gt;
+                USC/Information Sciences Institute
+                &lt;/organization&gt;
+            &lt;/author&gt;
+   =20
+            &lt;date month=3D"June" year=3D"1997" /&gt;
+        &lt;/front&gt;
+        &lt;seriesInfo name=3D"RFC" value=3D"2200" /&gt;
+        &lt;seriesInfo name=3D"STD" value=3D"1" /&gt;
+    &lt;/reference&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>The "reference" element also has an optional "target" attribute that =
+is used=20
+for external references (c.f., <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#eref">The =
+eref=20
+Element</A>). The XML application, if producing an HTML version of the =
+document=20
+will use the "target" attribute accordingly; however, if the "name" =
+attribute of=20
+the "seriesInfo" element has the value "RFC", then the XML application =
+should=20
+automatically provide an appropriate default for the "target" attribute =
+(e.g.,=20
+"http://example.com/rfcs/rfc2200.txt"). </P>
+<H4><A name=3Danchor12>2.4.2</A>&nbsp;Appendices</H4>
+<P>To include appendices after the bibliography, simply add more =
+"section"=20
+elements. (For an example, look at the example at the beginning of <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#back_matter"=
+>Back=20
+matter</A>.) </P>
+<H4><A name=3Danchor13>2.4.3</A>&nbsp;Copyright Status</H4>
+<P>The copyright status for the document is not included in the =
+document's=20
+markup -- this is automatically inserted by an XML application that =
+produces=20
+either a text or HTML version of the document. </P><A =
+name=3Danchor14><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>3.&nbsp;Processing the XML Source File</H3>
+<P>This section concerns itself with applications that operate on an XML =
+source=20
+file. A lot of XML tools are available, as are many lists of XML =
+resources,=20
+e.g., <A href=3D"http://metalab.unc.edu/xml/">Cafe con Leche</A>. </P>
+<P>There are two kinds of XML tools: validating and non-validating. Both =
+check=20
+that the source file conforms to the rules given in <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#xml_basics">=
+XML=20
+basics</A>. However, in addition to making sure that the source file is=20
+well-formed, a validating tool also reads the DTD referenced by the =
+source file=20
+to make sure that they match. There are a number of both validating and=20
+non-validating tools available. </P>
+<H4><A name=3Danchor15>3.1</A>&nbsp;Editing</H4>
+<P>There are several XML editors available. Ideally, you want an editor =
+that=20
+validates. This has two advantages:=20
+<UL class=3Dtext>
+  <LI>the editor provides guidance in fleshing-out the document =
+structure; and,=20
+  <LI>the editor validates that the source file matches the rules in the =
+DTD.=20
+  </LI></UL>
+<P></P>
+<P>There are two major modes in Emacs that support XML: <A=20
+href=3D"http://www.mulberrytech.com/tdtd/">tdtd</A> and <A=20
+href=3D"http://www.inria.fr/koala/plh/sxml.html">psgml</A>. The latter =
+mode allows=20
+you to validate the source file (by calling an external program). If you =
+visit=20
+the source file in Emacs and the major mode isn't "SGML" or "XML", then =
+usually=20
+all it takes is adding these lines to your ".emacs" file: =
+</P></FONT><PRE>    (setq auto-mode-alist
+          (cons (cons "\\.xml$" 'sgml-mode) auto-mode-alist))
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>and then restarting Emacs. If this doesn't work, try one of the =
+sources=20
+above. </P>
+<P>The author uses both sgml-mode in Emacs, and a commercial validating =
+editor,=20
+<A href=3D"http://www.t2000-usa.com/">Clip! version 1.5</A>, when =
+editing source=20
+files. </P>
+<H4><A name=3Danchor16>3.1.1</A>&nbsp;Checking</H4>
+<P>If your editor doesn't validate, then you should run a program to =
+validate=20
+the source file. </P>
+<P>The author uses <A =
+href=3D"http://www.alphaworks.ibm.com/formula/xml/">the=20
+AlphaWorks XML parser</A> for this purpose. It requires that your system =
+have a=20
+Java virtual machine. In addition to Java, there are validating parsers =
+written=20
+in C, Perl, Python, and Tcl. </P>
+<H4><A name=3Dxml2rfc>3.2</A>&nbsp;Converting to Text Format</H4>
+<P>The author has written <A =
+href=3D"http://memory.palace.org/authoring/">the=20
+xml2rfc tool</A>, which reads the source file and produces both a text =
+and HTML=20
+version of the document. (This memo was produced using the xml2rfc =
+tool.) Note=20
+that xml2rfc isn't a validating tool, so it's a good idea to use either =
+a=20
+validating editor or run a stand-alone validating parser prior to using =
+the=20
+tool. </P>
+<H4><A name=3Danchor17>3.3</A>&nbsp;Converting to HTML Format</H4>
+<P>The XML Style Language (XSL) is used to describe transformations from =
+the=20
+source file into some other structured file. So, ideally you should use =
+an=20
+XSL-capable formatter to convert an XML source file to HTML. </P>
+<P>However, as of this writing XSL is still in considerable flux. =
+(Hence, no=20
+reference was included in this memo, as by the time you read this =
+section, the=20
+reference would be outdated.) So, in the interim, the author uses the =
+xml2rfc=20
+tool for this purpose, even though this tool doesn't provide much =
+flexibility in=20
+its HTML layout. </P>
+<H4><A name=3Danchor18>3.4</A>&nbsp;Viewing</H4>
+<P>Browsers that support either XSL or Cascading Style Sheets (CSS) are =
+able to=20
+view the source file directly. </P>
+<P>At present, the author doesn't use any of these browsers, instead =
+converting=20
+source files to either text or HTML. </P>
+<H4><A name=3Danchor19>3.5</A>&nbsp;Searching</H4>
+<P>As with text editors, any text-oriented search tool (e.g., grep) can =
+be used=20
+on the source file. However, there are search tools available that =
+understand=20
+structured source. </P>
+<P>The author uses <A=20
+href=3D"http://www.cs.helsinki.fi/~jjaakkol/sgrep.html">sgrep version =
+1.9</A> for=20
+this purpose, e.g. </P></FONT><PRE>    sgrep -g xml 'ELEMENTS("title") =
+not in ELEMENTS("back")' \
+        writing-rfcs.xml
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>which extracts the title element from the source file. </P><A=20
+name=3Danchor20><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>4.&nbsp;Security Considerations</H3>
+<P>This memo raises no security issues; however, according to <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#refs.RFC2223=
+">[2]</A>,=20
+your document should contain a section near the end that discusses the =
+security=20
+considerations of the protocol or procedures that are the main topic of =
+your=20
+document, e.g., </P></FONT><PRE>    &lt;middle&gt;
+        ...
+        &lt;section title=3D"Security Considerations"&gt;
+            &lt;t&gt;This memo raises no security issues;
+            however,
+            according to &lt;xref target=3D"refs.RFC2223" /&gt;,
+            your document should contain a section near the end
+            that discusses the security considerations of the
+            protocol or procedures that are the main topic of your
+            document.&lt;/t&gt;
+        &lt;/section&gt;
+    &lt;/middle&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2><A=20
+name=3Drfc.references><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>References</H3>
+<TABLE border=3D0 width=3D"99%">
+  <TBODY>
+  <TR>
+    <TD class=3Dauthor-text vAlign=3Dtop><B><A =
+name=3DXML>[1]</A></B></TD>
+    <TD class=3Dauthor-text><A href=3D"http://www.w3c.org/">World Wide =
+Web=20
+      Consortium</A> and "<A=20
+      href=3D"http://www.w3.org/TR/1998/REC-xml-19980210">Extensible =
+Markup=20
+      Language (XML) 1.0</A>", W3C XML, February 1998.</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text vAlign=3Dtop><B><A =
+name=3Drefs.RFC2223>[2]</A></B></TD>
+    <TD class=3Dauthor-text><A href=3D"mailto:Postel@ISI.EDU">Postel, =
+J.</A>, <A=20
+      href=3D"mailto:jkrey@isi.edu">J. Reynolds</A> and "<A=20
+      =
+href=3D"http://info.internet.isi.edu/in-notes/rfc/files/rfc2223.txt">Inst=
+ructions=20
+      to RFC Authors</A>", RFC 2223, October 1997.</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text vAlign=3Dtop><B><A =
+name=3Drefs.RFC2026>[3]</A></B></TD>
+    <TD class=3Dauthor-text><A href=3D"mailto:sob@harvard.edu">Bradner, =
+S.O.</A>=20
+      and "<A=20
+      =
+href=3D"http://info.internet.isi.edu/in-notes/rfc/files/rfc2026.txt">The =
+
+      Internet Standards Process -- Revision 3</A>", RFC 2026, BCP 9, =
+October=20
+      1996.</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text vAlign=3Dtop><B><A =
+name=3DURI>[4]</A></B></TD>
+    <TD class=3Dauthor-text><A href=3D"mailto:timbl@w3.org">Berners-Lee, =
+T.</A>,=20
+      <A href=3D"mailto:fielding@ics.uci.edu">Fielding, R.T.</A>, <A=20
+      href=3D"mailto:masinter@parc.xerox.com">L. Masinter</A> and "<A=20
+      =
+href=3D"http://info.internet.isi.edu/in-notes/rfc/files/rfc2396.txt">Unif=
+orm=20
+      Resource Identifiers (URI): Generic Syntax</A>", RFC 2396, August=20
+  1998.</TD></TR></TBODY></TABLE><A name=3Drfc.authors><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Author's Address</H3>
+<TABLE border=3D0 cellPadding=3D0 cellSpacing=3D0 width=3D"99%">
+  <TBODY>
+  <TR>
+    <TD class=3Dauthor-text>&nbsp;</TD>
+    <TD class=3Dauthor-text>Marshall T. Rose</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text>&nbsp;</TD>
+    <TD class=3Dauthor-text>Invisible Worlds, Inc.</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text>&nbsp;</TD>
+    <TD class=3Dauthor-text>660 York Street</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text>&nbsp;</TD>
+    <TD class=3Dauthor-text>San Francisco, CA 94110</TD></TR>
+  <TR>
+    <TD class=3Dauthor-text>&nbsp;</TD>
+    <TD class=3Dauthor-text>US</TD></TR>
+  <TR>
+    <TD align=3Dright class=3Dauthor>Phone:&nbsp;</TD>
+    <TD class=3Dauthor-text>+1 415 695 3975</TD></TR>
+  <TR>
+    <TD align=3Dright class=3Dauthor>EMail:&nbsp;</TD>
+    <TD class=3Dauthor-text><A=20
+      =
+href=3D"mailto:mrose@not.invisible.net">mrose@not.invisible.net</A></TD><=
+/TR>
+  <TR>
+    <TD align=3Dright class=3Dauthor>URI:&nbsp;</TD>
+    <TD class=3Dauthor-text><A=20
+      =
+href=3D"http://invisible.net/">http://invisible.net/</A></TD></TR></TBODY=
+></TABLE><A=20
+name=3Drfc><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Appendix A.&nbsp;The rfc Element</H3>
+<P>The "&lt;rfc&gt;" tag at the beginning of the file, with only <A=20
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#ipr">an =
+"ipr"=20
+attribute</A>, produces an Internet-Draft. However, when other =
+attributes are=20
+added to this tag by the RFC editor, an RFC is produced, e.g., =
+</P></FONT><PRE>    &lt;rfc number=3D"2200"
+         obsoletes=3D"2000, 1920, 1880, 1800, ..."
+         category=3D"std"
+         seriesNo=3D"1"&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2>
+<P>At a minimum, the "number" attribute should be present. </P>
+<P>The other attributes are:=20
+<UL class=3Dtext>
+  <LI>"obsoletes", having a comma-separated list of RFC numbers, that =
+the=20
+  document obsoletes;=20
+  <LI>"updates", having a comma-separated list of RFC numbers, that the =
+document=20
+  updates;=20
+  <LI>"category", having one of these values:=20
+  <OL class=3Dtext>
+    <LI>"std", for a Standards-Track document;=20
+    <LI>"bcp", "for a Best Current Practices document;=20
+    <LI>"exp", for an Experimental Protocol document;=20
+    <LI>"historic", for a historic document; or,=20
+    <LI>"info", the default, for an Informational document. </LI></OL>
+  <LI>"seriesNo", having the corresponding number in the STD (std), BCP =
+(bcp),=20
+  or FYI (info) series. </LI></UL>
+<P></P>
+<P>Finally, a special entity, "&amp;rfc.number;", is available. Authors=20
+preparing an RFC should use this entity whenever they want to reference =
+the=20
+number of the RFC within the document itself. In printed versions of the =
+
+document, the appropriate substitution (or "XXXX") will occur. </P><A=20
+name=3Drfc.dtd><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Appendix B.&nbsp;The RFC DTD</H3></FONT><PRE>&lt;!--
+  DTD for the RFC document series, draft of 99-01-30
+  --&gt;
+
+
+&lt;!--
+  Contents
+
+    DTD data types
+
+    The top-level
+
+    Front matter
+
+    The Body
+
+    Back matter
+  --&gt;
+
+
+&lt;!--
+  DTD data types:
+
+        entity        description
+        =3D=3D=3D=3D=3D=3D        =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+        NUMBER        [0-9]+
+        NUMBERS       a comma-separated list of NUMBER
+
+        DAY           the day of the month, e.g., "1"
+        MONTH         the month of the year, e.g., "January"
+        YEAR          a four-digit year, e.g., "1999"
+
+        URI           e.g., "http://invisible.net/"
+
+        ATEXT/CTEXT   printable ASCII text (no line-terminators)
+
+        TEXT          character data
+  --&gt;
+
+
+&lt;!ENTITY % NUMBER     "CDATA"&gt;
+&lt;!ENTITY % NUMBERS    "CDATA"&gt;
+
+&lt;!ENTITY % DAY        "CDATA"&gt;
+&lt;!ENTITY % MONTH      "CDATA"&gt;
+&lt;!ENTITY % YEAR       "CDATA"&gt;
+
+&lt;!ENTITY % URI        "CDATA"&gt;
+
+&lt;!ENTITY % ATEXT      "CDATA"&gt;
+&lt;!ENTITY % CTEXT      "#PCDATA"&gt;
+
+&lt;!ENTITY % TEXT       "#PCDATA"&gt;
+
+&lt;!ENTITY   rfc.number "2629"&gt;
+
+
+&lt;!--
+  The top-level
+  --&gt;
+
+
+&lt;!--
+  attributes for the "rfc" element are supplied by the RFC
+  editor. when preparing drafts, authors should leave them blank.
+
+  the "seriesNo" attribute is used if the category is, e.g., BCP.
+  --&gt;
+&lt;!ELEMENT rfc         (front,middle,back?)&gt;
+&lt;!ATTLIST rfc
+          number      %NUMBER;           #IMPLIED
+          obsoletes   %NUMBERS;          ""
+          updates     %NUMBERS;          ""
+          category    (std|bcp|info|exp|historic)
+                                         "info"
+          seriesNo    %NUMBER;           #IMPLIED
+          ipr         (full2026|noDerivativeWorks2026|none)
+                                         #IMPLIED
+          docName     %ATEXT;            #IMPLIED&gt;=20
+
+&lt;!--
+  Front matter
+  --&gt;
+
+
+&lt;!ELEMENT front       (title,author+,date,area*,workgroup*,keyword*,
+                       abstract?,note*)&gt;
+
+&lt;!-- the "abbrev" attribute is used for headers, etc. --&gt;
+&lt;!ELEMENT title       (%CTEXT;)&gt;
+&lt;!ATTLIST title
+          abbrev      %ATEXT;            #IMPLIED&gt;=20
+
+&lt;!ELEMENT author      (organization,address?)&gt;
+&lt;!ATTLIST author
+          initials    %ATEXT;            #IMPLIED
+          surname     %ATEXT;            #IMPLIED
+          fullname    %ATEXT;            #IMPLIED&gt;
+
+&lt;!ELEMENT organization
+                      (%CTEXT;)&gt;
+&lt;!ATTLIST organization
+          abbrev      %ATEXT;            #IMPLIED&gt;=20
+=20
+&lt;!ELEMENT address     (postal?,phone?,facsimile?,email?,uri?)&gt;
+
+&lt;!-- at most one of each the city, region, code, and country
+     elements may be present --&gt;
+&lt;!ELEMENT postal      (street+,(city|region|code|country)*)&gt;
+&lt;!ELEMENT street      (%CTEXT;)&gt;
+&lt;!ELEMENT city        (%CTEXT;)&gt;
+&lt;!ELEMENT region      (%CTEXT;)&gt;
+&lt;!ELEMENT code        (%CTEXT;)&gt;
+&lt;!ELEMENT country     (%CTEXT;)&gt;
+&lt;!ELEMENT phone       (%CTEXT;)&gt;
+&lt;!ELEMENT facsimile   (%CTEXT;)&gt;
+&lt;!ELEMENT email       (%CTEXT;)&gt;
+&lt;!ELEMENT uri         (%CTEXT;)&gt;
+
+&lt;!ELEMENT date        EMPTY&gt;
+&lt;!ATTLIST date
+          day         %DAY;              #IMPLIED
+          month       %MONTH;            #REQUIRED
+          year        %YEAR;             #REQUIRED&gt;
+
+&lt;!-- meta-data... --&gt;
+&lt;!ELEMENT area        (%CTEXT;)&gt;
+&lt;!ELEMENT workgroup   (%CTEXT;)&gt;
+&lt;!ELEMENT keyword     (%CTEXT;)&gt;
+
+&lt;!ELEMENT abstract    (t)+&gt;
+&lt;!ELEMENT note        (t)+&gt;
+&lt;!ATTLIST note
+          title       %ATEXT;            #REQUIRED&gt;
+
+
+&lt;!--
+  The body
+  --&gt;
+
+
+&lt;!ELEMENT middle      (section)+&gt;
+
+&lt;!ELEMENT section     (t|figure|section)*&gt;
+&lt;!ATTLIST section
+          anchor      ID                 #IMPLIED
+          title       %ATEXT;            #REQUIRED&gt;
+
+&lt;!ELEMENT t           (%TEXT;|list|figure|xref|eref|iref|vspace)*&gt;
+&lt;!ATTLIST t
+          hangText    %ATEXT;            #IMPLIED&gt;
+
+&lt;!-- the value of the style attribute is inherited from the closest=20
+     parent --&gt;
+&lt;!ELEMENT list        (t+)&gt;
+&lt;!ATTLIST list
+          style       (numbers|symbols|hanging|empty)
+                                         "empty"&gt;
+
+&lt;!ELEMENT xref        (%CTEXT;)&gt;
+&lt;!ATTLIST xref
+          target      IDREF              #REQUIRED
+          pageno      (true|false)       "false"&gt;
+
+&lt;!ELEMENT eref        (%CTEXT;)&gt;
+&lt;!ATTLIST eref
+          target      %URI;              #REQUIRED&gt;
+
+&lt;!ELEMENT iref        EMPTY&gt;
+&lt;!ATTLIST iref
+          item        %ATEXT;            #REQUIRED
+          subitem     %ATEXT;            ""&gt;
+
+&lt;!ELEMENT vspace      EMPTY&gt;
+&lt;!ATTLIST vspace
+          blankLines  %NUMBER;           "0"&gt;
+
+&lt;!ELEMENT figure      (preamble?,artwork,postamble?)&gt;
+&lt;!ATTLIST figure
+          anchor      ID                 #IMPLIED
+          title       %ATEXT;            ""&gt;
+
+&lt;!ELEMENT preamble    (%TEXT;|xref|eref|iref)*&gt;
+&lt;!ELEMENT artwork     (%TEXT;)*&gt;
+&lt;!ATTLIST artwork
+          xml:space   (default|preserve) "preserve"&gt;
+&lt;!ELEMENT postamble   (%TEXT;|xref|eref|iref)*&gt;
+
+
+&lt;!--
+  Back matter
+  --&gt;
+
+
+&lt;!-- sections, if present, are appendices --&gt;
+&lt;!ELEMENT back        (references?,section*)&gt;
+
+&lt;!ELEMENT references  (reference+)&gt;
+&lt;!ELEMENT reference   (front,seriesInfo*)&gt;
+&lt;!ATTLIST reference
+          anchor      ID                 #IMPLIED
+          target      %URI;              #IMPLIED&gt;
+&lt;!ELEMENT seriesInfo  EMPTY&gt;
+&lt;!ATTLIST seriesInfo
+          name        %ATEXT;            #REQUIRED
+          value       %ATEXT;            #REQUIRED&gt;
+</PRE><FONT face=3D"verdana, helvetica, arial, sans-serif" size=3D2><A=20
+name=3Danchor21><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Appendix C.&nbsp;Acknowledgements</H3>
+<P>The author gratefully acknowledges the contributions of: Alan =
+Barrett, Brad=20
+Burdick, Brian Carpenter, Steve Deering, Patrik Faltstrom, Jim Gettys, =
+Carl=20
+Malamud, Chris Newman, Kurt Starsinic, and, Frank Strauss. </P><A=20
+name=3Drfc.index><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Index</H3>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><B>I</B></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>indexing</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;&nbsp;<A=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#anchor22">ho=
+w=20
+      to</A></TD></TR></TBODY></TABLE><A name=3Drfc.copyright><BR>
+<HR SIZE=3D1 shade=3D"0">
+</A>
+<TABLE align=3Dright border=3D0 cellPadding=3D0 cellSpacing=3D2 =
+height=3D15 width=3D30>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle bgColor=3D#990000 height=3D15 width=3D30><A =
+class=3Dlink2=20
+      =
+href=3D"http://memory.palace.org/authoring/writing-rfcs.html#toc"><FONT=20
+      color=3D#ffffff face=3D"monaco, MS Sans Serif"=20
+      =
+size=3D1><B>&nbsp;TOC&nbsp;</B></FONT></A><BR></TD></TR></TBODY></TABLE>
+<H3>Full Copyright Statement</H3>
+<P class=3Dcopyright>Copyright (C) The Internet Society (1999). All =
+Rights=20
+Reserved.</P>
+<P class=3Dcopyright>This document and translations of it may be copied =
+and=20
+furnished to others, and derivative works that comment on or otherwise =
+explain=20
+it or assist in its implmentation may be prepared, copied, published and =
+
+distributed, in whole or in part, without restriction of any kind, =
+provided that=20
+the above copyright notice and this paragraph are included on all such =
+copies=20
+and derivative works. However, this document itself may not be modified =
+in any=20
+way, such as by removing the copyright notice or references to the =
+Internet=20
+Society or other Internet organizations, except as needed for the =
+purpose of=20
+developing Internet standards in which case the procedures for =
+copyrights=20
+defined in the Internet Standards process must be followed, or as =
+required to=20
+translate it into languages other than English.</P>
+<P class=3Dcopyright>The limited permissions granted above are perpetual =
+and will=20
+not be revoked by the Internet Society or its successors or assigns.</P>
+<P class=3Dcopyright>This document and the information contained herein =
+is=20
+provided on an "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET=20
+ENGINEERING TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, =
+INCLUDING=20
+BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN =
+WILL NOT=20
+INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR =
+FITNESS FOR=20
+A PARTICULAR PURPOSE.</P>
+<H3>Acknowledgement</H3>
+<P class=3Dcopyright>Funding for the RFC editor function is currently =
+provided by=20
+the Internet Society.</P></FONT></BODY></HTML>

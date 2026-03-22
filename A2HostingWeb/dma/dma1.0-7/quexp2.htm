@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>quexp2.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995, 1996, 1997 by the
+ *  Association for Information and Image Management International
+ *      1100 Wayne Avenue
+ *      Silver Spring, MD 20910-5603
+ *      Tel: 301/587-8202
+ *      Fax: 301/587-2711
+ *  All Rights Reserved.
+ *  DMA (Document Management Alliance) working group.
+ */
+
+/* quexp2.cpp
+
+    This example is for the following query:
+ 
+    Find all priority 3 documents of any document class that
+    are filed in "blue" folders, and return the name of the
+    document and who filed it in the folder.
+
+    SELECT D.name, R.filer
+    FROM   F INNER JOIN R ON F.This = R.Tail
+               INNER JOIN D (IncludeSubclasses=TRUE) ON R.Head = D.This
+    WHERE  F.color = "blue" AND D.priority = 3
+    ORDER BY &lt;null&gt;
+
+    0: F ("Folder") is a subclass of dmaClass_Container
+    1: R ("Ref. Cont. Relationship") is a subclass of
+           dmaClass_ReferentialContainmentRelationship 
+    2: D ("Document") is a subclass of dmaClass_DocVersion
+*/
+
+#define DMA_INIT_CD
+#include &lt;query.h&gt;
+
+/* Declare DmaId variables for the searchable class ID's.
+*/
+#define DVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 } }
+DMA_EXTERN_C DmaId D = DVal;
+
+#define FVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x09 } }
+DMA_EXTERN_C DmaId F = FVal;
+
+#define RVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x09 } }
+DMA_EXTERN_C DmaId R = RVal;
+    
+/* Declare DmaId variables for the property ID's.
+*/
+#define priorityVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0A } }
+DMA_EXTERN_C DmaId priority = priorityVal;
+
+#define colorVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0B } }
+DMA_EXTERN_C DmaId color = colorVal;
+
+#define filerVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0C } }
+DMA_EXTERN_C DmaId filer = filerVal;
+
+#define nameVal { 0x12345678, 0x1234, 0x5678, \
+                 { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x0A } }
+DMA_EXTERN_C DmaId name = nameVal;
+
+/* Declare the variables needed to perform the query.
+*/
+
+    JoinExprElt             From2 [] = 
+        {
+            /* F[0] */
+            { 0, &amp;F, DMA_FALSE, NULL, NULL, 0, NULL, 0, NULL },
+
+            /* INNER JOIN R[1] ON [0].This = [1].Tail */
+            { 1, &amp;R, DMA_FALSE, &amp;dmaJoinOperator_Inner,
+              &amp;dmaQueryOperator_EqualObject,
+              0, &amp;dmaProp_This, 1, &amp;dmaProp_Tail
+            },
+
+            /* INNER JOIN D[2] (IncludeSubclases = TRUE)
+                   ON [1].Head = [2].This
+            */
+            { 2, &amp;D, DMA_TRUE, &amp;dmaJoinOperator_Inner,
+              &amp;dmaQueryOperator_EqualObject,
+              1, &amp;dmaProp_Head, 2, &amp;dmaProp_This
+            },
+
+            { -1, NULL, DMA_FALSE, NULL, NULL, 0, NULL, 0, NULL }
+        };
+
+
+    Property                Select2 [] = 
+        {
+            { 2, &amp;name },
+            { 1, &amp;filer },
+            { -1, NULL }
+        };
+
+    Operator                N12 = { &amp;dmaQueryOperator_And };
+    Operator                N22 = { &amp;dmaQueryOperator_EqualString };
+    Property                N32 = { 0, &amp;color };
+    StringConst             N42 = { L"blue" };
+    Operator                N52 = { &amp;dmaQueryOperator_EqualInteger32 };
+    Property                N62 = { 1, &amp;filer };
+    IntegerConst            N72 = { 3 };
+
+
+    /* F.color = "blue" AND D.priority = 3
+    */
+    QueryNode               QueryExpr2 [] =
+        {
+            { OperatorNodeType, 0, &amp;N12 },
+                { OperatorNodeType, 1, &amp;N22 },
+                    { PropertyNodeType, 2, &amp;N32 },
+                    { IntegerConstNodeType, 2, &amp;N42 },
+                { OperatorNodeType, 1, &amp;N52 },
+                    { PropertyNodeType, 2, &amp;N62 },
+                    { StringConstNodeType, 2, &amp;N72 },
+            { StopperNodeType, -1, NULL }
+        };
+
+    QueryRoot                QR2 = { &amp;From2[0], &amp;Select2[0],
+                                     &amp;QueryExpr2[0], NULL, DMA_FALSE };
+
+
+DmaRC
+QueryExample2(void)
+{
+    DmaRC                   rc;
+    IdmaScope *             pScope = NULL;
+    IdmaProperties *        pErrNode = NULL;
+    IdmaResultSet *         pResultSet = NULL;
+    IdmaProperties *        pResultRow = NULL;
+    DmaIndex32              SelectionsOffset;
+
+    /* TBD: Initializataion to get system object, doc space object, 
+       and target scope object = pScope.
+    */
+
+    rc = StartQuery(&amp;QR2, pScope, &amp;pResultSet);
+    CHK(rc);
+
+    while (1)
+    {
+        rc = pResultSet-&gt;GetNextResultRow(IID_IdmaProperties,
+                                          (pDmapv)&amp;pResultRow);
+        if (rc != DMARC_OK)
+        {
+            break;
+        }
+
+        rc = pResultRow-&gt;GetPropValInteger32ById(
+                             &amp;dmaProp_SelectListOffset,
+                             &amp;SelectionsOffset);
+        CHK(rc);
+
+        /* TBD: Not shown: Access the values of the properties of
+           the query result row referred to by pResultRow
+           corresponding to the properties selected in the Selections
+           list, e.g.,
+
+               DmaIndex32    x;
+               &lt;datatype&gt;    y;
+               rc = pResultRow-&gt;GetPropVal&lt;datatype&gt;ByIndex(
+                                    SelectionsOffset + x,
+                                    &amp;y);
+
+           to store the value for selection list element x into y.
+        */
+
+        RELEASE(pResultRow);  /* Release the Query Result row */
+    }
+
+theend:
+    return(DMARC_OK);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>

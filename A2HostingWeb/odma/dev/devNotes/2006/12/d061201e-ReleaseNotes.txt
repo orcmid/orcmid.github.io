@@ -1,0 +1,464 @@
+d061201e-ReleaseNotes.txt 0.01       UTF-8                    dh:2007-01-13
+
+                                 RELEASE NOTES
+
+               ODMJNI 1.0 0.30alpha Document-Access Features
+               ---------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201e.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   The ODMJNI 1.0 0.30alpha distribution is provided to accomplish three
+   important steps in the progression to full ODMJNI 1.0:
+
+     1. Change to use of a library, OdmNative100.lib, for linking of the
+        OdmNative interfaces and classes into the odmjni100.dll native
+        methods of ODMJNI (a packaging improvement for further development)
+
+     2. End-to-End delivery of DMS-managed document content as files for
+        access by the Java-based application, with proper release of
+        document resources on conclusion of application usage
+
+     3. Provision of DMS-carried metadata that is defined for ODMA as
+        optionally-available to the Java-based application through the
+        OdmViewingDocument interface.
+
+   CONTENT
+
+     1. IMPORTANT NOTICES
+        1.1 Releasing Resources Is Critical
+        1.2 Limitations and Caveats
+        1.3 Defect in 0.30alpha
+     1. Basic Exercises
+        1.1 Customization of OdmJava.bat
+        1.2 Confirming End-to-End Function
+            1.2.1 Using Setup04-reference
+            1.2.2 Using RunSetup02
+            1.2.3 Using RunNull00
+     2. Confirmation in an Application
+        2.1 Setting the environment for using 0.20alpha components
+        2.2 Using ODMJNI in the application
+            2.2.1 Starting out
+            2.2.2 Using the OdmConnection interface
+        2.3 Critical Confirmation for Java GUI Applications
+     Copyright Notice
+     Revision History
+
+
+1. IMPORTANT NOTICES
+
+1.1 Releasing Resources is Critical
+
+    The release() methods MUST BE USED TO RELEASE ODMJNI RESOURCES THAT
+    ARE NO LONGER NEEDED.
+
+    Although finalizers include release() in their operation, there is no
+    guarantee that a finalizer will be performed when the Java Virtual
+    Machine is shutting down.
+
+    To ensure that resources are released properly, the release() methods
+    must be performed while the application is still running.
+
+    Current documentation suggests that release is desirable rather than
+    required.  It will be changed to require release() operations as soon
+    as it is known that no further use of an interface implementation is
+    required.
+
+
+1.2 Limitations and Caveats
+
+    Format checking and the format checking functions are not yet provided.
+    These will be included after 0.50beta.
+
+    Finding the correct parent window for modal dialogs provided by the
+    ODMA DMS is not yet implemented.  The current implementation "guesses"
+    and it may find the wrong or no modal parent.   This will be resolved
+    after 0.50beta.
+
+    The Document metadata delivered from the DMS is converted to Java
+    Unicode strings correctly only for characters in the ISO 8859-1 code
+    set (Unicode Basic Latin, the ASCII/ISO 646 subset).  Correction for
+    different 8-bit code page usages will be made after 0.50beta.
+
+    Also see the Caveats (section 3) in the 0.40alpha Release Notes
+    <http://ODMA.info/dev/devNotes/2006/12/d061201f.htm>.
+
+
+1.3 Defect in 0.30alpha [2007-01-14 update]
+
+   There is a bug in the implementation of OdmViewing and OdmWorking method
+   dmsAvailable() where false is returned even when true is the correct
+   response.  The bug is simply in the reporting of the value.  The behavior
+   of the implementation is correct.  For example, operationSucceeded() will
+   be true.
+
+   The defect is repaired in 0.40alpha.
+
+### BEGINNING OF MATERIAL THAT REMAINS TO BE MODIFIED ###
+### REMEMBER TO ADJUST THE TABLE OF CONTENT TOO #########
+
+1. BASIC EXERCISES
+
+   There are three sample programs that can be used to demonstrate operation
+   of end-to-end connection:
+
+     Java app <-> practical100 - odmjni100 - odmjni100.dll - ODMA <-> DMS
+
+   There are also two OdmJava.bat scripts that must be customized in order
+   two operate the samples, which run as console (command-line) applica-
+   tions.  They are all found in these parts of the 0.20alpha folder tree:
+
+            <folder>
+                /info
+                    /odma
+                        /odmjni100
+                                OdmJava.bat << CUSTOMIZE
+                            /test
+                                /Setup02
+                                    RunSetup02.bat << FULL END-TO-END
+                        /OdmNative100
+                            /test
+                                /Setup04
+                                    Setup04-reference.exe
+                                        << NATIVE WINDOWS CONFIRMATION
+                        /practical100
+                                OdmJava.bat << CUSTOMIZE
+                            /test
+                                /Null00
+                                        RunNull00.bat << NULL FRONT END
+
+1.1 Customization of OdmJava.bat
+
+   The OdmJava.bat scripts have two lines that need to be customized.
+   These lines are here:
+
+        rem LOCATION OF THE JAVA JDK ON THIS COMPUTER:
+        SET OdmJava=C:\Program Files\Java\jdk1.5.0_09
+        rem         ---------------------------------
+
+        rem LOCATION OF THE FOLDER WHERE ODMJNI CLASSPATHS START
+        SET OdmClasses=C:\MyProjects\java\ODMdev
+        rem            -------------------------
+
+   The first is where you have installed a version of the J2SE SDK.  The
+   first setting is for the 1.5.0_09 release that was used in building
+   and testing the 0.20alpha distribution.  Change this to locate the
+   JDK on your system.
+
+   The second one is the location (called <folder> in these notes) where
+   you have extracted the 0.20alpha folder tree onto your computer.
+
+   This is important because the scripts RunSetup02.bat and RunNull00.bat
+   each depend on OdmJava.bat to find the java program and use the
+   java packages that are part of the 0.20alpha folder tree.
+
+
+1.2 Confirming End-to-End Function
+
+1.2.1 Using setup04-reference
+
+   The program setup04-reference.exe, under OdmNative100/test/Setup04,
+   uses the native Windows COM part of the ODMJNI bridge directly.  If you
+   suspect some difficulty with the Java portions, run setup04-reference
+   to see what results it produces.
+
+   This is a quick way to determine five things:
+
+        1. Whether the ODMA Connection Manager, Odma32.dll is installed
+           where ODMJNI can find and use it.
+
+        2. Whether there is a default DMS for the application.  There must
+           be either an explicit default registered against the application
+           name ("OdmNativeTest" in setup04-reference) or there must be
+           a global default that applies for all other applications.  If
+           neither case holds, the application will not find a default DMS.
+
+        3. Whether the specified default DMS (individual or global) is
+           reachable and responding to a request for a document selection.
+
+        4. Whether the DMS dialog for choosing a document is modal.  While
+           the DMS dialog is being displayed,
+             a. It should remain on top of the application window (in this
+                case, a console window)
+             b. The application window can't be used and no mouse action
+                on it is effective until the dialog window is dismissed in
+                some way.
+           *** THIS IS VERY IMPORTANT ***
+
+        5. The actions taken by the user with the dialog window are properly
+           reported back to the application and that is confirmed in the
+           output of Setup04-reference.
+
+   The OdmNative100/test/Setup04 directory contains examples of ODMA logs,
+   console transcripts, and screen shots that you can compare with.
+
+   There are also two registry scripts (OdmNativeTestDefault.reg and
+   OdmNativeTestNoDefault.reg) that can be used to specify a default
+   DMS and then remove the default DMS setting.  You can also modify
+   OdmNativeTestDefault.reg to change the name of the Default DMS to work
+   with.
+
+   In working with your own application, you can create similar scripts to
+   make sure that the different cases are being handled correctly.
+
+1.2.2 Using RunSetup02
+
+   In folder odmjni100\test\Setup02, the RunSetup02.bat script can be
+   executed within a console (command-line) session.  This script depends on
+   odmjni100\OdmJava.bat having been customized properly (section 1.1).
+
+   RunSetup02 performs essentially the same functions as Setup04-reference
+   except it uses a Java application and the full ODMJNI package.  There
+   should be equivalent results.
+
+   RunSetup02 provides fewer details than Setup04-reference because it does
+   not have access to the same kind of information.
+
+   This is the end-to-end confirmation in the 0.20alpha distribution.
+
+   Notice that RunSetup02 does not report the results of the user's actions
+   with the Default DMS document-selection dialog.  The dialog is produced,
+   and the user's action is recognized, but it is not reported back to the
+   Java application at this point.  (Basically, a new object is created to
+   communicate the result and 0.20alpha returns a null object where the
+   new object should be delivered.  0.30alpha will overcome that.)
+
+
+1.2.3 Using RunNull00
+
+   With RunSetup02 and Setup04-reference, the idea is to get as far into
+   connection with a default DMS as the 0.20alpha implementation allows.
+
+   When ODMJNI cannot access the ODMA Connection Manager, it provides
+   standard null responses for all operations.  Behind the scenes, it makes
+   use of the practical100 OdmNullConnection and related classes to
+   accomplish that.
+
+   The RunNull00.bat script in practical100/test/Null00 is a basic exercise
+   of the OdmNullConnection functionality as it has existed since 0.05alpha.
+
+   RunNull00 is useful as a demonstration of the ways that ODMJNI does not
+   fail but simply reduces function and availability of results.  Most of
+   the time, this is done in a way that advises the Java application to rely
+   on its normal file-access dialogs in place of defering to ODMA.
+
+
+2. CONFIRMATION IN AN APPLICATION
+
+2.1 Setting the Environment for Using 0.20alpha Components
+
+   Two access components of ODMJNI 1.0 0.20alpha in your own Java
+   application, you will need to specify the classpath (directory <folder>)
+   to java.
+
+   You will also need to tell java how to find odmjni100.dll.
+
+   There is an example of what is needed (for the command-line java engine)
+   in RunSetup02.bat.  This is the important instruction in that script:
+
+        java -cp ".;%OdmClasses%" -Djava.library.path=..\..\ Setup02
+
+   where %OdmClasses% was set in OdmJava.bat and the java.library.path is
+   locating the directory containing the odmjni100.dll that is needed for
+   ODMJNI operations.  An alternative value would be
+
+        "-Djava.library.path=%OdmClasses%\info\odma\odmjni100\"
+
+   The quotes are required if there are any spaces in the %OdmClasses%
+   path.  There are other ways to set the library path.  The alternatives
+   are specified in the JDK and JNI documentation.
+
+2.2 Using ODMJNI in the application
+
+2.2.1 Starting out
+
+   The way to obtain an OdmConnection interface for use of ODMJNI in your
+   Java application is with a definition such as the following:
+
+        import info.odma.practical100.*;
+
+            /* ... */
+
+        OdmConnection myOdma
+            = info.odma.odmjni100.OdmJniBind.application("MyApplication");
+
+   where "MyApplication" is a string that names your particular ODMA-aware
+   application.  (It must not exceed 15 alphanumeric characters, it must
+   not contain spaces, and be unique enough to your product that a default
+   DMS can be set for it in the Microsoft Windows registry.)
+
+   Everything that happens after that is accomplished with the myOdma
+   interface reference.
+
+2.2.2 Using the OdmConnection interface
+
+   All of the OdmConnection functions are implemented and represent
+   actual condition of the ODMA Connection Manager and any default DMS.
+
+   However, the functions for accessing actual documents are limited:
+
+        * acceptNewDocument provides a null-document response
+
+        * openKnownDocument provides a null-document response
+
+        * chooseDocument *will* engage any default DMS and elicit the
+          DMS document-selection dialog.  Then, whether there is a DMS or
+          not, it provides a null response.
+
+   These are all legitimate responses.  In the case of chooseDocument, the
+   user's response is simply being over-ridden and the Java program is
+   advised that the user requested that the application's own dialog be
+   used.  The 0.30alpha distribution will replace that behavior, reporting
+   the actual response and allowing a selected document to be delivered to
+   the application for its use.
+
+2.3 Critical Confirmation for Java GUI Applications
+
+   The end-to-end confirmation demonstrated in the 0.20alpha distribution
+   is accomplished using Java console applications.   No attempt is made
+   to provide a Java GUI demonstration.  This distributions is to seek
+   confirmation of successful Java GUI integration by Java application
+   developers.  There are two critical measures:
+
+        * Confirmation of the successful maintenance of an OdmConnection
+          interface to the end-to-end ODMJNI solution achieved in 0.20alpha.
+          This involves confirming the 5 features described for Setup04-
+          reference (section 1.2.1).
+
+        * Confirmation that the DMS dialog that appears in response to
+          OdmConnection.chooseDocument() operations is properly modal.
+
+          THIS IS A CRITICAL CHECK.  The dialogs must appear atop the Java
+          application's GUI window. Operations with the GUI window must not
+          be possible until the DMS Dialog is responded to by the user.
+
+          0.20alpha demonstrates that this is accomplished for console
+          (command-line) applications.  0.20alpha contains untested code
+          to accomplish the same result with a Java GUI application.  Java
+          GUI Application Developers: If a modal dialog is not presented,
+          or it is tied to the wrong Java GUI Windows, please report this
+          at once.  (See the end of this document for contact information.)
+
+   The following section sketches the recommended approach to integration
+   of ODMJNI operations and ODMA-aware behavior using the 0.20alpha
+   distribution.
+
+
+3. Integration in Application GUI Behavior
+
+   The following hierarchical progression recommends ways that application
+   GUI dialogs incorporate ODMA-aware behavior via ODMJNI:
+
+   The application should be organized to keep track of the documents it is
+   operating on, their origin, and their change status:
+
+       * whether the document has a known location or is not associated
+         with a known location (file system path)
+
+       * whether the local document is the content of a managed document
+         that is accessed via ODMA
+
+       * whether there are any changes to the local document that have not
+         been reflected at a file-system and location and in ODMA.
+
+    > OdmConnection is established in the startup of the application.  A
+      reference to the interface is kept available wherever users or the
+      application may request access to a document: Open ... selections,
+      Recent documents ..., etc.
+
+      > If OdmConnection.availableConnection() is false, all document
+        operations are to be accomplished with local file operations only.
+
+      > If OdmConnection.availableConnection() is true, ODMA should be
+        checked before performing a local file-system operation (other than
+        Save on a document that was obtained from the local file-system).
+
+        > If OdmConnection.dmsDefaultAvailable() is false, all document
+          operations that would require a default DMS should be performed
+          using the local file file-system.  dmsDefaultAvailable() is always
+          false when availableConnection() is false.
+
+        > If OdmConnection.dmsDefaultAvailable() is true, then operations
+          directed against a default DMS should be attempted before trying
+          the counterpart operation with the local file system:
+
+          > OdmConnection.acceptNewDocument is used when there is content
+            in the application that has no known location and it needs
+            to be saved.  If there is no default DMS, this operation will
+            simply return a null-document indicating that the local file-
+            system should be used.  That is also the response in 0.20alpha.
+
+          > OdmConnection.chooseDocument is used when the user indicates
+            a desire to access a document.  If there is no default DMS,
+            this operation will simply return a null-document indicating
+            that the local file-system should be used.  If there is a
+            default DMS, the DMS will interact with the user and return an
+            indication of the user's response via a document object.  For
+            0.20alpha, the null-document response is always provided.
+
+        > OdmConnection.openKnownDocument is used when an ODMA Document ID
+          has been provided to the application and that specific document
+          is being requested.  A known Document ID might have been provided
+          on the command line, as a link in another document, or from the
+          application's recent-documents list or equivalent.  When
+          OdmConnection.availableConnection() is false, this operation
+          returns a null-document indicating that the request failed.  The
+          operation will also fail if there is no DMS (default or otherwise)
+          of the kind required for the particular Document ID.  0.20alpha
+          always fails with this request.
+
+    > At some point where it is known that the OdmConnection interface will
+      not be needed, the OdmConnection.release() operation should be
+      performed.  This allows resources that are not in use to be released
+      by ODMJNI, rather than holding onto them in the prospect of further
+      operations.  OdmConnection.release() will not release anything used
+      by other ODMJNI objects (such as an in-use OdmWorkingDocument).  After
+      an OdmConnection.release(), OdmConnection.availableConnection() and
+      OdmConnection.dmsDefaultAvailable() return false and other operations
+      of the OdmConnection behave accordingly.
+
+### END OF MATERIAL THAT NEEDS TO BE EDITED ##############################
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+           Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+  Portions Copyright © 1994-1998 AIIM International <http://www.aiim.org>
+                   and the respective contributors to ODMA.
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: ODMJNI 1.0 0.30alpha End-to-End Confirmation.
+        ODMA Interoperability Exchange, ODMdev Development Note page
+        d061201e-ReleaseNotes.txt 0.01, January 14, 2007.  Current version
+        available as part of the archive downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201e.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-01-14-13:51 Add notification of the 0.30alpha defect.
+     Also refer to the 0.40alpha release notes for further caveats.
+0.00 2007-01-07-14:34 Begin editing of Release Notes using the 0.20alpha
+     release notes version 0.03 as the model,
+     <http://ODMA.info/dev/devNotes/2006/12/d061201c-ReleaseNotes.txt>
+
+$Header: /ODMdev/d061201e-ReleaseNotes.txt 2     07-01-14 13:55 Orcmid $
+
+                    *** END OF d061201e-ReleaseNotes.txt ***
+

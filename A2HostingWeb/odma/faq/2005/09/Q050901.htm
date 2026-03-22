@@ -1,0 +1,277 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q050901: ActiveODMA C/C++ Compiler</title>
+<!--$$Header: /ODMACompagno/faq/2005/09/Q050901.htm 77    13-08-22 12:48 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006.htm 0.10 of 2005-07-06T00:17Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>
+		<a href="../../q000001.htm#Q050901"><font color="#990033">Q050901</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../q000001.htm"><font color="#990033">
+		FAQtip</font></a></font></strong><font color="#990033"><strong><br>
+      <i><font size="5"> ActiveODMA C/C++ Compiler</font></i></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a 
+  href="../../">faq</a>&gt;<br>
+      <a href="../">2005</a>&gt;<a target="_top" href="./">09</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q050901.htm">Q050901</a>&gt;</code></b><br>
+      <small><small><a href="#0.27">0.27</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2008-04-26<!--webbot bot="Timestamp" endspan i-checksum="12288" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:09 -0700<!--webbot bot="Timestamp" endspan i-checksum="12066" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+  <hr noshade color="#990033">
+
+<blockquote>
+	<p>In order to have independent verification and confirmation of the 
+	construction of ActiveODMA components such as ODMref 1.0, there is careful 
+	management of the choice and configuration of compilers for construction of 
+	deliverables.&nbsp; The release notes for each deliverable 
+	identify the software that was used in its construction and that is usable 
+	for its verification.&nbsp; </p>
+	<p>This document reports the selection of C/C++ Compilers for ActiveODMA 
+	development.&nbsp; </p>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#1.">Requirements for Software Verification</a><br>
+			2. <a href="#2.">Choosing Compilers</a><br>
+			3. <a href="#3.">Supported Compilers</a><br>
+			4. <a href="#4.">Further Information</a></h3>
+			<blockquote>
+				<dl>
+					<dt><i>see also:</i></dt>
+					<dd><b>Q050901b: <a href="q050901b.htm">Recommended C/C++ 
+					Compiler for ActiveODMA Work</a></b></dd>
+					<dd><b>Q050902: <a href="q050902.htm">C/C++ Compiler Setup</a></b><br>
+					<b>Q050903: <a href="q050903.htm">C/C++ Programming Resources</a></b></dd>
+				</dl>
+			</blockquote>
+		</blockquote>
+		<!--webbot bot="Include" U-Include="../../../construction/2006/10/c061001b1.htm" TAG="BODY" startspan -->
+		
+		<table border="3" width="80%" bordercolor="#800000" id="table1">
+			<caption valign="bottom" align="bottom"><font face="sans-serif"><b><small><small>
+			<a href="../../../construction/2006/10/c061001e.htm"><font color="#800000">ODMA&gt; repaving&gt; 
+			2008-04-25 rededication&gt;</font></a></small></small></b></font></caption>
+			<tr>
+				<td>
+				<h3 align="center"><b><br><font color="#800000">ODMA.info Is Being 
+				Repaved.</font></b></h3>
+				<blockquote><small>
+					<p align="left"><font color="#800000"><b>Migration to a new 
+					server introduced a number of problems that need to be 
+					repaired.&nbsp; Older pages also need to be modified and 
+					reorganized for consistency across the entire ODMA site.&nbsp; While the site is 
+					being repaved to accomplish both kinds of improvements, you 
+					may notice discrepancies and problems with links to site 
+					content.</b></font></p>
+					<p align="left"><b><font color="#800000">Check the
+					<a href="../../../construction/2006/10/c061001.htm"><font color="#800000">Site Repaving Project</font></a> 
+					pages for additional details on the known defects and the 
+					approach to correction and upgrade.&nbsp; </font></b>
+					<font color="#800000"><b>Contact the
+					<a target="_top" href="../../../contact.htm"><font color="#800000">ODMA 
+					Technical Coordinator</font></a> with questions and to 
+					report any defects that you notice.</b></font></p></small>
+				</blockquote>
+				<p>&nbsp;</td>
+			</tr>
+			<!-- Included from ODMA construction/2006/10/c061001e1.htm of 2008-04-26-11:08 -0700 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="52334" --><p>
+		<font color="#800000"><b>NOTE: In early 1996 the Visual C++ Toolkit 2003 
+		was no longer available for download and Visual C++ 2005 Express Edition 
+		became the chosen tool for ActiveODMA development.&nbsp; These pages 
+		will be updated to reflect that as part of the overall repaving.</b></font></p>
+	</blockquote>
+</blockquote>
+<h2><a name="1." href="#1.">1.</a> Requirements for Software Verification</h2>
+<blockquote>
+	<p><b><a name="1.1" href="#1.1">1.1</a></b> To make it possible for others 
+	to easily duplicate and verify the construction of ActiveODMA components on 
+	their own systems, the software is delivered in packages that provide 
+	everything needed for rebuilding and testing of the component <b>using a 
+	comparable configuration of tools and their installation</b>. The 
+	configurations are managed carefully to ensure that the conditions of 
+	construction are stable and reproducible.</p>
+	<p><b><a name="1.2" href="#1.2">1.2</a></b> So that others may verify the 
+	work and inspect the software at minimum cost and without requiring 
+	extensive software-development training, the development software is chosen to 
+	satisfy the following requirements:</p>
+	<ul>
+		<li><b><a name="1.2.1" href="#1.2.1">1.2.1</a></b> All tools are freely 
+		available; there is no requirement for software purchases or significant 
+		training.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.2.2" href="#1.2.2">1.2.2</a></b> The tools are 
+		installed and operational in a form where programming novices can safely 
+		use them to duplicate the construction of the software without having to 
+		be capable of having written it or being required to modify it. <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.2.3" href="#1.2.3">1.2.3</a></b> The results obtained 
+		in development are fully reproducible and easily checked by any adopter, 
+		reviewer, or student using instructions and tools supplied for that 
+		purpose.</li>
+	</ul>
+	<p><b><a name="1.3" href="#1.3">1.3</a></b> For activities requiring 
+	specialized skills and greater experience, the same tools are usable.&nbsp; 
+	Use of advanced tools for development and analysis is optional.&nbsp; The 
+	basic configurations serve as foundations on which advanced skills can be 
+	exercised and developed.&nbsp;&nbsp; </p>
+	<p><b><a name="1.4" target="_top" href="#1.4">1.4</a></b> Basic working 
+	knowledge of a Microsoft Windows PC (Windows 2000 and later) is assumed.&nbsp; 
+	Confidence at working with files and folders and moving between accounts is 
+	presupposed.&nbsp; Minimal administrator-account operations are required.</p>
+</blockquote>
+<h2><a name="2." href="#2.">2.</a> Choosing Compilers</h2>
+<blockquote>
+	<p><b><a name="2.1" href="#2.1">2.1</a></b> Although ODMref 1.0 and other 
+	ActiveODMA Reference implementations are intended for adaptation by 
+	experienced software developers, they are also meant to be operational and 
+	usable.&nbsp;&nbsp; To serve this range of purposes and to maximize the 
+	opportunity for participation in ActiveODMA efforts, the software is created using 
+	widely-used, readily-available, well-documented tools that deliver 
+	production-quality software to the intended Microsoft platforms.</p>
+	<p><b><a name="2.2" href="#2.2">2.2</a></b> It is desirable to have all 
+	delivered software be instructive for study as reference implementations and 
+	as demonstrations of <b><a target="_top" href="http://TROSTing.org">
+	TROSTing</a></b> applied to ActiveODMA. </p>
+	<p><b><a name="2.3" href="#2.3">2.3</a></b> The chosen C/C++ compilers 
+	satisfy these requirements.&nbsp; Generally, only one is used at any point 
+	in time, and for as long as possible until it becomes unavailable or 
+	obsolescent for use on the commonly-available platforms.&nbsp; When the 
+	availability of C/C++ compilers changes, the roster of supported compilers will be updated and still-supported software 
+	versions will be rebuilt and re-verified when necessary for maintenance 
+	purposes.</p>
+	<p><b><a name="2.4" href="#2.4">2.4</a></b> It is the new stable distributions 
+	that are always built using the designated tools.&nbsp; The same compiler 
+	(and other resources) must be used when verifying the exact construction of one of those distributions.&nbsp; 
+	</p>
+	<p><b><a name="2.5" target="_top" href="#2.5">2.5</a></b> Developers of ODMA and ActiveODMA components are free to employ different C/C++ 
+	compilers and supporting tools in their contributions so long as the interfaces between components 
+	and supporting libraries are preserved.&nbsp; Any contributed source code to 
+	ActiveODMA projects will be recompiled using the preferred compiler as part 
+	of achieving a stable release.</p>
+</blockquote>
+<h2><a name="3." href="#3.">3.</a> Supported Compilers</h2>
+<blockquote>
+	<p><b><a name="3.1" href="#3.1">3.1</a></b> <b>Effective March 3, 2005</b> the 
+	C/C++ Compiler used for ActiveODMA deliverables is the command-line compiler 
+	provided in the <b><a href="q050901c.htm">Microsoft Visual C++ Toolkit 2003 
+	1.01</a></b>.</p>
+</blockquote>
+<h2><a name="4." href="#4.">4.</a> Further Information</h2>
+<blockquote>
+	<ul>
+		<li><b>Q050901b: <a href="q050901b.htm">Recommended C/C++ Compiler for 
+		ActiveODMA Work</a></b></li>
+		<li><b>Q050901c: <a href="q050901c.htm">Microsoft Visual C++ Toolkit 
+		2003 1.01</a></b></li>
+		<li><b>Q050901a: <a href="q050901a.htm">ActiveODMA C/C++ Compiler - 
+		Diary &amp; Job Jar</a></b></li>
+	</ul>
+	<dl>
+		<dt><i>see also:</i></dt>
+		<dd><b>Q050902: <a href="q050902.htm">C/C++ Compiler Setup</a></b><br>
+		<b>Q050903: <a href="q050903.htm">C/C++ Programming Resources</a></b></dd>
+	</dl>
+</blockquote>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><i><a name="Contributors">Contributors</a></i>:</b></dt>
+<dd>&nbsp;&nbsp;&nbsp;&nbsp; <b>2005-09-09:</b> Dennis Hamilton developed this note to support confirmation of 
+experiments and construction that are part of the ODMdev setup for ODMref 1.0 
+development and further ActiveODMA components.</dd>
+<dd>&nbsp;</dd>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.27">0.27</a> 2007-09-16-21:20 Indicate Replacement by VC++ 
+2005 Express Edition</b></dt>
+<dd>Add a marker that repaving applies here and that VC++ 2005 Express Edition 
+is now the favored product.</dd>
+<dt><b><a name="0.26">0.26</a> 2005-10-03-14:21 Move to faq/2005/09 canonical 
+location as part of FAQ Refresh</b></dt>
+<dd>This move provides for the material being at a predictable location, always, 
+and being situated elsewhere as include pages.</dd>
+<dt><b><a name="0.25">0.25</a> 2005-09-11-11:34 Provide more on prerequisites 
+and Windows knowledge</b></dt>
+<dt><b><a name="0.20">0.20</a> 2005-09-10-14:58 Specify Conditions that led to Selection 
+and Use of Visual C++ Toolkit 2003 1.01</b></dt>
+<dd>Link to the detailed materials that provide instruction for obtaining the 
+recommended toolkit.</dd>
+<dt><b><a name="0.00">0.00</a>  2005-09-07-22:36 create&nbsp; bootstrap placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="q050901a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; This page is a customization of the
+	<a href="../../../faq/templates/00/Q000006.htm">FAQtip 
+	Bootstrap Template 0.10 template</a>.&nbsp; A 
+	version from
+	<a target="_top" href="../../../projects/2005/06/p050601c.htm">FAQtip Bootstrap 0.10 Material</a> was used.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="16%">
+      <p><a href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="52%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="30%">
+      <p align="right"><font size="-2">created 2005-09-07-22:22 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 77 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

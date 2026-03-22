@@ -1,0 +1,243 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMACompagno/active/odmref10/mitigate/P050302.htm 21    13-08-22 12:47 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>P050302: ODMref1.0 Mitigation Experiment #1</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Project 
+		<a href="../../../projects/p000001-log.htm#P050302"><font color="#990033">P050302</font></a> ODMref1.0<br>
+      <i><big>
+      <big>Mitigation Experiment #1</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../../../" target="_top">ODMA</a>&gt;<a target="_top" href="../../">active</a>&gt;<br>
+      <a href="../" target="_top">ODMref1.0</a>&gt;<br>
+		<a target="_top" href="./">mitigate</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="P050302.htm">P050302</a>&gt;</code></b><br>
+      <small><small><a href="p050302.htm#0.00">0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2010-08-29<!--webbot bot="Timestamp" endspan i-checksum="12490" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->20:11 -0700<!--webbot bot="Timestamp" endspan i-checksum="11945" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<div align="left">
+  <table border="0" width="100%">
+    <tr>
+      <td width="50%"><b>Type: Feasibility Demonstration</b></td>
+      <td width="50%"><b>Project ID: 
+		<a href="../../../projects/p000001-log.htm#P050302">P050302</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Style: Abbreviated</b></td>
+      <td width="50%"><b>Status</b>: <b>In Progress</b></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">
+        <dl>
+          <dt>
+        <b>Objective:</b></dt>
+			<dd>Build a simple DLL that offers the standard entry required for 
+			ODMA DMS integrations.<br>
+&nbsp; 1. It uniformly fails to return an interface.<br>
+&nbsp; 2. It creates a log of the call that was made to it and reports the 
+			response it is providing.<br>
+&nbsp; 3. There is a simple test harness that also works with existing ODMA DMS 
+			DLLs.</dd>
+        </dl>
+      </td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt>
+        <b>Related information/projects:</b>
+          <br>
+&nbsp;&nbsp;&nbsp;&nbsp; P050301: <a href="P050301.htm">ODMAref1.0 Risk 
+		Mitigation Exercise</a></dt>
+			<dd>&nbsp;
+          </dd>
+        </dl>
+        <p>&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: Dennis E. Hamilton</td>
+      <td width="50%"><b>Defined By:&nbsp;</b>Dennis Hamilton (2004-11-11)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Initiated</b>: 2005-03-07</td>
+      <td width="50%"><b>Date Completed</b>: tbd</td>
+    </tr>
+    <tr>
+      <td width="50%">
+        &nbsp;</td>
+      <td width="50%"></td>
+    </tr>
+  </table>
+</div>
+  <hr noshade color="#990033">
+
+<h2>1. <a name="Concerns">Concerns</a></h2>
+
+<ul>
+  <li>Establish that there is a minimal, inexpensive tool set for constructing 
+	the necessary DLL.</li>
+	<li>Calibrating the effort involved in this simple activity, and the 
+	preparations for it.</li>
+	<li>Being able to explain and easily reproduce the preparation and 
+	construction process is part of the overhead for making constructions 
+	demonstrable and trustworthy.</li>
+</ul>
+
+<h2>2. <a name="Approach">Approach</a> (2005-03-27)</h2>
+<ul>
+	<li><span style="font-weight: 700; background-color: #CCCCFF">2005-03-09: Set up a simple compilation project using a freely available version of 
+	VC++</span></li>
+	<li><b><span style="background-color: #CCCCFF">2005-03-07: Extract a skeleton from the source code of the ODMA 2.0 Sample DMS (DLL 
+	structure) and the ODMA 2.0 Connection Manager (logging functions).</span></b></li>
+	<li><b><span style="background-color: #CCCCFF">2005-03-07: Find the ODMA header files that are required for implementation of a DMS 
+	DLL entry point (no interfaces)</span></b></li>
+	<li><b><span style="background-color: #CCCCFF">2005-03-07: Find the ODMA header files for properly matching the signature and data 
+	types of the
+	<a href="http://www.info../../../downloads/odma20-3.htm#ODMGetODMInterface">ODMGetODMInterface</a> function prototype.</span></b></li>
+	<li>Find the include files that are required to be able to compile all of 
+	the definitions used in the minimal skeleton DLL.&nbsp; Everything that is 
+	not redistributable from Microsoft, identify how it is found and then 
+	document how someone else can obtain it.</li>
+	<li>Successfully compile a simple DLL that has ODMGetODMInterface as its 
+	only function.</li>
+	<li>Create a script for registering the ODMref10 DLL with ODMA so that it 
+	can be called as a default function.</li>
+	<li>Try out the interface with TestODMA32 and one other application, such as 
+	Microsoft Word 2003.</li>
+	<li>Insert code to log the parameters passed to ODMGetODMInterface and also 
+	log the NOINTERFACE response from the dummy function.</li>
+	<li>Verify creation of the log by programs that initiate the interface.</li>
+</ul>
+
+<h2>3. <a name="Activities">Activities</a>                 (2005-03-27)</h2>
+
+<ul>
+  <li>
+    <p><span style="background-color: #CCCCFF"><b>2005-03-07: Extract the necessary skeleton 
+	and any local headers from the Sample DMS to the <strike>ODMref10</strike>DeRisk01 project.[dh:2005-03-27 
+	moved to separate DeRisk01 project.]</b></span><span style="background-color: #99FF66"><br>
+	The result is a simple file (or two) that will compile to a simple stub, 
+	provided that the necessary definition files are available.</span></li>
+	<li>
+    <p><span style="background-color: #99FF66">Arrange for the function to 
+	simply return NOINTERFACE, along with a NULL interface-pointer value.</span></li>
+	<li>
+    <p><span style="background-color: #99FF66">Get the DLL to compile.</span></li>
+	<li>
+    <p><span style="background-color: #99FF66">Use DeRun01 to verify that the 
+	DLL can be called and it behaves properly, just as other DMS DLLs called by 
+	DeRun01.</span></li>
+	<li>
+    <p><font color="#333333"><span style="background-color: #C0C0C0">Create 
+	registration and deregistration scripts to register the dummy as the default 
+	DMS, then deregister it.</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Attempt to operate the DMS with 
+	TestODMA32 and also Microsoft Word 2003.</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Record enough to be able to fully 
+	document this part and the preparations later.</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Find out how to learn the 
+	location of the DLL that is being run (we need this for other reasons later 
+	on)</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Use that as the location for 
+	creating a log (we will later put the logs in the directory of the document 
+	base being used, but for now we put them with the DLL).</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Implement a simple log, similar 
+	to that produced by the ODMA 2.0 Connection Manager.</span></li>
+	<li>
+    <p><span style="background-color: #C0C0C0">Verify operation of the log and 
+	the entry failures with TestODMA32 and any Microsoft Office applications 
+	that are proposed to be ODMA-aware.</span></li>
+</ul>
+
+  <h2>4. Materials (2005-03-27)</h2>
+</font>
+<ul>
+	<li><b>P050302b: <a href="P050302b.htm">DeRun01 Test Harness</a></b></li>
+	<li><b>P050302c: <a href="P050302c.htm">DeRisk01 Dummy DLL</a></b></li>
+	</ul>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+  <dt><b><a name="0.00">0.00</a>  2005-03-07 create&nbsp; placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="P050302a.htm">job jar </a>and use it to drive
+    the completion of essential items here, which starts as a simple skeleton.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a rel="nofollow" target="_top" href="../construction.htm"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2005-03-07-10:04 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:47 $<br>
+      $$Revision: 21 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

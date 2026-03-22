@@ -1,0 +1,152 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000901.htm 5     00-10-09 9:02 Orcmid $-->
+<title>X000901: Session Lifecycle Management</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000901.htm">X000901</a>:
+</b>Session Lifecycle Management</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-10-09-08:55 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000901.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Reliability - Concern</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000901.htm">X000901</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>3 - Non-Critical</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Investigation Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: <code>Odma.dll</code><kbd>, </kbd><code>ODMA32.dll</code></b><kbd>,
+        </kbd>versions 2.0.0</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd</a> </b></dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000704">Q000704</a>:
+            ODMA-Compliant DMS Integration
+        Compatibility with Connection-Manager Versions<br>
+            <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000809">X000809</a>:
+            Down-level <b><i><code>version</code></i></b> support not implemented.<br>
+            <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000808">X000808</a>:
+            <code><b>ODMRegisterApp</b> </code> Filters <b><i><code>version</code></i></b>
+        incorrectly.</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis Hamilton (2000-09-10)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-09-10</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>   (2000-09-11):</h3>
+
+<blockquote>
+
+<p>The ODMA Connection Manager creates a cache of loaded DMS integration DLLs
+and COM-object instances.&nbsp; This allows DMS integrations to be kept
+&quot;hot&quot; after any use of a particular DMS is made during a
+session.&nbsp; The initial session-creating <code><b>ODMRegisterApp</b></code>
+operation automatically initializes and caches the default DMS integration for
+the ODMA-aware application that's requesting the session.</p>
+
+<p>There are a number of object and DLL-readiness lifecycle considerations to be
+maintained to ensure that (1) DLLs are not released out from underneath COM
+objects that they implement, (2) COM objects are not lost track of without being
+released, and (3) system resources are not held on too long or even seized
+indefinitely until the application terminates or Windows is shutdown.</p>
+
+  <p>There is no indication that there are any difficulties in this area.&nbsp;
+  Examination of the ODMA Connection Manager source codes as part of
+  documentation and troubleshooting efforts does not suggest any problem.&nbsp;
+  However, this area has only been given cursory examination.&nbsp;&nbsp;</p>
+
+  <p>It is important to assure that the code has been inspected for possible
+  boundary cases that could lead to difficulties.&nbsp; The most dangerous case
+  is one that would cause the implementing code for a COM object to be released
+  while interfaces to the object are still held by the Connection Manager and
+  the application.&nbsp; There are comments in the implementation of <b><code>ODMQueryInterface</code></b>
+  that leave open the possibility of just this case.</p>
+
+  <p>This incident report is a placeholder for the absence of a complete audit
+  and the concern that there may be an unrecognized, although probably unlikely,
+  failure case in the current implementation.</p>
+
+  <p>Immediate resolution is a low priority, although it would be a source of
+  confidence that the Connection Manager is well-behaved and merits user
+  confidence because it employs robust lifecycle-management techniques.&nbsp; It
+  becomes more important to be satisfied that lifecycle-management is stable and
+  resilient before considering changes and updates to the Connection Manager
+  implementation.</p>
+
+</blockquote>
+<h3><a name="Actions">Actions</a>  (2000-09-11):</h3>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Create an identified project to carry the activity of completing an
+      audit of the Connection Manager, especially its handling of lifecycle
+      concerns. [2000-09-11: Project <a href="http://www.infonuovo.com/odma/projects/p00-log.htm#P000900">P000900</a>
+      is logged.&nbsp; It is not started.]</li>
+    <li>To keep attention on this concern, register an incident report that
+      brings to account the absence of any known audit and omission of a
+      documented set of constraints used to ensure well-behaved lifecycle
+      management in the Connection Manager implementation. [2000-09-11:
+      accomplished with this incident report, <a href="http://www.infonuovo.com/odma/support/X000901.htm">X000901</a>.]</li>
+    <li>Update this incident report, and close it as appropriate, based on the
+      outcome of the audit project.</li>
+  </ol>
+</blockquote>
+<h3><a name="Investigation">Investigation</a>    (2000-10-09):</h3>
+<blockquote>
+<p>The project for auditing the Connection Manager's lifecycle-management
+methodology should pay attention to the following:</p>
+  <ol>
+    <li>The impact of an <b><code>ODMSetDMS</code></b> operation on
+      already-established default DMS instances.</li>
+    <li>The impact of instantiating DMS implementations that do not support all
+      ODMA 2.0 interfaces.</li>
+    <li>The impact of <b><code> ODMQueryInterface</code></b> operations and the existence of
+      unreleased interfaces at the time of an <b><code>ODMUnregisterApp</code></b>
+      operation.</li>
+    <li>The rules for aggregation and the handling of <b><code>IUnknown</code></b>
+      interfaces by the container of the aggregated object, especially when
+      interfaces of the aggregated object are delivered as a consequence of <b><code>ODMQueryInterface</code></b>.</li>
+  </ol>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-09-11-05:40 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-10-09 9:02 $<br>
+$$Revision: 5 $</em></p>
+</body>
+</html>

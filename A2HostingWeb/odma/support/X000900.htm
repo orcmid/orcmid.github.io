@@ -1,0 +1,151 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000900.htm 3     00-09-10 13:12 Orcmid $-->
+<title>X000900: Omission of 0 and ODM_NOERROR from ODMSTATUSfect + ODMA32 +
+PCDocs Memory/Resource Hogging</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000900.htm">X000900</a>:
+</b>Omission of <b><code>0</code></b> and <b><code>ODM_NOERROR</code></b> from <b><code>ODMSTATUS</code></b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-09-10-11:58 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000900.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Functionality - Defect</b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000900.htm">X000900</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>5 - Important</b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Repair Pending</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: </b><kbd><b>Odma.h</b>, </kbd><a href="http://www.ionfonuovo.com/odma/downloads/odma200h.htm">version 2.0.0</a></td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd</a> </b></dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Q000705</a>:
+            Changes Between ODMA Versions<br>
+            <a href="http://www.infonuovo.com/odma/downloads/Q000703.htm">Q000703</a>:
+            ODMA-Aware Application and Connection Manager Version Compatibility<br>
+            <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000704">Q000704</a>:
+            ODMA-Compliant DMS Integration and Connection Manager Version
+            Compatibility<br>
+            <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000002">X000002</a>:
+            Error Codes Missing in <b><code>Odma.h</code></b></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Dennis Hamilton (2000-09-09)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-09-10</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>  (2000-09-10):</h3>
+
+<blockquote>
+
+<p>In the ODMA 1.0 Specification, <b><code>ODMSTATUS</code></b> value <b><code>0</code></b>
+is defined as the successful result.</p>
+
+  <p>In the ODMA 1.5 Specification, <b><code>ODMSTATUS</code></b> value <b><code>0</code></b>
+  continues to be defined as the successful result for those operations
+  preserved from ODMA 1.0.&nbsp; In addition, <b><code>ODMSTATUS</code></b>
+  value <b><code>ODM_NOERROR</code></b> is specified as the successful result
+  for new operations introduced in ODMA 1.5.&nbsp; In the <b><code>Odma.h</code></b>
+  file for ODMA 1.5, <b><code>ODM_NOERROR</code></b> is correctly defined to <b><code>0</code></b>,
+  preserving downward compatibility and the usability of <code><b>0</b></code>
+  as the status code for a successful operation.</p>
+
+  <p>In the ODMA 2.0 Specification, <b><code>ODMSTATUS</code></b> value <b><code>ODM_SUCCESS</code></b>
+  is the only defined value for a successful result.&nbsp; In the <b><code>Odma.h</code></b>
+  version 2.0.0, <b><code>ODM_SUCCESS</code></b> is correctly defined to <b><code>0</code></b>,
+  preserving downward compatibility.&nbsp; However, the value <b><code>ODM_NOERROR</code></b>
+  is no longer defined in <b><code>Odma.h</code></b>, violating the downward
+  compatibility commitment: An ODMA-1.5-compliant program will not compile
+  successfully using version 2.0.0 of the <b><code>Odma.h</code></b>
+  file.&nbsp;&nbsp;</p>
+
+  <p>This is a problem for source-code reuse and rebuilding of source code with
+  newer library files.&nbsp; The binary forms of ODMA-1.5-compliant components
+  will operate properly because only the symbolic name has changed, not the
+  actual value used for successful results.</p>
+
+</blockquote>
+<h3><a name="Actions">Actions</a> (2000-09-10):</h3>
+
+<blockquote>
+
+<ol>
+  <li>The update of <b><code>Odma.h</code></b> 2.0.0 to version 2.0.1 will
+    define <b><code>ODM_NOERROR</code></b> to be the same as <b><code>ODM_SUCCESS</code></b>
+    and there will be appropriate cautionary remarks about these always having
+    to have value <b><code>0</code></b>.</li>
+  <li>There will be no change to the documentation or the ODMA 2.0
+    Specification.&nbsp; The steps taken to preserve downward compatibility will
+    be documented with the ODMA 2.0 library files.</li>
+  <li>As a matter of good practice, new and revised ODMA-compliant components
+    should be programmed to confirm <b><code>ODM_SUCCESS</code></b> without
+    depending on its value being known to be <b><code>0</code></b>.&nbsp; E.g.,
+    use</li>
+</ol>
+<blockquote>
+  <p align="center"><b><code>if (rc != ODM_SUCCESS) return rc;</code></b></p>
+  <p align="left">rather than</p>
+  <p align="center"><b><code>if (rc) return rc</code></b>;</p>
+  <p align="left">Recommendations to this effect will be implicit in new
+  examples and sample software, as well as in any programming tips and
+  programmers guides that are developed.</p>
+</blockquote>
+
+</blockquote>
+<h3><a name="Investigation">Investigation</a>  (2000-09-09):</h3>
+<blockquote>
+  <ol>
+    <li>The ODMA 1.0, ODMA 1.5, and OMDA 2.0 specifications were compared as
+      part of producing <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Q000705</a>
+      on changes between ODMA versions.&nbsp; The use of <b><code>0</code></b>
+      in pre-ODMA-2.0 specifications, and the introduction of <b><code>ODM_NOERROR</code></b>
+      in ODMA 1.5 was noticed then.</li>
+    <li>The ODMA 1.5 version of <b><code>Odma.h</code></b> was inspected to
+      confirm that <b><code>ODM_NOERROR</code></b> is defined and is <b><code>0</code></b>
+      for downward compatibility.</li>
+    <li>The ODMA 2.0 header file, <b><code>Odma.h</code></b> version 2.0.0, was
+      inspected to confirm that <b><code>ODM_SUCCESS</code></b> preserves
+      downward compatibility with 0 but that <b><code>ODM_NOERROR</code></b> is
+      no longer defined.</li>
+  </ol>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-09-10-11:58 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-09-10 13:12 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

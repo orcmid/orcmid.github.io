@@ -1,0 +1,24 @@
+<html><head><title>DMA Join Operators</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2>DMA Defined Join Operators</h2><p>The following Join Operators are defined by DMA 1.0:</p>
+<TABLE BORDER=1><TR>
+<TD><p><b>Name</b></p></TD>
+<TD><p><b>Define Name</b></p></TD>
+<TD><p><b>Description</b></p></TD>
+</TR><TR>
+<TD><p>Cross Join</p></TD>
+<TD><p>dmaJoinOperator_Cross</p></TD>
+<TD><p>Returns the Cartesian product of the rows of the two searchable classes.</p></TD>
+</TR><TR>
+<TD><p>Inner Join</p></TD>
+<TD><p>dmaJoinOperator_Inner</p></TD>
+<TD><p>A Join operation that does not return a row if either the left or right or both operands of the equality operator are NULL for a particular row under scan.</p></TD>
+</TR><TR>
+<TD><p>Left Outer Join</p></TD>
+<TD><p>dmaJoinOperator_LeftOuter</p></TD>
+<TD><p>Returns a row if the left operand of the equality operator is non NULL, even if the right operand is NULL.</p></TD>
+</TR><TR>
+<TD><p>Right Outer Join</p></TD>
+<TD><p>dmaJoinOperator_RightOuter</p></TD>
+<TD><p>Returns a row if the right operand of the equality operator is non NULL, even if the left operand is NULL.</p></TD>
+</TR>
+</TABLE></body>

@@ -1,0 +1,977 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040701C: Atom Syndication Format 0.3pre </title>
+<!--$$Header: /A2HostingWeb/orcmid/BlunderDome/B040701C.htm 25    26-03-22 14:13 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>BlunderLab <a href="B000001-log.htm"><font color="#990033">Notebook</font></a>
+      <a href="B000001-log.htm#B040701"><font color="#990033">B040701</font></a><br>
+      <a href="B040701.htm"><font color="#990033">Atom Feed Synthesis</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>Atom Syndication Format 0.3pre</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="B040701C.htm" target="_top">B040701C</a>&gt;</code></b><br>
+      <small><small><!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<p align="left" style="border-style: dotted; border-width: 3">This material
+  was captured from the <a target="_top" href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">Atom
+Syndication Format page</a>.&nbsp;It is here for off-line consultation and also for
+  establishment of sources.&nbsp;&nbsp;<br>
+&nbsp;-- dh:2004-07-15-12:21 -0700</p>
+
+<div id="container">
+  <div id="banner">
+    <h1><a title="Home - AtomEnabled.org" href="http://www.atomenabled.org/"><img src="http://atomenabled.org/images/atom-logo75px.gif" align="middle" border="0" width="75" height="75"></a>AtomEnabled
+    <sup>beta</sup></h1>
+    <div id="navlist">
+      <ul id="navbar">
+        <li><a title="home" href="http://www.atomenabled.org/">home</a>
+        <li><a title="developers" href="http://www.atomenabled.org/developers/">developers</a>
+        <li><a title="publishers" href="http://www.atomenabled.org/publishers/">publishers</a>
+        <li><a title="everyone" href="http://www.atomenabled.org/everyone/">everyone</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="developers">
+    <h3>The Atom Syndication Format 0.3 (PRE-DRAFT)</h3>
+  </div>
+  <div id="blog" style="width: 537; height: 14763">
+    <div class="heading">
+      <div class="heading_path">
+        <a href="http://www.atomenabled.org/developers/">Developers</a> &gt; <a href="http://www.atomenabled.org/developers/syndication/index.php">Syndication</a>
+        &gt; Atom Syndication Format 0.3 Draft
+      </div>
+    </div>
+    <h2>draft-nottingham-atom-format-02</h2>
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td vAlign="center" align="middle" width="30" bgColor="#000000" height="30"><b><span class="RFC">&nbsp;RFC&nbsp;</span></b><br>
+          </td>
+        </tr>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <table cellSpacing="1" cellPadding="1" width="66%" border="0">
+      <tbody>
+        <tr>
+          <td class="header" vAlign="top" width="33%">Atom Working Group</td>
+          <td class="header" vAlign="top" width="33%">M Nottingham&nbsp;</td>
+        </tr>
+        <tr>
+          <td class="header" width="33%"></td>
+          <td class="header" vAlign="top" width="33%">December 2003&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Abstract</h1>
+    <p>This specification describes version 0.3 of the Atom, an XML-based Web
+    content and metadata syndication format.</p>
+    <h1>Editorial Notes</h1>
+    <p>This draft HAS NOT been submitted for publication, and does not have any
+    status; it should be referred to as a &quot;pre-draft.&quot;</p>
+    <p>Discussion of this draft happens in two fora;</p>
+    <p>&nbsp;
+    <dl>
+      <dd style="MARGIN-TOP: 0.5em">The <a href="http://www.imc.org/atom-syntax/index.html">Atom
+        Syntax mailing list</a>
+      <dd style="MARGIN-TOP: 0.5em">The <a href="http://www.intertwingly.net/wiki/pie/FrontPage">Atom
+        Wiki Web site</a></dd>
+    </dl>
+    <p>&nbsp;</p>
+    <p>Comments and suggestions can be directed to the mailing list, whilst
+    active development happens on the Wiki.</p>
+    <p>Sections called out [[like this]] indicate editorial notes that should be
+    removed before final publication.</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td vAlign="center" align="middle" width="30" bgColor="#000000" height="30"><b><span class="RFC">&nbsp;RFC&nbsp;</span></b><br>
+          </td>
+        </tr>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.toc">Table of Contents</a></h1>
+    <p><b>1&nbsp; <a href="#rfc.section.1">Introduction</a></b><br>
+    <b>&nbsp;1.1&nbsp; <a href="#rfc.section.1.1">Example</a></b><br>
+    <b>&nbsp;1.2&nbsp; <a href="#rfc.section.1.2">Conformance</a></b><br>
+    <b>&nbsp;1.3&nbsp; <a href="#rfc.section.1.3">Notational Conventions</a></b><br>
+    <b>2&nbsp; <a href="#rfc.section.2">Atom Documents</a></b><br>
+    <b>3&nbsp; <a href="#rfc.section.3">Common Atom Constructs</a></b><br>
+    <b>&nbsp;3.1&nbsp; <a href="#rfc.section.3.1">Content Constructs</a></b><br>
+    <b>&nbsp;&nbsp;3.1.1&nbsp; <a href="#rfc.section.3.1.1">&quot;type&quot;
+    Attribute</a></b><br>
+    <b>&nbsp;&nbsp;3.1.2&nbsp; <a href="#rfc.section.3.1.2">&quot;mode&quot;
+    Attribute</a></b><br>
+    <b>&nbsp;3.2&nbsp; <a href="#rfc.section.3.2">Person Constructs</a></b><br>
+    <b>&nbsp;&nbsp;3.2.1&nbsp; <a href="#rfc.section.3.2.1">&quot;atom:name&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;3.2.2&nbsp; <a href="#rfc.section.3.2.2">&quot;atom:url&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;3.2.3&nbsp; <a href="#rfc.section.3.2.3">&quot;atom:email&quot;
+    Element</a></b><br>
+    <b>&nbsp;3.3&nbsp; <a href="#rfc.section.3.3">Date Constructs</a></b><br>
+    <b>&nbsp;3.4&nbsp; <a href="#rfc.section.3.4">Link Constructs</a></b><br>
+    <b>&nbsp;&nbsp;3.4.1&nbsp; <a href="#rfc.section.3.4.1">&quot;rel&quot;
+    Attribute</a></b><br>
+    <b>&nbsp;&nbsp;3.4.2&nbsp; <a href="#rfc.section.3.4.2">&quot;type&quot;
+    Attribute</a></b><br>
+    <b>&nbsp;&nbsp;3.4.3&nbsp; <a href="#rfc.section.3.4.3">&quot;href&quot;
+    Attribute</a></b><br>
+    <b>&nbsp;&nbsp;3.4.4&nbsp; <a href="#rfc.section.3.4.4">&quot;title&quot;
+    Attribute</a></b><br>
+    <b>4&nbsp; <a href="#rfc.section.4">The &quot;atom:feed&quot; Element</a></b><br>
+    <b>&nbsp;4.1&nbsp; <a href="#rfc.section.4.1">&quot;version&quot; Attribute</a></b><br>
+    <b>&nbsp;4.2&nbsp; <a href="#rfc.section.4.2">&quot;xml:lang&quot; Attribute</a></b><br>
+    <b>&nbsp;4.3&nbsp; <a href="#rfc.section.4.3">&quot;atom:title&quot; Element</a></b><br>
+    <b>&nbsp;4.4&nbsp; <a href="#rfc.section.4.4">&quot;atom:link&quot; Element</a></b><br>
+    <b>&nbsp;4.5&nbsp; <a href="#rfc.section.4.5">&quot;atom:author&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.6&nbsp; <a href="#rfc.section.4.6">&quot;atom:contributor&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.7&nbsp; <a href="#rfc.section.4.7">&quot;atom:tagline&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.8&nbsp; <a href="#rfc.section.4.8">&quot;atom:id&quot; Element</a></b><br>
+    <b>&nbsp;4.9&nbsp; <a href="#rfc.section.4.9">&quot;atom:generator&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.10&nbsp; <a href="#rfc.section.4.10">&quot;atom:copyright&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.11&nbsp; <a href="#rfc.section.4.11">&quot;atom:info&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.12&nbsp; <a href="#rfc.section.4.12">&quot;atom:modified&quot;
+    Element</a></b><br>
+    <b>&nbsp;4.13&nbsp; <a href="#rfc.section.4.13">&quot;atom:entry&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.1&nbsp; <a href="#rfc.section.4.13.1">&quot;atom:title&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.2&nbsp; <a href="#rfc.section.4.13.2">&quot;atom:link&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.3&nbsp; <a href="#rfc.section.4.13.3">&quot;atom:author&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.4&nbsp; <a href="#rfc.section.4.13.4">&quot;atom:contributor&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.5&nbsp; <a href="#rfc.section.4.13.5">&quot;atom:id&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.6&nbsp; <a href="#rfc.section.4.13.6">&quot;atom:modified&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.7&nbsp; <a href="#rfc.section.4.13.7">&quot;atom:issued&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.8&nbsp; <a href="#rfc.section.4.13.8">&quot;atom:created&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.9&nbsp; <a href="#rfc.section.4.13.9">&quot;atom:summary&quot;
+    Element</a></b><br>
+    <b>&nbsp;&nbsp;4.13.10&nbsp; <a href="#rfc.section.4.13.10">&quot;atom:content&quot;
+    Element</a></b><br>
+    <b>5&nbsp; <a href="#rfc.section.5">Managing Feed State</a></b><br>
+    <b>6&nbsp; <a href="#rfc.section.6">Embedding Atom in Other Formats</a></b><br>
+    <b>7&nbsp; <a href="#rfc.section.7">Extending Atom</a></b><br>
+    <b>8&nbsp; <a href="#rfc.section.8">IANA Considerations</a></b><br>
+    <b>9&nbsp; <a href="#rfc.section.9">Security Considerations</a></b><br>
+    <b>§&nbsp; <a href="#rfc.references">References</a></b><br>
+    <b>§&nbsp; <a href="#rfc.authors">Author's Address</a></b><br>
+    <b>A&nbsp; <a href="#rfc.section.A">Contributors</a></b><br>
+    <b>B&nbsp; <a href="#rfc.section.B">Revision History</a></b><br>
+    <b>§&nbsp; <a href="#rfc.copyright">Full Copyright Statement</a></b><br>
+    </p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.1">1</a>&nbsp; Introduction</h1>
+    <p><a name="rfc.section.1.p.1"></a>Atom is an XML-based file format intended
+    to allow lists of information, known as &quot;feeds&quot;, to be
+    synchronised between publishers and consumers. Feeds are composed of a
+    number of items, known as &quot;entries&quot;, each with an extensible set
+    of attached metadata. For example, each entry has a title.</p>
+    <p><a name="rfc.section.1.p.2"></a>The primary use case that Atom addresses
+    is for syndicating Web content such as Weblogs and news headlines to other
+    Web sites and directly to consumers. However, nothing precludes it from
+    being used for other purposes and types of content.</p>
+    <p><a name="rfc.section.1.p.3"></a>Details of comunication protocols between
+    software agents using Atom are to be found in the Atom API specification <font color="red"><tt>&lt;eref&gt;</tt></font><EREF>
+    http://bitworking.org/projects/atom/draft-gregorio-09.html</EREF>
+    <font color="red"><tt>&lt;/eref&gt;</tt></font>.</p>
+    <p><a name="rfc.section.1.p.4"></a>[[ more motivation / design principles ]]</p>
+    <h2><a name="rfc.section.1.1">1.1</a>&nbsp; Example</h2>
+    <a name="rfc.figure.u.1"></a>
+    <p>A minimal, single-entry Atom feed serialized as XML 1.0:</p>
+    <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;feed version=&quot;0.3&quot; xmlns=&quot;http://purl.org/atom/ns#&quot;&gt;
+  &lt;title&gt;dive into mark&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; 
+   href=&quot;http://diveintomark.org/&quot;/&gt;
+
+  &lt;modified&gt;2003-12-13T18:30:02Z&lt;/modified&gt;
+  &lt;author&gt;
+    &lt;name&gt;Mark Pilgrim&lt;/name&gt;
+  &lt;/author&gt;
+  &lt;entry&gt;
+
+    &lt;title&gt;Atom 0.3 snapshot&lt;/title&gt;
+    &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; 
+     href=&quot;http://diveintomark.org/2003/12/13/atom03&quot;/&gt;
+    &lt;id&gt;tag:diveintomark.org,2003:3.2397&lt;/id&gt;
+    &lt;issued&gt;2003-12-13T08:29:29-04:00&lt;/issued&gt;
+
+    &lt;modified&gt;2003-12-13T18:30:02Z&lt;/modified&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;
+</pre>
+    <h2><a name="rfc.section.1.2">1.2</a>&nbsp; Conformance</h2>
+    <p><a name="rfc.section.1.2.p.1"></a>[[ talk about atom documents and atom
+    consumers, and how requirements are placed on them ]]</p>
+    <h2><a name="rfc.section.1.3">1.3</a>&nbsp; Notational Conventions</h2>
+    <p><a name="rfc.section.1.3.p.1"></a>The key words &quot;MUST&quot;,
+    &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL
+    NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;,
+    &quot;RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
+    document are to be interpreted as described in <a title="Key words for use in RFCs to Indicate Requirement Levels" href="#RFC2119">[RFC2119]</a>.</p>
+    <p><a name="rfc.section.1.3.p.2"></a>This specification uses XML Namespaces <a title="Namespaces in XML" href="#W3C.REC-xml-names-19990114">[W3C.REC-xml-names-19990114]</a>
+    to uniquely identify XML elements and attribute names. It uses the following
+    namespace prefixes for the indicated namespace URIs;</p>
+    <p><a name="rfc.section.1.3.p.3"></a>
+    <dl>
+      <dt style="MARGIN-TOP: 0.5em">&quot;atom&quot;:
+      <dd>http://purl.org/atom/ns#</dd>
+    </dl>
+    <p>&nbsp;</p>
+    <p><a name="rfc.section.1.3.p.4"></a>Note that the choice of any namespace
+    prefix is arbitrary and not semantically significant.</p>
+    <p><a name="rfc.section.1.3.p.5"></a>Atom is specified using the XML Infoset
+    <a title="XML Information Set" href="#W3C.REC-xml-infoset-20011024">[W3C.REC-xml-infoset-20011024]</a>,
+    but uses a shorthand for common terms; the phrase &quot;Information
+    Item&quot; is not used when naming XML constructs.</p>
+    <p><a name="rfc.section.1.3.p.6"></a>Therefore, when this specification uses
+    the term &quot;element,&quot; it is refering to an Element Information Item
+    in Infoset terms. Likewise, when it uses the term &quot;attribute,&quot; it
+    is refering to an Attribute Information Item.</p>
+    <p><a name="rfc.section.1.3.p.7"></a>Furthermore, when it indicates that the
+    content of an element or attribute is a &quot;string,&quot; it is referring
+    to a set of one or more Character Information Items.</p>
+    <p><a name="rfc.section.1.3.p.8"></a>[[children / contains]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.2">2</a>&nbsp; Atom Documents</h1>
+    <p><a name="rfc.section.2.p.1"></a>An Atom document is an XML document whose
+    document element is the atom:feed element, as described below.</p>
+    <p><a name="rfc.section.2.p.2"></a>Atom is specified in terms of the XML
+    Infoset, and therefore may be serialized in a variety of fashions. However,
+    the canonical serialization of an Atom document is XML 1.0, and this is the
+    only serialization that can be identified with the &quot;application/atom+xml&quot;
+    media type.</p>
+    <p><a name="rfc.section.2.p.3"></a>Atom documents MAY have a Document Type
+    Declaration.</p>
+    <p><a name="rfc.section.2.p.4"></a>[[Entities]]</p>
+    <p><a name="rfc.section.2.p.5"></a>Atom documents SHOULD NOT contain
+    Processing Instructions, unless they are a commonly used convention outside
+    the scope of Atom (e.g., the PI for XSLT processing).</p>
+    <p><a name="rfc.section.2.p.6"></a>Atom documents MAY contain Comments
+    wherever they are legal in XML.</p>
+    <p><a name="rfc.section.2.p.7"></a>All elements and attributes in an Atom
+    document MUST be namespace-qualified. Note that this requirement does not
+    preclude the use of a default namespace.</p>
+    <p><a name="rfc.section.2.p.8"></a>Any element in an Atom document MAY have
+    an xml:base attribute. However, XML Base <a title="XML Base" href="#W3C.REC-xmlbase-20010627">[W3C.REC-xmlbase-20010627]</a>
+    processing MUST NOT be applied to element or attribute content, unless that
+    element or attribute's specification explicitly includes XML Base
+    processing.</p>
+    <p><a name="rfc.section.2.p.9"></a>Any element MAY have an xml:lang
+    attribute whose content indicates the default natural language of the
+    element's content. The content of this attribute element MUST be a
+    registered language tag <a title="Tags for the Identification of Languages" href="#RFC3066">[RFC3066]</a>.
+    When determining element content's natural language, the first xml:lang
+    attribute encountered in that element's ancestors MUST be used.</p>
+    <p><a name="rfc.section.2.p.10"></a>[[extensibility]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.3">3</a>&nbsp; Common Atom Constructs</h1>
+    <p><a name="rfc.section.3.p.1"></a>Many of Atom's elements share a few
+    common structures. This section defines their requirements, for convenient
+    reference by the appropriate element definitions.</p>
+    <p><a name="rfc.section.3.p.2"></a>When an element is identified as being a
+    construct, it inherits the corresponding requirements from that construct's
+    definition in this section.</p>
+    <h2><a name="rfc.section.3.1">3.1</a>&nbsp; Content Constructs</h2>
+    <p><a name="rfc.section.3.1.p.1"></a>A Content construct is an element with
+    arbitrary child content, whose properties are described by the following
+    attributes:</p>
+    <h3><a name="rfc.section.3.1.1">3.1.1</a>&nbsp; &quot;type&quot; Attribute</h3>
+    <p><a name="rfc.section.3.1.1.p.1"></a>Content constructs MAY have a
+    &quot;type&quot; attribute, whose value indicates the media type of the
+    content. When present, this attribute's value MUST be a registered media
+    type <a title="Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies" href="#RFC2045">[RFC2045]</a>.
+    If not present, its value MUST be considered to be &quot;text/plain&quot;.</p>
+    <h3><a name="rfc.section.3.1.2">3.1.2</a>&nbsp; &quot;mode&quot; Attribute</h3>
+    <p><a name="rfc.section.3.1.2.p.1"></a>Content constructs MAY have a
+    &quot;mode&quot; attribute, whose value indicates the method used to encode
+    the content. When present, this attribute's value MUST be listed below. If
+    not present, its value MUST be considered to be &quot;xml&quot;.</p>
+    <p><a name="rfc.section.3.1.2.p.2"></a>
+    <dl>
+      <dt style="MARGIN-TOP: 0.5em">&quot;xml&quot;:
+      <dd>A mode attribute with the value &quot;xml&quot; indicates that the
+        element's content is inline xml (for example, namespace-qualified
+        XHTML).
+      <dt style="MARGIN-TOP: 0.5em">&quot;escaped&quot;:
+      <dd>A mode attribute with the value &quot;escaped&quot; indicates that the
+        element's content is an escaped string. Processors MUST unescape the
+        element's content before considering it as content of the indicated
+        media type.
+      <dt style="MARGIN-TOP: 0.5em">&quot;base64&quot;:
+      <dd>A mode attribute with the value &quot;base64&quot; indicates that the
+        element's content is base64-encoded <a title="Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies" href="#RFC2045">[RFC2045]</a>.
+        Processors MUST decode the element's content before considering it as
+        content of the the indicated media type.</dd>
+    </dl>
+    <p>&nbsp;</p>
+    <h2><a name="rfc.section.3.2">3.2</a>&nbsp; Person Constructs</h2>
+    <p><a name="rfc.section.3.2.p.1"></a>A Person construct is an element with
+    the following children:</p>
+    <h3><a name="rfc.section.3.2.1">3.2.1</a>&nbsp; &quot;atom:name&quot;
+    Element</h3>
+    <p><a name="rfc.section.3.2.1.p.1"></a>The &quot;atom:name&quot; element's
+    content conveys a human-readable name for the author. It MAY be the name of
+    a corporation or other entity no individual authors can be named. Person
+    constructs MUST contain exactly one &quot;atom:name&quot; element, whose
+    content MUST be a string.</p>
+    <h3><a name="rfc.section.3.2.2">3.2.2</a>&nbsp; &quot;atom:url&quot; Element</h3>
+    <p><a name="rfc.section.3.2.2.p.1"></a>The &quot;atom:url&quot; element's
+    content conveys a URI associated with the author. Person constructs MAY
+    contain an atom:url element, but MUST NOT contain more than one. The content
+    of atom:url in a Person construct MUST be a URI <a title="Uniform Resource Identifiers (URI): Generic Syntax" href="#RFC2396">[RFC2396]</a>.</p>
+    <p><a name="rfc.section.3.2.2.p.2"></a>xml:base <a title="XML Base" href="#W3C.REC-xmlbase-20010627">[W3C.REC-xmlbase-20010627]</a>
+    processing MUST be applied to the atom:url element.</p>
+    <h3><a name="rfc.section.3.2.3">3.2.3</a>&nbsp; &quot;atom:email&quot;
+    Element</h3>
+    <p><a name="rfc.section.3.2.3.p.1"></a>The &quot;atom:email&quot; element's
+    content conveys an e-mail address associated with the Person construct.
+    Person constructs MAY contain an atom:email element, but MUST NOT contain
+    more than one. Its content MUST be an e-mail address <a title="Internet Message Format" href="#RFC2822">[RFC2822]</a>.</p>
+    <p><a name="rfc.section.3.2.p.2"></a>Ordering of the element children of
+    Person constructs MUST NOT be considered significant.</p>
+    <h2><a name="rfc.section.3.3">3.3</a>&nbsp; Date Constructs</h2>
+    <p><a name="rfc.section.3.3.p.1"></a>A Date construct is an element whose
+    child content is a W3C Date-Time string <a title="Date and Time Formats" href="#W3C.NOTE-datetime-19980827">[W3C.NOTE-datetime-19980827]</a>.</p>
+    <h2><a name="rfc.section.3.4">3.4</a>&nbsp; Link Constructs</h2>
+    <p><a name="rfc.section.3.4.p.1"></a>A Link construct is an element that
+    MUST NOT have any child content, and has the following attributes:</p>
+    <h3><a name="rfc.section.3.4.1">3.4.1</a>&nbsp; &quot;rel&quot; Attribute</h3>
+    <p><a name="rfc.section.3.4.1.p.1"></a>The &quot;rel&quot; attribute
+    indicates the type of relationship that the link represents. Link constructs
+    MUST have a rel attribute, whose value MUST be a string, and MUST be one of
+    the values enumerated in the Atom API specification <font color="red"><tt>&lt;eref&gt;</tt></font><EREF>
+    http://bitworking.org/projects/atom/draft-gregorio-09.html</EREF>
+    <font color="red"><tt>&lt;/eref&gt;</tt></font>.</p>
+    <h3><a name="rfc.section.3.4.2">3.4.2</a>&nbsp; &quot;type&quot; Attribute</h3>
+    <p><a name="rfc.section.3.4.2.p.1"></a>The &quot;type&quot; attribute
+    indicates an advisory media type; it MAY be used as a hint to determine the
+    type of the representation which should be returned when the URI in the href
+    attribute is dereferenced. Note that the type attribute does not override
+    the actual media type returned with the representation.</p>
+    <p><a name="rfc.section.3.4.2.p.2"></a>Link constructs MUST have a type
+    attribute, whose value MUST be a registered media type <a title="Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies" href="#RFC2045">[RFC2045]</a>.</p>
+    <h3><a name="rfc.section.3.4.3">3.4.3</a>&nbsp; &quot;href&quot; Attribute</h3>
+    <p><a name="rfc.section.3.4.3.p.1"></a>The &quot;href&quot; attribute
+    contains the link's URI. Link constructs MUST have a href attribute, whose
+    value MUST be a URI <a title="Uniform Resource Identifiers (URI): Generic Syntax" href="#RFC2396">[RFC2396]</a>.</p>
+    <p><a name="rfc.section.3.4.3.p.2"></a>xml:base <a title="XML Base" href="#W3C.REC-xmlbase-20010627">[W3C.REC-xmlbase-20010627]</a>
+    processing MUST be applied to the atom:url element.</p>
+    <h3><a name="rfc.section.3.4.4">3.4.4</a>&nbsp; &quot;title&quot; Attribute</h3>
+    <p><a name="rfc.section.3.4.4.p.1"></a>The &quot;title&quot; attribute
+    conveys human-readable information about the link. Link constructs MAY have
+    a title attribute, whose value MUST be a string.</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.4">4</a>&nbsp; The &quot;atom:feed&quot; Element</h1>
+    <p><a name="rfc.section.4.p.1"></a>The &quot;atom:feed&quot; element is the
+    document (i.e., top-level) element of the format described by this
+    specification. Its children are a (potentially partial) representation of
+    the state of the feed.</p>
+    <p><a name="rfc.section.4.p.2"></a>The atom:feed element MAY contain any
+    namespace-qualified <a title="Namespaces in XML" href="#W3C.REC-xml-names-19990114">[W3C.REC-xml-names-19990114]</a>
+    elements as children. Ordering of the element children of atom:feed element
+    MUST NOT be considered significant.</p>
+    <p><a name="rfc.section.4.p.3"></a>The following attributes and child
+    elements are defined by this specification (note that it requires the
+    presence of some of these elements):</p>
+    <h2><a name="rfc.section.4.1">4.1</a>&nbsp; &quot;version&quot; Attribute</h2>
+    <p><a name="rfc.section.4.1.p.1"></a>atom:feed elements MUST have a
+    &quot;version&quot; attribute whose content indicates the version of the
+    Atom specification that the construct conforms to.</p>
+    <p><a name="rfc.section.4.1.p.2"></a>The version identifier for this
+    specification is &quot;0.3&quot;.</p>
+    <h2><a name="rfc.section.4.2">4.2</a>&nbsp; &quot;xml:lang&quot; Attribute</h2>
+    <p><a name="rfc.section.4.2.p.1"></a>atom:feed elements SHOULD have an
+    &quot;xml:lang&quot; attribute whose content indicates the default natural
+    language of the feed. The content of this attribute element MUST be a
+    registered language tag <a title="Tags for the Identification of Languages" href="#RFC3066">[RFC3066]</a>.</p>
+    <h2><a name="rfc.section.4.3">4.3</a>&nbsp; &quot;atom:title&quot; Element</h2>
+    <p><a name="rfc.section.4.3.p.1"></a>The &quot;atom:title&quot; element is a
+    Content construct that conveys a human-readable title for the feed.
+    atom:feed elements MUST contain exactly one atom:title element. If the feed
+    describes a Web resource, its content SHOULD be the same as that resource's
+    title.</p>
+    <h2><a name="rfc.section.4.4">4.4</a>&nbsp; &quot;atom:link&quot; Element</h2>
+    <p><a name="rfc.section.4.4.p.1"></a>The &quot;atom:link&quot; element is a
+    Link construct that conveys a URI associated with the feed. The nature of
+    the relationship as well as the link itself is determined by the element's
+    content.</p>
+    <p><a name="rfc.section.4.4.p.2"></a>atom:feed elements MUST contain at
+    least one atom:link element with a rel attribute value of
+    &quot;alternate&quot;.</p>
+    <p><a name="rfc.section.4.4.p.3"></a>atom:feed elements MUST NOT contain
+    more than one atom:link element with a rel attribute value of
+    &quot;alternate&quot; that has the same type attribute value.</p>
+    <p><a name="rfc.section.4.4.p.4"></a>atom:feed elements MAY contain
+    additional atom:link elements beyond those described above.</p>
+    <h2><a name="rfc.section.4.5">4.5</a>&nbsp; &quot;atom:author&quot; Element</h2>
+    <p><a name="rfc.section.4.5.p.1"></a>The &quot;atom:author&quot; element is
+    a Person construct that indicates the default author of the feed. atom:feed
+    elements MUST contain exactly one atom:author element, UNLESS all of the
+    atom:feed element's child atom:entry elements contain an atom:author
+    element. atom:feed elements MUST NOT contain more than one atom:author
+    element.</p>
+    <p><a name="rfc.section.4.5.p.2"></a>[[explain inheritence]]</p>
+    <h2><a name="rfc.section.4.6">4.6</a>&nbsp; &quot;atom:contributor&quot;
+    Element</h2>
+    <p><a name="rfc.section.4.6.p.1"></a>The &quot;atom:contributor&quot;
+    element is a Person construct that indicates a person or other entity who
+    contributes to the feed. atom:feed elements MAY contain one or more
+    atom:contributor elements.</p>
+    <h2><a name="rfc.section.4.7">4.7</a>&nbsp; &quot;atom:tagline&quot; Element</h2>
+    <p><a name="rfc.section.4.7.p.1"></a>The &quot;atom:tagline&quot; element is
+    a Content construct that conveys a human-readable description or tagline for
+    the feed. atom:feed elements MAY contain an atom:tagline element, but MUST
+    NOT contain more than one.</p>
+    <h2><a name="rfc.section.4.8">4.8</a>&nbsp; &quot;atom:id&quot; Element</h2>
+    <p><a name="rfc.section.4.8.p.1"></a>The &quot;atom:id&quot; element's
+    content conveys a permanent, globally unique identifier for the feed. It
+    MUST NOT change over time, even if the feed is relocated. atom:feed elements
+    MAY contain an atom:id element, but MUST NOT contain more than one. The
+    content of this element, when present, MUST be a URI.</p>
+    <h2><a name="rfc.section.4.9">4.9</a>&nbsp; &quot;atom:generator&quot;
+    Element</h2>
+    <p><a name="rfc.section.4.9.p.1"></a>The &quot;atom:generator&quot;
+    element's content indentifies the software agent used to generate the feed,
+    for debugging and other purposes. atom:feed elements MAY contain an
+    atom:generator element, but MUST NOT contain more than one.</p>
+    <p><a name="rfc.section.4.9.p.2"></a>The content of this element, when
+    present, MUST be a string that is a human-readable name for the generating
+    agent.</p>
+    <p><a name="rfc.section.4.9.p.3"></a>The atom:generator element MAY have a
+    &quot;url&quot; attribute whose value MUST be a URI. When dereferenced, that
+    URI SHOULD produce a representation that is relevant to that agent.</p>
+    <p><a name="rfc.section.4.9.p.4"></a>The atom:generator element MAY have a
+    &quot;version&quot; attribute that indicates the version of the generating
+    agent. When present, its value MUST be a string.</p>
+    <h2><a name="rfc.section.4.10">4.10</a>&nbsp; &quot;atom:copyright&quot;
+    Element</h2>
+    <p><a name="rfc.section.4.10.p.1"></a>The &quot;atom:copyright&quot; element
+    is Content construct that conveys a human-readable copyright statement for
+    the feed. atom:feed elements MAY contain an atom:copyright element, but MUST
+    NOT contain more than one.</p>
+    <p><a name="rfc.section.4.10.p.2"></a>The atom:copyright element SHOULD NOT
+    be used to convey machine-readable licensing information.</p>
+    <h2><a name="rfc.section.4.11">4.11</a>&nbsp; &quot;atom:info&quot; Element</h2>
+    <p><a name="rfc.section.4.11.p.1"></a>The &quot;atom:info&quot; element is a
+    Content construct that conveys a human-readable explanation of the feed
+    format itself. atom:feed elements MAY contain an atom:info element, but MUST
+    NOT contain more than one.</p>
+    <p><a name="rfc.section.4.11.p.2"></a>The atom:info element SHOULD NOT
+    considered meaningful by processors; it is a convenience to publishers in
+    certain situations.</p>
+    <h2><a name="rfc.section.4.12">4.12</a>&nbsp; &quot;atom:modified&quot;
+    Element</h2>
+    <p><a name="rfc.section.4.12.p.1"></a>The &quot;atom:modified&quot; element
+    is a Date construct that indicates the time when the state of the feed was
+    last modified, including any changes to entries therein. atom:feed elements
+    MUST contain exactly one atom:modified element.</p>
+    <p><a name="rfc.section.4.12.p.2"></a>The content of an atom:modified
+    element SHOULD have a time zone whose value MUST be &quot;UTC&quot;.</p>
+    <h2><a name="rfc.section.4.13">4.13</a>&nbsp; &quot;atom:entry&quot; Element</h2>
+    <p><a name="rfc.section.4.13.p.1"></a>The &quot;atom:entry&quot; element's
+    represents an individual entry that is contained by the feed. atom:feed
+    elements MAY contain one or more atom:entry elements.</p>
+    <p><a name="rfc.section.4.13.p.2"></a>The atom:entry element MAY contain any
+    namespace-qualified <a title="Namespaces in XML" href="#W3C.REC-xml-names-19990114">[W3C.REC-xml-names-19990114]</a>
+    elements as children. Ordering of the element children of atom:entry element
+    MUST NOT be considered significant.</p>
+    <p><a name="rfc.section.4.13.p.3"></a>The following child elements are
+    defined by this specification (note that it requires the presence of some of
+    these elements):</p>
+    <h3><a name="rfc.section.4.13.1">4.13.1</a>&nbsp; &quot;atom:title&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.1.p.1"></a>The &quot;atom:title&quot; element
+    is a Content construct that conveys a human-readable title for the entry.
+    atom:entry elements MUST have exactly one &quot;atom:title&quot; element. If
+    an entry describes a Web resource, its content SHOULD be the same as that
+    resource's title.</p>
+    <h3><a name="rfc.section.4.13.2">4.13.2</a>&nbsp; &quot;atom:link&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.2.p.1"></a>The &quot;atom:link&quot; element is
+    a Link construct that conveys a URI associated with the entry. The nature of
+    the relationship as well as the link itself is determined by the element's
+    content.</p>
+    <p><a name="rfc.section.4.13.2.p.2"></a>atom:entry elements MUST contain at
+    least one atom:link element with a rel attribute value of
+    &quot;alternate&quot;.</p>
+    <p><a name="rfc.section.4.13.2.p.3"></a>atom:entry elements MUST NOT contain
+    more than one atom:link element with a rel attribute value of
+    &quot;alternate&quot; that has the same type attribute value.</p>
+    <p><a name="rfc.section.4.13.2.p.4"></a>atom:entry elements MAY contain
+    additional atom:link elements beyond those described above.</p>
+    <h3><a name="rfc.section.4.13.3">4.13.3</a>&nbsp; &quot;atom:author&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.3.p.1"></a>The &quot;atom:author&quot; element
+    is a Person construct that indicates the default author of the entry.
+    atom:entry elements MUST contain exactly one atom:author element, UNLESS the
+    atom:feed element containing them contains an atom:author element itself.
+    atom:entry elements MUST NOT contain more than one atom:author element.</p>
+    <p><a name="rfc.section.4.13.3.p.2"></a>[[explain inheritence]]</p>
+    <h3><a name="rfc.section.4.13.4">4.13.4</a>&nbsp; &quot;atom:contributor&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.4.p.1"></a>The &quot;atom:contributor&quot;
+    element is a Person construct that indicates a person or other entity who
+    contributes to the entry. atom:entry elements MAY contain one or more
+    atom:contributor elements.</p>
+    <h3><a name="rfc.section.4.13.5">4.13.5</a>&nbsp; &quot;atom:id&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.5.p.1"></a>The &quot;atom:id&quot; element's
+    content conveys a permanent, globally unique identifier for the entry. It
+    MUST NOT change over time, even if other representations of the entry (such
+    as a web representation pointed to by the entry's atom:link element) are
+    relocated. If the same entry is syndicated in two atom:feeds published by
+    the same entity, the entry's atom:id MUST be the same in both feeds.</p>
+    <h3><a name="rfc.section.4.13.6">4.13.6</a>&nbsp; &quot;atom:modified&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.6.p.1"></a>The &quot;atom:modified&quot;
+    element is a Date construct that indicates the time that the entry was last
+    modified. atom:entry elements MUST contain an atom:modified element, but
+    MUST NOT contain more than one.</p>
+    <p><a name="rfc.section.4.13.6.p.2"></a>The content of an atom:modified
+    element MUST have a time zone whose value SHOULD be &quot;UTC&quot;.</p>
+    <h3><a name="rfc.section.4.13.7">4.13.7</a>&nbsp; &quot;atom:issued&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.7.p.1"></a>The &quot;atom:issued&quot; element
+    is a Date construct that indicates the time that the entry was issued.
+    atom:entry elements MUST contain an atom:issued element, but MUST NOT
+    contain more than one.</p>
+    <p><a name="rfc.section.4.13.7.p.2"></a>The content of an atom:issued
+    element MAY omit a time zone.</p>
+    <h3><a name="rfc.section.4.13.8">4.13.8</a>&nbsp; &quot;atom:created&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.8.p.1"></a>The &quot;atom:created&quot; element
+    is a Date construct that indicates the time that the entry was created.
+    atom:entry elements MAY contain an atom:created element, but MUST NOT
+    contain more than one.</p>
+    <p><a name="rfc.section.4.13.8.p.2"></a>The content of an atom:created
+    element MUST have a time zone whose value SHOULD be &quot;UTC&quot;.</p>
+    <p><a name="rfc.section.4.13.8.p.3"></a>If atom:created is not present, its
+    content MUST considered to be the same as that of atom:modified.</p>
+    <h3><a name="rfc.section.4.13.9">4.13.9</a>&nbsp; &quot;atom:summary&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.9.p.1"></a>The &quot;atom:summary&quot; element
+    is a Content construct that conveys a short summary, abstract or excerpt of
+    the entry. atom:entry elements MAY contain an atom:created element, but MUST
+    NOT contain more than one.</p>
+    <h3><a name="rfc.section.4.13.10">4.13.10</a>&nbsp; &quot;atom:content&quot;
+    Element</h3>
+    <p><a name="rfc.section.4.13.10.p.1"></a>The &quot;atom:content&quot;
+    element is a Content construct that conveys the content of the entry.
+    atom:entry elements MAY contain one or more atom:content elements.</p>
+    <p><a name="rfc.section.4.13.10.p.2"></a>If
+    @type=&quot;multipart/alternative&quot;, @mode MUST NOT be specified, and
+    content element MUST contain 1 or more content elements. These content
+    elements MUST NOT specify @type=&quot;multipart/alternative&quot; (i.e. only
+    one level of nesting is allowed). Consumers SHOULD look at all alternative
+    content elements and determine which one is most suitable, based on which
+    @type and @mode the consumer supports, and preferences specified by the end
+    user (if any). Consumers SHOULD NOT render more than one content
+    alternative.</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.5">5</a>&nbsp; Managing Feed State</h1>
+    <p><a name="rfc.section.5.p.1"></a>[[ talk about what it means to keep a
+    view of a feed ]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.6">6</a>&nbsp; Embedding Atom in Other Formats</h1>
+    <p><a name="rfc.section.6.p.1"></a>[[ ... ]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.7">7</a>&nbsp; Extending Atom</h1>
+    <p><a name="rfc.section.7.p.1"></a>[[ ... ]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.8">8</a>&nbsp; IANA Considerations</h1>
+    <p><a name="rfc.section.8.p.1"></a>The Atom format, when serialized as XML
+    1.0, can be identified with the following media type:</p>
+    <p><a name="rfc.section.8.p.2"></a>
+    <dl>
+      <dt style="MARGIN-TOP: 0.5em">MIME media type name:
+      <dd>application
+      <dt style="MARGIN-TOP: 0.5em">MIME subtype name:
+      <dd>atom+xml
+      <dt style="MARGIN-TOP: 0.5em">Mandatory parameters:
+      <dd>None.
+      <dt style="MARGIN-TOP: 0.5em">Optional parameters:
+      <dd>
+        <dl>
+          <dt style="MARGIN-TOP: 0.5em">&quot;charset&quot;:
+          <dd>This parameter has identical semantics to the charset parameter of
+            the &quot;application/xml&quot; media type as specified in RFC 3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>.
+            <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>.</dd>
+        </dl>
+      <dt style="MARGIN-TOP: 0.5em">Encoding considerations:
+      <dd>Identical to those of &quot;application/xml&quot; as described in RFC
+        3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>, section
+        3.2.
+      <dt style="MARGIN-TOP: 0.5em">Security considerations:
+      <dd>As defined in this specification. [[update upon publication]]
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>In addition, as this media type uses the &quot;+xml&quot; convention,
+        it shares the same security considerations as described in RFC 3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>,
+        section 10.
+      <dt style="MARGIN-TOP: 0.5em">Interoperability considerations:
+      <dd>There are no known interoperability issues.
+      <dt style="MARGIN-TOP: 0.5em">Published specification:
+      <dd>This specification. [[update upon publication]]
+      <dt style="MARGIN-TOP: 0.5em">Applications which use this media type:
+      <dd>No known applications currently use this media type.</dd>
+    </dl>
+    <p>&nbsp;</p>
+    <p><a name="rfc.section.8.p.3"></a>Additional information:</p>
+    <p><a name="rfc.section.8.p.4"></a>
+    <dl>
+      <dt style="MARGIN-TOP: 0.5em">Magic number(s):
+      <dd>As specified for &quot;application/xml&quot; in RFC 3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>,
+        section 3.2.
+      <dt style="MARGIN-TOP: 0.5em">File extension:
+      <dd>.atom
+      <dt style="MARGIN-TOP: 0.5em">Fragment identifiers:
+      <dd>As specified for &quot;application/xml&quot; in RFC 3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>,
+        section 5.
+      <dt style="MARGIN-TOP: 0.5em">Base URI:
+      <dd>As specified in RFC 3023 <a title="XML Media Types" href="#RFC3023">[RFC3023]</a>,
+        section 6.
+      <dt style="MARGIN-TOP: 0.5em">Macintosh File Type code:
+      <dd>TEXT
+      <dt style="MARGIN-TOP: 0.5em">Person and email address to contact for
+        further information:
+      <dd>Mark Nottingham &lt;mnot@pobox.com&gt;
+      <dt style="MARGIN-TOP: 0.5em">Intended usage:
+      <dd>COMMON
+      <dt style="MARGIN-TOP: 0.5em">Author/Change controller:
+      <dd>This specification's author(s). [[update upon publication]]</dd>
+    </dl>
+    <p>&nbsp;</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.9">9</a>&nbsp; Security Considerations</h1>
+    <p><a name="rfc.section.9.p.1"></a>[[ this is required ]]</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.references">References</a></h1>
+    <table border="0">
+      <tbody>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC2045">[RFC2045]</a></b></td>
+          <td vAlign="top"><a title="Innosoft International, Inc." href="mailto:ned@innosoft.com">Freed,
+            N.</a> and <a title="First Virtual Holdings" href="mailto:nsb@nsb.fv.com">Borenstein,
+            N.S.</a>,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc2045.txt">Multipurpose
+            Internet Mail Extensions (MIME) Part One: Format of Internet Message
+            Bodies</a>&quot;, RFC&nbsp;2045, November&nbsp;1996.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC2119">[RFC2119]</a></b></td>
+          <td vAlign="top"><a title="Harvard University" href="mailto:sob@harvard.edu">Bradner,
+            S.</a>,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc2119.txt">Key
+            words for use in RFCs to Indicate Requirement Levels</a>&quot;, BCP&nbsp;14,
+            RFC&nbsp;2119, March&nbsp;1997.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC2396">[RFC2396]</a></b></td>
+          <td vAlign="top"><a title="World Wide Web Consortium" href="mailto:timbl@w3.org">Berners-Lee,
+            T.</a>,&nbsp;<a title="Department of Information and Computer Science" href="mailto:fielding@ics.uci.edu">Fielding,
+            R.T.</a> and <a title="Xerox PARC" href="mailto:masinter@parc.xerox.com">Masinter,
+            L.</a>,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc2396.txt">Uniform
+            Resource Identifiers (URI): Generic Syntax</a>&quot;, RFC&nbsp;2396,
+            August&nbsp;1998.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC2822">[RFC2822]</a></b></td>
+          <td vAlign="top">Resnick, P.,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc2822.txt">Internet
+            Message Format</a>&quot;, RFC&nbsp;2822, April&nbsp;2001.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC3023">[RFC3023]</a></b></td>
+          <td vAlign="top">Murata, M.,&nbsp;St. Laurent, S. and Kohn, D.,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc3023.txt">XML
+            Media Types</a>&quot;, RFC&nbsp;3023, January&nbsp;2001.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="RFC3066">[RFC3066]</a></b></td>
+          <td vAlign="top">Alvestrand, H.,&nbsp;&quot;<a href="http://www.ietf.org/rfc/rfc3066.txt">Tags
+            for the Identification of Languages</a>&quot;, BCP&nbsp;47, RFC&nbsp;3066,
+            January&nbsp;2001.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="W3C.NOTE-datetime-19980827">[W3C.NOTE-datetime-19980827]</a></b></td>
+          <td vAlign="top">Wolf, M and Wicksteed, C,&nbsp;&quot;Date and Time
+            Formats&quot;, W3C NOTE&nbsp;NOTE-datetime-19980827, August&nbsp;1998.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="W3C.REC-xml-infoset-20011024">[W3C.REC-xml-infoset-20011024]</a></b></td>
+          <td vAlign="top">Cowan, J and Tobin, R,&nbsp;&quot;XML Information
+            Set&quot;, W3C REC&nbsp;REC-xml-infoset-20011024, October&nbsp;2001.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="W3C.REC-xml-names-19990114">[W3C.REC-xml-names-19990114]</a></b></td>
+          <td vAlign="top">Bray, T,&nbsp;Hollander, D and Layman, A,&nbsp;&quot;Namespaces
+            in XML&quot;, W3C REC&nbsp;REC-xml-names-19990114, January&nbsp;1999.</td>
+        </tr>
+        <tr>
+          <td vAlign="top" noWrap><b><a name="W3C.REC-xmlbase-20010627">[W3C.REC-xmlbase-20010627]</a></b></td>
+          <td vAlign="top">Marsh, J,&nbsp;&quot;XML Base&quot;, W3C REC&nbsp;REC-xmlbase-20010627,
+            June&nbsp;2001.</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <a name="rfc.authors">
+    <h1>Author's Address</h1>
+    </a>
+    <table cellSpacing="0" cellPadding="0" width="99%" border="0">
+      <tbody>
+        <tr>
+          <td>&nbsp;</td>
+          <td>Mark Nottingham</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="right"><b>EMail:&nbsp;</b></td>
+          <td><a href="mailto:mnot@pobox.com">mnot@pobox.com</a></td>
+        </tr>
+        <tr>
+          <td align="right"><b>URI:&nbsp;</b></td>
+          <td><a href="http://www.mnot.net/">http://www.mnot.net/</a></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.A">A</a>&nbsp; Contributors</h1>
+    <p><a name="rfc.section.A.p.1"></a>The following people contributed to this
+    specification's content: Tim Bray, Mark Pilgrim, and Sam Ruby. The content
+    and concepts within are a product of the Atom community.</p>
+    <hr class="noprint">
+    <table class="noprint" height="15" cellSpacing="2" cellPadding="0" width="30" align="right" border="0">
+      <tbody>
+        <tr>
+          <td align="middle" width="30" bgColor="#990000" height="15"><a class="link2" href="#rfc.toc"><b class="link2">&nbsp;TOC&nbsp;</b></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1><a name="rfc.section.B">B</a>&nbsp; Revision History</h1>
+    <p><a name="rfc.section.B.p.1"></a>
+    <dl>
+      <dt style="MARGIN-TOP: 0.5em">2003-12-12 (-02):
+      <dd>Fixed several typos, clarified some langauge.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Reference to RFC3066 for language tags.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Explained purpose, clarified requirements of atom:info.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Relaxed requirements for atom:issued date.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added reference to API spec.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added example.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Expanded upon Atom's use of XML (now &quot;Atom Documents&quot;).
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Expanded upon notational conventions.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added xml:base requirements to atom:author, atom:link.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Adjusted time zone requirements for dates.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>rel attribute values are constrained to those listed in the Atom API.
+      <dt style="MARGIN-TOP: 0.5em">2003-12-11 (-01):
+      <dd>New format for atom:generator.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>New format for atom:link.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added atom:info
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Many elements are now Content constructs.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Made it explicit that ordering in containers isn't significant.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added references.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Added media type registration template.
+      <dt style="MARGIN-TOP: 0.5em">&nbsp;
+      <dd>Reorganization.</dd>
+    </dl>
+    <p>&nbsp;</p>
+  </div>
+  <div id="footer">
+    <br clear="all">
+    <div id="copyright" align="center">
+      <a href="http://www.atomenabled.org/about.php">about</a> |<a href="http://www.atomenabled.org/contact.php">contact</a>
+      | <a href="http://www.atomenabled.org/sitemap.php">sitemap</a> | <a href="http://www.atomenabled.org/tos.php">terms
+      of service</a><br>
+      Copyright © 2004, AtomEnabled Alliance
+    </div>
+  </div>
+</div>
+<script language="javascript">postamble();</script>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="construction.htm" target="_top"><img border="0" src="wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-15-12:13 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:13 $<br>
+      $$Revision: 25 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

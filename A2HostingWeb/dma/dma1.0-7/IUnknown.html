@@ -1,0 +1,41 @@
+<html><head><title>Interfaces and Methods: IUnknown</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IUnknown"></a>IUnknown</h2>
+<p>Microsoft COM IUnknown interface. Included here for completeness, with arguments given as equivalent DMA types.</p>
+<h3><a name="IUnknownAddRef"></a>IUnknown::AddRef</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaUInteger32 <b>IUnknown::AddRef</b> ( )</p>    <b>Description</b>    </p>
+<p>Called when another component object is using the interface.  Increases the object's reference count by one and returns the number of references to the object.  As long as the reference count is non-zero, the object must remain in memory.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<h3><a name="IUnknownQueryInterface"></a>IUnknown::QueryInterface</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IUnknown::QueryInterface</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>Location for the returned interface pointer.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method requests an interface pointer from a COM object. If the interface is supported by the object, this method returns DMARC_OK and places the interface pointer in the location indicated by ppIObject. If the interface is not supported, the error code DMARC_BAD_INTERFACE is returned. 
+</p><p>
+This is the mechanism in COM that allows clients to dynamically discover (at run time) whether or not an interface is supported by a component object.
+</p><p>
+If an error occurs, NULL is returned as the new interface pointer.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_UNEXPECTED</p></TD><TD><p>(E_UNEXPECTED) An unexpected error occurred.</p></TD></TR>
+</TABLE>
+<h3><a name="IUnknownRelease"></a>IUnknown::Release</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaUInteger32 <b>IUnknown::Release</b> ( )</p>    <b>Description</b>    </p>
+<p>Called when the client no longer requires use of the interface. Decrements the reference count and returns the number of references to the object. This method is used to free interface pointers returned to the client interface.  When all interface pointers to an object are released, it will be deleted. 
+</p><p>
+This method must not be used for freeing  references to other datatypes (e.g., DMAString or Binary buffers).</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<p></p>
+</body></html>

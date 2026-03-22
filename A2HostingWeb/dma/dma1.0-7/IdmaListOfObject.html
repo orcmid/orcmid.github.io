@@ -1,0 +1,30 @@
+<html><head><title>Interfaces and Methods: IdmaListOfObject</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaListOfObject"></a>IdmaListOfObject</h2>
+<p>This interface provides the methods for handling lists that contain references to objects.
+</p><p>
+This interface offers all the methods of the IdmaList interface, as well as those listed below.</p></p>
+<h3><a name="IdmaListOfObjectGetObject"></a>IdmaListOfObject::GetObject</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaListOfObject::GetObject</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list to retrieve the object from.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObjectValue</i></p></TD><TD><p>output</p></TD><TD><p>Returns a pointer to the interface of the returned object, which is set to NULL for unsuccessful return codes.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This function will return the interface for the object that resides in the <i>iIndex</i>-th position in the list.
+</p><p>
+Valid values for iIndex are 0 through <i>n</i>-1, where <i>n</i> is the number of elements in the list at the time of the call.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_DELETED</p></TD><TD><p>The object has been deleted since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_STALE_METADATA</p></TD><TD><p>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</p></TD></TR>
+</TABLE>
+</body></html>

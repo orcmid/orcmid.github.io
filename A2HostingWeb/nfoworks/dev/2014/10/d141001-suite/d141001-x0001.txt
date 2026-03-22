@@ -1,0 +1,62 @@
+d141001-x0001.txt 0.00                UTF-8                    dh:2014-10-26
+
+           ODF CHANGE-TRACKING LIST CROSS-CUT DEFECT d141001-x0001
+           =======================================================
+
+                     LIBREOFFICE DEFECT DEMONSTRATION
+
+    The defect in this report is confirmed in Libreoffice 4.3.1.2 and has
+    appeared at least as far back as OpenOffice.org 2.4.3.
+
+    This is a Works-for-Me-Not defect.  The tracked change shown to the
+    user is not how the tracked-change is saved in the resulting file,
+    losing the change as it was observed when it was made.
+
+    The latest archive covering this defect case is available on the
+    Internet at <http://nfoWorks.org/dev/2014/10/d141001-suite#x0001>.
+
+d141001-x0001.txt is this manifest and defect demonstration
+
+RCT-2014-09-10-1519-CrossCut-LibO-start.odt
+    This is the initial file of simple nested lists.  The file was
+    created using entered text and the standard toolbar buttons to
+    make indented numbered lists with outline 1,(a),i nesting.
+
+RCT-2014-09-10-1523-CrossCut-LibO-start.png
+    This is a screen capture of the file -start.odt as it appears
+    using LibreOffice 4.3.1.2 en_US x86 on Windows 8.1 Pro x64.
+    Change Tracking is turned on and being shown.
+
+RCT-2014-09-10-1708-CrossCut-LibO-BC-select.png
+    Screen capture of a selection of text from the end of item
+    2. BBBBBB into the beginning of item (a) CCCCCC.
+
+RCT-2014-09-10-1711-CrossCut-LibO-BC-delete.png
+    Screen capture of the presentation after the DEL key is used.
+    The list is as created, with the deleted CCC and BB positions
+    shown with strike-through and a different color of text.
+
+RCT-2014-09-10-1712-CrossCut-LibO-BC-deleted.odt
+    This is the file obtained when a Save As ... is performed
+    after the change-tracked deletion shown in the -delete.png
+    image.
+
+RCT-2014-09-10-1716-CrossCut-LibO-BC-committed.png
+    Screen capture of the the -deleted.odt file re-opened in
+    LibreOffice.  The deletion is now shown quite differently
+    compared to what was presented to the user at the time the
+    deletion was made.  This change is also shown immediately
+    after the Save As ... is made, although that would not
+    be noticed if the change-tracked deletion was not visible
+    in the application window at the time.
+
+RCT-2014-09-13-1801-CrossCut-LibO-BC-accepted.png
+    This illustrates the consequences of rejecting the altered
+    tracked-change.  Rejection does not restore the text as
+    it was before the deletion operation was performed.
+
+
+0.00 2014-10-26T16:56Z Capture Test Files
+     The test files and screen captures of LibreOffice 4.3.1.2 are collected.
+
+                       *** end of d141001-x0001.txt ***

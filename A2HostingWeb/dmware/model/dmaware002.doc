@@ -1,0 +1,597 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff1\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f14\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+{\f16\fswiss\fcharset128\fprq2{\*\panose 020b0604020202020204}Arial Unicode MS;}{\f40\froman\fcharset238\fprq2 Times New Roman CE;}{\f41\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f43\froman\fcharset161\fprq2 Times New Roman Greek;}
+{\f44\froman\fcharset162\fprq2 Times New Roman Tur;}{\f45\froman\fcharset186\fprq2 Times New Roman Baltic;}{\f46\fswiss\fcharset238\fprq2 Arial CE;}{\f47\fswiss\fcharset204\fprq2 Arial Cyr;}{\f49\fswiss\fcharset161\fprq2 Arial Greek;}
+{\f50\fswiss\fcharset162\fprq2 Arial Tur;}{\f51\fswiss\fcharset186\fprq2 Arial Baltic;}{\f52\fmodern\fcharset238\fprq1 Courier New CE;}{\f53\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f55\fmodern\fcharset161\fprq1 Courier New Greek;}
+{\f56\fmodern\fcharset162\fprq1 Courier New Tur;}{\f57\fmodern\fcharset186\fprq1 Courier New Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;
+\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{
+\sb200\widctlpar\adjustright \f1\fs20\cgrid \snext0 Normal;}{\s1\sb100\sa100\widctlpar\adjustright \b\fs48\kerning36\cgrid \sbasedon0 \snext1 heading 1;}{\s2\sb100\sa100\widctlpar\adjustright \b\fs36\cgrid \sbasedon0 \snext2 heading 2;}{
+\s3\sb100\sa100\widctlpar\adjustright \b\fs27\cgrid \sbasedon0 \snext3 heading 3;}{\s5\sb100\sa100\widctlpar\adjustright \b\fs20\cgrid \sbasedon0 \snext5 heading 5;}{\*\cs10 \additive Default Paragraph Font;}{\s15\sb100\sa100\widctlpar\adjustright 
+\fs20\cgrid \sbasedon0 \snext15 Normal (Web);}{\s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid \sbasedon0 \snext16 Body Text 2;}{\s17\sb200\widctlpar\adjustright \f1\fs20\cgrid \sbasedon0 \snext17 Body Text;}{\s18\li720\sb200\widctlpar\adjustright 
+\f1\fs20\cgrid \sbasedon0 \snext18 Body Text Indent 2;}{\s19\sb200\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \f1\fs20\cgrid \sbasedon0 \snext19 header;}{\s20\sb200\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \f1\fs20\cgrid \sbasedon0 \snext20 footer;}
+{\*\cs21 \additive \sbasedon10 page number;}{\s22\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid \sbasedon0 \snext22 Body Text Indent 3;}{\*\cs23 \additive \ul\cf12 \sbasedon10 FollowedHyperlink;}{\s24\li720\ri720\widctlpar\adjustright \f1\fs20\cgrid 
+\sbasedon0 \snext24 Block Text;}{\*\cs25 \additive \i \sbasedon10 Emphasis;}{\*\cs26 \additive \ul\cf2 \sbasedon10 Hyperlink;}{\*\cs27 \additive \b \sbasedon10 Strong;}{\*\cs28 \additive \fs20 \sbasedon10 HTML Typewriter;}}{\*\listtable
+{\list\listtemplateid-1415689644{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'02.;}{\levelnumbers\'01;}\fi-360\li2160
+\jclisttab\tx2160 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'03.;}{\levelnumbers\'01;}\fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'02\'04.;}{\levelnumbers\'01;}\fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'05.;}{\levelnumbers\'01;}\fi-360\li4320\jclisttab\tx4320 }
+{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'06.;}{\levelnumbers\'01;}\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'02\'07.;}{\levelnumbers\'01;}\fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'08.;}{\levelnumbers\'01;}\fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid87386204}
+{\list\listtemplateid-1403118300{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\jclisttab\tx0 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers
+;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23
+\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listname ;}\listid415593845}{\list\listtemplateid-2033701356{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel
+\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600
+\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}
+\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid485362082}
+{\list\listtemplateid-2125048210{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}
+\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23
+\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 
+}{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid773551383}{\list\listtemplateid1694516038{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0
+{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }
+{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers
+;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname 
+;}\listid950665893}{\list\listtemplateid511190872{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0
+\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 
+}{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid1000040378}{\list\listtemplateid-1324334058{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1
+\levelspace360\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fbias0 
+\fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace360\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01o;}{\levelnumbers;}
+\f2\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0
+\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext
+\'01o;}{\levelnumbers;}\f2\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fbias0 \fi-360\li7200\jclisttab\tx7200 }{\listname 
+;}\listid1109742369}{\list\listtemplateid1958225722{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0
+\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 
+}{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid1166702447}{\list\listtemplateid-309163318{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 
+\fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers
+;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23
+\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 
+}{\listname ;}\listid1670982901}{\list\listtemplateid-1297588580{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc0\leveljc0
+\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'02.;}{\levelnumbers\'01;}
+\fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'03.;}{\levelnumbers\'01;}\fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'02\'04.;}{\levelnumbers\'01;}\fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'05.;}{\levelnumbers\'01;}\fi-360\li4320
+\jclisttab\tx4320 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'06.;}{\levelnumbers\'01;}\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'02\'07.;}{\levelnumbers\'01;}\fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc0\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'02\'08.;}{\levelnumbers\'01;}\fi-360\li6480\jclisttab\tx6480 }
+{\listname ;}\listid1965041908}{\list\listtemplateid1747613510{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel
+\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 
+}{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid1986397244}{\list\listtemplateid-389496392{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1
+\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 
+\fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers
+;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23
+\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 
+}{\listname ;}\listid2048672895}{\list\listtemplateid-684183680{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3913 ?;}{\levelnumbers;}\f3\fs20\fbias0 \fi-360\li720\jclisttab\tx720 }{\listlevel
+\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01o;}{\levelnumbers;}\f2\fs20\fbias0 \fi-360\li1440\jclisttab\tx1440 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext
+\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2160\jclisttab\tx2160 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li2880\jclisttab\tx2880 
+}{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li3600\jclisttab\tx3600 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0
+\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li4320\jclisttab\tx4320 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 
+\fi-360\li5040\jclisttab\tx5040 }{\listlevel\levelnfc23\leveljc0\levelfollow0\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li5760\jclisttab\tx5760 }{\listlevel\levelnfc23\leveljc0\levelfollow0
+\levelstartat1\levelspace0\levelindent0{\leveltext\'01\u-3929 ?;}{\levelnumbers;}\f14\fs20\fbias0 \fi-360\li6480\jclisttab\tx6480 }{\listname ;}\listid2117678065}}{\*\listoverridetable{\listoverride\listid2048672895\listoverridecount0\ls1}
+{\listoverride\listid2117678065\listoverridecount0\ls2}{\listoverride\listid1965041908\listoverridecount0\ls3}{\listoverride\listid87386204\listoverridecount0\ls4}{\listoverride\listid1670982901\listoverridecount0\ls5}{\listoverride\listid950665893
+\listoverridecount0\ls6}{\listoverride\listid1986397244\listoverridecount0\ls7}{\listoverride\listid415593845\listoverridecount0\ls8}{\listoverride\listid485362082\listoverridecount0\ls9}{\listoverride\listid1166702447\listoverridecount0\ls10}
+{\listoverride\listid1000040378\listoverridecount0\ls11}{\listoverride\listid773551383\listoverridecount0\ls12}{\listoverride\listid1109742369\listoverridecount0\ls13}}{\info{\title Model for DMAware Open-Source Development and Distribution}
+{\author Dennis E. Hamilton}{\operator Dennis E. Hamilton}{\creatim\yr1999\mo11\dy23\hr15\min6}{\revtim\yr1999\mo11\dy23\hr15\min12}{\version3}{\edmins1}{\nofpages17}{\nofwords6629}{\nofchars37786}{\*\company InfoNuovo}{\nofcharsws46403}{\vern113}}
+\margl1080\margr1080 \widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\formshade\viewkind1\viewscale46\viewzk1\pgbrdrhead\pgbrdrfoot \fet0\sectd \linex0\endnhere\titlepg\sectlinegrid360\sectdefaultcl {\header 
+\pard\plain \s19\sb200\widctlpar\tqc\tx5040\tqr\tx9900\adjustright \f1\fs20\cgrid {\i\fs16 Draft 0.02\tab Model for DMAware Open-Source Development and Distribution\tab page }{\field{\*\fldinst {\cs21\i\fs16  PAGE }}{\fldrslt {\cs21\i\fs16\lang1024 17}}}{
+\i\fs16 
+\par }}{\footer \pard\plain \s20\sb200\widctlpar\tqc\tx4320\tqr\tx9900\adjustright \f1\fs20\cgrid {\field{\*\fldinst {\i\fs16  FILENAME \\* Lower \\* MERGEFORMAT }}{\fldrslt {\i\fs16\lang1024 dmaware002.doc}}}{\i\fs16 \tab \tab }{\field{\*\fldinst {\i\fs16 
+ SAVEDATE \\@ "yyyy-MM-dd HH:mm" \\* MERGEFORMAT }}{\fldrslt {\i\fs16\lang1024 1999-11-23 15:06}}}{
+\par }}{\footerf \pard\plain \s20\sb200\widctlpar\tqc\tx4320\tqr\tx9900\adjustright \f1\fs20\cgrid {\field{\*\fldinst {\i\fs16  FILENAME \\* Lower \\* MERGEFORMAT }}{\fldrslt {\i\fs16\lang1024 dmaware002.doc}}}{\i\fs16 \tab \tab }{\field{\*\fldinst {\i\fs16 
+ SAVEDATE \\@ "yyyy-MM-dd HH:mm" \\* MERGEFORMAT }}{\fldrslt {\i\fs16\lang1024 1999-11-23 15:06}}}{\i\fs16 
+\par }}{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}
+{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8
+\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \s1\qc\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\fs32 
+\hich\af1\dbch\af16\loch\f1 Model for DMAware Open-Source Develo\hich\af1\dbch\af16\loch\f1 pment and Distribution
+\par }\pard\plain \s17\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i DMAware is the working name for the open-source development and distribution of document-management software based on the work of the AIIM Document Management Alliance.\~ }{
+
+\par }\pard\plain \s18\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i The subject matter of the DMAware clearinghouse is public, openly-contributed DMA software, documentation, and metadata definitions.\~ }{
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i The DMAware clearinghouse accepts other open-source contributions that further the integrated usage of standards-based document-management technology. \~\~
+ Links are provided to other work that contributes to interoperability of document-management solutions.}{
+\par }{\cs25\i This is a draft of in-progress work.\~ For access to the latest version, visit }{\field\fldedit{\*\fldinst {\cs25\i  HYPERLINK "http://www.infonuovo.com/DMAware" }{\i {\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b4200000068007400740070003a002f002f007700770077002e0069006e0066006f006e0075006f0076006f002e0063006f006d002f0044004d00410077006100720065000000}}}{\fldrslt {\cs26\i\ul\cf2 
+http://www.infonuovo.com/DMAware}}}{\cs25\i .}{
+\par }\pard \li720\ri720\sb100\sa100\widctlpar\adjustright {{\pict{\*\picprop\shplid1025{\sp{\sn shapeType}{\sv 1}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn fillColor}{\sv 7366760}}{\sp{\sn fFilled}{\sv 1}}{\sp{\sn fLine}{\sv 0}}}
+\picscalex720\picscaley6\piccropl0\piccropr0\piccropt0\piccropb0\picw1764\pich882\picwgoal1000\pichgoal500\wmetafile8\bliptag979344143\blipupi1439{\*\blipuid 3a5f9b0f7d4c0de404d567749d32d10a}
+010009000003310000000000070000000000050000000b0200000000050000000c02f401e803070000001b04f401e8030000000005000000140200000000050000001302f401e803050000001402f40100000500000013020000e8030300000000000000}
+\par }\pard\plain \s3\sb100\sa100\widctlpar\outlinelevel2\adjustright \b\fs27\cgrid {\hich\af1\dbch\af16\loch\f1 Author:
+\par }\pard\plain \s15\li720\ri720\sb100\sa100\widctlpar\adjustright \fs20\cgrid {\field\fldedit{\*\fldinst {\hich\af1\dbch\af16\loch\f1  \hich\af1\dbch\af16\loch\f1 HYPERLINK\hich\af1\dbch\af16\loch\f1  "mailto:infonuovo@email.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b360000006d00610069006c0074006f003a0069006e0066006f006e0075006f0076006f00400065006d00610069006c002e0063006f006d000000}}}{\fldrslt {\cs26\ul\cf2 \hich\af1\dbch\af16\loch\f1 
+Dennis E. Hamilton}}}{\hich\af1\dbch\af16\loch\f1 , Technical Committee Chairman, }{\field\fldedit{\*\fldinst {\hich\af1\dbch\af16\loch\f1  \hich\af1\dbch\af16\loch\f1 HYPERLINK\hich\af1\dbch\af16\loch\f1  "http://www.aiim.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2a00000068007400740070003a002f002f007700770077002e006100690069006d002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 \hich\af1\dbch\af16\loch\f1 
+AIIM Document Management Alliance}}}{
+\par }\pard\plain \s3\sb100\sa100\widctlpar\outlinelevel2\adjustright \b\fs27\cgrid {\hich\af1\dbch\af16\loch\f1 Revision History:
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs27\b This is draft 0.02}{ of 1999-11-23
+\par }\pard\plain \s2\ri1440\sb240\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\cs25\i\fs24 \hich\af1\dbch\af16\loch\f1 Content }{\fs24 
+\par }\pard\plain \li720\sb120\widctlpar\adjustright \f1\fs20\cgrid {1. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "Introduction" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d00000049006e00740072006f00640075006300740069006f006e000000
+}}}{\fldrslt {\cs26\fs24\ul\cf2 Introduction}}}{
+\par 2. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "DMAwareClearinghouse" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001500000044004d004100770061007200650043006c0065006100720069006e00670068006f007500730065000000}}}{\fldrslt {
+\cs26\fs24\ul\cf2 DMAware Clearinghouse}}}{
+\par 3. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "OpenSourceLicensing" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000140000004f00700065006e0053006f0075007200630065004c006900630065006e00730069006e0067000000}}}{\fldrslt {
+\cs26\fs24\ul\cf2 Open-Source Licensing}}}{
+\par 4. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ContributionProcedures" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001700000043006f006e0074007200690062007500740069006f006e00500072006f0063006500640075007200650073000000}}}{\fldrslt {
+\cs26\fs24\ul\cf2 Contribution Procedures}}}{
+\par 5. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "OpenSourceAccountability" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000190000004f00700065006e0053006f0075007200630065004100630063006f0075006e0074006100620069006c006900740079000000}}
+}{\fldrslt {\cs26\fs24\ul\cf2 Open-Source DMAware Availability and Accountability}}}{
+\par 6. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ProjectManagement" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b020000000800000012000000500072006f006a006500630074004d0061006e006100670065006d0065006e0074000000}}}{\fldrslt {\cs26\fs24\ul\cf2 
+Open-Source Project Management}}}{
+\par 7. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "SpecificationClearinghouse" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000001b000000530070006500630069006600690063006100740069006f006e0043006c0065006100720069006e00670068006f007500730065000000}}}{\fldrslt {\cs26\fs24\ul\cf2 Specifications, Definitions, and Metadata Clearinghouse}
+}}{
+\par 8. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ExistingMaterials" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000120000004500780069007300740069006e0067004d006100740065007200690061006c0073000000}}}{\fldrslt {\cs26\fs24\ul\cf2 
+Existing Specifications and Software}}}{
+\par 9. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "Transition" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000b0000005400720061006e0073006900740069006f006e000000}}}{\fldrslt {\cs26\fs24\ul\cf2 Implementation and Transition}}}{
+\par 10. }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "References" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000b0000005200650066006500720065006e006300650073000000}}}{\fldrslt {\cs26\fs24\ul\cf2 References and Resources}}}{
+\par }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "Contributors" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d00000043006f006e007400720069006200750074006f00720073000000}}}{\fldrslt {\cs25\i\ul\cf2 Contributors}}}{
+\par }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ChangeHistory" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000e0000004300680061006e006700650048006900730074006f00720079000000}}}{\fldrslt {\cs25\i\ul\cf2 Change History}}}{
+\par }\pard \li720\ri720\sb100\sa100\widctlpar\adjustright {{\pict{\*\picprop\shplid1026{\sp{\sn shapeType}{\sv 1}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn fillColor}{\sv 7366760}}{\sp{\sn fFilled}{\sv 1}}{\sp{\sn fLine}{\sv 0}}}
+\picscalex720\picscaley6\piccropl0\piccropr0\piccropt0\piccropb0\picw1764\pich882\picwgoal1000\pichgoal500\wmetafile8\bliptag979344143\blipupi1439{\*\blipuid 3a5f9b0f7d4c0de404d567749d32d10a}
+010009000003310000000000070000000000050000000b0200000000050000000c02f401e803070000001b04f401e8030000000005000000140200000000050000001302f401e803050000001402f40100000500000013020000e8030300000000000000}}{
+\par }\pard\plain \s15\widctlpar\adjustright \fs20\cgrid {\~
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\page \hich\af1\dbch\af16\loch\f1 1.\~ Introduction
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {DMAware is the name for clearinghouse and open-source development activities to be carried out with the institutional sponsorship of AIIM International.\~
+ The DMAware clearinghouse provides an archive of the technical specifications and sample software developed by the AIIM Document Management Alliance.\~
+ The DMAware clearinghouse provides an open, public forum for access to, discussion of, application of, and contribution to this body of work.\~\~\~ 
+\par To provide for the widest availability and reusability of the material, the current DMA 1.0 materials and proposed extensions to DMA 1.0 are being shared openly and organized for further development using open-source practices and licenses.\~ 
+\par This approach is being undertaken for the following purposes:
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls1\adjustright {To make the efforts of the Document Management Alliance an
+d other contributors to document-management interoperability as widely-accessible and usable as possible
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}To encourage the open contribution of participants in businesses, institutions, and government in the review and improvement of this technical work a
+nd in the achievement of interoperability in document management applications through the application of common software architectures, integration frameworks, interchange techniques, and protocol agreements
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}To cultivate the creation of community-owned s
+oftware components that are primarily valuable only when commonly used and openly shared among a diverse community of interests and application
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}To establish a high level of quality and accountability for critical interoperable elements through their full
+ disclosure, peer inspection, carefully-managed maintenance, extensive usage, and widespread community adoption
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}To encourage the contribution of scientists, scholars, and artisans to the ongoing exploration, development, and refinement of interoperabilit
+y techniques in document management, providing an avenue for placing new ideas and innovations into practice
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\page \hich\af1\dbch\af16\loch\f1 2.\~ DMAware Clearinghouse
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {The heart of the DMAware clearinghouse is a World-Wide Web site, operated as part of the }{\field\fldedit{\*\fldinst { HYPERLINK "http://aiim.www.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2a00000068007400740070003a002f002f006100690069006d002e007700770077002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 AIIM Web site}}}{ (at http://www.aiim.org),\~
+ that provides access to all information and participants of the DMAware community.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls2\adjustright {Archives of information that is available for reference and for use
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Status information on completed work and any comments, experiences, and defects that have been reported
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Distribution lists for discussions among DMAware users, contributors, and developers
+\par }\pard\plain \s15\li720\ri720\widctlpar\adjustright \fs20\cgrid {\hich\af1\dbch\af16\loch\f1 The DMAware clearinghouse provides three levels of material:
+\par {\listtext\pard\plain\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 1.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls3\adjustright \f1\fs20\cgrid {Specifications, standards, and documentation th
+at offer models, frameworks, interfaces, and procedures of value in the achievement of document-management interoperability
+\par {\listtext\pard\plain\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 2.\tab}Computer software that supports document-management system interoperability along with technical materials and documentation related to the application of that software
+\par {\listtext\pard\plain\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 3.\tab}User experiences and common definitions for user-meaningful information (e.g., metad
+ata) that enhances the interoperability of systems as well as the interchange and reusability of managed materials
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Although initial material for the DMAware clearinghouse is related to technical integration methodologies and software interfaces for interop
+erable access to varied document collections, coverage will expand to areas of usage and practice once technical interoperability becomes established.
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\hich\af1\dbch\af16\loch\f1 3.\~ Open-Source Licensing
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {To ensure that DMAware software is freely available for continuing community development, improvement, and refinement, open-source licensing practices are adopted.
+\par Rather than define a unique open-source license, the efforts of the broader open-source community are utilized.\~ The Open Source Initiative provides definitions and certification that will be relied upon for DMAware [}{\field\fldedit{\*\fldinst { 
+HYPERLINK "" \\l "[OSI]" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000060000005b004f00530049005d000000}}}{\fldrslt {\cs26\ul\cf2 OSI}}}{].
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 3.1 Copyright Held by AIIM International
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {License to all copyrighted subject matter contributed to DMAware will generally be held by AIIM International.\~ Where copyrigh
+t is retained by the contributing party, an appropriate OSI-approved license must be provided that permits unrestricted redistribution by AIIM International and any recipient of a distribution of the contributed material.
+\par Submitters of new contributions must provide a transfer agreement that includes affirmation that the contributor has the right to make the contribution under the covering license (section }{\field\fldedit{\*\fldinst { HYPERLINK "" \\
+l "LicenseRequirement" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000130000004c006900630065006e007300650052006500710075006900720065006d0065006e0074000000}}}{\fldrslt {\cs26\ul\cf2 4.1}}}{)
+\par }\pard\plain \s2\sb100\sa100\keepn\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 3.2 OSI Approved Open-Source License
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {All license statements employed for DMAware will conform to the Open-Source Definition [}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "[OSD]" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b0200000008000000060000005b004f00530044005d000000}}}{\fldrslt {\cs26\ul\cf2 OSD}}}{] and be approved by the Open Source Initiative [}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "[OSI]" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b0200000008000000060000005b004f00530049005d000000}}}{\fldrslt {\cs26\ul\cf2 OSI}}}{]. \~ Contributors may use any OSI-approved license.\~
+ There are nine qualities that the current version, OSD 1.7, stipulates as characteristics of open-source licenses. 
+\par Here is the proposed application to open-source DMAware:
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 1.\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright {\cs27\b Unrestricted Free Redistribution}{
+\par }\pard\plain \s16\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid {The materials covered by the license may be freely redistributed without modification.
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 2.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright \f1\fs20\cgrid {\cs27\b Source Code Inclusion}{
+\par }\pard \li1440\sb200\widctlpar\adjustright {The materials must include source code and the license allows redistribution in source code form as well as compiled form.
+\par Redistribution in a form that omits source code must be accompanied by a well-publicized means for obtaining the source code without difficulty and at nominal cost, if any.\~
+ Source code deposited in the DMAware clearinghouse may be used for this purpose (}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "DerivedWorksAllowed" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b020000000800000014000000440065007200690076006500640057006f0072006b00730041006c006c006f007700650064000000}}}{\fldrslt {\cs26\ul\cf2 3}}}{), below.
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 3.\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright {\cs27\b Derived Works Allowed}{
+\par }\pard \li1440\sb200\widctlpar\adjustright {"The license must allow modifications and derived works, and must allow them to be distributed under the same terms as the license of the original software."
+\par It is being discussed whether distribution of derived works be }{\cs25\i required}{ to be under the same terms as the license of the original software.\~ Under the OSD, it is only necessary that creators of derived works be }{\cs25\i allowed}{ to do so. 
+\~ There are OSI-approved licenses in both camps, so either approach will be allowed.\~ The question remains open for any DMAware-customized licenses that might be developed (section }{\field\fldedit{\*\fldinst { HYPERLINK "" \\
+l "ProgramsLibrariesComponents" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001c000000500072006f006700720061006d0073004c006900620072006100720069006500730043006f006d0070006f006e0065006e00740073000000}}}{\fldrslt {\cs26\ul\cf2 3.3}}}{).
+
+\par It is proposed that distributed forms of open-source derived works can be deposited, with appropriate source code, in the DMAware clearinghouse.\~
+ Such deposited source code may be used to satisfy availability of omitted source code in satisfaction of item (}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "SourceCodeInclusion" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000001400000053006f00750072006300650043006f006400650049006e0063006c007500730069006f006e000000}}}{\fldrslt {\cs26\ul\cf2 2}}}{), above.
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 4.\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright {\cs27\b Integrity of the Source Preservable}{
+\par }\pard \li1440\sb200\widctlpar\adjustright {"The license may restrict source-code from being distributed in modified form }{\cs25\i only}{
+ if the license allows the distribution of 'patch files' with the source code for the purpose of modifying the program at build time. The license must explicitly permit distribution of 
+software built from modified source code. The license may require derived works to carry a different name or version number from the original software."
+\par It is proposed for DMAware that separately-distributed derived works must be distinctly identified in a
+ way that avoids all possibility of confusion with the original work or subsequent versions of that work, and that provides access to the source for the original as well as for any derived open-source work.
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 5.\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright {\cs27\b No Discrimination Against Persons or Groups}{
+\par }\pard\plain \s15\li1440\ri720\sb100\sa100\widctlpar\adjustright \fs20\cgrid {\hich\af1\dbch\af16\loch\f1 "The license must not discriminate against any person or group of persons."
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 6.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright \f1\fs20\cgrid {\cs27\b No Discrimination Against Fields of Endeavor}{
+\par }\pard\plain \s22\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid {"The license must not restrict anyone from making use of the program in a specific field of endeavor. For example, it may not restri
+ct the program from being used in a business, or from being used for genetic research."
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 7.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright \f1\fs20\cgrid {\cs27\b Distribution of License without Added Restraints}{
+\par }\pard\plain \s22\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid {"The rights attached to the program must apply to all to whom the program is redistributed without the need for execution of an additional license by those parties."
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 8.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright \f1\fs20\cgrid {\cs27\b License Not Specific to a Product}{
+\par }\pard\plain \s22\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid {"The rights attached to the program must not depend on the program's being part of a particular software distribution. If the program is extracted from that distribution
+ and used or distributed within the terms of the program's license, all parties to whom the program is redistributed should have the same rights as those that are granted in conjunction with the original software distribution."
+\par {\listtext\pard\plain\cs27\b\f1\fs20\cgrid \hich\af1\dbch\af0\loch\f1 9.\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls4\adjustright \f1\fs20\cgrid {\cs27\b License Must Not Contaminate Other Software}{
+\par }\pard\plain \s22\li1440\sb200\widctlpar\adjustright \f1\fs20\cgrid {
+"The license must not place restrictions on other software that is distributed along with the licensed software. For example, the license must not insist that all other programs distributed on the same medium must be open-source software." 
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 3.3 Licenses Differentiate Programs, Libraries, and Components
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i Up to three specific OSI-approved license statements will be recommended (after development, if needed)\~ for specific application to DMAware as needed.\~
+ This is to provide for differentiation among general open-source software, open-source libraries that may be used in the construction of closed-source software, and open-source components that may be co-operated with closed-source software.\~ }{
+\par }{\cs25\i Existing OSI-approved licenses will be usable. \~ It is intended that contributors may make use of any OSI-approved licenses, whether or not DMAware-specific licenses are also established.\~
+ DMAware licenses will not be introduced where there is an available OSI-approved license that serves the requirements.}{
+\par }\pard\plain \s3\li720\ri720\sb100\sa100\widctlpar\outlinelevel2\adjustright \b\fs27\cgrid {\cs27\fs24 \hich\af1\dbch\af16\loch\f1 3.3.1 General Open-Source Licensing}{\fs24 
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i There are a variety of OSI-approved general open-source licenses.\~ It is probably unnecessary to craft an additional license for this purpose.}{
+\par A general open-source license, comparable in strength to the GNU General Public License [}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "[GPL]" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000060000005b00470050004c005d000000}}}{\fldrslt 
+{\cs26\ul\cf2 GPL}}}{] will be recommended for use with DMAware.\~ This license (and OSI-approved alternatives) applies to open-source distribution of complete software elements, such as 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls5\adjustright {fully-implemented client programs, 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}reference implementations of document spaces and other services,
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}tools for installation, operation, administration, testing, and verification of \~document systems
+\par }\pard \li720\sb200\widctlpar\adjustright {This license will conform to the Open-Source Definition (}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "OSIapproved" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000c0000004f005300490061007000700072006f007600650064000000}}}{\fldrslt {\cs26\ul\cf2 section 3.2}}}{).\~
+ The key feature of a strong GPL is that all derivative works of any kind are required to be made available under open-source conditions and must be distributed under license conditions that do not diminish access to the source 
+materials, the ability of others to inspect, redistribute, and the ability to make further open-source derivative works.
+\par }\pard\plain \s3\li720\ri720\sb100\sa100\widctlpar\outlinelevel2\adjustright \b\fs27\cgrid {\cs27\fs24 \hich\af1\dbch\af16\loch\f1 3.3.2 Open-Source Library Licensing}{\fs24 
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {The purpose of a library-level license is to encourage the separable distribution of library softwa
+re and allow for its use in building certain larger programs and components (dependent works) that incorporate the library software in some form.\~
+ A library license can be used to release the qualifying dependent work from treatment as a derivative work and to authorize closed-source dependent works.
+\par A library-level open-source license, comparable in strength to the GNU Lesser General Public License [}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "[LGPL]" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b0200000008000000070000005b004c00470050004c005d000000}}}{\fldrslt {\cs26\ul\cf2 LGPL}}}{] will be recommended for open-source distribution of libraries va
+luable in the construction of other libraries and in the construction of complete software elements of various kinds.\~ 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls6\adjustright {The library-level open-so
+urce license permits certain uses of the library in construction of other software (the dependent work) without requiring the resulting combination to be open-source.\~ 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Derivative works of the open-source library are still required to be preserved as open-source software. 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Independently-developed substitutions that provide the same interfaces and functions as the open-source library may be permitted (see }{\field\fldedit{\*\fldinst { HYPERLINK "" \\
+l "ComponentLicensing" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001300000043006f006d0070006f006e0065006e0074004c006900630065006e00730069006e0067000000}}}{\fldrslt {\cs26\ul\cf2 3.3.3}}}{)
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}There may be conditions on the identification of dependencies on the library, and availability of the library, in notices that accompany forms of the dependent work.
+\par }\pard \li720\sb200\widctlpar\adjustright {The DMA header files and other library-definition elements are subject to this kind of license, as are interface definitions expres
+sed in the Interface Definition Language (IDL) and other special forms, to the extent that copyrighted subject-matter is involved.
+\par The purpose of the open-source library license is to allow libraries that are contributed, developed, and redistributed as op
+en-source software to be employed in the construction of closed-source software (whether freeware, shareware, or commercial software) and in the construction of new open-source software.\~
+ However, any derivative work based on an open-source library that is itself a library is required to be an open-source library and satisfy other conditions of the open-source library license. \~
+ In addition, there can be licensing conditions on the notification that must be provided concerning the use of open-source libraries in the composition of other open- and closed-source dependent software.
+\par Open-source library licenses distinguish between creating derivative libraries and depending on libraries in the composition of non-library software.\~ Allowing closed-source usage e
+ncourages interoperability, reduces redundancy of useful library implementations, and expands the community of application for the library, contributing to its achievement of high reliability and utility.\~
+ It also provides an avenue for developers of close-source software to contribute useful libraries to the open-source community and retain full rights to application of the library (and open-source improvements of it) in their closed-source applications.
+
+\par }\pard\plain \s3\li720\ri720\sb100\sa100\widctlpar\outlinelevel2\adjustright \b\fs27\cgrid {\fs24 \hich\af1\dbch\af16\loch\f1 3.3.3 Open-Source Component Licensing
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {If necessary, there will also be a separate open-source component license recommended for use with open-source DMAware components.\~
+ The purpose is to assert that the covered components be separable with no restriction on certain combinations even were it determined that such combinations constituted derivative works or compilations under copyright law.\~
+ This is similar to the purpose of the library-level open-source agreement, and it might be the case that a single license form can cover both cases.
+\par Components, which are relatively-new kinds of software artifacts, have qualities of complete software elements and also of libraries.\~ The open-source component license is comparable in strength to the GNU Lesser General Public License [}
+{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "[LGPL]" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000070000005b004c00470050004c005d000000}}}{\fldrslt {\cs26\ul\cf2 LGPL}}}{
+] and provides for open-source distribution of components: software elements that are not independently operable but are employed in conjunction with software system elements and libraries.\~ Open-source components are similar to open-source libraries exc
+ept that combination with other elements occurs only in the course of processing operations and is entirely ephemeral.\~ The combination need never occur as a complete work fixed in a tangible medium.
+\par Examples of components in DMAware include plug-in servic
+e elements for converting URLs in different character-set encodings, comparing texts in different collation sequences, providing error message translations in different user languages, creating cross-repository searches (merging scopes), and providing ref
+erence or test implementations of system objects and other componentized functionality of document services.\~
+ In the reference implementation of DMA 1.0, the DMA System Manager is accessed and operated as a shared component by any DMA application that requires access to DMA services (delivered by further components).
+\par Characteristics to be considered and provided for in arriving at a component license, if needed, include
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls7\adjustright {The component is completely separable and distributable separately even when redistribu
+ted with other software and installed in conjunction with the installation of other software\~ 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Provision that open-source components may be operated in conjunction with other components and software elements that are not also open-source certified.\~ 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Conditions under which derivative works of the open-source components are required by the license to be preserved as open-source software.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Permitting substitutions of closed-source components that are not derivative works yet provide the same interfaces 
+and functionality, so long as the closed-source solution is clearly differentiated and cannot confused with the open-source component (and vice-versa).
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}How redistribution and installations of the open-source components, derivative or otherwise, are to be identified and notice provided of their open-source status and availability
+
+\par }\pard \li720\sb200\widctlpar\adjustright {Open-source implementations of Java classes, of ActiveX components, DMA service elements, and similar packaged components benefit from this form of licensing. \~\~ Components have e
+merged since the creation of the GNU GPL and LGPL licenses. The objective is to permit, at the option of the contributor, free commingling of closed-source and open-source components in operations of open-source and closed-source systems without diluting 
+the open-source license on the open-source components themselves. \~\~ 
+\par One of the key qualities of open-source components and open-source libraries is agreement on standardization of interfaces and allowance for substitutability of open-source and closed-source elements that honor those interfaces.\~
+ The interface is preserved as equally available for use with either kind of implementation.\~ Likewise, the application of the interface in the construction of open- and closed-source software is not restricted.
+\par }\pard\plain \s1\sb100\sa100\keepn\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\hich\af1\dbch\af16\loch\f1 4.\~\hich\af1\dbch\af16\loch\f1  Contribution Procedures
+\par }\pard\plain \s2\sb100\sa100\keepn\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 4.1 License and Release Required
+\par }\pard\plain \s15\li720\ri720\sb100\sa100\keepn\widctlpar\adjustright \fs20\cgrid {\cs25\i \hich\af1\dbch\af16\loch\f1 The open-source nature of contributions will be clearly specified and be authoritative.}{
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs27\b 4.1.1 }{New contributions must be clearly packaged with appropriate open-source license statements.
+\par }{\cs27\b 4.1.2}{ New c
+ontributions must be accompanied by a formal release statement that attests to the authority of the contributor to make the contribution, that transfers copyright to AIIM International if appropriate, and that asserts the absence of any encumbrance to the
+ license.\~ The material will be distributed as open-source certified software.
+\par }{\cs27\b 4.1.3}{ The DMAware clearinghouse will maintain records of the history of new contributions and modifications to contributions so that the origin of all material is readily auditable and confirmable.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 4.2 Limitation to Open-Source and Public-Domain Materials
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i So th
+at users of DMAware material are always clear on the usability of software obtained from the DMAware clearinghouse, only open-source and public-domain software will be provided on the clearinghouse site.}{
+\par }{\cs27\b 4.2.1}{ Contributions of software that are not made under an OSI-approved open-source license appropriate to the software will be rejected.\~ The clearinghouse materials will not be commingled with non-open-source software.\~
+ People who access software provided through the DMAware clearinghouse will have the reasonable expectation that all materials will be either OSI-certified or public-domain material.\~ Public-domain materials will be clearly identified.
+\par }{\cs27\b 4.2.2}{ The DMAware clearinghouse will allow announcements and posting of information for locating other materials, proprietary and otherwise, that may be of interest and value to the DMAware user community.\~\~
+ However, only open-source and public-domain materials, as already described, will be directly available via the DMAware clearinghouse.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 4.3 Disclosure of De\hich\af1\dbch\af16\loch\f1 pendencies and Tool Requirements
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i It is important that a recipient of the contribution have sufficient information to be able to reproduce the construction of operational forms of the software elements. \~
+ There will be packaging requirements for ensuring that contributions provide that information, including the following:}{
+\par }{\cs27\b 4.3.1 }{Contributions must provide sufficient dependency and construction information such that any compiled or derived software elements can be reconstructed and the reconstruction confirme
+d (i.e, the elements when recompiled and rebuilt or rederived are reproduced exactly in every material respect).
+\par }{\cs27\b 4.3.2}{ Any dependency of the open-source software portions on }{\cs25\i non-redistributable}{ materials that must be obtained elsewhere are clearly identified along with information on where to obtain the necessary materials.\~
+ (Such materials include non-redistributable debugging versions of run-time libraries, non-redistributable include files that are packaged with proprietary compilers and proprietary libr
+ary systems, and run-time libraries and subsystems that are not restricted from redistribution.)
+\par }{\cs27\b 4.3.3 }{All dependency of the contributed software on tools, generic or specific, that are not included as part of the contribution must be clearly identified an
+d the actual versions of tools used in construction and confirmation of the element must be identified so that all tool operations can be reproduced.\~ (This includes parameters and option settings that must be provided for proper tool operation.)
+\par }{\cs27\b 4.3.4}{ Any dependency of the open-source software on }{\cs25\i redistributable}{
+ materials and tools that are included under separate license conditions must be clearly identified, the redistributed material must be clearly identified, the applicable license statement must iden
+tify the material to which it applies and the license must be included.\~
+ The separate license for redistributable materials must permit continued redistribution as part of redistribution of the open-source material and of any derivative open-source works of that material.\~ (An example of this case is the library file }{
+\cs28 \hich\af1\dbch\af16\loch\f1 dmacom.h}{ that is subject to redistribution as part of DMAware under terms and conditions established by Microsoft Corporation.)
+\par }\pard\plain \s1\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\page \hich\af1\dbch\af16\loch\f1 5.\~ Open-Source DMAware Availability and Accountability
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i The status of all available and under-development DMAware will be fully reported on the DMAware clearinghouse site.\~
+ Reports of difficulties, suspected defects, and proposed remedies will be openly available.\~ The DMAware site will maintain an account of the history, provenance, and known status of all DMAware open-source releases. \~
+ Users of DMAware or of products that depend upon open-source DMAware are able to confirm the condition and history of the specific versions involved.}{
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 5.1 Availability and Archiving
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Availability of open-source releases of DMAware software will be announced on appropriate archive news groups and other avenues.\~
+ The DMAware clearinghouse site will provide a catalog of the current status of all open-source releases, including providing means for downloading the material from the DMAware clearinghouse site. \~
+ Other sites can redistribute and make available open-source DMAware materials as provided for in the applicable open-source licenses.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 5.2 Registration and Acknowledgment of License Condi\hich\af1\dbch\af16\loch\f1 tions
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Users who wish to download open-source DMAware materials may be required to register prior to being given download privileges.\~
+ The registration process is used to ensure that the requester is informed of the license conditions that apply to the material and knowingly consents to those conditions.\~
+ Registration also provides a contact mechanism if there is need to follow-up or communicate with the requester at a later time.\~ It is the policy of the DMAware site that the identity of requesters who have
+ accessed DMAware materials not be disclosed and not be used for any other purpose.
+\par }\pard\plain \s2\sb100\sa100\keepn\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 5.3 Information about On-Going Development, Identified Defects, Available Remedies, and Usage Experience
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Distribution lists will be available for discussion of DMAware, pro
+vision of trouble-shooting information and problem reports, and other discussions related to the use and any difficulties with the open-source DMAware software.
+\par Defect reports, proposed patches, and change suggestions will be announced and posted on the DMAware clearinghouse site.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 5.4 Reference to Clearinghouse from Distributed Materials
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Users of software systems that include open-source DMAware programs, libraries, or components will be able to confirm, from information that accompanies those software elem
+ents, the history and current status of the specific DMAware software versions that are employed.\~ License materials supplied to those users will include instructions on how to identify the versions and confirm their status.
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\page \hich\af1\dbch\af16\loch\f1 6.\~ Open-Source Project Manage\hich\af1\dbch\af16\loch\f1 ment
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i 
+There will be reliable procedures for the consistent maintenance of those open-source contributions for which the DMAware clearinghouse serves as the primary development, distribution, and archive point.\~ These procedures and guidelines will establish
+ how open-source DMAware projects are constituted and the leadership roles and accountabilities that govern management of contributions and development of revisions.}{
+\par }{\cs25\i In general, there is no particular procedure for developing a contribution and submitting it along the lines proposed in Section 4, }{\field\fldedit{\*\fldinst {\cs25\i  HYPERLINK "" \\l "ContributionProcedures" }{\i {\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000001700000043006f006e0074007200690062007500740069006f006e00500072006f0063006500640075007200650073000000}}}{\fldrslt {\cs26\i\ul\cf2 Contribution Procedures}}}{\cs25\i .\~
+ The need for open-source project management arises when maintenance and further development of an existing contribution is carried out by an informal open-source team.\~
+ In many ways, the project management requirement is similar to the rules that a club might have to reach agreement on direction and tasks.\~ There becomes a need to establish how disagreements are to be resolved and who is
+ allowed to participate in those decisions.}{
+\par }{\cs25\i It is expected that there will be very few specific procedures initially, and that more-detailed project management agreements will be introduced as the first projects are carried forward.}{
+\par Contributions of open-source DMAware software will be maintained and updated using agreed software project and configuration management practices.\~ The project management approach of the Apache Project [}{\field\fldedit{\*\fldinst { HYPERLINK "" \\
+l "[Apache]" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b0200000008000000090000005b004100700061006300680065005d000000}}}{\fldrslt {\cs26\ul\cf2 Apache}}}{] will serve as the model for DMAware project management.\~
+ As DMAware open-source development projects are undertaken, there will be identification of
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1260\ri720\sb100\sa100\widctlpar\jclisttab\tx0\ls8\adjustright {roles and responsibilities - defining the recognized roles in the project
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx1440\ls8\ilvl2\adjustright {participating users
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}contributing developers
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}development team 
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}managing body
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1260\ri720\sb100\sa100\widctlpar\jclisttab\tx0\ls8\adjustright {communication structure - defining how users and developers communicate with regard to the project
+
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx1440\ls8\ilvl2\adjustright {user lists
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}contributor lists
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}development team lists
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}announcement lists
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1260\ri720\sb100\sa100\widctlpar\jclisttab\tx0\ls8\adjustright {decision making - defining how action items are proposed and agreement reached
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx1440\ls8\ilvl2\adjustright {classification of action items
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}consensus process
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}non-consensus resolution process
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}standing of participants in decision making
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1260\ri720\sb100\sa100\widctlpar\jclisttab\tx0\ls8\adjustright {configuration management - defining how the 
+project's source code and other materials are organized and developed
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx1440\ls8\ilvl2\adjustright {definitive repository location and structure
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}requirements for license on submissions
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}access rights to repository
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}maintaining and reporting accurate status of configuration elements in the repository
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}distinguishing categories of development: branches, changes, and patches
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}formats for submissions to and distributions from the repository
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1260\ri720\sb100\sa100\widctlpar\jclisttab\tx0\ls8\adjustright {project management - defining the roles and responsibility of any management oversight for the project
+
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx1440\ls8\ilvl2\adjustright {eligibility to participate in management process
+\par {\listtext\pard\plain\f14\fs20\cgrid \loch\af14\dbch\af0\hich\f14 \'a7\tab}relationship of project management and the institutional sponsor (AIIM International)
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\hich\af1\dbch\af16\loch\f1 7.\~ Specifications, Definitions, and Metadata Clearinghouse
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Documentation and specifications will be available via the DMAware clearinghouse, both for download and on-line viewing.\~
+ Redistribution and creation of derivative works of these materials will be governed by notices provided in the documentation itself.
+\par An important contribution of the DMAware clearinghouse is providing a place for users of DMAware to publish and exchange application-valuable information.\~
+ There will be an electronic clearinghouse for users to publish class and property definitions and pro
+perty identifications that are valuable for use between organizations and individuals in achieving interoperability and interchange of managed-document information.\~ 
+\par The DMAware clearinghouse will provide a registry in which users can publish useful properties and class definitions and also publish descriptions of those items in any number of languages.\~
+ Material publicized and described in the registry will be freely usable in other usages of DMAware and in interoperable use of document-management systems.
+\par The intention is to employ registry-information data formats that are easily interchanged and employed in conjunction with standards-based metadata repository systems.
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\hich\af1\dbch\af16\loch\f1 8.\~ Existing Specifications and Software
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs25\i The specifications and software produced unde
+r the AIIM Document Management Alliance will be available for distribution and usage from the DMA 1.0 section of the DMAware clearinghouse.\~ These materials are }{\cs27\b\i not}{\cs25\i 
+ under open-source license and certain rights to use and manipulate the materials are reserved under terms and conditions of the DMA participation agreement, regardless of any open-source provisions that may be introduced in further work.\~\~ }{
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 8.1 Preservation of DMA 1.0 Materials and Software
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs27\b 8.1.1 }{Existing software and documents that have been co
+ntributed without restriction to the AIIM Document Management Alliance will be maintained under copyright of AIIM International.\~ This software and its source code will be segregated in the DMAware clearinghouse as DMA 1.0 material.\~
+ This material has no additional license conditions on its downloading or usage (except for restrictions on any redistributed elements that might apply: see section }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "4.3.4" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000600000034002e0033002e0034000000}}}{\fldrslt {\cs26\ul\cf2 4.3.4}}}{). \~ This material includes the DMA 1.0 samples and the source code employed in the creation of the DMA System Manager for Win32, file }
+{\cs28 \hich\af1\dbch\af16\loch\f1 dma10.dll}{.
+\par }{\cs27\b 8.1.2 }{Electronic versions of the DMA 1.0 specifications, the accompanying code samples and supporting documentation -- primarily the final proposals that were adopted as part of form
+ulating DMA 1.0 -- will be segregated as part of the DMA 1.0 material of the DMAware clearinghouse.\~ This material will be maintained under copyright of AIIM International.\~
+ There is no limitation on the downloading and redistribution of this material in unchanged form.\~
+ All other rights, including the creation of derivative works, are strictly reserved in accordance with the Document Management Alliance participation agreement under which the DMA 1.0 specification was produced and made available.
+\par }{\cs27\b 8.1.3 }{All DMA enhancement proposals that have been put forward for trial-use in the DMA Technical Committee will be made available as supplemental material of the DMAware DMA 1.0 collection.\~
+ Usage of this material is limited in exactly the same manner as the DMA 1.0 specification itself.
+\par }{\cs27\b 8.1.4}{ Certain supplemental data files constitute a database by which portions of the DMA 1.0 specification and interface libraries are produced.\~ The data files applicable to creation of the DMA 1.0 specification will be preserved 
+in conjunction with the electronic versions of the specification.\~ This data is usable to recreate the DMA 1.0 specification or an authorized derivative work based on that specification.
+\par }{\cs27\b 8.1.5}{ Apart from other work informally preserved under the DMAware cl
+earinghouse, such as presentations and training materials, no other materials from the development of the DMA 1.0 specifications and related materials will be preserved as part of DMAware.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 8.2 Transfer of DMA 1.0 Materials to Open-Source Development
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\cs27\b 8.2.1}{ The interface library that is maintained as part of DMA 1.0 support will be kept as part of the electronic DMA 1.0 specification (}{\field\fldedit{\*\fldinst { HYPERLINK "" \\
+l "8.1.2" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000600000038002e0031002e0032000000}}}{\fldrslt {\cs26\ul\cf2 8.1.2}}}{). \~ A derivative of this library will be updated and packaged as an open-source software library.\~
+ This library consists entirely of definitions of interfaces and supporting data-element values.\~ The appropriate license statements will be included in the updated package, satisfying the requirements of an open-source DMAware contribution (}
+{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ContributionProcedures" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001700000043006f006e0074007200690062007500740069006f006e00500072006f0063006500640075007200650073000000}}}{\fldrslt {
+\cs26\ul\cf2 section 4}}}{).
+\par }{\cs27\b 8.2.2}{ The DMA System Manager will also be repackaged and recreated as an open-source DMAware contribution.\~ The appropriate license statements will be included in the updated package.\~ All 
+further work on the reference middleware, including maintenance of this code base, will be carried out as an open-source development project.\~
+ Special provisions to coordinate the maintenance of a single implementation for each hardware-software platform on which the System Manager is implemented.\~
+ The objective is to provide installation practices and a consistent progressions of versions so that there can always be a single implementation operating on a given computer, shared by all applications and all installed DMA components. 
+\par }{\cs27\b 8.2.3}{ Introduction of derivatives any other DMA 1.0 materials as open-source DMAware contributions will depend upon voluntary contributions by individuals and organizations having the authority to contribute, as specified in }
+{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ContributionProcedures" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001700000043006f006e0074007200690062007500740069006f006e00500072006f0063006500640075007200650073000000}}}{\fldrslt {
+\cs26\ul\cf2 section 4}}}{.
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\hich\af1\dbch\af16\loch\f1 9.\~ Implementation and Transition
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {The DMAware clearinghouse will be populated in accordance with the following provisional task definitions.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 9.1 Establish DMA 1.0 Specification Archive
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {
+The DMA 1.0 specifications and existing reference software, along with other contributions made during the operation of the Document Management Alliance are reusable by members of the Alliance in accordance with the participation agreement that all DMA me
+mbers have accepted.\~ These members have certain rights distinct from the open-source usage of subsequent derivatives.\~
+ To provide a clear division between pre-open-source and post-open-source activities, the DMA 1.0 specifications, interface definitions, and contributed software are kept segregated within the clearinghouse.\~
+ These materials are available as part of the foundation for subsequent DMAware, but there status is different.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls9\adjustright \f1\fs20\cgrid {Inventory DMA materials on\~ }{\field\fldedit{\*\fldinst { HYPERLINK
+ "ftp://ftp.aiim.org" }{{\*\datafield 00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b280000006600740070003a002f002f006600740070002e006100690069006d002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 ftp.aiim.org}}}{
+ site.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Identify all DMA 1.0 and trial-use material to be preserved.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Organize materials on a working web site for review and verification.\~ Include historical copies of the participation agreement and identification of the DMA members that h
+ave use of the DMA 1.0 DMAware under the terms of that agreement.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Bring up provisional DMAware web on }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.aiim.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2a00000068007400740070003a002f002f007700770077002e006100690069006d002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 http://www.aiim.org}}}{
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Make DMA 1.0 specifications and\~ background proposal information available via DMAware web as the official base definitions.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Archive all interface definitions (header files), interface and documentation maintenance tools, and contributed software for reference under the DMA participation agreement.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Make all DMA extension proposals available via the DMAware web site for information and voluntary trial use application.
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {The DMA 1.0 specification, proposed extensions, and reference software are fixed and represent the DMAware base level.\~
+ Any derivatives made as part of the open-source activity are separated as supplements or replacements, archived in a distinct way and \~
+ identified to avoid any confusion between further open-source development, the DMA 1.0 base, and any independent use based on the DMA 1.0 participation agreement.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 9.2 Establish Interface-Definition Archive
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls10\adjustright \f1\fs20\cgrid {
+Collect DMA 1.0 interface definitions for use as baseline open-source library / component interfaces using the latest published DMA header files and interface databases.
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Add all DMA 1.0 trial-use definitions for companion use as open-source library / component interface definitions
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Provide a clearinghouse for additional library and component interfaces defined by open-source contributors of further libraries and components.
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 9.3 Provide Current DMA System Manager Reference Implementation
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard\plain \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls11\adjustright \f1\fs20\cgrid {
+Archive the DMA 1.0 System Manager (Amigo B) reference implementation for reuse as the common Win32 implementation and as the base for porting and further development
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Collect all known problem reports and fixes made to the System Manager by users
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}Organize for further continuation as an open-source development
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\fs28 \hich\af1\dbch\af16\loch\f1 9.4 Provide Follow-On Clearinghouse
+\par }\pard\plain \li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {As contributions become available, extend the clearinghouse to provide for archiving and dissemination of
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}}\pard \fi-360\li1440\ri720\sb100\sa100\widctlpar\jclisttab\tx720\ls12\adjustright {
+further DMAware interface definitions, protocol proposals, API extensions and alternatives: developed, contributed, and discussed on DMAware distribution lists and submitted in an agreed proposal format (e.g., using IETF-draft format as a model). 
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}open-source client, service-element, and middleware software
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}related open-source libraries and components
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}related-open source utilities, tools, and databases for support of document-management systems and their interoperability
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}regist
+ration of definitions and description translations of useful document classes, properties, interfaces and other metadata that contributes to interoperability by being reused in document-system applications of others
+\par {\listtext\pard\plain\f3\fs20\cgrid \loch\af3\dbch\af0\hich\f3 \'b7\tab}appropriate tracking, change-control, and problem reporting/resolution support for maintenance and continuing development of the open-source software and the metadata clearinghouse
+
+\par }\pard\plain \s16\li720\sb200\widctlpar\adjustright \f1\fs20\cgrid {Upon dissolution of the Document Management Alliance, materials not captured and supported under the DMAware clearinghouse are no long assured to be available.
+\par }\pard\plain \s1\sb100\sa100\widctlpar\outlinelevel0\adjustright \b\fs48\kerning36\cgrid {\page \hich\af1\dbch\af16\loch\f1 10. References and Resources
+\par }\pard\plain \ri720\widctlpar\adjustright \f1\fs20\cgrid {[Apache]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.apache.org/ABOUT_APACHE.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b5000000068007400740070003a002f002f007700770077002e006100700061006300680065002e006f00720067002f00410042004f00550054005f004100500041004300480045002e00680074006d006c000000}}
+}{\fldrslt {\cs26\ul\cf2 About the Apache HTTP Server Project}}}{.\~ published on the web at http://www.apache.org/ABOUT_APACHE.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.apache.org/" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2e00000068007400740070003a002f002f007700770077002e006100700061006300680065002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Apache Software Foundation}}}{
+ (Forest Hill, MD: February, 1999).
+\par }\pard \ri720\sb200\widctlpar\adjustright {[GNU Software]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.gnu.ai.mit.edu/software/software.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b6200000068007400740070003a002f002f007700770077002e0067006e0075002e00610069002e006d00690074002e006500640075002f0073006f006600740077006100720065002f0073006f006600740077006100
+720065002e00680074006d006c000000}}}{\fldrslt {\cs26\ul\cf2 Software}}}{.\~ 1999 November 6 update published on the web at http://www.gnu.ai.mit.edu/software/software.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.gnu.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2800000068007400740070003a002f002f007700770077002e0067006e0075002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Free Software Foundation}}}{
+ (Boston, MA: 1996, 1997, 1998, 1999).\~ This useful catalog of GNU and related software, some under GPL, some available under other terms, provides an useful sketch of the reach of the GNU effort.\~
+ It shows the kinds of information that a clearinghouse can provide around a focused open-source effort.
+\par }\pard \ri720\sb200\widctlpar\adjustright {[GPL]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/licenses/gpl-license.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b6800000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f006c006900630065006e007300650073002f00670070006c002d006c006900
+630065006e00730065002e00680074006d006c000000}}}{\fldrslt {\cs26\ul\cf2 The GNU General Public License}}}{. version 2, June 1991.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/licenses/" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b4800000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f006c006900630065006e007300650073002f000000}}}{\fldrslt {
+\cs26\ul\cf2 An OSI approved license}}}{ published on the web at http://www.opensource.org/licenses/gpl-license.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.gnu.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2800000068007400740070003a002f002f007700770077002e0067006e0075002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Free Software Foundation}}}{ (Boston, MA: 1989, 1991).
+
+\par }\pard \ri720\sb200\widctlpar\adjustright {[LGPL]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/licenses/lgpl-license.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b6a00000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f006c006900630065006e007300650073002f006c00670070006c002d006c00
+6900630065006e00730065002e00680074006d006c000000}}}{\fldrslt {\cs26\ul\cf2 The GNU Lesser General Public License}}}{.\~ version 2.1, January 1999.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/licenses/" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b4800000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f006c006900630065006e007300650073002f000000}}}{\fldrslt {
+\cs26\ul\cf2 An OSI approved license}}}{ published on the web at www.opensource.org/licenses/lgpl-license.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.gnu.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2800000068007400740070003a002f002f007700770077002e0067006e0075002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Free Software Foundation}}}{ (Boston, MA: 1991, 1999).
+
+\par }\pard \ri720\sb200\widctlpar\adjustright {[OSD]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/osd.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b4600000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f006f00730064002e00680074006d006c000000}}}{\fldrslt {
+\cs26\ul\cf2 The Open Source Definition}}}{.\~ Version 1.7 published on the web at http://www.opensource.org/osd.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3600000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Open Source Initiative}}}{.\~
+ A key definition of the qualities of an open-source license and the terms and conditions that apply to software that is approved as open-source certified.
+\par }\pard \ri720\sb200\widctlpar\adjustright {[OSI]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3600000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 Open Source Initiative}}}{
+. web site at http://www.opensource.org.\~ Open Source Initiative (California: 1999).
+\par }\pard \ri720\sb200\widctlpar\adjustright {[OSImark]
+\par }\pard \li720\ri720\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org/certification-mark.html" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b6400000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f00630065007200740069006600690063006100740069006f006e002d006d00
+610072006b002e00680074006d006c000000}}}{\fldrslt {\cs26\ul\cf2 The OSI Certification Mark and Program}}}{. published on the web at http://www.opensource.org/certification-mark.html.\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.opensource.org" }{
+{\*\datafield 00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3600000068007400740070003a002f002f007700770077002e006f00700065006e0073006f0075007200630065002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 
+Open Source Initiative}}}{ (California: 1999).\~ OSI has developed a two-step certification process.\~ A license is reviewed for conforming to the Open Source Definition and then approved.\~ Distributions of soft
+ware under that approved license may be identified as OSI Certified Open Source, using the OSI Certification Mark.\~ A number of open-source licenses are already OSI approved, including the GPL and LGPL.
+\par }\pard \ri720\sb200\widctlpar\adjustright {[ProCon]
+\par }\pard \li720\ri720\widctlpar\adjustright {Harvey, Joan (ed.).\~ }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.techrepublic.com/download_item.jhtml?id=dr00519991004jon99.htm" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b9400000068007400740070003a002f002f007700770077002e007400650063006800720065007000750062006c00690063002e0063006f006d002f0064006f0077006e006c006f00610064005f006900740065006d00
+2e006a00680074006d006c003f00690064003d0064007200300030003500310039003900390031003000300034006a006f006e00390039002e00680074006d000000}}}{\fldrslt {\cs26\ul\cf2 Open Source: An Introduction to the new programming paradigm}}}{.\~ TechRepublic White Paper.\~ 
+}{\field\fldedit{\*\fldinst { HYPERLINK "http://www.techrepublic.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3a00000068007400740070003a002f002f007700770077002e007400650063006800720065007000750062006c00690063002e0063006f006d002f000000}}}{\fldrslt {\cs26\ul\cf2 TechRepublic}}}{
+ (Louisville, KY: October, 1999).\~ published on the web at http://www.techrepublic.com/download_item.jhtml?id=dr00519991004jon99.htm.\~
+ This is a comprehensive survey of the open-source movement, with analysis of the importance for information technology organizations.\~ Pros and cons on the use of open-source development within an enterprise are presented.
+\par }\pard \widctlpar\adjustright {\page }{{\pict{\*\picprop\shplid1027{\sp{\sn shapeType}{\sv 1}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn fillColor}{\sv 7366760}}{\sp{\sn fFilled}{\sv 1}}{\sp{\sn fLine}{\sv 0}}}
+\picscalex864\picscaley6\piccropl0\piccropr0\piccropt0\piccropb0\picw1764\pich882\picwgoal1000\pichgoal500\wmetafile8\bliptag979344143\blipupi1439{\*\blipuid 3a5f9b0f7d4c0de404d567749d32d10a}
+010009000003310000000000070000000000050000000b0200000000050000000c02f401e803070000001b04f401e8030000000005000000140200000000050000001302f401e803050000001402f40100000500000013020000e8030300000000000000}}{
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\hich\af1\dbch\af16\loch\f1 Contributors
+\par }\pard\plain \s15\li720\ri720\sb100\sa100\widctlpar\adjustright \fs20\cgrid {\hich\af1\dbch\af16\loch\f1 The following people contributed to the development of this document:
+\par }\pard\plain \ri720\widctlpar\adjustright \f1\fs20\cgrid {\field\fldedit{\*\fldinst { HYPERLINK "mailto:BFANNING@aiim.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b320000006d00610069006c0074006f003a004200460041004e004e0049004e00470040006100690069006d002e006f00720067000000}}}{\fldrslt {\cs26\ul\cf2 Betsy Fanning}}}{
+, Director, Standards Program, }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.aiim.org" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2a00000068007400740070003a002f002f007700770077002e006100690069006d002e006f00720067002f000000}}}{\fldrslt {\cs26\ul\cf2 AIIM International}}}{
+\par }\pard \li720\ri720\widctlpar\adjustright {reviewer; contributed leads to additional references and sources
+\par }\pard \ri720\sb200\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "mailto:infonuovo@email.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b360000006d00610069006c0074006f003a0069006e0066006f006e0075006f0076006f00400065006d00610069006c002e0063006f006d000000}}}{\fldrslt {\cs26\ul\cf2 Dennis E. Hamilton}}}{
+, DMA Technical Committee Chair, }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.infonuovo.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3400000068007400740070003a002f002f007700770077002e0069006e0066006f006e0075006f0076006f002e0063006f006d002f000000}}}{\fldrslt {\cs26\ul\cf2 InfoNuovo}}}{
+\par }\pard \li720\ri720\widctlpar\adjustright {editor; principal author
+\par }\pard \ri720\sb200\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "mailto:Jean.Heminway@usa.xerox.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b460000006d00610069006c0074006f003a004a00650061006e002e00480065006d0069006e0077006100790040007500730061002e007800650072006f0078002e0063006f006d000000}}}{\fldrslt {
+\cs26\ul\cf2 Jean Heminway}}}{, DMA Advisory Council Chair, }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.xerox.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2c00000068007400740070003a002f002f007700770077002e007800650072006f0078002e0063006f006d002f000000}}}{\fldrslt {\cs26\ul\cf2 Xerox Corporation}}}{
+\par }\pard \li720\ri720\widctlpar\adjustright {reviewer, clarifications for sections 8 and 9 
+\par }\pard \ri720\sb200\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "mailto:kana@src.ricoh.co.jp" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b380000006d00610069006c0074006f003a006b0061006e00610040007300720063002e007200690063006f0068002e0063006f002e006a0070000000}}}{\fldrslt {\cs26\ul\cf2 Katsumi Kanasaki}}}{
+, DMA TC Asia-Japan Vice-Chair, }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.ricoh.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2c00000068007400740070003a002f002f007700770077002e007200690063006f0068002e0063006f006d002f000000}}}{\fldrslt {\cs26\ul\cf2 Ricoh Company, Ltd}}}{.
+\par }\pard \li720\ri720\widctlpar\adjustright {reviewer, discussion of derivative-work constraints in section 3.2
+\par }\pard \ri720\sb200\widctlpar\adjustright {\field\fldedit{\*\fldinst { HYPERLINK "mailto:RSauvain@crt.xerox.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3c0000006d00610069006c0074006f003a0052005300610075007600610069006e0040006300720074002e007800650072006f0078002e0063006f006d000000}}}{\fldrslt {\cs26\ul\cf2 Richard Sauvain}}}
+{, DMA TC North American Vice-Chair, }{\field\fldedit{\*\fldinst { HYPERLINK "http://www.xerox.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2c00000068007400740070003a002f002f007700770077002e007800650072006f0078002e0063006f006d002f000000}}}{\fldrslt {\cs26\ul\cf2 Xerox Corporation}}}{
+\par }\pard\plain \s24\li720\ri720\widctlpar\adjustright \f1\fs20\cgrid {
+reviewer, clarification of difference between DMA 1.0 and open-source DMAware, clarifying whether the DMA 1.0 specifications can be changed or revised (sections 8 and 9), examples for components, keeping project management light-weight, clarification of i
+ntroductory paragraph
+\par }\pard\plain \ri720\sb200\widctlpar\adjustright \f1\fs20\cgrid {\field\fldedit{\*\fldinst { HYPERLINK "mailto:mrcs@iname.com" }{{\*\datafield 
+00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b2c0000006d00610069006c0074006f003a006d00720063007300400069006e0061006d0065002e0063006f006d000000}}}{\fldrslt {\cs26\ul\cf2 Michael Seaman}}}{, }{\field\fldedit{\*\fldinst { 
+HYPERLINK "http://www.filenet.com" }{{\*\datafield 00d0c9ea79f9bace118c8200aa004ba90b0200000003000000e0c9ea79f9bace118c8200aa004ba90b3000000068007400740070003a002f002f007700770077002e00660069006c0065006e00650074002e0063006f006d002f000000}}}{\fldrslt {
+\cs26\ul\cf2 FileNET Corporation}}}{
+\par }\pard\plain \s24\li720\ri720\widctlpar\adjustright \f1\fs20\cgrid {reviewer, clarification of System Manager support requirements and tightening of nomenclature around "middleware."
+\par }\pard\plain \s2\sb100\sa100\widctlpar\outlinelevel1\adjustright \b\fs36\cgrid {\page \hich\af1\dbch\af16\loch\f1 Change History
+\par }\pard\plain \ri720\widctlpar\adjustright \f1\fs20\cgrid {\cs27\b draft 0.02}{ 1999-11-23-14:42 pst (-0800) by dh
+\par }\pard \li720\ri720\sb200\widctlpar\adjustright {"}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "ChangeHistory" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000e0000004300680061006e006700650048006900730074006f00720079000000}}
+}{\fldrslt {\cs26\ul\cf2 Change History}}}{" section added.\line references "}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "Top" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000000400000054006f0070000000}}}{\fldrslt {\cs26\ul\cf2 
+to Top of Document}}}{" corrected to be internal shortcuts and not web site references.\line Section }{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "DerivedWorksAllowed" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b020000000800000014000000440065007200690076006500640057006f0072006b00730041006c006c006f007700650064000000}}}{\fldrslt {\cs26\ul\cf2 3.2 (3)}}}{ updated to include requirement for deposit of derivative works and section }
+{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "SourceCodeInclusion" }{{\*\datafield 08d0c9ea79f9bace118c8200aa004ba90b02000000080000001400000053006f00750072006300650043006f006400650049006e0063006c007500730069006f006e000000}}}{\fldrslt {\cs26\ul\cf2 
+3.2 (2)}}}{ revised to allow access to source code to be satisfied by reference to the deposited copy.\line Remembered to run the FrontPage 98 spelling checker.\line "}{\field\fldedit{\*\fldinst { HYPERLINK "" \\l "Contributors" }{{\*\datafield 
+08d0c9ea79f9bace118c8200aa004ba90b02000000080000000d00000043006f006e007400720069006200750074006f00720073000000}}}{\fldrslt {\cs26\ul\cf2 Contributors}}}{" section added.\line Changed titles in the References sections to also be hyperlinks to t
+he sources, even though these may not be presented correctly on conversion to versions of Microsoft Word older than Word 97.\~ The references were revised to provide hyperlinks for all web-published materials and sources.\line 
+Removed dates from section 9 and replaced section with a simple road map.\~ Clarified the separation between DMA 1.0 material and subsequent open-source materials.\line 
+Copyright retention by AIIM is relaxed for material which is contributed under existing copyright, so long as the material is OSI-certified.\line Added more examples and cases for libraries and components in section 3.\line 
+Affirmed that project management is intended to be light-weight, applies beyond initial contribution, and is more like having bylaws for a club\line Left open determination of
+ whether or not derivative works must be redistributed under the same conditions (section 3.2 (3)).\line Provided more motivation for the purpose of library and component licenses separate from a general software license.\line 
+Emphasized the special status of the DMA System Manager and the importance of having all applications and components installed on a computer be able to rely on a single, shared system-manager copy.\line Completed sections 1 and 2.\line 
+Minor adjustments between the Word and HTML versions.
+\par }\pard \ri720\sb200\widctlpar\adjustright {\cs27\b draft 0.01}{ 1999-11-10-12:00 pst (-0800) by dh
+\par }\pard \li720\ri720\sb200\widctlpar\adjustright {Initial draft circulated for review and comment among DMA officers and key contributors
+\par \~
+\par }{{\pict{\*\picprop\shplid1028{\sp{\sn shapeType}{\sv 1}}{\sp{\sn fFlipH}{\sv 0}}{\sp{\sn fFlipV}{\sv 0}}{\sp{\sn fillColor}{\sv 7366760}}{\sp{\sn fFilled}{\sv 1}}{\sp{\sn fLine}{\sv 0}}}\picscalex720\picscaley6\piccropl0\piccropr0\piccropt0\piccropb0
+\picw1764\pich882\picwgoal1000\pichgoal500\wmetafile8\bliptag979344143\blipupi1439{\*\blipuid 3a5f9b0f7d4c0de404d567749d32d10a}010009000003310000000000070000000000050000000b0200000000050000000c02f401e803070000001b04f401e80300000000050000001402000000000500
+00001302f401e803050000001402f40100000500000013020000e8030300000000000000}}{
+\par }\pard\plain \s5\li720\ri720\sb100\sa100\widctlpar\outlinelevel4\adjustright \b\fs20\cgrid {\hich\af1\dbch\af16\loch\f1 End of Document 
+\par }\pard\plain \sb200\widctlpar\adjustright \f1\fs20\cgrid {
+\par }}

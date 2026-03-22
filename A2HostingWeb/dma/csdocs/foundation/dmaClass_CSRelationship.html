@@ -1,0 +1,401 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>dmaClass_CSRelationship for CSDocs</title>
+<!--$$Header: /InfoNuovo Conclave Web/dma/csdocs/sketch/dmaClass_CSRelationship.html 7     99-08-31 20:46 Orcmid $-->
+</head>
+
+<body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<h3>dmaClass_CSRelationship</h3>
+
+<p>This is the base class for for CSDocs relationships between CSRoot DocVersions and
+CSComponent DocVersions.</p>
+
+<table border="1" width="30%" bgcolor="#BFFFFF" bordercolor="#0000FF"
+bordercolorlight="#00FFFF" bordercolordark="#000080">
+  <tr>
+    <td width="100%"><blockquote>
+      <p><font color="#000080"><strong>added for the CSDocs Foundation, revision 0.02</strong></font></p>
+    </blockquote>
+    </td>
+  </tr>
+</table>
+
+<p><b>Class ID:</b> dmaClass_CSRelationship<br>
+<b>Superclass:</b> <a href="dmaClass_Relationship.html">Relationship</a><br>
+</p>
+
+<h4><b>Interfaces</b></h4>
+<a href="IUnknown.html">
+
+<p>IUnknown</a><br>
+<a href="IdmaObject.html">IdmaObject</a><br>
+<a href="IdmaProperties.html">IdmaProperties</a><br>
+<a href="IdmaEditProperties.html">IdmaEditProperties</a> [Optional]<br>
+<a href="IdmaConnection.html">IdmaConnection</a> [Optional]<br>
+<a href="IdmaRelationshipOrdering.html">IdmaRelationshipOrdering</a> [Optional] </p>
+
+<h4><b>Properties</b></h4>
+
+<table BORDER="1">
+  <tr>
+    <td><b>Name</b></td>
+    <td><b>Impl. <br>
+    Required</b></td>
+    <td><b>System <br>
+    Gen'ed</b></td>
+    <td><b>Read-<br>
+    Only</b></td>
+    <td><b>Value <br>
+    Required</b></td>
+    <td><b>Type</b></td>
+    <td><b>Cardinality</b></td>
+    <td><b>Required Class</b></td>
+    <td><b>Reflective<br>
+    Property</b></td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_OIID">OIID</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>String</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_ClassDescription">Class Description</a></td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Class Description</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_This">This</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td>Relationship</td>
+    <td>This</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_CreatePending">Create Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_UpdatePending">Update Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_DeletePending">Delete Pending</a></td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Boolean</td>
+    <td>Scalar</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080"><a name="TdmaProp_InstanceId"
+    href="#InstanceId">Instance Id</a></font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Yes</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_Head">Head</a></td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DocVersion</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">CSRoots</font></td>
+  </tr>
+  <tr>
+    <td><a name="TdmaProp_Tail">Tail</a></td>
+    <td>Yes</td>
+    <td>-</td>
+    <td>-</td>
+    <td>Yes</td>
+    <td>Object</td>
+    <td>Scalar</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DocVersion</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">CSComponents</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_HeadRenditionId" href="#HeadRenditionId"><font
+    color="#000080">Head Rendition Id</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_HeadContentElementId"
+    href="#HeadContentElementId"><font color="#000080">Head Content Element Id</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_TailRenditionId" href="#TailRenditionId"><font
+    color="#000080">Tail Rendition Id</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><a name="TdmaProp_TailContentElementId"
+    href="#TailContentElementId"><font color="#000080">Tail Content Element Id</font></a></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">-</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">DmaId</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">Scalar</font></td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+    <td bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080">&nbsp;</td>
+  </tr>
+</table>
+
+<h4><b>Detailed Description</b></h4>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="100%" bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><font color="#000080">The dmaClass_CSRelationship class models
+    the association between a root document and a component document as part of the DMA CSDocs
+    compound/structured documents model.&nbsp; The CSRelationship is directed from a CSRoot
+    DocVersion at the Tail to a CSComponent DocVersion at the Head.&nbsp; </font><p><font
+    color="#000080">For CSRelationship subclasses, the Head reflective property is always the
+    dmaProp_CSRoots property (pointing backward from the CSComponent through the
+    CSRelationship to the CSRoot).&nbsp; The CSRelationship Tail reflective property is always
+    the dmaProp_CSComponents property (pointing forward from the CSRoot through the
+    CSRelationship to the CSComponent).</font></p>
+    <p><font color="#000080">There are potentially several CSRelationship instances between
+    the same CSRoot DocVersion and CSComponent DocVersion.&nbsp; The ability to distinguish
+    them is dependent on the existence of additional properties, including the
+    InstanceId-matching properties and other decorations of the CSRelationship subclass.</font></td>
+  </tr>
+</table>
+
+<h4><b>Property Descriptions</b></h4>
+
+<p><b>&#149; OIID {<a name="dmaProp_OIID"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_OIID">dmaProp_OIID</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Class Description {<a name="dmaProp_ClassDescription"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</a>}</b>
+<br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; This {<a name="dmaProp_This"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_This">dmaProp_This</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Create Pending {<a name="dmaProp_CreatePending"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_CreatePending">dmaProp_CreatePending</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Update Pending {<a name="dmaProp_UpdatePending"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<p><b>&#149; Delete Pending {<a name="dmaProp_DeletePending"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_DeletePending">dmaProp_DeletePending</a>}</b> <br>
+<i>Property Inherited from DMA</i> </p>
+
+<table border="1" width="30%" bgcolor="#BFFFFF" bordercolor="#0000FF"
+bordercolorlight="#00FFFF" bordercolordark="#000080">
+  <tr>
+    <td width="100%"><b>&#149; <a name="InstanceId">Instance Id</a> {<a
+    name="dmaProp_DeletePending"></a><a href="#TdmaProp_InstanceId">dmaProp_InstanceId</a>}</b>
+    <br>
+    <i>Property Inherited from <a href="dmaClass_DMA-CSDocs.html#InstanceId">DMA</i> </a><p>[This
+    addition is made to all well-known classes]</td>
+  </tr>
+</table>
+
+<p><b>&#149; Head {<a name="dmaProp_Head"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_Head">dmaProp_Head</a>}</b> <br>
+<i>Property Inherited from Relationship</i> </p>
+
+<p><b>&#149; Tail {<a name="dmaProp_Tail"></a><a
+href="dmaClass_CSRelationship.html#TdmaProp_Tail">dmaProp_Tail</a>}</b><br>
+<i>Property Inherited from Relationship</i></p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="100%" bgcolor="#BFFFFF" bordercolor="#0000FF" bordercolorlight="#00FFFF"
+    bordercolordark="#000080"><b>&#149; <a name="HeadRenditionId"><font color="#000080">Head
+    Rendition Id</font></a> {<a name="dmaProp_DeletePending"></a><a
+    href="#TdmaProp_HeadRenditionId">dmaProp_HeadRenditionId</a>}</b> <p><font color="#000080">If
+    this property is supported and it has a non-NULL DmaId value, then a specific rendition of
+    the CSComponent participates in this CSRelationship.&nbsp;&nbsp; The Rendition object
+    involved is the one in the CSComponent's dmaProp_Renditions list property having the
+    matching InstanceId property value.&nbsp; If there is no such Rendition, the
+    CSRelationship has been broken.</font></p>
+    <p><font color="#000080">If this property is supported, and it has no value (or the value
+    is the NULL DmaId), then the employment of the CSComponent in the compound/structured
+    document via this CSRelationship is not specific to a rendition of the CSComponent.
+    &nbsp;&nbsp; It must be assumed that changes anywhere in the CSComponent may impact the
+    portion of the CSRoot that is involved in this relationship, and vice versa.</font></p>
+    <p><font color="#000080">If this property is not supported, the CSComponent is simply the
+    DocVersion at the Head. There is no further CSDocs information on how much of and in what
+    way the CSComponent is employed in the compound/structured document via this
+    CSRelationship.</font></p>
+    <p><b>&#149; <a name="HeadContentElementId"><font color="#000080">Head Content Element Id</font></a>
+    {<a name="dmaProp_DeletePending"></a><a href="#TdmaProp_HeadContentElementId">dmaProp_HeadContentElementId</a>}</b>
+    </p>
+    <p><font color="#000080">If this property is supported, the Head Rendition Id property
+    must also be supported.</font></p>
+    <p><font color="#000080">If this property is supported and it has a non-NULL DmaId value,
+    then so does the Head Rendition Id property.&nbsp; A specific content element of the
+    CSComponent participates in the compound/structured document via this CSRelationship.
+    &nbsp;&nbsp; The Content Element object involved is the one in the identified rendition's
+    dmaProp_ContentElements list property having the matching InstanceId property.&nbsp; If
+    there is no such Content Element, the CSRelationship has been broken.</font></p>
+    <p><font color="#000080">If this property is supported, and it has no value (or the value
+    is the NULL DmaId), then the participating element is not a definite content element. The
+    participating element is determined in accordance with the rules for the Head Rendition Id
+    property.</font></p>
+    <p><font color="#000080">If this property is not supported, the participating element of
+    the CSComponent is determined by the rules for Head Rendition Id.</font></p>
+    <p><b>&#149; <a name="TailRenditionId"><font color="#000080">Tail Rendition Id</font></a>
+    {<a name="dmaProp_DeletePending"></a><a href="#TdmaProp_TailRenditionId">dmaProp_TailRenditionId</a>}</b>
+    </p>
+    <p><font color="#000080">If this property is supported and it has a non-NULL DmaId value,
+    then a specific rendition of the CSRoot participates in the compound/structured document
+    via this CSRelationship.&nbsp;&nbsp; The Rendition object involved is the one in the
+    CSRoot's dmaProp_Renditions list property having the matching InstanceId property value.
+    &nbsp; If there is no such Rendition, the CSRelationship has been broken.</font></p>
+    <p><font color="#000080">If this property is supported, and it has no value (or the value
+    is the NULL DmaId), then this CSRelationship is not specific to a rendition of the CSRoot.
+    &nbsp;&nbsp; It must be assumed that all of the CSRoot may be impacted through this
+    CSRelationship to the identified CSComponent, and vice versa.</font></p>
+    <p><font color="#000080">If this property is not supported, the entire CSRoot is involved
+    in this CSRelationship. There is no further CSDocs information on how much of and in what
+    way the CSRoot is involved in the CSRelationship.</font></p>
+    <p><b>&#149; <a name="TailContentElementId"><font color="#000080">Tail Content Element Id</font></a>
+    {<a name="dmaProp_DeletePending"></a><a href="#TdmaProp_TailContentElementId">dmaProp_TailContentElementId</a>}</b>
+    </p>
+    <p><font color="#000080">If this property is supported, the Tail Rendition Id property
+    must also be supported.</font></p>
+    <p><font color="#000080">If this property is supported and it has a non-NULL DmaId value,
+    then so does the Tail Rendition Id property and a specific content element of the CSRoot
+    is involved in this CSRelationship.&nbsp; The Content Element object involved is the one
+    in the identified CSRoot Rendition's dmaProp_ContentElements list property having the
+    matching InstanceId property.&nbsp; If there is no such Content Element, the
+    CSRelationship has been broken.</font></p>
+    <p><font color="#000080">If this property is supported, and it has no value (or the value
+    is the NULL DmaId), then the portion of the CSRoot involved in this CSRelationship is not
+    a specific content element.&nbsp; The participating element of the CSRoot is determined by
+    the rules for Tail Rendition Id.</font></p>
+    <p><font color="#000080">If this property is not supported, the participating element of
+    the CSRoot is determined by the rules for Tail Rendition Id.</font></td>
+  </tr>
+</table>
+
+<p align="right"><font color="#0000FF"><em>$$Author: Orcmid $<br>
+$$Date: 99-08-31 20:46 $<br>
+$$Revision: 7 $</em></font></p>
+</body>
+</html>

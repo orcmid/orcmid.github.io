@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>i051201b: ODMref1.0 Reference Implementation -&nbsp; Latest Information </title>
+<!--$$Header: /NuovoDocCompagno/info/2005/12/i051201b.htm 145   23-01-06 14:48 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006b.htm of 2005-08-17T20:28Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+</body>
+</html><!--webbot bot="Include" U-Include="i051201e.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a rel="nofollow" target="_top" href="https://nuovodoc.nfoCentrale.com/">
+<img border="0" src="../../../images/NuovoDoc-thumb.gif" alt="NuovoDoc" width="111" height="82"><!-- Included from nuovodoc.nfoCentrale.com/construction/c000005b.htm of 2005-12-13-21:03 -0800 --></a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../i000001.htm#i051201"><font color="#990033">i051201</font></a> 
+NuovoDoc </strong></font>
+
+		<strong><a href="../../i000001.htm"><font color="#990033">InfoNote</font></a><font color="#990033"><br>
+      </font></strong><strong>
+
+  <font color="#990033">&nbsp;<a href="i051201.htm" rel="nofollow"><font color="#990033">ODMref1.0 
+Reference Implementation</font></a><br>
+      <em><font size="5">2007-07-30 Update</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>NuovoDoc</b></a></code><b><code>&gt;<a 
+  href="../../">info</a>&gt;<br>
+      <a target="_top" href="../">2005</a>&gt;<a target="_top" href="./">12</a>&gt;</code></b></p>
+      <p align="right"><b><code>
+		<a target="_top" rel="nofollow" href="i051201e.htm">i051201e</a>&gt;</code></b><br>
+      <small><small>
+		<a href="#1.30">1.30</a>
+		2008-07-20      
+      -14:43 -0700 
+      </small></small></p>
+</font>
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest Professional-Appearance version:</b>&nbsp; &lt;<b><font face="monospace"><a href="../../../products/ODMref10.htm">http://NuovoDoc.com/products/ODMref10.htm</a></font></b>&gt;<br>
+			<b>Latest Document-Engineering version: </b>&nbsp;&lt;<b><font face="monospace"><a href="i051201b.htm" rel="nofollow">http://NuovoDoc.com/info/2005/12/i051201b.htm</a></font></b>&gt;<br>
+&nbsp;&nbsp; </li>
+			<li><b>Previous version:</b> 2007-02-19 Update &lt;<b><font face="monospace"><a target="_top" rel="nofollow" href="i051201d.htm">http://NuovoDoc.com/info/2005/12/i051201d.htm</a></font></b>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+			</li>
+			<li><b>This version:</b>&nbsp;&nbsp;<b>2007-07-30 Update Document 
+			Engineering 1.30 </b>&lt;<b><font face="monospace"><a target="_top" rel="nofollow" href="i051201e.htm">http://NuovoDoc.com/info/2005/12/i051201e.htm</a></font></b>&gt;
+			<br>
+			Professional-Appearance Content: &lt;<b><font face="monospace"><a target="_top" rel="nofollow" href="i051201e1.htm">http://NuovoDoc.com/info/2005/12/i051201e1.htm</a></font></b>&gt; 
+			</li>
+		</ul>
+</div></small></blockquote>
+
+
+<div align="center">
+	<table border="0" width="90%" id="table3">
+		<tr>
+			<td colspan="3" valign="top" align="left">
+			<p><i>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#9090A0">&nbsp;<a rel="nofollow" href="../../../"><img border="0" src="../../../images/NuovoDoc-button.gif" hspace="0" alt="NuovoDoc" width="82" height="62"></a><b>design for document system interoperability</b></font></i><hr color="#9090A0" align="left"></td>
+		</tr>
+		<tr>
+			<td colspan="3" valign="top" align="left">
+			<p align="left"><b>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070">
+			<small><a target="_top" rel="nofollow" href="http://NuovoDoc.com/">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">NuovoDoc</font></a><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"> </font>&gt;
+			<a target="_top" rel="nofollow" href="../../../products"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">Product Information</font></a> &gt;
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">
+			<a target="_top" rel="nofollow" href="../../../products/ODMref10.htm"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">ODMref1.0 
+			Reference Implementation</font></a></font></a> &gt;
+			<a target="_top" rel="nofollow" href="i051201e1.htm"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#707070">
+			2007-07-30 
+			update</font></a><br />&nbsp;&nbsp;&nbsp;&nbsp; 
+			<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </small></font></b></td>
+		</tr>
+		<tr>
+			<td colspan="3" valign="top" align="left">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<h1><font color="#9090A0">
+			<span style="font-weight: 400; font-style:italic"><small>ODMref1.0</small><br />&nbsp;&nbsp;&nbsp;&nbsp; </span>
+			<span style="font-style:italic">ODMA 1.0 Reference Implementation</span></font></h1>
+			<blockquote>
+				<p><font color="#707070">ODMref1.0 is a miniature 
+				document-management system for personal use on desktop 
+				computers.&nbsp; It is useful for demonstration, study,&nbsp; 
+				training, troubleshooting, and prototyping of managed-document 
+				applications. </font></p>
+				<p><font color="#707070"><b>Development will be gradual</b>.&nbsp; 
+				Following stabilization of enough client-side ODMdev kits such 
+				as the Java-ODMA Integration Kit, ODMrun1.0 and ODMref1.0 will 
+				be developed in parallel.&nbsp;&nbsp; An iterative development 
+				process is used to make coordinated progress, with each stage of 
+				ODMrun1.0 and ODMref1.0 employed in the confirmation of the other.&nbsp; 
+				Intermediate convergence points will deliver development library 
+				additions and fixtures that can be used as tools and as 
+				examples.&nbsp; Those materials become the basis for improvement 
+				in subsequent iterations until complete ODMrun1.0 and ODMref1.0 
+				functionality is achieved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </font></p>
+			</blockquote></font></td>
+		</tr>
+		<tr>
+			<td width="60%" valign="top" align="left">
+			<h3><span style="font-weight: 400">
+			<font color="#606060" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">Features</font></span></h3>
+			</td>
+			<td width="3%" valign="top" rowspan="4" align="left">&nbsp;</td>
+			<td width="44%" valign="top" align="left">
+			<h3><span style="font-weight: 400">
+			<font color="#606060" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">System Requirements</font></span></h3>
+			</td>
+		</tr>
+		<tr>
+			<td width="47%" valign="top" align="left"><small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<ul type="circle">
+				<li><b>Straightforward Desktop Operation<br></b>Manage documents 
+				directly from ODMA-aware productivity applications; preserve and 
+				access your files in their original format with easy import, 
+			export, and packaging for interchange.<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><b>Simple Installation and Maintenance</b><br>Software 
+				installation, configuration, backup, and removal preserves 
+				document collections across upgrades, downgrades, and 
+				re-installation.<br>&nbsp;&nbsp; </li>
+				<li><b>Automatic Log and Audit Functions</b><br>Activity logs 
+				provide an audit trail and complete details for verifying 
+				office-document operations involving ODMref1.0-managed 
+				documents.<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><b>ODMA 1.0 Conformance</b><br>The ODMA 1.0 interface common to all ODMA-aware 
+			desktop software is implemented.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>Full Software Source-Code and Documentation</b><br>ODMref1.0 software and documentation illustrate, explain, and 
+			demonstrate the basic model for making document-management systems 
+			ODMA-compliant.&nbsp; The software is freely-available for re-use 
+				and modification under an easy-to-honor open-source license.<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+			</ul></font></small></td>
+			<td width="44%" valign="top" align="left"><small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<ul type="circle">
+				<li><b>Computer</b><br>Microsoft® Windows®-based personal computer suitable for 
+			office-document desktop applications<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><b>Operating System</b><br>Microsoft® 
+			Windows® 
+			XP Professional SP2 and Vista<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>Office Software</b><br>ODMA-aware desktop applications such as Microsoft® 
+			Office Word 2003 and Office System Word 2007<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>Hard Disk</b><br>50 MB available hard-disk space for 
+				initial installation and use (NTFS required)<br>&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>Document Storage</b><br>Local hard-disk space for keeping checked-in documents<br>&nbsp;</li>
+				<li><b>Optional Developer Resources</b><br>Working with ODMref1.0 source code requires Microsoft®
+			Visual C++®
+			and other freely-available tools <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+			</ul></font></small></td>
+		</tr>
+		<tr>
+			<td width="47%" valign="top" rowspan="2" align="left">
+			<h3><span style="font-weight: 400">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#606060">
+			More Information</font></span></h3>
+			<small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<ul type="circle">
+				<li><a rel="nofollow" href="../../../products/ODMdev.htm"><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">ODMdev</font></a> 
+				Development Framework<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><a rel="nofollow" href="../../../products/ODMrun10.htm"><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">ODMrun1.0</font></a> 
+				Test Runner<br>
+&nbsp;&nbsp;&nbsp;&nbsp;  
+				</li>
+				<li><a href="../../../products/ODMlicensing.htm"><font color="#707070">NuovoDoc 
+				ODMA-Contribution Licensing</font></a><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><a target="_top" href="http://ODMA.info/"><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">ODMA</font></a> Open Document Management API<br />
+				Interoperability 
+				Exchange site<ul type="square">
+				<li><a target="_top" href="http://ODMA.info/faq/ODMAapps.htm">
+				<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">Catalog of ODMA-aware Applications</font></a></li>
+				<li>
+				<a target="_top" href="http://ODMA.info/downloads/Q000500.htm"><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+				How ODMA Integrates Application and DMS</font></a></li>
+				<li>
+				<a target="_top" href="http://ODMA.info/downloads/Q000705.htm"><font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+				Changes Between ODMA Versions</font></a></li>
+			</ul> 
+				</li>
+			</ul></font></small>
+
+<font size="-1" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+  			<p><br>
+&nbsp;</p>
+			
+		
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+				<a href="../../../construction/templates/00/c000006.htm">visits to popular <b>NuovoDoc</b> pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+			<small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+				<a href="http://clustrmaps.com/counter/maps.php?url=http://NuovoDoc.com/analysis" id="clustrMapsLink0"><img src="http://clustrmaps.com/counter/index2.php?url=http://NuovoDoc.com/analysis" border=1 alt="Locations of visitors to this page" onError="this.onError=null; this.src='http://www.meetomatic.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://clustrmaps.com/'">
+</a>
+				</font></small></td>
+			</tr>
+			<!-- Inserted from NuovoDoc /construction/templates/00/c000006c1.htm of 2008-06-24-21:17 -0700 -->
+		</table>
+	
+	</td>
+			<td width="44%" valign="top">
+			<h3 align="left"><span style="font-weight: 400">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#606060">
+			Development Approach</font></span></h3><small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<ul type="circle">
+				<li>
+				<p align="left"><b>Autumn 2007 - Spring 2008: </b>Evolutionary development 
+				paced with additions to ODMdev and iteration through ODMref1.0 alpha stages<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li>
+				<p align="left"><b>Summer 2008:</b> Beta and Stable releases for 
+				use with further ActiveODMA developments<br>
+&nbsp;&nbsp;&nbsp; </li>
+				<li>
+				<p align="left"><b>Announcements and Project Tracking:</b> 
+				Regular progress is reported on the
+				<a target="_top" href="http://odma.info/dev/"><font color="#707070">ODMdev section</font></a> 
+				of the ODMA Interoperability Exchange site.</li>
+			</ul></font></small></td>
+		</tr>
+		<tr>
+			<td width="44%" valign="top" align="left">
+			<h3><span style="font-weight: 400">
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#606060">
+			How Made Available</font></span></h3><small>
+			<font color="#707070" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+			<ul type="circle">
+				<li>Free Internet downloads of all materials<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li>Installation software, sample scripts, developer 
+			documentation, and all source-code<br>
+&nbsp;&nbsp;&nbsp; </li>
+				<li>
+				<a target="_top" href="http://ODMA.info/active"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" color="#606060">
+				SourceForge.net ActiveODMA project</font></a> for public development and 
+				collaboration</li>
+			</ul></font></small>
+			</td>
+		</tr>
+		</table>
+
+	<table border="0" width="95%" id="table4">
+		<tr>
+			<td width="33%" align="left"><a href="i051201e.htm">
+			<img border="0" src="../../../images/hardhat-button.gif" width="17" height="22" alt="Document Engineering" align="left" hspace="0"></a></td>
+			<td width="33%">
+			<p align="center">
+			<font face="Times New Roman" style="font-size: smaller" color="#707070">
+			© 2005, 2007 </font>
+			<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070">
+			NuovoDoc</font></td>
+			<td width="33%">
+			<p align="right"><!-- included from the NuovoDoc info/2005/12/i051201c1.htm 
+			                      version 1.00 of 2005-12-17-09:24 -0800 --><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif" style="font-size: smaller" color="#707070"><small>
+			2023-01-06 14:48 -0800</small></font></p></td>
+		</tr>
+	</table>
+	</div>
+<hr color="#990033">
+
+<dl><small>
+		</small></dl>
+
+<dl><small>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="1.30">1.30</a> 2007-08-01-14:16 Update for 2007-07-30 </b></dt>
+	<dd>The dates are starting to get wildly off.&nbsp; I was stopped by illness 
+	on 2007-07-31 and I am now scrambling to get this material onto the site.&nbsp; 
+	I have made changes for ODMref1.0 that make it less in need of updating when 
+	other elements have progress.</dd>
+	<dt><b><a name="1.25">1.25</a> 2007-02-19-17:21 Revised Release Schedule</b></dt>
+	<dd>also with some updated requirements information</dd>
+	<dt><b><a name="1.00">1.00</a> 2005-12-17-09:56 Stable Version</b></dt>
+	<dd>Maintain with only simple editorial adjustments and additional links</dd>
+	<dt><b><a name="0.50">0.50</a> 2005-12-13-13:48 Draft for Review</b></dt>
+	<dd>Have final draft format and content for private review before ISV 
+	Empower review and broader announcement.&nbsp; Continue editorial and format 
+	improvements for achievement of stable 1.00 version.</dd>
+	<dt><b><a name="0.00">0.00</a> 2005-12-09-18:30 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; This page is 
+	a customization of the
+	<a target="_top" rel="nofollow" href="http://TROSTing.org/info/templates/00/i000006c.htm">
+	TROST InfoNote 
+	Bootstrap Template 0.20 Material [placeholder] template</a>.&nbsp; A 
+	version from
+	<a target="_top" href="http://TROSTing.org/projects/pilot/develop/p050601e.htm">Develop 
+	InfoNote Bootstrap Template (0.20) Material</a> was used.</dd>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><small>You are navigating 
+<a href="../../../" target="_top" rel="nofollow">NuovoDoc</a></small> </small>
+      <!-- Included from the nuovodoc.nfoCentrale.com/construction/c000005d.htm page of 2023-01-06T22:48Z -->
+      </font>
+</td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-12-09-18:30 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br> Orcmid <!-- $$Date: 23-01-06 14:48 $<br>
+      $$Revision: 145 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+ bot="Include" endspan i-checksum="56979"

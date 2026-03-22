@@ -1,0 +1,206 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X010101.htm 3     02-06-05 8:25 Orcmid $-->
+<title>X010101: WordPerfect SP4 Invalid Document IDs</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X010101.htm">X010101</a>:
+</b>WordPerfect SP4 Invalid Document IDs</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-03-02-10:20 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X010101.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Fatal Error -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X010100.htm">X010101</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: <code>ODMA32.dll</code></b>
+        2.0.0 interacting with <b>WordPerfect 9 SP4</b> and <b>Worldox</b>.</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information: </b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/support/X010100.htm">X010100</a>:
+            Inappropriate Messages to Users<br>
+            <a href="http://www.infonuovo.com/odma/faq/Q000600.htm">Q000600</a>:
+            WordPerfect-ODMA Troubleshooting<br>
+            <a href="http://www.infonuovo.com/odma/downloads/Q000014.htm">Q000014</a>:
+            Creating ODMA Document IDs</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: tbd</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>&nbsp;<a href="http://www.infonuovo.com/odma/faq/Q000605.htm#CarolynKaukl">Carolyn
+        Kaukl</a> (<a href="http://www.infonuovo.com/odma/support/x010100a.msg">2001-01-18</a>)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-01-25</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Summary of Incident</a></h3>
+
+<h3>2. If This Is Happening to You</h3>
+
+<h3>3. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>4. <a href="#Investigation">Investigation of Incident</a></h3>
+
+<h3>5. <a href="#Demonstration">Demonstration of Document ID Errors</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2><a name="Summary">Summary</a>      of Incident (2001-01-29):</h2>
+
+<blockquote>
+
+<h4>Software Used:</h4>
+
+  <ul>
+    <li>WordPerfect version 9 with SP4</li>
+    <li>Worldox DMS integration</li>
+    <li><b><code>ODMA32.dll</code></b> version 2.0.0</li>
+    <li>WordPerfect Document as merge template, and data file of merge
+      information, stored in the DMS</li>
+    <li>Operation is on NT 4.0 with SP5.</li>
+  </ul>
+  <p>Under certain conditions when operating with WordPerfect, a Connection
+  Manager error message can be provoked:</p>
+  <p align="center"><img border="0" src="x010100b.gif" alt="Specified DMS is not registered with ODMA Keys" width="640" height="480"></p>
+  <p align="center"><i><a name="Figure1">Figure 1</a></i>.&nbsp; ODMA Connection Manager Message (download
+  <a href="http://www.infonuovo.com/odma/support/x010100b.bmp">BMP
+  format</a>)</p>
+<p>These messages arise because WordPerfect is passing an ODMA Document ID for a DMS that
+has not been registered on the computer.&nbsp; This situation can also arise
+when an ODMA Document ID is malformed.</p>
+  <p>An invalid ODMA Document ID occurs in several ways:</p>
+  <ol>
+    <li>An incorrect Document ID is created by a DMS and passed to WordPerfect
+      as part of the DMS-initiated launch of WordPerfect.&nbsp; When WordPerfect
+      attempts to access the document that has been pre-selected for it to use,
+      the access fails because the Document ID is invalidly
+      formed.&nbsp; For example, the DMS could be improperly identified.</li>
+    <li>A valid ODMA Document ID is stored as a link in a WordPerfect document
+      which is then later used on a computer for which the originating DMS is
+      not installed.&nbsp; The same situation can arise if ODMA Document IDs are
+      passed in E-mail or in other data.</li>
+    <li>Document IDs that are originally valid are damaged before they are
+      presented for use in ODMA operations.</li>
+  </ol>
+  <p>There is evidence that damaged ODMA Document IDs (case 3, above) are being
+  created during some WordPerfect 9 SP4 ODMA operations.&nbsp; The damaged Document
+  IDs have doubled &quot;<b><code>::ODMA\</code></b>&quot; prefixes, making it
+  appear that <b><code>::ODMA</code></b> is the name of the DMS to use, instead
+  of the correct DMS ID (e.g., <b><code>WORLDOX</code></b>) found later in the Document ID text.&nbsp; These have
+  been noticed specifically in Merge operations, as in <a href="#Figure1">Figure
+  1</a>.</p>
+  <p>In all cases, when an invalid or unusable Document ID is presented to ODMA,
+  the rejected Document ID can be found by capturing the <a href="http://www.infonuovo.com/odma/support/x010101c.log">WordPerfect
+  File Activity log</a>, or by capturing an <a href="http://www.infonuovo.com/odma/support/x010101d.log">ODMA
+  2.0 Connection Manager log</a>.&nbsp; In the incident that led to these
+  reports, the logs reveal that
+  WordPerfect is presenting the following invalid ODMA Document ID to ODMA as
+  part of an ODMA operation:</p>
+  <p align="center"><b><code>::ODMA\::ODMA\WORLDOX\F:\DOCS\WD\DRAFT\JUR\A0023349.WPD</code></b></p>
+</blockquote>
+<h2><a name="Actions">Actions</a> Toward Resolution (2001-01-29):</h2>
+
+<blockquote>
+<p>The following actions are being taken to resolve this incident:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the repair that is needed.&nbsp;
+      [2001-01-29: Completed]</li>
+    <li>Provide information so that people can trouble-shoot these messages by
+      creating activity logs and determining the nature of the invalid ODMA
+      Document ID [2001-01-29: Completed]</li>
+    <li>Create a simple WordPerfect Merge Template document and Merge Data file
+      that can be used to reproducibly demonstrate this problem when a merge is
+      performed using documents found by their ODMA Document IDs.</li>
+    <li>If there is a consistent reproduction of the problem, add the
+      demonstration here and notify the appropriate vendor(s).</li>
+  </ol>
+</blockquote>
+<h2><a name="Investigation">Investigation</a>      of Incident (as of
+2001-01-29):</h2>
+<blockquote>
+<p>The following steps are being taken to confirm the claims made in this incident
+report:</p>
+  <ol>
+    <li>The Message being displayed was caught in a screen capture (<a href="#Figure1">Figure
+      1</a>).</li>
+    <li>The source of the message was tracked down in the ODMA 2.0 Connection
+      Manager (see incident report <a href="http://www.infonuovo.com/odma/support/X010100.htm">X010100</a>).</li>
+    <li><a href="http://www.infonuovo.com/odma/support/x010101c.log">WordPerfect
+      File Activity logs</a> and <a href="http://www.infonuovo.com/odma/support/x010101d.log">ODMA
+      Connection Manager logs</a> were captured and reviewed to confirm that
+      operation stopped at creation of the message.&nbsp; The invalid Document
+      ID that provokes the message was detected and confirmed in both logs.</li>
+    <li>It remains to create a reproducible demonstration of how the modified
+      ODMA Document ID is created and where.&nbsp;&nbsp;</li>
+  </ol>
+</blockquote>
+
+<h2><a name="Demonstration">Demonstration</a> of Document ID Errors (2001-03-02)</h2>
+<blockquote>
+  <p>&nbsp;</p>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#CarolynKaukl">Carolyn
+      Kaukl</a></dt>
+    <dd>provided the original report of incidents, and then provided the logs
+      that demonstrate ODMA is being given invalid ODMA Document IDs.</dd>
+    <dt><a href="mailto:infonuovo@email.com">Dennis Hamilton</a></dt>
+    <dd>reviewed the reports and logs, splitting the incident into two
+      problems.&nbsp; Creation of Invalid ODMA Document IDs in WordPerfect, and responding with
+      an inappropriate message to those Document IDs in ODMA.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-01-29-16:11 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-06-05 8:25 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

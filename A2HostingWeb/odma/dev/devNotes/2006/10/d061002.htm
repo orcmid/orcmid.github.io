@@ -1,0 +1,161 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061002.htm 70    13-08-22 12:53 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061002: ODMJNI 1.0 Guide &amp; Usage Scenarios</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong>
+		<a href="../../d000001.htm#d061002"><font color="#990033">d061002</font></a><br>
+      	<font size="5"><i>ODMJNI 1.0 Guide <br>
+		&amp; Usage Scenarios</i></font></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d061002.htm">d061002</a>&gt;</b></code><br>
+      <small><small><a href="#0.01">0.01</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<blockquote>
+	<p align="left"><font color="#800080"><b>{Placeholder: This is the initial 
+	placeholder for the progressive editions of the ODMJNI 1.0 Guide &amp; Usage 
+	Scenarios.&nbsp; This is an artifact of the ODMJNI 1.0 project that 
+	describes the ODMJNI software from the perspective of developers who want to 
+	create ODMA-aware Java-based applications.}</b></font></p>
+</blockquote>
+<blockquote>
+	<p align="left">&nbsp;</p>
+</blockquote>
+<h2 align="left"><a name="Materials">Available Material</a></h2>
+<ul>
+	<li><b>d061002b: <a href="d061002b.htm"><i>Guide &amp; Usage Scenarios</i> 
+	[latest]</a></b></li>
+	<li><b>d061002d: <a href="d061002d.htm">0.20 Review Draft</a>, 2006-10-16</b></li>
+	<li><b>d061002c: <a href="d061002c.htm">0.10 Review Draft</a>, 2006-10-05</b></li>
+	<li><b>d061002a: <a href="d061002a.htm">Diary &amp; Job Jar</a></b></li>
+</ul>
+<blockquote>
+	<dl>
+		<dt><b><i>see also:</i> </b></dt>
+		<dd><b>d061001: <a href="d061001.htm">info.odma.practical100 Component 
+		Development</a></b></dd>
+		<dd>&nbsp;</dd>
+	</dl>
+</blockquote>
+
+
+<blockquote>
+	<dl>
+		<dd><small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+	</dl>
+</blockquote>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.01">0.01</a> 2006-10-27-16:54 Link to the 0.20 Review Draft</b></dt>
+<dt><b><a name="0.00">0.00</a>  2006-10-26-19:45 create&nbsp;placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="d061001a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; The first objective is preservation of the current materials 
+	and maintenance of a job jar for further refinement of the material and this 
+	folio.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="11%">
+      <p><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="62%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2006-10-26-19:45 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 70 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

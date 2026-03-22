@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Query Examples</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P><A NAME="_Toc378259922"><A NAME="_Toc378657534"><A NAME="_Toc378658450"><A NAME="_Toc378694602"><A NAME="_Toc378695349"><A NAME="_Toc378696850">Query Example</A></A></A></A></A></A>s</P>
+</B></FONT><P>Actual clients of DMA will most often implement queries as part of a user interface module. It is expected that the client user interface code will usually either take user interface gestures or a query language as input. However, it is not appropriate to show a user interface module or a query language parser as part of a DMA query example in this document: What needs to be illustrated is not user interface code or query language code, but the code that deals with DMA objects involved with DMA queries. Therefore, we have chosen a data driven style for the query example. It would be convenient for both clients and implementations of the DMA API to implement canned queries using the data driven style illustrated. One situation in which canned queries are useful in implementing the DMA API is in implementing navigation, e.g., finding the contents of a container, or the containers of a containee.</P>
+<P>In our data driven style of example, there are several source files. One source file implements a general query parse tree generation engine that can generate a query parse tree for any query that the DMA query model can handle, with one exception: DMA query objects for list of constants (i.e., lists of integer constants, etc.) are omitted. Adding them would add bulk but to the example but not increase understanding. Adding lists of constants would be straightforward. </P>
+<P>The parse tree generation engine has an include file that modules using the engine must include. The third and final source file is the module that is the client of the parse tree generation module. The client module has the data for a specific query.</P>
+<P>The source files involved are:</P>
+
+<UL>
+<LI><A HREF="queryh.htm">query.h</A> This is the include file for query parse tree generation module. Both the query parse tree generation module and the client module include this file. This file includes all the DMA header files that are needed.</LI>
+<LI><A HREF="quexp0.htm">query.cpp</A> This is the query parse tree generation module. It is passed a tree of QueryNode structures (see below). It converts the tree of QueryNode structures into an equivalent DMA parse tree of DMA objects, and calls the ExecuteSearch method of the input DMA Scope object.</LI>
+<LI><A HREF="quexp1.htm">quexp1.cpp</A> This is the client of the query parse tree generation module. It statically declares a tree of initialized QueryNode structures in and passes it to the parse tree generation module. The parse tree generation module returns a DMA Query Result Set object, which the client uses to enumerate the results of the query.</LI>
+<LI><A HREF="quexp2.htm">quexp2.cpp</A> This example demonstrates how containment can be expressed within the DMA query model.</LI>
+<LI><A HREF="quexp3.htm">quexp3.cpp</A> This example demonstrates how children of an object supporting direct containment can be navigated.</LI></UL>
+
+<B><FONT SIZE=4><P>query.h</P>
+</B></FONT><P>Query parse trees in the DMA query model consist of DMA objects that merely contain data, and do not have any interesting methods except those dealing with properties. (The IdmaProperties and IdmaEditProperties interfaces deal with properties.) The "query.h" file has a "typedef struct" declaration for a collection of C structures that can hold the information for any node in a DMA query parse tree. These structures are Operator, BinaryConst, StringConst, BooleanConst, IntegerConst, FloatConst, DateTimeConst, IDConst, OIIDConst, Property, FromExprElt, JoinExpElt, OrderElt, QueryNode, and QueryRoot. The QueryNode structure contains a union field that has a case for each of the other structs.</P>
+<P>The basic idea is that the client statically declares an array of QueryNode structures that represents a depth-first tree of initialized QueryNode structures equivalent to a DMA query parse tree. This file also contains the procedure signature of the "entry point" into the parse tree module. Finally, this file includes all the DMA header files that are necessary.</P>
+<B><FONT SIZE=4><P>query.cpp</P>
+</B></FONT><P>This source file is the query parse tree generation module. The entry point function is StartQuery. It takes a QueryRoot structure and a DMA Scope object as input. The QueryRoot structure is the topmost node in a tree of structures for the main query. Subqueries are allowed. In that case, one of the subordinate nodes will also be a QueryRoot structure.</P>
+<P>One of the functions StartQuery calls is BuildQueryExpr. This function is indirectly recursive – it calls BuildTree, which can call BuildQueryExpr. The function BuildTree is also directly recursive – it can call itself.</P>
+<P>The main query, and each subquery (if any) are represented by separate trees of C structures. The "level" field of the QueryNode structure represents the recursive level of the node in the tree. The value of "level" for the root node is zero. The trees are flattened into an array of QueryNode structures in which the query nodes occur in depth first order.</P>
+<B><FONT SIZE=4><P>quexp1.cpp</P>
+</B></FONT><P>This file declares the particular query to be executed and calls StartSearch in the parse tree generation module. It uses the Query Result Set object returned to enumerate the result rows of the query.</P>
+</BODY>
+</HTML>

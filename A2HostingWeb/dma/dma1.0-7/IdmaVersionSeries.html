@@ -1,0 +1,97 @@
+<html><head><title>Interfaces and Methods: IdmaVersionSeries</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaVersionSeries"></a>IdmaVersionSeries</h2>
+<p>This interface provides the ability to reserve and checkout versions of versionable objects (initially Document Versions) in DMA.  It also provides a method to revoke (cancel) reservations and checkouts.
+</p><p>
+This interface is only present when the IdmaConnection interface is also present.  The operations are specific to persistent objects and don’t apply to any other forms of Version Series object.</p></p>
+<h3><a name="IdmaVersionSeriesSetCheckOutNext"></a>IdmaVersionSeries::SetCheckOutNext</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaVersionSeries::SetCheckOutNext</b> (<br>
+Dmapv    <i>pReservation</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pReservation</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to an interface of a new, unsaved reservation object</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Records the intention to reserve the right to check-in the next new current versionable object in this series. 
+</p><p>
+Following ExecuteChange on the Version Series the persistent state of  the Version Series is updated and a new Reservation object and a new working Versionable object are created in the persistent store. 
+</p><p>
+The Reservation property of the persistent Version Series object will be updated to refer to the new Reservation object.
+</p><p>
+The Reserved For property of the persistent Reservation object will refer to the Version Series object, the New Version property will refer to the working Versionable object and any extended properties will be set to reflect the extended properties of the Reservation object at the time of the ExecuteChange call. 
+</p><p>
+The working Versionable object is a clone of the current Versionable object in the version series. The Reservation and cloned versionable object can be found through navigation from the "Reservation" property of the Version Series
+</p><p>
+When the versionable object is "cloned", the versionable object and all dependent persistable subordinate objects are copied recursively.   Cloning sets the navigation properties to null but preserves other properties with the exception of the OIID which is given a new value.
+</p><p>
+The major purpose in providing Checkout in addition to Reserve is to allow the Document Space to optimize the work associated with ‘cloning’ the Document Version, particularly the content data. 
+</p><p>
+A reservation can be resolved with a check-in, or can be revoked.  Revoking a reservation created by SetCheckOutNext does not delete the NewVersion object.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_PENDING</p></TD><TD><p>The connection is already holding a request for a reservation.  There cannot be more than one at a time.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NO_CURRENT_VERSION</p></TD><TD><p>The version series has no current version.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_MODIFIED</p></TD><TD><p>The object has been modified since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_EXISTS</p></TD><TD><p>The version series is already holding a reservation.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_NOT_ALLOWED</p></TD><TD><p>The condition of the version series does not permit a reservation, though no reservation is currently present.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaVersionSeriesSetReserveNext"></a>IdmaVersionSeries::SetReserveNext</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaVersionSeries::SetReserveNext</b> (<br>
+Dmapv    <i>pReservation</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pReservation</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to an interface of a new, unsaved reservation object</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Records the intention to reserve the right to check-in the next new current versionable object in this series. 
+</p><p>
+Following ExecuteChange on the Version Series the persistent state of  the Version Series is updated and a new Reservation object is created in the persistent store.
+</p><p> 
+The Reservation property of the persistent Version Series object will be updated to refer to the new Reservation object.
+</p><p>
+The Reserved For property of the persistent Reservation object will refer to the Version Series object, the New Version property (if supported) will be NULL, and any extended properties will be set to reflect the extended properties of the Reservation object at the time of the ExecuteChange call. 
+</p><p>
+Unlike SetCheckOutNext, SetReserveNext does not create a clone of the versionable object.
+</p><p>
+A reservation can be resolved with a check-in, or can be revoked.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_PENDING</p></TD><TD><p>The connection is already holding a request for a reservation.  There cannot be more than one at a time.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ACCESS_DENIED</p></TD><TD><p>(E_ACCESSDENIED) The requester has insufficient access rights to perform the requested operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_LOCKED</p></TD><TD><p>The lock(s) on the persistent object prohibit the attempted operation.</p></TD></TR>
+<TR><TD><p>DMARC_OBJECT_MODIFIED</p></TD><TD><p>The object has been modified since it was retrieved.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_EXISTS</p></TD><TD><p>The version series is already holding a reservation.</p></TD></TR>
+<TR><TD><p>DMARC_RESERVATION_NOT_ALLOWED</p></TD><TD><p>The condition of the version series does not permit a reservation, though no reservation is currently present.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaVersionSeriesSetRevoke"></a>IdmaVersionSeries::SetRevoke</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaVersionSeries::SetRevoke</b> ( )</p>    <b>Description</b>    </p>
+<p>Records the intention to cancel an existing CheckOut or Reservation for the Version Series object. On successful completion of this method and one of the ExecuteChange(s) methods the Reservation property of the series is set to NULL and the Reservation object formerly pointed to is deleted.
+</p><p>
+If the Reservation was created by SetCheckOutNext, the cloned NewVersion object (created as a result of that method call) is NOT deleted.  If the NewVersion should be deleted, then the application must explicitly delete the object (which is pointed to by the Reservation’s NewVersion property).
+</p><p>
+This method will not fail because there is a SetRevoke already pending.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONFLICTING_OPERATION</p></TD><TD><p>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_NO_RESERVATION</p></TD><TD><p>The Version Series is not holding a reservation at this time.</p></TD></TR>
+</TABLE>
+</body></html>

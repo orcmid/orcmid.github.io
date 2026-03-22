@@ -1,0 +1,142 @@
+<html><head><title>Interfaces and Methods: IdmaServiceRegistry</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaServiceRegistry"></a>IdmaServiceRegistry</h2>
+<p>Provides access to registry elements that maintain information about the implementation of DMA Service Objects</p>
+<h3><a name="IdmaServiceRegistryFindNextRegistryElement"></a>IdmaServiceRegistry::FindNextRegistryElement</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::FindNextRegistryElement</b> (<br>
+pDmaId    <i>pPrevRegistrationId</i>,<br>pDmaId    <i>pServiceObjectIdFilter</i>,<br>pDmaId    <i>pServiceObjectTypeIdFilter</i>,<br>pDmaInteger32    <i>plCharSetEncodingIdFilter</i>,<br>pDmaBoolean    <i>pbPublishedFilter</i>,<br>pDmaId    <i>pRegistrationId</i>,<br>pDmaId    <i>pServiceObjectId</i>,<br>pDmaId    <i>pServiceObjectTypeId</i>,<br>ppDmaString    <i>ppProfile</i>,<br>pDmaId    <i>pModuleTypeId</i>,<br>ppDmaString    <i>ppModuleLocation</i>,<br>pDmaInteger32    <i>plCharSetEncodingId</i>,<br>pDmaBoolean    <i>pbPublished</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPrevRegistrationId</i></p></TD><TD><p>input</p></TD><TD><p>A reference to the registration Id of an existing Registry element or NULL.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectIdFilter</i></p></TD><TD><p>input</p></TD><TD><p>A reference to the Id of a Service Object or NULL. If non-NULL, this method will only return registration elements with Service Object Ids that match the dereferenced value of this parameter.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectTypeIdFilter</i></p></TD><TD><p>input</p></TD><TD><p>A reference to the Id of a Service Object Type or NULL.  If non-NULL, this method will only return registration elements with Service Object Type Ids that match the dereferenced value of this parameter.</p></TD></TR>
+<TR><TD><p><i>plCharSetEncodingIdFilter</i></p></TD><TD><p>input</p></TD><TD><p>A reference to a Character Set Encoding Id or NULL.  If non-NULL, this method will only return registration elements with Character Set Encoding Ids that match the dereferenced value of this parameter.</p></TD></TR>
+<TR><TD><p><i>pbPublishedFilter</i></p></TD><TD><p>input</p></TD><TD><p>A reference to a boolean or NULL.  If non-NULL, this method will only return registration elements with Published values that match the dereferenced value of this parameter.</p></TD></TR>
+<TR><TD><p><i>pRegistrationId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) The registration Id of a previously registered registry element. This parameter uniquely identifies the registry element accessed by this method.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) The Id of a Service Object that is registered with the System.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectTypeId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns the Type Id for the service object.</p></TD></TR>
+<TR><TD><p><i>ppProfile</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a copy of the profile string that is supplied to the Service Object when it is activated.</p></TD></TR>
+<TR><TD><p><i>pModuleTypeId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) A DmaId value that specifies of the type of Module used to implement the Service Object, e.g. a WIN32 DLL.</p></TD></TR>
+<TR><TD><p><i>ppModuleLocation</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a string that identifies the location of the Module.</p></TD></TR>
+<TR><TD><p><i>plCharSetEncodingId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns the character set encoding that is supported by this service object. </p></TD></TR>
+<TR><TD><p><i>pbPublished</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a boolean indicating whether this registration element has been published.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns the selected registration information for the registry element "following" the PrevRegistrationId in whatever order the Service Registry implementation maintains registry element entries.
+</p><p>  
+The list of registered service element entries can be browsed by calling this method initially with a NULL value for pPrevRegistrationId.  Subsequent methods calls would specify pRegistrationId as pPrevRegistrationId while this method returns DMARC_OK.  A DMARC_BAD_PARAMETER value will be returned if pPrevRegistrationId is not NULL and a registry entry with that RegistrationId does not exist.  A DMARC_NOT_FOUND value will be returned if all parameters are valid and no registry entry is found that meets the specified criteria.
+</p><p>
+This method supports filtering the list of registered service element entries based upon a combination of Service Object Id, Service Object Type Id, Character Set Encoding Id and bPublished through the specification of non-NULL values for any of the corresponding filter input parameters.  Providing specific values for Service Object Id, Service Object Type Id, Character Set Encoding Id and a NULL value for pPrevRegistrationId is guaranteed to return at most one registry element.
+</p><p>
+If an output parameter reference is NULL, the value for that information will not be returned.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaServiceRegistryGetRegistryElement"></a>IdmaServiceRegistry::GetRegistryElement</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::GetRegistryElement</b> (<br>
+pDmaId    <i>pRegistrationId</i>,<br>pDmaId    <i>pServiceObjectId</i>,<br>pDmaId    <i>pServiceObjectTypeId</i>,<br>ppDmaString    <i>ppProfile</i>,<br>pDmaId    <i>pModuleTypeId</i>,<br>ppDmaString    <i>ppModuleLocation</i>,<br>pDmaInteger32    <i>plCharSetEncodingId</i>,<br>pDmaBoolean    <i>pbPublished</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pRegistrationId</i></p></TD><TD><p>input</p></TD><TD><p>The registration Id of a previously registered registry element. This parameter uniquely identifies the registry element accessed by this method.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) The Id of a Service Object that is registered with the System.</p></TD></TR>
+<TR><TD><p><i>pServiceObjectTypeId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns the type the service object. </p></TD></TR>
+<TR><TD><p><i>ppProfile</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a copy of the profile string that is supplied to the Service Object when it is activated.</p></TD></TR>
+<TR><TD><p><i>pModuleTypeId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) A DmaId GUID value that specifies of the type of Module is used to implement the Service Object, e.g. WIN32 DLL.</p></TD></TR>
+<TR><TD><p><i>ppModuleLocation</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a string that identifies the location of the Module.</p></TD></TR>
+<TR><TD><p><i>plCharSetEncodingId</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns the character set encoding that is supported by this service object. </p></TD></TR>
+<TR><TD><p><i>pbPublished</i></p></TD><TD><p>output</p></TD><TD><p>(optional) Returns a boolean indicating whether this registration element has been published.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns the selected registration information for the identified registry element. If an output parameter reference is NULL, the value for that information will not be returned.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaServiceRegistryPublishRegistryElement"></a>IdmaServiceRegistry::PublishRegistryElement</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::PublishRegistryElement</b> (<br>
+pDmaId    <i>pRegistrationId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pRegistrationId</i></p></TD><TD><p>input</p></TD><TD><p>The registration Id of a previously registered registry element. This parameter uniquely identifies the registry element that will be published by this method.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method publishes a Service Registry element.  Upon successful completion of this method, the registry element’s bPublished attribute will have a value of DMA_TRUE. 
+</p><p>
+A Service Object that is initially registered is known only at the point of presence where it is registered.  Publishing the registration entry makes the service element known to all points-of-presence that can reach the point-of-service having the service object.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaServiceRegistryRegisterServiceElement"></a>IdmaServiceRegistry::RegisterServiceElement</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::RegisterServiceElement</b> (<br>
+pDmaId    <i>pServiceObjectId</i>,<br>pDmaId    <i>pServiceObjectTypeId</i>,<br>pDmaString    <i>pProfile</i>,<br>pDmaId    <i>pModuleTypeId</i>,<br>pDmaString    <i>pModuleLocation</i>,<br>DmaInteger32    <i>lCharSetEncodingId</i>,<br>pDmaId    <i>pRegistrationId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pServiceObjectId</i></p></TD><TD><p>input</p></TD><TD><p>The DmaId to use as the Service Object’s instance Id. If NULL, a DmaId GUID value will be assigned by the RegisterServiceElement operation</p></TD></TR>
+<TR><TD><p><i>pServiceObjectTypeId</i></p></TD><TD><p>input</p></TD><TD><p>The Service Object's type, e.g. a System, DocSpace, ScopeFactory,  TextOrdering, or other registry-supported type.</p></TD></TR>
+<TR><TD><p><i>pProfile</i></p></TD><TD><p>input</p></TD><TD><p>(optional) The profile string that will be supplied to the Service Object when it is activated via its GetServiceObject function.</p></TD></TR>
+<TR><TD><p><i>pModuleTypeId</i></p></TD><TD><p>input</p></TD><TD><p>Specifies the type of Module used to implement the Service Object, e.g. a Win32 DLL.</p></TD></TR>
+<TR><TD><p><i>pModuleLocation</i></p></TD><TD><p>input</p></TD><TD><p>The location of the Module containing the service-object implementation program code.</p></TD></TR>
+<TR><TD><p><i>lCharSetEncodingId</i></p></TD><TD><p>input</p></TD><TD><p>The character set encoding that is supported by this implementation of the service object.  </p></TD></TR>
+<TR><TD><p><i>pRegistrationId</i></p></TD><TD><p>output</p></TD><TD><p>Returns the registration that uniquely identifies the registry element registered by this method.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method adds an unpublished registry element to the Service Registry database. 
+</p><p>
+The combination of  ServiceObjectId, ServiceObjectTypeId and CharSetEncodingId must be unique across all registered elements.  An attempt to register an element that would violate this uniqueness invariant condition will result in a DMARC_NOT_UNIQUE return code.
+</p><p>
+DMA 1.0 defines well-known ServiceType values 
+<i>dmaServiceType_System, dmaServiceType_DocSpace, dmaServiceType_ScopeFactory, dmaServiceType_OIIDParser, dmaServiceType_TextOrdering</i>
+ for the Service Objects of the named types, respectively.
+</p><p>
+The ServiceObjectId is an instance Id associated with the service object and is defined as the SystemId for System service objects, the DocSpaceId for DocSpace service objects, or the TextOrderingId (Collation Id) for TextOrdering service objects. For an OIIDParser, the ServiceObjectId is the unique dmaService_ OIIDParser value. Any module registered as a dmaServiceType_OIIDParser service must support the IdmaOIID interface for OIID strings in the character set encoding for which it is registered.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ACCESS_DENIED</p></TD><TD><p>(E_ACCESSDENIED) The requester has insufficient access rights to perform the requested operation.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_UNIQUE</p></TD><TD><p>A uniqueness requirement has been violated.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaServiceRegistryRemoveRegistryElement"></a>IdmaServiceRegistry::RemoveRegistryElement</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::RemoveRegistryElement</b> (<br>
+pDmaId    <i>pRegistrationId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pRegistrationId</i></p></TD><TD><p>input</p></TD><TD><p>The registration Id of a previously registered registry element. This parameter uniquely identifies the registry element which will be removed by this method.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method removes a registry element from the Service Registry database.   If the registry element was published, it is unpublished prior to removal.  The Registration Id is guaranteed not to be reused by the Service Registry.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaServiceRegistryUnpublishRegistryElement"></a>IdmaServiceRegistry::UnpublishRegistryElement</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaServiceRegistry::UnpublishRegistryElement</b> (<br>
+pDmaId    <i>pRegistrationID</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pRegistrationID</i></p></TD><TD><p>input</p></TD><TD><p>The registration Id of a previously registered registry element. This parameter uniquely identifies the registry element which will be removed by this method.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method unpublishes a Service Registry element.  Upon successful completion of this method, the registry element’s bPublished attribute will have a value of DMA_FALSE.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_PUBLISHED</p></TD><TD><p>The service registry entry is not currently published.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

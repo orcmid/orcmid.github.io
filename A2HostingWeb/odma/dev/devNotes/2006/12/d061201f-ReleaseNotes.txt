@@ -1,0 +1,295 @@
+d061201f-ReleaseNotes.txt 0.01       UTF-8                    dh:2007-01-14
+
+                                 RELEASE NOTES
+
+               ODMJNI 1.0 0.40alpha Document-Update Features
+               ---------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201f.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   The ODMJNI 1.0 0.40alpha distribution is provided to accomplish four
+   important elements in the progression to full ODMJNI 1.0:
+
+     1. Implement OdmConnnection.chooseDocument() for both viewOnly and
+        modifiable documents, allowing the application to adjust its
+        behavior for the two cases.
+
+     2. Implement the OdmWorkingDocument.commitChanges() functionality
+        so that the application may edit the document file at
+        OdmWorkingDocument.documentLocation(), save and close the file,
+        and deliver the changes to the ODMA DMS.
+
+     3. Refresh document identity, content location, and other properties
+        when the ODMA DMS makes any alteration as the result of a
+        commitChanges() operation.  The docID, docLocation, windowTitle,
+        and additional document properties are subject to change (although
+        they often do not).
+
+     4. Provide the beginning of a suite of ODMJNI configurations that are
+        important in verifying that applications behave properly under
+        different circumstances:
+
+          * Absence of ODMA Connection Manager or of a default DMS for the
+            application.  This is exercised by using the OdmNullBind class
+            in place of OdmJniBind.  The variations can also be demonstrated
+            by using OdmJniBind and removing the ODMA Connection Manager
+            and by manipulating the Windows Registry.
+
+          * Cases where an user does not select a document when the
+            application provides a chooseDocument() request.  The treatment
+            of user cancellation and user request to use a local operation
+            can be confirmed with the 0.30alpha distribution.
+
+          * Proper use of a document that is only available for viewing.
+            The 0.30alpha release forces this case even when the DMS does
+            not, both for safe test access and to ensure that the applica-
+            tion does not attempt any operation that is not permitted for
+            a viewOnly document.
+
+          * Correct closing of document files and delivery of changed
+            content to the ODMA DMS.
+
+          * Correct releasing of all OdmConnection and OdmWorkingDocument
+            interfaces by applications.  These interfaces *must* be
+            explicitly released before the application terminates.  It is
+            preferable that such releases occur as soon in the application
+            where it is assured that no further use of an individual
+            interface implementation will be made.  The successful release
+            is confirmed by examining the ODMA 2.0 Connection Manager logs
+            following tests to ensure that ODMA was fully released with all
+            document operations accounted for.
+
+     5. [deferred] The 0.40alpha release implements all of the internal
+        functions required to implement the OdmConnection function
+        openKnownDocument.  This function is not required at this point.
+        The intention is to defer enabling of this function until 0.50beta
+        or even later to reduce the amount of testing to achieve 0.40alpha.
+
+
+   CONTENT
+
+     Synopsis
+
+     1. Summary of Changes
+        1.1 No Practical100 changes
+        1.2 Simple OdmNative100 expansion
+        1.3 odmjni100 additions
+
+     2. Confirmation of Changes
+        2.1 odmjni100 Check03 expansion
+        2.2 OdmNative100 Check05 expansion
+
+     3. Caveats
+        3.1 0.30alpha defect
+        3.2 Using the ODMA Sample DMS, ODMASAMP
+        3.3 Unimplemented Features
+
+     Copyright Notice
+     Revision History
+
+1. SUMMARY OF CHANGES
+
+   This release has the fewest changes of any of those provided so far.
+   There is only one new class, OdmJniWork, for implementing opened
+   working documents.  Everything else is by addition of functions in
+   classes and tests that already exist.
+
+
+1.1 No Practical100 Changes
+
+   The Practical100 package remains unchanged from the version released
+   as part of 0.30alpha.
+
+   The Practical100 interfaces are unchanged from the definitions used in
+   0.25alpha and documented in the 0.30alpha Pre-Release Notes.
+
+
+1.2 Simple OdmNative100 Expansion
+
+   The OdmNative100 expansion involves implementing the full
+   IodmWorking100::commitChanges in OdmWorking100.cpp.  OdmNative100.lib
+   is updated with the improved code.
+
+
+1.3 odmjni100 Additions
+
+   1.3.1 OdmJniApp.  A simple native method is added for checking whether
+   the IodmWorking100 interface returned in response to a successful
+   document selection is viewOnly or not.  OdmJniApp chooseDocument
+   implements the returned OdmWorkingDocument interface by an OdmJniView
+   or an OdmJniWork instance as appropriate.
+
+   1.3.2 OdmJniWork.  This new class is an extension of OdmJniView.  Beside
+   always reporting viewOnly() as false, its only new behavior is to rely on
+   a new native method for OdmWorkingDocument.commitChanges() and to flush
+   the cache of document properties each time there is a successful
+   commitChanges().
+
+   1.3.3 odmjni100.dll.  The code of odmjni100.cpp is expanded to implement
+   the viewOnly() check for OdmJniApp (1.3.1) and the commitChanges()
+   operation of OdmJniWork (1.3.2).
+
+   1.3.4 [2007-01-14 update] 0.40alpha begins the definition of native
+   methods in the class that uses them, so that they can be kept private.
+   The only native methods that will be package visible in OdmJniBind are
+   those used in common among all classes of odmjni100.
+
+
+2. CONFIRMATION OF CHANGES
+
+2.1 odmjni100 Check03 Expansion [updated 2007-01-14]
+
+   The Check03.java code is expanded to perform a commitChanges operation
+   after reporting the properties of the initial returned document from
+   OdmConnection.chooseDocument.
+
+   The performance of the operation, along with refetch of the document
+   properties after the commit, is confirmed by inspection of the Odma32.log
+   of the ODMA 2.0 Connection Manager.
+
+
+
+2.2 OdmNative100 Check05 Expansion [updated 2007-01-14]
+
+   The Check05.cpp code is expanded to make a commitChanges on a modifiable
+   document each time the user responds to a prompt.  The properties are
+   refetched after each successful change so that any changes can be noted.
+
+   Check05 launches an application for the docLocation document file, and
+   the user can use that application (typically NotePad when the ODMA
+   Sample DMS is used) to make modifications and then close the document
+   file before requesting that commitChanges be performed.
+
+   If the user does not want to commit changes, Check05 releases the
+   document and completes operation.
+
+   The correct performance of the operations is confirmable by inspection
+   of the Odma32.log from the ODMA 2.0 Connection Manager
+
+
+3. CAVEATS
+
+3.1 0.30alpha Defect
+
+   There is a bug in the implementation of OdmViewing and OdmWorking method
+   dmsAvailable() where false is returned even when true is the correct
+   response.  The bug is simply in the reporting of the value.  All
+   behavior is as if it is true.  This does not impact any other operations.  For example, operationSucceeded() will be true.
+
+   The defect is repaired in 0.40alpha.
+
+   The Release Notes and the web page for 0.30alpha will be updated to
+   make note of the defect.  It will not be repaired in 0.30alpha.
+
+
+3.2 Using the ODMA Sample DMS, ODMASAMP
+
+   The ODMA Sample DMS is not a very useful reference for ODMA DMS behavior.
+
+   First, ODMASAMP does not retain the identity of documents it creates for
+   later retrieval when it is used under a limited user account.  The user
+   account must have administrative privileges for ODMASAMP to retain the
+   list of documents created with it.  It will silently fail to do so when
+   operated from a limited user account.
+
+   ODMASAMP creates file locations in the user's temporary folder.  The
+   document files are used "in place."  That is, there is no separate copy
+   of the file.
+
+      - The documents may be deleted from the temporary folder as part of
+        ordinary Windows clean-up operations.  ODMASAMP will not notice such
+        deletions and will continue to offer the documents for selection in
+        response to a chooseDocument operation.
+
+      - commitChanges doesn't do anything.  Also, changes made to a document
+        without performing a commitChanges will still appear the next time
+        because the application is operating on the same document file that
+        ODMASAMP treats as its "managed" copy.
+
+      - Because ODMASAMP doesn't move changed documents into a private
+        private location, it is difficult to tell whether an application
+        is correctly saving changed content to the file *before* the
+        commitChanges operation is performed.  (In fact, the ODMA 2.0 Test32
+        application does it in the incorrect sequence.)
+
+   This is all the more motivation for replacing ODMASAMP with a reference
+   implementation of a local DMS repository.  That will not happen before
+   ODMJNI 1.0 is completed, however.
+
+
+3.2 Unimplemented Features
+
+   The following features are unimplemented at this time.  The intention
+   is to address these items *following* release of 0.50 beta:
+
+     * ODMJNI 1.0 may fail to determine the correct application window for
+       the DMS to add dialogs to.  This defect does not inhibit testing and
+       hardening of applications, although it is an usability annoyance.
+       This is the first priority for repair following 0.50beta.
+
+     * ODMJNI 1.0 0.40alpha does not attempt to adjust for the Windows
+       code page when translating document-property texts to Unicode for
+       delivery to the Java application.  This is the second priority for
+       repair following 0.50beta.
+
+     * ODMJNI 1.0 0.40alpha does not enforce the strict format validation
+       requirements for text strings submitted by the Java application.  The
+       third priority for completion following 0.50beta is implementation
+       of the OdmFormat class of filters for checking format validity.  At
+       that point, the operations that require well-formed text strings will
+       throw an OdmError exception when given ill-formed data.
+
+   There are additional improvements in packaging and hardening of the code
+   that will happen following the 0.50beta release.  These improvements are
+   part of the ordinary movement toward a 1.00 release.
+
+   Review the 0.30alpha Pre-Release Notes for further information on the
+   progression <http://ODMA.info/dev/devNotes/2006/10/d061001f.htm>.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+           Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+  Portions Copyright © 1994-1998 AIIM International <http://www.aiim.org>
+                   and the respective contributors to ODMA.
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: ODMJNI 1.0 0.40alpha Document Update Features.
+        ODMA Interoperability Exchange, ODMdev Development Note page
+        d061201f-ReleaseNotes.txt 0.01, January 14, 2007.  Current version available as part of the archive downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201f.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-01-14-13:06 Update these notes to reflect the outcome of 0.40alpha
+     development.
+0.00 2007-01-11-18:01 Begin editing of Release Notes using the 0.20alpha
+     release notes version 0.03 as the model,
+     <http://ODMA.info/dev/devNotes/2006/12/d061201c-ReleaseNotes.txt>.
+     This version of the release notes is used a description of the
+     work items, with packaging, installation, and usage information added
+     when 0.40alpha is ready for deployment.
+
+$Header: /ODMdev/d061201f-ReleaseNotes.txt 3     07-01-14 13:46 Orcmid $
+
+                    *** END OF d061201f-ReleaseNotes.txt ***
+

@@ -1,0 +1,492 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>DMA Return Codes</TITLE>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<FONT SIZE=5><P ALIGN="CENTER">DMA Return Codes</P>
+</FONT><FONT SIZE=2>
+<P>All DMA methods return an integer return code following the conventions used for an HRESULT in the COM specification. This table lists symbolic names and descriptions for the DMA return codes, all of which start with &quot;DMARC_&quot;.</P>
+
+<P>For background on HRESULT, see http://www.microsoft.com/oledev/olecom/Ch03.htm#IUnknown</P>
+
+<P>Return code listings in the method descriptions are only partial.  Other generic codes (such as DMARC_FAILED) can occur.  Some codes are warnings instead of errors – the descriptions of these warning codes begin with &quot;(Warning)&quot;.</P>
+
+<P>&nbsp;</P></FONT>
+<TABLE BORDER CELLSPACING=1 BORDERCOLOR="#000000" CELLPADDING=2 WIDTH=578>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#c0c0c0">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Name</B></FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#c0c0c0">
+<B><FONT FACE="Arial" SIZE=2><P ALIGN="CENTER">Description</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_3VE_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The current scope does not support three valued elimination.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_ABORT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The progress callback indicated that the method should be aborted.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_ACCESS_DENIED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_ACCESSDENIED) The requester has insufficient access rights to perform the requested operation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_ALIAS_CONFLICT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A class, operator or property in one component scope unifies with more than one such entity in another component scope.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_ALREADY_AUTHENTICATED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The user is already authenticated.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_AT_ENUM_END</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The enumerator object is positioned at the end of the component objects.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_CLASSID</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The supplied identifier does not reference an available class of object.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_COLLATION_SEQUENCE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The specified collation sequence is not known or supported by the scope.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_DOC_SPACE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>There is no available document space with the specified DmaId</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_FROM_EXPRESSION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The query contains an invalid From Expression.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_INDEX</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The index specified does not reference a valid property or list element.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_INTERFACE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_NOINTERFACE) The requested interface is not supported by this object.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_LOCK_TYPE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The lock type is invalid.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_OBJECT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_OIID</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The supplied buffer does not contain a valid OIID.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_OPERAND</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An operand is incorrect in datatype, form, or class.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_OPERATOR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An operator ID is not defined in the metadata of the current scope.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_ORDERBY_ELEMENT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Illegal 'order by' list element.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_PARAMETER</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_INVALIDARG) Invalid input parameter.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_PROPID</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A property identifier is not valid.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_PROTECTION_LEVEL</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Illegal value for the protection level parameter.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_RC</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Invalid Result Code.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_REFERENCE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object cannot be saved because it references another object which is not persistent.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_RESERVATION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>One or more of the Reservations is not the current reservation in the VersionSeries to which it refers.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_SC_OCCUR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The value of a query node's searchable class occurrence property is not present in the query.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_SELECT_ELEMENT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Illegal select list element.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_SUBQUERY_DATATYPE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The datatype of the query root node of an "IN" subquery does not match that of the property in the select list.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_SUBQUERY_SELECT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The select list of a subquery contains an inappropriate number of elements</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_URL</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The resource URL is not syntactically valid.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_BAD_VALUE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_CLASS_NOT_SEARCHABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A class referred to in the From Expression is not searchable.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_CLASSES_NOT_JOINABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A particular join operator in the query is supported, but the operator does not support the join between the particular operands specified in the query.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_CONFLICTING_OPERATION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The call on this primary intentional method logically conflicts with a prior call on a different primary intentional method.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_CONSTRAINT_VIOLATED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The operation violates a constraint of the implementation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_DATATYPE_MISMATCH</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The method invoked is inappropriate for the datatype of the property.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_DEVICE_ERROR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An error has occurred reading or writing a hardware device.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_DISCONNECTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The logical connection to the document space has been disconnected.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_DISTINCT_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The scope does not support the request for distinct result rows.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_EXTRA_OPERANDS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A query node has extra operands.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_FAILED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_FAIL) The operation failed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_FOREIGN_OBJECT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An object is not from the current document space.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_ILLEGAL_OPERATION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The operation is disallowed by the DMA Specification.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_LIST_BOUNDS_ERROR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The number of elements in a list is outside the permitted range.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_LOST_CONNECTION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The logical connection of the current object to the persistent store has been lost permanently. The operation could not be completed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_MAX_ROWS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A result set was truncated because it exceeded the maximum result items parameter.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_MISSING_OPERANDS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A query node is missing one or more operands.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_MISSING_REFERENCE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object cannot be saved because required reference to it is absent. For example, it may be required to be in a container and no appropriate relationship object exists.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_MULTIPLE_CHECKIN_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The implementation does not support multiple different checkins on the same object (i.e., threaded versioning).</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NEED_MORE_DATA</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(Warning) Indicates that more data is required to complete the browse connection operation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NETWORK_ERROR</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A network error has occurred.  It is undetermined as to whether retrying the method might succeed. The operation could not be completed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NETWORK_UNAVAILABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The network needed to perform this operation is not available.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NO_COLLATIONS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Merged scope creation failed because there would be no supported collation sequences.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NO_CURRENT_VERSION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The version series has no current version.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NO_MEMORY</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NO_RESERVATION</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The Version Series is not holding a reservation at this time.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_AUTHENTICATED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The user is not authenticated.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_CREATABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Creation of objects of the specified class is not supported.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_FOUND</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Requested item not found.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_LOCKED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object is not locked.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_PUBLISHED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The service registry entry is not currently published.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>This method is not supported in the context of this session or object.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_NOT_UNIQUE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A uniqueness requirement has been violated.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OBJECT_DELETED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object has been deleted since it was retrieved.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OBJECT_LOCKED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The lock(s) on the persistent object prohibit the attempted operation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OBJECT_MODIFIED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object has been modified since it was retrieved.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OBJECT_REFERENCED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object cannot be deleted because it is referenced by other objects.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OK</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(S_OK) Success.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OPERAND_MERGE_CONFLICT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The merge would create an invalid operand description.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_OPERATOR_MERGE_CONFLICT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An operator could not be merged because it has conflicting signatures in component scopes.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_POSITION_NOT_ALLOWED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The stream cannot be positioned as requested.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_PROPERTY_MERGE_CONFLICT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A property could not be merged because there is a conflict of conflicting datatype or cardinality in component scopes.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_PROPERTY_NOT_ORDERABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A property referred to in the query order by list is not orderable.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_PROPERTY_NOT_SEARCHABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A property referred to in the Query Expression is not searchable.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_PROPERTY_NOT_SELECTABLE</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A property referred to in the Selections list is not selectable.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_PROTECTION_LEVEL_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The desired protection level is not supported by the doc space.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_QUERY_AT_END</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The query ran to successful completion without encountering any constraints on time limits, number of rows generated, or any other constraints, and there are no more result rows that satisfy the query. A result row is not returned.  No more result rows will be returned unless ReExecuteQuery is executed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_QUERY_TREE_LOOP</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>There is a circular reference loop or a shared node in the query.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_READ_ONLY</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Method failed because an object or property is read-only.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_REFERENCES_OTHERS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The object cannot be deleted because it holds references to other objects.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_REQUIRED_VALUE_ABSENT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A required property value has not been set.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_RESERVATION_EXISTS</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The version series is already holding a reservation.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_RESERVATION_NOT_ALLOWED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The condition of the version series does not permit a reservation, though no reservation is currently present.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_RESERVATION_PENDING</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The connection is already holding a request for a reservation.  There cannot be more than one at a time.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_RESOURCE_NOT_FOUND</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The indicated resource was not found.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_RESULTS_TRUNCATED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The result set was truncated explicitly by a call on IdmaResultSet:: TerminateResults. No further rows will be returned unless ReExecuteQuery is executed. This is a failure code - no row is returned.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_SHORT_READ</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(Warning) End of stream was encountered before the requested number of bytes was read.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_STALE_METADATA</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The metadata in the persistent store has been changed so that it does not match the client's current copy of the metadata.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_TIMEOUT</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>A time limit has been exceeded.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_TRUNCATED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>Result sets were truncated in different component scopes for different reasons.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_UNEXPECTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>(E_UNEXPECTED) An unexpected error occurred.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_UNSUPPORTED_ORDERING</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>An unacceptable value was provided for an ordering parameter.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_URL_PROTOCOL_NOT_SUPPORTED</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The URL protocol specified in the reference is not supported.</FONT></TD>
+</TR>
+<TR><TD WIDTH="48%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>DMARC_VALUE_NOT_SET</FONT></TD>
+<TD WIDTH="52%" VALIGN="TOP" BGCOLOR="#ffffff">
+<FONT FACE="Arial" SIZE=2><P>The requested property currently has no value.</FONT></TD>
+</TR>
+</TABLE>
+
+<FONT SIZE=2></FONT></BODY>
+</HTML>

@@ -1,0 +1,320 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMdevCompagno/devnotes/2006/10/d061003.htm 76    13-08-22 12:53 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061003: ODMJNI 1.0 OdmNative100 ODMA-Access Implementation</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="64%" height="6">
+      <p align="center">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong>
+		<a href="../../d000001.htm#d061003"><font color="#990033">d061003</font></a><br>
+      	<i><font size="5">ODMJNI 1.0 OdmNative100 ODMA-Access Implementation</font></i></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">10</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d061003.htm">d061003</a>&gt;</b></code><br>
+      <small><small><a href="#0.05">0.05</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<blockquote>
+	<p align="left"><font color="#800080"><b>{Preliminary Material.}</b></font></p>
+</blockquote>
+<h2 align="left"><b><a name="1" target="_top" href="#1">1</a>. Overview</b></h2>
+<blockquote>
+	<p align="left"><b><kbd>OdmNative100</kbd></b> is a Microsoft native Windows 
+	C++ class.&nbsp; This class, its <b><kbd>IodmNative100</kbd></b> interface, 
+	and related helper classes and interfaces are used in the <code><b>
+	odmjni100.dll</b></code> to manage the lifetime of an ODMA connection and 
+	all subordinate document-access objects that will arise from it.</p>
+	<p align="left">Although <b><kbd>OdmNative100</kbd></b> is useful in other 
+	implementations of access to ODMA on the Windows desktop platform, initial 
+	development is skewed to the specific needs of ODMJNI and the <kbd><b>
+	info.odma.odmjni100</b></kbd> package.&nbsp; Generalization for reuse in 
+	other ODMA integration situations will be considered later.</p>
+	<p align="left">Initial development of <b><kbd>OdmNative100</kbd></b> satisfies 
+	Critical First Steps 3.2, Confirm ODMA Connection from C++ Class, in the 
+	ODMJNI 1.0 Development Progression. </p>
+	<p align="left"><b><kbd>OdmNative100</kbd></b> delivers a Microsoft Component 
+	Object Model (COM) binary interface.&nbsp; This allows the connection from 
+	Java-implemented ODMJNI classes to be managed with a single interface 
+	pointer disguised as a Java <kbd><b>long</b></kbd> data value. Using the 
+	reference-counting and interface versioning procedures of COM provides an 
+	easy way to correctly synchronize <b><kbd>OdmNative100</kbd></b> instance 
+	lifecycles with the lifecycle of the Java classes that use <b><kbd>OdmNative100</kbd></b> 
+	in the JNI implementations of their native methods.</p>
+	<p align="left">Although <b><kbd>IodmNative100</kbd></b> is a COM binary 
+	interface, it is only used internal to <code><b>odmjni100.dll</b></code> and the Java classes 
+	that rely on those DLLs.&nbsp; There is no independent COM object provided 
+	by or visible outside of ODMJNI.&nbsp; This is an important feature of the 
+	way that ODMA connection provide in-process, in-thread binding between 
+	Windows desktop applications and ODMA-compliant Document Management System 
+	integrations.&nbsp; In the case of ODMJNI, the Windows desktop application 
+	is Java-based.</p>
+</blockquote>
+<h2 align="left"><a name="2" target="_top" href="#2">2</a>. Progression</h2>
+<blockquote>
+	<p align="left">ODMJNI 1.0 is developed via evolutionary prototyping of 
+	components along three tracks:</p>
+	<ul>
+		<li>
+		<p align="left"><kbd><b>practical100</b></kbd><b> Pure Java:</b> The 
+		Java <kbd><b>info.odma.practical100</b></kbd> package of interfaces and 
+		null connections.&nbsp; These provide a neutral set of interfaces and 
+		classes for use by an ODMA-aware Java-based desktop application.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><kbd><b>OdmNative100</b></kbd><b> Native Windows: </b>
+		The C/C++ native Windows implementation of <kbd><b>OdmNative100</b></kbd> 
+		classes and interfaces that provide the native Windows code for 
+		coordinated use of the ODMA Connection Manager and the ODMA-compliant 
+		DMSs that reached via the connection manager.&nbsp;&nbsp; Instances of 
+		these classes are are implemented by the <code><b>odmjni100.dll</b></code> 
+		that implements Java Native Interface (JNI) operations for Java 
+		applications.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><kbd><b>odmjni100</b></kbd><b> Java with </b><kbd><b>
+		odmjni100.dll</b></kbd><b> JNI:</b> The Java and C/C++ implementation of 
+		the Java <kbd><b>info.odma.odmjni100</b></kbd> package and the <b><kbd>
+		odmjni100.dll</kbd></b> that provides native implementations for the 
+		native methods of the package classes.</p></li>
+	</ul>
+	<p align="left">Following initial setup, <kbd><b>OdmNative100</b></kbd> is 
+	evolved in synchronization with stages of the <kbd><b>practical100</b></kbd> 
+	interfaces and the <kbd><b>odmjni100</b></kbd> classes that bridge between 
+	the <kbd><b>practical100</b></kbd> interfaces and the <kbd><b>OdmNative100</b></kbd> 
+	implementation.</p>
+	<p align="left">In the evolution on each track, there are both free-standing 
+	and integrated confirmation tests.&nbsp; The results of the free-standing 
+	tests are designed to establish that there is a worked solution that the 
+	integrated case should be verifiable against.</p>
+</blockquote>
+<h3 align="left"><a name="2.1" target="_top" href="#2.1">2.1</a> Setup Stages</h3>
+<blockquote>
+	<p align="left">These are the preparatory stages for ensuring a reproducible 
+	development setup for <kbd><b>OdmNative100</b></kbd> work.</p>
+	<ul>
+		<li>
+		<p align="left"><b><a href="d061003c.htm">Setup00: VC++ Command Line</a></b>.&nbsp; 
+		Configure for command-line use of the Microsoft VC++ 2005 compiler.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="d061003d.htm">Setup01: PSDK Command Line</a>.</b>&nbsp; Configure for 
+		command-line use of the Microsoft Platform SDK in building native C/C++ 
+		code that relies on the Windows API.&nbsp; The setup test demonstrates 
+		loading of the ODMA Connection Manager DLL.&nbsp; The small program can 
+		be used to verify that the ODMA Connection Manager is properly 
+		installed.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="d061003e.htm">Setup02: Default DMS Access</a>. </b>&nbsp;Dynamic C 
+		Language access to functions of the ODMA Connection Manager is 
+		confirmed.&nbsp; The small program can be used to verify that the ODMA 
+		Connection Manager is present and whether there is a default DMS for the 
+		special Application ID <kbd><b>OdmNativeTest</b></kbd>.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b>Setup03: DMS Dialog.</b>&nbsp; Dynamic C Language 
+		initiation of an ODMA DMS dialog is confirmed.&nbsp; This program 
+		resolves a critical feasibility question, demonstrating whether an ODMA 
+		DMS can produce dialogs when a parent window is nonexistent or unknown.&nbsp; 
+		This small program is useful for testing whether a given ODMA DMS is 
+		able to produce its dialogs successfully under those conditions.&nbsp; 
+		The <kbd><b>TestSetup03</b></kbd> program can be used for confirming 
+		whether this is true for an ODMA DMS that is to be accessed from 
+		Java-based applications via ODMJNI. <br>
+&nbsp;&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="d061003g.htm">Setup04: 0.20alpha 
+		OdmNative100 Integration</a></b>.&nbsp; This exercise creates and 
+		exercises a complete internal COM object and delivers its interface.&nbsp; 
+		The IodmApplication100 interface delivers the functionality exercised in 
+		Setup02 and Setup03, with improved handling of the ODMA SelectDoc 
+		function.&nbsp; This implementation supports selection of a document but 
+		has no provision for opening the document for use by the ODMA 
+		application.&nbsp; It is sufficient for the first end-to-end 0.20alpha 
+		ODMJNI 1.0 integration.</p></li>
+	</ul>
+</blockquote>
+<h3 align="left"><a name="2.2" target="_top" href="#2.2">2.2</a> Feature 
+Progression</h3>
+<blockquote>
+	<p align="left">The basic structure is confirmed.&nbsp; The next stages are 
+	for progressive addition of features until the essential functionality for 
+	ODMJNI 1.0 is covered.</p>
+	<ul>
+		<li>
+		<p align="left"><b><a href="d061003h.htm">Check05: 0.26alpha Regression 
+		Check</a></b>.&nbsp; In setting up for feature introduction, a new 
+		confirmation program was derived from Setup04.&nbsp; The regression 
+		check is to confirm that nothing that worked for Setup04 has been 
+		broken.&nbsp; There is also a modification of the OdmNative 
+		implementation designed to find the calling application's main Window 
+		more reliably.<br>
+&nbsp;&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="d061003i.htm">Check05: 0.30alpha OdmNative 
+		Integration</a></b>.&nbsp; This stage creates the IodmWorking100 
+		interface to implementations of working documents.&nbsp; This provides 
+		all functionality required of Working Documents for ODMJNI 1.0, although 
+		those methods that are not required for 0.30alpha are represented by 
+		null implementations to be replaced by more-active versions on the 
+		progression to 0.50beta.&nbsp; The Check05 program is expanded to 
+		demonstrate operation of the 0.30alpha functionality.&nbsp; This is a 
+		breaking change to the OdmNative interfaces and implementations.</p>
+		</li>
+	</ul>
+</blockquote>
+<p align="left">&nbsp;</p>
+<h2 align="left"><a name="Materials">Available Material</a></h2>
+<ul>
+	<li><b>d061003b: <a href="d061003b.htm">OdmNative100 Implementation 
+	[latest]</a></b></li>
+	<li><b>d061003i: <a href="d061003i.htm">Check05: 0.30alpha Integration</a></b></li>
+	<li><b>d061003h: <a href="d061003h.htm">Check05: 0.26alpha Regression</a></b></li>
+	<li><b>d061003g: <a href="d061003g.htm">Setup04: 0.20alpha OdmNative 
+	Integration</a></b></li>
+	<li><b>d061003e: <a href="d061003e.htm">Setup02: Default DMS Access</a></b></li>
+	<li><b>d061003d: <a href="d061003d.htm">Setup01: PSDK Command Line</a></b></li>
+	<li><b>d061003c: <a href="d061003c.htm">Setup00: VC++ Command Line</a></b></li>
+	<li>
+	<p align="left"><b>d061003a: <a href="d061003a.htm">Diary &amp; Job Jar</a></b></li>
+</ul>
+<blockquote>
+	<dl>
+		<dt><b><i>see also:</i> </b></dt>
+		<dd><b>&nbsp;&nbsp;&nbsp;&nbsp; p061001d: </b>Development Progression: 
+		0.20 Critical First Steps.&nbsp; ODMJNI 1.0 Java-ODMA Reference 
+		Integration project document, 2006-10-26.</dd>
+		<dd>&nbsp;</dd>
+	</dl>
+</blockquote>
+
+
+<blockquote>
+	<dl>
+		<dd><small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+	</dl>
+</blockquote>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.05">0.05</a> 2007-01-03-16:34 Update to 0.30alpha Integration</b></dt>
+<dd>The description of the progression, and link to materials, is updated to 
+reflect the status as of completion of the 0.30alpha integration level of 
+OdmNative100.</dd>
+<dt><b><a name="0.04">0.04</a> 2006-12-20-17:55 Include d061003h 0.26alpha 
+Regression</b></dt>
+<dt><b><a name="0.03">0.03</a> 2006-11-28-14:19 Include Setup02 Material</b></dt>
+<dd>The Setup04 material was added previously, but not noted with revision of 
+this page.</dd>
+<dt><b><a name="0.02">0.02</a> 2006-11-08-15:45 Connect to Setup01 Material</b></dt>
+<dt><b><a name="0.01">0.01</a> 2006-11-05-17:42 Change Title and Expand 
+Preliminary Material</b></dt>
+<dd>Provide more context and description of the available Setup cases.&nbsp; 
+Link in the available Setup00 material.</dd>
+<dt><b><a name="0.00">0.00</a>  2006-10-27-15:23 create&nbsp;placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="d061003a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; The first objective is creating a jobjar and placeholder 
+	pages to be used while the component is taken through critical feasibility 
+	tests.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="11%">
+      <p><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="62%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2006-10-27-15:23 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 76 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

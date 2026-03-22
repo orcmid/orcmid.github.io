@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X040705C: Compagno Attack Surface - DSL Internet Penetration </title>
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/X040705C.htm 39    26-03-22 14:18 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report <a href="x000001-log.htm#X040705"><font color="#990033">X040705</font></a><br>
+      <a href="x040705.htm"><font color="#990033">Compagno Attack Surface</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>DSL Internet Penetration</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">sostegno</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="X040705C.htm" target="_top">X040705C</a>&gt;</code></b><br>
+      <small><small><!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote>
+
+<p align="left">The following diagram illustrates the path for the DSL Internet penetration check.&nbsp;
+The test is for unsolicited arrival of material from the Internet via the DSL
+connection.&nbsp; The remote sender is not responding to a request from a local
+computer.</p>
+
+<p align="left">This check confirmed that the surface presented to the
+internet is determined by the DSL Modem and the LinkSys router and
+residential firewall.&nbsp; There is no difference in the result of the tests on
+Centro (which has no personal firewall) and on Compagno (which has ZoneAlarm Pro
+5.0).</p>
+</blockquote>
+<p align="center"><img border="0" src="X040705C.png" width="671" height="401"></p>
+<blockquote>
+  <p align="left">In this test configuration, it is not established which
+  countermeasures are provided by the DSL Modem (or even the ISP) and which
+  countermeasures are provided by the Hub/Router.</p>
+  <p align="left">The following tests were performed from Centro and from
+  Compagno.&nbsp; There is no difference in results on either computer.</p>
+</blockquote>
+<h2 align="left">Basic Penetration Test (July 28, 2004):</h2>
+<blockquote>
+  <p align="left">The basic test was accomplished using the <b><a href="http://grc.com/x/ne.dll?bh0bkyd2">ShieldsUp!</a></b>
+  site:</p>
+  <blockquote>
+    <blockquote>
+      <center><font face="Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#e00000" size="+1"><b>The&nbsp;text&nbsp;below&nbsp;might&nbsp;uniquely<br>
+      identify&nbsp;you&nbsp;on&nbsp;the&nbsp;Internet</b></font></center>
+      <p><font face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#000060" size="2">Your
+      Internet connection's IP address is uniquely associated with the following
+      &quot;machine name&quot;:
+      <p><center><font face="Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#0033cc" size="3"><b>67-42-100-239.tukw.qwest.net</b></font></center>
+      <p>The string of text above is known as your Internet connection's
+      &quot;reverse DNS.&quot; The end of the string is probably a domain name
+      related to your ISP. This will be common to all customers of this ISP. But
+      the beginning of the string uniquely identifies your Internet connection.
+      The question is: Is the beginning of the string an &quot;account ID&quot;
+      that is uniquely and permanently tied to you, or is it merely related to
+      your current public IP address and thus subject to change?</p>
+      </blockquote>
+    </blockquote>
+  </font><p align="left">The information is from the DHCP-assigned IP address
+  that my ISP assigned to my DSL connection point.&nbsp; Although the IP Address
+  67.42.100.239 is changed periodically, its key feature is that it is
+  essentially the temporary address of the WAN side of my DSL modem.&nbsp; It is
+  unrelated to any address of my local machines.</p>
+</blockquote>
+<h2 align="left">NetBios Protection</h2>
+<blockquote>
+  <p align="left">My computers are part of a workgroup, and there is file and
+  printer sharing among the local machines of the workgroup.&nbsp; None of those
+  facilities are visible to the Internet:</p>
+<table cellSpacing="0" cellPadding="0" width="85%" border="0">
+  <tbody>
+    <tr>
+      <td align="middle"><font color="#cc0000" size="+1" face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif"><br>
+        Shields UP! is checking <b><i>YOUR</i></b> computer's Internet<br>
+        connection security <b>.&nbsp;.&nbsp;.</b> currently located at IP:<br>
+        <table cellSpacing="0" cellPadding="1" bgColor="black" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <table cellSpacing="0" cellPadding="1" bgColor="#00a0a0" border="0">
+                  <tbody>
+                    <tr>
+                      <td><font face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif" color="white" size="+2"><b>&nbsp;67.42.100.239&nbsp;</b></font></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        Please Stand By.&nbsp;.&nbsp;.</font></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;
+<table cellSpacing="5" cellPadding="0" width="85%" border="0">
+  <tbody>
+    <tr vAlign="top">
+      <td width="33"><img src="X040705C1.gif" border="0" width="33" height="34"></td>
+      <td><font face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#000080" size="+0"><b>Attempting
+        connection to your computer.&nbsp;.&nbsp;.</b><br>
+        <font color="#404040" size="-1"><b>Shields UP!</b> is now attempting to
+        contact the <b>Hidden Internet Server</b> within your PC. It is likely
+        that no one has told you that your own personal computer may now be
+        functioning as an <b>Internet Server</b> with neither your knowledge nor
+        your permission. And that it may be serving up all or many of your
+        personal files for reading, writing, modification and even deletion by
+        anyone, anywhere, on the Internet!</font></font></td>
+    </tr>
+  </tbody>
+</table>
+<table cellSpacing="5" cellPadding="0" width="85%" border="0">
+  <tbody>
+    <tr vAlign="top">
+      <td width="33"><img src="X040705C2.gif" border="0" width="33" height="34"></td>
+      <td><font face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#000080" size="+0"><b>Preliminary
+        Internet connection refused!</b><br>
+        <font color="#404040" size="-1"><b>This is extremely favorable</b> for
+        your system's overall Windows File and Printer Sharing security. Most
+        Windows systems, with the Network Neighborhood installed, hold the
+        NetBIOS port 139 wide open to solicit connections from all passing
+        traffic. Either this system has closed this usually-open port, or some
+        equipment or software such as a &quot;firewall&quot; is preventing
+        external connection and has firmly closed the dangerous port 139 to all
+        passersby. (Congratulations!)</font></font></td>
+    </tr>
+  </tbody>
+</table>
+<table cellSpacing="5" cellPadding="0" width="85%" border="0">
+  <tbody>
+    <tr vAlign="top">
+      <td width="33"><img src="X040705C2.gif" border="0" width="33" height="34"></td>
+      <td><font face="Verdana,Arial,Helvetica,Sans-Serif,MS Sans Serif" color="#000080" size="+0"><b>Unable
+        to connect with NetBIOS to your computer.</b><br>
+        <font color="#404040" size="-1">All attempts to get <b>any</b>
+        information from your computer have <b>FAILED</b>. (This is <b>very</b>
+        uncommon for a Windows networking-based PC.) Relative to vulnerabilities
+        from Windows networking, this computer appears to be <b>VERY SECURE</b>
+        since it is <b>NOT exposing ANY</b> of its internal NetBIOS networking
+        protocol over the Internet.</font></font></td>
+    </tr>
+  </tbody>
+</table>
+</blockquote>
+<h2><a name="CommonPorts">Checking Common Ports</a></h2>
+<blockquote>
+<p>The standard test for common ports made the following text-version report:
+  <blockquote>
+<p>----------------------------------------------------------------------<br>
+<br>
+GRC Port Authority Report created on UTC: 2004-07-28 at 05:34:19<br>
+<br>
+Results from scan of ports: 0, 21-23, 25, 79, 80, 110, 113,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+119, 135, 139, 143, 389, 443, 445,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1002, 1024-1030, 1720, 5000<br>
+<br>
+&nbsp;&nbsp;&nbsp; 0 Ports Open<br>
+&nbsp;&nbsp; 25 Ports Closed<br>
+&nbsp;&nbsp;&nbsp; 1 Ports Stealth<br>
+---------------------<br>
+&nbsp;&nbsp; 26 Ports Tested<br>
+<br>
+NO PORTS were found to be OPEN.<br>
+<br>
+The port found to be STEALTH was: 80<br>
+<br>
+Other than what is listed above, all ports are CLOSED.<br>
+<br>
+TruStealth: FAILED - NOT all tested ports were STEALTH,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- NO unsolicited packets were received,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- A PING REPLY (ICMP Echo) WAS RECEIVED.<br>
+<br>
+----------------------------------------------------------------------
+  </blockquote>
+  <p align="left">The stealth protection of Port 80 is apparently accomplished
+  by the DSL Modem.&nbsp; The LinkSys hub/router is simply not forwarding any
+  UDP or TCP port accesses onto the Centrale SOHO LAN.</p>
+  <p align="left">The DSL Modem does respond to requests from the SOHO LAN to
+  the URL <kbd><a href="http://67.42.100.239/" target="_top">http://67.42.100.239/</a></kbd></p>
+  <center>
+ 
+    <table cellSpacing="0" width="640" bgColor="#003366" border="0">
+      <tbody>
+        <tr>
+          <td colSpan="4"><img src="X040705C.gif" border="0" width="640" height="39"></td>
+        </tr>
+        <tr>
+          <td colSpan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <th align="left"><font face="arial" size="3" color="#CCCCFF">&nbsp;&nbsp;System</font></th>
+          <td colSpan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left" width="25%"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Firmware
+            Version:</b></font>
+          <td><font color="white">5.5.12-VUE-MSN</font></td>
+          <td align="left" width="25%"><font face="arial" size="2">&nbsp;&nbsp;&nbsp;&nbsp;</font><b><font face="Arial" size="2" color="#CCCCFF">Firmware
+            Date:</font></b>
+          <td><font color="white">Fri Jun 28 22:03:22 2002</font></td>
+        </tr>
+        <tr>
+          <td colSpan="4"><font color="#CCCCFF">&nbsp;</font></td>
+        </tr>
+        <tr>
+          <th align="left"><font face="arial" size="3" color="#CCCCFF">&nbsp;&nbsp;DSL</font></th>
+          <td colSpan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Connection
+            Status:</b></font>
+          <td><font color="white">Up</font></td>
+          <td colSpan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Line
+            Mode:</b></font>
+          <td><font color="white">ANSI T1.413</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>PVC
+            VPI/VCI:</b></font>
+          <td><font color="white">0/32</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Upstream
+            Speed:</b></font>
+          <td><font color="white">256 kbps</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Downstream
+            Speed:</b></font>
+          <td><font color="white">640 kbps</font></td>
+        </tr>
+        <tr>
+          <td colSpan="4"><font color="#CCCCFF">&nbsp;</font></td>
+        </tr>
+        <tr>
+          <th align="left"><font face="arial" size="3" color="#CCCCFF">&nbsp;&nbsp;PPP</font></th>
+          <td colSpan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Connection
+            Status:</b></font>
+          <td><font color="white">Up</font></td>
+          <td colSpan="2"><font color="#CCCCFF">&nbsp;</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>NAT
+            IP Address:</b></font>
+          <td><font color="white">67.42.100.239</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Encapsulations:</b></font>
+          <td><font color="white">PPPoE</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Sent
+            Packets:</b></font>
+          <td><font color="white">2351118</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Received
+            Packets:</b></font>
+          <td><font color="white">2717666</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Sent
+            Bytes:</b></font>
+          <td><font color="white">341330292</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Received
+            Bytes:</b></font>
+          <td><font color="white">2448276772</font></td>
+        </tr>
+        <tr>
+          <td colSpan="4"><font color="#CCCCFF">&nbsp;</font></td>
+        </tr>
+        <tr>
+          <th align="left"><font face="arial" size="3" color="#CCCCFF">&nbsp;&nbsp;LAN</font></th>
+          <td colSpan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>IP
+            Address:</b></font>
+          <td><font color="white">192.168.1.1</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Subnet
+            Mask:</b></font>
+          <td><font color="white">255.255.255.252</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>Ethernet
+            Link:</b></font>
+          <td><font color="white">Up</font></td>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>USB
+            Link:</b></font>
+          <td><font color="white">Down</font></td>
+        </tr>
+        <tr>
+          <td align="left"><font face="arial" size="2" color="#CCCCFF">&nbsp;&nbsp;&nbsp;&nbsp;<b>MAC
+            Address:</b></font>
+          <td><font color="white">0005D802EC20</font></td>
+          <td colSpan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colSpan="4">&nbsp;</td>
+        </tr>
+        <tr>
+          <th align="left"><font face="arial" size="3" color="#CCCCFF">&nbsp;&nbsp;DHCP
+            Table</font></th>
+          <td colSpan="3">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table cellSpacing="0" width="640" bgColor="#003366" border="0">
+      <tbody>
+        <tr>
+          <th align="middle"><font color="#CCCCFF">Host IP</font>
+          <th align="middle"><font color="#CCCCFF">Host Name</font>
+          <th align="middle"><font color="#CCCCFF">Host MAC</font>
+        </tr>
+        <tr>
+          <td align="middle"><font color="#CCCCFF">192.168.1.2</font>
+          <td align="middle"><font color="#CCCCFF">centrale</font>
+          <td align="middle"><font color="#CCCCFF">00045AE25DAE</font></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </center>
+</blockquote>
+  <h2 align="left">&nbsp;</h2>
+  <h2 align="left"><a name="AllServicePorts">Checking All Service Ports</a></h2>
+<blockquote>
+  <p align="left">On checking all service ports it is established that there is
+  more involved:</p>
+  <blockquote>
+
+<pre>----------------------------------------------------------------------
+
+GRC Port Authority Report created on UTC: 2004-07-28 at 05:40:58
+
+Results from scan of ports: 0-1055
+
+    1 Ports Open
+ 1054 Ports Closed
+    1 Ports Stealth
+---------------------
+ 1056 Ports Tested
+
+The port found to be OPEN was: 20
+
+The port found to be STEALTH was: 80
+
+Other than what is listed above, all ports are CLOSED.
+
+TruStealth: FAILED - NOT all tested ports were STEALTH,
+                   - NO unsolicited packets were received,
+                   - A PING REPLY (ICMP Echo) WAS RECEIVED.
+
+----------------------------------------------------------------------</pre>
+
+  </blockquote>
+  <p align="left">The open port 20 is suspected to be on the DSL modem, since
+  there is no port forwarding at the hub/router and there is no updating from
+  the web permitted at the hub/router.</p>
+</blockquote>
+  <h2 align="left"><a name="FurtherTesting">Further Testing</a></h2>
+<blockquote>
+  <p align="left">There are additional tests required for determining what the
+  contribution of the hub/router is to reduction of the attack surface.&nbsp;
+  There are also additional tests required for dealing with malicious routers
+  and local machines.</p>
+</blockquote>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="construction.htm" target="_top"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-28-14:26 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:18 $<br>
+      $$Revision: 39 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

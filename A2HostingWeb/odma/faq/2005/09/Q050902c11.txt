@@ -1,0 +1,18 @@
+@echo off
+rem .....|.........|.........|.........|.........|.........|.........|........*
+rem MyVC.bat for personal projects using Microsoft Visual C++ Toolkit 1.01.
+rem      To be saved as MyVC.bat wherever you want to work with the toolkit.
+rem      See <http://ODMA.info/active/ODMref10/tools/Q050902c.htm>.
+
+SET VCTK=C:\Program Files\Microsoft Visual C++ Toolkit 2003
+rem     The location of the Microsoft Visual C++ Toolkit that is to be used
+
+SET PATH=%VCTK%\bin;%PATH%
+
+SET INCLUDE=%VCTK%\include;%INCLUDE%
+
+SET LIB=%VCTK%\lib;%LIB%
+
+echo MyVC.bat CONSOLE SESSION FOR VISUAL C++ TOOLKIT PROGRAMMING
+
+rem                     *** end of MyVC.bat ***

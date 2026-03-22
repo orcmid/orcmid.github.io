@@ -1,0 +1,189 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000810.htm 4     00-08-30 17:52 Orcmid $-->
+<title>X000810: WordPerfect + ODMA32 + PCDocs Memory/Resource Hogging</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000810.htm">X000810</a>:
+</b>Memory / Resource Hogging in WordPerfect-ODMA-PCDocs Configuration</h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2000-08-30-17:41 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000810.htm">latest version</a>
+of this information is available on the <a href="http://www.infonuovo.com/dmware">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000">Reliability - Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000810.htm">X000810</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b><font color="#FF0000">9 - Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Summary">Closed</a></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: </b><kbd><b>ODMA32.DLL</b>, </kbd>version
+        1.5.0 and version 2.0.0</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Repaired in: </b>none required</dt>
+          <dt><b>Related information:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000802">Q000600:
+            Troubleshooting WordPerfect-ODMA Integrations<br>
+            Q000802: Isolating Misbehaving Components</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="http://www.infonuovo.com/odma/support/X000810a.htm">Joseph A. Beeler</a>
+        (2000-08-29)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2000-08-29</td>
+      <td width="50%"><b>Date Closed</b>: 2000-08-30</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3>&nbsp;</h3>
+
+<h3><a name="Summary">Summary</a> (2000-08-30):</h3>
+
+<blockquote>
+
+<p>A <a href="#OriginalProblem">Windows 95 configuration</a> of desktop
+application, ODMA, and an ODMA-compliant DMS integration demonstrated hogging of
+resources and a probable memory leak.&nbsp; <a href="http://www.infonuovo.com/odma/support/x000810a.msg">The condition was isolated to the
+application program</a>.&nbsp; <a href="http://www.infonuovo.com/odma/support/X000810b.htm">Repeated
+operation of the application program</a> then confirmed that the observed
+problem was not occurring in the ODMA configuration at all.&nbsp; Involvement of ODMA was
+eliminated, as was involvement of WordPerfect and the PCDOCS DMS.</p>
+
+  <p>This incident is closed.&nbsp; The troubleshooting procedures that were
+  employed will be published as a separate <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000802">ODMA
+  FAQtip</a> for use in similar situations in any ODMA configurations.</p>
+
+</blockquote>
+
+<h3><a name="Analysis">Analysis</a> (2000-08-30):</h3>
+
+<blockquote>
+
+<p>On applying the proposed <a href="#Investigation">trouble-shooting procedure</a>,
+it was discovered simply by operating WordPerfect for Windows version 9 in the
+same configuration both with and without ODMA operation that the undesirable
+resource drain occurred either way.&nbsp; This eliminated the PCDOCS DMS
+integration and the ODMA Connection Manager from the problem.&nbsp; There was no
+difference in behavior as the result of <a href="#ConfirmODMA2.0Operation">upgrading
+to the ODMA 2.0 Connection Manager</a>.</p>
+
+<p><a href="http://www.infonuovo.com/odma/support/X000810b.htm">Repetitive
+cycling</a> of WPWin startup, document manipulation, and exit then confirmed
+that there was no progressive resource drain, again with or without ODMA
+connection to the DMS.</p>
+
+  <p>The testing of an application without ODMA altogether was overlooked in the
+  troubleshooting procedure.&nbsp; Repetitive cycling to confirm that a
+  progressive decline in resources is present was also missing.&nbsp; These
+  checks will be included in the separate <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000802">FAQtip</a>
+  to be created for all ODMA users to employ when isolating an ODMA component
+  that is suspected of misbehaving.</p>
+
+</blockquote>
+<h3><a name="OriginalProblem">Original Problem</a>  (2000-08-29):</h3>
+
+<blockquote>
+  <dl>
+    <dt><b>Configuration:</b></dt>
+    <dd>1. WordPerfect for Windows version 9<br>
+      2. ODMA 1.5 Connection Manager <b><code>ODMA32.DLL</code></b> of
+      1996-10-31<br>
+      3. PC Docs' DOCSOpen V3.89.2 Build 41<br>
+      4. Windows 95 OSR2</dd>
+    <dt>&nbsp;</dt>
+    <dt><b>Behavior:</b></dt>
+    <dd>1. Without opening an application, check the level of system resources</dd>
+    <dd>2. Run WP9 and do an Open/Save/Close/Exit using the ODMA integration<br>
+      3. Check system resources again</dd>
+    <dd>4. The symptom of concern is a dramatic drop in available system
+      resources&nbsp;</dd>
+  </dl>
+  <p>This condition is classified as critical because draining of system
+  resources can lead to system crashes and loss of user work.</p>
+  <p>This is taken on as an ODMA incident until the ODMA Connection Manager is
+  eliminated as a contributor to this problem.</p>
+</blockquote>
+<h3><a name="Investigation">Investigation</a> (2000-08-29):</h3>
+<blockquote>
+  <p>The following steps are recommended for troubleshooting this problem:</p>
+  <ol>
+    <li><b><a name="UpgradeToODMA2.0">Upgrade the ODMA Connection Manager to the ODMA 2.0
+      version</a>.</b>&nbsp;&nbsp;<br>
+      It is recommended that this be done by <a href="http://www.infonuovo.com/odma/downloads/default.htm#ODMA-20-SDK">installing
+      the ODMA 2.0 SDK</a>.&nbsp; This will provide additional test tools and a
+      Connection Manager with special trouble-shooting aids.&nbsp; Backup the
+      ODMA 1.5 Connection Manager before installing the ODMA 2.0 software.&nbsp;
+      See ODMA FAQtip <a href="http://www.infonuovo.com/odma/faq/Q000603.htm">Q000603:
+      Latest ODMA Software</a>.</li>
+    <li><b><a name="ConfirmODMA2.0Operation">Confirm Operation with ODMA 2.0 Connection Manager</a><br>
+      </b>There should be no difference in operation, and the application should
+      behave as before.&nbsp; If there is a more-serious failure with
+      introduction of the ODMA 2.0 software, restore the ODMA 1.5 Connection
+      Manager.&nbsp; Immediately report this experience to <a href="mailto:ODMATECH@ftplist.aiim.org">ODMA
+      Tech</a>.</li>
+    <li><b><a name="VaryOperations">Vary Operation to Isolate Resource Hogging</a></b>.<br>
+      Taking careful notes so that the problem can be handed over for further
+      analysis by the appropriate development organizations, operate the
+      following variations:<br>
+      a. First, repeat a test version of the original operation and note whether
+      the resource hogging is still present, and by how much.<br>
+      b. Second, using the ODMATest application, with DOCSOpen still as the
+      default DMS, perform a similar operation with a simple text document for
+      testing purposes.&nbsp; Notice the before-and-after levels of resource
+      consumption with this case also.<br>
+      c. Third, remove DOCSOpen as the default DMS by adjusting the Windows
+      Registry so that the <b><code>HKEY_CLASSES_ROOT\ODMA32\PCDOCS\</code></b>
+      has no <b><code>DEFAULT</code></b> subkey.&nbsp; Make the ODMA Sample DMS,
+      <b><code>ODMASAMP</code></b> the default DMS by adding key <b><code>HKEY_CLASSES_ROOT\ODMA32\ODMASAMP\DEFAULT\</code></b>.&nbsp;&nbsp;<br>
+      d. Repeat the experiment, using WordPerfect to make a document using the
+      ODMA Sample DMS.&nbsp; Note the resource levels before and after.<br>
+      e. If there is no difference so far, use the ODMA Test application to make
+      a document via the ODMA Sample DMS and see how that leaves the resource
+      levels.<br>
+      f. Remove the <code><b>HKEY_CLASSES_ROOT\ODMA32\ODMASAMP\DEFAULT\</b></code>
+      Windows registry key and restore the <b><code>DEFAULT</code></b> registry
+      key for <b><code>PCDOCS</code></b>.</li>
+    <li><b><a name="ReportFindings">Report Your Findings</a><br>
+      </b>Provide information on the updating to ODMA 2.0 and on the variations
+      that were performed to determine any pattern in the resource hogging
+      behavior.&nbsp; Report the outcome to <a href="mailto:ODMATECH@ftplist.aiim.org">ODMA
+      Tech</a>.&nbsp; If the resource hogging occurs only in the presence of a
+      particular application or DMS, provide the same information to the vendor
+      for that component.&nbsp; Provide them with a reference to this incident
+      report also.</li>
+  </ol>
+  <hr>
+</blockquote>
+
+<p align="right">created 2000-08-29-10:22 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-08-30 17:52 $<br>
+$$Revision: 4 $</em></p>
+</body>
+</html>

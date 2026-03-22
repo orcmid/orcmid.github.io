@@ -1,0 +1,1440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061101o: 0.59beta odmjni100 Transition Candidate </title>
+<!--$$Header: /ODMdevCompagno/devNotes/2006/11/d061101o.htm 42    08-03-30 17:45 Orcmid $-->
+
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+		<a href="../../d000001.htm#d061101"><font color="#990033">d061101</font></a><br>
+      	</font></strong><strong><font color="#990033">&nbsp;<a href="d061101.htm"><font color="#990033">info.odma.odmjni100 
+Java-OdmNative Bridge</font></a><br>
+      <em><font size="5">0.59beta Transition Candidate Implementation</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br><a href="../">2006</a>&gt;<a target="_top" href="./">11</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b><a target="_top" href="d061101a.htm">d061101o</a>&gt;</b></font><br>
+</font><small><a href="#0.14">0.14</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2008-03-30 17:44 -0700<!--webbot bot="Timestamp" endspan i-checksum="28511" --> </small></p>
+</font>
+
+  	</small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+	<blockquote>
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest
+				<font face="Courier New, Courier, Monospace"><b>
+				info.odma.odmjni100</b></font> material can be found via &nbsp; &lt;<b><font face="monospace"><a href="d061101b.htm">http://ODMA.info/dev/devNotes/2006/11/d061101b.htm</a></font></b>&gt;.<div style="float: right">
+					<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="59500" --></div>
+				</li>
+				<li><b>Previous version:</b> 0.58beta Runtime Packaging &lt;<b><font face="monospace"><a href="d061101n.htm">http://ODMA.info/dev/devNotes/2006/11/d061101n.htm</a></font></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>This page:</b>&nbsp;<b>&nbsp;0.59beta Transition Candidate 
+				0.14 </b>&lt;<b><font face="monospace"><a href="d061101o.htm">http://ODMA.info/dev/devNotes/2006/11/d061101o.htm</a></font></b>&gt;.&nbsp;</li>
+				<li><b><a name="Downloads">Downloads</a>:</b><ul>
+				<li><b><font face="monospace"><a href="d061101o.txt">d061101o.txt</a></font></b>: 
+				0.00 manifest in a 17,221 byte file dated 2008-03-30-17:33</li>
+				<li><b><font face="monospace"><a href="d061101o-license.txt">d061101o-license.txt</a></font></b>: 
+				0.00 in a 3,193 byte file dated 2008-03-20-15:36</li>
+				<li><b><font face="monospace">
+				<a href="d061101o-ReleaseNotes.txt">d061101o-ReleaseNotes.txt</a></font></b> 
+				0.05 in an 18,364 byte file dated 2008-03-19-19:10</li>
+				<li><font face="monospace"><b>
+				<a href="d061101o-odmjni100-0.59beta.zip">d061101o-odmjni100-0.59beta.zip</a></b></font>: 
+				0.00 archive in a 1,424,744 byte file dated 2008-03-30-17:34</li>
+			</ul></li>
+			</ul></div>
+			
+
+</small>
+
+</blockquote>
+<h2><a name="Synopsis">Synopsis</a></h2>
+<blockquote>
+	<p>The 0.59 Public Transition Candidate is a complete release in which 
+	deprecated interface elements and replacement interface elements are present 
+	together.&nbsp; There are breaking changes around parameter-validation and 
+	exception-generation behavior.&nbsp; Later transition to the 0.60 Stable Candidate 
+	is accomplished by removing all deprecated elements and discarding those 
+	regression sets that have any dependency on deprecated elements.&nbsp; The 
+	resulting clean interfaces are to be preserved hereafter in all ODMJNI 1.0 
+	releases.</p>
+	<p>For <b><font face="monospace">odmjni100</font></b>, the changes consist 
+	of marking elements as deprecated, adding the <b><font face="monospace">
+	notChangeable</font></b> implementation to both <b><font face="monospace">OdmJniView</font></b> 
+	and <b>
+	<font face="monospace">OdmJniWork</font></b>, and conforming to the changes 
+	made in <b><font face="monospace">practical100</font></b> for 0.59.&nbsp;&nbsp; 
+	The revisions have been kept straightforward, making the least changes 
+	necessary to prepare for finalization with release 0.60.&nbsp; All of the 
+	Java classes in odmjni100 are updated: <b><font face="monospace">OdmJniApp</font></b>, <b>
+	<font face="monospace">OdmJniBind</font></b>, <b><font face="monospace">
+	OdmJniPend</font></b>, <b><font face="monospace">OdmJniView</font></b>, and <b>
+	<font face="monospace">OdmJniWork</font></b>.&nbsp; Of these, 
+	only <b><font face="monospace">OdmJniBind</font></b> is ever used directly 
+	by an ODMA-aware Java-based application.</p>
+	<div style="border: 1px solid #990033; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px">
+		<b>Because <font face="monospace">odmjni100</font> 0.59 involves 
+	both deprecated, new, and re-organized elements, it is only compatible with
+		</b><a href="../10/d061001h.htm">
+	<b><font face="monospace">practical100</font> 0.59</b></a><b>.&nbsp;&nbsp; It cannot 
+	be operated properly with earlier or later versions of
+		<font face="monospace">practical100</font> (and <i>vice versa</i>).</b></div>
+	<p>One of the challenges is arriving at regression sets that apply to the 
+	0.59 interfaces and earlier along with regression sets that have no 
+	dependency on deprecated elements and apply to the 0.59/0.60 interfaces and 
+	later.&nbsp; Improvements in test automation and test coverage are deferred 
+	to release 0.60 or later in order to accelerate availability of the public 
+	beta release.</p>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#1">Description</a><br>2. <a href="#2">Bugs and Caveats</a><br>
+&nbsp;&nbsp;&nbsp; 2.1 <a href="#2.1"> <font face="monospace">
+OdmFormatCheck</font><span style="font-weight: 400"> Implementation is the 0.59
+			</span> <font face="monospace">
+practical100</font><span style="font-weight: 400"> null Implementation</span></a><br>
+&nbsp;&nbsp;&nbsp; 2.2 <a href="#2.2"><font face="monospace">viewOnly</font><span style="font-weight: 400"> 
+			null Behavior Changed</span></a><br>
+&nbsp;&nbsp;&nbsp; 2.3 <a href="#2.3"><span style="font-weight: 400">Ambiguous
+			</span><font face="monospace">transferToNewDocument</font><span style="font-weight: 400"> 
+			Operation</span></a><br>
+&nbsp;&nbsp;&nbsp; 2.4 <span style="font-weight: 400"><a href="#2.4">Inadequate 
+			Confirmation Test Coverage</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.5 <span style="font-weight: 400"><a href="#2.5">Undocumented Dependency on
+			</span>
+<font face="monospace">ODMASAMP</font><span style="font-weight: 400"> Integration and <font face="monospace">
+Odma32</font> Logging</span></a><br>
+&nbsp;&nbsp;&nbsp; 2.6 <span style="font-weight: 400"><a href="#2.6">All ODMJNI 
+			Interfaces Must Be Explicitly Released</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.7 <span style="font-weight: 400"><a href="#2.7">Do Not 
+			Perform ODMJNI Requests on the Java GUI Thread</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.8 <span style="font-weight: 400"><a href="#2.8">Do Not 
+			Multi-Thread ODMJNI Requests</a></span><br>
+			&nbsp;&nbsp;&nbsp; 2.9 <span style="font-weight: 400">
+			<a target="_top" href="#2.9">Do Not Create Multiple Overlapping 
+			ODMJNI Sessions</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.10 <span style="font-weight: 400"><a href="#2.10">Code Page 
+			Inconsistencies Can Corrupt Strings from ODMJNI</a></span><br>
+&nbsp;&nbsp;&nbsp; 2.11 <a href="#2.11"><span style="font-weight: 400">Maintain 
+			GUI </span><font face="monospace">appWindow</font><span style="font-weight: 400"> 
+			While ODMA Dialogs Are Possible</span></a><br>
+&nbsp;&nbsp;&nbsp; 2.12 <span style="font-weight: 400"><a href="#2.12">
+			Conservative Format Checks May Be Too Strict</a></span><br>3. 
+			<a href="#3">Changes to <font face="monospace">odmjni100</font> 
+			in 0.59beta</a><br>&nbsp;&nbsp;&nbsp; 3.1 <span style="font-weight: 400">
+			<a href="#3.1">Organization of 
+			Pre-0.59 Regression Tests</a></span><br>
+&nbsp;&nbsp;&nbsp; 3.2 <span style="font-weight: 400"><a href="#3.2">Remove 
+			Parameter-Format Exceptions</a></span><br>
+&nbsp;&nbsp;&nbsp; 3.3 <span style="font-weight: 400"><a href="#3.3">Implement
+			</span>
+			<font face="monospace">formatCheck</font><span style="font-weight: 400"> Return of
+			</span>
+			<font face="monospace">OdmFormatCheck</font><span style="font-weight: 400"> Interfaces</span></a><br>
+&nbsp;&nbsp;&nbsp; 3.4 <span style="font-weight: 400"><a href="#3.4">Implement 
+			Refactoring of Metadata and Document Interface Implementations</a></span><br>
+&nbsp;&nbsp;&nbsp; 3.5 <span style="font-weight: 400"><a href="#3.5">Refactor 
+			Regression Sets</a></span><br>4. <a href="#4">Development</a><br>&nbsp;&nbsp;&nbsp; 4.1 
+			<span style="font-weight: 400"><a href="#4.1">Outline the 
+			Development</a></span><br>&nbsp;&nbsp;&nbsp; 4.2 <a href="#4.2">
+			<span style="font-weight: 400">Freeze
+			</span><font face="monospace">odmjni100</font><span style="font-weight: 400"> 
+			0.58 Regression Tests</span></a><br>&nbsp;&nbsp;&nbsp; 4.3 
+			<a href="#4.3"><span style="font-weight: 400">Change
+			</span><font face="monospace">odmjni100</font><span style="font-weight: 400"> 
+			Implementation Classes for 0.59</span></a><br>&nbsp;&nbsp;&nbsp; 4.4 
+			<span style="font-weight: 400"><a href="#4.4">Confirm 
+			Pre-0.59 Regression Checks</a></span><br>&nbsp;&nbsp;&nbsp; 4.5 
+			<a href="#4.5"><span style="font-weight: 400">Develop
+			</span><font face="monospace">odmjni100</font><span style="font-weight: 400"> 
+			0.59/0.60 Regression Tests</span></a><br>&nbsp;&nbsp;&nbsp; 4.6 
+			<a href="#4.6"><span style="font-weight: 400">Package
+			</span><font face="monospace">odmjni100</font><span style="font-weight: 400"> 
+			0.59beta Material</span></a><br>&nbsp;&nbsp;&nbsp; 4.7 
+			<span style="font-weight: 400"><a href="#4.7">Final 
+			Packaging</a></span><br>5. <a href="#5">Developer Notes: Working toward 0.59beta</a></h3>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<h2><a name="1" target="_top" href="#1">1</a>. Description</h2>
+<blockquote>
+	<p>The general approach and results are on the same pattern as for the <b>
+	<font face="monospace">practical100</font></b> interfaces and null 
+	implementations that <b><font face="monospace">odmjni100</font></b> depends 
+	upon.&nbsp; The information is repeated here for completeness.</p>
+	<blockquote>
+		<blockquote>
+			<dl>
+				<dt><i><b>see also:</b></i></dt>
+				<dd><b>d070701d: <a href="../../2007/07/d070701d.htm">ODMJNI 1.0 
+				Public Beta 0.59 Transition Candidate</a></b><br>
+				<b>d061001h: <a href="../10/d061001h.htm">
+				<font face="monospace">info.odma.practical100</font> 0.59beta 
+				Transition Candidate</a></b></dd>
+			</dl>
+		</blockquote>
+	</blockquote>
+	<p><b><a name="1.1" target="_top" href="#1.1">1.1</a></b> This 0.59beta 
+	stage introduces all <b><font face="monospace">odmjni100</font></b> 
+	changes that are visible to applications.&nbsp; In 0.60beta and beyond, only 
+	those interface elements that are permanent features of ODMJNI 1.0 are 
+	preserved.&nbsp; Elements identified as deprecated in 0.59beta will be 
+	removed in 0.60beta.</p>
+	<p><b><a name="1.2" target="_top" href="#1.2">1.2</a></b> With the exception 
+	of those changes that eliminate exceptions from format-checking, programs 
+	that rely on the 0.58beta level will not see any changes in operation with 
+	0.59beta.&nbsp; It is unlikely that any existing code will notice this 
+	change.</p>
+	<p><b><a name="1.3" target="_top" href="#1.3">1.3</a></b> The preservation 
+	of both deprecated interface elements and their replacements is a 
+	convenience to developers who have relied upon the 0.58beta release.&nbsp; 
+	Using 0.59beta, developers can take small incremental steps to replace use 
+	of deprecated elements with&nbsp; use of the corresponding replacement.&nbsp;&nbsp; 
+	Compiling with 0.60beta later will serve as a check that all dependencies on 
+	deprecated elements have been removed.</p>
+	<p><b><a name="1.4" target="_top" href="#1.4">1.4</a></b> To support 
+	evolution toward automated confirmation and regression tests, two regression 
+	sets are built as part of 0.59beta:</p>
+	<ul>
+		<li>One set of regressions provides confirmation using the 
+		0.58-supported interfaces and compiled runtime code.&nbsp; These 
+		regressions are retained in compiled form to verify that the 
+		0.59-supporting interfaces and code work properly with the 0.58 
+		regressions.<br>&nbsp;&nbsp; </li>
+		<li>The other set of regressions provides confirmation using only the 
+		0.60-intended elements of the 0.59 supporting interfaces and code.&nbsp; 
+		This will be used to confirm the changes in 0.59 and also provide a 
+		compiled confirmation regression to apply during construction of 
+		0.60beta.<br>&nbsp;&nbsp; </li>
+		<li>The system of folders and names for the different regression sets 
+		will be initiated with 0.59.&nbsp; The idea is to have a regression set 
+		always identified by the earliest release that it works completely with.&nbsp; 
+		</li>
+	</ul>
+</blockquote>
+
+<h2><a name="2" target="_top" href="#2">2</a>. Bugs and Caveats</h2>
+<h3><a name="2.1" target="_top" href="#2.1">2.1</a> <font face="monospace">
+OdmFormatCheck</font> Implementation is the 0.59 <font face="monospace">
+practical100</font><font face="default"> null implementation</font> </h3>
+<blockquote>
+	<p><b><a name="2.1.1" target="_top" href="#2.1.1">2.1.1</a></b> The <b>
+	<font face="monospace">OdmFormatCheck</font></b> interface implemented by <b>
+	<font face="monospace">odmjni100</font></b> 0.59 is the same one provided as 
+	the <b><font face="monospace">practical100</font></b> 0.59 &quot;null&quot; 
+	implementation.&nbsp; </p>
+	<p><b><a name="2.1.2" target="_top" href="#2.1.2">2.1.2</a></b> There is no 
+	attempt, in 0.59, to use exactly the same checking that is used in <b>
+	<font face="monospace">OdmNative100</font></b> as part of its defense 
+	against ill-formed string-valued parameters.&nbsp; Although the format 
+	requirements are close, agreement is not thoroughly tested for 0.59.</p>
+	<p><b><a name="2.1.3" target="_top" href="#2.1.3">2.1.3</a></b> It is 
+	possible that a request might fail because a parameter is unacceptable at 
+	the <b>
+	<font face="monospace">OdmNative100</font></b> or DMS Integration layer, even 
+	though the offending parameter successfully passes an <b>
+	<font face="monospace">OdmFormatCheck</font></b> filter.&nbsp; There is no 
+	programmatic way to determine that such a case has arisen.</p>
+	<p><b><a name="2.1.4" target="_top" href="#2.1.4">2.1.4</a></b> It is also 
+	possible that an <b><font face="monospace">OdmFormatCheck</font></b> and/or 
+	a request may fail even though the string-valued parameter was obtained as 
+	the result of an earlier request.&nbsp; It is conceivable that a request could 
+	return DMS-provided values that are not accepted as input by <b><font face="monospace">
+	OdmFormatCheck</font></b> and the internal checks in the <b>
+	<font face="monospace">odmjni100</font></b> implementation.&nbsp; (Cf. 
+	section <a href="#2.12">2.12</a>.)</p>
+	<p><b><a name="2.1.5" target="_top" href="#2.1.5">2.1.5</a></b> The 
+	long-term remedy is for <b><font face="monospace">odmjni100</font></b> and
+	<b><font face="monospace">OdmNative100</font></b> to share a common-code 
+	implementation of checks for string-valued parameters.&nbsp; This is planned 
+	for ODMJNI 1.0 release 0.80.&nbsp; The technical conditions for having 
+	common code will not be satisfied until then.&nbsp; </p>
+	<p><b><a name="2.1.6" target="_top" href="#2.1.6">2.1.6</a></b> If this 
+	becomes a problem between release 0.60 and release 0.80, an interim solution 
+	will be considered.</p>
+</blockquote>
+<h3><a name="2.2" target="_top" href="#2.2">2.2</a> <font face="monospace">
+viewOnly</font> Null Behavior Changed</h3>
+<blockquote>
+	<p><b><a name="2.2.1" target="_top" href="#2.2.1">2.2.1</a></b> The <b>
+	<font face="monospace">viewOnly</font></b> method of null-response document 
+	interfaces now always returns <b><font face="monospace">true</font></b>.</p>
+	<p><b><a name="2.2.2" target="_top" href="#2.2.2">2.2.2</a></b> This change 
+	is required by the <a href="../10/d061001h.htm#2.6">same breaking change</a> 
+	in the <b><font face="monospace">practical100</font></b> 0.59 interface 
+	definitions.</p>
+	<p><b><a name="2.2.3" target="_top" href="#2.2.3">2.2.3</a></b> The 
+	workaround is to locate all use of <b><font face="monospace">viewOnly</font></b> 
+	and substitute use of <b><font face="monospace">notChangeable</font></b> 
+	when upgrading and testing with 0.59.&nbsp; Verify that the null-behavior is 
+	dealt with properly wherever it can occur.&nbsp; <b><font face="monospace">
+	viewOnly</font></b> will be removed in 0.60.</p>
+</blockquote>
+<h3><a name="2.3" target="_top" href="#2.3">2.3</a> Ambiguous
+<font face="monospace">transferToNewDocument</font> Implementation</h3>
+<blockquote>
+	<p><b><a name="2.3.1" target="_top" href="#2.3.1">2.3.1</a></b> It is 
+	possible for an DMS integration to respond to a <b><font face="monospace">
+	transferToNewDocument</font></b> request with an internal-to-ODMJNI 
+	indication that a new document is not created and the original document 
+	should be used.&nbsp; </p>
+	<p><b><a name="2.3.2" target="_top" href="#2.3.2">2.3.2</a></b> This case is 
+	ambiguous in any <b><font face="monospace">odmjni100</font></b> release, 
+	including 0.59.&nbsp; The response is a null implementation with <b>
+	<font face="monospace">operationCancelled</font></b> set.&nbsp; The user 
+	needs to be consulted to determine whether a save (<b><font face="monospace">commitChanges</font></b>) 
+	is desired.&nbsp; Along with the prospect of a &quot;stuck cancel&quot; condition, 
+	this response is too confusing.&nbsp;&nbsp; </p>
+	<p><b><a name="2.3.3" target="_top" href="#2.3.3">2.3.3</a></b> <b>
+	Workaround:</b> The failure and <b><font face="monospace">operationCancelled</font></b> 
+	null responses from <b><font face="monospace">transferToNewDocument</font></b> 
+	should be treated the same.&nbsp; The user should be advised that the 
+	operation was unsuccessful and offered the opportunity to save the document, 
+	either to the DMS or locally.</p>
+</blockquote>
+<h3><a name="2.4" target="_top" href="#2.4">2.4</a> Inadequate Confirmation Test 
+Coverage</h3>
+<blockquote>
+	<p><b><a name="2.4.1" target="_top" href="#2.4.1">2.4.1</a></b> The tests 
+	used to confirm operation of <b><font face="monospace">odmjni100</font></b> 
+	are very weak.&nbsp; Coverage is poor.&nbsp; They are also clumsy to use, 
+	with considerable manual activity required.&nbsp; It is better than not 
+	having them, but the approach does not scale.</p>
+	<p><b><a name="2.4.2" target="_top" href="#2.4.2">2.4.2</a></b> Although the 
+	code has been reviewed many times, and there is general stability, this is 
+	still beta quality software.&nbsp; There is no measurable basis for high 
+	confidence.</p>
+	<p><b><a name="2.4.3" target="_top" href="#2.4.3">2.4.3</a> No immediate 
+	relief:</b> Improved testing operation and automatic operation will be 
+	developed after release 0.60 as part of the development toward 0.90 
+	(hardening).&nbsp; All tests will be made available as they are developed, 
+	independent of other release cycles.</p>
+</blockquote>
+<h3><a name="2.5" target="_top" href="#2.5">2.5</a> Undocumented Dependency on
+<font face="monospace">ODMASAMP</font> Integration and <font face="monospace">
+Odma32</font> Logging</h3>
+<blockquote>
+	<p><b><a name="2.5.1" target="_top" href="#2.5.1">2.5.1</a></b> The 
+	regression checks and field confirmations are all performed with the ODMA 
+	2.0 Connection Manager with logging active.&nbsp; There is little 
+	documentation on how to accomplish this and how to interpret the logs.&nbsp; 
+	The development of this documentation is expected in the course of 0.70 
+	(deployment) development.</p>
+	<p><b><a name="2.5.2" href="#2.5.2">2.5.2</a></b> The current regression 
+	checks and the sample results are obtained using the <b>
+	<font face="monospace">ODMASAMP</font></b> Sample DMS integration from the 
+	ODMA 2.0 SDK.&nbsp; Installation, use, and carrying out tests with this 
+	sample is not documented.&nbsp; The development of this documentation and 
+	any supplementary materials is also expected during the 0.70 (deployment) 
+	development.</p>
+</blockquote>
+
+<h3><a name="2.6" target="_top" href="#2.6">2.6</a> All ODMJNI Interfaces Must 
+Be Explicitly Released</h3>
+<blockquote>
+	<p><b><a name="2.6.1" target="_top" href="#2.6.1">2.6.1</a></b> By default, 
+	the Java Virtual Machine (JVM) <i>does not execute finalizers</i> for those 
+	objects that remain alive when an application is terminating.&nbsp; </p>
+	<p><b><a name="2.6.2" target="_top" href="#2.6.2">2.6.2</a></b> The ODMJNI 
+	interface implementations coordinate resources with ODMA and the DMS 
+	integration.&nbsp; In order for those resources to be properly released and 
+	the ODMA session to be terminated successfully, <b>all interface 
+	implementations must either be finalized or have their
+	<font face="monospace">release</font> operations performed when they are no 
+	longer usable</b>, especially before the application terminates.</p>
+	<p><b><a name="2.6.3" target="_top" href="#2.6.3">2.6.3</a> Confirmation:</b> 
+	If the ODMA32 2.0 log for an application&#39;s session with ODMA has an entry 
+	for a successful <b><font face="monospace">OdmRegisterApp</font></b> 
+	operation and no <b><font face="monospace">OdmUnRegisterApp</font></b> 
+	termination entry is produced, there are one or more interfaces to ODMJNI 
+	implementations that were not released by the time of application 
+	termination.&nbsp;&nbsp; This can be verified by performing the same session 
+	with the default behavior of the JVM changed to always finalize.&nbsp; If <b>
+	<font face="monospace">OdmUnRegisterApp</font></b> occurs in the second case 
+	and not the first, there is an unreleased-interface &quot;leak.&quot;</p>
+	<p><b><a name="2.6.4" target="_top" href="#2.6.4">2.6.4</a> Temporary 
+	Workaround:</b> Although the default behavior of the JVM can be changed by 
+	the application software, this should not be viewed as an ideal solution.</p>
+	<p><b><a name="2.6.5" target="_top" href="#2.6.5">2.6.5</a> Design Concerns:</b> 
+	It is always best to ensure that an ODMJNI interface is released as soon as 
+	it is known that it can no longer be used in the application.&nbsp; It is 
+	important for the application software design to be architected in a way 
+	that there is certainty when that is.&nbsp; If this is not determined 
+	naturally in the structure of the application, and forcing finalization is 
+	too costly, it may be important to keep a registry of interfaces and perform 
+	their release when the application is terminating.&nbsp; (Duplicate releases 
+	are harmless.)</p>
+	<p><b><a name="2.6.6" target="_top" href="#2.6.6">2.6.6</a> Risk Mitigation:</b> 
+	In the event of a platform (Windows), JVM,&nbsp; or application crash, it is 
+	not possible to ensure that all releases will occur.&nbsp; In most cases, 
+	resilient DMS integrations clean up their incomplete sessions.&nbsp; To 
+	minimize lost user work, the best safeguard is to release interfaces as 
+	early as possible after their known-to-be last usage and to have provisions 
+	for recovery of local backups of in-process documents that are not known to 
+	have been properly 
+	saved and closed.&nbsp; </p>
+</blockquote>
+
+<h3><a name="2.7" target="_top" href="#2.7">2.7</a> Do Not Perform ODMJNI 
+Requests on the Java GUI Thread</h3>
+<blockquote>
+	<p><b><a name="2.7.1" target="_top" href="#2.7.1">2.7.1</a></b> Any ODMJNI 
+	request may involve communication to another process and use of the network.&nbsp; 
+	While the request is being performed, the thread making the request may be 
+	blocked for an indefinite time.&nbsp; If the request is on the Java GUI 
+	thread, no refreshing of the application GUI will be performed until control 
+	returns.&nbsp;&nbsp; If there are extensive network delays or connection 
+	failures, this may leave the application blocked.</p>
+	<p><b><a name="2.7.2" target="_top" href="#2.7.2">2.7.2</a></b> Any ODMJNI 
+	request may lead to a modal dialog from the DMS-integration software.&nbsp; 
+	These dialogs require operator interaction and lead to indefinite delays.&nbsp; 
+	If the ODMJNI request is on the Java GUI thread, no refreshing of the GUI 
+	will be performed until control returns, and the GUI will be locked against 
+	user interaction until the interaction with the modal dialog (which is 
+	refreshed by Windows) is completed.</p>
+	<p><b><a name="2.7.3" target="_top" href="#2.7.3">2.7.3</a> Mitigation:</b> 
+	For smoothest operation, the ODMJNI requests should be made on a worker 
+	thread that is separate from the Java GUI thread where GUI events are being 
+	processed.&nbsp; Consider that ODMJNI is part of the managed-document model 
+	and should be on a separate thread from the view and interaction-control 
+	functions of the desktop application software.&nbsp; This will require some 
+	additional effort to block user interactions while allowing the GUI thread 
+	to run until it is known that the ODMJNI request has been processed and its 
+	results are available.</p>
+</blockquote>
+<h3><b><a name="2.8" target="_top" href="#2.8">2.8</a> Do Not Multi-Thread 
+ODMJNI Requests</b></h3>
+<blockquote>
+	<p><b><a name="2.8.1" target="_top" href="#2.8.1">2.8.1</a></b> The ODMA API 
+	and the ODMA Connection Manager implementations follow a design that 
+	originated with 16-bit Windows (versions 3.x), early versions of Microsoft 
+	Windows NT, and Windows 95.&nbsp; Although the ODMA32 2.0 Connection Manager 
+	is Win32 software and is generally re-entrant, the prospect of 
+	multi-threading in a single ODMA session has not been designed for nor has 
+	it been verified in any way.</p>
+	<ul>
+		<li><b><a name="2.8.1.1" target="_top" href="#2.8.1.1">2.8.1.1</a></b> 
+		At the native Windows level, a single session corresponds to all 
+		operations involving the same <b><font face="monospace">ODMHANDLE</font></b> 
+		from a single <b><font face="monospace">
+		<a target="_top" href="http://odma.info/downloads/odma20-3.htm#ODMRegisterApp">
+		ODMRegisterApp</a></font></b> operation.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.8.1.2" target="_top" href="#2.8.1.2">2.8.1.2</a></b> 
+		At the <b><font face="monospace">odmjni100</font></b> level, a single 
+		session corresponds to all operations involving the <b>
+		<font face="monospace">practical100</font></b> interfaces obtained 
+		directly and indirectly from a single <b><font face="monospace">
+		info.odma.odmjni100.OdmJniBind.application</font></b> operation.</li>
+	</ul>
+	<p><b><a name="2.8.2" href="#2.8.2">2.8.2</a></b> <b>The ODMA Connection 
+	Manager implementations through ODMA32.dll 2.0 are not thread safe.</b>&nbsp; 
+	State is maintained for each session.&nbsp; Manipulations of that state are 
+	not protected against thread collisions.&nbsp; There are also sequential 
+	operations (such as logging) that will be disrupted by multiple requests.&nbsp; 
+	This is not a trivial problem, because input-output blocking at the 
+	Connection Manager and below are occasions for advancing a different thread.</p>
+	<p><b><a name="2.8.3" href="#2.8.3">2.8.3</a></b> <b>There is no assurance 
+	that DMS Integrations are thread safe within a single DMS session.</b>&nbsp; 
+	In general, maintaining thread safety has not been emphasized as a design 
+	requirement for DMS integrations.&nbsp; Because threading errors have 
+	inscrutable and difficult to isolate transient symptoms, the prudent 
+	default assumption is that DMS integrations are not thread safe.</p>
+	<p><b><a name="2.8.4" href="#2.8.4">2.8.4</a> Mitigation:</b> Arrange for 
+	ODMJNI requests to be performed sequentially, ideally on a single worker 
+	thread.&nbsp; This can be an useful addition to the approach taken for 
+	preventing GUI thread blocking (section <a href="#2.7">2.7</a>).</p>
+</blockquote>
+
+<h3><a name="2.9" target="_top" href="#2.9">2.9</a> Do Not Create Multiple 
+Overlapping ODMJNI Sessions</h3>
+<blockquote>
+	<p><b><a name="2.9.1" target="_top" href="#2.9.1">2.9.1</a></b> The ODMA 
+	Specifications have had the following statement about <b>
+	<font face="monospace">
+	<a target="_top" href="http://odma.info/downloads/odma20-3.htm#ODMRegisterApp">
+	OdmRegisterApp</a></font></b> since the
+	<a href="http://odma.info/downloads/odma10-2.htm">ODMA 1.0 Specification</a>:</p>
+	<blockquote>
+		<p>&quot;A task may call <b><code>ODMRegisterApp</code></b> more than once. 
+		Each call will return a different handle, each of which must be released 
+		with <b><code>ODMUnRegisterApp</code></b>.&quot;</p>
+	</blockquote>
+	<p><b><a name="2.9.2" target="_top" href="#2.9.2">2.9.2</a></b> This 
+	statement is accurate with regard to the behavior of the ODMA Connection 
+	Manager.&nbsp; Each entry to <b><font face="monospace">OdmRegisterApp</font></b> 
+	creates an independent session and there is no conflict in the operation of 
+	the Connection Manager itself, except for possible confusion in the creation 
+	of logs (introduced with the ODMA 2.0 Connection manager).</p>
+	<p><b><a name="2.9.3" target="_top" href="#2.9.3">2.9.3</a></b> Each ODMJNI 
+	session created via <b><font face="monospace">
+		info.odma.odmjni100.OdmJniBind.application</font></b> will lead to at 
+	most one successful <b><font face="monospace">OdmRegisterApp</font></b> 
+	request at the <b><font face="monospace">OdmNative100</font></b> level.&nbsp; 
+	In the <b><font face="monospace">odmjni100</font></b> implementation, these 
+	sessions are correctly matched to ODMA Connection Manager sessions.</p>
+	<p><b><a name="2.9.4" target="_top" href="#2.9.4">2.9.4</a></b> For ODMJNI, 
+	the only useful purpose of multiple ODMJNI sessions is to have different 
+	sessions associated with different GUI windows via the <b><font face="monospace">
+		info.odma.odmjni100.OdmJniBind.application</font></b>
+	<font face="monospace"><b>appWindow</b></font> parameter.&nbsp; This has 
+	some appeal as a way to deal with multiple application windows, so long as 
+	the session is properly tied to the lifetime of that GUI window and all 
+	precautions against GUI-thread blocking (section <a href="#2.7">2.7</a>) and 
+	multi-threading (section <a href="#2.8">2.8</a>) are implemented for each 
+	ODMJNI session.</p>
+	<p><b><a name="2.9.5" target="_top" href="#2.9.5">2.9.5</a></b> Even though 
+	there might be a successful organization (as in <a href="#2.9.4">2.9.4</a>) 
+	for multiple-session operation, there are difficulties that the application 
+	developer cannot control.&nbsp; Each ODMJNI session will also have a 
+	distinct session for each DMS integration that is used in that session, 
+	especially for the default DMS.&nbsp; In addition to the increase of 
+	resources and the cost of additional session creation, there are potential 
+	risks of conflicts and instabilities in operation when an application uses 
+	multiple DMS-integration instances to operate with a single DMS.</p>
+	<p><b><a name="2.9.6" target="_top" href="#2.9.6">2.9.6</a></b> Because of 
+	the difficulty of managing multiple sessions (as in <a href="#2.9.4">2.9.4</a>) 
+	and the prospects of extremely-difficult to isolate integration problems (as 
+	in <a href="#2.9.5">2.9.5</a>), <b>it is strongly recommended that there be 
+	at most one ODMJNI session at any point in time. </b>&nbsp;Ideally, there 
+	should be at most one session for the duration of the application program&#39;s 
+	operation.&nbsp;&nbsp; </p>
+</blockquote>
+
+<h3><a name="2.10" href="#2.10">2.10</a> Code Page Inconsistencies Can Corrupt 
+Strings from ODMJNI</h3>
+<blockquote>
+	<p><b><a name="2.10.1" target="_top" href="#2.10.1">2.10.1</a></b> The <b><font face="monospace">odmjni100</font></b> 
+	interfaces and their <b><font face="monospace">odmjni100</font></b> 
+	implementations accept and supply <b><font face="monospace">java.lang.String</font></b> 
+	values for document metadata and other string-valued parameters and results.&nbsp; 
+	The intended interpretation of these <b><font face="monospace">String</font></b> 
+	values is as the Java-defined support for Unicode.</p>
+	<p><b><a name="2.10.2" target="_top" href="#2.10.2">2.10.2</a></b> The ODMA 
+	Connection Manager and the DMS integrations accept and supply single-byte 
+	character arrays for the same data elements.&nbsp; It is a
+	<a target="_top" href="http://odma.info/downloads/odma20-3.htm#CharacterSets">
+	requirement of ODMA</a> that these strings be coded in the
+	<a href="http://msdn2.microsoft.com/en-us/ms776413.aspx">current system&#39;s 
+	Windows ANSI Code Page</a> (<b><font face="monospace">CP_ACP</font></b>).</p>
+	<p><b><a name="2.10.3" target="_top" href="#2.10.3">2.10.3</a></b> If a DMS 
+	integration fails to honor the current Windows ANSI Code Page in the 
+	character data that it accepts and delivers, the translation of certain 
+	character codes to and from Java Unicode will be corrupted.&nbsp; There is 
+	generally no means for ODMJNI to detect this condition.&nbsp;&nbsp; ODMJNI 
+	has no means to compensate for the inconsistency, even if detected as a 
+	translation error.&nbsp; </p>
+	<p><b><a name="2.10.4" target="_top" href="#2.10.4">2.10.4</a> Symptoms:</b> 
+	Possible, but not uniquely-symptomatic, evidence for code-page 
+	inconsistencies include</p>
+	<ul>
+		<li>Incorrect characters displayed for document metadata information, 
+		such as author, document title, and the suggested title for use in the 
+		GUI window frame<br>
+&nbsp; </li>
+		<li>Strings delivered to the application having different characters 
+		than the same text displayed directly by the DMS<br>
+&nbsp;&nbsp; </li>
+		<li>Failure of the DMS to find documents using Document IDs that have 
+		been translated incorrectly at some point</li>
+	</ul>
+</blockquote>
+
+<h3><a name="2.11" target="_top" href="#2.11">2.11</a> Maintain GUI
+<font face="monospace">appWindow</font> While ODMA Dialogs Are Possible</h3>
+<blockquote>
+	<p><b><a name="2.11.1" target="_top" href="#2.11.1">2.11.1</a></b> For 
+	GUI-based Java applications, the <b><font face="monospace">
+		info.odma.odmjni100.OdmJniBind.application</font></b>
+	<font face="monospace"><b>appWindow</b></font> parameter is very important.&nbsp; 
+	The Microsoft Windows window that implements the <b><font face="monospace">
+	java.awt.Window</font></b> that
+	<font face="monospace"><b>appWindow</b></font> is based on will be the 
+	parent for all ODMA dialogs that apply to the running application.</p>
+	<p><b><a name="2.11.2" target="_top" href="#2.11.2">2.11.2</a></b> If
+	<font face="monospace"><b>appWindow</b></font> is no longer present when an 
+	ODMJNI operations leads to an ODMA modal dialog, the dialog will generally 
+	have no parent window and will <i>not</i> be forced to display atop the 
+	application-program&#39;s GUI.&nbsp; The dialog may be hidden by another GUI 
+	window and not be noticed by the computer user.&nbsp; The application may 
+	appear to be unresponsive or it may operate unexpectedly in response to user 
+	input because the dialog is not being responded to.&nbsp; </p>
+	<p><b><a name="2.11.3" target="_top" href="#2.11.3">2.11.3</a></b> The 
+	choice of
+	<font face="monospace"><b>appWindow</b></font> and its use by the 
+	application will depend on the design of the application and the approach 
+	for coordination of the display of documents and ODMJNI operations 
+	applicable to those documents.&nbsp; It may be useful, in this regard, that 
+	an AWT <font face="monospace"><b>Frame</b></font> or AWT <b>
+	<font face="monospace">Dialog</font></b> can be used.&nbsp; A Swing
+	<font face="monospace"><b>JFrame</b></font>, <b><font face="monospace">
+	JDialog</font></b>, or <b><font face="monospace">JWindow</font></b> is also 
+	usable.</p>
+</blockquote>
+<h3><a name="2.12" target="_top" href="#2.12">2.12</a> Conservative Format 
+Checks May Be Too Strict</h3>
+<blockquote>
+	<p><b><a name="2.12.1" target="_top" href="#2.12.1">2.12.1</a></b> The 
+	currently-implemented format checks for string-valued parameters have been 
+	defined conservatively.&nbsp; That is, they tend to be more-restrictive than 
+	what may be permissible for the ODMA Connection Manager and, most 
+	importantly, connected DMS integrations. </p>
+	<p><b><a name="2.12.2" target="_top" href="#2.12.2">2.12.2</a></b> The 
+	principle is that it is easier to expand the allowed cases than it is to 
+	ever restrict the allowed cases later.&nbsp; </p>
+	<p><b><a name="2.12.3" target="_top" href="#2.12.3">2.12.3</a></b> The 
+	liability of this approach, after ODMA has been in use for so long, is that 
+	there may be string-valued results from ODMA requests that are not accepted 
+	as parameters to other requests.&nbsp; There are two cases of concern:</p>
+	<ul>
+		<li>The form of ODMA Document IDs, especially the character set of the 
+		DMS ID in Document IDs<br>
+&nbsp;&nbsp; </li>
+		<li>The form of ODMA Document Format codes (<b><font face="monospace">dmsFormatName</font></b> 
+		value)</li>
+	</ul>
+	<p><b><a name="2.12.4" target="_top" href="#2.12.4">2.12.4</a></b> <b>We 
+	will consider relaxations of these two filters based on reported 
+	difficulties in actual operation.</b>&nbsp; The concern is protection of DMS 
+	integrations that are not adequately defensive in what they accept.&nbsp; 
+	Unfortunately, there is no method, at this point, for accessing DMS-supplied 
+	validations for these data elements.&nbsp; This would be preferable to 
+	second-guessing the DMS. Currently, it is not possible to determine what DMS 
+	constraints are, and only the DMS can communicate any restriction in a way 
+	that is useful to the operator an ODMA-aware application.</p>
+</blockquote>
+
+<h2><a name="3" target="_top" href="#3">3</a>. Changes to <font face="monospace">
+odmjni100</font> in 0.59beta</h2>
+<h3><a name="3.1" target="_top" href="#3.1">3.1</a> Organization of pre-0.59 
+Regression Set</h3>
+<blockquote>
+	<p><b><a name="3.1.1" target="_top" href="#3.1.1">3.1.1</a>
+	<font face="monospace">OdmClicker</font> Preserved.</b>&nbsp; Regression set
+	<b><font face="monospace">0.54-odmjni100</font></b> contains the <b>
+	<font face="monospace">Clicker</font></b> folder with complete source and 
+	compiled code.&nbsp; This is extracted from the<b><font face="monospace"> 
+	test/CheckSwing</font></b> set, omitting the pre-<b><font face="monospace">OdmClicker</font></b> 
+	confirmation experiments.&nbsp; Only the latest confirmation results are 
+	retained for comparison with those of 0.59 operation.&nbsp; Finalization of 
+	this material occurs as part of the completion of the new regression sets 
+	and packaging of <b><font face="monospace">odmjni100</font></b> 0.59:</p>
+	<blockquote>
+		<pre>0.54-odmjni100/            [the Swing-based Clicker regression check]
+  |
+  |-- Clicker/             [the backward-compatible 0.08 OmdClicker 
+        |                   version that was tweaked for 0.58]
+        |-- results/       [set of images and text files from
+        |                   confirmations using OdmClicker]
+        Check04-source.zip [script and source code for the programs]
+        OdmClicker$1.class [internal class - also backed up in the .zip]
+        OdmClicker.class   [the compiled OdmClicker regression check]
+        RunSwingApp.bat    [script for running the regression check]</pre>
+	</blockquote>
+	<p><b><a name="3.1.2" target="_top" href="#3.1.2">3.1.2</a>
+	<font face="monospace">Check04</font> Preserved.</b>&nbsp; Regression set <b>
+	<font face="monospace">0.57-odmjni100</font></b> contains the <b>
+	<font face="monospace">Check04</font></b> folder with complete source and 
+	compiled code.&nbsp; This is extracted from the <b><font face="monospace">
+	test/Check04</font></b> set, omitting obsolete Run scripts and old 
+	confirmation and test results.&nbsp; Finalization of this material occurs as 
+	part of the completion of the new regression sets and packaging of <b>
+	<font face="monospace">odmjni100</font></b> 0.59.&nbsp; The idea is not to 
+	make further investment in the pre-0.59 regression sets except where the 
+	material survives into 0.59/0.60 and beyond.</p>
+	<blockquote>
+		<pre>0.57-odmjni100/            [the console-application regression checks]
+  |
+  |-- Check04/
+        |
+        |-- results/       [set of images and text files from
+        |                   confirmations using Check04 applications]
+        Clicker-source.zip [script and source code for OdmClicker]
+        CheckChoice.class  [Exercise of chooseDocument cases]
+        CheckKnown.class   [Exercise of openKnownDocument cases]
+        CheckNew.class     [Exercise of acceptNewDocument cases]
+        CheckUtil.class    [Common utility functions for Check apps]
+        CheckUtil.dll      [library used for CheckUtil native methods]
+        ConIO.class        [prompted-IO classes and interfaces used here]
+        ConLineIO.class
+        ConReader.class
+        ConWriter.class
+        IConIn.class
+        IConIO.class
+        IConLineIn.class
+        IConLineIO.class
+        IConOut.class
+        RunCheck.bat       [script for running any of the Check exercises]
+        </pre>
+	</blockquote>
+	<p><b><a name="3.1.3" target="_top" href="#3.1.3">3.1.3</a> 0.59/0.60 
+	Provisional Regression Started.</b>&nbsp; Regression set <b>
+	<font face="monospace">0.59-odmjni100</font></b> is initiated with copies of 
+	the pre-0.59 regression-check folders <b><font face="monospace">Clicker</font></b> 
+	and <b><font face="monospace">Check04</font></b>.&nbsp;&nbsp; These and the 
+	pre-0.59 regression sets are verified to preserve exactly what is needed to 
+	use them with 0.59.&nbsp; After that point, the 0.59/0.60 regression checks 
+	are evolved to make 0.60-specific tests having no use of deprecated 
+	interface elements and implementations.</p>
+	<blockquote>
+		<pre>0.59-odmjni100/            [the provisional 0.59/0.60 regression set]
+  |
+  |-- Clicker/             [starts out the same as in 0.54-odmjni100]
+  |
+  |-- Check04/             [starts out the same as in 0.57-odmjni100] 
+</pre>
+	</blockquote>
+	<div style="border-style: solid; border-width: 1px; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px">
+		<b><a name="3.1.4" target="_top" href="#3.1.4">3.1.4</a> Commencement of 
+		ZigZag Development</b>.&nbsp; From this point on, no further changes are 
+		made at any stage until the corresponding adjustments are first reflected in 
+		the <b><font face="monospace">practical100</font></b> 0.59beta 
+		development and its evolving confirmation tests.&nbsp; Each time a 
+		change is made here, adapting to the confirmed <b>
+		<font face="monospace">practical100</font></b> changes, the pre-0.59 <b>
+		<font face="monospace">odmjni100</font></b> regression sets are 
+		confirmed and the provisional 0.59/0.60 regression set is updated to use 
+		only non-deprecated features, as necessary.&nbsp; Zigzagging&nbsp; 
+		in this manner is invaluable.&nbsp; It provides immediate feedback on <b>
+	<font face="monospace">practical100</font></b> changes being workable with
+		<b><font face="monospace">odmjni100</font></b>.&nbsp; This also provides 
+		confidence that a derivative of <b><font face="monospace">odmjni100</font></b> 
+		could also integrate just as successfully with the <b>
+	<font face="monospace">practical100</font></b> part of the ODMJNI 1.0 
+		&quot;stack.&quot;&nbsp; And, finally, the regression sets evolve as 
+		needed in parallel with the changes.</div>
+</blockquote>
+<h3><a name="3.2" target="_top" href="#3.2">3.2</a> Remove Parameter-Format 
+Exceptions</h3>
+<blockquote>
+	<p><b><a name="3.2.1" target="_top" href="#3.2.1">3.2.1</a></b> Removing 
+	Parameter-Format Exceptions involves conforming to the changes in the
+	<b><font face="monospace">practical100</font></b> interface definitions and 
+	class implementations, including the null implementations from which <b>
+	<font face="monospace">odmjni100</font></b> classes are derived.&nbsp; The 
+	following classes and methods are impacted:</p>
+	<blockquote>
+		<pre>        OdmJniApp.java
+        OdmJniApp(rIface) [new protected constructor]
+        OdmJniApp.acceptNewDocument(docFormatName)
+        OdmJniApp.openKnownDocument(docId)
+
+        OdmJniBind.java
+        OdmJniBind.application(appId)
+        OdmJniBind.application(appId, appWindow)
+
+        OdmJniPend.java
+        OdmJniPend(rIodmPending, nullDoc) [protected constructor]
+
+        OdmJniView.java
+        OdmJniView.transferToNewDocument(docFormatName)</pre>
+	</blockquote>
+	<p><b><a name="3.2.2" href="#3.2.2">3.2.2</a></b> As part of these changes,
+	<b><font face="monospace">appId</font></b> is no longer passed to <b>
+	<font face="monospace">OdmJniApp</font></b> and it is not retained anywhere 
+	after providing (along with any <b><font face="monospace">appWindow</font></b>) 
+	to the <b><font face="monospace">OdmNative100</font></b> constructor for 
+	connections.</p>
+	<p><b><a name="3.2.3" href="#3.2.3">3.2.3</a></b> Some methods are 
+	simplified by not having to raise exceptions.&nbsp; The checking of 
+	parameter formats can be deferred to <b><font face="monospace">OdmNative100</font></b> 
+	methods which will then return error codes as part of their built-in 
+	&quot;head-check&quot; defensive filters.&nbsp; [2007-10-31: Until the defense within
+	<b><font face="monospace">OdmNative100</font></b> is confirmed, a check is 
+	retained within <b><font face="monospace">openKnownDocument</font></b>.]</p>
+</blockquote>
+
+<h3><a name="3.3" target="_top" href="#3.3">3.3</a> Implement
+<font face="monospace">formatCheck</font> Return of <font face="monospace">
+OdmFormatCheck</font> Interfaces</h3>
+<blockquote>
+	<p><b><a name="3.3.1" target="_top" href="#3.3.1">3.3.1</a></b> <b>
+	<font face="monospace">OdmJniBind</font></b> is changed to extend <b>
+	<font face="monospace">OdmNullBind</font></b>.&nbsp; This allows <b>
+	<font face="monospace">MAX_APPID_SIZE</font></b> and the <b>
+	<font face="monospace">wfAppId</font></b> methods to be defined by 
+	inheritance from <b><font face="monospace">OdmNullBind</font></b>.&nbsp; 
+	This is the only public change directly noticeable to Java via ODMJNI 1.0.&nbsp; 
+	The other changes are delivered via <b><font face="monospace">practical100</font></b> 
+	interfaces.</p>
+	<p><b><a name="3.3.2" target="_top" href="#3.3.2">3.3.2</a></b> <b>
+	<font face="monospace">OdmJniApp</font></b> is changed to to supply the <b>
+	<font face="monospace">formatCheck</font></b> method with implementation via
+	<b><font face="monospace">OdmNullCache.nullCheck()</font></b>.&nbsp; This is 
+	a provisional solution to be extended for 0.60.</p>
+	<p><b><a name="3.3.3" target="_top" href="#3.3.3">3.3.3</a></b> <b>
+	<font face="monospace">OdmJniPend</font></b>, extending <b>
+	<font face="monospace">OdmNullPendingDocument</font></b>, supplies the <b>
+	<font face="monospace">nullDoc.nullCheck()</font></b> of its constructor to 
+	the constructor of the <b><font face="monospace">OdmNullPendingDocument</font></b> 
+	instance being extended.&nbsp; <b><font face="monospace">
+	OdmJniPend.formatCheck()</font></b> is implemented by inheritance.&nbsp;&nbsp; 
+	This is a provisional solution to be extended for 0.60. </p>
+	<p><b><a name="3.3.4" target="_top" href="#3.3.4">3.3.4</a></b> <b>
+	<font face="monospace">OdmJniView</font></b>, extending <b>
+	<font face="monospace">OdmNullWorkingDocument</font></b>, supplies the <b>
+	<font face="monospace">nullDoc.nullCheck()</font></b> of its constructor to 
+	the constructor of the <b><font face="monospace">OdmNullWorkingDocument</font></b> 
+	instance being extended.&nbsp; <b><font face="monospace">
+	OdmJniView.formatCheck()</font></b> is implemented by inheritance.&nbsp;&nbsp; 
+	This is a provisional solution to be extended for 0.60. </p>
+	<p><b><a name="3.3.5" target="_top" href="#3.3.5">3.3.5</a></b> <b>
+	<font face="monospace">OdmJniWork</font></b> extends <b>
+	<font face="monospace">OdmJniView</font></b> and requires no code changes to 
+	function properly.&nbsp; The commentary and version were updated to reflect 
+	the behavior changes that occur entirely via inheritance.</p>
+</blockquote>
+
+<h3><a name="3.4" target="_top" href="#3.4">3.4</a> Implement Refactoring of Metadata and Document Interface Implementations</h3>
+<blockquote>
+	<p><b><a name="3.4.1" target="_top" href="#3.4.1">3.4.1</a></b> Modify <b>
+	<font face="monospace">OdmJniView</font></b> class declaration to now cover 
+	implementation of <b><font face="monospace">
+	practical100.OdmBasicDocumentMetadata</font></b>, <b><font face="monospace">
+	practical100.OdmViewingDocument</font></b>, <b><font face="monospace">
+	practical100.OdmEditingDocument</font></b>, and <b><font face="monospace">
+	practical100.OdmWorkingDocument</font></b>.&nbsp; (All cases have the <b>
+	<font face="monospace">notChangeable</font></b> document behavior.)&nbsp;
+	</p>
+	<p><b><a name="3.4.2" target="_top" href="#3.4.2">3.4.2</a></b> The <b>
+	<font face="monospace">viewOnly</font></b> method implementation is deleted 
+	from <b>
+	<font face="monospace">OdmJniView</font></b> and both <b>
+	<font face="monospace">viewOnly</font></b> and <b><font face="monospace">
+	notChangeable</font></b> are implemented by inheritance from <b>
+	<font face="monospace">OdmNullWorkingDocument</font></b>.&nbsp; The null 
+	behavior and the <b>
+	<font face="monospace">OdmJniView</font></b> behaviors for both <b>
+	<font face="monospace">viewOnly</font></b> and <b><font face="monospace">
+	notChangeable</font></b> are the same.</p>
+	<p><b><a name="3.4.3" target="_top" href="#3.4.3">3.4.3</a></b> The <b>
+	<font face="monospace">OdmJniWork</font></b> class declaration is given an 
+	implementation of <b><font face="monospace">viewOnly</font></b> that relies 
+	on the implementation of <b><font face="monospace">notChangeable</font></b>.&nbsp; 
+	The <b><font face="monospace">notChangeable</font></b> implementation 
+	returns <b><font face="monospace">false</font></b> unless <b>
+	<font face="monospace">OdmJniWork</font></b> has been released.&nbsp;&nbsp; 
+	The commentary and organization of <b>
+	<font face="monospace">OdmJniWork</font></b> are adjusted to reflect the 
+	refactored organization and the changes that will apply for 0.60.</p>
+</blockquote>
+
+<h3><a name="3.5" target="_top" href="#3.5">3.5</a> Refactor Regression Sets</h3>
+<blockquote>
+	<p>Based on the experience with the provisional regression tests, only one 
+	set needs to be split for pre-0.60 and 0.59/0.60.&nbsp; The regression sets are organized and posted to the <b>d071001:
+	<a href="../../2007/10/d071001.htm">ODMJNI 1.0 Confirmation Tests folio</a></b>.</p>
+	<p><b><a name="3.5.1" target="_top" href="#3.5.1">3.5.1</a>
+	<font face="monospace">Clicker</font> Preserved.</b>&nbsp; Regression set
+	<b><font face="monospace">0.54-odmjni100</font></b> contains the <b>
+	<font face="monospace">Clicker</font></b> folder with complete source and 
+	compiled code.&nbsp; This is a repackaging of the set with improved 
+	organization, demonstration of results, and easier installation and 
+	execution in a location of the users choice.&nbsp; This regression set works 
+	for pre-0.59 releases and for 0.59/0.60 releases.&nbsp; Details are on the 
+	page <b>d071001e: <a href="../../2007/10/d071001e.htm">0.54-odmjni100 
+	Regression Set - Clicker</a></b>.</p>
+	<p><b><a name="3.5.2" target="_top" href="#3.5.2">3.5.2</a> Pre-0.60
+	<font face="monospace">Check04</font> Packaged.</b>&nbsp; Regression set
+	<b><font face="monospace">0.57-odmjni100</font></b> contains the <b>
+	<font face="monospace">Check04</font></b> folder with a version of checks 
+	that can be used to confirm ODMJNI 1.0 releases from 0.57 through 0.59.&nbsp; 
+	These checks are not applicable for 0.60 and beyond.&nbsp; Details and 
+	downloads are on the page <b>d071001f:<a href="../../2007/10/d071001f.htm"> 
+	0.57-odmjni100 Regression Set - Check04</a></b>.</p>
+	<p><b><a name="3.5.3" target="_top" href="#3.5.3">3.5.3</a></b> <b>0.59/0.60 
+	Check04 Packaged.</b>&nbsp; Regression set
+	<b><font face="monospace">0.59-odmjni100</font></b> contains the <b>
+	<font face="monospace">Check04</font></b> folder with a version of checks 
+	that can be used to confirm ODMJNI 1.0 release 0.59 and beyond.&nbsp; 
+	Details and downloads are on the page <b>d071001g:<a href="../../2007/10/d071001g.htm"> 
+	0.59-odmjni100 Regression Set - Check04</a></b>.</p>
+</blockquote>
+
+<h2><a name="4" target="_top" href="#4">4</a>. Development
+<span style="font-weight: 400"><small>(started 2007-10-04; <i>in progress</i>)</small></span></h2>
+<h3><a name="4.1" target="_top" href="#4.1">4.1</a> Outline the Development<span style="font-weight: 400"> 
+(started 2007-10-04;&nbsp; completed 2007-10-04)</span></h3>
+<blockquote>
+	<p>Outline the development based on the description in the 2007-09-20 
+	Tracking Report and d070701d: <a href="../../2007/07/d070701d.htm">ODMJNI 1.0 
+				Public Beta 0.59 Transition Candidate</a>.&nbsp; See sections 
+	4.2-4.7 for the current development outline.</p>
+</blockquote>
+<h3><a name="4.2" target="_top" href="#4.2">4.2</a> Freeze
+<font face="monospace">practical100</font> pre-0.59 Regression Tests
+<span style="font-weight: 400"><small>(started 2007-10-04; completed 2007-10-10; 
+revised 2007-10-13)</small></span></h3>
+<blockquote>
+	<p>The 
+	available confirmation tests are reviewed and used to create an <b>
+	<font face="monospace">odmjni100-0.56beta-regression</font></b> set.&nbsp;&nbsp; 
+	The name of the set may change&nbsp; This set applies to at least the 0.58beta 
+	compiled classes.&nbsp;&nbsp; The freeze process will determine which level 
+	of pre-0.59 implementations each retained test is compatible with.&nbsp; 
+	There will be a rational way to identify, refine and preserve regressions 
+	until they are obsoleted by breaking changes and removal of deprecated 
+	interface elements.&nbsp; This is a rehearsal for the pattern to be applied 
+	at 0.59beta and beyond.</p>
+</blockquote>
+<h3><a name="4.3" target="_top" href="#4.3">4.3</a> Change
+<font face="monospace">odmjni100</font> Implementation Classes 
+for 0.59<span style="font-weight: 400"> (started 2007-10-17; completed 
+2007-11-15)</span></h3>
+<blockquote>
+	<p>In step with each corresponding change in
+	<b><font face="monospace">practical100</font></b>, change the <b>
+	<font face="monospace">odmjni100</font></b> classes and updated regression 
+	tests to conform.&nbsp;&nbsp; The changes will eliminate &quot;throw&quot; cases, 
+	identify deprecated elements,&nbsp; and implement the additional interface 
+	elements introduced with <b>
+	<font face="monospace">practical100</font></b> 0.59.</p>
+	<ul>
+		<li><b><a name="4.3.1" target="_top" href="#4.3.1">4.3.1</a></b> The <b>
+	<font face="monospace">odmjni100</font></b> classes are adjusted to change 
+		exceptions for ill-formed string-valued parameters to returning of 
+		failure/null implementations that conform to the <b>
+	<font face="monospace">practical100</font></b>-specified behaviors.&nbsp; 
+		Class definitions are also adjusted to conform to refactoring of some 
+		members identified in the <a href="../10/d061001h.htm#4.3.1.1">
+		corresponding changes</a> for <b>
+	<font face="monospace">practical100</font></b> (<a href="#3.2">3.2</a>).&nbsp; (started 2007-10-17; 
+		completed 2007-10-17; touch-ups completed 2007-10-30)<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.2" target="_top" href="#4.3.2">4.3.2</a></b> The <b>
+	<font face="monospace">odmjni100</font></b> classes are adjusted to 
+		implement the new structure for checking the format of string-valued 
+		parameters (<a href="#3.3">3.3</a>).&nbsp; (started 2007-11-10; 
+		completed 2007-11-10)<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.3" target="_top" href="#4.3.3">4.3.3</a></b> The 
+		<b>
+	<font face="monospace">odmjni100</font></b> classes are adjusted to implement the refactored metadata and 
+		document interfaces, adding the <b><font face="monospace">notChangeable</font></b> method implementation, 
+		just like the deprecated <b><font face="monospace">viewOnly</font></b> method (<a target="_top" href="#3.4">3.4</a>).&nbsp; (started 
+		2007-11-15; completed 2007-11-15)</li>
+	</ul>
+</blockquote>
+<h3><a name="4.4" target="_top" href="#4.4">4.4</a> Confirm Pre-0.59 Regression Checks
+<span style="font-weight: 400">(started 2007-10-10; completed 2007-11-17)</span></h3>
+<blockquote>
+	<p>At each step 
+	of the way, verify that 
+	the pre-0.59 regression set continues to work with the 0.59 version of <b>
+	<font face="monospace">practical100</font></b>.&nbsp; This is done 
+	in the course of stage 4.3 and at the conclusion and after any subsequent 
+	changes to the 4.3 results.</p>
+	<ul>
+		<li><b><a name="4.4.1" target="_top" href="#4.4.1">4.4.1</a></b> 
+		<a name="4.4.1.1">The</a> pre-0.59 regression checks are not impacted (and are no different 
+		for 0.59/0.60) when the behavior for ill-formed string-valued parameter 
+		checking is changed to return null/failed implementations instead of 
+		throwing <b><font face="monospace">OdmError</font></b>. (confirmed 2007-10-17)<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.2" target="_top" href="#4.4.2">4.4.2</a></b> The 
+		pre-0.59 regression checks succeed after the odmjni100 classes are 
+		modified to deliver <b><font face="monospace">OdmFormatCheck</font></b> interfaces via
+		<b><font face="monospace">formatCheck</font></b> methods.&nbsp; 
+		(confirmed 2007-11-11)<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.3" target="_top" href="#4.4.3">4.4.3</a></b> The 
+		pre-0.59 regression checks succeed after the final changes are made.&nbsp; 
+		The deprecated <b><font face="monospace">viewOnly</font></b> result is reported in the Check04 tests.&nbsp; 
+		These tests will not work for 0.60.&nbsp; (confirmed 2007-11-15)</li>
+	</ul>
+</blockquote>
+<h3><a name="4.5" target="_top" href="#4.5">4.5</a> Develop
+<font face="monospace">odmjni100</font> 0.59/0.60 Regression Tests
+<span style="font-weight: 400">(started 2007-10-10; completed 2007-11-17)</span></h3>
+<blockquote>
+	<p>A provisional regression set is primed with the pre-0.59 checks and then 
+	evolved to remove all reliance on deprecated elements, relying on their 
+	replacements instead.&nbsp; The evolving tests are rerun any time that 
+	changes are brought back that change the <a href="#4.3">4.3</a> 
+	results or any of the confirmation tests.</p>
+	<ul>
+		<li><b><a name="4.5.1" target="_top" href="#4.5.1">4.5.1</a></b> The pre-0.59 
+	regression set is set up as the provisional 0.59/0/60 regression set (<a href="#3.1.3">3.1.3</a>)&nbsp; 
+	[started 2007-10-10; completed 2007-10-13].&nbsp; The provisional set is updated to rely only on the 0.60-intended elements of the 
+	0.59 <b><font face="monospace">odmjni100</font></b> implementation.&nbsp; 
+	This is done as changed elements are introduced in <b>
+		<font face="monospace">practical100</font></b> and then implemented in 
+		<b><font face="monospace">odmjni100</font></b>.&nbsp; We&#39;ll determine the appropriate identification of this set following review 
+	and determination of the necessary changes.&nbsp; Some of the confirmations 
+	may be unchanged.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.5.2" target="_top" href="#4.5.2">4.5.2</a></b>
+		<a name="4.5.1.1">Although</a> the behavior for ill-formed parameters has changed, and the 
+		implementation of <b><font face="monospace">odmjni100</font></b> classes has changed accordingly, 
+		there is no change necessary in the 0.59/0.60 regression set&nbsp; 
+		[2007-10-17].&nbsp; There are omissions in the coverage of these 
+		regressions, similar to those noticed for <b><font face="monospace">practical100</font></b>.&nbsp; These will be captured 
+		but not dealt with at this time.<br>
+&nbsp;&nbsp;&nbsp; 2007-10-31: The unchanged regression checks were reconfirmed 
+		after some editorial touch-ups to the source code that were intended to 
+		have no impact on the behavior.&nbsp; The code versions were updated 
+		because of these changes though, and the package was recompiled and the 
+		regressions repeated as an assurance step.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.5.3" target="_top" href="#4.5.3">4.5.3</a></b> There 
+		is also no change required for the 0.59/0.60 regression check 
+		[2007-11-11].&nbsp; 
+		There is no use of so-far deprecated elements and the tests are the same 
+		as the pre-0.59 regression checks.&nbsp; [2007-11-16 Mistake.&nbsp; The 
+		<b><font face="monospace">CheckKnown</font></b> procedure does rely on 
+		<b><font face="monospace">OdmFormat</font></b>.&nbsp; The changes are made 
+		and verified in the next round.]<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.5.4" target="_top" href="#4.5.4">4.5.4</a></b> The 
+		<b><font face="monospace">Check04</font></b> tests must be replaced to rely on
+		<b><font face="monospace">notChangeable</font></b> instead of the 
+		deprecated <b><font face="monospace">viewOnly</font></b> method.&nbsp; The switch from 
+		<b><font face="monospace">OdmFormat</font></b> to <b>
+		<font face="monospace">formatCheck</font></b> in <b>
+		<font face="monospace">CheckKnown</font></b> is made at the same time. [2007-11-16]<br>
+&nbsp; </li>
+		<li><b><a name="4.5.5" target="_top" href="#4.5.5">4.5.5</a></b> The 
+		modified <b><font face="monospace">CheckNew</font></b>, <b>
+		<font face="monospace">CheckKnown</font></b>, and <b>
+		<font face="monospace">CheckUtil</font></b> classes are used in a 
+		complete run of all three <b><font face="monospace">Check04</font></b> 
+		regression checks.&nbsp; (started 2007-11-16; completed 2007-11-17)</li>
+	</ul>
+</blockquote>
+<h3><a name="4.6" target="_top" href="#4.6">4.6</a> Package
+<font face="monospace">odmjni100</font> 0.59beta Material
+<span style="font-weight: 400">(started 2007-11-23; completed 2008-03-30)</span></h3>
+<blockquote>
+	<p><b><a name="4.6.1" target="_top" href="#4.6.1">4.6.1</a></b> The 
+	0.54-odmjni100 (Clickr) regression set is package for independent usage in 
+	confirmation of all releases from 0.54 to 0.59/0.60 and beyond (section
+	<a href="#3.5.1">3.5.1</a>).&nbsp; </p>
+	<p><b><a name="4.6.2" target="_top" href="#4.6.2">4.6.2</a></b> The 
+	0.57-odmjni100 (Check04) regression set is package for independent usage in 
+	confirmation of all releases from 0.57 to 0.59.&nbsp; This set relies on 
+	deprecated methods, interfaces and classes and will not operate beyond 0.59.</p>
+	<p><b><a name="4.6.3" target="_top" href="#4.6.3">4.6.3</a></b> The 
+	0.59-odmjni100 (Check04) regression set is packaged for independent usage 
+	with releases 0.59/0.60 and beyond.&nbsp; Only those features of 0.59 that 
+	are not deprecated and that are carried forth into 0.60 and beyond are 
+	exercised with this confirmation check.</p>
+	<p><b><a name="4.6.4" target="_top" href="#4.6.4">4.6.4</a></b> The license, release notes, manifest, and
+
+
+<small>
+	<b><font face="monospace" size="3">
+					d061001o-odmjni100-0.59beta.zip</font></b><font face="default" size="3"> 
+	archive are created and announced as available for review and provisional 
+	testing.</font></small></p>
+</blockquote>
+<h3><font face="default"><a name="4.7" target="_top" href="#4.7">4.7</a> Final 
+Packaging </font>
+<span style="font-weight: 400">(started 2008-03-30; <i>in progress</i>)</span></h3>
+<blockquote>
+	<p>The final packaging consists of any updating to the <b>
+	<font face="monospace">odmjni100</font></b> 0.59beta material.&nbsp; This 
+	is a reviewed package that is acceptable for inclusion in the final 0.59beta 
+	Packaging.&nbsp;&nbsp; See d070901c: <a href="../../2007/09/d070901c.htm">
+	0.59 Public Beta Transition Packaging</a>.</p>
+</blockquote>
+<h2><a name="5" target="_top" href="#5">5</a>. Developer Notes: Working toward 
+0.59beta</h2>
+<blockquote>
+	<dl>
+		<dt><b>2008-03-27-17:08 Barriers to Common Format Checking</b></dt>
+		<dd>I wanted to provide the common library for format checking as early 
+		as the 0.60 public beta.&nbsp; However, there really can&#39;t be clean 
+		common code implementations until <b><font face="monospace">
+		OdmNative100</font></b> delivers and accepts UTF-16 Unicode strings and 
+		operates with BSTR-like structures.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; The natural progression, from a development perspective, is 
+		to update format checking as part of 0.80 when that refactoring of <b><font face="monospace">
+		OdmNative100</font></b> is conducted.<br>
+&nbsp;&nbsp;&nbsp; If an intermediate solution is required, the <b><font face="monospace">
+		OdmNative100</font></b> library could be extended to provide appropriate 
+		native implementations for use by <b>
+	<font face="monospace">odmjni100</font></b> but with no/little shared use by <b><font face="monospace">
+		OdmNative100</font></b> interfaces before the 0.80 refactoring.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2008-03-26-18:36 DMS Connection Lifecycle Problems</b></dt>
+		<dd>I have just determined that the ODMA Connection Managers do not 
+		manage the life cycle of DMS integrations properly.&nbsp; In particular, 
+		an <font face="monospace"><b>OdmUnRegisterApp</b></font> will free all 
+		DMS DLLs whether or not any interfaces into the integration are still 
+		held.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; Because ODMJNI intervenes between the Java Application and 
+		the ODMA Connection Manager via the <b><font face="monospace">
+		OdmNative100</font></b> library, this situation is not possible.&nbsp;
+		<b><font face="monospace">OdmNative100</font></b> will not perform an
+		<font face="monospace"><b>OdmUnRegisterApp</b></font> until any 
+		interfaces that can involve access to a DMS integration are first 
+		released. <br>
+&nbsp;&nbsp;&nbsp; There is no caveat required about this.&nbsp; The design of 
+		ODMJNI does not permit performance of <b><font face="monospace">
+		OdmUnregisterApp</font></b> at a dangerous time.&nbsp; I must be careful 
+		in the further development of <b><font face="monospace">OdmNative100</font></b> 
+		for other, independent usage, however.&nbsp; This note is a reminder to 
+		account for that when the planned refactoring of <b><font face="monospace">
+		OdmNative100</font></b> occurs.&nbsp; There may be complications with 
+		the prospective use of additional DMS interfaces intended for COM-level 
+		discovery by future ODMA 2.5 clients.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2008-03-25-20:22 Format Checks Not Clear</b></dt>
+		<dd>The caveats about format checks don&#39;t reflect the principles I 
+		applied in coming up with what may be too-restrictive ones.&nbsp; I need 
+		to describe the motivation as well as the idea of choosing to err on the 
+		side of being too restrictive rather than too permissive, since 
+		restrictions can be dropped, but permissions are hard to remove.&nbsp; I 
+		am not sure where there is a good place to explain this yet.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2008-03-25-19:06 More Caveats</b></dt>
+		<dd>Every time I have documented some caveats, more occur to me.&nbsp; I 
+		think I have all that I can think of for now, so I just need to complete 
+		the ones listed in my work items. I will request review to see if others 
+		recall ones that I have forgotten.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2008-03-19-17:51 <font face="monospace">ODMASAMP</font> Uses
+		<font face="monospace">C:\WINDOWS\ODMASAMP.INI</font> File</b></dt>
+		<dd>The use of an <b><font face="monospace">.INI</font></b> file in the 
+		Windows directory will fail on Vista, even with administrator 
+		privileges.&nbsp; The file will be created in a redirected temporary 
+		that is not found by the running of <b> <font face="monospace">ODMASAMP</font></b> 
+		again in a later process.&nbsp; The behavior is as if the <b> <font face="monospace">ODMASAMP</font></b> 
+		documents are being magically deleted.&nbsp; This has to be repaired for 
+		an <b> <font face="monospace">ODMASAMP</font></b> to be useful in the 
+		future.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-17-17:16 Regression Organization Still Lacking</b></dt>
+		<dd>I have been cleaning up the regression sets.&nbsp; It is a pain.&nbsp; 
+		I need a better-organized approach and more automation.&nbsp; Also, 
+		there needs to be automated analysis of the results so I can tell 
+		quickly whether the expected behavior occurred or not.&nbsp; None of 
+		this is going to be solved overnight.&nbsp; I need to just improve with 
+		each release from now on.&nbsp; There may be no decent solution until we 
+		get to the 0.90 Hardening distribution.&nbsp; To do this thoroughly, we 
+		will need to have test fixtures beneath the ODMA Connection Manager, so 
+		there are some interesting dependencies of this work on the early 
+		progression to ODMA 2.5.&nbsp; <br>
+&nbsp;&nbsp; <i><b>See also:</b></i> <b>d071002:
+		<a href="../../2007/10/d071002.htm">Envisioning ODMA64</a></b><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-16-22:00 <font face="monospace">ODMASAMP</font> Requires 
+		Admin for New Documents</b></dt>
+		<dd>Among the many idiosyncrasies of the sample DMS, one is that it 
+		loses any document that is not created while running as an 
+		administrator.&nbsp; I&#39;m not sure what the details are (use of registry 
+		or access to a system directory), but it just fails silently.&nbsp; Of 
+		course, any time there is a temp-directory cleanup, the older documents 
+		vanish too, although they remain in the sample DMS directory of 
+		documents available for selection.&nbsp; Just venting.&nbsp; The ability 
+		to start a console session as administrator has been sufficient as a 
+		workaround, as demonstrated in the screen captures of the 0.59 
+		regression checks.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-11-16-17:00 Oh, Missed <font face="monospace">OdmFormat</font> 
+		Usage in <font face="monospace">CheckKnown</font></b></dt>
+		<dd>It happens that <b><font face="monospace">CheckKnown</font></b> in 
+		regression set <b><font face="monospace">Check04</font></b> uses <b>
+		<font face="monospace">OdmFormat</font></b>.&nbsp; I never looked.&nbsp; 
+		I saw it when looking for <b><font face="monospace">viewOnly</font></b> 
+		usages.&nbsp; I got that clue and did searches in all three of those to 
+		make sure that I found all use of deprecated elements.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-13-14:43 Regression Setup Complete</b></dt>
+		<dd>I am satisfied with the organization of the pre-0.59 regression sets 
+		and the <b>
+	<font face="monospace">0.59-odmjni100</font></b> regression set.&nbsp; 
+		Although more documentation and organization can be added to the 
+		provisional material at any time, everything is ready for the first 
+		zigzag of changes from <b>
+	<font face="monospace">practical100</font></b> to <b>
+	<font face="monospace">odmjni100</font></b>.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-10-18:28 Extending Test Development into the ZigZag</b></dt>
+		<dd>The development of new regression tests needs to follow along with 
+		incremental introduction of 0.59 changes over the 0.58 base.&nbsp; To 
+		accomplish that, copies of the pre-0.59 regression checks are used to 
+		form a provisional 0.59 set.&nbsp; <br>
+&nbsp;&nbsp; For each adjustment to <b>
+	<font face="monospace">odmjni100</font></b> code, the pre-0.59 
+		regression-checks will be confirmed.&nbsp; <br>
+&nbsp;&nbsp; But then any changes that can be made to a set of prospective 0.59 
+		regression-checks will also be made and used as a regression check for 
+		0.59/0.60 features.&nbsp; <br>
+&nbsp;&nbsp; To accomplish this, the 0.59/0.60 development of regression tests 
+		is being started now and will proceed in parallel with the zigzag of 
+		changes between <b>
+	<font face="monospace">practical100</font></b> and <b>
+	<font face="monospace">odmjni100</font></b>.</dd>
+		<dd>&nbsp;&nbsp; One consequence of this approach is that I won&#39;t know 
+		what pre-0.59 checks can be preserved unchanged and how simple the 
+		change may be.&nbsp; This exercise will doubtless prove that the current 
+		tests are inadequate and don&#39;t exercise enough cases.&nbsp; That is 
+		something to be dealt with over time as other developments increase the 
+		ability to refine the testing procedures and, especially, allow for 
+		greater automation of regression testing.</dd>
+		<dd>&nbsp;&nbsp; At the end of the zigzag process, I can then see which 
+		tests are the ones to support with better documentation and other 
+		additions for being useful into 0.60 and beyond.&nbsp; I won&#39;t be fussy 
+		about the tests that do not survive 0.59.<br>
+&nbsp;&nbsp; It is possible that an 0.60 constraint will be missed, but that 
+		will be factored back into this set if discovered during the upgraded 
+		for 0.60 release.&nbsp; <br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-08-17:55 Need Better Regression-Folder Names</b></dt>
+		<dd>When I chose <b><font face="monospace">0.30-regression</font></b> as 
+		the name of the <b>
+	<font face="monospace">practical100</font></b> set, I wasn&#39;t thinking ahead 
+		to when the regression sets might be carried with the run-time and not 
+		be differentiated by being under the <b>
+	<font face="monospace">practical100</font></b> or <b>
+	<font face="monospace">odmjni100</font></b> code trees.&nbsp; At the moment 
+		there is no collision, but I need to think this through and get it done 
+		properly now.&nbsp; The simple step is to replace &quot;<b><font face="monospace">regression</font></b>&quot; 
+		by the package name, whether <b>
+	<font face="monospace">practical100</font></b> or <b>
+	<font face="monospace">odmjni100</font></b>.&nbsp; There is still more to 
+		think about as some of the tests change and others do not.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-08-17:16 Examine Existing Tests to Make Into Regressions</b></dt>
+		<dd>Not having previously thought about making regression tests out of 
+		my confirmation tests, I had not made any effort to avoid recompiling 
+		classes when the source code hadn&#39;t changed.&nbsp; I also am not clear 
+		what happened with the tests as they were progressed through the 0.5x 
+		series of deployments.<br>
+&nbsp;&nbsp; The <b><font face="monospace">OdmClicker</font></b> test 
+		application was last modified with 0.54beta.&nbsp; It requires the 
+		changes in <b><font face="monospace">OdmJniBind.application</font></b> 
+		from 0.52beta.&nbsp; It should work with 0.52beta as well, although 
+		incorrect character conversions might show through from 0.52beta.<br>
+&nbsp;&nbsp; The <b><font face="monospace">Check04</font></b> set of test 
+		console applications should operate properly all the way back to 
+		0.50beta, even though <b><font face="monospace">CheckKnown</font></b> 
+		was not introduced until 0.57beta.&nbsp; The shared <b>
+		<font face="monospace">CheckUtil</font></b> class was modified in 
+		0.57beta but its native-method <b><font face="monospace">CheckUtil.dll</font></b> 
+		was not touched.&nbsp; It seems that all of these are backward 
+		compatible for operation with all 0.5x drops.<br>
+&nbsp;&nbsp; I had forgotten that, in 0.58beta, I updated <b>
+		<font face="monospace">RunCheck.bat</font></b> to accept the name of the 
+		class to run and to accept an optional addition to the class path so 
+		that testing with the run-time jar could be done using the same script.&nbsp; 
+		The default the class paths are those of the source-code tree set in <b>
+		<font face="monospace">OdmJava.bat</font></b>.&nbsp; The run-time jar is 
+		assumed to be at that point or somewhere below it, and the additional 
+		path segment (at least &quot;<b><font face="monospace">\</font></b>&quot;) and the
+		<b><font face="monospace">.jar</font></b> filename are accepted as the 
+		optional parameter.&nbsp; I will build on this method.</dd>
+		<dd>&nbsp;&nbsp; [<b>update 2007-10-10:</b> I also forgot that I had 
+		made a <b><font face="monospace">Clicker.jar</font></b> as part of the 
+		installation check included in the 0.58 run-time package.&nbsp; I am 
+		much closer to having an end-to-end regression structure that I can use, 
+		and have already tried out parts that I&#39;d forgotten about.&nbsp; Some 
+		dots are already connected.]<br>
+&nbsp;&nbsp; </dd>
+		<dt><b>2007-10-04-17:57 Use of Zigzag Development Progression</b></dt>
+		<dd>It was not until I started to introduce this material (0.02) that I 
+		saw that I needed finer-grained feature-by-feature zigzag changing and 
+		testing of <b>
+	<font face="monospace">practical100</font></b> and then
+
+
+<small>
+	<b><font face="monospace" size="3">
+					odmjni100</font></b></small>.&nbsp; This has been rippled 
+		over to the other materials.&nbsp; It will also impact packaging in how 
+		the regression tests are made avaiable as confirmation tests in the 
+		runtime distribution.</dd>
+	</dl>
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 <font face="Courier New, Courier, Monospace"><b>
+		info.odma.odmjni100</b></font> 0.59 Transition Candidate Implementation.&nbsp; AIIM ODMA Interoperability Exchange, ODMdev 
+		Development Note page d061101o 0.13, March 27, 2008.&nbsp; Available 
+		with any downloadable software at &lt;<b><font face="monospace"><a href="d061101o.htm">http://ODMA.info/dev/devNotes/2006/11/d061101o.htm</a></font></b>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.14">0.14</a> 2008-03-30-17:41 Complete Packaging</b></dt>
+	<dd>The packaging of the 0.59beta material is completed.&nbsp; </dd>
+	<dt><b><a name="0.13">0.13</a> 2008-03-27-17:59 Complete Additional Caveats</b></dt>
+	<dd>A large number of caveats are being compiled as a way to warn developers 
+	prior to the availability of specific documentation.</dd>
+	<dt><b><a name="0.12">0.12</a> 2008-03-20-12:20 Add Caveat on Finalizing</b></dt>
+	<dd>The problem of ensuring release of interface implementations is added to 
+	the caveats.</dd>
+	<dt><b><a name="0.11">0.11</a> 2008-03-19-17:56 Complete This Note</b></dt>
+	<dd>This note is completed except for completion of the downloads.&nbsp; 
+	When those are completed, stage 4.6 will be complete and stage 4.7 will be 
+	pending.</dd>
+	<dt><b><a name="0.10">0.10</a> 2007-12-01-13:23 Complete Packaging of the 
+	Regression Sets</b></dt>
+	<dd>The three regression sets are packaged and posted in the Confirmation 
+	Tests folio.</dd>
+	<dt><b><a name="0.09">0.09</a> 2007-11-17-18:37 Complete Metadata and 
+	Document Refactoring Adjustments</b></dt>
+	<dd>The classes are adjusted to honor the refactored interfaces of 
+	practical100.&nbsp; Deprecated elements and their replacements are 
+	documented and the notChangeable method is implemented.</dd>
+	<dt><b><a name="0.08">0.08</a> 2007-11-11-15:06 Complete formatCheck 
+	Adjustments</b></dt>
+	<dd>The adjustments to deliver OdmFormatCheck interfaces via formatCheck 
+	methods are made, along with corrections to be able to extend from classes 
+	of the 0.59 practical100 classes and implement the adjusted interfaces.&nbsp;
+	</dd>
+	<dt><b><a name="0.07">0.07</a> 2007-10-31-17:20 Complete Format-Exception 
+	Adjustments</b></dt>
+	<dd>The Release Notes are updated to reflect the completion of the changes 
+	and the final testing of the changes.</dd>
+	<dt><b><a name="0.06">0.06</a> 2007-10-23-22:48 Intermediate Update</b></dt>
+	<dd>The results of the removal of exceptions for ill-formed string-valued 
+	parameters remain to be documented, but the steps and their regression are 
+	accounted for.</dd>
+	<dt><b><a name="0.05">0.05</a> 2007-10-13-14:47 Refine Regression Setup</b></dt>
+	<dd>The pre-0.59 set is organized better and then the 0.59/0.60 provisional 
+	set is created using those sets for starter regression checks.</dd>
+	<dt><b><a name="0.04">0.04</a> 2007-10-10-19:56 Complete Setup of Regression 
+	Development</b></dt>
+	<dd>The relevant existing tests are captured into regression sets and then 
+	also cloned as the starting point for new tests to be evolved as the 0.59 
+	changes are introduced.</dd>
+	<dt><b><a name="0.03">0.03</a> 2007-10-07-18:03 Analyze Available 
+	Regressions to Freeze</b></dt>
+	<dd>I looked over the available confirmation tests and now understand which 
+	ones depend on what levels of runtime and what I need to do to preserve them 
+	as a pre-0.59 regression set.</dd>
+	<dt><b><a name="0.02">0.02</a> 2007-10-04-17:59 Complete Development 
+	Progression</b></dt>
+	<dt><b><a name="0.01">0.01</a> 2007-09-25-14:54 Provide Initial Structure for 0.59beta</b></dt>
+	<dd>I corrected the name one more time to transition candidate rather than 
+	candidate transition.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-09-24-22:45 Provide Placeholder for 
+	Material</b></dt>
+	<dd>Create placeholder that will be populated with information as the 
+	0.59beta Transition Candidate is defined and then implemented.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="66%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2007-09-24-17:57 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 08-03-30 17:45 $<br>
+      $$Revision: 42 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html><head><title>Interfaces and Methods: IdmaClassDescription</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaClassDescription"></a>IdmaClassDescription</h2>
+<p>Class Descriptions are DMA objects that provide a meta-data description and a constructor for a class of DMA objects.
+</p><p>
+The IdmaClassDescription interface provides specialized methods supported by Class Description objects.  The interface allows constructing an object of the described class, and testing if an object is in a class.</p></p>
+<h3><a name="IdmaClassDescriptionCreateInstance"></a>IdmaClassDescription::CreateInstance</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaClassDescription::CreateInstance</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIObject</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIObject</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface for the object created, which will be NULL if unsuccessful.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Creates a new transient object described by this Class Description object.  The new object’s properties will be assigned default values, and can be changed using the IdmaEditProperties interface.  The new object may be made persistent using the IdmaConnection::ExecuteChange method.
+</p><p>
+If the returned object does not support the interface specified by riid, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned.  In case the operation is successful, the returned interface must be released using the method IUnknown::Release.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaClassDescriptionIsOfClass"></a>IdmaClassDescription::IsOfClass</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaClassDescription::IsOfClass</b> (<br>
+pDmaId    <i>pClassId</i>,<br>pDmaBoolean    <i>pbIsOfClass</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pClassId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the class.</p></TD></TR>
+<TR><TD><p><i>pbIsOfClass</i></p></TD><TD><p>output</p></TD><TD><p>Returns DMA_TRUE if the object conforms to the selected Class Id.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns DMA_TRUE if and only if the described class conforms to the class specified by <i>pClassId.</i> To be conformant, the specified class ID must be an identifier for a class for which the described class is a subclass. All DMA Class Description objects should return DMA_TRUE if the specified class ID is dmaClass_DMA. (See also IdmaObject::IsOfClass for a similar method on any DMA object).</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_CLASSID</p></TD><TD><p>The supplied identifier does not reference an available class of object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

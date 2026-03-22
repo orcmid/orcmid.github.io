@@ -1,0 +1,66 @@
+<html><head><title>dmaClass_Rendition Reference</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff"><h3>
+ dmaClass_Rendition</h3><p>
+Represents the content of the DocVersion in a particular format.<p><b>Class ID:</b> dmaClass_Rendition<br>
+<b>Superclass:</b> <A href="dmaClass_DMA.html">DMA</A><br>
+<h4><b>Interfaces</b></h4><a href="IUnknown.html" > IUnknown</a><br><a href="IdmaObject.html" > IdmaObject</a><br><a href="IdmaProperties.html" > IdmaProperties</a><br><a href="IdmaEditProperties.html" > IdmaEditProperties</a> [Optional]
+<h4><b>Properties</b></h4><p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Impl. Required</b></p></TD><TD><p><b>System Gen'ed</b></p></TD><TD><p><b>Read-Only</b></p></TD>
+<TD><p><b>Value Required</b></p></TD><TD><p><b>Type</b></p></TD><TD><p><b>Cardinality</b></p></TD><TD><p><b>Required Class</b></p></TD></TR><TR><TD><p><A name="TdmaProp_OIID">OIID</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ClassDescription">Class Description</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Class Description</p></TD></TR><TR><TD><p><A name="TdmaProp_This">This</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Object</p></TD><TD><p>Scalar</p></TD><TD><p>
+Rendition</p></TD></TR><TR><TD><p><A name="TdmaProp_CreatePending">Create Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_UpdatePending">Update Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_DeletePending">Delete Pending</A></p></TD><TD><p>-</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>Boolean</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_RenditionType">Rendition Type</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Yes</p></TD><TD><p>String</p></TD><TD><p>Scalar</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ContentElementsPresent">Content Elements Present</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>Yes</p></TD><TD><p>Yes</p></TD><TD><p>-</p></TD><TD><p>String</p></TD><TD><p>List</p></TD><TD><p>
+</p></TD></TR><TR><TD><p><A name="TdmaProp_ContentElements">Content Elements</A></p></TD><TD><p>Yes</p></TD>
+<TD><p>-</p></TD><TD><p>-</p></TD><TD><p>-</p></TD><TD><p>Object</p></TD><TD><p>List</p></TD><TD><p>
+Content Element</p></TD></TR></TABLE><h4><b>Detailed Description</b></h4><p>
+<p>A Rendition contains the content of the Document Version in a particular file format.  It manages and provides access to all of the content material for that rendition.  The Rendition is intended to be sub-classed to support the specific characteristics of the various rendition types that exist (e.g., ASCII text, Word, PostScript, scanned image documents, SGML, OpenDoc, etc.).
+<p>A rendition object has a string valued property (rendition type) that differentiates the renditions of the document and is propagated by the system to the Renditions Present property of the parent document version.
+<p>Renditions are associated with a flat list of component content elements. The  Content Elements Present property is a system-generated list of strings which represent the types of these components.
+<h4><b>Property Descriptions</b></h4><p><b>• OIID     {<A name="dmaProp_OIID"></A><A href="dmaclass_rendition.html#TdmaProp_OIID">dmaProp_OIID</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Class Description     {<A name="dmaProp_ClassDescription"></A><A href="dmaclass_rendition.html#TdmaProp_ClassDescription">dmaProp_ClassDescription</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• This     {<A name="dmaProp_This"></A><A href="dmaclass_rendition.html#TdmaProp_This">dmaProp_This</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Create Pending     {<A name="dmaProp_CreatePending"></A><A href="dmaclass_rendition.html#TdmaProp_CreatePending">dmaProp_CreatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Update Pending     {<A name="dmaProp_UpdatePending"></A><A href="dmaclass_rendition.html#TdmaProp_UpdatePending">dmaProp_UpdatePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Delete Pending     {<A name="dmaProp_DeletePending"></A><A href="dmaclass_rendition.html#TdmaProp_DeletePending">dmaProp_DeletePending</A>}</b>
+<br><i>Property Inherited from DMA</i>
+<p><b>• Rendition Type     {<A name="dmaProp_RenditionType"></A><A href="dmaclass_rendition.html#TdmaProp_RenditionType">dmaProp_RenditionType</A>}</b>
+<p>
+Type of rendition
+</p><p>
+<p>A string indicating type of rendition.  These strings have the syntax "rendition_type_space::typename".  The syntax and semantics of the typename is specific to the rendition type space. DMA 1.0 defines one rendition type space, "MIME", whose values are legal MIME types as defined by the IANA. Examples are "MIME::application/postscript" or "MIME::text/plain".  Other rendition type spaces are anticipated.
+<p>
+</p>
+<p><a href="http://www.isi.edu:80/in-notes/iana/assignments/media-types/">MIME Rendition Types</a></p>
+<p><b>• Content Elements Present     {<A name="dmaProp_ContentElementsPresent"></A><A href="dmaclass_rendition.html#TdmaProp_ContentElementsPresent">dmaProp_ContentElementsPresent</A>}</b>
+<p>
+List of the component types of the content elements contained within this rendition at the time it was last made persistent.
+</p><p>
+<p>A system-generated (and read-only) ordered list of Strings which reflect the component types of the content elements in the rendition.
+<p>This property is static except over a Refresh of the parent DocVersion and does not dynamically track the state of the Content Elements list.  Therefore, the client application may not in general assume that the number or order of elements in this list correspond to that of the Content Elements list.
+<p>However, if neither the Content Elements list nor any of the content element objects it contains have been modified since the DocVersion was connected or last refreshed, then it is required that the two lists be synchronized.
+<p>
+</p>
+<p><b>• Content Elements     {<A name="dmaProp_ContentElements"></A><A href="dmaclass_rendition.html#TdmaProp_ContentElements">dmaProp_ContentElements</A>}</b>
+<p>
+List of Content Elements contained within this Rendition
+</p><p>
+<p>
+<p>
+</p>
+</body></html>

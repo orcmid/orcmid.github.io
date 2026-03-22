@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040802: Candling Phish </title>
+<!--$$Header: /A2HostingWeb/orcmid/BlunderDome/B040802.htm 28    26-03-22 14:13 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong><a href="./"><font color="#990033">BlunderLab</font></a></strong></font><font color="#990033"><strong> </strong></font>
+
+      <font color="#990033"><strong> <a href="B000001-log.htm"><font color="#990033">Notebook</font></a>
+      <a href="B000001-log.htm#B040802"><font color="#990033">B040802</font></a><br>
+      <i><big><big>Candling Phish</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="B040802.htm" target="_top">B040802</a>&gt;</code></b><br>
+      <a href="#0.00"><small>
+      <small>0.10</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<h2 align="left"><a name="Overview">Introduction</a></h2>
+
+<blockquote>
+  <p align="left">I happened to receive some phish e-mails while I was in the
+  midst of an <a href="../erudizione/M.ScIT/"> on-line course</a> in Information Security Engineering.&nbsp;
+  It was perfect time for my receiving some spam in my student
+  account, because the mail reader that we use for the computer-mediated distance
+  learning does not render HTML-formatted e-mail properly.&nbsp;&nbsp;</p>
+
+  <p align="left">When I realized from the message subject that one of the spam
+  had to be a phish, I was curious enough to look it over.&nbsp; And I found out
+  how it works.</p>
+
+  <p align="left">It is rather clever how some phish e-mail is arranged to hide
+  the URL of the phish-hook.&nbsp; Then pop-up techniques are used for
+  sleight-of-hand purposes and to prevent you from noticing that the spoof is in
+  front of a legitimate web page.&nbsp; I'll talk about that another
+  time.&nbsp;&nbsp;</p>
+
+  <p align="left">What I want to share with you right now is a way to detect a
+  wide class of spam and phish attacks from the safety of your in-basket.&nbsp;
+  You can do it now, it takes almost no effort, and it can be quite entertaining.</p>
+
+</blockquote>
+<h2 align="left"><a name="Angler">Angler in a Business Suit</a></h2>
+
+<blockquote>
+  <p align="left">I have a small collection of e-mail spam, viruses, and phish
+  attacks.&nbsp; Here's one exactly like the one that was received in the
+  in-basket for my on-line course.&nbsp; But it arrived in my Microsoft Outlook
+  in-basket, and it would look like this in Outlook Express, in Hotmail on-line,
+  and who knows where else:</p>
+
+  <p align="center"><a href="B040802.htm" target="_blank"><img border="0" src="B040802B.png" alt="This is a simulated phish image.  Do you reall want to click here?" width="667" height="730"></a></p>
+
+  <p align="left">I'm showing you this nearly full size so that you can
+  appreciate the impact of it.&nbsp; I have a trained eye and I already know
+  that this is a phish.&nbsp; I wouldn't be opening it now except there's
+  something I want you to see.&nbsp;&nbsp;&nbsp;</p>
+
+  <p align="left">I also disconnected from the internet before I opened this
+  email.&nbsp; I knew that I wasn't going to follow that apparent link even by
+  accident.&nbsp;&nbsp;</p>
+
+  <p align="left">For what we are about to do next, it is like letting the
+  dental assistant put the lead blanket over you.</p>
+
+</blockquote>
+<h2 align="left"><a name="X-Ray">Please Do Not Move Until the X-Ray Beeps</a></h2>
+
+<blockquote>
+  <p align="left">So, you've received this in your e-mail, wherever you receive
+  e-mail, and there's this nagging question.&nbsp; You've opened it, so your
+  guard is already down, but there's some hesitation.&nbsp; Here's what you do:</p>
+
+  <p align="left"><img border="0" src="B040802C.png" alt="Find the equivalent of this in your mail reader. You'll love it." width="187" height="213"></p>
+
+  <p align="left">Find the <b>Edit | Select All</b> menu item or its equivalent
+  in your mail reader.&nbsp; This is going to stick a gamma-ray candle behind
+  that message.&nbsp; Just do it, there's no harm.</p>
+
+</blockquote>
+<h2 align="left"><a name="LookyThere">Well Would You Look At That!</a></h2>
+
+<blockquote>
+  <p align="center"><a href="B040802.htm" target="_top"><img border="0" src="B040802D.png" alt="Uh excuse me, but if you wouldn't click on the phish, why would you click on this?" width="666" height="566"></a></p>
+
+  <p align="left"><b>Look at all of that nonsense!</b>&nbsp; Do you really think
+  Citibank hides secret messages in their e-mail?&nbsp; Well, maybe you do.</p>
+
+  <p align="left">There are two important things to notice, along with all of
+  the other give-aways that this is not a legitimate message:</p>
+
+  <ol>
+    <li>
+      <p align="left">The visible message is actually an image.&nbsp; That means
+      the URL in the image is not a link, it is a picture of a link.&nbsp; Since
+      there is a link behind the image (look at the change of cursor in the
+      first screen shot), it might be a phish-hook -- a well-hidden
+      phish-hook.&nbsp; Don't bite.</li>
+    <li>
+      <p align="left">I first thought the nonsense words were some sort of
+      secret message that phishers use for their anti-social purposes.&nbsp; Or
+      it is some kind of hacker's signature and bragging?&nbsp; Well, I have an
+      over-active imagination and it is simpler than that.&nbsp; It is so simple
+      that it is a death trap for this kind of spam.&nbsp; I'm not going to say
+      why here.&nbsp; I will let <a href="http://orcmid.com/blog/2004/08/candling-phish.asp"> readers of my blog</a> figure it out and report in
+      the comments to my blog about this.</li>
+  </ol>
+</blockquote>
+<h2 align="left"><a name="NowWhat">Now What?</a></h2>
+<blockquote>
+  <p align="left">First, make it a habit to &quot;candle&quot; mail that has
+  links in it, assuming you have bothered to open it and you just can't resist
+  thrill-seeking.</p>
+  <p align="left">Secondly, tell all your friends.&nbsp; If you have teen-agers,
+  or you are a teen-ager, tell and show <b>all</b> of your friends that are/have
+  teen-agers.&nbsp; And, once you figure out how that invisible ink works, <b>use
+  it</b>.&nbsp; Send notes to your friends, talk about your parents and
+  teachers, do all sorts of things that has those of you in the know go looking
+  for the secret messages.&nbsp; And most of all, <i><a href="http://alwaysuseprotection.com/" target="_top"><b>Always
+  Use Protection</b></a></i>.</p>
+</blockquote>
+<p align="left">I cannot believe how simple this is.&nbsp; I am beside
+myself.&nbsp; As Billy Connelly once said, &quot;wanking brilliant!&quot;&nbsp;
+Well, that was the gist of what he said.</p>
+<blockquote>
+  <p align="right"><i>-- Prof. Heinz Arnold Said von Clueless, DMV OHC BOB</i></p>
+</blockquote>
+
+  <hr color="#990033">
+
+<dl><small>
+     <dt><b><a name="0.10">0.10</a> 2004-08-29-18:40 Correct and Expand</b></dt>
+     <dd>Tidy up, add a <a href="B040802A.htm"> job jar</a>, and plant some links to other material.</dd>
+     <dt><b><a name="0.00">0.00</a> 2004-08-29-15:49 Initiate Provisional Version (<a href="../construction/orcmid.htm">orcmid</a>)</b></dt>
+  <dd>
+    Get a quickie version in place so that the images can be accessed
+    from a blog posting that has the essential part of this message and
+    illustration.</dd>
+</small></dl>
+
+
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm" target="_top"><img border="0" src="wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-08-03-15:47 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:13 $<br>
+      $$Revision: 28 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>ctgetdoc.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 by the Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  
+ *  Code example: retrieval of document content in DMA 1.0.
+ *
+ */
+
+#ifndef NULL
+#define NULL    0
+#endif
+
+// ANSI C header file
+#include &lt;stddef.h&gt;
+
+// DMA header files
+
+#include &lt;dmatypes.h&gt;
+#include &lt;dmastr.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmarc.h&gt;  
+#include &lt;dmacom.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+
+// Code example: retrieval of document content in DMA 1.0.
+
+// Assumes that connections to system and doc space have already been made
+// and that the doc id of the target document has been found
+// (by search or navigation)
+
+extern LPIdmaDocSpace iDocSpace; // Ref to interface for the connected doc space
+extern LPMALLOC iMalloc;    // An IMalloc interface obtained from IdmaSystemManager::GetMalloc
+
+// Utility that is assumed to exist
+extern Abort(DmaRC rc, char *msg);
+
+// DmaString utilities
+
+pDmaString MakeDmaString(DmaWChar* content)
+{
+    pDmaString newString;
+
+    DMA_CREATE_STRING(iMalloc-&gt;Alloc, wcslen(content), content, &amp;amp;newString)
+    return newString;
+}
+
+void FreeDMAString(pDmaString pString)
+{
+    DMA_FREE_STRING(iMalloc-&gt;Free, pString)
+    return;
+}
+
+
+// Procedure to retrieve content via docID to local file
+//    localFile is in URL form, e.g. "file://\\temp\foo.txt"
+// Retrieves only the first content element of the first rendition
+
+void MakeDocumentContentLocal(pDmaString documentID, wchar_t *localFile)
+{
+pDmaString              localFileURL = NULL;
+IdmaProperties*         iDocVer      = NULL;
+IdmaListOfObject*       iRenditions  = NULL;
+IdmaListOfObject*       iContentEls  = NULL;
+IdmaContentTransfer*    iFirstContent = NULL;
+IdmaProperties*         iFirstRendition = NULL;
+
+// Connect to the document version object.  This makes a snapshot
+// of the persistent doc ver in the client's process space.
+
+DmaRC rc = iDocSpace-&gt;ConnectObject (documentID, IID_IdmaProperties, 
+                                      (pDmapv)&amp;amp;iDocVer);
+if (rc != DMARC_OK)
+   Abort (rc, "Failed to connect to doc ver");
+
+// NOTE: for brevity, further error checking is omitted.  All DMA calls
+//   should be followed by code similar to the above
+
+//  Get the first rendition 
+rc = iDocVer-&gt;GetPropValObjectById(&amp;dmaProp_Renditions, IID_IdmaListOfObject,
+                                     (pDmapv) &amp;iRenditions);
+rc = iRenditions-&gt;GetObject(0, IID_IdmaProperties,(pDmapv)  &amp;iFirstRendition);
+
+// Get first content element
+rc = iFirstRendition-&gt;GetPropValObjectById(&amp;dmaProp_ContentElements,
+                       IID_IdmaListOfObject, (pDmapv) &amp;iContentEls);
+rc = iContentEls-&gt;GetObject(0, IID_IdmaContentTransfer,(pDmapv)  &amp;iFirstContent);
+
+// From the content transfer element, get a file access object,
+// and use it to copy the content to a local file
+localFileURL = MakeDmaString(localFile);
+
+rc = iFirstContent-&gt;CopyToResource (localFileURL, DMA_CREATE_REPLACE_EXISTING);
+
+// cleanup
+if (iRenditions != NULL) iRenditions-&gt;Release();
+if (iFirstRendition != NULL) iFirstRendition-&gt;Release();
+if (iContentEls!= NULL) iContentEls -&gt;Release();
+if (iFirstContent!= NULL) iFirstContent -&gt;Release();
+if (iDocVer != NULL) iDocVer-&gt;Release();
+FreeDMAString(localFileURL);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>
+

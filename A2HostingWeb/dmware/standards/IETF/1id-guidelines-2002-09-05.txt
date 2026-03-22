@@ -1,0 +1,235 @@
+Guidelines to Authors of Internet-Drafts
+Last modified September 5, 2002
+
+ALL submissions to the directories must be sent to internet-drafts@ietf.org
+
+	DO NOT SEND ZIP files. We will not open them.
+
+General Considerations
+======================
+
+The Internet-Drafts directories are available to provide authors with
+the ability to distribute and solicit comments on documents they may
+eventually submit to the IESG for publication as an RFC.
+Internet-Drafts are not an archival document series. These documents
+should not be cited or quoted in any formal document. Unrevised
+documents placed in the Internet-Drafts directories have a maximum life
+of six months. After that time, they must be updated, or they will be
+deleted. After a document becomes an RFC, it will be replaced in the
+Internet-Drafts Directories with an announcement to that effect.
+
+Internet-Drafts are generally in the format of an RFC, although they
+are expected to be rough drafts.  This format is specified fully in RFC
+2223.  In brief, an Internet-Draft must be submitted in ASCII text,
+limited to 72 characters per line and 58 lines per page, followed by a
+formfeed character.  Overstriking to achieve underlining is not
+acceptable.
+
+PostScript is acceptable, but only when submitted with a matching ASCII
+version (even if figures must be deleted).  PostScript should be
+formatted for use on 8.5x11 inch paper.  If A4 paper is used, an image
+area less than 10 inches high should be used to avoid printing extra
+pages when printed on 8.5x11 paper.
+
+There are differences between the RFC and Internet-Draft format.
+Internet-Drafts are NOT RFCs and are NOT a numbered document series.
+The words "INTERNET-DRAFT" should appear in the upper left hand corner
+of the first page.  The document should NOT refer to itself as an RFC
+or a draft RFC.
+
+The Internet-Draft should neither state nor imply that it has any
+standards status; to do so conflicts with the role of the RFC Editor
+and the IESG. The title of the document should not infer a status.
+Avoid the use of the terms Standard, Proposed, Draft, Experimental,
+Historic, Required, Recommended, Elective, or Restricted in the title
+of the Internet-Draft.
+
+
+Mandatory Statements
+====================
+
+All Internet-Drafts must begin with ONE of the following three
+statements:
+
+         This document is an Internet-Draft and is subject to
+         all provisions of Section 10 of RFC2026.
+
+         This document is an Internet-Draft and is subject to
+         all provisions of Section 10 of RFC2026 except that the
+         right to produce derivative works is not granted.
+
+         This document is an Internet-Draft and is NOT offered in
+         accordance with Section 10 of RFC2026, and the author does not
+         provide the IETF with any rights other than to publish as an
+         Internet-Draft
+
+
+Any submission which does not include one (and only one) of the above
+three statements will be returned to the submitter. The IETF
+Secretariat will NOT add this text.
+
+The first statement is required for all documents that might be
+submitted for Standards Track publication. The primary motivation is
+the the IETF retains change control, thus permitting augmenting the
+original document to clarify or enhance the protocol defined by the
+document.
+
+The second statment is used when "republishing" standards produced by
+other (non-IETF) standards organizations, industry consortia or
+individual companies. These are typically published as
+
+Informational RFCs, and does not require change control being ceded to
+the IETF. Basically, these documents convey information for the
+Internet community.
+
+The third statement is used when the documents purpose is to provide
+background information to educate and to facilitate discussions within
+IETF groups, but can NOT be the basis for any IETF Working Group
+activity.  This is driven by the concern that unless a document author
+agrees that it is subject to Section 10 of the Internet Standards
+process (RFC 2026), it is impossible for the IETF to ascertain whether
+or not there are any Intellectual Property rights issues with the
+document.
+
+
+The following verbatim statement must follow the optional opening
+sentence:
+
+     Internet-Drafts are working documents of the Internet Engineering
+     Task Force (IETF), its areas, and its working groups.  Note that
+     other groups may also distribute working documents as
+     Internet-Drafts.
+
+     Internet-Drafts are draft documents valid for a maximum of six
+     months and may be updated, replaced, or obsoleted by other
+     documents at any time.  It is inappropriate to use Internet-
+     Drafts as reference material or to cite them other than as
+     "work in progress."
+
+     The list of current Internet-Drafts can be accessed at
+     http://www.ietf.org/1id-abstracts.html
+
+     The list of Internet-Draft Shadow Directories can be accessed at
+     http://www.ietf.org/shadow.html
+
+Formatting
+==========
+
+Every Internet-Draft must have an Abstract section. The Abstract should
+provide a concise and comprehensive overview of the purpose and
+contents of the entire document. Its purpose is to give a technically
+knowledgable reader a general overview of the function of the document,
+to decide whether reading it will be useful. In addition to its
+function in the document, the Abstract section is used as a summary in
+publication announcements and in the online index of Internet-Drafts
+(1id-abstracts.txt).
+
+
+Composing a useful Abstract is a non-trivial writing task. Often, a
+satisfactory abstract can be constructed in part from material from the
+Introduction section, but a good abstract will be shorter, less
+detailed, and broader in scope than the Introduction. Simply copying
+and pasting the first few paragraphs of the Introduction is tempting,
+but it generally results in an Abstract that is both incomplete and
+redundant.
+
+An Abstract will typically be 5-10 lines, but an Abstract of more than
+20 lines or less than 3 lines is generally useless and will not be
+acceptable.
+
+An Abstract should be complete in itself, so it should contain no
+citations unless they are completely defined within the Abstract.
+Mnemonics appearing in the Abstract should generally be expanded in
+parentheses. There is a small set of reasonable exceptions to this
+rule; for example, readers don't need to be reminded of what "IP" or
+"TCP" or "MIB" means. In the end, therefore, this is a judgment call,
+but please err on the side of explicitness.
+
+In addition, the Internet-Draft should contain a section giving name
+and contact information (postal mail, voice/fax number and/or e-mail)
+for the authors.
+
+All Internet-Drafts should contain the full filename (beginning with
+draft- and including the version number) in the text of the document.
+The filename information should, at a minimum, appear on the first page
+(possibly with the title). Internet-Draft filenames use lowercase
+characters ONLY.
+
+It is strongly recommended that the draft include a notice (with email
+address) of where comments should be sent.
+
+A document expiration date must appear on the first and last page of
+the Internet-Draft.  The expiration date is six months following the
+submission of the document as an Internet-Draft. Use of the phrase
+"expires in six months" is not acceptable.
+
+Internet-Drafts must be in ASCII. No 8bit chars are currently allowed.
+If you need to include codepoints, a suggestion might be to use the
+unicode convention: U+XXXX, where X is a hexadecimal digit.
+
+If the Internet-Draft is lengthy, please include, on the second page, a
+table of contents to make the document easier to reference.
+
+
+Submitting
+==========
+
+For those authors submitting updates to existing Internet-Drafts, the
+choice of the file name is easily determined (up the version by 1).
+For new documents, either suggest one or send a message to
+"internet-drafts@ietf.org" with the document title, noting if it is a
+product of a working group (and the name of the group), and an
+abstract. The file name to be assigned will be included in a response.
+Simply add the filename text to the document (ASCII and PostScript
+versions) and submit the Internet-Draft.
+
+If the document is a new one (i.e. starting with revision -00.txt) and
+is submitted as a working group document, the IETF secretariat will ask
+the chair(s) of the wg the permission to publish it as a working group
+document.  To expedite the process, authors are encouraged to send the
+document to internet-drafts@ietf.org and at the same time cc: to the
+chair(s) of the working group.  If the document is accepted as a
+working group document, then it will have the draft-ietf-<working group
+acronym> file name and will be announced on the working group mailing
+list by the IETF Secretariat.  If the document is not accepted as a
+working group document, it will be processed as an individual
+submission, where the filename will be draft-<yourname>-....txt.
+
+NOTE: Revision numbers are based on the filename (as in first, second,
+      or third version of this document). If there is a filename
+change, the version number starts over at -00. Put another way, the
+prior version number will NOT be incremented when an Internet-Draft
+filename has changed. ALL FILES BEGIN at -00
+
+Before each IETF meeting, a deadline is announced for submitting
+documents ahead of time to be published for the meeting. For new
+documents, he deadline is even sooner (one week). There is no accepted
+delay. If you send at the very last minute, it is possible that it will
+arrive too late because of congestion of your mail server queues.  If
+it is received too late, it will not be published on time for the IETF
+meeting.
+
+Note that if a filename is suggested, but not used, the document will
+have to be resubmitted with the actual file name.
+
+
+Intellectual Property Rights
+============================
+
+If you think that you own an IPR on the work described in the draft,
+you should read carefully RFC 2026. If you intend to inform the IETF
+about the IPR, you should consider sending a statement to the IETF
+Executive Director as described in RFC 2026, section 10.3.2 C). Before
+submitting the draft, it would be a good advice to talk to the working
+group chair or area directors about it.
+
+References
+==========
+
+The IETF process is described in RFC 2026
+(http://www.ietf.org/rfc/rfc2026.txt).
+This document is for helping authors. The normative reference is RFC 2026.
+
+Another good reference is the web page on Submitting Internet-Drafts to
+the IESG (http://www.ietf.org/ID-nits.html).'
+

@@ -1,0 +1,67 @@
+<html><head><title>Interfaces and Methods: IdmaSystemManager</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaSystemManager"></a>IdmaSystemManager</h2>
+<p>The System Manager interface is an application’s access to the DMA information that is visible to and available at a point of access.  It is also used by DMA-compliant applications to enumerate and connect to registered systems.</p>
+<h3><a name="IdmaSystemManagerConnectSystem"></a>IdmaSystemManager::ConnectSystem</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystemManager::ConnectSystem</b> (<br>
+pDmaId    <i>pSystemId</i>,<br>pDmaString    <i>pLocaleName</i>,<br>DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppISystem</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pSystemId</i></p></TD><TD><p>input</p></TD><TD><p>The System Id which uniquely identifies the system configuration to connect to.</p></TD></TR>
+<TR><TD><p><i>pLocaleName</i></p></TD><TD><p>input</p></TD><TD><p>The name of the locale to be used by the returned system object.  If this parameter is NULL, the system object is to employ its default locale.If this parameter is non-NULL and does not correspond to a locale supported by this system object, the system object will utilize its default locale.</p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppISystem</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface for the System object, which will be NULL if unsuccessful. </p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns an interface that provides a (usually unauthenticated) DMA System object representing the indicated DMA System. If the operation succeeds, a new System Object is returned, representing a point-of-access view of the identified system.  Each System Object returned by IdmaSystemManager::ConnectSystem is a distinct instance.
+</p><p>
+In general, the IdmaAuthentication interface must be exercised on the returned DMA System object before the object can be used for anything other than inspecting the system’s non-object valued properties.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping these return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NETWORK_UNAVAILABLE</p></TD><TD><p>The network needed to perform this operation is not available.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_FOUND</p></TD><TD><p>Requested item not found.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaSystemManagerEnumerateSystems"></a>IdmaSystemManager::EnumerateSystems</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystemManager::EnumerateSystems</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIEnumOfSystem</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on resulting object.</p></TD></TR>
+<TR><TD><p><i>ppIEnumOfSystem</i></p></TD><TD><p>output</p></TD><TD><p>Returns a reference to the requested interface or NULL if unsuccessful. </p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>TThe IdmaSystemManager::EnumerateSystems function returns an interface (typically IdmaEnumOfObject) to a COM object which the caller can use to enumerate DMA System objects which the System Manager was able to locate and connect to via IdmaSystemManager::ConnectSystem (using the character set encoding id and locale name parameters specified in a prior call to dmaConnectSystemManager).
+</p><p>
+In general, the IdmaAuthentication interface must be exercised on the returned DMA System object before the object can be used for anything other than inspecting the System's non-object valued properties.
+</p><p>
+There is a small well defined set of DMA return codes returned from this method. There is no DMA supplied mechanism for mapping these return codes into a meaningful message (e.g., IdmaSystem::GetResultCodeDescription), until a DMA System object becomes available.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaSystemManagerGetMalloc"></a>IdmaSystemManager::GetMalloc</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaSystemManager::GetMalloc</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIMalloc</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>Interface Identifier for the desired interface on the system manager’s  Memory Management object.</p></TD></TR>
+<TR><TD><p><i>ppIMalloc</i></p></TD><TD><p>output</p></TD><TD><p>Returns the selected interface of the COM Memory Management object used by this DMA System Manager and its children.  This is an interface of the object whose interface was supplied as the pIMalloc parameter of the dmaConnectSystem-Manager operation if that parameter was non-NULL, otherwise it is an interface on the COM Memory Management object that the System Manager supplied.  This is always the correct Memory Manager to use for freeing data referenced by non-interface output pointers returned from methods on this System Manager object or  its children.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Returns the selected interface for the memory manager used by this DMA System Manager object. This is the memory manager used for all allocations of data passed to the client as a result of a DMA method call. This interface must be used to free any of that data when the returned pointer is no longer needed.
+</p><p>
+See the Component Object Model specification for a complete definition of the IMalloc interface. The following specialized methods are included in this interface: Alloc, Free, Realloc, GetSize, DidAlloc, HeapMinimize. The interface specification does not require that all of these methods be supported by the object supplying the interface.
+</p><p>
+If the returned object does not support the interface specified by the riid parameter, the operation will fail and the result code DMARC_BAD_INTERFACE will be returned. In case the operation is successful, the returned interface must be released using the method IUnknown::Release.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INTERFACE</p></TD><TD><p>(E_NOINTERFACE) The requested interface is not supported by this object.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+</body></html>

@@ -1,0 +1,203 @@
+<html>
+
+<head>
+<title>n010204: Framework Versus Structure</title>
+<!--$$Header: /miserCompagno/notes/2001/02/n010204.htm 19    17-08-29 16:40 Orcmid $-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="../../n000001.htm#n010204"><font color="#990033">n010204</font></a><br /> 
+      
+      
+
+      	<i><font size="5">Framework versus Structure</font></i></font></b></font></p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">notes</a>&gt;<br>
+		<a href="../" target="_top">2001</a>&gt;<a target="_top" href="./">02</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="n010204.htm">n010204</a>&gt;</code></b><br>
+      <small><small><a href="#v0.01">0.01</a> 
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2017-08-29 16:40<!--webbot bot="Timestamp" endspan i-checksum="25258" --></small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+    <hr color="#990033">
+<blockquote>
+	<p align="left">When this note was originally conceived, I used &quot;framework&quot; 
+	in reference to the tacit context relied upon in the presentation of 
+	algorithms and also of mathematics.&nbsp; I have elsewhere used &quot;toolcraft&quot; 
+	to signify the orientation to a particular technology, especially with 
+	regard to the tools used in production of computer programs in a given 
+	community.</p>
+	<p align="left">In looking through my notebooks from that time, I find no 
+	clues to how I meant &quot;structure&quot; to be understood.&nbsp; The sense of 
+	&quot;mathematical structure&quot; does not seem to apply.&nbsp; It could, but I don&#39;t 
+	see how that figures in the context where algorithms and programs are 
+	considered different.&nbsp; That&#39;s where this topic arose originally.</p>
+	<p align="left">What is clear from where these terms are used in related 
+	notes is that frameworks are tacit and structures have the tacit made 
+	explicit.&nbsp; Either way there are incidental matters that need to be 
+	recognized as merely-incidental, and tacit matters that cannot be avoided.</p>
+	<p align="left">In my notes, I said &quot;Consider that we arrange a way for data 
+	types to always be typical of their class.&quot;&nbsp; In this case, I meant that 
+	data of a type is not divorced from the class for which it represents an 
+	instance.</p>
+	<p align="left">I do think that is the key.&nbsp; By structure I meant the 
+	data values not being separated from their type.&nbsp; The structure within 
+	which a value is understood is inseparable from the instance of a value.</p>
+	<p align="left">This may be equivalent to considerations of abstract data 
+	type.&nbsp; I&#39;m not entirely certain of that.&nbsp; But that can be 
+	sufficient for now.</p>
+	<p align="left">Below are some extracts that may provide more sense of this.&nbsp;
+	</p>
+	<p align="right">-- Dennis E. Hamilton<br>
+	Seattle, Washington<br>
+	2014-03-31</p>
+</blockquote>
+<h2 align="left">Selected Observations</h2>
+<blockquote>
+  <p>The usual statement of an algorithm relies on a supposedly pre-existing 
+	framework.&nbsp; There is an implicit framework.&nbsp; It is useful to 
+	notice (1) how much of it we take for granted in reading an algorithm&#39;s 
+	description and (2) how much the author of this description takes for 
+	granted about what needs to be said and what can be left as understood.</p>
+	<p>...</p>
+	<p>Every expression of an algorithm has baggage.&nbsp; This includes 
+	assumptions about the existence of orderings, the assumption of 0-origin 
+	indexing, the use of natural numbers for indexes, and the stability of the 
+	objects involved.&nbsp; That the algorithm is effectively carried out 
+	atomically, while itself being composed of definite steps, is a key 
+	assumption in almost all expression of algorithms.&nbsp; This is part of the 
+	framework.</p>
+	<p>Then there is the simple use of ordinary language along with borrowing of 
+	mathematical objects and notations, all more framework for expressing 
+	algorithms.&nbsp;&nbsp;</p>
+	<p>...</p>
+</blockquote>
+<div style="border-style: none">
+	<blockquote>
+		<p align="left">Consider that the level of abstraction for statements of 
+		algorithms might need to be improved.&nbsp;&nbsp;</p>
+		<p align="left">One way is to notice that the objects appealed to in the 
+		statement of the algorithm might be at the wrong level of abstraction.&nbsp; 
+		A large part of the baggage might be a consequence of the level at which 
+		certain entities, such as ordered lists, are dealt with, in contrast 
+		with assumptions about indexing over storage structures, for example.</p>
+		<p align="left">Another approach is to make reliance on abstract 
+		elements explicit rather than tacit.&nbsp; What we might get to is a 
+		form of expression of algorithms that can be taken as concrete, given a 
+		representation of the abstract elements.&nbsp;&nbsp; </p>
+		<p align="left">...</p>
+	</blockquote>
+</div>
+<blockquote>
+	<p align="left">Consider that we arrange a way for data types to always be 
+	typical of their class.&nbsp; </p>
+</blockquote>
+
+
+<h2 align="left"><i><a name="References">Related Material</a></i>
+        </h2>
+<ul>
+	<li>
+	<p align="left"><b>n010204b: <a href="n010204b.htm">Framework versus 
+	Structure [latest]</a></b></li>
+<li>
+<p align="left"><b>n010204c: <a href="n010204c.htm">Initial Notes</a></b></li>
+<li>
+<p align="left"><b>n010204a: <a href="n010204a.htm">Diary &amp; Job Jar</a></b><br>
+&nbsp;&nbsp; </li>
+<li>
+<p align="left"><b>n020201: <a href="n010201.htm">Manifest Abstractions</a></b></li>
+<li>
+<p align="left"><b>n020202: <a href="n010202.htm">Homage to the Bit</a></b></li>
+<li>
+<p align="left"><b>n020205: <a href="n010205.htm">Programs Are Rarely Algorithms</a></b></li>
+<li>
+<p align="left"><b>n020207: <a href="n010207.htm">What&#39;s an Algorithm?</a></b></li>
+</ul>
+<hr color="#990033">
+
+
+<h3 align="left"><i><a name="History">History</a></i></h3>
+
+<dl><font size="-1">
+	<dt><b><a name="v0.01">0.01</a> 2014-03-31-11:45 Transpose to Folio Cover 
+	Page</b></dt>
+	<dd>The material is split to n010204c and this page becomes the folio cover 
+	with an initial placeholder about the concepts involved.</dd>
+	<dt><b><a name="v0.00">0.00</a> 2002-12-07-22:39 Split off from Orcmid 
+	Reading R010101a to provide initial material</b> (orcmid).</dt>
+	<dd>The original too-comprehensive note is pasted here as a boilerplate to 
+	be distilled down to the basic Framework Versus Structure discussion, if I 
+	can remember what I had in mind.</dd></font>
+</dl>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" --></td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2002-12-07-22:39 -0800 (pst) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 17-08-29 16:40 $<br>
+		$$Revision: 19 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</div>
+<p align="right">&nbsp;</p>
+
+</body>
+</html>

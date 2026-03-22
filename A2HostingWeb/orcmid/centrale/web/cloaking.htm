@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Cloaking Impact on Centrale Web</title>
+<!--$$Header: /A2HostingWeb/orcmid/centrale/web/cloaking.htm 30    26-03-22 14:17 Orcmid $-->
+<base target="_top">
+</head>
+
+<body stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="42469" -->
+
+
+    </td>
+
+    <td width="53%" height="6"><p align="center"><font color="#990033"><strong><i>Centrale 
+      Web<br><big><big>
+      Web Cloaking</big></big></i></strong></font></p>
+    </td>
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../../" target="_top">orcmid</a>&gt;<br>
+      <a href="../" target="_top">centrale</a>&gt;<br>
+      <a href="./">web</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="cloaking.htm" target="_top">cloaking</a>&gt;</code></b><br>
+      <small>
+      <small>
+      0.01</small></small><small><small>&nbsp;<!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->   
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" -->
+      </small></small></p></td>
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">      
+ 
+<p>There are many domain names used as part of Centrale's Web       
+presence.&nbsp; An anchor site, such as <b><code>nfocentrale.net</code></b>,&nbsp;       
+can carry site images for more than one domain.&nbsp; Individual domains are       
+hosted by <b>web forwarding</b>.&nbsp; Web       
+forwarding causes accesses to a given domain to be routed to a specified place      
+on the anchor site.&nbsp; However, this means that URLs that are presented to  
+browsers will be with the anchor-site (nfoCentrale.net) domain name, not that of  
+the anchored site.&nbsp; One approach to using the intended name for the site  
+and for bookmarking is <b>cloaking</b>.&nbsp; &nbsp;Web cloaking causes the pages that are delivered to <i>appear      
+</i>to be located at the domain name, and not at the anchor site.</p>     
+<p>The cloaking process is imperfect.&nbsp; There are      
+adjustments that must be made on a site so that the cloaking works well.&nbsp;      
+The key thing is that the cloaking should not confuse users of the site.</p>     
+      
+<p>After 18 months of experimentation with cloaking, I found it unacceptable,  
+and cloaking has been abandoned.&nbsp; However, the accomodation process is  
+still used because it is always the case that navigation may arrive via a framed  
+page.&nbsp;&nbsp; So the current practice is now,</p>    
+      
+<blockquote>
+  <ul>
+    <li>Prepare all site pages as if cloaking is happening, so that any framed 
+      entry to the site will behave properly</li>
+    <li>Use web forwarding to enter hosted Centrale sites and do not make use of 
+      cloaking as a way to preserve a domain name during navigation</li>
+  </ul>
+</blockquote>
+<h1>1.&nbsp; Minimal Cloaking Accommodation</h1>      
+<blockquote>  
+  <p>When minimal cloaking accommodations have been made, a site can be accessed     
+  via cloaking and operation is basically smooth.&nbsp; If you access a domain     
+  that has minimal cloaking accommodation in place, you will notice the     
+  following:</p>     
+  <ol>  
+    <li>entry to the site (e.g., <b><code><a href="http://orcmid.com/" target="_top">orcmid.com</a></code></b>)     
+      will lead to all pages of the site being presented as if all at the     
+      address <b><code><a href="http://orcmid.com/" target="_top">http://orcmid.com/</a></code></b>.&nbsp;</li>   
+    <li>exiting to a different site beyond the Centrale complex will properly     
+      change to the presentation of that site, with the cloaking     
+      dropped.&nbsp;&nbsp; The site beyond Centrale may be cloaked, but that     
+      will be in place of any Centrale-provided cloaking</li>    
+    <li>Sometimes, if a sub-web address is forced (e.g., by linking from outside    
+      Centrale, as when the URL is typed directly into the browser address    
+      window), such as <a href="http://orcmid.com/centrale/web/cloaking.htm" target="_top"><b><code>http://orcmid.com/centrale/web/cloaking.htm</code></b></a>,     
+      the detailed address will become the &quot;cloak&quot; address regardless     
+      of any navigation that occurs.&nbsp;</li>   
+  </ol> 
+  <p>This is the form of cloaking accommodation that is a practice of Centrale  
+  site-construction style.</p> 
+</blockquote>  
+<h1>2. Why Cloaking Failed</h1>
+<blockquote>
+  <p>First, although cloaking preserved the domain name, it had three key 
+  limitations:</p>
+  <ol>
+    <li>The URL used on entry to a page would be the one preserved for all 
+      navigation until a new top level is reached and the cloak-applied frame is 
+      dropped.</li>
+    <li>The use of fragment identifiers failed, in that the cloaking service  
+      dropped fragment identifiers.&nbsp; So URLs for fragments (such as into  
+      Orcmid Readings) were not usable.</li> 
+    <li>With a little experience blogging, it was also discovered that RSS feeds 
+      and other URI-usage that actually fetched material at a given URL were 
+      defeated by the presence of the outer, cloaking frame.</li>
+  </ol>
+  <p>Although it was the last situation that demonstrated how cloaking was  
+  always a bad idea, it was already very confusing to users.&nbsp; So, we shall  
+  go forth and cloak no more.&nbsp; If I find another way to preserve domain  
+  distinctness on a single anchor site, I will let you know.</p> 
+</blockquote>
+  <hr noshade color="#990033">      
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="index.htm" target="_top"><img border="0" src="../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Hard Hat Area (Construction Zone)" width="80" height="57"></a>
+
+
+
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="47016" -->
+
+
+
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2002-07-28-11:34 -0700 (pst) by <a href="../../construction/orcmid.htm">orcmid</a> 
+<br>
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 30 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>  
+</html>  

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/centrale/web/iis/default.asp 30    26-03-22 14:17 Orcmid $-->
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<title>Centrale Web IIS Usage</title>
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<div align="center"><center>
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="29024" -->
+
+
+    </td>
+
+    <td width="53%" height="6"><h1 align="center"><font color="#990033"><strong><i>IIS
+      Server Usage</i></strong></font></h1>
+    </td>
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../../../" target="_top">orcmid</a>&gt;<br>
+      <a href="../../" target="_top">centrale</a>&gt;<br>
+      <a href="../" target="_top">web</a>&gt;<br>
+      <a href="./">IIS</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="default.asp">default.asp</a>&gt;</code></b><br>
+      <a href="#0.00">
+      <small>
+      <small>
+      0.00</small></small></a><small><small>&nbsp;<!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2008-08-28<!--webbot bot="Timestamp" endspan i-checksum="12548" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->17:28 -0700<!--webbot bot="Timestamp" endspan i-checksum="12078" -->
+      (pst)</small></small></p></td>
+  </tr>
+</table>
+</font>
+</center></div>
+<small>
+  <hr color="#990033">
+</small>
+<p align="left"><small>Centrale sites are developed using Microsoft Internet
+Information Server.&nbsp; The sites are published via hosting services that
+typically also support IIS (or at least support ASP and FrontPage Server
+Extensions).</small></p>
+<p align="left"><small>This section of Orcmid's Lair describes the use of
+Microsoft IIS on behalf of Centrale.&nbsp;</small></p>
+<small>
+  <hr color="#990033">
+</small>
+
+<p align="left">&nbsp;</p>
+
+  <hr color="#990033">
+
+<dl>
+
+
+<small>
+
+
+  <dt><b><a name="0.00">0.00</a>      2003-12-13 Create&nbsp; Initial Version
+    for Verifying Default Page Presence (<a href="../../../construction/orcmid.htm">orcmid</a>)</b></dt>
+  </small>
+  <dd><small>This Active Server Page does not require any ASP processing.&nbsp;
+    It is used as a placeholder for optional introduction of ASP operations in
+    the future.&nbsp; The page also supports confirmation of default-page
+    precedence on a Centrale hosting service.&nbsp;&nbsp; It is not expected
+    that this page will be served except by direct naming in a URL.</small></dd>
+  </dl>
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005c.htm" TAG="BODY" startspan
+      -->
+<a href="../../../construction/index.htm" target="_top">
+<img border="0" src="../../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Hard Hat Area" align="left" width="80" height="57">
+</a>
+<!-- included from orcmid /construction/c000005b.htm of 2003-08-03-10:24 -0700 -->
+
+<!--webbot bot="Include" endspan i-checksum="15381"
+      -->
+
+
+
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="14556" -->
+
+
+
+    </td>
+    <td width="37%">
+      <p align="right"><small><small>created 2003-12-13-15:14 -0800 (pst) by <a href="../../../construction/orcmid.htm"> orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 26-03-22 14:17 $<br>
+$$Revision: 30 $</em></small></small></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

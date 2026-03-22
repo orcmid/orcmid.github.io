@@ -1,0 +1,285 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html dir="<$BlogLanguageDirection$>">
+<!-- NFOWORKS.ORG PURSUING HARMONY BLOG TEMPLATE 0.08
+     :mode=html:
+         This is an adaptation of the Blogger template "Sand Dollars" by Jason Sutter.  The original
+     template was used to accomplish a rough layout of the kind desired.  It is heavily customized to
+     provide the desired look-and-feel for nfoWorks, matching features of other nfoCentrale blogs.
+         The template's version history is found at the end, following the <body> element.
+     $$Header: /nfoWorksCompagno/construction/2008/08/default.htm.template.txt 1     10-04-10 15:58 Orcmid $
+     -->
+	<head>
+	    <meta http-equiv="Content-Language" content="en-us" />  <!-- 0.05 -->
+	    <$BlogMetadata$>
+		<title><$BlogPageTitle$></title>
+		<style type="text/css">
+			body{margin:0px;padding:0px;background:#f6f6f6;color:#000000;font-family:"Trebuchet MS",Trebuchet,Verdana,Arial,Sans-Serif;font-size:11pt;line-height:normal;}
+			<!-- 0.06 set expected font size and line height
+			     0.02 set desired value in the body tag, not here
+			     a{color:#DE7008;}  
+			     -->
+			a{font-weight: bold; text-decoration: none;} <!-- 0.05 improve link appearance -->
+			a:hover{color:red;} <!-- 0.02 give us the red color on hovers instead of lighter link color -->
+			#logo{padding:0px;margin:0px;}
+			@media all {
+                          div#mainClm{float:right;width:66%;padding:20px 7% 10px 10px;border-left:dotted 1px #E0AD12;} <!-- 0.06 -->
+			  div#sideBar{margin:20px 5px 5px 1em;border-right-width:thick;text-align:left;} <!-- 0.06 -->
+                        }
+            @media handheld {
+                          div#mainClm{float:none;width:90%;}
+			  div#sideBar{padding:30px 7% 10px 3%;}
+                        }
+			#header{padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;border-top:1px solid #eeeeee;border-bottom:dotted 1px #E0AD12;background:#F5E39E;color:white;}
+			#header h1 a:hover{color:red;} <!-- 0.06 -->
+			h1,h2,h3,h4,h5,h6{padding:0px;margin:0px;}
+			<!-- 0.02 delete these decorations and use the body ones:
+			     h1 a:link {text-decoration:none;color:#F5DEB3}
+			     h1 a:visited {text-decoration:none;color:#F5DEB3}
+			     -->
+			h1{padding:25px 0px 10px 5%;border-top:double 3px #BF5C00;border-bottom:solid 1px #E89E47;color:#F5DEB3;background:#DE7008;font:bold 200% Verdana,Sans-Serif;} <!-- 0.06 remove letter-spacing: -2px; -->
+			h2{color:#9E5205;font-weight:bold;font-family:Verdana,Sans-Serif;letter-spacing:-1px;}
+			h3{margin:10px 0px 0px 0px;color:#660000;}  <!-- 0.05 Used for top-date 0.06 remove font-size:150%; -->
+			h3 a:hover{color:red} <!-- 0.05 -->
+			h4{color:#aa0033;}
+			h6{color:#B8A80D;font-size:140%;}
+			h2.sidebar-title{color:#9E5205;margin:0px;padding:0px;font-size:120%;} <!-- 0.04 same color as in body -->
+			#sideBar ul{margin:0px 0px 33px 0px;padding:0px 0px 0px 0px;list-style-type:none;font-size:95%;}
+			#sideBar li{margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;list-style-type:none;font-size:95%;}
+			#description{padding:0px;margin:10px;margin-top:0px;color:#9E5205;background:transparent;} <!-- 0.05 less margin:7px 12% 7px 1em;font:italic 85% Verdana,Sans-Serif; -->
+			    <!-- 0.05 recast more like Orcmid's Lair and see how it works. -->
+			.blogPost{margin:0px 0px 30px 0px;} <!-- 0.05 font size -->
+			.blogPost strong{color:#000000;font-weight:bold;}
+			<!-- 0.04 treat sidebar links the same as all other? 
+			     #sideBar ul a{padding:2px;margin:1px;width:100%;border:none;color:#999999;text-decoration:none;}
+			     #sideBar ul a:link{color:#999999;}
+			     #sideBar ul a:visited{color:#999999;}
+			     #sideBar ul a:active{color:#ff0000;}
+			     #sideBar ul a:hover{color:#DE7008;text-decoration:none;}
+			     -->
+			pre,code{color:#999999;}
+			strike{color:#999999;}
+			.bug{padding:5px;border:0px;}
+			.byline{padding:0px;margin:0px;color:#444444;font-size:80%;}
+			.byline a{border:none;color:#968A0A;text-decoration:none;}
+			.byline a:hover{text-decoration:underline;}
+			.blogComments{padding:0px;color:#9E5205;font-size:110%;font-weight:bold;font-family:Verdana,Sans-Serif;}
+			.blogComment{margin-top:10px;font-size:100%;font-weight:normal;color:black;}
+			.blogComments .byline{padding-bottom:20px;color:#444444;font-size:80%;font-weight:normal;display:inline;margin-right:10px}
+            .deleted-comment {font-style:italic;color:gray;}
+			#profile-container { }
+			.profile-datablock { }
+			.profile-img {display:inline;}
+			.profile-img img {float:left;margin-right:5px;}
+			.profile-data strong { }
+			#profile-container p { }
+			#profile-container .profile-textblock { }
+            .profile-link a:link {color:#999999;text-decoration:none;}
+            .profile-link a:active {color:#ff0000;text-decoration:none;}
+            .profile-link a:visited {color:#999999;text-decoration:none;}
+			.profile-link a:hover{color:#DE7008;text-decoration:none;}
+            #blogfeeds { }
+            #postfeeds { font-size:100% }
+      .paging-control-container {
+        float: right;
+        margin: 0px 6px 0px 0px;
+        font-size: 80%;
+      }
+      .unneeded-paging-control {
+        visibility: hidden;
+      }
+		</style>
+		
+	</head>
+
+<body link="#9E5205" vlink="#9E5205" alink="red"> <!-- 0.04 Use the H2 color for links -->
+
+
+<div id="header">
+	<h1 align="center"><i><a href="http://nfoWorks.org/" target="_top" rel="nofollow">nfoWorks</a>: 
+	                   <a href="http://nfoWorks.org/diary/" target="_top" rel="nofollow">Pursuing Harmony</a></i></h1>
+	<!-- 0.02 This item is modified to have the link on every header for each kind of blog page,
+	          whether main page, post page, or archive page.  Also, make nofollow and target _top. 
+	     0.03 center the title for smoother appearance (inside table, later)
+	     0.06 Not so heavy and also italic
+	          -->
+</div>
+
+
+<!-- Main Column -->
+<div id="mainClm">
+
+	<!-- Blog Posts -->
+	<Blogger>
+		 <BlogDateHeader>
+			  <h3><a name="<$BlogDateHeaderDate$>" href="#<$BlogDateHeaderDate$>"><font color="660000"><$BlogDateHeaderDate$></font></a></h3>
+		 </BlogDateHeader>
+		 <a name="<$BlogItemNumber$>">&nbsp;</a>
+		 <BlogItemTitle><h2><BlogItemURL><a href="<$BlogItemURL$>"></BlogItemURL>
+<$BlogItemTitle$><BlogItemURL></a></BlogItemURL></h2></BlogItemTitle>
+			<div class="blogPost">
+			  <$BlogItemBody$><br />
+			  <div class="byline"><a href="<$BlogItemPermalinkURL$>" title="permanent link">#</a> <$I18NPostedByAuthorNickname$> @ <$BlogItemDateTime$><MainOrArchivePage><BlogItemCommentsEnabled>&nbsp;<a href="<$BlogItemCommentCreate$>"<$BlogItemCommentFormOnclick$>><span style="text-transform:lowercase"><$I18NNumComments$></span></a></BlogItemCommentsEnabled><BlogItemBacklinksEnabled>
+<a class="comment-link" href="<$BlogItemPermalinkUrl$>#links"><span style="text-transform:lowercase"><$I18NLinksToThisPost$></span></a>
+</BlogItemBacklinksEnabled>
+</MainOrArchivePage> <$BlogItemControl$> </div>
+			</div>
+ <ItemPage>
+  <div class="blogComments">
+	<BlogItemCommentsEnabled><a name="comments"></a>
+			<$I18NComments$>:
+      <$CommentPager$>
+			<BlogItemComments>
+			<div class="blogComment">
+				<a name="<$BlogCommentAnchorName$>"></a>
+				<$BlogCommentBody$><br />
+				<div class="byline"><a href="<$BlogCommentPermalinkURL$>"title="permanent link">#</a> <$I18NPostedByCommentAuthor$> : <$BlogCommentDateTime$> </div>
+				<$BlogCommentDeleteIcon$>
+			</div>
+			</BlogItemComments>
+      <$CommentPager$>
+			<$BlogItemCreate$>
+            <p id="postfeeds"><$BlogItemFeedLinks$></p>
+	</BlogItemCommentsEnabled>  
+        <br /> <br />
+        <BlogItemBacklinksEnabled>
+        <a name="links"></a>
+        <$I18NLinksToThisPost$>:
+        <BlogItemBacklinks>
+            <div class="blogComment">
+            <a href="<$BlogBacklinkURL$>" rel="nofollow"><$BlogBacklinkTitle$></a>
+            <$BlogBacklinkDeleteIcon$>
+            <br />
+            <$BlogBacklinkSnippet$><br />
+            <div class="byline">
+            <span class="comment-poster">
+            <em><$I18NPostedByBacklinkAuthor$> @ <$BlogBacklinkDateTime$></em>
+            </span>
+            </div>                        
+            </div>
+        </BlogItemBacklinks>
+        <p class="comment-timestamp"><$BlogItemBacklinkCreate$></p>
+        </BlogItemBacklinksEnabled>
+    </div>
+</ItemPage>
+</Blogger>
+
+</div>
+
+<!-- Sidebar -->
+<div id="sideBar">
+<div align="right">	<!-- 0.02 attempt right justification; 0.03 apply to entire sidebar -->
+  <p id="description"><$BlogDescription$></p>
+       <!-- 0.02 Move this here from the top banner and then figure out further customization needed -->
+       
+  <p><!-- 0.04 Add my Atom badge 0.05 use absolute URLs-->
+     <a href="http://nfoworks.org/diary/harmony-atom.xml" target="_top">
+           <img border="0" src="http://nfoWorks.org/diary/atom-feed.bmp" 
+                alt="Click for Atom feed" /></a>
+     <br />
+     <a href="http://nfoworks.org/diary/harmony-atom.xml" title="Atom feed" target="_top">Atom Feed</a>
+     </p>
+     
+    <h2 class="sidebar-title"><br />Recent Items</h2><!-- 0.04 List Recent Items -->
+    <BloggerPreviousItems>
+    <p><a href="<$BlogItemPermalinkURL$>"><$BlogPreviousItemTitle$></a></p>
+    </BloggerPreviousItems>
+
+           
+        <!-- In accordance to the Blogger terms of service, please leave this button somewhere on your blogger-powered page. Thanks! -->
+  <p><a href="http://www.blogger.com"><img width="88" height="31" 
+                                       src="http://buttons.blogger.com/bloggerbutton1.gif" border="0" 
+                                       alt="This page is powered by Blogger. Isn't yours?" /></a></p>
+        <!-- 0.02 This badge is moved to the sidebar of every post rather than the bottom of the page -->
+
+  
+  <table border="0" style="border-collapse: collapse" id="ClustrMap"><!-- 0.04 CLUSTRMAP -->
+	<caption align="bottom" valign="bottom"><small><small>
+		<a href="http://nfoWorks.com/construction/templates/00/c000006.htm">visits to popular <b><i>nfoWorks</i></b> pages</a></small></small></caption>
+	<tr><td><p align="center">
+			<a href="http://www3.clustrmaps.com/counter/maps.php?url=http://nfoWorks.org" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://nfoWorks.org" style="border:0px;" alt="Locations of visitors to nfoWorks" title="Locations of visitors to nfoWorks" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+            </a></p></td></tr>
+			<!-- Inserted from nfoWorks /construction/templates/00/c000006c1.htm of 2008-02-17-12:36 -0800 -->
+    </table>
+    <br />&nbsp;&nbsp; <br />
+
+		
+
+  <h2 class="sidebar-title">Associated Blogs</h2> <!-- 0.06 Make similar to Orcmid's Lair -->
+     <p><a href="http://miser-theory.info/astraendo/pn/">Numbering Peano</a>
+           <br />
+           &#160; <br />
+           <a href="http://orcmid.com/blog/">Orcmid's Lair</a><br />
+           &#160; <br />           
+           <a href="http://orcmid.com/BlunderDome/clueless/">Prof. von Clueless in the Blunder Dome</a>
+        </p>
+        
+      <h2 class="sidebar-title"><a href="http://nfoCentrale.net">nfoCentrale</a> Associated Sites</h2> <!-- 0.06 -->
+        <p>
+           <a href="http://dmatech.info/">DMA: The Document Management Alliance</a><br />
+           &#160; <br />
+           <a href="http://DMware.info/">DMware: Document Management Interoperability Exchange</a><br />
+           &#160; <br />
+           <a href="http://miser-theory.info/">The Miser Project</a><br />
+           &#160; <br />           
+           <a href="http://nfoWare.com/">nfoWare: Information Processing Technology</a><br />
+           &#160; <br />
+           <a href="http://nfoWorks.org/">nfoWorks: Tools for Document Interoperability</a><br />
+           &#160; <br />
+           <a href="http://NuovoDoc.com/">NuovoDoc: Design for Document System Interoperability</a><br />
+           &#160; <br />
+           <a href="http://ODMA.info/">ODMA Interoperability Exchange</a><br />
+           &#160; <br />
+           <a href="http://orcmid.com/">Orcmid's Lair</a><br />
+           &#160; <br />
+           <a href="http://trosting.org/">TROST: Open-System Trustworthiness</a>
+        </p>
+
+
+		
+		<h2 class="sidebar-title">Archives</h2> <!-- 0.04 Fix titles -->
+		<ul>
+			<BloggerArchives><li><a href='<$BlogArchiveURL$>'><$BlogArchiveName$></a></li></BloggerArchives>
+			<!-- 0.02 Eliminated javascript used here simply to add link to the main page from each archive page.
+			          My goal is to have every post link to the main page in its title block, so unnecessary. -->
+		</ul>
+	</div>
+</div>
+</body>
+<!-- NFOWORKS.ORG PURSUING HARMONY BLOG TEMPLATE REVISION HISTORY
+     0.08 2010-01-26T01:25Z Remove About Me block
+     0.07 2010-01-26T00:55Z Rearrange Left Sidebar
+          I am changing the order of things to have the same sequence as the latest Orcmid's Lair template.
+          I will see if it works to also use the same styling.
+     0.06 2010-01-02T01:52Z Correct Styles, Layout and Sidebar
+          The Atom Feed links are repaired with absolute links to the correct feed location
+          The title links are divided, hover is made red, and the title is lightened and italicized.
+          The blog date header is turned into a link.
+          I worked on the line-height a bit.
+     0.05 2008-08-21T00:32Z Improve Styles and Layout
+          Links are changed to bold, with no underlining.  Adjust spacing on sidebar.  Remove stray link at 
+          end of posts.
+     0.04 2008-08-20T23:43Z Enrich the Sidebar
+          Unify the font colors and weights on the sidebar, matching the body styles. Rearrange sidebar but keep
+          Blogger Profile item until blog is claimed on Technorati.  
+     0.03 2008-08-17T16:13Z Additional Clean-Ups
+          The title is centered in its block at the top of pages, the entire sidebar is right-justified, and the 
+          blog description is changed to italic with not such a large indentation.
+     0.02 2008-08-16T16:53Z Make Simple Clean-Ups
+          I corrected a doubling of "Jason" and a missing ":" in the version-control $Header label in the introductory
+          template comment.  I deleted the only JavaScript in the template as completely unnecessary and made the
+          title always link to the main page from all blog pages, including the main page.  I did some adjusting on
+          how links appear and using the body tag to control it.  Finally, I am moving the description to the sidebar
+          and then right-justifying everything below the profile.  The Blogger badge move and I get rid of the bogus
+          links in the sidebar for now.
+     0.01 2008-08-14T00:55Z Provide Basic Formatting Control
+          The !DOCTYPE is added to the front of the file.  The version control header is added in the introductory
+          comment before the <head> element.  This revision history is "primed" with this entry and identification
+          of the original download capture.  This version is uploaded as the new template to confirm that there
+          is no disruption.
+     0.00 2008-08-13T23:41 Capture Template as Backup from Blogger
+          The Blogger template on the Blogger dashboard is captured in a text file and imported into the site at
+          http://nfoWorks.org/diary/default.htm.template.txt.  From now on, revisions of this file will be loaded
+          from here into the Blogger template by copy and paste.
+          -->
+</html>

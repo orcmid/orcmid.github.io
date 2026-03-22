@@ -1,0 +1,542 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q050901b: Recommended C/C++ Compiler for ActiveODMA Work </title>
+<!--$$Header: /ODMACompagno/faq/2005/09/Q050901b.htm 123   13-08-22 12:48 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006b.htm 0.10 of 2005-07-05T04:06Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="q050901c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../q000001.htm#Q050901"><font color="#990033">Q050901</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+		<a href="../../q000001.htm"><font color="#990033">
+		FAQtip</font></a></strong><strong><font color="#990033"><br>
+      &nbsp;<a href="q050901.htm"><font color="#990033">ActiveODMA C/C++ 
+Compiler</font></a></font></strong></font><br>
+<strong>
+<font 
+color="#990033" 
+face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><em><font size="5"> 
+Microsoft</font></em></font></strong></font><strong><em><font size="5"><sup><font 
+face="Times New Roman" color="#990033">®</font></sup><font 
+color="#990033" 
+face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"> Visual 
+C++</font><sup><font face="Times New Roman" color="#990033">®</font></sup><font 
+color="#990033" 
+face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"> 
+Toolkit 2003 1.01</font></font></em></strong><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a 
+  href="../../">faq</a>&gt;<br>
+      <a href="../">2005</a>&gt;<a target="_top" href="./">09</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q050901c.htm">Q050901c</a>&gt;</code></b></font><br>
+      <small><small>
+		<a href="#0.26">0.26</a>
+		2013-08-22      
+      -12:48 -0700 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this FAQtip is available on the Internet at <br>
+			&lt;<b><kbd><a target="_top" href="q050901b.htm">http://ODMA.info/faq/2005/09/Q050901b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This version:</b>&nbsp;&nbsp; <b>0.26</b>
+			&lt;<b><kbd><a target="_top" href="q050901c.htm">http://ODMA.info/faq/2005/09/Q050901c.htm</a></kbd></b>&gt;.&nbsp; 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small>
+	<p><a href="q050901.htm#3.">Starting March 3, 2005</a>, the Microsoft Visual 
+	C++ Toolkit 2003 is selected for construction of all C/C++-based ActiveODMA 
+	deliverables.&nbsp; This same software is required for use in verifying the 
+	construction of any stable ActiveODMA release.&nbsp; It is useful for 
+	repeating ActiveODMA experiments, tests, and for making similar software 
+	using C/C++ and the Microsoft Windows platform.&nbsp; It can also be used, 
+	as <a href="q050902.htm">setup here</a>, for use in <a href="q050903.htm">
+	self-study</a>, practice, and general familiarization with C/C++ software 
+	development.</p>
+	<p>This document describes how to obtain the software and verify that the 
+	correct version has been obtained.&nbsp; Following verification of the 
+	download, setup can be performed.&nbsp; The recommended setup procedure is 
+	documented in FAQtip Q050902: <a href="q050902.htm">C/C++ Compiler Setup</a>.</p>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#1.">Why This Compiler?</a><br>
+			2. <a href="#2.">Prerequisites</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">2.1</span> <span style="font-weight: 400"><a href="#2.1">
+			Review of prerequisites</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">2.2</span> <span style="font-weight: 400"><a href="#2.2">
+			Alternatives</a></span><br>
+			3. <a href="#3.">Downloading the Toolkit</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.1</span> <span style="font-weight: 400"><a href="#3.1">
+			Prepare for downloading</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.2</span> <span style="font-weight: 400"><a href="#3.2">
+			Initiate the download</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">3.3</span> <span style="font-weight: 400"><a href="#3.3">Save 
+			the setup file</a></span><br>
+			4. <a href="#4.">Verifying the Download</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.1</span>
+			<span style="font-weight: 400"><a href="#4.1">Find the download on 
+			your computer</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.2</span>
+			<span style="font-weight: 400"><a href="#4.2">Check file properties</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.3</span>
+			<span style="font-weight: 400"><a href="#4.3">Verify digital 
+			signature</a></span><br>
+			5. <a href="#5.">Preserving the Download</a><br>
+			6. <a href="#6.">References</a></h3>
+			<dl>
+				<dt><i>see also:</i></dt>
+				<dd><b>Q050902: <a href="q050902.htm">C/C++ Compiler Setup</a></b><br>
+		<b>Q050903: <a href="q050903.htm">C/C++ Programming Resources</a></b></dd>
+			</dl>
+		</blockquote>
+	</blockquote>
+</blockquote>
+
+<h2><a name="1." target="_top" href="#1.">1.</a> Why This Compiler?</h2>
+<blockquote>
+	<p>The Microsoft Visual C++ Toolkit 2003 (<a href="#Microsoft2004">Microsoft 2004</a>) 
+	satisfies the basic requirements for a compiler to be used in building C/C++ 
+	ActiveODMA deliverables and verifying their construction.&nbsp; It is also a 
+	valuable tool for familiarization with compiler operation and for
+	<a href="q050903.htm">learning C/C++ programming</a>.</p>
+	<ul>
+		<li><b><a name="1.1" target="_top" href="#1.1">1.1</a></b> It is the 
+		latest version of compiler technology used in all earlier ODMA software 
+		distributions.&nbsp; It provides direct support for the Microsoft 
+		Component Object Model (COM) as it is relied upon for ODMA integration.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+		</li>
+		<li><b><a name="1.2" target="_top" href="#1.2">1.2</a></b> It operates on the platform 
+		for which ODMref 1.0 and ActiveODMA components are intended:&nbsp; 
+		Windows 2000 and later, targeting the Microsoft Windows XP SP2 
+		operating-system release. <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.3" target="_top" href="#1.3">1.3</a></b> The toolkit is available 
+		without charge for unrestricted use.&nbsp; The prohibitions concerning 
+		the redistributables (there are none) and samples are easily honored. <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.4" target="_top" href="#1.4">1.4</a></b> Substantial documentation 
+		and usage information is available on-line, with support from 
+		peer-supported newsgroups and online web logs (<a href="#MSDN2005">MSDN 2005</a>). 
+		<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.5" target="_top" href="#1.5">1.5</a></b> Additional libraries 
+		required for development of Windows-specific applications are available 
+		for free download and use in developing for the full range of Microsoft 
+		Windows platforms (<a href="#Microsoft2005">Microsoft 2005</a>).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="1.6" target="_top" href="#1.6">1.6</a></b> Although the 
+		compiler will be used from the command line in console sessions, the 
+		setup and usage seems relatively easy to describe and document for users unfamiliar 
+		with console-mode operation. Inclusion of easy-to-customize batch files 
+		simplifies confirmation exercises and the duplication of tests. </li>
+	</ul>
+</blockquote>
+<h2><a name="2." target="_top" href="#2.">2.</a> Prerequisites</h2>
+<p><b><a name="2.1" target="_top" href="#2.1">2.1</a> Review of Prerequisites</b></p>
+<blockquote>
+	<p>Please review all of these prerequisites before downloading the toolkit.&nbsp; 
+	If you are uncertain about any of the prerequisites, work with a 
+	knowledgeable buddy to determine an approach that works for you.&nbsp; 
+	Questions about the setup and any difficulties with it can also be sent to 
+	the <a href="../../../contact.htm">ActiveODMA Discussion List</a>.</p>
+	<p><b><a name="2.1.1" target="_top" href="#2.1.1">2.1.1</a></b> <b>You 
+		must obtain the toolkit <a href="#Microsoft2004">directly from Microsoft</a>
+	</b>(<a href="#3.">section 3</a>).&nbsp; This software is not 
+		redistributable by others.&nbsp;&nbsp; It is important to make sure that 
+		you have an authentic version obtained directly from Microsoft 
+		Corporation.&nbsp; It is also important to read the licensing 
+		conditions, confirm availability of the software, and understand the 
+		support resources that are available to you.&nbsp; </p>
+	<p><b><a name="2.1.2" target="_top" href="#2.1.2">2.1.2</a></b> <b>Microsoft customer 
+		support and developer support is not provided for Microsoft Visual C++ 
+		Toolkit 2003.</b>&nbsp; There is peer support for the toolkit on discussion 
+		groups and elsewhere.&nbsp; The <a href="#MSDN2005">MSDN site</a> 
+		provides further information about available resources.</p>
+	<p><b><a name="2.1.3" target="_top" href="#2.1.3">2.1.3</a></b> <b>You must 
+	have a Microsoft Windows PC with Intel Processor and a 32-bit 
+		operating system</b> (Windows 2000 Professional or later, with Windows 
+	XP Pro SP2 preferred).&nbsp; For ActiveODMA usage and for testing C/C++ 
+	software, it is desirable to use an NTFS-format file system for additional 
+		safety and security.</p>
+	<p><b><a name="2.1.4" href="#2.1.4">2.1.4</a> You'll need disk and backup capacity of 100MB or more to install and use 
+		the toolkit.</b>&nbsp; The toolkit setup file is 31.4 MB and the 
+		installed toolkit requires 30 MB on disk (not counting the .NET 
+	Framework which may be already installed).&nbsp; The space for your own 
+		C/C++ source programs and compiled results is additional.&nbsp; </p>
+	<p><b><a name="2.1.5" target="_top" href="#2.1.5">2.1.5</a> If 
+		possible, backup the downloaded setup file to CD-ROM or other removable 
+		storage</b> (<a href="#5.">section 5</a>).&nbsp; This is important if you 
+		need to reinstall the toolkit at a future time when the download is 
+		unavailable.&nbsp;&nbsp; You can also use less space by running the 
+		setup from CD-ROM.&nbsp; (To use the toolkit for ActiveODMA development, 
+		an additional 500MB will be required for initial installation of the 
+		<a href="#Microsoft2005">Microsoft Platform SDK</a>.)&nbsp; </p>
+	<p><b><a name="2.1.6" target="_top" href="#2.1.6">2.1.6</a> A limited account is 
+		sufficient and <i>strongly-recommended</i> for using the compiler and running tests.</b>&nbsp; 
+		This account together with the use of an NTFS file system protects other 
+		software and data on your computer from misadventures while you are 
+		running untested programs and early releases of ActiveODMA.</p>
+	<p><b><a name="2.1.7" target="_top" href="#2.1.7">2.1.7</a> You must be 
+		able to assume administrative privileges during installation.&nbsp; </b>There must be a separate administrator account.&nbsp; It will be used to 
+		elevate privileges of the limited account just long enough to install 
+		the toolkit.&nbsp; Then the limited account privileges can be restored.&nbsp;
+	</p>
+	<p><b><a name="2.1.8" target="_top" href="#2.1.8">2.1.8</a></b> <b>You 
+		will be using the Windows Command Prompt, batch files, and 
+		console/command-line utilities.&nbsp; </b>These are already part of 
+		Microsoft Windows.&nbsp; Additional utilities will be obtained from 
+		other sources.&nbsp; Most programs and their tests will involve creation 
+		of console programs.&nbsp; There will be some batch files that you will 
+		need to modify and run.&nbsp;&nbsp; If you are not already conversant 
+		with this style of operation, you must be prepared to practice and learn 
+		as part of working with console applications and the command-line 
+		compiler.&nbsp; The <a href="q050902.htm">setup procedures for the 
+		toolkit</a> provide an initial introduction into this style of 
+		operation.&nbsp; Successfully completing the setup is a good check for 
+		your readiness to continue.</p>
+	<p><b><a name="2.1.9" target="_top" href="#2.1.9">2.1.9</a></b> <b>You will 
+	need to become comfortable creating and organizing directories of files</b> 
+	using the Windows Explorer and the command-line interfaces.&nbsp; The 
+	Windows desktop &quot;<kbd><b>Start | Help and Support</b></kbd>&quot; (or equivalent 
+	) menu item provides information about Windows Basics, including an 
+	introduction to working with files and folders using the Windows Explorer.</p>
+</blockquote>
+<h3><a name="2.2" target="_top" href="#2.2">2.2</a> Alternatives</h3>
+<blockquote>
+	<p><b><a name="2.2.1" href="#2.2.1">2.2.1</a></b> The compiler that is part 
+	of Microsoft Visual Studio .NET 2003 (build 13.10.3077) is the same one that 
+	is included in the Microsoft Visual C++ Toolkit 2003.&nbsp; All of the 
+	procedures that are introduced for using the toolkit can be adapted to use 
+	the compiler, linker, and libraries in their locations under Visual Studio.&nbsp; 
+	There is no interference between this use and the continuing separate use of 
+	Visual Studio facilities (but see <a href="#2.2.4">2.2.4</a>).</p>
+	<p><b><a name="2.2.2" target="_top" href="#2.2.2">2.2.2</a></b> You can 
+	adapt the setup confirmation procedure for the toolkit to confirm that you 
+	are able to use the Visual Studio command-line compiler exactly as if you 
+	were using the toolkit compiler.&nbsp; Carrying out that exercise will also 
+	confirm whether or not you do have the same compiler release as the toolkit.</p>
+	<p><b><a name="2.2.3" target="_top" href="#2.2.3">2.2.3</a></b> To verify 
+	ActiveODMA C/C++ components, you will later need to customize the ODMdev 
+	batch files and the dependency limitation procedures used for ActiveODMA 
+	development.</p>
+	<p><b><a name="2.2.4" target="_top" href="#2.2.4">2.2.4</a></b> There are 
+	additional precautions required to ensure that ActiveODMA distributions can 
+	be verified using the resources of Microsoft Visual Studio.&nbsp; If there 
+	is an update or upgrade to Visual Studio, it may be necessary to also 
+	install the toolkit for separate command-line usage in order to maintain 
+	ActiveODMA verification capability.&nbsp; Using the toolkit setup described 
+	here, this duplication will avoid interference between Visual Studio, the 
+	Toolkit, and possibly-separate/multiple versions of the Windows Platform 
+	SDK.&nbsp; </p>
+</blockquote>
+<h2><a name="3." target="_top" href="#3.">3.</a> Downloading the Toolkit</h2>
+<h3><a name="3.1" target="_top" href="#3.1">3.1</a> Prepare for Downloading</h3>
+<blockquote>
+	<p><b><a name="3.1.1" target="_top" href="#3.1.1">3.1.1</a></b> <b>Read 
+		through this entire Section 3</b> before initiating the download.</p>
+	<p><b><a name="3.1.2" target="_top" href="#3.1.2">3.1.2</a></b> <b>Have 
+		sufficient space available</b> on your computer for the full 32MB download.&nbsp; </p>
+	<p><b><a name="3.1.3" target="_top" href="#3.1.3">3.1.3</a></b> <b>Decide 
+		where you want to store the downloaded setup file.</b>&nbsp; Your Windows desktop and the &quot;<kbd><b>My 
+	Documents</b></kbd>&quot; locations can be used if you make yourself 
+	administrator for the setup.&nbsp; On Windows XP, the 
+	folder reached via &quot;<kbd><b>Start|My Computer|Shared Documents</b></kbd>&quot; 
+	(typically at &quot;<kbd><b>C:\Documents and Settings\All Users\Documents</b></kbd>&quot;) 
+	is usable.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; To have the option to preserve the setup 
+		file (<a href="#5.">section 5</a>), create a separate 
+	place from which to backup and restore downloads like this one (e.g., make a
+	<kbd><b>Downloads</b></kbd> folder under <kbd><b>Shared Documents</b></kbd> 
+	or directly on your hard drive).&nbsp; In the 
+	illustrative download (<a href="#3.3">section 3.3</a>) the file is stored in 
+	a backed-up directory of all downloaded installation files.&nbsp; This can 
+	be used to restore files for reinstallation and to transfer the software to a new computer if that 
+		becomes necessary.&nbsp; </p>
+	<p><b><a name="3.1.4" target="_top" href="#3.1.4">3.1.4</a></b> <b>Be in the
+		<a href="#2.1.6">limited account</a></b> for conducting the download 
+	over the Internet.</p>
+	<p><b><a name="3.1.5" target="_top" href="#3.1.5">3.1.5</a></b> By 
+		opening a new page in your browser (<b><kbd>Ctrl+N</kbd></b> in Internet 
+		Explorer) you can keep this page open for viewing while navigating 
+		through the download process in a different browser window.</p>
+</blockquote>
+<h3><a name="3.2" target="_top" href="#3.2">3.2</a> Initiate the Download</h3>
+<blockquote>
+	<p><b><a name="3.2.1" href="#3.2.1">3.2.1</a></b> <b>In your browser, 
+		visit the Visual Toolkit 2003 web page</b> (<a href="#Microsoft2004">Microsoft 
+		2004</a>).&nbsp; Review that page if you have not visited it before.&nbsp;&nbsp;&nbsp;
+	</p>
+	<p><b><a name="3.2.2" target="_top" href="#3.2.2">3.2.2</a></b> <b>Click 
+		the &quot;Download the Visual C++ Toolkit 2003&quot; link</b> just below the brief 
+		description of the toolkit at the top of the page.&nbsp; </p>
+	<p align="left"><b><a name="3.2.3" target="_top" href="#3.2.3">3.2.3</a></b> 
+		You will be taken to the Microsoft Download Center for the actual 
+	download.&nbsp; 
+		Verify the download time that you can expect.&nbsp; <b>Verify that the 
+	details of version, date, and size match those in the screenshot</b> (<a 
+ href="#Fig.3-1">fig. 3-1</a>).&nbsp; If there is a discrepancy, please report 
+	this to <a href="../../../contact.htm">ActiveODMA Discussion list</a> and 
+	request further instructions.</p>
+	<p align="center"><a name="Fig.3-1">
+	<img border="0" 
+  src="Q050901c1.png" 
+  width="664" height="459" 
+  alt="Fig.3-1: Toolkit Download Page for version 1.01"></a><br><small><b>
+	<a target="_top" 
+  href="#Fig.3-1">Fig. 3-1</a>. <i>Visual C++ Toolkit 
+		2003 1.01 page at the Microsoft Download center (2005-09-09)</i></b></small></p>
+	<p align="left"><b><a name="3.2.4" href="#3.2.4">3.2.4</a></b> <b>Click the &quot;Download&quot; 
+		button.</b>&nbsp; This may take you directly to the download operation.&nbsp; 
+		You may be invited to register first.&nbsp; Whether you choose to register or not, you 
+		will reach a point where the download operation starts:</p>
+<p align="center"><a name="Fig.3-2">
+	<img border="0" src="Q050901c2.png" width="404" height="273" 
+  alt="Fig.3-2: File-Download Option Screen"></a><br>&nbsp;&nbsp;&nbsp;&nbsp; 
+	<small><b><a target="_top" href="#Fig.3-2">Fig. 3-2</a>.&nbsp; <i>File-Download Option Screen</i></b></small></p>
+	<p><b><a name="3.2.5" href="#3.2.5">3.2.5</a></b> <b>Click &quot;Save.&quot;</b>&nbsp; 
+	Do not specify that the file should be run.&nbsp; It is 
+		important to verify the download first.&nbsp; Also, attempting to open the file 
+		and install the toolkit under a limited 
+		account will fail.</p>
+</blockquote>
+<h3><a name="3.3" target="_top" href="#3.3">3.3</a> Save the Setup File</h3>
+<blockquote>
+	<p><b><a name="3.3.1" target="_top" href="#3.3.1">3.3.1</a> A &quot;Save As ...&quot;</b> 
+	<b>screen</b> will give you the option of specifying where you want to save 
+	the file and what you want to call it. Navigate to the directory where you want to 
+	save the file.&nbsp; It is recommended that you modify the name to have a 
+	reminder of the exact version of the toolkit this is, as illustrated below.&nbsp; 
+	This will also prevent it being over-written if you download a newer 
+	version later on.</p>
+	<p><b><a name="3.3.2" target="_top" href="#3.3.2">3.3.2</a></b> Once you 
+	click &quot;Save&quot; on the &quot;Save As ...&quot; screen, download proceeds:</p>
+	<p align="center"><a name="Fig.3-3"><img border="0" src="Q050901c3.png" 
+ width="374" height="268" alt="Fig. 3-3: Download Completion"></a><br><small>
+	<b><a target="_top" href="#Fig.3-3">Fig. 3-3</a>.&nbsp; <i>Download 
+	Completion</i></b></small></p>
+	<p align="left"><b><a name="3.3.3" target="_top" href="#3.3.3">3.3.3</a></b> 
+	If the download doesn't start when you click &quot;Save&quot; or it times-out, 
+	simply back up your browser to the &quot;Download&quot; button and start again.</p>
+</blockquote>
+<h2><a name="4." target="_top" href="#4.">4.</a> Verifying the Download</h2>
+<blockquote>
+	<p>After the download is complete, you can verify that the appropriate 
+	download has been completely received by examining the received file.</p>
+</blockquote>
+<h3><b><span style="font-weight: 400"><a name="4.1" href="#4.1">4.1</a></span> 
+Find the Download on Your Computer</b>&nbsp; </h3>
+<blockquote>
+	<p>Open a window for the directory where you downloaded the toolkit setup 
+	file.&nbsp; Notice the directory entry for the file.&nbsp; The size and 
+	descriptive material is consistent with the information on the download page 
+	(<a href="#Fig.3-1">fig. 3-1</a>).&nbsp; The dates are the date of download:</p>
+	<p align="center"><a name="Fig.4-1">
+	<img border="0" 
+ src="Q050901c4.png" 
+ width="745" height="275"></a><br>
+	<small><b><a target="_top" href="#Fig.4-1">Fig. 4-1</a>.&nbsp; <i>File Directory Entry for the 
+	Download (typical: Windows XP SP2)</i></b></small></p>
+</blockquote>
+<h3 align="left"><a name="4.2" target="_top" href="#4.2">4.2</a> Check File Properties</h3>
+<blockquote>
+	<p align="left">The properties of the file can be checked by selecting the 
+	file and then clicking File | Properties or by right-clicking on the file 
+	name and selecting the Properties option.&nbsp; Size information should 
+	agree with that shown, although other details may vary for your download 
+	(<a href="#Fig.4-2">fig. 4-2a</a>).&nbsp; Additional information about the toolkit setup launcher 
+	is available on the Version tab.</p>
+	<div align="center">
+	<table border="0" width="84%" id="table1">
+		<tr>
+			<td width="412"><img border="0" src="Q050901c5.png" width="409" 
+   height="509" 
+   alt="Fig.4-2a: General Properties of the Download, with exact size"></td>
+			<td><a name="Fig.4-2"><img border="0" src="Q050901c6.png" 
+   width="409" height="617" 
+   alt="Fig.4-2b: Verification of Setup File Digital Signature"></a></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<p align="center"><small><b><a target="_top" href="#Fig.4-2">Fig. 4-2</a>.&nbsp; File Properties 
+			(typical: Microsoft Windows XP SP2 configuration)<br>
+			left (a): <i>Typical Properties display for the toolkit download 
+			setup file.&nbsp; The exact size should match.</i><br>
+			right (b): <i>Digital Signature details for the setup file.</i></b></small></p></td>
+		</tr>
+	</table>
+	</div>
+</blockquote>
+<h3 align="left"><a name="4.3" target="_top" href="#4.3">4.3</a> Verify Digital 
+Signature</h3>
+<blockquote>
+	<p align="left"><b><a name="4.3.1" target="_top" href="#4.3.1">4.3.1</a></b> 
+	The Digital Signatures tab identifies a single signature.&nbsp; Selecting 
+	that entry and clicking on the &quot;Details&quot; button should confirm verification 
+	of the signature, when it was applied, and the signing authority (<a 
+ href="#Fig.4-2">fig. 4-2b</a>).&nbsp; 
+	There is additional information on the certificate.</p>
+	<p align="left"><b><a name="4.3.2" target="_top" href="#4.3.2">4.3.2</a></b> 
+	Successful verification of the signature, in this case, is basic 
+	confirmation that this is a Microsoft software release, something that we 
+	have every reason to expect since the file was obtained from the Microsoft 
+	Download Center.</p>
+	<p align="left"><b><a name="4.3.3" target="_top" href="#4.3.3">4.3.3</a></b> 
+	Perhaps more useful, in this case, is the evidence that verification of the 
+	digital signature and matching the exact size of the file provides for 
+	assurance that the file is accurately downloaded and has not been corrupted 
+	or altered in any way since the signature was applied. </p>
+</blockquote>
+<h2><a name="5." target="_top" href="#5.">5.</a> Preserving the Download</h2>
+<blockquote>
+	<p><b><a name="5.1" target="_top" href="#5.1">5.1</a></b> Once you are 
+	satisfied with the download, it is valuable to back it up (<a href="#2.1.5">section 
+	2.1.5</a>).&nbsp; The easiest way to restore the toolkit if it is damaged or 
+	you are moving to another computer is by performing the setup again using a 
+	backup copy.&nbsp; This restores your configuration to a known, predictable 
+	condition.&nbsp; </p>
+	<p><b><a name="5.2" target="_top" href="#5.2">5.2</a></b> If you already 
+	perform periodic backups, that procedure can be used.&nbsp; For the system 
+	on which this download was demonstrated, the toolkit setup file is backed up 
+	on another computer (using a small household network).&nbsp;&nbsp; The file 
+	is also stored on a CD-ROM along with other downloads, in case neither 
+	computer copy is usable.&nbsp; In all cases it is possible to recover the 
+	setup file by itself, without having to perform recovery of any other files.</p>
+	<p><b><a name="5.3" href="#5.3">5.3</a></b> Archiving the setup file also 
+	preserves the C/C++ Compiler in case it is needed later to recreate or 
+	trouble-shoot a package that has long since been distributed and possibly 
+	obsoleted.&nbsp;&nbsp; Even though this toolkit version might no longer be 
+	used, and it is removed from your computer, it can be important to always 
+	have a way to restore it to use later (so long as there are computers 
+	available that can still operate the software, of course).</p>
+	<p><b>Next Steps:</b> <b><a href="q050902c.htm">Setting up the Toolkit for 
+	Usage</a></b></p>
+</blockquote>
+<h2><a name="6." target="_top" href="#6.">6.</a> References</h2>
+<blockquote>
+	<dl>
+		<dt><a name="Microsoft2004">Microsoft (2004)</a>.</dt>
+		<dd>Microsoft<sup>®</sup> Visual C++<sup>®</sup> Toolkit 2003, version 1.01.0000, June 29, 
+		2004.&nbsp;
+	Available for download at &lt;<kbd><b><a 
+  href="http://msdn.microsoft.com/visualc/vctoolkit2003/">http://msdn.microsoft.com/visualc/vctoolkit2003/</a></b></kbd>&gt; 
+		(accessed 2005 March 3).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="Microsoft2005">Microsoft (2005)</a>.</dt>
+		<dd>Windows Server 2003 SP1 Platform SDK.&nbsp; April 2005 edition.&nbsp; 
+		Downloadable via Web Install, via Full Download, and via CD-ROM (U.S. 
+		only, for nominal shipping cost).&nbsp; Available via &lt;<b><a target="_top" 
+  href="http://www.microsoft.com/msdownload/platformsdk/sdkupdate/"><kbd>http://www.microsoft.com/msdownload/platformsdk/sdkupdate/</kbd></a></b>&gt; 
+		(accessed 2005 September 6).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="MSDN2005">MSDN (2005)</a>.</dt>
+		<dd>Microsoft<sup>®</sup> Visual C++<sup>®</sup> Developer Center.&nbsp; Web site.&nbsp; 
+Microsoft Software Developer Network, Microsoft Corporation, &lt;<b><a href="http://msdn.microsoft.com/visualc/"><kbd>http://msdn.microsoft.com/visualc/</kbd></a></b>&gt; 
+(accessed 2005 September 06).</dd>
+	</dl>
+</blockquote>
+
+  <hr color="#990033">
+
+<dl><small>
+<dl>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	</dl>
+
+<dl>
+	<dt><b>0.30 2005-10-06-16:10 Tie into other materials, make corrections</b></dt>
+	<dd>Upgrade to stitch into other materials better, especially the new Q0510<i>nn</i> 
+	materials.</dd>
+	<dt><b><a name="0.26">0.26</a> 2005-10-03-14:19 Move to /faq/2005/09/ as the 
+	canonical location for this material</b></dt>
+	<dt><b><a name="0.25">0.25</a> 2005-09-11-11:24 Make Important Correction on 
+	Choice of Download Location</b></dt>
+	<dd>Advice is added for ensuring that the download location works for the 
+	limited account and administrator accounts so that the setup can be done.&nbsp; 
+	Other small changes are made to the prerequisites and other text.</dd>
+	<dt><b><a name="0.20">0.20</a> 2005-09-10-18:09 Describe Why and How To Obtain the 
+	Toolkit</b></dt>
+	<dd>Provide screen captures and other details of what is expected and what 
+	the recommended download practice is.</dd>
+	<dt><b><a name="0.00">0.00</a> 2005-09-08-08:06 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; This page is 
+	a customization of the
+	<a target="_top" 
+ href="../../templates/00/Q000006c.htm">FAQtip Bootstrap Material [placeholder] 
+	Template 0.10</a>.&nbsp; A 
+	version from
+	<a target="_top" href="../../../projects/2005/06/p050601c.htm">FAQtip Bootstrap 0.10 Material</a> was used.</dd>
+	</dl>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-09-07-22:14 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 123 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="41037" -->
+</body>
+</html>

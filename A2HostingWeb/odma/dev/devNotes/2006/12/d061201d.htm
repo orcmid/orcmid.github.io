@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061201d: ODMJNI 1.0 Deployment 0.25alpha - API Regression Check </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/12/d061201d.htm 60    13-08-22 12:53 Orcmid $-->
+
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+		<a href="../../d000001.htm#d061201"><font color="#990033">d061201</font></a><br>
+      	</font></strong>
+<strong>
+
+  <font color="#990033">&nbsp;<a href="d061201.htm"><font color="#990033">ODMJNI 
+1.0 Deployment</font></a><br>
+      <em><font size="5">0.25alpha API Regression Check</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">12</a>&gt;</code></b></p>
+<p align="right"><code><b><a target="_top" href="d061201d.htm">d061201d</a>&gt;</b></code><br>
+</font>
+      <a href="#0.02"><font size="1">0</font><small><small>.02</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+	<blockquote>
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> <b>The latest
+				ODMJNI 1.0 Deployment material can be found via </b>&nbsp; &lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201b.htm">http://ODMA.info/dev/devNotes/2006/12/d061201b.htm</a></font></b>&gt;.</li>
+				<li><b>Next version:</b>&nbsp;<b>&nbsp; </b>ODMJNI 1.0 0.30alpha 
+				Document-Access Features<b>&nbsp; </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201e.htm">http://ODMA.info/dev/devNotes/2006/12/d061201e.htm</a></font></b>&gt;</li>
+				<li><b>Previous version:</b> <b>&nbsp;</b>ODMJNI 1.0 0.20alpha End-to-End 
+				Confirmation<b>&nbsp; </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201c.htm">http://ODMA.info/dev/devNotes/2006/12/d061201c.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+				That version was obsoleted by breaking changes introduced in 
+				this and subsequent versions.<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+				</li>
+				<li><b>This page:</b>&nbsp;<b>&nbsp; 0.01 ODMJNI 1.0 0.25alpha 
+				API Regression&nbsp; </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201d.htm">http://ODMA.info/dev/devNotes/2006/12/d061201d.htm</a></font></b>&gt;.&nbsp;&nbsp;
+				<font color="#800080"><b>This material was obsoleted by 
+				achievement of 0.30alpha.&nbsp; Later releases have introduced 
+				further breaking changes.&nbsp; This material is only preserved 
+				for historical purposes.</b></font></li>
+				<li><b><a name="Downloads">Downloads</a>:</b><ul>
+					<li><b><font face="Courier New, Courier, Monospace">
+					<a href="../../../devNotes/2006/12/d061201d-ODMJNI1.0-0.25alpha.zip">d061201d-ODMA1.0-0.25alpha.zip</a></font></b>: 
+				0.00 archive of the 0.25alpha regression check.&nbsp; 255,184 
+				byte file dated 2006-12-20-13:06.&nbsp; This is a preservation 
+				copy of the regression test that was conducted to ensure that 
+				the 0.30alpha practical100 API worked correctly with the 
+				existing odmjni100.dll and a revised set of odmjni100 classes.&nbsp; 
+				The test\Check03 folder contains the regression check program 
+				after modification to use the 0.30alpha API.</li>
+				</ul></li>
+			</ul></div>
+			
+
+</small>
+
+<p><b><a name="0.25alpha" href="d061201.htm#0.25alpha">0.25alpha API Regression Check</a></b> (<i>2006-12-20</i>).&nbsp; 
+		This is a version of 0.20alpha that substitutes the 0.30alpha API and 
+		demonstrates that the breaking changes have been accommodated by 
+		rebuilding odmjni100 classes and leaving odmjni100.dll unchanged.&nbsp; 
+		The Check03 test program does not exercise any additional functionality 
+		in this release: It is designed to show that nothing that worked before 
+		has been broken.</p>
+<p>The 0.25alpha Regression check uses version 0.00 form of the
+<a href="../10/d061001f.htm">0.30alpha practical100 code</a>.</p>
+
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 Deployment 0.25alpha API Regression Check.&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d061201d 0.01, February 8, 2007.&nbsp; 
+		Current version with downloadable software available at &lt;<font face="Courier New, Courier, Monospace"><b><a target="_top" href="d061201d.htm">http://ODMA.info/dev/devNotes/2006/12/d061201d.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.02">0.02</a> 2007-02-21-17:34 Tie to the 0.30alpha 
+	practical100 code</b></dt>
+	<dd>The subsequent adjustments to that code have no impact on this 
+	regression.</dd>
+	<dt><b><a name="0.01">0.01</a> 2007-02-08-21:50 Mark Obsolete and Connect 
+	Version Progression</b></dt>
+	<dd>The version progression is updated and the obsolescence of this material 
+	is asserted.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-12-20-13:19 Retain 0.25alpha API 
+	Regression</b></dt>
+	<dd>The ODMJNI practical100 interfaces and components (the API to Java) has 
+	been upgraded for 0.30alpha and beyond.&nbsp; This release provides the 
+	changes to odmjni100 classes to confirm that end-to-end operation has been 
+	preserved with the modifications for the 0.30alpha API.&nbsp; There is 
+	no change in end-to-end functionality, and the OdmNative code is not touched 
+	at all.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="60%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2006-12-20-13:13 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 60 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

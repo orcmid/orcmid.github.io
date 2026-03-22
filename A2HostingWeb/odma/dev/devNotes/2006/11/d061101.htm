@@ -1,0 +1,343 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /ODMdevCompagno/devnotes/2006/11/d061101.htm 79    13-08-22 12:53 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>info.odma.odmjni100 Java-OdmNative Bridge</title>
+
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="64%" height="6">
+      <p align="center">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong>
+		<a href="../../d000001.htm#d061101"><font color="#990033">d061101</font></a><br>
+      	<font size="5"><i>info.odma.</i></font><i><font size="5">odmjni100<br>
+		Java-OdmNative Bridge</font></i></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br><a href="../">2006</a>&gt;<a target="_top" href="./">11</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b>
+		<a target="_top" href="d061101.htm">d061101</a>&gt;</b><br></font>
+</font><small><a href="#0.06">0.06</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<blockquote>
+	<p align="left"><font color="#800080"><b>{Preliminary Material.&nbsp; Recast 
+	this and move the progression information somewhere else, or include it in 
+	the individual pages where it comes into play.&nbsp; The is material might 
+	be better included in the deployment treatment and in project documents 
+	also.}</b></font></p>
+</blockquote>
+<h2 align="left"><b><a name="1" target="_top" href="#1">1</a>. Overview</b></h2>
+<blockquote>
+	<p align="left">ODMJNI 1.0 is developed via evolutionary prototyping of 
+	components along multiple tracks:</p>
+	<ul>
+		<li>
+		<p align="left"><font face="monospace"><a href="../10/d061001.htm"><b>practical100</b></font><b> Pure Java</b></a><b>:</b> The 
+		Java <font face="monospace"><b>info.odma.practical100</b></font> package 
+		of interfaces and null connections.<br>&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><font face="monospace"><a href="../10/d061003.htm"><b>OdmNative100</b></font><b> Native Windows</b></a><b>: </b>
+		The C/C++ native Windows implementation of <font face="monospace"><b>OdmNative100</b></font> 
+		classes and interfaces that provide coordinated use of the ODMA Connection Manager and the ODMA-compliant DMSs 
+		that are reached via the connection manager.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left"><b><a href="#4">This Material:</a>
+		<font face="monospace">odmjni100</font></b><b> Java with </b>
+		<font face="monospace"><b>
+		odmjni100.dll</b></font><b> JNI:</b> The Java and C/C++ implementation of 
+		the Java <font face="monospace"><b>info.odma.odmjni100</b></font> package and the <b>
+		<font face="monospace">odmjni100.dll</font></b> that provides native implementations for the 
+		native methods of the package classes. </p>
+	<ul>
+		<li>
+		<p align="left">The <font face="monospace"><b>odmjni100</b></font> package is developed in 
+		Java.&nbsp; It makes use of and enhances the <font face="monospace"><b>practical100</b></font> 
+		components.&nbsp;&nbsp; The <font face="monospace"><b>odmjni100</b></font> classes and 
+		implementations of <font face="monospace"><b>practical100</b></font> interfaces are used 
+		from Java applications. <br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left">The <font face="monospace"><b>odmjni100.dll</b></font> provides native 
+		implementations for some private methods of <font face="monospace"><b>odmnji100</b></font>.&nbsp; 
+		Functions in the DLL are used by the Java virtual machine to obtain 
+		those implementations.&nbsp; The implementations satisfy the Java Native 
+		Interface (JNI) protocol for native methods.&nbsp; The
+		<font face="monospace"><b>
+		odmnji100.dll</b></font> functions make use of <font face="monospace"><b>OdmNative100</b></font> 
+		classes and interfaces.&nbsp; The DLL is implemented in Visual C++ and 
+		is only meant to be used by the Java Virtual Machine operating on Win32 
+		i86 platforms running Windows 2000 or later.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+	</ul>
+		</li>
+		<li>
+		<p align="left"><b><a href="../../2007/09/d070901.htm">ODMJNI 1.0 
+		Packaging</a></b>: A separate activity that brings together the run-time 
+		redistributable, the Java development package, and the ODMJNI source 
+		code and test utilities in a layered set of packages for deployment to 
+		developers and with applications to their adopters.</p></li>
+	</ul>
+	<p align="left">In the evolution on each track, there are both free-standing 
+	and integrated confirmation tests.&nbsp; The results of the free-standing 
+	tests are designed to establish that there is a worked solution that the 
+	integrated case should be verifiable against.</p>
+	<p align="left">The major integration and coordination effort involves
+	<font face="monospace"><b>odmjni100</b></font>, 
+	where all tracks come together.&nbsp; Here is the greatest need for careful 
+	synchronization.&nbsp; The <font face="monospace"><b>odmjni100</b></font> progression is 
+	constrained by the current levels of <font face="monospace"><b>practical100</b></font>.&nbsp; 
+	The needs of <font face="monospace"><b>odmjni100</b></font> introduce requirements for new 
+	levels of <font face="monospace"><b>OdmNative100</b></font>.</p>
+</blockquote>
+<h2 align="left"><a name="2" target="_top" href="#2">2</a>. Progression</h2>
+<blockquote>
+	<p align="left"><b><font face="monospace">info.odma.odmjni100</font></b> is a Java package of 
+	classes that deliver ODMA-aware operations to applications via the 
+	<font face="monospace"><b>
+	info.odma.practical100</b></font> interfaces:</p>
+	<ol>
+		<li>The <font face="monospace"><b>odmjni100</b></font> classes use 
+		private native methods and the Java Native Interface (JNI) to access 
+		native Windows and ODMA functions.<br />
+&nbsp;&nbsp; </li>
+		<li></li>The implementations of the native methods are provided 
+		by the <font face="monospace"><b>odmjni100.dll</b></font> Dynamic-Link Library (DLL).<br />
+&nbsp;&nbsp; </li>
+		<li>Functions implemented in <b><font face="monospace">odmjni100.dll</font></b> 
+		construct instances of <font face="monospace"><b>OdmNative100</b></font> objects and their
+		<font face="monospace"><b>IodmNative100</b></font> interfaces.<br />
+&nbsp;&nbsp; </li>
+		<li>The <font face="monospace"><b>odmjni100</b></font> classes implement their
+		<kbd><b>practical100</b></kbd> ODMA-aware operations by requests to 
+		<font face="monospace">
+		<b>IodmNative100</b></font> methods.&nbsp; These requests are via native
+		<font face="monospace"><b>odmjni100</b></font> &quot;helper&quot; methods.<br />
+&nbsp;&nbsp; </li>
+		<li>The linkage between <font face="monospace"><b>odmjni100</b></font> methods 
+		and <font face="monospace"><b>IodmNative100</b></font> methods is by retaining pointers to 
+		the <font face="monospace"><b>IodmNative100</b></font> interfaces in the 
+		<font face="monospace"><b>odmjni100</b></font> 
+		objects.&nbsp; These pointers are disguised as Java 
+		<font face="monospace"> <b>long</b></font> values.<br />
+&nbsp;&nbsp; </li>
+		<li><font face="monospace"><b>odmjni100</b></font> classes are designed to hold 
+		onto those disguised pointer values so long as any native helper method 
+		might be called.&nbsp; <br />
+&nbsp;&nbsp;&nbsp; </li>
+		<li>
+<font face="monospace"><b>IodmNative100</b></font> operations are obtained by passing the disguised 
+interface pointer to each native helper method as one of the parameters.&nbsp; 
+The native helper method's implementation in <font face="monospace"><b>odmjni100.dll</b></font> 
+uses the passed-back pointer to find the <font face="monospace"><b>IodmNative100</b></font> 
+interface that was created for the <font face="monospace"><b>odmjni100</b></font> object to use (3, 
+above).<br>
+&nbsp;&nbsp; 
+		</li>
+		<li>
+When the <font face="monospace"><b>odmjni100</b></font> object releases its resources, no later 
+than finalization, it uses helper methods to release all <font face="monospace"><b>IodmNative100</b></font> 
+interfaces being held, setting the Java <font face="monospace"> <b>long</b></font> values back to 
+<font face="monospace"><b>0</b></font> 
+to signify that no interface is being held.&nbsp; Any subsequent access to 
+<font face="monospace">
+<b>odmjni100</b></font> native helper methods of the object will result in null 
+responses.&nbsp; 
+		</li>
+	</ol>
+	<p>In this manner, the lifetime of resources held by <b>
+	<font face="monospace">OdmNative100</font></b> 
+	objects is synchronized with the lifetime and usage of the 
+	<font face="monospace"><b>odmjni100</b></font> 
+	objects.&nbsp; The retention of <font face="monospace"><b>odmjni100.dll</b></font> in computer 
+	memory is managed by the Java 
+	Virtual Machine.</p>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a>. References and Resources</h2>
+<blockquote>
+	<dl>
+		<dt><a name="Liang1999">Liang, Sheng</a>.</dt>
+		<dd><i>The Java Native Interface: Programmer's Guide and Specification</i>.&nbsp; 
+		Addison-Wesley (Reading, MA: 1999).&nbsp; ISBN 0-201-32577-2 pbk.&nbsp; 
+		Available at &lt;<b><a href="http://java.sun.com/docs/books/jni/"><font face="monospace">http://java.sun.com/docs/books/jni/</font></a></b>&gt; 
+		with different electronic editions and downloadable examples.&nbsp; The 
+		HTML version pages are dated 2002-03-07. Accessed 2006-11-11.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="SunMicro1999">Sun Microsystems</a>.</dt>
+		<dd>Java Native Interface Tips.&nbsp; Web page, updated 1999 December 2.&nbsp; 
+		Available at &lt;<b><a href="http://java.sun.com/products/jdk/faq/jnifaq.html"><font face="monospace">http://java.sun.com/products/jdk/faq/jnifaq.html</font></a></b>&gt;.&nbsp; 
+		Accessed 2006-11-11.<br>
+&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="SunMicro2005">Sun Microsystems</a>.</dt>
+		<dd>Java Native Interface 5.0 Specification.&nbsp; Undated on-line 
+		document.&nbsp; Available at &lt;<b><font face="monospace"><a href="http://java.sun.com/j2se/1.5.0/docs/guide/jni/spec/jniTOC.html">http://java.sun.com/j2se/1.5.0/docs/guide/jni/spec/jniTOC.html</a></font></b>&gt;.&nbsp; 
+		This document, as of 2005-08-26, is also available in the 2005-11-18
+		<font face="monospace"><b>jdk_1.5.0_doc.zip</b></font> download of the J2SE (TM) 
+		Development Kit Documentation 5.0 (English) available via &lt;<b><a href="http://java.sun.com/javase/downloads/index.jsp"><font face="monospace">http://java.sun.com/javase/downloads/index.jsp</font></a></b>&gt;.&nbsp; 
+		Accessed 2006-09-08.</dd>
+	</dl>
+</blockquote>
+<h2 align="left"><a name="4" target="_top" href="#4">4</a>. <a name="Materials">Available Material</a></h2>
+<ul>
+	<li><b>d061101b: <a href="d061101b.htm">odmjni100 Implementation 
+	[latest]</a></b></li>
+	<li><b>d061101o: <a href="d061101o.htm">0.59beta Transition Candidate 
+	Implementation</a></b></li>
+	<li><b>d061101n: <a href="d061101n.htm">Runtime Packaging: 0.58beta Integration</a></b></li>
+	<li><b>d061101m: <a href="d061101m.htm">KnownDocument: 0.57beta Regression</a></b></li>
+	<li><b>d061101k: CodePages: 0.54beta Integration</b></li>
+	<li><b>d061101j: CheckSwing: 0.52beta Integration</b></li>
+	<li><b>d061101i: Check04: 0.50beta Integration</b></li>
+	<li><b>d061101h: Check03: 0.40alpha Integration</b></li>
+	<li><b>d061101g: Check03: 0.30alpha Integration</b></li>
+	<li><b>d061101f: <a href="d061101f.htm">Check03: 0.25alpha Integration</a></b></li>
+	<li><b>d061101e: <a href="d061101e.htm">Setup02: 0.20alpha Integration</a></b></li>
+	<li><b>d061101d: <a href="d061101d.htm">Setup01: JNI Master Cases</a></b></li>
+	<li><b>d061101c: <a href="d061101c.htm">Setup00: The JNI &quot;Hello World&quot;</a></b></li>
+	<li>
+	<p align="left"><b>d061101a: <a href="../../../devNotes/tBlzT8bS/11/d061101a.htm">Diary &amp; Job Jar</a></b></li>
+</ul>
+<ul>
+	<li><b><i>see also:</i> </b>
+	<ul>
+		<li><b>d061001: <a href="../10/d061001.htm">info.odma.practical100 
+		Component Development</a></b></li>
+		<li><b>d061003: <a href="../10/d061003.htm">ODMJNI 1.0 OdmNative100 
+		ODMA-Access Implementation</a></b></li>
+		<li><b>d070901: <a href="../../2007/09/d070901.htm">ODMJNI 1.0 Packaging</a></b></li>
+		<li><b>d061201: <a href="../12/d061201.htm">ODMJNI 1.0 Deployment</a></b></li>
+		<li><b>d071001: <a href="../../2007/10/d071001.htm">ODMJNI 1.0 
+		Confirmation Tests</a></b></li>
+		<li><b>d070701: <a href="../../2007/07/d070701.htm">ODMJNI 1.0 Public 
+		Beta</a></b></li>
+		<li><b>p061001d: </b>Development Progression: 
+		0.20 Critical First Steps.&nbsp; ODMJNI 1.0 Java-ODMA Reference 
+		Integration project document, 2006-10-26.</li>
+	</ul>
+	</li>
+</ul>
+
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.06">0.06</a> 2007-12-01-13:48 Added Link to Confirmation Tests</b></dt>
+<dt><b><a name="0.05">0.05</a> 2007-09-25-13:55 Reflect Initiation of 0.59beta</b></dt>
+<dd>The 0.59beta Integration is introduced and the text and links are revised to 
+tie directly to the related developments and the separate packaging project.</dd>
+<dt><b><a name="0.04">0.04</a> 2007-03-05-17:30 Correct the placeholders for the 
+substitution of 0.57beta for 0.56beta</b></dt>
+<dd>This is done to accelerate availability of an openKnownDocument 
+implementation for testing with the Java application</dd>
+<dt><b><a name="0.03">0.03</a> 2007-02-24-18:13 Update with placeholders for the 
+progression through 0.58beta.</b></dt>
+<dt><b><a name="0.02">0.02</a> 2006-12-20-19:03 Link to <strike>0.30</strike><u>0.25</u>alpha Integration</b></dt>
+<dd>This page is badly in need of repaving.&nbsp; Later.</dd>
+<dt><b><a name="0.01">0.01</a> 2006-11-26-14:55 Complete Summary</b></dt>
+<dd>Provide basic sketch and context and be a placeholder for tying in the code 
+drops on further pages.</dd>
+<dt><b><a name="0.00">0.00</a>  2006-11-09-13:48 create&nbsp;placeholder to morph
+    into the necessary material</b></dt>
+  <dd>Incorporate <a href="d061101a.htm">job jar </a>and use it to drive the 
+	completion of essential items here, providing an initial skeleton for more 
+	content.&nbsp; The first objective is creating a jobjar and placeholder 
+	pages to be used while the component is taken through critical feasibility 
+	tests.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%">
+      <p><a href="index.htm" target="_top">
+		<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2006-11-09-13:48 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 79 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

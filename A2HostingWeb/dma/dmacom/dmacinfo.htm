@@ -1,0 +1,167 @@
+<html>
+
+<head>
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/_private/dmware/dmacinfo.htm 3     01-01-11 9:42 Orcmid $-->
+<!-- This document is based on the dmaprop.htm template last updated on 1999-06-08 by Dennis E. Hamilton (mailto:infonuovo@email.com)  -->
+<title>DMACOM.H Read-Me and Usage Information</title>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a NAME="Top">DMACOM.H Version 1.10 Read-Me and Usage Information</a></h1>
+
+<blockquote>
+  <blockquote>
+    <p align="left"><em>This is a draft of in-progress work.&nbsp; For access to the latest
+    version and related information, visit <a href="http://www.infonuovo.com/DMware">http://www.infonuovo.com/DMware</a>.</em></p>
+    <p align="left"><em>Currently, this is an empty document to be updated as the DMACOM.H
+    distribution version is set up.</em></p>
+    <p align="center"><font size="-1">L<span style="font-variant: small-caps">ast</span>
+    U<span style="font-variant: small-caps">pdated</span> 2001-01-11-09:43 -0800
+    (pst)</font></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h3><em>Author:</em></h3>
+
+<blockquote>
+  <p><a href="mailto:infonuovo@email.com">Dennis E. Hamilton</a> (ed.), 1999 Technical
+  Committee Chairman, <a href="http://www.aiim.org">AIIM Document Management Alliance</a>,
+  &nbsp; 2000 AIIM DMware Technical Coordinator</p>
+</blockquote>
+
+<h3><em>Revision History:</em></h3>
+
+<blockquote>
+  <p><strong>This is <a href="#0.02">draft 0.02</a></strong> of 2000-03-29</p>
+  <h1><em>Content </em></h1>
+</blockquote>
+
+<blockquote>
+  <h2><a href="#Contributors"><em>Contributors</em></a></h2>
+  <h2><a href="#ChangeHistory"><em>Change History</em></a></h2>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h1><a NAME="Introduction">1.&nbsp; Introduction</a></h1>
+
+<h1><a name="References">10. References and Resources</a></h1>
+
+<blockquote>
+  <dl>
+    <dt>&nbsp;</dt>
+    <div align="center"><center><table border="2" cellspacing="4" width="90%"
+    bordercolor="#008000" bordercolorlight="#00FF00" bordercolordark="#008080">
+      <tr>
+        <td width="100%">Find some references on COM and relationship to DMACOM.H<ul>
+          <li>Integration Model and related elements of the DMA Specification. Can refer to the AIIM
+            Web site.</li>
+          <li>References to the files on which DMACOM.H is based.</li>
+          <li>References to the COM Binary Standard and how it works.<ul>
+              <li>The COM Specification</li>
+              <li>Material on MSDN and the Platform SDK</li>
+            </ul>
+          </li>
+          <li>Anything explaining the parts we employ and how it works</li>
+          <li>&nbsp;</li>
+        </ul>
+        </td>
+      </tr>
+    </table>
+    </center></div>
+    <dt><a name="[DMA]">[DMA]</a></dt>
+    <dd><a href="http://www.aiim.org/dma">Document Management Alliance</a>.&nbsp; AIIM
+      International.&nbsp; Coalition created in 1995 to produce a single document-management
+      interoperability interface specification based on the work of the Document Enabled
+      Networking initiative and the Shamrock Coalition.</dd>
+    <dd>&nbsp;</dd>
+  </dl>
+</blockquote>
+
+<hr>
+
+<h2><a name="Contributors">Contributors</a></h2>
+
+<blockquote>
+  <p>The following people contributed to the development of this document and to DMACOM.H:</p>
+  <div align="center"><center><table border="2" cellspacing="4" width="90%"
+  bordercolor="#008000" bordercolorlight="#00FF00" bordercolordark="#008080">
+    <tr>
+      <td width="100%">Need to look for the following people who may have contributed to the
+      DMACOM.H progression:<ul>
+        <li>Tom Wills</li>
+        <li>Jock Williams</li>
+        <li>Larry Bonham</li>
+        <li>Terry Ho</li>
+        <li>anyone else involved in Amigo development at Xerox</li>
+        <li>Alan Babich and anyone else at Filenet who tested DMACOM.H with Amigo and the DMA
+          reference interfaces, including Jim Green and Glenn Peterson</li>
+        <li>People at Eastman Software who also tested and used the program</li>
+        <li>People at Napersoft and Hyland who used and contributed to this development.</li>
+        <li>Dig out the original distribution of Amigo and trace the evolution of DMACOM.H.
+          &nbsp;&nbsp; Include it in the Change History also.</li>
+      </ul>
+      </td>
+    </tr>
+  </table>
+  </center></div><dl>
+    <dt><a href="mailto:cfay@filenet.com">Chuck Fay</a>, 1997-1998 DMA Technical Committee
+      Chair, <a href="http://www.filenet.com">FileNET Corporation</a></dt>
+    <dd>&nbsp;</dd>
+    <dt><a href="mailto:infonuovo@email.com">Dennis E. Hamilton</a>, 1999 DMA Technical
+      Committee Chair, <a href="http://www.infonuovo.com">InfoNuovo</a></dt>
+    <dd>editor; principal author</dd>
+    <dt><a href="mailto:RSauvain@crt.xerox.com">Richard Sauvain</a>, 1998-1999 DMA TC North
+      American Vice-Chair, <a href="http://www.xerox.com">Xerox Corporation</a></dt>
+    <dd>&nbsp;</dd>
+    <dt><a href="mailto:mrcs@iname.com">Michael Seaman</a>, DMA developer, <a
+      href="http://www.filenet.com">FileNET Corporation</a></dt>
+    <dd>&nbsp;</dd>
+  </dl>
+</blockquote>
+
+<h2><a name="ChangeHistory">Change History</a></h2>
+
+<h3>DMACOM.H Version 1.10</h3>
+
+<blockquote>
+  <p>Version 1.10</p>
+  <p>DMA 1.0 Version</p>
+</blockquote>
+
+<h3>DMACINFO.HTM</h3>
+
+<blockquote>
+  <dl>
+    <dt><a name="0.02"><strong>draft 0.02</strong></a> 2000-03-29-09:33 pst (-0800) by dh</dt>
+    <dd>Created boiler-plate placehoder document to be fleshed out as a companion to the
+      DMACOM.H and DMACDIST.TXT materials.</dd>
+    <dt><a name="0.01"><strong>draft 0.01</strong></a> </dt>
+    <dd>There is no draft 0.01.&nbsp; The first draft is identified as 0.02, synchronizing with
+      the current working drafts for DMACDIST.TXT and DMACOM.H for review.</dd>
+    <dt>&nbsp;</dt>
+    <hr>
+  </dl>
+</blockquote>
+
+<p align="right">created 2000-03-29 at 09:33 -0800 (pst) by orcmid<em><br>
+$$Author: Orcmid $<br>
+$$Date: 01-01-11 9:42 $<br>
+$$Revision: 3 $</em></p>
+
+<blockquote>
+  <p><a href="mailto:(mailto:infonuovo@email.com"></a></p>
+  <h5><a name="Bottom">End of Document </a></h5>
+</blockquote>
+</body>
+</html>

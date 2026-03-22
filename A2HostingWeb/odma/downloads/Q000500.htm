@@ -1,0 +1,134 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/downloads/Q000500.htm 7     01-04-26 15:59 Orcmid $-->
+<title>Q000500: How ODMA Integrates Application and DMS</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="http://www.infonuovo.com/odma">ODMA</a> <a href="http://www.infonuovo.com/odma/faq">FAQtip</a>
+ <a href="http://www.infonuovo.com/odma/downloads/Q000500.htm">Q000500</a>:</h2>
+
+<h1 align="center"><font color="#ff0000" size="6">How ODMA Integrates
+Application and DMS</font></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#1.15">Version
+1.15</a></span>&nbsp; L<span style="font-variant: small-caps">ast updated</span>
+ 2001-04-26-15:51 -0700 (pdt)<br>
+The <a href="http://www.infonuovo.com/odma/downloads/Q000500.htm">latest
+version</a> of this information is available at the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<p align="center"><font size="1"><strong>Copyright © 1996-1998 <a href="http://www.infonuovo.com/odma/faq/Q000605.htm#COBrien"> Activedoc
+Corporation</a></strong></font><font size="2"><br>
+</font><font size="1"><b>Copyright © 2000, AIIM International</b></font>
+</p>
+
+<blockquote>
+
+<p><font size="-1">For the latest information on ODMA and the ODMA
+Specifications, consult the <a href="http://www.infonuovo.com/odma">ODMA</a>
+section of the <a href="http://www.dmware.org">AIIM DMware</a> site at <a href="http://www.dmware.org"><font size="+0"><b><code>http://www.dmware.org</code></b></font></a>.&nbsp;
+The latest status on&nbsp; ODMA 2.0 is always available on the Internet at
+<p align="center"><a href="http://www.infonuovo.com/odma/support/odma20st.htm"><font size="+0"><b><code>http://www.infonuovo.com/odma/support/odma20st.htm</code></b></font></a>.
+<p align="left">This information is also part
+of ODMA 2.0 Documentation Files edition 2.0-1.&nbsp; For later editions and
+current status, consult the <a href="http://www.infonuovo.com/odma/downloads/odma20D.htm">ODMA
+2.0 Documentation Files</a> description page.</font>
+
+</blockquote>
+
+  <hr>
+<p><font size="5">W</font>hen the application first wants to interact with the
+document management environment, it does an <b><code> <a href="../downloads/odma20-3.htm#ODMRegisterApp"> ODMRegisterApp</a></code></b> call to the
+<a href="../downloads/odma20-3.htm#ConnectionsAndConnectionManager"> ODMA
+Connection Manager</a> (ODMA). It will typically do this as part of its startup, but
+it can delay it until the user actually requests interaction with the document
+management system (DMS). ODMA returns a handle for the application to use for
+identification in all subsequent calls.&nbsp; Before the application exits, it
+must call <b><code>
+<a href="../downloads/odma20-3.htm#ODMUnRegisterApp">
+ODMUnRegisterApp</a></code></b> to release the handle and all ODMA and DMS
+resources that have been setup to support the application..</p>
+<p>As part of <b><code><a href="odma20-3.htm#ODMRegisterApp">ODMRegisterApp</a></code></b>
+operation, ODMA searches the Windows Registry for
+entries in <b><code>HKEY_Local_Machine/Software/Classes/ODMA</code></b>.&nbsp;
+There is a separate entry for 32-bit as <b><code>HKEY_Local_Machine/Software/Classes/ODMA32</code></b>.&nbsp;
+These entries identify all ODMA-compliant DMS integrations that are installed on
+the same computer as the application.&nbsp; Each entry has a <a href="odma20-3.htm#DMS_ID">DMS
+ID</a> as its key.</p>
+<p>ODMA connects to the first DMS whose Windows Registry DMS ID key has a sub-key of
+<b><code>DEFAULT</code></b>.
+The value for the DMS ID key is for a library file provided by the DMS
+vendor. This is a <b><code> .DLL</code></b> file whose function is to translate the ODMA calls
+into calls to the DMS client’s own integration API. If the user has not
+already logged in to this DMS either directly or from another application, then
+the DMS client puts up a log-in screen.&nbsp;</p>
+<p> Once an application has registered with
+ODMA, it either continues with API calls, or can switch to a COM interface. ODMA
+then becomes essentially a transparent traffic manager, passing ODMA calls
+through to the appropriate DMS client. The DMS client implements the COM
+interface, as an aggregation of that in ODMA.</p>
+<p align="center"><img border="0" src="Q000500a.gif" width="75%" height="75%"></p>
+<p align="left">(Systems do not register with ODMA. They provide an additional API call
+      that the Connection Manager uses to &quot;wake up&quot; the DMS
+      integration, which returns an interface used for further communication.)</p>
+Requests for new documents and searches go to the default
+      DMS. If the application provides a document id that is for a different
+      DMS, the Connection Manager starts the DMS client if it is not already
+      connected, and passes the call to it.
+<p>
+      All dialogs for searching, selecting and setting properties of documents,
+      as well as log-in, come from the DMS client. In ODMA 1.0, neither ODMA nor
+      the application provide any dialogs.</p>
+      <p>To open a document, the application calls <b><code><a href="odma20-3.htm#ODMSelectDoc"> ODMSelectDoc</a></code></b> and the DMS
+      displays a dialog for the user to select the document and version
+      required. The application calls <b><code><a href="odma20-3.htm#ODMOpenDoc"> ODMOpenDoc</a></code></b> to ask the DMS to retrieve a
+      working copy for the application to open.
+      </p>
+      <p>To save a new document, the application calls <b><code><a href="odma20-3.htm#ODMNewDoc"> ODMNewDoc</a></code></b> to get a
+      temporary document Id, <b><code><a href="odma20-3.htm#ODMSaveAs"> ODMSaveAs</a></code></b> for the user to complete a profile,
+      <b><code><a href="odma20-3.htm#ODMOpenDoc">
+      ODMOpenDoc</a></code></b> to get a filename to save to and <b><code><a href="odma20-3.htm#ODMSaveDoc"> ODMSaveDoc</a></code></b> to let the DMS know
+      it can take the file. <b><code><a href="odma20-3.htm#ODMCloseDoc"> ODMCloseDoc</a></code></b> completes the process and tells the DMS
+      to delete the local work copy of the file.
+      </p>
+  <hr>
+<blockquote>
+<p align="left"><font size="-1">This document is designed to
+be used in the same file location as <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm">HTML
+edition 2.0-3</a> of the ODMA 2.0 Specification and the <a href="http://www.infonuovo.com/odma/downloads/rata20-1.htm">Errata</a>
+for that edition.&nbsp; Shortcuts in this document depend on proximity to a copy
+of the specification.&nbsp; A convenient way to make sure all necessary
+materials are present is to download the complete <a href="http://www.infonuovo.com/odma/downloads/odma20D.htm">ODMA
+2.0 Documentation Files</a> package.</font>
+</blockquote>
+  <dl><font size="-1">
+    <dt><b><a name="1.15">Version 1.15</a>: Tie into ODMA 2.0 Specification
+      (orcmid)</b></dt>
+  
+    <dd>This document is moved for use in conjunction with the other ODMA 2.0
+      Documentation Files.&nbsp; The description is tied directly to sections of
+      the specification and some of the text is updated to line up better with
+      the terms and notions employed in the specification.</dd>
+    <dt><b><a name="1.10">Version 1.10</a>: Initial DMware Version (orcmid)</b></dt>
+  
+    <dd>Incorporate material in the FAQtip format, preserving most of the look
+      and feel.&nbsp; Obtain review.</dd>
+    <dt><b>Version 1.00: ActiveDoc Version (Colin O'Brien)</b></dt>
+    <dd>Published on the ActiveDoc web site and last updated 1999-08-24.</dd>
+  </font></dl>
+
+<p align="right">derived 2000-09-25-13:55 -0700 (pdt) from an article by <a href="Q000605.htm#COBrien">Colin
+O'Brien</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-04-26 15:59 $<br>
+$$Revision: 7 $</em></p>
+</body>
+</html>

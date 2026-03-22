@@ -1,0 +1,664 @@
+<html><head><title>Well Known Query Operators</title><meta name="GENERATOR" content="DMA Interface Database"></head><BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2>DMA Well Known Query Operators</h2><TABLE BORDER=1><TR>
+<TD><p><b>Name</b></p></TD>
+<TD><p><b>Result Type</b></p></TD>
+<TD><p><b>Min # of Opnds</b></p></TD>
+<TD><p><b>Max # of Opnds</b></p></TD>
+<TD><p><b>Operand Type(s)</b></p></TD>
+<TD><p><b>Safe to Eliminate</b></p></TD>
+<TD><p><b>Define</b></p></TD>
+</TR><TR>
+<TD><p>And</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>No</p></TD>
+
+<TD><p>dmaQueryOperator_And</p></TD>
+</TR><TR>
+<TD><p>Or</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>No</p></TD>
+
+<TD><p>dmaQueryOperator_Or</p></TD>
+</TR><TR>
+<TD><p>Not</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Not</p></TD>
+</TR><TR>
+<TD><p>Equal Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualBinary</p></TD>
+</TR><TR>
+<TD><p>Unequal Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalBinary</p></TD>
+</TR><TR>
+<TD><p>Greater Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterBinary</p></TD>
+</TR><TR>
+<TD><p>Greater Or Equal Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterOrEqualBinary</p></TD>
+</TR><TR>
+<TD><p>Less Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessBinary</p></TD>
+</TR><TR>
+<TD><p>Less Or Equal Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessOrEqualBinary</p></TD>
+</TR><TR>
+<TD><p>Equal String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualString</p></TD>
+</TR><TR>
+<TD><p>Unequal String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalString</p></TD>
+</TR><TR>
+<TD><p>Greater String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterString</p></TD>
+</TR><TR>
+<TD><p>Greater Or Equal String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterOrEqualString</p></TD>
+</TR><TR>
+<TD><p>Less String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessString</p></TD>
+</TR><TR>
+<TD><p>Less Or Equal String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessOrEqualString</p></TD>
+</TR><TR>
+<TD><p>Equal Boolean</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualBoolean</p></TD>
+</TR><TR>
+<TD><p>Unequal Boolean</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalBoolean</p></TD>
+</TR><TR>
+<TD><p>Equal Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualInteger32</p></TD>
+</TR><TR>
+<TD><p>Unequal Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalInteger32</p></TD>
+</TR><TR>
+<TD><p>Greater Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterInteger32</p></TD>
+</TR><TR>
+<TD><p>Greater Or Equal Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterOrEqualInteger32</p></TD>
+</TR><TR>
+<TD><p>Less Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessInteger32</p></TD>
+</TR><TR>
+<TD><p>Less Or Equal Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessOrEqualInteger32</p></TD>
+</TR><TR>
+<TD><p>Equal Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualFloat64</p></TD>
+</TR><TR>
+<TD><p>Unequal Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalFloat64</p></TD>
+</TR><TR>
+<TD><p>Greater Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterFloat64</p></TD>
+</TR><TR>
+<TD><p>Greater Or Equal Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterOrEqualFloat64</p></TD>
+</TR><TR>
+<TD><p>Less Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessFloat64</p></TD>
+</TR><TR>
+<TD><p>Less Or Equal Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessOrEqualFloat64</p></TD>
+</TR><TR>
+<TD><p>Equal Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualDateTime</p></TD>
+</TR><TR>
+<TD><p>Unequal Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalDateTime</p></TD>
+</TR><TR>
+<TD><p>Greater Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterDateTime</p></TD>
+</TR><TR>
+<TD><p>Greater Or Equal Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_GreaterOrEqualDateTime</p></TD>
+</TR><TR>
+<TD><p>Less DateTime</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessDateTime</p></TD>
+</TR><TR>
+<TD><p>Less Or Equal Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_LessOrEqualDateTime</p></TD>
+</TR><TR>
+<TD><p>Equal Id</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>ID</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualId</p></TD>
+</TR><TR>
+<TD><p>Unequal Id</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>ID</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_UnequalId</p></TD>
+</TR><TR>
+<TD><p>Equal Object</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Object</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_EqualObject</p></TD>
+</TR><TR>
+<TD><p>Is Defined</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Any</p></TD>
+<TD><p>No</p></TD>
+
+<TD><p>dmaQueryOperator_IsDefined</p></TD>
+</TR><TR>
+<TD><p>Is Null</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Any</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_IsNull</p></TD>
+</TR><TR>
+<TD><p>Like</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 3</p></TD>
+<TD><p> 3</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Like</p></TD>
+</TR><TR>
+<TD><p>Is Class</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32; ID</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_IsClass</p></TD>
+</TR><TR>
+<TD><p>Add Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_AddInteger32</p></TD>
+</TR><TR>
+<TD><p>Subtract Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_SubtractInteger32</p></TD>
+</TR><TR>
+<TD><p>Negate Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_NegateInteger32</p></TD>
+</TR><TR>
+<TD><p>Absolute Value Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_AbsoluteValueInteger32</p></TD>
+</TR><TR>
+<TD><p>Multiply Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_MultiplyInteger32</p></TD>
+</TR><TR>
+<TD><p>Divide Integer32</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_DivideInteger32</p></TD>
+</TR><TR>
+<TD><p>Add Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_AddFloat64</p></TD>
+</TR><TR>
+<TD><p>Subtract Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_SubtractFloat64</p></TD>
+</TR><TR>
+<TD><p>Negate Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_NegateFloat64</p></TD>
+</TR><TR>
+<TD><p>Absolute Value Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_AbsoluteValueFloat64</p></TD>
+</TR><TR>
+<TD><p>Multiply Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>-1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_MultiplyFloat64</p></TD>
+</TR><TR>
+<TD><p>Divide Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_DivideFloat64</p></TD>
+</TR><TR>
+<TD><p>Integer32 To Float64</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Integer32ToFloat32</p></TD>
+</TR><TR>
+<TD><p>Float64 To Integer32 Round</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Float64ToInteger32Round</p></TD>
+</TR><TR>
+<TD><p>Float64 To Integer32 Truncate</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Float64ToInteger32Truncate</p></TD>
+</TR><TR>
+<TD><p>Exists</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 1</p></TD>
+<TD><p> 1</p></TD>
+<TD><p>Class</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_Exists</p></TD>
+</TR><TR>
+<TD><p>In Binary</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Binary</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InBinary</p></TD>
+</TR><TR>
+<TD><p>In Boolean</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InBoolean</p></TD>
+</TR><TR>
+<TD><p>In String</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>String</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InString</p></TD>
+</TR><TR>
+<TD><p>In Integer32</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Int32</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InInteger32</p></TD>
+</TR><TR>
+<TD><p>In Float64</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>Float64</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InFloat64</p></TD>
+</TR><TR>
+<TD><p>In Date Time</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>DateTime</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InDateTime</p></TD>
+</TR><TR>
+<TD><p>In Id</p></TD>
+<TD><p>Boolean</p></TD>
+<TD><p> 2</p></TD>
+<TD><p> 2</p></TD>
+<TD><p>ID</p></TD>
+<TD><p>Yes</p></TD>
+<TD><p>dmaQueryOperator_InId</p></TD>
+</TR>
+</TABLE>
+<h3>dmaQueryOperator_And</h3>
+<p>Computes the logical AND of its Boolean operands.  The AND operator must allow any operand to be constant.</p>
+<h3>dmaQueryOperator_Or</h3>
+<p>Computes the logical inclusive OR of its Boolean operands.  The OR operator must allow any operand to be constant.</p>
+<h3>dmaQueryOperator_Not</h3>
+<p>Computes the logical negation of its Boolean operand</p>
+<h3>dmaQueryOperator_EqualBinary</h3>
+<p>Returns True if and only if the two Binary operands are equal</p>
+<h3>dmaQueryOperator_UnequalBinary</h3>
+<p>Returns True if and only if the two Binary operands are unequal</p>
+<h3>dmaQueryOperator_GreaterBinary</h3>
+<p>Returns True if and only if the first operand is greater than the second</p>
+<h3>dmaQueryOperator_GreaterOrEqualBinary</h3>
+<p>Returns True if and only if the first operand is greater than or equal to the second</p>
+<h3>dmaQueryOperator_LessBinary</h3>
+<p>Returns True if and only if the first operand is less than the second</p>
+<h3>dmaQueryOperator_LessOrEqualBinary</h3>
+<p>Returns True if and only if the first is less than or equal to  the second</p>
+<h3>dmaQueryOperator_EqualString</h3>
+<p>Returns True if and only if the two string operands are equal</p>
+<h3>dmaQueryOperator_UnequalString</h3>
+<p>Returns True if and only if the two string operands are unequal</p>
+<h3>dmaQueryOperator_GreaterString</h3>
+<p>Returns True if and only if the first operand is greater than the second</p>
+<h3>dmaQueryOperator_GreaterOrEqualString</h3>
+<p>Returns True if and only if the first operand is greater than or equal to the second</p>
+<h3>dmaQueryOperator_LessString</h3>
+<p>Returns True if and only if the first operand is less than the second</p>
+<h3>dmaQueryOperator_LessOrEqualString</h3>
+<p>Returns True if and only if the first is less than or equal to  the second</p>
+<h3>dmaQueryOperator_EqualBoolean</h3>
+<p>Returns True if and only if the two boolean operands are equal</p>
+<h3>dmaQueryOperator_UnequalBoolean</h3>
+<p>Returns True if and only if the two boolean operands are unequal</p>
+<h3>dmaQueryOperator_EqualInteger32</h3>
+<p>Returns True if and only if the two integer operands are equal</p>
+<h3>dmaQueryOperator_UnequalInteger32</h3>
+<p>Returns True if and only if the two integer operands are unequal</p>
+<h3>dmaQueryOperator_GreaterInteger32</h3>
+<p>Returns True if and only if the first operand is greater than the second</p>
+<h3>dmaQueryOperator_GreaterOrEqualInteger32</h3>
+<p>Returns True if and only if the first operand is greater than or equal to the second</p>
+<h3>dmaQueryOperator_LessInteger32</h3>
+<p>Returns True if and only if the first operand is less than the second</p>
+<h3>dmaQueryOperator_LessOrEqualInteger32</h3>
+<p>Returns True if and only if the first is less than or equal to  the second</p>
+<h3>dmaQueryOperator_EqualFloat64</h3>
+<p>Returns True if and only if the first operand is equal to the second</p>
+<h3>dmaQueryOperator_UnequalFloat64</h3>
+<p>Returns True if and only if the two operands are unequal</p>
+<h3>dmaQueryOperator_GreaterFloat64</h3>
+<p>Returns True if and only if the first operand is greater than the second</p>
+<h3>dmaQueryOperator_GreaterOrEqualFloat64</h3>
+<p>Returns True if and only if the first operand is greater than or equal to the second</p>
+<h3>dmaQueryOperator_LessFloat64</h3>
+<p>Returns True if and only if the first operand is less than the second</p>
+<h3>dmaQueryOperator_LessOrEqualFloat64</h3>
+<p>Returns True if and only if the first is less than or equal to  the second</p>
+<h3>dmaQueryOperator_EqualDateTime</h3>
+<p>Returns True if and only if the first operand is equal to the second</p>
+<h3>dmaQueryOperator_UnequalDateTime</h3>
+<p>Returns True if and only if the two operands are unequal</p>
+<h3>dmaQueryOperator_GreaterDateTime</h3>
+<p>Returns True if and only if the first operand is greater than the second</p>
+<h3>dmaQueryOperator_GreaterOrEqualDateTime</h3>
+<p>Returns True if and only if the first operand is greater than or equal to the second</p>
+<h3>dmaQueryOperator_LessDateTime</h3>
+<p>Returns True if and only if the first operand is less than the second</p>
+<h3>dmaQueryOperator_LessOrEqualDateTime</h3>
+<p>Returns True if and only if the first is less than or equal to  the second</p>
+<h3>dmaQueryOperator_EqualId</h3>
+<p>Returns True if and only if the first operand is equal to the second</p>
+<h3>dmaQueryOperator_UnequalId</h3>
+<p>Returns True if and only if the two operands are unequal</p>
+<h3>dmaQueryOperator_EqualObject</h3>
+<p>This operator evaluates to DMA_TRUE if and only if the two operands are the same persistent object.  This operator can be used, for example, for equi-joins on single-object-valued navigation properties, e.g., dmaProp_This, dmaProp_Head, dmaProp_Tail, etc.</p>
+<h3>dmaQueryOperator_IsDefined</h3>
+<p>The operand must be a property of a persistent object, not a constant or query parameter or operator or etc.  Return True if the property is defined in the current scope, else False.  It is used to help refine searches across multiple repositories when the rules of three valued logic are not sufficient to achieve the desired result</p>
+<h3>dmaQueryOperator_IsNull</h3>
+<p>The operand must be a property of a persistent object, not a constant or query parameter or operator or etc.  The property must be defined in the current scope, or else DMARC_UNKNOWN is returned.  If the property is defined, the operator returns True if the value of the property is NULL, else False.</p>
+<h3>dmaQueryOperator_Like</h3>
+<p>The first operand is the string under examination. The second operand is the pattern string, which may contain wildcard characters. The widlcard character "%" represents zero or more characters.  The wildcard character "_" (underscore) represents exactly one character. The third operand is a single character string designating the escape character used in the pattern string. Return True if the pattern match is successful, else False.  If the first operand is not defined or is NULL, return DMARC_UNKNOWN</p>
+<h3>dmaQueryOperator_IsClass</h3>
+<p>This operator can be used to refine 'include subclasses' searches so that fewer than all subclasses of the ancestor class are returned by the query.  The first parameter is the searchable class occurrence number of a searchable class in the current query.  This searchable class occurrence must have dmaProp_IsInclSubclasses set to True.  The second parameter is the ID of the searchable class or one of its subclasses.  Return True if the searchable class ID of the current row under scan corresponding to the designated searchable class occurrence is equal to the second operand, else False.</p>
+<h3>dmaQueryOperator_AddInteger32</h3>
+<p>Return the sum of the operands</p>
+<h3>dmaQueryOperator_SubtractInteger32</h3>
+<p>Subtract the second operand from the first and return the difference</p>
+<h3>dmaQueryOperator_NegateInteger32</h3>
+<p>Return the negation of the operand</p>
+<h3>dmaQueryOperator_AbsoluteValueInteger32</h3>
+<p>Return the absolute value of the operand</p>
+<h3>dmaQueryOperator_MultiplyInteger32</h3>
+<p>Return the product of the operands</p>
+<h3>dmaQueryOperator_DivideInteger32</h3>
+<p>Divide the first operand by the second and return the quotient</p>
+<h3>dmaQueryOperator_AddFloat64</h3>
+<p>Return the sum of the operands</p>
+<h3>dmaQueryOperator_SubtractFloat64</h3>
+<p>Subtract the second operand from the first and return the difference</p>
+<h3>dmaQueryOperator_NegateFloat64</h3>
+<p>Return the negation of the operand</p>
+<h3>dmaQueryOperator_AbsoluteValueFloat64</h3>
+<p>Return the absolute value of the operand</p>
+<h3>dmaQueryOperator_MultiplyFloat64</h3>
+<p>Return the product of the operands</p>
+<h3>dmaQueryOperator_DivideFloat64</h3>
+<p>Divide the first operand by the second and return the quotient</p>
+<h3>dmaQueryOperator_Integer32ToFloat32</h3>
+<p>Convert the integer32 operand's value to a float64 and return the result</p>
+<h3>dmaQueryOperator_Float64ToInteger32Round</h3>
+<p>Convert the float64 operand's value to an integer32 by rounding it and return the result</p>
+<h3>dmaQueryOperator_Float64ToInteger32Truncate</h3>
+<p>Convert the float64 operand's value to an integer32 by truncating it and return the result</p>
+<h3>dmaQueryOperator_Exists</h3>
+<p>The subquery operand must be of type Query Root.  It must have an empty Selections List, and therefore be of data type Class.  If the subquery finds any result rows, True is returned, else False</p>
+<h3>dmaQueryOperator_InBinary</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type Binary.  Hence, the data type of the subquery will be Binary.  The value of the first operand is compared against the list of Binary values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InBoolean</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type Boolean.  Hence, the data type of the subquery will be Boolean.  The value of the first operand is compared against the list of Boolean values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InString</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type String.  Hence, the data type of the subquery will be String.  The value of the first operand is compared against the list of String values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InInteger32</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type Int32.  Hence, the data type of the subquery will be Int32.  The value of the first operand is compared against the list of Int32 values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InFloat64</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type Float64.  Hence, the data type of the subquery will be Float64.  The value of the first operand is compared against the list of Float64 values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InDateTime</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type Date Time.  Hence, the data type of the subquery will be Date Time.  The value of the first operand is compared against the list of Date Time values returned by the subquery.  True is returned if it is amongst them, else False</p>
+<h3>dmaQueryOperator_InId</h3>
+<p>The operand must be a query property node, a query constant node, or a subquery node.  If the operand is of type Query Root, the subquery must have exactly one property in its Selections List, and it must be of type ID.  Hence, the data type of the subquery will be ID.  The value of the first operand is compared against the list of ID values returned by the subquery.  True is returned if it is amongst them, else False</p></body>

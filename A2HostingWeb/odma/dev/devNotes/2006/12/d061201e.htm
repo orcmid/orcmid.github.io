@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061201e: ODMJNI 1.0 Deployment 0.30alpha - Document-Access Features </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/12/d061201e.htm 60    13-08-22 12:53 Orcmid $-->
+
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="14%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="65%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+		<a href="../../d000001.htm#d061201"><font color="#990033">d061201</font></a><br>
+      	</font></strong>
+<strong>
+
+  <font color="#990033">&nbsp;<a href="d061201.htm"><font color="#990033">ODMJNI 
+1.0 Deployment</font></a><br>
+      <em><font size="5">0.30alpha Document-Access Features</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="20%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMdev</b></a></code><b><code>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">12</a>&gt;</code></b></p>
+<p align="right"><code><b><a target="_top" href="d061201e.htm">d061201e</a>&gt;</b></code><br>
+</font>
+      <a href="#0.05"><font size="1">0</font><small><small>.05</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+	<blockquote>
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest
+				ODMJNI 1.0 Deployment material can be found via &nbsp; &lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201b.htm">http://ODMA.info/dev/devNotes/2006/12/d061201b.htm</a></font></b>&gt;.</li>
+				<li><b>Previous version:</b> <b>&nbsp;</b><b>ODMJNI 1.0 
+				0.25alpha API Regression </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201d.htm">http://ODMA.info/dev/devNotes/2006/12/d061201d.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+				That distribution was a regression check of the 0.30alpha 
+				practical100 interfaces with the end-to-end functionality 
+				established in 0.20alpha.&nbsp; It is obsoleted by the 
+				functionality of 0.30alpha and later releases.</li>
+				<li><b>Next version:</b>&nbsp;<b>&nbsp; ODMJNI 1.0 0.40alpha 
+				Document-Update Features </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201f.htm">http://ODMA.info/dev/devNotes/2006/12/d061201f.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+				This release extends end-to-end document-access to allow for 
+				modification of accessed documents.&nbsp; The modifications are 
+				used to update the managed version, with any change to the 
+				properties of the managed version also made available for 
+				presentation to the Java application.&nbsp; There is also 
+				correction of a defect that was carried over from 0.30alpha.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b>This version:</b>&nbsp;<b>&nbsp; 0.04 ODMJNI 1.0 0.30alpha 
+				Document-Access Features&nbsp; </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d061201e.htm">http://ODMA.info/dev/devNotes/2006/12/d061201e.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+				This release adds end-to-end document-access for read-only use 
+				of documents using the OdmConnection.chooseDocument() method.&nbsp; 
+				The delivered OdmWorkingDocument interface has fully-functional 
+				OdmViewingDocument operations except for transferToNewDocument 
+				(not functional until 0.50beta along with acceptNewDocument).&nbsp;
+				<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				<li><b><a name="Downloads">Downloads</a>:</b><ul>
+				<li><b><font face="monospace"><a href="d061201e-license.txt">d061201e-license.txt</a></font></b> : 
+				0.00 version of the ODMA License 1.0 applied to the 0.30alpha 
+				release, 3,213 byte file dated 2007-02-22-13:19</li>
+				<li><b><font face="monospace">
+				<a href="../../../devNotes/2006/10/d061001f-PreReleaseNotes.txt">
+				d061001f-PreReleaseNotes.txt</a></font></b>: 0.06 notes on 
+				Practical100 and ODMJNI usage that were captured over the course 
+				of 0.30alpha development, 33,885 byte file dated 
+				2007-02-22-12:56</li>
+				<li><b><font face="monospace">
+				<a href="../../../devNotes/2006/12/d061201e-ReleaseNotes.txt">d061201e-ReleaseNotes.txt</a></font></b>: 
+				0.01 updated notes on the 0.30alpha release as it has been delivered, 
+				21,280 byte file dated 2007-01-14-13:54.</li>
+				<li><b><font face="monospace">d061201e.txt</font></b>: 0.00 
+				manifest for the archive package</li>
+				<li><b><font face="monospace">
+				<a href="../../../devNotes/2006/12/d061201e-ODMJNI1.0-0.30alpha.zip">d061201e-ODMA1.0-0.30alpha.zip</a></font></b>: 
+				0.00 archive of the 0.30alpha release, 319,290 byte file dated 
+				2007-01-09-23:11.&nbsp;&nbsp;&nbsp; 
+				This is a preservation copy of the essential files for using and 
+				confirming the 0.30alpha release.</li>
+			</ul></li>
+			</ul></div>
+			
+
+</small>
+
+<div style="border: 6px double #990033; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px">
+	<font color="#990033"><b>DEFECT NOTICE: There is a defect in the reporting 
+	of dmsAvailable in the 0.30alpha OdmJniView implementation.&nbsp; See the 
+	0.01 ReleaseNotes for details.&nbsp; This defect is repaired in the 
+	0.40alpha release.&nbsp; There is no plan for repairing the 0.30alpha 
+	version at this time.</b></font></div>
+<p><b><font color="#800080">{Author Note: For now, this is simply a preservation page 
+used to preserve the 0.30alpha material for review within the project.&nbsp; Any further documentation and packaging 
+will follow the achievement of ODMJNI 1.0 0.50beta deployment. }</font></b></p>
+
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 Deployment 0.30alpha Release.&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d061201e 0.05, February 22, 2007.&nbsp; 
+		Current version with downloadable software available at &lt;<font face="Courier New, Courier, Monospace"><b><a target="_top" href="d061201e.htm">http://ODMA.info/dev/devNotes/2006/12/d061201e.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.05">0.05</a> 2007-02-22-13:25 Add license document</b></dt>
+	<dt><b><a name="0.04">0.04</a> 2007-02-22-11:55 Update Summary of the 
+	d061001f-PreReleaseNotes.txt</b></dt>
+	<dd>There&#39;s an important correction with regard to null behavior of 
+	openKnownDocument in 0.30beta and beyond.</dd>
+	<dt><b><a name="0.03">0.03</a> 2007-02-19-20:24 Review and Small Corrections</b></dt>
+	<dt><b><a name="0.02">0.02</a> 2007-02-13-21:57 Adjust Version Progression 
+	for uniformity</b></dt>
+	<dt><b><a name="0.01">0.01</a> 2007-01-14-15:00 Reflect 0.40alpha 
+	availability</b></dt>
+	<dd>Give notice to the defect found in 0.30, update the ReleaseNote to 0.01, 
+	and link to 0.40alpha in the version progression block.</dd>
+	<dt><b><a name="0.00">0.00</a> 2007-01-09-14:04 Establish Placeholder for 
+	0.30alpha</b></dt>
+	<dd>Create page for preserving all of the 0.30alpha release materials.&nbsp; 
+	This release will include only the runtime and the interface definitions, 
+	along with the test programs.&nbsp; The individual progressions for the 
+	layers of the ODMJNI 1.0 0.30alpha stack will be linked for the full-source 
+	definitions.&nbsp; This becomes closer to what we want to put in a JAR 
+	eventually.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="60%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="26%">
+      <p align="right"><font size="-2">created 2007-01-09-14:04 -0800 (pst) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 60 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

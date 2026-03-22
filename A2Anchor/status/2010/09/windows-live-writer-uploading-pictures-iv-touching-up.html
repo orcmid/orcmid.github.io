@@ -1,0 +1,1020 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Movable Type 4.34-en" />
+<link rel="stylesheet" href="http://nfocentrale.com/status/styles.css" type="text/css" />
+<link rel="start" href="http://nfocentrale.com/status/" title="Home" />
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://nfocentrale.com/status/atom.xml" />
+<script type="text/javascript" src="http://nfocentrale.com/status/mt.js"></script>
+
+
+    
+    <link rel="prev bookmark" href="http://nfocentrale.com/status/2010/08/twitter-oauth-hurdles.html" title="Twitter OAuth Hurdles" />
+    <link rel="next bookmark" href="http://nfocentrale.com/status/2010/09/20-active-nfocentrale-domain-names.html" title="20 Active nfoCentrale Domain Names" />
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/09/windows-live-writer-uploading-pictures-iv-touching-up.html"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/45"
+    dc:title="Windows Live Writer: Uploading Pictures IV &amp;ndash; Touching Up"
+    dc:identifier="http://nfocentrale.com/status/2010/09/windows-live-writer-uploading-pictures-iv-touching-up.html"
+    dc:subject="blog development"
+    dc:description="As I was setting up Windows Live Writer and the nfoCentrale Status blog site for uploading images, I realized that there were some useful adjustments I could make. Previously, I had simply set up a single images/ directory per blog..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-09-01T17:54:00-08:00" />
+</rdf:RDF>
+-->
+
+    
+    <title>Windows Live Writer: Uploading Pictures IV &amp;ndash; Touching Up - nfoCentrale Status</title>
+</head>
+<body id="mt-blog" class="mt-entry-archive layout-tw">
+    <div id="container">
+        <div id="container-inner">
+
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name"><a href="http://nfocentrale.com/status/" accesskey="1">nfoCentrale Status</a></div>
+            <div id="header-description">nfoCentrale Status is a blog used to report status changes and other information related to the care and feeding of the nfoCentrale sites and their blogs.</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-44" class="entry-asset asset hentry">
+                                <div class="asset-header">
+                                    <h1 id="page-title" class="asset-name entry-title">Windows Live Writer: Uploading Pictures IV &ndash; Touching Up</h1>
+                                    <div class="asset-meta">
+                                        <span class="byline">
+
+                                            By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-09-01T17:54:00-08:00">September  1, 2010  5:54 PM</abbr>
+
+                                        </span>
+
+                                        <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/09/windows-live-writer-uploading-pictures-iv-touching-up.html#comments">No Comments</a>
+
+
+                                        <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/09/windows-live-writer-uploading-pictures-iv-touching-up.html#trackbacks">1 TrackBack</a>
+
+                                    </div>
+                                </div>
+                                <div class="asset-content entry-content">
+
+                                    <div class="asset-body">
+                                        <p>As I was <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html">setting up Windows Live Writer</a> and the <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html"><em>nfoCentrale Status</em> blog site</a> for uploading images, I realized that there were some useful adjustments I could make.</p>  <p>Previously, I had simply set up a single <font face="monospace"><strong>images/</strong></font> directory per blog and allowed images posted through Windows Live Writer to accumulate there.&#160;&#160; </p>  <h3><strong>A SLIGHT PROBLEM</strong></h3>  <p>Windows Live Writer creates a subfolder, with a name chosen by WLW, to hold the images uploaded for a particular post.&#160; In looking for straightforward ways to back up these folders and images, I realized that it is cumbersome to have these images-per-post sets accumulate in an ever-growing, potentially gigantic single folder.&#160; </p>  <p><strong>ANTICIPATING BACKUP ARRANGEMENTS</strong></p>  <p>To provide separate backups, I want to save compressed archives of the image sets.&#160; The single archives will not reduce the space requirements by much, but they are easier to manage.&#160; I can also include them in my source-control more easily than treating the individual folder sets as projects.&#160; (This is a convenience for the continued use of <a class="zem_slink" title="Microsoft Visual SourceSafe" href="http://en.wikipedia.org/wiki/Microsoft_Visual_SourceSafe" rel="wikipedia">Visual Source Safe</a>; with other <a class="zem_slink" title="Revision control" href="http://en.wikipedia.org/wiki/Revision_control" rel="wikipedia">version-control systems</a>, this part is easier.)&#160; </p>  <p>The use of the source-control system is primarily a way to achieve versioned backup.&#160; It is easy to expand a <a class="zem_slink" title="ZIP (file format)" href="http://en.wikipedia.org/wiki/ZIP_%28file_format%29" rel="wikipedia">Zip archive</a> back to the original folders.&#160; And archiving the Zips as checked-in revisions provides a means for recovery in the event that older materials on the site are corrupted or lost in some way.</p>  <p><strong>SUBDIVIDING BY YEAR</strong></p>  <p>My initial solution is to annualize the <font face="monospace"><strong>images/</strong></font> folder.&#160; I will initiate that with <font face="monospace"><strong>images/2010/</strong></font> and continue with <font face="monospace"><strong>images/2011/</strong></font>, etc.&#160; </p>  <p>If even annualizing becomes ungainly, I am thinking that I will not drop down to a monthly level.&#160; Instead, I will segment the year as needed.&#160; For example, I might end up with the progression <font face="monospace"><strong>images/2010/</strong></font>, <font face="monospace"><strong>images/2010a/</strong></font>, <font face="monospace"><strong>images/2010b</strong></font>, …, <font face="monospace"><strong>images/2011/</strong></font>, etc.</p>  <p><strong>ADJUSTING WINDOWS LIVE WRITER</strong></p>  <p>For Windows Live Writer, I don’t need to change the FTP permissions I have already provided.&#160; Those permissions already start at the <font face="monospace"><strong>images/</strong></font> subfolder of the blog.&#160; Any additional subfolders, such as <font face="monospace"><strong>images/2010/</strong></font> are already accessible.</p>  <p>First, I prepare subfolder <font face="monospace"><strong>images/2010/</strong></font> the same way I <a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html">prepared images/ originally</a>.&#160; I will do this each time I need a new annualized folder.</p>  <p><a href="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIVTouc_E814/F10xy14201007081725ResetImagesWLW.png"><img style="border-right-width: 0px; margin: 0px 10px 10px 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="Changing Windows Live Writer to use the new annualized image folder" border="0" alt="Changing Windows Live Writer to use the new annualized image folder" align="left" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIVTouc_E814/F10xy14201007081725ResetImagesWLW_thumb.png" width="374" height="348" /></a> Secondly, I instruct Windows Live Writer to use the new location for all future image uploads.&#160; </p>  <p>When I edit the blog settings for uploading pictures, I will need to provide FTP account credentials again.&#160; Then I can browse to the new location on the server and confirm that new location.</p>  <p>At the time I did this, there was already an uploaded-image folder at the <font face="monospace">images/</font> location the FTP account starts at (and where <a href="ftp://ftp.nfocentrale.com/">ftp.nfocentrale.com</a> is pointed in this case).&#160; That folder is allowed to remain, since there is a blog post that uses images from there.</p>  <p>Once I selected the folder, Windows Live Writer confirms the settings it will be using.</p>  <p>There is no further action to take until a new annualized folder is to be started.&#160; Every January 1, if not sooner, I will repeat this process to start the next annualized group.&#160; I can also adjust the backup procedures to begin preserving the new folder at that time.</p>  <p>&#160;</p>  <p></p>  <p><img style="border-right-width: 0px; margin: 5px auto; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px" title="WLW Confirmation of the FTP Configuration for Uploading to the Annualized Folder" border="0" alt="WLW Confirmation of the FTP Configuration for Uploading to the Annualized Folder" src="http://nfocentrale.com/status/images/2010/WindowsLiveWriterUploadingPicturesIVTouc_E814/F10xy15201007081726ResetImagesWLW.png" width="328" height="307" /></p>  <div class="zemanta-related">   <h6 class="zemanta-related-title">Related articles by Zemanta</h6>    <ul class="zemanta-article-ul">     <li class="zemanta-article-ul-li"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-iii-configuring-live-writer.html">Windows Live Writer: Uploading Pictures III - Configuring Live Writer</a> (nfocentrale.com) </li>      <li class="zemanta-article-ul-li"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-ii-setting-up-ftp-account.html">Windows Live Writer: Uploading Pictures II - Setting Up FTP Account</a> (nfocentrale.com)</li>      <li class="zemanta-article-ul-li"><a href="http://nfocentrale.com/status/2010/07/windows-live-writer-uploading-pictures-i-preparing-place-for-images.html">Windows Live Writer: Uploading Pictures I - Preparing Place for Images</a> (nfocentrale.com)</li>   </ul> </div>  <div class="zemanta-pixie"><img class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=f79a5a27-5f17-447d-8d10-9ec8b63fd2a0" /></div>  <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:830f8822-35c3-4bca-8dde-1a52f3172c1f" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/Windows+Live+Writer" rel="tag">Windows Live Writer</a>, <a href="http://del.icio.us/popular/uploading+pictures" rel="tag">uploading pictures</a>, <a href="http://del.icio.us/popular/web+configuration" rel="tag">web configuration</a>, <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a>, <a href="http://del.icio.us/popular/blog+development" rel="tag">blog development</a>, <a href="http://del.icio.us/popular/using+FTP+accounts" rel="tag">using FTP accounts</a></div>
+                                    </div>
+
+
+                                </div>
+                                <div class="asset-footer">
+
+    
+                                    <div class="entry-categories">
+                                        <h4>Categories<span class="delimiter">:</span></h4>
+                                        <ul>
+                                            <li><a href="http://nfocentrale.com/status/blog-development/movable-type/default.htm" rel="tag">Movable Type</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/blog-development/windows-live-writer/default.htm" rel="tag">Windows Live Writer</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/blog-development/default.htm" rel="tag">blog development</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/sites/nfocentrale/default.htm" rel="tag">nfoCentrale</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/blogs/nfocentrale-status/default.htm" rel="tag">nfoCentrale Status</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                </div>
+                            </div>
+
+
+                    <div id="trackbacks" class="trackbacks">
+    <h2 class="trackbacks-header">1 TrackBack</h2>
+
+    
+    
+    <div class="trackbacks-info">
+        <p>TrackBack URL: http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/45</p>
+    </div>
+    
+
+
+    
+    
+        
+    <div class="trackbacks-content">
+        
+        <div class="trackback" id="ping-917">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://orcmid.com/BlunderDome/wingnut/2010/10/next-steps-in-the-laboratory.htm" rel="nofollow">Next Steps in the Laboratory</a> from Spanner Wingnut's Muddleware Labs on <a href="#ping-917" rel="nofollow">October  2, 2010  7:12 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        For those wondering if the now-dormant blogs will every see the light of day anew, here are the dreary steps that will be confirmed before going farther: The procedure for configuring and maintaining images uploaded via Windows Live Writer will... <a href="http://orcmid.com/BlunderDome/wingnut/2010/10/next-steps-in-the-laboratory.htm" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        
+    
+</div>
+
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+    
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">Leave a comment</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://nfocentrale.com/cgi-bin/mt/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+                <input type="hidden" name="static" value="1" />
+                <input type="hidden" name="entry_id" value="44" />
+                <input type="hidden" name="__lang" value="en" />
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id" />
+                <input type="hidden" name="armor" value="1" />
+                <input type="hidden" name="preview" value="" />
+                <input type="hidden" name="sid" value="" />
+                <div id="comments-open-data">
+                    <div id="comment-form-name">
+                        <label for="comment-author">Name</label>
+                        <input id="comment-author" name="author" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-email">
+                        <label for="comment-email">Email Address</label>
+                        <input id="comment-email" name="email" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-url">
+                        <label for="comment-url">URL</label>
+                        <input id="comment-url" name="url" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" value="1" accesskey="r" />
+                        <label for="comment-bake-cookie">Remember personal info?</label>
+                    </div>
+                </div>
+                <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-text">
+                    <label for="comment-text">Comments
+                    (You may use HTML tags for style)</label>
+                    <textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtCommentFormOnFocus()"></textarea>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+                    <input type="submit" accesskey="v" name="preview_button" id="comment-preview" value="Preview" onclick="this.form.preview.value='1';" />
+                    <input type="submit" accesskey="s" name="post" id="comment-submit" value="Submit" />
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+    <!--
+    mtAttachEvent("load", mtEntryOnLoad);
+    mtAttachEvent("unload", mtEntryOnUnload);
+    //-->
+    </script>
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+                    <div id="beta">
+    <div id="beta-inner">
+
+
+    
+    <div class="widget-search widget">
+    <h3 class="widget-header">Search</h3>
+    <div class="widget-content">
+        <form method="get" action="http://nfocentrale.com/cgi-bin/mt/mt-search.cgi">
+            <input type="text" id="search" class="ti" name="search" value="" />
+
+            <input type="hidden" name="IncludeBlogs" value="1" />
+
+            <input type="hidden" name="limit" value="20" />
+            <input type="submit" accesskey="4" value="Search" />
+        </form>
+    </div>
+</div>
+
+<div class="widget-about-this-page widget">
+    <h3 class="widget-header">
+
+        About this Entry
+
+
+    </h3>
+    <div class="widget-content">
+
+
+        <p class="first">This page contains a single entry by <a href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a> published on <em>September  1, 2010  5:54 PM</em>.</p>
+    
+        <p><a href="http://nfocentrale.com/status/2010/08/twitter-oauth-hurdles.html">Twitter OAuth Hurdles</a> was the previous entry in this blog.</p>
+    
+    
+        <p><a href="http://nfocentrale.com/status/2010/09/20-active-nfocentrale-domain-names.html">20 Active nfoCentrale Domain Names</a> is the next entry in this blog.</p>
+    
+
+
+
+
+
+        <p>Find recent content on the <a href="http://nfocentrale.com/status/">main index</a> or look in the <a href="http://nfocentrale.com/status/archives.html">archives</a> to find all content.</p>
+
+    </div>
+</div>
+<div class="widget-archive widget-archive-category widget">
+    <h3 class="widget-header">Categories</h3>
+    <div class="widget-content">
+    
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/default.htm" title="Software tools and their usage in blog development for the nfoCentrale sites.">blog development (21)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/blogger/default.htm">Blogger (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/movable-type/default.htm">Movable Type (20)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/windows-live-writer/default.htm">Windows Live Writer (26)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/zemanta/default.htm">Zemanta (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/default.htm">blogs (12)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/kiln-sitters-digest/default.htm">Kiln Sitter's Digest (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/numbering-peano/default.htm">Numbering Peano (4)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-lair/default.htm">Orcmid's Lair (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-live-hideout/default.htm">Orcmid's Live Hideout (11)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/professor-von-clueless/default.htm">Professor von Clueless (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/pursuing-harmony/default.htm">Pursuing Harmony (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/spanner-wingnuts-muddleware-lab/default.htm">Spanner Wingnut's Muddleware Lab (9)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/nfocentrale-status/default.htm">nfoCentrale Status (14)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/default.htm">centrale (11)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/lan/default.htm">LAN (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/olpc/default.htm">OLPC (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/whs/default.htm">WHS (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/astraendo/default.htm">astraendo (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/blocco/default.htm">blocco (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/centro/default.htm">centro (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/ceramica/default.htm">ceramica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/compagno/default.htm">compagno (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/default.htm">conclave (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave333/default.htm">conclave.333 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave386/default.htm">conclave.386 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/liberta/default.htm">liberta (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/default.htm">microcomputers (2)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/atari-800/default.htm">Atari 800 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h8/default.htm">H8 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h89/default.htm">H89 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/hz158/default.htm">HZ158 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/ti-sr52/default.htm">TI SR52 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/quadro/default.htm">quadro (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scampo/default.htm">scampo (13)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scritto/default.htm">scritto (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/retired/default.htm">{retired} (2)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/default.htm">ecostructure (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/wp7/default.htm" title="Devices that serve as apparatus of the ecostructure, including when that is the role of endpoints in Centrale and the nfoCentrale web presence.">devices (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/default.htm">sites (4)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dma/default.htm">DMA (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dmware/default.htm">DMware (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/infonuovo/default.htm">InfoNuovo (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nuovodoc/default.htm">NuovoDoc (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/default.htm">ODMA (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/odmdev/default.htm">ODMdev (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/eoware/default.htm">eoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/millennia-antica/default.htm">millennia-antica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/miser/default.htm">miser (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/default.htm">nfoCentrale (13)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralecom/default.htm">nfocentrale.com (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralenet/default.htm">nfocentrale.net (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoware/default.htm">nfoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoworks/default.htm">nfoWorks (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmid/default.htm">orcmid (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidtv/default.htm">orcmid.tv (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidapache/default.htm">orcmid@apache (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/trost/default.htm">trost (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/worthiness/default.htm">worthiness (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/retired-1/default.htm">{retirees} (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/strumenti/default.htm" title="The tools and instruments that are part of the inventory of software and accessories deployed on Centrale, along with those whose principle application is blog, web, and other ecostructure development.">strumenti (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/default.htm">web development (22)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/apache/default.htm">Apache (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/ftp/default.htm">FTP (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/frontpage/default.htm">FrontPage (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/iis/default.htm">IIS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/linux/default.htm">Linux (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/pws/default.htm">PWS (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/vss/default.htm">VSS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/windows/default.htm">Windows (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/obsolete/default.htm">{obsolete} (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+        </ul>
+        
+    
+    </div>
+</div>
+
+
+
+
+    <div class="widget-archive-monthly widget-archive widget">
+    <h3 class="widget-header">Monthly <a href="http://nfocentrale.com/status/archives.html">Archives</a></h3>
+    <div class="widget-content">
+        <ul>
+        
+            <li><a href="http://nfocentrale.com/status/2011/07/default.htm">July 2011 (3)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/03/default.htm">March 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/02/default.htm">February 2011 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/01/default.htm">January 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/12/default.htm">December 2010 (2)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/11/default.htm">November 2010 (4)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/10/default.htm">October 2010 (7)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/09/default.htm">September 2010 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/08/default.htm">August 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/07/default.htm">July 2010 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/06/default.htm">June 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/05/default.htm">May 2010 (15)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/11/default.htm">November 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/09/default.htm">September 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/08/default.htm">August 2007 (1)</a></li>
+        
+        </ul>
+    </div>
+</div>
+        
+    
+
+
+
+<div class="widget-pages widget">
+    <h3 class="widget-header">Pages</h3>
+    <div class="widget-content">
+        <ul>
+    
+    
+        </ul>
+    </div>
+</div>
+
+<div class="widget-syndication widget">
+    <div class="widget-content">
+        <ul>
+            <li><img src="http://nfocentrale.com/mt-static/images/status_icons/feed.gif" alt="Subscribe to feed" width="9" height="9" /> <a href="http://nfocentrale.com/status/atom.xml">Subscribe to this blog's feed</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="widget-openid widget">
+    <div class="widget-content">
+        <em><strong>OpenID</strong> accepted here</em>
+        <a href="http://www.sixapart.com/labs/openid/">Learn more about OpenID</a>
+    </div>
+</div>
+
+<div class="widget-powered widget">
+    <div class="widget-content">
+        <a href="http://www.movabletype.com/"><img src="http://nfocentrale.com/mt-static/images/mt4-bug-pbmt-white.png" alt="Powered by Movable Type 4.34-en" width="120" height="75" /></a>
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+            <div class="widget-powered widget">
+                <div class="widget-content">
+                    Powered by <a href="http://www.movabletype.com/" rel="generator">Movable Type</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

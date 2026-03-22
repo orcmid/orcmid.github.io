@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>W040400: Risks of Risk Speculation</title>
+<!--$$Header: /A2HostingWeb/orcmid/writings/W040400.htm 31    26-03-22 14:20 Orcmid $-->
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+    <td width="20%" height="6" valign="middle"><!--webbot bot="Include" U-Include="../construction/templates/00/c000005b.htm"
+      TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+    </td>
+
+    <td width="53%" height="6"><p align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <strong><a href="w000001-log.htm"><font color="#993333">Writings</font></a><font color="#993333">
+    <a href="w000001-log.htm#W040400"><font color="#993333">W040400</font></a></font><br />
+            <font color="#993333"><i><big><big>Risks of Risk
+    Speculation</big></big></i></font></strong></font></p>
+    </td>
+    <td width="27%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;<br>
+      <a href="./" target="_top">writings</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="W040400.htm">W040400</a>&gt;<br>
+      </code></b><a href="#0.00"><small><small>0.00</a> <!--webbot bot="Timestamp"
+      S-Type="EDITED" S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" --> -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:09 -0700<!--webbot bot="Timestamp" endspan i-checksum="12068" --></small></small></p></td>
+</font>
+</table>
+
+<p><small>In Spring, 2003, I participated in an on-line <a href="../erudizione/MSC-SE/">Software
+Engineering</a> class.&nbsp; In the eighth, final, week we were assigned the
+following question for discussion [1]:&nbsp;</small></p>
+<blockquote>
+  <p><small>When large software systems are developed by many teams in many different
+  locations, how should liabilities be assigned?&nbsp; To answer the question,
+  consider the example of the Ariane 5 Rocket.&nbsp; In 1996, an unmanned Ariane 5
+  rocket launched by the European Space Agency exploded just forty seconds after
+  its lift-off from Kourou, French Guiana.&nbsp; The rocket was on its first voyage,
+  after a decade of development with millions of lines of programming code
+  costing $7 billion.&nbsp; An inquiry found that the cause of the failure was a
+  software error in the inertial reference system.&nbsp; Specifically a 64 bit
+  floating point number relating to the horizontal velocity of the rocket with
+  respect to the platform was converted to a 16 bit signed integer. The number
+  was larger than 32,768, the largest integer storable in a 16 bit signed
+  integer, and thus the conversion failed.<br>
+  http://www.ima.umn.edu/~arnold/disasters/ariane.html [<a href="#Arnold2000">Arnold2000</a>]</small></p>
+</blockquote>
+
+<p><small>I don't know how many times I have heard about the loss of the Ariane
+flight 501 in this or similar terms.&nbsp; Our Software Engineering text holds
+this incident up as the kind of failure that a successful Verification and
+Validation (V&amp;V) program might have avoided [<a href="#Sommerville2001">Sommerville2001</a>:p.468].&nbsp;
+The Inquiry Board concurred that the failure could have been prevented if there
+had been a full-dress simulated launch of Ariane 5 Flight 501 critical systems,
+including the flight profile [<a href="#Lions1996">Lions1996</a>: 3.1(s), 3.2]</small></p>
+
+<p><small>On examining the complete available materials on the failure of </small><small>the
+Ariane flight 501 failure, I made this remarkable discovery:&nbsp;&nbsp;</small></p>
+
+<blockquote>
+  <p style="border-style: groove; border-width: 4"><b><small>It is simply not
+  the case that a&nbsp; programming error involving a numeric conversion (some
+  call it an overflow) was the root cause of the failure of Ariane 5 Flight
+  501.&nbsp; That's not what happened</b>.&nbsp;&nbsp;</small></p>
+
+  <p><small>That's right.&nbsp; There was no bug, no coding or implementation
+  error.&nbsp; The software did what it
+  was designed to do.&nbsp; This is not about a programming error.&nbsp;&nbsp;It
+  is about engineering and design failures, born out in the identification of
+  remedies [<a href="#ESA1996">ESA1996</a>].</small></p>
+
+  <p><small>There was indeed a chain of events that led to a software-detected
+  out-of-range condition and automatic shutdown of the inertial reference
+  system.&nbsp; This exposed a serious integration bug and failure mode that led the rocket to
+  disintegrate, and the disintegration triggered (by non-computer
+  electromechanical means) the&nbsp; pyrotechnic destruction of the launcher and
+  its payload.</small></p>
+
+</blockquote>
+<p><small>How the failure was induced and why the software was being used under
+conditions it was not designed for and wasn't even required for is far more
+valuable to understand than trivializing it as something that could have been
+caught by proper debugging or attention to proper numerical computation.&nbsp;
+Those are certainly important practices. That is not the valuable lesson of
+Ariane 5 Flight 501.</small></p>
+
+<p><small>My interest here is to examine this established software myth from the
+following perspective:</small></p>
+
+<ol>
+  <li><small>What actually happened?</small></li>
+  <li><small>What were the findings of the Inquiry Board?</small></li>
+  <li><small>Why is this a success for software engineering?</small></li>
+  <li><small>What is there that has us portray this event as a lesson about
+    programming and stupid bugs?</small></li>
+</ol>
+
+<small>
+<p align="right"><i>-- Dennis E. Hamilton<br>
+Seattle, Washington<br>
+2004 April 5</i></p>
+</small>
+
+<hr color="#993333">
+
+
+<h2 align="left">
+        <a href="#1">1</a>.&nbsp; <a href="#1">What Happened</a>?
+        </h2>
+
+
+<h2 align="left">
+        2. What Are the Findings?
+        </h2>
+
+
+<h2 align="left">
+        3. How Did Software Engineering Succeed?
+        </h2>
+
+
+<h2 align="left">
+        4. Why Do We Trivialize This Lesson?
+        </h2>
+
+
+<dl><b><font size="+1">
+      
+  </dl>
+
+
+  <blockquote>
+    <h3><i><a href="#References">References</a></i></h3>
+    <p><i><a href="#Summary">End Notes</a></i></p>
+  </blockquote>
+      
+</font></b>
+
+
+<hr>
+
+
+<h1 align="left"><a name="1">1</a>. What Happened?
+        </h1>
+
+
+<p align="left">&nbsp;
+        </p>
+
+
+<h2 align="left"><i><a name="References">References</a></i>
+        </h2>
+
+
+<dl>
+  <dt>[<a name="Arnold2000">Arnold2000</a>]&nbsp;</dt>
+  <dd><a href="http://www.ima.umn.edu/~arnold/" target="_top">Arnold, Douglas N</a>.&nbsp;
+    The Explosion of the Ariane 5.&nbsp; <a href="http://www.ima.umn.edu/~arnold/education.html" target="_top">Education
+    Related Materials</a> page.&nbsp; Institute for Mathematics and Its
+    Applications.&nbsp; University of Minnesota.&nbsp; (Minneapolis: 2000 August
+    23).&nbsp;&nbsp; Posted on the web at &lt;<a href="http://www.ima.umn.edu/~arnold/disasters/ariane.html" target="_top">http://www.ima.umn.edu/~arnold/disasters/ariane.html</a>&gt;.<small><br>
+    &nbsp;&nbsp;&nbsp;&nbsp; The Ariane 501 flight failure description is found
+    in a collection of &quot;<a href="http://www.ima.umn.edu/~arnold/disasters/disasters.html" target="_top">disasters
+    attributable to bad numerics</a>&quot; where the explosion is described as
+    &quot;ultimately the consequence of a simple overflow.&quot;&nbsp; There is
+    in fact no such finding in the Board of Inquiry Report [<a href="#Lions1996">Lions1996</a>]
+    cited in this article, and the three quotations are from different parts of
+    the report and in a different sequence [<a href="#note2">2</a>].&nbsp;&nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></dd>
+  <dt>[<a name="ESA1996">ESA1996</a>]</dt>
+  <dd>ESA.&nbsp; Ariane 501 - Presentation of Inquiry Board report.&nbsp; Press
+    Release 33-1996.&nbsp; European Space Agency.&nbsp; (Paris: 1996 July
+    23).&nbsp; Published on-line at &lt;<a href="http://www.esa.int/export/esaLA/Pr_33_1996_p_EN.html" target="_top">http://www.esa.int/export/esaLA/Pr_33_1996_p_EN.html</a>&gt;.&nbsp;
+    The PDF version of [<a href="#Lions1996">Lions1996</a>] is linked from this
+    page.<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[<a name="Lions1996">Lions1996</a>]</dt>
+  <dd>Lions, Jacques-Louis (Chairman).&nbsp; Ariane 5 Flight 501 Failure.&nbsp;
+    Report by the Inquiry Board.&nbsp; (Paris: 1996 July 19).&nbsp; PDF version
+    at &lt;<a href="http://ravel.esrin.esa.it/docs/esa-x-1819eng.pdf" target="_top">http://ravel.esrin.esa.it/docs/esa-x-1819eng.pdf</a>&gt;.&nbsp;
+    An HTML version of the report, without the presentation slides and diagrams,
+    has been preserved by Douglas Arnold at &lt;<a href="http://www.ima.umn.edu/~arnold/disasters/ariane5rep.html" target="_top">http://www.ima.umn.edu/~arnold/disasters/ariane5rep.html</a>&gt;.<br>
+    &nbsp;&nbsp;&nbsp;</dd>
+  <dt>[<a href="http://nfocentrale.net/orcmid/readings/swe.htm#Sommerville2001" name="Sommerville2001" target="_top">Sommerville2001</a>]
+  <dd>Sommerville, Ian.&nbsp; <i>Software Engineering</i>, ed.6.&nbsp;
+    Addison-Wesley (Boston: 2001).&nbsp; ISBN 0-201-39815-X.&nbsp; &quot;It is
+    not uncommon for verification and validation to take up more than 50 percent
+    of the total development costs for critical-software systems.&nbsp; This
+    cost is, of course, justified if an expensive system failure is
+    avoided.&nbsp; For example, in 1996 a mission-critical software system on
+    the Ariane 5 rocket failed and several satellites were destroyed.&nbsp; The
+    consequential loss was hundreds of millions of dollars.&quot; section 2.1,
+    Critical system validation, p.468.</dd>
+</dl>
+<p><br>
+      &nbsp;&nbsp;&nbsp;</p>
+
+
+<h2 align="left"><a name="EndNotes"><i>End Notes</i></a>
+        </h2>
+
+
+<dl>
+    <dt><small>[<a name="note1">1</a>] The statement of the assignment includes text similar to that in [<a href="#Arnold2000">Arnold2000</a>].</small></dt>
+
+
+
+  <dd><small>The portion spanning from &quot;An inquiry found that&quot; to &quot;and thus
+  the conversion failed&quot; is a direct quotation <i>except</i> Arnold
+    correctly gives the largest 16-bit signed-integer value as 32767 (the
+    largest value fitting in 15 bits).&nbsp;<br>
+    &nbsp;&nbsp;&nbsp;</small>
+        </dd>
+
+
+<dt><small>[<a name="note2">2</a>] The Inquiry Board makes the following statements in
+different parts of the report [<a href="#Lions1996">Lions1996</a>]:</small></dt>
+<dd><small>(a) &quot;On 4 June 1996, the maiden flight of the Ariane 5 launcher ended in a
+  failure. Only about 40 seconds after initiation of the flight sequence, at an
+  altitude of about 3700 m, the launcher veered off its flight path, broke up
+  and exploded.&quot; -- quoted from the Foreword<br>
+  (b) &quot;The internal SRI software exception was caused during execution of a
+  data conversion from 64-bit floating point to 16-bit signed integer value. The
+  floating point number which was converted had a value greater than what could
+  be represented by a 16-bit signed integer.&quot; -- quoted from section 2.1, Chain of
+  Technical Events.&nbsp; That passage continues: &quot;This resulted in an
+  Operand Error. The data conversion instructions (in Ada code) were not
+  protected from causing an Operand Error, ... .&quot;&nbsp; We would now say
+  that the situation caused an exception to be thrown.&nbsp; The SRI was
+  designed to treat that kind of exception as fatal. The very next passage
+  identifies the problem with the exception being thrown where and when it occurred
+  after lift-off: &quot;The error occurred in a part of the software that only
+  performs alignment of the strap-down inertial platform. This software module
+  computes meaningful results only before lift-off. As soon as the launcher
+  lifts off, this function serves no purpose.&quot;<br>
+  (c) &quot;The failure of the Ariane 501 was caused by the complete loss of
+  guidance and attitude information 37 seconds after start of the main engine
+  ignition sequence (30 seconds after lift- off). This loss of information was
+  due to specification and design errors in the software of the inertial
+  reference system.' -- quoted from section 3.2, Cause of the Failure.&nbsp;
+  This short section has only this to add: &quot;The extensive reviews and tests
+  carried out during the Ariane 5 Development Programme did not include adequate
+  analysis and testing of the inertial reference system or of the complete
+  flight control system, which could have detected the potential failure.&quot;</small></dd>
+</dl>
+
+<hr color="#993333">
+
+
+  <dl><font size="-1">
+      <dt><b><a name="0.00">0.00</a>   2004-04-05</b> <b>Create Basic Article
+        Structure </b>(orcmid)</dt>
+      <dd>Bill Anderson called and pointed out one more place where the folklore
+        about the Ariane 501 failure being a software problem has come up once
+        again, and we want to have something somewhere to discuss the
+        strangeness of that persistent claim, when the failure was quite
+        different than that.&nbsp; I begin by <a href="W040400A.htm">gathering
+        the notes I have</a>, and sketching the approach.</dd>
+  </font></dl>
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="index.htm" target="_self"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Hard Hat Area" width="80" height="57"></a></td>
+    <td width="34%" valign="middle" align="center"><!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-04-05-18:21 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:20 $<br>
+      $$Revision: 31 $</em></font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

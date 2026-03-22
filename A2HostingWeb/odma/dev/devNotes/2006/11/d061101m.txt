@@ -1,0 +1,224 @@
+d061101m.txt 0.00                    UTF-8                   dh:2007-03-11
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+           CONTENT OF d061001m-odmjni100-0.57beta.zip ARCHIVE
+
+
+         ODMJNI 1.0 odmjni100 0.57beta KnownDocument Integration
+         -------------------------------------------------------
+
+
+     *********************************************************************
+     *  WARNING: This beta distribution is an incremental update to the  *
+     *  0.50, 0.52, 0.54, and 0.56 beta distributions.  THE LATEST 0.56  *
+     *  BETA DISTRIBUTION MUST BE USED.                                  *
+     *********************************************************************
+
+        The latest 0.50beta distribution is available at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201g.htm>.
+
+        The 0.52beta and 0.54beta supplements are available at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>
+
+        The latest 0.56beta supplement is available at
+        <http://ODMA.info/dev/devNotes/2006/10/d061001g.htm>
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/11/d061101m.htm>.
+        There is additional information on the origin and usage of
+        this material at that location.
+
+        This package updates the ODMJNI 1.0 odmjni100 package with the
+        0.57beta implementation of the OdmJniApp.openKnownDocument method.
+        For more information on the progression of releases of which this
+        is a part, consult the web page at
+        <http://odma.info/dev/devNotes/2006/12/d061201h.htm>.
+
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+
+   This distribution updates info.odma.odmjni100 components to provide
+   a working implementation of the OdmJniApp.openKnownDocument function.
+   The operation is now available via OdmConnection.openKnownDocument
+   interface methods obtained via OdmJniBind.application operations.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this distribution, it is necessary to have already
+   satisfied the following minimum prerequisites:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Creation of a development tree, starting at some folder, <folder>,
+        in which are installed and customized the 0.50beta, 0.52beta, and
+        0.54beta and 0.56beta distributions of the ODMJNI 1.0 development
+        packages.
+
+   THIS IS AN INCREMENTAL UPDATE.  IT IS ASSUMED THAT THE PREVIOUS BETA
+   DISTRIBUTIONS HAVE BEEN INSTALLED IN SEQUENCE, in accordance with the
+   instructions for those distributions.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to the <folder> location that is
+   the Java classpath point for the ODMJNI 1.0 packages on your computer.
+
+   The material must be extracted ON TOP OF the existing odmjni100
+   materials.
+
+   The update will install material in the following hierarchy when
+   extraction is into the directory at <folder>:
+
+            <folder>/
+                    d061101m.txt 0.00 this manifest, 10,031 byte file
+                                 dated 2007-03-11-23:21
+                info/
+                    odma/
+                        odmjni100/
+                                odmjni100.cpp 0.18, 2007-03-08-19:40
+                                odmjni100a.h, 2007-03-07-23:14
+                                odmjni100x.h 0.12, 2007-03-07-23:18
+                                OdmJniApp.java 0.12, 2007-03-07-23:14
+
+                                odmjni100.dll 0.18, 2007-03-10-13:36
+                                OdmJniApp.class 0.12, 2007-03-07-23:14
+                                OdmJniBind.class, 2007-03-07-23:14
+                                OdmJniPend.class, 2007-03-07-23:14
+                                OdmJniView.class, 2007-03-07-23:14
+                                OdmJniWork.class, 2007-03-07-23:14
+                            test/
+                                Check04/
+                                    BuildCheckKnown.bat 0.00,
+                                                    2007-03-10-13:51
+                                    CheckKnown.java 0.01, 2007-03-10-21:32
+                                    CheckUtil.java 0.04, 2007-03-10-14:47
+                                    RunCheckKnown.bat 0.00, 2007-03-10-13:58
+
+                                    CheckKnown.class, 2007-03-10-21:32
+                                    CheckNew.class, 2007-03-10-13:52
+                                    checkUtil.class, 2007-03-10-21:32
+
+                                    CheckKnown-2007-03-10-2110-Select.png
+                                    CheckKnown-2007-03-10-2111-Run.txt
+                                    CheckKnown-2007-03-10-2112-Log.txt
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061003m-odmjni100-0.57beta.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java SE JDK such as the JDK 1.5 used to develop all of the Java
+                      applications in this distribution.
+
+       A Visual C++ 2005 Express Edition (or compatible release) plus the
+                      Microsoft Platform SDK if it is desired to reconstruct
+                      the odmjni100.dll.  The OdmVC++.bat and OdmPSDK.bat
+                      files in the odmjni100 directory provide further
+                      information on the configuration used.
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   ** NOTE: If the same <folder> has been used to hold earlier materials
+   from odmjni100 development, DO NOT DELETE THE PREVIOUS MATERIAL.
+   This archive is designed for extraction on top of a development tree that
+   is current to 0.56beta.
+
+   The existing practical100\test\Check04 tests will operate.  The new
+   program, CheckKnown.java, provides confirmation of openKnownDocument
+   operation, also displaying the results of OdmFormat verifications of
+   the Document IDs that are used.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Content of d061101m-odmjni100-0.57beta.zip Archive: ODMJNI 1.0
+        odmjni100 0.57beta KnownDocument Integration. ODMA Interopera-
+        bility Exchange, ODMdev Development Note page d061101g.txt 0.00,
+        March 11, 2007.  Current version available as part of the archive at
+        <http://ODMA.info/dev/devNotes/2006/11/d061101m.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.00 2007-03-04-17:58 Adapt from d061001g.txt 0.04 to provide an account of
+     the 0.57beta incremental update to the odmjni100 package.
+
+$Header: /ODMdev/d061101m.txt 3     07-03-11 23:21 Orcmid $
+
+                       *** end of d061101m.txt ***

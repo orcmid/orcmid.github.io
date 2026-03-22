@@ -1,0 +1,242 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>System &amp; Document Space Connection Example</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 by the Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  Code example: System &amp; Document Space Connection Example
+ *  
+ *
+ */
+
+#include &lt;dmatypes.h&gt;
+#include &lt;dmacom.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+#include &lt;dmacfunc.h&gt;
+
+#ifndef NULL
+#define NULL    0
+#endif
+
+#define MAXSYSTEMS 100              // arbitrary         
+#define MAXDOCSPACE_PERSYSTEM 100   // Maximums
+
+// external functions
+DmaRC FreeString(pDmaString pDmaStr);
+pDmaString  AsciiDmaStringFromCString(char *string);
+
+// forward declarations
+DmaRC Authenticate ( IUnknown *punk, char *LoginStr );
+
+/* 
+ * This example is comprised of 2 loops; an outer system loop,
+ * and an inner document space loop
+ *
+ * An enumerated list of systems that are connected to the system manager
+ * is created. 
+ *
+ * For each system (the outer loop) the Display name is obtained, 
+ * and an authentication is performed.
+ *
+ * Inside this outer loop an enumeration of all the document spaces is
+ * obtained.
+ *
+ * For each document space in that system(the inner loop) the Display name 
+ * is obtained, and an authentication is performed 
+ */
+
+DmaRC IntegrationExample()
+{
+    DmaRC            rc;
+    pDmaString       pSystemDisplayName, pDocSpaceDisplayName;
+    IdmaSystemManager *pISysMgr;
+    IdmaEnumOfObject  *pIEnumSystems,*pIEnumDocSpaces;
+    DmaIndex32        NumSystem, NumDocSpace;
+    IdmaProperties    *pIProps;
+    DmaIndex32        iSystem, iDocSpace;
+    char *SystemLoginString =   "SCHEME=DMA-BASIC;UID=SYSTEM;PWD=MANAGER";
+    char *DocSpaceLoginString = "SCHEME=DMA-BASIC;UID=SCOTT;PWD=TIGER";
+
+    /*
+     * Get a IdmaSystem Manager Interface
+     */
+    rc = dmaConnectSystemManager( NULL,           // Environment info
+                                  NULL,           // System config location
+                                  NULL,           // IMalloc Interface
+                                  DMA_CS_UNICODE, // Char Set Coding ID
+                                  NULL,           // Name Of Display
+                                  IID_IdmaSystemManager,   
+                                                  // Desired Interface 
+                                  (pDmapv) &amp;pISysMgr);
+
+    if (rc != DMARC_OK)
+    {
+        return(rc);
+    }
+
+    // All future error handling omitted for simplicity
+
+    /*
+     *  Enumerate the Systems Connected To
+     */
+    rc = pISysMgr-&gt;EnumerateSystems(IID_IdmaEnumOfObject,
+                                   (pDmapv) &amp;pIEnumSystems); 
+
+    IUnknown * rgpunkSystems[MAXSYSTEMS];
+
+    rc = pIEnumSystems-&gt;GetNextObject ( MAXSYSTEMS, rgpunkSystems, &amp;NumSystem );
+    pIEnumSystems-&gt;Release();  // no longer needed
+
+    /* 
+     * Loop through systems and attempt to find the name of a system
+     */
+
+    for (iSystem = 0; iSystem &lt; NumSystem; iSystem++)
+    {
+        /*
+         * Get System's Property Interface
+         */
+        rc = rgpunkSystems[iSystem]-&gt;QueryInterface( IID_IdmaProperties, 
+                                                     (pDmapv)&amp;pIProps );
+        /*
+         * Get Display Name
+         */
+        rc = pIProps-&gt;GetPropValStringById ( &amp;dmaProp_DisplayName,
+                                             &amp;pSystemDisplayName );
+        pIProps-&gt;Release();        // No Longer Needed
+
+        // Authenticate if necessary
+        rc = Authenticate ( rgpunkSystems[iSystem], SystemLoginString );
+
+        FreeString(pSystemDisplayName);
+
+        /*
+         *  Enumerate the DocSpaces Available for this system
+         */
+        IdmaSystem *pISystem;
+        rc = rgpunkSystems[iSystem]-&gt;QueryInterface ( IID_IdmaSystem,
+                                                      (pDmapv)&amp;pISystem );
+
+        rc = pISystem-&gt;EnumerateDocSpaces( IID_IdmaEnumOfObject,
+                                           (pDmapv) &amp;pIEnumDocSpaces); 
+
+        pISystem-&gt;Release();
+        rgpunkSystems[iSystem]-&gt;Release();
+
+        IUnknown *rgpunkDocSpaces[MAXDOCSPACE_PERSYSTEM];
+
+        rc = pIEnumDocSpaces-&gt;GetNextObject ( MAXDOCSPACE_PERSYSTEM,
+                                              rgpunkDocSpaces,
+                                              &amp;NumDocSpace );
+        pIEnumDocSpaces-&gt;Release(); // no longer needed
+
+        /* 
+         * Loop through Doc Spaces in this System
+         */
+
+        for (iDocSpace = 0; iDocSpace &lt; NumDocSpace; iDocSpace++)
+        {
+            rc = rgpunkDocSpaces[iDocSpace]-&gt;QueryInterface (
+                                                    IID_IdmaProperties, 
+                                                    (pDmapv) &amp;pIProps ); 
+
+            rc = pIProps-&gt;GetPropValStringById ( &amp;dmaProp_DisplayName,
+                                                 &amp;pDocSpaceDisplayName );
+            pIProps-&gt;Release();        // No Longer Needed
+
+            // Authenticate if necessary
+            rc = Authenticate ( rgpunkDocSpaces[iDocSpace], 
+                                DocSpaceLoginString );
+
+            rgpunkDocSpaces[iDocSpace]-&gt;Release();     // No Longer Needed
+
+            FreeString(pDocSpaceDisplayName);
+
+        }  // while no more Doc Spaces enumerated
+
+    } // while no more Systems enumerated
+
+    return(DMARC_OK);
+}
+
+ 
+DmaRC Authenticate (
+    IUnknown *punk,
+    char *LoginStr )
+{
+    IdmaAuthentication *pIAuth;
+
+    DmaRC rc = punk-&gt;QueryInterface ( IID_IdmaAuthentication,
+                                      (pDmapv)&amp;pIAuth );
+    if ( rc == DMARC_OK )
+    {
+        // The authentication interface is supported. Therefore we must
+        //  try to authenticate.
+        pDmaString StringIn;
+        pDmaString StringOut;
+
+        StringIn = AsciiDmaStringFromCString(LoginStr);
+
+        do 
+        {
+            // Iteratively attempt to Authenticate
+            rc = pIAuth-&gt;AuthenticateUser ( StringIn, &amp;StringOut );
+
+            FreeString(StringIn); // no longer needed
+
+            if ( rc == DMARC_ALREADY_AUTHENTICATED || 
+                 rc == DMARC_OK)
+            {
+                FreeString(StringOut);
+                return(DMARC_OK);
+            }
+
+            if (rc == DMARC_NEED_MORE_DATA)
+            {
+                /* 
+                 * Note:At this point the Application would display
+                 * the information in the StringOut and get the
+                 * additional parameters needed in LoginStr via
+                 * user interface.
+                 */ 
+
+                StringIn = AsciiDmaStringFromCString(LoginStr);
+                FreeString(StringOut); 
+            }
+            
+        } while (rc == DMARC_NEED_MORE_DATA);
+
+        pIAuth-&gt;Release();
+    }
+    else if ( rc == DMARC_BAD_INTERFACE )
+    {
+        // The authentication interface is not supported, meaning that
+        //  it is not necessary to authenticate.
+        rc = DMARC_OK;
+    }
+
+    return(rc);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>
+
+

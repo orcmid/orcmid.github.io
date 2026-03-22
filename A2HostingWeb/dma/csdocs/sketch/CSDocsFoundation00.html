@@ -1,0 +1,1024 @@
+<html>
+
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<title>Compound/Structured Documents (CSDocs) Foundation</title>
+<meta NAME="subject" CONTENT="Enhancements to DMA for CSDocs Foundation">
+<meta NAME="Language" CONTENT="en_US">
+<meta NAME="Project" CONTENT="DMA TC CSDocs Subcommittee">
+<meta NAME="Template" CONTENT="C:\architetto\InsideDMA\CSDocs\ModelSketch\arch_templ_990707.dot">
+</head>
+
+<body TEXT="#000000" LINK="#0000ff" VLINK="#800080">
+<b><font SIZE="6">
+
+<p ALIGN="CENTER"><a NAME="_Toc389897700"></a><a NAME="_Toc389897806"></a><a NAME="_Toc389897945"></a><a NAME="_Toc389898743"></a><a NAME="_Toc389898757"></a><a NAME="_Toc389899422"></a><a NAME="_Toc389899442"></a><a NAME="_Toc389901439"></a><a NAME="_Toc389904799"></a><a NAME="_Toc389905093"></a>DMA Architecture Proposal for</p>
+
+<p ALIGN="CENTER">Compound/Structured Documents (CSDocs) Foundation</p>
+</font>
+
+<p><a NAME="_Toc389897701">Authors:</b> </a>DMA TC Compound/Structured Document
+Subcommittee
+
+<dir>
+  <dir>
+    <p>Richard Sauvain (Xerox Corporation, Chair), Mitsuru Akizawa (Hitachi, Ltd.), Alan
+    Babich (FileNET), Chuck Fay (FileNET), Jim Green (FileNET), Dennis Hamilton (InfoNuovo),
+    Katsumi Kanasaki (Ricoh, Ltd.), Yoshifumi Sato (Hitachi, Ltd.)</p>
+  </dir>
+</dir>
+<b>
+
+<p>Revision 0.00, 1999 July 28
+
+<ol>
+  <li><a NAME="_Toc389897703"></a><a NAME="_Toc389898744"></a><a NAME="_Toc389898758"></a><a NAME="_Toc389899423"></a><a NAME="_Toc389899443"></a><a NAME="_Toc389901440"></a><a NAME="_Toc389904800"></a><a NAME="_Toc389905094"></a><a NAME="_Toc389905202"></a><a NAME="_Toc389906235"></a><a NAME="_Toc389907139"></a><a NAME="_Toc389907213"></a><a NAME="RevisionHistory"></a><font SIZE="6"><a NAME="_Toc457811772">Revision History</a></li>
+</ol>
+</font>
+
+<p>Revision 0.00, 1999 July 28, Dennis Hamilton</b>
+
+<ul>
+  <li>Initial Foundation draft, incorporating back matter contributions of Richard Sauvain,
+    CSDocs Foundation as described in the current CSDocs sketch, and draft material previously
+    created by Alan Babich. Detailed information on extant systems with related features
+    (section 12) is moved to a separate document, with only a brief summary here.</li>
+</ul>
+
+<ol>
+  <li><a NAME="_Toc389897946"></a><a NAME="_Toc389898745"></a><a NAME="_Toc389898759"></a><a NAME="_Toc389899424"></a><a NAME="_Toc389899444"></a><a NAME="_Toc389901441"></a><a NAME="_Toc389904801"></a><a NAME="_Toc389905095"></a><a NAME="_Toc389905203"></a><a NAME="_Toc389906236"></a><a NAME="_Toc389907140"></a><a NAME="_Toc389907214"></a><a NAME="TableOfContent"></a><font SIZE="6"><b><a NAME="_Toc457811773">Table of Contents</a></li>
+  </b></font><p>1 Revision History <a HREF="CSDocsFoundation00.html#_Toc457811772">*</a> </p>
+  <p>2 Table of Contents <a HREF="CSDocsFoundation00.html#_Toc457811773">*</a></p>
+  <p>3 Functional Overview/Description <a HREF="CSDocsFoundation00.html#_Toc457811774">*</a></p>
+  <p>3.1 Purpose <a HREF="CSDocsFoundation00.html#_Toc457811775">*</a></p>
+  <p>3.2 Approach <a HREF="CSDocsFoundation00.html#_Toc457811776">*</a></p>
+  <p>3.3 Model Overview <a HREF="CSDocsFoundation00.html#_Toc457811777">*</a></p>
+  <p>3.3.1 CSRelationship <a HREF="CSDocsFoundation00.html#_Toc457811778">*</a></p>
+  <p>3.3.1.1 Interoperability Considerations <a HREF="CSDocsFoundation00.html#_Toc457811779">*</a></p>
+  <p>3.3.1.2 Backward Compatibility Considerations <a HREF="CSDocsFoundation00.html#_Toc457811780">*</a></p>
+  <p>3.3.2 CSRoot Renditions <a HREF="CSDocsFoundation00.html#_Toc457811781">*</a></p>
+  <p>3.3.3 Identifying Specific Elements in a CSRelationship <a HREF="CSDocsFoundation00.html#_Toc457811782">*</a></p>
+  <p>4 Glossary/Nomenclature <a HREF="CSDocsFoundation00.html#_Toc457811783">*</a></p>
+  <p>5 New/Changed Classes and Properties <a HREF="CSDocsFoundation00.html#_Toc457811784">*</a></p>
+  <p>5.1 DMA Class Changes <a HREF="CSDocsFoundation00.html#_Toc457811785">*</a></p>
+  <p>5.1.1 Instance Id {dmaProp_InstanceId} Introduction <a HREF="CSDocsFoundation00.html#_Toc457811786">*</a></p>
+  <p>5.1.2 Instance Id Definition <a HREF="CSDocsFoundation00.html#_Toc457811787">*</a></p>
+  <p>5.2 DocVersion Changes <a HREF="CSDocsFoundation00.html#_Toc457811788">*</a></p>
+  <p>5.2.1 New DocVersion Properties <a HREF="CSDocsFoundation00.html#_Toc457811789">*</a></p>
+  <p>5.2.1.1 CSRoots {dmaProp_CSRoots} <a HREF="CSDocsFoundation00.html#_Toc457811790">*</a></p>
+  <p>5.2.1.2 CSComponents {dmaProp_CSComponents} <a HREF="CSDocsFoundation00.html#_Toc457811791">*</a></p>
+  <p>5.2.1.3 CSRoot Style {dmaProp_CSRootStyle} <a HREF="CSDocsFoundation00.html#_Toc457811792">*</a></p>
+  <p>5.2.2 CSRoots Usage <a HREF="CSDocsFoundation00.html#_Toc457811793">*</a></p>
+  <p>5.2.3 CSComponents Usage <a HREF="CSDocsFoundation00.html#_Toc457811794">*</a></p>
+  <p>5.2.4 CSRoot Style Usage <a HREF="CSDocsFoundation00.html#_Toc457811795">*</a></p>
+  <p>5.3 New CSRelationship Class <a HREF="CSDocsFoundation00.html#_Toc457811796">*</a></p>
+  <p>5.3.1 Restricted Relationship Properties <a HREF="CSDocsFoundation00.html#_Toc457811797">*</a></p>
+  <p>5.3.1.1 Head {dmaProp_Head} <a HREF="CSDocsFoundation00.html#_Toc457811798">*</a></p>
+  <p>5.3.1.2 Tail {dmaProp_Tail} <a HREF="CSDocsFoundation00.html#_Toc457811799">*</a></p>
+  <p>5.3.2 New CSRelationship Properties <a HREF="CSDocsFoundation00.html#_Toc457811800">*</a></p>
+  <p>5.3.2.1 Head Rendition Id {dmaProp_HeadRenditionId} <a HREF="CSDocsFoundation00.html#_Toc457811801">*</a></p>
+  <p>5.3.2.2 Head Content Element Id {dmaProp_HeadContentElementId} <a HREF="CSDocsFoundation00.html#_Toc457811802">*</a></p>
+  <p>5.3.2.3 Tail Rendition Id {dmaProp_TailRenditionId} <a HREF="CSDocsFoundation00.html#_Toc457811803">*</a></p>
+  <p>5.3.2.4 Tail Content Element Id {dmaProp_TailContentElementId} <a HREF="CSDocsFoundation00.html#_Toc457811804">*</a></p>
+  <p>5.3.3 Head Rendition Id Usage <a HREF="CSDocsFoundation00.html#_Toc457811805">*</a></p>
+  <p>5.3.4 Head Content Element Id Usage <a HREF="CSDocsFoundation00.html#_Toc457811806">*</a></p>
+  <p>5.3.5 Tail Rendition Id Usage <a HREF="CSDocsFoundation00.html#_Toc457811807">*</a></p>
+  <p>5.3.6 Tail Content Element Id Usage <a HREF="CSDocsFoundation00.html#_Toc457811808">*</a></p>
+  <p>6 New/Changed Interfaces <a HREF="CSDocsFoundation00.html#_Toc457811809">*</a></p>
+  <p>7 New/Changed Types, Values, and Macros <a HREF="CSDocsFoundation00.html#_Toc457811810">*</a></p>
+  <p>8 Architectural Impacts <a HREF="CSDocsFoundation00.html#_Toc457811811">*</a></p>
+  <p>8.1 Integration Model <a HREF="CSDocsFoundation00.html#_Toc457811812">*</a></p>
+  <p>8.2 Query <a HREF="CSDocsFoundation00.html#_Toc457811813">*</a></p>
+  <p>8.2.1 Implementation Considerations for Query of CSDocs <a HREF="CSDocsFoundation00.html#_Toc457811814">*</a></p>
+  <p>8.2.2 Interoperability Considerations for Query of CSDocs <a HREF="CSDocsFoundation00.html#_Toc457811815">*</a></p>
+  <p>8.3 Internationalization/Localization <a HREF="CSDocsFoundation00.html#_Toc457811816">*</a></p>
+  <p>8.4 Content <a HREF="CSDocsFoundation00.html#_Toc457811817">*</a></p>
+  <p>8.4.1 Usage Considerations for CSDocs Content <a HREF="CSDocsFoundation00.html#_Toc457811818">*</a></p>
+  <p>8.4.2 CSDocs Content Interoperability and Safety <a HREF="CSDocsFoundation00.html#_Toc457811819">*</a></p>
+  <p>8.5 Containment <a HREF="CSDocsFoundation00.html#_Toc457811820">*</a></p>
+  <p>8.6 Versioning <a HREF="CSDocsFoundation00.html#_Toc457811821">*</a></p>
+  <p>8.6.1 Using Versioning with CSDocs <a HREF="CSDocsFoundation00.html#_Toc457811822">*</a></p>
+  <p>8.6.2 CSDocs Versioning Interoperability and Safety Considerations <a HREF="CSDocsFoundation00.html#_Toc457811823">*</a></p>
+  <p>8.7 Security <a HREF="CSDocsFoundation00.html#_Toc457811824">*</a></p>
+  <p>8.8 Naming <a HREF="CSDocsFoundation00.html#_Toc457811825">*</a></p>
+  <p>8.9 Locking and Transactions <a HREF="CSDocsFoundation00.html#_Toc457811826">*</a></p>
+  <p>8.9.1 Lock Usage Considerations for CSDocs Structures <a HREF="CSDocsFoundation00.html#_Toc457811827">*</a></p>
+  <p>8.9.2 Lock Implementation Considerations for CSDocs Structures <a HREF="CSDocsFoundation00.html#_Toc457811828">*</a></p>
+  <p>8.9.3 Interoperability of Locking for CSDocs Structures <a HREF="CSDocsFoundation00.html#_Toc457811829">*</a></p>
+  <p>9 Compliance &amp; Conformance Issues <a HREF="CSDocsFoundation00.html#_Toc457811830">*</a></p>
+  <p>10 Sample Usage <a HREF="CSDocsFoundation00.html#_Toc457811831">*</a></p>
+  <p>11 What Requirement Does This Address? <a HREF="CSDocsFoundation00.html#_Toc457811832">*</a></p>
+  <p>11.1 Why is this a good solution? <a HREF="CSDocsFoundation00.html#_Toc457811833">*</a></p>
+  <p>12 Extant Systems with Similar Features and Related Experiences <a HREF="CSDocsFoundation00.html#_Toc457811834">*</a></p>
+  <p>13 Impact on Existing Systems <a HREF="CSDocsFoundation00.html#_Toc457811835">*</a></p>
+  <p>14 Backwards Compatibility <a HREF="CSDocsFoundation00.html#_Toc457811836">*</a></p>
+  <p>15 Performance Impact <a HREF="CSDocsFoundation00.html#_Toc457811837">*</a></p>
+  <p>16 Failure Modes/Crash Recovery <a HREF="CSDocsFoundation00.html#_Toc457811838">*</a></p>
+  <p>17 How Is This Incorporated into the Specification? <a HREF="CSDocsFoundation00.html#_Toc457811839">*</a></p>
+  <p>18 How Is This Incorporated into the Code and Library Configurations? <a HREF="CSDocsFoundation00.html#_Toc457811840">*</a></p>
+  <p>19 Reference Materials <a HREF="CSDocsFoundation00.html#_Toc457811841">*</a></p>
+  <p>19.1 Normative Specifications <a HREF="CSDocsFoundation00.html#_Toc457811842">*</a></p>
+  <p>19.2 Informative References <a HREF="CSDocsFoundation00.html#_Toc457811843">*</a></p>
+  <p>19.3 Background Materials <a HREF="CSDocsFoundation00.html#_Toc457811844">*</a></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <li><a NAME="_Toc389899425"></a><a NAME="_Toc389899445"></a><a NAME="_Toc389901442"></a><a NAME="_Toc389904802"></a><a NAME="_Toc389905096"></a><a NAME="_Toc389905204"></a><a NAME="_Toc389906237"></a><a NAME="_Toc389907141"></a><a NAME="_Toc389907215"></a><a NAME="FunctionalDescription"></a><b><font SIZE="6"><a NAME="_Toc457811774">Functional
+    Overview/Description</a></li>
+  </font><ol>
+    <li><font SIZE="5"><a NAME="_Toc457811775">Purpose</a></li>
+    </font></b><p>The Compound/Structured Documents (CSDocs) Foundation extensions to DMA 1.0
+    provide fundamental capabilities for introducing and managing compound/structured
+    documents in DMA Document Spaces.</p>
+    <p>CSDocs Foundation establishes a general framework within which multiple
+    compound/structured document families and their implementations may be expressed and used
+    interoperably. </p>
+    <li><font SIZE="5"><b><a NAME="_Toc457811776">Approach</a></li>
+  </ol>
+</ol>
+</b></font>
+
+<p>CSDocs extensions are introduced entirely by additions to the DMA 1.0 model. There is
+no change to anything already in DMA 1.0. The CSDocs Foundation employs mechanisms that
+are already provided under DMA 1.0. </p>
+
+<p>These additions do not conflict with any other well-known DMA practice. In this way,
+CSDocs extensions are recognizable wherever supported by DMA-compliant products.</p>
+
+<p>Three overall considerations have guided the formulation of CSDocs:
+
+<ol>
+  <i>
+  <li>Upward Compatibility</i>. CSDocs extensions are completely upward compatible from DMA
+    1.0.</li>
+  <i>
+  <li VALUE="1">Backward Safety</i>. That CSDocs extensions can be encountered by DMA 1.0
+    requesters in a way that preserves DMA 1.0 operation where that is meaningful.</li>
+  <i>
+  <li VALUE="1">Interoperability.</i> That CSDocs extensions are usable in a way that provides
+    interoperability among CSDocs structures implemented on different collections and systems</li>
+</ol>
+
+<ol>
+  <ol>
+    <li><b><font SIZE="5"><a NAME="_Toc457811777">Model Overview</a></li>
+    </font><ol>
+      <li><font SIZE="4"><a NAME="_Toc457811778">CSRelationship</a></li>
+      </font></b><p>CSDocs introduces CSRelationship, a new subclass of the DMA Relationship
+      class. The relationships between DMA objects representing compound/structured documents
+      (CSRoots) and their components (CSComponents) are expressed using CSRelationship objects
+      (fig. 1).</p>
+      <p>CSRelationship objects link DMA DocVersions together into CSDocs structures. These
+      structures are used for every variety of compound/structured document represented under
+      the CSDocs extensions. The CSRelationship can be interpreted as establishing that the
+      CSRoot uses or has the specified CSComponent as part of a compound/structured document.</p>
+      <p>A CSRoot is a DocVersion that has a non-empty CSComponents enumeration property. The
+      CSComponents values are CSRelationships that lead to the components via their Head
+      properties.</p>
+      <p>&nbsp;</p>
+      <p ALIGN="CENTER"><img SRC="CSD990504-BASIC-SCHEME.gif" WIDTH="497" HEIGHT="373"></p>
+      <b><p ALIGN="CENTER">Figure 1 Organization of CSDoc Structures</p>
+      </b><p>A CSComponent is a DocVersion that has a non-empty CSRoots enumeration property.
+      The CSRoots values are CSRelationships with Tail properties that lead to the root
+      documents having this component. </p>
+      <p>The required class of the CSRelationship Tail property is DocVersion. The reflective
+      property of the Tail property is CSComponents. </p>
+      <p>The required class of the CSRelationship Head property is DocVersion. The reflective
+      property of the Head Property is CSRoots. DocVersions at the head of a CSRelationship are
+      known as CSRoot objects.</p>
+      <p>As illustrated in the figure, a CSRoot may also serve as a CSComponent.</p>
+      <p>A CSDocs structure is manually created by first establishing the CSRoot and CSComponent
+      objects and then inserting the CSRelationship objects that reflect how the root and
+      components are related in the structure. CSDocs structures might also be automatically
+      created as a consequence of creating a CSRoot of a particular kind. Some or all
+      CSComponents and CSRelationships might arise spontaneously as the result of requesting
+      that such a CSRoot be created.</p>
+      <p>This is the essence of CSDocs and the heart of the foundation model.</p>
+      <p>This is a <i>structural model</i>. CSDocs Foundation does not specify what the <i>mechanism</i>
+      of compounding or structuring is, nor what the interpretation of the structure is. The
+      presence of CSRelationship linkages is simply the means by which an implementation of
+      CSDocs structures signifies that there is a compound/structured-document interdependency
+      present. There is great freedom in what the specific interpretation of CSRelationships and
+      the semantics of the interdependency. [See the Sample Usages and References.] <ol>
+        <li><b><a NAME="_Toc457811779">Interoperability Considerations</a></li>
+        </b><p>The dmaClass_CSRelationship class is to be employed strictly as a virtual class.
+        CSDocs-supporting configurations will use specific subclasses of CSRelationship to
+        differentiate their particular forms and mechanisms of compound/structured-document
+        relationships. </p>
+        <p>Requesters that are specialized to exploit particular CSDocs structures can distinguish
+        when those mechanisms are supported. The applicable CSRelationship subclasses can be
+        differentiated in the different DMA DocSpaces that are accessed. Multiple-repository
+        queries will also operate more smoothly, finding matching uses of the same concepts.
+        Providers and requesters can form interoperability agreements about particular kinds of
+        CSDocs structures and make the specific subclasses and their definitions widely known.</p>
+        <p>The recommended sense of the CSRelationship class itself is as a base class for
+        &quot;some compound/structured-document composition relationship.&quot; This is consistent
+        with the DMA Relationship class standing generically for &quot;some relationship.&quot;</p>
+        <p>The CSRoot and CSComponent DocVersion subclasses that are linked by particular
+        CSRelationship subclasses can also be restricted as needed to implement a particular
+        structural mechanism. This is accomplished using existing provisions of the DMA 1.0 Object
+        Model [DMA 1.0: sections 3.1.4 Metadata Spaces, 3.1.7 Required and Optional Features,
+        3.1.8 Extensibility, and section 4.1.35 dmaClass_PropertyDescriptionObject Required Class
+        and Reflective Property Id descriptions].</p>
+        <li><b><a NAME="_Toc457811780">Backward Compatibility Considerations</a></li>
+      </ol>
+    </ol>
+  </ol>
+</ol>
+</b>
+
+<p>A CSDocs structure is opaque to a DMA 1.0 requester. This has several consequences:
+
+<ol>
+  <li>CSRelationship objects can be recognized but will have no DMA 1.0 interpretation beyond
+    &quot;some relationship&quot; and what can be learned by inspecting the class and property
+    descriptions.</li>
+  <li VALUE="1">CSRoot and CSComponent DocVersions, when accessed by DMA 1.0 requesters,
+    appear simply as DocVersion subclasses that may have additional properties for
+    application-specific, local or proprietary additions beyond the well-known DMA 1.0
+    properties. </li>
+  <li VALUE="1">Access to objects of CSDocs structures will appear no differently than access
+    to any customized DMA 1.0 DocVersion or Relationship subclass.</li>
+  <li VALUE="1">CSDocs-ignorant <b>alteration </b>of CSDocs-involved objects can lead to
+    severing of the CSDocs relationships and their structural integrity. Prevention is by
+    safeguarding against operations that violate an invariant of the implemented CSDocs
+    structure. Such safeguards on the integrity of relationships are already provided <font COLOR="#008000"><b>[DMA 1.0: &lt;add references&gt;].</li>
+  </b></font>
+  <li VALUE="1">It is not expected that a CSDocs-ignorant requester will attempt to create a
+    CSDocs structure or be equipped to succeed at such an attempt. A sufficiently-universal
+    DMA 1.0 requester could be guided through a CSDocs construction by a CSDocs-knowledgeable
+    operator.</li>
+  <li VALUE="1">Interoperable usage of DMA 1.0 requesters will diminish to the degree that
+    classes of document previously implemented by DMA 1.0 DocVersions are replaced by CSRoot
+    DocVersion implementations that the DMA 1.0 requester cannot create. </li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>The CSDocs model allows for the possibility of CSDocs structures being automatically
+generated on the creation of a CSRoot for a suitable type of document. These operations
+are safe for DMA 1.0 requesters when the resulting CSRoot is successfully usable as the
+overall document without having to be attentive to the CSDocs structure (e.g., any
+Renditions are complete renditions).
+
+<ol>
+  <ol>
+    <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811781">CSRoot Renditions</a></li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>In the ordinary interpretations of the DMA 1.0 Content Model, any renditions of a
+DocVersion are expected to be at the same level of abstraction &#150; render what is
+considered the same document in different presentations or with different stored
+representations. Also, in the ordinary interpretations of the DMA 1.0 Content Model, it is
+assumed that the Renditions are complete for what the DocVersion is understood to
+represent.</p>
+
+<p>With the introduction of CSRoot DocVersions, there is greater potential for ambiguity
+depending on whether the CSRoot is viewed as standing for the overall document or merely a
+piece of the overall document that happens to be tied to the other pieces.</p>
+
+<p>For CSDocs, the following position is taken:
+
+<ol>
+  <li>Any renditions of a particular CSRoot are at the same level of abstraction.</li>
+  <li>The default interpretation of any renditions of a CSRoot is that they are complete
+    renditions and the CSRoot represents the overall document determined by the CSDocs
+    structure that it is the root for.</li>
+  <li>Other interpretations of the renditions are selected by explicit presence of a CSRoot
+    Style property on the CSRoot object. (See 5.2.4 below.)</li>
+</ol>
+
+<p>This approach preserves interoperability with multi-part compound documents stored as
+single DMA 1.0 documents and with those same documents with their compound structure
+exposed in the CSDocs model but the CSRoot renditions left intact
+
+<ol>
+  <ol>
+    <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811782">Identifying Specific Elements in a
+        CSRelationship</a></li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>In the simplest case, the only thing known when a CSRelationship is present is that
+there is some interdependency between the CSRoot and the CSComponent of that relationship
+in realizing the overall compound/structured document represented by the particular CSRoot
+and all of its related components.</p>
+
+<p>Additional properties are provided on the CSRelationship object to allow more-specific
+identification of those elements of the CSRoot and CSRelationship that are connected by
+the particular CSRelationship. (See section 5.3 below.)</p>
+
+<p>The Head of the Relationship can be refined to a specific rendition or to a specific
+content element of a specific rendition of the CSComponent.</p>
+
+<p>The Tail of the Relationship can be refined to a specific rendition or to a specific
+content element of a specific rendition of the CSRoot.</p>
+
+<p>So that there is an interoperable way to identify specific elements in any CSDocs
+structure in any Document Space implementation, the CSDocs Foundation requires that any
+specific element (rendition or content element) used in this way have an InstanceId
+property (section 5.1 below).</p>
+
+<p>InstanceId properties have DmaId values. A particular rendition is selected by having
+its InstanceId value for the Head Rendition Id or the Tail Rendition Id value in the
+CSRelationship. A particular content element of that rendition is selected by having its
+InstanceId value for the Head or Tail Content Element Id value.
+
+<ol>
+  <li><a NAME="_Toc389899426"></a><a NAME="_Toc389899446"></a><a NAME="_Toc389901443"></a><a NAME="_Toc389904803"></a><a NAME="_Toc389905097"></a><a NAME="_Toc389905205"></a><a NAME="_Toc389906238"></a><a NAME="_Toc389907142"></a><a NAME="_Toc389907216"></a><a NAME="_Toc389899434"></a><a NAME="_Toc389899454"></a><a NAME="_Toc389901460"></a><a NAME="_Toc389904821"></a><a NAME="_Toc389905115"></a><a NAME="_Toc389905223"></a><a NAME="_Toc389906256"></a><a NAME="_Toc389907160"></a><a NAME="_Toc389907234"></a><a NAME="Glossary"></a><b><font SIZE="6"><a NAME="_Toc457811783">Glossary/Nomenclature</a></li>
+  </font><p>Complete Rendition</p>
+  </b><p>A rendition which requires no content elements other than its own in order to
+  render the content of the compound document as a whole. </p>
+  <p>A DMA DocVersion can have complete renditions even though the nature of those
+  renditions is determined by compound/structured-document relationships. The complete
+  rendition might be composed upon access to the rendition or it might be retained in
+  complete form and adjusted as alterations are made to components on which it depends.</p>
+  <b><p>Compound Document</p>
+  </b><p>A compound document is an organization of two or more documents in which material
+  of all of them is used to determine the complete document. It is common for one of the
+  documents to be viewed as a &quot;root&quot; or &quot;hub&quot; that represents how its
+  material is combined with those of the others, the &quot;component documents&quot;, to
+  produce the complete compound document.</p>
+  <p>A compound document may or may not also be a structured document (which see). Compound
+  documents tend to be viewed as composed from the components that are supplied for them. An
+  implementation may arrange for alteration of a complete rendition to be reflected in
+  corresponding alterations of the differentiated component documents (and vice versa).</p>
+  <b><p>CSRoot </p>
+  </b><p>A role of a DocVersion: that of having components and being part of a CSDocs
+  structure. </p>
+  <b><p>CSComponent</p>
+  </b><p>A role played by a DocVersion: that of being a component in a compound/structured
+  document, i. e., being used/determined by a CSRoot.</p>
+  <b><p>Structured Document</p>
+  </b><p>Structured documents are ones whose internal architecture is of independent
+  interest. The structural or logical elements of a structured document (pages, paragraphs,
+  illustrations, images, bibliographic notes, and so on) are as if they are free-standing,
+  independent (simple) documents. With structured documents, the separate components are
+  often derived from the complete document and made separately accessible and reusable. </p>
+  <p>With structured documents, the components are often viewed as given by the complete
+  document, but the electronic representation of both structured and compound views might be
+  supported by a single underlying implementation. The term compound/structured documents
+  reflects this range of application of CSDocs.</p>
+  <li><a NAME="ClassesAndProperties"></a><font SIZE="6"><b><a NAME="_Toc457811784">New/Changed
+    Classes</a> and Properties</li>
+</ol>
+</b></font>
+
+<p>Three classes are involved in the CSDocs Foundation:
+
+<ol>
+  <li>dmaClass_DMA is extended to have the InstanceId property.</li>
+  <li>dmaClass_DocVersion is extended to have two enumerations (CSRoots and CSComponents) and
+    a CSRootStyle property.</li>
+  <li>CSRelationship is introduced as a new subclass of Relationship objects.</li>
+</ol>
+
+<ol>
+  <ol>
+    <li><a NAME="_Ref457809226"></a><font SIZE="5"><b><a NAME="_Toc457811785">DMA Class Changes</a></li>
+    </b></font><p>The extensions made to dmaClass_DMA are presented in a separate Web Page,
+    dmaClass_DMA-CSDocs.html. (<a HREF="dmaClass_DMA-CSDocs.html">click to view</a>).</p>
+    <p>The single addition is for a new property, InstanceId. <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811786">Instance Id {dmaProp_InstanceId} Introduction</a></li>
+      </b></font><p>Implementation not required</p>
+      <p>Read-only</p>
+      <p>System-derived</p>
+      <p>Value-optional</p>
+      <p>Data type is scalar DmaId </p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811787">Instance Id Definition</a></li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>This optional property is meaningful only on objects that have corresponding
+representations as persistent objects.&nbsp; The object may be dependently persistent or
+independently persistent.</p>
+
+<p>If a class description specifies that this property is supported, but an instance of
+the class is not derived from an already-persistent object, the Instance Id property of
+the instance will have no value. </p>
+
+<p>When an instance of a class supporting Instance Id is an image of an already-persistent
+object, the value of Instance Id will be a globally-unique DmaId that applies specifically
+to that already-persistent object.&nbsp; An Instance Id value is set when an object is
+first created as persistent using an Execute Change operation or equivalent.&nbsp; An
+Instance Id for a persistent object is is never changed, even if the persistent object is
+updated.&nbsp; If a persistent object is replaced, the replacement will have a different
+Instance Id value.</p>
+
+<p>When an independently-persistent object has an Instance Id property, there is a
+relationship between the value of Instance Id and the OIID property. &nbsp; When there is
+an InstanceId, either
+
+<ol>
+  <li>the &lt;object id&gt; portion of the OIID string contains the Instance Id value in
+    &lt;Textualized Object DmaId&gt; format, or else</li>
+  <li VALUE="1">the optional &lt;object guid&gt; portion of the OIID string is present and
+    contains the Instance id value in &lt;Textualized Object DmaId&gt; format.</li>
+</ol>
+
+<ol>
+  <ol>
+    <li><a NAME="_Ref457810376"></a><a NAME="_Ref457810380"></a><font SIZE="5"><b><a NAME="_Toc457811788">DocVersion Changes</a></li>
+    </b></font><p>The extensions made to dmaClass_DocVersion are presented in a separate Web
+    Page, dmaClass_DocVersion-CSDocs.html (<a HREF="dmaClass_DocVersion-CSDocs.html">click to
+    view</a>).</p>
+    <p>Three properties are added. <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811789">New DocVersion Properties</a></li>
+      </b></font><p>&nbsp;<ol>
+        <li><b><a NAME="_Toc457811790">CSRoots {dmaProp_CSRoots}</a> </li>
+        </b><p>Implementation not required</p>
+        <p>Read-only</p>
+        <p>System-derived</p>
+        <p>Value-optional (can be empty)</p>
+        <p>Data type is enumeration of Object</p>
+        <p>Required class is dmaClass_CSRelationship</p>
+        <p>Reflective property is dmaProp_Head</p>
+        <li><b><a NAME="_Toc457811791">CSComponents {dmaProp_CSComponents}</a></li>
+        </b><p>Implementation not required</p>
+        <p>Read-only</p>
+        <p>System-derived</p>
+        <p>Value-optional (can be empty)</p>
+        <p>Data type is enumeration of Object</p>
+        <p>Required class is dmaClass_CSRelationship</p>
+        <p>Reflective property is dmaProp_Tail</p>
+        <li><b><a NAME="_Toc457811792">CSRoot Style {dmaProp_CSRootStyle}</a></li>
+      </ol>
+      </b><p>Implementation not required</p>
+      <p>Value-optional</p>
+      <p>Data type is scalar DmaId</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811793">CSRoots Usage</a></li>
+      </b></font><p>This optional property is meaningful only on objects that may be employed as
+      CSComponents in CSDocs structures.&nbsp; The reflective property of CSRoots is always the
+      dmaProp_Head property of an admissable dmaClass_CSRelationship subclass instance. &nbsp;
+      The property represents all of the CSRelationships in which this DocVersion occurs in some
+      way as a CSComponent.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811794">CSComponents Usage</a> </li>
+      </b></font><p>This optional property is meaningful only on objects that may be employed as
+      CSRoots in CSDocs structures.&nbsp; The reflective property of CSComponents is always the
+      dmaProp_Tail property of an admissable dmaClass_CSRelationship subclass instance.&nbsp;
+      The property represents all of the CSRelationships in which this DocVersion occurs in some
+      way as a CSRoot.</p>
+      <li><a NAME="_Ref457810441"></a><font SIZE="4"><b><a NAME="_Toc457811795">CSRoot Style Usage</a>
+      </li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>This optional property is meaningful only on objects that may be employed as
+CSRoots.&nbsp; When present, it specifies whether any renditions of the DocVersion are
+complete documents or whether some style of consolidation must be applied to derive a
+complete rendition.</p>
+
+<p>If CSRoot Style is not supported or it is supported and has no value, interpretation is
+the same as when CSRoot Style is supported and the value is the NULL DmaId
+(DMA_CSR_STYLE_COMPLETE).</p>
+
+<p>When CSRoot Style is supported and it has a value other than DMA_CSR_STYLE_COMPLETE,
+the value is the DmaId of a registered scheme for how a rendition of the complete document
+can be obtained or derived.&nbsp; For any value but DMA_CSR_STYLE_COMPLETE, it must be
+understood that no CSRoot Renditions is guaranteed to be a complete rendition of the
+compound/structured document represented by that DocVersion.&nbsp;&nbsp; </p>
+
+<p>It is anticipated that particular CSRoot DocVersion subclasses may fix the value of
+CSRoot Style as read-only and system-derived as part of subclass-specific realization of
+particular CSDoc structures.&nbsp; Subclasses may also limit the values to selections from
+a particular set of allowed values.</p>
+
+<p>The following values are defined for CSRoot Style:
+
+<ul>
+  <b>
+  <li>DMA_CSR_STYLE_COMPLETE</li>
+</ul>
+</b>
+
+<dl>
+  <dd>Any renditions of the CSRoot are complete renditions which can be used to render the
+    complete document using the CSRoot rendition alone.&nbsp; This is the corresponding
+    default interpretation of any DMA 1.0 DocVersion that has renditions, without regard to
+    the DocVersion's involvement in an explicit or implicit compound/structured document
+    relationship</dd>
+</dl>
+
+<ul>
+  <b>
+  <li>DMA_CSR_STYLE_INCOMPLETE</li>
+</ul>
+</b>
+
+<dl>
+  <dd>The CSRoot Renditions do not by themselves provide complete renditions.&nbsp; A complete
+    rendition is obtained by other means specific to the implementation of this CSRoot
+    DocVersion. &nbsp; The particular means is made known by application agreement.&nbsp; No
+    particular means is specified with this value of CSRoot Style.</dd>
+</dl>
+
+<ul>
+  <b>
+  <li>other values</li>
+</ul>
+</b>
+
+<dl>
+  <dd>Other values of CSRoot Style are safely interpreted as DMA_CSR_STYLE_INCOMPLETE if the
+    actual value is not one with a definition that the application is designed to
+    recognize.&nbsp; These other values are introduced as part of application agreements so
+    that interoperable use can be made of the CSRoot DocVersion and its renditions.</dd>
+</dl>
+
+<p>CSRoot Style is implemented with a DmaId so that the definition and advertising of
+particular CSRoot styles can occur on a decentralized basis without need for a central
+assignment authority.&nbsp;
+
+<ol>
+  <ol>
+    <li><a NAME="_Ref457809465"></a><font SIZE="5"><b><a NAME="_Toc457811796">New CSRelationship
+      Class</a></li>
+    </b></font><p>The new dmaClass_CSRelationship is specified on a separate Web Page,
+    dmaClass_CSRelationship.html (<a HREF="dmaClass_CSRelationship.html">click to view</a>).
+    CSRelationship inherits from Relationship. </p>
+    <p>CSRelationship restricts the Head and Tail properties and introduces four new optional
+    properties.<ol>
+      <li><b><font SIZE="4"><a NAME="_Toc457811797">Restricted Relationship Properties</a></li>
+      </font><ol>
+        <li><a NAME="_Toc457811798">Head {dmaProp_Head}</a></li>
+        </b><p>This object-valued property has its required class restricted to a DocVersion
+        subclass.</p>
+        <p>The reflective property of Head is CSRoots (dmaProp_CSRoots) for all CSRelationship
+        subclasses.</p>
+        <li><b><a NAME="_Toc457811799">Tail {dmaProp_Tail}</a></li>
+      </ol>
+      </b><p>This object-valued property has its required class restricted to a DocVersion
+      subclass.</p>
+      <p>The reflective property of Tail is CSComponents (dmaProp_CSComponents) for all
+      CSRelationship subclasses.</p>
+      <li><b><font SIZE="4"><a NAME="_Toc457811800">New CSRelationship Properties</a></li>
+      </font><ol>
+        <li><a NAME="_Toc457811801">Head Rendition Id {dmaProp_HeadRenditionId}</a> </li>
+        </b><p>Implementation not required</p>
+        <p>Value-optional</p>
+        <p>Data type is scalar DmaId</p>
+        <li><b><a NAME="_Toc457811802">Head Content Element Id {dmaProp_HeadContentElementId}</a></li>
+        </b><p>Implementation not required</p>
+        <p>Value-optional</p>
+        <p>Data type is scalar DmaId</p>
+        <li><b><a NAME="_Toc457811803">Tail Rendition Id {dmaProp_TailRenditionId}</a></li>
+        </b><p>Implementation not required</p>
+        <p>Value-optional</p>
+        <p>Data type is scalar DmaId</p>
+        <li><b><a NAME="_Toc457811804">Tail Content Element Id {dmaProp_TailContentElementId}</a></li>
+      </ol>
+      </b><p>Implementation not required</p>
+      <p>Value-optional</p>
+      <p>Data type is scalar DmaId</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811805">Head Rendition Id Usage</a></li>
+      </b></font><p>If this property is not supported, the CSComponent is simply the DocVersion
+      at the Head. There is no further CSDocs information on how much of and in what way the
+      CSComponent is employed in the compound/structured document via this CSRelationship.</p>
+      <p>If this property is supported, and it has no value (or the value is the NULL DmaId),
+      then the employment of the CSComponent in the compound/structured document via this
+      CSRelationship is not specific to a rendition of the CSComponent. &nbsp; It must be
+      assumed that changes anywhere in the CSComponent may impact the portion of the CSRoot that
+      is involved in the relationship.</p>
+      <p>If this property is supported and it has a non-NULL DmaId value, then a specific
+      rendition of the CSComponent participates in the compound/structured document via this
+      CSRelationship.&nbsp;&nbsp; The Rendition object involved is the one in the CSComponent's
+      dmaProp_Renditions list property that has the matching InstanceId property value.&nbsp; If
+      there is no such Rendition, the CSRelationship has been broken.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811806">Head Content Element Id Usage</a> </li>
+      </b></font><p>If this property is not supported, the participating element of the
+      CSComponent is determined in accordance with the definition of the Head Rendition Id
+      property.</p>
+      <p>If this property is supported, the Head Rendition Id property must also be supported.</p>
+      <p>If this property is supported, and it has no value (or the value is the NULL DmaId),
+      then the employment of the CSComponent in the compound/structured document via this
+      CSRelationship is not specific to a content element of a rendition of the CSComponent.</p>
+      <p>If this property is supported and it has a non-NULL DmaId value, then so does the Head
+      Rendition Id property.&nbsp; A specific content element of the CSComponent participates in
+      the compound/structured document via this CSRelationship. &nbsp; The Content Element
+      object involved is the one in the identified rendition's dmaProp_ContentElements list
+      property that has the matching InstanceId property.&nbsp; If there is no such Content
+      Element, the CSRelationship has been broken.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811807">Tail Rendition Id Usage</a> </li>
+      </b></font><p>If this property is not supported, the CSRoot is simply the DocVersion at
+      the Tail.&nbsp; There is no further CSDocs information on how much of and in what way the
+      CSRoot is related to the CSComponent via this CSRelationship.</p>
+      <p>If this property is supported, and it has no value (or the value is the NULL DmaId),
+      then the employment of the CSComponent in the compound/structured document via this
+      CSRelationship is not specific to a rendition of the CSComponent. &nbsp; It must be
+      assumed that any change to the identified CSComponent can impact any and all of the CSRoot
+      participating in this CSRelationship.</p>
+      <p>If this property is supported and it has a non-NULL DmaId value, then a specific
+      rendition of the CSRoot participates in the CSRelationship with the identified
+      CSComponent..&nbsp;&nbsp; The Rendition object involved is the one in the CSRoot's
+      dmaProp_Renditions list property that has the matching InstanceId property value. &nbsp;
+      If there is no such Rendition, the CSRelationship has been broken.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811808">Tail Content Element Id Usage</a> </li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>If this property is not supported, the participating element of the CSRoot is
+determined in accordance with the definition of the Tail Rendition Id property.</p>
+
+<p>If this property is supported, the Tail Rendition Id property must also be supported.</p>
+
+<p>If this property is supported, and it has no value (or the value is the NULL DmaId),
+then the portion of the CSRoot involved in this CSRelationship to the identified
+CSComponent&nbsp; is not a specific content element of a rendition of the
+CSComponent.&nbsp; </p>
+
+<p>If this property is supported and it has a non-NULL DmaId value, then so does the Tail
+Rendition Id property and a specific rendition content element of the CSRoot is involved
+in the CSRelationship to the identified CSComponent.&nbsp; The Content Element object
+involved is the one in the identified CSRoot Rendition's dmaProp_ContentElements list
+property that has the matching InstanceId property.&nbsp; If there is no such Content
+Element, the CSRelationship has been broken.
+
+<ol>
+  <li><a NAME="_Toc389899428"></a><a NAME="_Toc389899448"></a><a NAME="_Toc389901444"></a><a NAME="_Toc389904804"></a><a NAME="_Toc389905098"></a><a NAME="_Toc389905206"></a><a NAME="_Toc389906239"></a><a NAME="_Toc389907143"></a><a NAME="_Toc389907217"></a><a NAME="Interfaces"></a><font SIZE="6"><b><a NAME="_Toc457811809">New/Changed Interfaces</a></li>
+  </b></font><p>No changes</p>
+  <li><a NAME="TypesValuesMacros"></a><b><font SIZE="6"><a NAME="_Toc457811810">New/Changed
+    Types, Values, and Macros</a></li>
+  </font><font COLOR="#008000"><p>[add description here of new property identifications, new
+  class identifications, and the new enumeration values.]</p>
+  <li><a NAME="_Toc389899429"></a><a NAME="_Toc389899449"></a><a NAME="_Toc389901445"></a><a NAME="_Toc389904805"></a><a NAME="_Toc389905099"></a><a NAME="_Toc389905207"></a><a NAME="_Toc389906240"></a><a NAME="_Toc389907144"></a><a NAME="_Toc389907218"></a><a NAME="ArchitecturalImpacts"></a></font><font SIZE="6"><a NAME="_Toc457811811">Architectural
+    Impacts</a></li>
+  <ol>
+    <li><a NAME="_Toc389901446"></a><a NAME="_Toc389904806"></a><a NAME="_Toc389905100"></a><a NAME="_Toc389905208"></a><a NAME="_Toc389906241"></a><a NAME="_Toc389907145"></a><a NAME="_Toc389907219"></a><a NAME="IntegrationModel"></a></font><font SIZE="5"><a NAME="_Toc457811812">Integration Model</a></li>
+    </font></b><p><a NAME="_Toc389901447"></a><a NAME="_Toc389904807"></a><a NAME="_Toc389905101"></a><a NAME="_Toc389905209"></a><a NAME="_Toc389906242"></a><a NAME="_Toc389907146"></a><a NAME="_Toc389907220">No impact</p>
+    </a>
+    <li><a NAME="QueryModel"></a><font SIZE="5"><b><a NAME="_Toc457811813">Query</a></li>
+    </b></font><p>The CSDocs Foundation has no impact on the DMA Query model. The objects
+    employed in CSDocs structures are as amenable to access via Query as any other persistent
+    DMA objects. </p>
+    <p>The occurrence of CSDocs-related classes in the searchable classes of a document space
+    scope, and the identification of properties as query-able, selectable, and orderable, is
+    determined by the DocSpace implementation, the same as for any other objects usable in
+    queries.</p>
+    <p>CSDocs-related classes and properties do no introduce any exceptions to the rules for
+    merged scopes. <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811814">Implementation Considerations for Query of
+        CSDocs</a> </li>
+      </b></font><p>The CSDocs Foundation introduces new well-known properties (InstanceId and
+      related properties on CSRelationship objects) that have DmaId values. If these properties
+      are supported, it is valuable to also support the query operators dmaQueryOperator_EqualId
+      and dmaQueryOperator_UnequalId for those properties. If joins on CSDocs structures are
+      supported, DMA_JOIN_PARTICIPATION_OPERAND can be set as the value of the
+      dmaProp_JoinParticipation property for the dmaQueryOperator_EqualId
+      dmaClass_QueryOperatorDescription instance. </p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811815">Interoperability Considerations for Query of
+        CSDocs</a></li>
+    </ol>
+    </b></font><p>Interoperability of operation across different document spaces is enhanced
+    by ensuring that the different CSRelationship instances that might involve the identical
+    CSRoot and CSComponent are completely differentiated by subclassing and/or user-meaningful
+    searchable properties. </p>
+    <p>The use of advertised CSRelationship subclasses for particular structuring mechanisms
+    will allow cross-repository search for compound/structured-document structures of the same
+    kind, when that is important for a specialized requester. By having the provider&#146;s
+    CSRelationship also be a searchable class, with useful subclass properties supported,
+    general CSDocs provisions can also be discovered by interoperable requesters.</p>
+    <li><a NAME="_Toc389901448"></a><a NAME="_Toc389904808"></a><a NAME="_Toc389905102"></a><a NAME="_Toc389905210"></a><a NAME="_Toc389906243"></a><a NAME="_Toc389907147"></a><a NAME="_Toc389907221"></a><a NAME="Internationalization"></a><font SIZE="5"><b><a NAME="_Toc457811816">Internationalization/Localization</a></li>
+    </b></font><p><a NAME="_Toc389901449"></a><a NAME="_Toc389904809"></a><a NAME="_Toc389905103"></a><a NAME="_Toc389905211"></a><a NAME="_Toc389906244"></a><a NAME="_Toc389907148"></a><a NAME="_Toc389907222">No impact</p>
+    </a>
+    <li><a NAME="ContentModel"></a><font SIZE="5"><b><a NAME="_Toc457811817">Content</a></li>
+    </b></font><p><a NAME="_Toc389901450"></a><a NAME="_Toc389904810"></a><a NAME="_Toc389905104"></a><a NAME="_Toc389905212"></a><a NAME="_Toc389906245"></a><a NAME="_Toc389907149"></a><a NAME="_Toc389907223">The CSDocs Foundation does not alter the
+    DMA Content model. CSDocs does depend on the content model being employed in a way that is
+    consistent with the presence of CSDocs structures and the new ways that content may then
+    be viewed.</a><ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811818">Usage Considerations for CSDocs Content</a></li>
+      </b></font><p>Any DMA 1.0 usable rendition type and organization generally remains usable
+      as renditions of CSComponents without further consideration. Many DMA 1.0 usable rendition
+      types and Rendition subclasses may also remain usable as renditions of CSRoots. </p>
+      <p>CSRoot DocVersion subclasses that can be created with initial Renditions may be more
+      likely than DMA 1.0 DocVersions to restrict the usable Rendition subclasses. There may be
+      similar constraints on renditions of CSComponents that are usable in a particular (type
+      of) CSDocs structure.</p>
+      <p>These are all factors that apply in the DMA 1.0 applications of the DMA Content model.
+      CSDocs implementations may have the effect of expanding the incidence of such
+      restrictions.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811819">CSDocs Content Interoperability and Safety</a>
+      </li>
+    </ol>
+    </b></font><p>For those CSDocs structures that provide for it, a CSRoot can present
+    complete renditions that are indistinguishable from the renditions that its DMA 1.0
+    counterpart would create and access. This interoperability does not extend to CSDocs
+    structures that necessarily employ incomplete renditions of forms not safely recognized or
+    modified in DMA 1.0 applications.</p>
+    <li><a NAME="ContainmentModel"></a><font SIZE="5"><b><a NAME="_Toc457811820">Containment</a></li>
+    </b></font><p><a NAME="_Toc389901451"></a><a NAME="_Toc389904811"></a><a NAME="_Toc389905105"></a><a NAME="_Toc389905213"></a><a NAME="_Toc389906246"></a><a NAME="_Toc389907150"></a><a NAME="_Toc389907224">The CSDocs Foundation does not impact the
+    DMA Containment model. CSDocs is neutral to the containment model. No conditions are
+    placed on the independent Containable characteristics of CSRelationship objects and of
+    CSRoot and CSComponent DocVersions. (CSRelationship objects are ordinarily not Containable
+    subclasses.)</p>
+    </a>
+    <li><a NAME="VersioningModel"></a><font SIZE="5"><b><a NAME="_Toc457811821">Versioning</a></li>
+    </b></font><p><a NAME="_Toc389901452"></a><a NAME="_Toc389904812"></a><a NAME="_Toc389905106"></a><a NAME="_Toc389905214"></a><a NAME="_Toc389906247"></a><a NAME="_Toc389907151"></a><a NAME="_Toc389907225">CSDocs is neutral to the versioning
+    model, and no modifications to DMA 1.0 Versioning is proposed for the CSDocs Foundation.
+    No conditions are placed on the independent Versionable characteristics of CSRelationship
+    objects and of CSRoot and CSComponent DocVersions. (CSRelationship objects are ordinarily
+    not Versionable objects.) </p>
+    <p>Versioning of CSRoot, CSRelationship, and CSComponent objects is controlled by the
+    implementation in the same manner as for any DMA objects.</a><ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811822">Using Versioning with CSDocs</a> </li>
+      </b></font><p>Checkout of a CSRoot will produce a working copy that is created from the
+      CSRoot, usually without any associated relationship objects of any kind [DMA 1.0: section
+      4.2.44.1 IdmaVersionSeries::SetCheckOutNext]. </p>
+      <p>It is understood that the cloning operation is not required to replicate any
+      object-valued properties (including enumerations) that have independently-persistent
+      objects as values. There is also no requirement to replicate system-derived properties or
+      elements (e.g., automatically-created special renditions or other features, such as OIID
+      and InstanceId properties). The creation of the CSRoot might spontaneously establish
+      CSRelationship and CSComponent objects the same as when any CSRoot of that kind is
+      created. The SetCheckOutNext operation takes no actions to preserve or clone any
+      CSRelationship in which the original CSRoot is a participant.</p>
+      <p>The predictable automatic behavior is essentially the same behavior available if an
+      application were to fabricate the copy without anything to go by but the class description
+      of the given CSRoot instance, with no special knowledge of any semantics of properties and
+      elements of the CSRoot. </p>
+      <p>The copying of a dependently-persistent element of a CSRoot is straightforward so long
+      as the IdmaVersionSeries::SetCheckOutNext operation is dealing with objects for which it
+      has complete access to the implementation (i.e., objects implemented by the same Document
+      Space, which is always true under DMA 1.0). For example, the clone DocVersion object has
+      all of the resources possible for dealing perfectly and appropriately with the individual
+      dependently-persistent renditions of the original CSRoot that are inserted on the
+      clone&#146;s dmaProp_Renditions list property. (Appropriate operation may include failing
+      the checkout operation. See section 8.6.2 below.)</p>
+      <p>Checkout of a CSComponent is subject to the same considerations. The SetCheckOutNext
+      operation takes no actions to preserve or clone any CSRelationship in which the original
+      CSComponent is a participant.</p>
+      <li><a NAME="_Ref457787609"></a><font SIZE="4"><b><a NAME="_Toc457811823">CSDocs Versioning
+        Interoperability and Safety Considerations</a> </li>
+    </ol>
+    </b></font><p>DMA 1.0 versioning operations do not affect CSDocs structures.
+    CSRelationship objects of the CSDocs Foundation always bind specific instances of
+    DocVersions. The structure anchored on a specific CSRoot is not impacted by versioning of
+    the CSRoot, any CSComponent, or even a CSRelationship (were that admissible). The creation
+    of new DMA 1.0 versions is simply not noticed in the existing CSDocs Foundation structure
+    having a given CSRoot. This is a straightforward, interoperable behavior.</p>
+    <p>If the checked-out CSRoot has renditions that cannot be represented without the
+    existence of CSRelationships to components, the ExecuteChange operation to create the
+    clone might fail. </p>
+    <p>The most-interoperable and safe case is to have SetCheckOutNext operation always
+    produces a DMA 1.0 consistent form of the checked out object, whether or not there are any
+    spontaneously-derived CSRelationships and CSComponents. If it is not possible or not safe
+    to produce such an object from the given one, SetCheckOutNext operation should fail.</p>
+    <p>It may become desirable to extend the Versioning model by operations that go beyond
+    SetCheckOutNext for the checkout of objects that may be CSRoot DocVersions. No such
+    extension is proposed for the CSDocs Foundation.</p>
+    <li><a NAME="SecurityModel"></a><font SIZE="5"><b><a NAME="_Toc457811824">Security</a></li>
+    </b></font><p><a NAME="_Toc389901453"></a><a NAME="_Toc389904813"></a><a NAME="_Toc389905107"></a><a NAME="_Toc389905215"></a><a NAME="_Toc389906248"></a><a NAME="_Toc389907152"></a><a NAME="_Toc389907226">Not applicable</p>
+    </a>
+    <li><a NAME="NamingModel"></a><a NAME="NamingSystem"></a><font SIZE="5"><b><a NAME="_Toc457811825">Naming</a></li>
+    </b></font><p><a NAME="_Toc389901454"></a><a NAME="_Toc389904814"></a><a NAME="_Toc389905108"></a><a NAME="_Toc389905216"></a><a NAME="_Toc389906249"></a><a NAME="_Toc389907153"></a><a NAME="_Toc389907227">Not applicable</p>
+    </a>
+    <li><font SIZE="5"><b><a NAME="_Toc457811826">Locking and Transactions</a></li>
+    </b></font><p>The CSDocs Foundation does not impact the architecture of DMA Locking or the
+    Transaction mechanisms of DMA. <ol>
+      <li><font SIZE="4"><b><a NAME="_Toc457811827">Lock Usage Considerations for CSDocs
+        Structures</a></li>
+      </b></font><p>For CSDocs, the locking and unlocking of a CSRoot or CSComponent might also
+      require locking and unlocking of other portions of the structures in which the locked
+      DocVersion participates. Any such implicit locking is accomplished silently by the
+      implementation. No special provision is required on the part of requesters.</p>
+      <p>A CSDocs implementation might refuse to provide locks on CSDocs objects for locks that
+      would otherwise be available.</p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811828">Lock Implementation Considerations for CSDocs
+        Structures</a></li>
+      </b></font><p>CSDoc implementations that preserve synchronization among the participants
+      in a CSRelationship are not required to provide multiple locking. The DMA 1.0 requirement
+      is that no lock be granted for which the necessary invariant cannot be delivered by the
+      implementation. </p>
+      <li><font SIZE="4"><b><a NAME="_Toc457811829">Interoperability of Locking for CSDocs
+        Structures</a></li>
+    </ol>
+  </ol>
+</ol>
+</b></font>
+
+<p>The greatest level of interoperability for use of CSDocs Structures is by
+
+<ul>
+  <li>providing all forms of locking that are available on DocVersions and Relationship
+    objects generally</li>
+  <li>supporting synchronization and ExecuteChange with DMA_MODIFY_PROTECTED wherever all
+    forms of locking are not supported on non-read-only objects</li>
+  <li>limiting the modification of synchronized participants in a CSRelationship to just one
+    of them </li>
+</ul>
+
+<ol>
+  <li>typically the CSRoot for maximum backward interoperability with DMA 1.0 requesters</li>
+  <li>typically non-CSRoot CSComponents when the alteration is not one safely performed by DMA
+    1.0 clients</li>
+</ol>
+
+<p>&nbsp;
+
+<ol>
+  <li><a NAME="Conformance"></a><b><font SIZE="6"><a NAME="_Toc457811830">Compliance &amp;
+    Conformance Issues</a></li>
+  </font><font COLOR="#008000"><p>[Address that the CSDocs Foundation extensions are
+  completely optional, and that they have degrees of optionality among the extensions as
+  well.</p>
+  <p>Capabilities for specific levels of conformance will be incorporated in a future draft
+  of this CSDocs Foundation proposal.]</p>
+  <li><a NAME="SampleUsage"></a></font><font SIZE="6"><a NAME="_Toc457811831">Sample Usage</a></li>
+  </font><font COLOR="#008000"><p>[Samples illustrating application of the CSDocs Foundation
+  will be incorporated in a future draft of this CSDocs Foundation proposal.]</p>
+  </font></b><p>&nbsp;</p>
+  <li><a NAME="RequirementsAddressed"></a><b><font SIZE="6"><a NAME="_Toc457811832">What
+    Requirement Does This Address?</a></li>
+  </font><font COLOR="#008000"><p>[The CSDocs requirements matrix will be included with an
+  indication of which requirements are satisfied by the CSDocs Foundation, and how. There
+  will be verbal description of the key ideas as well.]</p>
+  <i><p>Edit this:</i></font></b> Handling of compound documents is a DMA user requirement
+  that was postponed in determining the scope of DMA 1.0. Increasing importance of document
+  formats that allow multiple components and/or have internal structure makes it important
+  to address this area in order to maintain the currency of DMA. SGML and XML are examples
+  of such document formats.<ol>
+    <li><a NAME="_Toc389904815"></a><a NAME="_Toc389905109"></a><a NAME="_Toc389905217"></a><a NAME="_Toc389906250"></a><a NAME="_Toc389907154"></a><a NAME="_Toc389907228"></a><b><font SIZE="5"><a NAME="_Toc457811833">Why is this a good solution?</a></li>
+  </ol>
+</ol>
+</font><font COLOR="#008000"><i>
+
+<p>Edit this after the beginning of Section 11 is expanded:</i></font></b> The approach
+provides a relatively simple way of constructing documents from other documents, which
+seems the most critical element of compound / structured document functionality. It is
+simple in requiring only one new sub-class (of dmaClass_Relationship), no new interfaces,
+and a small number of new properties in existing classes.</p>
+
+<p>Alternatives that were discarded include:
+
+<ul>
+  <li>A special kind of content element that is really a pointer to a complex object structure
+    specialized for representing SGML documents. This was the basic idea in the original
+    Hitachi CSDocs proposal. It was discarded because having an object in the content elements
+    list that does not support the interfaces or properties of DMA 1.0 dmaClass_ContentElement
+    subclasses was a violation of backwards compatibility.</li>
+  <li>Modeling compound documents with containers, with or without adding a rendition property
+    to the container class.</li>
+</ul>
+
+<p>&nbsp;
+
+<ol>
+  <li><a NAME="_Toc389899431"></a><a NAME="_Toc389899451"></a><a NAME="_Toc389901457"></a><a NAME="_Toc389904818"></a><a NAME="_Toc389905112"></a><a NAME="_Toc389905220"></a><a NAME="_Toc389906253"></a><a NAME="_Toc389907157"></a><a NAME="_Toc389907231"></a><a NAME="ExtantSystemsExperiences"></a><b><font SIZE="6"><a NAME="_Toc457811834">Extant
+    Systems with Similar Features and Related Experiences</a></li>
+</ol>
+</font><font COLOR="#008000">
+
+<p><a NAME="_Toc389899432"></a><a NAME="_Toc389899452"></a><a NAME="_Toc389901458"></a><a NAME="_Toc389904819"></a><a NAME="_Toc389905113"></a><a NAME="_Toc389905221"></a><a NAME="_Toc389906254"></a><a NAME="_Toc389907158"></a><a NAME="_Toc389907232">[The extant
+systems survey is to be distilled down to the elements related to Compound/structured
+documents as well as similarities at the Foundation versus beyond-Foundation level. The
+general survey information is inappropriate in this proposal. Also, the use of an
+annotated table might be more useful with regard to lining up the feature sets along
+common axes.]</p>
+</font></b>
+
+<p>As part of our background research, we reviewed several repository products that have
+some form of compound document support. We characterized each product by considering the
+following areas. The approach to compound/structured documents in each of these systems,
+and the relationship to provisions of CSDocs, is collected in a separate document,
+CSDocsExisting.doc (click to open in </a><a HREF="CSDocsExisting00.doc">Word</a> or <a HREF="CSDocsExisting00.html">HTML</a>). The current version of that document should be
+consulted for all details.</p>
+
+<p>The systems currently surveyed are
+
+<ul>
+  <li>Documentum</li>
+  <li>InterLeaf</li>
+  <li>Lotus Domino.doc</li>
+  <li>FileNET IDM</li>
+</ul>
+<b><font COLOR="#008000">
+
+<p>[We should add the Hitachi DocBroker to this list, since it establishes the
+compound/structured-document model for the Digital Library Project in Japan.]
+
+<ol>
+  <li><a NAME="_Toc389899435"></a><a NAME="_Toc389899455"></a><a NAME="_Toc389901461"></a><a NAME="_Toc389904822"></a><a NAME="_Toc389905116"></a><a NAME="_Toc389905224"></a><a NAME="_Toc389906257"></a><a NAME="_Toc389907161"></a><a NAME="_Toc389907235"></a><a NAME="ExistingSystemImpact"></a><a NAME="_Toc457811835"></a></font><font SIZE="6">Impact
+    on Existing Systems</li>
+  </font><font COLOR="#008000"><p><a NAME="_Toc389899436"></a><a NAME="_Toc389899456"></a><a NAME="_Toc389901462"></a><a NAME="_Toc389904823"></a><a NAME="_Toc389905117"></a><a NAME="_Toc389905225"></a><a NAME="_Toc389906258"></a><a NAME="_Toc389907162"></a><a NAME="_Toc389907236">[The impact on legacy systems of the basic requirements need to be
+  assessed here, along with the conditions for being able to express legacy compound and
+  structured documents features through the CSDocs Foundation.]</p>
+  <i><p>Edit this. We need to consider DMA 1.0 as a legacy impacted by these extensions.:</i></font></b>
+  This proposal will allow repositories that allow construction of documents from other
+  documents to expose this capability through DMA.</p>
+  <p>&nbsp;</p>
+  </a>
+  <li><a NAME="BackwardsCompatibility"></a><b><font SIZE="6"><a NAME="_Toc457811836">Backwards
+    Compatibility</a></li>
+  </font><font COLOR="#008000"><p>[The requirement for upward compatibility &#150;
+  completely additive extensions, and for backward safety for legacy applications is
+  addressed here. Hmm, has this always said Backwards compatibility?]</p>
+  <li><a NAME="PerformanceImpact"></a></font><font SIZE="6"><a NAME="_Toc457811837">Performance
+    Impact</a></li>
+  </font><font COLOR="#008000"><p><a NAME="_Toc389899437"></a><a NAME="_Toc389899457"></a><a NAME="_Toc389901463"></a><a NAME="_Toc389904824"></a><a NAME="_Toc389905118"></a><a NAME="_Toc389905226"></a><a NAME="_Toc389906259"></a><a NAME="_Toc389907163"></a><a NAME="_Toc389907237">[Assess that performance impact is at the same level as for
+  containment and the considerations that were made in not having something more efficient
+  than that.]</p>
+  </a>
+  <li><a NAME="_Toc389901455"></a><a NAME="_Toc389904816"></a><a NAME="_Toc389905110"></a><a NAME="_Toc389905218"></a><a NAME="_Toc389906251"></a><a NAME="_Toc389907155"></a><a NAME="_Toc389907229"></a><a NAME="FailureAndRecovery"></a></font><font SIZE="6"><a NAME="_Toc457811838">Failure Modes/Crash Recovery</a></li>
+  </font><font COLOR="#008000"><p><a NAME="_Toc389899430"></a><a NAME="_Toc389899450"></a><a NAME="_Toc389901456"></a><a NAME="_Toc389904817"></a><a NAME="_Toc389905111"></a><a NAME="_Toc389905219"></a><a NAME="_Toc389906252"></a><a NAME="_Toc389907156"></a><a NAME="_Toc389907230">[Assess the possible failures around DmaId exhaustion and
+  duplication. Assess the impact of structure construction being incomplete or being broken
+  as comparable to the same scenarios with containment and any structure defined using
+  separate relationship objects.]</p>
+  </a>
+  <li><a NAME="_Toc389899438"></a><a NAME="_Toc389899458"></a><a NAME="_Toc389901464"></a><a NAME="_Toc389904825"></a><a NAME="_Toc389905119"></a><a NAME="_Toc389905227"></a><a NAME="_Toc389906260"></a><a NAME="_Toc389907164"></a><a NAME="_Toc389907238"></a><a NAME="IncorporationInSpecification"></a><a NAME="SpecificationIncorporation"></a><a NAME="_Toc457811839"></a></font><font SIZE="6">How Is This Incorporated into the
+    Specification?</li>
+  </font><font COLOR="#008000"><p>[Discuss presentation in a package with all approved
+  CSDocs changes, in a standalone supplement that could eventually be a new section of the
+  DMA Specification.] </p>
+  <li><a NAME="CodeAndLibraryIncorporation"></a></font><font SIZE="6"><a NAME="_Toc457811840">How
+    Is This Incorporated into the Code and Library Configurations?</a></li>
+  </font><font COLOR="#008000"><p>[Propose an identified set of additions to the interface
+  libraries and other code, a set that will be used for trial-use, and merger into the main
+  DMA set in a way that does not interfere with software written to use the trial-use files
+  that have not changed.]</p>
+  </font></b><p>The new property Id, class Id, and enumeration-value definitions will be
+  incorporated in DMACSDOC.H for separate inclusion during the trial use period. This file
+  will be structured so that, when CSDocs extensions are adopted as part of the DMA baseline
+  reference interfaces, programs will compile properly whether they use a separate (current)
+  DMACSDOC.H or not.</p>
+  <li><a NAME="ReferenceMaterials"></a><b><font SIZE="6"><a NAME="_Toc457811841">Reference
+    Materials</a></li>
+  <ol>
+    <li><a NAME="NormativeSpecifications"></a></font><font SIZE="5"><a NAME="_Toc457811842">Normative
+      Specifications</a></li>
+    </font></b><p><a NAME="DCERPC">[DCE RPC]</a></p>
+    <dfn><blockquote>
+      <p>DCE 1.1: Remote Procedure Call.&nbsp; Open Group Technical Standard.&nbsp; Document
+      Number C706. &nbsp; The Open Group (Reading, UK: August, 1997). &nbsp; 737pp.&nbsp;
+      Electronic edition, $58.00.&nbsp; HTML edition available on-line.&nbsp; UUIDs are
+      specified in an Appendix.&nbsp; Registration is required to access the on-line material</p>
+    </blockquote>
+    </dfn><p><a NAME="DMA10">[DMA1.0]</a></p>
+    <dfn><p>&nbsp;</p>
+    </dfn><p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <li><font SIZE="5"><b><a NAME="_Toc457811843">Informative References</a></li>
+    </b></font><p><a NAME="COMSpec">[COMSpec]</a></p>
+    <blockquote>
+      <p>Microsoft Corporation and Digital Equipment Corporation.&nbsp; The Component Object
+      Model Specification. Microsoft Corporation (Redmond, WA: 1992-1995).&nbsp; Version 0.9,
+      October 24, 1995.&nbsp; This specification is available on the Microsoft Developer Network
+      (MSDN) Library CD-ROM distribution, as late as April, 1999.&nbsp; The specification can
+      also be found at Microsoft's on-line pages. &nbsp; There is an on-line (HTML) version and
+      two downloadable versions as Microsoft Word 6.0 Master Documents with individual
+      chapters.&nbsp; A Word 6.0 version is required in order to have the footnotes and
+      bibliography.&nbsp; Chapter 3.2 Globally-Unique Identifiers, provides the description of
+      GUID usage in COM</p>
+    </blockquote>
+    <li><b><font SIZE="5"><a NAME="_Toc457811844">Background Materials</a></li>
+  </ol>
+</ol>
+</font><font COLOR="#008000">
+
+<p>&nbsp;</p>
+
+<p>[This material will be edited to include definitive references &#150; ones essential to
+this proposal and specification, and informative ones that are not essential but may offer
+useful background or related material.]</p>
+<i>
+
+<p>Edit these with stronger references to sources:</p>
+</i></font></b>
+
+<p>Original Hitachi Proposal</p>
+
+<p>FileNet proposals</p>
+
+<p>Cousins proposal</p>
+
+<p>Documentum Server Reference Manual</p>
+
+<p>Black Forest Group requirements document (April 1999?)</p>
+
+<p>Original DMA Requirements Statement?</p>
+
+<p>Original Statement of Work and Proposal for the Subcommittee</p>
+
+<p>Requirements Documents adopted by the Subcommittee</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<font COLOR="#ff0000">
+
+<p>&nbsp;</p>
+</font>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d060701: getpwd Platform Isolation</title>
+<!--$$Header: /TROSTCompagno/dev/2006/07/d060701.htm 34    17-07-01 7:36 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006.htm of 2005-08-17T20:25Z -->
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a rel="nofollow" href="http://TROSTing.org" target="_top"><img border="0" 
+src="../../../images/TROSTSymbol-thumb.gif" alt="TROST: Open-System Trustworthiness" 
+width="100" height="87"></a>
+<!-- included from TROSTing /construction/C000005a.htm of 2005-07-21-13:35 -0700 $-->
+<!--webbot bot="Include" endspan i-checksum="10704" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>
+		<a href="../../d000001.htm#d060701"><font color="#990033">d060701</font></a> 
+		TROST </strong></font>
+
+		<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><font color="#990033"><strong><br>
+      <i><font size="5">getpwd Platform Isolation</font></i></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><code><a href="../../../"><b>TROSTing</b></a></code><b><code>&gt;<a 
+  href="../../">info</a>&gt;<br>
+      <a target="_top" href="../">2006</a>&gt;<a target="_top" href="./">07</a>&gt;</code></b></p>
+      <p align="right"><code><a target="_top" href="d060701.htm"><b>d060701</b></a><b>&gt;</b></code><br>
+      <small><small><a href="#0.50">0.50</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2017-07-01 07:36 -0700<!--webbot bot="Timestamp" endspan i-checksum="28946" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<font color="#800080">
+					<p></p>{<b>Customize: The text of the folio cover goes here.</b><p>
+<b>2006-07-29: This devNote illustrates platform isolation from C/C++ 
+implementation- and platform-specific libraries and APIs.&nbsp; The treatment 
+here was inspired by a request on the Microsoft MSDN Visual C++ 2005 Express 
+Edition Forum.&nbsp; This incomplete and provisional material is created so that 
+the in-progress work can be referenced at a stable web location from the related 
+MSDN Forum discussion threads.}</b></p>
+  </font>
+
+<h2>
+<b>Current Materials / Document Engineering</b></h2>
+<h3>Organization</h3>
+<blockquote>
+	<p>The evolving organization of material is as follows:</p>
+	<blockquote>
+		<ol>
+			<li><b><a href="d060701.htm">Synopsis</a></b> and Content (this 
+			page)<br>
+&nbsp;&nbsp; </li>
+			<li><b><a href="d060701b.htm">Overall Requirements and Approach</a></b> 
+			for Platform Isolation (d060701b for latest material)<br>
+&nbsp;&nbsp; </li>
+			<li><b><a href="d060701d.htm">API Reference</a></b> for <strong>
+	<font face="Courier New, Courier, Monospace">getpwd</font></strong> 
+			(d060701d for the latest)<br>
+&nbsp;&nbsp; </li>
+			<li><b><a href="d060701e.htm">Header File</a></b> development 
+			(d060701e for latest)<br>
+			toward a stable header file that is itself fully portable among 
+			Standard C/C++ implementations<br>
+&nbsp;&nbsp; </li>
+			<li><b>Portable Stub</b> Implementation (d060701g for latest)<br>
+			providing portable test programs and examples that are themselves 
+			fully portable<br>
+&nbsp;&nbsp; </li>
+			<li><b>Visual C++ implementation-specific code</b> (d060701h for 
+			latest)<br>
+			providing a platform-specific code that remains fully isolated and 
+			encapsulated behind the contracted interface associated with the 
+			header file and its correct portable usage<br>
+&nbsp;&nbsp; </li>
+			<li><b>A platform-independent fixture</b> for use in testing all of 
+			this</li>
+		</ol>
+	</blockquote>
+</blockquote>
+<h3>Archive</h3>
+<blockquote>
+	<p>The current article threads and materials are:</p>
+	<ul>
+		<li><b>d060701d: <a href="d060701d.htm">getpwd API Reference (latest 
+		version)</a></b><ul>
+		<li><b>d060701i: </b><a href="d060701i.htm">getpwd API Reference (0.50 
+		alpha)</a><b><br>
+&nbsp;&nbsp; </b></li>
+	</ul>
+		</li>
+		<li><b>d060701e: <a href="d060701e.htm">getpwd00.h Latest Description</a></b><ul>
+			<li><b>d060701j: </b><a href="d060701j.htm">getpwd00.h (0.50 alpha) 
+			Description</a></li>
+			<li><b>d060701f:</b> <a href="d060701f.htm">getpwd00.h (0.4 alpha) 
+			Description</a><b><br>&nbsp;&nbsp; 
+			</b></li>
+		</ul></li>
+		<li><b>d060701a: <a href="d060701a.htm">getpwd Diary &amp; Job Jar</a></b></li>
+	</ul>
+</blockquote>
+<h2><b>Acknowledgment</b></h2>
+<blockquote>
+	<p>This material owes its inspiration to the question provided by </p>
+	<dl>
+		<dt><b>
+		<a target="_top" href="http://forums.microsoft.com/MSDN/User/Profile.aspx?UserID=198209&SiteID=1">
+		desolate</a></b></dt>
+		<dd>signing as THE TRAINMAN on the MSDN Forums and requesting a <b>
+		<a target="_top" href="http://forums.microsoft.com/MSDN/showpost.aspx?postid=585283&siteid=1">
+		standard method for keyboard input</a></b></dd>
+	</dl>
+</blockquote>
+<p>
+&nbsp;</p>
+<font color="#800080">
+					</p>
+  </font>
+
+<dl><small>
+		<font color="#800080">
+
+
+
+
+  </font></small></dl>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a><br>
+<a name="0.50">0.50</a> 2006-08-07-13:05 Update for Version 0.50 content</b></dt>
+<dd>Reflect the changes to produce version 0.50 in the current round of updates</dd>
+<dt><b><a name="0.45">0.45</a> 2006-08-05-17:16 Expand Summary of Coverage</b></dt>
+<dd>Add information on how this material will be organized and provide 
+acknowledgment of inspiration for this project.</dd>
+<dt><b><a name="0.00">0.00</a>  2006-07-29-14:12 Establish Placeholder for Pending 
+Material</b></dt>
+  <dd>Also start a <a href="d060701a.htm">job jar</a> page for recording work 
+	items for building more 
+	content.</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%">
+      <p><a rel="nofollow" href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="64%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+<img border="0" src="../../../images/ccby20.gif" align="right" 
+ alt="Creative Commons License" width="88" height="31">
+You are navigating 
+<!-- included from TROSTing /construction/C000005c.htm of 2005-06-18T01:04Z -->
+ 	<a rel="nofollow" target="_top" href="../../../">TROSTing.org</a>.<br />This work is 
+	<a href="../../../info/2005/04/i050403c.htm" target="_top">licensed</a> under a <br />
+	<a rel="license" target="_top" 
+ href="http://creativecommons.org/licenses/by/2.0/">Creative Commons License</a>.
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.0/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--></small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="46192" --></td>
+    <td width="24%">
+      <p align="right"><font size="-2">created 2006-07-29-14:12 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-07-01 7:36 $<br>
+      $$Revision: 34 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

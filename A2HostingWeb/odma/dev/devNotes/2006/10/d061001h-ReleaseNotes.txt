@@ -1,0 +1,671 @@
+﻿d061001h-ReleaseNotes.txt 0.07       UTF-8                    dh:2007-11-19
+
+                                 RELEASE NOTES
+
+          info.odma.practical100 Component Development 0.59beta
+          -----------------------------------------------------
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061001h.htm>.
+
+     **********************************************************************
+     *  WARNING: The 0.59beta Public Transition Candidate makes breaking  *
+     *  changes to the info.odma.practical100 interfaces and null imple-  *
+     *  mentations.  In addition to the breaking changes, some elements   *
+     *  are deprecated for removal in the 0.60 Public Beta release.       *
+     **********************************************************************
+
+     **********************************************************************
+     *  WARNING: The 0.59beta version of practical100 is not compatible   *
+     *  with any version of odmjni100 except the 0.59beta release of that *
+     *  package.  Although the null implementations in this practical100  *
+     *  may be used independently, any use with odmjni100 will only work  *
+     *  in the case of odmjni100 0.59beta.                                *
+     **********************************************************************
+
+   The practical100 0.59beta package update is provided to accomplish
+   important steps in the progression to full ODMJNI 1.0 (see also
+   <http://odma.info/dev/devNotes/2007/07/d070701d.htm>):
+
+     1. Remove OdmError exceptions for ill-formed string-valued parameters
+        in the decoration of interface methods and in the practical100
+        classes for null behaviors.
+
+     2. Define the practical100.OdmFormatCheck interface for checking
+        whether a string-valued parameter candidates are well-formed. Add
+        this while continuing to use the 0.58 implementation of the filters.
+        These are replicated in OdmNullFormat, the practical100 class that
+        provides "null implementations" of OdmFormatCheck interfaces.
+
+     3. Extend the internal OdmNullCache implementation to cache OdmFormat-
+        Check implementations and pass those to constructors for null-
+        document behaviors.
+
+     4. Add the formatCheck method to the OdmInterface interface and provide
+        the null implementation in OdmNullConnection and OdmNullDocument.
+
+     5. Remove internal dependencies on deprecated practical100.OdmFormat
+        operations, so the class can simply be deleted in the 0.60 public
+        beta release.
+
+     6. Define refactored interfaces for OdmBasicDocumentMetadata,
+        OdmViewingDocument, OdmEditingDocument, and OdmWorkingDocument.
+
+     7. Implement the refactored interfaces in the OdmNullPendingDocument
+        and OdmNullWorkingDocument classes, with addition of the
+        notChangeable method.
+
+     8. Confirm the existing Null01 regression check for operating properly
+        with the 0.58 release (and therefore all releases back to 0.30).
+        Confirm that this regression works the same even with all 0.59
+        changes.  This check, which has weak coverage, makes no use of
+        deprecated or changed elements of 0.59 and should continue to
+        provide a regression check into the foreseeable future.
+
+     9. Define the 0.30-practical100 regression set consisting of the Null01
+        check.  Place this under the Confirmation Test development activity
+        but provide a copy as part of the practical100 development tree.
+
+    10. Provide a simple packaging of the odmjni100 development tree for
+        preservation and incorporation in the 0.59 packaging.
+
+
+   CONTENT
+
+     1. Breaking Changes
+     2. Deprecated Classes and Methods
+     3. New Interfaces
+     4. New Methods
+     5. Simple Improvements and Bug Fixes
+     6. Deployment and Testing
+     Copyright Notice
+     Revision History
+
+
+1. BREAKING CHANGES
+
+1.1 Elimination of Exceptions for Ill-Formed String-Valued Parameters
+
+   1.1.1 For 0.59beta, one breaking change will be perpetuated into all
+   future releases: OdmError exceptions are no longer thrown for malformed
+   java.lang.String parameters to info.odma.practical100 operations.
+
+   1.1.2 For interfaces this is simply a documentation change: OdmError is
+   not a checked exception.  For implementations in both practical100 and
+   odmjni100, defensive code that detects malformed parameters will no
+   longer throw OdmError.  Instead, an appropriate null/failed interface
+   implementation will be returned.
+
+   1.1.3 This change impacts the following methods and their .java file
+   documentation:
+
+        OdmConnection.java
+        OdmConnection.acceptNewDocument(docFormatName)
+        OdmConnection.openKnownDocument(docId)
+
+        OdmNullBind.java
+        OdmNullBind.application(appId)
+        OdmNullBind.application(appId, appWindow)
+
+        OdmNullConnection.java
+        OdmNullConnection.application(appId)
+        OdmNullConnection.application(appId, appWindow)
+        OdmNullConnection.acceptNewDocument(docFormatName)
+        OdmNullConnection.openKnownDocument(docId)
+
+        OdmViewingDocument.java
+        OdmViewingDocument.transferToNewDocument(docFormatName)
+            [to be moved to OdmWorkingDocument as part of 0.60]
+
+   1.1.4 In addition, commentary in the following modules is updated to
+   change discussion of OdmError throwing and the behavior of methods that
+   receive ill-formed input parameters:
+
+        OdmError.java
+        OdmFormat.java
+
+1.2 Changed viewOnly Null Behavior
+
+   1.2.1 The OdmViewingDocument.viewOnly null behavior is changed to return
+   true instead of false.  This change is more consistent with there being
+   no document to change.
+
+   1.2.2 This break occurs only in 0.59, since viewOnly is deprecated and
+   will be removed completely in 0.60.  It is consistent with the new
+   OdmEditingDocument.notChangeable null behavior now.
+
+
+2. DEPRECATED CLASSES AND METHODS
+
+   2.1 The entire OdmFormat class and its methods are deprecated.  The
+   constant and wfAppId method are moved to OdmNullBind.  The remaining
+   constants and methods are moved to the new OdmFormatCheck interface.
+   Implementation of the interface is added to implementations of the
+   info.odma.practical100.OdmInterface.FormatCheck() method.
+
+   2.2 The entire OdmNullFormat class, whose purpose is solely to support
+   implementation of OdmFormat, is replaced by a new implementation that is
+   internal to ODMJNI (see sections 3.2 and 4.8).
+
+   2.3 The OdmViewingDocument.viewOnly method is deprecated for removal in
+   0.60.  Its function is assumed by the OdmEditingDocument.notChangeable
+   method.
+
+   2.4 The OdmViewingDocument.transferToNewDocument operation is deprecated
+   in this interface and will only appear on the OdmWorkingDocument inter-
+   face in 0.60.
+
+
+3. NEW CLASSES AND INTERFACES
+
+   3.1 The OdmFormatCheck interface is added for delivery of all format
+   checks other than wfAppId.
+
+   3.2 The OdmNullFormat class is redefined to implement OdmFormatCheck and
+   to use non-static versions of the current OdmFormat methods for the
+   interface implementation in those classes that implement the OdmInterface
+   interface.
+
+   3.3 The OdmBasicDocumentMetadata interface is defined for access to
+   metadata that may be delivered separately to some operation and that are
+   also available from ODMA DMS Integrations without access to the content
+   files.
+
+   3.4 The OdmEditingDocument interface is defined to add the change
+   capabilities beyond OdmViewingDocument.  For 0.60 this includes all of
+   OdmWorking document except for transferToNewDocument.
+
+4. NEW METHODS
+
+4.1 OdmNullBind
+
+    4.1.1 The MAX_APPID_SIZE parameter is added (note change of name to a
+    value that is not pubic on OdmFormat).
+
+    4.1.2 The wfAppId method is added for checking the format of an appId
+    string.  This method is implemented for the NullBind just so that
+    applications that perform verification will have a means to do so,
+    even though it does not matter with NullBind.application methods.
+       The rule employed is one that will never be stricter on OdmJniBind,
+    but might be relaxed for some OdmJniBind implementations in the future.
+
+        public static final int MAX_APPID_SIZE;
+        /* The maximum size permitted for an Application ID String. This
+           is not enough to ensure validity of the string.
+           */
+
+        public static boolean wfAppId(java.lang.String appId);
+        /* determines whether appId is well-formed.  It must be a non-null
+           String having no more than MAX_APPID_SIZE Unicode characters
+           consisting of Basic Latin letters (a to z, A to Z) and digits
+           (0 to 9).  This is an always-safe format, even when the ODMA
+           Connection Manager might accept additional characters and even
+           longer Application ID values.
+           */
+
+
+4.2 OdmFormatCheck
+
+    This interface provides counterparts of all filters except wfAppId from
+    OdmFormat.  The names of the different size bounds have all been
+    changed to be sizes, rather than lengths.
+
+    public interface OdmFormatCheck
+
+    {
+
+        int MAX_FORMAT_SIZE;
+            /* This measure is in octets using the codepage that applies for
+               the DMS to which the Format is being specified.  A Java
+               string of this length can still be too long but a string
+               limited to this length is never too short.
+               */
+
+        boolean wfDocFormatName(java.lang.String docFormatName);
+            /* Determines whether the docFormatName string is of appropriate
+               format for specification to the DMS.
+               */
+
+
+        int MAX_DOCID_SIZE;
+            /* This measure is in octets using the codepage that applies for
+               the DMS to which the DocId is submitted.  A Java string of
+               this length can still be too long but a string limited to
+               this length is never too short.
+               */
+
+
+        int MAX_DMSID_SIZE;
+            /* Another octet-length limitation that a properly-formed Java
+               String will also satisfy.  The character set is severely
+               restricted for ODMJNI 1.0 for reasons similar to those that
+               are applied to Application ID strings.
+               */
+
+
+        java.lang.String ODMPREFIX = "::ODMA\\";
+            /* The ODMA Document ID is case insensitive, although
+               applications are not to change case of docId values.
+               Remember that '\\' is a single \-character.
+               */
+
+
+        int MAX_DOCIDPREFIX_SIZE;
+            /* "::ODMA\\dmsid\\"
+               */
+
+
+        boolean wfDocIdPrefix(java.lang.String docId);
+            /* Determines whether the supplied docId has a well-formed
+               prefix.
+               */
+
+
+        java.lang.String prefixDmsId(java.lang.String docId);
+            /* Given a well-formed prefix, extract the dmsId portion.
+               Otherwise, return null
+               */
+
+
+        boolean wfDocId(java.lang.String docId);
+            /* Determine whether the docId maps to the code page of the
+               application process, whether the mapped string is of
+               acceptable length, and verifies that the string has a
+               well-formed prefix.
+               */
+
+
+        boolean safeDocId(java.lang.String docId);
+            /* Ensure that the Document ID is not only well-formed but also
+               safe for a large number of interchange cases.
+               */
+
+
+        } /* OdmFormatCheck */
+
+
+4.3 OdmInterface
+
+    The new method is added for use by implementations of OdmConnection and
+    OdmDocument interfaces:
+
+        OdmFormatCheck formatCheck();
+        /* returns an interface for performing format checks on the string-
+           valued parameters accepted by methods of this ODMJNI 1.0 inter-
+           face implementation.
+           */
+
+    WARNING: There is still some looseness around what the null implementa-
+    tion case is and what portions may vary when a connection or document is
+    available.  The 0.59 implementation is the same as implemented by the
+    deprecated OdmFormat class.
+
+
+4.4 OdmNull
+
+    Two additional methods are added to this interface.  These support
+    caching behind implementations of two versions, one null version and
+    one that might vary depending on the connection and document that needs
+    to implement an OdmInterface.formatCheck method.
+
+        OdmFormatCheck nullCheck();
+       /* returns the format checking implementation appropriate to null
+          connections and null documents, and determined by practical100.
+          */
+
+       OdmFormatCheck formatCheck();
+       /* returns the format checking implementation appropriate to non-
+          null connections and document interfaces and determined by the
+          implementations of non-null connections (i.e., odmjni100).
+          */
+
+
+4.5 OdmNullCache
+
+    4.5.1 As part of implementation of the OdmNull interface, the two new
+    methods, nullCheck() and formatCheck(), are implemented.  Both return
+    the same cached instance of OdmNullFormat.
+
+    4.5.2 As part of the support for formatCheck() in the different null
+    documents, the nullCheck() result is provided to the revised constructor
+    for any flavor of pending document or working document.  This approach
+    is used to avoid the cached null documents having any sort of dependency
+    on OdmNullCache itself.
+
+
+4.6 OdmNullConnection
+
+    The formatCheck() method is implemented by returning the nullCheck()
+    result from the OdmNull implemented with an OdmNullCache kept
+    internal to the OdmNullConnection instance.
+
+
+4.7 OdmNullDocument
+
+    4.7.1 The constructor is extended to receive an OdmFormatCheck along
+    with the flavor code for the null document.
+
+    4.7.2 The formatCheck() method is implemented by returning the
+    OdmFormatCheck implementation that was supplied to the constructure.
+
+
+4.8 OdmNullFormat
+
+    This class, with its protected constructor is used internal to ODMJNI
+    for implementation of the OdmFormatCheck provided by null implementa-
+    tions.
+
+    For 0.59, the implementation of the OdmFormatCheck interface by
+    OdmNullFormat is the same as the implementation of OdmFormat has been.
+
+
+4.9 OdmNullPendingDocument
+
+    The constructor accepts an OdmFormatCheck parameter as well as a flavor
+    selection.  This is passed to the constructor of the OdmNullDocument
+    that OdmNullPendingDocument is derived from.
+
+
+4.10 OdmNullWorkingDocument
+
+    4.10.1 The same change is made here as for OdmNullPending Document.  The
+    constructor is modified to accept an OdmFormatCheck parameter as well
+    as a flavor selection.  This is passed to the constructor of the
+    OdmNullDocument that OdmNullWorkingDocument is derived from.
+
+    4.10.2 The new method, notChangeable is implemented.  The value of
+    viewOnly is returned.  (For 0.60, the implementation of viewOnly is
+    removed and notChangeable has its own implementation: return true.)
+
+    4.10.3 The viewOnly null behavior is changed to return true rather than
+    false.
+
+4.11 OdmBasicDocumentMetadata
+
+    This interface is defined for delivery of the document metadata that a
+    DMS would have available independent of the document having to be opened
+    for access:
+
+    java.lang.String docID();
+        /* For a known DMS-managed document, this method returns a string
+           with the ODMA Document ID.
+
+               Null response: null
+           */
+
+
+    java.lang.String dmsAuthor();
+        /* For an available known document, dmsAuthor() is an user-readable
+           text that is the name of the document's author as held by the
+           DMS.  This name is in the localized form delivered by the DMS.
+
+               Null response: null
+           */
+
+
+    java.lang.String dmsDocName();
+        /* For an available known document, dmsDocName() is an user-
+           readable text that is the name of the document as maintained by
+           the DMS.  This name is in the localized form delivered by the DMS
+           system.
+
+               Null response: null
+           */
+
+
+    java.lang.String dmsDocType();
+        /* For a successful document access, dmsDocType() is a descriptive
+           text that identifies the type of document from the perspective
+           of the DMS system.  The document type is not related to the
+           format of the document but to its application or use (invoice,
+           pleading, memorandum, report, etc.)  This text is in the
+           localized form delivered by the DMS system.
+
+               Null response: null
+           */
+
+
+    java.lang.String dmsFormatName();
+        /* For a successful document access, dmsFormatName() is the text
+           that the dms employs as the Document Format Name.  This text is
+           in the localized form delivered by the DMS system.
+
+           The dmsFormatName() supplied by a DMS is not necessarily in the
+           Document Format Name form that ODMJNI will accept from the
+           application (e.g., as the parameter of an acceptNewDocument
+           operation).
+
+               Null response: null
+           */
+
+
+4.12 OdmViewingDocument
+
+    the viewOnly method is deprecated.  Its null behavior is changed to
+    return true, not false.
+
+
+4.13 OdmEditingDocument
+
+    This new interface introduces notChangeable (replacing viewOnly in the
+    future).  It also now delivers commitChanges:
+
+    boolean notChangeable();
+        /* If notChangeable() is true, commitChanges is not permitted on
+           this document.
+
+              Null response: true
+           */
+
+
+    boolean commitChanges()
+                throws OdmError;
+        /* This operation is used to deliver changes saved to the file
+           at OdmViewingDocument.documentLocation().  The changes must
+           be saved and the file closed before requesting this operation.
+           The content should not be discarded from the application until
+           it is known that the commitChanges() succeeded.
+
+           If OdmDocument.operationSucceeded() is false, an unchecked
+           OdmError exception is thrown.  This operation is not permitted
+           when there is no actual document being represented by the
+           interface.
+
+           commitChanges() returns true when the operation succeeds.  It
+           returns false when notChangeable() is true or there is failure
+           for some other reason.
+
+           If commitChanges() returns false, the application should
+           treat the response as if localOperationRequested() were true,
+           providing the user an opportunity to save work in some other way.
+
+           If the commitChanges() succeeds, the OdmViewing document
+           interface specifies the characteristics that now apply to the
+           document.  All of the OdmViewingDocument information must be
+           assumed to have changed, including docID(), docLocation(),
+           windowTitle(), and the OdmBasicDocumentMetadata information.
+
+           If an OdmEditingDocument interface is released and there has
+           never been a commitChanges() operation, the DMS document is
+           unchanged, regardless of anything that has been done using the
+           OdmViewingDocument.docLocation().
+
+               Null behavior: throws OdmError with indication that the
+                              operation is not permissable with a null
+                              document.
+           */
+
+
+4.14 OdmWorkingDocument
+
+    4.14.1 This interface no longer has any additional methods.
+
+    4.14.2 When the deprecated OdmViewingDocument.transferToNewDocument is
+    removed, the transferToNewDocument will be reintroduced as an
+    OdmWorkingDocument method.
+
+    4.14.3 This rearrangement is designed to allow application programs to
+    deliver limited OdmBasicDocumentMetadata, OdmViewingDocument, and
+    OdmEditingDocument interfaces without providing a subordinate operation
+    the ability to transfer the document in the DMS.
+
+
+5. SIMPLE IMPROVEMENTS AND BUG FIXES
+
+   5.1 The OdmNullDocument and its derived OdmNullPendingDocument and
+   OdmNullWorkingDocument subclasses now provide identification of the
+   null document flavor via interfaceIdentification.  This provides more
+   detail in regression-check output and in OdmError messages.
+
+   5.2 The OdmNullConnection class no longer holds an appId parameter.  The
+   constructors do not receive such a parameter and OdmNullBind does not
+   pass one through.  The appWindow parameter is still passed through so
+   that the check for null happens in the correct place.
+
+   5.3 The OdmFormat class is no longer dependent on OdmNullFormat.  This
+   releases OdmNullFormat for other purposes.
+
+   5.4 The OdmNull interface is expanded to define a nullCheck method and
+   a formatCheck method to deliver the two cases of OdmFormatCheck
+   implementations that it are available.
+
+   5.5 The OdmNullCache class is expanded to implement the nullCheck method
+   and the formatCheck method with OdmNullDocument implementations in both
+   cases.
+
+   5.6 The formatCheck method is added to the OdmInterface interface.
+
+   5.7 The OdmNullConnection implements the formatCheck method with the
+   OdmNullCache.nullMethod that it retains in its private nullDocument
+   variable.
+
+   5.8 The OdmNullDocument constructor is modified to receive an OdmFormat-
+   Check interface that it retains as a private variable.  This interface
+   is returned from the implementation of the formatCheck method.
+
+   5.9 The OdmNullPendingDocument constructor is modified to receive an Odm-
+   FormatCheck interface that it supplies to its super constructor (for
+   an OdmNullDocument).
+
+   5.10 The OdmNullWorkingDocument constructor is modified the same as
+   OdmNullPendingDocument.  For both of these, there will need to be
+   cooperation from the odmjni100 classes that extend these classes.
+
+   5.11 Since OdmFormat is no longer used anywhere in practical100, the
+   class must be compiled independently.  The BuildClasses.bat file is
+   modified to do that every time practical100 classes are recompiled.
+   [When 0.60 is produced, OdmFormat is removed and BuildClasses must no
+   longer compile it.]
+
+   5.12 As part of preparation of the final 0.30-practical100 regression
+   set, the RunNull01 script is modified to allow specification of a
+   jar file to be used at the location of the CLASSPATH set by OdmJava.
+
+
+6. DEPLOYMENT AND TESTING
+
+6.1 Deployment
+
+   This 0.59 release of the practical100 development tree is a complete
+   replacement for that tree.
+
+   If your copy of the ODMJNI development tree is anchored at <folder>,
+   prepare for deployment as follows:
+
+        - Place the d061001h-practical100-0.59beta.zip file in <folder>.
+
+        - Delete any content in the  <folder>\info\odma\practical100 after
+          saving any customized OdmJava.bat from the practical100 folder.
+
+        - Following your preparations, unzip d061001g-practical100-
+          0.56beta.zip directly into <folder> using folder names.
+
+        - Restore any OdmJava.bat customization after examining the current
+          one for changes that you might want to adopt.
+
+   The material will be found in this directory tree:
+
+        <folder>\
+            |       d061001h.txt                Manifest file
+            |       d061001h-license.txt        BSD-style license
+            |       d061001h-ReleaseNotes.txt   version of this file
+            :----info\odma\practical100\
+                                            the classes and source code
+                                            with the updates and the
+                                            d071001d-0.30-practical100.zip
+                                            regression set
+
+   The practical100\test\Null01\ subtree provides the development area for
+   the Null01 regression check code.
+
+
+6.2 Testing
+
+   The test program in <folder>\info\odma\practical100\test\Null01 can be
+   used as already set up on your system.  The test is exercised using the
+   RunNull01.bat script.
+
+   The "official" regression set in
+
+       <folder>\info\odma\practical100\d071001d-0.30-practical100.zip
+
+   can be extracted for examination and reproduction of the regression check
+   that was performed before accepting practical100 0.59 as solid enough to
+   release.  Additional checks in odmjni100 0.59 also helped confirm the
+   usability and stability of practical100 0.59.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  For the latest contact procedures visit
+<http://ODMA.info/contact.htm>.
+
+             Copyright © 2006-2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the original on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Release Notes: info.odma.practical100 Component Development
+        0.59beta.  ODMA Interoperability Exchange, ODMdev Development Note
+        page d061001h-ReleaseNotes.txt 0.07, November 19, 2007.  Current
+        version available through
+        <http://ODMA.info/dev/devNotes/2006/10/d061001h.htm>.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.07 2007-11-19-22:03 Complete all sections of the Release Note, reflecting
+     the final changes made before creating the practical100 0.59 archive.
+0.06 2007-11-13-17:42 Reflect completion of all expected changes in the
+     practical100 package for 0.59.
+0.05 2007-11-09-17:14 Complete the description of the changes made to
+     implement the formatCheck method in all of the null implementations,
+     including expansion of OdmNullCache to cache null OdmFormatCheck
+     implementations.
+0.04 2007-11-06-22:11 Describe the changes that implement the OdmFormat-
+     Check interface and the formatCheck methods where the checks are now
+     available to application programs.
+0.03 2007-11-01-21:43 Define provisional OdmFormatCheck interface and
+     deprecate the OdmFormat class and its methods.
+0.02 2007-10-17-15:57 Reflect simplification of the OdmNullConnection
+     constructors and alignment of OdmNullBind to use them.
+0.01 2007-10-16-20:31 Account for the replacement of OdmError exceptions
+     with null results for ill-formed String parameters to ODMJNI methods.
+     Add flavor[nullFlavor] text to null-implementation interface-
+     Identification strings.
+0.00 2007-10-14-14:48 Placeholder draft of the release notes for 0.59beta
+     using an older note for boilerplate.  Minor customization performed.
+
+$Header: /ODMdev/d061001h-ReleaseNotes.txt 11    07-11-19 22:08 Orcmid $
+
+                  *** END OF d061001h-ReleaseNotes.txt ***

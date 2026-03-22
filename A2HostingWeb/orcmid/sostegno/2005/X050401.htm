@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/2005/X050401.htm 26    26-03-22 14:19 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X050401: Blocco Setup Firmware Resets</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="42469" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report 
+		<a href="../x000001-log.htm#X050401">
+      <font color="#990033">X050401</font></a><br>
+      <i><big><big>Blocco Setup Firmware Resets</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="../">sostegno</a>&gt;<br>
+      <a href="./" target="_top">2005</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="X050401.htm">X050401</a>&gt;</code></b><br>
+      <a href="#0.00">
+      <small><small>
+      0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->-<!--webbot bot="Timestamp" S-Type="EDITED" 
+  S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+
+<blockquote>
+  <div align="left">
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: Reliability</b></td>
+      <td width="50%"><b>Incident ID: <a href="../x000001-log.htm#X050401">X050401</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - Integrity Failure</b></td>
+      <td width="50%">
+        <dl>
+          <dt><b>Status</b>: Under Investigation</dt>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Subject: Computer Security Exposure</b></td>
+      <td width="50%"><b>Repaired in: </b>none</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="../../construction/orcmid.htm">Dennis
+        Hamilton</a> (analysis)</td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="../../construction/orcmid.htm">Dennis Hamilton</a>
+        (2005-04-16)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2005-04-16</td>
+      <td width="50%"><b>Date Closed</b>: tbd</td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <blockquote>
+          <p><b>1. <a href="#Summary">Summary</a><br>
+          2. <a href="#Remedies">Remedies</a><br>
+          3. <a href="#Actions">Actions</a><br>
+          &nbsp;</b></p>
+        </blockquote>
+      </td>
+      <td width="50%" valign="top" align="left">
+        <dl>
+          <dt><b>see also:</b></dt>
+			<dd><b>Blocco: <a href="../../centrale/blocco">System Management 
+			Notes</a></b></dd>
+          <dd>&nbsp;</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+  </div>
+</blockquote>
+
+<h3>1. <a name="Summary">Summary</a>               (2005-04-16):</h3>
+
+<blockquote>
+
+<p>From time to time, <a href="../../centrale/blocco">Blocco</a>, my Averatec 
+C3500 Tablet PC, resets its setup firmware to the default settings.&nbsp; This 
+is very unsettling, especially because it leaves the computer insecure and makes 
+me quite nervous that there is some sort of exploit being attempted or, worse 
+yet, already accomplished.</p>
+
+</blockquote>
+
+<h3>2. <a name="Remedies">Remedies</a>            (2005-04-16):</h3>
+
+<blockquote>
+
+  <p><b>1. Recognition.</b>&nbsp; I have the computer set to require an user 
+	password before booting the operating system.&nbsp; If the computer starts 
+	up without requiring any password, I know the setup firmware has been reset 
+	to its default configuration or otherwise altered.&nbsp; I also know there's 
+	something amiss if it does a Fast Boot or shows me the Averatec OEM screen 
+	on power-up.&nbsp; So the changes I make to my setup have the default 
+	behavior be startlingly different and a tip-off.&nbsp; The biggie is failure 
+	to ask me for the user password, though sometimes I think I may have done it 
+	mindlessly and I'll do a reboot to be certain.</p>
+	<p>1. <b>Apply Workaround.</b>&nbsp; My first step is to always restore the 
+	setup configuration to the one that I prefer.&nbsp; I do that at once.&nbsp; 
+	There might be more that I could do with respect to the hard disk and other 
+	bootstrap-related settings, but the documentation is silent on those 
+	features and settings and I don't want to end up locking myself out of the 
+	machine.&nbsp; </p>
+  <p><b>2. Look for Patterns.</b>&nbsp; I don't know what kind of diagnostic or 
+	forensic effort I could apply here.&nbsp; That's ignorance on my part.&nbsp; 
+	Reinstalling everything doesn't seem like the right approach, and it would 
+	be very painful to do even though I keep records and backups that would 
+	allow me to do it.&nbsp; What I am going to do is keep more-accurate records 
+	of these incidents as they occur and see what that provides.&nbsp; I am 
+	recovering what I can from my personal notebooks and building a better 
+	record.&nbsp; </p>
+  <p><b>3. Report the incident and see what information there is about it.&nbsp;
+	</b>I don't know how customer support works for this particular computer.&nbsp; 
+	I don't see anything confidence building on their site, but there are some 
+	places where users exchange information.&nbsp; I will report this experience 
+	there, on my blog, and to the vendor.&nbsp; They will all be able to access 
+	this incident material and maybe some resolution will arise.</p>
+</blockquote>
+<h3>3. <a name="Actions">Actions</a>     <b>(as of 2005-04-16):</b></h3>
+  <ul>
+    <li>
+      <p><b><span style="background-color: #CCCCFF">2005-04-16: Create Place to 
+		Record Incident Investigation.</span></b><span 
+  style="background-color: #CCCCFF">&nbsp; You are there, here.</span></li>
+	<li>
+      <p><b><span style="background-color: #CCCCFF">2005-04-16:</span></b><span 
+  style="background-color: #CCCCFF"> </span><b>
+		<span style="background-color: #CCCCFF">Recover a log of the incidents 
+		that have occurred.&nbsp; </span></b><a href="X050401B.htm">
+		<span style="background-color: #CCCCFF">X050401b</span></a><span 
+  style="background-color: #CCCCFF">.</span></li>
+	<li>
+      <p>Create my photographic record of how to make a more-secure setup that I 
+		consult when I need to restore it too (though I am beginning to learn it 
+		by heart, thanks to the frequency of incident occurence).</li>
+	<li>
+      <p>Identify my configuration and how I obtained it so that troubleshooters 
+		know what I have installed that could matter here.</li>
+	<li>
+      <p>Add a blog article about the incident so far.</li>
+	<li>
+      <p>Report the problem on the Tablet PC information site.</li>
+	<li>
+      <p>Let Averatec know about all of this, once I figure out how to contact 
+		support.</li>
+  </ul>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+  <dt><b><a name="0.00">0.00</a>         2005-04-16-12:26 Create Initial Incident Identification,
+    Analysis, and Collection of Materials</b></dt>
+</small>
+  <dd><small>Capture enough material so that related investigation can be
+    defined and this report can be polished later.&nbsp; Manage
+    with a&nbsp;<a href="X050401A.htm"> job jar</a>.&nbsp; Dig up photographs 
+	and add them to a description of the restoration process.</small></dd>
+</dl>
+
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a rel="nofollow" href="../construction.htm" target="_top"><img border="0" src="../../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="2535" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2005-04-16-12:26 -0700 (pdt) by
+		<a rel="nofollow" href="../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:19 $<br>
+      $$Revision: 26 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

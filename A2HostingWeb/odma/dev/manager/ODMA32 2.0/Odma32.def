@@ -1,0 +1,42 @@
+LIBRARY         ODMA32
+DESCRIPTION     'ODMA 2.0 Connection Manager 32-Bit'
+CODE            MOVEABLE DISCARDABLE
+DATA            MOVEABLE SINGLE
+
+HEAPSIZE        16392
+
+EXPORTS
+    ODMRegisterApp         @2
+    ODMUnRegisterApp       @3
+    ODMSelectDoc           @4
+    ODMOpenDoc             @5
+    ODMSaveDoc             @6
+    ODMCloseDoc            @7
+    ODMNewDoc              @8
+    ODMSaveAs              @9
+    ODMActivate            @10
+    ODMGetDocInfo          @11
+    ODMSetDocInfo          @12
+    ODMGetDMSInfo          @13
+    ODMQueryInterface      @14
+    ODMGetLeadMoniker      @15
+	
+	ODMQueryExecute        @16
+	ODMQueryGetResults	   @17
+	ODMQueryClose	       @18
+	
+	ODMGetDMSCount		   @19
+	ODMGetDMSList		   @20
+	ODMGetDMS			   @21
+	ODMSetDMS			   @22
+
+	ODMCloseDocEx			@23
+	ODMSaveAsEx			@24
+	ODMSaveDocEx			@25
+	ODMSelectDocEx			@26
+	ODMQueryCapability			@27
+	ODMSetDocEvent			@28
+	ODMGetAlternateContent			@29
+	ODMSetAlternateContent			@30
+	ODMGetDocRelation			@31
+	ODMSetDocRelation			@32

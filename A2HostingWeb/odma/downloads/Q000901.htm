@@ -1,0 +1,326 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /ODMACompagno/downloads/Q000901.htm 9     07-07-28 11:14 Orcmid $-->
+<title>Q000901: Using COM</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+<base target="_self">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="../faq/">ODMA FAQtip</a></h2>
+
+<h1 align="center"><b>Q000901: Using COM</b></h1>
+
+<h5 align="center"><span style="font-variant: small-caps"><a href="#0.10">Version
+0.10</a></span>&nbsp; <font color="#FF0000"><span style="text-transform: uppercase">Interim
+Draft </span></font>L<span style="font-variant: small-caps">ast updated</span>
+ 2002-11-22-14:14 -0800 (pst)<br>
+The <a href="http://odma.info/downloads/Q000901.htm">latest
+version</a> of this information is available at the <a href="http://DMware.info/" target="_top">AIIM
+DMware</a> <a href="http://ODMA.info/" target="_top">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <P align="left"><font size="-1">For the latest information on ODMA and the ODMA
+  Specifications, consult the <a href="http://ODMA.info/" target="_top">ODMA</a>
+  section of the <a href="http://DMware.info/" target="_top">AIIM DMware
+  Clearinghouse</a> at <a href="http://DMware.info/" target="_top"><b><code><font size="+0">http://</font></code></b></a></font><a href="http://DMware.info/" target="_top"><b><code><font size="+0">DMware.info/</font></code></b></a><font size="-1">.&nbsp;
+  The latest status on&nbsp; ODMA 2.0 is always available
+  on the Internet at</font>
+  <P align="center">
+  <a href="http://ODMA.info/support/odma20st.htm"><b><code>http://ODMA.info/support/odma20st.htm</code></b></a>.
+<P align="left"><font color="#0000FF"><strong><em>This information is also part of
+ODMA 2.0 Library Files edition 2.0-1.&nbsp; For later editions and current
+status, consult the <a href="http://ODMA.info/downloads/odma20L.htm">ODMA
+  2.0 Library Files</a> description page.</em></strong></font>
+
+</blockquote>
+
+<blockquote>
+  <p><i>ODMA employs the <a href="#[COMSpec]"> Microsoft Component Object Model (COM)</a> for dynamic
+  connection of DMS integrations to applications via the ODMA Connection
+  Manager.</i></p>
+  <p><i>This document provides references and background information on the use
+  of COM as part of developing ODMA Components.&nbsp;&nbsp;</i></p>
+  <p>This information is provided for developers and&nbsp; integrators who need
+  to understand when and where Microsoft COM <b>must</b> be used in the
+  integration of document-management services for access from ODMA-aware
+  applications.&nbsp; We also review where COM is <b>not</b> usable, and where
+  COM <b>may</b> be used to increase the flexibility by which an application
+  exploits the availability of services via ODMA.</p>
+  <hr>
+  <h3><i>Content</i></h3>
+</blockquote>
+<h2>1. <a href="#COMResources">COM Resources</a></h2>
+
+<h2>2. <a href="#ODMA-COMusage">How ODMA Uses COM</a></h2>
+<h2 align="left">3. <a href="#ODMA-COMlimitations">Limitations of ODMA COM
+Support</a></h2>
+<h2 align="left">4. <a href="#ODMA-AwareCOM">COM for ODMA-Aware Applications</a></h2>
+  <h2 align="left">5. <a href="#ODMA-CompliantCOM">COM for ODMA-Compliant DMS
+  Integration</a></h2>
+
+<blockquote>
+
+  <hr>
+</blockquote>
+<h1>1. <a name="COMResources">COM Resources</a></h1>
+<blockquote>
+  <blockquote>
+    <p><b>1.1 <a href="#Specs-Guides">Specifications and Guides</a><br>
+    1.2 <a href="#ReferenceLibraries">Reference Libraries</a></b></p>
+  </blockquote>
+</blockquote>
+<p><b><i>&nbsp;&nbsp;&nbsp;&nbsp; Sketch:</i></b></p>
+<blockquote>
+  <p>Give a thumbnail sketch of how to find out enough about COM to work with
+  ODMA, whether or not any further use of COM is intended.&nbsp; Include how to
+  find supporting information, updates, examples and samples, etc.</p>
+</blockquote>
+<h2>1.1 <a name="Specs-Guides">Specifications and Guides</a></h2>
+<blockquote>
+  <dl>
+    <dt><a name="[COMSpec]">[COM Spec]</a></dt>
+    <dd>Microsoft Corporation and Digital Equipment Corporation.&nbsp; <em><a href="http://www.microsoft.com/com/resources/comdocs.asp" target="_top">The Component Object
+      Model Specification</a>. </em>Microsoft Corporation (Redmond, WA: 1992-1995).&nbsp; Version
+      0.9, October 24, 1995.&nbsp;&nbsp;<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; This specification is available in the <a href="#[MSDNLib]"> Microsoft Developer
+      Network (MSDN) Library</a> as recently as the July 2000 distribution.&nbsp;&nbsp;&nbsp;
+      It can also be accessed via <a href="#[MSDNOn-Line]">MSDN On-Line</a>.&nbsp;
+      There is a copy on the CD-ROM supplement to [<a href="#[InsideCOM]">Inside
+      COM</a>].<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; The
+      specification is available <a href="http://www.microsoft.com/com/resources/comdocs.asp" target="_top">on-line</a>.
+      &nbsp; There is an on-line HTML version and two downloadable versions
+      consisting of Microsoft Word
+      6.0 Master Documents with individual chapters.&nbsp; A Word 6.0 version is required in
+      order to have the footnotes and bibliography.&nbsp; [An interesting
+      sideline to the downloadable versions is that they provide clean
+      demonstrations of successful Word Master Document usage, an interesting
+      challenge for document-management systems. --dh:]<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; For the purposes of ODMA, the important chapters
+      of the specification are those on the basic model and use of the binary
+      interface standard for COM.&nbsp; If ODMA is used in a COM environment,
+      more of the specification applies, but not because of anything that ODMA
+      depends on.</font></dd>
+    <dt>&nbsp;</dt>
+    <dt><a name="[InsideCOM]">[Inside COM]</a></dt>
+    <dd>Rogerson, Dale.&nbsp;<i> Inside COM: Microsoft's Component Object Model</i>.&nbsp;
+      Microsoft Press (Redmond, WA: 1997).&nbsp; ISBN 1-57231-349-8.&nbsp; pbk
+      with CD-ROM.&nbsp;&nbsp;<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; Chapters 1-4 take a leisurely tour of the
+      interface and execution model for COM.&nbsp; This is the part that applies
+      most directly to use of the ODMA COM interfaces.&nbsp; The
+      treatment of aggregation in Chapter 8 is also important, especially for
+      developers of DMS integrations.&nbsp; ODMA avoids use of COM Servers and the
+      COM Class Factory mechanisms: There is no direct dependence on the COM
+      APIs and the COM System Control Manager (SCM) -- COM's run-time -- at all.
+      The same effect is achieved by a
+      small, self-contained scheme implemented in the ODMA Connection
+      Manager.&nbsp; Higher-level COM techniques remain available and useful:
+      they simply don't arise directly in ODMA integration so far.</font></dd>
+    <dt>&nbsp;</dt>
+    <dt><a name="[EffectiveCOM]">[Effective COM]</a></dt>
+    <dd><a href="mailto:effectivecom@develop.com">Box, Don., Brown, Keith.,
+      Ewald, Tim., Sells, Chris</a>.&nbsp; <i><a href="http://www.develop.com/effectivecom" target="_top">Effective
+      COM: 50 Ways to Improve your COM and MTS-based Applications</a></i>.&nbsp;
+      Addison-Wesley (Reading, MA: 1999).&nbsp; ISBN 0-201-37968-6.<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; A
+      compendium of tips and practices based on experience creating successful
+      COM objects.&nbsp; For work with ODMA, the section on Interfaces
+      (guidelines 6-16) and Implementations (guidelines 18-28) are the most
+      useful and could be well-applied in future maintenance of ODMA SDK
+      components and of the ODMA Connection Manager.</font></dd>
+  </dl>
+  <dl>
+    <dt><a name="[InsideOLE]">[Inside OLE]</a></dt>
+    <dd>Brockschmidt, Kraig.&nbsp; <em><a href="http://msdn.microsoft.com/library/books/inole/triB194New.htm" target="_top">Inside
+      OLE</a>.</em>&nbsp; ed.2. Microsoft Press (Redmond,
+      WA: 1995).&nbsp; ISBN 1-55615-843-2.&nbsp; pbk with two disks.<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; This book is available in the <a href="#[MSDNLib]"> Microsoft Developer Network (MSDN) Library</a>
+      as recently as the July 2000 distribution.&nbsp;&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; The book can also
+      be found on <a href="#[MSDNOn-Line]"> MSDN Online</a>.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; OLE is a widely-known application of COM.&nbsp;
+      There is much in this treatment that is inapplicable in the ODMA
+      application of COM, although OLE facilities are certainly available to be
+      used in applications that are also using COM for ODMA operations.&nbsp;
+      The early material on pure COM aspects of OLE are applicable, though [<a href="#[InsideCOM]">Inside
+      COM</a>] provides a cleanly-separated view of the same basic COM
+      elements.&nbsp; OLE applies to electronic documents, and the OLE model of
+      documents is important to document-management, even though not addressed
+      by ODMA (apart from a smidgen of support via ODMA's <b><code><a href="../faq/q000001.htm#Q000200">ODMGetLeadMoniker</a></code></b>
+      operation).<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; <i>Inside OLE</i> is well-respected and, because
+      of its inclusion in the <a href="#[MSDNLib]">MSDN Library</a>, readily
+      available.</font></dd>
+    <dt>&nbsp;</dt>
+  </dl>
+</blockquote>
+<h2>1.2 <a name="ReferenceLibraries">Reference Libraries</a></h2>
+<blockquote>
+  <dl>
+    <dt><a name="[MSDNLib]">[MSDN Lib]</a></dt>
+    <dd><a href="http://www.microsoft.com" target="_top">Microsoft Corporation</a>.&nbsp;
+      Available by <a href="http://msdn.microsoft.com/subscriptions" target="_top">subscription</a>.</dd>
+    <dt>&nbsp;</dt>
+    <dt><a name="[MSDN Magazine]">[MSDN Magazine]</a></dt>
+    <dd>&nbsp;<i><a href="http://www.msdn.microsoft.com/msdnmag/" target="_top">MSDN Magazine</a></i>.&nbsp; Published monthly by Miller Freeman,
+      Inc. ISSN 1528-4859.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; Formerly the Microsoft Systems Journal (<i>MSJ</i>)
+      and the Microsoft Internet Development (<i>MIND</i>) publications, this
+      periodical provides timely material of importance to application
+      developers and independent software vendors who target Microsoft
+      platforms.&nbsp; The content is also available <a href="http://www.msdn.microsoft.com/msdnmag/" target="_top">on-line</a>
+      and materials are sometimes included in <a href="#[MSDNOn-Line]">MSDN
+      On-Line</a> and the <a href="#[MSDNLib]">MSDN Library</a>.</dd>
+    <dt>&nbsp;</dt>
+    <dt><a name="[MSDNOn-Line]">[MSDN On-Line]</a></dt>
+    <dd><a href="http://www.microsoft.com" target="_top">Microsoft Corporation</a>.&nbsp;
+      Published <a href="http://msdn.microsoft.com" target="_top">on the web</a>.</dd>
+  </dl>
+</blockquote>
+<h2>1.3 <a name="ArticlesAndOther">Articles and Other Materials</a></h2>
+<blockquote>
+  <dl>
+    <dt><a name="[8Lessons]">[8Lessons]</a></dt>
+    <dd>Prosise, Jeff.&nbsp; Eight Lessons from the COM School of Hard
+      Knocks.&nbsp; Wicked Code column.&nbsp; <i><a href="#[MSDN Magazine]">MSDN
+      Magazine</a></i> <b><i>15</i></b>, 11 (November 2000),
+      149-157.&nbsp;&nbsp;<font size="-1"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp; There are a number of critical areas to pay
+      attention to when ODMA COM interfaces are used from a full-up COM client
+      or when delivered by an implementation that also operates as a COM client
+      and/or COM server.&nbsp; These lessons apply to proper
+      initialization of COM, passing (and using) interface pointers between
+      threads, impact of the apartment models, and watching out for some DCOM
+      gotchas.&nbsp; There are also tips on sharing object instances, if you
+      must.</font></dd>
+  </dl>
+</blockquote>
+<h1>2. <a name="ODMA-COMusage">How ODMA Uses COM</a></h1>
+<p><b><i>&nbsp;&nbsp;&nbsp;&nbsp; Sketch:</i></b></p>
+<blockquote>
+  <p>A short discussion of how COM is used by ODMA, and the limited use that is
+  made of it.&nbsp; A diagram or two will be very helpful.</p>
+  <p>Basically in-process linkages via the DMS-integration <b><code>.dll</code></b>
+  file, with everything accomplished via the <b><code>ODMGetODMInterface</code></b>
+  entry to the <b><code>.dll</code></b>.</p>
+  <ul>
+    <li>We will emphasize that the implementation of the DMS COM object may use
+      more COM capabilities that ODMA requires.</li>
+    <li>ODMA has no direct way to take advantage of that.</li>
+    <li>It can still be useful</li>
+    <li>Details about DMS use of COM are deferred to the <a href="#ODMA-CompliantCOM">appropriate
+      section</a>.&nbsp;</li>
+  </ul>
+  <p>Point out that ODMA is designed so that a desktop application need not have
+  any COM dependency in it at all, but that there are advantages to using COM as
+  part of ODMA usage.&nbsp; The details are in <a href="#ODMA-AwareCOM">section
+  4</a>.</p>
+  <p>Finally indicate how, with one important exception, the use of COM for
+  dynamically connecting DMS integrations to desktop applications is entirely
+  handled by the ODMA Connection Manager.&nbsp;&nbsp;</p>
+  <p>This also means that a DMS integration must support the <b><code>.dll</code></b>
+  and COM interfaces required of it by ODMA.&nbsp; It can provide more, and
+  applications can be designed to discover and exploit that, but the key thing
+  is satisfying the COM requirement set down by ODMA.</p>
+</blockquote>
+<h1 align="left">3. <a name="ODMA-COMlimitations">Limitations of ODMA's COM
+Support</a></h1>
+<p align="left"><i><b>&nbsp;&nbsp;&nbsp;&nbsp; Sketch:</b></i></p>
+<blockquote>
+  <p align="left">ODMA Connection Manager is not available as a COM Server</p>
+  <p align="left">DMS Integrations are not required to be available as COM
+  Servers either</p>
+  <p align="left">There are neither IDispatch nor Dual interfaces defined by or
+  supported by ODMA, so there is no availability to scripting engines (VBScript,
+  JScript, Python, etc.).&nbsp; There is also no convenient availability to
+  Visual Basic or VBA.&nbsp; There is also no convenient way to build
+  ODMA-compliant components using these technologies.</p>
+  <p align="left">Even though ODMA Uses COM, it is not an application of COM
+  (like OLE) where there is support in special application-development systems (MFC,
+  Visual Basic, etc.)</p>
+  <p align="left">This also means that standard utilities and tools for working
+  with COM objects are useless with ODMA.</p>
+  <p align="left">There are also characteristics of ODMA that make it difficult
+  to extend the reach of ODMA via COM.</p>
+</blockquote>
+<h1 align="left">4. <a name="ODMA-AwareCOM">COM for ODMA-Aware Application</a>s</h1>
+<p align="left"><b><i>&nbsp;&nbsp;&nbsp;&nbsp; Sketch:</i></b></p>
+<blockquote>
+  <p align="left">When it is useful for an ODMA-Aware Application to use COM for
+  ODMA operations.</p>
+  <ul>
+    <li>
+      <p align="left">To ensure inter-version interoperability with any
+      connection manager and DMS combination</li>
+    <li>
+      <p align="left">To provide for more adaptability to the capability of the
+      assigned default DMS.</li>
+    <li>
+      <p align="left">To operate with special-purpose interfaces supplied by
+      known DMS integrations that are valuable beyond the ODMA-defined
+      interfaces (e.g., in a custom desktop application that is built to take
+      advantage of special DMS cases).</li>
+  </ul>
+  <p align="left">Include guidelines of when to keep using the ODMA API when it
+  is not know which DMS is the appropriate one to honor a given request.</p>
+</blockquote>
+  <h1 align="left">5. <a name="ODMA-CompliantCOM">COM for ODMA-Compliant DMS
+  Integration</a></h1>
+  <p align="left"><b><i>&nbsp;&nbsp;&nbsp;&nbsp; Sketch:</i></b></p>
+<blockquote>
+  <p align="left">OK, now you <i> have</i> to use COM.&nbsp; How much of it do you have
+  to use and what do you have to be careful about.</p>
+  <ul>
+    <li>
+      <p align="left">Satisfy the interface requirements</li>
+    <li>
+      <p align="left">Watch the object life cycle</li>
+    <li>
+      <p align="left">Be very careful about aggregation support in <b><code>ODMGetODMInterface</code></b></li>
+    <li>
+      <p align="left">Be defensive</li>
+    <li>
+      <p align="left"><b>Don't mess with the contract</b></li>
+    <li>
+      <p align="left">Be very cautious around deviations that have crept in
+      between different ODMA versions<br>
+      (See &quot;<a href="Q000705.htm">Changes Between ODMA Versions</a>.&quot;)</li>
+    <li>
+      <p align="left">Handle character sets and code pages as carefully as you
+      can.</li>
+    <li>
+      <p align="left">Be very careful with output parameters and when storing
+      material into data areas of the application</li>
+  </ul>
+</blockquote>
+  <p align="left">&nbsp;</p>
+<blockquote>
+  <p align="right"><i>Dennis E. Hamilton<br>
+  AIIM DMware Technical Coordinator<br>
+  Renton, Washington<br>
+  September 13, 2000</i></p>
+  <hr>
+</blockquote>
+<blockquote>
+  <dl><font size="-1">
+    <dt><strong><a name="0.10">Version 0.10</a>: <font color="#FF0000">Interim
+      Drafts</font> (orcmid)</strong></dt>
+    <dd>Collect key references and begin adding decorations on exactly how COM
+      is used and usable in the context of ODMA..</dd>
+  </font></dl>
+</blockquote>
+
+<p align="right"><small><small>created 2000-09-13-12:23 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 07-07-28 11:14 $<br>
+$$Revision: 9 $</em></small></small></p>
+</body>
+</html>

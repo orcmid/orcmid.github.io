@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X040703B: Atom Encoding Incoherence - Blog Examples </title>
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/X040703B.htm 31    26-03-22 14:18 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report <a href="x000001-log.htm#X040703"><font color="#990033">X040703</font></a><br>
+      <a href="x040703.htm"><font color="#990033">Atom Encoding Incoherence</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>Blog Examples</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">sostegno</a>&gt;</code></b></p>
+      <p align="right"><code><a href="X040703B.htm" target="_top"><b>X040703</b>B</a><b>&gt;</b></code><br>
+      <a href="#0.10">
+      <small><small>0.10</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<p align="left">The Atom entry used to provide a corrected notice of lockdown
+for Orcmid's Lair exposes a problem with the encoding parameter of the XML
+preamble being in conflict with the hosted-site Content Type that is specified
+in serving up the Atom feed.</p>
+
+<h2 align="left">Unstable Demonstration</h2>
+
+<blockquote>
+  <blockquote>
+    <table border="0" cellpadding="4" cellspacing="4" style="border: 4px double #990033">
+      <tr>
+        <td>
+
+<p align="left"><b>2004-07-24-16:20 -0700</b> <i>At this time, this situation
+applies to</i></p>
+
+          <ul>
+            <li>
+              <p align="left">Orcmid's Liar <a href="../blog/lair-atom.xml">l<kbd>air-atom.xml</kbd></a><kbd>
+              </kbd><a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/blog/lair-atom.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[Invalid%20Atom]" alt="Validate lair-atom.xml" /></a>(snapshot:
+              <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[InvalidAtom]" alt="Validate lair-atom.xml snapshot"></a>):&nbsp;</li>
+            <li>
+              <p align="left">Professor von Clueless <kbd><a href="../BlunderDome/clueless/clu-atom.xml">clu-atom.xml</a>
+              </kbd><a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/BlunderDome/clueless/clu-atom.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[Invalid%20Atom]" alt="Validate clu-atom.xml" /></a>(snapshot:
+              <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B2.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[Invalid%20Atom]" alt="Validate clu-atom.xml snapshot"></a>)</li>
+            <li>
+              <p align="left">Numbering Peano <kbd><a href="http://miser-theory/astraendo/pn/pn-atom.xml" target="_top">pn-atom.xml</a>
+              </kbd><a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://miser-theory.info/astraendo/pn/pn-atom.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[Invalid%20Atom]" alt="Validate pn-atom.xml" /></a>(snapshot:
+              <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B3.xml" target="_blank"><img border="0" src="../images/invalidAtom.png" lowsrc="[Invalid%20Atom]" alt="Validate pn-atom.xml snapshot"></a>)</li>
+          </ul>
+          <p align="left"><i>It does not apply to:</i></p>
+          <ul>
+            <li>
+              <p align="left">Spanner Wingnut's <kbd><a href="../BlunderDome/wingnut/wing-atom.xml">wing-atom.xml</a></kbd>.
+              <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/BlunderDome/wingnut/wing-atom.xml" target="_blank"><img border="0" src="../images/validAtom.png" width="88" height="31" lowsrc="[Valid%20Atom]" alt="Validate wing-atom.xml"></a>
+              (snapshot: <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B1.xml" target="_blank"><img border="0" src="../images/validAtom.png" width="88" height="31" lowsrc="[Valid%20Atom]" alt="Validate wing-atom.xml snapshot"></a>)</li>
+          </ul>
+<p align="left">The snapshots are copies of the feeds at the time we published
+clean notices of them, and they currently exhibit the incoherence in all but one
+case.&nbsp; The first buttons check the current actual feed and the results may
+differ.
+        </td>
+      </tr>
+    </table>
+  </blockquote>
+  <p align="left">The following replacement was intended to establish a grounded
+  notice for Orcmid's Lair and provide a reproducible demonstration of the
+  encoding incoherence.&#160; However, the <a href="x040703b.xml" target="_blank">copy
+  of the feed</a> that I associated with this report validates <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B.xml" target="_blank"><img border="0" src="../images/validAtom.png" width="88" height="31"></a>!&#160;
+  So I have to refer to the original feed, even though it might be valid or not
+  depending on when last updated.&#160; So I must refer to the direct feed and
+  the way it serves up as invalid.</p>
+
+  <p style="border: 3px solid #990033"><a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/blog/lair-atom.xml" target="_blank"><img border="0" src="http://orcmid.com/sostegno/X040704B3.png" lowsrc="[Invalid%20Atom]" alt="Validate my Atom feed" align="right" width="79" height="31" /></a><font color="#000080"><b><small>[updated
+  2004-07-24-14:25 - 0700&#160;</small></b><small> corrected for </small><small>acceptability</small><small> 
+  to the <a href="http://www.atomenabled.org/feedvalidator/" target="_blank">on-line
+  Atom validator</a>.&#160; The permanent <kbd>&lt;id&gt;</kbd>-element
+  for this notice is now a <a href="http://orcmid.com/sostegno/X040702B.htm" target="_blank"><b>reachable
+  web location</b></a>.&#160; Incident details are developed in <b><a href="http://orcmid.com/sostegno/X040702.htm" target="_blank">Incident
+  Report X040702: Blogger FTP Corruption</a></b>.&#160; Status of these blogs
+  is summarized at <b><a href="http://orcmid.com/sostegno/X040701.htm" target="_blank">X040701:
+  Web Log Status</a></b>.&#160; The invalidity of the Atom Feed is <a href="http://orcmid.com/sostegno/X040703.htm">yet
+  another problem</a>.&#160; The poor rendering of the Invalid Atom button is
+  a <a href="http://orcmid.com/sostegno/X040704.htm">different problem</a>
+  still.</small><b><small>]</small></b><br />
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_top"><img border="0" src="http://orcmid.com/images/hardhat-logo.gif" alt="CAUTION!! Blasting. Hard Hat Areas. Turn off all radio transmitters." align="left" hspace="4" vspace="2" width="160" height="115" /></a>
+  <b><font color="#9990033">
+  <u>IMPORTANT NOTICE</u>
+  </font>: 2004-07-15-20:23Z&#160; - On Friday, July 2, while posting a new article   
+  on <a href="http://orcmid.com/BlunderDome/clueless/" target="_blank">Professor   
+  von Clueless in the Blunder Dome</a>, Blogger transferred unintelligible binary to the default (current) page,  
+  an archive page, the posting page and the Atom feed.&#160; That blog is now   
+  rolled-back to the last backed-up content before that event.&#160; There will be no further posting to my   
+  non-experimental Blogger-intermediated Blogs until the situation is resolved.&#160;  
+  <u><font color="#990033">THESE BLOGS ARE CURRENTLY LOCKED DOWN</font></u>:&#160;
+  <a href="http://orcmid.com/blog/lair.asp" target="_blank">Orcmid's Lair</a>,
+  <a href="http://miser-theory.info/astraendo/pn/" target="_blank">Numbering Peano</a>, 
+  and <a href="http://orcmid.com/BlunderDome/clueless/" target="_blank">Professor von Clueless in the Blunder Dome</a>.&#160; 
+  Blogger is denied FTP access to those blogs and <em>comment postings will fail</em>.&#160; 
+  The only active blog is the experimental  
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_blank">Spanner Wingnut Muddleware Laboratory</a>.&#160; 
+  Live forensic and trouble-shooting analysis is performed there.&#160; That 
+  makes it a dangerous place.&#160; I do not recommend subscribing to that atom feed 
+  because it can be corrupted during incident trouble-shooting. -- <i>Dennis E.   
+  Hamilton</i></b>
+  </font></p>
+
+
+
+
+</blockquote>
+
+
+
+  <h2 align="left"><a name="Validation">Validation</a>  Failure <a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703b.xml" target="_blank"><img border="0" src="../images/validAtom.png" lowsrc="[Valid%20Atom]" alt="Validate my Atom feed" width="88" height="31"></a></h2>
+
+<ul>
+  <li>
+    <p align="left">The&nbsp;<a href="http://www.atomenabled.org/feedvalidator/">on-line
+  validator</a> produces the following report for <b><kbd><a href="../BlunderDome/wingnut/wing-atom.xml">lair-atom.xml</a></kbd></b>
+  with the <a href="#entry1">cleaned-up lockdown notice</a>:</li>
+</ul>
+<blockquote>
+
+  <p align="left"><img border="0" src="x040703b.png" width="727" height="682"></p>
+
+  <p align="left">The conflict is a rather complicated one having to do with how
+  Blogger decides what encoding is being used and how that is communicated to
+  the host site, which serves up the Atom feed to requesting browsers and news
+  feed aggregators.</p>
+
+</blockquote>
+
+<h2 align="left"><a name="entry1">Orcmid Lockdown Entry</a></h2>
+
+<blockquote>
+
+<p align="left">During a lockdown of Orcmid's Lair for troubleshooting, a manual
+feed entry was inserted based on <a href="X040702B.htm">the validated one for
+Spanner Wingnut</a>.&nbsp; In using this entry, the only difference, beside the
+modification date, is&nbsp;</p>
+
+<ul>
+  <li>
+    <p align="left">The Valid Atom button is changed to refer to the Orcmid's
+    Lair atom feed, <kbd><a href="http://orcmid.lair/blog/lair-atom.xml">lair-atom.xml</a></kbd>.</li>
+  <li>
+    <p align="left">The &lt;id&gt;-entry was not modified because the impact of
+    the preceding change was not appreciated.</li>
+  <li>
+    <p align="left">The feed is not valid, although that has nothing to do with
+    this entry.</li>
+</ul>
+
+  <p style="border: 3px solid #990033"><a href="http://www.atomenabled.org/feedvalidator/check.cgi?url=http://orcmid.com/sostegno/X040703B.xml" target="_blank"><img border="0" src="http://orcmid.com/images/validAtom.png" lowsrc="[Valid%20Atom]" alt="Validate my Atom feed" align="right" width="88" height="31" /></a><font color="#000080"><b><small>[updated
+  2004-07-23-18:14</small></b><small> corrected for acceptabillity to the <a href="http://www.atomenabled.org/feedvalidator/" target="_blank">on-line
+  Atom validator</a>.&#160; The permanent <kbd>&lt;id&gt;</kbd>-element
+  for this notice is now a <a href="http://orcmid.com/sostegno/X040702B.htm" target="_blank"><b>reachable
+  web location</b></a>.&#160; Incident details are developed in <b><a href="http://orcmid.com/sostegno/X040702.htm" target="_blank">Incident
+  Report X040702: Blogger FTP Corruption</a></b>.&#160; Status of these blogs
+  is summarized at <b><a href="http://orcmid.com/sostegno/X040701.htm" target="_blank">X040701:
+  Web Log Status</a></b>.<b>]</b></small><br />
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_top"><img border="0" src="http://orcmid.com/images/hardhat-logo.gif" alt="CAUTION!! Blasting. Hard Hat Areas. Turn off all radio transmitters." align="left" hspace="4" vspace="2" width="160" height="115" /></a>
+  <b><font color="#9990033">
+  <u>IMPORTANT NOTICE</u>
+  </font>: 2004-07-15-20:23Z&#160; - On Friday, July 2, while posting a new article   
+  on <a href="http://orcmid.com/BlunderDome/clueless/" target="_blank">Professor   
+  von Clueless in the Blunder Dome</a>, Blogger transferred unintelligible binary to the default (current) page,  
+  an archive page, the posting page and the Atom feed.&#160; That blog is now   
+  rolled-back to the last backed-up content before that event.&#160; There will be no further posting to my   
+  non-experimental Blogger-intermediated Blogs until the situation is resolved.&#160;  
+  <u><font color="#990033">THESE BLOGS ARE CURRENTLY LOCKED DOWN</font></u>:&#160;
+  <a href="http://orcmid.com/blog/lair.asp" target="_blank">Orcmid's Lair</a>,
+  <a href="http://miser-theory.info/astraendo/pn/" target="_blank">Numbering Peano</a>, 
+  and <a href="http://orcmid.com/BlunderDome/clueless/" target="_blank">Professor von Clueless in the Blunder Dome</a>.&#160; 
+  Blogger is denied FTP access to those blogs and <em>comment postings will fail</em>.&#160; 
+  The only active blog is the experimental  
+  <a href="http://orcmid.com/BlunderDome/wingnut/index.htm" target="_blank">Spanner Wingnut Muddleware Laboratory</a>.&#160; 
+  Live forensic and trouble-shooting analysis is performed there.&#160; That 
+  makes it a dangerous place.&#160; I do not recommend subscribing to that atom feed 
+  because it can be corrupted during incident trouble-shooting. -- <i>Dennis E.   
+  Hamilton</i></b>
+  </font></p>
+
+
+<p>The feed was edited using jEdit with the XML plug-in.&nbsp; The rules for the
+feed were analyzed and developed in accordance with Labnote <a href="../BlunderDome/B040701.htm">B040701:
+Atom Feed Synthesis</a>.</p>
+
+
+
+
+</blockquote>
+
+
+
+
+  <hr color="#990033">
+
+<dl>
+ 
+<dt><b><small><a name="0.10">0.10</a> 2004-07-25-12:00 Provide Snapshots for
+  Comparison Validations</small></b></dt>
+
+<dd><small>Expand the table of where the inconsistency shows up so that the
+  validations can be redone at any time to confirm the results that we
+  experienced.</small></dd>
+ 
+<dt><b><small><a name="0.01">0.01</a>  2004-07-24-12:57 Make adjusted version of
+  notice</small></b></dt>
+
+<dd><small>Create a new notice that is properly grounded (because it is
+  different that the </small><kbd><small>wing-atom.xml </small></kbd><small> one) and handles the feed invalidity.&nbsp;
+  The problems of the invalidAtom image degradation is captured as a <a href="x040704.htm">separate
+  incident</a>.</small></dd>
+ 
+<small>
+ 
+    <dt><b><a name="0.00">0.00</a>   2004-07-23-22:35 Identify material that
+      demonstrates the incoherence</b></small></dt>
+
+<small>
+ 
+    <dd>Capture the essential details of lock-down notice that revealed the
+      problem..</dd>
+
+</dl></small>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="construction.htm" target="_top"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-23-22:35 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:18 $<br>
+      $$Revision: 31 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

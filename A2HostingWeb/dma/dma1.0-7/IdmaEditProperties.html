@@ -1,0 +1,445 @@
+<html><head><title>Interfaces and Methods: IdmaEditProperties</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaEditProperties"></a>IdmaEditProperties</h2>
+<p>This interface allows writing and deleting DMA property values of any DMA base property type:  Binary, Boolean, DateTime, Float, Identifier, Integer, Object, or String.  Properties  may be chosen either by their index in the object's class description list, or by their property identifier (e.g. dmaProp_RenditionsPresent).  Both indices and property ids can be found from the object's meta-data.  Some Property Ids are well known and can be used directly without investigation of the meta-data. 
+</p><p>
+The methods used to access DMA Properties are segmented into two interfaces, the methods that allow readonly access to the properties (IdmaProperties), and the methods that allow modification of the properties (IdmaEditProperties). The IdmaEditProperties interface is available only on objects that are editable. It offers all the methods of the IdmaProperties interface,  as well as those listed below.
+</p><p>
+When any method in this interface is called successfully, the UpdatePending property for the target object is set to TRUE unconditionally, even if the new value that the property is being set to is exactly the same as the old value.</p></p>
+<h3><a name="IdmaEditPropertiesDeletePropValById"></a>IdmaEditProperties::DeletePropValById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::DeletePropValById</b> (<br>
+pDmaId    <i>pPropertyId</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be obtained.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Deletes the property value for the property selected by its identifier, which is either "well-known" or obtained from the meta-data.  The effect is that a subsequent call to a GetPropVal method will return DMARC_VALUE_NOT_SET.  Any value set for the property will be appropriately freed as part of this operation.
+</p><p>
+This operation must fail, with return code DMARC_ILLEGAL_OPERATION, if applied to a list or enumeration property.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_ILLEGAL_OPERATION</p></TD><TD><p>The operation is disallowed by the DMA Specification.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesDeletePropValByIndex"></a>IdmaEditProperties::DeletePropValByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::DeletePropValByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Deletes the property value for the property identified by the index, which is defined by the object's Class Description.  The effect is that a subsequent call to a GetPropVal method will return DMARC_VALUE_NOT_SET.  Any value set for the property will be appropriately freed as part of this operation.
+</p><p>
+This operation must fail, with return code DMARC_ILLEGAL_OPERATION, if applied to a list or enumeration property.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_ILLEGAL_OPERATION</p></TD><TD><p>The operation is disallowed by the DMA Specification.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+<TR><TD><p>DMARC_VALUE_NOT_SET</p></TD><TD><p>The requested property currently has no value.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValBinaryById"></a>IdmaEditProperties::PutPropValBinaryById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValBinaryById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DmaBinaryValue*    <i>pBinaryValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pBinaryValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the buffer containing the binary value.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a fixed number of bytes.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValBinaryByIndex"></a>IdmaEditProperties::PutPropValBinaryByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValBinaryByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaBinaryValue*    <i>pBinaryValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pBinaryValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the buffer containing the binary value.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a fixed number of bytes.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's Class Description.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValBooleanById"></a>IdmaEditProperties::PutPropValBooleanById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValBooleanById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DmaBoolean    <i>bBooleanValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>bBooleanValue</i></p></TD><TD><p>input</p></TD><TD><p>The boolean value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a boolean.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValBooleanByIndex"></a>IdmaEditProperties::PutPropValBooleanByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValBooleanByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaBoolean    <i>bBooleanValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>bBooleanValue</i></p></TD><TD><p>input</p></TD><TD><p>The boolean value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a boolean.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValDateTimeById"></a>IdmaEditProperties::PutPropValDateTimeById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValDateTimeById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaDateTime    <i>pDateTimeValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pDateTimeValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the DateTime to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a DateTime valued property. The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValDateTimeByIndex"></a>IdmaEditProperties::PutPropValDateTimeByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValDateTimeByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaDateTime    <i>pDateTimeValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pDateTimeValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the DateTime to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a DateTime valued property. The property of interest is indicated by its index in the set of properties for the object.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValFloat64ById"></a>IdmaEditProperties::PutPropValFloat64ById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValFloat64ById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DmaFloat64    <i>fFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>fFloatValue</i></p></TD><TD><p>input</p></TD><TD><p>The float value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a float, which must be 64 bits and signed.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValFloat64ByIndex"></a>IdmaEditProperties::PutPropValFloat64ByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValFloat64ByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaFloat64    <i>fFloatValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>fFloatValue</i></p></TD><TD><p>input</p></TD><TD><p>The float value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a float, which must be 64 bits and signed.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValIdById"></a>IdmaEditProperties::PutPropValIdById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValIdById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaId    <i>pIdValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIdValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the Id to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a DMA identifier valued property. The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValIdByIndex"></a>IdmaEditProperties::PutPropValIdByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValIdByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaId    <i>pIdValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIdValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the Id to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a DMA identifier valued property. The property of interest is indicated by its index in the set of properties for the object.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValInteger32ById"></a>IdmaEditProperties::PutPropValInteger32ById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValInteger32ById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>DmaInteger32    <i>lIntegerValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>lIntegerValue</i></p></TD><TD><p>input</p></TD><TD><p>The integer value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a long integer, which must be 32 bits and signed.  This is one of the basic data types used for property values.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValInteger32ByIndex"></a>IdmaEditProperties::PutPropValInteger32ByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValInteger32ByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>DmaInteger32    <i>lIntegerValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>lIntegerValue</i></p></TD><TD><p>input</p></TD><TD><p>The integer value of the Property to be assigned.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value as a long integer, which must be 32 bits and signed.  This is one of the basic data types used for property values.  The property of interest is located using its index, which is defined by the object's meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValObjectById"></a>IdmaEditProperties::PutPropValObjectById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValObjectById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>Dmapv    <i>pIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be assigned.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIObjectValue</i></p></TD><TD><p>input</p></TD><TD><p>A interface for the DMA object to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value, in object form, to a property.  The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.  This can be used, for instance, to assign a property value list into its owning object.
+</p><p>
+This operation must fail, with return code DMARC_ILLEGAL_OPERATION, if applied to a list or enumeration property.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_ILLEGAL_OPERATION</p></TD><TD><p>The operation is disallowed by the DMA Specification.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValObjectByIndex"></a>IdmaEditProperties::PutPropValObjectByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValObjectByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>Dmapv    <i>pIObjectValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pIObjectValue</i></p></TD><TD><p>input</p></TD><TD><p>A interface for the DMA object to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a Property Value, in object form, to a property.  The property of interest is located using its index, which is defined by the object's meta-data.  This can be used, for instance, to assign a property value list into its owning object.
+</p><p>
+This operation must fail, with return code DMARC_ILLEGAL_OPERATION, if applied to a list or enumeration property.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_OBJECT</p></TD><TD><p>An inappropriate object was passed as parameter to this function. For example, the object does not support a required interface or is of an inappropriate class.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_ILLEGAL_OPERATION</p></TD><TD><p>The operation is disallowed by the DMA Specification.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValStringById"></a>IdmaEditProperties::PutPropValStringById</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValStringById</b> (<br>
+pDmaId    <i>pPropertyId</i>,<br>pDmaString    <i>pStringValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pPropertyId</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the identifier of the property to be modified.  This identifier may be well-known or obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pStringValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the Property Value string to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a string valued property. The property of interest is located using its identifier, which is either "well-known" or obtained from the meta-data.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PROPID</p></TD><TD><p>A property identifier is not valid.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditPropertiesPutPropValStringByIndex"></a>IdmaEditProperties::PutPropValStringByIndex</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditProperties::PutPropValStringByIndex</b> (<br>
+DmaIndex32    <i>iIndex</i>,<br>pDmaString    <i>pStringValue</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>An index for the property that is to be modified.  This index may be obtained from the meta-data.</p></TD></TR>
+<TR><TD><p><i>pStringValue</i></p></TD><TD><p>input</p></TD><TD><p>A pointer to the Property Value string to be assigned to the property.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Assigns a string valued property. The property of interest is indicated by its index in the set of properties for the object.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_BAD_VALUE</p></TD><TD><p>The value given for a property or list element lies outside the permitted range or value set, or exceeds the maximum length allowed.</p></TD></TR>
+<TR><TD><p>DMARC_DATATYPE_MISMATCH</p></TD><TD><p>The method invoked is inappropriate for the datatype of the property.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+</TABLE>
+</body></html>

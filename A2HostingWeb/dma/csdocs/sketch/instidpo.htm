@@ -1,0 +1,395 @@
+<html>
+<!--$$Heading:                                                           $-->
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<!--$$Header: /DMACompagno/csdocs/sketch/instidpo.htm 13    13-08-22 12:15 Orcmid $-->
+<title>InstanceId Optionally-Supported Position Statement</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><em>CSDocs Architecture Sketch</em></h1>
+
+<h1 align="center">InstanceId Position Statement:</h1>
+
+<h1 align="center">Optionally-Supported InstanceId on dmaClass_DMA Class</h1>
+
+<blockquote>
+  <p align="right"><em>$$Author: Orcmid $<br>
+  $$Date: 13-08-22 12:15 $<br>
+  $$Revision: 13 $</em></p>
+  <p align="left"><em>The CSDocs proposal includes creation of a new general property that
+  can be used on any persistent element, the InstanceId.&nbsp; This is a structural
+  solution, accomplished entirely within the model, for identifying elements of
+  independently-persistent objects when it is valuable to do so, as in CSDocs compounding
+  relationships.</em></p>
+  <p align="left"><em>This position statement is part of the <a href="default.htm">CSDocs
+  Architecture Sketch</a>.&nbsp; It elaborates on <a href="default.htm#UniqueIdentifiability">proposed rules for InstanceId values</a> and how
+  the property is introduced.&nbsp; This is the basis for further e-mail discussion and
+  arrival at a consensus position in the <a href="CSDocsFoundation00.doc">CSDocs Foundation
+  proposal</a>.</em></p>
+  <p align="left"><em>The statement is in two parts:</em></p>
+  <ol>
+    <li><p align="left"><em>Having InstanceId be an Optionally-Supported Property of
+      dmaClass_DMA Class</em></p>
+      <p align="left">That is discussed on this page.</p>
+    </li>
+    <li><p align="left"><em>Having InstanceId values be DmaId values.</em></p>
+      <p align="left">That is discussed on a <a href="instidid.htm">companion page</a> that also
+      addresses use of DmaId values in legacy situations.</p>
+    </li>
+  </ol>
+  <hr>
+</blockquote>
+
+<blockquote>
+  <h2><a name="Content"><em>Content</em></a></h2>
+</blockquote>
+
+<h2><a href="#BasicPositionStatement">Basic Position Statement</a></h2>
+
+<h2><a href="#WhyInstanceId">Why InstanceId</a>?</h2>
+
+<blockquote>
+  <h3><a href="#OIIDlimitations"><span class="570322223-30061999">Limitations of DMA OIID</span></a></h3>
+  <h3><a href="#IdentifyingInteriorElements"><span class="570322223-30061999">Need for
+  Identification of Interior Elements of Objects</span></a></h3>
+  <h3><a href="#WhatInstanceIdProvides"><span class="570322223-30061999">What InstanceId
+  Provides</span></a></h3>
+</blockquote>
+
+<h2><a href="#GlobalSupportOptionalProperty">Position: Introducing DmaProp_InstanceId on
+dmaClass_DMA</a></h2>
+
+<blockquote>
+  <h3><a href="#DMApropertyInheritance">Background on DMA Property Inheritance</a></h3>
+  <h3><a href="#StickingtoOptionallySupported">Sticking to Optionally-Supported</a></h3>
+</blockquote>
+
+<h2><a href="#DmaIdValues">Position: DmaId for InstanceId Values</a> <small>(<a href="instidid.htm#DmaIdValues">on companion page</a>)</small></h2>
+
+<h2><a href="#Resources">References and Resources on DmaIds</a> <small>(<a href="instidid.htm#Resources">on companion page</a>)</small></h2>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h1><a name="BasicPositionStatement">Basic Position Statement</a></h1>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li><span class="570322223-30061999">There will be a new InstanceId Property for uniquely
+      distinguishing persistent elements in a Document Space, including interior elements of
+      independently-persistent objects. These identifications will be generated automatically by
+      document spaces that support them, on the persistent elements they are supported on.
+      &nbsp; </span><p><span class="570322223-30061999">This is in addition to the DMA OIID,
+      which identifies independently-persistent objects but does not provide identification of
+      anything smaller than that.&nbsp; </span></p>
+      <p><span class="570322223-30061999">There is alignment that we will have this optional
+      capability and rely on it for the CSDocs Compound/Structured Documents extensions to DMA
+      1.0.</span></p>
+    </li>
+    <li><span class="570322223-30061999"><a href="#GlobalOptionallySupportedProperty">InstanceId
+      is introduced on the dmaClass_DMA class</a>, the base class of every DMA class
+      hierarchy.&nbsp; Support is not required and the property is read-only, value optional,
+      and system-derived.&nbsp; </span><p><span class="570322223-30061999">This means that the
+      property can be introduced at any lower point in the class hierarchy, including on
+      distinct sub-hierarchies, and is then preserved by inheritance below that.&nbsp; This is
+      not a new principle.&nbsp; The related dmaProp_OIID is introduced into the DMA scheme of
+      things in exactly the same way.&nbsp; </span></p>
+      <p><span class="570322223-30061999"><em>Discussion:</em> There is some objection to this
+      by developers.&nbsp; The alternative is to introduce the property specifically where it is
+      needed for CSDocs and other introductions in a document space would happen, and be
+      documented, on an individual case basis.&nbsp; The effect appears to be identical, the
+      difference is in how the specification is written.</span></p>
+    </li>
+    <li><span class="570322223-30061999"><a href="#DmaIdValues">The dmaProp_InstanceId property
+      has values of type DmaId.</a>&nbsp; That is, the values are globally-unique
+      identifiers.&nbsp; </span><p><span class="570322223-30061999">There is concern that this
+      may be difficult to produce when adding DMA interfaces above a legacy
+      implementation.&nbsp; The alternative is to use some kind of string, and perhaps require
+      only local uniqueness.&nbsp; </span></p>
+      <p><span class="570322223-30061999">In these position papers, use of a DmaId and
+      achievement of global uniqueness and complete unambiguity is proposed to avoid having to
+      worry about degrees of uniqueness, especially in query, cross-repository operations, etc.</span></p>
+    </li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p><big><em><span class="570322223-30061999">There is general alignment on the overall
+  principles of section.&nbsp; The requirement for an InstanceId is recognized.</span>&nbsp;&nbsp;
+  <span class="570322223-30061999">Everything else is eligible for review.&nbsp; Here is
+  further background and positions on the two areas that have been raised for discussion.</span></em></big></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#BasicPositionStatement">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="WhyInstanceId"><span class="570322223-30061999">Why InstanceId?</span></a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#OIIDlimitations"><span class="570322223-30061999">Limitations of DMA OIID</span></a></li>
+      <li><a href="#IdentifyingInteriorElements"><span class="570322223-30061999">Need for
+        Identification of Interior Elements of Objects</span></a></li>
+      <li><a href="#WhatInstanceIdProvides"><span class="570322223-30061999">What InstanceId
+        Provides</span></a></li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p><span class="570322223-30061999">There is general agreement on the following analysis.
+  &nbsp; The areas being explored are expanded on in subsequent sections.</span></p>
+</blockquote>
+
+<h2><a name="OIIDlimitations"><span class="570322223-30061999">Limitations of DMA OIID</span></a></h2>
+
+<blockquote>
+  <p>In the DMA Model, the only objects that are uniquely and globally identified are what
+  we call independently-persistent objects.&nbsp; </p>
+  <p>Every independently-persistent object has an OIID (Object Instance Identification)
+  property.&nbsp; The OIID provides a text string (of type DmaString) that is an unambiguous
+  URL for that object.&nbsp; The way to determine whether an object interface delivered by
+  the DMA API is for an independently-persistent object is to check whether there is a
+  dmaProp_OIID property and that property has a value.</p>
+  <p>No two different DMA documents anytime and anywhere and anytime on the planet are
+  supposed to ever have the same OIID.&nbsp; They can always be distinguished by having
+  different OIIDs.&nbsp; The OIID also provides enough information for a DMA application to
+  locate the object where it can be <span class="570322223-30061999">accessed</span>: <span class="570322223-30061999">The OIID identifies the document space and provides a likely
+  way it can be reached.</span></p>
+  <p>An OIID is actually over-specified: It carries advice on how to find the document as
+  well as how to distinguish the document from all others.&nbsp; There can be different OIID
+  strings that locate the same document.&nbsp; OIID strings are not necessarily unique, yet
+  OIIDs unambiguously locate a particular document and never any other document.&nbsp; OIIDs
+  are not supposed to be reused.</p>
+  <p>These are the limitations: OIID applies only to independently-persistent objects and it
+  provides unambiguity, not uniqueness.</p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#WhyInstanceId">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="IdentifyingInteriorElements">Need for Identification of Interior Elements of
+Objects</a></h2>
+
+<blockquote>
+  <p>CSDocs and other applications of the DMA 1.0 model have a need to unambiguously
+  identify elements of larger DMA objects.</p>
+  <p>In DMA 1.0, there is no assured way to unambiguously identify an element of an
+  independently-persistent object without some special convention beyond what DMA 1.0
+  provides.&nbsp; That is, there is no reliable way to talk about a particular rendition of
+  a DocVersion, or a particular content element of a particular rendition.&nbsp; </p>
+  <p>In DMA 1.0, renditions and content elements are not independent things.&nbsp; They
+  always occur as parts of larger independently-persistent things, DocVersions.&nbsp; <span class="570322223-30061999">There can also be other elements of this kind.&nbsp; </span></p>
+  <p>In short, there is no convention for unambiguously and unalterably labeling the parts
+  of interesting DMA objects, so they can be referred to unambiguously, just like we can
+  unambiguously refer to a DocVersion by an OIID string.&nbsp; That is, there is no
+  structural or well-known feature that one can count on to provide an identification of
+  interior elements of objects.</p>
+  <p>[There is also a need for authenticated access to elements and independently-persistent
+  objects, as when passing a reference to an element to a third party.&nbsp; The CSDocs
+  proposals do not cover that case, which will need to be addressed separately as a general
+  security and AAA topic for DMA.]</p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#WhyInstanceId">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="WhatInstanceIdProvides">What InstanceId Provides</a></h2>
+
+<blockquote>
+  <p>Unambiguous identification of internal elements keeps coming up as a requirement in
+  DMA-based solutions.&nbsp; The CSDocs subcommittee is proposing a single consistent
+  structural solution that provides for identifiable elements without concern for any
+  existing properties or application-specific identifications that might be in use. &nbsp;
+  InstanceId provides a consistent means for navigation to and identification of persistent
+  elements.&nbsp; It can be delivered by any DMA Document Space independent of specialized
+  application properties and structures that are supported, providing a high level of
+  interoperability and consistency for this recurring requirement.</p>
+  <p>InstanceId can be added to elements of legacy objects and it can be employed on new
+  objects.&nbsp; It will not interfere with any existing DMA 1.0 application.&nbsp; It will
+  provide additional usefulness in those applications that are subsequently designed to <span class="570322223-30061999">take advantage</span> of it.</p>
+  <p>The dmaProp_InstanceId property is a new property having no conflict with any
+  well-known or custom property used in any DMA 1.0 implementation.&nbsp; Elements that
+  already have a property that satisfies the definition of the dmaProp_InstanceId property
+  can provide dmaProp_InstanceId as an alias for that existing property, exploiting the
+  existing implementation.</p>
+  <p>The dmaProp_InstanceId property can be implemented as a property of <em>any</em> <span class="570322223-30061999">class having </span>persistent instances (whether
+  independently-persistent or a persistent element).&nbsp; Its definition will show up in
+  the class description as <span class="570322223-30061999">value-optional, read-only, and
+  system-derived.&nbsp; The value is optional on property interfaces delivered through the
+  DMA API because there can be always be working instances that do not yet have any
+  persistent existence.&nbsp; </span></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#WhyInstanceId">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="GlobalOptionallySupportedProperty">Position: Introducing DmaProp_InstanceId
+on dmaClass_DMA</a></h1>
+
+<blockquote>
+  <blockquote>
+    <ul>
+      <li><a href="#DMApropertyInheritance">Background on DMA Property Inheritance</a></li>
+      <li><a href="#StickingtoOptionallySupported">Sticking to Optionally-Supported</a></li>
+    </ul>
+  </blockquote>
+  <p><big><em>It is proposed to introduce dmaProp_InstanceId on the base dmaClass_DMA class
+  of the DMA class hierarchy.&nbsp; The property will be specified to have support optional
+  and be read-only, and system-derived with optional value.</em></big></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="DMApropertyInheritance"><span class="570322223-30061999">Background on DMA
+Property Inheritance</span></a></h2>
+
+<blockquote>
+  <p><span class="570322223-30061999">The DMA Object Model and definitions of Classes and
+  Properties in the DMA 1.0 specification are actually a schema or template that any DMA 1.0
+  metadata space satisfies.&nbsp; DMA 1.0 does not specify the metadata space a DMA DocSpace
+  must have.&nbsp; Instead, it specifies the <em>pattern</em> that any DMA 1.0 metadata
+  space must follow.&nbsp; The DMA class hierarchy is a pattern for generating admissible
+  metadata spaces, including ones for DocSpace implementations.&nbsp; Similarly, the DMA
+  class inheritance model is a pattern for the inheritance model of a legitimate DMA 1.0
+  metadata space.</span></p>
+  <p><span class="570322223-30061999">The DMA inheritance model is also different than the
+  inheritance models of object-oriented programming models.&nbsp; For one thing, the DMA
+  classes do not correspond to implementations, so inheritance has nothing to do with the
+  implementations of classes. &nbsp; Implementations are not visible and there can be any
+  number of implementations of the same DMA class, even in the same metadata space.</span></p>
+  <p><span class="570322223-30061999">A property that is specified in a class description of
+  a metadata space must be specified in descriptions of all subclasses of that class.&nbsp;
+  For DMA, this does<em> not</em> prohibit the property being specified for disjoint
+  classes.&nbsp; Just because a property is defined as well-known and used in one part of
+  the DMA-specified hierarchy, it is not prevented from being independently-introduced
+  elsewhere in the same metadata space.&nbsp; This is a specific provision of the DMA 1.0
+  object model.</span></p>
+  <p><span class="570322223-30061999">There are some features in the DMA Object model,
+  especially the class descriptions and inheritance model, <em>that apply only to the
+  pattern or scheme</em>.&nbsp; One such case is that of &quot;optionally-supported
+  properties.&quot;&nbsp; <strong>There is no such thing as an optionally-supported property
+  in a metadata space.&nbsp; A property is defined for a class of the metadata space or it
+  isn't.&nbsp;</strong> If it is defined for a class, it will be defined for all subclasses
+  of that class too.&nbsp; That much is certain.</span></p>
+  <p><span class="570322223-30061999">There is an objection around the difficulty of
+  figuring out where support for an optionally-supported property arises, and dealing with
+  the same property being supported on disjoint subtrees of the DMA class hierarchy. &nbsp;
+  There are two things to deal with:</span> <ol>
+    <li><span class="570322223-30061999">The introduction of the same property, with the same
+      DmaId for its identification, on disjoint subtrees of the DMA class hierarchy is already
+      allowed, independent of the existence of support-optional well-known properties.</span></li>
+    <li><span class="570322223-30061999">No matter where a support-optional property is
+      introduced in the DMA metadata space <em>pattern</em>, there is always the prospect of the
+      property arising on disjoint subtrees in an actual metadata space.</span></li>
+  </ol>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#GlobalOptionallySupportedProperty">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h2><a name="StickingtoOptionallySupported">Sticking to Optionally-Supported</a></h2>
+
+<blockquote>
+  <p><span class="570322223-30061999">There is no particular advantage to specifying a
+  well-known optionally-supported property on different major class-hierarchy subtrees where
+  it might reasonably occur.&nbsp; There is some advantage in specifying properties at a
+  level in the class hierarchy that is at or above the highest point where a property is
+  normally expected to occur.&nbsp; </span></p>
+  <p><span class="570322223-30061999">The precedent for introducing an optionally-supported
+  property at a high level already exists.&nbsp; The DMA class hierarchy <em>pattern </em>even
+  has artificially-introduced classes precisely so such introductions can occur. &nbsp;
+  dmaClass_Containable and dmaClass_Versionable are examples, as is dmaClass_Relationship.</span></p>
+  <p><span class="570322223-30061999">In the case of properties related to the persistent
+  existence of an object, there is no clear single point in the DMA class hierarchy pattern
+  for making such a distinction.&nbsp; It is the precedent in DMA 1.0 to introduce such
+  properties on the overall base class, dmaClass_DMA.</span></p>
+  <p><span class="570322223-30061999">It is proposed that the same practice be employed for
+  the introduction of dmaProp_InstanceId.</span></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#GlobalOptionallySupportedProperty">to top of section</a><br>
+      <a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h1><a name="DmaIdValues"><span class="570322223-30061999">Position: DmaId for InstanceId
+Values</span></a></h1>
+
+<blockquote>
+  <p><big><em><span class="570322223-30061999">This topic is discussed in a <a href="instidid.htm">companion position paper</a> in a section on <a href="instidid.htm#DmaIdValues">DmaId for InstanceId Values</a>.</span></em></big></p>
+</blockquote>
+
+<h1><span class="570322223-30061999"><a name="Resources">References and Resources</a> on
+DmaIds</span></h1>
+
+<blockquote>
+  <p><big><em><span class="570322223-30061999">Provide references on UUIDs, how they can be
+  generated, and provisions for generating/reserving blocks of UUIDs.&nbsp; Blocks of
+  reserved Ids can be used to fabricate UUIDs from locally-unique IDs that are easily mapped
+  to dense integers. &nbsp; This is also discussed in the <a href="instidid.htm">companion
+  position paper</a>, in the section on<a href="instidid.htm#Resources"> references and
+  resources</a>.</span></em></big></p>
+  <blockquote>
+    <blockquote>
+      <p><em><a href="#Content">to contents</a></em></p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <hr>
+  <div align="center"><center><address>
+    updated <!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%Y-%m-%d %H:%M" startspan -->2006-08-28 18:06<!--webbot bot="Timestamp" endspan i-checksum="25788" --> -0700
+    (pdt) by Dennis E. Hamilton 
+  </address>
+  </center></div><div align="center"><center><address>
+    created 1999-07-06-08:40 -0700 (pdt) by Dennis E. Hamilton 
+  </address>
+  </center></div>
+</blockquote>
+</body>
+</html>

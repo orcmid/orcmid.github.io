@@ -1,0 +1,198 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000011.htm 3     01-03-05 12:31 Orcmid $-->
+<title>X000011: Trace Logging Failure</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000011.htm">X000011</a>:
+Trace Logging Failure</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-05-12:09 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000011.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Fatal Error -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X000011.htm">X000011</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: ODMA 2.0 Connection Managers <code>ODMA32.dll</code></b>
+        2.0.0 and <b><code>Odma.dll</code></b> 2.0.0</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd>ODMA 2.0 Specification section 7, <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#7">Connection
+            Manager Trace Logging</a><br>
+            Q000702: <a href="http://www.infonuovo.com/odma/faq/Q00-next.htm#Q000702">Interpreting
+            Connection Manager Logs<br>
+            </a>Q000603: <a href="http://www.infonuovo.com/odma/faq/Q000603.htm">Latest
+            ODMA Software</a></dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: tbd</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#SteveCartacki">Steve
+            Cartacki</a> (<a href="http://www.infonuovo.com/odma/support/x000011a.msg">1999-12-02</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Recorded</b>: 2001-03-05</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#HappeningToYou"> If This Is Happening to You</a></h3>
+
+<h3>3. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>4. <a href="#Investigation">Investigation of Incident</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>   (2001-03-05)</h2>
+
+<blockquote>
+
+<p>This incident covers two situations:</p>
+
+  <ul>
+    <li>The ODMA 2.0 Trace Log is enabled, but no log is produced.</li>
+    <li>The ODMA 2.0 Trace Log is enabled and errors occur in ODMA operations
+      until the Trace Log is disabled.</li>
+  </ul>
+  <p>Why is this incident critical?</p>
+  <blockquote>
+    <p>Difficulty in troubleshooting an ODMA configuration threatens the
+    usability of ODMA and the confidence of users in being able to operate
+    successfully via ODMA integrations.&nbsp; Having the troubleshooting
+    mechanisms be reliable and trustworthy is critical to ODMA operation.</p>
+  </blockquote>
+</blockquote>
+<h2>2. <a name="HappeningToYou">If This Is Happening to You</a> (2001-03-05)</h2>
+
+<blockquote>
+<p>This situation can be worked-around very easily:</p>
+
+  <ol>
+    <li>Ensure that the <a href="http://www.infonuovo.com/odma/faq/Q000603.htm">latest
+      ODMA 2.0 Connection Manager</a> is installed.</li>
+    <li>When enabling logging by modification of the registy, also specify a
+      specific file to be used for logging.&nbsp; This file must be in a valid
+      directory location that the user has permission to store data into.</li>
+    <li>When running with logging enabled, only have one ODMA-aware application
+      operating at once.&nbsp; This avoids possible conflicts and confusion
+      accessing the log file.</li>
+  </ol>
+</blockquote>
+
+<h2>3. <a name="Actions">Actions</a> Toward Resolution (2001-03-05)</h2>
+
+<blockquote>
+<p>The following actions are being taken to resolve this incident:</p>
+
+<ul>
+  <li>Confirm whether the incident was resolved by creation of correct registry
+    entries with an usable file path for the log.</li>
+  <li>Create a new FAQtip on using ODMA 2.0 Trace logs that guides users in
+    ensuring that
+    <ul>
+      <li>The ODMA 2.0 Connection Manager is installed</li>
+      <li>Logging operation is correctly initiated by registry modification</li>
+      <li>The log is being produced where expected</li>
+    </ul>
+  </li>
+  <li>Create an enhancement request to include control of Connection Manager
+    Logging as part of trouble-shooting and configuration utilities for ODMA 2.0
+    and beyond.</li>
+  <li>Create an incident report against the ODMA Connection Manager 2.0.0
+    implementation to ensure that the logging function is efficient and operates
+    reliably under all conditions (e.g., multiple applications operating at once
+    and the log being viewed while being written).&nbsp; The logging function
+    should also fail benignly, rather than causing repeated error conditions.</li>
+</ul>
+
+</blockquote>
+<h2>4. <a name="Investigation">Investigation</a>      of Incident (2001-03-05):</h2>
+<blockquote>
+<p>The ODMA 2.0 Connection Manager's logging operations were reviewed to
+determine ways that it can fail:</p>
+<ul>
+  <li>If logging is enabled and no filename is specified, the Connection Manager
+    will use a default log file in the Windows <code>SYSTEM</code>
+    subdirectory.&nbsp; This location can be off-limits on configurations of
+    Windows NT and Windows 2000.</li>
+  <li>If logging is enabled and the specified filename is for an inadmissible
+    location (e.g., improper path or drive designation), the Connection Manager
+    will encounter a failure every time that it attempts to append a new log
+    entry to the log file.</li>
+</ul>
+</blockquote>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="../faq/Q000605.htm#SteveCartacki">Steve Cartacki</a></dt>
+    <dd>encountered and reported the <a href="http://www.infonuovo.com/odma/support/x000011b.msg">original
+      incident</a>.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#DalGhotra">Dal
+      Ghotra</a></dt>
+    <dd>provided a <a href="http://www.infonuovo.com/odma/support/x000011b.msg">worked
+      example</a> of successful logging along with work-around suggestions.</dd>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed old ODMA Tech mail for untracked incidents, logged this
+      incident (2000-08-11) and then recorded the incident (2001-03-05) as part
+      of having all <a href="http://www.infonuovo.com/odma/projects/P010200.htm">backlog
+      recorded</a>.&nbsp; Dennis provided the analysis and proposed resolution.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-03-05-10:31 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-05 12:31 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

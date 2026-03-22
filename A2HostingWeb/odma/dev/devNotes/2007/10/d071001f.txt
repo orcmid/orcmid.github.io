@@ -1,0 +1,278 @@
+d071001f.txt 0.01                    UTF-8                   dh:2007-11-30
+
+                       Practical Java ODMA Access 1.00
+                       -------------------------------
+
+     USAGE OF d071001f-0.57-odmjni100.zip REGRESSION-SET ARCHIVE
+
+        This material is for confirmation testing of the Java
+        info.odma.odmjni100 package of the ODMJNI 1.0 Java-ODMA
+        Bridge.
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2007/10/d071001f.htm>.
+        Consult that page for the latest information on updates and
+        the range of odmjni100 version that this regression check
+        is usable for.
+
+        Versions of this regression set are redistributed as components
+        of archives containing material the regression set provides
+        confirmation tests of.  The list of archives carrying this
+        material is also found at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001f.htm>.
+
+
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     IMPORTANT NOTE: The confirmation checks in this regression set
+        apply to ODMJNI 1.0 releases 0.57 through 0.59.  The regression
+        set is not suitable for releases prior to 0.57 nor later than 0.59.
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this regression set, it is necessary to have experience
+   with the following minimum prerequisites:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Creation of a development tree, starting at some folder, <folder>,
+        in which are already installed the ODMJNI 1.0 classes to be
+        confirmed with this regression set, either in a development tree or
+        in a distribution .jar file.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to a <folder> location for
+   which there is not already a <folder>\0.57-odmjni100 subdirectory.
+   Any previous 0.57-odmjni100 subdirectory should be deleted.
+
+   This material does not have to be placed in the ODMJNI100 development
+   tree.  It can be placed anywhere, with the OdmJava.bat file then
+   customized to located the Java SDK being used and the classpath for the
+   ODMJNI 1.0 classes.
+
+   When the material is extracted, with subdirectories, there will be
+   the following structure:
+
+    <folder>
+            d071001e-0.57-odmjni100.zip 0.01
+                                This archive, from which the content has
+                                been extracted in the folders, below
+
+        0.57-odmjni100/
+                d071001f.txt 0.01, this manifest, 12,765 byte file
+                                dated 2007-11-30-16:51
+                d071001f-license.txt 0.01, 3,562 byte file
+                                dated 2007-11-30-16:41
+
+            Check04/
+                    2007-10-13  10:34  44,532 0.57 Check04-source.zip
+                    2007-01-25  19:13   4,328 0.17 CheckChoice.class
+                    2007-03-10  20:32   5,163 0.01 CheckKnown.class
+                    2007-03-10  12:52   4,778 0.00 CheckNew.class
+                    2007-03-10  20:32   6,300 0.04 CheckUtil.class
+                    2007-02-12  17:49  61,440 0.01 CheckUtil.dll
+                    2007-01-24  17:19   1,423 0.01 ConIO.class
+                    2007-01-23  17:01   1,284 0.03 ConLineIO.class
+                    2007-01-24  17:07     370 0.01 ConReader.class
+                    2006-10-23  22:16     367 0.01 ConWriter.class
+                    2007-01-24  17:19     212 0.01 IConIn.class
+                    2007-01-24  17:19     125 0.03 IConIO.class
+                    2007-01-24  17:19     187 0.01 IConLineIn.class
+                    2007-01-24  17:19     130 0.02 IConLineIO.class
+                    2007-01-24  17:19     480 0.01 IConOut.class
+                    2007-03-31  15:15   3,179 0.05 OdmJava.bat
+                    2007-11-29  16:50   3,830 0.02 RunCheck.bat
+
+                results/
+2007-02-12  16:26  20,858 Check04-2007-02-12-1626-0.54-CheckNew.png
+2007-02-12  16:28  24,868 Check04-2007-02-12-1627-0.54-CheckNew.png
+2007-02-12  16:31     377 Check04-2007-02-12-1630-ODM4D.txt
+2007-02-12  17:04   3,820 Check04-2007-02-12-1641-0.54-CheckNew.txt
+2007-02-12  17:04   3,293 Check04-2007-02-12-1641-0.54-Odma-log.txt
+2007-02-12  16:57  23,166 Check04-2007-02-12-1657-0.54-CheckChoice.png
+2007-02-12  17:01  14,947 Check04-2007-02-12-1658-0.54-CheckChoice.png
+2007-02-12  19:37  46,971 Check04-2007-02-12-1937-0.54-CheckChoice.png
+2007-02-12  19:51   5,745 Check04-2007-02-12-1948-0.54-CheckChoice-log.txt
+2007-03-10  21:11  36,536 Check04-2007-03-10-2110-0.57-CheckKnown.png
+2007-03-10  21:22   3,323 Check04-2007-03-10-2111.txt
+2007-03-10  21:38   4,442 Check04-2007-03-10-2112-Log.txt
+2007-04-02  19:39  50,143 Check04-2007-04-02-1937-JarPathChoice.png
+2007-04-02  19:55   1,045 Check04-2007-04-02-1939-odma.txt
+2007-04-02  19:59   3,648 Check04-2007-04-02-1940.txt
+2007-11-15  19:40  11,288 Check04-2007-11-15-1903-log.txt
+2007-11-15  19:18  10,497 Check04-2007-11-15-1904.txt
+2007-11-29  16:53  25,937 Check04-2007-11-29-1653-CheckNew.png
+2007-11-29  17:18   1,183 Check04-2007-11-29-1655-0.59-log.txt
+2007-11-29  17:03   2,544 Check04-2007-11-29-1656-0.59-CheckNew.txt
+2007-11-29  17:25  45,339 Check04-2007-11-29-1726-0.57-CheckChoice.png
+2007-11-29  17:27   1,026 Check04-2007-11-29-1727-0.57-ODM54.txt
+2007-11-29  17:28  36,407 Check04-2007-11-29-1729-0.57-TransferNew.png
+2007-11-29  17:29   8,150 Check04-2007-11-29-1730-0.57-TooMany.png
+2007-11-29  17:47   3,470 Check04-2007-11-29-1731-log.txt
+2007-11-29  17:37   3,724 Check04-2007-11-29-1732.txt
+2007-11-29  17:51  37,114 Check04-2007-11-29-1751-CheckKnownXfr.png
+2007-11-29  18:09   4,172 Check04-2007-11-29-1752-log.txt
+2007-11-29  18:10   4,526 Check04-2007-11-29-1753.txt
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d071001f-0.57-odmjni100.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       PNG Image Viewer for viewing confirmation test screen captures
+                      These captures were made with HyperSnap Version
+                      6.13.02.  They can be viewed with Windows Picture
+                      and Fax Viewer or other image display software
+
+       Utility for viewing or editing simple text files and batch scripts
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+       A Java runtime such as the JRE 1.5 and JDK 1.5 used to develop
+                      and run the Check04 applications in this archive.
+
+       The ODMA32 ODMA 2.0 Connection Manager must be installed for ODMA
+       to be available.
+
+       An ODMA DMS must be installed and available as a default DMS for
+       Application ID "OdmNativeTest"
+
+       These tests have been performed using the ODMASAMP Sample DMS
+       integration distributed with the ODMA 2.0 SDK.
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for review of all of the material.  A folder that is chosen for extracts
+   of all ODMJNI 1.0 distributions is satisfactory.
+
+   The RunCheck.bat script is used to carry out checks with any of CheckNew,
+   CheckChoice, and CheckKnown.
+
+   The RunCheck.bat script depends on the included OdmJava.bat script.
+
+   Adjust OdmJava.bat as necessary to locate the Java version that is used
+   for the tests.  It is assumed that a Java Development Kit (JDK) is used.
+   If there is only a Java runtime, OdmJava should be corrected such that
+   the PATH statement in the script works properly.
+
+   Also adjust OdmJava.bat to set the %OdmClasses% environment variable so
+   that the practical100 and odmjni100 classes can be located.  This can be
+   any of
+
+     * the directory where there is a jar file to be used, where the jar
+       file itself will be named when the RunClicker script is performed
+
+     * the directory that has subfolder sequences info\odma\practical100
+       and info\odma\odmjni100, with the respective packages in the sub-
+       folders at the end.
+
+   The RunCheck.bat file depends on odmjni100.dll being available adjacent
+   to the package, if the jar file directory is named.  Otherwise, the DLL
+   is expected in the %OdmClasses%\info\odma\odmjni100 folder.
+
+   Operation of the confirmation check is by starting a console session and
+   changing to the 0.57-odmjni100\Check04 folder wherever it has been
+   extracted.  Perform the confirmation test using command
+
+        RunClicker Checkapp <optional-package>
+
+   where Checkapp is one of CheckNew, CheckChoice, or CheckKnown
+
+   where the <optional-package> is used in the case where %OdmClasses% is
+   the location of a .jar file to be used.  The <optional-package> parameter
+   is of the form
+
+        \package.jar
+
+   when it is used.
+
+   Consult the transcripts in the results folder for illustrations of the
+   configurations used when those confirmation tests were performed.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  For further details and contact information
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate this archive on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        ODMJNI 1.0 0.57-odmjni100 Regression Set archive d071001f-0.57-
+        odmjni100.zip. ODMA Interoperability Exchange, ODMdev Development
+        Note page d071001f.txt 0.0 (manifest), November 29, 2007.
+        Current version available for download at
+        <http://ODMA.info/dev/devNotes/2007/10/d071001f.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2007-11-30-16:46 Update with replacement of the license document.
+0.00 2007-11-29-22:06 Customize initial manifest for the regression set.
+
+$Header: /ODMdev/info/odma/odmjni100/0.57-odmjni100/d071001f.txt 15    07-11-30 16:51 Orcmid $
+
+                       *** end of d071001f.txt ***

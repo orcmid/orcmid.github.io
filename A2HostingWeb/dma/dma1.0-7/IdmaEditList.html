@@ -1,0 +1,49 @@
+<html><head><title>Interfaces and Methods: IdmaEditList</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaEditList"></a>IdmaEditList</h2>
+<p>Lists are a fundamental feature in managing documents, so there are several operations available for manipulating them and the objects contained within them.  Items within a list are kept in inserted order and can be identified by an index (ordinal position).
+</p><p>
+The methods used to access a DMA List are segmented into two groups of interfaces, the methods that allow readonly access to the list (IdmaList), and the methods that allow modification of the list (IdmaEditList). The IdmaEditList interface is only available on list objects that are editable. For each list datatype, there is a specific interface that offers methods particular to that datatype, as well as all the methods of IdmaEditList, (e.g., IdmaEditListOfString).</p></p>
+<h3><a name="IdmaEditListDeleteElement"></a>IdmaEditList::DeleteElement</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditList::DeleteElement</b> (<br>
+DmaIndex32    <i>iIndex</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list of the element to delete.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method deletes an item from a list based on an ordinal position, provided by the caller.  All following list elements will have their ordinal position decremented by one.  Permitted values for iIndex are 0 through n-1, where n is the number of elements in the list at the time of the call.
+</p><p>
+Items on the list are freed as appropriate for their type.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaEditListTruncateList"></a>IdmaEditList::TruncateList</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaEditList::TruncateList</b> (<br>
+DmaIndex32    <i>iIndex</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>iIndex</i></p></TD><TD><p>input</p></TD><TD><p>The ordinal position in the list which will be the first item deleted.  All following items will also be deleted.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method will delete all items from the list starting with the item at the supplied ordinal position.  All subsequent items in the list will also be deleted.  Items on the list will be released as appropriate for their type.
+</p><p>
+Examples: An index value of zero (0) will result in the list being emptied.  An index value of one (1) will result in all but the first item in the list being deleted.  An index of <i>n</i>-1, where <i>n</i> is the number of items in the list, will result in the last item on the list being deleted.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_INDEX</p></TD><TD><p>The index specified does not reference a valid property or list element.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_READ_ONLY</p></TD><TD><p>Method failed because an object or property is read-only.</p></TD></TR>
+</TABLE>
+<p>    <b>Deferred Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_CONSTRAINT_VIOLATED</p></TD><TD><p>The operation violates a constraint of the implementation.</p></TD></TR>
+<TR><TD><p>DMARC_LIST_BOUNDS_ERROR</p></TD><TD><p>The number of elements in a list is outside the permitted range.</p></TD></TR>
+</TABLE>
+</body></html>

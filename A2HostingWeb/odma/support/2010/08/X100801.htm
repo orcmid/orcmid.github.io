@@ -1,0 +1,293 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X100801: DLL Hijacking Advisory</title>
+<!--$$Header: /ODMACompagno/support/2010/08/X100801.htm 27    10-08-30 11:31 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006.htm of 2005-08-17T20:25Z -->
+
+<base target="_self">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../X00-log.htm#X100801"><font color="#990033">X100801</font></a> 
+		ODMA Support </strong></font>
+
+		<strong><a href="../../X00-log.htm"><font color="#990033">Incident</font></a><font color="#990033"><br>
+      </font></strong>
+</font>
+
+  	<font color="#990033"><strong>
+      <i><font size="5">DLL Hijacking Advisory</font></i></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+
+      <p align="right"><small><b><font face="monospace"><a href="../../../">ODMA</a>&gt;<a href="../../">support</a>&gt;<br>
+      <a href="../">2010</a>&gt;<a href="./">10</a>&gt;</font></b></small></p>
+
+
+      <p align="right"><small>
+		<b><font face="monospace"><a target="_top" href="X100801.htm">X100801</a>&gt;</font></b><br />
+
+
+  		</small>
+</font>
+      <small><small><a href="#0.00">0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2010-08-30<!--webbot bot="Timestamp" endspan i-checksum="12473" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->11:30 -0700<!--webbot bot="Timestamp" endspan i-checksum="11946" --></small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+<dl>
+		<font color="#800080">
+			</dl>
+					<p></p>
+  </font>
+
+<blockquote>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000">Security Exposure</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="../../x00-log.htm#X100801">X100801</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>7 - <font color="#FF0000">Warning</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: ODMA Integration Generally <code>ODMA32.dll</code></b>
+        2.0.0<br>
+		<font face="Courier New" size="2"><b>ODMJNI100.dll </b></font>0.20<font face="Courier New" size="2"><b><br>
+		ODMNative100.lib </b></font>0.28</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information: </b></dt>
+          <dd>
+            <br>
+          </dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: none</td>
+      <td width="50%">
+        <dl>
+          <dt><b>Reported By:&nbsp;
+        </b></dt>
+          <dd>Dennis E. Hamilton, 2010-08-29</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Logged</b>: 2010-08-29<br>
+        <b>Date Recorded</b>: 2010-08-29</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+
+	<div style="float: right; width:170px; height:122px">
+		<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="24%" style="border-collapse: collapse" id="ClustrMap">
+			<tr>
+				<td>
+				<p align="center">
+				<a href="http://clustrmaps.com/counter/maps.php?url=http://ODMA.info" id="clustrMapsLink0">
+				<img src="http://clustrmaps.com/counter/index2.php?url=http://ODMA.info" border=1 alt="Locations of visitors to this page" onError="this.onError=null; this.src='http://www.meetomatic.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://clustrmaps.com/'" ></a><br /><small><small>
+				<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMA.info pages</a></small></small></td>
+			</tr>
+			<!-- Inserted from ODMA /construction/templates/00/c000006c1.htm of 2007-07-18-13:37 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="62426" --></div>
+
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#Mitigation">Mitigation</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>     (2010-08-29):</h2>
+
+<blockquote>
+	<p align="left">There is recently-heightened concern for the way that DLLs 
+	are loaded on the Windows platform.&nbsp; The concern is that a malicious 
+	dynamic link library can be substituted for an authentic one by installing 
+	the counterfeit in a path that has the malicious version be found and 
+	loaded.&nbsp; Once the DLL is loaded, other applications may end up using 
+	the same DLL because it is thought to already be loaded and available.</p>
+	<p align="left">Generally, this vulnerability requires that the desktop 
+	computer have been compromised in order for the malicious DLL to be loaded.&nbsp; 
+	However, if applications are run from shared directories on networks, a 
+	subverted DLL can be loaded from the network location.</p>
+</blockquote>
+<h3 align="left">1.1 Vulnerable ODMA Applications</h3>
+
+<blockquote>
+  <p align="left">ODMA-aware software packages that load <b>
+	<font face="Courier New" size="2">ODMA32.dll</font></b> may be vulnerable to 
+	DLL hijacking when the loading of the DLL is by name searching instead of by 
+	loading from a safe system-protected location.&nbsp; Any software package 
+	that installs an <b><font face="Courier New" size="2">ODMA32.dll</font></b> 
+	in its own directory is likely to be vulnerable to this situation by design.</p>
+</blockquote>
+  <h3 align="left">1.2 Vulnerable ODMA Libraries</h3>
+<blockquote>
+	<p align="left">Libraries that provides support for application-software 
+	integration with ODMA may use vulnerable built-in methods.</p>
+	<p align="left">The distributed versions of ODMJNI beta packages load <b>
+	<font face="Courier New" size="2">ODMA32.dll</font></b> in a manner that 
+	allows substitution anywhere in the DLL search path (with default location 
+	being that of the Java version that is running).&nbsp; This vulnerability is 
+	in the <b><font face="Courier New" size="2">OdmNative100.lib</font></b> used 
+	in the construction of <b><font face="Courier New" size="2">odjni100.dll</font></b>.</p>
+	<p align="left">In addition, <b><font face="Courier New" size="2">
+	odmjni100.dll</font></b>, which is always located in the same directory as 
+	the ODMJNI-using application, makes use of the Java system's <b>
+	<font face="Courier New" size="2">awt.dll</font></b> file by name.&nbsp; 
+	This DLL cannot be hijacked if it is only installed in the directory of the 
+	java installation that loads the application.&nbsp; </p>
+</blockquote>
+  <h3><b>1.3 Vulnerable DMS Integrations</b></h3>
+
+<blockquote>
+
+  <p>ODMA 2.0 loads DMS integration software based on registry settings.&nbsp; 
+	These registry settings, below the <b><font face="Courier New" size="2">
+	HKEY_CLASSES_ROOT\ODMA32</font></b> key, should always load DLLs by absolute 
+	paths.&nbsp; Failure to use an absolute file-system path is unlikely.</p>
+</blockquote>
+<h2>2. <a name="Mitigation">Mitigation</a></h2>
+<blockquote>
+	<p>The following steps are recommended to minimize vulnerability:</p>
+	<ul>
+		<li>Do not execute applications that access internal document-management 
+		systems from network-shared filesystem locations.<br>
+&nbsp;&nbsp; </li>
+		<li>On client systems, do not install ODMA32.dll anywhere but the 
+		Windows System directory.&nbsp; Copies should not be carried in the same 
+		directory as applications and copies used in testing and for setup of 
+		ODMA should not be where applications could accidently load them.<br>
+&nbsp; </li>
+		<li>Ensure that DMS integration DLLs loaded by ODMA are always 
+		registered with absolute path names to files on the local system.</li>
+	</ul>
+	<p>No software updates or special releases are planned as further 
+	mitigation.&nbsp; Any future production release of <b>
+	<font face="Courier New" size="2">OdmNative100.lib</font></b> and ODMJNI 
+	will limit <b><font face="Courier New" size="2">ODMA32.dll</font></b> 
+	loading to use only safe system locations.&nbsp; There is no plan for such a 
+	release at this time..</p>
+</blockquote>
+<blockquote>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="../../../faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>created this incident report.</dd>
+    <dt>&nbsp;</dt>
+  </dl>
+  </blockquote>
+</font>
+
+<p>&nbsp;</p>
+<h2><a name="FurtherInformation">Related Material</a></h2>
+<blockquote>
+	<ul>
+		<li><b>X100801a: <a href="X100801a.htm">Diary 
+		&amp; Job Jar</a> </b></li>
+	</ul>
+</blockquote>
+		<font color="#800080">
+  </font>
+
+<dl><small>
+		<font color="#800080">
+
+
+
+
+  </font></small></dl>
+
+  <hr noshade color="#990033">
+
+<dl>
+
+<small>
+<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+<dt><b><a name="0.00">0.00</a>  2010-08-29 Establish Initial Report</b></dt>
+  <dd>Also start a <a href="X100801a.htm">job jar</a> page for recording work 
+	items for building more 
+	content.&nbsp;</small></dl>
+
+  <hr noshade color="#990033">
+
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="11%">
+      <p><a rel="nofollow" href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a></p>
+    </td>
+    <td width="64%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="24%">
+      <p align="right"><font size="-2">created 2010-08-29-20:21 -0700 (pdt) by orcmid<br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 10-08-30 11:31 $<br>
+      $$Revision: 27 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

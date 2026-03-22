@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<!--$$Header: /A2HostingWeb/orcmid/sostegno/x040702.htm 31    26-03-22 14:18 Orcmid $-->
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>X040702: Blogger FTP Corruption</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>Incident Report <a href="x000001-log.htm#X040702">
+      <font color="#990033">X040702</font></a><br>
+      <i><big>
+      <big>Blogger FTP Corruption</big></big></i></strong></font>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">sostegno</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="X040702.htm" target="_top">X040702</a>&gt;</code></b><br>
+      <a href="#0.10"><small>
+      <small>0.10</a> <!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" -->
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr noshade color="#990033">
+
+<blockquote>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000">Data Corruption -
+        Transient?</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="x000001-log.htm#X040702">X040702</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b><font color="#FF0000">9 - Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: Develop Workarounds and Incident
+        Containment Procedures</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Subject: Blogger.com </b>version 5.15</td>
+      <td width="50%"><b>Repaired in: </b>?.??</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="../construction/orcmid.htm">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b><a href="../construction/orcmid.htm">Dennis Hamilton</a>
+        (2004-07-02)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2004-07-15</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h2>1. <a name="Summary">Summary</a>     (2004-08-03):</h2>
+
+<blockquote>
+  <p>On Friday 2004-07-02 at around 04:44, I was posting a note on &quot;<a href="X040702D.htm">Why
+  Learn Assembly Language</a>&quot; from my account on Blogger.com to my <b><a href="../BlunderDome/clueless/">Professor
+  von Clueless in the BlunderDome</a></b> blog.&nbsp; The posting was reported
+  to be successful.&nbsp; However, I could no longer view my blog default page
+  or the page where the article was supposed to have been loaded.</p>
+  <p>I discovered that all files uploaded along with the posting consisted of
+  corrupted binary information. Repeating the posting did not change anything.&nbsp;
+  Four files, including the Atom site feed, had been corrupted.&nbsp; In
+  addition, my profile page contains a link to the corrupted posting.</p>
+</blockquote>
+
+  <h2>2. <a name="Approach">Approach</a> (2004-07-31)</h2>
+
+<blockquote>
+  <p>I submitted a trouble report to Blogger.com on the morning of July 2.&nbsp; I then began posting notices that the
+  blogs should not be updated or commented.&nbsp; Later that same day, I changed
+  the access rights of the account that I have Blogger.com use for FTP so that
+  no more transfers could take place.&nbsp; I received a confirmation of my
+  report from Blogger.com later that day.</p>
+  <p>I restored the material on Professor von Clueless to the last backup.&nbsp;
+  I did not overcome the problem, I simply restored what I could and left the
+  site locked-down.</p>
+  <p>On the afternoon of Tuesday, 2004-07-06, I received a response from Blogger
+  support that said&nbsp;</p>
+  <blockquote>
+  <p> &quot;I visited your blog and you appear to
+  have resolved the problem yourself.&nbsp; Please let us
+  know if you have any further questions or concerns.&quot;</p>
+  </blockquote>
+  <p>I have not resolved the problem myself, I had simply restored data to the
+  point preceding the corruption.&nbsp; I don't know how it happened
+  or whether or not it will happen again, so I am undertaking a slow part-time process
+  to capture everything about the incident and then restore operation.&nbsp; I
+  will not commit much new work to the blog until I am confident that I am
+  prepared to confine damage and recover from any recurrence of the incident.</p>
+  <p>As part of the lockdown process, I posted modified default pages for all of
+  my blogs and I also learned how to place anouncements directly into the Atom
+  site feeds without relying on Blogger.com.</p>
+  <p>My first priority is to have operation of the blogs restored and to have a
+  process in place for rapidly recovering from any additional failures of this
+  or some other nature.</p>
+  <p>Then I will re-open the problem report with Blogger.com and let them know
+  that I do not consider the situation resolved.&nbsp; I can then offer them
+  complete incident information for them to use as they see fit in establishing
+  the root cause and determining whether the situation is resolved.</p>
+  <p>I also see this as important practice for capturing incidents, quickly
+  recovering, and then completing any software forensics for all misadventures
+  that arise involving these web sites and the blogs on them.</p>
+</blockquote>
+
+<h2>3. <a name="Remedies">Remedies</a>   (2004-07-23):&nbsp;&nbsp;</h2>
+<blockquote>
+  Workarounds or anything else we know&nbsp;
+</blockquote>
+<h2>4. <a name="Analysis">Analysis</a>     (2004-08-03):</h2>
+<h3>4.1 <a name="CorruptedData">Corrupted Data</a></h3>
+<blockquote>
+  <p>The following files have been captured as part of this incident report:</p>
+  <ul>
+    <li>The corrupted <b><kbd><a href="X040702D.htm">2004/07/why-learn-assembly-language.asp</a></kbd></b>
+      (<b><kbd><a href="X040702D.bin" target="_blank">.bin</a></kbd></b><a href="X040702D.bin" target="_blank">
+      file</a>) article file.</li>
+    <li>The corrupted <b><kbd> default.asp</kbd></b> (<b><kbd><a href="X040702E.bin" target="_blank">.bin</a></kbd></b><a href="X040702E.bin" target="_blank">
+      file</a>) blog home page file.</li>
+    <li>The corrupted <b><kbd> clu-atom.xml</kbd></b> (<b><kbd><a href="X040702F.bin" target="_blank">.bin</a></kbd></b><a href="X040702F.bin" target="_blank">
+      file</a>) site feed file.</li>
+    <li>The corrupted <kbd><b> 2004_06_27_clu-chive.asp</b></kbd> (<b><kbd><a href="X040702G.bin" target="_blank">.bin</a></kbd></b><a href="X040702G.bin" target="_blank">
+      file</a>) archive
+      page.</li>
+  </ul>
+  <p>The files have been replaced if there were previous versions that could be
+  restored.&nbsp; Other files have been removed so that there is no danger of a
+  blog reader inadvertently retrieving a corrupted Atom site feed or blog web
+  page.&nbsp;</p>
+  <p>I also learned [2004-08-02] that my profile on Blogger.com contains a link
+  to where the corrupted article post was stored:</p>
+</blockquote>
+  <p align="center"><img border="0" src="X040702H.png" width="509" height="571"></p>
+<h3>3.2 Blogger.com Notification and Response</h3>
+<blockquote>
+  <p>There's the initial e-mail I sent and the responses I received, including
+  the last one thinking I had solved the problem because I had rolled back the
+  impacted pages.&nbsp; I need to re-open the incident with Blogger.com when I
+  have solved my urgent needs and have time to interact with them again.&nbsp;
+  This incident report will provide everything that they need.</p>
+</blockquote>
+  <h3>3.3 Lockdown</h3>
+<blockquote>
+  <ul>
+    <li>2004-07-02 Locked-down the sites and made manual updates to the blog default pages.&nbsp;
+      Blogger is locked out and any pages that are restored or deleted have had their
+      corrupted versions <a href="#CorruptedData">quarantined</a>.</li>
+    <li>2004-07-15 Setup Atom Feed with <a href="X040702B.htm"> Lockdown information</a>&nbsp;<br>
+  2004-07-15 Create incident page and <a href="X040702A.htm">job jar</a></li>
+    <li>2004-07-24 Complete providing <a href="X040702B.htm">Lockdown Feed
+      Notices</a> that tie to Incident materials.<br>
+      This led to recognition of Invalid Atom discrepancies and <a href="x040703.htm">another
+      incident report</a>.</li>
+  </ul>
+</blockquote>
+  <h3>3.4 Develop Incident Response Materials</h3>
+<blockquote>
+  <ul>
+    <li>2004-07-30 Use Feed to <a href="X040702C.htm"> announce restoration approach</a></li>
+    <li>2004-08-03 <a href="../BlunderDome/B040801.htm"><b> Create slam-down pages</b></a> and verify on Wingnut</li>
+    <li>Bring Wingnut to readiness for restoration</li>
+    <li>Restore the blogs as correct FTP is confirmed for each blog</li>
+    <li>Complete analysis and updating of notes</li>
+  </ul>
+</blockquote>
+
+  <hr noshade color="#990033">
+
+<dl>
+  <dt><small><b><a name="0.10">0.10</a> 2004-07-31-23:42 Link in captured
+    information</b></small></dt>
+  <dd><small>Add basic captured information and minimal description that ties in
+    material developed so far.&nbsp; Change class of incident from Fatal Error
+    to Data Corruption.</small></dd>
+
+<small>
+  <dt><b><a name="0.00">0.00</a> 2004-07-15-22:48 Create Placeholder for
+    Incident Identification and Analysis</b></dt>
+  <dd>Provide enough so that announced restoration procedures can refer here as
+    a place to see the latest on incident resolution as well as establishment of
+    incident response procedures for any recurrence.</dd>
+</dl></small>
+
+  <hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%">
+      <p><a href="construction.htm" target="_top"><img border="0" src="../blunderdome/wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a></p>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-15-22:48 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:18 $<br>
+      $$Revision: 31 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

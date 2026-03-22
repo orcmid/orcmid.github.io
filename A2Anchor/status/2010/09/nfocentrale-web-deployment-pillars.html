@@ -1,0 +1,1168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Movable Type 4.34-en" />
+<link rel="stylesheet" href="http://nfocentrale.com/status/styles.css" type="text/css" />
+<link rel="start" href="http://nfocentrale.com/status/" title="Home" />
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://nfocentrale.com/status/atom.xml" />
+<script type="text/javascript" src="http://nfocentrale.com/status/mt.js"></script>
+
+
+    
+    <link rel="prev bookmark" href="http://nfocentrale.com/status/2010/09/six-apart-acquisition-and-movable-type-future.html" title="Six Apart Acquisition and Movable Type Future" />
+    <link rel="next bookmark" href="http://nfocentrale.com/status/2010/09/woops-more-obsolescence-windows-live-spaces.html" title="Woops, More Obsolescence: Windows Live Spaces" />
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html"
+    trackback:ping="http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/49"
+    dc:title="nfoCentrale Web Deployment Pillars"
+    dc:identifier="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html"
+    dc:subject="Apache"
+    dc:description="When I had to become much more web-server savvy as part of having a private installation of Movable Type on my web-hosting account, I realized that my web site deployment and maintenance model had exceeded my mental grasp.&#160; I spent..."
+    dc:creator="Dennis E. Hamilton"
+    dc:date="2010-09-23T15:47:25-08:00" />
+</rdf:RDF>
+-->
+
+    
+    <title>nfoCentrale Web Deployment Pillars - nfoCentrale Status</title>
+</head>
+<body id="mt-blog" class="mt-entry-archive layout-tw">
+    <div id="container">
+        <div id="container-inner">
+
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name"><a href="http://nfocentrale.com/status/" accesskey="1">nfoCentrale Status</a></div>
+            <div id="header-description">nfoCentrale Status is a blog used to report status changes and other information related to the care and feeding of the nfoCentrale sites and their blogs.</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-48" class="entry-asset asset hentry">
+                                <div class="asset-header">
+                                    <h1 id="page-title" class="asset-name entry-title">nfoCentrale Web Deployment Pillars</h1>
+                                    <div class="asset-meta">
+                                        <span class="byline">
+
+                                            By <span class="vcard author"><a class="fn url" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span> on <abbr class="published" title="2010-09-23T15:47:25-08:00">September 23, 2010  3:47 PM</abbr>
+
+                                        </span>
+
+                                        <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html#comments">3 Comments</a>
+
+
+                                        <span class="separator">|</span> <a href="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html#trackbacks">5 TrackBacks</a>
+
+                                    </div>
+                                </div>
+                                <div class="asset-content entry-content">
+
+                                    <div class="asset-body">
+                                        <p><a href="http://nfocentrale.com/status/images/2010/nfoCentraleWebDeploymentPillars_D381/F10xy56201009231518nfoCentraleDeployment0.12.png"><img style="border-bottom: 0px; border-left: 0px; margin: 0px 10px 10px 0px; display: inline; border-top: 0px; border-right: 0px" title="nfoCentrale Web Deployment model (print preview)" border="0" alt="nfoCentrale Web Deployment model (print preview)" align="left" src="http://nfocentrale.com/status/images/2010/nfoCentraleWebDeploymentPillars_D381/F10xy56201009231518nfoCentraleDeployment0.12_thumb.png" width="305" height="238" /></a>When I had to become much more web-server savvy as part of having a private installation of <a class="zem_slink" title="Movable Type" href="http://www.movabletype.com/" rel="homepage">Movable Type</a> on my web-hosting account, I realized that my web site deployment and maintenance model had exceeded my mental grasp.&#160; I spent several days making diagrams using borders around groups of annotated spreadsheet cells.&#160; Although I could have used Visio, I found that Excel was much simpler for this kind of diagramming.</p>  <p>A full image of the diagram is not great for viewing on the web.&#160; But you can get a general sense of the way the pillars are connected, starting with my development web folders on the left and my Internet domains on the right.&#160; This image is better for keeping inside my notebooks where I can remind myself how to stage something I am working on.</p>  <p>This diagram is going to see heavy duty in defining and documenting the more-detailed procedures that make this work.&#160; A view of the worksheet itself is a little better for taking a closer look:</p>  <p>&#160;<a href="http://nfocentrale.com/status/images/2010/nfoCentraleWebDeploymentPillars_D381/F10xy57201009231521nfoCentraleDeployment0.12.png"><img style="border-bottom: 0px; border-left: 0px; margin: 5px auto; display: block; float: none; border-top: 0px; border-right: 0px" title="nfoCentrale Deployment Model 0.12 (worksheet view) " border="0" alt="nfoCentrale Deployment Model 0.12 (worksheet view) " src="http://nfocentrale.com/status/images/2010/nfoCentraleWebDeploymentPillars_D381/F10xy57201009231521nfoCentraleDeployment0.12_thumb.png" width="701" height="427" /></a> </p>  <p>This is draft 0.12.&#160; I will be refining the diagram as I work through further details.&#160; Here is the Excel worksheet that I used for this version:</p>  <p><iframe style="width: 707px; height: 658px" height="346" src="http://r.office.microsoft.com/r/rlidExcelEmbed?su=3713586660967533479&amp;Fi=SD33894F6489994BA7!1748&amp;AllowInteractivity=False" frameborder="0" width="800" scrolling="yes"></iframe></p>  <p></p>  <p></p>  <p>&#160;</p>  <p></p>  <div style="margin-top: 10px; height: 15px" class="zemanta-pixie">   <div style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; float: none; padding-top: 0px" id="scid:0767317B-992E-4b12-91E0-4F059A8CECA8:78e7de56-b7e8-4bab-a6db-2dd7d7fc1415" class="wlWriterEditableSmartContent">del.icio.us Tags: <a href="http://del.icio.us/popular/Microsoft+Excel" rel="tag">Microsoft Excel</a>, <a href="http://del.icio.us/popular/Microsoft+Office+Web" rel="tag">Microsoft Office Web</a>, <a href="http://del.icio.us/popular/nfoCentrale" rel="tag">nfoCentrale</a>, <a href="http://del.icio.us/popular/web+development" rel="tag">web development</a>, <a href="http://del.icio.us/popular/blog+development" rel="tag">blog development</a>, <a href="http://del.icio.us/popular/Internet+Information+Server" rel="tag">Internet Information Server</a>, <a href="http://del.icio.us/popular/Visual+Source+Safe" rel="tag">Visual Source Safe</a>, <a href="http://del.icio.us/popular/FrontPage+Server+Extensions" rel="tag">FrontPage Server Extensions</a>, <a href="http://del.icio.us/popular/FTP+transfer" rel="tag">FTP transfer</a>, <a href="http://del.icio.us/popular/Apache+web+server" rel="tag">Apache web server</a></div>    <p><img style="border-bottom-style: none; border-right-style: none; border-top-style: none; float: right; border-left-style: none" class="zemanta-pixie-img" alt="" src="http://img.zemanta.com/pixy.gif?x-id=b0a7832c-865b-47cb-966d-c2a57cf0efe8" /></p> </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="asset-footer">
+
+    
+                                    <div class="entry-categories">
+                                        <h4>Categories<span class="delimiter">:</span></h4>
+                                        <ul>
+                                            <li><a href="http://nfocentrale.com/status/web-development/apache/default.htm" rel="tag">Apache</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/web-development/ftp/default.htm" rel="tag">FTP</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/web-development/frontpage/default.htm" rel="tag">FrontPage</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/web-development/iis/default.htm" rel="tag">IIS</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/web-development/vss/default.htm" rel="tag">VSS</a><span class="delimiter">,</span></li> <li class="entry-category"><a href="http://nfocentrale.com/status/web-development/default.htm" rel="tag">web development</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                </div>
+                            </div>
+
+
+                    <div id="trackbacks" class="trackbacks">
+    <h2 class="trackbacks-header">5 TrackBacks</h2>
+
+    
+    
+    <div class="trackbacks-info">
+        <p>TrackBack URL: http://nfocentrale.com/cgi-bin/mt/mt-tb.cgi/49</p>
+    </div>
+    
+
+
+    
+    
+        
+    <div class="trackbacks-content">
+        
+        <div class="trackback" id="ping-933">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://nfocentrale.com/status/2010/11/the-2011-nfoprojects-launch-crunch-begins.html" rel="nofollow">The 2011 nfoProjects Launch Crunch Begins</a> from nfoCentrale Status on <a href="#ping-933" rel="nofollow">November  7, 2010  2:46 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        I’ve been looking at all of the projects that I have and the number of burners there are for my efforts. In the past week, I realized that I needed a consolidated plan with defensible, risk-managed timelines for getting to... <a href="http://nfocentrale.com/status/2010/11/the-2011-nfoprojects-launch-crunch-begins.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <div class="trackback" id="ping-940">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://nfocentrale.com/status/2010/11/whs-uh-oh-microsoft-wants-to-improve-windows-home-server.html" rel="nofollow">WHS: Uh Oh, Microsoft Wants to &ldquo;Improve&rdquo; Windows Home Server</a> from nfoCentrale Status on <a href="#ping-940" rel="nofollow">November 24, 2010  1:42 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        There’s a big dust-up about a mammoth breaking change that is coming in the successor to Windows Home Server 1.0. This week, the Microsoft team announced that the Drive Extender technology was being removed from the planned Windows Home Server... <a href="http://nfocentrale.com/status/2010/11/whs-uh-oh-microsoft-wants-to-improve-windows-home-server.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <div class="trackback" id="ping-954">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://nfocentrale.com/status/2011/01/movable-type-oh-and-about-that-security-update.html" rel="nofollow">Movable Type: Oh, and About that Security Update</a> from nfoCentrale Status on <a href="#ping-954" rel="nofollow">January 20, 2011  8:04 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        While I was setting up for my Scampo Deathwatch, I brought up the Movable Type dashboard on this site.&#160; Oh my, there is a security update of Movable Type that has been available for a month while I was paying... <a href="http://nfocentrale.com/status/2011/01/movable-type-oh-and-about-that-security-update.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <div class="trackback" id="ping-1122">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://nfocentrale.com/status/2011/03/web-deployment-mitigating-windows-7-frontpage-client-difficulties.html" rel="nofollow">Web Deployment: Mitigating Windows 7 FrontPage Client Difficulties</a> from nfoCentrale Status on <a href="#ping-1122" rel="nofollow">March  6, 2011  3:13 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        Wholesale upgrading to Microsoft Windows 7 on the Centrale SOHO LAN breaks the existing nfoCentrale&#160;web deployment model.&#160; Until I can resolve that problem, I must keep a Windows XP PC system operating well enough to sustain the web-deploymen... <a href="http://nfocentrale.com/status/2011/03/web-deployment-mitigating-windows-7-frontpage-client-difficulties.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <div class="trackback" id="ping-4671">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://nfocentrale.com/status/2011/07/what-yet-another-web-site----orcmid-apache.html" rel="nofollow">What? Yet Another Web Site -- orcmid @ Apache</a> from nfoCentrale Status on <a href="#ping-4671" rel="nofollow">July  3, 2011  2:57 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        Coming soon: orcmid @ Apache As a newly-minted Initial Committer on the Apache OpenOffice.org Incubator Podling, there is a *nix account and hosted web pages beckoning to me.&#160; Not there yet?&#160; Well, I am about repairing that. It is natural... <a href="http://nfocentrale.com/status/2011/07/what-yet-another-web-site----orcmid-apache.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        
+    
+</div>
+
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">3 Comments</h2>
+    
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-19" class="comment entry-author-comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">
+                    <a class="commenter-profile" href="http://orcmid.com/construction/orcmid.htm"><img alt="Author Profile Page" src="http://nfocentrale.com/mt-static/images/comment/mt_logo.png" width="16" height="16" /></a>
+
+                    <span class="vcard author"><a title="http://orcmid.com/construction/orcmid.htm" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span>
+
+                    | <a href="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html#comment-19"><abbr class="published" title="2010-09-23T18:10:59-08:00">September 23, 2010  6:10 PM</abbr></a>
+
+                    | <a title="Reply" href="javascript:void(0);" onclick="mtReplyCommentOnClick(19, 'Dennis E. Hamilton')">Reply</a>
+
+                </span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>I have updated the Excel Worksheet to 0.13, although there is no difference in the data.  I discovered that where there is a selected cell determines what the embedded Excel WebApp shows in the window when you first reach this page.  So I tweaked it a little.</p>
+
+<p>Although off-topic, I also discovered that my Desktop Office 2007 applications will now launch properly if I launch from this Skydrive copy, and it will save back there automatically.  That wasn't working when Skydrive consolidation was first done, earlier this year.</p>
+        </div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-20" class="comment entry-author-comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">
+                    <a class="commenter-profile" href="http://orcmid.com/construction/orcmid.htm"><img alt="Author Profile Page" src="http://nfocentrale.com/mt-static/images/comment/mt_logo.png" width="16" height="16" /></a>
+
+                    <span class="vcard author"><a title="http://orcmid.com/construction/orcmid.htm" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span>
+
+                    | <a href="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html#comment-20"><abbr class="published" title="2010-09-23T21:28:10-08:00">September 23, 2010  9:28 PM</abbr></a>
+
+                    | <a title="Reply" href="javascript:void(0);" onclick="mtReplyCommentOnClick(20, 'Dennis E. Hamilton')">Reply</a>
+
+                </span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>I thought I'd try my luck to see if I could annotate the spreadsheet with comments that would show up in the embedded view.  No such luck.  If you look at the full-document view you'll see a notification that the Excel document has features that aren't supported in the web view.  Had my hopes up, but pleased with how I was informed what didn't work. </p>
+        </div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-21" class="comment entry-author-comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">
+                    <a class="commenter-profile" href="http://orcmid.com/construction/orcmid.htm"><img alt="Author Profile Page" src="http://nfocentrale.com/mt-static/images/comment/mt_logo.png" width="16" height="16" /></a>
+
+                    <span class="vcard author"><a title="http://orcmid.com/construction/orcmid.htm" href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a></span>
+
+                    | <a href="http://nfocentrale.com/status/2010/09/nfocentrale-web-deployment-pillars.html#comment-21"><abbr class="published" title="2010-09-23T22:03:45-08:00">September 23, 2010 10:03 PM</abbr></a>
+
+                    | <a title="Reply" href="javascript:void(0);" onclick="mtReplyCommentOnClick(21, 'Dennis E. Hamilton')">Reply</a>
+
+                </span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>Oh, before I forget.  I did this entire post with Windows Live Writer, and the SkyDrive embed code worked just fine.  I thought it hadn't worked, at first, but it was apparently just a little slow to show up.  I was also able to resize the default frame to fit the page width and have more depth as well.  The direct link to the file on SkyDrive is <a href="http://cid-33894f6489994ba7.office.live.com/view.aspx/Public/WebDevelopment-2010-09-23-1439-Deployment.xlsx">http://cid-33894f6489994ba7.office.live.com/view.aspx/Public/WebDevelopment-2010-09-23-1439-Deployment.xlsx</a></p>
+        </div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+    
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">Leave a comment</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://nfocentrale.com/cgi-bin/mt/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+                <input type="hidden" name="static" value="1" />
+                <input type="hidden" name="entry_id" value="48" />
+                <input type="hidden" name="__lang" value="en" />
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id" />
+                <input type="hidden" name="armor" value="1" />
+                <input type="hidden" name="preview" value="" />
+                <input type="hidden" name="sid" value="" />
+                <div id="comments-open-data">
+                    <div id="comment-form-name">
+                        <label for="comment-author">Name</label>
+                        <input id="comment-author" name="author" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-email">
+                        <label for="comment-email">Email Address</label>
+                        <input id="comment-email" name="email" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-url">
+                        <label for="comment-url">URL</label>
+                        <input id="comment-url" name="url" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" value="1" accesskey="r" />
+                        <label for="comment-bake-cookie">Remember personal info?</label>
+                    </div>
+                </div>
+                <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-text">
+                    <label for="comment-text">Comments
+                    (You may use HTML tags for style)</label>
+                    <textarea id="comment-text" name="text" rows="15" cols="50" onfocus="mtCommentFormOnFocus()"></textarea>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+                    <input type="submit" accesskey="v" name="preview_button" id="comment-preview" value="Preview" onclick="this.form.preview.value='1';" />
+                    <input type="submit" accesskey="s" name="post" id="comment-submit" value="Submit" />
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <script type="text/javascript">
+    <!--
+    mtAttachEvent("load", mtEntryOnLoad);
+    mtAttachEvent("unload", mtEntryOnUnload);
+    //-->
+    </script>
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+                    <div id="beta">
+    <div id="beta-inner">
+
+
+    
+    <div class="widget-search widget">
+    <h3 class="widget-header">Search</h3>
+    <div class="widget-content">
+        <form method="get" action="http://nfocentrale.com/cgi-bin/mt/mt-search.cgi">
+            <input type="text" id="search" class="ti" name="search" value="" />
+
+            <input type="hidden" name="IncludeBlogs" value="1" />
+
+            <input type="hidden" name="limit" value="20" />
+            <input type="submit" accesskey="4" value="Search" />
+        </form>
+    </div>
+</div>
+
+<div class="widget-about-this-page widget">
+    <h3 class="widget-header">
+
+        About this Entry
+
+
+    </h3>
+    <div class="widget-content">
+
+
+        <p class="first">This page contains a single entry by <a href="http://orcmid.com/construction/orcmid.htm">Dennis E. Hamilton</a> published on <em>September 23, 2010  3:47 PM</em>.</p>
+    
+        <p><a href="http://nfocentrale.com/status/2010/09/six-apart-acquisition-and-movable-type-future.html">Six Apart Acquisition and Movable Type Future</a> was the previous entry in this blog.</p>
+    
+    
+        <p><a href="http://nfocentrale.com/status/2010/09/woops-more-obsolescence-windows-live-spaces.html">Woops, More Obsolescence: Windows Live Spaces</a> is the next entry in this blog.</p>
+    
+
+
+
+
+
+        <p>Find recent content on the <a href="http://nfocentrale.com/status/">main index</a> or look in the <a href="http://nfocentrale.com/status/archives.html">archives</a> to find all content.</p>
+
+    </div>
+</div>
+<div class="widget-archive widget-archive-category widget">
+    <h3 class="widget-header">Categories</h3>
+    <div class="widget-content">
+    
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/default.htm" title="Software tools and their usage in blog development for the nfoCentrale sites.">blog development (21)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/blogger/default.htm">Blogger (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/movable-type/default.htm">Movable Type (20)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/windows-live-writer/default.htm">Windows Live Writer (26)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blog-development/zemanta/default.htm">Zemanta (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/default.htm">blogs (12)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/kiln-sitters-digest/default.htm">Kiln Sitter's Digest (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/numbering-peano/default.htm">Numbering Peano (4)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-lair/default.htm">Orcmid's Lair (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/orcmids-live-hideout/default.htm">Orcmid's Live Hideout (11)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/professor-von-clueless/default.htm">Professor von Clueless (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/pursuing-harmony/default.htm">Pursuing Harmony (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/spanner-wingnuts-muddleware-lab/default.htm">Spanner Wingnut's Muddleware Lab (9)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/blogs/nfocentrale-status/default.htm">nfoCentrale Status (14)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/default.htm">centrale (11)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/lan/default.htm">LAN (3)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/olpc/default.htm">OLPC (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/whs/default.htm">WHS (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/astraendo/default.htm">astraendo (7)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/blocco/default.htm">blocco (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/centro/default.htm">centro (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/ceramica/default.htm">ceramica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/compagno/default.htm">compagno (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/default.htm">conclave (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave333/default.htm">conclave.333 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/conclave/conclave386/default.htm">conclave.386 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/liberta/default.htm">liberta (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/default.htm">microcomputers (2)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/atari-800/default.htm">Atari 800 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h8/default.htm">H8 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/h89/default.htm">H89 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/hz158/default.htm">HZ158 (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/microcomputers/ti-sr52/default.htm">TI SR52 (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/quadro/default.htm">quadro (5)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scampo/default.htm">scampo (13)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/scritto/default.htm">scritto (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/centrale/retired/default.htm">{retired} (2)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/default.htm">ecostructure (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/ecostructure/wp7/default.htm" title="Devices that serve as apparatus of the ecostructure, including when that is the role of endpoints in Centrale and the nfoCentrale web presence.">devices (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/default.htm">sites (4)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dma/default.htm">DMA (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/dmware/default.htm">DMware (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/infonuovo/default.htm">InfoNuovo (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nuovodoc/default.htm">NuovoDoc (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/default.htm">ODMA (1)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/odma/odmdev/default.htm">ODMdev (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/eoware/default.htm">eoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/millennia-antica/default.htm">millennia-antica (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/miser/default.htm">miser (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/default.htm">nfoCentrale (13)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralecom/default.htm">nfocentrale.com (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfocentrale/nfocentralenet/default.htm">nfocentrale.net (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoware/default.htm">nfoWare (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/nfoworks/default.htm">nfoWorks (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmid/default.htm">orcmid (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidtv/default.htm">orcmid.tv (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/orcmidapache/default.htm">orcmid@apache (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/trost/default.htm">trost (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/worthiness/default.htm">worthiness (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/sites/retired-1/default.htm">{retirees} (3)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/strumenti/default.htm" title="The tools and instruments that are part of the inventory of software and accessories deployed on Centrale, along with those whose principle application is blog, web, and other ecostructure development.">strumenti (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/default.htm">web development (22)</a>
+        
+        
+        
+        <ul>
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/apache/default.htm">Apache (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/ftp/default.htm">FTP (2)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/frontpage/default.htm">FrontPage (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/iis/default.htm">IIS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/linux/default.htm">Linux (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/pws/default.htm">PWS (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/vss/default.htm">VSS (8)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/windows/default.htm">Windows (1)</a>
+        
+        
+            </li>
+        
+    
+        
+        
+            <li><a href="http://nfocentrale.com/status/web-development/obsolete/default.htm">{obsolete} (1)</a>
+        
+        
+            </li>
+        
+        </ul>
+        
+    
+            </li>
+        
+        </ul>
+        
+    
+    </div>
+</div>
+
+
+
+
+    <div class="widget-archive-monthly widget-archive widget">
+    <h3 class="widget-header">Monthly <a href="http://nfocentrale.com/status/archives.html">Archives</a></h3>
+    <div class="widget-content">
+        <ul>
+        
+            <li><a href="http://nfocentrale.com/status/2011/07/default.htm">July 2011 (3)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/03/default.htm">March 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/02/default.htm">February 2011 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2011/01/default.htm">January 2011 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/12/default.htm">December 2010 (2)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/11/default.htm">November 2010 (4)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/10/default.htm">October 2010 (7)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/09/default.htm">September 2010 (6)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/08/default.htm">August 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/07/default.htm">July 2010 (5)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/06/default.htm">June 2010 (8)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2010/05/default.htm">May 2010 (15)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/11/default.htm">November 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/09/default.htm">September 2007 (1)</a></li>
+        
+    
+        
+            <li><a href="http://nfocentrale.com/status/2007/08/default.htm">August 2007 (1)</a></li>
+        
+        </ul>
+    </div>
+</div>
+        
+    
+
+
+
+<div class="widget-pages widget">
+    <h3 class="widget-header">Pages</h3>
+    <div class="widget-content">
+        <ul>
+    
+    
+        </ul>
+    </div>
+</div>
+
+<div class="widget-syndication widget">
+    <div class="widget-content">
+        <ul>
+            <li><img src="http://nfocentrale.com/mt-static/images/status_icons/feed.gif" alt="Subscribe to feed" width="9" height="9" /> <a href="http://nfocentrale.com/status/atom.xml">Subscribe to this blog's feed</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="widget-openid widget">
+    <div class="widget-content">
+        <em><strong>OpenID</strong> accepted here</em>
+        <a href="http://www.sixapart.com/labs/openid/">Learn more about OpenID</a>
+    </div>
+</div>
+
+<div class="widget-powered widget">
+    <div class="widget-content">
+        <a href="http://www.movabletype.com/"><img src="http://nfocentrale.com/mt-static/images/mt4-bug-pbmt-white.png" alt="Powered by Movable Type 4.34-en" width="120" height="75" /></a>
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+            <div class="widget-powered widget">
+                <div class="widget-content">
+                    Powered by <a href="http://www.movabletype.com/" rel="generator">Movable Type</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+</body>
+</html>

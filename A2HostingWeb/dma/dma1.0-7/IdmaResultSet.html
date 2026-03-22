@@ -1,0 +1,71 @@
+<html><head><title>Interfaces and Methods: IdmaResultSet</title><meta name="GENERATOR" content="DMA Interface Database"></head><body TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<h2><a name="IdmaResultSet"></a>IdmaResultSet</h2>
+<p>The IdmaResultSet interface provides the methods specific to a result set object, such as asking when search results are available, retrieving those results, terminating and restarting a search.</p>
+<h3><a name="IdmaResultSetGetNextResultRow"></a>IdmaResultSet::GetNextResultRow</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaResultSet::GetNextResultRow</b> (<br>
+DMA_REFIID    <i>riid</i>,<br>pDmapv    <i>ppIResultRow</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>riid</i></p></TD><TD><p>input</p></TD><TD><p>The Id of the desired interface on the result row object.</p></TD></TR>
+<TR><TD><p><i>ppIResultRow</i></p></TD><TD><p>ouput</p></TD><TD><p>Location in which to return an interface to the result row object</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method returns the next query result row (dmaClass_QueryResultRow), if any.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_MAX_ROWS</p></TD><TD><p>A result set was truncated because it exceeded the maximum result items parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_QUERY_AT_END</p></TD><TD><p>The query ran to successful completion without encountering any constraints on time limits, number of rows generated, or any other constraints, and there are no more result rows that satisfy the query. A result row is not returned.  No more result rows will be returned unless ReExecuteQuery is executed.</p></TD></TR>
+<TR><TD><p>DMARC_RESULTS_TRUNCATED</p></TD><TD><p>The result set was truncated explicitly by a call on IdmaResultSet:: TerminateResults. No further rows will be returned unless ReExecuteQuery is executed. This is a failure code - no row is returned.</p></TD></TR>
+<TR><TD><p>DMARC_TIMEOUT</p></TD><TD><p>A time limit has been exceeded.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaResultSetIsResultReady"></a>IdmaResultSet::IsResultReady</h3><p>Support for this method is optional.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaResultSet::IsResultReady</b> (<br>
+pDmaBoolean    <i>pbIsReady</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pbIsReady</i></p></TD><TD><p>output</p></TD><TD><p>Returns DMA_TRUE if the search results are ready to be delivered.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>Poll to see if the results are ready to be delivered.  When the IdmaScope::ExecuteSearch method returns, the search operation may not be complete (e.g., the result set may not be ready to deliver its results).  The pbIsReady parameter will be set to the value DMA_FALSE if the results are not ready, and will be set to DMA_TRUE if at least one result set item is ready to be delivered.
+</p><p>
+In more detail, DMA_TRUE is returned if at least one result set item can be returned by GetNextResultRow without blocking, or if all the rows satisfying the search criteria have been returned, or because the result set has been truncated (see the MaximumResultItems property of the query object) and the last available row has already been returned by GetNextResultRow.
+</p><p>
+This method will not return FALSE indefinitely if there are any results rows that can be generated.
+</p><p>
+Note that support of this method is optional.  A document space may choose to implement synchronous searches (ExecuteSearch does not return until all results are ready).  If this method is supported, a document space may choose to generate result items as a side effect of calls upon it.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_BAD_PARAMETER</p></TD><TD><p>(E_INVALIDARG) Invalid input parameter.</p></TD></TR>
+<TR><TD><p>DMARC_NOT_SUPPORTED</p></TD><TD><p>This method is not supported in the context of this session or object.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_RESULTS_TRUNCATED</p></TD><TD><p>The result set was truncated explicitly by a call on IdmaResultSet:: TerminateResults. No further rows will be returned unless ReExecuteQuery is executed. This is a failure code - no row is returned.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaResultSetReExecuteQuery"></a>IdmaResultSet::ReExecuteQuery</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaResultSet::ReExecuteQuery</b> (<br>
+Dmapv    <i>pICallback</i>)</p>
+<p><b>    Parameters</b></p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Mode</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p><i>pICallback</i></p></TD><TD><p>input</p></TD><TD><p>Pointer to a callback interface whose ReportProgress method will optionally be called at regular intervals during this function call. This pointer may be NULL.</p></TD></TR>
+</TABLE>
+    <b>Description</b>    </p>
+<p>This method performs processing necessary for reexecution of the query against the persistent store, so that GetNextResultRow can be called to generate a fresh sequence of query result rows.</p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_ABORT</p></TD><TD><p>The progress callback indicated that the method should be aborted.</p></TD></TR>
+<TR><TD><p>DMARC_NO_MEMORY</p></TD><TD><p>(E_OUTOFMEMORY) Insufficient memory to complete the operation.</p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+</TABLE>
+<h3><a name="IdmaResultSetTerminateResults"></a>IdmaResultSet::TerminateResults</h3><p>This method must be supported in every implementation of this interface.</p>
+<p>    <b>Syntax</b><br>DmaRC <b>IdmaResultSet::TerminateResults</b> ( )</p>    <b>Description</b>    </p>
+<p>Terminate delivery of result rows for this result set.
+</p><p>
+After a successful call to TerminateResults, any of the non-inherited IdmaResultSet methods return DMARC_RESULTS_TRUNCATED until ReExecuteQuery is called.</p></p>
+<p>    <b>Return Values</b>    </p>
+<TABLE BORDER=1><TR><TD><p><b>Name</b></p></TD><TD><p><b>Description</b></p></TD></TR>
+<TR><TD><p>DMARC_OK</p></TD><TD><p>(S_OK) Success.</p></TD></TR>
+<TR><TD><p>DMARC_RESULTS_TRUNCATED</p></TD><TD><p>The result set was truncated explicitly by a call on IdmaResultSet:: TerminateResults. No further rows will be returned unless ReExecuteQuery is executed. This is a failure code - no row is returned.</p></TD></TR>
+</TABLE>
+</body></html>

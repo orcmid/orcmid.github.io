@@ -1,0 +1,18 @@
+# Miser notes/.htaccess 0.03         UTF-8 (ASCII)              dh:2013-11-29
+#
+# CASE SENSITIVITY CLEANUP FOR http://miser-theory.info/notes/ CONTENT
+
+# RewriteEngine on
+# Options FollowSymLinks
+# RewriteRule ^N(.*)$ n$1 [L]
+
+# 0.03 2013-11-29-20:46 Disable the rules, not getting desired result
+# 0.02 2013-11-29-20:33 Restore $1, $0 is something else
+# 0.01 2013-11-29-20:16 Change $1 to $0 and look for improvement
+# 0.00 2013-11-29-17:20 Rewrite Nyymmnnx accession filenames to nyymmnnx form.
+#      This is a provisional arrangement to change URLs until enough time has
+#      passed to use only the official n-prefixed form.
+#
+# $Header: /A2HostingWeb/miser/notes/.htaccess 10    13-11-29 20:48 Orcmid $
+#
+#                    *** end of Miser notes/.htaccess ***

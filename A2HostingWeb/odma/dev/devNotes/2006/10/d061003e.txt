@@ -1,0 +1,346 @@
+d061003e.txt 0.01                    UTF-8                    dh:2006-11-09
+
+            CONTENT OF d061003e-OdmNative100-Setup02.zip ARCHIVE
+
+              ODMJNI 1.0 OdmNative Setup02: Default DMS Access
+              ------------------------------------------------
+
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/10/d061003e.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+   CONTENT
+
+     1. Manifest
+     2. Tools Required
+     3. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. MANIFEST
+
+   Archive file d061003e-OdmNative100-Setup02.zip contains the following
+   materials:
+
+        d061003e.txt  0.01: This file, providing a manifest and content
+                      description.  The file is dated 2006-11-07-16:19 and
+                      is 15,893 bytes in size.
+
+         OdmVC++.bat  0.27: in archive folder info/odma/OdmNative100/,
+                      providing a batch script for setting up use of the
+                      Visual C++ command-line compiler for developing
+                      OdmNative.  The file is dated 2006-11-04-17:22 and is
+                      2,998 bytes in size.  The other scripts in this
+                      archive depend on OdmVC++.bat being in this relative
+                      location above info/odma/OdmNative100/test/setup01.
+                    **** NOTE 1: This script is the same one provided with
+                    ****   Setup00 archive 0.04.
+                    **** NOTE 2: See section 3.3, below, about BACKING-UP
+                    ****   ANY CHANGES MADE TO THIS FILE FOR YOUR SYSTEM.
+
+         OdmPSDK.bat  0.02: in archive folder info/odma/OdmNative100/,
+                      providing a batch script for setting up use of the
+                      Microsoft Platform SDK (PSDK) for use with the VC++
+                      2005 command-line compiler.  The file is dated 2006-
+                      11-06-14:18 and is 3,699 bytes in size.
+                    **** NOTE 1: This script is the same one provided with
+                    ****   Setup01 archive 0.01.
+                    **** NOTE 2: See section 3.3, below, about BACKING-UP
+                    ****   ANY CHANGES MADE TO THIS FILE FOR YOUR SYSTEM.
+
+    BuildSetup02.bat  0.04: in folder info/odma/OdmNative100/test/setup02,
+                      providing an annotated compilation of the source
+                      program TestSetup01.c.  The file is dated
+                      2006-11-06-15:06 and is 2,825 bytes in size.
+
+    BuildSetup02.log  in archive folder info/odma/OdmNative100/test/setup02,
+                      providing a transcript of the compilation of the
+                      program that is here as TestSetup01-reference.exe.
+                      The file is dated 2006-11-07-13:35 and is 1,545
+                      bytes in size.
+
+    CheckSetup02.bat  0.02: in folder info/odma/OdmNative100/test/setup02,
+                      providing a narrated review of TestSetup01-reference.
+                      The script will build a new TestSetup01.exe that can
+                      be used to confirm construction on a computer other
+                      than the OdmNative development system.  This file is
+                      dated 2006-11-07-14:00 and is 3,766 bytes in size.
+
+    CheckSetup02.log  in archive folder info/odma/OdmNative100/test/setup02,
+                      providing a transcript of the CheckSetup01 script
+                      used to demonstrate compilation of a new TestSetup01
+                      program for comparison with the results of the
+                      TestSetup01-reference program.  This file is dated
+                      2006-11-07-14:06 and is 4,606 bytes in size.
+
+              Odma.h  200-1: in archive folder info/odma/OdmNative100/
+                      setup02ODMA 2.0 Header files from the ODMA 2.0 SDK.
+                      The file is dated 1998-04-09-12:31 and is 11,567 bytes
+                      in size.  This is the uncorrected official header file
+                      for ODMA 2.0: http://odma.info/downloads/odma200h.htm
+
+         Odma32api.h  0.03 ODMA 1.0-compatible dynamic entry-point types for
+                      the ODMA Connection Manager.  This file defines the
+                      entry points as types for pointers to the
+                      corresponding Connection Manager entry points.  The
+                      file is dated 2006-11-02-19:40 and is 6,586 bytes in
+                      size.
+
+   OdmNativeTestDefault.reg is a registry file that sets the ODMA Sample
+                      DMS, ODMASAMP, as the default DMS for Appliation ID
+                      "OdmNativeTest" used by program TestSetup02.  The file
+                      is dated 2006-11-01-22:02 and is 98 bytes in size.
+
+   OdmNativeTestNoDefault.reg is a registry file that removes any default
+                      DMS for Application ID "OdmNativeTest" used by program
+                      TestSetup02.  If there is a global default DMS, that
+                      will still be recognized for this Application ID too.
+                      If there is no global default, none will be available
+                      to TestStup02 after running the NoDefault.reg file.
+                      The file is dated 2006-11-01-22:02 and is 85 bytes in
+                      size.
+
+       TestSetup02.c  0.02: in folder info/odma/OdmNative100/test/setup02,
+                      the source program used to confirm that the Connection
+                      Manager entries and detection of a default DMS are
+                      performed correctly.  The resulting program is a free-
+                      standing executable that will run on any i86 Microsoft
+                      Windows 2000 or later version.  The file is dated
+                      2006-11-01-19:30 and is 11,061 bytes in size.
+
+   TestSetup02-reference.exe 0.02 in archive folder info/odma/OdmNative100/
+                      test/setup02, providing a reference version of
+                      TestSetup01.exe that demonstrates how the compilation
+                      on any other system should operate.  This file is
+                      dated 2006-11-07-13:33 and is 53,248 bytes in size.
+
+   TestSetup02-reference.log in archive folder info/odma/OdmNative100/
+                      test/setup01, providing a text-file transcript of two
+                      executions of TestSetup01-reference.exe.  This file
+                      is dated 2006-11-07-14:25 and is 2,428 bytes in size.
+
+
+2. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061003d-OdmNative100-Setup01.zip file.  Microsoft
+                      Internet Explorer 6 and Internet Explorer 7 have
+                      both been used to confirm download from the web
+                      page on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+         ODMA 2.0 SDK or other resource for obtaining the ODMA32.dll form of
+                      the ODMA 2.0 Connection Manager.  Installation and
+                      removal of ODMA32.dll can be used to confirm that
+                      TestSetup01 properly detects the presence of the
+                      Connection Manager.
+
+       An ODMA-compliant DMS integration, such as the ODMASAMP sample or
+                      a production DMS for use in confirming access as a
+                      default DMS for the TestSetup02 application
+                      identification "OdmNativeTest"
+
+       Microsoft Visual C++ 2005 Express Edition for rebuilding the
+                      software, if desired.  The libraries and command-
+                      line compiler that were used are from the version
+                      of VC++ 2005 Express identified as Microsoft Visual
+                      Studio 2005 Version 8.0.50727.42 (RTM.050727-4200).
+                      Other identifications can be seen in the log files
+                      from BuildSetup00.bat and CheckSetup00.bat.
+
+       Microsoft Windows Platform SDK for providing the native Windows
+                      API libraries used in the performance of TestSetup01.
+                      The March 2006, Microsoft Platform SDK for Windows
+                      Server 2003 R2 was used in producing the TestSetuo01-
+                      reference.exe 0.02 version.
+
+       Microsoft Windows Regedit utility for setting and removing default
+                      DMS registry entries for ODMA Application ID
+                      "OdmNativeTest" used by program TestSetup02 when
+                      checking for presence of a default DMS.
+
+
+3. INSTALLATION AND USAGE
+
+   This package is very simple.  The basic approach is the same as for
+   Setup01.
+
+   Further information about available resources for self-study and
+   reference will be added on the web site.  Links will be added to
+
+          <http://ODMA.info/dev/devNotes/2006/10/d061003e.htm>
+
+   and related pages.
+
+   Setup02 is the first exercise that introduces ODMA-specific header files
+   and configuration procedures.
+
+   There should not be
+
+
+3.1 Simple Access and Review
+
+   The text files can be extracted individually for inspection and review.
+
+   You need to know enough about the use of .zip archives and the Windows
+   file system to open the archive, locate the material within the archive,
+   and extract the material to a file-system location for your inspection
+   and review.
+
+
+3.2 Execution of TestSetup01-reference.exe
+
+   To use the TestSetup01-reference program, you must also be familiar with
+   the Windows file system, be able to copy files from .zip archives,
+   and know how to initiate a Windows Console Session (Command Prompt).
+
+   You need to know how to use a Windows Console Session to navigate to the
+   folder where TestSetup01-reference.exe has been extracted.  You will
+   also need to know how to execute programs from the command line and
+   to use basic command-line utilities.
+
+   The program TestSetup01-reference.exe is a native Windows console
+   application.  It does not run as a GUI application.  It will run from
+   a command prompt and provide its simple output in the console window.
+   A transcript of two specimen console executions is included in the
+   TestSetup01-reference.log file.
+
+   To install and remove the ODMA32.dll, it is necessary to operate as
+   administrator and move the ODMA32.dll in and out of the Windows System folder (System32 on recent distributions of Microsoft Windows).  One
+   useful approach is to install the ODMA 2.0 SDK, which will install the
+   ODMA32.dll file in the proper Windows directory.  A backup of that file should also be retained in the installed ODMA 2.0 SDK folders.  That will
+   make it easier to test with alternative Configuration Managers and with
+   no Configuration Manager, restoring the proper one whenever desired.
+
+
+3.3 Duplication of TestSetup01 Compilation
+
+   The archive is organized for use in demonstrating compilation of the
+   TestSetup01 program.
+
+   In this case, it is recommended that a file folder location, <folder>
+   be chosen for the entire contents of d061003d-OdmNative100-Setup01.zip
+
+   Extract the entire contents to the <folder> you have chosen.  You should
+   have the resulting directory hierarchy
+
+        <folder>\info\odma\OdmNative100\test\setup01
+
+   with the contents as described in the Manifest (section 1, above).  A
+   copy of this file, d061003d.txt, will be found at the <folder> level.
+
+   Using a Windows Console Session, navigate into the setup01 folder.  You
+   can execute the BuildSetup01.bat script to compile a version of
+   TestSetup01.exe.  You can also use CheckSetup01.bat to walk through a
+   comparison of your result, if any, and the TestSetup01-reference.exe
+   provided in the archive.
+
+   The scripts provide error messages when they are unable to operate
+   successfully.  It is particularly important to make sure that the scripts
+   OdmVC++.bat and OdmPSDK.bat are extracted to  <folder>\info\odma\
+   OdmNative100.
+
+   **** IMPORTANT: If you find it necessary to modify OdmVC++.bat or
+   ****   OdmPSDK.bat, keep backup copies of your changes.  Installing
+   ****   and re-installing   OdmNative packages may replace those files ****   with different (newer or older) versions.  Compare against your
+   ****   backed-up modifications and review the differences.  You can
+   ****   then determine whether to modify your backup copies and restore
+   ****   them in place of the downloaded copies.
+
+
+3.4 Troubleshooting and Modification of the Material
+
+   Any troubleshooting of the scripts requires further understanding of
+   the Microsoft Windows Command Shell (cmd.exe), the various internal
+   commands (echo, call, if, exit, etc.), and sources of technical
+   details and examples.
+
+   Adjustments for differences between Visual C++ Command-Line compiler
+   setups, libraries, environment variables, and compiler options requires
+   detailed knowledge of the tools, sources of technical information, and
+   an ability to experiment and confirm configuration adjustments.
+
+   Finally, all of the C Language programs and header files introduced for
+   OdmNative require a basic understanding of the writing of "clean C" and
+   how that is accomplished with Visual C++.  These Setup programs do serve
+   as worked examples.
+
+   Because Setup01 and later stages of OdmNative development rely on the
+   PSDK and the Windows API, an uderstanding of the basic Windows PSDK
+   libraries and interfaces is required.
+
+   You will need access to reference materials and resources on C Language,
+   the Standard C libraries, and programming for Microsoft Windows.  For
+   Visual C++ language support, there are also MSDN documentation and help
+   files online and incorporated in the Visual C++ and Visual Studio
+   packages.  For the PSDK you will need to know how to use the Platform
+   SDK Documentation, with or without integration into the VC++ Help and
+   Intellisense facilities.
+
+   Only the Visual C++ 2005 command-line compiler is required to duplicate
+   the construction of TestSetup01.  It is possible to use the Visual C++
+   2005 Integrated Development Environment (IDE) simply to edit the
+   TestSetup01.c source code.  You can also make a VC++ project at the
+   setup01 folder.  You must then know how to adjust the IDE and the
+   project configuration to produce a Release (not Debug) build that
+   duplicates the command-line build of the TestSetup00.exe file.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+          Copyright © 2006 AIIM International <http://www.aiim.org>
+                   and the respective contributors to ODMA.
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        ODMJNI 1.0 OdmNative ODMA-Access Implementation Build Setup01:
+        PSDK Command Line.  AIIM ODMA Interoperability Exchange, ODMdev
+        Development Note page d061003d 0.01, November 7, 2006.  Available
+        at <http://ODMA.info/dev/devNotes/2006/10/d061003d.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.01 2006-11-07-16:19 Incorporation of the essential information for the
+     first distribution of the Setup01 package.
+0.00 2006-11-07-14:37 Initial draft manifest derived from d061003c.txt 0.04
+
+$Header: /MyProjects/java/ODMdev/d061003e.txt 14    06-11-25 12:47 Orcmid $
+
+                        *** END OF d061003d.txt ***
+

@@ -1,0 +1,191 @@
+d061201h-0.54beta.txt 0.00           UTF-8                    dh:2007-02-13
+
+             CONTENT OF d061201h-ODMA1.0-0.54beta.zip ARCHIVE
+
+             ODMJNI 1.0 0.54beta Character-Code Stabilization
+             ------------------------------------------------
+
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   This material is a supplemental patch to the 0.50beta distribution.
+   The material is intended to be extracted atop the same directory
+   structure that already holds the 0.50beta (and earlier) distributions.
+
+   The prerequisites are the same as those required to make use of the
+   0.50beta release in various ways.  In addition, the 0.52beta drop must
+   already be installed.
+
+   IMPORTANT NOTE: This patch requires that the 0.52beta drop has already
+                   been installed atop the 0.50beta distribution.
+
+2. MANIFEST
+
+   This archive is designed to be extracted to the <folder> location that is
+   the Java classpath point for the ODMJNI 1.0 packages on your computer.
+
+   The extraction, with preservation of subdirectories, will add updated
+   material in the following hierarchy when extraction is into the directory
+   at <folder>:
+
+    <folder>/
+            d061201h-0.54beta.txt - this manifest
+            d061201h-0.54beta-DropNotes.txt file of release notes
+                applicable to this 0.54beta interim drop.
+        info/
+            odma/
+                odmjni100/
+                        odmjni100.cpp 0.17 latest DLL source code
+                            30,680 byte file dated 2007-02-12-19:36
+                        odmjni100.dll 0.17 latest DLL
+                            77,824 byte file dated 2007-02-19-19:36
+                    test/
+                        Check04/
+                           CheckChoice-2007-02-12-1657-0.54beta-check.png
+                           CheckChoice-2007-02-12-1658-0.54beta-check.png
+                           CheckChoice-2007-02-12-1937-0.54beta-check.png
+                           CheckChoice-2007-02-12-1942-ODM4D.txt
+                           CheckChoice-2007-02-12-1944-ODM4D.txt
+                           CheckChoice-2007-02-12-1948-Odma32-log.txt
+                           CheckNew-2007-02-12-1626-0.54beta-check.png
+                           CheckNew-2007-02-12-1527-0.54beta-check.png
+                           CheckNew-2007-02-12-1641-0.45beta-Odma-log.txt
+                           CheckNew-2007-02-12-1641-0.54beta-check.txt
+                           CheckUtil.cpp 0.01
+                                2,197 byte file dated 2007-02-12-18:49
+                           CheckUtil.dll 0.01
+                                61,440 byte file dated 2007-02-12-18:49
+                        CheckSwing/
+                           OdmClicker$1.class 2007-02-12-17:24
+                           OdmClicker.class 2007-02-12-17:23
+                           OdmClicker.java 0.08
+                                14,262 byte file dated 2007-02-12-17:23
+                           OdmClicker-2007-02-12-1725-0.08-selection.png
+                           OdmClicker-2007-02-12-1726-0.08-selection.png
+
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061201h-ODMJNI1.0-0.54beta.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+         ODMA 2.0 SDK or other resource for obtaining the ODMA32.dll form of
+                      the ODMA 2.0 Connection Manager.  Installation and
+                      removal of ODMA32.dll can be used to confirm that
+                      the Check04 and OdmClicker test programs properly
+                      detects the presence of the Connection Manager
+                      Connection Manager.
+
+       An ODMA-compliant DMS integration, such as the ODMASAMP sample or
+                      a production DMS for use in confirming access as a
+                      default DMS for the Check04 and OdmClicker application
+                      identifications "OdmNativeTest"
+
+       A Java SE JDK such as the JDK 1.5 used to develop all of the Java
+                      applications in this distribution.  There are batch
+                      files already provided in 0.50beta + 0.52beta for
+                      performing compilations and running the results.
+
+       Microsoft Visual C++ 2005 Express Edition for rebuilding the
+                      software, if desired.  The libraries and command-
+                      line compiler that were used are from the version
+                      of VC++ 2005 Express identified as Microsoft Visual
+                      Studio 2005 Version 8.0.50727.42 (RTM.050727-4200).
+                      There are batch files already provided in 0.50beta
+                      + 0.52beta for performing compilations.
+
+       Microsoft Windows Platform SDK for providing the native Windows
+                      API libraries used in OdmNative100 development.
+                      The March 2006, Microsoft Platform SDK for Windows
+                      Server 2003 R2 was used in producing the 0.54beta
+                      odmjni100.dll and CheckUtil.dll.
+
+       Microsoft Windows Regedit utility for setting and removing default
+                      DMS registry entries for ODMA Application ID
+                      "OdmNativeTest" used by the Check04 tests and the
+                      OdmClicker test and the ODMA Connection Manager
+                      when checking for presence of a default DMS.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2007 NuovoDoc <http://NuovoDoc.com>
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Content of d061201h-ODMA1.0-0.54beta.zip Archive: ODMJNI 1.0
+        0.52beta Character-Code Stabilization.  ODMA Interoperability
+        Exchange, ODMdev Development Note page d061201h-0.54beta.txt 0.00,
+        February 13, 2007.  Current version available as part of the archive
+        downloadable at <ttp://ODMA.info/dev/devNotes/2006/12/d061201h.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+
+0.00 2007-02-13-17:40 Manifest sufficient for 0.54beta drop.
+
+$Header: /ODMdev/d061201h-0.54beta.txt 3     07-02-13 17:44 Orcmid $
+
+                    *** END OF d061201h-0.54beta.txt ***
+

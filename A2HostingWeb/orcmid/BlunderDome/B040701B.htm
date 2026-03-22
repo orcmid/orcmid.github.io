@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>B040701B: AtomAPI Quick Guide - Clipping </title>
+<!--$$Header: /A2HostingWeb/orcmid/BlunderDome/B040701B.htm 26    26-03-22 14:13 Orcmid $-->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://orcmid.com" target="_top">
+<img border="0" src="../images/OrcmidsLair-thumb.gif" width="145" height="90" lowsrc="../construction/Orcmid's%20Lair">
+<!-- Included from construction/C000005a.htm of 2007-02-16-16:52 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="58655" -->
+
+
+
+    </td>
+    
+    <td width="52%" height="6">
+      <p align="center"><font color="#990033"><strong>BlunderLab <a href="B000001-log.htm"><font color="#990033">Notebook</font></a>
+      <a href="B000001-log.htm#B040701"><font color="#990033">B040701</font></a><br>
+      <a href="B040701.htm"><font color="#990033">Atom Feed Synthesis</font></a></strong></font><strong><font color="#990033"><br>
+      <em><big><big>AtomAPI Quick Reference</big></big></em></font></strong>
+
+      </p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right"><b><code><a href="../" target="_top">orcmid</a>&gt;</code><br>
+      <code><a target="_top" href="./">BlunderDome</a>&gt;</code></b></p>
+      <p align="right"><b><code><a href="B040701B.htm" target="_top">B040701B</a>&gt;</code></b><br>
+      <small><small><!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2022-05-06<!--webbot bot="Timestamp" endspan i-checksum="12310" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->12:10 -0700<!--webbot bot="Timestamp" endspan i-checksum="11932" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+  <p align="left" style="border-style: dotted; border-width: 3">This material
+  was captured from the <a href="http://www.atomenabled.org/developers/tutorials/api-quick-guide.php" target="_top">Atom
+  API Quick Guide</a>.&nbsp;It is here for off-line consultation and also for
+  establishment of sources.&nbsp; The page was captured this way because I
+  couldn't accomplish a Save As ... MHT with my current security settings. --
+  dh:2004-07-09-13:51 -0700</p>
+
+<div id="container">
+  <div id="banner">
+    <h1><a title="Home - AtomEnabled.org" href="http://www.atomenabled.org/"><img src="http://atomenabled.org/images/atom-logo75px.gif" align="middle" border="0" width="75" height="75"></a>AtomEnabled
+    <sup>beta</sup></h1>
+    <div id="navlist">
+      <ul id="navbar">
+        <li><a title="home" href="http://www.atomenabled.org/">home</a>
+        <li><a title="developers" href="http://www.atomenabled.org/developers/">developers</a>
+        <li><a title="publishers" href="http://www.atomenabled.org/publishers/">publishers</a>
+        <li><a title="everyone" href="http://www.atomenabled.org/everyone/">everyone</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="developers">
+    <h3>Atom API Quick Guide</h3>
+  </div>
+  <div id="blog">
+    <div class="heading">
+      <div class="heading_path">
+        <a href="http://www.atomenabled.org/developers/">Developers</a> &gt; <a href="http://www.atomenabled.org/developers/tutorials/index.php">Tutorials</a>
+        &gt; Atom API Quick Guide
+      </div>
+    </div>
+    <div class="item">
+      <h2>AtomAPI Quick Reference</h2>
+      <p>Written by <a href="http://www.bitworking.org">Joe Gregorio</a></p>
+      <div class="itemContent">
+        <p>The current revision of the AtomAPI is contains quite a few changes
+        from previous revisions. All of those changes have been talked about
+        seperately, but when put together represent a fairly large change to the
+        API. Here is Quick Reference for the AtomAPI which also highlights those
+        changes.</p>
+        <p>The URIs in the <a href="http://www.atomenabled.org/developers/api/atom-api-spec.php">draft
+        AtomAPI RFC</a> are not normative, they are examples. The draft RFC
+        isn't about specifying the form of the URLs that are to be used. Yes,
+        there are <a href="http://www.w3.org/Provider/Style/URI.html">guidelines
+        you should follow when creating URIs</a>, but those are just general
+        guidelines. That is an important document and if you're creating server
+        side software you should know it already.</p>
+        <p>In the end, it's the server that controls the URI space for that
+        domain. Now, for convenience that space may be mapped to a file system
+        hierarchy, but again, there's no requirement for that to be true. So
+        what does the RFC specify? It lays out the <em>formats</em> of the files
+        that can be returned, and the <em>actions</em> that can be performed on
+        the URIs. Note that URIs are embedded in some of those formats. That
+        embedding, that intertwingling of format and URI, is the crux of
+        hypertext, and we are using HTTP as our protocol, the Hypertext Transfer
+        Protocol. Here then is an abbreviated description of the AtomAPI as it
+        stands today, with all the example URIs contracted into short names.
+        Outlined first are the different <strong>types</strong> of URIs the
+        AtomAPI deals with. Different types of URIs are distinguished by the
+        methods that are allowed to act on them, their actions, and the
+        content-types that they accept.</p>
+        <h3 id="TypesOfURIs">Types of URIs</h3>
+        <table cellSpacing="0" cellPadding="3" summary="AtomAPI URIs and associated Formats and Verbs" border="1">
+          <tbody>
+            <tr>
+              <th>URI Type</th>
+              <th>HTTP Method</th>
+              <th>Content Type</th>
+              <th>Return values</th>
+            </tr>
+            <tr>
+              <td><a href="#post">Post</a></td>
+              <td>POST</td>
+              <td><a href="#AtomEntry">AtomEntry</a></td>
+              <td>Returns an <a href="#edit">Edit</a> URI in the Location:
+                header.</td>
+            </tr>
+            <tr>
+              <td><a href="#edit">Edit</a></td>
+              <td>GET, PUT, DELETE</td>
+              <td><a href="#AtomEntry">AtomEntry</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><a href="#feed">Feed</a></td>
+              <td>GET</td>
+              <td><a href="#AtomFeed">AtomFeed</a></td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Several things are important to note here. First is that both weblog
+        entries and comments on those entries are both created using a <code>Post</code>
+        URI. Now they are probably going to be different URIs, but they are the
+        same <strong>type</strong> of URI, i.e. a URI that accepts a POST with a
+        body of a filled in Atom Entry and as a consequence creates a new
+        resource based on that Entry. How to discover the types of URIs and what
+        they are used for is discussed later.</p>
+        <p>All of the discovery uses a <code>link</code> tag. The <a href="http://www.w3.org/TR/html401/struct/links.html#h-12.3">link
+        tag from HTML</a> will be used in (X)HTML, and the same tag will be used
+        in the Atom format, with the restriction the value of the <code>rel</code>
+        attribute is case sensitive.</p>
+        <dl>
+          <dt><a id="post" href="#post">Post</a>
+          <dd>
+            <dl>
+              <dt>Purpose
+              <dd>The Post URI is used to create entries. These can be either
+                full entries as in a weblog post, or they can be comments. The
+                client POSTs a filled in Atom Entry to this URI.
+              <dt>Finding
+              <dd>
+                <p>For creating a new site Entry, the link tag is used. Note
+                that a link tag is used in both HTML and in the Atom format. A
+                link tag of the following format points to the <code>Post</code>
+                URI for a site. In HTML the link tags are always found in the <code>head</code>
+                element, while in Atom they may appear as children of the <code>Feed</code>
+                and <code>entry</code> elements. In the case of <code>Post</code>,
+                the link tag is found in HTML and as a child of the <code>Feed</code>
+                element only.</p>
+                <pre class="example"><code>&lt;link rel=&quot;service.post&quot;
+   type=&quot;application/x.atom+xml&quot;
+   href=&quot;URI for Posting goes here&quot;
+   title=&quot;The name of the site.&quot;&gt;</code></pre>
+                <p><strong>Note:</strong> Multiple link tags may appear together
+                and can be distinguished by having different 'rel', 'type' and
+                'title' attributes.</p>
+              </dd>
+            </dl>
+          <dt><a id="edit" href="#edit">Edit</a>
+          <dd>
+            <dl>
+              <dt>Purpose
+              <dd>The <code>Edit</code> URI is used to edit an existing Entry.
+                To edit the Entry the client does a GET on the URI to retrieve
+                the Atom Entry, it then modifies the Entry and then PUTs the
+                Entry back to the same URI. Use the DELETE method on the URI to
+                remove the Entry. Note that an Entry could be either a full
+                Entry on a site, or a comment.
+              <dt>Finding
+              <dd>
+                <p>A link tag in either HTML or Atom of the following form will
+                point to the URI for editing an Entry.</p>
+                <pre class="example"><code>&lt;link rel=&quot;service.edit&quot;
+   type=&quot;application/x.atom+xml&quot;
+   href=&quot;URI that handles editing &quot;
+   title=&quot;Desc/title of Entry.&quot;&gt;</code></pre>
+              </dd>
+            </dl>
+          <dt><a id="feed" href="#feed">Feed</a>
+          <dd>
+            <dl>
+              <dt>Purpose
+              <dd>
+                <p>The <code>Feed</code> URI is used to retrieve an <a href="#AtomFeed">Atom
+                feed</a>. Note that the feed may contain just Entries for
+                syndication, or may contain additional link tags so that it may
+                be used for browsing/navigating around to other Atom feeds.</p>
+              <dt>Finding
+              <dd>
+                <p>A typical feed for syndication would be indicated by a link
+                tag of the form:</p>
+                <pre class="example"><code>&lt;link href='URI of feed goes here'
+   type='application/x.atom+xml'
+   rel='feed'
+   title='A nice descriptive title'/&gt;</code></pre>
+                <p>If a feed contains extra link tags for navigation, such a
+                feed might be supplied specifically for a weblog publishing
+                client to use, then it is of the form:</p>
+                <pre class="example"><code>&lt;link href='URI of feed goes here'
+   type='application/x.atom+xml'
+   rel='feed.browse'
+   title='A nice descriptive title'/&gt;</code></pre>
+                <p>Or</p>
+                <pre class="example"><code>&lt;link href='URI of feed goes here'
+   type='application/x.atom+xml'
+   rel='prev'
+   title='A nice descriptive title'/&gt;</code></pre>
+              </dd>
+            </dl>
+            <h3 id="AtomEntry"><a href="#AtomEntry">AtomEntry</a></h3>
+            <pre class="example"><code>&lt;entry xmlns=&quot;http://example.com/newformat#&quot; &gt;
+  &lt;title&gt;My First Entry&lt;/title&gt;
+  &lt;summary&gt;A very boring entry...&lt;/summary&gt;
+
+  &lt;author&gt;
+    &lt;name&gt;Bob B. Bobbington&lt;/name&gt;
+    &lt;url&gt;http://bob.name/&lt;/url&gt;
+  &lt;/author&gt;
+
+  &lt;issued&gt;2003-02-05T12:29:29&lt;/issued&gt;
+  &lt;created&gt;2003-02-05T14:10:58Z&lt;/created&gt;
+  &lt;modified&gt;2003-02-05T14:10:58Z&lt;/modified&gt;
+
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot;
+    href=&quot;http://example.org/reilly/2003/02/05#My_First_Entry&quot;/&gt;
+
+  &lt;id&gt;urn:example.org:reilly:1&lt;/id&gt;
+
+  &lt;content type=&quot;application/xhtml+xml&quot; xml:lang=&quot;en-us&quot;&gt;
+    &lt;p xmlns=&quot;...&quot;&gt;Hello, &lt;em&gt;weblog&lt;/em&gt; world! 2 &lt; 4!&lt;/p&gt;
+
+  &lt;/content&gt;
+
+&lt;/entry&gt; </code></pre>
+            <h3 id="AtomFeed"><a href="#AtomFeed">AtomFeed</a></h3>
+            <pre class="example"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;feed version=&quot;0.3&quot; xmlns=&quot;http://purl.org/atom/ns#&quot;&gt;
+
+  &lt;link rel=&quot;next&quot; type='application/x.atom+xml'
+     title=&quot;Next 20 Entries&quot; href=&quot;http://..&quot;/&gt;
+  &lt;link rel=&quot;prev&quot; type='application/x.atom+xml'
+     title=&quot;Previous 20 Entries&quot; href=&quot;http://..&quot;/&gt;
+  &lt;link rel=&quot;comments&quot; type='application/x.atom+xml'
+     title=&quot;Last 20 Comments&quot; href=&quot;http://..&quot;/&gt;
+  &lt;link rel='service.post' type='application/x.atom+xml&quot; 
+     title=&quot;Create a new post on intertwingly.net&quot; href=&quot;..&quot;/&gt;
+
+  &lt;entry&gt;
+    &lt;id&gt;http://example.org/blog/1630.atom&lt;/id&gt;
+
+    &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; 
+       href=&quot;http://example.org/blog/1630.html&quot; /&gt;
+
+    &lt;link rel=&quot;service.post&quot; type='application/x.atom+xml' 
+       href=&quot;/blog/1630.atom-new-comment&quot; title=&quot;Add a comment.&quot;/&gt;
+
+    &lt;link rel=&quot;comments&quot; type='application/x.atom+xml' 
+       title=&quot;Comments on Entry 1630&quot; href=&quot;/blog/1630.atom&quot; /&gt;
+
+    &lt;link rel=&quot;service.edit&quot; type='application/x.atom+xml&quot; 
+       href=&quot;/blog/1630.atomapi&quot; /&gt;
+
+    &lt;title&gt;One year ago today...&lt;/title&gt;
+
+    &lt;content type=&quot;application/xhtml+xml&quot; mode=&quot;xml&quot;&gt;
+      &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;Microsoft
+      &lt;a href=&quot;http://www.intertwingly.net/blog/945.html&quot;&gt;
+      inhaled a blogger&lt;/a&gt;.&amp;#160; Now it looks like
+      he is attempting to
+      &lt;a href=&quot;http://www.razorsoft.net/weblog/2003/10/28.html&quot;&gt;
+      resurface&lt;/a&gt;...
+      &lt;/div&gt;
+
+    &lt;/content&gt;
+
+    &lt;issued&gt;2003-10-29T20:52:57-05:00&lt;/issued&gt;
+    &lt;modified&gt;2003-10-29T20:52:57-05:00&lt;/modified&gt;
+  &lt;/entry&gt;
+
+  &lt;entry&gt;
+    &lt;id&gt;http://example.org/blog/1628.atom&lt;/id&gt;
+    &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; 
+       href=&quot;http://example.org/blog/1628.atom&quot; /&gt;
+
+    &lt;link rel=&quot;service.post&quot; type='application/x.atom+xml' 
+       href=&quot;/blog/1628.atom-new-comment&quot; title=&quot;Add a comment&quot;/&gt;
+
+    &lt;link rel=&quot;comments&quot; type='application/x.atom+xml' 
+       title=&quot;Comments on Entry 1628&quot; href=&quot;/blog/1628.atom&quot; /&gt;
+
+    &lt;link rel=&quot;service.edit&quot; type='application/x.atom+xml&quot; 
+       href=&quot;/blog/1628.atomapi&quot; /&gt;
+
+    &lt;title&gt;Is &amp;lt;content&amp;gt; required on a POST?&lt;/title&gt;
+
+    &lt;content type=&quot;application/xhtml+xml&quot; mode=&quot;xml&quot;&gt;
+
+      &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        I've kicked off what I intend to be a series of
+        discussions leading up to the creation of a
+        validation test suite for Atom implementors
+        with the following question on the
+        &lt;a href=&quot;http://www.imc.org/atom-syntax/index.html&quot;&gt;
+        atom-syntax mailing list&lt;/a&gt;:
+        &lt;a href=&quot;http://www.imc.org/atom-syntax/mail-archive/msg00908.html&quot;&gt;
+
+        Is content required on a POST&lt;/a&gt;?
+      &lt;/div&gt;
+
+    &lt;/content&gt;
+
+    &lt;issued&gt;2003-10-29T05:24:12-05:00&lt;/issued&gt;
+    &lt;modified&gt;2003-10-29T05:24:12-05:00&lt;/modified&gt;
+
+  &lt;/entry&gt;
+
+&lt;/feed&gt;
+</code></pre>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <br clear="all">
+    <div id="copyright" align="center">
+      <a href="http://www.atomenabled.org/about.php">about</a> |<a href="http://www.atomenabled.org/contact.php">contact</a>
+      | <a href="http://www.atomenabled.org/sitemap.php">sitemap</a> | <a href="http://www.atomenabled.org/tos.php">terms
+      of service</a><br>
+      Copyright © 2004, AtomEnabled Alliance
+    </div>
+  </div>
+</div>
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="29%"><a href="construction.htm" target="_top"><img border="0" src="wingnut/images/hardhat-logo.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="57"></a>
+    </td>
+    <td width="34%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    <small><!-- Included from Orcmid /construction/c000005c.htm of 2005-02-11-16:46 -0800 -->
+    <small>You are navigating <a rel="nofollow" href="../" target="_top">Orcmid's Lair</a></small></small></font>
+<!--webbot bot="Include" endspan i-checksum="52416" -->
+    </td>
+    <td width="37%">
+      <p align="right"><font size="-2">created 2004-07-09-1358 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 26-03-22 14:13 $<br>
+      $$Revision: 26 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

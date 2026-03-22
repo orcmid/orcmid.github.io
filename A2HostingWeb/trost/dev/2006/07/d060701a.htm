@@ -1,0 +1,785 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d060701a: getpwd Platform Isolation - Diary &amp; Job Jar </title>
+<!--$$Header: /TROSTCompagno/dev/2006/07/d060701a.htm 23    13-08-22 15:32 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006a.htm of 2005-08-17T16:32Z -->
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a rel="nofollow" href="http://TROSTing.org" target="_top"><img border="0" 
+src="../../../images/TROSTSymbol-thumb.gif" alt="TROST: Open-System Trustworthiness" 
+width="100" height="87"></a>
+<!-- included from TROSTing /construction/C000005a.htm of 2005-07-21-13:35 -0700 $-->
+<!--webbot bot="Include" endspan i-checksum="10704" --></td>
+    
+    <td width="52%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="center"><font color="#990033"><strong>
+		<a href="../../d000001.htm#d060701"><font color="#990033">d060701</font></a> 
+		TROST </strong></font>
+
+		<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong><font color="#990033"><strong><br>
+      <a href="d060701.htm"><font color="#990033">getpwd Platform Isolation</font></a><br /></strong></font>
+</font><font color="#990033"><strong><em><big><big>Diary &amp; Job Jar</big></big></em></strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>TROSTing</b></a></code><b><code>&gt;<a 
+  href="../../">dev</a>&gt;<br>
+      <a target="_top" href="../">2006</a>&gt;<a target="_top" href="./">07</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d060701a.htm">d060701a</a>&gt;</b></code><br>
+</font>
+      <small><small>
+		<a href="#0.00">0.00</a>
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2011-11-12<!--webbot bot="Timestamp" endspan i-checksum="12067" -->      
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->21:28 -0800<!--webbot bot="Timestamp" endspan i-checksum="12068" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<div align="center">
+  <center>
+  
+  <table border="2" width="100%" bordercolor="#990033" bordercolorlight="#CC0066" bordercolordark="#800000" bgcolor="#FFFFFF">
+    <tr>
+    <big>
+      <td width="11%" align="center"><p><i><b>S<span style="font-variant: small-caps">tatus</span></b></i></p></td>
+      <td width="11%" align="center"><p><i><b>D<span style="font-variant: small-caps">ate</span></b></i></p></td>
+      <td width="78%" align="left">
+        <p align="center"><i><b>D<span style="font-variant: small-caps">escription</span></b></i></p>
+      </td>
+      </big>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;
+    </td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+      <td width="78%" align="left" valign="top">
+        &nbsp;</td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-07</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701: number sections with permalinks</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-06</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701e: Update to include d060701j as the latest 
+		version.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-06</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701f: 0.42 Update the Zip archive to reflect the 
+		obsolescence of this version, with no other changes.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701g/h: I arranged not to use the heap or a large 
+		stack frame for buffering the entered password.&nbsp; Document that this 
+		was a concern and I chose to move the problem to the caller, where there 
+		is more situation-specific knowledge.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701g/h: We need to be specific about the conditions 
+		under which the application can be aborted by user action while getpwd 
+		is awaiting input.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701i: Look at the edge case of &lt;0 results, and why it 
+		is not permissible, with the portable interface, to use this as a way of 
+		sneaking details to platform-specific callers.&nbsp; To do that takes a 
+		different header file.&nbsp; It is interesting to consider whether 
+		under-specifying the returned value is all that desirable.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701g/h: We have to be careful in working with size_t 
+		and edge cases with respect to integers, etc.&nbsp; This needs to be 
+		documented.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701g/h: How do we deal with locale sensitivity in 
+		character manipulations?</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701g/h: Look at __isascii() from ISO C++ and &lt;ctype.h&gt; 
+		as a possible important case for filtering characters.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There needs to be a separate program for exercising the 
+		implementation _getch() and _putch() functions) to discover how these 
+		really work with keyboards, what the dependencies are, and how to 
+		properly get through the input stream.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">There needs to be a place where the design decisions and 
+		related TROSTing of this effort are discussed.&nbsp; Some issues are the 
+		choke on buffer size, the reliance on pure ASCII, and avoidance of 
+		multi-byte and wide-character complexities and edge cases (like breaking 
+		a multi-byte character or surrogate pair).&nbsp; There's also a serious 
+		problem of synchronizing backspace and multi-byte characters in the 
+		buffer.&nbsp; These can all be about problems we are avoiding and also 
+		that must be documented in case someone decides to make a getpwd for 
+		those more-difficult settings.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701j: Add discussion on the page of what is being 
+		accomplished in this update, what the thinking might be, etc.&nbsp; This 
+		could also be a see-also to the main thread, but we don't have one of 
+		those yet.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-05</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701j: Make the next version of the header, with 
+		validation and other information from the API Reference.&nbsp; 
+		Cross-reference to the API Reference that applies.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-08-04</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701i: Include an attribution entry</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-30</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701: There needs to be, someplace in the folio, more 
+		on organization of Zip packages for solution building (in the case of 
+		Visual Studio) and also direct building (probably using batch files on 
+		Windows platforms, other approaches for other platforms -- JavaScript? 
+		-- with some modicum of attention on managing dependencies and providing 
+		guidance for installing, building and operating the code.&nbsp; Ideally, 
+		there are places that can be cited and only a sketch/outline with links 
+		is needed here.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701f: The header file must contain information about 
+		what is allowed to change without having to revise the header/interface 
+		contract version.</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">d060701f: Explain the naming of the file and the document 
+		engineering principles that are being applied in this case.&nbsp; The 
+		principles might be on another page, or even over in an infoNote.&nbsp; 
+		But there is some representation here, for now.&nbsp; [dh:2006-08-06 
+		This is accomplished on the API Reference, d060701i.&nbsp; There can be 
+		more about packaging on the new header description, d060701j, where the 
+		first use of this naming is applied.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Once the versioned &quot;man page&quot; is published, link to the 
+		version from the corresponding article on the Forum. [dh:2006-08-06 That 
+		is the d060701i getpwd API Reference, and the link should be to 
+		d060701d, the page that always tracks the latest API Reference.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Once the pages are published, link to the approach from 
+		the original article on the MSDN Forum</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top">&nbsp;</td>
+    
+      <td width="11%" align="center" valign="top"><small>2006-07-29</small></td>
+      <td width="78%" align="left" valign="top">
+        <font size="2">Incorporate the approach posted to the forum as a 
+		versioned folio page.&nbsp; [dh:2006-08-06 My latest thinking is that 
+		d060701b holds the latest overall approach and description material, 
+		with d060701c as the first version.]</font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.50</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-07</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701 and d060701f/j update to version 0.50 of the 
+		next headers</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.50</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-07</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701: 0.50 update versions of the archived 
+		materials</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.50</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-07</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701i: 0.50 Add defined constants for the maximum 
+		buffer size and maximum echo field.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-06</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701: Update to reflect the creation of a later 
+		header page (d060701j).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-06</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: 0.41 Link to the replacement and report that 
+		this version is now considered obsolete.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Update catalog to reflect 0.45 alpha version here.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701d: Include d060701i as the latest version of 
+		the API Reference.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701i: Change the rule on excessive input to 
+		include all recognized characters, whether or not includable in the 
+		password string.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701i: Change to 0.45 alpha of the API Reference.&nbsp; 
+		Correct on the folio cover too.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-05</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701i: Review notebook pages for changes to reflect 
+		in the revised API Reference.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40<br>
+		2006-08-04</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Incorporate the &quot;man page&quot; version 0.3 from the MSDN 
+		Forum thread as a versioned folio page here.&nbsp; [dh:2006-08-04 The 
+		latest API Specification page will be d060701d and the initial one (0.4 
+		alpha) will be in d060701i.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701i: Add section numbers and anchor them as 
+		permalinks.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2"><strike>d060701i: Change return type to long and indicate 
+		that there are still edge cases.&nbsp; Invariants for the int result and 
+		the size_t parameters must be accounted for in the calling program.&nbsp; 
+		getpwd lacks sufficient information to apply a universally-correct 
+		standard behavior. </strike>&nbsp;[dh:2006-08-04 This is silly.&nbsp; 
+		Keep the result an int and constrain the value of maxpwd and maxfield to 
+		something reasonable, like 256 ASCII characters.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#FFCC99">
+		<font size="2" color="#800000"><b>not done</b></font></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#FFCC99">
+		<font color="#800000"><b><small>2006-08-04</small></b></font></td>
+      <td width="78%" align="left" valign="top" bgcolor="#FFCC99">
+        <b>
+        <font size="2" color="#800000">d060701i: Change the prototype to return a long rather 
+		than an int.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-04</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701i: Create as the starting version of the API 
+		Specification (&quot;man&quot;) page.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45<br>
+		2006-08-03</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701: Add a &quot;see also&quot; to the MSDN Forum thread where 
+		this all began. [dh:2006-08-05 This is in the acknowledgment already.]</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45<br>
+		2006-08-03</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701: Acknowledge the original inspiration for taking 
+		this journey.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.45<br>
+		2006-08-03</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-30</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701: Add an explanation of the coverage of the 
+		exercise, including (1) developing a stable header file that is itself 
+		fully portable among Standard C/C++ implementations, (2) developing a 
+		set of portable test programs and examples that are themselves fully 
+		portable among Standard C/C++ implementations, (3) developing a 
+		platform-independent fixture that pretends to be a getpwd 
+		implementation, and (4) developing a platform-specific implementation 
+		that remains fully encapsulated behind the contracted interface 
+		associated with the header file and its correct portable use.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-08-03</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: The revision-linking link to d060701e is 
+		implemented incorrectly (it's still d060701d from the boilerplate file 
+		that I used).</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40<br>
+		2006-07-30</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Once the initial header file information is published, 
+		also publish an abbreviated version on the discussion thread, linking 
+		back to the &quot;master&quot; version.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.40</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: Make a version that simply uses getpwd00.h 
+		as the alpha-beta version.&nbsp; It is up to developers to track these 
+		and/or go upgrade them for getpwd10.h when it is baked.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.30</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701f: Include enough material so I can post this to 
+		the web site and then post an article about it on the thread.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.30</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">d060701f: Add a d060701f.txt template and go through the 
+		drill about adding it to the .zip file, etc.&nbsp; Make this a very 
+		simple one.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.30</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">The standalone version of the getpwd.h file should have a 
+		link to its revision history and further information.&nbsp; The document 
+		engineering should be established from the beginning.&nbsp; Because 
+		there is only one getpwd.h.txt file [is there?], we need to consider versioning it 
+		appropriately.&nbsp; This depends on contract identification and 
+		versioning.&nbsp; We need to look at that from the beginning too. 
+		[dh:2006-07-29 I chose to use getpwd00.h flavors for alpha and 
+		provisional versions, with getpwd10.h for version 1.0 of getpwd.]</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done 0.30</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b>
+        <font size="2">Create an initial header file text and publish it here on 
+		a versioned thread.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: Put the header inside of a Zip file so that 
+		the version-control information is preserved.&nbsp; Also, this way I can 
+		use a simple name (d060701f.zip) for the container.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: Include the little compilation test program 
+		as part of the Zip, as long as we are doing this.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: Make sure the date-time stamp in the anchor 
+		block is updated on all changes to the page.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701e: Make this the master page and include 
+		d060701f as the initial content.</font></b></td>
+    </tr>
+	<tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">d060701f: Make this the description page for 
+		getpwd00-0.3alpha.h</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Add placeholder pages d060701d and d060701e so that we 
+		can capture the material from/for the discussion thread.</font></b></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <font size="2"><b>Customize all pages of the folio to provide basic 
+		placeholder structure: d060701, d060701b, and the starting d060701c.</b></font></td>
+    </tr>
+    
+    <tr>
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b>
+		<font size="2">done</font></b></td>
+    
+      <td width="11%" align="center" valign="top" bgcolor="#CCCCFF"><b><small>2006-07-29</small></b></td>
+      <td width="78%" align="left" valign="top" bgcolor="#CCCCFF">
+        <b><font size="2">Customize to support initial work items for &quot;getpwd 
+		Platform Isolation&quot;</font></b></td>
+    </tr>
+    
+  </center>
+  <center>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+   <small> 
+    </small>
+  </center>
+  
+  <center>
+    </table>
+  
+  </center>
+</div>
+
+<small>
+<dl>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+		<dt><b><a name="0.00">0.00</a> 2006-07-29-14:11 Create Initial Placeholder</b></dt>
+		<dd>Introduce an initial placeholder that serve as a target of links and 
+		provides a diary &amp; job jar that can be employed immediately. </dd></dl>
+
+</small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="12%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="61%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+<img border="0" src="../../../images/ccby20.gif" align="right" 
+ alt="Creative Commons License" width="88" height="31">
+You are navigating 
+<!-- included from TROSTing /construction/C000005c.htm of 2005-06-18T01:04Z -->
+ 	<a rel="nofollow" target="_top" href="../../../">TROSTing.org</a>.<br />This work is 
+	<a href="../../../info/2005/04/i050403c.htm" target="_top">licensed</a> under a <br />
+	<a rel="license" target="_top" 
+ href="http://creativecommons.org/licenses/by/2.0/">Creative Commons License</a>.
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.0/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--></small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="46192" --></td>
+    <td width="25%">
+      <p align="right"><font size="-2">created 2006-07-29-14:11 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 15:32 $<br>
+      $$Revision: 23 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

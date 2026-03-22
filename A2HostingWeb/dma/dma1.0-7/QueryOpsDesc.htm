@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Query Operators</TITLE>
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\HTML.DOT">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+
+<B><FONT SIZE=5><P>DMA Well Known Query Operators</P>
+</FONT><FONT SIZE=4><P>Ordering Rules</P>
+</B></FONT><P>For all the ordering relational operators (greater, greater or equal, less, less or equal), for all datatypes, the null value collates before any non null value.</P>
+<P>Two strings of unequal length are always unequal. If two strings are of unequal length, and the initial prefix of the longer string is equal to the entire shorter string, then the shorter string collates before the longer string. The collating sequence used in the comparison for all the string relational operators is specified by a property on the Query Object. Refer to the discussion on the query object.</P>
+<P>The comparison of binary operands is done one unsigned byte at a time from lower index values to higher index values. Two binary operands of unequal length are always unequal. If the two binary operands are of unequal length, and the initial prefix of the longer operand is equal to the entire shorter operand, then the shorter operand collates before the longer operand.</P>
+<P>The comparison of lists is done one element at a time, starting from element zero. The first corresponding pair of list elements with unequal values determines the outcome of the compare. If no corresponding pair of list elements have unequal values, the lists are considered equal. Two lists of unequal lengths are always unequal. If two lists are of unequal length, and the initial elements of the longer list are equal to the corresponding elements in the shorter list, then the shorter list collates before the longer list. </P>
+<P>Note: The above rules are in harmony with the ANSI/ISO SQL 92 standards: ANSI X3.135-1992, &quot;Database Language SQL&quot;, and ISO/IEC 9075:1992, &quot;Database Language SQL&quot;.</P>
+<P>When a singleton is compared against a list, the singleton is treated as if it were a list of one element, and the comparison proceeds as for two lists.</P>
+<P><A HREF="QueryOps.html">Query Operators</A></P></BODY>
+</HTML>

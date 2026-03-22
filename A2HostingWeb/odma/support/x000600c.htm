@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>X000600 2000-06-22-21:42 Investigation Request</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR></HEAD>
+<BODY bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<h3 align="center"><a href="X000600.htm">ODMA Incident Report X000600</a> </h3>
+<h2 align="center"><b>2000-06-22 Word 2000 + ODMA32 + SampleDMS</b> </h2>
+<h2 align="center"><a href="x000600c.msg">2000-06-22-21:42 Investigation Request</a> </h2>
+<P align="center">L<span style="font-variant: small-caps">ast</span>
+U<span style="font-variant: small-caps">pdated</span> 2000-10-19-15:30 -0700 (pdt) </P>
+<dl>
+  <dt><b>Responds To:</b></dt>
+  <dd><a href="x000600a.htm">2000-06-21-04:50 Initial Report
+    </a><br><a href="x000600b.htm">2000-06-21-10:14 Initial Acknowledgment</a></dd>
+  <dt><b>Response:</b></dt>
+  <dd><a href="x000600e.msg">2000-06-25-08:27 Proposed Remedy</a></dd>
+</dl>
+<hr>
+<P><kbd><font color="#000000">From: Dennis E. Hamilton [<a href="mailto:infonuovo@email.com">mailto:infonuovo@email.com</a>]<br>
+Sent: Thursday, 22 June 2000 21:42<br>
+To: sramnath@MEGSINET.COM<br>
+Cc: <a href="mailto:ODMATECH@FTPLIST.AIIM.ORG">ODMA TECH LIST</a>; GIBNEY@woodsrogers.com<br>
+Subject: RE: ODMA 2.0 sample w/ MS Word 2000<br>
+<br>
+%To:&nbsp;&nbsp;&nbsp; S Ramanathan<br>
+%Cc:&nbsp;&nbsp;&nbsp; ODMA Tech<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clay Gibney<br>
+%From:&nbsp; Dennis E. Hamilton<br>
+%Re:&nbsp;&nbsp;&nbsp; ODMA Incident X000600: Word 2000 + ODMA32 + SampleDMS<br>
+<br>
+I have logged a new incident report on failure of the SampleDMS (ODMASamp32.dll)
+in combination with Word 2000 and ODMA32.&nbsp; The particulars are at<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="X000600.htm" target="_blank">http://www.infonuovo.com/odma/support/X000600.htm</a><br>
+<br>
+This is based on information <a href="x000600a.htm">from you</a> and from <a href="x000500z.htm">Clay
+Gibney</a>.&nbsp; It does not include reported failures of ODMA32 to produce
+logs.&nbsp; That will be researched separately.<br>
+<br>
+I have performed the particular sequence under Windows 98 without any failure.&nbsp;
+This provides a worked case where the configuration performs as expected.&nbsp;
+We can compare logs and other material with the failing configurations.<br>
+<br>
+I now request the following information to provide a failure case.&nbsp; I will
+work with that to find a configuration on which I can duplicate the problem:<br>
+<br>
+Open Microsoft Word 2000 and obtain the following information:<br>
+<br>
+1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On Help / About Microsoft Word<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; record the Microsoft Word 2000
+version number (e.g., 9.0.2720)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click &quot;System Info&quot; and
+record the Microsoft Windows version information at the top of the list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(e.g., Microsoft Windows 98 4.10.2222 A)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Close Word 2000<br>
+<br>
+2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Create a new file with ODMA activated and with
+ODMASAMP as the default DMS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.g., open Word after everything is
+set and create a new document by typing a small amount of test data into an
+unnamed file (e.g., Document1), then use the Save button to save it to the
+Sample DMS.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Get as far as you can get.&nbsp;
+Notice what shows up in the title bar.<br>
+<br>
+3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When you quit windows or shut it down after a
+failure, capture the following information and package it in a ZIP file (so that
+there are no problems with character sets between systems):<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The
+ODMA32 log that you created.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do a
+file find for ODMASAMP.INI and include that file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Do a
+search of your configuration's temporary file (historically, Windows\TEMP) for
+files named ODM*.tmp (these should all have zero length) and ODM*.txt, where the
+&quot;*&quot; should be 3-4 numeric digits.&nbsp; (The ODMASAMP.INI file, if
+readable, will tell you the file locations where ODMASAMP was telling word to
+put things, and the names it was giving them.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Send me any of these you aren't
+concerned about the content of.&nbsp; (By the way, they are not necessarily text
+files.&nbsp; They will likely be Word Document files.&nbsp; ODMASAMP stores away
+everything with extension *.txt.&nbsp; This is harmless though a little
+disconcerting.)<br>
+<br>
+4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; That's enough for now.&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank you for whatever you are able
+to provide.&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I invite others who have information
+to contribute on this incident to also provide information of comparable
+quality.&nbsp; This will help us get the most value out of the ODMA 2.0 test
+fixtures and also see if we can demonstrate failure modes that are happening
+with production DMS integrations and WordPerfect.</font></kbd> </P>
+<hr>
+<p align="right"><a name="created">created</a>  2000-06-22-22:31 -0700 (pdt) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 00-10-19 15:32 $<br>
+$$Revision: 4 $</em></p>
+<P><kbd><FONT size=2><BR></FONT> </kbd> </P></BODY></HTML>

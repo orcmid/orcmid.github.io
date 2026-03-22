@@ -1,0 +1,147 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+SELECT_DIALOG DIALOG DISCARDABLE  100, 100, 285, 89
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Document"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,220,8,56,16
+    PUSHBUTTON      "Cancel",IDCANCEL,220,28,56,16
+    PUSHBUTTON      "Select in app.",IDAPPSELECT,220,56,56,16
+    LISTBOX         IDC_SELECT,12,8,195,72,LBS_SORT | WS_VSCROLL
+END
+
+SAVEAS_DIALOG DIALOG DISCARDABLE  100, 100, 223, 68
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Save Document As..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "New Document",IDCOPY,84,45,66,14
+    PUSHBUTTON      "Cancel",IDCANCEL,163,45,50,14
+    DEFPUSHBUTTON   "Current Document",IDOK,7,45,66,14
+    PUSHBUTTON      "Options...",IDC_OPTIONS,164,13,50,14
+    LTEXT           "Format:",-1,7,15,36,10
+    LTEXT           "",ST_FORMAT,45,15,109,10
+END
+
+PROFILE_DIALOG DIALOG DISCARDABLE  100, 100, 276, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Document Profile"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Document ID",-1,2,11,45,8
+    LTEXT           "",ST_DOCID,60,11,136,11
+    LTEXT           "Name",-1,2,28,28,8
+    EDITTEXT        IDC_NAME,60,27,140,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Author",-1,2,48,28,8
+    EDITTEXT        IDC_AUTHOR,60,46,140,12,ES_UPPERCASE | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "Doc. Type",-1,2,68,35,8
+    EDITTEXT        IDC_TYPE,60,66,140,12,ES_UPPERCASE | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    DEFPUSHBUTTON   "OK",IDOK,215,27,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,215,54,50,14
+END
+
+SELECT_DIALOG_EX DIALOG DISCARDABLE  100, 100, 280, 90
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select DocumentS"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,220,8,52,16
+    PUSHBUTTON      "Cancel",IDCANCEL,220,28,52,16
+    LISTBOX         IDC_SELECT,12,8,195,72,LBS_SORT | LBS_MULTIPLESEL | 
+                    WS_VSCROLL
+    PUSHBUTTON      "Select in app.",IDAPPSELECT,220,56,52,16
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    SELECT_DIALOG_EX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 273
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 83
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

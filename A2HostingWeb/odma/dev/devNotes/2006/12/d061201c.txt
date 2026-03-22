@@ -1,0 +1,329 @@
+d061201c.txt 0.02                    UTF-8                    dh:2006-12-07
+
+            CONTENT OF d061201c-ODMA1.0-0.20alpha.zip ARCHIVE
+
+               ODMJNI 1.0 0.20alpha End-to-End Confirmation
+               --------------------------------------------
+
+
+        For the latest version of this material, consult web page
+        <http://ODMA.info/dev/devNotes/2006/12/d061201c.htm>.
+        This material is maintained on the ODMA Interoperability
+        Exchange site at <http://ODMA.info>.
+
+   If there is any concern for the authenticity of the archive and its
+   content, obtain a full replacement copy from the ODMA.info site.
+
+
+              The software in this package is released under the
+              Open Document Management API License 1.0, an open-
+              source software license using the BSD template
+              license.
+
+              A copy of the license should accompany the
+              computer software that is contained in this archive.
+              If the license has has been separated from the
+              material, obtain a copy at
+                 <http://DMware.info/license/>.
+
+   CONTENT
+
+     1. Prerequisites
+     2. Manifest
+     3. Tools Required
+     4. Installation and Usage
+     Copyright Notice
+     Revision History
+
+
+1. PREREQUISITES
+
+   To make use of this distribution, the following minimum prerequisites
+   are required:
+
+      * Extraction of Zip material into subdirectories of folders on the
+        Microsoft Windows platform (Windows 2000 and later)
+
+      * Execution of console (command-line) sessions, navigation among
+        directories, and executing Windows console applications and
+        batch scripts.
+
+      * Customization of batch scripts to correctly work with installed
+        Java Standard Edition (J2SE) SDK software.
+
+      * Installation of the ODMA 2.0 SDK if it is not already installed.
+
+      * Modification of the Windows Registry for configuration of ODMA 2.0
+        logging options and control of the availability of a default DMS
+        for the sample applications included in the distribution.
+
+   Further information on the basic use of this distribution and how to
+   observe the confirmation of end-to-end operation is found in the
+   accompanying d061201c-ReleaseNotes.txt document.
+
+   Development of Java programs that rely on the ODMJNI 1.0 Java packages of
+   classes and interfaces will require proficiency in the Java language.
+
+   Review and adaptation of the implementation of ODMJNI 1.0 also requires
+   understanding of C and C++ language, command-line use of the Visual C++
+   2005 compiler, the Windows Platform SDK, the Microsoft Component Object
+   Model (COM) and creation of libraries used with the Java Native Interface
+   (JNI).
+
+   There are extensive comments in the material to guide the reviewer and
+   adopter in understanding the intention for the software and the methods
+   used.  The code annotations are insufficient for reliable understanding
+   in the absence of the prerequisites.
+
+
+2. MANIFEST
+
+   This archive is designed to be extracted to the <folder> location that is
+   the Java classpath point for the ODMJNI 1.0 packages on your computer.
+
+   The extraction, with preservation of subdirectories, will install
+   material in the following hierarchy when extraction is into the directory
+   at <folder>:
+
+            <folder>/
+                    d061201c.txt - this manifest
+                    d061201c-license.txt copy of the Open Document
+                        Management API License 1.0 applied to the archive
+                        d061201c-ODMJNI1.0-0.20alpha.zip and its content
+                    d061201c-ReleaseNotes.txt file of additional information
+                        that provides an overview and guide to the use
+                        of the 0.20alpha distribution in confirmation of
+                        initial Java application use of ODMJNI.
+                info/
+                    odma/
+                        odmjni100/
+                                OdmJava.bat
+                                    Script that establishes the Java
+                                    environment for operating with odmjni
+                                    and also for rebuilding its Java
+                                    classes.
+                                [plus all other scripts, source code,
+                                 compiled classes, libraries (.obj), and
+                                 DLL files used for odmjni100 and also
+                                 usable in rebuilding any of it.]
+                            test/
+                                Setup02/
+                                    RunSetup02.bat
+                                        script used in executing the
+                                        end-to-end demonstration and
+                                        provides useful portrayal of
+                                        the levels of connection
+                                        operation.
+                                    [plus all other scripts, source code,
+                                     and compiled classes to rebuild the
+                                     Setup02.class]
+                        OdmNative100/
+                                OdmPSDK.bat
+                                    Script for setting PSDK environment
+                                OdmVC++.bat
+                                    Script for setting VC++ environment
+                                [plus all source-code and compiled code for
+                                 the OdmNative100 library]
+                            test/
+                                Setup04/
+                                    Setup04-reference.exe
+                                        Test program that demonstrates
+                                        VC++ access to ODMA using the
+                                        OdmNative100 library.
+                                    [plus all source-code and scripts
+                                     for reconstructing Setup04.exe]
+                        practical100/
+                                OdmJava.bat
+                                    Script that must be customized to
+                                    use and to compile practical 100
+                                    code
+                                [plus all source-code, scripts, and
+                                 compiled classes for the practical100
+                                 package]
+                            test/
+                                Null00/
+                                        RunNull00.bat
+                                            Script for running the
+                                            demonstration of the null
+                                            implementation for the
+                                            practical100 interfaces
+                                        [plus all scripts and source code
+                                         and compiled classes for the
+                                         RunNull00 test.]
+
+
+
+
+3. TOOLS REQUIRED
+
+   To access and use the material in this archive, the following resources
+   are required:
+
+       Internet Connection and Browser
+                      for access to the material and download of the
+                      d061003g-OdmNative100-Setup04.zip file.  Microsoft
+                      Internet Explorer 7 has been used to confirm
+                      download from the web on the http://ODMA.info/ site.
+
+       Zip-format archive access utility
+                      The archive was produced with WinZip 9.0 SR-1 (6224)
+
+       Utility for viewing or editing simple text files
+                      Windows Notepad is sufficient.  No tabs are used
+                      and word wrap should not be used in viewing. Most
+                      lines of text in the body are not wider than 80
+                      characters.  Some command lines in logs are wider.
+                      The text files in this archive are all in UTF-8
+                      encoding and were produced using jEdit 4.2final.
+
+         ODMA 2.0 SDK or other resource for obtaining the ODMA32.dll form of
+                      the ODMA 2.0 Connection Manager.  Installation and
+                      removal of ODMA32.dll can be used to confirm that
+                      TestSetup04 properly detects the presence of the
+                      Connection Manager.
+
+       An ODMA-compliant DMS integration, such as the ODMASAMP sample or
+                      a production DMS for use in confirming access as a
+                      default DMS for the Setup04 application
+                      identification "OdmNativeTest"
+
+       A Java SE JDK such as the JDK 1.5 used to develop all of the Java
+                      applications in this distribution.
+
+       Microsoft Visual C++ 2005 Express Edition for rebuilding the
+                      software, if desired.  The libraries and command-
+                      line compiler that were used are from the version
+                      of VC++ 2005 Express identified as Microsoft Visual
+                      Studio 2005 Version 8.0.50727.42 (RTM.050727-4200).
+                      Other identifications can be seen in the log files
+                      from BuildSetup04.bat.
+
+       Microsoft Windows Platform SDK for providing the native Windows
+                      API libraries used in OdmNative100 development.
+                      The March 2006, Microsoft Platform SDK for Windows
+                      Server 2003 R2 was used in producing the 0.20alpha
+                      OdmNative100 integration.
+
+       Microsoft Windows Regedit utility for setting and removing default
+                      DMS registry entries for ODMA Application ID
+                      "OdmNativeTest" used by Setup04-reference.exe when
+                      checking for presence of a default DMS.
+
+
+4. INSTALLATION AND USAGE
+
+   The entire archive should be extracted into a folder that can be used
+   for performance of the end-to-end confirmation.  It will also be
+   appropriate to use this <folder> location as the class path location
+   for using ODMJNI components in the ODMA-aware development of a
+   Java-based application.
+
+   ** NOTE: If the same <folder> has been used to hold earlier materials
+   from ODMJNI development, it may be simpler to delete all material in
+   <folder> and make a fresh extract with just this archive material.
+
+   For further details on the customization and exercise of this material,
+   see the companion d061201c-ReleaseNotes.txt document.
+
+4.1 Minimum Customization
+
+   All of the Java applications in this distribution depend on the two
+   OdmJava.bat files for establishing the Java environment.  The two copies
+   (one in folder odmjni and the other in folder practical100) should be
+   backed up (or renamed) and then modified to reflect the <folder>
+   location and the location of the JDK that is installed.  The modifica-
+   tions should also be backed up to a location where they can be reused
+   with future distributions of the ODMJNI 1.0 development tree.
+
+   Unless the C and C++ programs are also to be compiled, there is no need
+   for any further customization.
+
+4.2 Demonstrating Operation
+
+   There are three demonstration programs:
+
+   1. RunNull00 is in practical100/test/Null00.
+      It can be used to confirm the expected behavior of a null
+      implementation.  Null behavior often occurs in the odmjni100
+      implementation under various circumstances, and this application
+      demonstrates typical responses.  Perform RunNull00.bat in a
+      console window from the directory containing the script.  OdmJava.bat
+      is used in this script.
+
+   2. Setup04-reference.exe is in OdmNative100/Setup04.
+      This is a native Windows application.  It uses the OdmNative
+      library routines to access ODMA via the same interfaces that
+      are provided to odmjni100.  This can be used to demonstration
+      ODMA Connection and, if there is a default DMS available, the
+      initiation of an user choice of a document from the DMS for use
+      by the application.  The document is not used in any way.  We
+      are only demonstrating that we can obtain the display from the
+      DMS and that there is an usable ODMA Configuration.
+
+   3. RunSetup02 is in odmjni100/test/Setup02.
+      This Java program uses ODMJNI to accomplish essentially the
+      same end-to-end communication that is demonstrated by Setup04.
+      In this case, the result of selecting a document (or other option)
+      in the DMS is not displayed, because that is done with a different
+      interface that must be added to ODMJNI for 0.30alpha.  However,
+      the display from the DMS should be visible, just as for Setup04.
+
+4.3 Use in Developing Applications
+
+    Although there is still much null behavior in 0.20 alpha, the current
+    practical100 and odmjni100 classes can be used to establish that there
+    is end-to-end correction from a Java application.
+
+    For the OdmConnection interface, the availability of ODMA and the
+    availability of a default DMS will be reported to the application.  If
+    ODMA has been configured so that connection is accomplished and there
+    is a default DMS, the OdmConnection.chooseDocument operation will lead
+    to DMS presentation of a document-selection dialog.
+
+    0.20alpha provides a null response regardless of the user action with
+    the DMS.  Providing actual status and a document to work on is the
+    accomplishment of the 0.30alpha distribution.
+
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+Questions, comments, discussion and feedback about ODMA concepts, status,
+and materials are welcome.  Please send comments to the discussion list at
+<mailto:activeodma-discuss@lists.sourceforge.net>.  For further details
+visit <http://ODMA.info/contact.htm>.
+
+             Copyright © 2006 NuovoDoc <http://NuovoDoc.com>
+  Portions Copyright © 1994-1998 AIIM International <http://www.aiim.org>
+                   and the respective contributors to ODMA.
+
+           This work is licensed under the Creative Commons Attribution
+           License.  To view a copy of this license, visit web site
+           http://creativecommons.org/licenses/by/2.5/ or send a letter
+           to Creative Commons, 559 Nathan Abbott Way, Stanford,
+           California 94305, USA.
+
+Attributions can be made in any suitable scholarly-citation format.  It is
+requested that citations identify the material sufficiently for others
+to be able to locate the material on their own.   This citation example
+can be adapted to your purpose and format:
+
+    Hamilton, Dennis E.
+        Content of d061201c-ODMA1.0-0.20alpha.zip Archive: ODMJNI 1.0
+        0.20alpha End-to-End Confirmation.  ODMA Interoperability Exchange,
+        ODMdev Development Note page d061201c.txt 0.02, December 7, 2006.
+        Current version available as part of the archive downloadable at
+        <http://ODMA.info/dev/devNotes/2006/12/d061201c.htm>.
+
+ - - - - - - - - - - - - - - - - - - | - - - - - - - - - - - - - - - - - -
+
+0.02 2006-12-07-17:09 Update to reflect incorporation of the updated and
+     renamed ReleaseNotes file.  Add Prerequisites section and tie to the
+     Release Notes as well.
+0.01 2006-12-06-17:00 Make simple corrections and account for the addition
+     of d061201c-caveats.txt in the manifest.
+0.00 2006-12-05-21:53 Initial draft manifest.
+
+$Header: /ODMdev/d061201c.txt 4     06-12-07 18:43 Orcmid $
+
+                        *** END OF d061201c.txt ***
+

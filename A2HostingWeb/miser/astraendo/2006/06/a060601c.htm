@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>A060601c: Peano Arithmetic - What It Is</title>
+<!--$$Header: /miserCompagno/astraendo/2006/06/a060601c.htm 29    17-08-29 16:38 Orcmid $-->
+<base target="_self">
+
+</head>
+
+<body marginwidth="0" marginheight="0" stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="73%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+		<b>
+      	<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../a000001.htm#a060601"><font color="#990033">a060601</font></a> Astraendo
+		<a href="../../a000001.htm"><font color="#990033">Topic</font></a>
+      <br /> 
+		<a href="a060601.htm"><font color="#990033">Peano Arithmetic</font></a><br />
+		<i><font size="5">What It Is</font></i></font></b></p>
+    
+</font>
+
+    </td>
+    
+    <td width="15%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a target="_top" href="../../">astraendo</a>&gt;<br>
+		<a href="../" target="_top">2006</a>&gt;<a target="_top" href="./">06</a>&gt;</code></b></p>
+    
+</font>
+
+      <p align="right"><b><code><a target="_top" href="a060601c.htm">a060601c</a>&gt;</code></b><br>
+      <small><small>
+		<a href="#v0.01">0.01</a>
+		<!--webbot bot="Timestamp" S-Type="EDITED"
+      S-Format="%Y-%m-%d" startspan -->2014-01-09<!--webbot bot="Timestamp" endspan i-checksum="12072" -->        
+      -<!--webbot bot="Timestamp" S-Type="EDITED" S-Format="%H:%M %Z" startspan -->18:56 -0800<!--webbot bot="Timestamp" endspan i-checksum="12073" -->      
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+<hr noshade color="#990033">
+
+<p><font color="#800080"><b>{Ed.Note: This is the place for a basic summary of 
+what Peano Arithmetic and the basic formulation that will be used.&nbsp; There 
+is the informal notion, then the FOL= formulation.&nbsp; We think that PAO will 
+be used here, but we need to be certain about that.&nbsp; Additional pages will 
+have more detail.&nbsp; This page should serve as the latest overview and basic 
+formulation.}</b></font><p>Preliminaries<p>Peano Arithmetic with Induction: PAI<p>Peano Arithmetic <h2>Sources</h2>
+<blockquote>
+	<dl>
+		<dt><a name="Boolos2002">Boolos, George S., Burgess, John P., Jeffrey, 
+		Richard C.</a> (<a target="_top" href="http://orcmid.com/readings/logic.htm#Boolos2002">2002</a>)</dt>
+		<dd><i>Computability and Logic</i>, ed.4.&nbsp; Cambridge University 
+		Press (Cambridge &amp; New York: 2002).&nbsp; ISBN 0-521-00758-5 pbk.<br>
+&nbsp;&nbsp; </dd>
+		<dt><a name="Kennedy1973">Kennedy, Hubert C. (1973)</a></dt>
+		<dd><i>Selected works of Giuseppe Peano</i>.&nbsp;&nbsp; Translated and 
+		edited, with a biographical sketch and bibliography by Hubert C. 
+		Kennedy.&nbsp; University of Toronto Press (Toronto &amp; Buffalo, NY: 1973); George 
+		Allen &amp; Unwin (London: 1973).&nbsp; ISBN 0-04-164002-0.<small><br />
+&nbsp;&nbsp; Chapter VII, pp. 101-134, provides a translation of (<a href="#Peano1889">Peano 
+		1889</a>) in its entirety, including Peano&#39;s selection of theorems and 
+		approach to presentation of proofs.<br />
+&nbsp;&nbsp; </small></dd>
+		<dt>
+		<a name="Nelson1986" target="_top" href="http://orcmid.com/readings/logic.htm#Nelson1986">
+		Nelson, Edward (1986)</a>.</dt>
+		<dd><i>Predicative Arithmetic</i>.&nbsp; Mathematical Notes 32.&nbsp; 
+		Princeton University Press (Princeton, NJ: 1986).&nbsp; ISBN 
+		0-691-08455-6 pbk.<br>
+&nbsp;&nbsp; </dd>
+		<dt><a name="Peano1889">Peano, Giuseppe (1889)</a>.</dt>
+		<dd><i>Arithmetices principia, nova methoda exposita</i>.&nbsp; Bocca 
+		(Torino: 1889).<small><br />
+&nbsp;&nbsp; Written in a form of Latin that Peano sought to use as a universal 
+		language for exposition of mathematics, <i>The principles of arithmetic, 
+		presented by a new method</i> was the first effort to characterize 
+		arithmetic in an axiomatic symbolic logic.&nbsp; Translations appear in 
+		(<a href="#Kennedy1973">Kennedy 1973</a>; <a href="#vanHeijenoort1977">
+		van Heijenoort 1977</a>).<br />
+&nbsp;&nbsp; </small></dd>
+		<dt>
+		<a target="_top" name="vanHeijenoort1977" href="http://orcmid.com/readings/logic.htm#vanHeijenoort1977">van Heijenoort, Jean (ed.) (1977)</a>.</dt>
+		<dd>van Heijenoort, Jean (ed).&nbsp; <i>From Frege to Gödel: 
+		A Source Book in Mathematical Logic, 1879-1931</i>.&nbsp;&nbsp;Harvard University 
+		Press (Cambridge, MA: 1967), 3rd (1977) printing.&nbsp; ISBN 
+		0-674-32449-8 pbk.<small><br />
+&nbsp;&nbsp; pp. 81-97 provides an abridged translation of (<a href="#Peano1889">Peano 
+		1889</a>) prepared by the editor.&nbsp; The first three pages include 
+		introductory remarks that provide some context and also tend to offer 
+		some critical hindsight where Peano did not meet the later standards of 
+		formal deductive logic.&nbsp; Nevertheless, Peano and Frege are credited 
+		with setting the stage for the development of <i>
+		<a target="_top" href="http://nfocentrale.net/orcmid/readings/logic.htm#Whitehead1997">
+		Principia Mathematica</a>, </i>published in 1910.&nbsp; Many of Peano&#39;s 
+		notational ideas have survived in present-day mathematical logic, as has 
+		Peano Arithmetic itself.</small></dd>
+	</dl>
+</blockquote>
+<p>&nbsp;<hr noshade color="#990033">
+
+<small>
+<dl>
+	<dt><b><a name="v0.01">0.01</a> 2014-01-09-18:52 Revival</b></dt>
+	<dd>The style and format is adjusted and the page reviewed for continuation 
+	with development of the content.</dd>
+	<dt><b><a name="v0.00">0.00</a>   2006-06-06-13:49 Initial Diary placeholder (<a href="../../NuovoDoc/construction/orcmid.htm">orcmid</a>)</b></dt>
+	</small>
+	<dd><small>&nbsp;Customize as the basic placeholder for the article and hold 
+	initial notes.</small></dd>
+</dl>
+<hr noshade color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="8%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="70%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" --></td>
+    <td width="20%">
+      <p align="right"><font size="-2">created 2006-06-08-14:18 -0700 (pdt) by <a href="../construction/orcmid.htm">orcmid</a><br> 
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-08-29 16:38 $<br>
+      $$Revision: 29 $</em></font></p>
+    </td>
+  </tr>
+</table>
+			
+			
+		
+	
+	
+
+
+
+
+
+</body>
+</html>

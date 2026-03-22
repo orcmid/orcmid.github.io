@@ -1,0 +1,91 @@
+ODMdev.bat 0.04 CONSOLE-SESSION SETUP FOR ActiveODMA DEVELOPMENT
+   For further information, refer to http://ODMA.info/dev/
+   "
+   %ODMdev% development tree = C:\crea\ActiveODMA
+   %VCTK% C++ toolkit = C:\Program Files\Microsoft Visual C++ Toolkit 2003
+   %MSDK% non-redistributables = C:\crea\ActiveODMA\MSreliance
+      for necessary Microsoft-licensed materials.
+   "
+C:\crea\ActiveODMA>cd confirm\DeRisk01
+
+C:\crea\ActiveODMA\confirm\DeRisk01>cl @DeRun01.opt
+Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 13.10.3077 for 80x86
+Copyright (C) Microsoft Corporation 1984-2002. All rights reserved.
+
+cl /EHsc
+   /showIncludes
+   /DDERUN01_OPT#0.01
+   DeRun01.c
+
+DeRun01.c
+Note: including file: C:\Program Files\Microsoft Visual C++ Toolkit 2003\include
+\stdio.h
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:DeRun01.exe
+DeRun01.obj
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum DeRun01.c DeRun01.opt DeRun01.obj DeR
+un01.exe >DeRun01-0.01.md5
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum --check DeRun01-0.01.md5
+DeRun01.c: OK
+DeRun01.opt: OK
+derun01.obj: OK
+derun01.exe: OK
+
+C:\crea\ActiveODMA\confirm\DeRisk01>rem Checking .obj, .exe, and .md5 into VSS.
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum --check DeRun01-0.01.md5
+DeRun01.c: OK
+DeRun01.opt: OK
+derun01.obj: OK
+derun01.exe: OK
+
+C:\crea\ActiveODMA\confirm\DeRisk01>rem Check out .obj and .exe to rebuild.
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum --check DeRun01-0.01.md5
+DeRun01.c: OK
+DeRun01.opt: OK
+derun01.obj: OK
+derun01.exe: OK
+
+C:\crea\ActiveODMA\confirm\DeRisk01>cl @DeRun01.opt
+Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 13.10.3077 for 80x86
+Copyright (C) Microsoft Corporation 1984-2002. All rights reserved.
+
+cl /EHsc
+   /showIncludes
+   /DDERUN01_OPT#0.01
+   DeRun01.c
+
+DeRun01.c
+Note: including file: C:\Program Files\Microsoft Visual C++ Toolkit 2003\include
+\stdio.h
+Microsoft (R) Incremental Linker Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:DeRun01.exe
+DeRun01.obj
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum --check DeRun01-0.01.md5
+DeRun01.c: OK
+DeRun01.opt: OK
+derun01.obj: FAILED
+derun01.exe: FAILED
+md5sum: WARNING: 2 of 4 computed checksums did NOT match
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum DeRun01.c DeRun01.opt DeRun01.obj DeR
+un01.exe >DeRun01-0.01.md5
+
+C:\crea\ActiveODMA\confirm\DeRisk01>md5sum --check DeRun01-0.01.md5
+DeRun01.c: OK
+DeRun01.opt: OK
+derun01.obj: OK
+derun01.exe: OK
+
+C:\crea\ActiveODMA\confirm\DeRisk01>rem checkin .obj, .exe, and .md5 of Build B
+
+
+C:\crea\ActiveODMA\confirm\DeRisk01>

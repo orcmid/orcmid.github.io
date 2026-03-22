@@ -1,0 +1,670 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>P050702c: ODMdev Bootspiral Scoping 0.11</title>
+<!--$$Header: /ODMACompagno/active/odmref10/envision/p050702c.htm 101   13-08-22 12:47 Orcmid $
+    created using Project Folio Bootstrap 0.11 Material [placeholder] file
+    ODMA /projects/templates/00/P000006c.htm of 2005-07-05T00:56Z.
+    See <http://ODMA.info/projects/2005/07/P050701c.htm> for further details. 
+    -->
+    
+<base target="_self">
+<style>
+<!--
+span.MsoHyperlink
+	{color:windowtext;
+	text-decoration:underline;
+	text-underline:single;}
+-->
+</style>
+</head>
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3" id="table1">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="10445" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font color="#990033"><strong>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<a href="../../../projects/p000001-log.htm#P050702"><font color="#990033">
+P050702</font></a> 
+		ODMA <a href="../../../projects/p000001-log.htm"><font color="#990033">Project</font></a><br>
+      &nbsp;<i><a href="p050702.htm"><font color="#990033"><big><big>ODMdev Bootspiral Scoping</big></big></font></a></i></font><br>
+      &nbsp;version 0.12</strong></font></p>
+    </td>
+    
+    <td width="28%" height="6">
+      <p align="right">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a 
+  href="../../">active</a>&gt;<br>
+      <a target="_top" href="../">ODMref10</a>&gt;<a target="_top" href="./">envision</a>&gt;</code></b></font></p>
+      <p align="right"><code><a target="_top" href="p050702c.htm"><b>P050702c</b></a><b>&gt;</b></code><br>
+      <small><small>
+		<a href="#0.12">0.12</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED"
+      S-Format="%Y-%m-%d" startspan -->2013-08-22<!--webbot bot="Timestamp" endspan i-checksum="12500" -->      
+      -<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%H:%M %Z" startspan -->12:47 -0700<!--webbot bot="Timestamp" endspan i-checksum="12068" -->&nbsp; 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this material is available on the Internet at <br>
+			&lt;<b><kbd><a href="p050702b.htm">http://ODMA.info/active/ODMref10/envision/P050702b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This version:</b>&nbsp; 0.12 &lt;<b><kbd><a 
+   href="p050702c.htm">http://ODMA.info/active/ODMref10/envision/P050702c.htm</a></kbd></b>&gt;.&nbsp; 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small>
+	<p>To address the lifecycle within which the ODMref 1.0 implementation will 
+	occur, a &quot;bootspiral&quot; is carried out ahead of and sometimes along side of 
+	full-development cycles.&nbsp; This provides &quot;plumbing&quot; and 
+	a carrier for the packaging, delivery, installation, confirmation, adoption, and 
+	end-of-life of ODMref 1.0 releases and other ODMA-related components.</p>
+	<p>This attention to lifecycle beyond the immediate software-development 
+	activity is part of creating a foundation of reliability.&nbsp; The idea is 
+	to build to a trustworthy engagement in which delivery, maintenance, and support for 
+	ODMA components occurs.&nbsp; This is part of the <a target="_top" 
+ href="http://TROSTing.org/">TROSTing</a> for ODMref 1.0.</p>
+	<blockquote>
+		<blockquote>
+			<h3>1.&nbsp; <a href="#Concepts">Concepts</a><br>
+			2.&nbsp; <a href="#Context">Context</a><br>
+			3.&nbsp; <a href="#Scenario">Scenario</a><br>
+			4.&nbsp; <a href="#Artifacts">Artifacts</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.1
+			<a href="#ScopeSatisfactionChecklist">Scope Satisfaction Checklist</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.2
+			<a href="#GeneralPackageInformationApproach">Approach: </a>
+			<a href="#GeneralPackageInformationApproach">General Package Information and 
+			Instructions</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.3
+			<a href="#InformationInstructionElements">Information and 
+			Instruction Elements</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.4
+			<a href="#OperationalComponentPackage">Operational-Component Package</a></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">4.5
+			<a href="#ConfirmableConstructionPackage">Confirmable-Construction 
+			Package</a></span><br>
+			5.
+			<a href="#Resources">Resources and References</a></h3>
+		</blockquote>
+	</blockquote>
+</blockquote>
+
+<h2><a name="1" target="_top" href="#1">1</a>. <a name="Concepts">Concepts</a></h2>
+<blockquote>
+	<dl>
+		<dt><b><a name="1.1" target="_top" href="#1.1">1.1</a> <a name="ODMdev">ODMdev</a></b></dt>
+		<dd>is the basic framework, with supporting resources, for developing, 
+		packaging, deploying and confirming new ODMA components.&nbsp; It serves all parts of the component lifecycle 
+		with particular attention to deliverables and how their development and 
+		operational installation are confirmed.&nbsp; ODMdev is a foundation for 
+		reliable delivery, availability of support resources for adopted 
+		components, and the reliable repair, upgrade, or removal of the 
+		components as circumstances change.<br>
+&nbsp;&nbsp; </dd>
+		<dt><b><a name="1.2" target="_top" href="#1.2">1.2</a> <a name="Bootspiral">Bootspiral</a></b></dt>
+		<dd>is a spiral development model (<a href="#McConnell1996">McConnell 1996</a>, sections 7.3 &amp; 35) 
+		that fits naturally with ideas of evolutionary development (<a 
+  href="#Gilb1988">Gilb 1988</a>, chapter 7).&nbsp; Spiral development attends 
+		to lifecycle considerations and provides ways to start lean.&nbsp; The 
+		deliverable is enriched through a spiraling of 
+		product-development cycles.&nbsp; <br />
+		<a href="http://www.stsc.hill.af.mil/crosstalk/2001/05/boehm.html" 
+  target="_top" name="Fig.1"><img border="0" src="P050702c1.jpg" width="595" height="315" 
+  alt="Ingredients of a Spiral Model"></a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>
+		<b><a target="_top" href="#Fig.1">Fig. 1</a> Ingredients of a Spiral Model</b> [from (<a 
+  target="_top" href="#Boehm2001">Boehm &amp; 
+		Hansen 2001</a>, fig.2)]<br>
+		</small><br />
+		Bootstrapping of spiral development (bootspiraling) for ODMdev involves 
+		creation of end-to-end lifecycle support where there is none already.&nbsp; 
+		Development of the bootspiral itself may employ a variety of rudimentary 
+		improvisations until the bootspiraling completes and initial scaffolding has 
+		disappeared.&nbsp; Subsequent development is with the cyclic development 
+		and lifecycle process model available as if it was always present.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><b><a name="1.3" target="_top" href="#2">1.3</a> <a name="Scope">Scoping</a></b></dt>
+		<dd>in this case, we mean technical (or solution) scoping as opposed to project scopings.&nbsp; 
+		The scopes are presented as a tabulation of the deliverables required for 
+		taking a software &quot;component&quot; through a complete deployment and adoption 
+		phase, starting with rudimentary elements and crude placeholders that 
+		are improved from cycle to cycle of scoping.&nbsp; We do not include 
+		development of the software component as a deliverable under bootspiral 
+		scopings, we take the software as an input; the <i>delivery and support 
+		mechanism</i> is what the bootspiral process arrives at.&nbsp; It is a 
+		set of rehearsals carried out so there is already a delivery practice available 
+		for improvement along with each round of deliverable-component 
+		development.</dd>
+	</dl>
+</blockquote>
+<h2><a name="2" target="_top" href="#2">2</a>. <a name="Context">Context</a></h2>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<dl>
+				<dt><i><b>see also:</b></i></dt>
+				<dd><b>P050702: <a href="p050702.htm#Engagement">ODMdev 
+				Bootspiral Scoping, Motivation and Engagement</a></b><br>
+				<b>Trosting.org: <a target="_top" 
+    href="http://TROSTing.org/TROSTing.htm">About TROST</a></b><br>
+				<b>TROST i050601: <a target="_top" 
+    href="http://TROSTing.org/info/2005/06/i050601.htm">Symbols of Trust</a></b></dd>
+			</dl>
+		</blockquote>
+	</blockquote>
+	<p><b><a name="2.1" target="_top" href="#2.1">2.1</a> Cycle of Learning and Improvement.</b>&nbsp; We imagine a development process that follows the Deming-Shewhart 
+	&quot;Plan &ndash; 
+	Do – Study – Act&quot; cycle of learning and improvement (<a href="#Latzko1995">Latzko 
+	&amp; Saunders 1995</a>, p.65).&nbsp; For software development the cycle can be 
+	seen in the &quot;Envisioning/Planning – Developing – Stabilizing – Deploying/Envisioning&quot; 
+	spiraling of <i>MSF Process Model 
+	3.1</i> (<a href="#Microsoft2002">Microsoft 2002</a>, fig.8).&nbsp; Each cycle 
+	of the spiral leads to release of a package into the hands of others, even 
+	if only a simulated delivery as part of bootspiraling.</p>
+	<blockquote>
+		<p><a name="Fig.2">
+		<img border="0" src="P050702c2.jpg" width="386" height="306"></a><br />
+		<small><b><a target="_top" href="#Fig.2">Fig. 2</a>
+		MSF 3.1 Process Model Phases and Milestones</b> [from (<a href="#Microsoft2002">Microsoft 
+		2002</a>, fig.8)]</small></p>
+	</blockquote>
+	<p>The bootspiral framework applies in stabilization, deployment, and 
+	envisioning (mainly with regard to feedback, support, and envisioning a 
+	future cycle).&nbsp; It includes the software build process of the 
+	development phase, since builds must be repeatable and confirmable as part 
+	of stabilization as well as by external reviewers and testers.</p>
+	<p>Envisioning applies to the product and the packaging of 
+	delivery in each cycle.&nbsp; Stabilization can include a complete 
+	simulation and verification of the structures for community engagement in 
+	the deployment phase.</p>
+	<p><b><a name="2.2" target="_top" href="#2.2">2.2</a> Lifecycle of Engagement.</b>&nbsp; For the ODMdev Bootspiral, the 
+	lifecycle model includes engagement of external participants 
+	in confirming the construction, functionality, and stability of a release:</p>
+	<ul>
+		<li>Release construction is repeatable and confirmable.</li>
+		<li>All aspects of the construction may be inspected, 
+		reconstructed, replicated, reported, and assessed.</li>
+		<li>There's provision for review and feedback from peers, reviewers, 
+		and users into the trouble-shooting, repair/reworking, and refinement of 
+		components (either as rework or adjustment in a subsequent phase).</li>
+	</ul>
+	<p>This extension into the adoption lifecycle of component applications can 
+	be viewed as an extension of the spiral over time until the next 
+	release-development spiral is undertaken (<a href="#Fig.1">fig.1</a>).</p>
+	<p><b><a name="2.3" target="_top" href="#2.3">2.3</a> Communities of Interest.</b>&nbsp; The ODMdev Bootspiral is 
+	oriented to the delivery and assessment process that, when matured, applies 
+	to engagement of</p>
+	<ul>
+		<li>a dispersed developer community, including open-source developers</li>
+		<li>beta-test users, students, and writers/instructors</li>
+		<li>independent observers, reviewers, and assessors, whether engaged 
+		privately or in a public process</li>
+		<li>application domain end-user, system-administrator, and support 
+		personnel who encounter and engage with the lifecycle of the software 
+		component in their day-to-day application-focused activities.</li>
+	</ul>
+	<p><b><a name="2.4" target="_top" href="#2.4">2.4</a> Scope Exclusions.</b>
+	</p>
+	<ul>
+		<li>Because the early bootspiral does not deliver a &quot;real&quot; functioning 
+		component, end-user involvement is not expected, and materials suitable 
+		for end users are not provided.</li>
+		<li>The ODMdev Bootspiral Scoping does not address the process-model adjustments 
+		that are required to deal with multiple release lifecycles.&nbsp;&nbsp; 
+		That becomes important when component lifecycles do not coincide with 
+		the lifecycle of applications systems in which the software components 
+		are introduced, requiring that components inter-work with different 
+		releases of themselves, the platforms on which they are operated, and 
+		the application software in which they are integrated. </li>
+		<li>The prospect of retrofitting later rework to earlier releases is 
+		also excluded from this bootspiral.</li>
+	</ul>
+</blockquote>
+<h2><a name="3" target="_top" href="#3">3</a>. <a name="Scenario">Scenario</a></h2>
+<blockquote>
+	<p>&nbsp;Each cycle of bootspiral consists of three elements:</p>
+	<ul>
+		<li><b><a name="3.1" target="_top" href="#3.1">3.1</a> Construction and Packaging </b>leads to a physical delivery of the component 
+		and all of the material&nbsp; required to employ the software and to confirm 
+		its operation and construction.</li>
+		<li><b><a name="3.2" target="_top" href="#3.2">3.2</a> Installation and Adoption</b> involves using the package and any 
+		collateral materials to 
+		install the component, confirm its operation, and perform the functions 
+		that can be exercised with it.&nbsp; In addition, the construction of 
+		the package can be confirmed and the available assessments reviewed 
+		before and during the integrated use of the component in an application 
+		setting.</li>
+		<li><b><a name="3.3" target="_top" href="#3.3">3.3</a> Assessment and Monitoring</b> of the component's dependable 
+		development and functioning occurs over  
+		<img src="P050702c3.gif" border="0" align="left" 
+  width="157" height="151" hspace="10" 
+  alt="ODMdev: Deployment and Adoption Lifecycle Pattern">the lifetime of the component's
+		<i>use</i> in the application setting&nbsp; This overlaps the other stages, especially (<a 
+  href="#3.2">3.2</a>).&nbsp; Those engaged in 
+		installation and review have access to assessments of others and may 
+		contribute their own.&nbsp; Monitoring involves learning whether there 
+		is new information such as a newly-discovered defect, disclosure of a 
+		security vulnerability, or announcement of obsolescence and the end of 
+		support.&nbsp; Any of these may require corrective action or response.&nbsp; 
+		Assessment and monitoring is carried out by users of the packaged component and by the 
+		developers and maintainers of the component. 
+		</li>
+	</ul>
+</blockquote>
+<h2><a name="4" target="_top" href="#4">4</a>. <a name="Artifacts">Artifacts</a></h2>
+<h3><a name="4.1" target="_top" href="#4.1">4.1</a> <a name="ScopeSatisfactionChecklist">Scope Satisfaction Checklist</a></h3>
+<blockquote>
+	<p>This is a project artifact.&nbsp; It identifies how each scope element is 
+	defined and implemented in a given delivery.&nbsp; It is valuable for identifying all 
+	deviations in the current bootspiral cycle.&nbsp; It can also be used to 
+	account for changes and improvements over previous cycles.</p>
+	<p>It is appropriate to include a Scope Satisfaction Checklist in the 
+	delivered package.&nbsp; </p>
+</blockquote>
+<h3><a name="4.2" target="_top" href="#4.2">4.2</a> Approach: <a name="GeneralPackageInformationApproach">General Package Information</a> and 
+Instructions</h3>
+<blockquote>
+	<p>This is material included with the software component(s) being delivered.&nbsp; 
+	There is everything necessary to support the component being installed and 
+	adopted in an application setting.&nbsp; </p>
+	<p><b><a name="4.2.1" target="_top" href="#4.2.1">4.2.1</a> No Commitment or Installation Required for Review.&nbsp; </b>It 
+	is important that general information be available for review without 
+	installing any of the package elements and without examining any of the 
+	content.&nbsp; The recipient is to be given a way to determine the prerequisites and 
+	any license conditions on use of the material without exposure to the 
+	package content itself and especially without committing to an installation 
+	process. </p>
+	<p><b><a name="4.2.2" target="_top" href="#4.2.2">4.2.2</a> Distribution of the Material.</b>&nbsp; Not all general 
+	information need be provided in full detail if resources can be obtained in 
+	some other way.&nbsp; The general information and instruction elements are 
+	provided either directly or at locations identified in the material.&nbsp; 
+	It is desirable to provide enough information in the package so that someone 
+	skilled in using the packages of a given sort can operate without having 
+	on-line connectivity.</p>
+	<p><b><a name="4.2.3" target="_top" href="#4.2.3">4.2.3</a> Reliance on Supporting Resources.</b>&nbsp; A number of 
+	information and instruction elements will rely on the existence of external 
+	resources for current, timely information, notification, and communication 
+	with the package supplier.&nbsp; The bootspiral will extend these supporting 
+	resources to some initial minimum.&nbsp; They will continue to expand along 
+	with growth of package deployment and audience. </p>
+	<p><b><a name="4.2.4" target="_top" href="#4.2.4">4.2.4</a> Layered, Progressive Development.</b>&nbsp; The organization into individual artifacts 
+	and in-package and/or externally-available location of the material is to be 
+	resolved on a case-by-case basis. The level of effort and degree of detail 
+	will be resolved as each bootspiral round is initiated (<a href="#Fig.1">fig. 
+	1</a>).&nbsp; The Scope Satisfaction Checklist will 
+	identify the specific approach (section
+	<a href="#ScopeSatisfactionChecklist">4.1</a>, above) for each distributed 
+	package.&nbsp; </p>
+</blockquote>
+<h3><a name="4.3" target="_top" href="#4.3">4.3</a> <a name="InformationInstructionElements">Information and Instruction 
+Elements</a></h3>
+<blockquote>
+	<p>These are generic element descriptions.&nbsp; For a given implementation of a 
+	bootspiral cycle, any element may be very limited if provided at all 
+	(although the omission will be explicit), as specified in the scope 
+	statement and checklist for the deliverable.&nbsp; For ODMref 1.0 as a 
+	reference implementation, some elements may never be developed very far.&nbsp; 
+	It is important to account for that and also develop the practice, 
+	nevertheless.</p>
+	<p><b><a name="4.3.1" target="_top" href="#4.3.1">4.3.1</a> Package Identification.</b>&nbsp; There is 
+	unambiguous identification of the package, its version and release date and 
+	a way to determine whether this a more-recent version that may be preferable 
+	to use.&nbsp; Similarly, all elements in the package are identified in some 
+	unambiguous scheme that allows for auditing and tracing of elements back to 
+	their originations.&nbsp; This may be carried at the beginning of the manifest.</p>
+	<p><b><a name="4.3.2" target="_top" href="#4.3.2">4.3.2</a> Manifest</b>.&nbsp; The manifest describes 
+	the package content, identifies the individually-usable elements and the 
+	pre-requisites for the use of the material.&nbsp; The manifest can also 
+	provide additional information or summaries that link to where additional 
+	detailed information may be found.&nbsp; </p>
+	<p><b><a name="4.3.3" target="_top" href="#4.3.3">4.3.3</a> Authentication Information.</b>&nbsp; There 
+	is information on confirming the authenticity of the package and its 
+	content.&nbsp; Some of this may be incorporated in the manifest.&nbsp; 
+	Because the package might be counterfeit, there must be an 
+	independently-reliable, external means for determining that the package is 
+	authentic without first trusting information conveyed in the package.</p>
+	<p><b><a name="4.3.4" href="#4.3.4">4.3.4</a> Status Information.</b>&nbsp; There is 
+	information for determining the current support status of the package, 
+	learning the ongoing status as it may have changed over time, and 
+	periodically locating other information that may be important in&nbsp; 
+	installation and adoption.&nbsp; Any ways to submit such information is 
+	provided as part of support information (<a href="#4.3.18">4.3.18</a>).</p>
+	<p><b><a name="4.3.5" target="_top" href="#4.3.5">4.3.5</a> Notices.</b>&nbsp; Copyright notices and 
+	other intellectual-property notices that might be required, such as 
+	applicability of any royalty-free licenses and similar conditions that may 
+	impact the transferability and application of the component.</p>
+	<p><b><a name="4.3.6" target="_top" href="#4.3.6">4.3.6</a> License and Terms of Use.</b>&nbsp;&nbsp; 
+	This provides at least summary notice of license(s) and terms of use, with 
+	identification of where complete statements and related information is to be 
+	found.&nbsp; These are for the original work and may also emphasize the 
+	applicability of other licenses.</p>
+	<p><b><a name="4.3.7" target="_top" href="#4.3.7">4.3.7</a> Attributions and Dependencies.</b>&nbsp; 
+	Acknowledgment of sources that are relied upon in the component and that 
+	have derivative works in the component is provided.&nbsp; The original 
+	source codes and other dependencies need to be identified and locatable.&nbsp; 
+	This is not merely for compliance with conditions of open-source licenses of 
+	constituent elements integrated in the package.&nbsp; It is important to 
+	know what other specific components are relied upon for the packaged 
+	components in case there is some question about their reliability and any 
+	defects and vulnerabilities that have been disclosed since the current 
+	package was distributed.&nbsp; This internal dependency on the 
+	trustworthiness of other sources (termed a trust point) is made explicit.&nbsp; 
+	In some cases the details are technical and elaborate, so they are called 
+	out separately.&nbsp; The attributions then provide usable citation and 
+	location of further details for anyone with concern in the matter.</p>
+	<p><b><a name="4.3.8" target="_top" href="#4.3.8">4.3.8</a> Attestations and Certifications.</b>&nbsp; 
+	Attestations and certifications about the package, as originally 
+	constructed, are provided for inspection and review as part of the 
+	preparation to install the packaged components and other materials.&nbsp; If 
+	a threat-model exists for the component, here or the next section is a good 
+	place to make that known.&nbsp; Encourage checking for recent status, 
+	especially to see whether any certifications and attestations have been 
+	challenged or revoked (cf. <a href="#4.3.4">4.3.4</a>).&nbsp; </p>
+	<p><b><a name="4.3.9" target="_top" href="#4.3.9">4.3.9</a> Assurances, Caveats, Workarounds, and 
+	Disclaimers.</b>&nbsp; There may be additional warnings and conditions on 
+	use of the current package that a potential adopter is encourage to take 
+	into account (e.g., if the components are in &quot;beta&quot; or there are known 
+	deficiencies or limitations that must be allowed for).&nbsp; If there is no 
+	way to fall back to a previous version or other irreversible condition, that 
+	must be made very clear.&nbsp; In some cases, explicit assurances are made 
+	rather than leave some case unstated and left to question.&nbsp; Assurance 
+	that the installation procedures are fully reversible, for example, is 
+	important, as well as description of how existing data may need to be 
+	backed-up and preserved for restoration.&nbsp; Any cautionary observations 
+	about failure modes of the components are raised here, with further 
+	detailing in the information on troubleshooting and incident recovery 
+	(sections <a href="#4.3.13">4.3.13</a>-<a href="#4.3.17">4.3.17</a>).</p>
+	<p><b><a name="4.3.10" target="_top" href="#4.3.10">4.3.10</a> Skill Prerequisites.</b>&nbsp; There may 
+	be special skill requirements to make use of the package: to install it 
+	properly, to adopt it, and to integrate its usage in an application system 
+	and setting.&nbsp; These are made known.&nbsp; It may be important to 
+	identify different classes of users (e.g., system administrator, instructor, 
+	support tech., end-users, and others as applicable) and the prerequisites 
+	that apply.</p>
+	<p><b><a name="4.3.11" target="_top" href="#4.3.11">4.3.11</a> Platform Prerequisites.</b>&nbsp; Any 
+	prerequisites for installation and operation on a supported platform are 
+	identified.&nbsp; This may include supporting software (e.g., having the 
+	ODMA Connection Manager already installed), and so on.&nbsp; Any software 
+	that is required to use or operate with any of the materials and components 
+	is identified.&nbsp; Facility with such platform tools and services may be 
+	reflected in the skill prerequisites (<a href="#4.3.8">4.3.8</a>).&nbsp; 
+	Although it is not anticipated for ODMref 1.0 and similar components, 
+	integration with system-management facilities may also be a factor.&nbsp; 
+	There may need to be a way to control such integration, especially while the 
+	component is under test and trial operation (cf. <a href="#4.3.14">4.3.14</a>).</p>
+	<p><b><a name="4.3.12" target="_top" href="#4.3.12">4.3.12</a> Resource and Capacity Requirements. </b>
+	&nbsp;This information allows the adopter to determine whether the required 
+	resources are available and affordable for provision to the packaged 
+	components in the intended setting.</p>
+	<p><b><a name="4.3.13" target="_top" href="#4.3.13">4.3.13</a> Installation Instructions.</b>&nbsp; 
+	Instructions cover pre-installation conditions (e.g., how and where to place 
+	the package, the account to operate in, disposition of any previous 
+	installation, and privileges required), unpacking material, and initiating 
+	any special installation setup processes or scripts.&nbsp; The normal 
+	progression through installation is described, along with response to 
+	potential exceptions.&nbsp; It should be clear what will be installed where, 
+	and under what conditions.&nbsp; It must be possible to review that without 
+	actually performing the installation.&nbsp; If installation relies on 
+	automated procedures, there must be information for determining how to 
+	restore the configuration in the event that the installation process itself 
+	were to fail to complete or back out correctly.</p>
+	<p><b><a name="4.3.14" target="_top" href="#4.3.14">4.3.14</a> Confirmation Instructions.</b>&nbsp; 
+	Confirmation of the installation and proper operation is described.&nbsp; 
+	This may involve additional components in the package or simple tests that 
+	can be carried out.&nbsp; During the bootspiral development, this may be all 
+	there is to do.&nbsp; In the event that confirmation fails, there need to be 
+	procedures for backing out the installation, similar to installation failure 
+	recovery (<a href="#4.3.13">4.3.13</a>) or in-use trouble-shooting (<a 
+ href="#4.3.15">4.3.15</a>).&nbsp; If there are 
+	confidence tests and backup procedures, there should be ways to demonstrate 
+	and exercise these, including any provision of live-fire (injected-failure) 
+	drills.&nbsp; Special test, trial, and practice modes where production data 
+	sets are not altered and production transactions do not arise may also be 
+	available.&nbsp; Wherever possible, confirmation procedures are accompanied 
+	by result sets that they are expected to be reproducible, with automatic 
+	checking for agreement.</p>
+	<p><b><a name="4.3.15" target="_top" href="#4.3.15">4.3.15</a> Trouble-Shooting Instructions.</b>&nbsp; 
+	There may be specific guidance on troubleshooting during installation and 
+	confirmation as well as during operational use.&nbsp; Part of the guidance 
+	may involve checking for known defects that may have been encountered (<a 
+ href="#4.3.4">4.3.4</a>, above) as well as how to submit an incident report 
+	against the component.&nbsp; If there are confidence tests and 
+	repair-backup-recovery procedures, these are identified and sources of their 
+	instructions and usage examples provided.&nbsp; Anything that makes it 
+	effortless for an user to report a problem is valuable.</p>
+	<p><b><a name="4.3.16" target="_top" href="#4.3.16">4.3.16</a> Data Backup, Preservation, Recovery, and 
+	Upgrade/Downgrade. </b>&nbsp;The protection and preservation of data-set 
+	integrity may have special provisions, especially with 
+	document-management-system components.&nbsp; Beside routine back and 
+	recovery and repair procedures for data sets and their elements, a package 
+	installation may involve upgrade of data set structure and metadata support.&nbsp; 
+	The behavior of down-level versions with upgraded data may need to be 
+	accounted for (possibly after a package is supplanted but still supported).
+	</p>
+	<p><b><a name="4.3.17" target="_top" href="#4.3.17">4.3.17</a> Removal and Roll-Back Instructions.&nbsp;
+	</b>Provisions for removal of an installed and adopted package are 
+	described.&nbsp; This includes reversion to an earlier package, however that 
+	can be accomplished.&nbsp; In case automatic removal or roll-back fails, 
+	guidance for manual repair is also available.</p>
+	<p><b><a name="4.3.18" target="_top" href="#4.3.18">4.3.18</a> Support, Feedback, and Assessment 
+	Reporting Instructions.&nbsp; </b>The availability of support, 
+	peer-discussion groups, mailing lists, subscriptions to alerts and other 
+	ways to ask questions, request support, report problems, and introduce 
+	evaluations and assessments is described.&nbsp; This is closing the loop on 
+	status information (<a href="#4.3.4">4.3.4</a>).</p>
+	<p><b><a name="4.3.19" target="_top" href="#4.3.19">4.3.19</a> Configuration Management.</b>&nbsp; 
+	Although the component may have built-in configuration management functions 
+	and options, there may be need to document some of that and any manual 
+	aspects that require attention as part of installation and adoption.&nbsp;
+	</p>
+	<p><b><a name="4.3.20" target="_top" href="#4.3.20">4.3.20</a> Release Notes.</b>&nbsp; There is always 
+	the prospect of some other release notes to accompany a package, especially 
+	with regard to bugs fixed, etc.</p>
+</blockquote>
+<h3><a name="4.4" target="_top" href="#4.4">4.4</a> <a name="OperationalComponentPackage">Operational-Component Package</a></h3>
+<blockquote>
+	<p>The operational package contains everything needed to place the delivered 
+	software component into operational use, from installation to adoption to 
+	ultimate removal and replacement:</p>
+	<p><b><a name="4.4.1" target="_top" href="#4.4.1">4.4.1</a></b> <b>Scope Satisfaction Checklist.</b>&nbsp; 
+	This may be included or referenced (<a href="#ScopeSatisfactionChecklist">4.1</a>).&nbsp;
+	</p>
+	<p><b><a name="4.4.2" target="_top" href="#4.4.2">4.4.2</a> General Information and Instructions.</b>&nbsp;&nbsp; 
+	The elements applicable to the operational components and their installation 
+	are covered (<a href="#4.2">4.2</a>).</p>
+	<p><b><a name="4.4.3" target="_top" href="#4.4.3">4.4.3</a> Installation Tools and Scripts.</b>&nbsp; 
+	Any automatic aids for the installation of the components, adjustment of 
+	registries and configuration files, and also confirmation processes are 
+	provided.&nbsp; Tools and scripts for removal are included.</p>
+	<p><b><a name="4.4.4" target="_top" href="#4.4.4">4.4.4</a></b> <b>Components</b>.&nbsp; The installable 
+	components are part of the package, possibly embedded in an installer.&nbsp; 
+	On installation, these become operational and available for adoption in 
+	application settings.&nbsp; The components may incorporate a variety of 
+	information and instruction elements that are available as part of their 
+	operation.&nbsp; This includes &quot;About ...&quot; identifications, splash 
+	notifications, and Help-dialog content as well as more active-support (e.g., 
+	checking for announcements and updates).</p>
+	<p><b><a name="4.4.5" target="_top" href="#4.4.5">4.4.5</a> Confirmation and Trouble-Shooting Tools.</b>&nbsp; 
+	There may be companion materials to support confirmation of authenticity, 
+	performing verification tests, and also trouble-shooting the operational 
+	software. Some of this support, including configuration-management 
+	functions, may be embedded in the operational components.</p>
+	<p><b><a name="4.4.6" target="_top" href="#4.4.6">4.4.6</a> Familiarization and Training Support. </b>&nbsp;Any 
+	computer-based support tied directly to the components, including ones that 
+	allow simulated or trial use, may be package with the components.</p>
+</blockquote>
+<h3><a name="4.5" target="_top" href="#4.5">4.5</a> <a name="ConfirmableConstructionPackage">Confirmable-Construction 
+Package</a></h3>
+<blockquote>
+	<p>The confirmable-construction package corresponds to the open-source 
+	provision of source code and construction projects for building the 
+	components and the operational-component package.&nbsp; The model applies 
+	regardless of the conditions under which source-code is made available:</p>
+	<ul>
+		<li>It is a basis for archiving of the artifacts that are required for 
+		reproduction of the construction, if it is ever needed.</li>
+		<li>It is a basis for internal turnovers to ensure that the construction 
+		is repeatable and confirmable, e.g., between a development team and a 
+		system-test and deployment operation (<a href="#Fig.2">fig. 2</a>).</li>
+		<li>It may be the form delivered to external auditors for confirmation, 
+		review, assessment, and certification/attestation of qualities of the 
+		package.</li>
+	</ul>
+	<p><b><a name="4.5.1" target="_top" href="#4.5.1">4.5.1</a></b> <b>Scope Satisfaction Checklist.</b>&nbsp; 
+	This may be included or referenced (<a href="#ScopeSatisfactionChecklist">4.1</a>).&nbsp; 
+	This is of a rather different nature, since it applies to the repeatability 
+	of the construction and the verification of the software.</p>
+	<p><b><a name="4.5.2" target="_top" href="#4.5.2">4.5.2</a> General Information and Instructions.</b>&nbsp;&nbsp; 
+	These cover the source code and construction elements, not the 
+	operational-component package.&nbsp; </p>
+	<p><b><a name="4.5.3" target="_top" href="#4.5.3">4.5.3</a> The Operational-Component Package.</b>&nbsp; 
+	This is the package whose construction is to be repeatable and verifiable.&nbsp; 
+	It may be included or located.&nbsp; If the package is separate, there are 
+	provisions for ensuring that the package corresponds to the build that is 
+	being confirmed.</p>
+	<p><b><a name="4.5.4" target="_top" href="#4.5.4">4.5.4</a></b> <b>Source Code Tree</b>.&nbsp; The 
+	source-code, libraries, and other material, are organized in the fashion 
+	presumed by the build tools and scripts.&nbsp; This is normally installed 
+	for use by a simple extraction from the package (e.g., Zip file with a 
+	sub-directory structure).</p>
+	<p><b><a name="4.5.5" target="_top" href="#4.5.5">4.5.5</a> Build Tools and Scripts.</b>&nbsp; Any 
+	automatic aids for the construction of the operational components from the 
+	source code.&nbsp; There is a tool and/or script for confirming that a 
+	replicated build has successfully duplicated the software of the 
+	operational-component package.</p>
+	<p><b><a name="4.5.6" target="_top" href="#4.5.6">4.5.6</a> Test Cases, Code, Tools and Data.</b>&nbsp; 
+	There may be companion materials to support confirmation and testing of the 
+	source-code units that make up the operational components.&nbsp; Also, the 
+	operational-component confirmation and troubleshooting tools may be part of 
+	the construction materials.&nbsp; These materials are valuable if the source 
+	code tree is being maintained or modified to make a derivative work.</p>
+	<p><b><a name="4.5.7" href="#4.5.7">4.5.7</a> Technical Information and Documentation. </b>&nbsp;Additional 
+	documents that support the understanding and use of the source code and the 
+	build process.</p>
+</blockquote>
+<h2><a name="5" target="_top" href="#5">5</a>. <a name="Resources">Resources and References</a></h2>
+<dl>
+	<dt><a name="Boehm2001">Boehm, Barry., Hansen, W. (2001)</a>.</dt>
+	<dd>The Spiral Model as a Tool for Evolutionary Acquisition.&nbsp; <i>
+	CrossTalk</i>: The Journal of Defense Software Engineering.&nbsp; May 2001.&nbsp; 
+	Available on the Internet at &lt;<a 
+ href="http://www.stsc.hill.af.mil/crosstalk/2001/05/boehm.html">http://www.stsc.hill.af.mil/crosstalk/2001/05/boehm.html</a>&gt;.&nbsp; 
+	Accessed on 2005 July 6.<br>
+&nbsp;&nbsp; </dd>
+	<dt>
+	<a target="_top" href="http://orcmid.com/readings/swe.htm#[Gilb1988]" 
+ name="Gilb1988">Gilb, Tom (1988)</a>.</dt>
+	<dd><i>Principles of Software Engineering Management</i>.&nbsp; Susannah Finzi 
+	(ed.).&nbsp; Addison-Wesley (Wokingham, England: 1988).&nbsp; ISBN 0-201-19246-2 pbk.&nbsp; 
+	Foreword by Barry Boehm.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt>
+	<a href="http://orcmid.com/readings/quality.htm#Latzko1995" 
+ name="Latzko1995">Latzko, William J., Saunders, David M,&nbsp; (1995)</a>.</dt>
+	<dd><i>Four Days with Dr. Deming: A Strategy for Modern Methods of 
+	Management</i>.&nbsp; Addison-Wesley (Reading, MA: 1995).&nbsp; ISBN 0-201-63366-3 
+	pbk.<br>
+	<font size="2">&nbsp;&nbsp; </font></dd>
+	<dt>
+	<a target="_top" 
+ href="http://orcmid.com/readings/swe.htm#[McConnell1996]" 
+ name="McConnell1996">McConnell, Steve (1996)</a>.</dt>
+	<dd><i>Rapid Development: Taming Wild Software Schedules</i>.&nbsp; Microsoft 
+	Press (Redmond, WA: 1996).&nbsp; ISBN 1-55615-900-5 pbk.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+	<dt><a name="Microsoft2002">Microsoft (2002)</a>.</dt>
+	<dd><i>MSF Process Model 3.1</i>.&nbsp; Microsoft Solutions Framework White Paper. 
+	Microsoft Corporation, Redmond, WA.&nbsp; June 2002.&nbsp; 47pp.&nbsp; For 
+	more information on MSF see <a target="_top" 
+ href="http://www.microsoft.com/msf">http://www.microsoft.com/msf</a>.&nbsp; PDF 
+	Version of 2004-04-19 <a target="_top" 
+ href="http://www.microsoft.com/downloads/details.aspx?FamilyID=e481cb0b-ac05-42a6-bab8-fc886956790e&DisplayLang=en">
+	available on the Internet</a>.</dd>
+</dl>
+<p>&nbsp;</p>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.12">0.12</a> 2005-08-03-11:56 Review and Add Permalinks</b></dt>
+	<dd>The key (numbered) sections, paragraphs and figure captions are made 
+	permalinks for ease in cross-referencing.&nbsp; Adjust citation format.</dd>
+	<dt><b><a name="0.11">0.11</a> 2005-07-10-14:17 Make Proof-Reading Touch-Ups</b></dt>
+	<dd>Repair items noticed during proof-reading and after I notified the 
+	distribution lists this material was available.</dd>
+	<dt><b><a name="0.10">0.10</a> 2005-07-10-10:33 Expand Initial Scope 
+	Definition</b></dt>
+	<dd>The major scope areas and the artifacts are identified.&nbsp; This is a 
+	form of implementation-level template for the artifacts that are customized 
+	in each round of the bootspiral activity.</dd>
+	<dt><b><a name="0.00">0.00</a> 2005-07-05-18:21 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; This page is 
+	a customization of the
+	<a href="http://ODMA.info/projects/templates/00/p000006c.htm">Project Folio 
+	Bootstrap Template</a>.&nbsp; A 
+	version from
+	<a href="http://ODMA.info/projects/2005/07/p050701c.htm">Project Folio Bootstrap 0.11 Material</a> was used.</dd>
+	</dl>
+</small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan --><font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --><!--webbot bot="Include" endspan i-checksum="32730" --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-07-05-18:21 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:47 $<br>
+      $$Revision: 101 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

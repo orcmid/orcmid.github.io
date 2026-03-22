@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Q050902b: Latest C/C++ Compiler Setup </title>
+<!--$$Header: /ODMACompagno/faq/2005/09/Q050902b.htm 127   13-08-22 12:48 Orcmid $-->
+<!-- Customized from ODMA /faq/templates/00/Q000006b.htm 0.10 of 2005-07-05T04:06Z 
+     See http://ODMA.info/projects/2005/06/P050601c.htm -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<!--webbot bot="Include" U-Include="q050902c.htm" TAG="BODY" startspan -->
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+
+<a href="http://ODMA.info" target="_top"><img border="0" 
+     src="../../../images/odma-thumb.gif" 
+     alt="ODMA: Open Document Management API" width="113" height="85" /></a><!-- 
+     Included from http://ODMA.info/construction/C000005a.htm of 2004-11-17-15:02 -0800 --></a>
+</td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../q000001.htm#Q050902"><font color="#990033">Q050902</font></a> 
+		ODMA </strong></font>
+
+		<strong>
+		<a href="../../q000001.htm"><font color="#990033">
+		FAQtip</font></a></strong><strong><font color="#990033"><br>
+      &nbsp;<a href="q050902.htm"><font color="#990033">C/C++ Compiler Setup</font></a></font></strong></font><br>
+<em><strong><font size="5" color="#990033">Visual C++ Toolkit 1.01 Setup</font></strong></em></p>
+    </td>
+    
+    <td width="28%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>ODMA</b></a></code><b><code>&gt;<a href="../../">faq</a>&gt;<br>
+      <a href="../">2005</a>&gt;<a href="./">09</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="q050902c.htm">Q050902c</a>&gt;</code></b></font><br>
+      <small><small>
+		<a href="#0.30">0.30</a>
+		2013-08-22      
+      -12:48 -0700 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> The latest version of this FAQtip is available on the Internet at <br>
+			&lt;<b><kbd><a target="_top" href="q050902b.htm">http://ODMA.info/faq/2005/09/Q050902b.htm</a></kbd></b>&gt;.</li>
+			<li><b>This version:</b>&nbsp;&nbsp; <b>0.30</b>
+			&lt;<b><kbd><a target="_top" href="q050902c.htm">http://ODMA.info/faq/2005/09/Q050902c.htm</a></kbd></b>&gt;.&nbsp; 
+			Consult that page for the latest status and for the most-recent 
+			electronic copies of the material.</li>
+		</ul>
+</div></small></blockquote>
+
+<div style="border: 5px double #990033; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+
+<h3><font color="#990033">Draft 0.30: Warning -- Limited Validation Performed 
+(welcome to alpha documentation!)</font></h3>
+<blockquote>
+	<p>This page is intended for use by newcomers and beginners and to provide 
+	review for experienced software 
+	developers (amateur and professional).&nbsp; The intention is to have a 
+	stable, consistent C/C++ compiler installation that works for verification 
+	and community quality-assurance activities.&nbsp; It is also offered as a 
+	good practice for installation of the Microsoft Visual C++ Toolkit 2003 for self-study and 
+	for development of software on the Microsoft Windows platform.</p>
+	<p>This initial Outline/Sketch provides the intended direction.&nbsp; It may 
+	be 
+	incomplete.&nbsp; It also needs more confirmation in practice.</p>
+</blockquote></div>
+<blockquote>
+	<p>The basic elements are as follows:</p>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#Prerequisites">Prerequisites</a><br>
+&nbsp;&nbsp; <br>
+			2. <a href="#InstallingToolkit">Installing the Toolkit</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: 400">2.1 
+			<a href="#ElevatingToAdministrator">Elevating to an 
+			administrator account</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2.2 <a href="#ExecutingSetup">Executing the setup program</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2.3 <a href="#RestoringLimitedOperation">Restoring limited-account operation</a><br>
+&nbsp;&nbsp; <br>
+			</span>3. <a href="#ConfirmingInstallation">Confirming Installation</a><br>
+			<span style="font-weight: 400">&nbsp;&nbsp;&nbsp;&nbsp; 3.1 
+			<a href="#InstalledCommandPrompt">The 
+			Installed Command Prompt</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3.2 <a href="#ConfirmingCompilerVersion">Confirming the Compiler Version</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3.3 <a href="#ViewingInstallationDirectory">Viewing the Installation Directory</a></span><br>
+&nbsp;&nbsp; <br>
+			4.&nbsp; <a href="#YourDevelopmentDirectory">Creating Your Development Directory</a><br>
+			<span style="font-weight: 400">&nbsp;&nbsp;&nbsp;&nbsp; 4.1 
+			<a href="#ForYourProjects">Directory for your C/C++ projects</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4.2 <a href="#PersonalCommandPrompts">Making personal command prompts</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4.3 <a href="#VerifyingCommandPrompt">Verifying your command prompt</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4.4 <a href="#CopyingYourShortcuts">Copying shortcuts to your command prompts</a></span><br>
+&nbsp;&nbsp; <br>
+			5.&nbsp; <a href="#HelloWorldAnnouncement">Your &quot;<kbd>Hello World</kbd>&quot; Announcement</a><br>
+			<span style="font-weight: 400">&nbsp;&nbsp;&nbsp;&nbsp; 5.1 
+			<a href="#MakeHelloDirectory">Make a &quot;</a></span><a href="#MakeHelloDirectory"><kbd>hello</kbd><span 
+   style="font-weight: 400">&quot; project directory</span></a><span 
+   style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 5.2 <a href="#CreateHelloFile">Create the &quot;</a></span><a href="#CreateHelloFile"><kbd>hello.c</kbd><span 
+   style="font-weight: 400">&quot; file in your project</span></a><span 
+   style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 5.3 <a href="#CompilingHello">Compiling &quot;</a></span><a href="#CompilingHello"><kbd>hello.exe</kbd><span 
+   style="font-weight: 400">&quot;</span></a><span 
+   style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 5.4 <a href="#ExecutingHello">Executing &quot;</a></span><a href="#ExecutingHello"><kbd>hello.exe</kbd><span 
+   style="font-weight: 400">&quot;</span></a><span 
+   style="font-weight: 400"> <br>
+&nbsp;&nbsp; <br>
+			</span>6. <a href="#Review">Review</a><span style="font-weight: 400"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 6.1 <a href="#WhatAccomplished">What you've accomplished</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; 6.2 <a href="#Opportunities">Opportunities from here</a><br>
+&nbsp;<br>
+			</span>7. <a href="#Resources">Resources and References</a></h3>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<h2><a name="1." target="_top" href="#1.">1.</a> <a name="Prerequisites">Prerequisites</a></h2>
+<blockquote>
+	<p><b><a name="1.1">1.1</a></b> You have successfully downloaded the setup 
+	file according to the procedure in <b>Q050901c: <a href="q050901c.htm">
+	Windows Visual C++ Toolkit 2003 1.01</a></b>, or according to an equivalent 
+	procedure that you have selected.&nbsp; </p>
+	<p><b>1.2</b> You have reviewed the prerequisites for downloading and being 
+	prepared to install.&nbsp; The following procedure assumes that download and 
+	confirmation of the download has occurred as illustrated there.</p>
+</blockquote>
+<h2><a name="2." target="_top" href="#2.">2.</a> <a name="InstallingToolkit">Installing the Toolkit</a></h2>
+<h3><a name="2.1" target="_top" href="#2.1">2.1</a>
+<a name="ElevatingToAdministrator">Elevating to Administrator Operation</a></h3>
+<blockquote>
+	<p><b>Note.&nbsp; This procedure assumes that you are operating on a standalone 
+	computer or a simple workgroup network.</b>&nbsp; If your accounts are managed 
+	by a domain controller, you will need the assistance of the system 
+	administrator to adjust privileges for your limited account.&nbsp; There are 
+	alternatives to this procedure.&nbsp; The approach offered here does not 
+	assume installation of any special software to simplify performing 
+	administrative functions under a limited account.</p>
+	<ul>
+		<li><b><a name="2.1.1" target="_top" href="#2.1.1">2.1.1</a></b> If you are able to disconnect from the Internet via software 
+		firewall, do so now.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.2" target="_top" href="#2.1.2">2.1.2</a></b> Save any work and log out of your limited account.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.3" target="_top" href="#2.1.3">2.1.3</a></b> Save all work and log out of all other accounts.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.4" target="_top" href="#2.1.4">2.1.4</a></b> Physically disconnect from the Internet if the first step was not 
+		available to you.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.5" target="_top" href="#2.1.5">2.1.5</a></b> Log in to an administrator account.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.6" target="_top" href="#2.1.6">2.1.6</a></b> In that account use 
+		<kbd><b>Start | Control Panel | User Accounts</b></kbd> to change your 
+		limited account type to be an administrator account.&nbsp; (The limited 
+		account should be logged out when you do this, with the change taking 
+		effect on the next login of the limited account.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.7" target="_top" href="#2.1.7">2.1.7</a></b> Log out or switch out of the administrator account.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.1.8" target="_top" href="#2.1.8">2.1.8</a></b> Log in to your 
+		usually-limited account.&nbsp; It now has administrative 
+		privileges and you are able to perform software installations.&nbsp; You 
+		should still be disconnected from the network.</li>
+	</ul>
+</blockquote>
+<h3><a name="2.2" target="_top" href="#2.2">2.2</a> <a name="ExecutingSetup">Executing the Setup Program</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="2.2.1" target="_top" href="#2.2.1">2.2.1</a></b> The 
+		downloaded file has the date and time of the download, and the name it 
+		was downloaded as.&nbsp; The other description information that pops-up 
+		under the cursor should agree with that in the directory detail view, 
+		below.<br>
+&nbsp;&nbsp;&nbsp; <img border="0" src="Q050901c4.png" width="745" 
+ height="275"><br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.2" target="_top" href="#2.2.2">2.2.2</a></b> In the directory where you placed the setup program, double-click on 
+		the program.<br>
+&nbsp;<b>&nbsp;&nbsp;&nbsp; </b> </li>
+		<li><b><a name="2.2.3" target="_top" href="#2.2.3">2.2.3</a></b> If you receive a warning that this is a downloaded program, 
+		verify that this is Microsoft-published software and click &quot;<kbd><b>Run</b></kbd>.&quot;<br>
+&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c1.png" width="404" height="309"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.4" target="_top" href="#2.2.4">2.2.4</a></b> The installer will load and begin preparations ...<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c2.png" width="504" height="386"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.5" target="_top" href="#2.2.5">2.2.5</a></b> When the installer reports that it is ready to proceed.&nbsp; Click 
+		&quot;<kbd><b>Next</b></kbd>.&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c3.png" width="504" height="386"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.6" target="_top" href="#2.2.6">2.2.6</a></b> Review the End-User 
+		License Agreement (EULA) <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c4.png" width="504" height="386"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.7" target="_top" href="#2.2.7">2.2.7</a></b> Lest 
+		there be any concern about the limitations on redistributables, there 
+		are no redistributables included in the Visual C++ Toolkit 2003 1.01.&nbsp;&nbsp; 
+		(See the <b><kbd>redist.txt</kbd></b> file in section <a href="#3.3.4">
+		3.3.4</a>.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.8" target="_top" href="#2.2.8">2.2.8</a></b> Accept the default destination folder 
+		(recommended).&nbsp;&nbsp; If you choose a different location for the 
+		software, you will need to make corresponding adjustments in the 
+		remainder of this procedure.&nbsp; Here we recommend that you use the 
+		default location as a way to preserve consistency with others and the 
+		customary practice for software on Microsoft Windows Win32 platforms.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c5.png" width="504" height="386"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.2.9" target="_top" href="#2.2.9">2.2.9</a></b> The installation should complete without difficulty.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c6.png" width="504" height="386"></li>
+	</ul>
+</blockquote>
+<h3><a name="2.3" target="_top" href="#2.3">2.3</a>
+<a name="RestoringLimitedOperation">Restoring Limited-Account Operation</a></h3>
+<blockquote>
+	<p><b>Note.&nbsp; This procedure also assumes that you are operating on a 
+	standalone computer or a simple workgroup network.</b>&nbsp; If your accounts 
+	are managed by a domain controller, you will need the assistance of the 
+	system administrator to adjust privileges for your limited account.</p>
+	<ul>
+		<li><b><a name="2.3.1" target="_top" href="#2.3.1">2.3.1</a></b> You are 
+		still in your usually-limited account, but you have administrator privileges and 
+		can change you're account capabilities right here.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.3.2" target="_top" href="#2.3.2">2.3.2</a></b> Using the 
+		<kbd><b>Start | Control Panel | User Accounts</b></kbd> window, change the account type of 
+		the temporarily-elevated limited account back to being a limited account.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.3.3" target="_top" href="#2.3.3">2.3.3</a></b> Use Windows to restart your computer 
+		(remembering that there should only be this one account active at this 
+		point).&nbsp; This will ensure that the install is fully completed and 
+		that your limited account is no longer elevated to administrative.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.3.4" target="_top" href="#2.3.4">2.3.4</a></b> You can reconnect the network now, if any cables were disconnected.&nbsp; 
+		Software disconnects using firewall software should be reset as part of 
+		restarting.<br>
+&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="2.3.5" target="_top" href="#2.3.5">2.3.5</a></b> Log in to your limited account when the restart has completed.</li>
+	</ul>
+</blockquote>
+<h2><a name="3." target="_top" href="#3.">3.</a> 
+<a name="ConfirmingInstallation">Confirming Installation</a></h2>
+<blockquote>
+	<p>All further operation is under the limited account where the Visual C++ 
+	Toolkit was installed.</p>
+</blockquote>
+<h3><a name="3.1" target="_top" href="#3.1">3.1</a>
+<a name="InstalledCommandPrompt">The Installed Command Prompt</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="3.1.1" target="_top" href="#3.1.1">3.1.1</a></b> The installation process added a folder and two links to <kbd><b>
+		Start | All Programs</b></kbd> for you:<br>
+		<br>
+		<img border="0" src="Q050902c7.png" width="610" height="118"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.1.2" target="_top" href="#3.1.2">3.1.2</a></b> Click on the &quot;<kbd><b>Visual C++ Toolkit 2003 Command Prompt</b></kbd>.&quot;&nbsp; 
+		You should be welcomed into a command-line console session:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c8.png" width="669" height="262"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.1.3" target="_top" href="#3.1.3">3.1.3</a></b> If your version takes the full screen of your computer and has no 
+		window bar at the top, click <kbd><b>Alt</b></kbd>+<b><kbd>Space</kbd></b> 
+		to switch to a context menu.&nbsp; On that menu, choose <kbd><b>
+		Properties</b></kbd> and then change the <kbd><b>Display Option</b></kbd> 
+		from <kbd><b>Full Screen</b></kbd> to <kbd><b>Window</b></kbd>.</li>
+	</ul>
+</blockquote>
+<h3><a name="3.2" target="_top" href="#3.2">3.2</a>
+<a name="ConfirmingCompilerVersion">Confirming the Compiler Version</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="3.2.1" target="_top" href="#3.2.1">3.2.1</a></b> While in the initial command prompt (above), enter the command &quot;<b><kbd>cl</kbd></b>&quot; 
+		(letter <kbd><b>c</b></kbd> and letter <kbd><b>l</b></kbd>) followed by the 
+		<kbd><b>Enter</b></kbd> key:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c9.png" width="669" height="178"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.2.2" target="_top" href="#3.2.2">3.2.2</a></b> The 
+		compiler reports its version number.&nbsp; Your display should match 
+		this information.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.2.3" target="_top" href="#3.2.3">3.2.3</a></b> Because no command-line parameters were specified with &quot;<b><kbd>cl</kbd></b>,&quot; 
+		the compiler provides the two identification lines and a hint about the 
+		format of commands that can be used.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="3.2.4" target="_top" href="#3.2.4">3.2.4</a></b> At the next command prompt (the &quot;<kbd><b>&gt;</b></kbd>&quot; where the cursor is), enter the 
+		command &quot;<kbd><b>exit</b></kbd>&quot; followed by the <kbd><b>Enter</b></kbd> 
+		key.&nbsp; That will close the window, ending the console session.</li>
+	</ul>
+</blockquote>
+<h3><a name="3.3" target="_top" href="#3.3">3.3</a>
+<a name="ViewingInstallationDirectory">Viewing the Installation Directory</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="3.3.1" target="_top" href="#3.3.1">3.3.1</a></b> Using Windows Explorer, navigate to the directory where the program 
+		is installed:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c10.png" width="719" height="384"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.3.2" target="_top" href="#3.3.2">3.3.2</a></b> Notice the material that is available for you to consult.&nbsp; (To 
+		obtain this layout, click <kbd><b>View | Details</b></kbd> on the menu bar.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.3.3" target="_top" href="#3.3.3">3.3.3</a></b> There are two copies of the 
+		<b><kbd>EULA</kbd></b> and two versions of <code><b>README</b></code>.&nbsp; 
+		You can read the ones that are most-conveniently viewed on your computer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.3.4" target="_top" href="#3.3.4">3.3.4</a></b> The 
+		file <b><kbd>redist.txt</kbd></b> identifies those components of the 
+		installed materials that are redistributable under the terms of the 
+		EULA.&nbsp; There are none.&nbsp; And to distribute the programs you 
+		write and their compiled versions, using the libraries provided with the 
+		toolkit, you won't be requiring any redistributables to accompany them.&nbsp; 
+		In Windows Notepad, set <kbd><b>Format | Word Wrap</b></kbd> to view the 
+		file's text:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+		<img border="0" src="Q050902c25.png" width="729" height="155"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.3.5" target="_top" href="#3.3.5">3.3.5</a></b> The two additional files of interest are the file 
+		<code><b>vcvars32.bat</b></code> and the Shortcut, &quot;<kbd><b>Visual C++ Toolkit 
+		2003 Command Prompt</b></kbd>.&quot;&nbsp;&nbsp; You will make personal 
+		versions of these files as part of setting up your own directory for 
+		development projects (section 4).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="3.3.6" target="_top" href="#3.3.6">3.3.6</a></b> The 
+		remainder of the toolkit is in the folders <kbd><b>bin</b></kbd>,
+		<kbd><b>include</b></kbd>, <kbd><b>lib</b></kbd>, and <code><b>samples</b></code>.&nbsp; 
+		These can be explored later on, after you have set up your own projects.&nbsp; 
+		The individual samples are set up to be compiled.&nbsp; To avoid using 
+		the <b><kbd>&quot;C:\Program Files</kbd></b>&quot; folders as working directories, 
+		it is recommended that you copy the entire <kbd><b>samples</b></kbd> 
+		directory, or the individual <kbd><b>samples</b></kbd> subfolders to a 
+		personal folder of your own before working with them.</li>
+	</ul>
+</blockquote>
+<h2><a name="4." target="_top" href="#4.">4.</a> 
+<a name="YourDevelopmentDirectory">Creating Your Development Directory</a></h2>
+<h3><a name="4.1" target="_top" href="#4.1">4.1</a> <a name="ForYourProjects">Directory for Your C/C++ Projects</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="4.1.1" target="_top" href="#4.1.1">4.1.1</a></b> Using Windows Explorer, create a directory for your own C/C++ 
+		programming projects.&nbsp; It can be in your &quot;<kbd><b>My Documents</b></kbd>&quot; folder or 
+		it can be a new folder on your hard drive.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.1.2" target="_top" href="#4.1.2">4.1.2</a></b> For simplicity, we will use &quot;<b><kbd>C:\MyPrograms</kbd></b>&quot; 
+		in our examples.&nbsp; This makes it easy to compare examples with 
+		those by Mike McGrath (<a href="#McGrath2004">2004</a>).<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.1.3" target="_top" href="#4.1.3">4.1.3</a></b> We are going to make a simplified replacement for <kbd><b>
+		vcvars32.bat</b></kbd> that works better for getting started.&nbsp; It 
+		also allows you to have programming projects wherever you want, in 
+		folders that are fully yours to use under the limited account.<br>
+&nbsp;</li>
+		<li><b><a name="4.1.4" target="_top" href="#4.1.4">4.1.4</a></b> The 
+		simplified replacement is stored in your project development 
+		directory.<br>
+&nbsp;</li>
+		<li><b><a name="4.1.5" target="_top" href="#4.1.5">4.1.5</a></b> Using Windows Notepad, create the following file and store it in 
+		your project directory (e.g., <b><kbd>MyPrograms</kbd></b>) as <b><kbd>MyVC.bat</kbd></b>.&nbsp; 
+		<br>
+&nbsp;</li>
+		<li><b><a name="4.1.6" target="_top" href="#4.1.6">4.1.6</a></b> The 
+		file should look essentially like that in the image below.&nbsp; 
+		Right-click on the image or this link:&nbsp;
+		<a target="_top" href="Q050902c11.txt"><kbd><b>.txt</b></kbd> 
+		copy</a> to download a version that you can save with the name <kbd><b>
+		MyVC.bat</b></kbd>.&nbsp; (If you view the <b><kbd>.txt </kbd></b>copy 
+		in your browser and save it from there, it may end up with HTML tags 
+		added to the file.&nbsp; Downloading instead of viewing will avoid 
+		this.)<br>
+		<br>
+		<a href="Q050902c11.txt">
+		<img border="0" src="Q050902c11.png" 
+  alt="Notepad creation of MyVC.bat (right-click to download as .txt)"></a><br>
+&nbsp;</li>
+		<li><b><a name="4.1.7" target="_top" href="#4.1.7">4.1.7</a></b> The &quot;ruler&quot; line in the first remark 
+		(<b><kbd>rem</kbd></b> command) is a reminder for keeping lines 
+		less than 80 columns.&nbsp; You should also turn off <kbd><b>Format | Word Wrap</b></kbd> 
+		in Notepad and choose a fixed-pitch font.&nbsp; This will help in the 
+		visual layout of your C/C++ programs and also make it easier to verify 
+		that text files are transcribed properly.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="4.1.8" href="#4.1.8">4.1.8</a></b> The &quot;<b><kbd>rem</kbd></b>&quot; 
+		lines are remarks, and they can be omitted without any impact on the 
+		behavior of the batch-file script.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.1.9" target="_top" href="#4.1.9">4.1.9</a></b> The &quot;<kbd><b>@echo 
+		off</b></kbd>&quot; line at the top is a command that stops the echoing of 
+		the commands to the console window. The batch script runs silently 
+		(except for possible error messages) with the only output from the &quot;<kbd><b>echo</b></kbd>&quot; 
+		command near the end.&nbsp; </li>
+	</ul>
+</blockquote>
+<h3><span style="font-weight: 400"><a name="4.2" target="_top" href="#4.2">4.2</a></span>
+<a name="PersonalCommandPrompts">Making Personal Command Prompts</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="4.2.1" target="_top" href="#4.2.1">4.2.1</a></b> Using 
+		Windows Explorer, open the folder that you are using for your projects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.2" target="_top" href="#4.2.2">4.2.2</a></b> Right click on <b><kbd>MyVC.bat </kbd></b>and then click <kbd><b>
+		Create Shortcut</b></kbd> on the context menu.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+		<img border="0" src="Q050902c12.png" width="600" height="461"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.3" target="_top" href="#4.2.3">4.2.3</a></b> Right click on the Shortcut that is created and Click <kbd><b>Rename</b></kbd>.<br>
+		<br>
+		<img border="0" src="Q050902c13.png" width="600" height="461"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.4" target="_top" href="#4.2.4">4.2.4</a></b> Rename the shortcut to something like &quot;<kbd><b>MyPrograms.bat</b></kbd>.&quot;&nbsp; 
+		You can change the name later and you can give copies of it on your 
+		desktop and elsewhere different names.&nbsp; Just &quot;<b><kbd>MyPrograms</kbd></b>&quot; 
+		will work too, so long as you avoid putting it in places where other 
+		shortcuts by that name might arise, such as a shortcut to the <code><b>
+		MyPrograms</b></code> directory (something I'm stung by from time to 
+		time).<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.5" target="_top" href="#4.2.5">4.2.5</a></b> Right click on the shortcut and click on <kbd><b>Properties</b></kbd>.&nbsp; 
+		The initial properties will look like this:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c14.png" width="376" height="527"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.6" target="_top" href="#4.2.6">4.2.6</a></b> Change the Shortcut Properties so that the <kbd><b>Target:</b></kbd> 
+		entry reads &quot;<kbd><b>%comspec% /k MyVC.bat</b></kbd>&quot;:<br>
+		<br>
+		<img border="0" src="Q050902c15.png" width="376" height="527"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.2.7" target="_top" href="#4.2.7">4.2.7</a></b> Supply a creative <kbd><b>Comment</b></kbd> entry also.&nbsp; Then 
+		click <kbd><b>OK</b></kbd>.</li>
+	</ul>
+</blockquote>
+<h3><a name="4.3">4.3</a> <a name="VerifyingCommandPrompt">Verifying Your Command Prompt</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="4.3.1" target="_top" href="#4.3.1">4.3.1</a></b> Double-click the shortcut in your projects folder.&nbsp; A console 
+		session should begin with the following initial line and command prompt:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c16.png" width="589" height="110"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.2" target="_top" href="#4.3.2">4.3.2</a></b> Enter the command &quot;<b><kbd>cl</kbd></b>&quot; and initiate the command by 
+		clicking the <kbd><b>Enter</b></kbd> key on your keyboard.&nbsp; If the 
+		PATH variable is set properly, you will have this response:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c17.png" width="589" height="170"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.3" target="_top" href="#4.3.3">4.3.3</a></b> If you receive a different response, double-check the <b><kbd>
+		MyVC.bat</kbd></b> file and the properties of the shortcut that you made 
+		from it.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.4" target="_top" href="#4.3.4">4.3.4</a></b> With success to this point, double-check the other compiler 
+		parameters set up by <b><kbd>MyVC.bat</kbd></b>.&nbsp; Execute a &quot;<kbd><b>set 
+		INCLUDE</b></kbd>&quot; and then a &quot;<kbd><b>set LIB</b></kbd>&quot; command.&nbsp; 
+		You should have a result similar to this:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c18.png" width="589" height="218"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.5" target="_top" href="#4.3.5">4.3.5</a></b> There may be additional material after the &quot;;&quot; of each displayed 
+		result.&nbsp; That doesn't matter for now.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.3.6" target="_top" href="#4.3.6">4.3.6</a></b> End the console session with an &quot;<kbd><b>exit</b></kbd>&quot; command.</li>
+	</ul>
+</blockquote>
+<h3><a name="4.4" target="_top" href="#4.4">4.4</a>
+<a name="CopyingYourShortcuts">Copying Shortcuts to Your Command Prompts</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="4.4.1" target="_top" href="#4.4.1">4.4.1</a></b> The shortcut that you created in your project directory can be 
+		copied to other places where it will be handy.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.2" target="_top" href="#4.4.2">4.4.2</a></b> You can place a copy on your Windows Desktop.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.3" target="_top" href="#4.4.3">4.4.3</a></b> Every time you double-click on one of the copied shortcuts, it will 
+		bring you into your project directory in a new console session.&nbsp; 
+		All parameters needed for using the toolkit will already be set.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.4" target="_top" href="#4.4.4">4.4.4</a></b> You can also experiment with other properties of the shortcuts to 
+		set display font size, set the size of the window, and change the colors 
+		for text and the background.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.5" target="_top" href="#4.4.5">4.4.5</a></b> You can also make copies of <b><kbd>MyVC.bat</kbd></b> in other 
+		directories and create new shortcuts for rapid entry into other projects 
+		and subprojects.&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="4.4.6" target="_top" href="#4.4.6">4.4.6</a></b> For now, we will use the one project directory.</li>
+	</ul>
+</blockquote>
+<h2><a name="5." target="_top" href="#5.">5.</a> 
+<a name="HelloWorldAnnouncement">Your &quot;<kbd>Hello World</kbd>&quot; Announcement</a></h2>
+<h3><a name="5.1" target="_top" href="#5.1">5.1</a> <a name="MakeHelloDirectory">Make a &quot;<kbd>hello</kbd>&quot; Project Directory</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="5.1.1" target="_top" href="#5.1.1">5.1.1</a></b> Double-click on one of your <b><kbd>MyPrograms.bat</kbd></b> 
+		shortcuts.<br>
+&nbsp;&nbsp; </li>
+		<li><b><a name="5.1.2" target="_top" href="#5.1.2">5.1.2</a></b> In the new console session perform the indicated commands:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c19.png" width="589" height="170"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.1.3" target="_top" href="#5.1.3">5.1.3</a></b> You have created a folder for your &quot;<kbd><b>hello</b></kbd>&quot; project 
+		with &quot;<b><kbd>mkdir hello</kbd></b>&quot; and then navigated (via &quot;<b><kbd>cd 
+		hello</kbd></b>&quot; command) into that folder to begin working there.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.1.4" target="_top" href="#5.1.4">5.1.4</a></b> This was followed by command &quot;<kbd><b>start notepad</b></kbd>&quot; to 
+		initiate the Windows Notepad application.&nbsp; Notepad should open 
+		in a separate window.</li>
+	</ul>
+</blockquote>
+<h3><a name="5.2" target="_top" href="#5.2">5.2</a> <a name="CreateHelloFile">Create the &quot;<kbd>hello.c</kbd>&quot; File in Your Project</a></h3>
+<blockquote>
+	<ul>
+		<li>5.2.1 Using Notepad, create a version of this famous first C Language 
+		application:<br>
+		<br>
+		<a href="Q050902c20.txt" target="_top">
+		<img border="0" 
+  src="Q050902c20.png" width="657" height="340" 
+  alt="Hello.c (right-click to download a .txt copy)"></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.2.2" href="#5.2.2">5.2.2</a></b> You can download a 
+		copy by right-clicking the image or this link to the
+		<a href="Q050902c20.txt"><kbd><b>.txt</b></kbd> file</a>.&nbsp; <b>However you create 
+		it, remember to name it <kbd>hello.c</kbd> and save it in your </b> <kbd><b>hello</b></kbd><b> 
+		folder, not 
+		somewhere else</b>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.2.3" target="_top" href="#5.2.3">5.2.3</a></b> If you 
+		downloaded the file, you should open it in Notepad just to make sure you 
+		have what is expected.&nbsp; Try the command &quot;<b><kbd>start notepad 
+		hello.c</kbd></b>&quot; in the console session that you have going.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.2.4" target="_top" href="#5.2.4">5.2.4</a></b> You can leave Notepad open in case there are changes to make. 
+		Remember to perform a <kbd><b>File | Save</b></kbd> of any changes so 
+		they will be written to the folder and the compiler will process the 
+		same version that is in Notepad.</li>
+	</ul>
+</blockquote>
+<h3><a name="5.3" target="_top" href="#5.3">5.3</a> <a name="CompilingHello">Compiling Your &quot;<kbd>hello.exe</kbd>&quot; Program</a></h3>
+<blockquote>
+	<ul>
+		<li><b><a name="5.3.1" target="_top" href="#5.3.1">5.3.1</a></b> After the program file has been saved from Notepad 
+		(or downloaded and reviewed), return to the 
+		console window and perform a &quot;<kbd><b>dir</b></kbd>&quot; command to demonstrate that the file 
+		is present and see what folders (directories) look like in console mode:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c21.png" width="589" height="242"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.3.2" target="_top" href="#5.3.2">5.3.2</a></b> You can now compile the C program with one simple command, &quot;<b><kbd>cl 
+		hello.c</kbd></b>&quot;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c22.png" width="589" height="206"><br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.3.3" target="_top" href="#5.3.3">5.3.3</a></b> If you have different results, review the <b><kbd>hello.c</kbd></b> 
+		program for typographical errors or omissions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </li>
+		<li><b><a name="5.3.4" target="_top" href="#5.3.4">5.3.4</a></b> Notice that, in contrast to examples 
+		you might see using Unix and GNU/Linux 
+		systems, the Visual C++ command-line compiler, <b><kbd>cl</kbd></b>, 
+		produces a complete program by default.&nbsp; The name of the program 
+		that is produced is derived from the name of the C Language program 
+		given on the command line.<br>
+&nbsp;</li>
+		<li><b><a name="5.3.5" target="_top" href="#5.3.5">5.3.5</a></b> Inspect the project directory with a &quot;<kbd><b>dir</b></kbd>&quot; command 
+		to see what's new:<br>
+&nbsp;<br>
+		<img border="0" src="Q050902c23.png" width="589" height="242"></li>
+	</ul>
+</blockquote>
+<h3><a name="5.4">5.4</a> <a name="ExecutingHello">Executing Your &quot;<kbd>hello.exe</kbd>&quot;</a></h3>
+<blockquote>
+	<blockquote>
+		<p>Execution of the program is simple:<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+		<img border="0" src="Q050902c24.png" width="589" height="122"></p>
+	</blockquote>
+</blockquote>
+<h2><a name="6." target="_top" href="#6.">6.</a> <a name="Review">Review</a></h2>
+<blockquote>
+	<p>The goal for this procedure is demonstration, in small steps, that the 
+	Visual C++ Toolkit 2003 can be safely installed and set up ready for further 
+	exploratory usage.&nbsp; The procedure is intended to work for beginners 
+	even though not everything might be understood.&nbsp; For more-experienced 
+	computer users and developers, the procedure provides a short review for 
+	probable customization and shortcuts based on preferences from individual 
+	experience.&nbsp; The procedure is also a touchstone for experts recognizing 
+	how beginners on ActiveODMA project are advised to set up computers, 
+	compilers and tools for their self-study and possible participation.</p>
+</blockquote>
+<h3><a name="6.1" target="_top" href="#6.1">6.1</a> <a name="WhatAccomplished">What You've Accomplished</a></h3>
+<blockquote>
+	<p><b><a name="6.1.1" target="_top" href="#6.1.1">6.1.1</a></b> We took an 
+	indirect route to the ultimate goal, your compiling of 
+	an initial C Language program that confirms installation and operation of 
+	the compiler.&nbsp; This route was designed to begin some practices that 
+	will serve you in operating safely and consistently in your 
+	software-development activities.</p>
+	<p><b><a name="6.1.2" target="_top" href="#6.1.2">6.1.2</a></b> You've seen 
+	some basic manual steps of value in future work: </p>
+	<ul>
+		<li>operating as administrator only as long as needed to complete a 
+		software installation</li>
+		<li>creating a batch file </li>
+		<li>creating custom 
+	shortcuts for working in console-session (command-line) projects </li>
+		<li>correctly entering and compiling a C Language program</li>
+		<li>performing some basic console-session operations such as making a 
+		directory and navigating</li>
+	</ul>
+	<p><b><a name="6.1.3" target="_top" href="#6.1.3">6.1.3</a></b> You've seen 
+	a little of what command-line operation is like using Microsoft Windows 
+	console sessions.&nbsp; This has not been a systematic orientation, but you 
+	should have enjoyed some confidence in being able to follow predefined 
+	procedures involving console operations.</p>
+</blockquote>
+<h3><a name="6.2" target="_top" href="#6.2">6.2</a> <a name="Opportunities">Opportunities from Here</a></h3>
+<blockquote>
+	<p><b><a name="6.2.1" target="_top" href="#6.2.1">6.2.1</a></b> You now have some foundation practices for performing additional C/C++ 
+	projects.</p>
+	<p><b><a name="6.2.2" target="_top" href="#6.2.2">6.2.2</a></b> You are also 
+	positioned to deepen your understanding of the rules and principles of 
+	command-line operation.&nbsp; You can learn more about the operations 
+	available to you in carrying out command-line sessions.&nbsp; You can also 
+	develop facility creating batch files and other scripts for simplifying 
+	repetitive activities in console sessions.</p>
+</blockquote>
+<h2><a name="7." target="_top" href="#7.">7.</a> <a name="Resources">Resources and References</a></h2>
+<blockquote>
+	<blockquote>
+		<dl>
+			<dt><i>see also: </i></dt>
+			<dd><b>Q050903: <a href="q050903.htm">C/C++ Programming Resources</a></b></dd>
+		</dl>
+		<p>&nbsp; </p>
+	</blockquote>
+	<dl>
+		<dt><a name="Eckel2004">Eckel, Bruce (2004).</a></dt>
+		<dd>Free Electronic Book Volume 1 &amp; Volume 2, <i>Thinking in C++</i> 2nd 
+		Edition by Bruce Eckel.&nbsp; Web page at &lt;<b><a href="http://mindview.net/Books/TICPP/ThinkingInCPP2e.html"><kbd>http://mindview.net/Books/TICPP/ThinkingInCPP2e.html</kbd></a></b>&gt; 
+		accessed on 2005-10-06.<small><br />
+&nbsp;&nbsp;&nbsp;&nbsp; I love the approach taken here, with books available 
+		for on-line reading, downloading (as Adobe PDF), and purchase.&nbsp;&nbsp; 
+		On this page the author describes the motivation and the value.&nbsp; 
+		There are other tips and leads to further material here.&nbsp; Newcomers might 
+		consider purchasing the hard copy of Volume 1 (second edition) with its 
+		bound-in CD-ROM with the <i>Thinking in C</i> CD-ROM designed for 
+		training and as preparation for moving on to C++ and for Java.&nbsp; 
+		Reviewers recommend that you have some programming experience&nbsp; and 
+		Volume 1 starts out assuming familiarity with C Language (and the 
+		McGrath books might get you started).&nbsp; You can also download the 
+		free edition and see how the material works for you.&nbsp; The author's 
+		comments about the CD-ROM on this web page are also instructive for 
+		setting your level of expectations and calibrating your experience and 
+		readiness for C++&nbsp; --dh:2005-10-06<br />
+&nbsp;&nbsp;&nbsp;&nbsp; </small></dd>
+		<dt><a name="McGrath2004">McGrath, Mike (2004)</a>.</dt>
+		<dd><i>C Programming in Easy Steps</i>.&nbsp; Learn the ANSI C standard 
+		in full color.&nbsp; Computer Step, Southam, Warwickshire, UK.&nbsp; 
+		ISBN 1-84078-203-X pbk.&nbsp; Barnes &amp; Noble edition for sale in the USA 
+		only, ISBN 0-7607-5504-3.&nbsp; Book description and source-code 
+		downloads available at &lt;<b><a 
+  href="http://www.ineasysteps.com/books/?184078203x"><kbd>http://www.ineasysteps.com/books/?184078203x</kbd></a></b>&gt;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; </dd>
+		<dt><a name="McGrath2005">McGrath, Mike (2005)</a>.</dt>
+		<dd><i>C++ Programming in Easy Steps</i>.&nbsp; Conforms to ANSI &amp; ISO 
+		Standards, in full color.&nbsp; Computer Step, Southam, Warwickshire, 
+		UK.&nbsp; ISBN 1-84078-295-1 pbk.&nbsp; Barnes &amp; Noble edition for sale 
+		in the USA only, ISBN 0-7607-7138-3.&nbsp; Book description and 
+		source-code downloads available at &lt;<b><a href="http://www.ineasysteps.com/books/?1840782951"><kbd>http://www.ineasysteps.com/books/?1840782951</kbd></a></b>&gt;.<br>
+		<small>&nbsp;&nbsp;&nbsp;&nbsp; The advantage of this version, focusing only on C++, in 
+		addition to the &quot;in Easy Steps&quot; format, is use of the MinGW 
+		build of the GNU C++ compiler with its closer match to the Microsoft 
+		Windows environment.&nbsp;&nbsp; If you 
+		use this compiler, I recommend that you employ batch files to set 
+		environment variables, including the Path variable, applying the 
+		technique of <a href="#YourDevelopmentDirectory">section 4</a> and employed throughout 
+		this site for C and C++ projects.&nbsp; And, if you want to grow into 
+		development of programs for the Windows graphical user-interface, I 
+		think the Microsoft Visual C++ Toolkit 2003 will provide an easier 
+		start.&nbsp; -- dh:2005-10-06</small></dd>
+	</dl>
+</blockquote>
+<p>&nbsp;</p>
+
+  <hr color="#990033">
+
+<dl><small>
+
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+
+
+
+	<dt><b><a name="0.30">0.30</a> 2005-10-06-15:16 Take to next level of 
+	cleanup</b></dt>
+	<dd>Proof, add links to new material on ODMdev setup and preparation, and 
+	other changes in the job jar.</dd>
+	<dt><b><a name="0.26">0.26</a> 2005-10-03-16:30 Move to Canonical Location, 
+	faq/2005/09</b></dt>
+	<dd>Usage from other settings can be made by inclusion of the pages as 
+	needed</dd>
+	<dt><b><a name="0.25">0.25</a> 2005-10-01-17:24 Review and Complete the 
+	Sketch</b></dt>
+	<dd>The sketch was applied in a walkthrough on a new computer and all problems noticed 
+	have been corrected.&nbsp; 
+	The entire text is reviewed and bumps smoothed out while awaiting feedback 
+	from others.&nbsp;&nbsp; We are ready to start cross-referencing to 
+	collateral materials that address other aspects of setting up for operation, 
+	development, and testing.</dd>
+	<dt><b><a name="0.05">0.05</a> 2005-09-12-00:31 Provide Highly-Provisional 
+	Draft Sketch</b></dt>
+	<dd>To do well by beginners, this section takes more effort than can be 
+	provided immediately.&nbsp; A crude outline/sketch with available images is 
+	used as a stop-gap.</dd>
+	<dt><b><a name="0.00">0.00</a> 2005-09-08-09:12 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; This page is 
+	a customization of the
+	<a target="_top" 
+ href="../../templates/00/Q000006c.htm">FAQtip Bootstrap Material [placeholder] 
+	Template 0.10</a>.&nbsp; A 
+	version from
+	<a target="_top" href="../../../projects/2005/06/p050601c.htm">FAQtip Bootstrap 0.10 Material</a> was used.</dd>
+	
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="14%"><a href="../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="53%" valign="middle" align="center">
+      <font 
+   face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif"><small><small>You are 
+   navigating the<br>
+<a href="../../../" target="_top">ODMA Interoperability Exchange</a>.</small></small></font><!-- 
+    Included from the http://orcmid.info/construction/c000005c.htm page of 2004-11-18-10:10 -0800 
+    --></td>
+    <td width="32%">
+      <p align="right"><font size="-2">created 2005-09-07-22:14 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:48 $<br>
+      $$Revision: 127 $</em></font></p>
+    </td>
+  </tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="35703" -->
+</body>
+</html>

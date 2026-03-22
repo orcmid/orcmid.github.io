@@ -1,0 +1,228 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>ctedit.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>/*
+ *  Copyright 1995,1996,1997 by the Association for Information and Image Management Int'l
+ *                                             1100 Wayne Avenue
+ *                                             Silver Spring, MD 20910-5603
+ *                                             Tel: 301/587-8202
+ *                                             Fax: 301/587-2711
+ *      All Rights Reserved.
+ *      DMA (Document Management Alliance) working group.
+ *
+ *  Code example: editing a document in DMA 1.0.
+ *  
+ */
+
+#ifndef NULL
+#define NULL    0
+#endif
+
+// ANSI C header file
+#include &lt;stddef.h&gt;
+
+// DMA header files
+#include &lt;dmatypes.h&gt;
+#include &lt;dmastr.h&gt;
+#include &lt;dmaenums.h&gt;
+#include &lt;dmarc.h&gt;  
+#include &lt;dmacom.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmaids.h&gt;
+
+#define  DMA_INIT_ID
+#include &lt;dmaidvar.h&gt;
+
+#define sampleProp_AuthorVal {0x0L, 0xBADL, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}
+
+DMA_DECL_ID(sampleProp_Author)
+
+// Code example: editing a document in DMA 1.0.
+
+// A completely artificial example that changes the "author" property
+//  on an existing document and adds a new PDF rendition or replaces
+//  the one that's there.
+
+// Assumes that connections to system and doc space have already been
+// made, that the doc id of the target document has been found
+// (by search or navigation), and that documents are not versioned.
+
+// Assumes the doc ver has a DmaString-valued property "author".
+
+// forward refs to helper routines 
+LPIdmaEditProperties MakeRendition(DmaWChar *,DmaWChar *);  
+DmaRC                ReportError(DmaRC, char *msg);
+
+// Utilities assumed to exist
+extern DmaBoolean EqualDmaString(pDmaString, pDmaString);
+
+// Assume these interface pointers have been initialized
+LPMALLOC      iMalloc;
+LPIdmaSystem   iSystem;    /* interface on system object */
+LPIdmaDocSpace iDocSpace;  /* interface on the connected doc space */
+
+Abort(DmaRC rc, char *msg)
+{
+return(rc);
+}
+
+// Procedure to do the edits.  Last argument is a URL giving path name 
+//  to the PDF file that is to become the new rendition
+
+EditStuff(pDmaString documentID, DmaWChar* newAuthor, DmaWChar* pdfFile)
+{
+DmaRC      rc;
+IdmaEditProperties*    iDocProps = NULL;
+IdmaEditProperties*    iRenditionObj = NULL;
+IdmaListOfString*      iRenditionsPresent = NULL;
+IdmaEditListOfObject*  iRenditions = NULL;
+IdmaList*              iRendList = NULL;
+IdmaConnection*        iDocConnection = NULL;
+DmaIndex32             nRenditions;
+pDmaString             authorString = NULL;
+pDmaString             PDFTYPE = NULL; 
+pDmaString             renditionType = NULL;
+
+// Connect to the document version object.  This makes a snapshot
+// of the persistent doc ver in the client's process space.
+
+rc = iDocSpace-&gt;ConnectObject (documentID, IID_IdmaEditProperties,
+                               (pDmapv) &amp;iDocProps);
+if (rc != DMARC_OK)
+   Abort (rc, "Failed to connect to doc ver");
+
+// NOTE: for brevity, further error checking is omitted.  All DMA calls
+//   should be followed by code similar to the above
+
+//  Change the author property
+if (newAuthor != NULL)
+    {
+    DMA_CREATE_STRING (iMalloc-&gt;Alloc, 21, newAuthor, &amp;authorString);
+    rc = iDocProps-&gt;PutPropValStringById(&amp;sampleProp_Author, authorString);
+    }
+
+// Make our PDF rendition file into a DMA rendition object.
+DMA_CREATE_STRING (iMalloc-&gt;Alloc, 21, L"MIME::application/PDF", &amp;PDFTYPE);
+iRenditionObj = MakeRendition(pdfFile, PDFTYPE);
+if (iRenditionObj == NULL)
+    Abort(DMARC_NO_MEMORY , "MakeRendition Failed");
+
+// Get the RenditionsPresent property and check to see if a PDF
+// rendition is present.  Since IdmaListOfString inherits from
+// IdmaList, it also has a GetCount method.
+rc = iDocProps-&gt;GetPropValObjectById(&amp;dmaProp_RenditionsPresent,
+                    IID_IdmaListOfString, (pDmapv) iRenditionsPresent);
+rc = iRenditionsPresent-&gt;GetElementCount(&amp;nRenditions);
+
+int noPDF = 1;
+rc = iDocProps-&gt;GetPropValObjectById(&amp;dmaProp_Renditions,
+                IID_IdmaEditListOfObject, (pDmapv) iRenditions);
+for (int i = 0; i &lt; nRenditions; i++)
+    {
+    rc = iRenditionsPresent-&gt;GetString(i, &amp;renditionType);
+    if (EqualDmaString(renditionType, PDFTYPE))
+        {
+        rc =iRenditions-&gt;ReplaceObject(i, &amp;iRenditionObj);
+        noPDF = 0;
+        }
+    DMA_FREE_STRING(iMalloc-&gt;Free, renditionType);
+    }
+if (noPDF)
+    {
+    rc =iRenditions-&gt;InsertObject(nRenditions, &amp;iRenditionObj);
+    }
+// Make the changes persistent
+
+rc = iDocProps-&gt;QueryInterface(IID_IdmaConnection, (pDmapv)  &amp;iDocConnection);
+rc = iDocConnection-&gt;ExecuteChange(NULL,DMA_MODIFY_UNPROTECTED,DMA_FALSE);
+
+// cleanup
+if (iDocProps != NULL) iDocProps-&gt;Release();
+if (iRenditionObj != NULL) iRenditionObj-&gt;Release();
+if (iRenditions != NULL) iRenditions-&gt;Release();
+if (iRenditionsPresent != NULL) iRenditionsPresent-&gt;Release();
+if (iDocConnection != NULL) iDocConnection-&gt;Release();
+
+DMA_FREE_STRING(iMalloc-&gt;Free, authorString);
+DMA_FREE_STRING(iMalloc-&gt;Free, PDFTYPE);
+return(DMARC_OK);
+}
+
+// Create a DMA rendition object of the indicated type.  The rendition
+// will have one content transfer element, whose content is named by the URL 
+// indicated by contentURL.
+
+// Returns a pointer to the IdmaEditProperties interface on the new
+// rendition, or NULL if the process failed for any reason.
+
+// Ownership of the returned object and its content element and DMAStrings 
+// passes to the caller.
+
+IdmaEditProperties* MakeRendition(DmaWChar* contentURL, DmaWChar* renditionType)
+{
+IdmaEditProperties*     iContentEl  = NULL;
+IdmaEditProperties*     iRenditionProps = NULL;
+IdmaContentTransfer*    iContentTr = NULL;
+IdmaEditListOfObject*   iContentEls = NULL;
+IdmaObjectFactory*      iObjFactory = NULL;
+pDmaString              contentURLString = NULL;
+pDmaString              rendType = NULL;
+pDmaString              componentType = NULL;
+
+// check arguments and convert to DMAStrings
+if ((contentURL == NULL) || (wcslen(contentURL) == 0) ||
+   (renditionType == NULL) || (wcslen(renditionType) == 0))
+    return (NULL);
+else
+    {
+    DMA_CREATE_STRING (iMalloc-&gt;Alloc, wcslen(renditionType), renditionType, &amp;rendType);
+    DMA_CREATE_STRING (iMalloc-&gt;Alloc, wcslen(contentURL), contentURL, &amp;contentURLString);
+    }
+
+//  Make content transfer element
+DmaRC rc = iDocSpace-&gt;QueryInterface(IID_IdmaObjectFactory,
+                                     (pDmapv) &amp;iObjFactory);
+if (rc != DMARC_OK)
+   return (NULL);
+
+// error checks omitted on following calls for brevity
+rc = iObjFactory-&gt;CreateObject(&amp;dmaClass_ContentTransfer,
+                 IID_IdmaEditProperties, (pDmapv) &amp;iContentEl);
+
+//  Set properties of the content element.
+DMA_CREATE_STRING (iMalloc-&gt;Alloc, 6, L"single", &amp;componentType);
+rc = iContentEl-&gt;PutPropValStringById(&amp;dmaProp_ComponentType, componentType);
+rc = iContentEl-&gt;QueryInterface(IID_IdmaContentTransfer, (pDmapv) &amp;iContentTr);
+rc = iContentTr-&gt;SetCaptureResource(contentURLString);
+
+// Make a rendition and add the content element to it
+rc = iObjFactory-&gt;CreateObject(&amp;dmaClass_Rendition, IID_IdmaEditProperties,
+                             (pDmapv)&amp; iRenditionProps);
+rc = iRenditionProps-&gt;PutPropValStringById(&amp;dmaProp_RenditionType, rendType);
+rc = iRenditionProps-&gt;GetPropValObjectById(&amp;dmaProp_ContentElements,
+                          IID_IdmaEditListOfObject, (pDmapv)&amp;iContentEls); 
+rc = iContentEls-&gt; InsertObject(0, iContentEl);
+
+// cleanup
+if (iContentEl != NULL) iContentEl-&gt;Release();
+if (iContentTr != NULL) iContentTr-&gt;Release();
+if (iContentEls != NULL)  iContentEls-&gt;Release();
+if (iRenditionProps != NULL) iRenditionProps-&gt;Release();
+if (iObjFactory != NULL) iObjFactory-&gt;Release();
+
+DMA_FREE_STRING(iMalloc-&gt;Free, rendType);
+DMA_FREE_STRING(iMalloc-&gt;Free, componentType);
+DMA_FREE_STRING(iMalloc-&gt;Free, contentURLString);
+return (iRenditionProps);
+}
+</FONT>
+</PRE>
+</BODY>
+</HTML>
+

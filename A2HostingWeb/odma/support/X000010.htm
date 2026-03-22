@@ -1,0 +1,157 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X000010.htm 3     01-03-06 23:48 Orcmid $-->
+<title>X000010: ODMQueryGetResults Buffer Handling</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="http://www.infonuovo.com/odma/support/X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X000010.htm">X000010</a>:
+<code>ODMQueryGetResults</code> Buffer Handling</b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2001-03-06-22:46 -0800 (pst)<br>
+The <a href="http://www.infonuovo.com/odma/support/X000010.htm">latest version</a>
+of this information is available on the <a href="http://www.dmware.org">AIIM
+DMware</a> <a href="http://www.infonuovo.com/odma">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000"> Functionality -
+        Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000010">X000010</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b>9 - <font color="#FF0000">Urgent</font></b></td>
+      <td width="50%"><b>Status</b>: <a href="#Actions">Under Investigation</a></td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Component: ODMA 1.5 &amp; 2.0 Connection
+        Managers</b></td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Repaired in: <a href="#Actions">tbd<br>
+            </a> Related information:</b></dt>
+          <dd>ODMA 2.0 Specification section <a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#2.13">2.13</a>,
+            <b><code><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODMOpenDoc">ODMOpenDoc</a></code></b>
+            definition of <code> <b><a href="http://www.infonuovo.com/odma/downloads/odma20-3.htm#ODM_REFCOPY2.13">ODM_REFCOPY</a></b></code>,<code> <b><br>
+            </b></code>ODMA 1.5 Specification definition of <b><code><a href="http://www.infonuovo.com/odma/downloads/odma15-2.htm#opendoc">ODMOpenDoc</a></code></b>,<br>
+            Q000705: <a href="http://www.infonuovo.com/odma/downloads/Q000705.htm">Changes
+            Between ODMA Versions</a>,<br>
+            P000702: <a href="http://www.infonuovo.com/odma/projects/p00-log.htm#P000702">ODMA
+            Library Release 2.0.1</a> project</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Assigned To</b>: tbd</td>
+      <td width="50%" valign="top">
+        <dl>
+          <dt><b>Reported By:</b></dt>
+          <dd><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#JohnCharlesBrown">John
+            Charles Brown</a> (<a href="http://www.infonuovo.com/odma/support/x000010a.msg">1999-11-19</a>)</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top"><b>Date Logged</b>: 2000-08-11<br>
+        <b>Date Recorded</b>: 2001-03-06</td>
+      <td width="50%" valign="top"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+  <hr>
+  <h4><i><b>Content</b></i></h4>
+</blockquote>
+
+<h3>1. <a href="#Summary">Incident Summary</a></h3>
+
+<h3>2. <a href="#Actions">Actions Toward Resolution</a></h3>
+
+<h3>3. <a href="#WorkAround">Working Around the Problem</a></h3>
+
+<h3>4. <a href="#Investigation">Analysis</a></h3>
+
+<blockquote>
+
+<h4><i><a href="#Contributors">Contributors</a></i></h4>
+
+  <hr>
+
+</blockquote>
+
+<h2>1. <a name="Summary">Incident Summary</a>    (2001-03-06)</h2>
+
+<blockquote>
+  <p align="left">When ODMA queries are performed directly via an ODMA-aware
+  application, rather than by the normal File | Open ... and DMS search
+  interface, the ODMA-aware application may lock up.&nbsp; It will be necessary
+  to force the application to shut down to break the lock, which is caused by a
+  loop in the ODMA Connection Manager.</p>
+
+  <p align="left"><i>Why is this considered critical?</i></p>
+
+  <p align="left">The condition can easily occur in practice and will crash an
+  ODMA-aware application with loss of any work in progress.&nbsp; The defect
+  will have users avoid using the ODMA Query capability when it is supported by
+  the application and one or more DMS integrations.</p>
+
+</blockquote>
+
+<h2>2. <a name="Actions">Actions</a> Toward Resolution</h2>
+
+<blockquote>
+<p>The following actions are proposed:</p>
+
+  <ol>
+    <li>Record the existence of of the problem and establish an incident report
+      as notification and as documentation of the problem to be confirmed.&nbsp;
+      [2001-03-06: Completed]</li>
+    <li>Inspect the ODMA 2.0 Connection Manager implementation and identify the
+      conditions under which the software fails.</li>
+    <li>Construct a repeatable demonstration of the problem, if needed.&nbsp;</li>
+    <li>Establish work-arounds for the problem until a production solution is
+      available.</li>
+    <li>Implement any needed correction in project <a href="http://www.infonuovo.com/odma/projects/P000902.htm">P000902:
+      ODMA Connection Manager Release 2.0.1</a>.</li>
+    <li>Evaluate the need for specific trouble-shooting procedures for
+      situations in which ODMA Query is used.</li>
+  </ol>
+</blockquote>
+
+<h2>3. <a name="WorkAround">Working Around the Problem</a></h2>
+
+<h2>4. <a name="Investigation">Analysis</a>      of Incident</h2>
+
+<blockquote>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote>
+  <font size="-1">
+  <dl>
+    <dt><a href="http://www.infonuovo.com/odma/faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>reviewed old ODMA Tech mail for untracked incidents, logged this
+      incident (2000-08-11) and then recorded the incident (2001-03-06) as part
+      of having all <a href="http://www.infonuovo.com/odma/projects/P010200.htm">backlog
+      recorded</a>.</dd>
+  </dl>
+  </blockquote>
+</font>
+
+<p align="right">created 2001-03-06-22:46 -0800 (pst) by <a href="mailto:infonuovo@email.com">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 01-03-06 23:48 $<br>
+$$Revision: 3 $</em></p>
+</body>
+</html>

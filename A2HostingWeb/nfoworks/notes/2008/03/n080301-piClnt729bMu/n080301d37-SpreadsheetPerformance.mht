@@ -1,0 +1,2461 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: An Antic Disposition: Spreadsheet file format performance
+Date: Tue, 13 May 2008 20:36:10 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C8B538.FA43C300"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5512
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.robweir.com/blog/2008/05/spreadsheet-file-format-performance.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=3Den-US xml:lang=3D"en-US"=20
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>An Antic =
+Disposition: Spreadsheet file format performance</TITLE>
+<STYLE type=3Dtext/css>BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #ffffff; =
+PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: 0.9em "Trebuchet =
+MS",Trebuchet,Verdana,Sans-Serif; COLOR: #000000; PADDING-TOP: 0px
+}
+A {
+	COLOR: #de7008
+}
+A:hover {
+	COLOR: #e0ad12
+}
+
+@media All   =20
+{
+DIV#mainClm {
+	PADDING-RIGHT: 50px; PADDING-LEFT: 5%; FLOAT: left; PADDING-BOTTOM: =
+10px; WIDTH: 68%; PADDING-TOP: 13px
+}
+DIV#sideBar {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px =
+1em 0px 0px; PADDING-TOP: 0px; TEXT-ALIGN: right
+}
+
+}
+
+@media Handheld   =20
+{
+DIV#mainClm {
+	FLOAT: none; WIDTH: 90%
+}
+DIV#sideBar {
+	PADDING-RIGHT: 50px; PADDING-LEFT: 5%; PADDING-BOTTOM: 10px; =
+PADDING-TOP: 13px; TEXT-ALIGN: left
+}
+    }
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+H1 A:link {
+	COLOR: #fffafa; TEXT-DECORATION: none
+}
+H1 A:visited {
+	COLOR: #fffafa; TEXT-DECORATION: none
+}
+H1 {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ff7f50 9px solid; PADDING-LEFT: 5%; =
+BACKGROUND: #ff4500; PADDING-BOTTOM: 10px; MARGIN: 0px 0px 8px; FONT: =
+bold 266% Verdana,Sans-Serif; COLOR: #fffafa; PADDING-TOP: 18px; =
+BORDER-BOTTOM: #deb887 1px solid
+}
+H2 {
+	BORDER-RIGHT: #f5f5f5 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: =
+#f5f5f5 1px solid; PADDING-LEFT: 5px; BACKGROUND: #eeeeee; =
+PADDING-BOTTOM: 2px; MARGIN: 0px 0px 10px; FONT: bold 110% =
+Verdana,Sans-Serif; BORDER-LEFT: #f5f5f5 1px solid; COLOR: #555555; =
+PADDING-TOP: 2px; BORDER-BOTTOM: #dddddd 1px solid
+}
+H2.sidebar-title {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #ffffff; =
+PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 125% Verdana,Sans-Serif; =
+COLOR: #ff4500; BORDER-TOP-STYLE: none; PADDING-TOP: 0px; =
+BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: =
+none
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 2%; FONT-SIZE: 90%; PADDING-BOTTOM: =
+0px; MARGIN: 10px 0px 0px; COLOR: #777777; PADDING-TOP: 0px; =
+BORDER-BOTTOM: #cccccc 1px dotted; TEXT-ALIGN: left
+}
+H4 {
+	COLOR: #aa0033
+}
+H6 {
+	FONT: bold 125% Verdana,Sans-Serif; COLOR: #ff4500
+}
+PRE {
+	COLOR: #999999
+}
+CODE {
+	COLOR: #999999
+}
+STRIKE {
+	COLOR: #999999
+}
+BLOCKQUOTE {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FONT-SIZE: 88%; BACKGROUND: =
+url(http://www.robweir.com/blog/quotes.gif) no-repeat left top; =
+PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 30px; COLOR: #666; LINE-HEIGHT: =
+1.5em; PADDING-TOP: 10px
+}
+BLOCKQUOTE P {
+	MARGIN-TOP: 0px
+}
+.blogPost {
+	FONT-SIZE: 100%; MARGIN: 0px 6px 30px 5px
+}
+.blogPost STRONG {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.bug {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; =
+BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 5px; =
+PADDING-TOP: 5px; BORDER-RIGHT-WIDTH: 0px
+}
+.byline {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 80%; PADDING-BOTTOM: =
+0px; MARGIN: 0px; COLOR: #444444; PADDING-TOP: 0px
+}
+.byline A {
+	COLOR: #ff4500; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; TEXT-DECORATION: none; BORDER-BOTTOM-STYLE: =
+none
+}
+.byline A:hover {
+	TEXT-DECORATION: underline
+}
+.blogComments {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: =
+110%; PADDING-BOTTOM: 2px; COLOR: #555555; PADDING-TOP: 2px; =
+FONT-FAMILY: Verdana,Sans-Serif
+}
+.blogComment {
+	MARGIN-TOP: 10px; FONT-WEIGHT: normal; FONT-SIZE: 100%; COLOR: black
+}
+.blogComments .byline {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; FONT-WEIGHT: =
+normal; FONT-SIZE: 80%; MARGIN-BOTTOM: 20px; PADDING-BOTTOM: 0px; COLOR: =
+#444444; MARGIN-RIGHT: 10px; PADDING-TOP: 0px
+}
+.deleted-comment {
+	COLOR: gray; FONT-STYLE: italic
+}
+.comment-link {
+=09
+}
+.profile-datablock {
+	TEXT-ALIGN: justify
+}
+.profile-img {
+=09
+}
+.profile-img IMG {
+	FLOAT: right; MARGIN-LEFT: 5px
+}
+.profile-data STRONG {
+=09
+}
+.profile-link A:link {
+	COLOR: #999999; TEXT-DECORATION: none
+}
+.profile-link A:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.profile-link A:visited {
+	COLOR: #999999; TEXT-DECORATION: none
+}
+.profile-link A:hover {
+	COLOR: #de7008; TEXT-DECORATION: none
+}
+A.techtag {
+	FONT-SIZE: 2px; COLOR: #fff
+}
+DIV.techtags {
+	PADDING-RIGHT: 5px; BORDER-TOP: #888 1px solid; PADDING-LEFT: 5px; =
+FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; MARGIN: 15px =
+5px 5px; COLOR: #888; PADDING-TOP: 5px; FONT-FAMILY: Tahoma, Arial, =
+sans-serif
+}
+DIV.techtags A.techtag {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #888; FONT-FAMILY: tahoma, =
+arial, sans-serif
+}
+#header {
+	PADDING-RIGHT: 0px; BORDER-TOP: #ffebcd 2px solid; PADDING-LEFT: 0px; =
+BACKGROUND: #ffebcd; PADDING-BOTTOM: 8px; MARGIN: 0px 0px 20px; COLOR: =
+#8b4513; PADDING-TOP: 0px; BORDER-BOTTOM: #eeeeee 1px solid
+}
+#logo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: =
+0px; PADDING-TOP: 0px
+}
+#profile-container {
+=09
+}
+#profile-container P {
+=09
+}
+#profile-container .profile-textblock {
+	TEXT-ALIGN: justify
+}
+#sideBar UL A {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: =
+1px; WIDTH: 100%; COLOR: #999999; BORDER-TOP-STYLE: none; PADDING-TOP: =
+2px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; TEXT-DECORATION: =
+none; BORDER-BOTTOM-STYLE: none
+}
+#sideBar UL A:link {
+	COLOR: #999999
+}
+#sideBar UL A:visited {
+	COLOR: #999999
+}
+#sideBar UL A:active {
+	COLOR: #ff0000
+}
+#sideBar UL A:hover {
+	COLOR: #de7008; TEXT-DECORATION: none
+}
+#sideBar UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 95%; PADDING-BOTTOM: =
+0px; MARGIN: 0px 0px 33px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#sideBar LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 105%; PADDING-BOTTOM: =
+0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#description {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5%; BACKGROUND: none transparent =
+scroll repeat 0% 0%; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 85% =
+Verdana,Sans-Serif; COLOR: #9e5205; PADDING-TOP: 0px
+}
+</STYLE>
+
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3DUTF-8">
+<META content=3Dtrue name=3DMSSmartTagsPreventParsing>
+<META content=3D"MSHTML 6.00.6000.16640" name=3DGENERATOR><LINK=20
+title=3D"An Antic Disposition - Atom" =
+href=3D"http://www.robweir.com/blog/atom.xml"=20
+type=3Dapplication/atom+xml rel=3Dalternate><LINK title=3D"An Antic =
+Disposition - RSS"=20
+href=3D"http://www.robweir.com/blog/rss.xml" type=3Dapplication/rss+xml=20
+rel=3Dalternate><LINK title=3D"An Antic Disposition - Atom"=20
+href=3D"http://www.blogger.com/feeds/11236681/posts/default"=20
+type=3Dapplication/atom+xml rel=3Dservice.post><LINK title=3DRSD=20
+href=3D"http://www.blogger.com/rsd.g?blogID=3D11236681" =
+type=3Dapplication/rsd+xml=20
+rel=3DEditURI><LINK title=3D"An Antic Disposition - Atom"=20
+href=3D"http://www.robweir.com/blog/atom.xml" =
+type=3Dapplication/atom+xml=20
+rel=3Dalternate>
+<STYLE type=3Dtext/css>@import url( =
+http://www.blogger.com/css/blog_controls.css );
+@import url( =
+http://www.blogger.com/dyn-css/authorization.css?targetBlogID=3D11236681 =
+);
+</STYLE>
+
+<SCRIPT src=3D"http://www.blogger.com/js/backlink.js"=20
+type=3Dtext/javascript></SCRIPT>
+
+<SCRIPT src=3D"http://www.blogger.com/js/backlink_control.js"=20
+type=3Dtext/javascript></SCRIPT>
+
+<SCRIPT type=3Dtext/javascript>var BL_backlinkURL =3D =
+"http://www.blogger.com/dyn-js/backlink_count.js";var BL_blogId =3D =
+"11236681";</SCRIPT>
+
+<META=20
+content=3D"This is the personal blog Rob Weir in Westford, An Antic =
+Disposition"=20
+name=3Ddescription>
+<META content=3D"Rob Weir" name=3Dauthor>
+<META=20
+content=3D"Robert Weir, Robert C. Weir, Rob Weir, Rob Wier, Rob Weird, =
+Westford, standards, open standards, ODF, OpenDocument, Open Document, =
+OOXML, MOOXML, Open XML, OpenXML,Office Open XML, blog, An Antic =
+Disposition"=20
+name=3Dkeywords>
+<META content=3DCollection name=3DDC.Type>
+<META content=3D"An Antic Disposition" name=3DDC.Title>
+<META content=3D"Rob Weir" name=3DDC.Creator>
+<META content=3D"Rob Weir" name=3DDC.Creator.name>
+<META content=3Dhttp://www.robweir/com/blog name=3DDC.Identifier>
+<META content=3Dtext/html name=3DDC.Format>
+<META content=3Den name=3DDC.Language>
+<META content=3D"Copyright 2005 - 2008 Rob Weir, All Rights Reserved"=20
+name=3DDC.Rights>
+<META content=3D42.60960,-71.40776 name=3DICBM>
+<META content=3D"Westford, MA" name=3Dgeo.placename>
+<META content=3DUS name=3Dgeo.country></HEAD>
+<BODY><!-- Heading -->
+<DIV id=3Dheader>
+<H1><A href=3D"http://www.robweir.com/blog/">An Antic Disposition =
+</A></H1>
+<P id=3Ddescription>Rob Weir, thinking the unthinkable, pondering the=20
+imponderable, effing the ineffable and scruting the =
+inscrutable</P></DIV><!-- Main Column -->
+<DIV id=3DmainClm><!-- Blog Posts -->
+<H3>Tuesday, May 13, 2008</H3><A name=3D4912814743730565869></A>
+<H2>Spreadsheet file format performance</H2>
+<DIV class=3DblogPost>
+<DIV style=3D"CLEAR: both"></DIV>I've been doing some performance =
+timings of file=20
+format support, comparing MS Office and OpenOffice. Most of the results =
+are as=20
+expected, but some are surprising, and one in particular is quite=20
+disappointing.<BR><BR>But first, a little details of my setup. All =
+timings, done=20
+by stopwatch, were from Office 2003 and OpenOffice 2.4.0 running on =
+Windows XP,=20
+with all current service packs and patches. The machine is a Lenova =
+T60p,=20
+dual-core Intel 2.16 Ghz and 2 GB of RAM. I took all the standard =
+precautions --=20
+disk was defragmented, and test files were confirmed as defragmented =
+using <A=20
+href=3D"http://technet.microsoft.com/en-us/sysinternals/bb897428.aspx">co=
+ntig</A>.=20
+No other applications were running and background tasks were all shut=20
+down.<BR><BR>For test files, I went back to an old favorite, George Ou's =
+(at the=20
+time with ZDNet) monster 50MB XLS file from his <A=20
+href=3D"http://blogs.zdnet.com/Ou/?p=3D119">series of tests</A> back in =
+2005. This=20
+file, although very large, is very simple. There are no formulas, indeed =
+no=20
+formatting or styles. It is just text and numbers, treating a =
+spreadsheet like a=20
+giant data table. So tests of this file will emphasize the raw =
+throughput of the=20
+applications. Real world spreadsheets will typically be worse than this =
+due to=20
+additional overhead from process styles, formulas, etc.<BR><BR>A test of =
+a=20
+single file is not really that interesting. We want to see trends, see =
+patterns.=20
+So I made a set of variations on George's original file, converting it =
+into ODF,=20
+XLS and OOXML formats, as well as making scaled down versions of it. In =
+total I=20
+made 12 different sized subsets of the original file, ranging down to a =
+437KB=20
+version, and created each file in all three formats. I then tested how =
+long it=20
+took to load each file in each of the applications. In the case of MS =
+Office, I=20
+installed the current versions of the translators for those formats, the =
+
+Compatibility Pack for OOXML, and the ODF Add-in for the ODF =
+support.<BR><BR>I=20
+find it convenient to report numbers per 100,000 spreadsheet cells. You =
+could=20
+equally well use the original XLS spreadsheet size, or the number of =
+rows of=20
+data, or any other correlated variable as the ordinate, but values per =
+100K=20
+cells is simple for anyone to understand.<BR><BR>I'll spare you all the =
+pretty=20
+picture. If you want to make some, here is the <A=20
+href=3D"http://www.robweir.com/blog/attachments/FileFormatPerf.csv">raw =
+data</A>=20
+(CSV format). But I will give some summary observations.<BR><BR><BR>For =
+document=20
+sizes, the results are as follows:<BR>
+<UL>
+  <LI>Binary XLS format =3D 1,503 KB per 100K cells
+  <LI>OOXML format =3D 491 KB per 100K cells
+  <LI>ODF format =3D 117 KB per 100K cells</LI></UL>So the XML formats =
+are far=20
+smaller than the legacy binary format. This is due to the added Zip =
+compression=20
+that both XML formats use. Also, note that the ODF files are =
+significantly=20
+smaller than the OOXML files, less than 1/4 the size on average. Upon =
+further=20
+examination, the XML document representing the ODF content is larger =
+than the=20
+corresponding XML in OOXML, as expected, due to its use of longer, more=20
+descriptive markup tags. However the ODF XML compresses far better than =
+the=20
+OOXML version, enough to overcome its greater verbosity and result in =
+files=20
+smaller than OOXML. The compression ratio (original/zipped) for ODF's=20
+content.xml is 87, whereas the compression ratio for OOXML's sheet1.xml =
+is only=20
+12. We could just mumble something about entropy and walk away, but I =
+think this=20
+area could bear further investigation.<BR><BR>Any ideas?<BR><BR>For load =
+time,=20
+the times for processing the binary XLS files were:<BR>
+<UL>
+  <LI>Microsoft Office 2003 =3D 0.03 seconds per 100K cells
+  <LI>OpenOffice 2.4.0 =3D 0.4 seconds per 100K cells</LI></UL>Not too =
+surprising.=20
+These binary formats are optimized for the guts of MS Office. We would =
+expect=20
+them to load faster in their native application.<BR><BR>So what about =
+the new=20
+XML formats? There has been recent talk about the "<A=20
+href=3D"http://www.codinghorror.com/blog/archives/001114.html">Angle =
+Bracket=20
+Tax</A>" for XML formats. How bad is it?<BR>
+<UL>
+  <LI>Microsoft Office 2003 with OOXML =3D 1.5 seconds per 100K cells
+  <LI>OpenOffice 2.4.0 with ODF =3D 2.7 seconds per 100K =
+cells</LI></UL>For typical=20
+sized documents, you probably will not notice the difference. However =
+with the=20
+largest documents, like the 16-page, 3-million cells monster sheet, the =
+OOXML=20
+document took 40 seconds to load in Office, the ODF sheet took 90 =
+seconds to=20
+load in OpenOffice, whereas the XLS binary took less than 2 seconds to =
+load in=20
+MS Office.<BR><BR>OK. So what are we missing. Ah, yes, ODF format in MS =
+Office,=20
+using their ODF Add-in.<BR>
+<UL>
+  <LI>Microsoft Office 2003 with ODF, using the ODF Add-in =3D 74.6 =
+seconds per=20
+  100K cells</LI></UL>Yup. You read that right. To put this in =
+perspective, let's=20
+look at a single test file, a 600K cells file, as we load it in the =
+various=20
+formats and editors:<BR><BR>
+<UL>
+  <LI>Microsoft Office 2003 in XLS format =3D 0.75 seconds
+  <LI>OpenOffice 2.4.0 in XLS format =3D 3.03 seconds
+  <LI>Microsoft Office 2003 in OOXML format =3D 8.28 seconds
+  <LI>OpenOffice 2.4.0 in ODF format =3D 14.09 seconds
+  <LI>Microsoft Office 2003 in ODF format =3D 515.60 =
+seconds</LI></UL>Can someone=20
+explain to me why Microsoft Office needs almost 10 minutes to load an =
+ODF file=20
+that OpenOffice can load in 14 seconds?<BR><BR>(I was not able to test =
+files=20
+larger than this using the ODF Add-in since they all crashed =
+.)<BR><BR>(Update:=20
+Since it is the question everyone wants to know, the beta OpenOffice 3.0 =
+opens=20
+the OOXML version of that file in 49.4 seconds, over 10x faster than MS =
+Office=20
+loads the ODF document.)<BR><BR>This is one reason why I think file =
+format=20
+translation is a poor engineering approach to interoperability. When =
+OpenOffice=20
+wants to read an legacy XLS file, it does not approach the problem by=20
+translating the XLS into an ODF document and then loading the ODF file. =
+Instead=20
+they simply load the XLS file, via a file filter, into the internal =
+memory model=20
+of OpenOffice.<BR><BR>What is a file filter? It is like 1/2 of a =
+translator.=20
+Instead of translating from one disk format to another disk format, it =
+simply=20
+loads the disk format and maps it into an application-specific memory =
+model that=20
+the application logic can operate directly on. This is far more =
+efficient than=20
+translation. This is the untold truth that the layperson does not know. =
+But this=20
+is how everyone does it. That is how we support formats in SmartSuite. =
+That is=20
+how OpenOffice does it. And that is how MS Office does it for the file =
+formats=20
+they care about. In fact, that is the way that Novell is now doing it =
+now, since=20
+they discovered that the Microsoft approach is doomed to performance=20
+hell.<BR><BR>So it is with some amusement that I watch Microsoft and =
+others=20
+propose translation as a solution to interoperability, creating reports =
+about=20
+translation, even a proposal for a new work item in JTC1/SC34 concerning =
+file=20
+format translation, when the single concrete attempt at translation is =
+such an=20
+abysmal failure. It may look great on paper, but it is an engineering =
+disaster.=20
+What customers need is direct, internal support for ODF in MS Office, =
+via native=20
+code, in a file filter, not a translator that takes 10 minutes to load a =
+
+file.<BR><BR>The astute engineer will agree with the above, but will =
+also feel=20
+some discomfort at the numbers. There is more here than can be explained =
+simply=20
+by the use of translators versus import filters. That choice might =
+explain a 2x=20
+difference in performance. A particularly poor implementation might =
+explain a 5x=20
+difference. But none of this explains why MS Office is almost 40x slower =
+in=20
+processing ODF files. Being that much slower is hard to do accidentally. =
+Other=20
+forces must be at play.<BR><BR>Any ideas?
+<DIV style=3D"CLEAR: both; PADDING-BOTTOM: 0.25em"></DIV>
+<P class=3Dblogger-labels>Labels: <A=20
+href=3D"http://www.robweir.com/blog/labels/ODF.html" rel=3Dtag>ODF</A>, =
+<A=20
+href=3D"http://www.robweir.com/blog/labels/OOXML.html" =
+rel=3Dtag>OOXML</A>, <A=20
+href=3D"http://www.robweir.com/blog/labels/Performance.html"=20
+rel=3Dtag>Performance</A></P>
+<DIV class=3Dbyline>
+<P><A style=3D"FLOAT: none"=20
+href=3D"http://digg.com/submit?phase=3D2&amp;url=3Dhttp://www.robweir.com=
+/blog/2008/05/spreadsheet-file-format-performance.html">Digg</A>=20
+| <A style=3D"FLOAT: none"=20
+href=3D"http://reddit.com/submit?url=3Dhttp://www.robweir.com/blog/2008/0=
+5/spreadsheet-file-format-performance.html&amp;title=3DSpreadsheet file =
+format performance">Reddit</A>=20
+| <A style=3D"FLOAT: none"=20
+href=3D"http://del.icio.us/post?url=3Dhttp://www.robweir.com/blog/2008/05=
+/spreadsheet-file-format-performance.html&amp;title=3DSpreadsheet file =
+format performance">Del.icio.us</A>=20
+</P><A title=3D"permanent link"=20
+href=3D"http://www.robweir.com/blog/2008/05/spreadsheet-file-format-perfo=
+rmance.html">#</A>=20
+posted by Rob : 5/13/2008 03:30:00 PM <SPAN class=3Ditem-action><A=20
+title=3D"Email Post"=20
+href=3D"http://www.blogger.com/email-post.g?blogID=3D11236681&amp;postID=3D=
+4912814743730565869"><IMG=20
+class=3Dicon-action alt=3D""=20
+src=3D"http://www.blogger.com/img/icon18_email.gif"></A></SPAN> =
+</DIV></DIV>
+<DIV class=3DblogComments><A name=3Dcomments></A>Comments:=20
+<DIV class=3DblogComment><A name=3D17022040695506848></A>"Being that =
+much slower is=20
+hard to do accidentally. Other forces must be at play."<BR><BR>Never =
+attribute=20
+to malice that which can be adequately explained by =
+stupidity.<BR><BR>Come on,=20
+given that MS weren't even capable of spell-checking or copy-editing the =
+OOXML=20
+spec to a level that high school students would consider acceptably=20
+unembarassing, I consider it entirely possible that they're incompetent =
+enough=20
+to have this happen accidentally.<BR><BR>I know they won't do it to you, =
+but why=20
+not be kind, give them the benefit of the doubt, and just assume they're =
+a=20
+complete bunch of retards?<BR>
+<DIV class=3Dbyline><A title=3D"permanent link"=20
+href=3D"http://www.robweir.com/blog/2008/05/spreadsheet-file-format-perfo=
+rmance.html?showComment=3D1210717800000#c17022040695506848">#</A>=20
+posted by <SPAN class=3D"comment-icon anon-comment-icon"=20
+style=3D"LINE-HEIGHT: 16px"><IMG style=3D"DISPLAY: inline" =
+alt=3DAnonymous=20
+src=3D"http://www.blogger.com/img/anon16-rounded.gif"></SPAN>&nbsp;<SPAN =
+
+class=3Danon-comment-author>Karellen</SPAN> : Tue May 13, 06:30:00 PM=20
+EDT</DIV><SPAN class=3D"item-control blog-admin pid-1363601793"><A=20
+title=3D"Delete Comment"=20
+style=3D"BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none"=20
+href=3D"http://www.blogger.com/delete-comment.g?blogID=3D11236681&amp;pos=
+tID=3D17022040695506848"><SPAN=20
+class=3Ddelete-comment-icon>&nbsp;</SPAN></A></SPAN> </DIV>
+<DIV class=3DblogComment><A name=3D9081125735942909073></A>I bet that =
+ODF does=20
+better by not having 30 ways to specify the same thing. That should help =
+
+compression a lot, even if individual tags are longer and more=20
+readable.<BR><BR>As for why Office sucks in terms of performance, that's =
+
+probably because there's no money in it for them, so they let their =
+worst coders=20
+work on it. They're just stingy that way.<BR>
+<DIV class=3Dbyline><A title=3D"permanent link"=20
+href=3D"http://www.robweir.com/blog/2008/05/spreadsheet-file-format-perfo=
+rmance.html?showComment=3D1210719360000#c9081125735942909073">#</A>=20
+posted by <SPAN class=3D"comment-icon anon-comment-icon"=20
+style=3D"LINE-HEIGHT: 16px"><IMG style=3D"DISPLAY: inline" =
+alt=3DAnonymous=20
+src=3D"http://www.blogger.com/img/anon16-rounded.gif"></SPAN>&nbsp;<SPAN =
+
+class=3Danon-comment-author>Anonymous</SPAN> : Tue May 13, 06:56:00 PM=20
+EDT</DIV><SPAN class=3D"item-control blog-admin pid-1363601793"><A=20
+title=3D"Delete Comment"=20
+style=3D"BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none"=20
+href=3D"http://www.blogger.com/delete-comment.g?blogID=3D11236681&amp;pos=
+tID=3D9081125735942909073"><SPAN=20
+class=3Ddelete-comment-icon>&nbsp;</SPAN></A></SPAN> </DIV>
+<DIV class=3DblogComment><A name=3D5540867953679044093></A>&gt; Never =
+attribute to=20
+malice that which can be adequately explained by stupidity.<BR><BR>Don't =
+forget=20
+that the corollary to the law you quote is that sufficiently stupid =
+actions are=20
+indistinguishable from malice ...<BR>
+<DIV class=3Dbyline><A title=3D"permanent link"=20
+href=3D"http://www.robweir.com/blog/2008/05/spreadsheet-file-format-perfo=
+rmance.html?showComment=3D1210729920000#c5540867953679044093">#</A>=20
+posted by <SPAN class=3D"comment-icon anon-comment-icon"=20
+style=3D"LINE-HEIGHT: 16px"><IMG style=3D"DISPLAY: inline" =
+alt=3DAnonymous=20
+src=3D"http://www.blogger.com/img/anon16-rounded.gif"></SPAN>&nbsp;<SPAN =
+
+class=3Danon-comment-author>Anonymous</SPAN> : Tue May 13, 09:52:00 PM=20
+EDT</DIV><SPAN class=3D"item-control blog-admin pid-1363601793"><A=20
+title=3D"Delete Comment"=20
+style=3D"BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none"=20
+href=3D"http://www.blogger.com/delete-comment.g?blogID=3D11236681&amp;pos=
+tID=3D5540867953679044093"><SPAN=20
+class=3Ddelete-comment-icon>&nbsp;</SPAN></A></SPAN> </DIV>
+<DIV class=3DblogComment><A name=3D3045612117455741255></A>Only guesses =
+about the=20
+CleverAge ODF addin, but still :<BR><BR>- written in .NET, so incurs a =
+few=20
+seconds just to load<BR>- not written with performance in mind, meaning =
+bad=20
+String use all over the place. Effect : many garbage collections, a big =
+time=20
+consumer.<BR>- inefficiency of the resulting translated file. To store =
+strings=20
+and numbers, there are ways Excel optimizes it (shared strings, =
+factorized=20
+floats, single precision floats versus double precision floats). This =
+greatly=20
+impacts both the file size, and the time to open it in its native=20
+application.<BR><BR>-Stephane Rodriguez<BR>
+<DIV class=3Dbyline><A title=3D"permanent link"=20
+href=3D"http://www.robweir.com/blog/2008/05/spreadsheet-file-format-perfo=
+rmance.html?showComment=3D1210731540000#c3045612117455741255">#</A>=20
+posted by <SPAN class=3D"comment-icon anon-comment-icon"=20
+style=3D"LINE-HEIGHT: 16px"><IMG style=3D"DISPLAY: inline" =
+alt=3DAnonymous=20
+src=3D"http://www.blogger.com/img/anon16-rounded.gif"></SPAN>&nbsp;<SPAN =
+
+class=3Danon-comment-author>Anonymous</SPAN> : Tue May 13, 10:19:00 PM=20
+EDT</DIV><SPAN class=3D"item-control blog-admin pid-1363601793"><A=20
+title=3D"Delete Comment"=20
+style=3D"BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none"=20
+href=3D"http://www.blogger.com/delete-comment.g?blogID=3D11236681&amp;pos=
+tID=3D3045612117455741255"><SPAN=20
+class=3Ddelete-comment-icon>&nbsp;</SPAN></A></SPAN> </DIV><A =
+class=3Dcomment-link=20
+href=3D"http://www.blogger.com/comment.g?blogID=3D11236681&amp;postID=3D4=
+912814743730565869">Post=20
+a Comment</A> <BR><BR><A name=3Dlinks></A>Links to this post:
+<SCRIPT=20
+src=3D"http://www.blogger.com/dyn-js/backlink.js?blogID=3D11236681&amp;po=
+stID=3D4912814743730565869"=20
+defer type=3Dtext/javascript charset=3Dutf-8>=0A=
+</SCRIPT>
+ <NOSCRIPT><A=20
+href=3D"http://blogsearch.google.com/?ui=3Dblg&amp;q=3Dlink%3Ahttp%3A%2F%=
+2Fwww.robweir.com%2Fblog%2F2008%2F05%2Fspreadsheet-file-format-performanc=
+e.html">See=20
+links to this post</A></NOSCRIPT>=20
+<DIV id=3Dblogger-dcom-block style=3D"DISPLAY: none">
+<DIV class=3DblogComment><A=20
+href=3D"http://www.robweir.com/blog/2008/05/%3C$BlogBacklinkURL$%3E"=20
+rel=3Dnofollow>&lt;$BlogBacklinkTitle$&gt;</A> <SPAN=20
+class=3D"item-control blog-admin"><A title=3D"Remove Link"=20
+style=3D"BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; =
+BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none"=20
+href=3D"http://www.blogger.com/delete-backlink.g?blogID=3D11236681&amp;po=
+stID=3D4912814743730565869&amp;backlinkURL=3D%3C$BlogBacklinkURLEscaped$%=
+3E"><SPAN=20
+class=3Ddelete-comment-icon>&nbsp;</SPAN></A></SPAN>=20
+<BR>&lt;$BlogBacklinkSnippet$&gt;<BR>
+<DIV class=3Dbyline><SPAN class=3Dcomment-poster><EM>posted by=20
+&lt;$BlogBacklinkAuthor$&gt; @ &lt;$BlogBacklinkDateTime$&gt;</EM>=20
+</SPAN></DIV></DIV></DIV>
+<SCRIPT type=3Dtext/javascript>if (typeof BL_addOnLoadEvent =3D=3D =
+'function') { BL_addOnLoadEvent(function() { BL_writeBacklinks(); }); =
+}</SCRIPT>
+
+<P class=3Dcomment-timestamp>
+<SCRIPT type=3Dtext/javascript>function BlogThis() {=0A=
+Q=3D''; x=3Ddocument; y=3Dwindow;=0A=
+if(x.selection) {=0A=
+  Q=3Dx.selection.createRange().text;=0A=
+} else if (y.getSelection) {=0A=
+  Q=3Dy.getSelection();=0A=
+} else if (x.getSelection) {=0A=
+  Q=3Dx.getSelection();=0A=
+}=0A=
+popw =3D y.open('http://www.blogger.com/blog-this.g?t=3D' +=0A=
+  escape(Q) + '&u=3D' + escape(location.href) + '&n=3D' +=0A=
+  escape(document.title),'bloggerForm',=0A=
+  =
+'scrollbars=3Dno,width=3D475,height=3D300,top=3D175,left=3D75,status=3Dye=
+s,resizable=3Dyes');=0A=
+void(0);=0A=
+}=0A=
+</SCRIPT>
+<A class=3Dcomment-link id=3Db-backlink =
+href=3D"javascript:BlogThis();">Create a=20
+Link</A></P><BR><BR><A href=3D"http://www.robweir.com/blog/">&lt;&lt; =
+Home</A>=20
+</DIV><!-- 	In accordance to the Blogger terms of service, please leave =
+this button somewhere on your blogger-powered page. Thanks! -->
+<P><A href=3D"http://www.blogger.com/"><IMG height=3D31=20
+alt=3D"This page is powered by Blogger. Isn't yours?"=20
+src=3D"http://buttons.blogger.com/bloggerbutton1.gif" width=3D88 =
+border=3D0></A></P><!-- c(~) --><!--WEBBOT bot=3D"HTMLMarkup" startspan =
+ALT=3D"Site Meter" -->
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>var =
+site=3D's22robweir'</SCRIPT>
+
+<SCRIPT language=3DJavaScript1.2=20
+src=3D"http://s22.sitemeter.com/js/counter.js?site=3Ds22robweir"=20
+type=3Dtext/javascript>
+</SCRIPT>
+<NOSCRIPT><A =
+href=3D"http://s22.sitemeter.com/stats.asp?site=3Ds22robweir"=20
+target=3D_top><IMG alt=3D"Site Meter"=20
+src=3D"http://s22.sitemeter.com/meter.asp?site=3Ds22robweir" =
+border=3D0></A>=20
+</NOSCRIPT></DIV><!-- Sidebar -->
+<DIV id=3DsideBar>
+<SCRIPT src=3D"http://pmetrics.performancing.com/4686.js"=20
+type=3Dtext/javascript></SCRIPT>
+<NOSCRIPT>
+<P><IMG alt=3D"Performancing Metrics"=20
+src=3D"http://pmetrics.performancing.com/4686-db1.gif"></P></NOSCRIPT><!-=
+-=20
+		=09
+			+++++++++++++++++++++++++++++++++++++++++++++++++
+				=09
+			Add things to your sidebar here.
+			Use the format:
+		=09
+			<li><a href=3D"URL">Link Text</a></li>
+	=09
+			+++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<H6>Background</H6>
+<UL>
+  <LI><A=20
+  =
+href=3D"http://dewey.library.upenn.edu/sceti/printedbooksNew/index.cfm?Te=
+xtID=3Dhamlet_f1&amp;PagePosition=3D7">An=20
+  antic disposition</A>=20
+  <LI><A href=3D"http://www.robweir.com/blog/rob.html">Who is Rob?</A> =
+</LI></UL>
+<H6>Feeds</H6>
+<UL>
+  <LI><A title=3D"Atom 1.0 feed" =
+href=3D"http://www.robweir.com/blog/atom.xml">Atom=20
+  1.0</A> </LI></UL>
+<H6>Of possible interest</H6>
+<UL>
+  <LI><A href=3D"http://www.odfalliance.org//">ODF Alliance</A>=20
+  <LI><A href=3D"http://opendocumentfellowship.com/">OpenDocument =
+Fellowship</A>=20
+  <LI><A href=3D"http://www.opendocsociety.org/">OpenDoc Society</A>=20
+  <LI><A href=3D"http://www.solidoffice.com/">SolidOffice</A>=20
+  <LI><A=20
+  =
+href=3D"http://symphony.lotus.com/software/lotus/symphony/buzz.jspa">Lotu=
+s=20
+  Symphony Team Blog</A>=20
+  <LI><A href=3D"http://www.sutor.com/newsite/blog-open/">Bob Sutor</A>=20
+  <LI><A href=3D"http://lehors.wordpress.com/">Arnaud Lehors</A>=20
+  <LI><A href=3D"http://www.consortiuminfo.org/standardsblog/">Andy =
+Updegrove</A>=20
+  <LI><A href=3D"http://www.groklaw.net/">GrokLaw</A>=20
+  <LI><A href=3D"http://netapps.muohio.edu/blogs/darcusb/darcusb/">Bruce =
+
+  D'Arcus</A>=20
+  <LI><A href=3D"http://opendocument.xml.org/">OpenDocument XML.org</A>=20
+  <LI><A href=3D"http://www.dwheeler.com/blog/">David A. Wheeler</A>=20
+  <LI><A href=3D"http://daniel.carrera.name/">Daniel Carrera</A>=20
+  <LI><A href=3D"http://ooo-speak.blogspot.com/">Louis Suarez-Potts</A>=20
+  <LI><A href=3D"http://lodahl.blogspot.com/">Leif Lodahl</A>=20
+  <LI><A href=3D"http://www.edbrill.com/ebrill/edbrill.nsf">Ed Brill</A> =
+
+  <LI><A href=3D"http://avi.alkalay.net/">Ari Alkalay</A>=20
+  <LI><A href=3D"http://www.geniisoft.com/showcase.nsf/GeniiBlog">Ben=20
+  Langhinrichs</A>=20
+  <LI><A href=3D"http://www.standardsandfreedom.net/">Charles H. =
+Schulz</A>=20
+  <LI><A href=3D"http://ooonewsletter.blogspot.com/">OpenOffice.org</A>=20
+  <LI><A href=3D"http://blogs.sun.com/roller/page/dancer">Erwin =
+Tenhumberg</A>=20
+  <LI><A href=3D"http://osindia.blogspot.com/">Open Source India</A>=20
+  <LI><A href=3D"http://www.fanaticattack.com/">Fanatic Attack</A>=20
+  <LI><A href=3D"http://ctrambler.wordpress.com/">CyberTech Rambler</A>=20
+  <LI><A href=3D"http://lnxwalt.wordpress.com/">Walt Hucks</A>=20
+  <LI><A href=3D"http://boycottnovell.com/">Roy Schestowitz</A>=20
+  <LI><A href=3D"http://www.noooxml.org/">&lt;NO&gt; OOXML</A>=20
+  <LI><A href=3D"http://www.openmalaysiablog.com/">Open Malaysia</A>=20
+  <LI><A=20
+  =
+href=3D"http://www-128.ibm.com/developerworks/blogs/dw_blog.jspa?blog=3D4=
+41&amp;ca=3Ddrs-bl">Rich=20
+  Schwerdtfeger</A>=20
+  <LI><A href=3D"http://jakaplan.blogspot.com/">Jeff Kaplan</A>=20
+  <LI><A href=3D"http://blogs.sun.com/GullFOSS/">GullFOSS</A> </LI></UL>
+<H6>My other sites</H6>
+<UL>
+  <LI><A href=3D"http://www.robweir.com/weather/index.html">Westford =
+Weather</A>=20
+  <LI><A href=3D"http://www.westfordtaxpayers.org/">Westford Taxpayers=20
+  Association</A>=20
+  <LI><A href=3D"http://www.robweir.com/genealogy/mytree/index.htm">My =
+Family=20
+  Tree</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/genealogy/Diane/index.htm">Diane's Family =
+
+  Tree</A> </LI></UL>
+<H6>Search this blog</H6>
+<P><!-- Google CSE Search Box Begins  -->
+<FORM id=3Dsearchbox_004719272648369049983:uwm3xboo8pe=20
+action=3Dhttp://www.google.com/cse><INPUT type=3Dhidden=20
+value=3D004719272648369049983:uwm3xboo8pe name=3Dcx> <INPUT =
+type=3Dhidden=20
+value=3DFORID:1 name=3Dcof> <INPUT name=3Dq> <INPUT type=3Dsubmit =
+value=3DSearch name=3Dsa>=20
+</FORM>
+<SCRIPT=20
+src=3D"http://www.google.com/coop/cse/brand?form=3Dsearchbox_004719272648=
+369049983%3Auwm3xboo8pe"=20
+type=3Dtext/javascript></SCRIPT>
+<!-- Google CSE Search Box Ends --></P>
+<H6>Archives</H6>
+<P>
+<UL>
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_01_01_robweir_archive.html">Janu=
+ary=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_02_01_robweir_archive.html">Febr=
+uary=20
+  2006</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/blog/2006_07_01_robweir_archive.html">July=
+=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_08_01_robweir_archive.html">Augu=
+st=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_09_01_robweir_archive.html">Sept=
+ember=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_10_01_robweir_archive.html">Octo=
+ber=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_11_01_robweir_archive.html">Nove=
+mber=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2006_12_01_robweir_archive.html">Dece=
+mber=20
+  2006</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_01_01_robweir_archive.html">Janu=
+ary=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_02_01_robweir_archive.html">Febr=
+uary=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_03_01_robweir_archive.html">Marc=
+h=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_04_01_robweir_archive.html">Apri=
+l=20
+  2007</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/blog/2007_05_01_robweir_archive.html">May =
+
+  2007</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/blog/2007_06_01_robweir_archive.html">June=
+=20
+  2007</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/blog/2007_07_01_robweir_archive.html">July=
+=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_08_01_robweir_archive.html">Augu=
+st=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_09_01_robweir_archive.html">Sept=
+ember=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_10_01_robweir_archive.html">Octo=
+ber=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_11_01_robweir_archive.html">Nove=
+mber=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2007_12_01_robweir_archive.html">Dece=
+mber=20
+  2007</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2008_01_01_robweir_archive.html">Janu=
+ary=20
+  2008</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2008_02_01_robweir_archive.html">Febr=
+uary=20
+  2008</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2008_03_01_robweir_archive.html">Marc=
+h=20
+  2008</A>=20
+  <LI><A=20
+  =
+href=3D"http://www.robweir.com/blog/2008_04_01_robweir_archive.html">Apri=
+l=20
+  2008</A>=20
+  <LI><A =
+href=3D"http://www.robweir.com/blog/2008_05_01_robweir_archive.html">May =
+
+  2008</A> </LI></UL>
+<P></P>
+<H6>From my library</H6>
+<SCRIPT language=3Djavascript=20
+src=3D"http://www.librarything.com/jswidget.php?reporton=3DCicero&amp;sho=
+w=3Drandom&amp;header=3D&amp;num=3D8&amp;covers=3Dmedium&amp;text=3Dnone&=
+amp;onlycovers=3D1&amp;tag=3Dalltags&amp;amazonassoc=3Dananticdispos-20&a=
+mp;css=3D1&amp;style=3D5&amp;version=3D1"=20
+type=3Dtext/javascript>
+                </SCRIPT>
+</DIV>
+<SCRIPT src=3D"http://www.google-analytics.com/urchin.js" =
+type=3Dtext/javascript>
+</SCRIPT>
+
+<SCRIPT type=3Dtext/javascript>
+_uacct =3D "UA-957769-1";
+urchinTracker();
+</SCRIPT>
+</BODY></HTML>
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.blogger.com/img/icon18_email.gif
+
+R0lGODlhEgANAOMAAIqKioCAgOXl5f////Ly8urq6uTk5AAAAMzMzLS0tBoaGjMzM2ZmZk1NTf//
+/////ywAAAAAEgANAAAEWRDISSsIk+jN+QUIQAxkaRIgVoSjWaKIoa6iOxygIQNFz56Lg27X89UO
+isMiqZv1AAnRgdFYHoROqEAAQCqZxIJ2SxYsA03euLw9CBJozJpdhmMC+Lx+j48AADs=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.blogger.com/img/anon16-rounded.gif
+
+R0lGODlhEAAQANUAAAAAAP///8S3osO2ocO1oMK0n8G0nsCznb6wmbqslLmrk7ipkbeokLWmjrSk
+i7OjirGhiPTy7fDt5vLv6fHu6L+ym76xmtjPv9vTxOvm3e/r5K6cf66ehL6tkbCgh6+fhrKiibSl
+jLanj7mqkr2vmLyul7utlszArc3CsNTKudPJuN7WyZuIbKKQdaGPdKORdqaUeaWTeKeVeqmYfqiX
+faeWfKqZf66dg62cgsa0mce6psW4pPf18vf08fr49v///yH5BAEAAD8ALAAAAAAQABAAAAa6wN9P
+QCQUDIcKglRKCH874gBZWjBGiewIKiUYFjhYzOZQKKxEgVFwkWhQslloxGBIj6uAPoBqgawNAgNe
+BhF7ARouEAwiIYNHB4Z7EjIPIg0ORgYGFXl7KR8NDSGZmwcIBhgTFCoQHA6wD5AIDBw1HTkbLC00
+NyAPmxUKOhcZPj4ZKgwsLxwgSBYYh4cnLjgQBxYIPNN7PTgfHkoITQp0DKMODyAQHj/kJgkjVo3q
+7O5C8WeMmOrtQkEAADs=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://buttons.blogger.com/bloggerbutton1.gif
+
+R0lGODlhWAAfAOYAAPjx6P9mAABDev///+jcy8i1n+/m2e3j1ezi1O7k1vTr4fPr4PTs4vXt4vLp
+3vPq3/Hp3fHo2/Dn2kJxl7bDy/+zgOfl4SFaiRFPgYSgtf/Zv/8AAP+MQFN9nw5NgNfa2XSUrf+W
+UB1XhjJmkDxsk8bO0jxskv9wEGOJpjtrkUFwlrW/xJWrvLS+wrW/w/ngy//Gn/yaV9LSzrW/xdXW
+0ztskv/iz0p2mPmWUsTKy/5uDvDUu0t3mZeruLbAxkt2mdXV0sTJybO/xv/s3/HWvlqAnvmVUYae
+r4efsP9vD1F7naW0vcTKyniVqmmLpdTU0ZWptf+DMJirueTg2ixhjNTW1Et2mC1ijYegsniWq7O+
+xv/172iKo6e2v5aruKSzu7TAxsPJzP+fYJaptsPIyHmWrGqMpkp1l2mLpLO9wQAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5
+BAEAABsALAAAAABYAB8AAAf/gBsbBISFhoeIiYqLjI2OiIKDCJOUlZaXmJmam5ydlwSDB6KjpKWm
+p6ipqqusqAUECbE7RgG1tre4tkY7sb2+v8DBwsPEwa8GBkQ6uczMOkTI0SkpUNFcKWdf0dvc3d7f
+4NHHBjjN5rg43Gkp2ylHRyLh8vPzrxIS5/m29/wtNfwSarSQIUDGGA8iyCC5IcEDEn8Sbghg2IJK
+QYAYM2q89ypCBGYhKogUKeaEOY8oXZhAGcFEERErPSxBYyKIBxcCrDQpskREBBEuXIgIwrKo0aMo
+X0GAgOuEhgFQow7YEqLZ0qsrTFyFYALLCghMBEBYIVaAkx8efnjJIqDtiqxb/+PKnbv1lQMHuJ5K
+3RuF2d2/M0j8dUBixl8BT3oIJuGhhwgROXKIACx4sOXLmP++evDgVoi9oGEw40z6igcppEn4IG3G
+g4AuD8oIAMLDA+faHoD4IEG6t+/fwB+8WrDgVoWoMDgo/wx1CDPi0KNLh05jyvToNGhc385d+isF
+CoxHrVrrxJCoJnGBX8++vZYw7ePLn0+f/isGDMRHtaFBr1QNHNyC34BKqGCgEkLgJ4QAKgzo4IMQ
+RijhhPi90kAD+oEGWgW3XOhhWyAKUEUDYDDo4Ykopqjiiixe+AoAAGSooVQc2gLjjW0BYEEHAmQA
+AAUCTHDjkEQWaeSRSML4Yv+Mthy3X3/92UDjLUTmCAAIPf4YJIwWoNAWChbAWMIFAoCQQQdcThAk
+CxN8AGMGGAQZJgAdZOAlC0QumSF5nkVVYy1V9ggCBheECaSQAKh5AZmIknlBnALA6CWhbVEAAAsC
+XDDClgC09ailQ+rZJHLKlcoBDH5SOWSIZcJ4qI4CYGCBBXFa8EGsWkYKAJkl0CqApZu6SWaYbX0w
+Z6gEwNjnjHsFaOOqv1KwKQhaCvlqotFyaqWValraVgYZkOmtrkWKaot/zGqAS6Cu5vjqtd1eu62u
+3XYa5AT4umlluckyaYtTzA6gQXrP4qhrBu5uaUGss9Z6Kwa5wsirr8AKUALHu0aa69lIHFfg7LrQ
+4tsWmkBi4KOijEoswAiQSpopmb8CgDAGE7AM47559quPPkRCOvKcm6K5489ikomlrhaoWXPMMsPc
+gZsYQJxxvzHsbE4MSWaNJM4w1qs1vzC+kITVuSTxwtdfs2AmjxeIiUIGR7uJNrI3vlA12bXEcPbc
+WfPYFgZ4yhwitXzfuGThiPNdAgUUHAvAB4zLnXgBGxSQ+OWYZ65kJAV07vnnoIcu+uikl2766aFH
+ovrqrLfu+uuwxy777IIEAgA7
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://s22.sitemeter.com/meter.asp?site=s22robweir
+
+R0lGODlhAgACAIAAAP//////zCH5BAUUAAAALAAAAAACAAIAAAIChFEAOw==
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://pmetrics.performancing.com/4686-db1.gif
+
+R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAQAIChAsAOw==
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.blogger.com/css/blog_controls.css
+
+.item-control {
+	DISPLAY: none
+}
+.item-control A {
+	TEXT-DECORATION: none! important
+}
+.item-action A {
+	TEXT-DECORATION: none! important
+}
+.widget-item-control {
+	FLOAT: right
+}
+.icon-action {
+	MARGIN: 0px 0px -5px 0.5em; BORDER-TOP-STYLE: none! important; =
+BORDER-RIGHT-STYLE: none! important; BORDER-LEFT-STYLE: none! important; =
+BORDER-BOTTOM-STYLE: none! important
+}
+.delete-comment-icon {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; BACKGROUND: =
+url(/img/icon_delete13.gif) no-repeat left 50%; PADDING-BOTTOM: 7px; =
+PADDING-TOP: 7px
+}
+
+@media All   =20
+{
+.BLOG_mobile_video_class {
+	DISPLAY: none
+}
+
+}
+
+@media Handheld   =20
+{
+.BLOG_mobile_video_class {
+	DISPLAY: inline
+}
+.BLOG_video_class {
+	DISPLAY: none
+}
+
+}
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.blogger.com/js/backlink.js
+
+// Global variable which is populated by the dynamic javascript =0A=
+// retrieved from a request to the blogger server=0A=
+var BL_Backlinks =3D new Array();=0A=
+var BL_BacklinkCount =3D new Array();=0A=
+=0A=
+function BL_processBacklinkTemplate(templateHTML) {=0A=
+  var finalHTML =3D "";=0A=
+  for (i=3D0; i < BL_Backlinks.length; i++) {=0A=
+    var html =3D templateHTML;=0A=
+    html =3D =
+html.replace(/(<|%3C)\$BlogBacklinkURL\$(>|%3E)/g,BL_Backlinks[i]["BlogBa=
+cklinkURL"]);=0A=
+    html =3D =
+html.replace(/(<|%3C)\$BlogBacklinkURLEscaped\$(>|%3E)/g,escape(BL_Backli=
+nks[i]["BlogBacklinkURL"]));=0A=
+    html =3D =
+html.replace(/&lt;\$BlogBacklinkTitle\$&gt;/g,BL_Backlinks[i]["BlogBackli=
+nkTitle"]);=0A=
+    html =3D =
+html.replace(/&lt;\$BlogBacklinkSnippet\$&gt;/g,BL_Backlinks[i]["BlogBack=
+linkSnippet"]);=0A=
+    html =3D =
+html.replace(/&lt;\$BlogBacklinkAuthor\$&gt;/g,BL_Backlinks[i]["BlogBackl=
+inkAuthor"]);=0A=
+    html =3D =
+html.replace(/&lt;\$BlogBacklinkDateTime\$&gt;/g,BL_Backlinks[i]["BlogBac=
+klinkDateTime"]);=0A=
+    finalHTML +=3D html;=0A=
+  }=0A=
+  return finalHTML;=0A=
+}=0A=
+=0A=
+function BL_writeBacklinks() {=0A=
+  var dcomDiv =3D document.getElementById('blogger-dcom-block');=0A=
+  if (dcomDiv !=3D null && dcomDiv.innerHTML) {=0A=
+    var finalHTML =3D BL_processBacklinkTemplate(dcomDiv.innerHTML); =0A=
+    // Add a div with a unique id to test if the subsequent write=0A=
+    // succeeded=0A=
+    if (finalHTML !=3D "") {=0A=
+      finalHTML +=3D '<span id=3D"blogger-dcom-ihtest"></span>';=0A=
+      dcomDiv.innerHTML =3D finalHTML;=0A=
+      if (document.getElementById('blogger-dcom-ihtest')) {=0A=
+        dcomDiv.style.display =3D "block";         	=0A=
+      }=0A=
+    }=0A=
+  }=0A=
+}=0A=
+=0A=
+function BL_addOnLoadEvent(func) {=0A=
+  var oldonload =3D window.onload;=0A=
+  if (typeof window.onload !=3D 'function') {=0A=
+    window.onload =3D func;=0A=
+  } else {=0A=
+    window.onload =3D function() {=0A=
+      oldonload();=0A=
+      func();=0A=
+    }=0A=
+  }=0A=
+}=0A=
+=0A=
+function BL_loadScript (url) {=0A=
+  if (document.getElementById) {=0A=
+    var script =3D document.createElement('script');=0A=
+    script.defer =3D true;=0A=
+    script.src =3D url;=0A=
+    document.getElementsByTagName('head')[0].appendChild(script);=0A=
+  }=0A=
+}=0A=
+=0A=
+function BL_populateBacklinksCount() {=0A=
+  var linkSpans =3D document.getElementsByTagName("span");=0A=
+  var postQuery =3D "";=0A=
+  for (var i=3D0; i < linkSpans.length; i++) {=0A=
+    if (linkSpans[i].className =3D=3D "backlinkcount") {         =0A=
+      var postId =3D linkSpans[i].id;	=0A=
+      if (postId) {=0A=
+        BL_BacklinkCount[postId] =3D linkSpans[i];=0A=
+        postQuery +=3D "&postID=3D" + postId;=0A=
+      }=0A=
+    }=0A=
+  }=0A=
+  if (postQuery !=3D "") {=0A=
+    var url =3D window.BL_backlinkURL + "?blogID=3D" + window.BL_blogId =
++ postQuery; =0A=
+    BL_loadScript(url);	=0A=
+  }=0A=
+}=0A=
+=0A=
+BL_addOnLoadEvent(function() { BL_populateBacklinksCount(); })=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.blogger.com/js/backlink_control.js
+
+if (document.getElementById) {=0A=
+  var toggle_opened =3D new Image();=0A=
+  var toggle_closed =3D new Image();=0A=
+  // pre-loading the images=0A=
+  toggle_opened.src =3D "http://www.blogger.com/img/triangle_open.gif";=0A=
+  toggle_closed.src =3D "http://www.blogger.com/img/triangle_ltr.gif";=0A=
+  document.write(['<style type=3D"text/css">',=0A=
+                '.comment-toggler {',=0A=
+                'background:url(',=0A=
+	        toggle_closed.src,=0A=
+		') no-repeat left center;',=0A=
+	        'padding-right:11px;',=0A=
+		'margin-right:0.1em;',=0A=
+		'cursor:pointer;',=0A=
+                'cursor:hand;',=0A=
+	        '}',=0A=
+	        '#blogger-dcom-block dd {',=0A=
+		'display:none;',=0A=
+		'margin-top:1em;',=0A=
+		'padding-left:14px;',=0A=
+		'margin-left:0.4em;',=0A=
+		'}',=0A=
+		'</style>'].join(""));=0A=
+=0A=
+  // Register old onmousedown function=0A=
+  var BL_oldonmousedown =3D document.onmousedown; =0A=
+=0A=
+  document.onmousedown =3D function(e) {  =0A=
+   =0A=
+    var shouldPropagate =3D true;=0A=
+=0A=
+    var target =3D window.event ? window.event.srcElement : e.target;=0A=
+	    =0A=
+    if (target.className =3D=3D "comment-toggler") {=0A=
+      var dt =3D target.parentNode;=0A=
+      var dd =3D dt.nextSibling;=0A=
+		=0A=
+      while (dd.tagName !=3D "DD") {=0A=
+        dd =3D dd.nextSibling; =0A=
+      }=0A=
+		=0A=
+      if (dd.style.display =3D=3D "block") {=0A=
+        dd.style.display =3D "none";=0A=
+        target.style.backgroundImage =3D "url(" + toggle_closed.src + =
+")";=0A=
+      } else {=0A=
+        dd.style.display =3D "block";=0A=
+        target.style.backgroundImage =3D "url(" + toggle_opened.src + =
+")";=0A=
+      } =0A=
+      shouldPropagate =3D false;	=0A=
+    }	    =0A=
+    // call old onmousedown function if registered 	=0A=
+    if (typeof window.BL_oldonmousedown =3D=3D 'function') {=0A=
+      return window.BL_oldonmousedown(e);=0A=
+    }=0A=
+    return shouldPropagate;    =0A=
+  }=0A=
+}=0A=
+=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.blogger.com/dyn-js/backlink.js?blogID=11236681&postID=4912814743730565869
+
+=0A=
+var backlink;=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://s22.sitemeter.com/js/counter.js?site=s22robweir
+
+// Copyright (c)2006 Site Meter, Inc.=20
+// <![CDATA[
+var SiteMeter =3D
+{
+	init:function( sCodeName, sServerName, sSecurityCode )
+	{
+		SiteMeter.CodeName =3D sCodeName;
+		SiteMeter.ServerName =3D sServerName;	=09
+		SiteMeter.SecurityCode =3D sSecurityCode;=09
+		SiteMeter.IP =3D "70.58.93.167";=09
+		SiteMeter.trackingImage =3D new Image();
+
+		if (typeof(g_sLastCodeName) !=3D 'undefined')
+			if (g_sLastCodeName =3D=3D sCodeName)
+				return;
+			=09
+		SiteMeter.onPageLoad();
+//		if (!SiteMeter.addEvent( window, "load", SiteMeter.displayCounter ))
+//			SiteMeter.onPageLoad();
+
+		SiteMeter.addEvent( window, "load", SiteMeter.trackOutClicks );
+	},
+=09
+	aimInit:function(sCodeName)
+	{
+		var sSubDomain =3D sCodeName.substr(0,3);
+		SiteMeter.init( sCodeName, sSubDomain + ".sitemeter.com", "");
+	},
+
+	trackOutClicks:function()
+	{
+		for(var i=3D0;i<document.links.length;i++)
+		{
+			SiteMeter.addEvent( document.links[i], "click", SiteMeter.onClick );
+			SiteMeter.addEvent( document.links[i], "contextmenu", =
+SiteMeter.onContextClick );		=09
+		}
+	=09
+	},
+
+	onPageLoad:function()
+	{
+		var newImage  =3D document.createElement("img");
+		var newHref   =3D document.createElement("a")	=09
+		var scriptRef =3D SiteMeter.getScriptElement();
+
+		var newIFrame =3D document.createElement("iframe");
+    newIFrame.frameBorder=3D0;
+		newIFrame.width =3D 0;
+		newIFrame.height =3D 0;
+		newIFrame.src =3D "http://dg.specificclick.net/?u=3D" + =
+escape(document.location) + "&r=3D" + SiteMeter.getReferral();
+
+		var today=3Dnew Date();
+		var sTZO=3D(typeof(today.getTimezoneOffset)!=3D'undefined') ? =
+today.getTimezoneOffset() : '';
+	=09
+		newHref.target =3D "_top";
+		newHref.href =3D "http://www.sitemeter.com/stats.asp?site=3D" + =
+SiteMeter.CodeName;
+		newHref.id =3D "idSiteMeterHREF";
+	=09
+		newImage.border =3D "0";
+		newImage.alt =3D "Site Meter";
+	=09
+		var sImage =3D "http://" + SiteMeter.ServerName + "/meter.asp?site=3D" =
++ SiteMeter.CodeName;=20
+		sImage +=3D "&refer=3D"+SiteMeter.getReferral();
+		if (SiteMeter.IP !=3D "")
+			sImage +=3D "&ip=3D"+SiteMeter.IP;
+		sImage +=3D "&w=3D"+window.screen.width;=20
+		sImage +=3D "&h=3D"+window.screen.height;
+		sImage +=3D "&clr=3D"+window.screen.colorDepth;
+		sImage +=3D "&tzo=3D" + sTZO;
+		sImage +=3D "&lang=3D"+escape(navigator.language ? navigator.language =
+: navigator.userLanguage);
+		if (SiteMeter.SecurityCode !=3D "")
+			sImage +=3D "&sc=3D"+escape(SiteMeter.SecurityCode);
+		sImage +=3D "&pg=3D"+escape(document.location);
+		sImage +=3D "&js=3D1&rnd=3D"+Math.random();
+	=09
+		newImage.src =3D sImage;
+		newHref.appendChild(newImage);
+		var parentOfScript =3D SiteMeter.getParent( scriptRef );
+	=09
+		if (parentOfScript){
+			parentOfScript.insertBefore(newHref,scriptRef);
+			parentOfScript.insertBefore(newIFrame,scriptRef);
+		}
+		else
+			SiteMeter.trackingImage.src =3D sImage;
+	},
+=09
+	logEvent:function(sEvent, sText, sURL )
+	{
+		if (document.images && !SiteMeter.isLocalURL(sURL))
+		{
+			var sImg =3D "http://" + SiteMeter.ServerName + "/meter.asp?site=3D" =
++ SiteMeter.CodeName;=20
+			sImg +=3D "&e=3D" + sEvent;
+			sImg +=3D "&l=3D" + escape(sURL);
+			sImg +=3D "&t=3D" + escape(sText);
+			sImg +=3D "&pg=3D"+ escape(document.location);
+			if (SiteMeter.SecurityCode !=3D "") sImg +=3D =
+"&sc=3D"+escape(SiteMeter.SecurityCode);
+			if (SiteMeter.IP !=3D "")	sImg +=3D "&ip=3D"+SiteMeter.IP;
+			sImg +=3D "&rnd=3D"+Math.random();
+			if (SiteMeter.trackingImage)
+				SiteMeter.trackingImage.src =3D sImg;
+		}
+	},
+=09
+	trimFragment:function(sString)
+	{
+		return sString.indexOf("#")>0?sString.substring(0, =
+sString.indexOf("#")):sString;
+	},
+=09
+	isLocalURL:function(sURL)
+	{
+		return (SiteMeter.trimFragment(document.location.href) =3D=3D =
+SiteMeter.trimFragment(sURL));
+	},
+=09
+	getReferral:function()
+	{
+	 	var sRef=3D"";
+		var g_d =3D document;
+		if (typeof(g_frames) !=3D "undefined")
+		if (g_frames)
+			sRef=3Dtop.document.referrer;
+		if ((sRef =3D=3D "") || (sRef =3D=3D "[unknown origin]") || (sRef =
+=3D=3D "unknown") || (sRef =3D=3D "undefined"))
+		if (document["parent"] !=3D null)=20
+			if (parent["document"] !=3D null) // ACCESS ERROR HERE!
+				if (parent.document["referrer"] !=3D null)=20
+					if (typeof(parent.document) =3D=3D "object")
+						sRef=3Dparent.document.referrer;=20
+		if ((sRef =3D=3D "") || (sRef =3D=3D "[unknown origin]") || (sRef =
+=3D=3D "unknown") || (sRef =3D=3D "undefined"))
+		if (g_d["referrer"] !=3D null)=20
+			sRef =3D g_d["referrer"];
+		if ((sRef =3D=3D "[unknown origin]") || (sRef =3D=3D "unknown") || =
+(sRef =3D=3D "undefined"))
+			sRef =3D "";
+		=09
+		return escape(sRef);
+	},
+=09
+	getParent:function(e)
+	{
+		if (!e)
+			return null;
+		else
+			if (e.parentElement)=20
+				return e.parentElement;		=09
+			else=09
+				if (e.parentNode)
+					return e.parentNode;
+				else
+					return null;
+	},
+=09
+	getTarget:function(e)
+	{
+		var targ=3Dnull;
+		if (!e) var e =3D window.event;
+		if (e.target)=20
+			targ =3D e.target;
+		else if (e.srcElement)=20
+			targ =3D e.srcElement;
+		if (targ.nodeType)=20
+			if (targ.nodeType =3D=3D 3) // Safari bug
+				targ =3D targ.parentNode;
+		return targ;
+	},
+=09
+	getScriptElement:function()
+	{
+		var refScript=3Dnull;
+		refScript =3D document.getElementById( "SiteMeterScript" );
+		if (refScript)
+			return refScript;
+		=09
+		var pageScripts =3D document.getElementsByTagName("script");
+		for(var i=3D0;i<pageScripts.length;i++)
+		{
+			if (pageScripts[i].src)
+			{
+				var sSource =3D pageScripts[i].src.toLowerCase();
+				if (sSource.indexOf("site=3D" + SiteMeter.CodeName) > 0)
+					return pageScripts[i];
+			}
+		}
+
+		return null;
+	},
+=09
+	elementText:function(e)
+	{
+		do
+		{
+			var sText =3D (e.text)?e.text:e.innerText;
+			if (sText) return sText.substr(0,100);
+			if (e.alt) return e.alt;
+			if (e.src) return e.src;
+			e =3D SiteMeter.getParent(e);
+		}
+		while (e);
+		return "";
+	},
+=09
+	elementURL:function(e)
+	{
+		do
+		{
+			if ((e.href) && (e.nodeName.toUpperCase() =3D=3D 'A')) return e.href;
+			e =3D SiteMeter.getParent(e);
+		}
+		while (e);
+		return "";
+	},
+=09
+	onClick:function(e)
+	{
+		var target =3D SiteMeter.getTarget(e);
+		SiteMeter.logEvent( "click", SiteMeter.elementText(target), =
+SiteMeter.elementURL(target) );
+	},
+=09
+	onContextClick:function(e)
+	{
+		var target =3D SiteMeter.getTarget(e);
+		SiteMeter.logEvent( "context", SiteMeter.elementText(target), =
+SiteMeter.elementURL(target) );
+	},
+
+	addEvent:function( obj, sEvent, func )
+	{
+		if (obj.addEventListener)
+		    obj.addEventListener(sEvent, func, false);
+		else=20
+			if (obj.attachEvent)=09
+			   obj.attachEvent( "on"+sEvent, func );
+			else
+				return false;
+		return true;
+	}
+
+}
+
+SiteMeter.init('s22robweir', 's22.sitemeter.com', '');
+
+var g_sLastCodeName =3D 's22robweir';
+// ]]>
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pmetrics.performancing.com/4686.js
+
+var clicky=3D{init:function(){clicky.img=3Dnew =
+Image();clicky.img_base=3D"http://pmetrics.performancing.com/in.php?site_=
+id=3D4686&srv=3Ddb1";if(clicky.isset("clicky_custom_session")){for(var i =
+in =
+clicky_custom_session){clicky.img_base+=3D"&custom["+clicky.enc(i)+"]=3D"=
++clicky.enc(clicky_custom_session[i]);}}var =
+r=3DRegExp("^https?://[^/]*"+location.host.replace(/^www\./i,"")+"/","i")=
+.test(document.referrer)?"":document.referrer;clicky.img.src=3Dclicky.img=
+_base+'&title=3D'+clicky.enc((clicky.isset("clicky_page_title")?clicky_pa=
+ge_title:document.title))+'&href=3D'+clicky.enc(location.pathname+locatio=
+n.search)+'&ref=3D'+clicky.enc(r)+'&res=3D'+screen.width+'x'+screen.heigh=
+t+'&lang=3D'+(navigator.language||navigator.browserLanguage).substr(0,2)+=
+'&x=3D'+Math.random();clicky.add_event(window,'load',clicky.advanced);},i=
+sset:function(e){return(typeof(window[e])!=3D"undefined");},enc:function(=
+e){return =
+encodeURIComponent?encodeURIComponent(e):escape(e);},add_event:function(e=
+,event,func){if(e.addEventListener){e.addEventListener(event,func,false);=
+}else =
+if(e.attachEvent){e.attachEvent("on"+event,func);}},download:function(e){=
+clicky.img_src(e,"download");},outbound:function(e){clicky.img_src(e,"out=
+bound");},click:function(e){clicky.img_src(e,"click");},img_src:function(=
+e,type){obj=3Dclicky.get_target(e);clicky.log(clicky.get_href(obj),clicky=
+.get_text(obj).substr(0,60),type);},log:function(href,title,type){type=3D=
+type||"click";if(type!=3D"outbound")href=3Dhref.replace(/^https?:\/\/([^\=
+/]+)/i,"");clicky.img.src=3Dclicky.img_base+"&type=3D"+type+"&title=3D"+c=
+licky.enc(title)+"&href=3D"+clicky.enc(href)+"&r=3D"+Math.random();clicky=
+.pause();},pause:function(){var =
+t=3Dclicky.isset("clicky_pause_timer")?clicky_pause_timer:500;var =
+now=3Dnew Date();var stop=3Dnow.getTime()+t;while(now.getTime()<stop)var =
+now=3Dnew Date();},get_text:function(e){do{var =
+txt=3De.text?e.text:e.innerText;if(txt)return txt;if(e.alt)return =
+e.alt;if(e.title)return e.title;if(e.src)return =
+e.src;e=3Dclicky.get_parent(e);}while(e);return"";},get_href:function(e){=
+do{if(e.href&&!e.src)return =
+e.href;e=3Dclicky.get_parent(e);}while(e);return"";},get_parent:function(=
+e){return =
+e.parentElement||e.parentNode;},get_target:function(e){if(!e)var =
+e=3Dwindow.event;var =
+t=3De.target?e.target:e.srcElement;if(t.nodeType&&t.nodeType=3D=3D3)t=3Dt=
+.parentNode;return =
+t;},advanced:function(){if(clicky.isset("clicky_advanced_disable"))return=
+;var =
+dtypes=3Dclicky.isset("clicky_download_types")?clicky_download_types:"7z|=
+aac|avi|csv|doc|exe|flv|gif|gz|jpe?g|js|mp(3|4|e?g)|mov|pdf|phps|png|ppt|=
+rar|sit|tar|torrent|txt|wma|wmv|xls|xml|zip";var =
+ltypes=3Dclicky.isset("clicky_link_types")?clicky_link_types:"https?|ftp|=
+telnet|ssh|mailto";var is_download=3Dnew =
+RegExp("\\.("+dtypes+")$","i");var is_link=3Dnew =
+RegExp("^("+ltypes+"):","i");var is_link_internal=3Dnew =
+RegExp("^https?:\/\/(.*)"+location.host.replace(/^www\./i,""),"i");var =
+a=3Ddocument.getElementsByTagName('a');for(var =
+i=3D0;i<a.length;i++){if(a[i].className.indexOf("clicky_log")>=3D0){if(a[=
+i].className.indexOf("clicky_log_download")>=3D0){clicky.add_event(a[i],"=
+mouseup",clicky.download);}else =
+if(a[i].className.indexOf("clicky_log_outbound")>=3D0){clicky.add_event(a=
+[i],"mouseup",clicky.outbound);}else{clicky.add_event(a[i],"mouseup",clic=
+ky.click);}}else{if(is_link.test(a[i].href)&&a[i].className.indexOf("clic=
+ky_ignore")=3D=3D-1){if(is_link_internal.test(a[i].href)){if(is_download.=
+test(a[i].href)){clicky.add_event(a[i],"mouseup",clicky.download);}}else{=
+clicky.add_event(a[i],"mouseup",clicky.outbound);}}}}}};clicky.init();
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.google.com/coop/cse/brand?form=searchbox_004719272648369049983%3Auwm3xboo8pe
+
+=0A=
+(function() {=0A=
+var f =3D =
+document.getElementById('searchbox_004719272648369049983:uwm3xboo8pe');=0A=
+if (!f) {=0A=
+f =3D document.getElementById('searchbox_demo');=0A=
+}=0A=
+if (f && f.q) {=0A=
+var q =3D f.q;=0A=
+var n =3D navigator;=0A=
+var l =3D location;=0A=
+if (n.platform =3D=3D 'Win32') {=0A=
+q.style.cssText =3D 'border: 1px solid #7e9db9; padding: 2px;';=0A=
+}=0A=
+var b =3D function() {=0A=
+if (q.value =3D=3D '') {=0A=
+q.style.background =3D '#FFFFFF =
+url(http:\x2F\x2Fwww.google.com\x2Fcoop\x2Fintl\x2Fen\x2Fimages\x2Fgoogle=
+_custom_search_watermark.gif) left no-repeat';=0A=
+}=0A=
+};=0A=
+var f =3D function() {=0A=
+q.style.background =3D '#ffffff';=0A=
+};=0A=
+q.onfocus =3D f;=0A=
+q.onblur =3D b;=0A=
+if (!/[&?]q=3D[^&]/.test(l.search)) {=0A=
+b();=0A=
+}=0A=
+}=0A=
+})();=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.librarything.com/jswidget.php?reporton=Cicero&show=random&header=&num=8&covers=medium&text=none&onlycovers=1&tag=alltags&amazonassoc=ananticdispos-20&css=1&style=5&version=1
+
+=0A=
+document.write('<div class=3D"LTwrapper" style=3D"font-family: Verdana, =
+Arial, sans-serif;">');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTodd" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0140442103/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0140442103.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTeven" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0520075153/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0520075153.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTodd" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0596008651/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0596008651.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTeven" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0201546108/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0201546108.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTodd" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0714537683/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0714537683.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTeven" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0060976519/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0060976519.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTodd" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0961496371/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0961496371.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTitem LTeven" style=3D"clear: right; =
+padding-top: 5px; display: inline;"><a =
+href=3D"http://www.amazon.com/exec/obidos/ASIN/0898704901/ref=3Dnosim/ana=
+nticdispos-20" target=3D"_new"><img =
+src=3D"http://images.amazon.com/images/P/0898704901.01._SY142_SCLZZZZZZZ_=
+.jpg" border=3D0 style=3D"margin: 2px;" height=3D"142"\></a></div>');=0A=
+=0A=
+document.write('<div class=3D"LTprovided" style=3D"text-align: right; =
+clear: right !important; font-size: 9px; padding: 5px 0px 5px =
+0px;">powered by <a href=3D"http://www.librarything.com"  =
+target=3D"_top">LibraryThing</a></div>');=0A=
+=0A=
+document.write('</div>');=0A=
+=0A=
+// rendered in 1=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.google-analytics.com/urchin.js
+
+//-- Google Analytics Urchin Module=0A=
+//-- Copyright 2007 Google, All Rights Reserved.=0A=
+=0A=
+//-- Urchin On Demand Settings ONLY=0A=
+var _uacct=3D"";			// set up the Urchin Account=0A=
+var _userv=3D1;			// service mode (0=3Dlocal,1=3Dremote,2=3Dboth)=0A=
+=0A=
+//-- UTM User Settings=0A=
+var _ufsc=3D1;			// set client info flag (1=3Don|0=3Doff)=0A=
+var _udn=3D"auto";		// (auto|none|domain) set the domain name for cookies=0A=
+var _uhash=3D"on";		// (on|off) unique domain hash for cookies=0A=
+var _utimeout=3D"1800";   	// set the inactive session timeout in seconds=0A=
+var _ugifpath=3D"/__utm.gif";	// set the web path to the __utm.gif file=0A=
+var _utsp=3D"|";			// transaction field separator=0A=
+var _uflash=3D1;			// set flash version detect option (1=3Don|0=3Doff)=0A=
+var _utitle=3D1;			// set the document title detect option =
+(1=3Don|0=3Doff)=0A=
+var _ulink=3D0;			// enable linker functionality (1=3Don|0=3Doff)=0A=
+var _uanchor=3D0;			// enable use of anchors for campaign =
+(1=3Don|0=3Doff)=0A=
+var _utcp=3D"/";			// the cookie path for tracking=0A=
+var _usample=3D100;		// The sampling % of visitors to track (1-100).=0A=
+=0A=
+//-- UTM Campaign Tracking Settings=0A=
+var _uctm=3D1;			// set campaign tracking module (1=3Don|0=3Doff)=0A=
+var _ucto=3D"15768000";		// set timeout in seconds (6 month default)=0A=
+var _uccn=3D"utm_campaign";	// name=0A=
+var _ucmd=3D"utm_medium";		// medium (cpc|cpm|link|email|organic)=0A=
+var _ucsr=3D"utm_source";		// source=0A=
+var _uctr=3D"utm_term";		// term/keyword=0A=
+var _ucct=3D"utm_content";	// content=0A=
+var _ucid=3D"utm_id";		// id number=0A=
+var _ucno=3D"utm_nooverride";	// don't override=0A=
+=0A=
+//-- Auto/Organic Sources and Keywords=0A=
+var _uOsr=3Dnew Array();=0A=
+var _uOkw=3Dnew Array();=0A=
+_uOsr[0]=3D"google";	_uOkw[0]=3D"q";=0A=
+_uOsr[1]=3D"yahoo";	_uOkw[1]=3D"p";=0A=
+_uOsr[2]=3D"msn";		_uOkw[2]=3D"q";=0A=
+_uOsr[3]=3D"aol";		_uOkw[3]=3D"query";=0A=
+_uOsr[4]=3D"aol";		_uOkw[4]=3D"encquery";=0A=
+_uOsr[5]=3D"lycos";	_uOkw[5]=3D"query";=0A=
+_uOsr[6]=3D"ask";		_uOkw[6]=3D"q";=0A=
+_uOsr[7]=3D"altavista";	_uOkw[7]=3D"q";=0A=
+_uOsr[8]=3D"netscape";	_uOkw[8]=3D"query";=0A=
+_uOsr[9]=3D"cnn";	_uOkw[9]=3D"query";=0A=
+_uOsr[10]=3D"looksmart";	_uOkw[10]=3D"qt";=0A=
+_uOsr[11]=3D"about";	_uOkw[11]=3D"terms";=0A=
+_uOsr[12]=3D"mamma";	_uOkw[12]=3D"query";=0A=
+_uOsr[13]=3D"alltheweb";	_uOkw[13]=3D"q";=0A=
+_uOsr[14]=3D"gigablast";	_uOkw[14]=3D"q";=0A=
+_uOsr[15]=3D"voila";	_uOkw[15]=3D"rdata";=0A=
+_uOsr[16]=3D"virgilio";	_uOkw[16]=3D"qs";=0A=
+_uOsr[17]=3D"live";	_uOkw[17]=3D"q";=0A=
+_uOsr[18]=3D"baidu";	_uOkw[18]=3D"wd";=0A=
+_uOsr[19]=3D"alice";	_uOkw[19]=3D"qs";=0A=
+_uOsr[20]=3D"yandex";	_uOkw[20]=3D"text";=0A=
+_uOsr[21]=3D"najdi";	_uOkw[21]=3D"q";=0A=
+_uOsr[22]=3D"aol";	_uOkw[22]=3D"q";=0A=
+_uOsr[23]=3D"club-internet"; _uOkw[23]=3D"q";=0A=
+_uOsr[24]=3D"mama";	_uOkw[24]=3D"query";=0A=
+_uOsr[25]=3D"seznam";	_uOkw[25]=3D"q";=0A=
+_uOsr[26]=3D"search";	_uOkw[26]=3D"q";=0A=
+_uOsr[27]=3D"szukaj";	_uOkw[27]=3D"szukaj";=0A=
+_uOsr[28]=3D"szukaj";	_uOkw[28]=3D"qt";=0A=
+_uOsr[29]=3D"netsprint";	_uOkw[29]=3D"q";=0A=
+_uOsr[30]=3D"google.interia";	_uOkw[30]=3D"q";=0A=
+_uOsr[31]=3D"szukacz";	_uOkw[31]=3D"q";=0A=
+_uOsr[32]=3D"yam";	_uOkw[32]=3D"k";=0A=
+_uOsr[33]=3D"pchome";	_uOkw[33]=3D"q";=0A=
+=0A=
+=0A=
+//-- Auto/Organic Keywords to Ignore=0A=
+var _uOno=3Dnew Array();=0A=
+//_uOno[0]=3D"urchin";=0A=
+//_uOno[1]=3D"urchin.com";=0A=
+//_uOno[2]=3D"www.urchin.com";=0A=
+=0A=
+//-- Referral domains to Ignore=0A=
+var _uRno=3Dnew Array();=0A=
+//_uRno[0]=3D".urchin.com";=0A=
+=0A=
+//-- **** Don't modify below this point ***=0A=
+var =
+_uff,_udh,_udt,_ubl=3D0,_udo=3D"",_uu,_ufns=3D0,_uns=3D0,_ur=3D"-",_ufno=3D=
+0,_ust=3D0,_ubd=3Ddocument,_udl=3D_ubd.location,_udlh=3D"",_uwv=3D"1.1";=0A=
+var _ugifpath2=3D"http://www.google-analytics.com/__utm.gif";=0A=
+if (_udl.hash) _udlh=3D_udl.href.substring(_udl.href.indexOf('#'));=0A=
+if (_udl.protocol=3D=3D"https:") =
+_ugifpath2=3D"https://ssl.google-analytics.com/__utm.gif";=0A=
+if (!_utcp || _utcp=3D=3D"") _utcp=3D"/";=0A=
+function urchinTracker(page) {=0A=
+ if (_udl.protocol=3D=3D"file:") return;=0A=
+ if (_uff && (!page || page=3D=3D"")) return;=0A=
+ var a,b,c,xx,v,z,k,x=3D"",s=3D"",f=3D0;=0A=
+ var nx=3D" expires=3D"+_uNx()+";";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ _udh=3D_uDomain();=0A=
+ if (!_uVG()) return;=0A=
+ _uu=3DMath.round(Math.random()*2147483647);=0A=
+ _udt=3Dnew Date();=0A=
+ _ust=3DMath.round(_udt.getTime()/1000);=0A=
+ a=3Ddc.indexOf("__utma=3D"+_udh);=0A=
+ b=3Ddc.indexOf("__utmb=3D"+_udh);=0A=
+ c=3Ddc.indexOf("__utmc=3D"+_udh);=0A=
+ if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ if (_utimeout && _utimeout!=3D"") {=0A=
+  x=3Dnew Date(_udt.getTime()+(_utimeout*1000));=0A=
+  x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ }=0A=
+ if (_ulink) {=0A=
+  if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+  s+=3D_udl.search;=0A=
+  if(s && s!=3D"" && s.indexOf("__utma=3D")>=3D0) {=0A=
+   if (!(_uIN(a=3D_uGC(s,"__utma=3D","&")))) a=3D"-";=0A=
+   if (!(_uIN(b=3D_uGC(s,"__utmb=3D","&")))) b=3D"-";=0A=
+   if (!(_uIN(c=3D_uGC(s,"__utmc=3D","&")))) c=3D"-";=0A=
+   v=3D_uGC(s,"__utmv=3D","&");=0A=
+   z=3D_uGC(s,"__utmz=3D","&");=0A=
+   k=3D_uGC(s,"__utmk=3D","&");=0A=
+   xx=3D_uGC(s,"__utmx=3D","&");=0A=
+   if ((k*1) !=3D ((_uHash(a+b+c+xx+z+v)*1)+(_udh*1))) =
+{_ubl=3D1;a=3D"-";b=3D"-";c=3D"-";xx=3D"-";z=3D"-";v=3D"-";}=0A=
+   if (a!=3D"-" && b!=3D"-" && c!=3D"-") f=3D1;=0A=
+   else if(a!=3D"-") f=3D2;=0A=
+  }=0A=
+ }=0A=
+ if(f=3D=3D1) {=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+b+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+c+"; path=3D"+_utcp+";"+_udo;=0A=
+ } else if (f=3D=3D2) {=0A=
+  a=3D_uFixA(s,"&",_ust);=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ } else if (a>=3D0 && b>=3D0 && c>=3D0) {=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+ } else {=0A=
+  if (a>=3D0) a=3D_uFixA(_ubd.cookie,";",_ust);=0A=
+  else a=3D_udh+"."+_uu+"."+_ust+"."+_ust+"."+_ust+".1";=0A=
+  _ubd.cookie=3D"__utma=3D"+a+"; path=3D"+_utcp+";"+nx+_udo;=0A=
+  _ubd.cookie=3D"__utmb=3D"+_udh+"; path=3D"+_utcp+";"+x+_udo;=0A=
+  _ubd.cookie=3D"__utmc=3D"+_udh+"; path=3D"+_utcp+";"+_udo;=0A=
+  _ufns=3D1;=0A=
+ }=0A=
+ if (_ulink && xx && xx!=3D"" && xx!=3D"-") {=0A=
+   xx=3D_uUES(xx);=0A=
+   if (xx.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmx=3D"+xx+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ if (_ulink && v && v!=3D"" && v!=3D"-") {=0A=
+  v=3D_uUES(v);=0A=
+  if (v.indexOf(";")=3D=3D-1) _ubd.cookie=3D"__utmv=3D"+v+"; =
+path=3D"+_utcp+";"+nx+_udo;=0A=
+ }=0A=
+ _uInfo(page);=0A=
+ _ufns=3D0;=0A=
+ _ufno=3D0;=0A=
+ if (!page || page=3D=3D"") _uff=3D1;=0A=
+}=0A=
+function _uGH() {=0A=
+ var hid;=0A=
+ var wc=3Dwindow;=0A=
+ if (wc && wc.gaGlobal && wc.gaGlobal.hid) {=0A=
+  hid=3Dwc.gaGlobal.hid;=0A=
+ } else {=0A=
+  hid=3DMath.round(Math.random()*0x7fffffff);=0A=
+  if (!wc.gaGlobal) wc.gaGlobal=3D{};=0A=
+  wc.gaGlobal.hid=3Dhid;=0A=
+ }=0A=
+ return hid;=0A=
+}=0A=
+function _uInfo(page) {=0A=
+ var p,s=3D"",dm=3D"",pg=3D_udl.pathname+_udl.search;=0A=
+ if (page && page!=3D"") pg=3D_uES(page,1);=0A=
+ _ur=3D_ubd.referrer;=0A=
+ if (!_ur || _ur=3D=3D"") { _ur=3D"-"; }=0A=
+ else {=0A=
+  dm=3D_ubd.domain;=0A=
+  if(_utcp && _utcp!=3D"/") dm+=3D_utcp;=0A=
+  p=3D_ur.indexOf(dm);=0A=
+  if ((p>=3D0) && (p<=3D8)) { _ur=3D"0"; }=0A=
+  if (_ur.indexOf("[")=3D=3D0 && =
+_ur.lastIndexOf("]")=3D=3D(_ur.length-1)) { _ur=3D"-"; }=0A=
+ }=0A=
+ s+=3D"&utmn=3D"+_uu;=0A=
+ if (_ufsc) s+=3D_uBInfo();=0A=
+ if (_uctm) s+=3D_uCInfo();=0A=
+ if (_utitle && _ubd.title && _ubd.title!=3D"") =
+s+=3D"&utmdt=3D"+_uES(_ubd.title);=0A=
+ if (_udl.hostname && _udl.hostname!=3D"") =
+s+=3D"&utmhn=3D"+_uES(_udl.hostname);=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ s+=3D"&utmhid=3D"+_uGH();=0A=
+ s+=3D"&utmr=3D"+_ur;=0A=
+ s+=3D"&utmp=3D"+pg;=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() {_uVoid();}=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uVoid() { return; }=0A=
+function _uCInfo() {=0A=
+ if (!_ucto || _ucto=3D=3D"") { _ucto=3D"15768000"; }=0A=
+ if (!_uVG()) return;=0A=
+ var =
+c=3D"",t=3D"-",t2=3D"-",t3=3D"-",o=3D0,cs=3D0,cn=3D0,i=3D0,z=3D"-",s=3D""=
+;=0A=
+ if (_uanchor && _udlh && _udlh!=3D"") s=3D_udlh+"&";=0A=
+ s+=3D_udl.search;=0A=
+ var x=3Dnew Date(_udt.getTime()+(_ucto*1000));=0A=
+ var dc=3D_ubd.cookie;=0A=
+ x=3D" expires=3D"+x.toGMTString()+";";=0A=
+ if (_ulink && !_ubl) {=0A=
+  z=3D_uUES(_uGC(s,"__utmz=3D","&"));=0A=
+  if (z!=3D"-" && z.indexOf(";")=3D=3D-1) { =
+_ubd.cookie=3D"__utmz=3D"+z+"; path=3D"+_utcp+";"+x+_udo; return ""; }=0A=
+ }=0A=
+ z=3Ddc.indexOf("__utmz=3D"+_udh);=0A=
+ if (z>-1) { z=3D_uGC(dc,"__utmz=3D"+_udh,";"); }=0A=
+ else { z=3D"-"; }=0A=
+ t=3D_uGC(s,_ucid+"=3D","&");=0A=
+ t2=3D_uGC(s,_ucsr+"=3D","&");=0A=
+ t3=3D_uGC(s,"gclid=3D","&");=0A=
+ if ((t!=3D"-" && t!=3D"") || (t2!=3D"-" && t2!=3D"") || (t3!=3D"-" && =
+t3!=3D"")) {=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"utmcid=3D"+_uEC(t);=0A=
+  if (t2!=3D"-" && t2!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmcsr=3D"+_uEC(t2); }=0A=
+  if (t3!=3D"-" && t3!=3D"") { if (c !=3D "") c+=3D"|"; =
+c+=3D"utmgclid=3D"+_uEC(t3); }=0A=
+  t=3D_uGC(s,_uccn+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmccn=3D"+_uEC(t);=0A=
+  else c+=3D"|utmccn=3D(not+set)";=0A=
+  t=3D_uGC(s,_ucmd+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcmd=3D"+_uEC(t);=0A=
+  else  c+=3D"|utmcmd=3D(not+set)";=0A=
+  t=3D_uGC(s,_uctr+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmctr=3D"+_uEC(t);=0A=
+  else { t=3D_uOrg(1); if (t!=3D"-" && t!=3D"") =
+c+=3D"|utmctr=3D"+_uEC(t); }=0A=
+  t=3D_uGC(s,_ucct+"=3D","&");=0A=
+  if (t!=3D"-" && t!=3D"") c+=3D"|utmcct=3D"+_uEC(t);=0A=
+  t=3D_uGC(s,_ucno+"=3D","&");=0A=
+  if (t=3D=3D"1") o=3D1;=0A=
+  if (z!=3D"-" && o=3D=3D1) return "";=0A=
+ }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { c=3D_uOrg(); if (z!=3D"-" && =
+_ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") { if (_ufns=3D=3D1)  c=3D_uRef(); if =
+(z!=3D"-" && _ufno=3D=3D1)  return ""; }=0A=
+ if (c=3D=3D"-" || c=3D=3D"") {=0A=
+  if (z=3D=3D"-" && _ufns=3D=3D1) { =
+c=3D"utmccn=3D(direct)|utmcsr=3D(direct)|utmcmd=3D(none)"; }=0A=
+  if (c=3D=3D"-" || c=3D=3D"") return "";=0A=
+ }=0A=
+ if (z!=3D"-") {=0A=
+  i=3Dz.indexOf(".");=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  if (i>-1) i=3Dz.indexOf(".",i+1);=0A=
+  t=3Dz.substring(i+1,z.length);=0A=
+  if (t.toLowerCase()=3D=3Dc.toLowerCase()) cs=3D1;=0A=
+  t=3Dz.substring(0,i);=0A=
+  if ((i=3Dt.lastIndexOf(".")) > -1) {=0A=
+   t=3Dt.substring(i+1,t.length);=0A=
+   cn=3D(t*1);=0A=
+  }=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) {=0A=
+  t=3D_uGC(dc,"__utma=3D"+_udh,";");=0A=
+  if ((i=3Dt.lastIndexOf(".")) > 9) {=0A=
+   _uns=3Dt.substring(i+1,t.length);=0A=
+   _uns=3D(_uns*1);=0A=
+  }=0A=
+  cn++;=0A=
+  if (_uns=3D=3D0) _uns=3D1;=0A=
+  _ubd.cookie=3D"__utmz=3D"+_udh+"."+_ust+"."+_uns+"."+cn+"."+c+"; =
+path=3D"+_utcp+"; "+x+_udo;=0A=
+ }=0A=
+ if (cs=3D=3D0 || _ufns=3D=3D1) return "&utmcn=3D1";=0A=
+ else return "&utmcr=3D1";=0A=
+}=0A=
+function _uRef() {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k,n;=0A=
+ if ((i=3D_ur.indexOf("://"))<0) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  k=3Dh.substring(h.indexOf("/"),h.length);=0A=
+  if (k.indexOf("?") > -1) k=3Dk.substring(0,k.indexOf("?"));=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ h=3Dh.toLowerCase();=0A=
+ n=3Dh;=0A=
+ if ((i=3Dn.indexOf(":")) > -1) n=3Dn.substring(0,i);=0A=
+ for (var ii=3D0;ii<_uRno.length;ii++) {=0A=
+  if ((i=3Dn.indexOf(_uRno[ii].toLowerCase())) > -1 && =
+n.length=3D=3D(i+_uRno[ii].length)) { _ufno=3D1; break; }=0A=
+ }=0A=
+ if (h.indexOf("www.")=3D=3D0) h=3Dh.substring(4,h.length);=0A=
+ return =
+"utmccn=3D(referral)|utmcsr=3D"+_uEC(h)+"|"+"utmcct=3D"+_uEC(k)+"|utmcmd=3D=
+referral";=0A=
+}=0A=
+function _uOrg(t) {=0A=
+ if (_ur=3D=3D"0" || _ur=3D=3D"" || _ur=3D=3D"-") return "";=0A=
+ var i=3D0,h,k;=0A=
+ if ((i=3D_ur.indexOf("://")) < 0) return "";=0A=
+ h=3D_ur.substring(i+3,_ur.length);=0A=
+ if (h.indexOf("/") > -1) {=0A=
+  h=3Dh.substring(0,h.indexOf("/"));=0A=
+ }=0A=
+ for (var ii=3D0;ii<_uOsr.length;ii++) {=0A=
+  if (h.toLowerCase().indexOf(_uOsr[ii].toLowerCase()) > -1) {=0A=
+   if ((i=3D_ur.indexOf("?"+_uOkw[ii]+"=3D")) > -1 || =
+(i=3D_ur.indexOf("&"+_uOkw[ii]+"=3D")) > -1) {=0A=
+    k=3D_ur.substring(i+_uOkw[ii].length+2,_ur.length);=0A=
+    if ((i=3Dk.indexOf("&")) > -1) k=3Dk.substring(0,i);=0A=
+    for (var yy=3D0;yy<_uOno.length;yy++) {=0A=
+     if (_uOno[yy].toLowerCase()=3D=3Dk.toLowerCase()) { _ufno=3D1; =
+break; }=0A=
+    }=0A=
+    if (t) return _uEC(k);=0A=
+    else return =
+"utmccn=3D(organic)|utmcsr=3D"+_uEC(_uOsr[ii])+"|"+"utmctr=3D"+_uEC(k)+"|=
+utmcmd=3Dorganic";=0A=
+   }=0A=
+  }=0A=
+ }=0A=
+ return "";=0A=
+}=0A=
+function _uBInfo() {=0A=
+ var sr=3D"-",sc=3D"-",ul=3D"-",fl=3D"-",cs=3D"-",je=3D1;=0A=
+ var n=3Dnavigator;=0A=
+ if (self.screen) {=0A=
+  sr=3Dscreen.width+"x"+screen.height;=0A=
+  sc=3Dscreen.colorDepth+"-bit";=0A=
+ } else if (self.java) {=0A=
+  var j=3Djava.awt.Toolkit.getDefaultToolkit();=0A=
+  var s=3Dj.getScreenSize();=0A=
+  sr=3Ds.width+"x"+s.height;=0A=
+ }=0A=
+ if (n.language) { ul=3Dn.language.toLowerCase(); }=0A=
+ else if (n.browserLanguage) { ul=3Dn.browserLanguage.toLowerCase(); }=0A=
+ je=3Dn.javaEnabled()?1:0;=0A=
+ if (_uflash) fl=3D_uFlash();=0A=
+ if (_ubd.characterSet) cs=3D_uES(_ubd.characterSet);=0A=
+ else if (_ubd.charset) cs=3D_uES(_ubd.charset);=0A=
+ return =
+"&utmcs=3D"+cs+"&utmsr=3D"+sr+"&utmsc=3D"+sc+"&utmul=3D"+ul+"&utmje=3D"+j=
+e+"&utmfl=3D"+fl;=0A=
+}=0A=
+function __utmSetTrans() {=0A=
+ var e;=0A=
+ if (_ubd.getElementById) e=3D_ubd.getElementById("utmtrans");=0A=
+ else if (_ubd.utmform && _ubd.utmform.utmtrans) =
+e=3D_ubd.utmform.utmtrans;=0A=
+ if (!e) return;=0A=
+ var l=3De.value.split("UTM:");=0A=
+ var i,i2,c;=0A=
+ if (_userv=3D=3D0 || _userv=3D=3D2) i=3Dnew Array();=0A=
+ if (_userv=3D=3D1 || _userv=3D=3D2) { i2=3Dnew Array(); c=3D_uGCS(); }=0A=
+=0A=
+ for (var ii=3D0;ii<l.length;ii++) {=0A=
+  l[ii]=3D_uTrim(l[ii]);=0A=
+  if (l[ii].charAt(0)!=3D'T' && l[ii].charAt(0)!=3D'I') continue;=0A=
+  var r=3DMath.round(Math.random()*2147483647);=0A=
+  if (!_utsp || _utsp=3D=3D"") _utsp=3D"|";=0A=
+  var f=3Dl[ii].split(_utsp),s=3D"";=0A=
+  if (f[0].charAt(0)=3D=3D'T') {=0A=
+   s=3D"&utmt=3Dtran"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmtst=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmtto=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmttx=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmtsp=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmtci=3D"+_uES(f[6]);=0A=
+   f[7]=3D_uTrim(f[7]); if(f[7]&&f[7]!=3D"") =
+s+=3D"&utmtrg=3D"+_uES(f[7]);=0A=
+   f[8]=3D_uTrim(f[8]); if(f[8]&&f[8]!=3D"") =
+s+=3D"&utmtco=3D"+_uES(f[8]);=0A=
+  } else {=0A=
+   s=3D"&utmt=3Ditem"+"&utmn=3D"+r;=0A=
+   f[1]=3D_uTrim(f[1]); if(f[1]&&f[1]!=3D"") =
+s+=3D"&utmtid=3D"+_uES(f[1]);=0A=
+   f[2]=3D_uTrim(f[2]); if(f[2]&&f[2]!=3D"") =
+s+=3D"&utmipc=3D"+_uES(f[2]);=0A=
+   f[3]=3D_uTrim(f[3]); if(f[3]&&f[3]!=3D"") =
+s+=3D"&utmipn=3D"+_uES(f[3]);=0A=
+   f[4]=3D_uTrim(f[4]); if(f[4]&&f[4]!=3D"") =
+s+=3D"&utmiva=3D"+_uES(f[4]);=0A=
+   f[5]=3D_uTrim(f[5]); if(f[5]&&f[5]!=3D"") =
+s+=3D"&utmipr=3D"+_uES(f[5]);=0A=
+   f[6]=3D_uTrim(f[6]); if(f[6]&&f[6]!=3D"") =
+s+=3D"&utmiqt=3D"+_uES(f[6]);=0A=
+  }=0A=
+  if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+  if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+   i[ii]=3Dnew Image(1,1);=0A=
+   i[ii].src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+   i[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+  if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+   i2[ii]=3Dnew Image(1,1);=0A=
+   =
+i2[ii].src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D=
+"+c;=0A=
+   i2[ii].onload=3Dfunction() { _uVoid(); }=0A=
+  }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function _uFlash() {=0A=
+ var f=3D"-",n=3Dnavigator;=0A=
+ if (n.plugins && n.plugins.length) {=0A=
+  for (var ii=3D0;ii<n.plugins.length;ii++) {=0A=
+   if (n.plugins[ii].name.indexOf('Shockwave Flash')!=3D-1) {=0A=
+    f=3Dn.plugins[ii].description.split('Shockwave Flash ')[1];=0A=
+    break;=0A=
+   }=0A=
+  }=0A=
+ } else if (window.ActiveXObject) {=0A=
+  for (var ii=3D10;ii>=3D2;ii--) {=0A=
+   try {=0A=
+    var fl=3Deval("new =
+ActiveXObject('ShockwaveFlash.ShockwaveFlash."+ii+"');");=0A=
+    if (fl) { f=3Dii + '.0'; break; }=0A=
+   }=0A=
+   catch(e) {}=0A=
+  }=0A=
+ }=0A=
+ return f;=0A=
+}=0A=
+function __utmLinker(l,h) {=0A=
+ if (!_ulink) return;=0A=
+ var p,k,a=3D"-",b=3D"-",c=3D"-",x=3D"-",z=3D"-",v=3D"-";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ if (!l || l=3D=3D"") return;=0A=
+ var iq =3D l.indexOf("?"); =0A=
+ var ih =3D l.indexOf("#"); =0A=
+ if (dc) {=0A=
+  a=3D_uES(_uGC(dc,"__utma=3D"+_udh,";"));=0A=
+  b=3D_uES(_uGC(dc,"__utmb=3D"+_udh,";"));=0A=
+  c=3D_uES(_uGC(dc,"__utmc=3D"+_udh,";"));=0A=
+  x=3D_uES(_uGC(dc,"__utmx=3D"+_udh,";"));=0A=
+  z=3D_uES(_uGC(dc,"__utmz=3D"+_udh,";"));=0A=
+  v=3D_uES(_uGC(dc,"__utmv=3D"+_udh,";"));=0A=
+  k=3D(_uHash(a+b+c+x+z+v)*1)+(_udh*1);=0A=
+  =
+p=3D"__utma=3D"+a+"&__utmb=3D"+b+"&__utmc=3D"+c+"&__utmx=3D"+x+"&__utmz=3D=
+"+z+"&__utmv=3D"+v+"&__utmk=3D"+k;=0A=
+ }=0A=
+ if (p) {=0A=
+  if (h && ih>-1) return;=0A=
+  if (h) { _udl.href=3Dl+"#"+p; }=0A=
+  else {=0A=
+   if (iq=3D=3D-1 && ih=3D=3D-1) _udl.href=3Dl+"?"+p;=0A=
+   else if (ih=3D=3D-1) _udl.href=3Dl+"&"+p;=0A=
+   else if (iq=3D=3D-1) =
+_udl.href=3Dl.substring(0,ih-1)+"?"+p+l.substring(ih);=0A=
+   else _udl.href=3Dl.substring(0,ih-1)+"&"+p+l.substring(ih);=0A=
+  }=0A=
+ } else { _udl.href=3Dl; }=0A=
+}=0A=
+function __utmLinkPost(f,h) {=0A=
+ if (!_ulink) return;=0A=
+ var p,k,a=3D"-",b=3D"-",c=3D"-",x=3D"-",z=3D"-",v=3D"-";=0A=
+ var dc=3D_ubd.cookie;=0A=
+ if (!f || !f.action) return;=0A=
+ var iq =3D f.action.indexOf("?"); =0A=
+ var ih =3D f.action.indexOf("#"); =0A=
+ if (dc) {=0A=
+  a=3D_uES(_uGC(dc,"__utma=3D"+_udh,";"));=0A=
+  b=3D_uES(_uGC(dc,"__utmb=3D"+_udh,";"));=0A=
+  c=3D_uES(_uGC(dc,"__utmc=3D"+_udh,";"));=0A=
+  x=3D_uES(_uGC(dc,"__utmx=3D"+_udh,";"));=0A=
+  z=3D_uES(_uGC(dc,"__utmz=3D"+_udh,";"));=0A=
+  v=3D_uES(_uGC(dc,"__utmv=3D"+_udh,";"));=0A=
+  k=3D(_uHash(a+b+c+x+z+v)*1)+(_udh*1);=0A=
+  =
+p=3D"__utma=3D"+a+"&__utmb=3D"+b+"&__utmc=3D"+c+"&__utmx=3D"+x+"&__utmz=3D=
+"+z+"&__utmv=3D"+v+"&__utmk=3D"+k;=0A=
+ }=0A=
+ if (p) {=0A=
+  if (h && ih>-1) return;=0A=
+  if (h) { f.action+=3D"#"+p; }=0A=
+  else {=0A=
+   if (iq=3D=3D-1 && ih=3D=3D-1) f.action+=3D"?"+p;=0A=
+   else if (ih=3D=3D-1) f.action+=3D"&"+p;=0A=
+   else if (iq=3D=3D-1) =
+f.action=3Df.action.substring(0,ih-1)+"?"+p+f.action.substring(ih);=0A=
+   else =
+f.action=3Df.action.substring(0,ih-1)+"&"+p+f.action.substring(ih);=0A=
+  }=0A=
+ }=0A=
+ return;=0A=
+}=0A=
+function __utmSetVar(v) {=0A=
+ if (!v || v=3D=3D"") return;=0A=
+ if (!_udo || _udo =3D=3D "") {=0A=
+  _udh=3D_uDomain();=0A=
+  if (_udn && _udn!=3D"") { _udo=3D" domain=3D"+_udn+";"; }=0A=
+ }=0A=
+ if (!_uVG()) return;=0A=
+ var r=3DMath.round(Math.random() * 2147483647);=0A=
+ _ubd.cookie=3D"__utmv=3D"+_udh+"."+_uES(v)+"; path=3D"+_utcp+"; =
+expires=3D"+_uNx()+";"+_udo;=0A=
+ var s=3D"&utmt=3Dvar&utmn=3D"+r;=0A=
+ if (_usample && _usample !=3D 100) s+=3D"&utmsp=3D"+_uES(_usample);=0A=
+ if ((_userv=3D=3D0 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i=3Dnew Image(1,1);=0A=
+  i.src=3D_ugifpath+"?"+"utmwv=3D"+_uwv+s;=0A=
+  i.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+ if ((_userv=3D=3D1 || _userv=3D=3D2) && _uSP()) {=0A=
+  var i2=3Dnew Image(1,1);=0A=
+  =
+i2.src=3D_ugifpath2+"?"+"utmwv=3D"+_uwv+s+"&utmac=3D"+_uacct+"&utmcc=3D"+=
+_uGCS();=0A=
+  i2.onload=3Dfunction() { _uVoid(); }=0A=
+ }=0A=
+}=0A=
+function _uGCS() {=0A=
+ var t,c=3D"",dc=3D_ubd.cookie;=0A=
+ if ((t=3D_uGC(dc,"__utma=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utma=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmb=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmb=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmc=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmc=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmx=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmx=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmz=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmz=3D"+t+";+");=0A=
+ if ((t=3D_uGC(dc,"__utmv=3D"+_udh,";"))!=3D"-") =
+c+=3D_uES("__utmv=3D"+t+";");=0A=
+ if (c.charAt(c.length-1)=3D=3D"+") c=3Dc.substring(0,c.length-1);=0A=
+ return c;=0A=
+}=0A=
+function _uGC(l,n,s) {=0A=
+ if (!l || l=3D=3D"" || !n || n=3D=3D"" || !s || s=3D=3D"") return "-";=0A=
+ var i,i2,i3,c=3D"-";=0A=
+ i=3Dl.indexOf(n);=0A=
+ i3=3Dn.indexOf("=3D")+1;=0A=
+ if (i > -1) {=0A=
+  i2=3Dl.indexOf(s,i); if (i2 < 0) { i2=3Dl.length; }=0A=
+  c=3Dl.substring((i+i3),i2);=0A=
+ }=0A=
+ return c;=0A=
+}=0A=
+function _uDomain() {=0A=
+ if (!_udn || _udn=3D=3D"" || _udn=3D=3D"none") { _udn=3D""; return 1; }=0A=
+ if (_udn=3D=3D"auto") {=0A=
+  var d=3D_ubd.domain;=0A=
+  if (d.substring(0,4)=3D=3D"www.") {=0A=
+   d=3Dd.substring(4,d.length);=0A=
+  }=0A=
+  _udn=3Dd;=0A=
+ }=0A=
+ _udn =3D _udn.toLowerCase(); =0A=
+ if (_uhash=3D=3D"off") return 1;=0A=
+ return _uHash(_udn);=0A=
+}=0A=
+function _uHash(d) {=0A=
+ if (!d || d=3D=3D"") return 1;=0A=
+ var h=3D0,g=3D0;=0A=
+ for (var i=3Dd.length-1;i>=3D0;i--) {=0A=
+  var c=3DparseInt(d.charCodeAt(i));=0A=
+  h=3D((h << 6) & 0xfffffff) + c + (c << 14);=0A=
+  if ((g=3Dh & 0xfe00000)!=3D0) h=3D(h ^ (g >> 21));=0A=
+ }=0A=
+ return h;=0A=
+}=0A=
+function _uFixA(c,s,t) {=0A=
+ if (!c || c=3D=3D"" || !s || s=3D=3D"" || !t || t=3D=3D"") return "-";=0A=
+ var a=3D_uGC(c,"__utma=3D"+_udh,s);=0A=
+ var lt=3D0,i=3D0;=0A=
+ if ((i=3Da.lastIndexOf(".")) > 9) {=0A=
+  _uns=3Da.substring(i+1,a.length);=0A=
+  _uns=3D(_uns*1)+1;=0A=
+  a=3Da.substring(0,i);=0A=
+  if ((i=3Da.lastIndexOf(".")) > 7) {=0A=
+   lt=3Da.substring(i+1,a.length);=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  if ((i=3Da.lastIndexOf(".")) > 5) {=0A=
+   a=3Da.substring(0,i);=0A=
+  }=0A=
+  a+=3D"."+lt+"."+t+"."+_uns;=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+function _uTrim(s) {=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  while ((s.charAt(0)=3D=3D' ') || (s.charAt(0)=3D=3D'\n') || =
+(s.charAt(0,1)=3D=3D'\r')) s=3Ds.substring(1,s.length);=0A=
+  while ((s.charAt(s.length-1)=3D=3D' ') || =
+(s.charAt(s.length-1)=3D=3D'\n') || (s.charAt(s.length-1)=3D=3D'\r')) =
+s=3Ds.substring(0,s.length-1);=0A=
+  return s;=0A=
+}=0A=
+function _uEC(s) {=0A=
+  var n=3D"";=0A=
+  if (!s || s=3D=3D"") return "";=0A=
+  for (var i=3D0;i<s.length;i++) {if (s.charAt(i)=3D=3D" ") n+=3D"+"; =
+else n+=3Ds.charAt(i);}=0A=
+  return n;=0A=
+}=0A=
+function __utmVisitorCode(f) {=0A=
+ var r=3D0,t=3D0,i=3D0,i2=3D0,m=3D31;=0A=
+ var a=3D_uGC(_ubd.cookie,"__utma=3D"+_udh,";");=0A=
+ if ((i=3Da.indexOf(".",0))<0) return;=0A=
+ if ((i2=3Da.indexOf(".",i+1))>0) r=3Da.substring(i+1,i2); else return =
+"";  =0A=
+ if ((i=3Da.indexOf(".",i2+1))>0) t=3Da.substring(i2+1,i); else return =
+"";  =0A=
+ if (f) {=0A=
+  return r;=0A=
+ } else {=0A=
+  var c=3Dnew =
+Array('A','B','C','D','E','F','G','H','J','K','L','M','N','P','R','S','T'=
+,'U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9');=0A=
+  return =
+c[r>>28&m]+c[r>>23&m]+c[r>>18&m]+c[r>>13&m]+"-"+c[r>>8&m]+c[r>>3&m]+c[((r=
+&7)<<2)+(t>>30&3)]+c[t>>25&m]+c[t>>20&m]+"-"+c[t>>15&m]+c[t>>10&m]+c[t>>5=
+&m]+c[t&m];=0A=
+ }=0A=
+}=0A=
+function _uIN(n) {=0A=
+ if (!n) return false;=0A=
+ for (var i=3D0;i<n.length;i++) {=0A=
+  var c=3Dn.charAt(i);=0A=
+  if ((c<"0" || c>"9") && (c!=3D".")) return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uES(s,u) {=0A=
+ if (typeof(encodeURIComponent) =3D=3D 'function') {=0A=
+  if (u) return encodeURI(s);=0A=
+  else return encodeURIComponent(s);=0A=
+ } else {=0A=
+  return escape(s);=0A=
+ }=0A=
+}=0A=
+function _uUES(s) {=0A=
+ if (typeof(decodeURIComponent) =3D=3D 'function') {=0A=
+  return decodeURIComponent(s);=0A=
+ } else {=0A=
+  return unescape(s);=0A=
+ }=0A=
+}=0A=
+function _uVG() {=0A=
+ if((_udn.indexOf("www.google.") =3D=3D 0 || _udn.indexOf(".google.") =
+=3D=3D 0 || _udn.indexOf("google.") =3D=3D 0) && _utcp=3D=3D'/' && =
+_udn.indexOf("google.org")=3D=3D-1) {=0A=
+  return false;=0A=
+ }=0A=
+ return true;=0A=
+}=0A=
+function _uSP() {=0A=
+ var s=3D100;=0A=
+ if (_usample) s=3D_usample;=0A=
+ if(s>=3D100 || s<=3D0) return true;=0A=
+ return ((__utmVisitorCode(1)%10000)<(s*100));=0A=
+}=0A=
+function urchinPathCopy(p){=0A=
+ var d=3Ddocument,nx,tx,sx,i,c,cs,t,h,o;=0A=
+ cs=3Dnew Array("a","b","c","v","x","z");=0A=
+ h=3D_uDomain(); if (_udn && _udn!=3D"") o=3D" domain=3D"+_udn+";";=0A=
+ nx=3D_uNx()+";";=0A=
+ tx=3Dnew Date(); tx.setTime(tx.getTime()+(_utimeout*1000));=0A=
+ tx=3Dtx.toGMTString()+";";=0A=
+ sx=3Dnew Date(); sx.setTime(sx.getTime()+(_ucto*1000));=0A=
+ sx=3Dsx.toGMTString()+";";=0A=
+ for (i=3D0;i<6;i++){=0A=
+  t=3D" expires=3D";=0A=
+  if (i=3D=3D1) t+=3Dtx; else if (i=3D=3D2) t=3D""; else if (i=3D=3D5) =
+t+=3Dsx; else t+=3Dnx;=0A=
+  c=3D_uGC(d.cookie,"__utm"+cs[i]+"=3D"+h,";");=0A=
+  if (c!=3D"-") d.cookie=3D"__utm"+cs[i]+"=3D"+c+"; path=3D"+p+";"+t+o;=0A=
+ }=0A=
+}=0A=
+function _uCO() {=0A=
+ if (!_utk || _utk=3D=3D"" || _utk.length<10) return;=0A=
+ var d=3D'www.google.com';=0A=
+ if (_utk.charAt(0)=3D=3D'!') d=3D'analytics.corp.google.com';=0A=
+ _ubd.cookie=3D"GASO=3D"+_utk+"; path=3D"+_utcp+";"+_udo;=0A=
+ var sc=3Ddocument.createElement('script');=0A=
+ sc.type=3D'text/javascript';=0A=
+ sc.id=3D"_gasojs";=0A=
+ =
+sc.src=3D'https://'+d+'/analytics/reporting/overlay_js?gaso=3D'+_utk+'&'+=
+Math.random();=0A=
+ document.getElementsByTagName('head')[0].appendChild(sc);  =0A=
+}=0A=
+function _uGT() {=0A=
+ var h=3Dlocation.hash, a;=0A=
+ if (h && h!=3D"" && h.indexOf("#gaso=3D")=3D=3D0) {=0A=
+  a=3D_uGC(h,"gaso=3D","&");=0A=
+ } else {=0A=
+  a=3D_uGC(_ubd.cookie,"GASO=3D",";");=0A=
+ }=0A=
+ return a;=0A=
+}=0A=
+var _utk=3D_uGT();=0A=
+if (_utk && _utk!=3D"" && _utk.length>10) {=0A=
+ if (window.addEventListener) {=0A=
+  window.addEventListener('load', _uCO, false); =0A=
+ } else if (window.attachEvent) { =0A=
+  window.attachEvent('onload', _uCO);=0A=
+ }=0A=
+}=0A=
+=0A=
+function _uNx() {=0A=
+  return (new Date((new Date()).getTime()+63072000000)).toGMTString();=0A=
+}=0A=
+
+------=_NextPart_000_0000_01C8B538.FA43C300--

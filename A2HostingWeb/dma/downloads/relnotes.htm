@@ -1,0 +1,764 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.03 [en] (WinNT; I) [Netscape]">
+   <TITLE>Amigo 32 Release Notes</TITLE>
+</HEAD>
+<BODY>
+<B><I>Amigo32 readme.htm B0.03</I></B>
+<CENTER><B><I>1997-11-09</I></B> <B><U><FONT SIZE=+1>AMIGO32 B0.03 RELEASE
+NOTES</FONT></U></B></CENTER>
+
+
+<P><B>Please provide feedback/bugs to:</B>
+<UL>
+<LI>
+<B>hamilton@parc.xerox.com +1-650-813-6880,</B></LI>
+</UL>
+<B>If it is an emergency and you can't reach Dennis, contact one of:</B>
+<UL>
+<LI>
+<B>jwilliams@xsoft.xerox.com +1-650-813-6824</B></LI>
+
+<LI>
+<B>lbonham@xsoft.xerox.com +1-650-813-7489.</B></LI>
+</UL>
+
+<CENTER><B><FONT SIZE=+1>*** WARNING ***</FONT></B></CENTER>
+
+
+<P><B>Please consult the caveats (section 9) and notes on compiling and
+running a client application.</B>
+
+<P><B>History:</B>
+<UL>
+<LI>
+<B>Larry Bonham - January 20, 1998 (B0.03)</B></LI>
+
+<LI>
+<B>Jock Williams - November 9, 1997 (B0.02)</B></LI>
+
+<LI>
+<B>Jock Williams - November 5, 1997 (B0.01)</B></LI>
+
+<LI>
+<B>Jock Williams - November 3, 1997 (B0.00)</B></LI>
+
+<LI>
+<B>Jock Williams - August 25, 1997 (A5.00)</B></LI>
+
+<LI>
+<B>Jock Williams - July 24, 1997 (A4.00)</B></LI>
+
+<LI>
+<B>Jock Williams - June 25, 1997 (A3.00)</B></LI>
+
+<LI>
+<B>Dennis Hamilton and Larry Bonham - March 28, 1997 (A2.02)</B></LI>
+
+<LI>
+<B>Larry Bonham -- March 28, 1997 (A2.01)</B></LI>
+
+<LI>
+<B>Larry Bonham -- March 3, 1997 (A1.02)</B></LI>
+
+<LI>
+<B>Larry Bonham -- February 28, 1997 (A1.01)</B></LI>
+
+<LI>
+<B>Larry Bonham and Dennis Hamilton -- February 17, 1997 (A0.02)</B></LI>
+
+<LI>
+<B>Jock Williams -- February 13, 1997 (A0.01)</B></LI>
+</UL>
+
+<HR>
+<BR>&nbsp;
+
+<P><B><FONT SIZE=+1>CONTENT</FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM1__Installation">1. Installation</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM2__Contents_of_the_ZIP_file">2. Contents
+of the ZIP file</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM3__Verification_of_install">3. Verification
+of install</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM4__Moving_the_installed_files">4. Moving
+the installed files</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM5__Integrating_your_own_doc_space">5. Integrating
+your own doc space</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM6__Compiling_and_running_a_client_appl">6.
+Compiling and running a client application</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM7__Supported_functionality">7. Supported
+functionality</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM8__Code_Structure___module_organizatio">8.
+Code Structure - module organization</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM9__Caveats">9. Caveats</A></FONT></B>
+
+<P><B><FONT SIZE=+1><A HREF="#BM10__Bug_Fixes__code_level_">10. Explicit
+Release Modifications &amp; Bug Fixes (code level)</A></FONT></B>
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM1__Installation"></A><B><FONT SIZE=+1>1. Installation</FONT></B>
+
+<P>The Amigo32 (win32) release is delivered as a zip file. Unzip (recursive)
+to install onto your machine (and preserve the original sub tree structure).
+
+<P>The sub tree is self contained and can be installed anywhere you choose.
+At this point the code is sufficiently configured to allow you to access
+the dmaSystemManager and its service registry interface.&nbsp; You cannot
+connect to the system object, nor any document space or other service (eg:
+the merged scope factory) at this point.&nbsp; To do so you must register
+the system object, and document spaces.
+
+<P>The quick and simple solution is to adapt the supplied "dmasvc.reg"
+to detail the services you want registered, and 'run dmasvc.reg'.
+
+<P>The more standard approach (ie: less Amigo specific) is to register
+services via the IdmaServiceRegistry interface.&nbsp; In the case of Amigo,
+a service once registered can be used immediately (no need to reboot, no
+need to restart the DMA application).&nbsp; You do however need write permission
+to the LOCAL_MACHINE\Software\ branch of the windows registry.
+
+<P>Note: the system manager and the system object maintain separate registries.
+You must first must register the system object(s) using the IdmaServiceRegistry
+interface of the system manager. You can then connect to the system object,
+and register document spaces.&nbsp;&nbsp; The document spaces must be registered
+using the IdmaServiceRegistry interface of the system object. The registries
+are located as follows:
+<UL>
+<LI>
+"HKEY_LOCAL_MACHINE\Software\DMA\System Manager Service Registry 1.0"</LI>
+
+<BR>"HKEY_LOCAL_MACHINE\Software\DMA\System Object Service Registry 1.0"</UL>
+&nbsp;
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM2__Contents_of_the_ZIP_file"></A><B><FONT SIZE=+1>2. Contents
+of the ZIP file</FONT></B>
+<UL>
+<LI>
+amigo32\bin\win32msc\debug<I> // debug runtime .EXE's/.DLLs/.LIB directory</I></LI>
+
+<LI>
+amigo32\bin\win32msc\release <I>// non debug runtime .EXE's/.DLLs/.LIB
+directory</I></LI>
+
+<LI>
+amigo32\dma\include <I>// The DMA 1.0 header files</I></LI>
+
+<LI>
+amigo32\src <I>// source directory for Amigo32</I></LI>
+
+<LI>
+amigo32\dmasvc.reg <I>// sample registration file</I></LI>
+</UL>
+The source directory contains a make file:
+<UL>
+<LI>
+win32msc.mak // windows 32, make file for Microsoft VC. This has targets
+for all amigo components</LI>
+</UL>
+The win32msc.mak make files is generated using Microsoft Developer's Workbench,
+are VC++ 4.2 and provides release &amp; debug targets. All code was compiled
+pack(8) and all the DLLs uses dynamic linked runtime libraries, and exceptions
+disabled.
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM3__Verification_of_install"></A><B><FONT SIZE=+1>3. Verification
+of install</FONT></B>
+
+<P>From a dos prompt inside the debug or release runtime directory, you
+should be able to invoke the <I>testclnt.exe </I>program. This program
+allows you to connect to the system manager.&nbsp; It should fail and exit
+on attempt to connect to the system object if no system object is registered.
+
+<P>Once the system object is registered the program can connect to the
+system object, but will fail on attempting to connect to a document space
+unless one or more document space is available, and correctly registered..&nbsp;
+The debug version is a lot chattier than the release version, which tells
+you the basics.
+
+<P>You should also be able to make release &amp; debug versions of any
+of the runtime modules using "nmake" or "Microsoft Developer Studio" on
+the supplied win32msc.mak file.
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM4__Moving_the_installed_files"></A><B><FONT SIZE=+1>4. Moving
+the installed files</FONT></B>
+
+<P>You can safely copy the content of the runtime directory (bin/debug
+or bin/release) elsewhere (e.g., DMA, DMATEST, DMADEMO), as you require
+so long as your service registrations are not invalidated (eg: if you give
+a full path name for the module location, and then move the module..!!!).
+
+<P>Typically I would not expect full pathnames to be registered. Provided
+the DLL is still on the search path of the executing process, the DLL will
+be found.
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM5__Integrating_your_own_doc_space"></A><B><FONT SIZE=+1>5.
+Integrating your own doc space</FONT></B>
+
+<P>The document space must be registered with the system object.&nbsp;
+The data is recorded in the windows registry
+<UL>
+<LI>
+The default document space is whichever document space is produced first
+by enumeration of the windows registry.</LI>
+</UL>
+To update the registry using a REG file, modify the dmasvc.reg file per
+instructions inside the file (please save an original copy in case you
+chew it up and need a reference). At ConnectDocSpace, the service procedure
+will be passed the specified profile string and required GUIDs. If the
+client does not request a specific DocSpace (ie: a NULL guid), on a ConnectDocSpace,
+the first DocSpace encountered in the registry is invoked.
+
+<P>To update the list of document spaces programmatically use the IdmaServiceRegistry
+interface from the system object.&nbsp; You can either supply an explicit
+serviceID, or rely on the Amigo software to generate a GUID for you (it
+uses CoCreateGUID).
+
+<P>The test program connects to the default document space.
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM6__Compiling_and_running_a_client_appl"></A><B><FONT SIZE=+1>6.
+Compiling and running a client application</FONT></B>
+
+<P>Client applications should include the DMA header files, and link with
+DMA10.LIB to access the Amigo32 System Manager module. Aside from making
+sure your services are properly registered, that's it.
+
+<P>*** NOTE: When all else fails, try the supplied testclnt.exe and see
+if the connection gets through to the docspace you are trying to use. Then
+see how your connection code deviates from the example and see if you can
+make it work by matching the clnttest for now.
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM7__Supported_functionality"></A><B><FONT SIZE=+1>7. Supported
+functionality </FONT>(see <A HREF="#10__Bug_Fixes__code_level_">Section
+10</A> for features new to this release)</B>
+
+<P><B>7.1 SystemManager</B>
+<UL>
+<LI>
+dmaConnectSystemManager - keeps a copy of the locale (but performs no validation).
+Supports UNICODE only.</LI>
+
+<LI>
+IdmaSystemManager:</LI>
+
+<UL>
+<LI>
+GetMalloc() - is implemented via the task allocator (CoGetMalloc) if no
+IMalloc was supplied at the dmaConnectSystemManager call.</LI>
+
+<LI>
+ConnectSystem().</LI>
+
+<LI>
+EnumerateSystems()</LI>
+</UL>
+
+<LI>
+IUnknown</LI>
+
+<UL>
+<LI>
+QueryInterface()</LI>
+
+<LI>
+AddRef()</LI>
+
+<LI>
+DeleteRef()</LI>
+</UL>
+
+<LI>
+IdmaOIID</LI>
+
+<UL>
+<LI>
+GetSystemId()</LI>
+
+<LI>
+GetDocSpaceId()</LI>
+
+<LI>
+GetGuid()</LI>
+
+<LI>
+GetObjectIdText()</LI>
+</UL>
+
+<LI>
+IdmaServiceRegistry</LI>
+
+<UL>
+<LI>
+GetRegistryElement</LI>
+
+<LI>
+FindNextRegistryElement</LI>
+
+<LI>
+RegisterServiceElement</LI>
+
+<LI>
+RemoveRegistryElement</LI>
+</UL>
+</UL>
+Notes:
+<UL>
+<LI>
+Use of a null <I>pSystemId </I>is not&nbsp; permitted (as per the DMA 1.0
+specification).</LI>
+
+<LI>
+The service registry for the system manager is stored at</LI>
+
+<BR>"HKEY_LOCAL_MACHINE\SOFTWARE\DMA\System Manager Service Registry 1.0"</UL>
+<B>7.2 System Object</B>
+<UL>
+<LI>
+IdmaSystem (Supports UNICODE only)</LI>
+
+<UL>
+<LI>
+ConnectDocSpace()</LI>
+
+<LI>
+EnumerateDocSpaces()</LI>
+
+<LI>
+GetResultCodeDescription()</LI>
+
+<LI>
+CreateScope() - Implemented if a ScopeFactory plug-in module is present.</LI>
+</UL>
+
+<LI>
+IUnknown</LI>
+
+<UL>
+<LI>
+QueryInterface()</LI>
+
+<LI>
+AddRef()</LI>
+
+<LI>
+DeleteRef()</LI>
+</UL>
+
+<LI>
+IdmaOIID is implemented here.</LI>
+
+<LI>
+IdmaProperties</LI>
+
+<UL>
+<LI>
+GetPropValBooleanById()</LI>
+
+<LI>
+GetPropValInteger32ById()</LI>
+
+<LI>
+GetPropValStringById()</LI>
+
+<LI>
+GetPropValIdById()</LI>
+</UL>
+
+<LI>
+IdmaServiceRegistry</LI>
+
+<UL>
+<LI>
+GetRegistryElement</LI>
+
+<LI>
+FindNextRegistryElement</LI>
+
+<LI>
+RegisterServiceElement</LI>
+
+<LI>
+RemoveRegistryElement</LI>
+</UL>
+</UL>
+Notes:
+<UL>
+<LI>
+Use of a null <I>pDocSpaceId </I>is not supported (as per the DMA 1.0 specification).</LI>
+</UL>
+<B>7.3 Test DocSpace</B>
+
+<P>There is no test document space provided with this build.
+<BR>
+<HR>
+
+<P><A NAME="BM8__Code_Structure___module_organizatio"></A><B><FONT SIZE=+1>8.
+Code Structure - module organization</FONT></B>
+
+<P>The only implemented interfaces and functions are within:
+
+<P>DMA10.LIB
+<UL>
+<LI>
+Link with this to have access to dmaConnectSystemManager</LI>
+</UL>
+DMA10.DLL
+<UL>
+<LI>
+dmaConnectSystemManager (dll well-known entry point)</LI>
+
+<LI>
+IdmaSystemManager</LI>
+
+<UL>
+<LI>
+ConnectSystem</LI>
+
+<LI>
+GetMalloc</LI>
+
+<LI>
+EnumerateSystems</LI>
+</UL>
+
+<LI>
+IUnknown (ALL methods)</LI>
+
+<LI>
+IdmaOIID (ALL methods)</LI>
+
+<LI>
+IdmaServiceRegistry (ALL methods)</LI>
+</UL>
+DMASYS1.DLL
+<UL>
+<LI>
+DMA_GetServiceObject (dll well-known entry point)</LI>
+
+<LI>
+IdmaSystem</LI>
+
+<UL>
+<LI>
+ConnectDocSpace</LI>
+
+<LI>
+EnumerateDocSpaces</LI>
+
+<LI>
+GetResultCodeDescription</LI>
+</UL>
+
+<LI>
+IUnknown (ALL methods)</LI>
+
+<LI>
+IdmaOIID (ALL methods)</LI>
+
+<LI>
+IdmaProperties</LI>
+
+<UL>
+<LI>
+GetPropValBooleanById()</LI>
+
+<LI>
+GetPropValInteger32ById()</LI>
+
+<LI>
+GetPropValStringById()</LI>
+
+<LI>
+GetPropValIdById()</LI>
+</UL>
+
+<LI>
+IdmaServiceRegistry (ALL methods)</LI>
+
+<LI>
+IdmaScopeFactory (QueryInterface fails if no scope factory service is registered)</LI>
+</UL>
+tstdocsp.dll
+<UL>
+<LI>
+DMA_GetServiceObject (dll well-known entry point)</LI>
+
+<LI>
+IUnknown (ALL)</LI>
+</UL>
+
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM9__Caveats"></A><B><FONT SIZE=+1>9. Caveats</FONT></B>
+
+<P>dmaConnectSystemManager
+<UL>
+<LI>
+pEnvInfo (not validated, it's pointer is simply passed through the system)</LI>
+
+<LI>
+pProfile (assumed NULL; ignored in this implementation)</LI>
+
+<LI>
+pIMalloc (if NULL, CoGetMalloc is used as the default allocator; if non-NULL,
+there must be a valid IMalloc interface available via QueryInterface)</LI>
+
+<LI>
+The DmaString located by pLocaleName is copied but not validated.</LI>
+</UL>
+IdmaSystemManager::ConnectSystem
+<UL>
+<LI>
+lCharSetEncodingID (must be DMA_CS_UNICODE for the supplied system object;
+anything else leads to DMARC_BAD_PARAMETER)</LI>
+</UL>
+IdmaSystem::ConnectDocSpace
+<UL>
+<LI>
+If the DocSpace ID is NULL then DMARC_BAD_PARAMETER is returned.</LI>
+</UL>
+IdmaSystem::EnumerateDocSpaces
+<UL>
+<LI>
+Only Document Spaces with the current character set encoding (UNICODE)
+can be instantiated and delivered through the enumerator.</LI>
+
+<LI>
+**Warning: The enumerator does not have an IdmaProperties interface, though
+this is required by DMA 1.0</LI>
+</UL>
+System Object IdmaProperties (supports only the following properties):
+<UL>
+<LI>
+dmaProp_DisplayName</LI>
+
+<LI>
+dmaProp_DescriptiveText</LI>
+
+<LI>
+dmaProp_LocaleName</LI>
+
+<LI>
+dmaProp_CreatePending</LI>
+
+<LI>
+dmaProp_UpdatePending</LI>
+
+<LI>
+dmaProp_DeletePending</LI>
+
+<LI>
+dmaProp_CharacterSetEncoding</LI>
+
+<LI>
+dmaProp_SystemOIIDPrefix</LI>
+
+<LI>
+dmaProp_SystemId</LI>
+
+<LI>
+**Warning: There is no dmaProp_ClassDescription. This is a violation of
+DMA 1.0</LI>
+
+<LI>
+**Warning: Access to these properties is by id only. Access by index is
+not supported. This is a violation of DMA 1.0</LI>
+</UL>
+IdmaSystem::GetResultCodeDescription
+<UL>
+<LI>
+Delivers "en_US" messages, and ignores the locale.</LI>
+</UL>
+IdmaServiceRegistry::RegisterServiceElement
+<UL>
+<LI>
+Does not ensure the uniqueness of the svcObjId, svcType, charset tuple.
+The same service can be registrered multiple times.</LI>
+</UL>
+&nbsp;
+<BR>
+<HR>
+<BR>&nbsp;
+
+<P><A NAME="BM10__Bug_Fixes__code_level_"></A><B><FONT SIZE=+1>10. Explicit
+Release Modifications &amp; Bug Fixes (<I>code level</I>)</FONT></B>
+
+<P><B>10.1 New to this release</B>
+<UL>
+<LI>
+uses the AIIM header files of 1/20/98 .</LI>
+
+<LI>
+CallDmaGetServiceElementBySvcRegId supports verification that desired character
+encoding ID is supported by requested service</LI>
+
+<LI>
+character encoding id added as a parameter to GetEntryProc.</LI>
+
+<LI>
+GetStringAFromDmaId function enhanced to prevent purify warning messages
+generated by sprintf.</LI>
+
+<LI>
+CdmaServiceRegistry constructor enhanced to accept character encoding id
+parameter.&nbsp; This class now retains this information as a public data
+member.</LI>
+
+<LI>
+CdmEnumOfSvc constructor enhanced to accept a pointer to the environment
+info data.&nbsp; This class now retains this information as a private data
+member.</LI>
+
+<LI>
+Removed hard-coded DMA_CS_UNICODE in ConnectSystem's call to CallDmaGetServiceElementBySvcObjId.&nbsp;
+This allows</LI>
+
+<BR>the determination of character encoding supported to be resolved at
+the appropriate level.
+<BR>Enhanced call to swprintf in CdmaSystemObject::GetPropValStringById
+and to prevent purify warning messages being generated.</UL>
+<B>10.2 Bug Fixes (code level)</B>
+
+<P>Since Amigo A5:
+<UL>
+<LI>
+IdmaServiceRegistry::GetNextObject employs a mutex to ensure the stability
+of the read, and correct forward advance of the enumerator.</LI>
+
+<LI>
+fixed a bug whereby IdmaServiceRegistry::RegisterServiceElement did not
+return the registration Id.</LI>
+
+<LI>
+dmaConnectSystemManager returns with an error if the character set requested
+is not UNICODE.</LI>
+
+<LI>
+pLocaleName is copied on dmaConnectSystemManager, and ConnectSystem. Clients
+are no longer required to maintain this parameter value.</LI>
+
+<LI>
+pLocaleName parameter on ConnectSystem and connectDocSpace is now passed
+down even if NULL. Per the DMA specification we should not substitute the
+parents locale when given a NULL.</LI>
+
+<LI>
+CdmaSystemManager::GetMalloc returns DMARC_UNEXPECTED if no allocator is
+available. Previously this returned DMARC_NOT_IMPLEMENTED (really!).</LI>
+</UL>
+Since Amigo B0.00:
+<UL>
+<LI>
+fixed bug where ConnectDocSpace and ConnectSystem fail when service registration
+id is not the same as the service object id.</LI>
+
+<LI>
+fixed bug whereby the service registration id was passed to the Dma_GetServiceObject
+call.</LI>
+
+<LI>
+removed some bogus registry keys from dmasvc.reg</LI>
+</UL>
+Since Amigo B0.01
+<UL>
+<LI>
+fixed bug where CdmaSystem::QueryInterface fails when asked for IID_ScopeFactory.</LI>
+
+<LI>
+DMA_CREATE_STRING was buggy in B0.01 DMA header file. The new headers fix
+the length field of the BSTR.</LI>
+</UL>
+Since Amigo B0.02
+<UL>
+<LI>
+uses the headers3.zip header files from \DMA\TechnicalCommittee\Editorial\spec100\New\headers3.zip.</LI>
+
+<LI>
+the system manager lib file is now called DMA10.LIB</LI>
+
+<LI>
+the source tree structure is changed</LI>
+
+<LI>
+added version resources to the DLLs and test program.</LI>
+
+<LI>
+changed the registry key used by the system manager and system object for
+their service registry data.</LI>
+
+<LI>
+IdmaServiceRegistry no longer uses the serviceObjectId as the registryId.</LI>
+
+<LI>
+IdmaServiceRegistry has tighter validation of what it will allow to be
+registered.</LI>
+
+<LI>
+added #pragma message comments to hghlight the difference in status between
+the system manager and the other components.</LI>
+
+<LI>
+error descriptions are now based on the description in the DMA specification
+(not the symbolic name).</LI>
+
+<LI>
+error description code factored out of sysobj.cpp to better isolate this
+code as it would need localization.</LI>
+
+<LI>
+uses the new string macros defined in dmastr.h</LI>
+
+<LI>
+supports IdmaScopeFactory, and requests the new IdmaScopeFactory interface
+from the merged scope plug in</LI>
+
+<LI>
+changed the source tree layout for simplicity</LI>
+
+<LI>
+IdmxOIID is no longer available (changes to IdmaOIID make this obsolete).</LI>
+
+<LI>
+made local source file data items and functions static where-ever possible
+to reduce global symbol litter</LI>
+
+<LI>
+made code tighter with respect to unused but named arguments, and unused
+local variables.</LI>
+
+<LI>
+added test code for DMA string macros</LI>
+
+<BR>added test code for obtaining the scope factory from the system object</UL>
+
+</BODY>
+</HTML>

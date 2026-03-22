@@ -1,0 +1,197 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<!--$$Header: /miserCompagno/notes/2014/04/n140401.htm 33    17-09-26 11:21 Orcmid $-->
+<title>n140401: Pursuing Generality</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<table border="0" width="100%" height="3">
+  <tr>
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+    <td width="11%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://miser-theory.info" target="_top"><img border="0" src="../../../images/misertheory-logo.gif" alt="The Miser Project" width="105" height="72"></a>
+<!-- Included from miser /construction/c000005a.htm of 2004-05-30-21:07 -0700 -->
+<!--webbot bot="Include" endspan i-checksum="26648" --></font></td>
+    
+    <td width="76%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="center">
+    	<b>
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<a href="../../n000001.htm"><font color="#990033">Notes</font></a> Folio
+		<a href="../../n000001.htm#n140401"><font color="#990033">n140401</font></a><br /> 
+      
+      
+
+      	<i><font size="5">Pursuing Generality</font></i></font></b></font></p>
+    </td>
+    
+    <td width="12%" height="6">
+    
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+    
+      <p align="right"><b><code><a target="_top" href="../../../">miser</a>&gt;<a href="../../">notes</a>&gt;<br>
+		<a href="../" target="_top">2014</a>&gt;<a target="_top" href="./">04</a>&gt;</code></b></p>
+      <p align="right"><b><code><a target="_top" href="n140401.htm">n140401</a>&gt;</code></b><br>
+      <small><small><a href="#v0.11">0.00</a> 
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2017-09-26 11:20<!--webbot bot="Timestamp" endspan i-checksum="25108" --></small>   
+      </small></p>
+    
+</font>
+
+      </td>
+    
+</font>
+
+  </tr>
+</table>
+
+  <hr color="#990033">
+<blockquote>
+  <p align="left">Although oMiser is a miniature computational mechanism in its 
+	simplicity, it is offered as serious demonstration of ambitious reach: 
+	universal general-purpose computing power.</p>
+<p align="left">We begin with the structure, <b>‹ob›</b> including a set of 
+constructions, the Obs.&nbsp; This structure is carefully defined to establish 
+that it is amenable to manifestation by procedures operating in a conventional 
+digital computer.&nbsp; There is a kind of arithmetic that can be carried out 
+with Obs and there are many ways to manifest arithmetic as we know it.</p>
+	<p align="left">The next step is demonstration that there is a function on 
+	two Obs, <b>ob.ap</b>(<i>p</i>, <i>x</i>) that is a Universal Function for <b>‹ob›</b>, 
+	with Ob <i>p</i>&nbsp; taken as the description of a procedure that <b>ob.ap</b> 
+	applies, given operand Ob <i>x</i>, to produce a result Ob <i>y</i>.&nbsp; 
+	The thesis is that for every function <i>f</i> that is computable on Obs <i>
+	x</i>, there are&nbsp; Obs <i>p</i> such that <b>ob.ap</b>(<i>p</i>, <i>x</i>) =
+	<i>f</i>(<i>x</i>).&nbsp; And the function <b>ob.ap</b> is itself 
+	computable.&nbsp; <i><b>oMiser</b></i> implementations using computer 
+	programs demonstrate the computational manifestation of <b>ob.ap</b>.</p>
+	<p align="left">The importance of <b>ob.ap</b> universality for <b>‹ob›</b>&nbsp; 
+	is that it is also Church-Turing complete in the sense that at least the 
+	functions representable under the Church-Turing thesis are representable via 
+	suitable constructions of <i>p</i> and interpretations of <i>x</i> and <i>y</i> 
+	such that <b>ob.ap</b>(<i>p</i>, <i>x</i>) = <i>y</i>.&nbsp;&nbsp; </p>
+<p align="left">The universality of <b>ob.ap</b> is not easy to exploit, without 
+some generalized means to express Obs as data (the <i>x</i>) and as procedures 
+(the <i>p</i>) to which <b>ob.ap</b> is applied.&nbsp; The Frugal notation and 
+the <i><b>oFrugal</b></i> program facilitate the useful expression and 
+manipulation of Obs via an <i><b>oMiser</b></i> mechanism.</p>
+	<p align="left">To bridge from working &quot;merely&quot; on Obs, there are two 
+	intermediate steps that facilitate bridges to representation of (computable) 
+	functions on other domains:</p>
+	<ol>
+		<li>
+		<p align="left">Representation of other structures having finite 
+		elements via representation in terms of Obs and functions on those Obs 
+		that correspond to sufficient primitive functions of the intended 
+		structure, paralleling <b>‹ob› </b>but realizing some other structure 
+		such as the Peano Arithmetic, <b>‹pa›</b>.&nbsp; This is tantamount to 
+		usage of <b>‹ob›</b> to represent other abstract data types.<br>
+&nbsp;&nbsp; </p></li>
+		<li>
+		<p align="left">Demonstration that the structure of combinators, <b>‹c›</b>, 
+		already represented, is automatically extended to representations of 
+		other structures, as in (1), to deliver all computable functions of (1) 
+		simply by employing the primitive procedures for representation of (1) 
+		along with combinator procedures, and <b>ob.ap</b>.</p></li>
+	</ol>
+	<p align="left">In this way, the extension to computationally-complete 
+	representations of other structures is accomplished using the machinery that 
+	is already achieved with <b>ob.ap</b> and <b>‹ob›</b>. </p>
+	<p align="left">At this point, the embrace of generality branches along a 
+	number of lines.&nbsp; .</p>
+	<p align="left"><font color="#800080"><b>{Ed.Note: To be Continued ...}</b></font></p>
+<p align="right"><i>-- Dennis E. Hamilton<br>
+Seattle, Washington<br>
+2014-04-27</i></p>
+</blockquote>
+<h1 align="left"><a name="RelatedMaterial">Related Material</a></h1>
+<ul>
+	<li>
+	<p align="left"><b>n140401b: <a href="n140401b.htm">Pursuing Generality [latest]</a></b></li>
+<li>
+<p align="left"><b>n140401c: <a href="n140401c.htm">Grounding</a></b><br>
+&nbsp;&nbsp; </li>
+<li>
+<p align="left"><b>Barwise, Jon (ed.).&nbsp; <i>Handbook of Mathematical Logic</i>.&nbsp; 
+Elsevier (Amsterdam: 1977).&nbsp; ISBN 0-444-86388-5 pbk.</b></p></li>
+	<li>
+<p align="left"><b>Copeland, B. Jack, &quot;The Church-Turing Thesis&quot;, <em>The 
+Stanford Encyclopedia of Philosophy </em>(Fall 2008 Edition), Edward N. Zalta&nbsp;(ed.), 
+available at &lt;<a href="http://plato.stanford.edu/archives/fall2008/entries/church-turing/">http://plato.stanford.edu/archives/fall2008/entries/church-turing/</a>&gt;.</b></p></li>
+	<li>
+<p align="left"><b>Rosenbloom, Paul. <i>&nbsp;The Elements of Mathematical Logic</i>.&nbsp; 
+Dover Publications (New York: 1950).</b></p></li>
+	<li>
+	<p align="left"><b>Wikipedia.&nbsp; Church-Turing Thesis (article).&nbsp; 
+	2014-04-19T03:42 version at &lt;<a href="https://en.wikipedia.org/w/index.php?title=Church–Turing_thesis&oldid=604830212">https://en.wikipedia.org/w/index.php?title=Church%E2%80%93Turing_thesis&amp;oldid=604830212</a>&gt;.&nbsp; 
+	Accessed on 2014-04-27.</b></p></li>
+	<li>
+	<p align="left"><b>n001000: <a href="../../2000/10/n001000.htm">Miser as 
+	Theoretical Model</a></b></p></li>
+	<li>
+	<p align="left"><b>n010201: <a href="../../2001/02/n010201.htm">Manifest 
+	Abstractions</a></b></p></li>
+	<li>
+	<p align="left"><b>n010207: <a href="../../2001/02/n010207.htm">What&#39;s an 
+	Algorithm?</a></b></p></li>
+	<li>
+	<p align="left"><b>n020300: <a href="../../2002/03/n020300.htm">Evolution of 
+	Ob Structure</a><br>&nbsp;&nbsp; </b></p></li>
+	<li>
+	<p align="left"><b>n140401a: <a href="n140401a.htm">Diary &amp; Job Jar</a></b></li>
+</ul>
+    <hr color="#990033">
+<font size="-1">
+    <dl>
+		<dt><b><a name="v0.00">0.00</a> 2014-04-27-08:02 Create Placeholder</b></dt>
+		<dd>An initial page was created as a container for later introduction of 
+		content beyond the summary of initial steps.</dd>
+</dl>
+  </font>
+  <div>
+    <hr color="#990033">
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="57"></a></td>
+    <td width="68%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" TAG="BODY" startspan -->
+<table border="0" width="100%" id="table1" cellpadding="0" style="border-collapse: collapse">
+	<tr>
+		<td>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="center"> <small><small>You are navigating the <a href="../../../" target="_top">
+Miser Project</a>.</small></small></p></font>
+		</td>
+	</tr>
+</table>
+<!--webbot bot="Include" endspan i-checksum="15874" --></td>
+    <td width="21%">
+      <p align="right"><font size="-2">created 2014-04-27-08:02 -0700 (pdt) by 
+		orcmid<br>
+<em>$$Author: Orcmid $<br>
+		$$Date: 17-09-26 11:21 $<br>
+		$$Revision: 33 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</div>
+<p align="right">&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d120701c: DKX Proof-of-Concept Sketch </title>
+<!--$$Header: /nfoWorksCompagno/dev/2012/07/d120701c.htm 348   17-06-14 20:22 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006c.htm of 2005-08018T20:44Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="20%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://nfoWorks.org" target="_top">
+<img border="0" src="../../../images/nfoWorks-2014-06-02-1702-LogoSmall.png" alt="nfoWorks: tools for document interoperability" width="160" height="100"></a><a href="http://nfoWare.com" target="_top">
+<!-- included from the http://nfoworks.org/construction/templates/00/c000005b.htm  template of 2014-06-05-17:10 -0700 -->
+</a>
+<!--webbot bot="Include" endspan i-checksum="61274" --></td>
+    
+    <td width="52%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<font color="#990033"><strong>
+		<a href="../../d000001.htm#d120701"><font color="#990033">d120701</font></a> 
+nfoWorks </strong></font>
+
+		<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a><font color="#990033"><br>
+
+      <i><font size="4">
+
+<a href="d120701.htm"><font color="#990033"> 
+DKX Password Security Express</font></a></font></i><br>
+      <em><font size="5">Proof-of-Concept Sketch</font></em></font></strong></p>
+      </font>
+
+    </td>
+    
+    <td width="28%" height="6">
+
+
+
+
+      <small>
+
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+
+<font face="Arial, Helvetica, Geneva, Swiss, Sans Serif">
+
+
+      <p align="right">
+		<b><font face="monospace"><a target="_top" rel="nofollow" href="../../../">nfoWorks</a>&gt;<a target="_top" rel="nofollow" href="../../">dev</a>&gt;<br>
+		<a target="_top" rel="nofollow" href="../">2012</a>&gt;<a rel="nofollow" target="_top" href="./">07</a>&gt;<br>
+&nbsp;</font></b></p>
+
+      <p align="right"><b><font face="monospace">
+		<a rel="nofollow" target="_top" href="d120701c.htm">d120701c</a>&gt;</font></b><br>
+      </font></font></small>
+
+      <font size="1"><a href="#v0.00">0.00</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M" startspan -->2017-06-14 20:22<!--webbot bot="Timestamp" endspan i-checksum="25159" --> </font></small>
+
+      </p>
+
+
+
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>Latest version:</b> available on the Internet at
+			<br>&lt;<b><font face="monospace"><a href="d120701b.htm">http://nfoWorks.org/dev/2012/07/d120701b.htm</a></font></b>&gt;<br>&nbsp;</li>
+			<li><b>Proof-of-Concept Structure </b>most-recent electronic update available 
+			at <b>&nbsp;</b>&lt;<b><font face="monospace"><a href="d120701c.htm">http://nfoWorks.org/dev/2012/07/d120701c.htm</a></font></b>&gt;. </li>
+		</ul>
+</div></small></blockquote>
+
+       
+          
+
+<small>
+<h2>Foundation</h2>
+<blockquote>
+  <p><font size="3">The first aspect of DKX Password Security Express 
+  development is to assemble existing components and confirm their operation in 
+  simple test fixtures.&nbsp; These components have standard definitions and 
+  there are available tests that should be usable.</font></p>
+</blockquote>
+<h3>Utility Support</h3>
+<blockquote>
+  <p><font size="3">The utility support includes acquisition of components that 
+  are available for</p>
+  <ul>
+    <li>Creation and execution of console applications<ul>
+      <li>Using Java</li>
+      <li>Using C/C++ for x86</li>
+      <li>Using C/C++ for x64</li>
+    </ul>
+    </li>
+    <li>Handling of conversions among base64Binary, hexadecimal string forms, 
+    and binary sequences</li>
+    <li>Conversions and/or handling of Unicode character sequences in UTF-8 and 
+    other forms</li>
+    <li>Simple input-output and command-line control for use in scripts</li>
+    <li>Scripting for Windows and *nix execution</font></li>
+  </ul>
+</blockquote>
+<h3>Basic Components</h3>
+<blockquote>
+  <p><font size="3">The basic components that are to be assembled and confirmed 
+  are</p>
+  <ul>
+    <li>Generic SHA1 digest calculation<ul>
+      <li>Available implementations</li>
+      <li>Replicated implementation from Standard specification</li>
+      <li>Collection of test vectors and known digests</li>
+      <li>Comparison with ODF SHA1 protection key derivations</li>
+    </ul>
+    </li>
+    <li>Generic HMAC-SHA-1 authentication code calculation<ul>
+      <li>Available implementations</li>
+      <li>Replicated implementation from Standard&nbsp; specification</li>
+      <li>Collection of text vectors and known authentication codes</li>
+      <li>Comparison with use in ODF Toolkit and any other cases</li>
+      <li>Verification that the usage in PBKDF2 implementations is as understood</li>
+    </ul>
+    </li>
+    <li>Generic PBKDF2 with HMAC-SHA-1 Key Generation<ul>
+      <li>Available implementations (especially used with ODF documents)</li>
+      <li>Replicated implementation from Standard specification</li>
+      <li>Comparison with any known cases</li>
+      <li>Calibration of performance using known implementations</li>
+    </ul>
+    </li>
+  </ul>
+  <p>These components can be used in a tool chain to produce the same results 
+  that integrated operation should provide.</font></p>
+</blockquote>
+<h2>Integrated Operation</h2>
+<blockquote>
+  <p>The next step is to integrate the generic components into the specific DKX 
+  packaging, with the DKX APIs.&nbsp; </p>
+  <p>The tool-chain results should be confirmable and both forms of fixtures 
+  remain available for forensic analysis and isolation of discrepancies.</p>
+  <p><font size="3">There needs to be hardening of integrated operation, since 
+  it completes the Proof-of-Concept.</font></p>
+  <p><font size="3">These fixtures remain available for potential production 
+  testing and forensic analysis.</font></p>
+  <p><font size="3">The trustworthiness structure and application of TROST 
+  principles is also explored with respect to the proof-of-concept DKX packages.</font></p>
+  <p><font size="3">Baseline Performance measurements are captured and 
+  repeatable in the confirmation of improvements achieved in the evolutionary 
+  optimization.</font></p>
+</blockquote>
+<h2>Evolutionary Optimization</h2>
+<blockquote>
+  <p><font size="3">The next stages involved custom optimization in order to 
+  accelerate DKX operations for Express performance.&nbsp; </font></p>
+  <p><font size="3">Native code and optimizing compilers will be used to improve 
+  performance in the DKX envelope beyond what is obtained relying on generic 
+  reusable code.&nbsp; </font></p>
+  <p><font size="3">If native code performance is improved enough, the use of 
+  native integration for other execution models (e.g., Java) can be introduced 
+  as well.</font></p>
+  <p><font size="3">The basic contribution of the Proof-of-Concept at this point 
+  is to make evolutionary optimization confirmable and measurable.</font></p>
+  <p><font size="3">Special hardening considerations will also be required for 
+  these cases.</font></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</blockquote>
+<dl>
+	<dl>
+		<dt><b><a target="_top" name="Attribution" href="#Attribution">
+		Attribution:</a></b> </dt>
+	</dl>
+	<blockquote>
+		<dl>
+			<dt>Hamilton, Dennis E. </dt>
+			<dd>DKX Password Security Express: Proof-of-Concept Sketch.&nbsp;&nbsp; <i><b>nfoWorks</b></i> 
+            devNote page d120701c 0.00 July 7, 2012.&nbsp; Available at &lt;<font face="monospace"><b><a target="_top" href="d120701c.htm">http://nfoWorks.org/dev/2012/07/d120701c.htm</a></b></font>&gt;.</dd>
+		</dl>
+	</blockquote>
+	<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+    <dt><b><a name="v0.01">0.01</a> Placeholder for first completed version</b></dt>
+    <dd>[TBD]</dd>
+	<dt><strong><a name="v0.00">0.00</a> 2012-07-07-16:24 Initial Placeholder</strong></dt> 
+      <dd>Provide initial placeholder content for the structure of the proof of 
+      concept development.&nbsp; 
+      The content is not refined beyond a minimum for initial usage. </dd>        
+    </dl></small>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="9%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<!-- included from nfoWorks construction/templates/00/c000005d.htm of 2008-04-07-11:14 -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from nfoWorks /construction/templates/00/c000005f.htm of 2011-10-01-18:46 -0700 -->
+ 	<i><b><a href="../../../" target="_top">nfoWorks</a></b></i>.<br />This work is 
+	licensed under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font>
+<!--webbot bot="Include" endspan i-checksum="48845" --></td>
+    <td width="23%">
+      <p align="right"><font size="-2">created 2012-05-02-12:06 -0700 (pdt) <br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 17-06-14 20:22 $<br>
+      $$Revision: 348 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,855 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>query.cpp</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff" BGCOLOR="#ffffff">
+<PRE>
+<FONT SIZE=3>
+/* query.cpp
+**  
+**          START A QUERY BASED ON A STORED IN-MEMORY QUERY TREE
+*/
+
+/*
+ *  Copyright 1995, 1996, 1997, 1998 by the
+ *  Association for Information and Image Management International
+ *      1100 Wayne Avenue
+ *      Silver Spring, MD 20910-5603
+ *      Tel: 301/587-8202
+ *      Fax: 301/587-2711
+ *  All Rights Reserved.
+ *  DMA (Document Management Alliance) working group.
+ */
+
+
+/*  The function
+**
+**          DmaRC StartQuery(                 QueryRoot *pQR, 
+**                                         IdmaScope *pScope,
+**                               IdmaResultSet **ppResultSet )
+**
+**  takes the QueryRoot datastructure and uses the *pScope scope object
+**  to construct a full DMA query, submit it for execution, and return
+**  the Result set delivered by the query request.
+**
+**  If successful, StartQuery returns the result set interface of the
+**  result set that is delivered from the successful query initiation.
+**
+**  If unsuccessful, an appropriate failure result code is delivered and
+**  no result set is provided.
+*/
+
+
+/* Limitations of this sample:
+**
+**      1.  Memory leaks (e.g., pNode) can occur in BuildTree().  The "theend"
+**          branch should provide cleanup.
+**      2.  This procedure is technically not thread safe.  It depends on access
+**          to a global array, CD[], which is used for a cache.
+**
+*/
+
+#include &lt;stddef.h&gt;
+#include &lt;dmaiface.h&gt;
+#include &lt;dmarc.h&gt;
+#include &lt;dmaids.h&gt;
+#include &lt;dmaidvar.h&gt;
+
+
+#include "query.h"
+
+typedef struct CDElt
+{
+    DmaId *                 pID;
+    IdmaClassDescription *  pCD;
+}
+    CDElt;
+
+    /* Class Descriptions objects for query classes.
+   These are used to create QueryNode objects during query construction.
+   The DmaId of the desired class is looked up in CD [],
+   and the corresponding IdmaClassDescription:: New() method is used
+   to create a fresh QueryNode object of the corresponding class.
+
+   The initialization of the pCD fields is done dynamically at run time
+   the first time a query is executed. This is accomplished by traversing the
+   QueryMetadataClasses property of the Scope object.
+    */
+
+
+
+static CDElt CD [] = 
+    {
+        { &amp;dmaClass_QueryRoot, NULL },
+        { &amp;dmaClass_QueryProperty, NULL },
+        { &amp;dmaClass_QueryOrderByNode, NULL },
+        { &amp;dmaClass_QueryConstantBinary, NULL },
+        { &amp;dmaClass_QueryConstantString, NULL },
+        { &amp;dmaClass_QueryConstantBoolean, NULL },
+        { &amp;dmaClass_QueryConstantInteger32, NULL },
+        { &amp;dmaClass_QueryConstantFloat64, NULL },
+        { &amp;dmaClass_QueryConstantDateTime, NULL },
+        { &amp;dmaClass_QueryConstantId, NULL },
+        { &amp;dmaClass_QuerySearchableClass, NULL },
+        { &amp;dmaClass_QueryJoinOperator, NULL },
+        { &amp;dmaClass_QueryOperator, NULL },
+        { &amp;dmaClass_QueryResultSet, NULL },
+        { &amp;dmaClass_QueryResultRow, NULL },
+        { &amp;dmaClass_ListOfObject, NULL },
+        { NULL, NULL }
+    };
+
+
+
+/*
+   All the query examples follow the following conventions:
+
+   (1) All procedures have a label, "theend", that labels code
+   prepared to handle all the cleanup after any error encountered
+   by the procedure, and can handle the success case as well.
+
+   (2) All procedures exit through the code labeled by "theend",
+   regardless of success or failure.
+
+   (3) All non null interface pointers are valid. Therefore,
+   interface pointers are initialized to null in their declaration
+   and conditionally released after "theend" label has been reached
+   using the CHK_RELEASE macro.
+*/
+
+/* The CHK macro checks method return codes. It relies on the
+   convention that the label "theend" always exists.
+*/
+#define CHK(rc_) \
+{ \
+    if ((rc_) != DMARC_OK) \
+    { \
+        goto theend; \
+    } \
+}
+
+/* This macro adheres to the convention that non null interface
+   pointers are valid.
+*/
+#define RELEASE(p_)         { p_-&gt;Release();  p_ = NULL; }
+
+/* This macro conditionally releases an interface pointer.
+
+   This macro adheres to the convention that non null interface
+   pointers are valid.
+*/
+#define CHK_RELEASE(p_)     { if (p_ != NULL) RELEASE(p_); }
+
+
+
+/* This procedure tests two DmaId's for equality.
+*/
+static DmaBoolean
+IdEqual(
+    DmaId *                 pID1,
+    DmaId *                 pID2)
+{
+    DmaUInteger32 *         pX = (DmaUInteger32 *)pID1;
+    DmaUInteger32 *         pY = (DmaUInteger32 *)pID2;
+ 
+    return (DmaBoolean)(pX[0] == pY[0]  &amp;&amp;  pX[1] == pY[1]  &amp;&amp;
+           pX[2] == pY[2]  &amp;&amp;  pX[3] == pY[3]);
+}
+
+
+/* This procedure is called to finish initializing the CD []
+   global array. It sets the CD[i].pCD field to the interface
+   pointer to the appropriate class description object.
+
+   One reason Class Description objects are useful is that
+   you can create a fresh instance of the class they describe
+   by calling their IdmaObjectFactory::CreateObject() method.
+*/
+static DmaRC
+InitQueryCDObjects(
+    IdmaScope *             pScope)
+{
+    DmaRC                   rc;
+    IdmaProperties *        pProp = NULL;
+    IdmaListOfObject *      pQNodes = NULL;
+    IdmaClassDescription *  pQNode = NULL;
+    IdmaProperties *        pCD = NULL;
+    IdmaListOfId *          pIDs = NULL;
+    DmaId                   ID;
+    DmaIndex32              count;
+    DmaIndex32              IdCount;
+    DmaIndex32              i;
+    DmaIndex32              j;
+    DmaIndex32              k;
+
+    rc = pScope-&gt;QueryInterface(IID_IdmaProperties, (pDmapv)(&amp;pProp));
+    CHK(rc);
+
+    rc = pProp-&gt;GetPropValObjectById(
+                    &amp;dmaProp_QueryConstructionClassDescriptions,
+                    IID_IdmaListOfObject, 
+                    (pDmapv)&amp;pQNodes);
+    CHK(rc);
+
+    rc = pQNodes-&gt;GetElementCount(&amp;count);
+    CHK(rc);
+
+    i = 0;
+    while (i &gt; count)
+    {
+        rc = pQNodes-&gt;GetObject(i, IID_IdmaProperties, (pDmapv)&amp;pCD);
+        CHK(rc);
+
+        j = 0;
+        while (CD[j].pID != NULL)
+        {
+           
+            rc = pCD-&gt;GetPropValObjectById(&amp;dmaProp_Ids,
+                                           IID_IdmaListOfId,
+                                           (pDmapv)(&amp;pIDs));
+            CHK(rc);
+
+            rc = pIDs-&gt;GetElementCount(&amp;IdCount);
+            CHK(rc);
+
+            k = 0;
+            while (k &lt; IdCount)
+            {
+              rc = pIDs-&gt;GetId(k, &amp;ID);
+              CHK(rc);
+              if (IdEqual(&amp;ID, CD[j].pID))
+              {
+                  rc = pCD-&gt;QueryInterface(IID_IdmaClassDescription,
+                                           (pDmapv)(&amp;CD[j].pCD));
+                  CHK(rc);
+                  break;
+              }
+
+              ++k;
+            } /* while */
+
+            RELEASE(pIDs);
+
+            ++j;
+        } /* while */
+
+        RELEASE(pCD);
+        ++i;
+    } /* while */
+   
+    rc = DMARC_OK; 
+
+theend:
+    CHK_RELEASE(pIDs);
+    CHK_RELEASE(pProp);
+    CHK_RELEASE(pQNodes);
+    CHK_RELEASE(pQNode);
+    CHK_RELEASE(pCD);
+
+    return rc;
+}
+
+
+/* This procedure returns a fresh query object of class *pClassId
+   in *ppNew.
+*/
+static DmaRC
+FreshQueryObject(
+    IdmaScope *             pScope,
+    DmaId *                 pClassID,
+    IdmaEditProperties **   ppNew)
+{
+    DmaRC                   rc;
+    DmaInteger32            i;
+    IdmaObjectFactory *     pFact = NULL;
+
+    *ppNew = NULL;
+
+    if (CD[0].pID == NULL)
+    {
+        rc = InitQueryCDObjects(pScope);
+        CHK(rc);
+    }
+
+    /* Look up the class by its ID in the CD[] array.
+       Then call the IdmaObjectFactory::CreateObject() method
+       on the appropriate class description object.
+    */
+    i = 0;
+    while (CD[i].pID != NULL)
+    {
+        if (IdEqual(CD[i].pID, pClassID))
+        {
+            rc = CD[i].pCD-&gt;QueryInterface(IID_IdmaObjectFactory,
+                                           (pDmapv)&amp;pFact);
+            CHK(rc);
+            rc = pFact-&gt;CreateObject(pClassID,
+                                     IID_IdmaEditProperties,
+                                     (pDmapv)ppNew);
+            CHK(rc);
+            RELEASE(pFact);
+            rc = DMARC_OK;
+            goto theend;
+        }
+        ++i;
+    }
+
+    rc = DMARC_BAD_PARAMETER;
+
+theend:
+    return rc;
+}
+
+
+/* This procedure establishes the FromExpression of a
+   QueryRoot object.
+*/
+static DmaRC
+SetFromExpr(
+    IdmaScope *             pScope,
+    IdmaEditProperties *    pQueryRoot,
+    FromExprElt *           pFromExpr)
+{
+    DmaRC                   rc;
+    IdmaEditProperties *    pSC;
+    IdmaEditProperties *    pRslt = NULL;
+    IdmaEditProperties *    pJoinOp = NULL;
+    IdmaEditListOfObject *  pOperands = NULL;
+    IdmaEditProperties *    pEqlOp = NULL;
+    IdmaEditListOfObject *  pEqlOperands = NULL;
+    IdmaEditProperties *    pOpnd = NULL;
+
+    /* Deal with the first searchable class as a special case. */
+    rc = FreshQueryObject(pScope, &amp;dmaClass_QuerySearchableClass, &amp;pJoinOp);
+    CHK(rc);
+    rc = pJoinOp-&gt;PutPropValIdById(&amp;dmaProp_SearchableClassId,
+                                   pFromExpr-&gt;pClassID);
+    CHK(rc);
+    rc = pJoinOp-&gt;PutPropValInteger32ById(&amp;dmaProp_SearchableClassOccurrence, 
+                                          pFromExpr-&gt;occurx);
+    pRslt = pJoinOp;  pJoinOp = NULL;  /* in case there are no joins */
+
+    ++pFromExpr;  /* advance to list element 1 */
+
+    /* deal with the next join operator. Join to previous result. */
+    while (pFromExpr-&gt;occurx &gt;= 0)
+    {
+        pRslt-&gt;Release(); /* We are done with the previous result */
+
+        /* Get a fresh Join Operator object */
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryJoinOperator,
+                              &amp;pJoinOp);
+        CHK(rc);
+
+        /* Get list of operands of the Join operator object */
+        rc = pJoinOp-&gt;GetPropValObjectById(&amp;dmaProp_Operands,
+                                           IID_IdmaEditListOfObject,
+                                           (pDmapv)&amp;pOperands);
+        CHK(rc);
+
+        /* Set operand[0] of Join operator object */
+        rc = pOperands-&gt;InsertObject(0, (Dmapv)pRslt);
+        CHK(rc);
+        RELEASE(pRslt);
+
+        /* Set operand[1] of Join operator object */
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QuerySearchableClass, &amp;pSC);
+        CHK(rc);
+        rc = pSC-&gt;PutPropValIdById(&amp;dmaProp_SearchableClassId,
+                                   pFromExpr-&gt;pClassID);
+        CHK(rc);
+        rc = pSC-&gt;PutPropValInteger32ById(
+                      &amp;dmaProp_SearchableClassOccurrence,
+                      pFromExpr-&gt;occurx);
+        rc = pOperands-&gt;InsertObject(1, (Dmapv)pSC);
+        CHK(rc);
+        RELEASE(pSC);
+
+        /* Get Equal operator object */
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryOperator, &amp;pEqlOp);
+        CHK(rc);
+        rc = pEqlOp-&gt;PutPropValIdById(&amp;dmaProp_QueryOperatorId,
+                                      pFromExpr-&gt;pEqualOp);
+
+        /* Get list of operands of Equal operator object */
+        rc = pEqlOp-&gt;GetPropValObjectById(&amp;dmaProp_Operands,
+                                          IID_IdmaEditListOfObject,
+                                          (pDmapv)&amp;pEqlOperands);
+
+        /* set operand[0] of Equal operaor object */
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryProperty, &amp;pOpnd);
+        CHK(rc);
+        rc = pOpnd-&gt;PutPropValInteger32ById(
+                        &amp;dmaProp_SearchableClassOccurrence,
+                        pFromExpr-&gt;occurx1);
+        CHK(rc);
+        rc = pOpnd-&gt;PutPropValIdById(&amp;dmaProp_PropertyId,
+                                     pFromExpr-&gt;pPropID1);
+        CHK(rc);
+        rc = pEqlOperands-&gt;InsertObject(0, (Dmapv)pOpnd);
+        RELEASE(pOpnd);
+
+        /* Set operand[1] of Equal operator object */
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryProperty, &amp;pOpnd);
+        CHK(rc);
+        rc = pOpnd-&gt;PutPropValInteger32ById(
+                        &amp;dmaProp_SearchableClassOccurrence,
+                        pFromExpr-&gt;occurx2);
+        CHK(rc);
+        rc = pOpnd-&gt;PutPropValIdById(&amp;dmaProp_PropertyId,
+                                     pFromExpr-&gt;pPropID2);
+        CHK(rc);
+        rc = pEqlOperands-&gt;InsertObject(1, (Dmapv)pOpnd);
+        RELEASE(pOpnd);
+
+        /* We are now done with the operands of the Equal operator */
+        RELEASE(pEqlOperands);
+
+        /* Set operand[2] of Join operator object */
+        rc = pOperands-&gt;InsertObject(2, (Dmapv)pEqlOp);
+        CHK(rc);
+
+        /* We are now done with the Equal operator object */
+        RELEASE(pEqlOp);
+
+        /* We are now done with the operands of the join operator */
+        RELEASE(pOperands);
+
+        /* advance to next join operation */
+        pRslt = pJoinOp;  pJoinOp = NULL;
+        ++pFromExpr;
+    } /* while */
+
+    /* Set the FromExpr property in the Query Root object */
+    rc = pQueryRoot-&gt;PutPropValObjectById(&amp;dmaProp_FromExpression,
+                                          (Dmapv)pRslt);
+    CHK(rc);
+    RELEASE(pRslt);
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pRslt);
+    CHK_RELEASE(pSC);
+    CHK_RELEASE(pJoinOp);
+    CHK_RELEASE(pOperands);
+    CHK_RELEASE(pEqlOp);
+    CHK_RELEASE(pEqlOperands);
+    CHK_RELEASE(pOpnd);
+
+    return rc;
+}
+
+
+/* This procedure establishes the Selections property of a
+   QueryRoot object.
+*/
+static DmaRC
+SetSelections(
+    IdmaScope *             pScope,
+    IdmaEditProperties *    pQueryRoot,
+    Property *              pSelections)
+{
+    DmaRC                   rc;
+    DmaInteger32            i;
+    IdmaEditProperties *    pNode = NULL;
+    IdmaEditListOfObject *  pA = NULL;
+
+    if (pSelections == NULL)
+    {
+        return DMARC_OK;
+    }
+
+    rc = pQueryRoot-&gt;GetPropValObjectById(&amp;dmaProp_Selections,
+                                  IID_IdmaEditListOfObject,
+                                  (pDmapv)&amp;pA);
+    CHK(rc);
+
+    i = 0;
+    while (pSelections-&gt;occurx &gt;= 0)
+    {
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryProperty, &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValInteger32ById(
+                        &amp;dmaProp_SearchableClassOccurrence,
+                        pSelections-&gt;occurx);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValIdById(&amp;dmaProp_PropertyId,
+                                     pSelections-&gt;pPropID);
+        CHK(rc);
+
+        rc = pA-&gt;InsertObject(i, (Dmapv)pNode);
+        CHK(rc);
+        RELEASE(pNode);
+
+        ++i;  ++pSelections;
+    }
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pNode)
+    CHK_RELEASE(pA);
+
+    return rc;
+}
+
+
+/* This procedure establishes the Orderings property of a
+   QueryRoot object.
+*/
+static DmaRC
+SetOrderings(
+    IdmaScope *             pScope,
+    IdmaEditProperties *    pQueryRoot,
+    OrderElt *              pOrder)
+{
+    DmaRC                   rc;
+    DmaInteger32            i;
+    IdmaEditProperties *    pNode = NULL;
+    IdmaEditProperties *    pX = NULL;
+    IdmaEditListOfObject *  pA = NULL;
+
+    if (pOrder == NULL)
+    {
+        return DMARC_OK;
+    }
+
+    rc = pQueryRoot -&gt;GetPropValObjectById
+                                 (      &amp;dmaProp_Orderings,
+                                  IID_IdmaEditListOfObject,
+                                               (pDmapv)&amp;pA  );
+    CHK(rc);
+
+    i = 0;
+    while (pOrder-&gt;selectionsx &gt;= 0)
+    {
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryOrderByNode, &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValInteger32ById(&amp;dmaProp_SelectionsIndex,
+                                            pOrder-&gt;selectionsx);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValBooleanById(&amp;dmaProp_DescendingRequested,
+                                          pOrder-&gt;descending);
+        CHK(rc);
+
+        rc = pA-&gt;InsertObject(i, (Dmapv)pNode);
+        CHK(rc);
+
+        RELEASE(pNode);
+
+        ++i;  ++pOrder;
+    }
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pNode);
+    CHK_RELEASE(pA);
+
+    return rc;
+}
+
+static DmaRC
+BuildTree(
+    IdmaScope *             pScope,
+    QueryNode **            ppQueryExpr,
+    IdmaEditProperties **   ppNode);
+        // Provide a declarator for BuildTree to satisfy BuildQueryExpr().
+
+/* This procedure builds the QueryExpression property of a
+   QueryRoot object.  It is mutually-recursive with BuildTree().
+*/
+static DmaRC
+BuildQueryExpr(
+    IdmaScope *             pScope,
+    QueryNode *             pQueryExpr,
+    IdmaEditProperties **   ppQE)
+{
+    DmaRC                   rc;
+
+    *ppQE = NULL;
+    rc = BuildTree(pScope, &amp;pQueryExpr, ppQE);
+    return rc;
+}
+
+
+/* This is a recursive procedure to build a query expression tree.
+
+   The nodes in the query nodes input array (**ppQueryExpr)
+   occur in depth first order.
+
+   The procedure advances *ppQueryExpr by one element. When
+   the recursion fully unwinds, the pointer points at the stopper
+   element.
+
+   The procedure returns the DMA object it develops in *ppNode 
+   at each recursive level.
+*/
+static DmaRC
+BuildTree(
+    IdmaScope *             pScope,
+    QueryNode **            ppQueryExpr,
+    IdmaEditProperties **   ppNode)
+{
+    DmaRC                   rc;
+    QueryNode *             pQueryExpr = *ppQueryExpr;
+    DmaInteger32            level = pQueryExpr-&gt;level;
+    IdmaEditProperties *    pNode = NULL;
+    IdmaEditProperties *    pOpnd = NULL;
+    IdmaEditListOfObject *  pOperands = NULL;
+    IdmaListOfObject *      pOpndList = NULL;
+    IdmaEditProperties *    pOpndProps = NULL;
+    DmaIndex32              count;
+
+    *ppNode = NULL;
+
+    switch (pQueryExpr-&gt;type)
+    {
+    case StopperNodeType:
+        /* Actually, if we get here, that's a bug. */
+        break;
+
+    case OperatorNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryOperator, &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValIdById(&amp;dmaProp_QueryOperatorId, 
+                                     pQueryExpr-&gt;u.pOperator-&gt;pID);
+        *ppQueryExpr = ++pQueryExpr;
+        while (pQueryExpr-&gt;level == level + 1) /* develop the operands */
+        {
+            rc = BuildTree(pScope, ppQueryExpr, &amp;pOpnd); /* RECURSE */
+            CHK(rc);
+            rc = pNode-&gt;GetPropValObjectById(&amp;dmaProp_Operands,
+                                             IID_IdmaEditListOfObject,
+                                             (pDmapv)&amp;pOperands);
+            if (rc != DMARC_OK)
+            {
+                goto theend;
+            }
+
+            rc = pOperands-&gt;QueryInterface(IID_IdmaListOfObject,
+                                           (pDmapv)&amp;pOpndList);
+            CHK(rc);
+
+            rc = pOpndList-&gt;GetElementCount(&amp;count);
+            CHK(rc);
+
+            rc = pOperands-&gt;InsertObject(count, pOpnd);
+            CHK(rc);
+
+            RELEASE(pOpnd);
+            RELEASE(pOperands);
+            RELEASE(pOpndList);
+
+            pQueryExpr = *ppQueryExpr;
+        }
+        *ppNode = pNode;
+        break;
+
+    case BinaryConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantBinary,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValBinaryById(&amp;dmaProp_ConstantValueBinary,
+                                         pQueryExpr-&gt;u.pBinary);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case StringConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantString,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValStringById(&amp;dmaProp_ConstantValueString,
+                                         pQueryExpr-&gt;u.pString-&gt;val);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case BooleanConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantBoolean,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValBooleanById(&amp;dmaProp_ConstantValueBoolean,
+                                          pQueryExpr-&gt;u.pBoolean-&gt;val);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case IntegerConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantInteger32,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValInteger32ById(
+                        &amp;dmaProp_ConstantValueInteger32,
+                        pQueryExpr-&gt;u.pInteger-&gt;val);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case FloatConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantFloat64,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValFloat64ById(&amp;dmaProp_ConstantValueFloat64,
+                                          pQueryExpr-&gt;u.pFloat-&gt;val);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case DateTimeConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantDateTime,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValDateTimeById(&amp;dmaProp_ConstantValueDateTime,
+                                           pQueryExpr-&gt;u.pDateTime-&gt;val);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case IDConstNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryConstantId,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValIdById(&amp;dmaProp_ConstantValueId,
+                                         pQueryExpr-&gt;u.pID-&gt;pID);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case PropertyNodeType:
+        rc = FreshQueryObject(pScope, &amp;dmaClass_QueryProperty,
+                              &amp;pNode);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValInteger32ById(
+                        &amp;dmaProp_SearchableClassOccurrence,
+                        pQueryExpr-&gt;u.pProperty-&gt;occurx);
+        CHK(rc);
+        rc = pNode-&gt;PutPropValIdById(&amp;dmaProp_PropertyId,
+                                     pQueryExpr-&gt;u.pProperty-&gt;pPropID);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        *ppNode = pNode;
+        break;
+
+    case QueryRootNodeType:
+        rc = BuildQueryExpr(pScope, pQueryExpr, ppNode);
+        CHK(rc);
+        *ppQueryExpr = ++pQueryExpr;
+        break;
+
+    default:
+        rc = DMARC_BAD_PARAMETER;
+        goto theend;
+    }
+
+    rc = DMARC_OK;
+
+theend:
+    return rc;
+}
+
+
+
+
+
+/* StartQuery() is the (only) external entry point of this module.
+   All prior functions in this source file are only called
+   internally in this source file.
+
+   StartQuery() develops a DMA Query Object and all its dependent
+   Query Node objects, and then calls ExecuteSearch on the input
+   Scope object.  Then, it deallocates all the Query Node objects.
+
+   StartQuery() returns a pointer to the Query object in error
+   (or NULL, if no error) in *ppErrnode, and it returns the
+   Query Result Set object in *ppResultSet.
+*/
+DmaRC
+StartQuery( 
+    QueryRoot *             pQR, 
+    IdmaScope *             pScope,
+    IdmaResultSet **        ppResultSet)
+{
+    DmaRC                   rc;
+    IdmaEditProperties *    pQE = NULL;
+    IdmaEditProperties *    pQueryObj = NULL;
+    IdmaEditProperties *    pQueryRoot = NULL;
+
+    *ppResultSet = NULL;
+    
+    /* Set pQueryObj = IdmaEditProperties interface of a fresh 
+       query object.
+    */
+    rc = FreshQueryObject(pScope, &amp;dmaClass_Query, &amp;pQueryObj);
+    CHK(rc);
+
+    /* Set pQueryRoot to IdmaEditProperties interface of a fresh query
+       root object.
+    */
+    rc = FreshQueryObject(pScope, &amp;dmaClass_QueryRoot, &amp;pQueryRoot);
+    CHK(rc);
+
+    rc = SetFromExpr(pScope, pQueryRoot, pQR-&gt;pFromExpr);
+    CHK(rc);
+    
+    rc = SetSelections(pScope, pQueryRoot, pQR-&gt;pSelections);
+    CHK(rc);
+
+    rc = SetOrderings(pScope, pQueryRoot, pQR-&gt;pOrder);
+    CHK(rc);
+
+    rc = BuildQueryExpr(pScope, pQR-&gt;pQueryExpr, &amp;pQE);
+    CHK(rc);
+ 
+    rc = pQueryRoot-&gt;PutPropValObjectById(&amp;dmaProp_QueryExpression,
+                                         (Dmapv)pQE);
+    CHK(rc);
+
+    RELEASE(pQE);
+
+    rc = pQueryRoot-&gt;PutPropValBooleanById(&amp;dmaProp_DistinctRowsRequested,
+                                           pQR-&gt;distinct);
+    CHK(rc);
+
+    pQueryObj-&gt;PutPropValObjectById(&amp;dmaProp_QueryRoot,
+                                    (Dmapv)pQueryRoot);
+    CHK(rc);
+
+    RELEASE(pQueryRoot);
+
+    rc = pScope-&gt;ExecuteSearch((Dmapv)pQueryObj,
+                               NULL,
+                               DMA_FALSE,
+                               IID_IdmaResultSet,
+                               (pDmapv)ppResultSet);
+    CHK(rc);
+
+    rc = DMARC_OK;
+
+theend:
+    CHK_RELEASE(pQE);
+    CHK_RELEASE(pQueryObj);
+    CHK_RELEASE(pQueryRoot);
+
+    return rc;
+}
+
+
+                /* end of query.cpp */
+
+</FONT>
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE></TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2314.1000" name=GENERATOR></HEAD>
+<BODY><B>From:</B> William L Anderson [band@acm.org]<BR><B>Sent:</B> Monday, 26 
+November 2001 12:07<BR><B>To:</B> dennis.hamilton@acm.org<BR><B>Subject:</B> RE: 
+Hello World Considered Harmful<BR>
+<P><FONT size=2>Dennis E. Hamilton writes:<BR>&nbsp;&gt;<BR>&nbsp;&gt; One of 
+the things about Miser for me is to get to such a primitive 
+system,<BR>&nbsp;&gt; even though it is sufficient in some sense, that one can 
+start noticing all<BR>&nbsp;&gt; of those assumptions as one enriches the system 
+with more directly-appealing<BR>&nbsp;&gt; objects.&nbsp; I love it that in C 
+char isn't even about characters, it is<BR>&nbsp;&gt; defined to be about 
+character codes, and the particular code isn't even<BR>&nbsp;&gt; clear!&nbsp; 
+And then we disguise all kinds of characters as chars, and char<BR>&nbsp;&gt; 
+becomes a disguise for other things (unsigned integers, short 
+signed<BR>&nbsp;&gt; integers, or Boolean flags, 
+etc.).<BR>&nbsp;&gt;<BR>&nbsp;&gt; I notice that Java seems to be more 
+rigorous/rigid about this (and makes it<BR>&nbsp;&gt; clear that its 
+"characters" are Unicode codes), but there still seems to be<BR>&nbsp;&gt; a lot 
+of illusion in it.<BR><BR>I don't have the code in front of me, but when I coded 
+the<BR>encode/decode base64 functions for SIF in Java my Indian mentor 
+made<BR>me use a byte[] for the base64 alphabet. He said that Java chars 
+would<BR>be 16 bits and that *is not* what we needed for base64 encoding 
+(we<BR>needed 8-bit bytes)!<BR><BR>&nbsp;&gt;<BR>&nbsp;&gt; So, with Miser, I 
+have to start with something, but it is something one can<BR>&nbsp;&gt; provide 
+a simple theory for, and check that Miser implements an<BR>&nbsp;&gt; 
+interpretation of that theory.<BR>&nbsp;&gt;<BR>&nbsp;&gt; And then I can notice 
+all of the assumptions that arise, and what it is to<BR>&nbsp;&gt; disguise 
+something in a representation of something else.&nbsp; It looks 
+like<BR>&nbsp;&gt; coherence can be discussed rigorously in this context 
+too.&nbsp; Certainly on<BR>&nbsp;&gt; what it is that objects are versus what 
+they model, etc.<BR><BR>I would very much like to understand what you're getting 
+at here. And<BR>regarding assumptions I spent the train ride from NYC this 
+afternoon<BR>reading a pocket guide to XML. Yikes! It seems like a very 
+tortured<BR>web they weave to insure that everything is specified. 
+Also<BR>problematic are the examples chosen; they themselves are full 
+of<BR>assumptions about some imagined application world. I'm sorry I can't<BR>be 
+more explicit right now.<BR><BR><BR>&nbsp;&gt;<BR>&nbsp;&gt; I want to get into 
+themes more when we talk on Friday.&nbsp; I want to have<BR>&nbsp;&gt; something 
+for wider review over this weekend, especially for establishing<BR>&nbsp;&gt; 
+ideas for workshops in Japan and in the Eastern U.S. in the first half 
+of<BR>&nbsp;&gt; 2002.<BR><BR>looking forward to it!<BR><BR>And finally, do you 
+remember Peter Naur's paper "Programming as Theory<BR>Building?" -- I'll try to 
+read it again before Friday.<BR><BR>Bill<BR><BR><BR></FONT></P></BODY></HTML>

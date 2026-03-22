@@ -1,0 +1,343 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X020501e.htm 3     02-06-05 9:03 Orcmid $-->
+<title>X020501e: Outlook 2002 Save-Document Analysis</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h2 align="center"><a href="X00-log.htm">ODMA Incident Report</a> <b><a href="X020501.htm">X020501</a>&nbsp;</b></h2>
+
+<h1 align="center">Outlook 2002 Save-Document Analysis</h1>
+
+<h2 align="center"><b>Outlook2002 + ODMA 2.0 + Content Manager</b></h2>
+
+<h5 align="center">V<span style="font-variant: small-caps">ersion</span> <a href="#0.10">0.20</a>
+L<span style="font-variant: small-caps">ast updated</span> 
+ 2002-06-05-09:35 -0700 (pdt)<br>
+The latest version
+of this information is available on the <a href="http://DMware.info/">AIIM
+DMware</a> <a href="http://ODMA.info/">ODMA site</a>.
+</h5>
+
+<blockquote>
+  <hr>
+
+<h3><i><a href="#Summary">Summary</a>:</i></h3>
+
+  <p><i><font size="4">This is the supporting analysis of an Outlook 2002
+  attempted to Save via ODMA.</font></i></p>
+
+</blockquote>
+
+<blockquote>
+  <h3><a href="#Contributors"><em>Contributors</em></a></h3>
+  <h3><a href="#History"><em>Change History</em></a></h3>
+</blockquote>
+
+<blockquote>
+<blockquote>
+</blockquote>
+  <hr>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h2>1. <a name="Summary">Analysis</a> (2002-05-20):</h2>
+
+<blockquote>
+  <p>An ODMA log file (here, <a href="X020501d.txt"><b><code>X020501d.txt</code></b></a>)
+  has been obtained for the failing scenario.&nbsp; This log file is decomposed
+  and annotated request-by-request in the following sections.</p>
+
+</blockquote>
+<h3>1.1 Registration of the Desktop Application</h3>
+
+<blockquote>
+  <p>The log begins with Outlook's registration of itself as an ODMA-aware
+  application.&nbsp;&nbsp; If Outlook is unable to access the ODMA Connection
+  Manager's <b><code>ODMRegisterApp</code></b> operation, it must simply operate
+  as if there is no DMS to be used.&nbsp; On successfully making a request (as
+  confirmed by the log being created), the continuation depends on the results
+  delivered by each operation.</p>
+
+  <blockquote>
+    <pre style="border-style: solid; border-width: 1"><b>ODMRegisterApp
+	Input parameters:
+	version=100(64)
+	lpszAppId=MSOutlook;
+	dwEnvData=5309080(510298)
+	Output parameters:
+	odmHandle=71895248(44908d0)
+	Return value=0(0)</b></pre>
+  </blockquote>
+  <ol>
+    <li>Microsoft Outlook 2002 invokes <b><code>ODMRegisterApp</code></b> to
+      establish operation with the default ODMA DMS that is available for it to
+      use.</li>
+    <li>Outlook identifies itself as &quot;<code><b>MSOutlook</b></code>&quot;.&nbsp;</li>
+    <li>Outlook specifies that it requires ODMA 1.0 functionality (<b><code><i>version</i>=100</code></b>)
+      and no more.&nbsp; This provides maximum interoperability with all
+      versions of ODMA and with all DMS integrations.</li>
+    <li>There is a default DMS available for Outlook 2002.&nbsp; ODMA returns a
+      handle for Outlook to use in further operations with ODMA and specifies an
+      <b><code>ODM_SUCCESS</code></b> return value.&nbsp;&nbsp;</li>
+  </ol>
+  <p>The DMS is also initialized for a session of operation with Outlook.&nbsp;
+  Generally, there is no user interaction required because no managed-document
+  operations have yet occurred.&nbsp; Some DMS integrations may require that the
+  user be authenticated at this point, although there might not be any
+  meaningful DMS accesses in this session.</p>
+  <p>&nbsp;</p>
+</blockquote>
+<h3>1.2 Prepare to Establish a New Document
+</h3>
+<blockquote>
+  <p>When a <b>File / Save As ...</b> or similar menu option occurs in an
+  application, there is a sequence of ODMA operations that must be performed
+  before a document is fully created in the DMS.&nbsp; The first step is ODMA
+  operation <b><code>ODMNewDoc</code></b>:
+</p>
+  <blockquote>
+    <pre style="border-style: solid; border-width: 1"><b>ODMNewDoc
+	Input parameters:
+	odmHandle=71895248(44908d0)
+	dwFlags=16(10)
+	lpszFormat=.txt;
+	lpszDocLocation=Not Defined
+	Output parameters:
+	lpszDocId=::ODMA\FRNODMA\;
+	Return value=0(0)</b></pre>
+  </blockquote>
+  <ol>
+    <li>In order to create a document for the first time, it is necessary to
+      first tell the DMS that a new document is to be prepared for.&nbsp; This
+      is accomplished by requesting the ODMA <b><code>ODMNewDoc</code></b>
+      operation. The <b><code>ODMRegisterApp</code></b>-returned <b><code><i>odmHandle</i></code></b>
+      is provided to <b><code>ODMNewDoc</code></b> as identification of the ODMA
+      session that the request is on behalf of.</li>
+    <li>Outlook specifies a <b><code><i>dwFlags</i></code></b> value of 16 (<b><code>ODM_SILENT</code></b>),
+      signifying that the DMS should respond silently with a new document
+      without interacting with the user.&nbsp; This is typical.</li>
+    <li>Outlook specifies that the new document will (likely) be in <b><code>.txt</code></b>
+      format.</li>
+    <li>Outlook indicates (by having <b><code><i>lpszDocLocation</i></code></b>
+      not defined -- <b><code>NULL</code></b>) that it has no preference for
+      where any file for the new document to be created is to be placed for use
+      by Outlook or to be delivered by Outlook for delivery into the DMS.&nbsp;
+      (The DMS must specify a location that can be accessed by Outlook, when
+      content is to be transferred later in the sequence of operations.)</li>
+    <li>The default DMS is accessed by ODMA and the provisional ODMA Document ID
+      &quot;<b><code>::ODMA\FRNODMA\</code></b>&quot; is returned by the DMS
+      (which has DMS ID &quot;<b><code>FRNODMA</code></b>&quot;).&nbsp; This
+      provisional form is used by this particular DMS to distinguish a pending
+      new document from an existing document.</li>
+    <li>The pending establishment of a new document is complete and ODMA returns
+      <b><code>ODM_SUCCESS</code></b> as the return value.</li>
+  </ol>
+  <p>It is not necessary for the DMS to be completely silent at this
+  point.&nbsp; For example, the user might be required to log onto the DMS
+  system for authentication purposes.&nbsp; Since no access to managed documents
+  has actually occured so far, and the application may elect not to go further,
+  it is preferable for the DMS to be silent.&nbsp; Also, the Outlook user is
+  unaware of the activity up to this point.&nbsp; This is all preparation
+  between Outlook, ODMA, and the default DMS.</p>
+</blockquote>
+<h3>1.3 Complete the Establishment of a New Document</h3>
+<blockquote>
+  <blockquote>
+    <pre style="border-style: solid; border-width: 1"><b>ODMSaveAs
+	Input parameters:
+	odmHandle=71895248(44908d0)
+	lpszDocId=::ODMA\FRNODMA\;
+	lpszFormat=.txt;
+	pcbCallBack address=823698922(3118a5ea)
+	pInstanceData address=52793216(3258f80)
+	Output parameters:
+	lpszNewDocId=::ODMA\FRNODMA\DZ4MLR9VANIJH4BS\0\0\FRN$NULL;
+	Return value=0(0)</b></pre>
+  </blockquote>
+  <ol>
+    <li>The <b><code>ODMSaveAs</code></b> operation is used to establish a new
+      (provisional) document in the DMS.&nbsp; The new document can be based on
+      an existing document or it can be an entirely-new document.</li>
+    <li>The <b><i><code>lpszDocId</code></i></b> of &quot;<b><code>::ODMA\FRNODMA\</code></b>&quot;
+      indicates that we now want to establish an actual (provisional) document
+      for the pending document we started.&nbsp; In this case, no intervening
+      preparation operations have occurred.&nbsp; This is also typical.</li>
+    <li>The default format for this document is <b><code>.txt</code></b>.</li>
+    <li>Outlook is providing a <b><i><code>pcbCallBack</code></i></b> parameter,
+      along with data for the call-back operation, <b><code><i>pInstanceData</i></code></b>.&nbsp;
+      This indicates that Outlook has an option dialog that it will present for
+      controlling further options in the way the document is to be saved.&nbsp;
+      (For example, it might provide for selecting a different format for the
+      saved document, such as <code><b>.msg</b></code> or <b><code>.rtf</code></b>.)&nbsp;&nbsp;</li>
+    <li>
+      <p align="left">The DMS is provided this information and is expected to present a dialog
+      for capturing and confirming user information about the document that is
+      being created.&nbsp; There is also required to be an option for the user
+      declining to use the DMS and requesting that the document be saved in the
+      local file system instead.&nbsp; An additional option from the DMS, if
+      there is a <b><i><code>pcbCallBack</code></i></b>, is to provide an option
+      button by which the user can communicate any storage preferences back to
+      Outlook before the content is transferred to the DMS and the document
+      actually created.
+      <p align="center"><br>
+      <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:344.25pt;
+ height:295.5pt'>
+ <v:imagedata src="file:///C:/windows/TEMP/msoclip1/01/clip_image001.png"
+  o:title=""/>
+</v:shape><![endif]-->
+      <img src="X020501f1.jpg" v:shapes="_x0000_i1025" width="459" height="394"></span></p>
+      <p align="left"><span style="font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">The
+      DMS client presents a log-in requirement before anything else is
+      attempted.</span></p>
+      <p align="center"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:366.75pt;
+ height:248.25pt'>
+ <v:imagedata src="file:///C:/windows/TEMP/msoclip1/01/clip_image001.png"
+  o:title=""/>
+</v:shape><![endif]-->
+      <img src="X020502f2.jpg" v:shapes="_x0000_i1025" width="489" height="331"></span></p>
+      <p align="left"><span style="font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">The
+      DMS client then presents additional information to be specified /
+      confirmed for the document being established.&nbsp; Notice that there is
+      an option to use the File System instead.&nbsp; The Options ... button
+      will use a supplemental dialog supplied by Outlook to determine if the
+      user wants to specify a different format for the document before the
+      content is saved.&nbsp; Neither of these options are taken in the current
+      test.&nbsp; When Save is selected, the DMS client completes the
+      establishment of a provisional document and returns control through ODMA.<br>
+      </span></li>
+    <li>The DMS returns <code><b>ODM_SUCCESS</b></code>, confirming that a new
+      (provisional) document is now established with the document-management
+      system.&nbsp; This document reflects the entries made by the user and any
+      format-change established via operation of the <b><i><code>pcbCallBack</code></i></b>
+      to provide further Outlook-specific options.&nbsp; The new document is now
+      (provisionally) in the DMS.&nbsp; However, no content has been transfered
+      from Outlook at this point.&nbsp;&nbsp;</li>
+    <li>The DMS delivers the <b><code><i>lpszNewDocId</i>[]</code></b> value of
+      &quot;<b><code>::ODMA\FRNODMA\DZMLRVANIJH4BS\0\0\FRN$NULL</code></b>&quot;
+      as the ODMA Document ID that is specific to the (provisional) document
+      just established.&nbsp; The use of provisional documents is to allow for
+      the possibility that completion of the document can still fail.&nbsp; Each
+      DMS will be designed to deal with these cases in an
+      implementation-specific way.&nbsp; It is not necessary for ODMA or Outlook
+      to be aware of the particular procedure.</li>
+  </ol>
+  <p>At this point, there is no further log output.&nbsp; No new ODMA requests
+  are made before Outlook displays a failure message.</p>
+  <table border="2" cellspacing="3" width="100%">
+    <tr>
+      <td width="100%" bordercolor="#FF0000" bordercolorlight="#FF0000" bordercolordark="#FF0000">
+        <h4><font color="#FF0000"><b>Additional Analysis Information Required:</b></font></h4>
+        <ul>
+          <li><font color="#FF0000"><b>Configure the SampleDMS as the default
+            DMS and have it operate with Outlook 2002.&nbsp; See if it gets any
+            farther.&nbsp;&nbsp;</b></font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</blockquote>
+<h3>1.4 Expected Continuation</h3>
+<blockquote>
+  <p>At this point, there are usually three more operations to be performed:</p>
+  <ol>
+    <li><b><code>ODMOpenDoc</code></b> actually opens the newly created document
+      and obtains a file location where Outlook can store the content for the
+      document.</li>
+    <li><b><code>ODMSaveDoc</code></b> informs the DMS that the document content
+      has been stored in the agreed file location and can now be moved to the
+      DMS as the content for the document.&nbsp; This may cause finalization of
+      the document and a different document identification may be returned for
+      this form.&nbsp; A permanent addition to the DMS might not exist until
+      this operation has been performed.</li>
+    <li><b><code>ODMCloseDoc</code></b> is used to release the file location and
+      cease all operation with the document content.</li>
+    <li>Other operations can also be performed to manipulate properties in the
+      profile of the document and discover information about the document for
+      use in presentations to the user.</li>
+  </ol>
+  <p>None of this activity occurred in the Outlook 2002 + Content Manager
+  configuration for which this log was produced.</p>
+  <hr>
+</blockquote>
+
+<h2><a name="Contributors">Contributors</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><a href="../faq/Q000605.htm#MariaGabrielaSerkin">Maria Gabriela Serkin</a></dt>
+    <dd>confirmed that Outlook 2002 is ODMA-aware and tested saving of e-mail
+      messages into a DMS, providing the key information and a log file for
+      incident X020501.</dd>
+    <dt><a href="../faq/Q000605.htm#orcmid">Dennis Hamilton</a></dt>
+    <dd>analyzed the contributed material.</dd>
+  </dl></font>
+</blockquote>
+<h2><a name="History">History</a></h2>
+<blockquote><font size="-1">
+  <dl>
+    <dt><b><a name="0.20">Version 0.20: Expanded Analysis</a></b></dt>
+    <dd>&nbsp;</dd>
+    <dt><strong><a name="0.10">Version 0.10: Initial Analysis</a></strong></dt>
+    <dd>The initial version is posted for trial use and confirmation by those
+      who provided the original information and others interested in
+      WordPerfect-ODMA troubleshooting.</dd>
+  </dl>
+</font></blockquote>
+
+<p align="right"><font size="-2">created 2002-05-20-15:48 -0700 (pdt) by <a href="mailto:dennis.hamilton@acm.org">orcmid</a><br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-06-05 9:03 $<br>
+$$Revision: 3 $</em></font></p>
+</body>
+</html>

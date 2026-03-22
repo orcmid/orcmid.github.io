@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d061201k: ODMJNI 1.0 0.70 Beta Refactoring </title>
+<!--$$Header: /ODMdevCompagno/devnotes/2006/12/d061201k.htm 6     13-08-22 12:53 Orcmid $-->
+
+</head>
+
+<body stylesrc="../../../construction/templates/00/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="12%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/templates/00/c000005b.htm" TAG="BODY" startspan -->
+<a href="http://ODMA.info/dev/" target="_top" rel="nofollow">
+<img border="0" 
+     src="../../../images/ODMdev-thumb.gif" 
+     alt="ODMdev: ActiveODMA Development Framework" width="105" height="86" /></a><!-- 
+     Included from ODMdev /construction/templates/00/C000005a.htm of 2006-01-21-15:23 -0800 --></a>
+<!--webbot bot="Include" endspan i-checksum="16470" --></td>
+    
+    <td width="69%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<font color="#990033" face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+		<strong>
+		<a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong></font><strong><font color="#990033">
+		<a href="../../d000001.htm#d061201"><font color="#990033">d061201</font></a><br>
+      	</font></strong>
+<strong>
+
+  <font color="#990033">&nbsp;<a href="d061201.htm"><font color="#990033">ODMJNI 
+1.0 Deployment</font></a><br>
+      <em><font size="5">0.80 Beta Refactoring</font></em></font></strong></font></p>
+    </td>
+    
+    <td width="17%" height="6">
+
+      <small>
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<p align="right"><font face="monospace"><a href="../../../"><b>ODMdev</b></a><b>&gt;<a 
+  href="../../">devNotes</a>&gt;<br>
+      <a href="../">2006</a>&gt;<a target="_top" href="./">12</a>&gt;</b></font></p>
+      <p align="right"><font face="monospace"><b>
+		<a target="_top" href="d061201k.htm">d061201k</a>&gt;</b><br>
+</font>
+</font></small>
+      <a href="#0.00"><font size="1">0</font><small><small>.00</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED" S-Format="%Y-%m-%d %H:%M %Z" startspan -->2013-08-22 12:53 -0700<!--webbot bot="Timestamp" endspan i-checksum="28654" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+	<blockquote>
+<small>
+
+		<div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+			<ul>
+				<li><b>Latest version:</b> The latest
+				ODMJNI 1.0 Deployment material can be found via &nbsp; &lt;<b><font face="monospace"><a href="d061201b.htm">http://ODMA.info/dev/devNotes/2006/12/d061201b.htm</a></font></b>&gt;.<div style="float: right">
+					<!--webbot bot="Include" U-Include="../../../construction/templates/00/c000006b1.htm" TAG="BODY" startspan -->
+		
+		<table border="0" width="17%" style="border-collapse: collapse" id="ClustrMap">
+		<caption align="bottom" valign="bottom"><small><small>
+						<a href="../../../construction/templates/00/c000006c.htm">visits to popular ODMdev pages</a></small></small></caption>
+			<tr>
+				<td>
+				<p align="center">
+                     <a href="http://www3.clustrmaps.com/counter/maps.php?url=http://odma.info/dev" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://odma.info/dev" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+                      </a></td>
+			</tr>
+			<!-- Inserted from ODMdev /construction/templates/00/c000006c1.htm of 2007-07-24-10:31 -->
+		</table>
+	
+	<!--webbot bot="Include" endspan i-checksum="59500" --></div>
+				</li>
+				<li><b>Previous version:</b> <b>&nbsp;</b><b>ODMJNI 1.0 0.70beta 
+				Deployment Release </b>&lt;<b><font face="monospace"><a href="d061201j.htm">http://ODMA.info/dev/devNotes/2006/12/d061201j.htm</a></font></b>&gt;.</li>
+				<li><b>Next version: ODMJNI 1.0 0.90beta Hardening</b> &lt;<b><font face="monospace"><a href="d061201l.htm">http://ODMA.info/dev/devNotes/2006/12/d061201l.htm</a></font></b>&gt;.</li>
+				<li><b>This page:</b>&nbsp;<b>&nbsp;ODMJNI 1.0 0.80 Beta 
+				Refactoring 0.00 </b>&lt;<b><font face="monospace"><a href="d061201k.htm">http://ODMA.info/dev/devNotes/2006/12/d061201k.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+				0.80beta reintegrates odmjni100 with a refactored OdmNative100.</li>
+				<li><b><a name="Downloads">Downloads</a>:</b><ul>
+					<li><b><font face="monospace">d061201k-license.txt</font></b>: 0.00 version of the ODMA License 1.0 applied to the 
+					0.80beta 
+				release (<i>tbd</i>)</li>
+					<li><b><font face="monospace">
+					d061201k-ReleaseNotes.txt</font></b>: 0.00 for the 0.80beta 
+					release, --- byte file dated -----. (<i>tbd</i>)</li>
+					<li><b><font face="monospace">d061201k.txt</font></b>: 0.00 
+				manifest for the version ---- archive package version (<i>tbd</i>)</li>
+					<li><b><font face="monospace">
+					d061201k-ODMJNI1.0-0.80beta.zip</font></b>: 
+				0.00 archive of the 0.80beta release, ----- byte file dated 
+					-----.&nbsp;&nbsp;&nbsp; This is 
+					a complete roll-up and preservation copy of the essential files for using and 
+					confirming the 0.80beta release (<i>tbd</i>).&nbsp;&nbsp;&nbsp;&nbsp; </li>
+				</ul></li>
+			</ul></div>
+			
+
+</small>
+
+<p><font color="#800080"><b>{Author Note: More editing and Further Explanations 
+Required}</b></font></p>
+
+</blockquote>
+
+  <h2>1. Purpose and Scope</h2>
+<blockquote>
+	<p><b><a name="0.80beta">0.80beta Refactoring</a></b> (<i>tbd, tentative</i>).&nbsp; Along 
+		with maintenance and any bug fixes, this release includes a major 
+		refactoring of the Java native implementations in <b>
+	<font face="monospace">odmjni100</font></b> to exploit a 
+		significant improvement and restructuring of <b><font face="monospace">OdmNative100</font></b> interfaces and 
+		code.&nbsp; There is continuing improvement of regression tests and 
+		sample applications begin to take form.</p>
+</blockquote>
+
+  <h2>2. Description</h2>
+<h2>3. Bugs and Caveats</h2>
+<h2>4. Changes</h2>
+<blockquote>
+	<p>There is a progression of key changes as part of the refactoring:</p>
+	<ol>
+		<li>The performance of library entry-point detection and access is 
+		consolidated inside a set of global interfaces.&nbsp; This removes the 
+		funky coordination of the library handle with the implementations of 
+		document instances.<br>
+&nbsp; </li>
+		<li>There is refactoring of the top-level interfaces so the part that 
+		might be shared can be reduced and shared with administrative and 
+		non-DMS functions separate from the <b><font face="monospace">practical100</font></b> level of DMS-related 
+		functions.<br>
+&nbsp;&nbsp; </li>
+		<li>The public interfaces are changed to not reveal ODMA API features in 
+		any respect.&nbsp; Instead, all ODMA-related functions are replaced by 
+		COM-interface methods that work with Unicode strings and consistently 
+		deliver <b><font face="monospace">HRESULT</font></b>s.<br>
+&nbsp; </li>
+		<li>There is a COM-interface version of UTF-16 character arrays (<b><font face="monospace">BSTR</font></b>s) 
+		that allow appropriate caching and also work in coordination with 
+		Object-Oriented implementation of wide-character and Unicode strings.<br>
+&nbsp;&nbsp; </li>
+		<li>There is a common library used for validation of the Unicode strings 
+		that are supplied as parameters to <b><font face="monospace">OdmNative100</font></b> methods.&nbsp; This 
+		common library can be used &quot;up front&quot; in wrappers, such as <b>
+		<font face="monospace">odmjni100</font></b>, to 
+		provide pre-filtering of string-valued parameters at the application 
+		level.</li>
+	</ol>
+</blockquote>
+<h2>5. Development</h2>
+<h2>6. Developer Notes</h2>
+<blockquote>
+	<dl>
+		<dt><b>2008-03-31-12:18 Public Beta of <font face="monospace">OdmNative100</font></b></dt>
+		<dd>This release is accompanied by the public beta of <b><font face="monospace">OdmNative100</font></b>.&nbsp; 
+		This is the level at which we want to start public support for the 
+		library, headers, and the interfaces.&nbsp; There can be additions, and 
+		we will work carefully with the versioning of interfaces, but this 
+		should establish what we hope is the model continuing into the future.</dd>
+	</dl>
+</blockquote>
+
+  <hr color="#990033">
+
+<small>
+
+<dl>
+	<dt><b><a name="Attribution" target="_top" href="#Attribution">Attribution:</a></b></dt>
+	</dl>
+	<blockquote>
+	<dl>
+		<dt>Hamilton, Dennis E.</dt>
+		<dd>ODMJNI 1.0 0.80 Beta Refactoring.&nbsp; AIIM ODMA Interoperability Exchange, 
+		ODMdev Development Note page d061201k 0.00, March 31, 2008.&nbsp; 
+		Current version with downloadable software available at &lt;<font face="monospace"><b><a target="_top" href="d061201k.htm">http://ODMA.info/dev/devNotes/2006/12/d061201k.htm</a></b></font>&gt;.</dd></dl>
+	</blockquote>
+<dl>
+	<dt><b><a name="RevisionHistory" target="_top" href="#RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.00">0.00</a> 2008-03-31-09:57 Establish Placeholder for 
+	0.80beta</b></dt>
+	<dd>Create page for preserving the 0.70beta release materials and capturing 
+	notes prior to the initiation of this development stage.</dd>
+		</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="index.htm" target="_top">
+	<img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Structure (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="65%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/templates/00/c000005d.htm" 
+  TAG="BODY" startspan -->
+<div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+	<a rel="license" href="http://creativecommons.org/licenses/by/2.5/" target="_top">
+<img border="0" src="../../../images/ccSomeRights20.png" width="88" height="31" 
+     align="right" alt="Creative Commons License"></a>
+You are navigating 
+<!-- included from ODMdev /construction/templates/00/C000005f.htm of 2006-01-22-12:02 -0800 -->
+ 	<a href="../../../" target="_top">ODMdev</a>.<br />This work is 
+	<a rel="nofollow" href="../01/d060101c.htm" target="_top">licensed</a> under a <br />
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--><a rel="license"    href="http://creativecommons.org/licenses/by/2.5/" target="_top">Creative Commons 
+   Attribution 2.5 License</a>.</small></small></font></div>
+
+<!--webbot bot="Include" endspan i-checksum="24451" --></td>
+    <td width="24%">
+      <p align="right"><font size="-2">created 2008-03-27-15:35 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 13-08-22 12:53 $<br>
+      $$Revision: 6 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

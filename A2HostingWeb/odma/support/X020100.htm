@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<!--$$Header: /InfoNuovo Conclave Web/odma/support/X020100.htm 2     02-02-08 21:44 Orcmid $-->
+<title>X000500: WordPerfect + ODMA32 + Windows2000 Fatal Errors</title>
+
+
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<h1 align="center"><a href="X00-log.htm">ODMA Incident Report</a></h1>
+
+<h2 align="center"><b><a href="http://www.infonuovo.com/odma/support/X00-log.htm#X000500">X020100</a>:
+Improper <code>ODMAtest Save / SaveAs</code></b></h2>
+
+<h5 align="center">L<span style="font-variant: small-caps">ast updated</span> 
+ 2002-02-08-21:34 -0800 (pst)
+</h5>
+
+<blockquote>
+  <hr>
+  <table border="0" width="90%">
+    <tr>
+      <td width="50%"><b>Category: <font color="#FF0000">Functionality - Critical</font></b></td>
+      <td width="50%"><b>Incident ID: <a href="X00-log.htm#X020100">X020100</a></b></td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Priority</b>: <b><font color="#FF0000">7 - Serious</font></b></td>
+      <td width="50%"><b>Status</b>: Identify Correction</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Component: </b><kbd><b>TestODMA.EXE</b> and <b>TestODMA32.EXE</b>,
+        </kbd>version 2.0.0</td>
+      <td width="50%"><b>Repaired in: </b>none</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Assigned To</b>: <a href="mailto:infonuovo@email.com">Dennis
+        Hamilton</a></td>
+      <td width="50%"><b>Reported By:&nbsp;<br>
+        </b>Ralf Verstappen (2002-01-31)</td>
+    </tr>
+    <tr>
+      <td width="50%"><b>Date Opened</b>: 2002-02-06</td>
+      <td width="50%"><b>Date Closed</b>: none</td>
+    </tr>
+  </table>
+</blockquote>
+
+<h3><a name="Summary">Summary</a>    (2001-02-08):</h3>
+
+<blockquote>
+  <p>The ODMA 2.0 Test Client, <b>TestODMA</b>, does not save documents
+  correctly.&nbsp; It saves the document being created or edited to the working
+  disk file <i><b>after </b></i>requesting that the document file be saved by
+  the DMS.&nbsp; The copy that the DMS is given is not the latest copy that <b>TestODMA</b>
+  has.</p>
+  <p>The consequences of this incorrect functionality will vary depending on the
+  DMS integration that is being used:</p>
+  <ul>
+    <li>With the Sample DMS, <b><code>ODMASAMP</code></b>, operation will appear
+      to be correct.&nbsp; That is because <b><code>ODMASAMP</code></b> does not
+      move the file, so a belated updated still obtains the correct result.</li>
+    <li>With more-highly functional, production DMS Integrations it may seem as
+      if the file was not saved or that changes that were made by the user were
+      not saved.</li>
+  </ul>
+</blockquote>
+
+<h3><a name="Remedies">Remedies</a>    (2002-02-08):&nbsp;&nbsp;</h3>
+<blockquote>
+  <ol>
+    <li>There is no workaround.</li>
+    <li>The program <b>TestODMA</b> is not trustworthy for saving the correct
+      document information to the DMS.</li>
+    <li>The inspection of <b>TestODMA</b> code will be completed and an
+      appropriate remedy proposed.
+      <ul>
+        <li>On initial inspection, the repair appears to be quite simple.</li>
+        <li>Duplicating the building of <b>TestODMA</b> may require far more
+          effort than the repair itself.</li>
+        <li>There is no schedule for this effort at the moment.</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+<h3><a name="Analysis">Analysis</a>  (2002-02-06):</h3>
+<blockquote>
+  <p>It has been confirmed experimentally, and by inspection of the source code,
+  that when the user takes an action that involves a call to any of <b><code>ODMSaveDoc</code></b>,
+  <b><code>ODMSaveDocEx</code></b>, or <b><code>ODMSetAlternateContent</code></b>,
+  <b><code>TestODMA</code></b> fails to flush the edited document to disk until <i><b>after</b></i>
+  the ODMA save operation is performed.</p>
+  <p>[Further details to be provided.]</p>
+  <hr>
+</blockquote>
+
+<p align="right"><font size="-2">created 2002-02-06-22:17 -0800 (pst) by orcmid<br>
+<em>$$Author: Orcmid $<br>
+$$Date: 02-02-08 21:44 $<br>
+$$Revision: 2 $</em></font></p>
+</body>
+</html>

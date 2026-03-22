@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>d060701j: getpwd00.h (0.45-alpha) Description </title>
+<!--$$Header: /TROSTCompagno/dev/2006/07/d060701j.htm 6     06-08-31 17:29 Orcmid $-->
+<!-- Customized from TROST /info/templates/00/i000006c.htm of 2005-08018T20:44Z -->
+
+<base target="_self">
+</head>
+
+<body stylesrc="../../../construction/c000005e.htm" bgcolor="#FFFFFF" text="#000080" link="#0000FF" vlink="#800080" alink="#FF0000">
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<table border="0" width="100%" height="3">
+  <tr>
+    
+    <td width="12%" height="6">
+
+<!--webbot bot="Include"
+      U-Include="../../../construction/c000005a.htm" TAG="BODY" startspan -->
+<a rel="nofollow" href="http://TROSTing.org" target="_top"><img border="0" 
+src="../../../images/TROSTSymbol-thumb.gif" alt="TROST: Open-System Trustworthiness" 
+width="100" height="87"></a>
+<!-- included from TROSTing /construction/C000005a.htm of 2005-07-21-13:35 -0700 $-->
+<!--webbot bot="Include" endspan i-checksum="10704" --></td>
+    
+    <td width="69%" height="6">
+      <p align="center">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <font color="#990033"><strong>
+		<a href="../../d000001.htm#d060701"><font color="#990033">d060701</font></a> 
+		TROST </strong></font>
+
+<strong><a href="../../d000001.htm"><font color="#990033">devNote</font></a></strong><font color="#990033"><strong><br>
+      <a href="d060701.htm"><font color="#990033">getpwd Platform Isolation</font></a><br />
+<em><font size="5">getpwd00.h (0.50 alpha) Description</font></em></strong></font></font></p>
+    </td>
+    
+    <td width="18%" height="6">
+
+<font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+      <p align="right"><code><a href="../../../"><b>TROSTing</b></a></code><b><code>&gt;<a 
+  href="../../">dev</a>&gt;<br>
+      <a target="_top" href="../">2006</a>&gt;<a target="_top" href="./">07</a>&gt;</code></b></p>
+      <p align="right"><code><b><a target="_top" href="d060701j.htm">d060701j</a>&gt;</b></code><br>
+</font>
+      <small><small>
+		<a href="#0.50">0.50</a>
+		<!--webbot bot="Timestamp" S-Type="REGENERATED"
+      S-Format="%Y-%m-%d %H:%M %Z" startspan -->2006-08-31 17:28 -0700<!--webbot bot="Timestamp" endspan i-checksum="29201" --> 
+      </small></small></p>
+      </td>
+    
+  </tr>
+</table>
+</font>
+
+  <hr color="#990033">
+
+<blockquote><small><div align="left" 
+
+ style="border-style:dotted; border-width:1px; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+	
+		<ul>
+			<li><b>The latest getpwd.h Description:</b>&nbsp;&nbsp;<b> </b>&lt;<b><font face="Courier New, Courier, Monospace"><a target="_top" href="d060701e.htm">http://TROSTing.org/2006/07/d060701e.htm</a></font></b>&gt;.&nbsp; 
+			Consult that page for the latest header-file version and its 
+			download.</li>
+			<li><b>This getpwd00.h (0.50 alpha) Description: </b>&lt;<b><font face="Courier New, Courier, Monospace"><a href="d060701j.htm">http://TROSTing.org/2006/07/d060701j.htm</a></font></b>&gt;.&nbsp; 
+			Consult that page for current status and any important notices.&nbsp; 
+			This version specifies additional information about the contracted 
+			behavior that applies to all implementations based on this header.</li>
+			<li><b>Previous (0.4 alpha) version:</b> &lt;<b><font face="Courier New, Courier, Monospace"><a href="d060701f.htm">http://TROSTing.org/2006/07/d060701f.htm</a></font></b>&gt;.&nbsp;&nbsp; 
+			Obsolete initial version with function prototype only.</li>
+		</ul>
+</div></small>
+	<p>This version of&nbsp; <b><font face="Courier New, Courier, Monospace">getpwd00.h</font></b> 
+	reflects the invariant behavior of the <b><a href="d060701i.htm">getpwd API 
+	Reference (0.50 alpha)</a></b>.&nbsp; The Zip package includes demonstration 
+	that the header is usable in both applications of <b>
+	<font face="Courier New, Courier, Monospace">getpwd</font></b> and in 
+	implementations for <b><font face="Courier New, Courier, Monospace">getpwd</font></b>.</p>
+	<blockquote>
+		<blockquote>
+			<h3>1. <a href="#Trial">Improved Trial Header</a><br>
+			2. <a href="#Download">Package Download</a><br>
+			3. Package Usage<br>
+			4. Design Notes</h3>
+		</blockquote>
+	</blockquote>
+</blockquote>
+
+<h2><a name="1" target="_top" href="#1">1</a>. <a name="Trial">Improved Trial 
+Header</a></h2>
+<blockquote>
+	<p>The header file is tied to the corresponding <a href="d060701i.htm">API 
+	Reference specification</a>.&nbsp; The current 
+	text is as follows:</p>
+</blockquote>
+<blockquote>
+	<div style="border: 2px solid #808080; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px">
+		<pre><font color="#008000">/* getpwd00.h 0.50 alpha      ISO 8859-1 encoding            dh:2006-08-31
+ *
+ *  Obtain Password Entry Directly from Console (version 0.50 alpha)
+ *  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ *
+ * This is an alpha-test version of a C/C++ Language header of a custom
+ * user function.  The interface contract that this header represents is
+ * available at http://TROSTing.org/dev/2006/07/d060701i.htm
+ *
+ *          Copyright © 2006, NuovoDoc &lt;http://NuovoDoc.com&gt;
+ *
+ *     Attribution: 
+ *       Hamilton, Dennis E.  getpwd00.h 0.50 alpha.  C Language header
+ *       for trial getpwd00-version implementations, 2006-08-31.
+ *       Latest version available in package d060701j.zip at
+ *       http://TROSTing.org/dev/2006/07/d060701j.htm 
+ *
+ *    This work is licensed under the Creative Commons Attribution 
+ *    License.  To view a copy of this license, visit web site
+ *    http://creativecommons.org/licenses/by/2.5/ or send a letter 
+ *    to Creative Commons, 559 Nathan Abbott Way, Stanford, 
+ *    California 94305, USA.
+ */</font><font color="#000000">
+ 
+</font><font color="#0000FF">#ifndef</font><font color="#000000"> GETPWD_H
+</font><font color="#0000FF">#define</font><font color="#000000"> GETPWD_H
+
+</font><font color="#0000FF">#ifdef</font><font color="#000000">  __cplusplus
+</font><font color="#0000FF">extern</font><font color="#000000"> </font><font color="#993333">&quot;C&quot;</font><font color="#000000"> {
+</font><font color="#0000FF">#endif</font><font color="#000000">
+
+</font><font color="#0000FF">#include</font><font color="#000000"> </font><font color="#993333">&lt;stddef.h&gt;</font><font color="#000000">
+    </font><font color="#008000">/* for implementation of size_t. */</font><font color="#000000">
+ 
+</font><font color="#0000FF">int</font><font color="#000000"> getpwd00(</font><font color="#0000FF">char</font><font color="#000000"> buffer[ ], size_t maxpwd, size_t maxfield);
+
+</font><font color="#0000FF">#define</font><font color="#000000"> getpwdMAX_MAXPWD (63)
+    </font><font color="#008000">/* Limit buffers to a reasonable ceiling above manual entries */</font><font color="#000000">
+
+</font><font color="#0000FF">#define</font><font color="#000000"> getpwdMAX_MAXFIELD (getpwdMAX_MAXPWD+8)
+    </font><font color="#008000">/* Limit fields to a slight increase over the maximum buffer */</font><font color="#000000">
+    
+</font><font color="#0000FF">#ifdef</font><font color="#000000">  __cplusplus
+}
+</font><font color="#0000FF">#endif</font><font color="#000000">
+
+</font><font color="#0000FF">#endif</font><font color="#000000"> </font><font color="#008000">/* GETPWD_H */</font><font color="#000000">
+</font><font color="#008000">/*
+ * $<!-- Freeze VSS label -->Header: /MyProjects/getpwd/getpwd00.h 4     06-08-31 17:04 Orcmid $
+ *
+ *                        *** end of getpwd00.h ***
+ */</font></pre></div>
+</blockquote>
+
+  <h2><a name="2" target="_top" href="#2">2</a>. <a name="Download">Package 
+	Download </a></h2>
+<blockquote>
+	<p>A Zip archive with the header and a simple test program is available:</p>
+	<ul>
+		<li><b>The Manifest for the Zip Archive: </b>5,013 byte file 
+		<font face="Courier New, Courier, Monospace"><b>
+		<a href="d060701f.txt">d060701f.txt</a></b></font>&nbsp; version 0.06 dated 
+		2006-07-30-00:40.&nbsp; Read this file first to determine whether it is 
+		useful to download the Zip file.<br>
+&nbsp;&nbsp; </li>
+		<li><b>The Zip Archive:</b> 4,301 byte file 
+		<font face="Courier New, Courier, Monospace"><b>
+		<a href="d060701f.zip">d060701f.zip</a></b></font> version 0.06 dated 
+		2006-07-30-00:41.</li>
+	</ul>
+</blockquote>
+
+  <h2>3. <a name="Usage">Package Usage</a></h2>
+<blockquote>
+	<p>&nbsp;</p>
+</blockquote>
+<h2>4. <a name="Notes">Design Notes</a></h2>
+<blockquote>
+	<p>&nbsp;</p>
+</blockquote>
+
+  <hr color="#990033">
+
+<dl><small>
+		</small></dl>
+
+<dl><small>
+		<dt><b><a name="RevisionHistory">Revision History:</a></b></dt>
+	<dt><b><a name="0.50">0.50</a> 2006-08-07-13:14 Upgrade to 0.50 alpha</b></dt>
+	<dd>Go immediately to the 0.50 alpha level so that the defined constants can 
+	be employed in the statement of invariants and in the little test program 
+	that is constructed next.</dd>
+	<dt><b><a name="0.45">0.45</a> 2006-08-06-10:45 Upgrade to 0.45 alpha</b></dt>
+	<dd>Tie to the 0.45 alpha API Reference and demonstrate use in application 
+	of getpwd as well as implementations of getpwd.</dd>
+	<dt><b><a name="0.40" href="d060701f.htm">0.40</a> 2006-07-30-00:44 Update to 0.4 alpha with 
+	Cleaned-Up Files</b></dt>
+	<dd>The header file is renamed to getpwd00.h for all alpha-beta versions, 
+	and the Zip package is cleaned up.&nbsp; </dd>
+	<dt><b><a name="0.30">0.30</a> 2006-07-29-21:50 Introduce Initial Header 
+	File and Confirmation</b></dt>
+	<dd>The text of the first, provisional header file is produced.&nbsp; There 
+	is an on-line manifest and a Zip file that can be downloaded that contains 
+	the manifest, the file, and a tiny program that tests compilation using the 
+	header file and its Standard C Library dependency.</dd>
+	<dt><b><a name="0.00">0.00</a> 2006-07-29-16:08 Create Initial Placeholder</b></dt>
+	<dd>Introduce an initial placeholder that serve as a target of links and 
+	include-page components until more content is developed.&nbsp; </dd>
+</small></dl>
+
+  <hr color="#990033">
+
+<table border="0" cellspacing="3" width="100%">
+  <tr>
+    <td width="10%"><a href="../../construction.htm" target="_top"><img border="0" src="../../../images/hardhat-thumb.gif" alt="Construction Zone (Hard Hat Area)" width="80" height="60"></a>
+    </td>
+    <td width="63%" valign="middle" align="center">
+      <!--webbot bot="Include" U-Include="../../../construction/c000005c.htm" 
+  TAG="BODY" startspan --><div align="center"><font face="Arial, Microsoft Sans Serif, Helvetica, Geneva, Swiss, Sans Serif">
+<small><small>
+<img border="0" src="../../../images/ccby20.gif" align="right" 
+ alt="Creative Commons License" width="88" height="31">
+You are navigating 
+<!-- included from TROSTing /construction/C000005c.htm of 2005-06-18T01:04Z -->
+ 	<a rel="nofollow" target="_top" href="../../../">TROSTing.org</a>.<br />This work is 
+	<a href="../../../info/2005/04/i050403c.htm" target="_top">licensed</a> under a <br />
+	<a rel="license" target="_top" 
+ href="http://creativecommons.org/licenses/by/2.0/">Creative Commons License</a>.
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+<license rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by/2.0/">
+<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+<permits rdf:resource="http://web.resource.org/cc/Distribution" />
+<requires rdf:resource="http://web.resource.org/cc/Notice" />
+<requires rdf:resource="http://web.resource.org/cc/Attribution" />
+<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+</License>
+
+</rdf:RDF>
+
+--></small></small></font></div>
+<!--webbot bot="Include" endspan i-checksum="46192" --></td>
+    <td width="25%">
+      <p align="right"><font size="-2">created 2006-07-29-16:08 -0700 (pdt) by
+		<a rel="nofollow" href="../../../construction/orcmid.htm">orcmid</a><br>
+      <em>$$Author: Orcmid $<br>
+      $$Date: 06-08-31 17:29 $<br>
+      $$Revision: 6 $</em></font></p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
